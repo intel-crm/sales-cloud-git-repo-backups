@@ -377,7 +377,7 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
                 <elementReference>vProgramName</elementReference>
             </value>
         </filters>
-        <object>Core_MDF_ClaimActAllocRecTypeMapping__mdt</object>
+        <object>Core_MDF_ObjRecType_Budget_FieldSetMap__mdt</object>
         <outputAssignments>
             <assignToReference>vAllocationRTDeveloperName</assignToReference>
             <field>Core_MDF_Allocation_RecordType_txt__c</field>

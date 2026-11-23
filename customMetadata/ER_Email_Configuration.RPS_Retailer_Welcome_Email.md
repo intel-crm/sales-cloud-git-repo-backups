@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Business_Event__c</field>
-        <value xsi:type="xsd:string">Welcome_email_on_request_approval_New_deleted</value>
+        <value xsi:type="xsd:string">Welcome_email_on_request_approval_New_DELETED</value>
     </values>
     <values>
         <field>Country__c</field>

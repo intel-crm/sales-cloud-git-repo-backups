@@ -15,6 +15,7 @@
             <name>body</name>
             <value>
                 <elementReference>$Record.HtmlBody</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
             </value>
         </inputParameters>
         <inputParameters>
@@ -228,6 +229,9 @@
                 <elementReference>Get_Contacts_based_Email_address</elementReference>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>END_ELEMENT_12</targetReference>
+        </connector>
     </assignments>
     <assignments>
         <name>From_To_CC_Email_Concat</name>
@@ -511,6 +515,9 @@
         <label>From,To and CC are present?</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_16</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Present</name>
@@ -558,6 +565,9 @@
         <label>Recepient list is available</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_17</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Yes</name>
@@ -580,6 +590,9 @@
         <label>User Details verification</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_18</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Get_Opty_Team_based_on_User</name>
@@ -597,6 +610,51 @@
             <label>Get Opty Team based on User</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_12</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_13</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_14</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_15</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_16</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_17</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_18</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_19</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_20</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>EAC Email Sync Trigger {!$Flow.CurrentDateTime}</interviewLabel>
     <label>EAC Email Sync Trigger</label>
@@ -854,6 +912,9 @@
         <label>Update RelatedtoID</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_19</targetReference>
+        </connector>
         <inputAssignments>
             <field>RelatedToId</field>
             <value>
@@ -867,6 +928,9 @@
         <label>Update RelatedtoID - Single Account</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_13</targetReference>
+        </connector>
         <inputAssignments>
             <field>RelatedToId</field>
             <value>
@@ -880,6 +944,9 @@
         <label>Update RelatedtoID - Single Account (No Contact Role)</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_15</targetReference>
+        </connector>
         <inputAssignments>
             <field>RelatedToId</field>
             <value>
@@ -893,6 +960,9 @@
         <label>Update RelatedtoID - Single Account (No Team Member)</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_14</targetReference>
+        </connector>
         <inputAssignments>
             <field>RelatedToId</field>
             <value>
@@ -906,6 +976,9 @@
         <label>Update RelatedtoID - Single Opportunity</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_20</targetReference>
+        </connector>
         <inputAssignments>
             <field>RelatedToId</field>
             <value>

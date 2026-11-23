@@ -9,6 +9,12 @@
             <publicGroup>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</publicGroup>
             <publicGroup>Core_MDF_CCP_Retail_WW_Fin_Mgr_Queue_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>atormf_fin_manager@intel.com.crm</user>
+            <user>ccp_testrmf_fin_manager@intel.com.crm</user>
+            <user>csccrmf_fin_manager@intel.com.crm</user>
+            <user>uatrmf1_fin_manager@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>PartnerMarketingBudget</sobjectType>

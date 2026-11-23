@@ -76,6 +76,11 @@
         <label>Out of Home-&gt;Other (Out Of Home)</label>
     </customValue>
     <customValue>
+        <fullName>Outcome-Based-&gt;Outcome-Based</fullName>
+        <default>false</default>
+        <label>Outcome-Based-&gt;Outcome-Based</label>
+    </customValue>
+    <customValue>
         <fullName>Video-&gt;Television</fullName>
         <default>false</default>
         <label>Video-&gt;Television</label>
@@ -1366,83 +1371,6 @@
         <label>Digital Media-&gt;IndustryPartner.com</label>
     </customValue>
     <customValue>
-        <fullName>Outcome-Based-&gt;Outcome-Based</fullName>
-        <default>false</default>
-        <label>Outcome-Based-&gt;Outcome-Based</label>
-    </customValue>
-    <customValue>
-        <fullName>Test2</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Test2</label>
-    </customValue>
-    <customValue>
-        <fullName>Event 2025-&gt;Third - Party Event</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Event 2025-&gt;Third - Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Test LOV Activity Category-&gt;Test LOV Type</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Test LOV Activity Category-&gt;Test LOV Type</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025-&gt;Promotion – Non-Retail</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Sales Readiness 2025-&gt;Promotion – Non-Retail</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025-&gt;Promotion – Retail</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Sales Readiness 2025-&gt;Promotion – Retail</label>
-    </customValue>
-    <customValue>
-        <fullName>Test LOV Activity Category-&gt;Test LOV Type 2</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Test LOV Activity Category-&gt;Test LOV Type 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital 2025-&gt;Web Page</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Digital 2025-&gt;Web Page</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital 2025-&gt;Social Graphic Ad</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Digital 2025-&gt;Social Graphic Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital 2025-&gt;Social Text Ad</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Digital 2025-&gt;Social Text Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital 2025-&gt;Social Video Ad</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Digital 2025-&gt;Social Video Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital 2025-&gt;Search (SEM) Graphic Ad</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Digital 2025-&gt;Search (SEM) Graphic Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital 2025-&gt;Search (SEM) Text Ad</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Digital 2025-&gt;Search (SEM) Text Ad</label>
-    </customValue>
-    <customValue>
         <fullName>Digital 2025-&gt;Video Ad</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -1647,16 +1575,88 @@
         <label>Events -&gt; Event with Product Sales Onsite</label>
     </customValue>
     <customValue>
+        <fullName>Events -&gt; Event(Customer-Owned)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Events -&gt; Event(Customer-Owned)</label>
+    </customValue>
+    <customValue>
         <fullName>Digital Media-&gt;Channel Partner Online Display</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Digital Media-&gt;Channel Partner Online Display</label>
     </customValue>
     <customValue>
-        <fullName>Events -&gt; Event(Customer-Owned)</fullName>
+        <fullName>Test2</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Events -&gt; Event(Customer-Owned)</label>
+        <label>Test2</label>
+    </customValue>
+    <customValue>
+        <fullName>Event 2025-&gt;Third - Party Event</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Event 2025-&gt;Third - Party Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Test LOV Activity Category-&gt;Test LOV Type</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Test LOV Activity Category-&gt;Test LOV Type</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness 2025-&gt;Promotion – Non-Retail</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sales Readiness 2025-&gt;Promotion – Non-Retail</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness 2025-&gt;Promotion – Retail</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sales Readiness 2025-&gt;Promotion – Retail</label>
+    </customValue>
+    <customValue>
+        <fullName>Test LOV Activity Category-&gt;Test LOV Type 2</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Test LOV Activity Category-&gt;Test LOV Type 2</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Web Page</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Digital 2025-&gt;Web Page</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Social Graphic Ad</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Digital 2025-&gt;Social Graphic Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Social Text Ad</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Digital 2025-&gt;Social Text Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Social Video Ad</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Digital 2025-&gt;Social Video Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Search (SEM) Graphic Ad</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Digital 2025-&gt;Search (SEM) Graphic Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Search (SEM) Text Ad</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Digital 2025-&gt;Search (SEM) Text Ad</label>
     </customValue>
     <masterLabel>Activity Category -&gt;Type</masterLabel>
     <sorted>false</sorted>

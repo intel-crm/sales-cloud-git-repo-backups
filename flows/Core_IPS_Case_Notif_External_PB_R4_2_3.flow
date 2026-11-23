@@ -37,12 +37,12 @@
     <actionCalls>
         <name>myRule_11_A2</name>
         <label>Email Alert</label>
-        <locationX>1609</locationX>
-        <locationY>1427</locationY>
+        <locationX>1535</locationX>
+        <locationY>1470</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</actionName>
         <actionType>emailAlert</actionType>
         <connector>
-            <targetReference>myRule_13</targetReference>
+            <targetReference>myRule_15</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -143,61 +143,41 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
-        <name>myRule_9_A2</name>
-        <label>Email Alert</label>
-        <locationX>1246</locationX>
-        <locationY>1319</locationY>
-        <actionName>Case.Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</actionName>
-        <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <name>Send_Emails_Using_Email_Config_MDT</name>
+        <label>Send Emails Using Email Config MDT</label>
+        <locationX>1217</locationX>
+        <locationY>1368</locationY>
+        <actionName>DynamicEmailAlertSender</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
-            <name>SObjectRowId</name>
+            <name>emailAlertName</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
             <value>
                 <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</nameSegment>
+        <nameSegment>DynamicEmailAlertSender</nameSegment>
         <offset>0</offset>
     </actionCalls>
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>True_External_Close</name>
-        <label>True External Close</label>
-        <locationX>997</locationX>
-        <locationY>625</locationY>
-        <assignmentItems>
-            <assignToReference>varExternalCloseScheduler</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <assignments>
-        <name>True_Schedule_Path2</name>
-        <label>True Schedule Path2</label>
-        <locationX>1354</locationX>
-        <locationY>1626</locationY>
-        <assignmentItems>
-            <assignToReference>varSchedulerExternalClosePending10days</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-    </assignments>
     <decisions>
         <name>Check_External_Close_Pending_10days_True</name>
         <label>Check External - Close Pending @10days True</label>
-        <locationX>1273</locationX>
-        <locationY>235</locationY>
+        <locationX>1223</locationX>
+        <locationY>288</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Check_Schedule_var_true_External_Close_Pending_10days</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>varSchedulerExternalClosePending10days</leftValueReference>
+                <leftValueReference>formula_TRUE_myRule_13</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -212,14 +192,14 @@
     <decisions>
         <name>check_External_Close_True</name>
         <label>check External Close True</label>
-        <locationX>1265</locationX>
-        <locationY>58</locationY>
+        <locationX>1233</locationX>
+        <locationY>122</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>check_VAR_External_Close_True</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>varExternalCloseScheduler</leftValueReference>
+                <leftValueReference>formula_TRUE_myRule_5</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -260,10 +240,10 @@
     <decisions>
         <name>myRule_11</name>
         <label>External - Close Pending</label>
-        <locationX>1741</locationX>
-        <locationY>1211</locationY>
+        <locationX>1874</locationX>
+        <locationY>1246</locationY>
         <defaultConnector>
-            <targetReference>myRule_13</targetReference>
+            <targetReference>myRule_15</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>FALSE_External - Close Pending</defaultConnectorLabel>
         <rules>
@@ -281,32 +261,6 @@
             </connector>
             <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>TRUE_External - Close Pending</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>myRule_13</name>
-        <label>External - Close Pending @10days</label>
-        <locationX>1706</locationX>
-        <locationY>1614</locationY>
-        <defaultConnector>
-            <targetReference>myRule_15</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>FALSE_External - Close Pending @10days</defaultConnectorLabel>
-        <rules>
-            <name>TRUE_myRule_13</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_TRUE_myRule_13</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>True_Schedule_Path2</targetReference>
-            </connector>
-            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-            <label>TRUE_External - Close Pending @10days</label>
         </rules>
     </decisions>
     <decisions>
@@ -364,7 +318,7 @@
         <locationX>977</locationX>
         <locationY>479</locationY>
         <defaultConnector>
-            <targetReference>myRule_5</targetReference>
+            <targetReference>myRule_7</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>FALSE_External Update Contact</defaultConnectorLabel>
         <rules>
@@ -382,32 +336,6 @@
             </connector>
             <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>TRUE_External Update Contact</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>myRule_5</name>
-        <label>External Close</label>
-        <locationX>1260</locationX>
-        <locationY>512</locationY>
-        <defaultConnector>
-            <targetReference>myRule_7</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>FALSE_External Close</defaultConnectorLabel>
-        <rules>
-            <name>TRUE_myRule_5</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_TRUE_myRule_5</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>True_External_Close</targetReference>
-            </connector>
-            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-            <label>TRUE_External Close</label>
         </rules>
     </decisions>
     <decisions>
@@ -803,7 +731,7 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
         <locationX>1246</locationX>
         <locationY>1211</locationY>
         <connector>
-            <targetReference>myRule_9_A2</targetReference>
+            <targetReference>Send_Emails_Using_Email_Config_MDT</targetReference>
         </connector>
         <inputAssignments>
             <field>Core_IPS_email_text__c</field>
@@ -860,8 +788,8 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
             </connector>
             <label>External Close Scheduled Path</label>
             <offsetNumber>1</offsetNumber>
-            <offsetUnit>Hours</offsetUnit>
-            <recordField>LastModifiedDate</recordField>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>ClosedDate</recordField>
             <timeSource>RecordField</timeSource>
         </scheduledPaths>
         <scheduledPaths>
@@ -870,14 +798,14 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
                 <targetReference>Check_External_Close_Pending_10days_True</targetReference>
             </connector>
             <label>External - Close Pending @10days Scheduler Path</label>
-            <offsetNumber>10</offsetNumber>
-            <offsetUnit>Days</offsetUnit>
+            <offsetNumber>5</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
             <recordField>Core_IPS_Date_Time_Close_Pending__c</recordField>
             <timeSource>RecordField</timeSource>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>varExternalCloseScheduler</name>
         <dataType>Boolean</dataType>

@@ -166,9 +166,14 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
 
         try {
             Id AccountCreateRT = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get('Account_Create_Request').getRecordTypeId();
-
-            workItems = [ SELECT Id, ProcessInstanceId,ActorId FROM ProcessInstanceWorkitem WHERE ProcessInstance.TargetObjectId = :regReqId];
+	    //ATHR Fix - TWC729-9556 - JB
+            workItems = [ SELECT Id /*, ProcessInstanceId,ActorId*/ FROM ProcessInstanceWorkitem WHERE ProcessInstance.TargetObjectId = :regReqId];
+            System.debug('WorkItems Size: ' + workItems.size()); //sj start
             
+            /*if(!workItems.isEmpty()){ //sjstart
+                System.debug('WorkItem Id: ' + workItems[0].Id);
+                System.debug('Actor Id: ' + workItems[0].ActorId);
+            }//sj end*/
             apWrp.workItemId = workItems.isEmpty()? null : workItems[0].Id;
             PRM_Registration_Request__c regRec = [SELECT Id, PRM_Company_Nm_Eng__c, PRM_Alt_CompanyNameLang__c, PRM_Salesforce_ID__c, PRM_Email_ID__c, Geo_Code__c, PRM_Country__c,
             PRM_Matching_Contact__c,PRM_Matching_Contact__r.email,PRM_Matching_Contact__r.AccountId,RecordTypeId, PRM_Channel_Program_Level_txt__c
@@ -224,6 +229,7 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
         }
         catch(exception ex) { throw new AuraHandledException('Exception occured'+ ex);
         }
+        System.debug('Approval Wrapper = ' + JSON.serialize(apWrp));//sj
         return apWrp;
     }
 
@@ -491,7 +497,8 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
         CompanyValidationWrap compValidWrap = new CompanyValidationWrap();
         try{
             if (regReqId!=null){
-                for (PRM_Registration_AI_Agent_Info__c agentInfoRec : [Select id,PRM_Status__c from PRM_Registration_AI_Agent_Info__c 
+                //ATHR Fix - TWC729-9556
+                for (PRM_Registration_AI_Agent_Info__c agentInfoRec : [Select id /*,PRM_Status__c*/ from PRM_Registration_AI_Agent_Info__c 
                                        where PRM_Registration_Request__c =: regReqId and
                                        PRM_Status__c ='In Progress' limit 1]) {
                     isValidationInProgress = true;

@@ -19,6 +19,9 @@
         <field>FK_NAME</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Concatenated_Application_workload__c</field>
+    </columns>
+    <columns>
         <field>Opportunity_Solution_Area__c.Core_Application_Workload__c</field>
     </columns>
     <columns>
@@ -70,21 +73,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>India</value>
+            <value>APJ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Win</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Submitted,Approved</value>
+            <value>Approved</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Deal: Sell-to</value>
+            <operator>contains</operator>
+            <value>Sell-To</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -113,8 +123,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-10-16</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2025-07-01</startDate>
     </timeFrameFilter>
 </Report>

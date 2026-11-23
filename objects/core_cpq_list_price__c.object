@@ -310,22 +310,6 @@
         </filters>
         <label>All</label>
     </listViews>
-    <listViews>
-        <fullName>PSG_Tools_List_Price</fullName>
-        <columns>NAME</columns>
-        <columns>core_cpq_product_name__c</columns>
-        <columns>core_cpq_product_opn_txt__c</columns>
-        <columns>core_cpq_list_price_amt__c</columns>
-        <columns>core_cpq_minimum_order_qty__c</columns>
-        <columns>core_cpq_multiple_order_quantity__c</columns>
-        <columns>core_cpq_Price_Book__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>core_cpq_product_opn_txt__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <label>PSG Tools List Price</label>
-    </listViews>
     <nameField>
         <displayFormat>LP-{0000}</displayFormat>
         <label>List Price Name</label>

@@ -3,10 +3,6 @@
     <backgroundEndColor>#FFFFFF</backgroundEndColor>
     <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
     <backgroundStartColor>#FFFFFF</backgroundStartColor>
-    <chartTheme>light</chartTheme>
-    <colorPalette>unity</colorPalette>
-    <dashboardChartTheme>light</dashboardChartTheme>
-    <dashboardColorPalette>unity</dashboardColorPalette>
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -962,7 +958,7 @@
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11540272@intel.com.crm</owner>
-    <runningUser>11376277@intel.com.crm</runningUser>
+    <runningUser>12229482@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Sales Cloud Data Quality Monitoring</title>
     <titleColor>#000000</titleColor>

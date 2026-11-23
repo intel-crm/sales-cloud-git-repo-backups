@@ -360,6 +360,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label>Причина отмены требования</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>Текстовая заметка, связанная с заявкой</help>
         <label>Примечания к заявке</label>
         <name>Core_MDF_Claim_Comments__c</name>

@@ -34,9 +34,6 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
     <description>Tracking AMR 2025 Regional Bonus - Qualified opportunities for Enterprise AI Acceleration: Innovate &amp; Scale</description>
     <filter>
         <booleanFilter>1 AND 3 AND (2 OR 4) AND 5</booleanFilter>
@@ -78,11 +75,6 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Commissionable__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Oppty_Count__c</field>

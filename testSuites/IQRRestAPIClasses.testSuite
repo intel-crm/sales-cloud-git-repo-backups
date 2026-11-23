@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Pricing_RestAPI_ChangeRequestQLI_Test</testClassName>
+    <testClassName>Pricing_RestAPI_PerformanceMetrics_Test</testClassName>
+    <testClassName>Pricing_RestAPI_QuoteComments_Test</testClassName>
+    <testClassName>Pricing_RestAPI_QuotelinesV2_Test</testClassName>
+    <testClassName>Pricing_RestAPI_QuotesUtilityV2_Test</testClassName>
+    <testClassName>Pricing_RestAPI_QuotesV2_Test</testClassName>
+</ApexTestSuite>

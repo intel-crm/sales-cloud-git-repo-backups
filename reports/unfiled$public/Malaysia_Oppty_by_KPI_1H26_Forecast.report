@@ -18,8 +18,8 @@
             <column>Opportunity$StageName</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design Win</value>
+            <operator>notEqual</operator>
+            <value>,Lost,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity$Core_Approved_Date__c</column>
@@ -71,7 +71,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity$CloseDate</dateColumn>
-        <endDate>2026-09-30</endDate>
+        <endDate>2026-06-30</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2026-01-01</startDate>
     </timeFrameFilter>

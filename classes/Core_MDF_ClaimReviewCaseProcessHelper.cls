@@ -457,7 +457,7 @@ global without sharing class Core_MDF_ClaimReviewCaseProcessHelper implements Da
                   //  List<ContentDocumentLink> docLink = [SELECT ContentDocumentId,Id,LinkedEntityId,ShareType FROM ContentDocumentLink WHERE LinkedEntityId IN:claimIdList]; //POP
                     for(Case cs: [SELECT Id,RecordTypeId,Core_MDF_Claim_ID__c,Core_MDF_Status__c,Core_MDF_Claim_Amount_USD__c,Core_MDF_Claim_Conversion_Exchange_Rate__c,
                                   Core_MDF_Channel_Program_txt__c,Core_MDF_Claim_Local_Currency__c,Core_MDF_Claim_Taxes_Local__c,Core_MDF_Invoice_Date__c,Core_MDF_OtherCostsnotReimbursableLocal__c,
-                                  Core_MDF_TotalTransactionAmountLocal__c,Core_MDF_Total_Offset_Amount_amt__c, Core_MDF_Claim_Submitter__c, Core_MDF_Invoice_Number_txt__c,
+                                  Core_MDF_TotalTransactionAmountLocal__c,Core_MDF_Total_Offset_Amount_amt__c, Core_MDF_Claim_Submitter__c, Core_MDF_Claim_Submitter_Language__c, Core_MDF_SLA_Start_Date__c, Core_MDF_Invoice_Number_txt__c,
                                   Core_MDF_Claim_Number__c,Core_MDF_More_Documentation_Required__c,Core_MDF_Activity_End_Date__c,CreatedDate FROM Case WHERE Core_MDF_Claim_ID__c IN :claimIdList]) {
                                       
                                       claimIDWithCase.put(cs.Core_MDF_Claim_ID__c, cs);

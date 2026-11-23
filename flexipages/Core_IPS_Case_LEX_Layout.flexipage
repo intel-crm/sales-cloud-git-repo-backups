@@ -180,19 +180,6 @@
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer1</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Data Ops</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>IPS_GEC_ReadOnly</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>Facet-08aceb9c-4b37-43c2-a088-a0bd94a8c7c5</name>
@@ -205,7 +192,7 @@
                 <identifier>c_ips_AgentLuncher</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-dc4a3884-b6d6-4703-9234-b0f3ec359a4c</name>
+        <name>Facet-7e5edce8-e4e2-47b3-a685-fe65fd39bb2a</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -319,7 +306,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-dc4a3884-b6d6-4703-9234-b0f3ec359a4c</value>
+                    <value>Facet-7e5edce8-e4e2-47b3-a685-fe65fd39bb2a</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>

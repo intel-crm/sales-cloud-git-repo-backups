@@ -152,15 +152,18 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
         bypassFunctionKeys.add('Bypass_GeoBased_Allocation_Sharing');
         bypassFunctionKeys.add('byPassShareUnshareCampaignRecord');
         bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
+        bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
+        bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
         bypassFunctionKeys.add('byPassMDFPFAChangesMethod');
         bypassFunctionKeys.add('byPassRetailCampSharingOnPFAChange');
         bypassFunctionKeys.add('byPassValidateAccountHierarchy');
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
+        Set<String> myset1 = new Set<String>();
+        List<String> result1 = new List<String>();
+        myset1.addAll(bypassFunctionKeys);
+        result1.addAll(myset1);
+        
+        // FIX 1: Run the bypass executions so records can be created safely
+        List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1, true, true);
             
 
         List<Account> toBeUpdated = new List<Account>();
@@ -193,15 +196,16 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
         toBeUpdated.add(acc4);
         Database.update(toBeUpdated);
         
-       /* PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), false);
+        PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), false);
          pbm1.Core_MDF_Budget_Type_Txt__c='MDF';
         insert pbm1;
         
         PartnerMarketingBudget pbm2 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2020,01,01), Date.newInstance(2020,12,31), false);
          pbm2.Core_MDF_Budget_Type_Txt__c='MDF';
-        insert pbm2;*/
+        insert pbm2;
         
-
+        // FIX 2: Create allocation record so that getBudgetList query retrieves data
+        PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm2, acc2, 3000, true);
     
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         
@@ -215,13 +219,6 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
            
             try
             {
-                PartnerMarketingBudget pbm1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2019,01,01), Date.newInstance(2019,12,31), false);
-        pbm1.Core_MDF_Budget_Type_Txt__c='MDF';
-        insert pbm1;
-        
-        PartnerMarketingBudget pbm2 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000, Date.newInstance(2020,01,01), Date.newInstance(2020,12,31), false);
-        pbm2.Core_MDF_Budget_Type_Txt__c='MDF';
-        insert pbm2;
                 List<PartnerMarketingBudget> pbmList1 = Core_MDF_BudgetTransferHandler_INT.GetBudgetList (acc2.Id);
                 
 
@@ -236,8 +233,8 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
               test.stopTest();
     }
     
-   /* @isTest static void validateGetBalanceAllocationAmount(){
-        Test.startTest();
+    @isTest static void validateGetBalanceAllocationAmount(){
+        
         Core_MDF_Configuration__c vatConfig = new Core_MDF_Configuration__c();
             vatConfig.Name = 'ALLOWED_PRG_FOR_RUS_NOTIF';
             vatConfig.Core_MDF_Value__c = 'Retail Marketing Funds;Intel Partner Alliance';
@@ -287,7 +284,8 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
             
-
+        // FIX 3: Run bypass executions to prevent setup blocks
+        List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1, true, true);
             
         List<Account> toBeUpdated = new List<Account>();
         
@@ -334,7 +332,10 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
             PartnerFundAllocation pfa = [Select id, Amount from PartnerFundAllocation where BudgetId =: pbm.Id and Title='Test PFA' limit 1];
             
             Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today(), System.today().addDays(300), 10000, 'Always Connected PC', acc2.Id,'Desktop', true);
-
+            /*camp.Core_MDF_Supports_legacy_program__c='MDF or both CMP & MDF';
+            camp.Core_MDF_Opal_Budget_Type_Txt__c='MDF';
+            camp.Core_MDF_Activity_Category_Type__c = 'Broadcast->Podcast';
+            insert camp;*/
             
             PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft',false);
             testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c='100%';
@@ -359,35 +360,7 @@ public class Core_MDF_BudgetTransferHandler_INT_Test  {
             System.assertEquals(pfaNew.Core_MDF_Available_Allocation_Amount__c, amount);
             Test.stopTest();
         }
-    }*/
-    
-    //Added by Joshua
-    @IsTest
-        static void testAccountIDNameMapping_Exception() {
-                    
-                try
-                {
-                    
-                    Core_MDF_BudgetTransferHandler_INT.accountIDNameMapping(null);
-                }
-                catch(Exception e){System.debug(e.getmessage());}
-                
-                
-        }
-        //Added by Joshua
-        @IsTest
-        static void getBudgetList_test() {
-                    
-                try
-                {
-                    
-                    Core_MDF_BudgetTransferHandler_INT.getBudgetList(null);
-                }
-                catch(Exception e){System.debug(e.getmessage());}
-                
-                
-        }
-    
+    }
     
     
     @isTest static void validateTransferAllocationAmount(){

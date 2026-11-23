@@ -57,17 +57,25 @@ public without sharing class Pricing_RecordJobHandler extends TriggerHandler {
                 if(quoteIdToQLIMap.size() > 0 && quoteIdToQLIMap.get(qId) != null){
                 for(SBQQ__QuoteLine__c qli: quoteIdToQLIMap.get(qId)) {
                     if(!qli.Pricing_Save_After_Calculation_cb__c) {
+                        system.debug('isCalculationPending:'+isCalculationPending);
                         isCalculationPending = true;
                         }
                     }
                 }
+                system.debug('isCalculationPendingiff:'+isCalculationPending);
                 if(!isCalculationPending) {
                     apexJobIds.add(quoteIdToRecordJobMap.get(qId).SBQQ__JobId__c);
                 }
             }
 
+            system.debug('apexJobIds:'+apexJobIds);
+            system.debug('isStopCalculatorForBulkWon:'+isStopCalculatorForBulkWon);
             for(AsyncApexJob queue: [Select Id,CreatedBy.Profile.Name,Status,ApexClass.Name from AsyncApexJob WHERE Id IN: apexJobIds AND Status NOT IN ('Aborted','Completed') and JobType = 'Queueable']) {
+               system.debug('enter#:'+isStopCalculatorForBulkWon);
+               system.debug('Entered checkCalculatorFailure method: '+queue);
+               system.debug('Entered checkCalculatorFailure method Profile Name: '+queue.createdby.Profile.Name);
                 if(queue.CreatedBy.Profile.Name == 'Integration' || isStopCalculatorForBulkWon){
+                    system.debug('if entering');
                 	System.AbortJob(queue.Id);
                 }
             }

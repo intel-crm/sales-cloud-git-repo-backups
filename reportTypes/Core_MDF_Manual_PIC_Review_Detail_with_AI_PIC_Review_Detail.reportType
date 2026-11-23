@@ -378,6 +378,16 @@
             <field>Core_MDF_PIC_Review_id__c.Core_MDF_Overall_AI_Confidence_Score_Nm__c</field>
             <table>Core_MDF_PICReviewResult__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_PIC_Review_id__c.Core_MDF_Claim_ID_id__c.CreatedDate</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_PIC_Review_id__c.Core_MDF_Claim_ID_id__c.Amount</field>
+            <table>Core_MDF_PICReviewResult__c</table>
+        </columns>
         <masterLabel>Manual PIC Review Details</masterLabel>
     </sections>
 </ReportType>

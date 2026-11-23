@@ -4,7 +4,7 @@
     <label>PCC Test ASMO CC</label>
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6gAwWTrJA1KyljZsbGO9uQ4YcOQPtbgMH4vqDupjcUosUanXAELMH96RyjBP</consumerKey>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxLq9L7swHkDC3esZY4uuhM3Bpte3Y8xKQRCyLborTLhuzVkgc2yozisYDrD_</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -22,7 +22,7 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>pccintegrationtestuser@intel.com.crm</oauthClientCredentialUser>
+        <oauthClientCredentialUser>testpccpostmansubuser@spamok.com</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>
     </oauthConfig>
@@ -31,4 +31,7 @@
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
 </ConnectedApp>

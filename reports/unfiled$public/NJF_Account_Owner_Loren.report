@@ -18,6 +18,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Account.Core_Account_Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Canada</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_Covered_Account__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -36,7 +43,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Andrew Robinson</value>
+            <value>Maria Defelippe</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

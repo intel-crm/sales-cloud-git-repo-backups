@@ -5,10 +5,10 @@
     <assignments>
         <name>Assign_BR_Plan_Default_Values</name>
         <label>Assign BR Plan Default Values</label>
-        <locationX>2162</locationX>
-        <locationY>1379</locationY>
+        <locationX>2426</locationX>
+        <locationY>1553</locationY>
         <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_BR_All_Assigned__c</assignToReference>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_BR_DCAI_Assigned__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Default_Value__c</elementReference>
@@ -21,8 +21,8 @@
     <assignments>
         <name>Assign_CR_OEM_Default_Value</name>
         <label>Assign CR OEM Default Value</label>
-        <locationX>2602</locationX>
-        <locationY>1379</locationY>
+        <locationX>2866</locationX>
+        <locationY>1553</locationY>
         <assignmentItems>
             <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_CR_OEM_Assigned__c</assignToReference>
             <operator>Assign</operator>
@@ -35,12 +35,12 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_CR_Retail_Default_Value</name>
-        <label>Assign CR Retail Default Value</label>
-        <locationX>2866</locationX>
-        <locationY>1379</locationY>
+        <name>Assign_Deal_Win_Default_Value</name>
+        <label>Assign Deal Win Default Value</label>
+        <locationX>3306</locationX>
+        <locationY>1553</locationY>
         <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_CR_Retail_Assigned__c</assignToReference>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Wins_Deal_Assigned__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Default_Value__c</elementReference>
@@ -51,22 +51,15 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_STG_Default_Value_and_Plan_Value</name>
-        <label>Assign STG Default Value and Plan Value</label>
-        <locationX>3306</locationX>
-        <locationY>1379</locationY>
+        <name>Assign_Design_Win_Default_Value</name>
+        <label>Assign Design Win Default Value</label>
+        <locationX>3570</locationX>
+        <locationY>1553</locationY>
         <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Sales_Team_Goal_Assigned__c</assignToReference>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Wins_Design_Assigned__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Default_Value__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Sales_Team_Goal__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>GOVERNMENT STG</stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -76,8 +69,8 @@
     <assignments>
         <name>CPT_Add_Quota_Setup_Records_to_Collection</name>
         <label>Add Quota Setup Records to Collection</label>
-        <locationX>2074</locationX>
-        <locationY>1739</locationY>
+        <locationX>2338</locationX>
+        <locationY>2429</locationY>
         <assignmentItems>
             <assignToReference>CPT_QuotaSetupUpdateRecords</assignToReference>
             <operator>Add</operator>
@@ -93,7 +86,7 @@
         <description>Update both plan and Owner of the Quota Setup</description>
         <name>CPT_Update_Manager_and_Plan_Name</name>
         <label>Update Manager and Plan Name</label>
-        <locationX>2074</locationX>
+        <locationX>1942</locationX>
         <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.OwnerId</assignToReference>
@@ -110,14 +103,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_Quota_Setup_Plan_Defaults</targetReference>
+            <targetReference>GPT_Nullify_Update_and_Default_the_field_values_of_Quota_Setup_Object</targetReference>
         </connector>
     </assignments>
     <assignments>
         <description>Update the plan name on the quota setup when it is updated on the commission employee</description>
         <name>CPT_Update_Plan_on_the_Quota_Setup_Object</name>
         <label>Update Plan on the Quota Setup Object</label>
-        <locationX>2338</locationX>
+        <locationX>2206</locationX>
         <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Plan__c</assignToReference>
@@ -127,14 +120,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_Quota_Setup_Plan_Defaults</targetReference>
+            <targetReference>GPT_Nullify_Update_and_Default_the_field_values_of_Quota_Setup_Object</targetReference>
         </connector>
     </assignments>
     <assignments>
         <description>Update quota Setup Record Owner to the new manager</description>
         <name>CPT_Update_Quota_Setup_Record_Owner</name>
         <label>Update Quota Setup Record Owner</label>
-        <locationX>1810</locationX>
+        <locationX>2470</locationX>
         <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.OwnerId</assignToReference>
@@ -144,15 +137,16 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_Quota_Setup_Plan_Defaults</targetReference>
+            <isGoTo>true</isGoTo>
+            <targetReference>CPT_Add_Quota_Setup_Records_to_Collection</targetReference>
         </connector>
     </assignments>
     <assignments>
         <description>24 Nov 2025</description>
         <name>GPT_Nullify_Update_and_Default_the_field_values_of_Quota_Setup_Object</name>
         <label>Nullify Update and Default the field values of Quota Setup Object</label>
-        <locationX>2074</locationX>
-        <locationY>539</locationY>
+        <locationX>2338</locationX>
+        <locationY>1013</locationY>
         <assignmentItems>
             <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_BR_CCG_Assigned__c</assignToReference>
             <operator>Assign</operator>
@@ -168,41 +162,11 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Sales_Team_Goal__c</assignToReference>
-            <operator>Assign</operator>
-        </assignmentItems>
-        <assignmentItems>
             <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.XX_CPT_Complete__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <booleanValue>false</booleanValue>
             </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Sales_OKR_Assigned__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>0%</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_BR_All_Assigned__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>0%</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Sales_OKR_Objective1__c</assignToReference>
-            <operator>Assign</operator>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Sales_OKR_Objective2__c</assignToReference>
-            <operator>Assign</operator>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Sales_OKR_Objective3__c</assignToReference>
-            <operator>Assign</operator>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_CR_OEM_Assigned__c</assignToReference>
@@ -226,110 +190,73 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_Margin_CCG_Assigned__c</assignToReference>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Wins_Deal_Assigned__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <stringValue>0%</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_Margin_DCG_Assigned__c</assignToReference>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Wins_Design_Assigned__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <stringValue>0%</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_Next_Gen_CCG_LNL_Assigned__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>0%</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_Next_Gen_CCG_PTL_Assigned__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>0%</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_Next_Gen_CCG_WCL_Assigned__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>0%</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_Next_Gen_DCG_GNR_Assigned__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>0%</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_KPI_Name1__c</assignToReference>
-            <operator>Assign</operator>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_KPI_Name2__c</assignToReference>
-            <operator>Assign</operator>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_KPI_Name3__c</assignToReference>
-            <operator>Assign</operator>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_Margin_CCG__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_Margin_DCG__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_NextGen_CCG_LNL__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_NextGen_CCG_PTL__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_NextGen_CCG_WCL__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_MarVol_NextGen_DCG_GNR__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>CPT_check_if_Job_is_Updated_or_Manager_is_Updated</targetReference>
+            <targetReference>Get_Quota_Setup_Plan_Defaults</targetReference>
         </connector>
     </assignments>
+    <customErrors>
+        <name>ErrorMessage</name>
+        <label>ErrorMessage</label>
+        <locationX>270</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>Plan cannot be updated because the associated Quota Setup is marked as Completed. Change the Quota Setup Stage to In Progress before updating the Employee Plan.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Check_if_Quota_Setup_is_Completed</name>
+        <label>Check if Quota Setup is Completed</label>
+        <locationX>1304</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>CPT_check_if_Job_is_Updated_or_Manager_is_Updated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Completed_and_Plan_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CPT_Sales_Compensation_Plan__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.CPT_Sales_Compensation_Plan__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ErrorMessage</targetReference>
+            </connector>
+            <label>Completed and Plan Changed</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>Check_Quota_Setup_Field_Name</name>
         <label>Check Quota Setup Field Name</label>
-        <locationX>3020</locationX>
-        <locationY>1163</locationY>
+        <locationX>3284</locationX>
+        <locationY>1337</locationY>
         <defaultConnector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
         </defaultConnector>
@@ -345,7 +272,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Is_BR_All_Field</targetReference>
+                <targetReference>Is_BR_DCG</targetReference>
             </connector>
             <label>Billings Revenue</label>
         </rules>
@@ -365,48 +292,33 @@
             <label>Consumer Revenue</label>
         </rules>
         <rules>
-            <name>Is_STG_Field</name>
+            <name>Is_PfR_Field</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Sales_KPI_Type__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>STG</stringValue>
+                    <stringValue>DW</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Is_STG_Fields</targetReference>
+                <targetReference>Is_pfr_Fields</targetReference>
             </connector>
-            <label>Is STG Field ?</label>
+            <label>Is PfR Field ?</label>
         </rules>
     </decisions>
     <decisions>
         <name>CPT_check_if_Job_is_Updated_or_Manager_is_Updated</name>
         <label>check if Job is Updated or Manager is Updated</label>
-        <locationX>2074</locationX>
+        <locationX>2338</locationX>
         <locationY>647</locationY>
         <defaultConnector>
-            <targetReference>CPT_Update_Plan_on_the_Quota_Setup_Object</targetReference>
+            <targetReference>END_ELEMENT_2</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>CPT_Manager_is_Updated</name>
+            <name>Manager_AND_Plan_Changed</name>
             <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_Manager__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>$Record__Prior.CPT_Manager__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>CPT_Update_Quota_Setup_Record_Owner</targetReference>
-            </connector>
-            <label>Manager is Updated</label>
-        </rules>
-        <rules>
-            <name>CPT_Manager_and_Plan_is_Updated</name>
-            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.CPT_Manager__c</leftValueReference>
                 <operator>NotEqualTo</operator>
@@ -424,14 +336,47 @@
             <connector>
                 <targetReference>CPT_Update_Manager_and_Plan_Name</targetReference>
             </connector>
-            <label>Manager and Plan is Updated</label>
+            <label>Manager AND Plan Changed</label>
+        </rules>
+        <rules>
+            <name>Plan_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CPT_Sales_Compensation_Plan__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.CPT_Sales_Compensation_Plan__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CPT_Update_Plan_on_the_Quota_Setup_Object</targetReference>
+            </connector>
+            <label>Plan Changed</label>
+        </rules>
+        <rules>
+            <name>Manager_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CPT_Manager__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.CPT_Manager__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CPT_Update_Quota_Setup_Record_Owner</targetReference>
+            </connector>
+            <label>Manager Changed</label>
         </rules>
     </decisions>
     <decisions>
         <name>CPT_check_if_records_to_update_is_not_empty</name>
         <label>check if records to update is not empty</label>
         <locationX>182</locationX>
-        <locationY>1931</locationY>
+        <locationY>2705</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>CPT_Records_Not_Empty</name>
@@ -450,35 +395,35 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Is_BR_All_Field</name>
-        <label>Is BR All Field?</label>
-        <locationX>2294</locationX>
-        <locationY>1271</locationY>
+        <name>Is_BR_DCG</name>
+        <label>Is BR DCG ?</label>
+        <locationX>2558</locationX>
+        <locationY>1445</locationY>
         <defaultConnector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Check_if_it_is_BR_All_Field</name>
+            <name>Check_if_it_is_BR_DCG</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>CPT_BR_All_Assigned__c</stringValue>
+                    <stringValue>CPT_BR_DCAI_Assigned__c</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Assign_BR_Plan_Default_Values</targetReference>
             </connector>
-            <label>Check if it is BR All Field?</label>
+            <label>Check if it is BR - DCG ?</label>
         </rules>
     </decisions>
     <decisions>
         <name>Is_CR_Fields</name>
         <label>Is CR Fields?</label>
-        <locationX>2866</locationX>
-        <locationY>1271</locationY>
+        <locationX>2998</locationX>
+        <locationY>1445</locationY>
         <defaultConnector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
         </defaultConnector>
@@ -498,55 +443,93 @@
             </connector>
             <label>Is CR - OEM Field ?</label>
         </rules>
-        <rules>
-            <name>Is_CR_Retail_Field</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>CPT_CR_Retail_Assigned__c</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_CR_Retail_Default_Value</targetReference>
-            </connector>
-            <label>Is CR - Retail Field ?</label>
-        </rules>
     </decisions>
     <decisions>
-        <name>Is_STG_Fields</name>
-        <label>Is STG Field ?</label>
-        <locationX>3438</locationX>
-        <locationY>1271</locationY>
+        <name>Is_pfr_Fields</name>
+        <label>Is PFR Fields ?</label>
+        <locationX>3570</locationX>
+        <locationY>1445</locationY>
         <defaultConnector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Is_STG_Field_Default_Plan_Value</name>
+            <name>Is_Deal_Win_Field</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>CPT_Sales_Team_Goal_Assigned__c</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.Label</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>403</stringValue>
+                    <stringValue>CPT_Wins_Deal_Assigned__c</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Assign_STG_Default_Value_and_Plan_Value</targetReference>
+                <targetReference>Assign_Deal_Win_Default_Value</targetReference>
             </connector>
-            <label>Is STG Field &amp; Default Plan Value ?</label>
+            <label>Is Deal Win Field ?</label>
+        </rules>
+        <rules>
+            <name>Is_Design_Win_Field</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CPT_Wins_Design_Assigned__c</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Design_Win_Default_Value</targetReference>
+            </connector>
+            <label>Is Design Win Field ?</label>
         </rules>
     </decisions>
-    <description>[24/Nov/25 08:00 PM] - Added the Default Value for the BR, CR &amp; MARVOL Fields + STG Default Value</description>
+    <decisions>
+        <name>Territory_Assignment_Exists</name>
+        <label>Territory Assignment Exists?</label>
+        <locationX>2338</locationX>
+        <locationY>2129</locationY>
+        <defaultConnector>
+            <targetReference>CPT_Add_Quota_Setup_Records_to_Collection</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Territory_Assignment_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Territory_Assignments_for_Quota_Setup</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Existing_Territory_Assignments</targetReference>
+            </connector>
+            <label>Territory Assignment Found</label>
+        </rules>
+    </decisions>
+    <description>[17/Nov/26]  - Added the Default Value for the BR, CR &amp; PfR Fields Default Value</description>
+    <ends>
+        <name>END_ELEMENT_1</name>
+        <locationX>270</locationX>
+        <locationY>755</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_2</name>
+        <locationX>2734</locationX>
+        <locationY>755</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>314</locationX>
+        <locationY>2813</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>50</locationX>
+        <locationY>2921</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <description>Assign Default % Assigned Value for 601 Plan</description>
@@ -589,7 +572,7 @@
         <collectionReference>CPT_get_unlocked_Quota_Period_Records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>GPT_Nullify_Update_and_Default_the_field_values_of_Quota_Setup_Object</targetReference>
+            <targetReference>Check_if_Quota_Setup_is_Completed</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>CPT_check_if_records_to_update_is_not_empty</targetReference>
@@ -598,15 +581,15 @@
     <loops>
         <name>Loop_Over_Quota_Setup_Plan_Defaults</name>
         <label>Loop Over Quota Setup Plan Defaults</label>
-        <locationX>2074</locationX>
-        <locationY>1055</locationY>
+        <locationX>2338</locationX>
+        <locationY>1229</locationY>
         <collectionReference>Get_Quota_Setup_Plan_Defaults</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Check_Quota_Setup_Field_Name</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>CPT_Add_Quota_Setup_Records_to_Collection</targetReference>
+            <targetReference>Update_Quota_Setup_Before_Territory_Assignment_Delete</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -628,6 +611,16 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <name>Delete_Existing_Territory_Assignments</name>
+        <label>Delete Existing Territory Assignments</label>
+        <locationX>2206</locationX>
+        <locationY>2237</locationY>
+        <connector>
+            <targetReference>CPT_Add_Quota_Setup_Records_to_Collection</targetReference>
+        </connector>
+        <inputReference>Get_Territory_Assignments_for_Quota_Setup</inputReference>
+    </recordDeletes>
     <recordLookups>
         <description>20 Jan 2025</description>
         <name>CPT_get_unlocked_Quota_Period_Records</name>
@@ -653,8 +646,8 @@
     <recordLookups>
         <name>Get_Quota_Setup_Plan_Defaults</name>
         <label>Get Quota Setup Plan Defaults</label>
-        <locationX>2074</locationX>
-        <locationY>947</locationY>
+        <locationX>2338</locationX>
+        <locationY>1121</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
@@ -678,12 +671,46 @@
         <object>CPT_Quota_Setup_Plan_Default__mdt</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Get_Territory_Assignments_for_Quota_Setup</name>
+        <label>Get Territory Assignments for Quota Setup</label>
+        <locationX>2338</locationX>
+        <locationY>2021</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Territory_Assignment_Exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CPT_Quota_Setup__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>CPT_Territory_Assignment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>CPT_Update_the_Quota_Setup_Records</name>
         <label>Update the Quota Setup Records</label>
         <locationX>50</locationX>
-        <locationY>2039</locationY>
+        <locationY>2813</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
         <inputReference>CPT_QuotaSetupUpdateRecords</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Quota_Setup_Before_Territory_Assignment_Delete</name>
+        <label>Update Quota Setup Before Territory Assignment Delete</label>
+        <locationX>2338</locationX>
+        <locationY>1913</locationY>
+        <connector>
+            <targetReference>Get_Territory_Assignments_for_Quota_Setup</targetReference>
+        </connector>
+        <inputReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records</inputReference>
     </recordUpdates>
     <start>
         <locationX>56</locationX>

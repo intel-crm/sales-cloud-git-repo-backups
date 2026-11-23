@@ -2,7 +2,7 @@
     <div class="slds-box slds-theme_default slds-container">
         <div class="slds-col">
             <lightning-layout>
-                <lightning-card title="Search to CMF" icon-name="standard:ai_accelerator_card" style="width: 100%;">
+                <lightning-card title="Search to Business Partner" icon-name="standard:ai_accelerator_card" style="width: 100%;">
                    
                    
                     <template if:true={showSpinner}>
@@ -32,6 +32,11 @@
                         <div class="slds-col slds-size_1-of-3 slds-p-top_large">
                             <lightning-button label="Search" variant="brand" onclick={handleSearchNew} disabled={searchButtonSwitch}></lightning-button>
                         </div>
+                        <div class="slds-col slds-p-top_large">
+              <!--IAO CMF TO BPID-->
+              <lightning-input type="toggle" checked={isCMFToGroup} message-toggle-active="CMF" message-toggle-inactive="Account" onchange={handleToggleChange}></lightning-input>
+
+            </div>
                     </div>
  
                     <!-- Data Table Section -->
@@ -59,7 +64,7 @@
                                 <div class="slds-border">
                                     <div class="slds-grid slds-gutters slds-p-around_small">
                                         <div>
-                                            <lightning-button label="Add to CMF Group" onclick={handleAddNew} disabled={disableAdd}></lightning-button>
+                                            <lightning-button label="Add to Business Partner Group" onclick={handleAddNew} disabled={disableAdd}></lightning-button>
                                         </div>
                                         <div>
                                             <lightning-input type="text" onchange={onchangeHandleSearch} variant="label-hidden" style="width:350px;" placeholder="Search CMF" disabled={disableSearch}></lightning-input>

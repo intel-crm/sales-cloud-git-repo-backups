@@ -233,6 +233,9 @@
                 <elementReference>Get_Opportunity_if_it_s_created.Id</elementReference>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>END_ELEMENT_14</targetReference>
+        </connector>
     </assignments>
     <assignments>
         <name>Assign_OpportunityId_2</name>
@@ -312,6 +315,9 @@
         <label>Create opportunity</label>
         <locationX>4062</locationX>
         <locationY>170</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_15</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Initial_Approval</name>
@@ -492,6 +498,9 @@
         <label>PDI eligible DRPs exists</label>
         <locationX>578</locationX>
         <locationY>1142</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_16</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes12</name>
@@ -575,6 +584,76 @@
         </rules>
     </decisions>
     <description>Final version for deal to opportunity conversion and apex action.</description>
+    <ends>
+        <name>END_ELEMENT_14</name>
+        <locationX>2778</locationX>
+        <locationY>1034</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_15</name>
+        <locationX>5066</locationX>
+        <locationY>278</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_16</name>
+        <locationX>842</locationX>
+        <locationY>1250</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_17</name>
+        <locationX>314</locationX>
+        <locationY>1358</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_18</name>
+        <locationX>1458</locationX>
+        <locationY>3062</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_19</name>
+        <locationX>4274</locationX>
+        <locationY>1250</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_20</name>
+        <locationX>578</locationX>
+        <locationY>1466</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_21</name>
+        <locationX>2514</locationX>
+        <locationY>1358</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_22</name>
+        <locationX>1722</locationX>
+        <locationY>1682</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_23</name>
+        <locationX>4010</locationX>
+        <locationY>1358</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_24</name>
+        <locationX>3746</locationX>
+        <locationY>2114</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_25</name>
+        <locationX>3482</locationX>
+        <locationY>1574</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_26</name>
+        <locationX>50</locationX>
+        <locationY>1250</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_27</name>
+        <locationX>4538</locationX>
+        <locationY>1142</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>closeDateFormula</name>
@@ -1022,6 +1101,9 @@ TODAY()
         <label>Create Pricing Integration Staging record for quote creation</label>
         <locationX>314</locationX>
         <locationY>1250</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_17</targetReference>
+        </connector>
         <faultConnector>
             <targetReference>Publish_failure_event_to_deal_create_PIS_record</targetReference>
         </faultConnector>
@@ -1057,6 +1139,9 @@ TODAY()
         <label>Opportunity Creation Success Event</label>
         <locationX>1458</locationX>
         <locationY>2954</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_18</targetReference>
+        </connector>
         <inputAssignments>
             <field>PCC_Object__c</field>
             <value>
@@ -1083,6 +1168,9 @@ TODAY()
         <label>Publish failure event for opportunity creation</label>
         <locationX>4538</locationX>
         <locationY>1034</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_27</targetReference>
+        </connector>
         <inputAssignments>
             <field>PCC_Error_Message__c</field>
             <value>
@@ -1115,6 +1203,9 @@ TODAY()
         <label>Publish failure event to deal</label>
         <locationX>4274</locationX>
         <locationY>1142</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_19</targetReference>
+        </connector>
         <inputAssignments>
             <field>PCC_Error_Message__c</field>
             <value>
@@ -1147,6 +1238,9 @@ TODAY()
         <label>Publish failure event to deal create PIS record</label>
         <locationX>578</locationX>
         <locationY>1358</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_20</targetReference>
+        </connector>
         <inputAssignments>
             <field>PCC_Error_Message__c</field>
             <value>
@@ -1179,6 +1273,9 @@ TODAY()
         <label>Publish failure event to deal - deal update with opp id</label>
         <locationX>2514</locationX>
         <locationY>1250</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_21</targetReference>
+        </connector>
         <inputAssignments>
             <field>PCC_Error_Message__c</field>
             <value>
@@ -1211,6 +1308,9 @@ TODAY()
         <label>Publish failure event to deal no DRP</label>
         <locationX>1722</locationX>
         <locationY>1574</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_22</targetReference>
+        </connector>
         <inputAssignments>
             <field>PCC_Error_Message__c</field>
             <value>
@@ -1243,6 +1343,9 @@ TODAY()
         <label>Publish failure event to deal opp partner</label>
         <locationX>4010</locationX>
         <locationY>1250</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_23</targetReference>
+        </connector>
         <inputAssignments>
             <field>PCC_Error_Message__c</field>
             <value>
@@ -1275,6 +1378,9 @@ TODAY()
         <label>Publish failure event to deal oppty share</label>
         <locationX>3746</locationX>
         <locationY>2006</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_24</targetReference>
+        </connector>
         <inputAssignments>
             <field>PCC_Error_Message__c</field>
             <value>
@@ -1307,6 +1413,9 @@ TODAY()
         <label>Publish failure event to deal oppty team</label>
         <locationX>3482</locationX>
         <locationY>1466</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_25</targetReference>
+        </connector>
         <inputAssignments>
             <field>PCC_Error_Message__c</field>
             <value>
@@ -1616,6 +1725,9 @@ TODAY()
         <label>Update PIS record</label>
         <locationX>50</locationX>
         <locationY>1142</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_26</targetReference>
+        </connector>
         <inputReference>Get_pricing_integration_staging_record</inputReference>
     </recordUpdates>
     <recordUpdates>

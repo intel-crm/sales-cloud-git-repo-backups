@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>CloudMile Partner User</description>
+    <description>Cloud Mile Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>CloudMile Partner User</name>
+    <name>Cloud Mile Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>EMP_12270215_Shantanu_Priyadarshi</parentRole>
 </Role>

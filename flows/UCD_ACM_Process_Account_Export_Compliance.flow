@@ -91,53 +91,24 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_Compliance_Watchlist_Value_Is_Review_is_pending_or_not</name>
-        <label>Check Compliance Watchlist Value Is Review is pending or not</label>
+        <description>Check For Compliance Status is blocked Or Released.</description>
+        <name>Check_For_Compliance_Status</name>
+        <label>Check For Compliance Status</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Is_Not_Review_is_pending</name>
+            <name>Compliance_Status_is_Blocked</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Core_Compliance_Watch_List_Type__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>REVIEWWIP</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Check_For_Compliance_Watch_List_Type</targetReference>
-            </connector>
-            <label>Is Not Review is pending</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <description>Check For Compliance Watch List Type is Blocked Or Released.</description>
-        <name>Check_For_Compliance_Watch_List_Type</name>
-        <label>Check For Compliance Watch List Type</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Has_Blocked_CWL</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Label.PerformScreeningFromCWLObject</leftValueReference>
+                <leftValueReference>$Record.Core_Compliance_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <stringValue>BLK</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.Core_Compliance_Watch_List_Type__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>ISBlockedCWL</leftValueReference>
+                <leftValueReference>$Label.UCD_ACM_Switch_IAO_Change</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -146,52 +117,37 @@
             <connector>
                 <targetReference>Check_Account_ECB_Is_Unchecked</targetReference>
             </connector>
-            <label>Has Blocked CWL</label>
+            <label>Compliance Status is Blocked</label>
         </rules>
         <rules>
-            <name>Has_Non_Blocked_CWL</name>
+            <name>Compliance_Status_is_Released</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Label.PerformScreeningFromCWLObject</leftValueReference>
+                <leftValueReference>$Label.UCD_ACM_Switch_IAO_Change</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>ISBlockedCWL</leftValueReference>
+                <leftValueReference>$Record.Core_Compliance_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_Compliance_Watch_List_Type__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <stringValue>REL</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Check_Account_ECB_Flag_is_Checked</targetReference>
             </connector>
-            <label>Has Non Blocked CWL</label>
+            <label>Compliance Status is Released</label>
         </rules>
     </decisions>
     <description>This Flow updates the Account Export Compliance Block And Reason Field Based on Compliance Watch List Code Is Blocked Or Not</description>
     <environments>Default</environments>
     <formulas>
-        <name>ISBlockedCWL</name>
+        <name>IsComplianceWatchListTypeBlocked</name>
         <dataType>Boolean</dataType>
-        <expression>OR(
-INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;NOTRDOUT&quot;),
-INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;NOTRDIN&quot;),
-INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;NOPAYOUT&quot;),
-INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;NOPAYIN&quot;),
-INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;EC&quot;),
-INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;ECB&quot;),
-INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;TRDCOND&quot;)
-)</expression>
+        <expression>CONTAINS(&apos;,&apos;+{!$Label.UCD_ACM_ExportComplianceBlock_Codes}+&apos;,&apos;, &apos;,&apos;+TEXT({!$Record.Core_Compliance_Status__c})+ &apos;,&apos;)</expression>
     </formulas>
     <interviewLabel>UCD ACM Process Account Export Compliance {!$Flow.CurrentDateTime}</interviewLabel>
     <label>UCD ACM Process Account Export Compliance</label>
@@ -218,7 +174,7 @@ INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;TRDCOND&quot;)
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_Compliance_Watchlist_Value_Is_Review_is_pending_or_not</targetReference>
+            <targetReference>Check_For_Compliance_Status</targetReference>
         </connector>
         <filterLogic>(1 OR 2) AND 3</filterLogic>
         <filters>
@@ -236,7 +192,7 @@ INCLUDES({!$Record.Core_Compliance_Watch_List_Type__c}, &quot;TRDCOND&quot;)
             </value>
         </filters>
         <filters>
-            <field>Core_Compliance_Watch_List_Type__c</field>
+            <field>Core_Compliance_Status__c</field>
             <operator>IsChanged</operator>
             <value>
                 <booleanValue>true</booleanValue>

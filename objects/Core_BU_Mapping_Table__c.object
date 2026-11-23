@@ -305,8 +305,17 @@
         <columns>LAST_UPDATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Product_Segment__c</field>
+            <operation>contains</operation>
+            <value>data cen</value>
+        </filters>
+        <filters>
+            <field>Core_Product_Type__c</field>
+            <operation>equals</operation>
+            <value>boards and kits</value>
+        </filters>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>BU-{0000}</displayFormat>

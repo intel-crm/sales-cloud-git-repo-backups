@@ -37,6 +37,7 @@ global class PRM_Account_Contact_Profiles_Model {
         public Boolean IsDeleted {set;get;}
         public Boolean IsODMAccount {set;get;}
         public List<cmfWrapper> CMFGroups{set;get;}
+        public String CNDANumber{set;get;}   //Ganesh Changes
     }
     public class cmfWrapper {
         public String GroupName{set;get;}
@@ -47,6 +48,7 @@ global class PRM_Account_Contact_Profiles_Model {
         public String ActiveContactCount{set;get;}
         public String InActiveContactCount{set;get;}
         public List <cmfData> CMFs {set;get;}
+        public String GroupId{set;get;} //Ganesh Changes
     }
     public class cmfData{
         public String CMFID {set;get;}
@@ -336,6 +338,7 @@ public ContactAccountWrapper ContactAccount {set;get;}
        
     public class AccountInformationWrapper{
         public String AccountId {set;get;}
+        public String OnePartnerId { get; set; }
         public String Name {set;get;} 
         Public String BadgeTier {set;get;}
         Public String BadgeTierLabel {set;get;}

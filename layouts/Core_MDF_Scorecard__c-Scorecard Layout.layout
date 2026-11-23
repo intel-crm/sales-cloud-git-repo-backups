@@ -204,7 +204,7 @@
                 <field>Core_MDF_Highlight_Partner_Review_Ind__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_MDF_AI_Recommend_Investigation_Ind__c</field>
             </layoutItems>
         </layoutColumns>

@@ -324,7 +324,10 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
     
     @isTest static void getActivityRejectionCommentsTest(){
         User usr1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-        Test.startTest();        
+        Test.startTest();
+        // Highlight: Unused Local Variable - 14285
+ 
+       // date sdate = date.today();        
         System.runAs(usr1){
             
             PartnerFundRequest pfr=[select id,OwnerId from PartnerFundRequest where Title='Test PFR Retail'];

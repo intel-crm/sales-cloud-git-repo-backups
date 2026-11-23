@@ -45,7 +45,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Qualify,Define,Develop,Design,Design Win,Production Win,Lost,Cancelled,Group,Production Lost,Production Cancelled,Group Open,Group Cancelled,Group Closed</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

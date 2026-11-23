@@ -140,7 +140,7 @@
         <field>PRODUCT_NAME</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -154,13 +154,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>IND,JPN,KOR,TWN</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Lost,Production Lost</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -179,7 +172,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>G req lost for 2025</name>
+    <name>G req lost</name>
     <params>
         <name>terr</name>
         <value>all</value>

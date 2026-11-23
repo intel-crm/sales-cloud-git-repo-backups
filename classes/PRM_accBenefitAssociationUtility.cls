@@ -349,7 +349,7 @@ Description : Check Wether correct benefit is associated with the account.
         //Query on BatchCustomSetting to fetch Entitlements
         PRM_BatchCustomSetting__c batchCustomSetting;
         List<String> entitlementNotToInactivate = new List<String>();
-        batchCustomSetting = [Select Id, Name, PRM_NoOfRecords__c, PRM_SchedulingHour__c,PRM_PartnerType__c,PRM_ChannelProgramLevel__c, PRM_EntitlementsNotToInactivate__c From PRM_BatchCustomSetting__c Where Name =:System.Label.PRM_BatchValues];
+        batchCustomSetting = [Select Id, Name,/* PRM_NoOfRecords__c, PRM_SchedulingHour__c,PRM_PartnerType__c,PRM_ChannelProgramLevel__c,*/ PRM_EntitlementsNotToInactivate__c From PRM_BatchCustomSetting__c Where Name =:System.Label.PRM_BatchValues];//ATHR Fix - TWC729-9556
         if(batchCustomSetting.PRM_EntitlementsNotToInactivate__c != null){
         entitlementNotToInactivate = batchCustomSetting.PRM_EntitlementsNotToInactivate__c.split(';');
     }
@@ -362,7 +362,7 @@ Description : Check Wether correct benefit is associated with the account.
         }
         //Fetching contact id.
         if(accId != null && !accId.IsEmpty()){
-            for(PRM_Account_Contact_Relationship__c acrList : [Select id, name, PRM_Account_Id__c, PRM_Contact_Id__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c IN :accId]){
+            for(PRM_Account_Contact_Relationship__c acrList : [Select id, name/*, PRM_Account_Id__c*/, PRM_Contact_Id__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c IN :accId]){ //ATHR Fix - TWC729-9556
                 contactList.add(acrList.PRM_Contact_Id__c);
             }
         }
@@ -380,7 +380,8 @@ Description : Check Wether correct benefit is associated with the account.
         //Creating batch entitlement record with contact and entitlement id.
         if(entitlementList != null && !entitlementList.IsEmpty()){
             List<String> nonProcessedRecords = getActvieBatchEntitlement(entitlementList,contactList);//remove duplciate for removal batch entitlement 
-            for(Core_Contact_Entitlement__c ce :[Select Id,Core_Contact_Id__c,Core_Entitlement_Id__r.Name,Name,Core_Entitlement_Id__c,Core_Status__c,Core_Data_Loaded__c,Core_DontNotify__c,Core_Selected__c From Core_Contact_Entitlement__c Where Core_Entitlement_Id__c IN :entitlementList AND Core_Contact_Id__c IN :contactList AND Core_Selected__c = true]){
+            //ATHR Fix - TWC729-9556
+            for(Core_Contact_Entitlement__c ce :[Select Id,Core_Contact_Id__c,Core_Entitlement_Id__r.Name,Core_Entitlement_Id__c/*,Name,Core_Status__c,Core_Data_Loaded__c,Core_DontNotify__c,Core_Selected__c*/ From Core_Contact_Entitlement__c Where Core_Entitlement_Id__c IN :entitlementList AND Core_Contact_Id__c IN :contactList AND Core_Selected__c = true]){
                 if( entitlementNotToInactivate == null || (!entitlementNotToInactivate.IsEmpty() && !entitlementNotToInactivate.contains(ce.Core_Entitlement_Id__r.Name)))
                 { // added check as part of TWC727-790 [Shivini]
                     String key = ce.Core_Contact_Id__c+'_'+ce.Core_Entitlement_Id__c;
@@ -426,7 +427,7 @@ Description : Check Wether correct benefit is associated with the account.
         PRM_AccountBenefitAssociation__c abaOld ;
         Set<Id> intelAccountIds = new Set<Id>();
         List<String> entitlementNotToInactivate = new List<String>();
-    PRM_BatchCustomSetting__c batchCustomSetting = [Select Id, Name, PRM_NoOfRecords__c, PRM_SchedulingHour__c,PRM_PartnerType__c,PRM_ChannelProgramLevel__c, PRM_EntitlementsNotToInactivate__c From PRM_BatchCustomSetting__c Where Name =:System.Label.PRM_BatchValues];
+    PRM_BatchCustomSetting__c batchCustomSetting = [Select Id, Name,/* PRM_NoOfRecords__c, PRM_SchedulingHour__c,PRM_PartnerType__c,PRM_ChannelProgramLevel__c,*/ PRM_EntitlementsNotToInactivate__c From PRM_BatchCustomSetting__c Where Name =:System.Label.PRM_BatchValues];//ATHR Fix - TWC729-9556
         if(batchCustomSetting.PRM_EntitlementsNotToInactivate__c != null){
           entitlementNotToInactivate = batchCustomSetting.PRM_EntitlementsNotToInactivate__c.split(';');
         }
@@ -491,7 +492,8 @@ Description : Check Wether correct benefit is associated with the account.
         //Creating batch entitlement record with contact and entitlement id.
         if(entitlementList != null && !entitlementList.IsEmpty()){
             List<String> nonProcessedRecords = getActvieBatchEntitlement(entitlementList,contactList);//remove duplciate for removal batch entitlement 
-            for(Core_Contact_Entitlement__c ce :[Select Id,Core_Contact_Id__c,Name,Core_Entitlement_Id__c,Core_Status__c,Core_Data_Loaded__c,Core_DontNotify__c,Core_Selected__c,Core_Entitlement_Id__r.name,Core_Contact_Id__r.AccountId From Core_Contact_Entitlement__c Where Core_Entitlement_Id__c IN :entitlementList AND Core_Contact_Id__c IN :contactList AND Core_Selected__c = true]){
+            //ATHR Fix - TWC729-9556
+            for(Core_Contact_Entitlement__c ce :[Select Id,Core_Contact_Id__c,Core_Entitlement_Id__r.name,Core_Entitlement_Id__c,Core_Contact_Id__r.AccountId /*,Name,Core_Status__c,Core_Data_Loaded__c,Core_DontNotify__c,Core_Selected__c*/ From Core_Contact_Entitlement__c Where Core_Entitlement_Id__c IN :entitlementList AND Core_Contact_Id__c IN :contactList AND Core_Selected__c = true]){
                 if (( entitlementNotToInactivate == null || (!entitlementNotToInactivate.IsEmpty() && !entitlementNotToInactivate.contains(ce.Core_Entitlement_Id__r.Name))) && 
                    (ce.Core_Entitlement_Id__r.name != 'Points Redeem' || (ce.Core_Entitlement_Id__r.name == 'Points Redeem' && !filterIntelIds.contains(ce.Core_Contact_Id__r.AccountId)))){
                     String key = ce.Core_Contact_Id__c+'_'+ce.Core_Entitlement_Id__c;

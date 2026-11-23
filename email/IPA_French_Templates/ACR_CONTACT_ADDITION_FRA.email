@@ -67,7 +67,7 @@
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
 <th class="small-12 large-12 columns first last" style="margin: 0px auto; padding: 20px 20px 10px; width: 650px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; vertical-align: top; background-color: #fefefe;">{!UserName},<br><br><p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">{!ContactName} a été ajouté au compte de l'Alliance partenaire Intel&reg;&nbsp;de {!Account.Name}.<br>
 <br><u><b>Nom de l'entreprise&nbsp;:</b></u> {!Account.Name}<br><u><b>ID de l'entreprise&nbsp;:</b></u> {!Account.AccountNumber}<br><u><b>E-mail ajouté au contact&nbsp;:</b></u> {!ContactEmail}<br><u><b>Relation (rôle)&nbsp;:</b></u> {!AcrRoles}<br>
-<br><a href="https://partner.intel.com/s/manage-personnel" style="color:red">Cliquez ici</a> pour voir plus de détails.</p><p></p><table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
+<br><a href="https://intel--crmqa9.sandbox.my.site.com/ipa/s/manage-personnel" style="color:red">Cliquez ici</a> pour voir plus de détails.</p><p></p><table style="padding: 0px; width: 100%; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
 <tbody>
 </tbody><tbody>
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
@@ -78,7 +78,8 @@
 <tbody><tr style="padding: 0px; text-align: left; vertical-align: top;">
 <th style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
 <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
-</p></th></tr><tr><td style="word-break:break-all;line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400;color: #555554; ">Pour toute question, veuillez contacter l'<a href="https://www.intel.fr/content/www/fr/fr/support/contact-support.html">Assistance</a></td></tr>
+</p></th></tr><tr><td style="word-break:break-all;line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400;color: #555554; ">Pour toute question, veuillez contacter l'<a href="https://www.intel.fr/content/www/fr/fr/support/contact-support.html"style="color:red"
+ >Assistance</a></td></tr>
 
 
 <tr><th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>

@@ -46,6 +46,8 @@ export default class QuanticFacetManager extends LightningElement {
   unsubscribeSearchStatus;
   /** @type {AnyHeadless} */
   headless;
+  /** @type {boolean} */
+  hasInitializationError = false;
 
   itemTemplate;
 
@@ -119,6 +121,7 @@ export default class QuanticFacetManager extends LightningElement {
       // @ts-ignore
       wrapper.setAttribute('data-facet-id', facet.facetId ?? facet.field);
       wrapper.classList.add('facet-manager__item');
+      wrapper.setAttribute('data-testid', 'facet-manager__item');
 
       wrapper.appendChild(facet);
       this.host.appendChild(wrapper);
@@ -127,7 +130,6 @@ export default class QuanticFacetManager extends LightningElement {
 
   resolveItemTemplate() {
     this.itemTemplate = document.createElement('div');
-    this.itemTemplate.classList.add('slds-var-m-bottom_large');
 
     const slotElement = this.querySelector('*[slot="itemTemplate"]');
     if (slotElement) {
@@ -167,5 +169,12 @@ export default class QuanticFacetManager extends LightningElement {
 
   isPseudoFacet(el) {
     return 'facetId' in el.dataset;
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
   }
 }

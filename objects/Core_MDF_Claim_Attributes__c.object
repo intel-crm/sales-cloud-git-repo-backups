@@ -409,6 +409,12 @@
                     <label>Retail Activation Percentage Spend</label>
                 </value>
                 <value>
+                    <fullName>Retail Activation - # of Person Days Numeric</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Retail Activation - # of Person Days Numeric</label>
+                </value>
+                <value>
                     <fullName>Technical Services - # of Deployments</fullName>
                     <default>false</default>
                     <isActive>false</isActive>

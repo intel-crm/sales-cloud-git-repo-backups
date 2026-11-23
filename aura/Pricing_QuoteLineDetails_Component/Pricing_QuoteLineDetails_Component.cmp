@@ -2,7 +2,7 @@
   @description       : 
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : 
-  @last modified on  : 11-17-2026
+  @last modified on  : 11-04-2026
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
 <aura:component controller="Pricing_QuoteLineController"
@@ -103,7 +103,7 @@
     <!-- Navigation service Added By Naresh as part of US1104647-->
     <lightning:navigation aura:id="navService" />
     <aura:attribute name="showConsumptionParametersEdit" type="Boolean" default="false" />
-
+    
     <!--override Toast CSS with external [.CSS] file.-->
     <ltng:require styles="{!$Resource.multilineToastCSS}" />
     <aura:if isTrue="{!v.isModalOpen}">

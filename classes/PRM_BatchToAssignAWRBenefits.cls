@@ -58,7 +58,7 @@ global class PRM_BatchToAssignAWRBenefits implements Database.Batchable<SObject>
             //System.debug('onePartnerIds :'+onePartnerIds);
             //Get partner benefit id list.
             if(benefits != null && !benefits.isEmpty()){
-                for (PRM_PartnerBenefit__c bnft : [select Id,Name,PRM_Benefit_Dsc__c,PRM_Benefit_Type_Nm__c,PRM_Benefit_Cd__c from PRM_PartnerBenefit__c where Name IN :benefits]) {
+                for (PRM_PartnerBenefit__c bnft : [select Id/*,Name,PRM_Benefit_Dsc__c,PRM_Benefit_Type_Nm__c,PRM_Benefit_Cd__c*/ from PRM_PartnerBenefit__c where Name IN :benefits]) {//ATHR Fix - TWC729-9556
                     benefitIds.add(bnft.Id);
                 }
                 //System.debug('benefitIds :'+benefitIds);

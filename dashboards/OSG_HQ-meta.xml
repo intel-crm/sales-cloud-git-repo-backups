@@ -12,6 +12,11 @@
     </folderShares>
     <folderShares>
         <accessLevel>Manage</accessLevel>
+        <sharedTo>10642423@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
         <sharedTo>salesforce.system.user@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>

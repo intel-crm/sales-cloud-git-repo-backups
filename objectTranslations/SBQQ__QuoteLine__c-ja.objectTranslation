@@ -1341,8 +1341,16 @@
         <label><!-- Region --></label>
         <name>Pricing_RegionQL_Nm__c</name>
         <picklistValues>
+            <masterLabel>AMR_SR</masterLabel>
+            <translation><!-- AMR_SR --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>APJ</masterLabel>
             <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ_SR</masterLabel>
+            <translation><!-- APJ_SR --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ASMO</masterLabel>
@@ -1353,8 +1361,16 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>EMEA_SR</masterLabel>
+            <translation><!-- EMEA_SR --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC_SR</masterLabel>
+            <translation><!-- PRC_SR --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Worldwide</masterLabel>

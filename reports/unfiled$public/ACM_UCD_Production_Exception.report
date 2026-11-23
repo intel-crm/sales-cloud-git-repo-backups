@@ -21,7 +21,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>ACM,Product</value>
+            <value>ACM</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Log_Entry__c.Core_Severity__c</column>

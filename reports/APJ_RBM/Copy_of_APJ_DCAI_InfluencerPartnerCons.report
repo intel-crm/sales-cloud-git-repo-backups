@@ -75,7 +75,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Australia &amp; New Zealand Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Southeast Asia Sales Group,APJ Taiwan Sales Group,India Sales Group,APJ Hosted Sales Group,APJ Partner Led</value>
+            <value>APJ Australia &amp; New Zealand Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Southeast Asia Sales Group,APJ Taiwan Sales Group,APJ Hosted Sales Group,APJ Partner Led</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_BU_Focus__c</column>
@@ -159,8 +159,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
-        <endDate>2026-12-26</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2025-12-28</startDate>
+        <startDate>2024-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -24,11 +24,11 @@ public with sharing class Product_ProcessInboundStagingRecords {
                 ipaasId = Ids[0];  //This is a unique load id which we get in every payload from Mulesoft.
                 hp.iPaaS_Load_ID__c =Ids[0];
                 
-                Boolean skipJob = skipJobBasedOnCount(ipaasId);
-
+                /*Boolean skipJob = skipJobBasedOnCount(ipaasId);
+				System.debug('skipjob////'+skipJob);
                 if (skipJob && !Test.isRunningTest()) {
                     return;
-                }
+                }*/
 
                  
                 // Process L1 categories for VPH.
@@ -49,7 +49,7 @@ public with sharing class Product_ProcessInboundStagingRecords {
                 }
                 
                 if (inputWrapperMap.size() > 0){
-                    
+                    System.debug('vplchid '+vplchInd);
                     System.enqueueJob(new Product_stageQueueable(IntialCount,inbMasterList,inputWrapperMap,vplchInd, ipaasId,opnIDs));
                 } 
             }   
@@ -89,6 +89,7 @@ public with sharing class Product_ProcessInboundStagingRecords {
             System.debug('Inbound Records:'+inbRcrd);
             if(string.isNotBlank((string)inbRcrd.get('level_1_epm_id__c'))  ){
                 // Prepring list of level 1 EPM ids to send to Queueable where count is less than limit
+                System.debug('inbRcrd count '+ (Integer)inbRcrd.get('cnt'));
                 if ((Integer)inbRcrd.get('cnt') < recordCountL1Limit) {
                     InputWrapper input = new InputWrapper();
                     input.atLevel2 = false;
@@ -207,7 +208,7 @@ public with sharing class Product_ProcessInboundStagingRecords {
 				oldInboundRecCount = [SELECT count() FROM Product_Inbound_Staging__c where iPaaS_Load_ID__c = :productStagings[0].iPaaS_Load_ID__c];
                 if (oldInboundRecCount > 0) {
                     dropIncreasePercentage = ((oldInboundRecCount - inboundRecCount)*100/oldInboundRecCount);
-                        
+                    System.debug('dropIncreasePercentage////'+dropIncreasePercentage);    
                         
                     if (dropIncreasePercentage > Integer.valueOf(Label.InboundRecordsDifferenceLimit) || Test.isRunningTest()) {                    
                         Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();

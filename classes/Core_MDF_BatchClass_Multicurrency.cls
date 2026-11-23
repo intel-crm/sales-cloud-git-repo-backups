@@ -9,8 +9,7 @@
 * Intel - Narayani Perachi		12/26/2018                    Added Database.AllowsCallouts to allow multiple callouts and added Limit 1 to the query
 * Intel - Narayani Perachi		12/26/2018                    Added Environment Label to the Mail subject to make it more readable
 **************************************************************************************************************************************************************************************/
-//US930209 - Added without sharing keyword to fix checkmarx issues
-global without sharing class Core_MDF_BatchClass_Multicurrency implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
+global class Core_MDF_BatchClass_Multicurrency implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
     
     string query='';
     string sendEmailAddress = '';

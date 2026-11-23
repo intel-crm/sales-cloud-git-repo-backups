@@ -16,7 +16,7 @@
             <name>rtsync__Update_Unique_Tuple_Field</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <formula>true</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>

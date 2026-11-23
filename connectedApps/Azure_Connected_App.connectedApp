@@ -4,7 +4,7 @@
     <label>Azure Connected App</label>
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6juSkcgio6mV4aSeYpd.R672TdbQuWPjl1WUCU8nfiGHoCvQt4PjkJ1qaABs</consumerKey>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxLPcGlZEtJdSJPDHbBQP1PnVFVtKS1gL1JcYTybD3AGjEoou3AWs7r8HuQ_q</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -22,7 +22,7 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>azure_write@intel.com.crm</oauthClientCredentialUser>
+        <oauthClientCredentialUser>azure_write@intel.com.crm.crmqa9</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>
     </oauthConfig>

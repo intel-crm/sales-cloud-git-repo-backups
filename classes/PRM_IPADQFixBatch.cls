@@ -242,7 +242,7 @@ public class PRM_IPADQFixBatch implements  Database.Batchable<sObject>,Database.
             Integer fieldLength=Schema.SObjectType.Core_Log_Entry__c.fields.Core_Details__c.getLength();
             logEntryUtility.addLogEntry(logEntryMsgString,fieldLength);
             for(Integer i=0; i<logEntryUtility.logEntryList.size();i++){
-                Core_Log_Entry.logEntryWithDetails('PRM_IPADQFixBatch', 'IPA', 'PRM_IPADQFixBatch', 'Medium','Job started at: '+ jobInitiatedDateTime +' PST' ,logEntryUtility.logEntryList[i] , '', '', '');
+                Core_Log_Entry.logEntryWithDetails('IPADQ', 'IPA', 'IPADQ', 'Medium','Job started at: '+ jobInitiatedDateTime +' PST' ,logEntryUtility.logEntryList[i] , '', '', '');
             }//loop ends here..
         }
     }

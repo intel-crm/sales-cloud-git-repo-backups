@@ -4,8 +4,8 @@
         <description>Send Admin Review Email to Intel Admin when Marketing profile Information records is updated to status to &apos;Admin Review&apos;</description>
         <name>Admin_Review_Email_to_Intel_Admin</name>
         <label>Admin Review Email to Intel Admin</label>
-        <locationX>50</locationX>
-        <locationY>1536</locationY>
+        <locationX>204</locationX>
+        <locationY>1392</locationY>
         <actionName>PMP_Company__c.PMP_Company_Admin_Review_Alert_To_Admin</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -19,13 +19,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_Company__c.PMP_Company_Admin_Review_Alert_To_Admin</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>Send Admin Review Email to Intel Admin when Marketing profile Information records is updated to status to &apos;Admin Review&apos;</description>
         <name>Admin_Review_Email_to_Intel_Admin_0</name>
         <label>Admin Review Email to Intel Admin</label>
-        <locationX>50</locationX>
-        <locationY>2112</locationY>
+        <locationX>204</locationX>
+        <locationY>1908</locationY>
         <actionName>PMP_Company__c.PMP_Company_Admin_Review_Alert_To_Admin</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -39,13 +40,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_Company__c.PMP_Company_Admin_Review_Alert_To_Admin</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This Action is send Approved And Published Email Alert To Recent Submitter</description>
         <name>Approved_And_Published_Email_Alert_To_Recent_Submitter</name>
         <label>Approved And Published Email Alert To Recent Submitter</label>
-        <locationX>50</locationX>
-        <locationY>3600</locationY>
+        <locationX>204</locationX>
+        <locationY>3240</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -65,15 +67,19 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action is to email is to send enhanced benefit</description>
         <name>Enhanced_Benefit_Email_Alert</name>
         <label>Enhanced Benefit Email Alert</label>
-        <locationX>50</locationX>
-        <locationY>6216</locationY>
+        <locationX>204</locationX>
+        <locationY>5880</locationY>
         <actionName>PMP_SendEmailAlertsForCompanyInfo</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_7</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>CompanyInfoIds</name>
@@ -82,13 +88,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForCompanyInfo</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action is to send new company info email</description>
         <name>New_Company_Info_Email</name>
         <label>New Company Info Email</label>
         <locationX>50</locationX>
-        <locationY>5544</locationY>
+        <locationY>5196</locationY>
         <actionName>PMP_SendEmailAlertsForCompanyInfo</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -102,13 +109,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForCompanyInfo</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action is send Non English Resubmit notification to recent submitters</description>
         <name>Non_English_Resubmit_Notification_To_Submitter</name>
         <label>Non-English_Resubmit_Notification_To_Submitter</label>
-        <locationX>50</locationX>
-        <locationY>5208</locationY>
+        <locationX>204</locationX>
+        <locationY>4680</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -128,13 +136,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action will send Reject Alert To Recent Submitter</description>
         <name>Reject_Alert_To_Recent_Submitter</name>
         <label>Reject Alert To Recent Submitter</label>
-        <locationX>50</locationX>
-        <locationY>4056</locationY>
+        <locationX>204</locationX>
+        <locationY>3648</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -154,13 +163,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This Actions send resubmit notificatin to the submitter</description>
         <name>Resubmit_Notification_To_Submitter</name>
         <label>Resubmit_Notification_To_Submitter</label>
-        <locationX>50</locationX>
-        <locationY>4632</locationY>
+        <locationX>204</locationX>
+        <locationY>4164</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -180,13 +190,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action is to send resubmit email for admin</description>
         <name>Resubmitted_Email_for_Admin</name>
         <label>Resubmitted Email for Admin</label>
-        <locationX>50</locationX>
-        <locationY>4512</locationY>
+        <locationX>204</locationX>
+        <locationY>4056</locationY>
         <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_Admin</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -200,13 +211,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_Admin</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action is to send resubmit email for admin</description>
         <name>Resubmitted_Email_for_Admin_0</name>
         <label>Resubmitted Email for Admin</label>
-        <locationX>50</locationX>
-        <locationY>5088</locationY>
+        <locationX>204</locationX>
+        <locationY>4572</locationY>
         <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_Admin</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -220,55 +232,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_Admin</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <name>Resubmitted_Email_for_MP_Admin_Group</name>
-        <label>Resubmitted Email for MP Admin Group</label>
-        <locationX>314</locationX>
-        <locationY>4164</locationY>
-        <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</actionName>
-        <actionType>emailAlert</actionType>
-        <connector>
-            <targetReference>Resubmit_Notification_To_Submitter</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-                <inputConfiguratorMode>Resource</inputConfiguratorMode>
-            </value>
-        </inputParameters>
-        <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
-        <name>Resubmitted_Email_for_MP_Admin_Group_non_english_flow</name>
-        <label>Resubmitted Email for MP Admin Group non english flow</label>
-        <locationX>314</locationX>
-        <locationY>4872</locationY>
-        <actionName>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</actionName>
-        <actionType>emailAlert</actionType>
-        <connector>
-            <targetReference>Non_English_Resubmit_Notification_To_Submitter</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-                <inputConfiguratorMode>Resource</inputConfiguratorMode>
-            </value>
-        </inputParameters>
-        <nameSegment>PMP_Company__c.PMP_Company_Resubmit_Alert_for_MPAdminGroup</nameSegment>
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>Send Email to Intel admin if the Intel admin is changed for the partner</description>
         <name>Send_Email_If_Intel_Admin_is_changed</name>
         <label>Send Email If Intel Admin is changed</label>
-        <locationX>50</locationX>
-        <locationY>2688</locationY>
+        <locationX>204</locationX>
+        <locationY>2424</locationY>
         <actionName>PMP_Company__c.PMP_Company_Under_Review_Alert_To_Admin</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -282,13 +253,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_Company__c.PMP_Company_Under_Review_Alert_To_Admin</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This mail is used to send update required Email when partner status is changed to partner</description>
         <name>Send_Update_Required_Email</name>
         <label>Send Update Required Email</label>
-        <locationX>50</locationX>
-        <locationY>3144</locationY>
+        <locationX>204</locationX>
+        <locationY>2832</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -308,13 +280,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>Send Email Update to the recent submitter</description>
         <name>Submit_Mail_To_Recent_Submitter</name>
         <label>Submit Mail To Recent Submitter</label>
-        <locationX>50</locationX>
-        <locationY>1656</locationY>
+        <locationX>204</locationX>
+        <locationY>1500</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -334,13 +307,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>Non English Submit Mail To Recent Submitter</description>
         <name>Submit_Mail_To_Recent_Submitter_0</name>
         <label>Non English Submit Mail To Recent Submitter</label>
-        <locationX>50</locationX>
-        <locationY>2232</locationY>
+        <locationX>204</locationX>
+        <locationY>2016</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -360,13 +334,14 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action is to send Translation Approved Email Alert</description>
         <name>Translation_Approved_Email_Alert</name>
         <label>Translation Approved Email Alert</label>
-        <locationX>50</locationX>
-        <locationY>5880</locationY>
+        <locationX>204</locationX>
+        <locationY>5580</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -386,15 +361,19 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>10 Day(s) Reminder Emails for Company &apos;Update Required&apos;</description>
         <name>X10_Day_s_Reminder_Emails_for_Company_Update_Required</name>
         <label>10 Day(s) Reminder Emails for Company &apos;Update Required&apos;</label>
-        <locationX>1106</locationX>
-        <locationY>408</locationY>
+        <locationX>1260</locationX>
+        <locationY>384</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_8</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>partnerId</name>
@@ -409,15 +388,19 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>3 Day(s) Reminder Emails for Company &apos;Update Required&apos;</description>
         <name>X3_Day_s_Reminder_Emails_for_Company_Update_Required</name>
         <label>3 Day(s) Reminder Emails for Company &apos;Update Required&apos;</label>
-        <locationX>578</locationX>
-        <locationY>408</locationY>
+        <locationX>732</locationX>
+        <locationY>384</locationY>
         <actionName>PMP_SendEmailAlertsForPartners</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_9</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>partnerId</name>
@@ -432,6 +415,7 @@
             </value>
         </inputParameters>
         <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -464,8 +448,11 @@
         <description>Is 10 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</description>
         <name>Is_10_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</name>
         <label>Is 10 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</label>
-        <locationX>1238</locationX>
-        <locationY>288</locationY>
+        <locationX>1392</locationX>
+        <locationY>276</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_10</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Entry_Criteria_10_Day_s_Company_Update_Required_Reminder_Emails</name>
@@ -515,8 +502,11 @@
         <description>Is 3 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</description>
         <name>Is_3_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</name>
         <label>Is 3 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</label>
-        <locationX>710</locationX>
-        <locationY>288</locationY>
+        <locationX>864</locationX>
+        <locationY>276</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_11</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Entry_Criteria_3_Day_s_Company_Update_Required_Reminder_Emails</name>
@@ -566,8 +556,8 @@
         <description>This decision is used to Verify If Intel Admin is changed for Partner and then send email</description>
         <name>Verfiy_If_Intel_Admin_is_changed_for_Partner</name>
         <label>Verify If Intel Admin is changed for Partner</label>
-        <locationX>182</locationX>
-        <locationY>2448</locationY>
+        <locationX>336</locationX>
+        <locationY>2208</locationY>
         <defaultConnector>
             <targetReference>Verify_If_Update_Required_to_send_partner_Edit_email</targetReference>
         </defaultConnector>
@@ -596,8 +586,8 @@
 		iv) PMP_Company_Information_Language_Nm__c is &apos;English&apos;</description>
         <name>Verify_Admin_Review_Email_can_be_sent_to_Intel_Admin</name>
         <label>Verify Admin Review Email can be sent to Intel Admin</label>
-        <locationX>182</locationX>
-        <locationY>1296</locationY>
+        <locationX>336</locationX>
+        <locationY>1176</locationY>
         <defaultConnector>
             <targetReference>Verify_to_send_Email_for_any_Non_English_Storefront_changes_to_Intel_Admin</targetReference>
         </defaultConnector>
@@ -619,61 +609,11 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Verify_if_the_IntelMarketplaceadmin_user_is_active</name>
-        <label>Verify if the IntelMarketplaceadmin user is active</label>
-        <locationX>182</locationX>
-        <locationY>4056</locationY>
-        <defaultConnector>
-            <targetReference>Resubmitted_Email_for_MP_Admin_Group</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>If Intelmarketplaceadmin is inactive,send email to group</defaultConnectorLabel>
-        <rules>
-            <name>If_IntelMarketplaceadmin_is_active</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.PMP_Intel_Admin_Id__r.IsActive</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Resubmitted_Email_for_Admin</targetReference>
-            </connector>
-            <label>If IntelMarketplaceadmin is active</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Verify_if_the_IntelMarketplaceadmin_user_is_activenon_english</name>
-        <label>Verify if the IntelMarketplaceadmin user is activenon english</label>
-        <locationX>182</locationX>
-        <locationY>4764</locationY>
-        <defaultConnector>
-            <targetReference>Resubmitted_Email_for_MP_Admin_Group_non_english_flow</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>If Intelmarketplaceadmin is inactive,send email to group</defaultConnectorLabel>
-        <rules>
-            <name>If_IntelMarketplaceadmin_is_active_nonenglish</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.PMP_Intel_Admin_Id__r.IsActive</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Resubmitted_Email_for_Admin_0</targetReference>
-            </connector>
-            <label>If IntelMarketplaceadmin is active nonenglish</label>
-        </rules>
-    </decisions>
-    <decisions>
         <description>Verify If partner status is Update Required to send partner Edit email</description>
         <name>Verify_If_Update_Required_to_send_partner_Edit_email</name>
         <label>Verify If Update Required to send partner Edit email</label>
-        <locationX>182</locationX>
-        <locationY>2904</locationY>
+        <locationX>336</locationX>
+        <locationY>2616</locationY>
         <defaultConnector>
             <targetReference>Verify_to_send_Approved_Email</targetReference>
         </defaultConnector>
@@ -698,8 +638,8 @@
         <description>This decision is used to verify whether one partner Id Sync</description>
         <name>Verify_One_Partner_Id_Sync</name>
         <label>Verify One Partner Id Sync</label>
-        <locationX>182</locationX>
-        <locationY>288</locationY>
+        <locationX>336</locationX>
+        <locationY>276</locationY>
         <defaultConnector>
             <targetReference>verify_update_last_updated_date_of_storefront</targetReference>
         </defaultConnector>
@@ -724,8 +664,8 @@
         <description>This decision is to verify whether Approved and published Email could be sent to partners</description>
         <name>Verify_to_send_Approved_Email</name>
         <label>Verify to send Approved Email</label>
-        <locationX>182</locationX>
-        <locationY>3360</locationY>
+        <locationX>336</locationX>
+        <locationY>3024</locationY>
         <defaultConnector>
             <targetReference>verify_whether_to_send_partner_rejected_email</targetReference>
         </defaultConnector>
@@ -750,8 +690,8 @@
         <description>Verify to send Email for any Non-English Storefront changes to Intel Admin</description>
         <name>Verify_to_send_Email_for_any_Non_English_Storefront_changes_to_Intel_Admin</name>
         <label>Verify to send Email for any Non-English Storefront changes to Intel Admin</label>
-        <locationX>182</locationX>
-        <locationY>1872</locationY>
+        <locationX>336</locationX>
+        <locationY>1692</locationY>
         <defaultConnector>
             <targetReference>Verfiy_If_Intel_Admin_is_changed_for_Partner</targetReference>
         </defaultConnector>
@@ -776,8 +716,8 @@
         <description>This is to store status published date of storefront</description>
         <name>Verify_to_store_status_published_date_of_storefront</name>
         <label>Verify to store status published date of storefront</label>
-        <locationX>182</locationX>
-        <locationY>960</locationY>
+        <locationX>336</locationX>
+        <locationY>876</locationY>
         <defaultConnector>
             <targetReference>Verify_Admin_Review_Email_can_be_sent_to_Intel_Admin</targetReference>
         </defaultConnector>
@@ -802,8 +742,8 @@
         <description>This decision used to Verify to whether to send New Company Info Creation Email</description>
         <name>Verify_to_whether_to_send_New_Company_Info_Creation_Email</name>
         <label>Verify to whether to send New Company Info Creation Email</label>
-        <locationX>182</locationX>
-        <locationY>5424</locationY>
+        <locationX>336</locationX>
+        <locationY>4980</locationY>
         <defaultConnector>
             <targetReference>verify_whether_to_send_translation_approved_email</targetReference>
         </defaultConnector>
@@ -828,8 +768,8 @@
         <description>This decision is used to verify whether to update last status update date of storefront details</description>
         <name>verify_update_last_updated_date_of_storefront</name>
         <label>verify update last updated date of storefront</label>
-        <locationX>182</locationX>
-        <locationY>624</locationY>
+        <locationX>336</locationX>
+        <locationY>576</locationY>
         <defaultConnector>
             <targetReference>Verify_to_store_status_published_date_of_storefront</targetReference>
         </defaultConnector>
@@ -854,8 +794,11 @@
         <description>This decision is to send verify whether to send enhanced benefit email</description>
         <name>verify_whether_to_send_enhanced_benefit_email</name>
         <label>verify whether to send enhanced benefit email</label>
-        <locationX>182</locationX>
-        <locationY>6096</locationY>
+        <locationX>336</locationX>
+        <locationY>5772</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_12</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Dont send Email, Continue</defaultConnectorLabel>
         <rules>
             <name>send_enhanced_benefit_email</name>
@@ -878,8 +821,8 @@
         <description>This decision is used to verify whether to send Non English resubmit email</description>
         <name>verify_whether_to_send_Non_English_resubmit_email</name>
         <label>verify whether to send Non English resubmit email</label>
-        <locationX>182</locationX>
-        <locationY>4848</locationY>
+        <locationX>336</locationX>
+        <locationY>4356</locationY>
         <defaultConnector>
             <targetReference>Get_Existing_Email_Logs</targetReference>
         </defaultConnector>
@@ -904,8 +847,8 @@
         <description>This decision is used to verify whether to send partner rejected email</description>
         <name>verify_whether_to_send_partner_rejected_email</name>
         <label>verify whether to send partner rejected email</label>
-        <locationX>182</locationX>
-        <locationY>3816</locationY>
+        <locationX>336</locationX>
+        <locationY>3432</locationY>
         <defaultConnector>
             <targetReference>Verify_whether_to_send_resubmit_email</targetReference>
         </defaultConnector>
@@ -930,8 +873,8 @@
         <description>This Decision is used to Verify whether to send resubmit email</description>
         <name>Verify_whether_to_send_resubmit_email</name>
         <label>Verify whether to send resubmit email</label>
-        <locationX>182</locationX>
-        <locationY>4272</locationY>
+        <locationX>336</locationX>
+        <locationY>3840</locationY>
         <defaultConnector>
             <targetReference>verify_whether_to_send_Non_English_resubmit_email</targetReference>
         </defaultConnector>
@@ -956,8 +899,8 @@
         <description>This decision is used to verify whether to send translation approved email</description>
         <name>verify_whether_to_send_translation_approved_email</name>
         <label>verify whether to send translation approved email</label>
-        <locationX>182</locationX>
-        <locationY>5760</locationY>
+        <locationX>336</locationX>
+        <locationY>5472</locationY>
         <defaultConnector>
             <targetReference>verify_whether_to_send_enhanced_benefit_email</targetReference>
         </defaultConnector>
@@ -979,6 +922,36 @@
         </rules>
     </decisions>
     <description>Company Process Automation</description>
+    <ends>
+        <name>END_ELEMENT_10</name>
+        <locationX>1524</locationX>
+        <locationY>384</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_11</name>
+        <locationX>996</locationX>
+        <locationY>384</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_12</name>
+        <locationX>468</locationX>
+        <locationY>5880</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_7</name>
+        <locationX>204</locationX>
+        <locationY>5988</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_8</name>
+        <locationX>1260</locationX>
+        <locationY>492</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_9</name>
+        <locationX>732</locationX>
+        <locationY>492</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <description>This formula is used verify whether Approved and published Email could be sent to partners</description>
@@ -1155,8 +1128,8 @@
         <description>This is to store latest updated date of storefront details</description>
         <name>store_latest_updated_date_of_storefront_details</name>
         <label>store latest updated date of storefront details</label>
-        <locationX>50</locationX>
-        <locationY>744</locationY>
+        <locationX>204</locationX>
+        <locationY>684</locationY>
         <connector>
             <targetReference>Verify_to_store_status_published_date_of_storefront</targetReference>
         </connector>
@@ -1172,8 +1145,8 @@
         <description>This action is to Sync opid sfid Ref with  opid sfid on Company record</description>
         <name>Sync_One_PartnerId_Ref</name>
         <label>Sync One PartnerId Ref</label>
-        <locationX>50</locationX>
-        <locationY>408</locationY>
+        <locationX>204</locationX>
+        <locationY>384</locationY>
         <connector>
             <targetReference>verify_update_last_updated_date_of_storefront</targetReference>
         </connector>
@@ -1189,8 +1162,8 @@
         <description>This is to update date when status is changed to published</description>
         <name>update_date_when_status_is_changed_to_published</name>
         <label>update date when status is changed to published</label>
-        <locationX>50</locationX>
-        <locationY>1080</locationY>
+        <locationX>204</locationX>
+        <locationY>984</locationY>
         <connector>
             <targetReference>Verify_Admin_Review_Email_can_be_sent_to_Intel_Admin</targetReference>
         </connector>
@@ -1206,8 +1179,8 @@
         <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
         <name>Update_Last_Status_Update_Date</name>
         <label>Update Last Status Update Date</label>
-        <locationX>50</locationX>
-        <locationY>1416</locationY>
+        <locationX>204</locationX>
+        <locationY>1284</locationY>
         <connector>
             <targetReference>Admin_Review_Email_to_Intel_Admin</targetReference>
         </connector>
@@ -1231,8 +1204,8 @@
         <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
         <name>Update_Last_Status_Update_Date_0</name>
         <label>Update Last Status Update Date</label>
-        <locationX>50</locationX>
-        <locationY>1992</locationY>
+        <locationX>204</locationX>
+        <locationY>1800</locationY>
         <connector>
             <targetReference>Admin_Review_Email_to_Intel_Admin_0</targetReference>
         </connector>
@@ -1256,8 +1229,8 @@
         <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
         <name>Update_Last_Status_Update_Date_0_0</name>
         <label>Update Last Status Update Date</label>
-        <locationX>50</locationX>
-        <locationY>2568</locationY>
+        <locationX>204</locationX>
+        <locationY>2316</locationY>
         <connector>
             <targetReference>Send_Email_If_Intel_Admin_is_changed</targetReference>
         </connector>
@@ -1281,8 +1254,8 @@
         <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
         <name>Update_Last_Status_Update_Date_0_0_0</name>
         <label>Update Last Status Update Date</label>
-        <locationX>50</locationX>
-        <locationY>3024</locationY>
+        <locationX>204</locationX>
+        <locationY>2724</locationY>
         <connector>
             <targetReference>Send_Update_Required_Email</targetReference>
         </connector>
@@ -1306,8 +1279,8 @@
         <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
         <name>Update_Last_Status_Update_Date_0_0_0_0</name>
         <label>Update Last Status Update Date</label>
-        <locationX>50</locationX>
-        <locationY>3480</locationY>
+        <locationX>204</locationX>
+        <locationY>3132</locationY>
         <connector>
             <targetReference>Approved_And_Published_Email_Alert_To_Recent_Submitter</targetReference>
         </connector>
@@ -1331,8 +1304,8 @@
         <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
         <name>Update_Last_Status_Update_Date_0_0_0_0_0</name>
         <label>Update Last Status Update Date</label>
-        <locationX>50</locationX>
-        <locationY>3936</locationY>
+        <locationX>204</locationX>
+        <locationY>3540</locationY>
         <connector>
             <targetReference>Reject_Alert_To_Recent_Submitter</targetReference>
         </connector>
@@ -1356,10 +1329,10 @@
         <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
         <name>Update_Last_Status_Update_Date_0_0_0_0_0_0</name>
         <label>Update Last Status Update Date</label>
-        <locationX>50</locationX>
-        <locationY>4392</locationY>
+        <locationX>204</locationX>
+        <locationY>3948</locationY>
         <connector>
-            <targetReference>Verify_if_the_IntelMarketplaceadmin_user_is_active</targetReference>
+            <targetReference>Resubmitted_Email_for_Admin</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1381,10 +1354,10 @@
         <description>Update the  Last Status Update Date on Marketing profile Information Record</description>
         <name>Update_Last_Status_Update_Date_0_0_0_0_0_0_0</name>
         <label>Update Last Status Update Date</label>
-        <locationX>50</locationX>
-        <locationY>4968</locationY>
+        <locationX>204</locationX>
+        <locationY>4464</locationY>
         <connector>
-            <targetReference>Verify_if_the_IntelMarketplaceadmin_user_is_activenon_english</targetReference>
+            <targetReference>Resubmitted_Email_for_Admin_0</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1403,7 +1376,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>584</locationX>
+        <locationX>738</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Verify_One_Partner_Id_Sync</targetReference>
@@ -1417,9 +1390,9 @@
             </connector>
             <label>Action  After 3 Business Days</label>
             <maxBatchSize>1</maxBatchSize>
-            <offsetNumber>3</offsetNumber>
-            <offsetUnit>Days</offsetUnit>
-            <recordField>PMP_Workflow_Three_Day_Trigger_Dt__c</recordField>
+            <offsetNumber>2</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>PMP_Company_Status_Update_Dt__c</recordField>
             <timeSource>RecordField</timeSource>
         </scheduledPaths>
         <scheduledPaths>
@@ -1429,9 +1402,9 @@
             </connector>
             <label>Action  After 10 Business Days</label>
             <maxBatchSize>1</maxBatchSize>
-            <offsetNumber>10</offsetNumber>
-            <offsetUnit>Days</offsetUnit>
-            <recordField>PMP_Workflow_One_Week_Trigger_Dt__c</recordField>
+            <offsetNumber>3</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>PMP_Company_Status_Update_Dt__c</recordField>
             <timeSource>RecordField</timeSource>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>

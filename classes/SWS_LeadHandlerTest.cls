@@ -1,6 +1,6 @@
 @isTest
 public class SWS_LeadHandlerTest {
-    
+    // Test setup method
     @testSetup 
     private static void setup(){
         

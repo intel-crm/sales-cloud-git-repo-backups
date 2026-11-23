@@ -75,7 +75,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
-    <description>for dashboard forecast chart</description>
     <filter>
         <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5)) AND 6 AND 7</booleanFilter>
         <criteriaItems>

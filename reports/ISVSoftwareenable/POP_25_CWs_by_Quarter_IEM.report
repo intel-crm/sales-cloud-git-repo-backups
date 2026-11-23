@@ -163,7 +163,7 @@
         <field>OPPORTUNITY.NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>POP_25_CWs by Quarter History</name>
+    <name>POP_25_CWs by Quarter &amp; Geo</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -185,8 +185,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2025-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2025-01-01</startDate>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

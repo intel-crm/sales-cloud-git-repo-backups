@@ -52,7 +52,7 @@
     </values>
     <values>
         <field>Project__c</field>
-        <value xsi:type="xsd:string">CRM</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Security_Query_txt__c</field>
@@ -60,11 +60,11 @@
     </values>
     <values>
         <field>Security_enforced__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Static_Filter_and_Value_txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">year eq 2023</value>
     </values>
     <values>
         <field>Static_filter__c</field>

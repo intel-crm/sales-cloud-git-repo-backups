@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ER_BusinessPartner_Deltasync</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ER_BusinessPartner_Deltasync</value>
+    </caseValues>
+    <fields>
+        <label><!-- Last DateTime Sync --></label>
+        <name>Last_DateTime_Sync__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

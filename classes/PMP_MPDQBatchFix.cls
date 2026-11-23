@@ -264,6 +264,7 @@ logEntryMsgString +='\nReactivated latest deactivated PAG '
                             }                          
                             if (!alreadyQueued) {
                                 latestRel.Is_Active__c = true;
+                                //if(!relUpdates.contains(latestRel))
                                 relUpdates.add(latestRel);                         
                                 logEntryMsgString +='\nReactivated latest deactivated PAG ' + latestRel.Id +' for Account ' + accId;
                             }
@@ -385,7 +386,8 @@ APPLY MPI CHANGE
                         }
                         
                         String finalTier = rankToTier.get(highestRank);
-                       
+                        system.debug('finalTier----'+finalTier);
+                        system.debug('pub.PMP_IPA_Badge_Tier_Txt__c=-='+pub.PMP_IPA_Badge_Tier_Txt__c);
                         if (pub.PMP_IPA_Badge_Tier_Txt__c != finalTier) {
                             pub.PMP_IPA_Badge_Tier_Txt__c = finalTier;
                             changed = true;
@@ -398,7 +400,8 @@ APPLY MPI CHANGE
                             pub.PMP_Partner_Program_nm__c = partnerProgram;
                             changed = true;
                         }
-                       
+                        system.debug('pub.PMP_Account_Program_Membership__c=='+pub.PMP_Account_Program_Membership__c);
+                        system.debug('programMembership====='+programMembership);
                         /*  if (pub.PMP_Account_Program_Membership__c != programMembership) {
 pub.PMP_Account_Program_Membership__c = programMembership;
 changed = true;
@@ -418,16 +421,20 @@ changed = true;
 }*/}
                     
                     if (!inactiveOPIDMPIREL && (IfInactivatedMPI || changed)) {
+                       // if(!companyUpdates.contains(pub))
                         companyUpdates.add(pub);
                         companyPcMap.put(pub.id,pub);
+                        system.debug('companyUpdates.add(pub);'+companyUpdates);
                         workingCopyIds.add(pub.PMP_Working_Copy_Id__r.id);
                     }
                 } 
+        system.debug('workingCopyUpdatess1'+workingCopyUpdates);
         //GET THE WORKING COPIES FOR UPDATED PUBLISHED MPIS AND MAKE CHANGE ON THEM AS WELL
         List<PMP_Company__c> CompanyWCList = New List<PMP_Company__c>();
         CompanyWCList = [Select Id,PMP_Company_Lifecycle_Status_Nm__c,PMP_IPA_Badge_Tier_Txt__c,PMP_Partner_Program_nm__c,PMP_Account_Program_Membership__c,PMP_Benefit_Update_Ind__c,PMP_Published_Copy_Id__c,
                          PMP_Published_Copy_Id__r.PMP_IPA_Badge_Tier_Txt__c,PMP_Published_Copy_Id__r.PMP_Partner_Program_nm__c,PMP_Published_Copy_Id__r.PMP_Account_Program_Membership__c,PMP_Published_Copy_Id__r.PMP_Benefit_Update_Ind__c from PMP_Company__c where Id IN :workingCopyIds];
         for(PMP_Company__c wc:CompanyWCList){
+            system.debug('companyUpdates.add(pub)11;'+companyPcMap);
             if (companyPcMap.get(wc.PMP_Published_Copy_Id__c) != null) {
                 // PMP_Company__c wc = new PMP_Company__c( Id = pub.PMP_Working_Copy_Id__r.id);
                 if(wc.PMP_Company_Lifecycle_Status_Nm__c=='Approved' || wc.PMP_Company_Lifecycle_Status_Nm__c=='Draft'){                  
@@ -442,6 +449,7 @@ changed = true;
                         wc.PMP_Benefit_Update_Ind__c = pubCompany.PMP_Benefit_Update_Ind__c;
                     }
                     
+                    system.debug('workingCopyUpdatess'+workingCopyUpdates);
                     workingCopyUpdates.add(wc);
                 }
             }
@@ -556,7 +564,7 @@ changed = true;
     global void finish(Database.BatchableContext bc) {
         Decimal threshold;
         Map<String, Map<String, Object>> dqObjectsMap = getCustomMetadataRecords();
-      
+        system.debug('dqObjectsMap===='+dqObjectsMap);
         if(dqObjectsMap != null && !dqObjectsMap.isEmpty()){
             if(dqObjectsMap.containsKey('Threshold')){
                 threshold = Decimal.valueOf(String.valueOf(dqObjectsMap.get('Threshold').get('Threshold__c')));

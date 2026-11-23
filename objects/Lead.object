@@ -6679,18 +6679,6 @@ DATETIMEVALUE(TEXT(DATEVALUE(Core_Entrance_Date_SAL__c) + CASE(MOD( DATEVALUE(Co
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>CventEvents__ContactStub__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>true</externalId>
-        <label>Cvent Contact Stub</label>
-        <length>36</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Days__c</fullName>
         <formula>IF(AND(NOT(ISNULL(Core_Entrance_Date_MAQL__c)),NOT(OR(WEEKDAY(DATEVALUE(Core_Entrance_Date_MAQL__c))=1,WEEKDAY(DATEVALUE(Core_Entrance_Date_MAQL__c))=7))),true,
 IF(AND(NOT(ISNULL(Core_Entrance_Date_TAL__c)),NOT(OR(WEEKDAY(DATEVALUE(Core_Entrance_Date_TAL__c))=1,WEEKDAY(DATEVALUE(Core_Entrance_Date_TAL__c))=7))),true,
@@ -7301,6 +7289,27 @@ NULL))))</formula>
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>SWS_Marketo_Email_Invalid_Cause__c</fullName>
+        <description>Email Invalid Cause from Marketo</description>
+        <externalId>false</externalId>
+        <label>Marketo Email Invalid Cause</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWS_Marketo_Email_Invalid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Email Invalid Marketo  flag</description>
+        <label>Marketo Email Invalid</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>SWS_No_Schedule__c</fullName>
         <defaultValue>false</defaultValue>
         <label>No Schedule</label>
@@ -7709,7 +7718,6 @@ NULL))))</formula>
     </fields>
     <listViews>
         <fullName>All_Leads4</fullName>
-        <columns>Core_Partner_Name__c</columns>
         <columns>FULL_NAME</columns>
         <columns>PMP_Offering_Id__c</columns>
         <columns>LEAD.COMPANY</columns>
@@ -7721,6 +7729,26 @@ NULL))))</formula>
         <columns>LEAD.RECORDTYPE</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>LEAD.STATUS</field>
+            <operation>equals</operation>
+            <value>Rejected</value>
+        </filters>
+        <filters>
+            <field>Core_Lead_State__c</field>
+            <operation>equals</operation>
+            <value>Terminated</value>
+        </filters>
+        <filters>
+            <field>LEAD.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Lead.Partner_Lead</value>
+        </filters>
+        <filters>
+            <field>Core_Lead_Status__c</field>
+            <operation>equals</operation>
+            <value>Qualified</value>
+        </filters>
         <label>All Leads</label>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -8743,9 +8771,9 @@ NULL))))</formula>
         <columns>Core_Reprocess_Lead_Sharing__c</columns>
         <filterScope>Queue</filterScope>
         <filters>
-            <field>Core_Partner_Name__c</field>
-            <operation>contains</operation>
-            <value>silicon</value>
+            <field>LEAD.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Lead.Partner_Lead</value>
         </filters>
         <label>PTNR - Global Partner Queue</label>
         <queue>Core_PTNR_Global_Partner_Queue</queue>
@@ -8872,10 +8900,6 @@ NULL))))</formula>
             <field>Core_Lead_Status__c</field>
             <operation>notEqual</operation>
             <value>Dispositioned for Partner Lead Pilot</value>
-        </filters>
-        <filters>
-            <field>LEAD.LAST_ACTIVITY</field>
-            <operation>equals</operation>
         </filters>
         <label>Leads - From Marketplace</label>
         <sharedTo>
@@ -21687,78 +21711,6 @@ else {
 alert( &quot;An error has occurred while updating lead &quot; + result[0].errors.message );
 }
 }</url>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__InviteLeadToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Invite</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__LeadInviteExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__ModifyCancelLeadToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Modify/Cancel</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__LeadModifyCancelExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__NominateLeadToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Nominate</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__LeadNominateExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__RegisterLeadToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Register</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__LeadRegisterExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
     </webLinks>
     <webLinks>
         <fullName>Eloqua_Profiler</fullName>

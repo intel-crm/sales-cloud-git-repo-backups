@@ -18,14 +18,5 @@
         <type>TextArea</type>
     </fields>
     <label>Core Level 1 Products</label>
-    <listViews>
-        <fullName>Product_Integration</fullName>
-        <columns>NAME</columns>
-        <columns>Is_Active__c</columns>
-        <columns>Level_1_Id__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>Product Integration`</label>
-        <language>en_US</language>
-    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

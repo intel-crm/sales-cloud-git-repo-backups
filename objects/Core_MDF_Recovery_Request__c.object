@@ -243,7 +243,7 @@
         <defaultValue>false</defaultValue>
         <description>Used to identify whether the Recovery Request record is created through UI or Recovery Batch.</description>
         <label>Is System Created?</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>

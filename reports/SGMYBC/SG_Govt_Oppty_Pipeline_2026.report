@@ -7,10 +7,19 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
+        <field>CLOSE_DATE2</field>
+    </columns>
+    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -25,7 +34,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -57,12 +66,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>ACCOUNT_NAME</sortColumn>
+    <sortColumn>AMOUNT</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2026-11-22</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>

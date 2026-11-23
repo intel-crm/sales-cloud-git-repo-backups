@@ -54,10 +54,6 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>AGE</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>ACCOUNT_NAME</column>
@@ -71,7 +67,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled</value>
+            <value>Cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -91,7 +87,7 @@
         <field>Opportunity.Core_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2026 - Accenture - All GEO - Oppty</name>
+    <name>2025 - Accenture - All GEO - Oppty</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -117,8 +113,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-12-26</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-10</startDate>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

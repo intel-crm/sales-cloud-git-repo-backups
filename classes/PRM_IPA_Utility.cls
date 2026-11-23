@@ -15,6 +15,7 @@
         //Use this method to create a log entry record for Integrations.    
         public static PRM_Integration_Log__c createIntegrationLog(String recordId ,String callType, String module, String reqPayload, String respPayload, Integer respCode ,String systemName, String className)
         {
+            System.debug('In 18::'+recordId +' length: ' +recordId.length());
             PRM_Integration_Log__c intLog = new PRM_Integration_Log__c();
             intLog.PRM_Record_ID__c = recordId;
             intLog.PRM_Callout_Type__c = callType;
@@ -44,7 +45,7 @@
         
         public static PRM_Integration_Log__c createPCCIntegrationLog(String recordId ,String callType, String module, String reqPayload, String respPayload, Integer respCode ,String systemName, String className,  DateTime reqTime, DateTime resTime, Boolean insertRecord, Id program, String reqUrl)
         {
-            
+            System.debug('In 18::'+recordId +' length: ' +recordId.length());
             PRM_Integration_Log__c intLog = new PRM_Integration_Log__c();
             intLog.PRM_Record_ID__c = recordId;
             intLog.PRM_Callout_Type__c = callType;
@@ -128,7 +129,7 @@
                     sysAccIdSet.add(mapSysAcc.get(keySetString).AccountId__c);
                 }        
                 if(sysAccIdSet != null){
-                    for(Contact cons : [SELECT Id,AccountId,Account.Name,Email FROM Contact WHERE Email IN: regReqEmails AND AccountId IN: sysAccIdSet]){
+                    for(Contact cons : [SELECT Id,AccountId,/*Account.Name,*/Email FROM Contact WHERE Email IN: regReqEmails AND AccountId IN: sysAccIdSet]){//ATHR Fix - TWC729-9556
                         if(cons.Email != null){
                             returnSysAccMap.put(cons.Email, True);
                             //System.debug('ReturnSysAccMap-->'+returnSysAccMap);

@@ -22,6 +22,10 @@
                 <behavior>Edit</behavior>
                 <field>ReferenceEntityId</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IsCreditMemoLocked</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -35,6 +39,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Description</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CreditMemoLockedDateTime</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -61,6 +69,18 @@
                 <behavior>Readonly</behavior>
                 <field>TotalAmountWithTax</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>TotalHeaderRefundApplied</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>TotalLineRefundApplied</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>NetRefundsApplied</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -70,6 +90,14 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>NetCreditsApplied</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>TotalHeaderRefundUnapplied</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>TotalLineRefundUnapplied</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>

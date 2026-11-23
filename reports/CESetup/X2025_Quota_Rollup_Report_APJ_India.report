@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>FK_$CPT_Employee__c.CPT_Employee_WWID__c</field>
+        <field>CPT_Quota_Setup__c.CPT_Sales_Org__c</field>
     </columns>
     <columns>
-        <field>CPT_Quota_Setup__c.CPT_Employee_Name__c</field>
+        <field>CPT_Quota_Setup__c.CPT_Sales_Group__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_Sales_Team__c</field>
     </columns>
     <columns>
         <field>CPT_Quota_Setup__c.CPT_Manager__c</field>
@@ -13,13 +16,10 @@
         <field>CPT_Quota_Setup__c.CPT_Manager_WWID__c</field>
     </columns>
     <columns>
-        <field>CPT_Quota_Setup__c.CPT_Sales_Org__c</field>
+        <field>CPT_Quota_Setup__c.CPT_Employee_Name__c</field>
     </columns>
     <columns>
-        <field>CPT_Quota_Setup__c.CPT_Sales_Group__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_Sales_Team__c</field>
+        <field>FK_$CPT_Employee__c.CPT_Employee_WWID__c</field>
     </columns>
     <columns>
         <field>CPT_Quota_Setup__c.CPT_Job_Role__c</field>
@@ -34,9 +34,6 @@
         <field>CPT_Quota_Setup__c.CPT_Status__c</field>
     </columns>
     <columns>
-        <field>CPT_Quota_Setup__c.CPT_Sales_OKR_Assigned__c</field>
-    </columns>
-    <columns>
         <field>CPT_Quota_Setup__c.CPT_Sales_OKR_Objective1__c</field>
     </columns>
     <columns>
@@ -45,107 +42,8 @@
     <columns>
         <field>CPT_Quota_Setup__c.CPT_Sales_OKR_Objective3__c</field>
     </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_BR_Assigned__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_BR_All_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_BR_All_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_BR_CCG_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_BR_CCG_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_BR_DCAI_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_BR_DCAI_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_CR_Assigned__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_CR_OEM_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_CR_OEM_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_CR_Partner_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_CR_Partner_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_CR_Retail_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_CR_Retail_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_Sales_Team_Goal_Assigned__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_Sales_Team_Goal__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Assigned__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Next_Gen_CCG_LNL_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_NextGen_CCG_LNL_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Next_Gen_CCG_PTL_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_NextGen_CCG_PTL_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Next_Gen_CCG_WCL_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_NextGen_CCG_WCL_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Next_Gen_DCG_GNR_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_NextGen_DCG_GNR_Quota__c</field>
-    </columns>
     <filter>
-        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>CPT_Quota_Setup__c.CPT_Sales_Org__c</column>
             <columnToColumn>false</columnToColumn>
@@ -154,23 +52,16 @@
             <value>APJ,India</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CPT_Quota_Setup__c.CPT_Sales_Group__c</column>
+            <column>CPT_Quota_Setup__c.CPT_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>APJ,India</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CPT_Quota_Setup__c.CPT_Sales_Team__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>APJ,India</value>
+            <value>George Chacko,Santhosh</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>2026 Quota Rollup Report - APJ+India</name>
+    <name>2025 Quota Rollup Report - APJ+India</name>
     <params>
         <name>co</name>
         <value>1</value>

@@ -6,6 +6,7 @@ global class PRM_Account_Contact_Profiles {
     public static final String LOG_ENTRY_SCOPE    = 'PRM_Account_Contact_Profiles class';
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_INFO     = 'info';
+    public static boolean isCMF=Boolean.valueOf(label.ER_IsCMF);
     
     @HttpPost
     global static PRM_Account_Contact_Profiles_Model.Profiles GetProfiles(){
@@ -43,8 +44,6 @@ global class PRM_Account_Contact_Profiles {
             if(attributeString!=null){
                  atrributeList=attributeString.split(',');
             }
-           
-            
             
 
             String inputfield = (KeyInput.containsKey('InputField'))?((!String.isEmpty((String) KeyInput.get('InputField')))? String.escapeSingleQuotes(((String) KeyInput.get('InputField'))).trim().toUpperCase():null):null;
@@ -199,26 +198,35 @@ global class PRM_Account_Contact_Profiles {
                     }               
                 }// End of WHEN
                 WHEN 'CONTACTCMFGROUP' {
-                    if(inputfield !=EMAILID && inputfield != ENTERPRISEID){
-                        error = error + 'Input should be a valid EmailId/EnterpriseId\n';
+                    
+                        if(inputfield !=EMAILID && inputfield != ENTERPRISEID){
+                             error = error + 'Input should be a valid EmailId/EnterpriseId\n';
+                             }
+                    
+                             else if((inputfield == EMAILID || inputfield == ENTERPRISEID) && isCMF ){
+                                 responseList.add(PRM_Account_Contact_Profiles_Utility.getCMfDetails(inputValue, inputfield));
+                                     createLogEntry('GetProfile API response log '+inputfield+': '+inputvalue+' Attribute: '+attribute+' AdditionalAttribute: '+addtlInputField+': '+addtlInputValue+ ' Response Time in MS: '/*+response.ResponseTimeMS*/, null, LOG_ENTRY_INFO,inputvalue );
+                             }
+                             //As part of IAO- CMF TO BPID changes
+                             else{
+                                 responseList.add(PRM_Account_Contact_Profiles_Utility.getBPAccountDetails(inputValue, inputfield));
+                                     createLogEntry('GetProfile API response log '+inputfield+': '+inputvalue+' Attribute: '+attribute+' AdditionalAttribute: '+addtlInputField+': '+addtlInputValue+ ' Response Time in MS: '/*+response.ResponseTimeMS*/, null, LOG_ENTRY_INFO,inputvalue );
+                            
+                             }
+                      //  if(inputfield !=EMAILID && inputfield != ENTERPRISEID){
+                       // error = error + 'Input should be a valid EmailId/EnterpriseId\n';
                         //return PRM_Account_Contact_Profiles_Utility.generateError(error);
-                   }else {  
-                        if(inputfield == EMAILID || inputfield == ENTERPRISEID){
+                  // }else {  
+                   //     if(inputfield == EMAILID || inputfield == ENTERPRISEID){
                            
                             
-                              responseList.add(PRM_Account_Contact_Profiles_Utility.getCMfDetails(inputValue, inputfield));
-                               createLogEntry('GetProfile API response log '+inputfield+': '+inputvalue+' Attribute: '+attribute+' AdditionalAttribute: '+addtlInputField+': '+addtlInputValue+ ' Response Time in MS: '/*+response.ResponseTimeMS*/, null, LOG_ENTRY_INFO,inputvalue );
-                        }
-                       
-                       
-                        
-                                                   
-                    }    
+                     //         responseList.add(PRM_Account_Contact_Profiles_Utility.getCMfDetails(inputValue, inputfield));
+                      //         createLogEntry('GetProfile API response log '+inputfield+': '+inputvalue+' Attribute: '+attribute+' AdditionalAttribute: '+addtlInputField+': '+addtlInputValue+ ' Response Time in MS: '/*+response.ResponseTimeMS*/, null, LOG_ENTRY_INFO,inputvalue );
+                      //  }                               
+                  //  }    
                     //return response;
                 }
-               
-                   
-               
+           
                 When else {
                     error = error + 'Attribute is not a valid one!\n';
                     //return PRM_Account_Contact_Profiles_Utility.generateError(error);

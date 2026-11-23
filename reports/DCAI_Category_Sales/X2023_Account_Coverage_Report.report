@@ -7,7 +7,7 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>User.User_Unique__c</column>
+            <column>Account.Core_Standard_Industry_Classification_1__c</column>
         </chartSummaries>
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -26,10 +26,6 @@
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>User.User_Unique__c</field>
-    </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Account.Core_Standard_Industry_Classification_1__c</field>

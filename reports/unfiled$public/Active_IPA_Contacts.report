@@ -25,18 +25,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>FK_$Core_Entitlement__c.Core_IsActive__c</field>
     </columns>
-    <crossFilters>
-        <criteriaItems>
-            <column>PRM_Partner_Subscription_Id__c</column>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Membership Communications</value>
-        </criteriaItems>
-        <operation>with</operation>
-        <primaryTableColumn>CONTACT_ID</primaryTableColumn>
-        <relatedTable>PRM_ContactSubscriptionAssociation__c</relatedTable>
-        <relatedTableJoinColumn>PRM_Contact_Id__c</relatedTableJoinColumn>
-    </crossFilters>
     <filter>
         <criteriaItems>
             <column>Contact.External_User_State__c</column>
@@ -58,20 +46,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>EMAIL</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>test</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>test</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

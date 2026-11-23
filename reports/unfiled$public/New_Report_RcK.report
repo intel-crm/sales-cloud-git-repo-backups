@@ -8,10 +8,10 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Account.AccountEmailMessages$CreatedDate</groupingColumn>
+        <groupingColumn>Account$Name</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -28,9 +28,6 @@
         <field>Account.AccountEmailMessages$Subject</field>
     </columns>
     <columns>
-        <field>Account$Name</field>
-    </columns>
-    <columns>
         <field>Account.AccountEmailMessages$FromAddress</field>
     </columns>
     <columns>
@@ -39,21 +36,13 @@
     <columns>
         <field>Account.AccountEmailMessages$CcAddress</field>
     </columns>
-    <columns>
-        <field>Account.AccountEmailMessages$TextBody</field>
-    </columns>
     <description>Accounts with Email Messages EAC</description>
-    <filter>
-        <criteriaItems>
-            <column>Account.AccountEmailMessages$Source</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <groupingsDown>
         <field>Account.AccountEmailMessages$CreatedDate</field>
         <sortOrder>Asc</sortOrder>
@@ -64,7 +53,7 @@
         <value>1</value>
     </params>
     <reportType>Accounts_with_Email_Messages_EAC__c</reportType>
-    <scope>accountteamteam</scope>
+    <scope>ownaccountteam</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

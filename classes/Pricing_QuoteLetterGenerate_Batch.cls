@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Vrushabh 
  * @group             : 
- * @last modified on  : 05-05-2026
+ * @last modified on  : 04-30-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 
@@ -48,7 +48,7 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
                                                 quoteIdToDocList.put(quoteDocumnetList.SBQQ__Quote__c, new List<SBQQ__QuoteDocument__c> {quoteDocumnetList});
                                             }
                                         }
-            
+            system.debug('quoteIdToDocList:'+quoteIdToDocList.keyset());
             Set<Id> quoteIdWithQuoteDocIds = new Set<Id>();
             Set<Id> quoteIdWithDocIdsGen = new Set<Id>();
             for(SBQQ__Quote__c quote : quoteBatch){
@@ -75,6 +75,7 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
             if(quoteIdWithQuoteDocIds.size() > 0){
                 quoteIdWithQuoteDocIds.removeAll(quoteIdWithDocIdsGen);
             }
+            system.debug('quoteIdWithQuoteDocIds:'+quoteIdWithQuoteDocIds);
             //getting all Quotelines from quoteIds.
             if(quoteIdWithQuoteDocIds.size() > 0){
                 quoteLines = [SELECT Id, Pricing_Quote_Line_Number__c, Pricing_Status_Nm__c, SBQQ__Quote__r.Pricing_Maximum_Approved_Rejected_Date__c,Pricing_Product_Nm__r.Name, SBQQ__Quote__c, SBQQ__Quote__r.Name, Pricing_Last_Approved_Date_dt__c, LastModifiedDate , Pricing_Deal_RFQ_Id__c, Pricing_Quote_Program_Nm__c
@@ -96,7 +97,7 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
                     }
                 }
             }
-
+                system.debug('quoteIdToQLStatusMap:'+quoteIdToQLStatusMap);
             // if not WIP or WIN with Deal id ql having PFIR or PIFR qls then removing those quotes
             for(Id quoteId : quoteIdToQLStatusMap.keyset()){
                 if( !quoteIdToQLStatusMap.get(quoteId).contains('Pending Intel Field Review')
@@ -113,7 +114,7 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
                     eligibleQuoteLines.add(qls);
                 }
             }
-            
+            system.debug('eligibleQuoteLines:'+eligibleQuoteLines);
             List<Id> quoteLineIdWithQuoteDoc = new List<Id>();
             for(SBQQ__QuoteLine__c ql : eligibleQuoteLines){
                 if(quoteIdToDocList.containskey(ql.SBQQ__Quote__c)){
@@ -127,6 +128,7 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
                     }
                 }
             }
+            system.debug('quoteLineIdWithQuoteDoc:'+quoteLineIdWithQuoteDoc);
             List<Id> finalQuoteLineId = new List<Id>();
             //Excluding quoteLines where quoted document is created from eligible quote Lines.
             for(SBQQ__QuoteLine__c ql : eligibleQuoteLines){
@@ -135,6 +137,7 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
                     finalQuoteIds.add(ql.SBQQ__Quote__c);
                 }
             }
+            system.debug('finalQuoteLineId:'+finalQuoteLineId);
             generateQuoteLetter(finalQuoteLineId);
         }
         catch(exception ex){

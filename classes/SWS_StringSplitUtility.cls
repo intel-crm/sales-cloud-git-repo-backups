@@ -6,7 +6,8 @@ public class SWS_StringSplitUtility {
         category='String Utilities'
     )
     public static List<SplitStringResult> splitSemicolonString(List<SplitStringRequest> requests ) {
-
+        system.debug('requests');
+		system.debug(requests);
         List<SplitStringResult> results = new List<SplitStringResult>();
         
         if (requests == null || requests.isEmpty())  {
@@ -24,9 +25,7 @@ public class SWS_StringSplitUtility {
      * Processes a single request
      */
     private static SplitStringResult processRequest(SplitStringRequest request) {
-
-        SplitStringResult result = new SplitStringResult();
-        
+        SplitStringResult result = new SplitStringResult();        
         try {
             if (String.isBlank(request.inputString)) {
                 return createEmptyResult();
@@ -43,11 +42,9 @@ public class SWS_StringSplitUtility {
      * Processes the input string and validates emails
      */
    private static List<String> processInputString(String inputString) {
-    List<String> splitValues = new List<String>();
-    
+    List<String> splitValues = new List<String>();    
     String processedString = inputString.replaceAll(',(?=(?:[^"]*"[^"]*")*[^"]*$)(?![^<]*>)', ';');
-    String[] rawSplit = processedString.split(';');
-    
+    String[] rawSplit = processedString.split(';');    
     for (String value : rawSplit) {
         String processedEmail = processEmailValue(value.trim());
         if (String.isNotBlank(processedEmail)) {

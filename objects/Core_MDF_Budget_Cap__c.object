@@ -438,6 +438,16 @@
         <columns>Core_MDF_Budget_Name_id__c</columns>
         <columns>Core_MDF_Budget_Amount_amt__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Type_nm__c</field>
+            <operation>equals</operation>
+            <value>Proposal I MDF</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Effective_End_Date_Dt__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>

@@ -385,6 +385,7 @@ export default class Core_IPS_MapProductsRelatedList extends NavigationMixin(Lig
                         
                     }
                     if(lineItemList === undefined || lineItemList === null || lineItemList.length === 0) {
+                        console.log('this.spinnerOn ', this.spinnerOn);
                         this.spinnerOn = false;
                         this.reloadCurrentPage();
                     }

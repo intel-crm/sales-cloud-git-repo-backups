@@ -684,6 +684,16 @@
             <field>PRM_Duration__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ACM_SDP_System_Serial_Number__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ACM_SDP_Product_Code__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
         <masterLabel>New Registrations</masterLabel>
     </sections>
     <sections>

@@ -7,6 +7,9 @@
         <field>CPT_Quota_Setup__c.CPT_Plan_Name__c</field>
     </columns>
     <columns>
+        <field>CPT_Quota_Setup__c.CPT_Sales_Group__c</field>
+    </columns>
+    <columns>
         <field>CPT_Quota_Setup__c.CPT_Job_Role__c</field>
     </columns>
     <format>Summary</format>

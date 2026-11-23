@@ -282,7 +282,7 @@
         <name>Core_IPS_Restrict_Changing_Private</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Sub-Region is required when creating / Updating the Project with a specified Region --></errorMessage>
+        <errorMessage><!-- Sub-Region is required when creating / Updating the Project with a specified Region. --></errorMessage>
         <name>SubRegionNotNullIfRegionExistedOnNewProj</name>
     </validationRules>
     <webLinks>

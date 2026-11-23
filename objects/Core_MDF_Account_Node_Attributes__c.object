@@ -366,11 +366,6 @@ Core_MDF_NonPO_GL_Account_nbr__c
         <columns>Core_MDF_NonPO_GL_Account_nbr__c</columns>
         <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Account_id__c</field>
-            <operation>equals</operation>
-            <value>IPA - TD Synnex</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -379,15 +374,13 @@ Core_MDF_NonPO_GL_Account_nbr__c
         <columns>Core_MDF_Account_id__c</columns>
         <columns>Core_MDF_Program_id__c</columns>
         <columns>Core_MDF_CSAR_GL_Account_nbr__c</columns>
-        <columns>Core_MDF_NonPO_GL_Account_nbr__c</columns>
         <columns>Core_MDF_Final_CSAR_GL_Account_nbr__c</columns>
         <columns>Core_MDF_Default_CSAR_GL_Account_nbr__c</columns>
-        <columns>Core_MDF_Final_NonPO_GL_Account_nbr__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Account_id__c</field>
             <operation>contains</operation>
-            <value>IPA - Elo Touch Solutions</value>
+            <value>Mega</value>
         </filters>
         <filters>
             <field>Core_MDF_Program_id__c</field>

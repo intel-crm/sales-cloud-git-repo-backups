@@ -2,14 +2,13 @@
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
         <fullName>Core_IPS_Case_BK_PromoteUpdate_Failure_Notify</fullName>
-        <ccEmails>sushma.hamom@intel.com</ccEmails>
         <description>Core IPS Case BK PromoteUpdate Failure Notify</description>
         <protected>false</protected>
         <recipients>
             <field>Core_Support_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Internal_Backend_Integration_Error</template>
     </alerts>
@@ -34,7 +33,7 @@
             <field>Core_Support_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CPQ_Email_Templates/IQR_Error_Notification_Template</template>
     </alerts>
@@ -51,7 +50,7 @@
             <recipient>11710633@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Quality_Builder_Emails_For_Survey_Failure</template>
     </alerts>

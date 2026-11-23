@@ -17,6 +17,14 @@
             <start>220.203.247.81</start>
         </ipRanges>
         <ipRanges>
+            <end>198.175.68.52</end>
+            <start>198.175.68.52</start>
+        </ipRanges>
+        <ipRanges>
+            <end>198.175.68.53</end>
+            <start>198.175.68.51</start>
+        </ipRanges>
+        <ipRanges>
             <description>Asia (India)</description>
             <end>198.175.68.62</end>
             <start>198.175.68.33</start>
@@ -35,6 +43,10 @@
             <description>Asia (Malaysia)</description>
             <end>192.198.146.190</end>
             <start>192.198.146.161</start>
+        </ipRanges>
+        <ipRanges>
+            <end>192.55.79.182</end>
+            <start>192.55.79.180</start>
         </ipRanges>
         <ipRanges>
             <description>Asia</description>
@@ -62,6 +74,10 @@
             <start>134.191.232.65</start>
         </ipRanges>
         <ipRanges>
+            <end>134.191.227.49</end>
+            <start>134.191.227.47</start>
+        </ipRanges>
+        <ipRanges>
             <description>Europe (Ireland)</description>
             <end>134.191.227.62</end>
             <start>134.191.227.33</start>
@@ -87,9 +103,19 @@
             <start>134.134.137.65</start>
         </ipRanges>
         <ipRanges>
+            <description>Anjali</description>
+            <end>125.16.97.38</end>
+            <start>125.16.97.38</start>
+        </ipRanges>
+        <ipRanges>
             <description>Asia (China)</description>
             <end>114.94.152.94</end>
             <start>114.94.152.81</start>
+        </ipRanges>
+        <ipRanges>
+            <description>United States SN</description>
+            <end>108.200.182.127</end>
+            <start>108.200.182.125</start>
         </ipRanges>
         <ipRanges>
             <description>Copado Cloud NA</description>
@@ -97,9 +123,29 @@
             <start>104.196.211.229</start>
         </ipRanges>
         <ipRanges>
+            <description>APIGEE IP new</description>
+            <end>103.187.217.236</end>
+            <start>103.187.217.236</start>
+        </ipRanges>
+        <ipRanges>
             <description>For INC11060214</description>
             <end>73.249.161.121</end>
             <start>73.249.161.121</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Account-Pulse AWS VPC</description>
+            <end>52.38.108.31</end>
+            <start>52.38.108.31</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner IP - range 6, Devashish</description>
+            <end>51.124.145.159</end>
+            <start>51.124.145.152</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner IP - range 5, Devashish</description>
+            <end>40.125.111.47</end>
+            <start>40.125.111.32</start>
         </ipRanges>
         <ipRanges>
             <description>Copado Cloud NA</description>
@@ -151,6 +197,26 @@
             <end>34.73.251.138</end>
             <start>34.73.251.138</start>
         </ipRanges>
+        <ipRanges>
+            <description>Impartner IP - range 4, Devashish</description>
+            <end>20.120.187.231</end>
+            <start>20.120.187.224</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner IP - range 2, Devashish</description>
+            <end>20.105.204.79</end>
+            <start>20.105.204.72</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner IP - range 3, Devashish</description>
+            <end>20.59.52.111</end>
+            <start>20.59.52.104</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner IP - range 1, Devashish</description>
+            <end>20.51.97.223</end>
+            <start>20.51.97.208</start>
+        </ipRanges>
     </networkAccess>
     <passwordPolicies>
         <complexity>UpperLowerCaseNumericSpecialCharacters</complexity>
@@ -172,7 +238,7 @@
         <canConfirmEmailChangeInLightningCommunities>false</canConfirmEmailChangeInLightningCommunities>
         <canConfirmIdentityBySmsOnly>true</canConfirmIdentityBySmsOnly>
         <disableTimeoutWarning>false</disableTimeoutWarning>
-        <enableBuiltInAuthenticator>false</enableBuiltInAuthenticator>
+        <enableBuiltInAuthenticator>true</enableBuiltInAuthenticator>
         <enableCSPOnEmail>true</enableCSPOnEmail>
         <enableCSRFOnGet>true</enableCSRFOnGet>
         <enableCSRFOnPost>true</enableCSRFOnPost>
@@ -191,17 +257,17 @@
         <enablePermissionsPolicy>false</enablePermissionsPolicy>
         <enablePostForSessions>false</enablePostForSessions>
         <enableSMSIdentity>true</enableSMSIdentity>
-        <enableU2F>false</enableU2F>
+        <enableU2F>true</enableU2F>
         <enforceIpRangesEveryRequest>false</enforceIpRangesEveryRequest>
         <enforceUserDeviceRevoked>false</enforceUserDeviceRevoked>
         <forceLogoutOnSessionTimeout>true</forceLogoutOnSessionTimeout>
-        <forceRelogin>true</forceRelogin>
+        <forceRelogin>false</forceRelogin>
         <grantCameraAccess>TrustedUrls</grantCameraAccess>
         <grantMicrophoneAccess>TrustedUrls</grantMicrophoneAccess>
         <hasRetainedLoginHints>false</hasRetainedLoginHints>
         <hasUserSwitching>true</hasUserSwitching>
         <identityConfirmationOnEmailChange>false</identityConfirmationOnEmailChange>
-        <identityConfirmationOnTwoFactorRegistrationEnabled>true</identityConfirmationOnTwoFactorRegistrationEnabled>
+        <identityConfirmationOnTwoFactorRegistrationEnabled>false</identityConfirmationOnTwoFactorRegistrationEnabled>
         <lockSessionsToDomain>false</lockSessionsToDomain>
         <lockSessionsToIp>false</lockSessionsToIp>
         <lockerServiceCSP>true</lockerServiceCSP>
@@ -223,6 +289,7 @@
         <useEAPIRateLimitForConnectAPI>false</useEAPIRateLimitForConnectAPI>
         <useLocalStorageForLogoutUrl>false</useLocalStorageForLogoutUrl>
         <vfInlineScriptInjection>Allow</vfInlineScriptInjection>
+        <welcomeEmailTemplateId>000000000000000</welcomeEmailTemplateId>
     </sessionSettings>
     <singleSignOnSettings>
         <enableCaseInsensitiveFederationID>false</enableCaseInsensitiveFederationID>

@@ -54,7 +54,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled</value>
+            <value>Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -81,7 +81,7 @@
         <field>Opportunity.Core_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2026 - Accenture - Secondary Design</name>
+    <name>2025 - Accenture - Secondary Design</name>
     <params>
         <name>terr</name>
         <value>all</value>

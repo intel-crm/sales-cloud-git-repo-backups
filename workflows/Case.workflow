@@ -43,7 +43,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CEP_Email_Templates/Core_CEP_Case_Assignment</template>
     </alerts>
@@ -56,7 +56,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CEP_Email_Templates/Core_CEP_Case_Reminder</template>
     </alerts>
@@ -67,7 +67,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/CEP_Case_Assignment</template>
     </alerts>
@@ -208,7 +208,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -235,7 +235,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -265,7 +265,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -277,7 +277,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -292,7 +292,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -319,7 +319,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -338,7 +338,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -354,7 +354,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -365,7 +365,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -380,7 +380,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Agent</template>
     </alerts>
@@ -392,7 +392,7 @@
             <recipient>IPS External Interested Party</recipient>
             <type>caseTeam</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Close</template>
     </alerts>
@@ -416,7 +416,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_No_Update</template>
     </alerts>
@@ -440,7 +440,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_Close_Pending</template>
     </alerts>
@@ -452,7 +452,7 @@
             <recipient>IPS External Interested Party</recipient>
             <type>caseTeam</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Update</template>
     </alerts>
@@ -468,7 +468,7 @@
             <field>Core_IPS_Supported_Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -484,7 +484,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -496,7 +496,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Attachment</template>
     </alerts>
@@ -508,7 +508,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Close_Survey</template>
     </alerts>
@@ -520,7 +520,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Create</template>
     </alerts>
@@ -532,7 +532,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Reopen</template>
     </alerts>
@@ -544,7 +544,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Update</template>
     </alerts>
@@ -564,7 +564,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -580,7 +580,11 @@
             <field>Core_IPS_Supported_Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <recipients>
+            <recipient>12123695@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -592,7 +596,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_Partner</template>
     </alerts>
@@ -604,7 +608,7 @@
             <recipient>IPS External Interested Party</recipient>
             <type>caseTeam</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Reopen</template>
     </alerts>
@@ -616,7 +620,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -628,7 +632,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Ext_Close_Survey</template>
     </alerts>
@@ -640,7 +644,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_GEC</template>
     </alerts>
@@ -652,7 +656,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -663,7 +667,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
     </alerts>
@@ -686,7 +690,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Close</template>
     </alerts>
@@ -709,7 +713,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -721,7 +725,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_GEC</template>
     </alerts>
@@ -733,7 +737,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Create</template>
     </alerts>
@@ -748,7 +752,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Attachment</template>
     </alerts>
@@ -771,7 +775,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -794,7 +798,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Reopen</template>
     </alerts>
@@ -809,7 +813,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Request_Close</template>
     </alerts>
@@ -824,7 +828,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Request_Reopen</template>
     </alerts>
@@ -835,7 +839,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Attachment</template>
     </alerts>
@@ -846,7 +850,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Close</template>
     </alerts>
@@ -857,7 +861,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Create</template>
     </alerts>
@@ -868,7 +872,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Reopen</template>
     </alerts>
@@ -879,7 +883,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -902,7 +906,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -929,7 +933,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -956,7 +960,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Partner</template>
     </alerts>
@@ -983,7 +987,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Private</template>
     </alerts>
@@ -1010,7 +1014,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1025,7 +1029,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_SLA_Overdue</template>
     </alerts>
@@ -1040,7 +1044,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1055,7 +1059,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_SLA_Reminder</template>
     </alerts>
@@ -1070,7 +1074,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1082,7 +1086,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Private</template>
     </alerts>
@@ -1093,7 +1097,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1108,7 +1112,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Private</template>
     </alerts>
@@ -1119,7 +1123,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1134,7 +1138,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -1372,7 +1376,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/CEP_Case_Assignment</template>
     </alerts>
@@ -2134,7 +2138,7 @@ null
     <outboundMessages>
         <fullName>Core_IPS_CaseFieldUpdate_Backend_OutMsg</fullName>
         <apiVersion>35.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseObjectUpdate</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCaseObjectUpdate</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_ID__c</fields>
         <fields>Id</fields>
@@ -2147,7 +2151,7 @@ null
     <outboundMessages>
         <fullName>Core_IPS_CaseStatusUpdate_Backend_OutMsg</fullName>
         <apiVersion>38.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_ID__c</fields>
         <fields>Core_IPS_Backend_Previous_Status__c</fields>
@@ -2164,7 +2168,7 @@ null
         <fullName>Core_IPS_Case_Backend_OutMsg</fullName>
         <apiVersion>34.0</apiVersion>
         <description>Backend Case Outbound Message</description>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCasePromote</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCasePromote</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_ID__c</fields>
         <fields>Id</fields>
@@ -2178,7 +2182,7 @@ null
         <fullName>Core_IPS_Case_Depromote_Backend_OutMsg</fullName>
         <apiVersion>41.0</apiVersion>
         <description>Backend depromotion outbound messages</description>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseDePromote</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCaseDePromote</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_Previous_Status__c</fields>
         <fields>Id</fields>

@@ -52,6 +52,13 @@ public class Core_OppApprovalCtrl_Test {
         
         // Insert the custom setting record
         insert salesGroupCtrl;
+        insert new CRM_OpportunitySubmissionSwitch__c(
+            Name = 'CRM_IntelLed',
+            Opportunity_Coverage__c = 'Intel-Led Opportunity',
+            Start_Date__c = System.today(),
+            End_Date__c = System.today(),
+            Active__c = true
+        );
         Core_Opp_Bypass_Validation_Rule__c triggerExecList = new Core_Opp_Bypass_Validation_Rule__c();
         triggerExecList.Bypass__c = true;
         INSERT triggerExecList;
@@ -693,7 +700,7 @@ public class Core_OppApprovalCtrl_Test {
     }
     
     static testMethod void checkDesignOpp(){        
-        Opportunity opp = [select id,accountid, Core_Exclude_From_KPIs__c, account.Core_Export_Compliance_Block__c, account.Core_Export_Compliance_Block_Reason__c, Core_Commissionable__c, Core_Compliance_Status__c, Account.RecordType.Name, Core_Write_In_Product_Count__c from opportunity where Core_Opportunity_Type__c='Design: Original' limit 1];
+        Opportunity opp = [select id,accountid, Core_Exclude_From_KPIs__c, account.Core_Export_Compliance_Block__c, account.Core_Export_Compliance_Block_Reason__c, Core_Commissionable__c, Core_Compliance_Status__c, Account.RecordType.Name, Core_Write_In_Product_Count__c from opportunity where Core_Opportunity_Type__c='Design: Original' order by CreatedDate desc limit 1];
         opp.Core_Manufacturing_Geo__c = '';
         opp.Core_Production_End_Date__c = null;
         opp.Core_Volume__c = null;

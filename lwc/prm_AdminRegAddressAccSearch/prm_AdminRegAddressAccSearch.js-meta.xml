@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Admin Registration Address</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="addressLabel" type="String" label="Address label" role="inputOnly" default="Address"/>
+            <property name="required" type="Boolean" label="Address required" role="inputOnly" default="false"/>
+            <property name="disabled" type="Boolean" label="Disable entire address" role="inputOnly" default="false"/>
+            <property name="usePartialLocks" type="Boolean" label="Lock populated fields individually" role="inputOnly" default="false"/>
+            <property name="streetLocked" type="Boolean" label="Lock street" role="inputOnly" default="false"/>
+            <property name="cityLocked" type="Boolean" label="Lock city" role="inputOnly" default="false"/>
+            <property name="provinceLocked" type="Boolean" label="Lock state/province" role="inputOnly" default="false"/>
+            <property name="countryLocked" type="Boolean" label="Lock country" role="inputOnly" default="false"/>
+            <property name="postalCodeLocked" type="Boolean" label="Lock postal code" role="inputOnly" default="false"/>
+            <property name="street" type="String" label="Street"/>
+            <property name="city" type="String" label="City"/>
+            <property name="province" type="String" label="State/province"/>
+            <property name="provinceCode" type="String" label="State/province code"/>
+            <property name="country" type="String" label="Country"/>
+            <property name="countryCode" type="String" label="Country code"/>
+            <property name="postalCode" type="String" label="Zip/postal code"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

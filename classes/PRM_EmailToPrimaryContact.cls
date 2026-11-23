@@ -112,21 +112,25 @@ public with sharing class PRM_EmailToPrimaryContact {
 
                 if(acrObjs != null){
                     for(PRM_Account_Contact_Relationship__c acrObj:acrObjs){
-
-                        if(Test.isRunningTest() || (!mapOfNewACR.containskey(conId) && acrObj != null 
-                           && !acrObj.PRM_InActive_Ind__c 
-                           && (acrObj.PRM_Relationship_Id__r.name.touppercase() == System.Label.PRM_Primary_Contact.touppercase() || acrObj.PRM_Relationship_Id__r.name.touppercase() == System.Label.PRM_Partner_Admin_Delegate.touppercase()) && acrObj.PRM_Status_Nm__c !='Pending Action')){
-                               if(mapAccIdsWithActivePAs.containsKey(acrObj.PRM_Account_Id__c)){
-                                    mapAccIdsWithActivePAs.get(acrObj.PRM_Account_Id__c).add(acrObj.PRM_Contact_Id__c);
-                                }else{
-                                    list<string> listOfActivePAs= new list<string>();
-                                    if(!listOfActivePAs.contains(acrObj.PRM_Contact_Id__c))
-                                    listOfActivePAs.add(acrObj.PRM_Contact_Id__c);                    
-                                    mapAccIdsWithActivePAs.put(acrObj.PRM_Account_Id__c, listOfActivePAs);
-                                }
-                                
-                                
-                           }
+						System.debug('JB Acr -->'+acrObj);
+                        System.debug('ACR RELN -->'+acrObj.PRM_Relationship_Id__r);
+                        System.debug('ACR RELN Name -->'+acrObj.PRM_Relationship_Id__r.Name);
+                       
+                            if(Test.isRunningTest() || (!mapOfNewACR.containskey(conId) && acrObj != null 
+                               && !acrObj.PRM_InActive_Ind__c 
+                               && ( acrObj.PRM_Relationship_Id__r.name.touppercase() == System.Label.PRM_Primary_Contact.touppercase() || acrObj.PRM_Relationship_Id__r.name.touppercase() == System.Label.PRM_Partner_Admin_Delegate.touppercase()) && acrObj.PRM_Status_Nm__c !='Pending Action')){
+                                   if(mapAccIdsWithActivePAs.containsKey(acrObj.PRM_Account_Id__c)){
+                                        mapAccIdsWithActivePAs.get(acrObj.PRM_Account_Id__c).add(acrObj.PRM_Contact_Id__c);
+                                    }else{
+                                        list<string> listOfActivePAs= new list<string>();
+                                        if(!listOfActivePAs.contains(acrObj.PRM_Contact_Id__c))
+                                        listOfActivePAs.add(acrObj.PRM_Contact_Id__c);                    
+                                        mapAccIdsWithActivePAs.put(acrObj.PRM_Account_Id__c, listOfActivePAs);
+                                    }
+                                    
+                                    
+                               }
+                       
                     }
                 }
             }

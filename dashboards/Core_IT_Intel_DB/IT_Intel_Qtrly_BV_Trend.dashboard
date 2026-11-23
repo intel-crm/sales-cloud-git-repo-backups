@@ -23,7 +23,7 @@
             <showValues>false</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>BV Qtr Trend (Pending/Won) 2017-Now</title>
+            <title>BV Qtr Trend (Pending/Won) 2017-2022</title>
             <useReportChart>false</useReportChart>
         </components>
         <components>
@@ -100,7 +100,7 @@
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>Qtrly SSR Trend 2023-2025</title>
+            <title>Qtrly SSR Trend</title>
             <useReportChart>false</useReportChart>
         </components>
     </leftSection>
@@ -123,7 +123,7 @@
             <showValues>false</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>BV Qtr Trend (by Opps Stage) 2023-2025</title>
+            <title>BV Qtr Trend (by Opps Stage) 2021-2022</title>
             <useReportChart>false</useReportChart>
         </components>
         <components>

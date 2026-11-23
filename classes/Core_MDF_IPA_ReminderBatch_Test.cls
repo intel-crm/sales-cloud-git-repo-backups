@@ -57,7 +57,7 @@ public class Core_MDF_IPA_ReminderBatch_Test {
             ipaPFR3.Core_MDF_Region_nm__c='APJ';
             pfrList.add(ipaPFR3);
              
-            
+             Database.insert(pfrList);
              /*ipaPFR.Core_MDF_ToBeClosedDate__c = system.today() + 30 ;
             ipaPFR2.Core_MDF_ToBeClosedDate__c = system.today() + 29 ;
             ipaPFR3.Core_MDF_ToBeClosedDate__c = system.today() + 31 ;
@@ -65,21 +65,9 @@ public class Core_MDF_IPA_ReminderBatch_Test {
              pfrUpdateList.add(ipaPFR2);
              pfrUpdateList.add(ipaPFR3);
             Database.Update(pfrUpdateList);*/
-
-			PartnerFundRequest ipaPFROutcome = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
-			    ipaCampaignForAP.id, acc.id,
-			    System.today().addDays(1),
-			    System.today().addDays(10),
-			    false);
-			ipaPFROutcome.Title = 'Test Outcome Activity';
-			ipaPFROutcome.Core_MDF_ToBeClosedDate__c = System.today() + 15;
-			ipaPFROutcome.Core_MDF_Fund_Request_Status__c = 'Planned';
-			ipaPFROutcome.Core_MDF_Region_nm__c = 'APJ';
-			ipaPFROutcome.Core_MDF_Is_Outcome_Based_Ind__c = true; 
-			pfrList.add(ipaPFROutcome);
-           
-            Database.insert(pfrList);
-
+            
+            // Add this in createTestData after existing pfrList records
+            
              Test.stopTest();
         }
     }
@@ -92,4 +80,52 @@ public class Core_MDF_IPA_ReminderBatch_Test {
 	System.Assert(ipaBatch!=null);
          }
     }
+    @isTest
+Public static void testOutcomeBasedPlannedMethod(){
+    User testUser = [SELECT id, lastname FROM User WHERE lastname='Admin_user' LIMIT 1];
+    System.runAs(testUser){
+        
+        Account acc = [SELECT Id FROM Account WHERE Name = 'Test Account 3' LIMIT 1];
+        Campaign ipaCampaign = [SELECT Id FROM Campaign WHERE Name = 'Test Campaign - AP' LIMIT 1];
+        
+        List<PartnerFundRequest> pfrOutcomeList = new List<PartnerFundRequest>();
+        
+        PartnerFundRequest ipaPFROutcome1 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
+            ipaCampaign.id,
+            acc.id,
+            System.today().addDays(1),
+            System.today().addDays(10),
+            false
+        );
+        ipaPFROutcome1.Title = 'Test Outcome Activity1';
+        ipaPFROutcome1.Core_MDF_ToBeClosedDate__c = System.today() + 30;
+        ipaPFROutcome1.Core_MDF_Fund_Request_Status__c = 'Planned';
+        ipaPFROutcome1.Core_MDF_Region_nm__c = 'APJ';
+        ipaPFROutcome1.Core_MDF_Is_Outcome_Based_Ind__c = true;
+        pfrOutcomeList.add(ipaPFROutcome1);
+        
+        PartnerFundRequest ipaPFROutcome2 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(
+            ipaCampaign.id,
+            acc.id,
+            System.today().addDays(1),
+            System.today().addDays(10),
+            false
+        );
+        ipaPFROutcome2.Title = 'Test Outcome Activity2';
+        ipaPFROutcome2.Core_MDF_ToBeClosedDate__c = System.today() + 5;
+        ipaPFROutcome2.Core_MDF_Fund_Request_Status__c = 'Planned';
+        ipaPFROutcome2.Core_MDF_Region_nm__c = 'APJ';
+        ipaPFROutcome2.Core_MDF_Is_Outcome_Based_Ind__c = true;
+        pfrOutcomeList.add(ipaPFROutcome2);
+        
+        Database.insert(pfrOutcomeList);
+        
+        Test.startTest();
+        Core_MDF_IPA_ReminderBatch ipaBatch = new Core_MDF_IPA_ReminderBatch();
+        Database.executeBatch(ipaBatch);
+        Test.stopTest();
+        
+        System.Assert(ipaBatch != null);
+    }
+}
 }

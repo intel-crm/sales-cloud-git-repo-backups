@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Preview Middle East FZE Partner User</description>
+    <description>Preview General Trading Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Preview Middle East FZE Partner User</name>
+    <name>Preview General Trading Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>Admin</parentRole>
 </Role>

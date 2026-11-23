@@ -2,6 +2,6 @@
 <RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Insight.Tech articles for Japanese locale</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
-    <isActive>true</isActive>
+    <isActive>false</isActive>
     <url>https://zh-hant.insight.tech</url>
 </RemoteSiteSetting>

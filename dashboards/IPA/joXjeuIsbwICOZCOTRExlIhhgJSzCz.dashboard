@@ -34,7 +34,7 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>2</decimalPrecision>
                 <displayUnits>Integer</displayUnits>
-                <drillDownUrl>https://partner.intel.com/s/sales-details</drillDownUrl>
+                <drillDownUrl>https://intel--crmqa9.sandbox.my.site.com/ipa/s/sales-details</drillDownUrl>
                 <groupingSortProperties/>
                 <header>Total Sales for Account (in $)</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
@@ -82,7 +82,7 @@
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11540272@intel.com.crm</owner>
-    <runningUser>ipa-data-migration-user@intel.com</runningUser>
+    <runningUser>12276585@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>SALES</title>
     <titleColor>#000000</titleColor>

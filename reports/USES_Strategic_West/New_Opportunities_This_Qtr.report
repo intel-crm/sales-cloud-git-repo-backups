@@ -64,12 +64,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
     </columns>
-    <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
-    </columns>
     <description>Updated USES 2024 Pipeline Matrix Dashboard</description>
     <filter>
         <criteriaItems>
@@ -123,6 +117,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-22</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>

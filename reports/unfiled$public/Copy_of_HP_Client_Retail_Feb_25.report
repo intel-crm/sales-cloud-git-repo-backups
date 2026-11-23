@@ -126,7 +126,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Pending Intel Field Review,Pending Further Intel Review,Approved,Won,Lost,Revised</value>
+            <value>,Draft,Pending Intel Field Review,Pending Further Intel Review,Approved,Rejected,Won,Lost,Revised,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$Pricing_Region_Nm__c</column>

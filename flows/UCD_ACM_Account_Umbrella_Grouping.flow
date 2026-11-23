@@ -3,10 +3,49 @@
     <apiVersion>59.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
+        <name>Check_Record_Type_Change</name>
+        <label>Check Record Type Change</label>
+        <locationX>608</locationX>
+        <locationY>270</locationY>
+        <defaultConnector>
+            <targetReference>If_Region_Is_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Record Type Change</defaultConnectorLabel>
+        <rules>
+            <name>Record_Type_Changed_To_Intel_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Account_Record_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Intel Account</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Account_Record_Type__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Group_Name__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Group_ID_For_Record_Type_Change</targetReference>
+            </connector>
+            <label>Record Type Changed To Intel Account</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>If_Region_Is_Changed</name>
         <label>If Region Is Changed</label>
         <locationX>608</locationX>
-        <locationY>399</locationY>
+        <locationY>530</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Region_Changed_True</name>
@@ -115,10 +154,33 @@
         <name>Get_Group_ID</name>
         <label>Get Group ID</label>
         <locationX>619</locationX>
-        <locationY>574</locationY>
+        <locationY>705</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Populate_Group_ID</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Group_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Core_Group_Name__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_Account_Umbrella_Grouping__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Core_Group_Id__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Group_ID_For_Record_Type_Change</name>
+        <label>Get Group ID For Record Type Change</label>
+        <locationX>350</locationX>
+        <locationY>400</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Populate_Group_ID_For_Record_Type_Change</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -138,11 +200,24 @@
         <name>Populate_Group_ID</name>
         <label>Populate Group ID</label>
         <locationX>618</locationX>
-        <locationY>694</locationY>
+        <locationY>825</locationY>
         <inputAssignments>
             <field>Core_Group_Id__c</field>
             <value>
                 <elementReference>Get_Group_ID.Core_Group_Id__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Populate_Group_ID_For_Record_Type_Change</name>
+        <label>Populate Group ID For Record Type Change</label>
+        <locationX>350</locationX>
+        <locationY>530</locationY>
+        <inputAssignments>
+            <field>Core_Group_Id__c</field>
+            <value>
+                <elementReference>Get_Group_ID_For_Record_Type_Change.Core_Group_Id__c</elementReference>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
@@ -183,9 +258,9 @@
         <locationX>490</locationX>
         <locationY>48</locationY>
         <connector>
-            <targetReference>If_Region_Is_Changed</targetReference>
+            <targetReference>Check_Record_Type_Change</targetReference>
         </connector>
-        <filterLogic>1 AND (2 OR 3)</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Account_Record_Type__c</field>
             <operator>EqualTo</operator>
@@ -193,22 +268,8 @@
                 <stringValue>Intel Account</stringValue>
             </value>
         </filters>
-        <filters>
-            <field>Core_Geo__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Group_Name__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
         <object>Account</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

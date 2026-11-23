@@ -98,7 +98,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Yue Li</value>
+            <value>Gary Gao</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Past_Due__c</column>
@@ -151,6 +151,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-22</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>

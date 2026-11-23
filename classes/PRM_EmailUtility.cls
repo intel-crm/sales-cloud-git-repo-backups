@@ -35,10 +35,13 @@ public without sharing class PRM_EmailUtility {
     //             hence, code and the design used for framework will not work for multiple records at once.  
     public static set<String> sendEmail(List<EmailNotification> objEmailNotifList){
         set<String> regRequestIdSet = new set<String>();
+        // System.debug('>>>>>objEmailNotifList inside calling'+objEmailNotifList);
         if(!objEmailNotifList.isEmpty()){
             /*if(System.isBatch() || System.isFuture() || System.isQueueable()){
+                System.debug('aaaaa');
                 sendEmailUtil(objEmailNotifList);
             }else {
+                System.debug('bbbbb');
                 System.enqueueJob(new sendEmailQueuable(objEmailNotifList));
             }*/
             regRequestIdSet = sendEmailUtil(objEmailNotifList);
@@ -71,8 +74,14 @@ public without sharing class PRM_EmailUtility {
         'FROM PRM_EmailConfigurationDetails__mdt ' +
         'WHERE PRM_BusinessEvent__c IN (\'' + String.join(lstEmailNotBusinessEvent, '\',\'') + '\')';
         emailConfigList = database.query(queryForTemplateDetails);
-        for(EmailNotification emailNot : objEmailNotifList){  
+        for(EmailNotification emailNot : objEmailNotifList){ 
+            System.debug('=== PROCESSING EMAIL NOTIFICATION ===');
+            System.debug('EmailNotification contactNameMap: ' + emailNot.contactNameMap);
+            System.debug('EmailNotification mailToContactID: ' + emailNot.mailToContactID);
+            System.debug('EmailNotification BusinessEvent: ' + emailNot.BusinessEvent); 
             SendEmailWrapper sendWrap = sendEmail(emailNot);
+            System.debug(LoggingLevel.info,'sendWrap.allEmails>>>>'+sendWrap.allEmails);
+            System.debug(LoggingLevel.info,'sendWrap.allEmails>>>>'+sendWrap.allEmails.size());
             allmails.addAll(sendWrap.allEmails);
             logList.addAll(sendWrap.logListWrap);
             regReqLst.add(sendWrap.regReqId);
@@ -354,10 +363,20 @@ public without sharing class PRM_EmailUtility {
                         }
                         
                         if(objEmailNotif.contactNameMap != null && !objEmailNotif.contactNameMap.isEmpty()){
+                            System.debug('=== USERNAME REPLACEMENT DEBUG ===');
+                            System.debug('contWrapObj.contId: ' + contWrapObj.contId);
+                            System.debug('objEmailNotif.contactNameMap: ' + objEmailNotif.contactNameMap);
                             String fName = objEmailNotif.contactNameMap.get(contWrapObj.contId);
+                            System.debug('Retrieved fName: ' + fName);
                             if(String.isNotEmpty(fName)){
+                                System.debug('BEFORE replacement - htmlValue1 contains: ' + (htmlValue1.contains('{!UserName}') ? 'YES {!UserName}' : 'NO {!UserName}'));
                                 htmlValue1 = htmlValue1.replace('{!UserName}', fName);
-                            }                            
+                                System.debug('AFTER replacement - Replaced {!UserName} with: ' + fName);
+                            }
+                            else{
+                                System.debug('ERROR: fName is empty, no replacement made');
+                            }  
+                            System.debug('=== USERNAME REPLACEMENT DEBUG END ===');                          
                         }
                         
                         htmlValue1 = htmlValue1.replace('{!$Label.PRM_CurrentYear}', Label.PRM_CurrentYear);
@@ -427,6 +446,7 @@ public without sharing class PRM_EmailUtility {
                         targetIdLog.put(l.PRM_User__c,l);
                     }
                 }
+                //system.debug('logList-->'+logList);
                 for(Messaging.SendEmailResult result : resultList)
                 {
                     if(! result.isSuccess())
@@ -460,11 +480,15 @@ public without sharing class PRM_EmailUtility {
             list<Database.saveResult> saveLogResLst =  Database.insert(logList,false); 
              for (Database.SaveResult sr : saveLogResLst) {
                     if (sr.isSuccess()) {
+                        System.debug('@@jj regReqLst.size()'+regReqLst.size());
+                        System.debug('@JJ count'+count);
                         if(regReqLst.size() > count) {
                             PRM_Registration_Request__c regRequest=new PRM_Registration_Request__c();
                             regRequest.id=regReqLst[count];
+                            System.debug('@@jj regRequest.id'+regrequest.id);
                             regRequest.PRM_Email_Log__c=sr.getId(); //need to check the method
                             regReqLstToupdate.add(regRequest);
+                             System.debug('@JJ regReqLstToupdate'+regReqLstToupdate);
                         }  
                     }
                     else if (!sr.isSuccess()){
@@ -583,6 +607,8 @@ public without sharing class PRM_EmailUtility {
         List<ContactTemplateWrapper> listOfConactWrapper = new List<ContactTemplateWrapper>();
         if(!mapContTemplate.isEmpty() && !langEmailTempMap.isEmpty() && !langTemplateMap.isEmpty()){            
             for(String conId : mapContTemplate.keySet()){
+                System.debug('=== TEMPLATE WRAPPER DEBUG ===');
+                System.debug('Creating ContactTemplateWrapper for conId: ' + conId);
                 String devName = mapContTemplate.get(conId);
                 EmailTemplate tempDetail = langEmailTempMap.get(devName);
                 if(tempDetail != null && !emailTempMap.isEmpty()){
@@ -592,6 +618,7 @@ public without sharing class PRM_EmailUtility {
                         Map<EmailTemplate,String> mapObj = new Map<EmailTemplate,String>();
                         mapObj.put(tempDetail,processedData);
                         conWrapp.contId = conId;
+                        System.debug('Set contWrapObj.contId to: ' + conWrapp.contId);
                         conWrapp.templateDetailsMap = mapObj;
                         conWrapp.templateUniqName = devName;
                         conWrapp.lang = langTemplateMap.get(devName);                        
@@ -760,6 +787,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
     /*Utkarsh - TWC727-864 - Remove DZS releated line from welcome email template when contact partner role is Guest*/
     if((businessEvent == System.Label.PRM_Welcome_Email_New_Event) || (businessEvent == System.Label.PRM_Welcome_Email_Existing_Event) || (businessEvent == System.Label.PRM_Email_Admin_Approval_Event)){
           if(partnerRole == 'Guest'){
+            system.debug('inside welcome template');
                 if(language == 'ENG'){
                     tempHtmlValue = tempHtmlValue.replace('Access to Intel® Developer Zone','');
                 }
@@ -810,6 +838,7 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
                 }
           }
         }
+    system.debug('tempHtmlValue-->'+tempHtmlValue);
     /*END - TWC727-864*/
         return tempHtmlValue ;
     }

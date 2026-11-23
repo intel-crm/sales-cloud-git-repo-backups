@@ -332,7 +332,7 @@ public without sharing class IPABenefitUtility {
             
         }
         
-        List<PRM_Account_Contact_Relationship__c>  accContRel = [select id,PRM_Contact_Id__r.Core_IPA_PartnerRole__c,PRM_Relationship_Id__r.name,PRM_Account_Id__c  from PRM_Account_Contact_Relationship__c where PRM_Status_Nm__c ='Complete' and  PRM_InActive_Ind__c = false and PRM_Contact_Id__c = :userData.contactId ];  //  
+        List<PRM_Account_Contact_Relationship__c>  accContRel = [select id,PRM_Contact_Id__r.Core_IPA_PartnerRole__c/*,PRM_Relationship_Id__r.name,PRM_Account_Id__c*/  from PRM_Account_Contact_Relationship__c where PRM_Status_Nm__c ='Complete' and  PRM_InActive_Ind__c = false and PRM_Contact_Id__c = :userData.contactId ];  // //ATHR Fix - TWC729-9556 
         if(accContRel.size()>0){
             if(accContRel[0].PRM_Contact_Id__r.Core_IPA_PartnerRole__c != null && userData != null ){
                 //to get the label of the picklist based on the api name
@@ -405,6 +405,7 @@ public without sharing class IPABenefitUtility {
                         ////system.debug('3--');
                         if( benefitsList.size()>0){   
                             if(benefitAccessMatrix.PRM_Benefit_Blade__c=='Points'){  //IPA2.0-TWC727-2896
+                                System.debug('POINT CTA => ' + benefitAccessMatrix.PRM_Click_To_Action__c);
                                 if(benefitAccessMatrix.PRM_Click_To_Action__c == 'Spend Points' && !pointLinks.contains(benefitAccessMatrix.PRM_Click_To_Action__c)) {      //Special Rule for 'Spend Points' linkpointLinks.add(benefitAccessMatrix.PRM_Click_To_Action__c);        
                                 }
                                 if(benefitAccessMatrix.PRM_Click_To_Action__c != 'Spend Points' && !pointLinks.contains(benefitAccessMatrix.PRM_Click_To_Action__c)){pointLinks.add(benefitAccessMatrix.PRM_Click_To_Action__c);  
@@ -541,6 +542,10 @@ public without sharing class IPABenefitUtility {
                 
                 userBenefit=getTraining(trainingLinks,alertTitles,adhocMsgs,trainingMetrics);
               
+                userBenefits.add(userBenefit);
+            }
+            //DOCEBO WW44
+            else if(ben == 'Docebo'){userBenefit = getDoceboBlade();
                 userBenefits.add(userBenefit);
             }
             else if(ben=='MDF'  && mdfLinks.size()>0)
@@ -1309,7 +1314,12 @@ public without sharing class IPABenefitUtility {
         
         // Step 2: Fetch all CMDT records as Map<String, Map<String, Object>> where key = DeveloperName
         Map<String, Map<String, Object>> ctaMetaMap = ctaController.getAll();
-
+		System.debug('All CMDT Keys: ' + ctaMetaMap.keySet());
+        System.debug('Redeem Points Exists: ' + ctaMetaMap.containsKey('Redeem Points'));
+        System.debug('Spend Points Exists: ' + ctaMetaMap.containsKey('Spend Points'));
+        if(ctaMetaMap.containsKey('Spend Points')){
+            System.debug('Spend Points Metadata: ' + JSON.serializePretty(ctaMetaMap.get('Spend Points')));
+        }
         for (String cta : ctaPriorities) {
             IPABenefitWrapper.Link mlink=new IPABenefitWrapper.Link();
             if (ctaMetaMap.containsKey(cta)) {
@@ -2111,10 +2121,13 @@ public without sharing class IPABenefitUtility {
         boolean awrVisibility = false;
         if(userInfo.onePartnerId!= null)
         {
-            List<PRM_AccountBenefitAssociation__c> abaList = new List<PRM_AccountBenefitAssociation__c>();
+             //ATHR Fix - TWC729-9556 -- start
+            /*List<PRM_AccountBenefitAssociation__c> abaList = new List<PRM_AccountBenefitAssociation__c>();
             for(PRM_AccountBenefitAssociation__c pba : [Select id, name, PRM_Partner_Benefit_Id__r.Name from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c= :userInfo.onePartnerId and PRM_Status_Nm__c = 'Active' and PRM_Partner_Benefit_Id__r.Name =: Label.PRM_Advanced_Warranty_Replacement ]){
-                abaList.add(pba);
-            }
+            abaList.add(pba);
+            }*/
+            List<PRM_AccountBenefitAssociation__c> abaList =[Select id, name, PRM_Partner_Benefit_Id__r.Name from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c= :userInfo.onePartnerId and PRM_Status_Nm__c = 'Active' and PRM_Partner_Benefit_Id__r.Name =: Label.PRM_Advanced_Warranty_Replacement ];
+            //ATHR Fix - TWC729-9556 -- end
             if(abaList.size() > 0 && !abaList.isempty()){
                 try{AggregateResult aggregateSum = [Select Sum(PRM_Number_Of_AWR_Remaining_Nbr__c) awrMetric from PRM_Warranty_Data__c where PRM_One_Partner_Id__c =:userInfo.onePartnerId];
                     awrMetric=Integer.valueOf(aggregateSum.get('awrMetric'));
@@ -2286,5 +2299,12 @@ public without sharing class IPABenefitUtility {
             }
         }
         return isRedirectToAccessDenied;
+    }
+    public static IPABenefitWrapper.UserBenefitInfo getDoceboBlade()
+    {
+        IPABenefitWrapper.UserBenefitInfo benefit = new IPABenefitWrapper.UserBenefitInfo();
+        benefit.title = string.valueof(system.label.PRM_Docebo_MainTag);//'Recommended Learnings';
+        benefit.description = '';
+        return benefit;
     }
 }

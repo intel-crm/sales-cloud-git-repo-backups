@@ -20,6 +20,6 @@
     </values>
     <values>
         <field>Timeout_Ms__c</field>
-        <value xsi:type="xsd:double">30000.0</value>
+        <value xsi:type="xsd:double">120000.0</value>
     </values>
 </CustomMetadata>

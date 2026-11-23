@@ -322,12 +322,12 @@ public without sharing class PRM_RegistrationRequestUtility {
             Name,
             PRM_Channel_Program_Id__c,
             PRM_Language_Codes__c,
-            PRM_Partner_Role__c,
+            /*PRM_Partner_Role__c,*/
             PRM_InActive_Ind__c,
             PRM_Agreement_Cd__c
             FROM PRM_PartnerAgreement__c
             WHERE PRM_InActive_Ind__c = FALSE
-        ]) {
+        ]) {//ATHR Fix - TWC729-9556
             //Set Without language field
             if (String.isBlank(pa.PRM_Language_Codes__c)) {
                 allPASetWithoutLanguage.add(
@@ -409,9 +409,13 @@ public without sharing class PRM_RegistrationRequestUtility {
         //Map<Id, Account> accMap,
         Map<Id, Contact> contMap,
         Map<Id,PRM_Registration_Request__c> regReqOldMap,
-        Map<Id, list<string>>  mapOfAccIdPartnerRole
+        Map<Id, list<string>>  mapOfAccIdPartnerRole,
+		Set<Id> setOpidWithPA, //OPIDs that already have an active Partner Admin / Delegate
+		Map<Id, Id> mapAccIdToOpid //Account Id -> One Partner Id
     ) {
         Set<Id> existingAccFromReqIds = new Set<Id>();
+        // setOpidWithPA is a DB snapshot; this tracks PAs assigned earlier in this same loop (OPID-level twin of existingAccFromReqIds)
+        Set<Id> opidAssignedInBatch = new Set<Id>();
         for (PRM_Registration_Request__c reg : regReqList) {
             if (
                 (reg.recordTypeId ==
@@ -456,19 +460,35 @@ public without sharing class PRM_RegistrationRequestUtility {
                     if (reg.PRM_Partner_Relationship__c == null || String.isBlank(reg.PRM_Partner_Relationship__c) 
                     || ( regReqOldMap.containsKey(reg.Id) && (regReqOldMap.get(reg.Id).PRM_Salesforce_ID__c != reg.PRM_Salesforce_ID__c))
                     ) {
+						
+						
                         if (
                             (!partnerRoleArray.contains(reg.PRM_Partner_Role__c)|| isACRActive == false) &&
                             !existingAccFromReqIds.contains(reg.PRM_Salesforce_ID__c) //if(isACRActive == false)
                         ) {
-                            existingAccFromReqIds.add(reg.PRM_Salesforce_ID__c);
-                            reg.PRM_Partner_Relationship__c =
+							Id regOpid = (mapAccIdToOpid != null) ? mapAccIdToOpid.get(reg.PRM_Salesforce_ID__c) : null;
+							// Non-IPA = existing account with no Approved IPA ACM; OPID-level PA check applies only to these
+							Boolean isNonIpaAcc = reg.PRM_Salesforce_ID__c != null && !mapOfAccIdPartnerRole.containsKey(reg.PRM_Salesforce_ID__c);
+							if(isNonIpaAcc && regOpid != null
+							   && ((setOpidWithPA != null && setOpidWithPA.contains(regOpid))
+							       || opidAssignedInBatch.contains(regOpid))){
+								 reg.PRM_Partner_Relationship__c = System.Label.PRM_WorksFor;
+							}else{
+								existingAccFromReqIds.add(reg.PRM_Salesforce_ID__c);
+								if(regOpid != null){
+									opidAssignedInBatch.add(regOpid);
+								}
+								reg.PRM_Partner_Relationship__c =
                                 System.Label.PRM_Primary_Contact +
                                 ';' +
                                 System.Label.PRM_WorksFor;
+							}
+                            
                         } else {
                             reg.PRM_Partner_Relationship__c = System.Label.PRM_WorksFor;
                         }
                     }
+                system.debug( reg.PRM_Partner_Relationship__c+' reg.PRM_Partner_Relationship__c');
             }
         }
     }
@@ -833,11 +853,27 @@ public without sharing class PRM_RegistrationRequestUtility {
                 mapOfEmailRegRequest.containsKey(acrObject.PRM_Contact_Id__r.email) && String.isNotBlank(mapOfEmailRegRequest.get(acrObject.PRM_Contact_Id__r.email).PRM_Partner_Role__c) && String.isNotBlank(acrObject.PRM_Partner_Role__c) &&
                 acrObject.PRM_Partner_Role__c.contains(mapOfEmailRegRequest.get(acrObject.PRM_Contact_Id__r.email).PRM_Partner_Role__c) && acrObject.PRM_Account_Id__c == mapOfEmailRegRequest.get(acrObject.PRM_Contact_Id__r.email).PRM_Salesforce_ID__c
             ) {
+                PRM_Registration_Request__c regReq = mapOfEmailRegRequest.get(acrObject.PRM_Contact_Id__r.Email);//UIOLI Return journey pcr status reason mapping -TWC729-9379
+                System.debug('=== ACR DEBUG START ===');
+        System.debug('ACR Id = ' + acrObject.Id);
+        System.debug('Email = ' + acrObject.PRM_Contact_Id__r.Email);
+                System.debug('RegReq = ' + regReq);
                 acrObject.PRM_InActive_Ind__c = false;
                 acrObject.PRM_Status_Nm__c = 'Complete';
-                acrObject.PRM_Status_Reason_Txt__c = System.Label.PRM_APPROVE_MSG;
+                //UIOLI Return journey pcr status reason mapping -TWC729-9379
+                if (regReq != null && regReq.PRM_Is_Returning_User__c && String.isNotBlank(regReq.PRM_Review_Note_txt__c)) {
+                    System.debug('Returning User = ' + regReq.PRM_Is_Returning_User__c);
+          System.debug('Review Note = ' + regReq.PRM_Review_Note_txt__c);
+                    System.debug('INSIDE RETURNING USER BLOCK');
+                    acrObject.PRM_Status_Reason_Txt__c = regReq.PRM_Review_Note_txt__c;
+                }else{
+                    System.debug('INSIDE ELSE BLOCK');
+                    acrObject.PRM_Status_Reason_Txt__c = System.Label.PRM_APPROVE_MSG;
+                }
                 acrObject.PRM_No_Email__c = true;
+                System.debug('FINAL STATUS REASON = ' + acrObject.PRM_Status_Reason_Txt__c);
                 mapOfUpdateACR.put(acrObject.id, acrObject);
+        System.debug('=== ACR DEBUG END ===');
             }
         }
         return mapOfUpdateACR;

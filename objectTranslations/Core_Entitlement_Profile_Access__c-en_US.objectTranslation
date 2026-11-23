@@ -284,10 +284,6 @@
             <translation><!-- Deal Incentive User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Deal Reg Financial Incentive Access</masterLabel>
-            <translation><!-- Deal Reg Financial Incentive Access --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Design Solutions Network</masterLabel>
             <translation><!-- Design Solutions Network --></translation>
         </picklistValues>
@@ -472,6 +468,10 @@
             <translation><!-- OLO Subcontractor --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>OTC IP Double Bailment External Reporting Users</masterLabel>
+            <translation><!-- OTC IP Double Bailment External Reporting Users --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Offering Editor</masterLabel>
             <translation><!-- Offering Editor --></translation>
         </picklistValues>
@@ -640,6 +640,10 @@
             <translation><!-- RMF User --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>RPS Retailer</masterLabel>
+            <translation><!-- RPS Retailer --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>RPS_Agency(Marketing Studio)</masterLabel>
             <translation><!-- RPS_Agency(Marketing Studio) --></translation>
         </picklistValues>
@@ -666,6 +670,14 @@
         <picklistValues>
             <masterLabel>Return for Credit (R4C)</masterLabel>
             <translation><!-- Return for Credit (R4C) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Return for Credit( IAO - QA) - Dual</masterLabel>
+            <translation><!-- Return for Credit( IAO - QA) - Dual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Return for Credit( R4C - IAO(QA) )</masterLabel>
+            <translation><!-- Return for Credit( R4C - IAO(QA) ) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SDSi Purchase Agent - LIV – external</masterLabel>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Admin Account Search</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="existingPartnerRole" type="String" label="Existing account partner roles" role="inputOnly"/>
+            <property name="existingPartnerRoleText" type="String" label="Existing account partner roles as text" role="outputOnly"/>
+            <property name="accountName" type="String" label="Account name to search" role="inputOnly"/>
+            <property name="website" type="String" label="Website to search" role="inputOnly"/>
+            <property name="contactEmail" type="String" label="Contact email" role="inputOnly"/>
+            <property name="disabled" type="Boolean" label="Disable search" role="inputOnly" default="false"/>
+            <property name="selectedAccountId" type="String" label="Selected account ID" role="outputOnly"/>
+            <property name="selectedName" type="String" label="Selected account name" role="outputOnly"/>
+            <property name="selectedWebsite" type="String" label="Selected website" role="outputOnly"/>
+            <property name="selectedPartnerRole" type="String" label="Selected partner role" role="outputOnly"/>
+            <property name="selectedStreet" type="String" label="Selected street" role="outputOnly"/>
+            <property name="selectedCity" type="String" label="Selected city" role="outputOnly"/>
+            <property name="selectedState" type="String" label="Selected state" role="outputOnly"/>
+            <property name="selectedStateCode" type="String" label="Selected state code" role="outputOnly"/>
+            <property name="selectedCountry" type="String" label="Selected country" role="outputOnly"/>
+            <property name="selectedCountryCode" type="String" label="Selected country code" role="outputOnly"/>
+            <property name="selectedPostalCode" type="String" label="Selected postal code" role="outputOnly"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

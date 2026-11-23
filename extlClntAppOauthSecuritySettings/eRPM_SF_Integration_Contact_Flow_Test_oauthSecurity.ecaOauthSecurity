@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSecuritySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <externalClientApplication>eRPM_SF_Integration_Contact_Flow_Test</externalClientApplication>
+    <label>eRPM_SF_Integration_Contact_Flow_Test_oauthSecurity</label>
+</ExtlClntAppOauthSecuritySettings>

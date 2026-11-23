@@ -1,0 +1,267 @@
+<template>
+    <template lwc:if={hasCourses}>
+        <div class="learning-container">
+            <!-- <div class="course-count">
+                {courseCount} items
+            </div>
+       <div class="learning-header">
+            <div class="header-content">
+                                    
+                <div>
+                    <h1>
+                        Recommended Trainings
+                    </h1>
+                </div>
+
+                <div class="header-icon">
+                        <img
+                            src={doceboLogo}
+                            alt="Docebo"
+                            class="docebo-logo" />
+                    </div>
+            </div>
+        </div>-->
+
+        <template if:true={loading}>
+            <div class="loading-container">
+                <lightning-spinner
+                    alternative-text="Loading courses"
+                    size="medium">
+                </lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={errorMessage}>
+            <div class="error-container">
+                {errorMessage}
+            </div>
+        </template>
+
+        <template if:true={hasCourses}>
+
+            <div class="course-count">
+                {courseCountLabel}
+            </div>
+
+            <div class="carousel-shell">
+
+                <button
+                    class="carousel-button previous-button"
+                    onclick={handlePrevious}
+                    disabled={isFirstPage}
+                    title="Previous courses"
+                    type="button">
+
+                    <span>‹</span>
+
+                </button>
+
+                <div class="course-viewport">
+
+                    <div
+                        class="course-track"
+                        style={trackStyle}>
+
+                        <template
+                            for:each={coursePages}
+                            for:item="page"
+                            for:index="pageIndex">
+
+                            <div
+                                class="course-page"
+                                key={page.pageKey}>
+
+                                <template
+                                    for:each={page.courses}
+                                    for:item="course">
+
+                                    <article
+                                        class="course-card"
+                                        key={course.id}>
+
+                                        <div
+                                            class="course-image"
+                                            data-url={course.fullUrl}
+                                            onclick={handleCourseClick}>
+
+                                            <template if:true={course.hasImage}>
+
+                                                <img
+                                                    src={course.imageUrl}
+                                                    alt={course.title} />
+
+                                            </template>
+
+                                            <template if:false={course.hasImage}>
+
+                                                <div class="image-placeholder">
+                                                    <span>{labels.IPA_IntelLearning}</span>
+                                                </div>
+
+                                            </template>
+
+                                            <template if:true={course.isNew}>
+
+                                                <span class="new-badge">
+                                                    {labels.IPA_New}
+                                                </span>
+
+                                            </template>
+
+                                        </div>
+
+                                        <div class="course-body">
+
+                                            <a
+                                                href="javascript:void(0);"
+                                                class="course-title"
+                                                data-url={course.fullUrl}
+                                                onclick={handleCourseClick}>
+
+                                                {course.title}
+
+                                            </a>
+
+                                            <template if:true={course.hasExpiration}>
+
+                                                <div class="expiration">
+                                                    {labels.IPA_Expiration}
+                                                    {course.expirationDisplay}
+                                                </div>
+
+                                            </template>
+
+                                            <template if:true={course.hasLanguage}>
+
+                                                <div class="course-meta">
+
+                                                    <span>
+                                                        {course.languageLabel}
+                                                    </span>
+
+                                                    <template if:true={course.hasDuration}>
+
+                                                        <span class="separator">
+                                                            |
+                                                        </span>
+
+                                                        <span>
+                                                            {course.durationDisplay}
+                                                        </span>
+
+                                                    </template>
+
+                                                </div>
+
+                                            </template>
+
+                                            <div class="rating-row">
+
+                                                <template if:true={course.hasViews}>
+
+                                                    <span class="views">
+                                                        {course.views} {labels.IPA_Views}
+                                                    </span>
+
+                                                </template>
+
+                                                <template if:true={course.hasRating}>
+
+                                                    <span class="rating">
+
+                                                        <span class="star">
+                                                            ★
+                                                        </span>
+
+                                                        {course.ratingDisplay}
+
+                                                    </span>
+
+                                                </template>
+
+                                            </div>
+
+                                            <div class="course-footer">
+
+                                                <span class="course-type">
+
+                                                    <lightning-icon
+                                                        icon-name="utility:play"
+                                                        alternative-text="Type"
+                                                        size="xx-small">
+                                                    </lightning-icon>
+
+                                                    {course.displayType}
+
+                                                </span>
+
+                                                <template if:true={course.showMenu}>
+
+                                                    <button
+                                                        class="menu-button"
+                                                        data-id={course.id}
+                                                        onclick={handleMenuClick}
+                                                        title="More actions"
+                                                        type="button">
+
+                                                        ⋮
+
+                                                    </button>
+
+                                                </template>
+
+                                            </div>
+
+                                        </div>
+
+                                    </article>
+
+                                </template>
+
+                            </div>
+
+                        </template>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="carousel-button next-button"
+                    onclick={handleNext}
+                    disabled={isLastPage}
+                    title="Next courses"
+                    type="button">
+
+                    <span>›</span>
+
+                </button>
+
+            </div>
+
+            <div class="carousel-indicator">
+
+                <template
+                    for:each={pageIndicators}
+                    for:item="indicator">
+
+                    <span
+                        key={indicator.key}
+                        class={indicator.className}>
+                    </span>
+
+                </template>
+
+            </div>
+
+        </template>
+
+        <template if:true={noCourses}>
+
+            <div class="empty-container">
+                No courses found.
+            </div>
+
+        </template>
+    </div>
+</template>

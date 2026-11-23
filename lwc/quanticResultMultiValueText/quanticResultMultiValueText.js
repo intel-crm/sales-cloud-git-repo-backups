@@ -7,6 +7,7 @@ import {LightningElement, api} from 'lwc';
 
 /**
  * The `QuanticResultMultiValueText` component displays a given result multi-value field value.
+ * Make sure the field specified in this component is also included in the field array for the relevant template. See the this example: [Quantic usage](https://docs.coveo.com/en/quantic/latest/usage/#javascript).
  * @category Result Template
  * @example
  * <template if:true={result.raw.language}>
@@ -15,7 +16,7 @@ import {LightningElement, api} from 'lwc';
  */
 export default class QuanticResultMultiValueText extends LightningElement {
   /**
-   * The [result item](https://docs.coveo.com/en/headless/latest/reference/search/controllers/result-list/#result) to use.
+   * The [result item](https://docs.coveo.com/en/headless/latest/reference/interfaces/Search.Result.html) to use.
    * @api
    * @type {Result}
    */

@@ -53,66 +53,22 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_BR_All_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_BR_All_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
             <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_CR_Partner_Target__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>$Record.CPT_CR_Partner_Target__c</elementReference>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_MarVol_Margin_CCG_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Margin_CCG_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_MarVol_Margin_DCG_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Margin_DCG_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_MarVol_Next_Gen_CCG_LNL_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Next_Gen_CCG_LNL_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_MarVol_Next_Gen_CCG_PTL_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Next_Gen_CCG_PTL_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_MarVol_Next_Gen_CCG_WCL_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Next_Gen_CCG_WCL_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</elementReference>
-            </value>
-        </assignmentItems>
         <connector>
             <targetReference>CPT_Add_Assigment_Record_to_List</targetReference>
         </connector>
     </assignments>
-    <description>[24 Nov 2025] Flow to Copy the target values from the account/territory/country into the assignment object.</description>
+    <description>[12/Nov/2025] Flow to Copy the target values from the account/territory/country into the assignment object.</description>
+    <ends>
+        <name>END_ELEMENT_2</name>
+        <locationX>176</locationX>
+        <locationY>947</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>Territory Target - After Insert/Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CPT Territory Target - After Insert/Update</label>
@@ -177,6 +133,9 @@
         <label>Update Assignment Records</label>
         <locationX>176</locationX>
         <locationY>839</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_2</targetReference>
+        </connector>
         <inputReference>AssignmentRecordsList</inputReference>
     </recordUpdates>
     <start>

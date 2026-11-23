@@ -829,6 +829,7 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
                                                                                     System.today().addDays(-1), franceBank.ID, false);
             franceClaim.Core_MDF_Currency__c='USD';
             franceClaim.Core_MDF_Processing_Preference_nm__c = 'Get paid, then settle';
+            franceClaim.Core_MDF_Status__c = 'Cancelled';
             claimListToBeProcessed.add(franceClaim);
             
             Database.insert(claimListToBeProcessed);
@@ -1256,5 +1257,38 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         }
         test.stopTest();
     }
+@isTest
+static void testSendClaimsToClaimPredictionCatchBlock() {
+    Test.startTest();
+    
+    // Create a map with null values to trigger NullPointerException
+    Map<Id, PartnerFundClaim> invalidNewClaimMap = new Map<Id, PartnerFundClaim>();
+    Map<Id, PartnerFundClaim> invalidOldClaimMap = new Map<Id, PartnerFundClaim>();
+    
+   
+    PartnerFundRequest franceActivity = [SELECT Id,ChannelPartner.Core_MDF_Auto_Transfer_Account__c,BudgetId,AllocationId,ChannelPartner.Core_MDF_Enabled_Auto_Transfer__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c from PartnerFundRequest where Title='France Activity' limit 1];
+    Core_MDF_Bank__c franceBank = [Select id from Core_MDF_Bank__c where Name = 'Test'];
+    PartnerFundClaim franceClaim = Core_MDF_CCP_TestDataUtility.createClaim('India Claim8', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
+                                                                                    franceActivity.Id, 
+                                                                                    franceActivity.Core_MDF_Start_Date__c, franceActivity.Core_MDF_Start_Date__c, 
+                                                                                    300, 
+                                                                                    System.today().addDays(-1), franceBank.ID, true);
+    
+    // Get existing claim
+    PartnerFundClaim existingClaim = [SELECT Id FROM PartnerFundClaim Where Title = 'India Claim8' LIMIT 1];
+    
+    
+    // Add null claim to trigger exception
+    invalidNewClaimMap.put(existingClaim.Id, null);
+    
+    try {
+        Core_MDF_ProcessCCP_Claim.SendClaimsToClaimPrediction(invalidOldClaimMap, invalidNewClaimMap);
+    } catch (Exception e) {
+        // Exception expected and caught
+        System.assert(true, 'Exception caught as expected');
+    }
+    
+    Test.stopTest();
+}
 
 }

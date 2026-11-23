@@ -13,13 +13,7 @@
         <field>LEAD_SOURCE</field>
     </columns>
     <columns>
-        <field>Lead.Core_Lead_Status__c</field>
-    </columns>
-    <columns>
         <field>STREET</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Sub_Status__c</field>
     </columns>
     <columns>
         <field>RATING</field>
@@ -41,18 +35,6 @@
     </columns>
     <columns>
         <field>COMPANY</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Geo__c</field>
-    </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Conversion_Flag__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Conversion_Point_First_Touch__c</field>
     </columns>
     <description>Leads created my marketo, but record type reflecting as Sales lead instead of lead.</description>
     <filter>
@@ -85,6 +67,11 @@
         <field>Lead.Core_Lead_State__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_Lead_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>MGL Record type as Sales Lead!!</name>
     <params>
         <name>co</name>
@@ -95,8 +82,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CREATED_DATE</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>core_cpq_bm_assignment_config__c.core_cpq_end_customer_parent__c</field>
+    </columns>
+    <columns>
+        <field>core_cpq_bm_assignment_config__c.core_cpq_account_tier_nm__c</field>
+    </columns>
+    <columns>
+        <field>core_cpq_bm_assignment_config__c.core_cpq_business_unit_nm__c</field>
+    </columns>
+    <columns>
+        <field>core_cpq_bm_assignment_config__c.core_cpq_asmo_txt__c</field>
+    </columns>
+    <columns>
+        <field>core_cpq_bm_assignment_config__c.core_cpq_apj_prc_txt__c</field>
+    </columns>
+    <columns>
+        <field>core_cpq_bm_assignment_config__c.core_cpq_emea_txt__c</field>
+    </columns>
+    <columns>
+        <field>core_cpq_bm_assignment_config__c.core_cpq_japan_txt__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <format>Tabular</format>
+    <name>1. BM Assignment Configs Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$core_cpq_bm_assignment_config__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

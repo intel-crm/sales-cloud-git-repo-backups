@@ -3,6 +3,26 @@
     <description>Permission Set to access Commission details by Commission Integration</description>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.CRM_Audit_Close_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.CRM_Audit_Status_Txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.CRM_Last_Approved_DateTime__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.CRM_Team_Member_Addition_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_Commissionable_Transaction__c.Core_Account_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -68,7 +88,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.Core_Forecast_Product_Schedule__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.Core_Goal__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_Commissionable_Transaction__c.Core_KPI_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Commissionable_Transaction__c.Core_Last_Approved_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

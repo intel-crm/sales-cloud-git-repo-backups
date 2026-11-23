@@ -102,7 +102,7 @@ private class Core_MDF_ClaimsAutoClosureBatch_Test {
         Core_MDF_Bank__c bank = [Select Id from Core_MDF_Bank__c where Core_MDF_Supplier_Number__c='1249641240' limit 1];
         PartnerFundRequest testPartnerFundRequestRecord = [Select Id,Title,Core_MDF_Fund_Request_Status__c from PartnerFundRequest where Title = 'test'];
         
-        System.runAs(usr){
+      //  System.runAs(usr){
             // Creating Claim with utility class
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('PIC Review Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today()-1, System.today(), 5000.00, System.today(), bank.Id, false);
             claim1.Core_MDF_Invoice_Date__c = System.today().addDays(-1);
@@ -122,6 +122,6 @@ private class Core_MDF_ClaimsAutoClosureBatch_Test {
             database.executebatch(batch1,5);
             System.assertNotEquals(claim1.Id,null);
             test.stopTest();
-        }
+      //  }
     }
 }

@@ -23,7 +23,9 @@ public with sharing class Core_IPS_Case_Clone_Controller_LEX{
             Map<String, Object> bindMap = new Map<String, Object>{ 'recId' => recId };
             String qry = 'SELECT ' + Utilities_Portal_LEX.getAllFieldsAccessible(exclude, new Case()) + ', CaseNumber,Core_IPS_Project_Case__r.Name,RecordType.DeveloperName,Asset.Core_IPS_Case__c,Account.Core_Military_Aerospace_and_Government__c,Core_Case_issue_category__r.name,Core_case_issue_sub_category__r.name,Asset.status,Asset.Core_Supported_Product__c,Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c,Core_IPS_Supported_Product__r.Core_EOIS__c,Core_Case_Issue_Category__r.Core_Issue_Category_Name__r.Name,Core_Case_Issue_Sub_Category__r.Core_Issue_Sub_Category_Name__r.Name,(select Name, Core_Question__c, Core_Answer__c, Core_Case__c from Environments__r) ,(Select Id,Type__c,User__c,Contact__c,Active__c ,case__c From  Interested_Parties__r) ';
             qry += 'FROM Case WHERE Id =: recId';
+            System.debug('qry'+qry);
             clonedCases = createcloneCase(Database.queryWithBinds(qry, bindMap, AccessLevel.USER_MODE));
+            System.debug('clonedCases'+clonedCases);
             // SOQL Injection Fix - End -  Shipra
         }
 

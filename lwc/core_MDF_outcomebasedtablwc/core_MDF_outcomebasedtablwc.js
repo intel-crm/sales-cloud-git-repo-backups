@@ -123,7 +123,7 @@ export default class OutcomeBasedActivitiesTable extends NavigationMixin(Lightni
             fieldName: 'Core_MDF_Budget_Type_nm__c',
             type: 'text',
             sortable: false
-        },*/
+        } */
         { 
             label: this.Status, 
             fieldName: 'Core_MDF_Fund_Request_Status__c', 

@@ -5,7 +5,7 @@
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
         <certificate>MIIDKzCCAhMCFDSH/ko6C/s4nrZZvXs9yvhYeVXdMA0GCSqGSIb3DQEBCwUAMFIxCzAJBgNVBAYTAklTMQswCQYDVQQIDAJIVDENMAsGA1UEBwwESVNIVDENMAsGA1UECgwEREVMTDELMAkGA1UECwwCREwxCzAJBgNVBAMMAkRMMB4XDTIzMDgwMTA3MTUzMFoXDTI0MDczMTA3MTUzMFowUjELMAkGA1UEBhMCSVMxCzAJBgNVBAgMAkhUMQ0wCwYDVQQHDARJU0hUMQ0wCwYDVQQKDARERUxMMQswCQYDVQQLDAJETDELMAkGA1UEAwwCREwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCzZ7spFwkaXYAT/lesx7K0Vf18YhEfMAcl/TNaxMdoYfwnv1v0x9BIbqAthDRmgVz+iZ2yKMAkasfqEw9QsRsz9N1yKiaMpFfU//QZ6Y96kbkSQ6zh6XdQlLeD8k2brruAU4jxnngmR2yMENsV5RFJz7NvR//StHaOHdSyYa9WL0n1Ujhk43S0f6RZNjDC79gGtlKnuRlySZmHfZlNzZvWJZjJ3eenYRTWgqDa70wAM/FVBppYWELdFg18x+Xl3g9c9tFmBtibJRiHDZ9ITju7eRQKC9xmdhnZIb/REQqWxxl/pUpTZiWO/OctUoSSAWUUrnuBjTdw2blB/agcCYr5AgMBAAEwDQYJKoZIhvcNAQELBQADggEBAJvyHWaYhMa/SLrE0bs4xZ6LthG3MSYVzUqX/AaQvJm84vB0eQj8RFBxWBriINowrOom1VDP0olRzxq7RzkPOLFF3FVXOZeqESP6nvoiQj0wGGvoJ6xLS2Ced1xXO1zGqRn955mVGQ3aS+VcwHKSIsMXd7OjnACpMsPWiftERzOO1cHN+Ezd9QAyNbui3Mp8HATe/VOqC0Vz1GZQ5m2Z7p7WHk4T1qcC2wn6fbEvLKpO9QKWajqA1AR9e5sC2RgL/jJPzERciBD3GsY4qcLtw1Ncki3o0pUFjR92jVBVo12Sosq7Le3PSK9GmpQFf1w4HDcGxMBHgVBv7on/2eeZLVc=</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6hGDZdjWJJaw2qR8VCedh7NXVM116nA7EWvPakFDY_5Qnq9LJQlU6V9iXKrn</consumerKey>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxGSh05F3e_cEMNq9un7zzuKVkWFKBCWHixZHFn2mYUxQrMWmg_NUZ5KWcJ6o</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -20,7 +20,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>

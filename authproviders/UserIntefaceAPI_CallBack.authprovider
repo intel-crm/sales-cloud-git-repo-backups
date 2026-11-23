@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6sWzA7dftDbAANxHlc2lcFGr2jgbFtG39zmWWvLys6LPuWG1uVIZa4uYeWGl</consumerKey>
+    <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxGSh05F3e_cEtBHyyqnIod11ZReVEENIYYyJUQJMWWnLage1OOBBJwFmPG0y</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
     <defaultScopes>full refresh_token offline_access</defaultScopes>
     <friendlyName>UserIntefaceAPI_CallBack</friendlyName>

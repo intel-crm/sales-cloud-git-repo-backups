@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
-    <clientCredentialsFlowUser>unrival_integration_user@intel.com.crm</clientCredentialsFlowUser>
+    <clientCredentialsFlowUser>unrival_integration_user@intel.com.crm.crmqa9</clientCredentialsFlowUser>
     <externalClientApplication>Unrival_External_App</externalClientApplication>
     <ipRelaxationPolicyType>Enforce</ipRelaxationPolicyType>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>

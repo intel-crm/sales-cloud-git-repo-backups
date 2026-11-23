@@ -2,7 +2,7 @@
  * @description       : Test Class for Pricing_QuoteLetterGenerate_Batch
  * @author            : Vrushabh 
  * @group             : 
- * @last modified on  : 03-16-2026
+ * @last modified on  : 03-10-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -50,15 +50,18 @@ public class Pricing_QuoteLetterGenerate_BatchTest {
     
     @isTest
     public static void testExecuteMethodWithEmptyBatch(){
+        // Test execute method with empty batch to cover exception handling
         test.startTest();
         Pricing_QuoteLetterGenerate_Batch batchJob = new Pricing_QuoteLetterGenerate_Batch();
         batchJob.execute(null, new List<SBQQ__Quote__c>());
         test.stopTest();
+        // Should not throw any exception
         System.assert(true, 'Execute method should handle empty batch without exception');
     }
     
     @isTest
     public static void testGenerateQuoteLetterMethod(){
+        // Test the generateQuoteLetter static method with sample data
         List<User> adminUserList = Pricing_Test_Utility.createAdminUser();
         System.runAs(adminUserList[0]){
             test.startTest();
@@ -76,6 +79,7 @@ public class Pricing_QuoteLetterGenerate_BatchTest {
             quoteLines[0].SBQQ__Quote__r.Pricing_Auto_generate_Quote_Letter__c = true;
             update quoteLines;
             
+            // Test generateQuoteLetter method
             List<Id> quoteLineIds = new List<Id>();
             for(SBQQ__QuoteLine__c quoteLine : quoteLinesUpdated){
                 quoteLineIds.add(quoteLine.Id);

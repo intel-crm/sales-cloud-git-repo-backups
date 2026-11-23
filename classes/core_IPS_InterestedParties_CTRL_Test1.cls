@@ -22,10 +22,7 @@ public class core_IPS_InterestedParties_CTRL_Test1 {
                             EmailEncodingKey = 'UTF-8',
                             LocaleSidKey = 'en_US'
                            );
-		User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-           insert usr; 
-        }
+		insert usr;
         System.assert(usr.Id != null, 'Record not created');
 		 Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();//test class fix
          Account newAccount = new Account (

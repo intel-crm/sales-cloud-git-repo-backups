@@ -497,7 +497,7 @@ iupgmLst.add(iupgm1); */
             reqCoEng.paymentNature = 'Expense';
             Core_MDF_PaymentUtility.getOOCPaymentDueClaims(
                 new List<Core_MDF_PaymentUtility.OOCClaimRequest>{ reqCoEng }
-            );
+            ); 
     
         Test.stopTest();
     

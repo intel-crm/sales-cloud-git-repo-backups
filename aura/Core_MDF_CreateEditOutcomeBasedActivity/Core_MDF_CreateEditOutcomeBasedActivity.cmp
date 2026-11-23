@@ -334,7 +334,8 @@
     <aura:attribute name="focusAreaSetFromFile" type="Boolean" default="false" description="Flag to track if focus area was set from file upload"/>
     <!--Ramapriya- Partner Contact Field-->
     <aura:attribute name="allowedPartnerContactDomains" type="List" default="[]"/>
-    <aura:attribute name="partnerContactDomainsLoaded" type="Boolean" default="false"/>
+    <!--Ramapriya - Commented as part of TWC702-16422
+    <aura:attribute name="partnerContactDomainsLoaded" type="Boolean" default="false"/>-->
     <aura:attribute name="showPartnerContactError" type="Boolean" default="false"/>
     <aura:attribute name="partnerContactErrorMsg" type="String" default=""/>
     <lightning:navigation aura:id="navService" />
@@ -1158,8 +1159,10 @@
                                 <aura:if isTrue="{!v.showOtherMeasurementApproachField}">
                                     <lightning:layout horizontalAlign="spread" multipleRows="true">
                                         <!-- Anjali changes - Reduced size to 5, positioned on left side, made required=true -->
+
                                         <lightning:layoutItem padding="around-small" flexibility="grow" size="6" mediumDeviceSize="6" largeDeviceSize="6" class="slds-p-left_none">
                                             <lightning:textarea aura:id="otherMeasurementApproach" 
+
                                                                 name="Core_MDF_Other_Measurement_Approach_txt__c"
                                                                 label="{!$Label.c.Core_MDF_Other_Measurement_Approach}"
                                                                 value="{!v.newPFR.Core_MDF_Other_Measurement_Approach_txt__c}"

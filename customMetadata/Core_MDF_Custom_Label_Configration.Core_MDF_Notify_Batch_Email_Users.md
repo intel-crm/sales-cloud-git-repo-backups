@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">amal.thomas@intel.com,ccptech@intel.com</value>
+        <value xsi:type="xsd:string">shivax.rama.krishnan.n.s@intel.com,prashantx.dhanagar@intel.com,soniyax.agarwal@intel.com</value>
     </values>
 </CustomMetadata>

@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_Value2_Txt__c</field>
-        <value xsi:type="xsd:string">Retail Marketing Funds:2026-11-02,Intel Partner Alliance:2026-11-03</value>
+        <value xsi:type="xsd:string">Retail Marketing Funds:2024-11-12,Intel Partner Alliance:2024-11-12</value>
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Client:2026-11-04,Datacenter:2026-11-04,</value>
+        <value xsi:type="xsd:string">Client:2024-12-03,Datacenter:2024-12-03,</value>
     </values>
 </CustomMetadata>

@@ -4,22 +4,36 @@
     <label>scott_app</label>
     <oauthConfig>
         <callbackUrl>https://www.salesforce.com</callbackUrl>
-        <certificate>MIIDETCCAfmgAwIBAgIUfp9KpU9acX3+pGI+5lzUYp9svYMwDQYJKoZIhvcNAQELBQAwGDEWMBQGA1UEAwwNSldUIEF1dGggQ2VydDAeFw0yNTEyMTkyMTU5MDlaFw0yNjEyMDQyMTU5MDlaMBgxFjAUBgNVBAMMDUpXVCBBdXRoIENlcnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCL/iMUViBJpkHZ7FZ3gaZo2Uwu9Pbj4wuvfm8U6HwHefSvZYMsa3W8bXAZpQqxzU3EFzO9Ko2Y8yq6t6deEwLDNWm6kiCj07+4s1guKvMLT9Q8YxlQfiAJBcpBUQltIoM0Ofaz+JzwJ245RC+aIEjLc7MjJnArJcqOHOQ/KEGm+ngno375G+tB31gw8Je/OFLD02tfD5DpSeMKpHLUynKyKhUtNTTWGcrjrfkwtW3wVcs69oIyZqQ8oaT4MCIhNMBALnRClQS8fEeyaCLN8H31ugjM5vn/SiiQ0bsjHXuE8dED/EZqjW2/RF1yyv+TzZB0uCprKrI9ThufMLsnyzwNAgMBAAGjUzBRMB0GA1UdDgQWBBRBOZyxrCcx+IIF3WKrhMgCbJL+NzAfBgNVHSMEGDAWgBRBOZyxrCcx+IIF3WKrhMgCbJL+NzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQB/VhtjmfD/mGQ+m5BooIxJDDhlMNcAdNursdMpZpm3/Dwj5UXs6XATDj43SJ0bQG2VNxM+MZVZEEL2RrTCegtBEjJQQsvqquTMZFN/CFFFdgsiNIa1z4pVkgOf/1DbWvprEUcXqYuDRGu2nMM4uf+YHohJYeq3TNb84uO8FT9t/ztq3mJAoz5qO4b4jmhXcbXNkEEd9CT5HP6oiBiI2MLQUtrqwDtOcLDclg7xKcyKJZJej8BrpsFKF4sGDtmYMKzKPAWAX66GeRaWahrTNcAmPfgmisdCe6zwEImv8J1ltFQRdoh2PympsJasV24yYkLvPV+oRvzErPrEpJCzx/oc</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6tLUi38Bq9swTPoOkxTJjpWy4ksQ0hee5W6E7tOS073OQG81gAnmI1oDpwHs</consumerKey>
+        <certificate>MIICtDCCAZygAwIBAgIUSqaCDW1dalS0kU+YZDYD3vMlKnowDQYJKoZIhvcNAQEL
+BQAwFDESMBAGA1UEAwwJa2VyZW5fYXBwMB4XDTI2MTAxOTA4MDYwN1oXDTI3MTAx
+OTA4MTEwN1owFDESMBAGA1UEAwwJa2VyZW5fYXBwMIIBIjANBgkqhkiG9w0BAQEF
+AAOCAQ8AMIIBCgKCAQEAyRF70xxoqcvzeNRud2CDf1YjZS7LCHlREUH7+PoDrpKo
+kJ2YsITvDCiPRHmZ7NtKMj6Moz1Je81nF2z1h101pPthFOcS2WQ63A8N8vC9neAw
+zrx+whoNSS2dlvO7y3RWcAK8l6AIN41ziF36+PFo94itBX9qE+CFbAVsgnae2ngh
+bBv0zwuV7QVXthSz3wh0F6s2Kb/s0u/mMPXWG/KzqZGzz1momM7mJAuzGesuRVoG
+NcypMqd5x9vzEf7TG5tDG8MzvGVdSXRER49DnQAPsrJfHHIAps3OnO1NJIVhKEBx
+6perkGzaC7jLL5qdNxo8cZlDVfwUJqbKU2psmAxn3QIDAQABMA0GCSqGSIb3DQEB
+CwUAA4IBAQC3cQT2oiihhsBxtue9KDOlaDmtz5ONcZ/+eyTAXfkBVGSLOUYT9nIL
+ZI5QD3BzHiq/P6thFPOUO4wZIcNV+3bqVUux17A9s0ZjqONlPJa24HKMD+yUYdjW
+ovYO4NsehehhK/SvZNf4E+cb7FLAQ1mjwJiACOol9uNRdNrq83QvwnDCTVTm9ytf
+hZaWkTgEQDyzji9VWDsMOR9/f718qaloOO8x5+wL+6qJY/sETS81viKDdasqrij9
+bFpmke9tfB/nut+3D7XGDNbcshe03wpm+hVQmRgt5l1ONe6y5U+TA56LjLyX7LMl
+JHkTAjjLc153H3jQU43wVVinr206msJC</certificate>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxGSh05F3e_cEmP5q_yjkamapgKu5mjG4U_mQ3FTiopvVxC4mwUZ06lKXS1Ua</consumerKey>
         <isAdminApproved>true</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isDPopEnabled>false</isDPopEnabled>
         <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
-        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
         <isIpBindingEnabled>false</isIpBindingEnabled>
-        <isNamedUserJwtEnabled>true</isNamedUserJwtEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>true</isPkceRequired>
-        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
         <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>

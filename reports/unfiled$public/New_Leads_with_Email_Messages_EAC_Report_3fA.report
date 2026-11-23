@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Lead$Name</field>
+    </columns>
+    <columns>
+        <field>Lead.LeadEmailMessages$Name</field>
+    </columns>
+    <columns>
+        <field>Lead.LeadEmailMessages$Subject</field>
+    </columns>
+    <columns>
+        <field>Lead.LeadEmailMessages$ToAddress</field>
+    </columns>
+    <columns>
+        <field>Lead.LeadEmailMessages$FromAddress</field>
+    </columns>
+    <columns>
+        <field>Lead.LeadEmailMessages.EmailMessageRelationRecipient$CreatedDate</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Lead.LeadEmailMessages$Source</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Leads with Email Messages EAC</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Leads_with_Email_Messages_EAC__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Lead$Core_1st_Reminder__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

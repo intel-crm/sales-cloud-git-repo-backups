@@ -39,6 +39,9 @@ global with sharing class Core_IPS_BES_ExceptionHandler {
                         }
                         update ouboundMsg; 
                     }
+                    //Chandra - to keep track of the error details.
+                   // System.debug('error response '+response);
+                  //  Core_Log_Entry.logEntryWithDetails('SFDC','IPS',null,'info','Erro Details Json',response,null,'Core_IPS_BES_Error_Log__c',null);
                 }
             }
              //Creating custom exception to cover catch block

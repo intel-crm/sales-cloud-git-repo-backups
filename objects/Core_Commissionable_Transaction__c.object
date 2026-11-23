@@ -155,6 +155,37 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>CRM_Audit_Close_Date__c</fullName>
+        <label>Audit Close Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Audit_Status_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Audit Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Last_Approved_DateTime__c</fullName>
+        <label>Last Approved DateTime</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Team_Member_Addition_Date__c</fullName>
+        <label>Team Member Addition Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>Core_Account_ID__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <label>Account</label>

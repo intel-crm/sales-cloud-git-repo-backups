@@ -773,6 +773,7 @@ public class Core_OppApproval_Test {
             for(Core_Design_Registration__c iDR : TestDDRlst)
             {
                 iDR.Core_Approver_Grp_Nm__c = 'Core_DDR_Approver_PSG_USA_Oregon';
+                iDR.Core_Product_Group_Nm__c = 'Embedded/IOT';
                 iDR.Core_Partner_Account_Id__c = lstAcc[0].Id;
             }        
             insert TestDDRlst;
@@ -1065,6 +1066,7 @@ public class Core_OppApproval_Test {
             for(Core_Design_Registration__c iDR : TestDDRlst)
             {
                 iDR.Core_Approver_Grp_Nm__c = 'Core_DDR_Approver_PSG_USA_Oregon';
+                iDR.Core_Product_Group_Nm__c = 'Embedded/IOT';
                 iDR.Core_Partner_Account_Id__c = lstAcc[0].Id;
             }        
             insert TestDDRlst;

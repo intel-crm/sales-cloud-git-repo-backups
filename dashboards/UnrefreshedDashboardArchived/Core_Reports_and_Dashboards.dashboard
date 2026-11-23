@@ -42,7 +42,6 @@
         <name>Report Folder: Name</name>
     </dashboardFilters>
     <dashboardType>SpecifiedUser</dashboardType>
-    <description>Dashboard components below are filtered to show &quot;All Reports&quot; or &quot;All Dashboards&quot;, excluding the ability to see reports/dashboards in My Personal Folders for individual users.</description>
     <isGridLayout>false</isGridLayout>
     <leftSection>
         <columnSize>Wide</columnSize>

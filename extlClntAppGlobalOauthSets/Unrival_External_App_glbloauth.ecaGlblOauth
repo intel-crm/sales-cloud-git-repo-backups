@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
-    <callbackUrl>https://login.salesforce.com/services/oauth2/token</callbackUrl>
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6s3_Ge.EBqX87fqInDojXESL3spBIghLADtSmqQTp_Lb3YxX62OdJropXY4U</consumerKey>
+    <callbackUrl>https://intel--crmqa9.sandbox.my.salesforce.com/services/oauth2/token</callbackUrl>
+    <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBbklY.jT7hNpWTPqSa6NAGMKpMOQz23hBcIvwNxkNQG8JosBq1HP8soSuCbQz</consumerKey>
     <externalClientApplication>Unrival_External_App</externalClientApplication>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
-    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
-    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isCodeCredFlowEnabled>true</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>true</isCodeCredPostOnly>
     <isConsumerSecretOptional>false</isConsumerSecretOptional>
     <isDPopEnabled>false</isDPopEnabled>
     <isDeviceFlowEnabled>false</isDeviceFlowEnabled>

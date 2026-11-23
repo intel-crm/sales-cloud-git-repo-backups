@@ -21,7 +21,7 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
+                <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
@@ -33,8 +33,9 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>This Y DW &amp; pipeline</header>
+                <header>This Y Edge DW &amp; pipeline</header>
                 <legendPosition>Bottom</legendPosition>
+                <maxValuesDisplayed>6</maxValuesDisplayed>
                 <report>KPI_Tracking/This_Y_Edge_DW_pipeline</report>
                 <showPercentage>false</showPercentage>
                 <showTotal>true</showTotal>
@@ -59,7 +60,7 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
+                <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
@@ -97,7 +98,7 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
+                <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
@@ -134,44 +135,6 @@
                     <axisBinding>y</axisBinding>
                     <column>TOTAL_PRICE</column>
                 </chartSummary>
-                <componentType>Donut</componentType>
-                <decimalPrecision>0</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>BucketField_16585743</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Total Edge DW this Q</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>KPI_Tracking/Total_Edge_DW_this_Q</report>
-                <showPercentage>false</showPercentage>
-                <showTotal>true</showTotal>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>0</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
                 <componentType>BarStacked</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -200,6 +163,48 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>TOTAL_PRICE</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>BucketField_91266824</groupingColumn>
+                <groupingColumn>Opportunity.Core_Approval_Status__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Segment Sbmt/Aprod DW this Y</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>KPI_Tracking/Segment_Sbmt_Aprod_DW_this_Y</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
             <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
@@ -214,9 +219,9 @@
                     <axisBinding>y</axisBinding>
                     <column>TOTAL_PRICE</column>
                 </chartSummary>
-                <componentType>Donut</componentType>
+                <componentType>Bar</componentType>
                 <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
+                <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
@@ -231,8 +236,8 @@
                 <header>NEX Comms sbmt/Aprod DW this Y</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>KPI_Tracking/NEX_Comms_sbmt_Aprod_DW_this_Y</report>
-                <showPercentage>true</showPercentage>
-                <showTotal>true</showTotal>
+                <showPercentage>false</showPercentage>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
@@ -301,7 +306,7 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>BucketField_91266824</groupingColumn>
+                <groupingColumn>CLOSE_DATE</groupingColumn>
                 <groupingColumn>Opportunity.Core_Approval_Status__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
@@ -310,12 +315,12 @@
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Segment Sbmt/Aprod DW this Y</header>
+                <header>NEX Comms Pending Pipeline</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>KPI_Tracking/Segment_Sbmt_Aprod_DW_this_Y</report>
+                <report>KPI_Tracking/NEX_Comms_Pending_Pipeline</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -469,21 +474,22 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
+                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
                 <groupingColumn>Opportunity.Core_Approval_Status__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
+                        <sortColumn>s!TOTAL_PRICE</sortColumn>
+                        <sortOrder>d</sortOrder>
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>NEX Comms Pending Pipeline</header>
+                <header>Sbmt/Aprod DW by OPP this Y</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>KPI_Tracking/NEX_Comms_Pending_Pipeline</report>
+                <report>KPI_Tracking/Sbmt_Aprod_DW_by_OPP_this_Y</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -547,45 +553,6 @@
                     <axisBinding>y</axisBinding>
                     <column>TOTAL_PRICE</column>
                 </chartSummary>
-                <componentType>Bar</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Pending Pipeline by Opp</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>KPI_Tracking/Pending_Pipeline_by_Opp</report>
-                <showPercentage>false</showPercentage>
-                <showPicturesOnCharts>false</showPicturesOnCharts>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>23</rowIndex>
-            <rowSpan>7</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
                 <componentType>BarStacked</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -619,6 +586,45 @@
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>3</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>TOTAL_PRICE</column>
+                </chartSummary>
+                <componentType>Bar</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>ACCOUNT_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!TOTAL_PRICE</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Sbmt/Aprod DW by Account this Y</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>KPI_Tracking/Sbmt_Aprod_DW_by_Account_this_Y</report>
+                <showPercentage>false</showPercentage>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>23</rowIndex>
+            <rowSpan>7</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
             <columnIndex>9</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -635,8 +641,8 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
-                <groupingColumn>Opportunity.Core_Approval_Status__c</groupingColumn>
+                <groupingColumn>ACCOUNT_NAME</groupingColumn>
+                <groupingColumn>CLOSE_DATE</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -648,9 +654,9 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Sbmt/Aprod DW by OPP this Y</header>
+                <header>Pending Pipeline by Account</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>KPI_Tracking/Sbmt_Aprod_DW_by_OPP_this_Y</report>
+                <report>KPI_Tracking/Pending_Pipeline_by_Account</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -671,30 +677,27 @@
                     <axisBinding>y</axisBinding>
                     <column>TOTAL_PRICE</column>
                 </chartSummary>
-                <componentType>BarStacked</componentType>
+                <componentType>Bar</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
-                <groupingColumn>Opportunity.Core_Approval_Status__c</groupingColumn>
+                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!TOTAL_PRICE</sortColumn>
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
                 </groupingSortProperties>
-                <header>DW &amp; Pipeline Data by Y</header>
+                <header>Pending Pipeline by Opp</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>KPI_Tracking/DW_Pipeline_Data_by_Y</report>
+                <report>KPI_Tracking/Pending_Pipeline_by_Opp</report>
                 <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
+                <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
@@ -762,22 +765,21 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>ACCOUNT_NAME</groupingColumn>
                 <groupingColumn>CLOSE_DATE</groupingColumn>
+                <groupingColumn>Opportunity.Core_Approval_Status__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Pending Pipeline by Account</header>
+                <header>Pending Pipeline By Year</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>KPI_Tracking/Pending_Pipeline_by_Account</report>
+                <report>KPI_Tracking/Pending_Pipeline_By_Year</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -810,20 +812,20 @@
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
+                        <sortOrder>d</sortOrder>
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Pending Pipeline By Year</header>
+                <header>DW &amp; Pipeline Data by Y</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>KPI_Tracking/Pending_Pipeline_By_Year</report>
+                <report>KPI_Tracking/DW_Pipeline_Data_by_Y</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
+                <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>30</rowIndex>

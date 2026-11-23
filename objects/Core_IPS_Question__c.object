@@ -663,6 +663,15 @@
         <language>en_US</language>
     </listViews>
     <listViews>
+        <fullName>IGT_Unassigned_Core_IPS_Question</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IGT – Unassigned</label>
+        <queue>IGT_Unassigned</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>MAG_Questions</fullName>
         <columns>NAME</columns>
         <columns>Core_IPS_Question__c</columns>

@@ -253,14 +253,12 @@ Modification Log :
 ***************************************************************************************************/
     public static void createAssetforIPSProduct(List<Core_IPS_Product__c> trgNew
                                                 , Map<id,Core_IPS_Product__c> trgOldmap){
-                                                    system.debug('trgNew'+trgNew);
-                                                    system.debug('trgOldmap'+trgOldmap);
                                                     set<id> validProductIds = new set<id>();
                                                     set<id> supportProductIds = new set<id>();
                                                     set<id> projectids = new set<id>();
                                                     List<Asset> assetList = new List<Asset>();
-						    List<Core_IPS_Project__c> projectdetails = new List<Core_IPS_Project__c>();
-						    Map<Id,Asset> assetRecords;
+                                                    List<Core_IPS_Project__c> projectdetails = new List<Core_IPS_Project__c>();
+                                                    Map<Id,Asset> assetRecords;
                                                     for(Core_IPS_Product__c product:trgNew){
                                                         if((trgOldmap.get(product.id).is_approved__c!=product.is_approved__c && product.is_approved__c) || (product.Core_IPS_IsAutoApprove__c && product.Core_IsSubmitted_Header__c)){
                                                             projectIds.add(product.Core_IPS_Project__c);
@@ -268,25 +266,17 @@ Modification Log :
                                                             SupportProductIds.add(product.Core_Supported_Product__c); 
                                                         }
                                                     }
-                                                    system.debug('SupportProductIds'+SupportProductIds);
-                                                    system.debug('validProductIds'+validProductIds);
-                                                    system.debug('projectIds'+projectIds);
                                                     if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){ //FLS Check already added - Aditya
                                                     projectdetails = [select id,(select id,Core_Supported_Product__c,Core_Supported_Product__r.Core_Product_Organization__c,Core_Supported_Product__r.Core_Supported_Product_Alias__c,Core_Supported_Product__r.Core_Product__c,Core_Supported_Product__r.Core_Supported_Product_Name__c from IPS_Products__r where Id In:validProductIds) from Core_IPS_Project__c where Id IN: projectIds];
                                                     }
-                                                    system.debug('projectdetails'+projectdetails);
                                                      if(Asset.SObjectType.getDescribe().isAccessible()){ //FLS check added - Aditya
                                                       assetRecords = new Map<id,Asset>([select id,Name,AccountID,Core_Supported_Product__c,Core_IPS_Project__c from Asset where Core_Supported_Product__c IN:SupportProductIds]);
                                                     set<string> assetIdentifier = new  set<string>();
-                                                    system.debug('assetRecords'+assetRecords);
                                                     for(Asset recAsset:AssetRecords.values()){
                                                         assetIdentifier.add(recAsset.Core_Supported_Product__c+'##'+recAsset.Core_IPS_Project__c);
                                                     }
-                                                    system.debug('assetIdentifier'+assetIdentifier);
                                                     for(Core_IPS_Project__c project :Projectdetails){
                                                         for(Core_IPS_Product__c product:project.IPS_Products__r){
-                                                            system.debug('project333'+project);
-                                                            system.debug('product445'+product);
                                                             if(!assetIdentifier.contains(product.Core_Supported_Product__c+'##'+project.id)){
                                                                 Asset recordAsset = new Asset();
                                                                 recordAsset = new Asset();   
@@ -323,16 +313,12 @@ Modification Log :
                                                                 if (Schema.sObjectType.Asset.fields.core_alias__c.isCreateable()) {
                                                                 recordAsset.core_alias__c=product.Core_Supported_Product__r.Core_Supported_Product_Alias__c;
                                                                 }
-                                                                system.debug('recordAsset'+recordAsset);
-                                                            	
                                                                 assetList.add(recordAsset);
-                                                                system.debug('assetList'+assetList);
                                                             }
                                                             }
                                                         }   
                                                     }
                                                     if(!assetList.isempty()){
-                                                         system.debug('assetList23'+assetList);
                                                         insert assetList;
                                                           
                                                     }

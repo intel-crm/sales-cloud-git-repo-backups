@@ -72,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Asus,CCF</value>
+            <value>HPE</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -91,6 +91,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>PartnerFundRequest$Core_MDF_Start_Date__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

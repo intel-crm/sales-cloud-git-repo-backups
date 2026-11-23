@@ -638,6 +638,7 @@ getCatergories(prodId) {
             })
             .catch(error => {
                 console.log('error in categories==>' + JSON.stringify(error));
+                console.log('error message==>', error?.body?.message);
             })
     }
 }
@@ -916,7 +917,8 @@ get sendcaseproducts() {
         }
         else{
             queryWhereClauseStr = '  WHERE Status!=\'Inactive\' AND core_ips_project__c = \'\'';
-        }           
+        }    
+        
         this.lookupQueryStringProduct = soqlQuery + queryWhereClauseStr + queryOrderByClauseStr;
         this.lookupTempQueryStringProduct = soqlQuery + queryWhereClauseStr ;
         this.isLookupQueryPresentProduct = true;
@@ -1030,17 +1032,20 @@ bugAssistSupportedProductArr;
 //transforming handleChangeProduct to aysnc as part of BugAssist by Deepaksai
 // handleChangeProduct(event) {
 async handleChangeProduct(event) {
+   // console.log('sabira'+JSON.stringify(event.detail.record));
     this.productid = event.detail.record;
     this.assetid = event.detail.recordId;
     this.product = this.assetid;
     this.caseassetId = event.detail.recordId;
+   // console.log('sabira-01 prodid'+JSON.stringify(this.productid?.Core_Product_Organization__r));
     if (this.productid == null || this.productid == undefined || this.productid == '') {
         this.selectedProductName = '';
         this.selectedProductName =undefined;
         this.product='';
         this.refreshSelectedProd();
     } else {
-
+        console.log('OUTPUT22 : ',this.productid.Core_Product_Organization__c );
+        console.log('OUTPUT33 : ',this.productid?.Core_Product_Organization__r?.Name);
         //START - Added by Deepaksai as part of BugAssist
         // Get Product Org Name from Apex using Core_Product_Organization__c ID
         let productOrgName = null;

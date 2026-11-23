@@ -5,14 +5,6 @@ public class Core_IPS_Project_Member_Controller_Test{
     static List<User> listOfUser = new List<User> ();
     static Group grp = new Group();
     static Group queue = new Group();
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
-
     static void getRecords (){
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
@@ -25,7 +17,7 @@ public class Core_IPS_Project_Member_Controller_Test{
         // Create Users
         listOfUser = TestUtilities.getListOfUser(1);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'));
     }
     
@@ -75,7 +67,7 @@ public class Core_IPS_Project_Member_Controller_Test{
         listOfExternalUsers.get(0).Email ='newusers123@intel.com';
         listOfExternalUsers.get(0).LastName='Testinguser123';
         listOfExternalUsers.get(0).UserName ='newusertest123@intel.com';
-        insertUsersWithValidationBypass(listOfExternalUsers);
+        insert listOfExternalUsers;
         System.assert(listOfExternalUsers[0].Id != null, 'Record not created');
         //end
         

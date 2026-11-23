@@ -42,7 +42,6 @@ public without sharing class PMP_CompanyImageResizeService implements PMP_RetryC
             contentAssetName = string.valueOf(partnerResources[0].Id) +'_'+ string.valueOf(partnerResources[0].PMP_Company_Id__c);   
         }
         HTTPResponse response;           
-
         //fetch base community URL
         String baseCommunityUrl = PMP_Utility.getBaseCommunityUrl();
         
@@ -95,7 +94,6 @@ public without sharing class PMP_CompanyImageResizeService implements PMP_RetryC
 
         //system.debug('###contentURL:->'+contentURL);
         //system.debug('###endPointURL:->'+endPointURL);
-
         Http h = new Http();//http instance variable to make http callout
 
         HTTPResponse response = new  HTTPResponse(); // variable to store http response
@@ -107,7 +105,6 @@ public without sharing class PMP_CompanyImageResizeService implements PMP_RetryC
     	//system.debug('response::'+response);
         return response;
     }
-   
      /**
     * @description make an http call out to PIM
     * @param imageContentAssetURL    - ContentDownloadUrl of content distribution object
@@ -130,7 +127,6 @@ public without sharing class PMP_CompanyImageResizeService implements PMP_RetryC
         String apiKey = PMP_Utility.getValue('Thumbnail_API_Key'); 
         request.setHeader('API_Key', apiKey);
         request.setTimeout(60000);
-
         Http h = new Http();//http instance variable to make http callout
 
         HTTPResponse response = new  HTTPResponse(); // variable to store http response

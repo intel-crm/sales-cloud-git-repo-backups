@@ -6821,11 +6821,6 @@ Pricing_Comp_Additional_OEM_Disc_Amt__c / Pricing_Comp_Total_without_discount_Am
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Worldwide</fullName>
-                    <default>false</default>
-                    <label>Worldwide</label>
-                </value>
-                <value>
                     <fullName>APJ</fullName>
                     <default>false</default>
                     <label>APJ</label>
@@ -6836,14 +6831,39 @@ Pricing_Comp_Additional_OEM_Disc_Amt__c / Pricing_Comp_Total_without_discount_Am
                     <label>PRC</label>
                 </value>
                 <value>
+                    <fullName>EMEA</fullName>
+                    <default>false</default>
+                    <label>EMEA</label>
+                </value>
+                <value>
+                    <fullName>Worldwide</fullName>
+                    <default>false</default>
+                    <label>Worldwide</label>
+                </value>
+                <value>
                     <fullName>ASMO</fullName>
                     <default>false</default>
                     <label>ASMO</label>
                 </value>
                 <value>
-                    <fullName>EMEA</fullName>
+                    <fullName>AMR_SR</fullName>
                     <default>false</default>
-                    <label>EMEA</label>
+                    <label>AMR_SR</label>
+                </value>
+                <value>
+                    <fullName>APJ_SR</fullName>
+                    <default>false</default>
+                    <label>APJ_SR</label>
+                </value>
+                <value>
+                    <fullName>PRC_SR</fullName>
+                    <default>false</default>
+                    <label>PRC_SR</label>
+                </value>
+                <value>
+                    <fullName>EMEA_SR</fullName>
+                    <default>false</default>
+                    <label>EMEA_SR</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -20079,7 +20099,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -20091,7 +20119,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -22275,7 +22311,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -22287,7 +22331,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -28943,7 +28995,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -28955,7 +29015,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -31123,7 +31191,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -31135,7 +31211,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -33303,7 +33387,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -33315,7 +33407,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -35479,7 +35579,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -35491,7 +35599,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37655,7 +37771,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37667,7 +37791,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39831,7 +39963,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -39843,7 +39983,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -42007,7 +42155,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -42019,7 +42175,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -44179,7 +44343,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -44191,7 +44363,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -46367,7 +46547,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -46379,7 +46567,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -48555,7 +48751,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -48567,7 +48771,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -50743,7 +50955,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <picklistValues>
             <picklist>Pricing_RegionQL_Nm__c</picklist>
             <values>
+                <fullName>AMR_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ_SR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -50755,7 +50975,15 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
                 <default>false</default>
             </values>
             <values>
+                <fullName>EMEA_SR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC_SR</fullName>
                 <default>false</default>
             </values>
             <values>

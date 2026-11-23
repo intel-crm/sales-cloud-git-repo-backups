@@ -72,7 +72,7 @@ Public class Core_IPS_PARCreation_Controller_Lex_Test { //System.assert()--> sta
         insert ProductList;
         
         prodOrg = TestUtilities.getSupportOrg();
-        prodOrg.OwnerId = [SELECT Id FROM User WHERE IsActive = true AND UserType = 'Standard' LIMIT 1].Id;
+        prodOrg.OwnerId = [SELECT Id FROM User LIMIT 1].Id;
         insert prodOrg;
         
         
@@ -120,7 +120,7 @@ Public class Core_IPS_PARCreation_Controller_Lex_Test { //System.assert()--> sta
         insert ProductList;
         
         prodOrg = TestUtilities.getSupportOrg();
-        prodOrg.OwnerId = [SELECT Id FROM User WHERE IsActive = true AND UserType = 'Standard' LIMIT 1].Id;
+        prodOrg.OwnerId = [SELECT Id FROM User LIMIT 1].Id;
         insert prodOrg;
         
         
@@ -150,7 +150,7 @@ Public class Core_IPS_PARCreation_Controller_Lex_Test { //System.assert()--> sta
         insert ProductList1;
         
         prodOrg1 = TestUtilities.getSupportOrg();
-        prodOrg1.OwnerId = [SELECT Id FROM User WHERE IsActive = true AND UserType = 'Standard' LIMIT 1].Id;
+        prodOrg1.OwnerId = [SELECT Id FROM User LIMIT 1].Id;
         insert prodOrg1;
         
         

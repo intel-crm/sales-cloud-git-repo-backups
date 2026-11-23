@@ -248,10 +248,12 @@ Modification Log :
 		} 
         if(!caseid.isEmpty()){
 List<Case> casel = [Select Id,Owner.Name,recordtype.DeveloperName from case where Id In:caseid];
+        System.debug('i am one hero');
      for(Case cc : casel){
 	 Case oldCase = Trigger.isUpdate? (Case) Trigger.oldMap.get(cc.id): null;
      string recordtypedevelopername = cc.recordtype.DeveloperName;
          if(recordtypedevelopername.contains('IPS_') &&(cc.OwnerId != oldCase?.OwnerId || Trigger.isInsert)){
+             System.debug('i am inside workflow to apex trigger class');
           Case c = new Case();
 			c.Id= cc.Id;
           c.Core_IPS_Assigned_Queue__c=cc.Owner.Name;

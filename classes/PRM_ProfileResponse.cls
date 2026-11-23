@@ -757,7 +757,7 @@ false - if profile response is getting created
       
       List<PRM_AccountBenefitAssociation__c> actABAtobeUpdated = new List<PRM_AccountBenefitAssociation__c>();  
       Set<Id> abaAccIdsUpdated = new Set<Id>();  
-			for(PRM_AccountBenefitAssociation__c aba : [select id,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.name,PRM_Status_Reason_Txt__c 
+      for(PRM_AccountBenefitAssociation__c aba : [select id,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.name,PRM_Status_Reason_Txt__c 
                                                         from PRM_AccountBenefitAssociation__c 
                                                         where (PRM_Account_Id__c in:activateBenefitAccIds or PRM_Account_Id__c in:inactivateBenefitAccIds) AND PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c in :System.Label.PRM_benefits_for_point_not_eligible_flag.split(';')
                                                        ]){
@@ -829,7 +829,8 @@ false - if profile response is getting created
                     allAccountIds.put(ipaMemAtt.PRM_Account_Id__c,ipaMemAtt);
                 }
                 if(allAccountIds!=null){
-                    for(PRM_AccountChannelMembership__c acmrecord : [SELECT PRM_Channel_Program_Level_Id__r.name,PRM_Partner_Role__c, PRM_Status_Nm__c, PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c 
+                    //ATHR Fix - TWC729-9556
+                    for(PRM_AccountChannelMembership__c acmrecord : [SELECT PRM_Account_Id__c/* PRM_Channel_Program_Level_Id__r.name,PRM_Partner_Role__c, PRM_Status_Nm__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c */
                                                                  from PRM_AccountChannelMembership__c 
                                                                  where PRM_Account_Id__c in:allAccountIds.keySet() and PRM_Status_Nm__c='Approved' and PRM_Account_Id__r.RecordType.DeveloperName ='Core_Partner_Account_Group'
                                                                 ]){
@@ -1155,7 +1156,7 @@ false - if profile response is getting created
         }
         // Get all the responses for the OPID 
         if(!locAccountIdsOnCag.IsEmpty()){
-            for(PRM_IPAMembership_Attributes__c locIpaMemAtt: [ SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c where PRM_Account_Id__c in :locAccountIdsOnCag ]){
+            for(PRM_IPAMembership_Attributes__c locIpaMemAtt: [ SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c,PRM_Activity_earning_excluded__c,PRM_Activity_earning_excluded_Start_Date__c,PRM_Client_Business_earning_excluded__c,PRM_ClientBusinessexcluded_StartDate__c,PRM_Ethernet_Business_earning_excluded__c,PRM_Ethernet_BusinessexcludedStartDt__c,PRM_Server_Business_earning_excluded__c,PRM_Server_Business_excluded_Start_Date__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c where PRM_Account_Id__c in :locAccountIdsOnCag ]){//varun
                 locAcctIpaMemAttMap.put(locIpaMemAtt.PRM_Account_Id__c,locIpaMemAtt);        
             }
         }         
@@ -1222,6 +1223,14 @@ false - if profile response is getting created
         ipaMemAttReceive.PRM_Branded_Point_earning_excl_Dt__c = ipaMemAttGet.PRM_Branded_Point_earning_excl_Dt__c;
         ipaMemAttReceive.PRM_ODM_whiteboxPointEarning_excl_Ind__c = ipaMemAttGet.PRM_ODM_whiteboxPointEarning_excl_Ind__c;
         ipaMemAttReceive.PRM_ODM_whiteboxPointEarning_excl_Dt__c = ipaMemAttGet.PRM_ODM_whiteboxPointEarning_excl_Dt__c;
+        ipaMemAttReceive.PRM_Activity_earning_excluded__c = ipaMemAttGet.PRM_Activity_earning_excluded__c; //varun
+        ipaMemAttReceive.PRM_Activity_earning_excluded_Start_Date__c = ipaMemAttGet.PRM_Activity_earning_excluded_Start_Date__c;
+        ipaMemAttReceive.PRM_Client_Business_earning_excluded__c = ipaMemAttGet.PRM_Client_Business_earning_excluded__c;
+        ipaMemAttReceive.PRM_ClientBusinessexcluded_StartDate__c = ipaMemAttGet.PRM_ClientBusinessexcluded_StartDate__c;
+        ipaMemAttReceive.PRM_Ethernet_Business_earning_excluded__c = ipaMemAttGet.PRM_Ethernet_Business_earning_excluded__c;
+        ipaMemAttReceive.PRM_Server_Business_earning_excluded__c = ipaMemAttGet.PRM_Server_Business_earning_excluded__c;
+        ipaMemAttReceive.PRM_Server_Business_excluded_Start_Date__c = ipaMemAttGet.PRM_Server_Business_excluded_Start_Date__c;
+        ipaMemAttReceive.PRM_Ethernet_BusinessexcludedStartDt__c = ipaMemAttGet.PRM_Ethernet_BusinessexcludedStartDt__c;
         ipaMemAttReceive.PRM_Registration_Source_Txt__c = ipaMemAttGet.PRM_Registration_Source_Txt__c;
         ipaMemAttReceive.PRM_Points_Opt_in_Ind__c = ipaMemAttGet.PRM_Points_Opt_in_Ind__c;
         ipaMemAttReceive.PRM_Points_Opt_in_Dt__c = ipaMemAttGet.PRM_Points_Opt_in_Dt__c;

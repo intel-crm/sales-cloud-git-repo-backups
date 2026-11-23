@@ -2,8 +2,8 @@
 Class Name        	:    Core_MDF_AGS_AuthProvider
 Test Class Name 	:    Core_MDF_AGS_CalloutQueueable_Test
 Description         :    Auth provider plugin used by AGS integrations to launch the OAuth flow,
-                         exchange the authorization code for tokens, and supply token refresh/user
-                         info behavior expected by Salesforce Auth.Provider extensions.
+                          exchange the authorization code for tokens, and supply token refresh/user
+                          info behavior expected by Salesforce Auth.Provider extensions.
 Created By          :    Ramapriya
 ******************************************************************************************************/
 global class Core_MDF_AGS_AuthProvider extends Auth.AuthProviderPluginClass {
@@ -80,10 +80,10 @@ global class Core_MDF_AGS_AuthProvider extends Auth.AuthProviderPluginClass {
     }
      /******************************************************************************************************
     Method Name:        refresh   
-    Description:        Refreshes the AGS access token using the configured token endpoint.
+    Description:        
     Added By:           Ramapriya
     *******************************************************************************************************/
-    
+    /** Refreshes the AGS access token using the configured token endpoint. */
     global override Auth.OAuthRefreshResult refresh(Map<String,String> authProviderConfiguration, String refreshToken) { 
         key = authProviderConfiguration.get('Consumer_Key__c');
         secret = authProviderConfiguration.get('Consumer_Secret__c');

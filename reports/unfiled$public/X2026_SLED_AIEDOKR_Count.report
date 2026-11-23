@@ -31,9 +31,23 @@
 o	Deploy 250+ Schools in 1H ’26
 o	Deploy 65+ AI EmpowerED Labs in ’26 with Insight/Lenovo</description>
     <filter>
-        <booleanFilter>1</booleanFilter>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
         <criteriaItems>
             <column>SUBJECT</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>#AIEDOKR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>#AIEDOKR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -52,7 +66,7 @@ o	Deploy 65+ AI EmpowerED Labs in ’26 with Insight/Lenovo</description>
         <field>DUE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2026 SLED #AIEDOKR</name>
+    <name>2026 SLED #AIEDOKR Count</name>
     <params>
         <name>closed</name>
         <value>all</value>

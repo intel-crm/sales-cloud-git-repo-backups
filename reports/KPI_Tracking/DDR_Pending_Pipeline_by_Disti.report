@@ -187,7 +187,6 @@
     </columns>
     <description>2025 MSQ create</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND (8 OR 9)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -243,13 +242,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>charlie.hu@intel.com,yixin.fu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner_Manager_Email__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com,charlie.hu@intel.com,yixin.fu@intel.com</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

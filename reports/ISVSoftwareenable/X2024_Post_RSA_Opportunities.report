@@ -42,12 +42,6 @@
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <columns>
-        <field>Opportunity.CventEvents__EventTitle__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.CventEvents__Event__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Lead_Conversion_Point__c</field>
     </columns>
     <columns>

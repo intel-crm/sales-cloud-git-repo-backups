@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>http://localhost:7171/OauthRedirect</callbackUrl>
+    <certificate>MIID8TCCAtmgAwIBAgIUWL66x2jLi9zBEycIU8my+HUi1VQwDQYJKoZIhvcNAQEL
+BQAwgaAxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTETMBEGA1UEBwwKQ2FsaWZv
+cm5pYTETMBEGA1UECgwKSW50ZWwgQ29ycDEdMBsGA1UECwwUU2FsZXMgJiBNYXJr
+ZXRpbmcgSVQxDjAMBgNVBAMMBUludGVsMSswKQYJKoZIhvcNAQkBFhxyYW1lc2h4
+Lm5haWR1LmFsbHVAaW50ZWwuY29tMB4XDTI2MDgyNzA1NTQwMloXDTI3MDgyNzA1
+NTQwMlowgaAxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTETMBEGA1UEBwwKQ2Fs
+aWZvcm5pYTETMBEGA1UECgwKSW50ZWwgQ29ycDEdMBsGA1UECwwUU2FsZXMgJiBN
+YXJrZXRpbmcgSVQxDjAMBgNVBAMMBUludGVsMSswKQYJKoZIhvcNAQkBFhxyYW1l
+c2h4Lm5haWR1LmFsbHVAaW50ZWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
+MIIBCgKCAQEAyRF70xxoqcvzeNRud2CDf1YjZS7LCHlREUH7+PoDrpKokJ2YsITv
+DCiPRHmZ7NtKMj6Moz1Je81nF2z1h101pPthFOcS2WQ63A8N8vC9neAwzrx+whoN
+SS2dlvO7y3RWcAK8l6AIN41ziF36+PFo94itBX9qE+CFbAVsgnae2nghbBv0zwuV
+7QVXthSz3wh0F6s2Kb/s0u/mMPXWG/KzqZGzz1momM7mJAuzGesuRVoGNcypMqd5
+x9vzEf7TG5tDG8MzvGVdSXRER49DnQAPsrJfHHIAps3OnO1NJIVhKEBx6perkGza
+C7jLL5qdNxo8cZlDVfwUJqbKU2psmAxn3QIDAQABoyEwHzAdBgNVHQ4EFgQUm0pA
+egdd/sv/T+elUx2e84rEFX8wDQYJKoZIhvcNAQELBQADggEBACLVS0Ui1s7F0KQU
+zNijhzmvpTF8SusdCVu+u0epuOsgRhq95BBWwsLZEkluo07ikBGfJRaDvHT3AsYl
+a/6/R6tP0V1YxG+BAZ7a5lZAXImnUqkwaavEwwKuaP/By9MnEoAixvU0wJw9o7qz
+fEsBSdFiwcqA1RgIC3R2Qs3lFL9eNf0sZKKNMfB+wG7tTZ4w7hUZ8tN2sdijBqv4
+mk/cvYYY+YUWoIk6MBpOAkTY+QWcsXeeJBFNnDIVkd6SskMr6uA0+Nz57kHnD0NT
+TWUZcWl2y3LP/5jszy2yYKBcgPRTLhQMbyPOSk5ZdzMBggWmRu3zPKdKvt3+p4jE
+q8soToA=</certificate>
+    <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBbsMHvJOohgad.4HX.U4SfF_PERSUxyDUf1dr3mpV_5M6u3ZoK2R5RqEVPme_</consumerKey>
+    <externalClientApplication>keren_test_app</externalClientApplication>
+    <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>keren_test_app_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

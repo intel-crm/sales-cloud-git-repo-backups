@@ -105,7 +105,8 @@ private static Map<Id, PRM_AccountLegalAgreemntAssociation__c> createLegalAgreem
 }
 
 
- public static void updateProfileResponse(List<PRM_AccountLegalAgreemntAssociation__c> intelAcc)
+    //ATHR Fix - TWC729-9556
+/* public static void updateProfileResponse(List<PRM_AccountLegalAgreemntAssociation__c> intelAcc)
  {
      Set<id> setAccid = new Set<id>();
      Map<Id,String> questionIdCodeMap = new Map<Id,String>();
@@ -125,7 +126,7 @@ private static Map<Id, PRM_AccountLegalAgreemntAssociation__c> createLegalAgreem
      PRM_ProfileResponse.pointsCalculation(profileResponse,null); 
      
 
- }
+ }*/
  
     public static void updateProfileResponse_IPAR(List<PRM_AccountLegalAgreemntAssociation__c> intelAcc)
  {
@@ -133,12 +134,12 @@ private static Map<Id, PRM_AccountLegalAgreemntAssociation__c> createLegalAgreem
      for(PRM_AccountLegalAgreemntAssociation__c laRec:(List<PRM_AccountLegalAgreemntAssociation__c>)intelAcc){
         setaccId.add(laRec.PRM_Account_Id__c);
      } 
-     
+     System.debug('@NJ setaccid'+setAccid);
      List<PRM_IPAMembership_Attributes__c> profileResponse = new List<PRM_IPAMembership_Attributes__c>(); 
      profileResponse = [Select id,PRM_Account_Id__c,PRM_Points_Opt_in_Ind__c,PRM_Points_Not_Eligible_Ind__c,PRM_Points_Opt_in_Dt__c,PRM_Points_Not_Eligible_Dt__c,PRM_Point_Status_Txt__c,PRM_Point_Status_Dt__c,LastModifiedDate,LastModifiedBy.Name from PRM_IPAMembership_Attributes__c Where PRM_Account_Id__c in :setaccId order by LastModifiedDate ASC];
-     
+     System.debug('@NJ profileResponse'+profileResponse);
      List<PRM_IPAMembership_Attributes__c> profRespALAList=PRM_ProfileResponseOptIn.pointStatusCalc_IPAR(profileResponse,null);
-     
+     System.debug('@NJ profRespALAList'+profRespALAList);
      if(!profRespALAList.isEmpty()){
         Database.update(profRespALAList,false);    
             

@@ -17,12 +17,11 @@
                 <componentType>Gauge</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Millions</displayUnits>
-                <gaugeMax>3.0E8</gaugeMax>
+                <gaugeMax>6.0E8</gaugeMax>
                 <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>2026 Revenue Assist $ (Goal $300M)</header>
-                <indicatorBreakpoint1>1.0E8</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.0E8</indicatorBreakpoint2>
+                <indicatorBreakpoint1>2.0E8</indicatorBreakpoint1>
+                <indicatorBreakpoint2>4.0E8</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
@@ -31,6 +30,7 @@
                 <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
+                <title>2025 Revenue Assist $ Goal (Goal $450M)</title>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
@@ -109,20 +109,20 @@
                 <componentType>Gauge</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <gaugeMax>3.0E8</gaugeMax>
+                <gaugeMax>6.0E8</gaugeMax>
                 <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>2026 BV Pipeline to convert (for rest of year)</header>
-                <indicatorBreakpoint1>1.0E8</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.0E8</indicatorBreakpoint2>
+                <indicatorBreakpoint1>2.0E8</indicatorBreakpoint1>
+                <indicatorBreakpoint2>4.0E8</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>IT_Intel/IT_Intel_BV_Pipeline_to_convert</report>
+                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <report>IT_Intel/IT_Intel_Pipeline_YTD_Happy_Scenario</report>
                 <showPercentage>false</showPercentage>
                 <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
+                <title>2025 Pipeline $ (including Won$)</title>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
@@ -186,28 +186,33 @@
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
                     <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
                     <column>FK_OPP_AMOUNT</column>
                 </chartSummary>
-                <componentType>Gauge</componentType>
-                <decimalPrecision>-1</decimalPrecision>
+                <componentType>Column</componentType>
                 <displayUnits>Auto</displayUnits>
-                <gaugeMax>6.0E8</gaugeMax>
-                <gaugeMin>0.0</gaugeMin>
-                <groupingSortProperties/>
-                <header>2026 potential Total BV $ (inc Won$)</header>
-                <indicatorBreakpoint1>2.0E8</indicatorBreakpoint1>
-                <indicatorBreakpoint2>4.0E8</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>Core_Sales_Support_Request__c.Core_IT_Intel_Geo__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <legendPosition>Bottom</legendPosition>
                 <report>IT_Intel/IT_Intel_Pipeline_YTD_Happy_Scenario</report>
                 <showPercentage>false</showPercentage>
-                <showRange>false</showRange>
-                <showTotal>true</showTotal>
-                <showValues>false</showValues>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>YTD BV Pipeline by Region</title>
+                <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>16</rowIndex>
             <rowSpan>8</rowSpan>
@@ -296,34 +301,23 @@
             <colSpan>4</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>FK_OPP_AMOUNT</column>
-                </chartSummary>
-                <componentType>Column</componentType>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Core_Sales_Support_Request__c.Core_IT_Intel_Geo__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <legendPosition>Bottom</legendPosition>
-                <report>IT_Intel/IT_Intel_Pipeline_YTD_Happy_Scenario</report>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Gauge</componentType>
+                <displayUnits>Millions</displayUnits>
+                <gaugeMax>1.0E9</gaugeMax>
+                <gaugeMin>0.0</gaugeMin>
+                <groupingSortProperties/>
+                <indicatorBreakpoint1>3.33E8</indicatorBreakpoint1>
+                <indicatorBreakpoint2>6.66E8</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <report>IT_Intel/IT_Intel_BV_Next_Year_onward_Pipeline</report>
                 <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <title>YTD BV Pipeline by Region</title>
-                <useReportChart>false</useReportChart>
+                <showRange>false</showRange>
+                <showTotal>true</showTotal>
+                <showValues>false</showValues>
+                <title>Next Year onward BV Pipeline</title>
             </dashboardComponent>
             <rowIndex>24</rowIndex>
             <rowSpan>8</rowSpan>
@@ -406,21 +400,21 @@
                 </chartSummary>
                 <componentType>Gauge</componentType>
                 <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Millions</displayUnits>
-                <gaugeMax>1.0E9</gaugeMax>
+                <displayUnits>Auto</displayUnits>
+                <gaugeMax>3.0E9</gaugeMax>
                 <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <indicatorBreakpoint1>3.33E8</indicatorBreakpoint1>
-                <indicatorBreakpoint2>6.66E8</indicatorBreakpoint2>
+                <indicatorBreakpoint1>1.0E9</indicatorBreakpoint1>
+                <indicatorBreakpoint2>2.0E9</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
-                <report>IT_Intel/IT_Intel_BV_Next_Year_onward_Pipeline</report>
+                <report>IT_Intel/IT_Intel_Future_Years_Pipeline</report>
                 <showPercentage>false</showPercentage>
                 <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
-                <title>Next Year/2027 onward BV Pipeline</title>
+                <title>Total BV Pipeline (inc. this year)</title>
             </dashboardComponent>
             <rowIndex>32</rowIndex>
             <rowSpan>8</rowSpan>
@@ -519,7 +513,7 @@
     <owner>10530471@intel.com.crm</owner>
     <runningUser>10530471@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>2026 IT@Intel KPI Dashboard (POR)</title>
+    <title>2025 IT@Intel KPI Dashboard (POR)</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

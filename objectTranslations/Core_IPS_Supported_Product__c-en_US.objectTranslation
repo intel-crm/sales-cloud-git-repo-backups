@@ -102,10 +102,6 @@ This field value cannot be changed once checked as Public Product. --></help>
     <fields>
         <help><!-- Reference to the Master Data product. --></help>
         <label><!-- Product Name --></label>
-        <lookupFilter>
-            <errorMessage><!-- Product Master Data record is not IPS Visible. Exit this screen and request Data Ops to set Product to IPS Visible. --></errorMessage>
-            <informationalMessage><!-- Only &quot;IPS Visible&quot; products are shown for adding to IPS Support Orgs. --></informationalMessage>
-        </lookupFilter>
         <name>Core_Product__c</name>
         <relationshipLabel><!-- Supported Products --></relationshipLabel>
     </fields>

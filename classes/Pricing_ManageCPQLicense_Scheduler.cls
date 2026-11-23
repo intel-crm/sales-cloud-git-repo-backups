@@ -20,5 +20,6 @@ public without sharing class Pricing_ManageCPQLicense_Scheduler implements Sched
 
         Flow.Interview decisionTableFlow = Flow.Interview.createInterview('Pricing_Decision_Table_Refresh_Flow_From_Batch',new Map<String, Object>());
         decisionTableFlow.start();
+        
     }
 }

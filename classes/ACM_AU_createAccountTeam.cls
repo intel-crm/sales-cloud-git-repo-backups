@@ -21,7 +21,7 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
     
     private void createAccountTeams(UCD_ACM_UnitOfWork unitOfWork, Map<Id, Account> oldAccounts, Map<Id, Account> newAccounts){
 
-        Map<Id, Account> mapOfIdwithAccountTeams = new Map<Id, Account>([select id,OwnerId, (Select id, TeamMemberRole, UserId, Core_Account_Category__c	from AccountTeamMembers where TeamMemberRole = 'Account Owner') from Account where ID IN :newAccounts.keySet()]);
+        Map<Id, Account> mapOfIdwithAccountTeams = new Map<Id, Account>([select id,OwnerId, (Select id, TeamMemberRole, UserId, Core_Account_Category__c    from AccountTeamMembers where TeamMemberRole = 'Account Owner') from Account where ID IN :newAccounts.keySet()]);
 
         Map<Id, List<AccountTeamMember>> mapAccountIdByAccountTeamMember = new Map<Id, List<AccountTeamMember>>();
         List<String> accountIdsForAccountTeam = new List<String>();
@@ -52,7 +52,6 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
 
                     lstAccountTeamMember = [Select id, AccountId, UserId,Core_Account_Category__c,TeamMemberRole from AccountTeamMember where AccountId IN : accountIdsForAccountTeam  Order By CreatedDate ];
             
-
             for(AccountTeamMember accountTeamRec: lstAccountTeamMember){
                 if(mapAccountIdByAccountTeamMember.get(accountTeamRec.AccountId) != null){
                     mapAccountIdByAccountTeamMember.get(accountTeamRec.AccountId).add(accountTeamRec);

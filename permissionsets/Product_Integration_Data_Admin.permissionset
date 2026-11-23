@@ -589,6 +589,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Product_Inbound_Staging__c.Core_IsActive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Product_Inbound_Staging__c.Core_Unique_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Product_Inbound_Staging__c.Deactivation_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>

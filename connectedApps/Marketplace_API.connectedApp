@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>dinesh.maruti.mengade@intel.com</contactEmail>
+    <contactEmail>vivek.krishnamurthy@intel.com</contactEmail>
     <label>Marketplace API</label>
     <oauthConfig>
         <callbackUrl>https://intel.lightning.force.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6v0lpllEpk2iipPUt.gzYHQWBWiJmFUxI8WQerhlun_arZayBUj0VejsBaOs</consumerKey>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxB4y7LTzCABaEPMlvRhb4iTNA3ndCwWsRpF5afXo5RIrh2kAIf62ruYyUHtq</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
@@ -19,7 +19,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Basic</scopes>

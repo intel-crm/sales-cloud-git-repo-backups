@@ -18,7 +18,7 @@ public class Core_Contact_Ent_BT_Handler_Test {
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                           Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'exception',
                                           BillingStreet='1234 CBT testAccountSetup', BillingCity='CBT testCity1', BillingState='OR',
-                                          BillingCountry='USA', BillingPostalCode='2395',Core_CNDA_Number__c = '126575',Core_IPS_Active__c = true);
+                                          BillingCountry='USA', BillingPostalCode='2395',Core_CNDA_Number__c = '126575'/*,Core_IPS_Active__c = true*/);
         insert testAccount;
         Contact testContact = new Contact(FirstName='testFirstName123CBT',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastCBTName', Email='test1234@testingCBT.com.testsetup',
                                           AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='USA',

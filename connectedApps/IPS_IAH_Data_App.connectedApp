@@ -3,8 +3,8 @@
     <contactEmail>techsurfers@intel.com</contactEmail>
     <label>IPS IAH Data App</label>
     <oauthConfig>
-        <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6vdV2zYFAGv6R_lJbty.Y0uRY.fBjrhvf5.khrxdB_.j3sybag.INE0RgvK0</consumerKey>
+        <callbackUrl>https://test.salesforce.com/services/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxMTpxBgO2ochFBELmh54msMJoqxJrnto99mW0.mBONTOUwoXhJ_WQBikBeYk</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -22,7 +22,7 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>iah.ips@intel.com.crm</oauthClientCredentialUser>
+        <oauthClientCredentialUser>iah.ips@intel.com.crm.crmqa9</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>Full</scopes>
     </oauthConfig>

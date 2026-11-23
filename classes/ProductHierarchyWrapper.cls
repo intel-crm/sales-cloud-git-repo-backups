@@ -30,7 +30,9 @@ public class ProductHierarchyWrapper {
         public String l5name;
         public String l5_name;
         public Integer l5_is_active;
+        //Ganesh Start
 		public String L5DeprecationDate;
+		//Ganesh End
         
         public Map<String, String> attributes;
         

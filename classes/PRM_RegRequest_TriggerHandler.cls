@@ -153,7 +153,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 /*if(isActive('PSG_Approval_Check')){
                     PRM_PSG_RegistrationReqUtility.checkEVAndContactExistance((List<PRM_Registration_Request__c>)Trigger.new, null);         
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }*/
                 //LA check needs to be implemented for admin reg req at time of insertion (for AccountCreateReq--> in before update)
                 if(isActive('Legal_Agreement_Check')){
                     //String recordTypeId == Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId()
@@ -174,7 +174,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 /*if(isActive('Update_Submitted_Date')){
                     PRM_RegistrationRequestUtility.updateSubmittedDate((List<PRM_Registration_Request__c>)Trigger.new);
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }*/
                 if(isActive('Auto_Approve_User_Registration') && PRM_RegistrationRequestUtility.isautoApproveEndUserRegistrationFirstRun==false){            
                     PRM_RegistrationRequestUtility.isautoApproveEndUserRegistrationFirstRun=true;
                     PRM_RegistrationRequestUtility.autoApproveEndUserRegistration((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap, isSysAccMap, mapAccIdToListContact , mapAccount, acmList);
@@ -216,6 +216,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
             }
             else {
                 //List<PRM_Registration_Request__c> listREgReqForIQR= new List<PRM_Registration_Request__c>();
+				Set<id> setOpid = new Set<Id>();
                 Set<id> accountIds = new Set<Id>();
                 Map<String, String> defaultPartnerRoleBizType = new Map<String, String>();
                 Map<Id, List<PRM_Account_Contact_Relationship__c>> mapAccountIdTOListACR =  new Map<Id, List<PRM_Account_Contact_Relationship__c>>();
@@ -317,32 +318,54 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                         Core_IPA_Partner_Role__c,
                         Name,
                         Core_Intel_Partner_Alliance_PartnerGroup__c,
-                        Core_Deactivated__c
+                        Core_Deactivated__c,
+                        Core_IPA_One_Partner_Id__c
                         FROM Account 
                         WHERE id IN: setExistingAcc
                     ]);
                 }
-                
-                if(!setExistingAcc.isEmpty()){
+                Map<Id, Id> mapAccIdToOpid = new Map<Id, Id>();
+                for(Account acc : mapAccount.values()){
+                    if(acc.Core_IPA_One_Partner_Id__c != null){
+                        mapAccIdToOpid.put(acc.Id, acc.Core_IPA_One_Partner_Id__c);
+                        setOpid.add(acc.Core_IPA_One_Partner_Id__c);
+                    }
+                }
+                Set<Id> setOpidWithPA = new Set<Id>();
+                if(!setExistingAcc.isEmpty() || !setOpid.isEmpty() ){
                     for(PRM_Account_Contact_Relationship__c acrRec : [
                         SELECT 
                         Id,
                         PRM_Account_Id__c,
+						PRM_Account_Id__r.Core_IPA_One_Partner_Id__c,
                         PRM_InActive_Ind__c,
                         PRM_Partner_Role__c,
                         PRM_Status_Nm__c,
                         PRM_Relationship_Id__r.Name
                         FROM PRM_Account_Contact_Relationship__c
-                        WHERE PRM_Account_Id__c IN: setExistingAcc]){
-                            if(mapAccountIdTOListACR.containsKey(acrRec.PRM_Account_Id__c)){
+                        WHERE PRM_Account_Id__c IN: setExistingAcc or
+						(PRM_Account_Id__r.Core_IPA_One_Partner_Id__c IN: setOpid 
+						and PRM_InActive_Ind__c=false and PRM_Status_Nm__c=: System.Label.PRM_ACR_Status
+						and (PRM_Relationship_Id__r.Name=: System.Label.PRM_Partner_Admin
+                             or PRM_Relationship_Id__r.Name=: System.Label.PRM_Partner_Admin_Delegate))]){
+							if(setExistingAcc.contains(acrRec.PRM_Account_Id__c)){
+								if(mapAccountIdTOListACR.containsKey(acrRec.PRM_Account_Id__c)){
                                 mapAccountIdTOListACR.get(acrRec.PRM_Account_Id__c).add(acrRec);
-                            }else{
-                                mapAccountIdTOListACR.put(acrRec.PRM_Account_Id__c, new List<PRM_Account_Contact_Relationship__c>{acrRec});
-                            }
+								}else{
+									mapAccountIdTOListACR.put(acrRec.PRM_Account_Id__c, new List<PRM_Account_Contact_Relationship__c>{acrRec});
+								}
+							}
+                            // Not else-if: a PA on the existing account itself must also count for its OPID
+							if(acrRec.PRM_InActive_Ind__c==false 
+                            && acrRec.PRM_Status_Nm__c==System.Label.PRM_ACR_Status 
+							&& setOpid.contains(acrRec.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c) 
+							&& (acrRec.PRM_Relationship_Id__r.Name == System.Label.PRM_Partner_Admin
+                            || acrRec.PRM_Relationship_Id__r.Name == System.Label.PRM_Partner_Admin_Delegate)){
+								setOpidWithPA.add(acrRec.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c);
+							}
                         }
                 }
-                
-                
+                system.debug(setOpidWithPA+' setOpidWithPA');
                 if(!accountIds.isEmpty() || !setExistingAcc.isEmpty()) {
                     for(PRM_AccountChannelMembership__c acm :[
                         SELECT 
@@ -398,7 +421,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 /*if(isActive('PSG_Approval_Check')){
                     PRM_PSG_RegistrationReqUtility.checkEVAndContactExistance((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap);
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }*/
                 
                 
                 if(isActive('Legal_Agreement_Check')){
@@ -407,7 +430,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                  
                 
                 if(isActive('Partner_Relationship') && IPAfirstRun){
-                 PRM_RegistrationRequestUtility.partnerrelationship((List<PRM_Registration_Request__c>)Trigger.new, mapAccountIdTOListACR, contMap, (Map<Id,PRM_Registration_Request__c>)Trigger.oldMap,mapOfAccIdPartnerRole);
+                PRM_RegistrationRequestUtility.partnerrelationship((List<PRM_Registration_Request__c>)Trigger.new, mapAccountIdTOListACR, contMap, (Map<Id,PRM_Registration_Request__c>)Trigger.oldMap,mapOfAccIdPartnerRole,setOpidWithPA,mapAccIdToOpid);
                     IPAfirstRun = false;
                 }   
                 //Rahul added for US626612/US638396
@@ -473,7 +496,9 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
             }
             else {
                 //Moved code from after update to after insert as part of CidaaS requirments - atb
-                Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
+                //ATHR Fix - TWC729-9556
+                //Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
+                Id accCreateRequestId = PRM_Registration_Request__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();              
                 List<PRM_Registration_Request__c> listREgReqForIQR= new List<PRM_Registration_Request__c>();
                 for (PRM_Registration_Request__c regReq : (List<PRM_Registration_Request__c>)Trigger.new) {
                     if(regReq.PRM_Channel_Program_Level_txt__c == 'Intel Quote Request'

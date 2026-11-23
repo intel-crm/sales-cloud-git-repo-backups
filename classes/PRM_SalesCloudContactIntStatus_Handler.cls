@@ -252,7 +252,7 @@ System.debug('@RRT-------pendingContactIds'+pendingContactIds);
             Core_MergeContactHandler.isRecurssive = true;
 
             for(Contact ContactRec : contactsToBeUpdated){
-	    	System.debug('@RRT-------PRM_deletedContactIds'+Core_MergeContactHandler.PRM_deletedContactIds);
+        System.debug('@RRT-------PRM_deletedContactIds'+Core_MergeContactHandler.PRM_deletedContactIds);
                 if(Core_MergeContactHandler.PRM_deletedContactIds != null){
                     if(!Core_MergeContactHandler.PRM_deletedContactIds.contains(ContactRec.Id)){
                         contactsToUpdateNew.add(ContactRec);

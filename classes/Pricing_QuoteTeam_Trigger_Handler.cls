@@ -426,7 +426,11 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
     }
 
     public static void getUserPSMap(Set<Id> userIds,Map<Id,List<String>> userPermSetAssignmentMap){
-        for(PermissionSetAssignment psa :[SELECT Id, PermissionSetId, PermissionSet.Name, PermissionSet.ProfileId, PermissionSet.Profile.Name, AssigneeId, Assignee.Name FROM PermissionSetAssignment WHERE AssigneeId IN :userIds]){
+        for(PermissionSetAssignment psa :[SELECT Id, PermissionSetId, PermissionSet.Name, PermissionSet.ProfileId,
+                                          PermissionSet.Profile.Name, AssigneeId, Assignee.Name FROM PermissionSetAssignment WHERE AssigneeId IN :userIds]){
+            System.debug('Entered getUserPSMap Method: '+psa);
+            System.debug(LoggingLevel.INFO, '>>> [PROFILE INFO] User: ' + psa.Assignee.Name + ' (' + psa.AssigneeId + ') | Profile Name: ' + psa.PermissionSet.Profile.Name + ' | Profile Id: ' + psa.PermissionSet.ProfileId);
+            System.debug(LoggingLevel.INFO, '>>> [PERM SET INFO] User: ' + psa.Assignee.Name + ' | PermSet Name: ' + psa.PermissionSet.Name + ' | PermSet Id: ' + psa.PermissionSetId);
             if(userPermSetAssignmentMap.containsKey(psa.AssigneeId)){
                 userPermSetAssignmentMap.get(psa.AssigneeId).add(psa.PermissionSet.Name);
             }else{

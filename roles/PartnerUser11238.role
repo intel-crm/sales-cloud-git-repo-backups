@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>聊城市诺禾信息技术有限公司 Partner User</description>
+    <description>聊城国力 Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>聊城市诺禾信息技术有限公司 Partner User</name>
+    <name>聊城国力 Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11412417_Peng_Ji</parentRole>
+    <parentRole>Admin</parentRole>
 </Role>

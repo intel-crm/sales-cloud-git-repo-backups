@@ -7,7 +7,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Core_CoveredAccount_Notification</template>
     </alerts>
@@ -18,7 +18,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Core_Email_notification_for_lead_ownership_change</template>
     </alerts>
@@ -29,7 +29,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Partner_Lead_Management/Core_Send_Email_To_PSG_Leads</template>
     </alerts>
@@ -50,7 +50,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/MAQL_SLA_EXPIRED</template>
     </alerts>
@@ -61,7 +61,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/SAL_SLA_Expired</template>
     </alerts>
@@ -72,7 +72,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/TAL_SLA_Expired</template>
     </alerts>
@@ -83,7 +83,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/TQL_SLA_Expired</template>
     </alerts>

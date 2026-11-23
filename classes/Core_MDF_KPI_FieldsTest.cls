@@ -53,6 +53,7 @@ public with sharing class Core_MDF_KPI_FieldsTest {
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' limit 1];
             PermissionSet aacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
+
             
             Contact con  = Core_MDF_CCP_TestDataUtility.createContact(ipaIntelAcc.Id, true);
             User usrBudgetAdmin = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -85,7 +86,7 @@ public with sharing class Core_MDF_KPI_FieldsTest {
             ipaCampaign.Core_MDF_Activity_Category_Type__c =null;
             ipaCampaign.Core_MDF_Program__c = 'Intel Partner Alliance';
             ipaCampaign.Core_MDF_Reimbursement_Rate__c='100%';
-            ipaCampaign.Core_MDF_Technology__c = '';
+            ipaCampaign.Core_MDF_Technology__c = 'Apollo Lake';
             insert ipaCampaign;
             
             test.startTest();
@@ -97,6 +98,7 @@ public with sharing class Core_MDF_KPI_FieldsTest {
             bank.Core_MDF_Bank_Status__c = 'Active'; 
             Database.update(bank);
             //creating ABM for bank1
+
             test.stopTest();
         }
         

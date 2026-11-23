@@ -967,8 +967,10 @@ update acrEmployeeFinalList;
         }
         // get the registration record for this contacts
         if(updatedContactsMap!=null && !updatedContactsMap.isEmpty()){
-            for(PRM_Registration_Request__c regrec : [select id, PRM_Email_ID__c, RecordType.DeveloperName from PRM_Registration_Request__c where PRM_Channel_Program_Level_txt__c = 'Intel Partner Alliance' and PRM_Email_ID__c in :updatedContactsMap.keySet() order by createddate desc]){
-                if(!contactIdRegReqMp.containsKey(regrec.PRM_Email_ID__c.toLowerCase())){
+            //for(PRM_Registration_Request__c regrec : [select id, PRM_Email_ID__c, RecordType.DeveloperName from PRM_Registration_Request__c where PRM_Channel_Program_Level_txt__c = 'Intel Partner Alliance' and PRM_Email_ID__c in :updatedContactsMap.keySet() order by createddate desc]){
+            //Ganesh Changes
+            for(PRM_Registration_Request__c regrec : [select id, PRM_Email_ID__c from PRM_Registration_Request__c where PRM_Channel_Program_Level_txt__c = 'Intel Partner Alliance' and PRM_Email_ID__c in :updatedContactsMap.keySet() order by createddate desc]){           
+				if(!contactIdRegReqMp.containsKey(regrec.PRM_Email_ID__c.toLowerCase())){
                     contactIdRegReqMp.put(regrec.PRM_Email_ID__c.toLowerCase(),regrec.Id);
                 }
             }

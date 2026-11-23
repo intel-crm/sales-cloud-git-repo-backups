@@ -144,7 +144,7 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
   public override void beforeDelete() {
         if(isActive('ABA_Delete_PartnerUtility_Trigger') && PRM_aba_TriggerHandler.mpFirstDeleteRun){
             PRM_aba_TriggerHandler.mpFirstDeleteRun = false;
-            PMP_AccountBenefitPartnerUtility.deleteUtility((List<PRM_AccountBenefitAssociation__c>)Trigger.old);
+            //PMP_AccountBenefitPartnerUtility.deleteUtility((List<PRM_AccountBenefitAssociation__c>)Trigger.old);
         }
       
     }

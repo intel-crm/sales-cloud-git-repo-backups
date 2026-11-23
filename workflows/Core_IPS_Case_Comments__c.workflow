@@ -23,7 +23,7 @@
     <outboundMessages>
         <fullName>Core_IPS_RTF_CaseComment_Backend_OutMsg</fullName>
         <apiVersion>35.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
         <fields>Core_IPS_Case__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>

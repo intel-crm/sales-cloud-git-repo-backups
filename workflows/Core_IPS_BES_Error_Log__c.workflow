@@ -5,34 +5,14 @@
         <description>Support Team Error Notification</description>
         <protected>false</protected>
         <recipients>
-            <recipient>11072741@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>11637316@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>11710633@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>12076249@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>12140730@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
             <recipient>12217293@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>12240480@intel.com.crm</recipient>
+            <recipient>chetanx.yashwant.karanda@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_IPS_BES_Support_Team</template>
     </alerts>
@@ -41,14 +21,14 @@
         <description>Tecnnical Error Notification</description>
         <protected>false</protected>
         <recipients>
-            <recipient>12140730@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
             <recipient>12217293@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <recipients>
+            <recipient>chetanx.yashwant.karanda@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_BES_Technical_Notification</template>
     </alerts>

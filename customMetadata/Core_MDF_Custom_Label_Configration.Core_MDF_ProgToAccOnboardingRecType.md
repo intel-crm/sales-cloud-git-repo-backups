@@ -12,11 +12,11 @@
     </values>
     <values>
         <field>Core_MDF_Value2_Txt__c</field>
-        <value xsi:type="xsd:string">Ecosystem Extension Fund=Core_MDF_Ecosystem_Extension_Fund,Intel Partner Alliance=Core_MDF_Intel_Partner_Alliance,Retail Marketing Funds=Core_MDF_Retail_Marketing_Funds,Service Provider Co-Marketing Fund=Core_MDF_Service_Provider_Co_Marketing_Fund</value>
+        <value xsi:type="xsd:string">Ecosystem Extension Fund=Core_MDF_Ecosystem_Extension_Fund,Intel Partner Alliance=Core_MDF_Intel_Partner_Alliance,Retail Marketing Funds=Core_MDF_Retail_Marketing_Funds,Service Provider Co-Marketing Fund=Core_MDF_Service_Provider_Co_Marketing_Fund,</value>
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Co-Inv=Core_MDF_Co_Inv</value>
     </values>
     <values>
         <field>Core_MDF_Value4_Txt__c</field>

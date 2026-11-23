@@ -32,7 +32,7 @@ insert acc;
 Contact con = PRM_TestUtility.getContact();
 con.FirstName='Samuel';
 con.LastName='Johnson';
-con.Email='samuel@outlook.com';
+con.Email='samuel@spamok.com';
 con.AccountId=acc.Id;
 insert con;
 
@@ -42,7 +42,7 @@ ChannelProgram cp = new ChannelProgram(); //Channel Program
 cp.Name='Intel Partner Alliance';
 cp.PRM_programCode__c='IPA';
 insert cp;
-System.debug('CP Insertion done');
+
 
 PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
 pb.Name = 'Points Redeem';
@@ -151,7 +151,7 @@ insert response;
         Contact con = new contact();
         con.FirstName='Samuel';
         con.LastName='Johnson';
-        con.Email='samueldsaiodada@outlook.com';
+        con.Email='samueldsaiodada@spamok.com';
         con.AccountId=testAccount00.Id;
         con.MailingCountry='USA';
         insert con;
@@ -361,7 +361,7 @@ insert response;
         Contact con = new contact();
         con.FirstName='Samuel';
         con.LastName='Johnson';
-        con.Email='samueldsaiodada@outlook.com';
+        con.Email='samueldsaiodada@spamok.com';
         con.AccountId=testAccount.Id;
         con.MailingCountry='USA';
         insert con;
@@ -369,7 +369,7 @@ insert response;
         Contact con1 = new contact();
         con1.FirstName='test';
         con1.LastName='cont';
-        con1.Email='testcont@outlook.com';
+        con1.Email='testcont@spamok.com';
         con1.AccountId=testAccount12.Id;
         con1.MailingCountry='USA';
         insert con1;
@@ -606,7 +606,7 @@ insert response;
         Contact con = new contact();
         con.FirstName='Samuel';
         con.LastName='Johnson';
-        con.Email='samueldsaiodada@outlook.com';
+        con.Email='samueldsaiodada@spamok.com';
         con.AccountId=testAccount11.Id;
         con.MailingCountry='USA';
         insert con;
@@ -752,7 +752,7 @@ insert response;
         Contact con1 = PRM_TestUtility.getContact();
         con1.FirstName='Samuel';
         con1.LastName='Johnson';
-        con1.Email='samuel@outlook.com';
+        con1.Email='samuel@spamok.com';
         con1.AccountId=acc.Id;
         con1.MailingCountry='USA';
         insert con1;
@@ -828,7 +828,7 @@ insert response2;*/
         Contact con = new contact();
         con.FirstName='Samuel';
         con.LastName='Johnson';
-        con.Email='samueldsaiodada@outlook.com';
+        con.Email='samueldsaiodada@spamok.com';
         con.AccountId=testAccount22.Id;
         con.MailingCountry='USA';
         insert con;
@@ -1212,7 +1212,7 @@ insert response2;*/
         Contact con = new contact();
         con.FirstName='Samuel';
         con.LastName='Johnson';
-        con.Email='samueldsaiodada@outlook.com';
+        con.Email='samueldsaiodada@spamok.com';
         con.AccountId=testAccount.Id;
         con.MailingCountry='USA';
         insert con;
@@ -1846,7 +1846,7 @@ prList.add(pr3); */
         acr.PRM_Status_Reason_Txt__c = 'test';
         acr.PRM_CampaignId__c=null;
         insert acr;
-        System.debug('@Nj'+newAccount.id);
+        
 
         Core_Account_Group_Member__c cag = new Core_Account_Group_Member__c();
         cag.Core_Intel_Account_Id__c= newAccount.id;

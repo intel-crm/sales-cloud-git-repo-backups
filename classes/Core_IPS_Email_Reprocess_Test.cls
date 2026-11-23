@@ -101,10 +101,10 @@
             }
             Database.insert(lstEmailLog);
             //check log
-            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            LogCount = [select count() from Core_IPS_Email_Log__c];
             System.assertEquals(FileCount,LogCount); 
             //Reprocess - should not send email as  error not fixed
-            lstEmailLog = [select Id, Core_TargetObjectId__c, Core_TemplateID__c, Core_WhatId__c, Core_OrgWideEmailAddressId__c from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            lstEmailLog = [select Id, Core_TargetObjectId__c, Core_TemplateID__c, Core_WhatId__c, Core_OrgWideEmailAddressId__c from Core_IPS_Email_Log__c];
             for(Core_IPS_Email_Log__c EmailLogObj : lstEmailLog ){
                 FailedEmailLogIds.add(EmailLogObj.id);    
             }
@@ -113,7 +113,7 @@
             system.assert(Message != null); 
             //check log
             LogCount = 0;
-            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            LogCount = [select count() from Core_IPS_Email_Log__c];
             System.assertEquals(FileCount,LogCount);  
             //Correct Entry
             List<Contact> lstTobeUpdatedContact = new List<Contact>();
@@ -128,7 +128,7 @@
             system.assert(Message != null); 
             //check log
             LogCount = 0;
-            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            LogCount = [select count() from Core_IPS_Email_Log__c];
             System.assertEquals(0,LogCount);              
         }        
     }    

@@ -14,15 +14,23 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Ashton Porter,Christel Thompson,Chris Smart,Derek Gaines,Justin Manker,Khondoker Mujtaba,Matthew House,Rodney Dahleen,Mark Wier,Mario DiSanza,Umair Tariq</values>
+            <values>Chris Smart,Derek Gaines,Justin Manker,Khondoker Mujtaba,Matthew House,Rodney Dahleen,Mark Wier</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Ashton Porter,Ellen Farber,George Kondos,Robert McLoughlin,Sameera Kandewatte,Jorge Gomez Oliveros,Peter Bas,Gresa Heta,Kristiyan Kolev</values>
+            <values>Ashton Porter,Christel Thompson,Ellen Farber,George Kondos,Robert McLoughlin,Sameera Kandewatte,Jorge Gomez Oliveros,Peter Bas,Gresa Heta,Kristiyan Kolev</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values></values>
         </dashboardFilterOptions>
         <name>Geo Team</name>
     </dashboardFilters>
     <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Ashton Porter</values>
+        </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
             <values>Chris Smart</values>
@@ -30,6 +38,10 @@
         <dashboardFilterOptions>
             <operator>equals</operator>
             <values>Christel Thompson</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Derek Gaines</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -73,6 +85,10 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>Russell Cheng</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>Samanth R</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
@@ -93,21 +109,13 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Umair Tariq</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
             <values>XIN FAN</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Mario DiSanza,Derek Gaines,Justin Manker,Ashton Porter,Ajaysinh Mansinh,Daniel Alcazar,Gresa Heta,Jorge Gomez Oliveros,Kris Kolev,Nailesh Chikkamath,Nischitha Ts,Viktor Dekanj,Vladimir Isikiyski</values>
+            <values>Ajaysinh Mansinh,Daniel Alcazar,Gresa Heta,Jorge Gomez Oliveros,Justin Manker,Kris Kolev,Nailesh Chikkamath,Nischitha Ts,Viktor Dekanj,Vladimir Isikiyski</values>
         </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Ankit Kumar</values>
-        </dashboardFilterOptions>
-        <name>IEM</name>
+        <name>Account Owner</name>
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
@@ -122,10 +130,10 @@
                 </chartSummary>
                 <componentType>BarGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>CREATED_BY</column>
+                    <column>USERS.NAME</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>CREATED_BY</column>
+                    <column>USERS.NAME</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -133,22 +141,21 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>DUE_DATE</groupingColumn>
-                <groupingColumn>CREATED_BY</groupingColumn>
+                <groupingColumn>USERS.NAME</groupingColumn>
+                <groupingColumn>CDF1</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
-                        <sortColumn>RowCount</sortColumn>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Weekly Discovery Calls</header>
+                <header>Accounts by Last Activity Range</header>
                 <legendPosition>Right</legendPosition>
-                <report>ISVSoftwareenable/AI_Discovery_Calls</report>
+                <report>ISVSoftwareenable/AI_Owned_Accounts_by_Activity_Range_QA</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -156,7 +163,7 @@
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>14</rowSpan>
+            <rowSpan>20</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>6</colSpan>
@@ -203,7 +210,7 @@
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>14</rowSpan>
+            <rowSpan>20</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>6</colSpan>
@@ -241,17 +248,17 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Quarterly Discovery Calls</header>
+                <header>Weekly Discovery Calls</header>
                 <legendPosition>Right</legendPosition>
-                <report>ISVSoftwareenable/AI_Discovery_Calls_Quarterly</report>
+                <report>ISVSoftwareenable/AI_Discovery_Calls</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>14</rowIndex>
-            <rowSpan>14</rowSpan>
+            <rowIndex>20</rowIndex>
+            <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>6</colSpan>
@@ -263,55 +270,7 @@
                     <axisBinding>y</axisBinding>
                     <column>RowCount</column>
                 </chartSummary>
-                <componentType>BarGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>CREATED_BY</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>CREATED_BY</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>DUE_DATE</groupingColumn>
-                <groupingColumn>CREATED_BY</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortColumn>RowCount</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Quarterly Activities</header>
-                <legendPosition>Right</legendPosition>
-                <report>ISVSoftwareenable/AI_Unique_Activities_QA_Quaterly1</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>14</rowIndex>
-            <rowSpan>14</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>12</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>ColumnStacked</componentType>
+                <componentType>BarStacked</componentType>
                 <dashboardFilterColumns>
                     <column>CREATED_BY</column>
                 </dashboardFilterColumns>
@@ -337,7 +296,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Total Discovery Calls by IEM</header>
+                <header>AI Discovery calls by IEM</header>
                 <legendPosition>Right</legendPosition>
                 <report>ISVSoftwareenable/AI_Discovery_Calls</report>
                 <showPercentage>false</showPercentage>
@@ -346,53 +305,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>28</rowIndex>
-            <rowSpan>11</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>12</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>ColumnGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>CREATED_BY</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>CREATED_BY</column>
-                </dashboardFilterColumns>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>DUE_DATE</groupingColumn>
-                <groupingColumn>Activity.Core_Subtype_of_Activity__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Activities by week &amp; type</header>
-                <legendPosition>Right</legendPosition>
-                <report>ISVSoftwareenable/AI_Unique_Activities_QA</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>39</rowIndex>
+            <rowIndex>20</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -438,7 +351,53 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>51</rowIndex>
+            <rowIndex>32</rowIndex>
+            <rowSpan>12</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>12</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>ColumnGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>CREATED_BY</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>CREATED_BY</column>
+                </dashboardFilterColumns>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>DUE_DATE</groupingColumn>
+                <groupingColumn>Activity.Core_Subtype_of_Activity__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Activities by week &amp; type</header>
+                <legendPosition>Right</legendPosition>
+                <report>ISVSoftwareenable/AI_Unique_Activities_QA</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>44</rowIndex>
             <rowSpan>12</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -458,7 +417,6 @@
                 <dashboardFilterColumns>
                     <column>CREATED_BY</column>
                 </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -476,7 +434,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Weekly Activities Trend</header>
+                <header>Weekly Activities by Subtype</header>
                 <legendPosition>Right</legendPosition>
                 <report>ISVSoftwareenable/AI_Unique_Activities_QA</report>
                 <showPercentage>false</showPercentage>
@@ -485,8 +443,56 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>63</rowIndex>
+            <rowIndex>56</rowIndex>
             <rowSpan>15</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>12</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>BarGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>USERS.NAME</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>USERS.NAME</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>Account.Core_Geo__c</groupingColumn>
+                <groupingColumn>USERS.NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortColumn>RowCount</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Accounts by ISV Region</header>
+                <legendPosition>Right</legendPosition>
+                <report>ISVSoftwareenable/AI_Owned_Accounts_by_Activity_Range_QA</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>71</rowIndex>
+            <rowSpan>14</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>12</colSpan>
@@ -534,7 +540,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>78</rowIndex>
+            <rowIndex>85</rowIndex>
             <rowSpan>15</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -545,9 +551,9 @@
                 <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
                     <axisBinding>y</axisBinding>
-                    <column>FORMULA1</column>
+                    <column>RowCount</column>
                 </chartSummary>
-                <componentType>BarStacked</componentType>
+                <componentType>BarGrouped</componentType>
                 <dashboardFilterColumns>
                     <column>CREATED_BY</column>
                 </dashboardFilterColumns>
@@ -560,30 +566,30 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>ACCOUNT</groupingColumn>
+                <groupingColumn>DUE_DATE</groupingColumn>
                 <groupingColumn>CREATED_BY</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
+                        <sortOrder>d</sortOrder>
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
+                        <sortColumn>RowCount</sortColumn>
+                        <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Duplicated Discovery Calls</header>
+                <header>Quarterly Activities by IEM</header>
                 <legendPosition>Right</legendPosition>
-                <report>ISVSoftwareenable/AI_Discovery_Calls_Duplicate</report>
+                <report>ISVSoftwareenable/AI_Unique_Activities_QA_Quaterly1</report>
                 <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
+                <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
-                <title>Multiple DC with same ISV: Delete 1</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>93</rowIndex>
-            <rowSpan>14</rowSpan>
+            <rowIndex>100</rowIndex>
+            <rowSpan>15</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
@@ -591,9 +597,9 @@
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11430255@intel.com.crm</owner>
-    <runningUser>12248510@intel.com.crm</runningUser>
+    <runningUser>11430255@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>AI Activities DB</title>
+    <title>AI Accounts &amp; Activities</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

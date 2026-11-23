@@ -3,8 +3,34 @@ public class Core_MDF_Outc_Claim_Reject_Test {
     
     // test method for data setup
     @TestSetup static void setUpData(){
-    
-              List<String> bypassFunctionKeys = new List<String>();
+        List<Account> acctList = new List<Account>();
+        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
+        Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
+        
+        // Creating User with utility class 
+        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
+        usr.Email = 'sysadmin@example.com';
+        Database.insert(usr);
+
+        System.runAs(usr){
+            // Creating a map of profile name and profile Id
+            Map<String,Id> profileToId = new Map<String,Id>();
+            List<User> userList = new List<User>();
+            for(Profile prfl:[SELECT Id,Name FROM Profile WHERE Name IN ('System Administrator','CCP - Core Access')]) {
+                profileToId.put(prfl.Name,prfl.Id);
+            }
+            // Creating a map of PS names and PS
+            Map<String,PermissionSet> nameToPerSet = new Map<String,PermissionSet>();
+            for(PermissionSet pSet:[SELECT Id,Name FROM PermissionSet WHERE Name IN (
+                'Core_MDF_CCP_Internal_IPA_Program_Adm',
+                'View_All_Data'
+            )]) {
+                nameToPerSet.put(pSet.Name,pSet);
+            }
+            
+            PermissionSet ipaPaymentAdmPS = nameToPerSet.get('Core_MDF_CCP_Internal_IPA_Program_Adm');
+            PermissionSet viewAllDataPS = nameToPerSet.get('View_All_Data');
+                        List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
             bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
@@ -52,34 +78,7 @@ public class Core_MDF_Outc_Claim_Reject_Test {
             result1.addAll(myset1);
             
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-	    
-        List<Account> acctList = new List<Account>();
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
-        Id campaign_RecordType_IPA = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
-        
-        // Creating User with utility class 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.Email = 'sysadmin@example.com';
-        Database.insert(usr);
-
-        System.runAs(usr){
-            // Creating a map of profile name and profile Id
-            Map<String,Id> profileToId = new Map<String,Id>();
-            List<User> userList = new List<User>();
-            for(Profile prfl:[SELECT Id,Name FROM Profile WHERE Name IN ('System Administrator','CCP - Core Access')]) {
-                profileToId.put(prfl.Name,prfl.Id);
-            }
-            // Creating a map of PS names and PS
-            Map<String,PermissionSet> nameToPerSet = new Map<String,PermissionSet>();
-            for(PermissionSet pSet:[SELECT Id,Name FROM PermissionSet WHERE Name IN (
-                'Core_MDF_CCP_Internal_IPA_Program_Adm',
-                'View_All_Data'
-            )]) {
-                nameToPerSet.put(pSet.Name,pSet);
-            }
             
-            PermissionSet ipaPaymentAdmPS = nameToPerSet.get('Core_MDF_CCP_Internal_IPA_Program_Adm');
-            PermissionSet viewAllDataPS = nameToPerSet.get('View_All_Data');
             
             User usr2 = Core_MDF_CCP_TestDataUtility.createUser(false); 
             usr2.Email='testPayment@example.com';
@@ -126,6 +125,8 @@ public class Core_MDF_Outc_Claim_Reject_Test {
         Database.update(acc1);
         
         Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
+        
+        
 
         Id IUPGM_recordtype_IPA = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();

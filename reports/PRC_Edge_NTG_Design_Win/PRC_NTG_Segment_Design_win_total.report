@@ -144,7 +144,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Comms Infra. / Networking,Embedded / IOT</value>
+            <value>Comms Infra. / Networking</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -166,20 +166,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>John Li,Jimmy Wang,Tao Yan,Yue Li,Yixin Fu</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>,Not Submitted,Submitted,Approved,Rejected,Recalled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>,Not Submitted,Submitted,Approved,Rejected,Recalled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

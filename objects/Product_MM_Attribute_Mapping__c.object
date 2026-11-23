@@ -677,6 +677,11 @@ IF(L5_Product__r.Core_Avail_for_New_Designs__c , true, false)</formula>
         <unique>false</unique>
     </fields>
     <label>Product MM Attribute Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Material ID</label>
         <trackHistory>false</trackHistory>

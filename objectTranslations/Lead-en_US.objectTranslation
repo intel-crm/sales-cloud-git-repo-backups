@@ -3684,10 +3684,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_lead_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Cvent Contact Stub --></label>
-        <name>CventEvents__ContactStub__c</name>
-    </fields>
-    <fields>
         <label><!-- Days --></label>
         <name>Days__c</name>
     </fields>
@@ -3901,6 +3897,14 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <fields>
         <label><!-- MQL no task Calculation --></label>
         <name>SWS_MQL_no_task_Calculation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid Cause --></label>
+        <name>SWS_Marketo_Email_Invalid_Cause__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid --></label>
+        <name>SWS_Marketo_Email_Invalid__c</name>
     </fields>
     <fields>
         <label><!-- No Schedule --></label>
@@ -4470,22 +4474,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <webLinks>
         <label><!-- Core_Revive --></label>
         <name>Core_Revive</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- InviteLeadToEvent --></label>
-        <name>CventEvents__InviteLeadToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelLeadToEvent --></label>
-        <name>CventEvents__ModifyCancelLeadToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateLeadToEvent --></label>
-        <name>CventEvents__NominateLeadToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterLeadToEvent --></label>
-        <name>CventEvents__RegisterLeadToEvent</name>
     </webLinks>
     <webLinks>
         <label><!-- Eloqua_Profiler --></label>

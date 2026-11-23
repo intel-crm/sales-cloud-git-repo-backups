@@ -1,12 +1,5 @@
 @istest   
 public class Core_IPS_AdminUtilityTest { //System.assert()--> statement Added By Hassan Khan 03-02-2024
-
-    private static void insertUserWithValidationBypass(User testUser) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert testUser;
-        }
-    }
     
     static testmethod void adminUtilitytestMethod1() {
         
@@ -23,7 +16,7 @@ public class Core_IPS_AdminUtilityTest { //System.assert()--> statement Added By
         sysAdimUser.ProfileId = ps.id;
         sysAdimUser.userroleid=role.id;
         
-        insertUserWithValidationBypass(sysAdimUser);
+        insert sysAdimUser;
         
         System.runAs(sysAdimUser) {
             List < Account > listOfAccounts = TestUtilities.getAccountsList(1);
@@ -352,7 +345,7 @@ Core_IPS_AdminUtility.insertLineItems(mapLineItems);
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
+        insert uu;
         /*   PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
 PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
 insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps.Id );
@@ -429,7 +422,7 @@ insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps1.Id 
         testuser.LanguageLocaleKey = 'en_US';
         testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -478,7 +471,7 @@ insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps1.Id 
         testuser.LanguageLocaleKey = 'en_US';
         testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -516,7 +509,7 @@ insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps1.Id 
         testuser.LanguageLocaleKey = 'en_US';
         testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -554,7 +547,7 @@ insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps1.Id 
         testuser.LanguageLocaleKey = 'en_US';
         testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -588,7 +581,7 @@ insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps1.Id 
         testuser.LanguageLocaleKey = 'en_US';
         testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
@@ -626,7 +619,7 @@ insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps1.Id 
         testuser.LanguageLocaleKey = 'en_US';
         testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
         PermissionSet ps1 = [select id,label from PermissionSet where Label = 'IPS Permission Set'];
         insert new PermissionSetAssignment(AssigneeId = testuser.id, PermissionSetId = ps.Id );
@@ -753,7 +746,7 @@ insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps1.Id 
             u.EmailEncodingKey = 'UTF-8';
             u.LanguageLocaleKey = 'en_US';
             u.LocaleSidKey = 'en_US';
-    insertUserWithValidationBypass(u);
+       Insert u;
          
         User uu = new User(
             ProfileId = profileId,
@@ -768,9 +761,7 @@ insert new PermissionSetAssignment(AssigneeId = uu.id, PermissionSetId = ps1.Id 
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        System.runAs(u) {
-            insert uu;
-        }
+        insert uu;
           
         core_IPS_LEXAddCommentController.CaseWrapper caseWrapperObj = new core_IPS_LEXAddCommentController.CaseWrapper();
            System.runas(u){

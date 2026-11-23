@@ -409,9 +409,11 @@
         </filters>
         <object>PartnerFundClaim</object>
         <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
+            <frequencyNumber>0</frequencyNumber>
             <startDate>2021-02-18</startDate>
-            <startTime>00:30:00.000Z</startTime>
+            <startTime>07:55:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

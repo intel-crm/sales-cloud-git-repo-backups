@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <commaSeparatedOauthScopes>RefreshToken, MCP</commaSeparatedOauthScopes>
+    <externalClientApplication>Partner_MCP_Client_App</externalClientApplication>
+    <isFirstPartyAppEnabled>false</isFirstPartyAppEnabled>
+    <label>Partner_MCP_Client_App_oauth</label>
+    <oauthLink>00Ddi000004mJ65:888di000000Iklx</oauthLink>
+</ExtlClntAppOauthSettings>

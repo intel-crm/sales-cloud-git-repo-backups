@@ -1188,7 +1188,7 @@ to be shown on the UI*/
 * @description method checks if Enable or disable RPM bulk action for bulk deal creations 
 * @author Accenture | 11-17-2022  
 * @return count 
-**/  
+**/	
     @AuraEnabled(cacheable=true)
     public static Boolean isBulkDealCreations() {
         
@@ -1211,8 +1211,8 @@ to be shown on the UI*/
     * @description method checks if User has RPM Permission Sets assigned or not 
     * @author Accenture  
     * @return count 
-    **/  
-    @AuraEnabled(cacheable=true)
+    **/	
+   @AuraEnabled(cacheable=true)
     public static Boolean hasPricingManagerAccess() {
         integer count = [SELECT count() FROM PermissionSetAssignment 
                          WHERE AssigneeId = :Userinfo.getUserId() AND PermissionSet.Name =:Label.Pricing_Tender_PermissionSets_PricingTenderRegionalPricingManager];
@@ -1223,7 +1223,7 @@ to be shown on the UI*/
     * @description method checks if User has FinancialIncentivePricingManager Permission Sets assigned or not 
     * @author Accenture  
     * @return Boolean true if has access , false is not.
-    **/  
+    **/	
     @AuraEnabled(cacheable=true)
     public static Boolean hasFinancialIncentivePricingManagerPS() {
         integer count = [SELECT count() FROM PermissionSetAssignment 
@@ -1234,7 +1234,7 @@ to be shown on the UI*/
     * @description method returns picklist options available for Rejection Reasons
     * @author Accenture | 02-02-2023
     * @return options
-    **/  
+    **/	
     @AuraEnabled(cacheable=true)
     public static Map<String, String> getRejectionReasonsValue(Id recId){
 
@@ -1278,7 +1278,7 @@ to be shown on the UI*/
 * @description method will call publishIQR and publish IQR event  
 * @author Accenture | 08-08-2023
 * @param quoteLineId 
-**/  
+**/	
     @AuraEnabled
     public static void handleSyncStatus(Id quoteLineId){
         try {

@@ -59,7 +59,7 @@
             <column>Case.Core_IPS_Age__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
+            <operator>greaterThan</operator>
             <value>1</value>
         </criteriaItems>
         <criteriaItems>

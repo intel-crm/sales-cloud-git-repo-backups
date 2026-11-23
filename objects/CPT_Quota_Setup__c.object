@@ -181,7 +181,7 @@
         <fullName>CPT_BR_All_Assigned__c</fullName>
         <label>BR-All % Assigned</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -209,9 +209,7 @@
         <fullName>CPT_BR_Allocated__c</fullName>
         <formula>(
 VALUE( SUBSTITUTE(TEXT( CPT_BR_CCG_Assigned__c ), &apos;%&apos;, &apos;&apos;)) +
-VALUE( SUBSTITUTE(TEXT( CPT_BR_DCAI_Assigned__c), &apos;%&apos;, &apos;&apos;)) +
-
-VALUE( SUBSTITUTE(TEXT( CPT_BR_All_Assigned__c ), &apos;%&apos;, &apos;&apos;)) 
+VALUE( SUBSTITUTE(TEXT( CPT_BR_DCAI_Assigned__c), &apos;%&apos;, &apos;&apos;))
 )/100</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BR (Allocated)</label>
@@ -223,8 +221,50 @@ VALUE( SUBSTITUTE(TEXT( CPT_BR_All_Assigned__c ), &apos;%&apos;, &apos;&apos;))
         <type>Percent</type>
     </fields>
     <fields>
+        <fullName>CPT_BR_Allocation_Editable__c</fullName>
+        <formula>OR(
+    ISPICKVAL(CPT_Plan__c, &quot;120&quot;),
+    ISPICKVAL(CPT_Plan__c, &quot;121&quot;),
+    ISPICKVAL(CPT_Plan__c, &quot;122&quot;),
+    ISPICKVAL(CPT_Plan__c, &quot;620&quot;),
+    ISPICKVAL(CPT_Plan__c, &quot;621&quot;),
+    AND(
+        OR(
+            ISPICKVAL(CPT_Plan__c, &quot;331&quot;),
+            ISPICKVAL(CPT_Plan__c, &quot;631&quot;)
+        ),
+        CPT_Sales_Group__c = &quot;PRC&quot;
+    )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BR Allocation Editable</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>CPT_BR_Allowed__c</fullName>
-        <formula>VALUE(SUBSTITUTE(TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Billings_Revenue__c), &apos;%&apos;, &apos;&apos;))/100</formula>
+        <formula>IF(
+    AND(
+        OR(
+            ISPICKVAL(CPT_Plan__c,&quot;331&quot;),
+            ISPICKVAL(CPT_Plan__c,&quot;631&quot;)
+        ),
+        CPT_Employee__r.CPT_Sales_Group__c &lt;&gt; &quot;PRC&quot;
+    ),
+    0,
+
+    VALUE(
+        SUBSTITUTE(
+            TEXT(
+                CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Billings_Revenue__c
+            ),
+            &quot;%&quot;,
+            &quot;&quot;
+        )
+    ) / 100
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BR (Allowed)</label>
         <precision>18</precision>
         <required>false</required>
@@ -247,9 +287,9 @@ VALUE( SUBSTITUTE(TEXT( CPT_BR_All_Assigned__c ), &apos;%&apos;, &apos;&apos;))
     </fields>
     <fields>
         <fullName>CPT_BR_CCG_Assigned__c</fullName>
-        <label>BR-CCG % Assigned</label>
+        <label>BR-CCPG % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -260,7 +300,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_BR_All_Assigned__c ), &apos;%&apos;, &apos;&apos;))
     <fields>
         <fullName>CPT_BR_CCG_Quota__c</fullName>
         <inlineHelpText>Value is in whole dollars.</inlineHelpText>
-        <label>BR-CCG Quota</label>
+        <label>BR-CCPG Quota</label>
         <summarizedField>CPT_Territory_Assignment__c.CPT_BR_CCG_Target__c</summarizedField>
         <summaryFilterItems>
             <field>CPT_Territory_Assignment__c.CPT_BR_CCG__c</field>
@@ -328,7 +368,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_BR_All_Assigned__c ), &apos;%&apos;, &apos;&apos;))
         <fullName>CPT_BR_Intel_AI_PC_Assigned__c</fullName>
         <label>BR-Intel AI PC % Assigned</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -355,7 +395,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_BR_All_Assigned__c ), &apos;%&apos;, &apos;&apos;))
         <fullName>CPT_BR_NEX_Ethernet_Assigned__c</fullName>
         <label>BR-DCAI Ethernet % Assigned</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -402,7 +442,26 @@ VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+
     </fields>
     <fields>
         <fullName>CPT_CR_Allowed__c</fullName>
-        <formula>VALUE(SUBSTITUTE(TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Consumption_Revenue__c), &apos;%&apos;, &apos;&apos;))/100</formula>
+        <formula>IF(
+    AND(
+        OR(
+            ISPICKVAL(CPT_Plan__c,&quot;331&quot;),
+            ISPICKVAL(CPT_Plan__c,&quot;631&quot;)
+        ),
+        CPT_Employee__r.CPT_Sales_Group__c = &quot;PRC&quot;
+    ),
+    0,
+
+    VALUE(
+        SUBSTITUTE(
+            TEXT(
+                CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Consumption_Revenue__c
+            ),
+            &quot;%&quot;,
+            &quot;&quot;
+        )
+    ) / 100
+)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>CR (Allowed)</label>
         <precision>18</precision>
@@ -451,7 +510,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+
         <fullName>CPT_CR_OEM_Assigned__c</fullName>
         <label>CR - OEM % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -461,6 +520,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+
     </fields>
     <fields>
         <fullName>CPT_CR_OEM_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
         <label>CR - OEM Quota</label>
         <summarizedField>CPT_Territory_Assignment__c.CPT_CR_OEM_Target__c</summarizedField>
         <summaryFilterItems>
@@ -478,7 +538,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+
         <fullName>CPT_CR_Partner_Assigned__c</fullName>
         <label>CR - Partner % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -488,6 +548,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+
     </fields>
     <fields>
         <fullName>CPT_CR_Partner_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
         <label>CR - Partner Quota</label>
         <summarizedField>CPT_Territory_Assignment__c.CPT_CR_Partner_Target__c</summarizedField>
         <summaryFilterItems>
@@ -505,7 +566,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+
         <fullName>CPT_CR_Retail_Assigned__c</fullName>
         <label>CR - Retail % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -515,6 +576,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+
     </fields>
     <fields>
         <fullName>CPT_CR_Retail_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
         <label>CR - Retail Quota</label>
         <summarizedField>CPT_Territory_Assignment__c.CPT_CR_Retail_Target__c</summarizedField>
         <summaryFilterItems>
@@ -543,19 +605,19 @@ VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+
         <description>Effective end formula field to derive end date for the setup.[10-Dec-25]</description>
         <formula>CASE(
     LEFT(TEXT(CPT_Effective_Month__c), 3),
-    &quot;Jan&quot;, DATE(2026, 12, 31),
-    &quot;Feb&quot;, DATE(2026, 12, 31),
-    &quot;Mar&quot;, DATE(2026, 12, 31),
-    &quot;Apr&quot;, DATE(2026, 12, 31),
-    &quot;May&quot;, DATE(2026, 12, 31),
-    &quot;Jun&quot;, DATE(2026, 12, 31),
-    &quot;Jul&quot;, DATE(2026, 12, 31),
-    &quot;Aug&quot;, DATE(2026, 12, 31),
-    &quot;Sep&quot;, DATE(2026, 12, 31),
-    &quot;Oct&quot;, DATE(2026, 12, 31),
-    &quot;Nov&quot;, DATE(2026, 12, 31),
-    &quot;Dec&quot;, DATE(2026, 12, 31),
-    DATE(2026, 12, 31)
+    &quot;Jan&quot;, DATE(2027, 12, 31),
+    &quot;Feb&quot;, DATE(2027, 12, 31),
+    &quot;Mar&quot;, DATE(2027, 12, 31),
+    &quot;Apr&quot;, DATE(2027, 12, 31),
+    &quot;May&quot;, DATE(2027, 12, 31),
+    &quot;Jun&quot;, DATE(2027, 12, 31),
+    &quot;Jul&quot;, DATE(2027, 12, 31),
+    &quot;Aug&quot;, DATE(2027, 12, 31),
+    &quot;Sep&quot;, DATE(2027, 12, 31),
+    &quot;Oct&quot;, DATE(2027, 12, 31),
+    &quot;Nov&quot;, DATE(2027, 12, 31),
+    &quot;Dec&quot;, DATE(2027, 12, 31),
+    DATE(2027, 12, 31)
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Effective_End</label>
@@ -576,64 +638,64 @@ VALUE( SUBSTITUTE(TEXT( CPT_CR_OEM_Assigned__c ), &apos;%&apos;, &apos;&apos;))+
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Jan 2026</fullName>
+                    <fullName>Jan 2027</fullName>
                     <default>true</default>
-                    <label>Jan 2026</label>
+                    <label>Jan 2027</label>
                 </value>
                 <value>
-                    <fullName>Feb 2026</fullName>
+                    <fullName>Feb 2027</fullName>
                     <default>false</default>
-                    <label>Feb 2026</label>
+                    <label>Feb 2027</label>
                 </value>
                 <value>
-                    <fullName>Mar 2026</fullName>
+                    <fullName>Mar 2027</fullName>
                     <default>false</default>
-                    <label>Mar 2026</label>
+                    <label>Mar 2027</label>
                 </value>
                 <value>
-                    <fullName>Apr 2026</fullName>
+                    <fullName>Apr 2027</fullName>
                     <default>false</default>
-                    <label>Apr 2026</label>
+                    <label>Apr 2027</label>
                 </value>
                 <value>
-                    <fullName>May 2026</fullName>
+                    <fullName>May 2027</fullName>
                     <default>false</default>
-                    <label>May 2026</label>
+                    <label>May 2027</label>
                 </value>
                 <value>
-                    <fullName>Jun 2026</fullName>
+                    <fullName>Jun 2027</fullName>
                     <default>false</default>
-                    <label>Jun 2026</label>
+                    <label>Jun 2027</label>
                 </value>
                 <value>
-                    <fullName>Jul 2026</fullName>
+                    <fullName>Jul 2027</fullName>
                     <default>false</default>
-                    <label>Jul 2026</label>
+                    <label>Jul 2027</label>
                 </value>
                 <value>
-                    <fullName>Aug 2026</fullName>
+                    <fullName>Aug 2027</fullName>
                     <default>false</default>
-                    <label>Aug 2026</label>
+                    <label>Aug 2027</label>
                 </value>
                 <value>
-                    <fullName>Sep 2026</fullName>
+                    <fullName>Sep 2027</fullName>
                     <default>false</default>
-                    <label>Sep 2026</label>
+                    <label>Sep 2027</label>
                 </value>
                 <value>
-                    <fullName>Oct 2026</fullName>
+                    <fullName>Oct 2027</fullName>
                     <default>false</default>
-                    <label>Oct 2026</label>
+                    <label>Oct 2027</label>
                 </value>
                 <value>
-                    <fullName>Nov 2026</fullName>
+                    <fullName>Nov 2027</fullName>
                     <default>false</default>
-                    <label>Nov 2026</label>
+                    <label>Nov 2027</label>
                 </value>
                 <value>
-                    <fullName>Dec 2026</fullName>
+                    <fullName>Dec 2027</fullName>
                     <default>false</default>
-                    <label>Dec 2026</label>
+                    <label>Dec 2027</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1105,7 +1167,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <description>Managers to identify if a role is an Overlay and skip level managers can sum up all the Non-Overlay quotas and assign to managers.</description>
         <inlineHelpText>Select &quot;Overlay&quot; if a role is an overlay or duplicate quota (i.e., technical seller). This will exclude quota from Manager roll-up.</inlineHelpText>
         <label>Overlay</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -1159,75 +1221,93 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
+                    <fullName>120</fullName>
+                    <default>false</default>
+                    <label>120</label>
+                </value>
+                <value>
+                    <fullName>121</fullName>
+                    <default>false</default>
+                    <label>121</label>
+                </value>
+                <value>
+                    <fullName>330</fullName>
+                    <default>false</default>
+                    <label>330</label>
+                </value>
+                <value>
+                    <fullName>630</fullName>
+                    <default>false</default>
+                    <label>630</label>
+                </value>
+                <value>
+                    <fullName>240</fullName>
+                    <default>false</default>
+                    <label>240</label>
+                </value>
+                <value>
+                    <fullName>640</fullName>
+                    <default>false</default>
+                    <label>640</label>
+                </value>
+                <value>
+                    <fullName>331</fullName>
+                    <default>false</default>
+                    <label>331</label>
+                </value>
+                <value>
+                    <fullName>620</fullName>
+                    <default>false</default>
+                    <label>620</label>
+                </value>
+                <value>
+                    <fullName>621</fullName>
+                    <default>false</default>
+                    <label>621</label>
+                </value>
+                <value>
+                    <fullName>122</fullName>
+                    <default>false</default>
+                    <label>122</label>
+                </value>
+                <value>
+                    <fullName>631</fullName>
+                    <default>false</default>
+                    <label>631</label>
+                </value>
+                <value>
+                    <fullName>650</fullName>
+                    <default>false</default>
+                    <label>650</label>
+                </value>
+                <value>
+                    <fullName>250</fullName>
+                    <default>false</default>
+                    <label>250</label>
+                </value>
+                <value>
                     <fullName>100</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>100</label>
                 </value>
                 <value>
                     <fullName>101</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>101</label>
-                </value>
-                <value>
-                    <fullName>202</fullName>
-                    <default>false</default>
-                    <label>202</label>
-                </value>
-                <value>
-                    <fullName>300</fullName>
-                    <default>false</default>
-                    <label>300</label>
-                </value>
-                <value>
-                    <fullName>301</fullName>
-                    <default>false</default>
-                    <label>301</label>
-                </value>
-                <value>
-                    <fullName>305</fullName>
-                    <default>false</default>
-                    <label>305</label>
-                </value>
-                <value>
-                    <fullName>403</fullName>
-                    <default>false</default>
-                    <label>403</label>
-                </value>
-                <value>
-                    <fullName>600</fullName>
-                    <default>false</default>
-                    <label>600</label>
-                </value>
-                <value>
-                    <fullName>601</fullName>
-                    <default>false</default>
-                    <label>601</label>
-                </value>
-                <value>
-                    <fullName>602</fullName>
-                    <default>false</default>
-                    <label>602</label>
-                </value>
-                <value>
-                    <fullName>800</fullName>
-                    <default>false</default>
-                    <label>800</label>
-                </value>
-                <value>
-                    <fullName>801</fullName>
-                    <default>false</default>
-                    <label>801</label>
-                </value>
-                <value>
-                    <fullName>802</fullName>
-                    <default>false</default>
-                    <label>802</label>
                 </value>
                 <value>
                     <fullName>102</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>102</label>
+                </value>
+                <value>
+                    <fullName>111</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>111</label>
                 </value>
                 <value>
                     <fullName>200</fullName>
@@ -1240,6 +1320,36 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>201</label>
+                </value>
+                <value>
+                    <fullName>202</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>202</label>
+                </value>
+                <value>
+                    <fullName>300</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>300</label>
+                </value>
+                <value>
+                    <fullName>301</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>301</label>
+                </value>
+                <value>
+                    <fullName>305</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>305</label>
+                </value>
+                <value>
+                    <fullName>35</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>35</label>
                 </value>
                 <value>
                     <fullName>400</fullName>
@@ -1258,6 +1368,12 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>402</label>
+                </value>
+                <value>
+                    <fullName>403</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>403</label>
                 </value>
                 <value>
                     <fullName>404</fullName>
@@ -1284,10 +1400,46 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
                     <label>502</label>
                 </value>
                 <value>
+                    <fullName>600</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>600</label>
+                </value>
+                <value>
+                    <fullName>601</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>601</label>
+                </value>
+                <value>
+                    <fullName>602</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>602</label>
+                </value>
+                <value>
                     <fullName>700</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>700</label>
+                </value>
+                <value>
+                    <fullName>800</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>800</label>
+                </value>
+                <value>
+                    <fullName>801</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>801</label>
+                </value>
+                <value>
+                    <fullName>802</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>802</label>
                 </value>
                 <value>
                     <fullName>900</fullName>
@@ -1571,7 +1723,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <externalId>false</externalId>
         <formula>CPT_Employee__r.CPT_Sales_Group__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Sales Group</label>
+        <label>Region</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1620,7 +1772,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <inlineHelpText>Maximum 1000 characters allowed.</inlineHelpText>
         <label>Sales OKR Objective 1</label>
         <length>1000</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -1631,7 +1783,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <inlineHelpText>Maximum 1000 characters allowed.</inlineHelpText>
         <label>Sales OKR Objective 2</label>
         <length>1000</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -1642,7 +1794,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <inlineHelpText>Maximum 1000 characters allowed.</inlineHelpText>
         <label>Sales OKR Objective 3</label>
         <length>1000</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -1652,7 +1804,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <inlineHelpText>Sales OKR for Q1 Only.</inlineHelpText>
         <label>Sales OKR</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1719,7 +1871,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <description>Picklist options to select STG values dependent on Plan. [10-Dec-2025]</description>
         <label>Sales Team Goal</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1925,50 +2077,6 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
                     <label>WW NEX Software</label>
                 </value>
             </valueSetDefinition>
-            <valueSettings>
-                <controllingFieldValue>403</controllingFieldValue>
-                <controllingFieldValue>600</controllingFieldValue>
-                <controllingFieldValue>601</controllingFieldValue>
-                <controllingFieldValue>602</controllingFieldValue>
-                <valueName>AUTOMOTIVE STG</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>403</controllingFieldValue>
-                <controllingFieldValue>600</controllingFieldValue>
-                <controllingFieldValue>601</controllingFieldValue>
-                <controllingFieldValue>602</controllingFieldValue>
-                <valueName>GOVERNMENT STG</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>600</controllingFieldValue>
-                <controllingFieldValue>601</controllingFieldValue>
-                <controllingFieldValue>602</controllingFieldValue>
-                <valueName>AMR STG</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>600</controllingFieldValue>
-                <controllingFieldValue>601</controllingFieldValue>
-                <controllingFieldValue>602</controllingFieldValue>
-                <valueName>APJ STG</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>600</controllingFieldValue>
-                <controllingFieldValue>601</controllingFieldValue>
-                <controllingFieldValue>602</controllingFieldValue>
-                <valueName>EMEA STG</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>600</controllingFieldValue>
-                <controllingFieldValue>601</controllingFieldValue>
-                <controllingFieldValue>602</controllingFieldValue>
-                <valueName>INDIA STG</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>600</controllingFieldValue>
-                <controllingFieldValue>601</controllingFieldValue>
-                <controllingFieldValue>602</controllingFieldValue>
-                <valueName>PRC STG</valueName>
-            </valueSettings>
         </valueSet>
     </fields>
     <fields>
@@ -2023,7 +2131,7 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
     </fields>
     <fields>
         <fullName>CPT_Total_Allocated__c</fullName>
-        <formula>CPT_BR_Allocated__c + CPT_CR_Allocated__c + CPT_Sales_OKR_Allocated__c + CPT_Sales_Team_Goal_Allocated__c+ CPT_MarVol_Allocated__c</formula>
+        <formula>CPT_BR_Allocated__c + CPT_CR_Allocated__c + CPT_Wins_Allocated__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Total (Allocated)</label>
         <precision>18</precision>
@@ -2059,6 +2167,88 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
         <unique>true</unique>
     </fields>
     <fields>
+        <fullName>CPT_Wins_Allocated__c</fullName>
+        <formula>(VALUE( SUBSTITUTE(TEXT( CPT_Wins_Deal_Assigned__c ), &apos;%&apos;, &apos;&apos;)) +
+VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos;)) 
+)/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PfR (Allocated)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Allowed__c</fullName>
+        <formula>VALUE(SUBSTITUTE(TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_Wins_Revenue__c), &apos;%&apos;, &apos;&apos;))/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PfR (Allowed)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_Wins_Allocated__c*100) &amp; &quot;/&quot; &amp; TEXT(CPT_Wins_Allowed__c*100) &amp; &quot;%&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PfR (% Assigned)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Deal_Assigned__c</fullName>
+        <label>PfR - Deal Wins % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Deal_Quota__c</fullName>
+        <label>Wins - Deal Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_Wins_Deal_Target__c</summarizedField>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Design_Assigned__c</fullName>
+        <label>PfR - Design Wins % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_Wins_Design_Quota__c</fullName>
+        <label>Wins - Design Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_Wins_Design_Target__c</summarizedField>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
         <fullName>XX_CPT_Complete__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Manager will check this box when planning is completed. Validation rule will check for the completeness of the data when this checkbox is selected.</description>
@@ -2079,9 +2269,7 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
         <columns>CPT_Status__c</columns>
         <columns>CPT_BR_Assigned__c</columns>
         <columns>CPT_CR_Assigned__c</columns>
-        <columns>CPT_Sales_OKR_Assigned__c</columns>
-        <columns>CPT_Sales_Team_Goal_Assigned__c</columns>
-        <columns>CPT_MarVol_Assigned__c</columns>
+        <columns>CPT_Wins_Assigned__c</columns>
         <columns>CPT_Total_Assigned__c</columns>
         <columns>CPT_Effective_Start__c</columns>
         <columns>CPT_Effective_End__c</columns>
@@ -2095,15 +2283,15 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
         <fullName>CPT_My_Team_s_Quota</fullName>
         <columns>NAME</columns>
         <columns>CPT_Employee_Name__c</columns>
-        <columns>CPT_Manager__c</columns>
-        <columns>CPT_Quota_Period__c</columns>
-        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Employee_WWID__c</columns>
         <columns>CPT_Stage__c</columns>
         <columns>CPT_Total_Assigned__c</columns>
         <columns>CPT_Job_Role__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
         <columns>CPT_Effective_Month__c</columns>
         <columns>CPT_Effective_Start__c</columns>
         <columns>CPT_Effective_End__c</columns>
+        <columns>CPT_Quota_Period__c</columns>
         <filterScope>Mine</filterScope>
         <label>My Team&apos;s Quota</label>
         <sharedTo>
@@ -2145,8 +2333,6 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
         <columns>CPT_Stage__c</columns>
         <columns>CPT_Plan_Name__c</columns>
         <columns>CPT_Status__c</columns>
-        <columns>CPT_BR_All_Quota__c</columns>
-        <columns>CPT_BR_All_Assigned__c</columns>
         <columns>CPT_BR_CCG_Quota__c</columns>
         <columns>CPT_BR_CCG_Assigned__c</columns>
         <columns>CPT_BR_DCAI_Quota__c</columns>
@@ -2187,78 +2373,21 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>My_Team_s_Quota_MarginVolume</fullName>
+        <fullName>My_Team_s_Quota_Wins</fullName>
         <columns>NAME</columns>
         <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
         <columns>CPT_Status__c</columns>
-        <columns>CPT_MarVol_Margin_CCG_Quota__c</columns>
-        <columns>CPT_MarVol_Margin_CCG_Assigned__c</columns>
-        <columns>CPT_MarVol_Margin_DCG_Quota__c</columns>
-        <columns>CPT_MarVol_Margin_DCG_Assigned__c</columns>
-        <columns>CPT_MarVol_NextGen_CCG_LNL_Quota__c</columns>
-        <columns>CPT_MarVol_Next_Gen_CCG_LNL_Assigned__c</columns>
-        <columns>CPT_MarVol_NextGen_CCG_PTL_Quota__c</columns>
-        <columns>CPT_MarVol_Next_Gen_CCG_PTL_Assigned__c</columns>
-        <columns>CPT_MarVol_NextGen_CCG_WCL_Quota__c</columns>
-        <columns>CPT_MarVol_Next_Gen_CCG_WCL_Assigned__c</columns>
-        <columns>CPT_MarVol_NextGen_DCG_GNR_Quota__c</columns>
-        <columns>CPT_MarVol_Next_Gen_DCG_GNR_Assigned__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CPT_MarVol_Allowed__c</field>
-            <operation>greaterThan</operation>
-            <value>0.0</value>
-        </filters>
-        <label>My Team&apos;s Quota - MarginVolume</label>
-    </listViews>
-    <listViews>
-        <fullName>My_Team_s_Quota_Sales_OKR</fullName>
-        <columns>NAME</columns>
-        <columns>CPT_Employee_Name__c</columns>
-        <columns>CPT_Manager__c</columns>
-        <columns>CPT_Quota_Period__c</columns>
-        <columns>CPT_Plan_Name__c</columns>
-        <columns>CPT_Stage__c</columns>
-        <columns>CPT_Sales_OKR_Assigned__c</columns>
-        <columns>CPT_Sales_OKR__c</columns>
-        <columns>CPT_Sales_OKR_Objective1__c</columns>
-        <columns>CPT_Sales_OKR_Objective2__c</columns>
-        <columns>CPT_Sales_OKR_Objective3__c</columns>
-        <columns>CPT_Effective_Month__c</columns>
+        <columns>CPT_Wins_Deal_Assigned__c</columns>
+        <columns>CPT_Wins_Deal_Quota__c</columns>
+        <columns>CPT_Wins_Design_Assigned__c</columns>
+        <columns>CPT_Wins_Design_Quota__c</columns>
+        <columns>CPT_Wins_Assigned__c</columns>
+        <columns>CPT_Wins_Allocated__c</columns>
+        <columns>CPT_Wins_Allowed__c</columns>
         <filterScope>Mine</filterScope>
-        <filters>
-            <field>CPT_Sales_OKR_Allowed__c</field>
-            <operation>greaterThan</operation>
-            <value>0</value>
-        </filters>
-        <label>My Team&apos;s Quota - Sales OKR</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>My_Team_s_Quota_Sales_Team_Goal</fullName>
-        <columns>NAME</columns>
-        <columns>CPT_Employee_Name__c</columns>
-        <columns>CPT_Manager__c</columns>
-        <columns>CPT_Quota_Period__c</columns>
-        <columns>CPT_Plan_Name__c</columns>
-        <columns>CPT_Stage__c</columns>
-        <columns>CPT_Sales_Team_Goal_Assigned__c</columns>
-        <columns>CPT_Sales_Team_Goal__c</columns>
-        <columns>CPT_Effective_Month__c</columns>
-        <columns>CPT_Effective_Start__c</columns>
-        <columns>CPT_Effective_End__c</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CPT_Sales_Team_Goal_Allowed__c</field>
-            <operation>greaterThan</operation>
-            <value>0</value>
-        </filters>
-        <label>My Team&apos;s Quota - Sales Team Goal</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
+        <label>My_Team&apos;s_Quota_PFR</label>
     </listViews>
     <nameField>
         <displayFormat>QS-{000000}</displayFormat>
@@ -2267,6 +2396,1675 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Quota Setup</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Quota_Setup_Default</fullName>
+        <active>true</active>
+        <label>Quota Setup Default</label>
+        <picklistValues>
+            <picklist>CPT_BR_All_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E668%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E333%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E334%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_BR_CCG_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_BR_DCAI_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_BR_DCAI_DAIS_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E668%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E333%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E334%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_BR_Intel_AI_PC_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E668%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E333%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E334%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_BR_NEX_Ethernet_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E668%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E333%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E334%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_BR_SATG_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E668%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E333%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E334%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_CR_CCG_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E668%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E333%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E334%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_CR_OEM_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E668%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E333%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E334%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_CR_Partner_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E668%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E333%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E334%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_CR_Retail_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>26%2E668%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E333%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>33%2E334%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_Effective_Month__c</picklist>
+            <values>
+                <fullName>Apr 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Aug 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dec 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Feb 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jan 2027</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Jul 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jun 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mar 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>May 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Nov 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Oct 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sep 2027</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_KPI_Name1__c</picklist>
+            <values>
+                <fullName>CCG Billings Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Consumer Consumption Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG LNL Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Next Gen Deal Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG PTL Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Product Margin %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Strategic Design %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG WCL Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG vPro Platform %2B Solution Adoption Deal Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consumer Next Gen Consumption Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Billings Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Cloud EMR%2B Deal %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG GNR Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Product Margin %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Xeon 6 Deal Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG%2FCEG Strategic Design %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Edge Design %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ISV Software CW%2FPW %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel OEM Consumption Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel OEM Next Gen Consumption Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel Partner Consumption Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel Partner Next Gen Consumption Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regional Priority</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_KPI_Name2__c</picklist>
+            <values>
+                <fullName>CCG Billings Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Consumer Consumption Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG LNL Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Next Gen Deal Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG PTL Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Product Margin %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Strategic Design %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG WCL Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG vPro Platform %2B Solution Adoption Deal Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consumer Next Gen Consumption Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Billings Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Cloud EMR%2B Deal %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG GNR Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Product Margin %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Xeon 6 Deal Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG%2FCEG Strategic Design %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Edge Design %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ISV Software CW%2FPW %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel OEM Consumption Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel OEM Next Gen Consumption Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel Partner Consumption Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel Partner Next Gen Consumption Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regional Priority</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_KPI_Name3__c</picklist>
+            <values>
+                <fullName>CCG Billings Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Consumer Consumption Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG LNL Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Next Gen Deal Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG PTL Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Product Margin %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG Strategic Design %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG WCL Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCG vPro Platform %2B Solution Adoption Deal Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consumer Next Gen Consumption Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Billings Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Cloud EMR%2B Deal %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG GNR Billings Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Product Margin %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG Xeon 6 Deal Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCG%2FCEG Strategic Design %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Edge Design %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ISV Software CW%2FPW %23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel OEM Consumption Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel OEM Next Gen Consumption Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel Partner Consumption Revenue %24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>One Intel Partner Next Gen Consumption Volume</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regional Priority</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_Plan__c</picklist>
+            <values>
+                <fullName>120</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>121</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>122</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>240</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>250</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>330</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>331</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>620</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>621</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>630</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>631</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>640</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>650</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_Sales_OKR__c</picklist>
+            <values>
+                <fullName>Sales OKR</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_Sales_Team_Goal__c</picklist>
+            <values>
+                <fullName>AMR STG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJ STG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AUTOMOTIVE STG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA STG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GOVERNMENT STG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA STG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC STG</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_Stage__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-Progress</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_Wins_Deal_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_Wins_Design_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
@@ -2286,25 +4084,27 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
         <active>true</active>
         <description>Please select 0% instead of &quot;none&quot; for all the Assigned % fields.</description>
         <errorConditionFormula>OR(
-
 AND(
   CPT_BR_Allowed__c &gt; 0, 
   OR(
     TEXT(CPT_BR_CCG_Assigned__c)=&apos;&apos;,  
     TEXT(CPT_BR_DCAI_Assigned__c)=&apos;&apos;, 
-    TEXT(CPT_BR_DCAI_DAIS_Assigned__c)=&apos;&apos;,
-    TEXT(CPT_BR_NEX_Ethernet_Assigned__c)=&apos;&apos;,
-    TEXT(CPT_BR_All_Assigned__c)=&apos;&apos;,
-    TEXT(CPT_BR_Intel_AI_PC_Assigned__c)=&apos;&apos;
+    TEXT(CPT_BR_All_Assigned__c)=&apos;&apos;
   )
 ),
 
 AND(
   CPT_CR_Allowed__c &gt; 0, 
   OR(
-    TEXT(CPT_CR_CCG_Assigned__c)=&apos;&apos;
+    TEXT(CPT_CR_OEM_Assigned__c)=&apos;&apos;,
+    TEXT(CPT_CR_Partner_Assigned__c)=&apos;&apos;,
+    TEXT(CPT_CR_Retail_Assigned__c)=&apos;&apos;
   )
 ),
+
+
+
+
 
 AND(
   CPT_Sales_OKR_Allowed__c &gt; 0, 
@@ -2320,7 +4120,6 @@ AND(
   )
 )
 
-
 )</errorConditionFormula>
         <errorMessage>Please select 0% instead of &quot;none&quot; for all the Assigned % fields.</errorMessage>
     </validationRules>
@@ -2331,9 +4130,7 @@ AND(
         <errorConditionFormula>AND(ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
 OR(
 IF(Text(CPT_BR_CCG_Assigned__c)=&apos;0%&apos;,false,IF(CPT_BR_CCG_Quota__c=0,true,false)),
-IF(Text(CPT_BR_DCAI_Assigned__c )=&apos;0%&apos;,false,IF(CPT_BR_DCAI_Quota__c=0,true,false)),
-IF(Text(CPT_BR_All_Assigned__c)=&apos;0%&apos;,false,IF(CPT_BR_All_Quota__c=0,true,false))
-)
+IF(Text(CPT_BR_DCAI_Assigned__c )=&apos;0%&apos;,false,IF(CPT_BR_DCAI_Quota__c=0,true,false)))
 )</errorConditionFormula>
         <errorMessage>A Territory must be linked to the selected Billings Revenue Business Units (BU) to assign % and Quota. Please select the BR-BU checkbox in Territory Assignments.</errorMessage>
     </validationRules>
@@ -2361,6 +4158,35 @@ IF(TEXT(CPT_DR_NEX_Assigned__c) =&apos;0%&apos;,false,IF(CPT_DR_NEX_Quota__c=0,t
         <errorMessage>A Territory must be tied to selected Deal Win Rev BU&apos;s to Assign % and Quota. Please add quota for selected DR-BU(s) in Territory Assignments.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>CPT_BR_Fixed_Plan_Allocation</fullName>
+        <active>true</active>
+        <description>Enforce fixed BR CCG/DCG allocations for Plans 250, 330, 630 and 650.</description>
+        <errorConditionFormula>AND(
+    NOT(ISNEW()),
+    OR(
+        AND(
+            ISPICKVAL(CPT_Plan__c, &quot;250&quot;),
+            OR(
+                NOT(ISPICKVAL(CPT_BR_CCG_Assigned__c, &quot;0%&quot;)),
+                NOT(ISPICKVAL(CPT_BR_DCAI_Assigned__c, &quot;40%&quot;))
+            )
+        ),
+        AND(
+            OR(
+                ISPICKVAL(CPT_Plan__c, &quot;330&quot;),
+                ISPICKVAL(CPT_Plan__c, &quot;630&quot;),
+                ISPICKVAL(CPT_Plan__c, &quot;650&quot;)
+            ),
+            OR(
+                NOT(ISPICKVAL(CPT_BR_CCG_Assigned__c, &quot;0%&quot;)),
+                NOT(ISPICKVAL(CPT_BR_DCAI_Assigned__c, &quot;20%&quot;))
+            )
+        )
+    )
+)</errorConditionFormula>
+        <errorMessage>BR allocation is fixed. Plan 250 requires CCG 0% and DCG 40%. Plans 330, 630 and 650 require CCG 0% and DCG 20%.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>CPT_BR_Prevent_Excess_Allocation</fullName>
         <active>true</active>
         <description>Prevent over allocation of Billing Revenue(BR)</description>
@@ -2371,29 +4197,15 @@ IF(TEXT(CPT_DR_NEX_Assigned__c) =&apos;0%&apos;,false,IF(CPT_DR_NEX_Quota__c=0,t
         <fullName>CPT_BR_Prevent_Incomplete_Data_Update</fullName>
         <active>true</active>
         <description>Enforce Billing Revenue assignment and quota is complete</description>
-        <errorConditionFormula>AND(ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
-
-
+        <errorConditionFormula>AND(
+ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
 OR(
-AND(OR(ISBLANK(TEXT(CPT_BR_CCG_Assigned__c)),Text(CPT_BR_CCG_Assigned__c)=&apos;0%&apos;), CPT_BR_CCG_Quota__c&gt;0),
-AND(OR(ISBLANK(TEXT(CPT_BR_DCAI_Assigned__c)),Text(CPT_BR_DCAI_Assigned__c)=&apos;0%&apos;), CPT_BR_DCAI_Quota__c	&gt;0),
-AND(OR(ISBLANK(TEXT(CPT_BR_DCAI_DAIS_Assigned__c)),Text(CPT_BR_DCAI_DAIS_Assigned__c)=&apos;0%&apos;), CPT_BR_DCAI_DAIS_Quota__c&gt;0),
-AND(OR(ISBLANK(TEXT(CPT_BR_NEX_Ethernet_Assigned__c)),Text(CPT_BR_NEX_Ethernet_Assigned__c)=&apos;0%&apos;), CPT_BR_NEX_Ethernet_Quota__c	&gt;0),
-AND(OR(ISBLANK(TEXT(CPT_BR_All_Assigned__c)),Text(CPT_BR_All_Assigned__c)=&apos;0%&apos;), CPT_BR_All_Quota__c&gt;0),
-AND(OR(ISBLANK(TEXT(CPT_BR_Intel_AI_PC_Assigned__c)),Text(CPT_BR_Intel_AI_PC_Assigned__c)=&apos;0%&apos;), CPT_BR_Intel_AI_PC_Quota__c&gt;0),
-
-
-AND(Text(CPT_BR_CCG_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_CCG_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_CCG_Quota__c&lt;=0),
-AND(Text(CPT_BR_DCAI_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_DCAI_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_DCAI_Quota__c	&lt;=0),
-AND(Text(CPT_BR_DCAI_DAIS_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_DCAI_DAIS_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_DCAI_DAIS_Quota__c&lt;=0),
-AND(Text(CPT_BR_NEX_Ethernet_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_NEX_Ethernet_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_NEX_Ethernet_Quota__c=0),
-AND(Text(CPT_BR_All_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_All_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_All_Quota__c&lt;=0),
-AND(Text(CPT_BR_Intel_AI_PC_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_Intel_AI_PC_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_Intel_AI_PC_Quota__c&lt;=0),
-
-
-CPT_BR_Allocated__c&lt;&gt;CPT_BR_Allowed__c 
+AND(OR(ISBLANK(TEXT(CPT_BR_CCG_Assigned__c)), TEXT(CPT_BR_CCG_Assigned__c)=&apos;0%&apos;), CPT_BR_CCG_Quota__c&gt;0),
+AND(OR(ISBLANK(TEXT(CPT_BR_DCAI_Assigned__c)), TEXT(CPT_BR_DCAI_Assigned__c)=&apos;0%&apos;), CPT_BR_DCAI_Quota__c&gt;0),
+AND(TEXT(CPT_BR_CCG_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_CCG_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_CCG_Quota__c&lt;=0),
+AND(TEXT(CPT_BR_DCAI_Assigned__c)&lt;&gt;&apos;0%&apos;, TEXT(CPT_BR_DCAI_Assigned__c)&lt;&gt;&apos;&apos;, CPT_BR_DCAI_Quota__c&lt;=0),
+CPT_BR_Allocated__c &lt;&gt; CPT_BR_Allowed__c
 )
-
 )</errorConditionFormula>
         <errorMessage>Please complete the Billings Revenue Assigned % and Quota fields.</errorMessage>
     </validationRules>
@@ -2586,6 +4398,61 @@ AND( NOT(OR(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;&quot;), ISPICKVAL(CPT_CR_OE
         <errorMessage>Objective and KPI Name fields cannot be modified when Stage is &quot;Completed&quot;.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>CPT_Prevent_more_than_100_for_240</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+    ISPICKVAL(CPT_Plan__c, &quot;240&quot;),
+    OR(
+        
+        AND(
+            NOT(ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;0%&quot;)),
+            NOT(ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;100%&quot;))
+        ),
+        AND(
+            NOT(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;0%&quot;)),
+            NOT(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;100%&quot;))
+        )
+    )
+)</errorConditionFormula>
+        <errorMessage>For Plan 240, exactly one of Retail, or Partner Assigned % must be 100%, and the remaining one must be 0%.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_more_than_20_for_120</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+    ISPICKVAL(CPT_Plan__c, &quot;120&quot;),
+    OR(
+        AND(
+            NOT(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;0%&quot;)),
+            NOT(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;20%&quot;))
+        ),
+        AND(
+            NOT(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;0%&quot;)),
+            NOT(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;20%&quot;))
+        )
+    )
+)</errorConditionFormula>
+        <errorMessage>For Plan 120, exactly one of OEM or Partner Assigned % must be 20%, and the remaining one must be 0%.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_more_than_40_for_122</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+    ISPICKVAL(CPT_Plan__c, &quot;122&quot;),
+    OR(
+        AND(
+            NOT(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;0%&quot;)),
+            NOT(ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;40%&quot;))
+        ),
+        AND(
+            NOT(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;0%&quot;)),
+            NOT(ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;40%&quot;))
+        )
+    )
+)</errorConditionFormula>
+        <errorMessage>For Plan 122, exactly one of OEM or Partner Assigned % must be 40%, and the remaining one must be 0%.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>CPT_STG_Prevent_Incomplete_Data_Update</fullName>
         <active>true</active>
         <description>Enforce Sales Team Goal assignment</description>
@@ -2635,6 +4502,22 @@ AND( OR( CPT_MarVol_NextGen_CCG_WCL__c, CPT_MarVol_NextGen_CCG_PTL__c, CPT_MarVo
         <description>This validation rule ensures mutual dependency between CPT_MarVol_NextGen_DCG_GNR and CPT_MarVol_Margin_DCG fields. If one is selected, the other must also be selected, and vice versa.</description>
         <errorConditionFormula>OR( AND(CPT_MarVol_NextGen_DCG_GNR__c, NOT(CPT_MarVol_Margin_DCG__c)), AND(CPT_MarVol_Margin_DCG__c, NOT(CPT_MarVol_NextGen_DCG_GNR__c)) )</errorConditionFormula>
         <errorMessage>Volume DCG and Margin DCG must both be selected together.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Restrict_33_for_Plans_other_than_640</fullName>
+        <active>true</active>
+        <description>33.333 and 33.334 percent can only be selected for Plan 640</description>
+        <errorConditionFormula>AND(
+NOT(ISPICKVAL(CPT_Plan__c, &quot;640&quot;)),
+OR(
+ISPICKVAL(CPT_BR_All_Assigned__c, &quot;33.333%&quot;), ISPICKVAL(CPT_BR_CCG_Assigned__c, &quot;33.333%&quot;), ISPICKVAL(CPT_BR_DCAI_Assigned__c, &quot;33.333%&quot;),
+ISPICKVAL(CPT_BR_All_Assigned__c, &quot;33.334%&quot;), ISPICKVAL(CPT_BR_CCG_Assigned__c, &quot;33.334%&quot;), ISPICKVAL(CPT_BR_DCAI_Assigned__c, &quot;33.334%&quot;),
+ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;33.333%&quot;), ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;33.333%&quot;), ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;33.333%&quot;),
+ISPICKVAL(CPT_CR_Retail_Assigned__c, &quot;33.334%&quot;), ISPICKVAL(CPT_CR_OEM_Assigned__c, &quot;33.334%&quot;), ISPICKVAL(CPT_CR_Partner_Assigned__c, &quot;33.334%&quot;), 
+ISPICKVAL(CPT_Wins_Deal_Assigned__c, &quot;33.333%&quot;), ISPICKVAL(CPT_Wins_Design_Assigned__c, &quot;33.333%&quot;),
+ISPICKVAL(CPT_Wins_Deal_Assigned__c, &quot;33.334%&quot;), ISPICKVAL(CPT_Wins_Design_Assigned__c, &quot;33.334%&quot;)) 
+)</errorConditionFormula>
+        <errorMessage>33.333 and 33.334 percent can be selected only for 640 Plan</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Restrict_5_Percent_For_Plan_602_802</fullName>

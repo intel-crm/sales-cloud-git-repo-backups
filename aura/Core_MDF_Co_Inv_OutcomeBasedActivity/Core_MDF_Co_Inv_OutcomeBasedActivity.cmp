@@ -1,0 +1,391 @@
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride"
+    access="global" Controller="Core_MDF_PartnerFundRequestCreatePage">
+
+    <aura:html tag="style">
+        .slds-modal__container{
+        max-width: 70rem !important;
+        width:95% !important;
+        }
+        .budget-table-container {
+            margin-top: 1rem;
+            border: 1px solid #d8dce6;
+            border-radius: 4px;
+            padding: 1rem;
+            background-color: #f7f9fb;
+        }
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .budget-table thead {
+            background-color: #e5e7eb;
+        }
+        .budget-table th,
+        .budget-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #d8dce6;
+        }
+        .budget-table th {
+            font-weight: 600;
+            color: #333;
+        }
+        .budget-table tbody tr:hover {
+            background-color: #f0f1f3;
+        }
+        .percentage-input {
+            width: 80px;
+        }
+        .budget-select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #bfbfbf;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+        .action-button {
+            margin-right: 0.5rem;
+        }
+        .total-row {
+            background-color: #fffbea;
+            font-weight: 600;
+        }
+        .validation-error {
+            color: #c23030;
+            font-size: 0.875rem;
+        }
+        .success-message {
+            color: #2e7d32;
+            font-size: 0.875rem;
+        }
+    </aura:html>
+
+    <!-- Essential Record and UI Control Attributes -->
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="mode" type="String" default="create" />
+    <aura:attribute name="checkCloneAttribute" type="Boolean" default="false" />
+    <aura:attribute name="checkCloneRecordId" type="String" default="" />
+    <aura:attribute name="showPCTApprovalCheckbox" type="Boolean" default="false"
+        description="Show PCT Approval checkbox when Incentive is selected" />
+    <aura:attribute name="isAdditionalReviewReqd" type="Boolean" default="false" />
+    <aura:attribute name="isLoggedInUserLevelOneApprover" type="Boolean" default="false" />
+
+    <!-- RecordType Attributes (Client / Datacenter) -->
+    <aura:attribute name="recordtype" type="String" default="" description="RecordType ID" />
+    <aura:attribute name="recordtypeName" type="String" default="" description="RecordType Name" />
+    <aura:attribute name="recordtypeDeveloperName" type="String" default="" description="RecordType Developer Name" />
+    <aura:attribute name="checkNewCommunityAttribute" type="Boolean" default="false" />
+
+    <!-- Reference to the component that opened this form, used to close its modal overlay -->
+    <aura:attribute name="parentComponent" type="Object" />
+
+    <!-- Core PFR Object Attributes - only fields confirmed to exist on PartnerFundRequest -->
+    <aura:attribute type="PartnerFundRequest" name="newPFR" default="{Title:'',
+                             RequestedAmount:0,
+                             Core_MDF_Start_Date__c:'',
+                             Core_MDF_End_Date__c:'',
+                             Core_MDF_Activity_Description__c:'',
+                             Core_MDF_Budget_Type_nm__c:'',
+                             Core_MDF_Maximum_Intel_Investment_amt__c:0,
+                             Core_MDF_Activity_Reimbursement_Amt_nbr__c:0,
+                             Core_MDF_Priority_nm__c:'',
+                             Core_MDF_Outcome_Region_nm__c:'',
+                             Core_MDF_Country_nm__c:'',
+                             Core_MDF_TargetAudience_nm__c:'',
+                             Core_MDF_ProductType__c:'',
+                             Core_MDF_Is_Outcome_Based_Ind__c:true,
+                             Core_MDF_Skip_PCT_Approval_ind__c:false,
+                             Core_MDF_Attribution_Variance_Pos_txt__c:null,
+                             Core_MDF_Attribution_Variance_Neg_txt__c:null
+                             }" description="Stores the field values of the PFR record being created" />
+
+    <!-- Account Lookup -->
+    <aura:attribute name="selectedAccount" type="Account" default="{'sobjectType':'Account',Id:null, Name:''}" />
+    <aura:attribute name="additionalAccFilter" type="String" default=""
+        description="Additional filter for account lookup" />
+
+    <!-- Selected values -->
+    <aura:attribute name="selectedFocusArea" type="String" default="" />
+    <aura:attribute name="SelPriority" type="String" default="" />
+    <aura:attribute name="SelRegion" type="String" default="" />
+    <aura:attribute name="countryFilter" type="String" default="" />
+    <aura:attribute name="showOtherEcosystemPartner" type="Boolean" default="false" />
+    <aura:attribute name="selectedEcosystemPartnerOptions" type="List" default="[]" />
+    <aura:attribute name="ecosystemAllocations" type="List" default="[]" />
+    <aura:attribute name="selectedInitiativeOptions" type="List" default="[]" />
+    <aura:attribute name="selectedBrandOptions" type="List" default="[]" />
+    <aura:attribute name="selectedTechnologyOptions" type="List" default="[]" />
+    <aura:attribute name="selectedOutcomeMetricOptions" type="List" default="[]" />
+    <aura:attribute name="selectedOutcomeTypeOptions" type="List" default="[]" />
+    <aura:attribute name="selectedMarketingOutcomeMetricOptions" type="List" default="[]" />
+    <aura:attribute name="selectedBusinessOutcomeMetricOptions" type="List" default="[]" />
+    <aura:attribute name="selectedMarketingBrandOptions" type="List" default="[]" />
+    <aura:attribute name="selectedMarketingTechnologyOptions" type="List" default="[]" />
+    <aura:attribute name="selectedBusinessBrandOptions" type="List" default="[]" />
+    <aura:attribute name="selectedBusinessTechnologyOptions" type="List" default="[]" />
+    <aura:attribute name="marketingOtherBrandsTechnologies" type="String" default="" />
+    <aura:attribute name="businessOtherBrandsTechnologies" type="String" default="" />
+    <aura:attribute name="isLoadingOutcomePurpose" type="Boolean" default="false" />
+    <aura:attribute name="selectedTacticsOptions" type="List" default="[]" />
+    <aura:attribute name="selectedMeasurementApproachOptions" type="List" default="[]" />
+    <aura:attribute name="selectedApproverOptions" type="List" default="[]" />
+    <aura:attribute name="selectedExtActSubmitterOptions" type="List" default="[]" />
+    <aura:attribute name="approverFilter" type="String" default="" />
+    <aura:attribute name="extActSubmitterFilter" type="String" default="" />
+    <aura:attribute name="showNoIntelOwnerMessage" type="Boolean" default="false" />
+    <aura:attribute name="isSPIFSecAvailable" type="Boolean" default="false" />
+    <aura:attribute name="segmentString" type="String" default="" />
+
+    <!-- Option maps / dependent picklists -->
+    <aura:attribute name="apitoLabelConvert" type="Map" />
+    <aura:attribute name="focusArea" type="Map" />
+    <aura:attribute name="focusAreaDependent" type="List" default="[]" />
+    <aura:attribute name="AllFocusAreaOptions" type="List" default="[]" />
+
+    <aura:attribute name="priority" type="Map" />
+    <aura:attribute name="priorityDependent" type="List" default="[]" />
+    <aura:attribute name="priorityValues" type="List" default="[]" />
+
+    <aura:attribute name="regions" type="Map" />
+    <aura:attribute name="regionDependants" type="List" default="[]" />
+    <aura:attribute name="regionvalues" type="List" default="[]" />
+
+    <aura:attribute name="CountryPicklistValues" type="Map" />
+    <aura:attribute name="CountryDependants" type="List" default="[]" />
+    <aura:attribute name="AllCountryOptions" type="List" default="[]" />
+    <aura:attribute name="AllCountryOptionsMain" type="List" default="[]" />
+
+    <aura:attribute name="audiencePicklistValues" type="Map" />
+    <aura:attribute name="MultiTargetAudienceValues" type="List" default="[]" />
+    <aura:attribute name="AllTargetAudienceOptions" type="List" default="[]" />
+
+    <aura:attribute name="ProductTypes" type="Map" />
+    <aura:attribute name="ProductTypeDependent" type="List" default="[]" />
+    <aura:attribute name="ProductTypeValues" type="List" default="[]" />
+
+    <aura:attribute name="MultiBrandTypes" type="Map" />
+    <aura:attribute name="MultiBrandValues" type="List" default="[]" />
+    <aura:attribute name="AllBrandOptions" type="List" default="[]" />
+
+    <aura:attribute name="initiativePicklistValues" type="Map" />
+    <aura:attribute name="MultiInitiativeValues" type="List" default="[]" />
+    <aura:attribute name="AllInitiativeOptions" type="List" default="[]" />
+
+    <aura:attribute name="MultiEcoPartnerTypes" type="Map" />
+    <aura:attribute name="MultiEcoPartnerValues" type="List" default="[]" />
+    <aura:attribute name="AllEcosystemPartner" type="List" default="[]" />
+
+    <aura:attribute name="technologies" type="Map" />
+    <aura:attribute name="technologiesDependant" type="List" default="[]" />
+    <aura:attribute name="AllTechnologyOptions" type="List" default="[]" />
+
+    <aura:attribute name="outcomes" type="Map" />
+    <aura:attribute name="outcomeDependent" type="List" default="[]" />
+    <aura:attribute name="AllOutcomeOptions" type="List" default="[]" />
+
+    <aura:attribute name="measurementApproaches" type="Map" />
+    <aura:attribute name="measurementDependant" type="List" default="[]" />
+    <aura:attribute name="AllMeasurementApproaches" type="List" default="[]" />
+
+    <aura:attribute name="budgetTypeVal" type="List" default="[]" />
+
+    <!-- Budget Allocation Table Attributes -->
+    <aura:attribute name="availableBudgets" type="List" default="[]" />
+    <aura:attribute name="budgetAllocations" type="List" default="[]" />
+    <aura:attribute name="budgetValidationError" type="String" default="" />
+    <aura:attribute name="totalPercentageAllocation" type="Decimal" default="0" />
+    <aura:attribute name="totalAllocatedAmount" type="Decimal" default="0" />
+    <aura:attribute name="showBudgetTable" type="Boolean" default="false" />
+
+    <!-- Additional Budget Related Attributes -->
+    <aura:attribute name="budgetHelpMessage" type="String" default="" />
+    <aura:attribute name="isShowAllocationAmt" type="Boolean" default="false" />
+    <aura:attribute name="showAllocationAmtMsg" type="String" default="" />
+
+    <!-- Event Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.selectedAccount}" action="{!c.onAccountChange}" />
+    <aura:handler name="change" value="{!v.newPFR.Core_MDF_Budget_Type_nm__c}" action="{!c.onBudgetTypeChange}" />
+    <aura:handler name="change" value="{!v.budgetAllocations}" action="{!c.validateBudgetAllocations}" />
+    <aura:handler name="change" value="{!v.selectedEcosystemPartnerOptions}" action="{!c.setEcosystemPartner}" />
+    <aura:handler name="change" value="{!v.selectedInitiativeOptions}" action="{!c.setInitiative}" />
+    <aura:handler name="change" value="{!v.selectedBrandOptions}" action="{!c.setBrand}" />
+    <aura:handler name="change" value="{!v.selectedTechnologyOptions}" action="{!c.setTechnology}" />
+    <aura:handler name="change" value="{!v.selectedOutcomeMetricOptions}" action="{!c.setOutcomeMetric}" />
+    <aura:handler name="change" value="{!v.selectedOutcomeTypeOptions}" action="{!c.setOutcomeType}" />
+    <aura:handler name="change" value="{!v.selectedTacticsOptions}" action="{!c.setTactics}" />
+    <aura:handler name="change" value="{!v.selectedMeasurementApproachOptions}" action="{!c.setMeasurementApproach}" />
+    <aura:handler name="change" value="{!v.selectedApproverOptions}" action="{!c.setApprover}" />
+    <aura:handler name="change" value="{!v.selectedExtActSubmitterOptions}" action="{!c.setExtActSubmitter}" />
+
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="large" class="slds-is-fixed" />
+    </aura:if>
+
+    <div class="slds-p-around_medium">
+
+        <!-- DETAILS -->
+        <h3 class="slds-text-heading_small slds-m-bottom_small">Details</h3>
+        <lightning:layout horizontalAlign="spread" multipleRows="true">
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                <lightning:input aura:id="NewForm" label="{!$Label.c.Core_MDF_Name}" name="Title"
+                    value="{!v.newPFR.Title}" required="true" />
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                <c:Core_Intel_customLookup objectAPIName="Account" selectedRecord="{!v.selectedAccount}"
+                    sAdditionalFilter="{!v.additionalAccFilter}" label="{!$Label.c.Core_MDF_Account}"
+                    IconName="standard:account" disabled="false" />
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                <lightning:input type="date" aura:id="NewForm" label="{!$Label.c.Core_MDF_Start_Date}"
+                    value="{!v.newPFR.Core_MDF_Start_Date__c}" required="true" onchange="{!c.onDateChange}" />
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                <lightning:input type="date" aura:id="NewForm" label="{!$Label.c.Core_MDF_End_Date}"
+                    value="{!v.newPFR.Core_MDF_End_Date__c}" required="true" onchange="{!c.onDateChange}" />
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5"
+                largeDeviceSize="5">
+                <lightning:textarea aura:id="NewForm" label="{!$Label.c.Core_MDF_Activity_Description_Outcome_Based}"
+                    name="Description" value="{!v.newPFR.Core_MDF_Activity_Description__c}" required="true" />
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                <c:Core_MDF_Picklist aura:id="BudgetTypeField" objName="PartnerFundRequest"
+                    fldName="Core_MDF_Budget_Type_nm__c" isRequired="true" recTypeName="{!v.recordtypeName}"
+                    selectedValue="{!v.newPFR.Core_MDF_Budget_Type_nm__c}" dispLabel="{!$Label.c.Core_MDF_Budget_Type}"
+                    recTypeDevName="{!v.recordtypeDeveloperName}" options="{!v.budgetTypeVal}"
+                    fetchPicklistValuesFromCampaign="false" />
+            </lightning:layoutItem>
+
+            <!-- Total Investment and Maximum Intel Investment Fields -->
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                <lightning:input type="number" formatter="currency" step="0.01"
+                    label="{!$Label.c.Core_MDF_Activity_Total_Investment}" value="{!v.newPFR.RequestedAmount}" onchange="{!c.onTotalInvestmentChange}" />
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                <lightning:input type="number" formatter="currency" step="0.01"
+                    label="{!$Label.c.Core_MDF_Maximum_Intel_Investment}"
+                    value="{!v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c}"
+                    onchange="{!c.onMaxIntelInvestmentChange}" />
+            </lightning:layoutItem>
+
+            <!-- Available Budgets Table Section -->
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="12">
+                <h4 class="slds-text-heading_small slds-m-bottom_small">{!$Label.c.Core_MDF_Available_Budget_Label}</h4>
+                <aura:if isTrue="{!v.showBudgetTable}">
+                    <div class="budget-table-container">
+                        <table class="budget-table">
+                            <thead>
+                                <tr>
+                                    <th>Budget Name</th>
+                                    <th>Available Amount</th>
+                                    <th>Allocation %</th>
+                                    <th>Allocated Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.budgetAllocations}" var="allocation" indexVar="index">
+                                    <tr>
+                                        <td>
+                                            <lightning:select class="budget-select" 
+                                                value="{!allocation.budgetId}"
+                                                onchange="{!c.onBudgetSelect}"
+                                                aura:id="budgetSelect_{!index}">
+                                                <option value="" text="-- Select a Budget --"/>
+                                                <aura:iteration items="{!v.availableBudgets}" var="budget">
+                                                    <option value="{!budget.budgetId}" text="{!budget.budgetName + ' - ' + budget.budgetType + if(empty(budget.revenueSegment), '', ' - ' + budget.revenueSegment)}"/>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </td>
+                                        <td>${!allocation.availableAmount}</td>
+                                        <td>
+                                            <lightning:input type="number" class="percentage-input" min="0" max="100"
+                                                step="0.01" value="{!allocation.allocationPercentage}"
+                                                onchange="{!c.onPercentageChange}" 
+                                                aura:id="budgetPercent_{!index}" />%
+                                        </td>
+                                        <td>${!allocation.allocatedAmount}</td>
+                                        <td>
+                                            <lightning:button variant="bare" iconName="utility:delete" 
+                                                title="Remove Budget"
+                                                onclick="{!c.removeBudgetAllocation}"
+                                                aura:id="budgetDelete_{!index}"
+                                                class="action-button" />
+                                        </td>
+                                    </tr>
+                                </aura:iteration>
+                                <tr class="total-row">
+                                    <td colspan="2">Total Allocation</td>
+                                    <td>{!v.totalPercentageAllocation}%</td>
+                                    <td>${!v.totalAllocatedAmount}</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <aura:if isTrue="{!and(not(empty(v.budgetValidationError)), v.budgetValidationError != '')}">
+                            <p class="validation-error slds-m-top_small">{!v.budgetValidationError}</p>
+                        </aura:if>
+                    </div>
+                    <lightning:button variant="brand" label="Add Budget Row" 
+                        onclick="{!c.addBudgetAllocation}"
+                        class="slds-m-top_medium" />
+                </aura:if>
+                <aura:if isTrue="{!not(v.showBudgetTable)}">
+                    <p class="slds-text-color_weak">Select a Budget Type to add budgets</p>
+                </aura:if>
+            </lightning:layoutItem>
+
+            <aura:if isTrue="{!and(v.isLoggedInUserLevelOneApprover, not(empty(v.newPFR.Core_MDF_Budget_Type_nm__c)))}">
+                <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                    <aura:if isTrue="{!or(v.newPFR.Core_MDF_Budget_Type_nm__c == $Label.c.Core_MDF_BudgetType_CMP, v.newPFR.Core_MDF_Budget_Type_nm__c == $Label.c.Core_MDF_BudgetType_SP_CMP)}">
+                        <lightning:input type="checkbox" name="isAdditionalReviewReqd"
+                            label="{!$Label.c.Core_MDF_Field_Review + '?'}" aura:id="NewForm"
+                            checked="{!v.isAdditionalReviewReqd}" />
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!or(v.newPFR.Core_MDF_Budget_Type_nm__c == $Label.c.Core_MDF_BudgetType_MDF, v.newPFR.Core_MDF_Budget_Type_nm__c == $Label.c.Core_MDF_BudgetType_MDFPlus)}">
+                                <lightning:input type="checkbox" name="isAdditionalReviewReqd"
+                                    label="{!$Label.c.Core_MDF_Marketing_Review + '?'}" aura:id="NewForm"
+                                    checked="{!v.isAdditionalReviewReqd}" />
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </lightning:layoutItem>
+            </aura:if>
+
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="12">
+                <c:core_MDF_Outcome_Based_Acc_Node aura:id="activityAccNode" recordId="{!v.recordId}"
+                    parentAccountId="{!v.selectedAccount.Id}"
+                    totalAmount="{!v.newPFR.Core_MDF_Maximum_Intel_Investment_amt__c}" mode="{!v.mode}"
+                    budgetId="" editable="false" />
+            </lightning:layoutItem>
+        </lightning:layout>
+
+        <!-- PRIORITY / REGION -->
+        <lightning:layout horizontalAlign="spread" multipleRows="true">
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                <c:Core_MDF_Picklist aura:id="Priority1Field" objName="PartnerFundRequest"
+                    fldName="Core_MDF_Priorities__c" isRequired="true" recTypeName="{!v.recordtypeName}"
+                    selectedValue="{!v.SelPriority}" dispLabel="{!$Label.c.Core_MDF_Priority}"
+                    recTypeDevName="{!v.recordtypeDeveloperName}" options="{!v.priorityValues}"
+                    fetchPicklistValuesFromCampaign="false" labelValueMap="{!v.apitoLabelConvert}" />
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small" flexibility="grow" size="6">
+                <lightning:select aura:id="RegionField" name="Region" label="{!$Label.c.Core_MDF_RegionLabel}"
+                    value="{!v.SelRegion}" onchange="{!c.onRegionChange}">
+                    <aura:iteration items="{!v.regionvalues}" var="item">
+                        <option value="{!item.value}" text="{!item.label}" />
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+        </lightning:layout>
+
+    </div>
+
+</aura:component>

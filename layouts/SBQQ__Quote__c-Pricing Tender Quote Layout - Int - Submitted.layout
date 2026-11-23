@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
@@ -27,7 +28,7 @@
                 <field>Pricing_End_Customer_Country_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>Pricing_Server_Deal_Type_Nm__c</field>
             </layoutItems>
             <layoutItems>
@@ -207,34 +208,25 @@
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>SBQQ__Quote__c.Pricing_QuoteTeamSharing</actionName>
+            <actionName>SBQQ__Quote__c.Pricing_FSEAccountTeam_Sync</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>SBQQ__Quote__c.Pricing_FSEAccountTeam_Sync</actionName>
+            <actionName>SBQQ__Quote__c.Pricing_Resubmit_UCD_Request</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>4</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SBQQ__Quote__c.Pricing_Resubmit_UCD_Request</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
     </platformActionList>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>Pricing_Quote_Line_Number__c</fields>
+        <fields>Pricing_Quote_Line_Number_Txt__c</fields>
         <fields>SBQQ__ProductName__c</fields>
         <fields>Pricing_Status_Nm__c</fields>
         <fields>Pricing_Sales_Rep__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>Pricing_Question__c</fields>
         <fields>Pricing_Answer__c</fields>
         <fields>NAME</fields>

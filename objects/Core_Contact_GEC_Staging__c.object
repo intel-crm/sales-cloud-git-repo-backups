@@ -294,6 +294,11 @@
         <columns>Core_Payload__c</columns>
         <columns>Core_Response__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

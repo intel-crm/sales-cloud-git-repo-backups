@@ -3,20 +3,20 @@
     <executionUserId>0053b00000BQZJu</executionUserId>
     <identityLocation>SubjectNameId</identityLocation>
     <identityMapping>FederationId</identityMapping>
-    <issuer>https://sts.windows.net/46c98d88-e344-4ed4-8496-4ed7712e255d/</issuer>
-    <loginUrl>https://login.microsoftonline.com/46c98d88-e344-4ed4-8496-4ed7712e255d/saml2</loginUrl>
-    <logoutUrl>https://partners.intel.com/secur/logout.jsp</logoutUrl>
+    <issuer>https://sts.windows.net/24d2eec2-c04e-4c44-830d-f374a7b9559e/</issuer>
+    <loginUrl>https://login.microsoftonline.com/24d2eec2-c04e-4c44-830d-f374a7b9559e/saml2</loginUrl>
+    <logoutUrl>https://login.microsoftonline.com/24d2eec2-c04e-4c44-830d-f374a7b9559e/saml2</logoutUrl>
     <name>sts-portal-ddr</name>
-    <oauthTokenEndpoint>https://intel.my.salesforce.com/services/oauth2/token?so=00Do0000000aRcf</oauthTokenEndpoint>
+    <oauthTokenEndpoint>https://intel--crmqa9.sandbox.my.salesforce.com/services/oauth2/token?so=00Ddi000004mJ65</oauthTokenEndpoint>
     <redirectBinding>false</redirectBinding>
     <requestSignatureMethod>1</requestSignatureMethod>
-    <requestSigningCertId>0P1cv0000000nvB</requestSigningCertId>
-    <salesforceLoginUrl>https://intel.my.salesforce.com?so=00Do0000000aRcf</salesforceLoginUrl>
-    <samlEntityId>https://saml.salesforce.com.crm.ddr</samlEntityId>
+    <requestSigningCertId>0P1di000000tvo9</requestSigningCertId>
+    <salesforceLoginUrl>https://intel--crmqa9.sandbox.my.salesforce.com?so=00Ddi000004mJ65</salesforceLoginUrl>
+    <samlEntityId>https://saml.salesforce.com.crmqa9.ddr</samlEntityId>
     <samlJitHandlerId>01pHo00000EIK9x</samlJitHandlerId>
     <samlVersion>SAML2_0</samlVersion>
     <useConfigRequestMethod>true</useConfigRequestMethod>
     <useSameDigestAlgoForSigning>true</useSameDigestAlgoForSigning>
     <userProvisioning>true</userProvisioning>
-    <validationCert>MIIC8DCCAdigAwIBAgIQHNHfBnzBwrBPdY3oew+DCTANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMjExMTExMzM1NDVaFw0yNTExMTExMzM1NDVaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtrxSRxsD2PWLDUMXlhGMUtsGkUMDXu0viaT0bgJrvo2kMKtwohNPU5pDcgRcfdC5OnFYkJ/P7NC93S9LDYOZqkoicgKHvinYiC9VVe7OftZI2+rzzPRkkJ4P3vqlWu2KoFmWctFYGLHfnmUlhlVWnYMxYValtjpATbHU/20K/zkONj2lToQQfyiddu3DkRRzd8BUwkgS7iDDU/sSNUn5lDj5CvOhnIjglOD/9eBTfGPQ3ZW0ronIwegb+PAut01vjgm2nTmHKmrKeHgANc+VgHd0A00iENuAsVIpyE/OzkWr7k2MUh38hxlKSPv9sU8WKW5Fng5wt4ZL4IhtvTnLuQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBA03OEGCi+w3fQONotOBNTR4abzSPF9GSVSOpg1hXxUxVzS++aRfMIiDKRD1fOwCw1LbA+ApDDXJrjLeRiAcUirSsB0TunggcniR6ztdZEK154Ap1X8Ulb4heyebeRvYdzOFiOFBf06VHpmiLPieQo7OjZ7OTJvWoy106p7z6VESN2F+RaWND3uoQe1Pw+vjIA7h8l1PCPzR6VpDiw8UsYKpbTEV6NGc+oU6jMICE2TwgussIGm4nfUj3ePaNiRAZMmmUFU5G8MCAC3Q7kj8tNFk2QXoxNENAoNfbptFSC3CfW9qHs/qLcr6lJy7MdGZq97O6uUwbZeY+cTeDqg2f2</validationCert>
+    <validationCert>MIIC8DCCAdigAwIBAgIQQn5P/43AMoBIT8Jr7E/vrzANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMjA5MTYxMDEzMDBaFw0yNTA5MTYxMDEyNTlaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApqnZBytPa8T2zrGSVY/4oBViu/nbXgiHIVzo4S6x31vTSumUO/pL0gaaYU+HwTrAGx2ToAZZnqU/VGKa7xHhOtjad6BypGAMcyvugvkX/SdfyPRxaprCYJ2sYJJaGLCUCaqNuN28nbtKb5jSKLa9fqTA+kJE8DVRDiRpFbgplxjMpG4OmtLfHp7ANEmx1rnq7EqPM4aVuBWaCcrFJA2D5pBskLknKxMF4nTpWvkKjaxi24EoSLtJUUgh8zXedQyPBLcO2aY7LTH+pkgO6lTwT08WIv5ztlKzrfMUasMuMnPPUtKZJQZcz31IV9hGdaWusyfcoqMZb30gm+uzXJ0K5QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBji/zPkjwUPx0Bz4O2jz18MvrckvuYwoWjPB/OlQ2tAiQKFNLkXc379ZsAA5wgadwU4WH2GGdJ5712BmI4qHdAoadAkcd76HoiW1V2WM4yOJ8UaIbzEjh2vVcy09pVjHwBP5IOlBXRPDMxCyQDaJ69ZIenKt1N+QijduViTs2BemNf8gCyMpYKPk3TpCCQeXh5ys4xsnMC5/dkUZQhvqDvtW3/rN8647wu6eSWnQVJsCiWByblAMOCddI+BkgWQbuUw+8BYrtYX2fsiUZbfVCo8JiQgHEsGZwaADP/VrMtYX2qdohnQs24MUtKjBbKcxii4FzK8eSUpgqVmYL/56RD</validationCert>
 </SamlSsoConfig>

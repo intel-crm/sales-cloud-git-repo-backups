@@ -1155,16 +1155,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Product_Inbound_Staging__c.Core_IsActive__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Product_Inbound_Staging__c.Core_Unique_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Product_Inbound_Staging__c.Is_MMID_Blank__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1390,16 +1380,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Product_Inbound_Staging__c.L5_Line_Of_Business_Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Product_Inbound_Staging__c.L5_Line_of_Business__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Product_Inbound_Staging__c.L5_MarketCodeName_WOR__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1501,11 +1481,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Product_Inbound_Staging__c.L5_ProfitCenter__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Product_Inbound_Staging__c.L5_Profit_Center_Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

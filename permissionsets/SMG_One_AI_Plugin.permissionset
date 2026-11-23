@@ -100,7 +100,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Core_Solution_Areas__c.Core_Solution_Partners_Txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -132,6 +132,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Core_Intel_Platform__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Last_Opportunity_Progressed_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Opportunity_Not_Progressed__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -192,6 +202,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Product2.Core_Family_Nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -395,7 +395,7 @@ METHODS
             if(acmOldMap!=null && acmOldMap.get(acm.Id).PRM_Partner_Role__c!=acm.PRM_Partner_Role__c){
                 accountIdAfterOperationOnACM.add(acm.PRM_Account_Id__c);// storing account ids
             }
-            
+                        
             PRM_AccountChannelMembership__c acmOld ; 
             if(acmOldMap!=null && !acmOldMap.isEmpty()) {
                 acmOld = (PRM_AccountChannelMembership__c) acmOldMap.get(acm.id) ;
@@ -416,7 +416,6 @@ METHODS
                 AcmWithOPIDCheckMap.put(acm.PRM_Account_Id__c,acm);
                 accountIdSet.add(acm.PRM_Account_Id__c);
             }
-            
             //Map Of Tier and Business Event
             /*if(!ipaRefresh || Test.isRunningTest()){
             if(acm.PRM_Tier_Name_txt__c=='Gold' 
@@ -755,8 +754,8 @@ METHODS
         if(acmOldList == null){
             if(acmList != null && !acmList.IsEmpty()){
                 for(PRM_AccountChannelMembership__c acm :acmList){
-                    //dup acm role  
-                    if((acm.PRM_Channel_Program_Level_Id__r.PRM_inactind__c == FALSE) && (acm.PRM_Channel_Program_Level_Id__r.Program.Name == 'Intel Partner Alliance')){
+                    //rrt-dup acm role  
+                   if((acm.PRM_Channel_Program_Level_Id__r.PRM_inactind__c == FALSE) && (acm.PRM_Channel_Program_Level_Id__r.Program.Name == 'Intel Partner Alliance')){
                         uniqueMap.put(acm.PRM_Account_Channel_Program_Key__c, acm.Id);
                     } 
                 }
@@ -772,7 +771,7 @@ METHODS
             if(acmList != null && !acmList.IsEmpty()){
                 for(PRM_AccountChannelMembership__c acm :acmList){
                     if((uniqstr != null && !uniqstr.IsEmpty()) && (idsList != null && !idsList.IsEmpty()) && (!idsList.contains(acm.Id)) && (uniqstr.contains(acm.PRM_Account_Channel_Program_Key__c))){
-                        //dup acm role 
+                        //rrt-dup acm role 
                         if((acm.PRM_Channel_Program_Level_Id__r.PRM_inactind__c == FALSE) && (acm.PRM_Channel_Program_Level_Id__r.Program.Name == 'Intel Partner Alliance')){
                             uniqueUpdateMap.put(acm.PRM_Account_Channel_Program_Key__c,acm.Id);
                         } 
@@ -1919,7 +1918,7 @@ opidAndIntelAccRecList.add(agm.Core_Partner_Account_Id__c);
                 Set<Id> locationAccount = new Set<Id>();             
                 if(inactivateOPIDACM){
                     if(inactiveACMAccId != null && !inactiveACMAccId.IsEmpty()){ //Fetching parent account id.
-                        for(Core_Account_Group_Member__c agm : [Select Id,Name,Core_Partner_Account_Id__c, Core_Partner_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__c,Core_Inactive_Ind__c From Core_Account_Group_Member__c Where (Core_Intel_Account_Id__c IN :inactiveACMAccId or Core_Partner_Account_Id__c IN:inactiveACMAccId) AND Core_Inactive_Ind__c = false]){
+                        for(Core_Account_Group_Member__c agm : [Select Id,Name,Core_Partner_Account_Id__c, /*Core_Partner_Account_Id__r.Core_IPA_Partner_Segment__c,*/ Core_Intel_Account_Id__c,Core_Inactive_Ind__c From Core_Account_Group_Member__c Where (Core_Intel_Account_Id__c IN :inactiveACMAccId or Core_Partner_Account_Id__c IN:inactiveACMAccId) AND Core_Inactive_Ind__c = false]){//ATHR Fix - TWC729-9556
                             parentAccId.add(agm.Core_Partner_Account_Id__c);
                             locationAccount.add(agm.Core_Intel_Account_Id__c);
                             Account opidAcc = new Account();
@@ -2253,7 +2252,7 @@ opidAndIntelAccRecList.add(agm.Core_Partner_Account_Id__c);
                             'Gold' => 2,
                             'Member' => 1
                             };
-                   
+                   system.debug('addPartnerRoleForApprovedAcms'+addPartnerRoleForApprovedAcms);
                                 for(PRM_AccountChannelMembership__c acm :[SELECT Id,PRM_Account_Id__c,PRM_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Status_Nm__c,PRM_Partner_Role__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c IN :acmActiveAccountIDset AND PRM_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c = FALSE]){                                   
                                     Account accToUpdate = acctounsToUpdateMap.containsKey(acm.PRM_Account_Id__c)? acctounsToUpdateMap.get(acm.PRM_Account_Id__c): new Account();Account acc = new Account();
                                     accToUpdate.id=acm.PRM_Account_Id__c;

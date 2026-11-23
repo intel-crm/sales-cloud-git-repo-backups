@@ -79,7 +79,7 @@ export default class Core_aaqcase extends NavigationMixin(LightningElement) {
     accessErrorMessageOrNoServiceMessageTagged ='';
 
     /****************************************************************************************** 
-     * Handles current page reference to get recordId from Account Object.
+     * Handles current page reference to get recordId from the Account Object.
      * @param {}.
     ******************************************************************************************/
     @wire(CurrentPageReference)

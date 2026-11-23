@@ -95,7 +95,7 @@
         <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Gerry Opportunities Jan &apos;27 - Dec &apos;27</name>
+    <name>Gerry Opportunities Jan &apos;26 - Dec &apos;26</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -119,8 +119,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2027-12-31</endDate>
+        <endDate>2026-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2027-01-01</startDate>
+        <startDate>2026-01-01</startDate>
     </timeFrameFilter>
 </Report>

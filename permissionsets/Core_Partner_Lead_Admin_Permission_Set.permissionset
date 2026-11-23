@@ -13955,11 +13955,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>User.User_Unique__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>sbaa__ApprovalChain__c.sbaa__TargetObject__c</field>
         <readable>true</readable>

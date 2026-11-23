@@ -1891,10 +1891,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <masterLabel>IQR_TANDC</masterLabel>
             <translation><!-- IQR_TANDC --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>PSG_TANDC</masterLabel>
-            <translation><!-- PSG_TANDC --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- UCD Rejection Reason --></label>
@@ -2117,10 +2113,6 @@ The field allows only English letters, digits (0-9), and the following special c
         <picklistValues>
             <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
             <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Retailer</masterLabel>
@@ -2629,6 +2621,14 @@ The field allows only English letters, digits (0-9), and the following special c
         <label><!-- Subscriptions --></label>
         <name>PRM_Subscriptions__c</name>
         <picklistValues>
+            <masterLabel>Developer Zone Newsletter</masterLabel>
+            <translation><!-- Developer Zone Newsletter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edge Software Hub Product Communication</masterLabel>
+            <translation><!-- Edge Software Hub Product Communication --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Education and Training</masterLabel>
             <translation><!-- Education and Training --></translation>
         </picklistValues>
@@ -2637,8 +2637,16 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Events and Tradeshows --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>FPGA Partner Program Newsletter</masterLabel>
+            <translation><!-- FPGA Partner Program Newsletter --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Industry Solutions</masterLabel>
             <translation><!-- Industry Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inside Edge Newsletter</masterLabel>
+            <translation><!-- Inside Edge Newsletter --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Cloud Insider Events and Tradeshows</masterLabel>
@@ -2695,6 +2703,18 @@ The field allows only English letters, digits (0-9), and the following special c
         <picklistValues>
             <masterLabel>Product and Solution Communications</masterLabel>
             <translation><!-- Product and Solution Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programmable Logic Newsletters</masterLabel>
+            <translation><!-- Programmable Logic Newsletters --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programmable Logic Product Announcements</masterLabel>
+            <translation><!-- Programmable Logic Product Announcements --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Developer Product Insights</masterLabel>
+            <translation><!-- Software Developer Product Insights --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Surveys</masterLabel>

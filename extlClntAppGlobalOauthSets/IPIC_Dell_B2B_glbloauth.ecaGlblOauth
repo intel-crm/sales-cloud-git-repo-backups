@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
-    <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
+    <callbackUrl>https://test.salesforce.com/services/oauth2/callback</callbackUrl>
     <certificate>MIIG8DCCBdigAwIBAgIQDE9hYlQjD8rCsEX8AmnQozANBgkqhkiG9w0BAQsFADBZ
 MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMTMwMQYDVQQDEypE
 aWdpQ2VydCBHbG9iYWwgRzIgVExTIFJTQSBTSEEyNTYgMjAyMCBDQTEwHhcNMjYw
@@ -39,7 +39,7 @@ lE+qj1QICnpscCtbvDCt4ofrB/CHuImg6uoE2GM4VVkWOe1X8T6C+tQcnNp45HhP
 qu1VrkCkcR6mq117nkvEfiDb6Y6oA7ZZIrMVpy5licfCUzUEIClKDoCbgB3Stash
 V0OckVUu+cabmwBvYHJaF0qz7nuo45jnRbAcxPEmp082N+4Clke+n5OyqixSrski
 5uuj6w==</certificate>
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6lAselY3ULM7__DNCS3Sqb.Xto1vi8AQN6n9xUTc0zCfstgr.hegoqSxZt9t</consumerKey>
+    <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBbk4sD4Rr4..4sPieKVaJTBIZ8yKWoeMLhqQOROldWL5TJaUQheyQV.VxRBnu</consumerKey>
     <externalClientApplication>IPIC_Dell_B2B</externalClientApplication>
     <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
     <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
@@ -47,12 +47,12 @@ V0OckVUu+cabmwBvYHJaF0qz7nuo45jnRbAcxPEmp082N+4Clke+n5OyqixSrski
     <isConsumerSecretOptional>false</isConsumerSecretOptional>
     <isDPopEnabled>false</isDPopEnabled>
     <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
-    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
     <isIntrospectAllTokens>false</isIntrospectAllTokens>
     <isMtlsEnabled>false</isMtlsEnabled>
     <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
     <isPkceRequired>true</isPkceRequired>
-    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
     <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
     <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
     <isTokenExchangeEnabled>false</isTokenExchangeEnabled>

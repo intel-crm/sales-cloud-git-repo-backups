@@ -36,6 +36,8 @@ export default class Prm_RegReq_Rejection extends LightningElement {
     async fetchApprovalRecordJS(){
         if(this.recordId){
             this.resultdata = await fetchApprovalRecord({regReqId :this.recordId});
+             console.log('Fetched approval record: ', JSON.stringify(this.resultdata));
+             console.log('this.callFetchApproval: ', this.callFetchApproval);
            if(!this.resultdata.workItemId && this.callFetchApproval){
                 const evt = new ShowToastEvent({
                     title: 'Error',
@@ -80,6 +82,7 @@ export default class Prm_RegReq_Rejection extends LightningElement {
                 this.recordDetail = data;
                 this.status = getFieldValue( this.recordDetail, STATUS);
                if(this.status === NEW || this.status == 'Pending'){
+                    console.log('JB reject loop');
                     this.showSave = true;
                     this.showRejectReason = true;
                 }else if(this.status === APPROVED){

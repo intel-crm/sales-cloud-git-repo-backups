@@ -39,6 +39,7 @@ public without sharing class Core_OpportunityHandler{ //TWC3123-5359 Added witho
     public static String DESIGN_WIN = 'Design Win';
     public static String DESIGN = 'Design';//Added by Hira
     public static String PRODUCTION_WIN = 'Production Win';//Added by Hira
+    public static Boolean kpiBatchCleanupQueued = false;
     public static Set<Id> uniqueOpptyIdsSet = new Set<Id>();   //DE28766: Adding a new Set to check the recurssion of Trigger execution - Ashwin 
     public static final Set<String> Core_Status = new Set<String>{'Lost','Cancelled','Deleted','On Hold','Production Lost','Production Cancelled'};
         public static boolean isExistingOpp = true;
@@ -1659,14 +1660,14 @@ opptyId.add(opp.Id);
     // As a part of TWC3123-6470
     //Description  : This method checks the technical owner change on opportunity and shares it with the respective Portal Roles and delete previous.
     
-   /* public static void OpportunityKPIfieldRefresh(List<Opportunity> OppList, Map<Id,Opportunity> OldMap)
+    public static void OpportunityKPIfieldRefresh(List<Opportunity> OppList, Map<Id,Opportunity> OldMap)
     { 
         for(Opportunity opp:OppList){
             if(opp.StageName != OldMap.get(opp.Id).StageName && opp.StageName != PRODUCTION_WIN){
                 opp.Core_ProductionWin_KPI_Txt__c=null;
             }  
         }
-    }*/
+    }
     //Description  : This method stores the Description Of Contribution of Technical owner and Partner account owner into field whenever Opportunity Owner changed.
     public static void storeOppTeamMemDescription(map<Id, Opportunity> oldMap, map<Id, Opportunity> newMap) {
         set<Id> updatedOppSet = new set<Id>();
@@ -1701,7 +1702,8 @@ opptyId.add(opp.Id);
                 }
             }
         } catch(Exception ex) {
-        PMP_Utility.logError(ex, 'Core_OpportunityHandler.storeOppTeamMemDescription'); }
+        PMP_Utility.logError(ex, 'Core_OpportunityHandler.storeOppTeamMemDescription'); 
+    }
     }
     
     //Description-Added as part of TWC3123-5419 for point-> Any update to DW opportunity in stage DW including the submission - > update the pw qty, sales price from DW field for blank values)
@@ -1838,25 +1840,107 @@ public static void syncOwner_Opportunity_Quote(List<Opportunity> newOppList, Map
         }
     }
    
+    // Stage reversals during approval recall happen after the trigger recursion guard stops calling this handler,
+    // so cleanup is deferred to a Queueable that evaluates the final committed stage.
     public static void OpportunityKPIBatchUpdate(List<Opportunity> OppList, Map<Id,Opportunity> OldMap){ 
-        Set<Id> oppIds=new Set<Id>();
-        Map<Id, String> oldStatusMap = new Map<Id, String>();
-        List<Core_Opportunity_KPI_Batch_Detail__c> oppKPIBatchToDelete = new List<Core_Opportunity_KPI_Batch_Detail__c>();
-        for(Opportunity opp:OppList){
-            if(opp.StageName != OldMap.get(opp.Id).StageName && 
-               ((OldMap.get(opp.Id).StageName == PRODUCTION_WIN && opp.StageName == DESIGN_WIN) || 
-                (OldMap.get(opp.Id).StageName == DESIGN_WIN && opp.StageName == DESIGN))){
-                    oppIds.add(opp.Id);
-                    oldStatusMap.put(opp.ID, OldMap.get(opp.Id).StageName);
-                }  
+        Set<Id> oppIds = new Set<Id>();
+        Set<String> trackedStages = new Set<String>{DESIGN_WIN, PRODUCTION_WIN};
+        for(Opportunity opp : OppList){
+            Opportunity oldOpp = OldMap != null ? OldMap.get(opp.Id) : null;
+            if(trackedStages.contains(opp.StageName) || (oldOpp != null && trackedStages.contains(oldOpp.StageName))){
+                oppIds.add(opp.Id);
+            }
         }
-        if(!oppIds.isEmpty()){
-            List<Core_Opportunity_KPI_Batch_Detail__c> matchingKPIBatch = [SELECT Id FROM Core_Opportunity_KPI_Batch_Detail__c WHERE Core_Opportunity_ID_Txt__c IN :oppIds AND Core_Opportunity_Stage_Txt__c IN :oldStatusMap.values()];
-            if(matchingKPIBatch.size() > 0){
-                oppKPIBatchToDelete.addAll(matchingKPIBatch);
-                delete oppKPIBatchToDelete;
-            }  
+        if(oppIds.isEmpty() || kpiBatchCleanupQueued){
+            return;
+        }
+        kpiBatchCleanupQueued = true;
+        if(System.isFuture() || System.isQueueable() || System.isBatch() || Limits.getQueueableJobs() >= Limits.getLimitQueueableJobs()){
+            cleanupKPIBatch(oppIds);
+        } else {
+            System.enqueueJob(new KPIBatchCleanupJob(oppIds));
+        }
+    }
+
+    public without sharing class KPIBatchCleanupJob implements Queueable {
+        private Set<Id> oppIds;
+        public KPIBatchCleanupJob(Set<Id> oppIds){
+            this.oppIds = oppIds;
+        }
+        public void execute(QueueableContext ctx){
+            Core_OpportunityHandler.cleanupKPIBatch(oppIds);
+        }
+    }
+
+    public static void cleanupKPIBatch(Set<Id> oppIds){
+        try{
+            if(oppIds == null || oppIds.isEmpty()){
+                return;
+            }
+            // Keyed by both 18- and 15-char Id text since Core_Opportunity_ID_Txt__c may hold either.
+            Map<String, Set<String>> staleStagesByOppId = new Map<String, Set<String>>();
+            Set<String> allStaleStages = new Set<String>();
+            for(Opportunity opp : [SELECT Id, StageName FROM Opportunity WHERE Id IN :oppIds]){
+                Set<String> staleStages;
+                if(opp.StageName == DESIGN){
+                    staleStages = new Set<String>{DESIGN_WIN, PRODUCTION_WIN};
+                } else if(opp.StageName == DESIGN_WIN){
+                    staleStages = new Set<String>{PRODUCTION_WIN};
+                } else {
+                    continue;
+                }
+                String idText = String.valueOf(opp.Id);
+                staleStagesByOppId.put(idText, staleStages);
+                staleStagesByOppId.put(idText.left(15), staleStages);
+                allStaleStages.addAll(staleStages);
+            }
+            if(staleStagesByOppId.isEmpty()){
+                return;
+            }
+            Set<String> oppIdTexts = staleStagesByOppId.keySet();
+            List<Core_Opportunity_KPI_Batch_Detail__c> toDelete = new List<Core_Opportunity_KPI_Batch_Detail__c>();
+            for(Core_Opportunity_KPI_Batch_Detail__c kpi : [SELECT Id, Core_Opportunity_ID_Txt__c, Core_Opportunity_Stage_Txt__c
+                                                            FROM Core_Opportunity_KPI_Batch_Detail__c
+                                                            WHERE Core_Opportunity_ID_Txt__c IN :oppIdTexts
+                                                            AND Core_Opportunity_Stage_Txt__c IN :allStaleStages]){
+                Set<String> staleStages = staleStagesByOppId.get(kpi.Core_Opportunity_ID_Txt__c);
+                if(staleStages != null && staleStages.contains(kpi.Core_Opportunity_Stage_Txt__c)){
+                    toDelete.add(kpi);
+                }
+            }
+            if(toDelete.isEmpty()){
+                return;
+            }
+            List<Core_Log_Entry__c> logEntries = new List<Core_Log_Entry__c>();
+            for(Database.DeleteResult sr : Database.delete(toDelete, false)){
+                if(!sr.isSuccess()){
+                    for(Database.Error err : sr.getErrors()){
+                        logEntries.add(new Core_Log_Entry__c(Core_Message__c = 'Error', Core_Details__c = err.getMessage(), Core_Origin__c = 'Core_OpportunityHandler.cleanupKPIBatch', Core_Severity__c = 'High', Core_When__c = System.now(), Core_Project__c = 'Sales Evolve', Core_sObjectId__c = sr.getId()));
+                    }
+                }
+            }
+            Map<String, Core_LogEntry_Switch__c> logSwitch = Core_LogEntry_Switch__c.getAll();
+            if(!logEntries.isEmpty() && logSwitch.get('Core_LogEntry_Check') != null && logSwitch.get('Core_LogEntry_Check').Is_Selected__c){
+                insert logEntries;
+            }
+        } catch(Exception ex){
+            PMP_Utility.logError(ex, 'Core_OpportunityHandler.cleanupKPIBatch');
         }
     }
     
+    //Description : Detects Opportunities where CRM_Audit_Status__c changed and triggers Approved
+    //commission generation for them. Every audit status change produces a new Approved
+    //Core_Commissionable_Transaction__c record, even if Approved records already exist.
+    public static void generateCommissionOnAuditStatusChange(List<Opportunity> newOppList, Map<Id,Opportunity> oldOppMap) {
+        Set<Id> auditStatusChangedOppIds = new Set<Id>();
+        for (Opportunity opp : newOppList) {
+            Opportunity oldOpp = oldOppMap != null ? oldOppMap.get(opp.Id) : null;
+            if (oldOpp != null && opp.CRM_Audit_Status__c != oldOpp.CRM_Audit_Status__c) {
+                auditStatusChangedOppIds.add(opp.Id);
+            }
+        }
+        if (!auditStatusChangedOppIds.isEmpty()) {
+            Core_CommissionableTransactions.generateApprovedCommissionOnAuditStatusChange(auditStatusChangedOppIds);
+        }
+    } 
 }

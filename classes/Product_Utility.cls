@@ -23,9 +23,11 @@ public with sharing class Product_Utility {
     public static Set<String> softwareEpmid = new Set<String>(Product_Staging_StaticConstants.SOFTWARE_EPMID);
     public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     public static Boolean executeProductOldLogic = mapFunctionalityNameTriggerExecution.containsKey('ExecuteProduct_DeactivationAndLogEntry') && mapFunctionalityNameTriggerExecution.get('ExecuteProduct_DeactivationAndLogEntry').Core_Active__c;
+    //Ganesh Start
 	public static Boolean isProductDeprecationDateEnabled() {
 		return mapFunctionalityNameTriggerExecution.containsKey('ProductDeprecationDate')&& mapFunctionalityNameTriggerExecution.get('ProductDeprecationDate').Core_Active__c;
-	} 
+	}
+	//Ganesh End   
     
     // method to store the metadata mappings for Inbound to Staging to FPH/Product3
     static{
@@ -202,7 +204,9 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
             stagingRec.Core_Sales_Visible_Flag__c = stagingRec.Core_Hierarchy_ID__c == '59' ? true : salesConfig != null && salesConfig.Sales_Visible__c;
             
         }   
+        //Ganesh Start
 		copyLevel5DeactivationDate(productLevel,stagingRec);
+		//Ganesh End
         return stagingRec;
     }    
     
@@ -556,7 +560,9 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
         }
         
         Core_Products_Staging__c stngRec=populateStngIPSRecAttributes(productLevel, level, ipsConfigMap, stagingRec);
+        //Ganesh Start
 	    copyLevel5DeactivationDate(productLevel,stngRec);
+	    //Ganesh End
         if (eligibleLevels.containskey(level) &&  eligibleLevels.get(level)) {
             for (Product_fields_mapping__mdt mapping : mappings) {
                 stngRec.put(mapping.Product_staging_field__c,productLevel.get(mapping.Inbound_staging_field__c)); 
@@ -748,10 +754,12 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
         stagingRec.Unique_Value__c = stagingRec.Core_Unique_ID__c+';'+stagingRec.iPaaS_Load_ID__c+';'+ stagingRec.Core_Product_Org__c; 
         String keyFlag = stagingRec.Level__c+';'+stagingRec.Core_Hierarchy_ID__c;
         stagingRec.Core_IPS_Visible_Flag_External__c = ipsConfigMap.containsKey(keyFlag) &&  ipsConfigMap.get(keyFlag).IPS_Visible_Flag_External__c;
+        //Ganesh Start
 	    copyLevel5DeactivationDate(productLevel,stagingRec);
+	    //Ganesh End
         return stagingRec;
     }
-
+    //Ganesh Start
 	private static void copyLevel5DeactivationDate(Product_Inbound_Staging__c source, Core_Products_Staging__c target) {
     	if (!isProductDeprecationDateEnabled()) { 
         return;
@@ -765,4 +773,5 @@ stagingRec.Core_Intel_vPro_Platform_Eligibility__c=True;
         target.Deactivation_Date__c = source.Deactivation_Date__c;
     }
 }
+//Ganesh End
 }

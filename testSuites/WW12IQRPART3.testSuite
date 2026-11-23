@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Pricing_BatchPricingInboundMsgTest</testClassName>
+    <testClassName>Pricing_BulkInsertUpdateAESR_Batch_Test</testClassName>
+    <testClassName>Pricing_CustomerDivisionComp_cntrl_Test</testClassName>
+    <testClassName>Pricing_EmailUtility_Test</testClassName>
+    <testClassName>Pricing_Manage_Small_Volume_Deal_Test</testClassName>
+    <testClassName>Pricing_MyDeals_RetryIntegration_Test</testClassName>
+    <testClassName>Pricing_PerformanceMetricsControllerTest</testClassName>
+    <testClassName>Pricing_PricingAI_Controller_Test</testClassName>
+    <testClassName>Pricing_QuoteLineStatusAgeTest</testClassName>
+    <testClassName>Pricing_RestAPI_QuoteComments_Test</testClassName>
+    <testClassName>Pricing_SyncSDMToQuote_Test</testClassName>
+    <testClassName>Pricing_UCD_IQR_FormRequestTest</testClassName>
+    <testClassName>Pricing_UCD_IQR_Response_Handler_Test</testClassName>
+    <testClassName>PricingIQREventBusinessLogic_Test</testClassName>
+</ApexTestSuite>

@@ -343,11 +343,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Payment_Id__c.Core_MDF_EFT_Nbr__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Payment_Id__c.Core_MDF_Payment_Made_Dt__c</field>
             <table>PartnerFundClaim</table>
         </columns>

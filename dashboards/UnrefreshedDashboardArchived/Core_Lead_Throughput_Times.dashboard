@@ -3,10 +3,6 @@
     <backgroundEndColor>#DDDDDD</backgroundEndColor>
     <backgroundFadeDirection>TopToBottom</backgroundFadeDirection>
     <backgroundStartColor>#FFFFFF</backgroundStartColor>
-    <chartTheme>light</chartTheme>
-    <colorPalette>justice</colorPalette>
-    <dashboardChartTheme>light</dashboardChartTheme>
-    <dashboardColorPalette>justice</dashboardColorPalette>
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -413,7 +409,6 @@
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
-    <description>Dashboard components show &quot;All Leads&quot; based on the filter in the underlying reports. To see &quot;My Leads&quot; or &quot;My Team&apos;s Leads,&quot; clone the dashboard and point components to reports with a different filter setting.</description>
     <isGridLayout>true</isGridLayout>
     <owner>deployment.user@intel.com.crm</owner>
     <runningUser>salesforce.system.user@intel.com.crm</runningUser>

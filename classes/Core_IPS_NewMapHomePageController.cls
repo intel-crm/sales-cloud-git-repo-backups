@@ -667,7 +667,7 @@ Description : This method maps API name and value with a map
         //     LIMIT 49999
         // ];
         return (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.queryRecords(
-            'SELECT Id, Name, First_Name__c, Last_Name__c, User__r.FirstName, User__r.LastName, Active__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c = :caseId WITH USER_MODE LIMIT 49999',
+            'SELECT Id, Name, First_Name__c, Last_Name__c, User__r.FirstName, User__r.LastName, Active__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c = :caseId LIMIT 49999',
             new Map<String, Object>{ 'caseId' => caseId }
         );
     }

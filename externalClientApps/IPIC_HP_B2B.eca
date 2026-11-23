@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>anushyax.sivasankaran@intel.com</contactEmail>
+    <description>For HP External API access</description>
+    <distributionState>Local</distributionState>
+    <isProtected>false</isProtected>
+    <label>IPIC HP B2B</label>
+    <orgScopedExternalApp>00Ddi000004mJ65:IPIC_HP_B2B</orgScopedExternalApp>
+</ExternalClientApplication>

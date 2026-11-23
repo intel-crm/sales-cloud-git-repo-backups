@@ -6394,6 +6394,7 @@
     <tabs>standard-report</tabs>
     <tabs>CPT_Quota_Setup_Transposed__c</tabs>
     <tabs>Sales_Incentives</tabs>
+    <tabs>standard-OtherUserProfile</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Sales_Incentives_UtilityBar</utilityBar>
 </CustomApplication>

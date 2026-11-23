@@ -1,150 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <description>Send all the holding batch details to the respective</description>
-        <name>Send_Holding_Batch_Details</name>
-        <label>Send Holding Batch Details</label>
-        <locationX>50</locationX>
-        <locationY>792</locationY>
-        <actionName>espy_ApexJobsEmail</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>Wait_to_recheck_the_holding_state</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <nameSegment>espy_ApexJobsEmail</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
     <apiVersion>60.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>Holding_AsyncApexJobCount</name>
-        <label>Holding AsyncApexJob Count</label>
-        <locationX>182</locationX>
-        <locationY>576</locationY>
-        <assignmentItems>
-            <assignToReference>HoldingAsyncApexJobCount</assignToReference>
-            <operator>AssignCount</operator>
-            <value>
-                <elementReference>Holding_AsyncApexJob</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Is_Holding_Count_is_Greater_than_Limit</targetReference>
-        </connector>
-    </assignments>
-    <decisions>
-        <name>Are_there_any_holding</name>
-        <label>Are there any holding?</label>
-        <locationX>336</locationX>
-        <locationY>468</locationY>
-        <defaultConnector>
-            <targetReference>Wait_to_recheck_the_holding_state</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>Yes</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Holding_AsyncApexJob</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Holding_AsyncApexJobCount</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Is_Holding_Count_is_Greater_than_Limit</name>
-        <label>Is Holding Count is Greater than Limit?</label>
-        <locationX>182</locationX>
-        <locationY>684</locationY>
-        <defaultConnector>
-            <targetReference>Wait_to_recheck_the_holding_state</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Holding_count_greater_than_limit</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Metadata.espy__Is_Active__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>HoldingAsyncApexJobCount</leftValueReference>
-                <operator>GreaterThanOrEqualTo</operator>
-                <rightValue>
-                    <elementReference>Parsingtodouble</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Send_Holding_Batch_Details</targetReference>
-            </connector>
-            <label>Holding Count greater than limit</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Is_Started_Today</name>
-        <label>Is Started Today</label>
-        <locationX>138</locationX>
-        <locationY>1176</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Started_Today</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>FlowStartDateOnly</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Flow.CurrentDate</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <isGoTo>true</isGoTo>
-                <targetReference>Holding_AsyncApexJob</targetReference>
-            </connector>
-            <label>Started Today</label>
-        </rules>
-    </decisions>
     <description>This flow is designed to monitor Apex jobs within the system to ensure that no job exceeds a specified threshold. It will regularly check for any active or pending Apex jobs. If the number of jobs surpasses the defined threshold, indicating potential performance issues or an overload of system resources, the flow will trigger an alert email notification. The email will contain relevant details, including the current number of Apex jobs and any necessary actions to address the issue.</description>
     <environments>Default</environments>
-    <formulas>
-        <name>CurrentDate</name>
-        <dataType>DateTime</dataType>
-        <expression>{!$Flow.CurrentDateTime}</expression>
-    </formulas>
-    <formulas>
-        <name>FlowStartDateOnly</name>
-        <dataType>Date</dataType>
-        <expression>DATEVALUE({!FlowStarDatetime})</expression>
-    </formulas>
-    <formulas>
-        <name>Parsingtodouble</name>
-        <dataType>Number</dataType>
-        <expression>{!Get_Metadata.espy__Limit__c}</expression>
-        <scale>2</scale>
-    </formulas>
-    <formulas>
-        <name>PauseDateTime</name>
-        <dataType>DateTime</dataType>
-        <expression>DATETIMEVALUE(FROMUNIXTIME(UNIXTIMESTAMP({!$Flow.CurrentDateTime}) + {!PauseFrequency} * 60 ))</expression>
-    </formulas>
-    <formulas>
-        <name>PauseFrequency</name>
-        <dataType>Number</dataType>
-        <expression>{!Get_Metadata.espy__Timing__c}</expression>
-        <scale>2</scale>
-    </formulas>
     <interviewLabel>espy__NotificationFlexQueue {!$Flow.CurrentDateTime}</interviewLabel>
     <label>espy_NotificationFlexQueue</label>
-    <overriddenFlow>espy__NotificationFlexQueue</overriddenFlow>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -165,120 +26,37 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <name>Get_Metadata</name>
-        <label>Get Metadata</label>
-        <locationX>336</locationX>
-        <locationY>360</locationY>
+        <name>get_user_records_test</name>
+        <label>get user records test</label>
+        <locationX>176</locationX>
+        <locationY>252</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Are_there_any_holding</targetReference>
-        </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>espy__Limit__c</field>
-            <operator>IsNull</operator>
+            <field>Name</field>
+            <operator>EqualTo</operator>
             <value>
-                <booleanValue>false</booleanValue>
+                <stringValue>test</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>espy__NotificationFlexQueue_Confg__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Holding_AsyncApexJob</name>
-        <label>Holding AsyncApexJob</label>
-        <locationX>336</locationX>
-        <locationY>252</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Get_Metadata</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Status</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Holding</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>AsyncApexJob</object>
+        <object>Account</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>210</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Holding_AsyncApexJob</targetReference>
+            <targetReference>get_user_records_test</targetReference>
         </connector>
         <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
+            <frequencyNumber>0</frequencyNumber>
             <startDate>2025-01-29</startDate>
             <startTime>00:05:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
     <status>Active</status>
-    <variables>
-        <name>FlowStarDatetime</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <elementReference>$Flow.InterviewStartTime</elementReference>
-        </value>
-    </variables>
-    <variables>
-        <name>HoldingAsyncApexJobCount</name>
-        <dataType>Number</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <scale>2</scale>
-    </variables>
-    <variables>
-        <description>Get the Metadata record details</description>
-        <name>NotificationFlexQueueConfig</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <objectType>espy__NotificationFlexQueue_Confg__mdt</objectType>
-    </variables>
-    <waits>
-        <name>Wait_to_recheck_the_holding_state</name>
-        <label>Wait to recheck the holding state</label>
-        <locationX>336</locationX>
-        <locationY>1068</locationY>
-        <defaultConnectorLabel>Default Path</defaultConnectorLabel>
-        <waitEvents>
-            <name>Pause</name>
-            <conditionLogic>and</conditionLogic>
-            <connector>
-                <targetReference>Is_Started_Today</targetReference>
-            </connector>
-            <eventType>AlarmEvent</eventType>
-            <inputParameters>
-                <name>AlarmTime</name>
-                <value>
-                    <elementReference>PauseDateTime</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>TimeOffset</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>TimeOffsetUnit</name>
-                <value>
-                    <stringValue>Hours</stringValue>
-                </value>
-            </inputParameters>
-            <label>Pause</label>
-        </waitEvents>
-    </waits>
 </Flow>

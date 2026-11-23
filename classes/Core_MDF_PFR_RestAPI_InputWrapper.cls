@@ -85,6 +85,15 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
             parserSegment.put('Core_MDF_Segment_Name_nm', segment.segmentName);
             parserSegment.put('Core_MDF_Minimum_Forecast_Volume_nbr', segment.minimumForecastVolume == null ? null : String.valueOf(segment.minimumForecastVolume));
             parserSegment.put('Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr', segment.incentiveAmountPerUnit == null ? null : String.valueOf(segment.incentiveAmountPerUnit));
+            parserSegment.put('Core_MDF_Maximum_Bundled_Volume_nbr', segment.maximumBundledVolume == null ? null : String.valueOf(segment.maximumBundledVolume));
+            parserSegment.put('Core_MDF_Maximum_Cost_of_Bundle_nbr', segment.maximumCostOfBundle == null ? null : String.valueOf(segment.maximumCostOfBundle));
+            Decimal estimatedShare;
+            if (segment.maximumBundledVolume != null && segment.maximumCostOfBundle != null) {
+                estimatedShare = segment.maximumBundledVolume * segment.maximumCostOfBundle;
+            } else if (segment.minimumForecastVolume != null && segment.incentiveAmountPerUnit != null) {
+                estimatedShare = segment.minimumForecastVolume * segment.incentiveAmountPerUnit;
+            }
+            parserSegment.put('Core_MDF_Estimated_Share_of_SPIF_amt', estimatedShare == null ? null : String.valueOf(estimatedShare.setScale(2, System.RoundingMode.HALF_UP)));
             parserSegment.put('productIdSet', segment.productIds == null ? new List<String>() : segment.productIds);
             parserSegments.add(parserSegment);
         }
@@ -132,6 +141,15 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
         }
 
         List<String> errors = new List<String>();
+        if (String.isNotBlank(dto.PartnerContact) && !Pattern.matches(
+            '^[A-Za-z0-9_%+\'-]+(?:\\.[A-Za-z0-9_%+\'-]+)*@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+$',
+            dto.PartnerContact
+        )) {
+            errors.add(Core_MDF_PFR_RestAPI_Constants.formatError(
+                Core_MDF_PFR_RestAPI_Constants.ERR_9014_INVALID_FIELD_VAL,
+                new List<String>{ 'PartnerContact must be a valid email address.' }
+            ));
+        }
         errors.addAll(validateConditionalIncentiveFields(dto, payloadMap, wrapper));
         if (!errors.isEmpty()) {
             wrapper.validationFailures.add(buildFailure(dto.ActivityName, errors));
@@ -309,7 +327,9 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
         Map<String, Object> segmentMap = (Map<String, Object>) rawSegment;
         if (isEnteredValue(segmentMap.get('SegmentName'))
             || isEnteredValue(segmentMap.get('MinimumForecastVolume'))
-            || isEnteredValue(segmentMap.get('IncentiveAmountPerUnit'))) {
+            || isEnteredValue(segmentMap.get('IncentiveAmountPerUnit'))
+            || isEnteredValue(segmentMap.get('MaximumBundledVolume'))
+            || isEnteredValue(segmentMap.get('MaximumCostOfBundle'))) {
             return true;
         }
 
@@ -1256,6 +1276,8 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
         public String segmentName { get; set; }
         public Decimal minimumForecastVolume { get; set; }
         public Decimal incentiveAmountPerUnit { get; set; }
+        public Decimal maximumBundledVolume { get; set; }
+        public Decimal maximumCostOfBundle { get; set; }
         public List<String> productIds { get; set; }
         
         public SegmentInputDetail() {
@@ -1271,6 +1293,8 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
             segMap.put('SegmentName', this.segmentName);
             segMap.put('MinimumForecastVolume', this.minimumForecastVolume);
             segMap.put('IncentiveAmountPerUnit', this.incentiveAmountPerUnit);
+            segMap.put('MaximumBundledVolume', this.maximumBundledVolume);
+            segMap.put('MaximumCostOfBundle', this.maximumCostOfBundle);
             segMap.put('ProductIds', this.productIds);
             return segMap;
         }
@@ -1294,28 +1318,43 @@ public inherited sharing class Core_MDF_PFR_RestAPI_InputWrapper {
                 return null;
             }
             
-            // Parse minimum forecast volume
-            Object forecastObj = segMap.get('MinimumForecastVolume');
-            segment.minimumForecastVolume = convertToDecimal(forecastObj);
-            if (segment.minimumForecastVolume == null) {
-                errors.add('Segment ' + index + ': ' + Core_MDF_PFR_RestAPI_Constants.MISSING_SEGMENT_FORECAST);
-                return null;
-            }
-            if (segment.minimumForecastVolume <= 0) {
-                errors.add('Segment ' + index + ': ' + Core_MDF_PFR_RestAPI_Constants.INVALID_SEGMENT_FORECAST);
-                return null;
-            }
+            Boolean hasBundleValues = isEnteredValue(segMap.get('MaximumBundledVolume')) || isEnteredValue(segMap.get('MaximumCostOfBundle'));
+            if (hasBundleValues) {
+                if (isEnteredValue(segMap.get('MinimumForecastVolume')) || isEnteredValue(segMap.get('IncentiveAmountPerUnit'))) {
+                    errors.add('Segment ' + index + ': Provide either bundle values or forecast/incentive values, not both.');
+                    return null;
+                }
+                segment.maximumBundledVolume = convertToDecimal(segMap.get('MaximumBundledVolume'));
+                segment.maximumCostOfBundle = convertToDecimal(segMap.get('MaximumCostOfBundle'));
+                if (segment.maximumBundledVolume == null || segment.maximumBundledVolume <= 0
+                    || segment.maximumCostOfBundle == null || segment.maximumCostOfBundle <= 0) {
+                    errors.add('Segment ' + index + ': MaximumBundledVolume and MaximumCostOfBundle must both be valid numbers greater than zero.');
+                    return null;
+                }
+            } else {
+	            // Parse minimum forecast volume
+	            Object forecastObj = segMap.get('MinimumForecastVolume');
+	            segment.minimumForecastVolume = convertToDecimal(forecastObj);
+	            if (segment.minimumForecastVolume == null) {
+	                errors.add('Segment ' + index + ': ' + Core_MDF_PFR_RestAPI_Constants.MISSING_SEGMENT_FORECAST);
+	                return null;
+	            }
+	            if (segment.minimumForecastVolume <= 0) {
+	                errors.add('Segment ' + index + ': ' + Core_MDF_PFR_RestAPI_Constants.INVALID_SEGMENT_FORECAST);
+	                return null;
+	            }
             
-            // Parse incentive amount
-            Object incentiveObj = segMap.get('IncentiveAmountPerUnit');
-            segment.incentiveAmountPerUnit = convertToDecimal(incentiveObj);
-            if (segment.incentiveAmountPerUnit == null) {
-                errors.add('Segment ' + index + ': ' + Core_MDF_PFR_RestAPI_Constants.MISSING_SEGMENT_INCENTIVE);
-                return null;
-            }
-            if (segment.incentiveAmountPerUnit <= 0) {
-                errors.add('Segment ' + index + ': ' + Core_MDF_PFR_RestAPI_Constants.INVALID_SEGMENT_INCENTIVE);
-                return null;
+	            // Parse incentive amount
+	            Object incentiveObj = segMap.get('IncentiveAmountPerUnit');
+	            segment.incentiveAmountPerUnit = convertToDecimal(incentiveObj);
+	            if (segment.incentiveAmountPerUnit == null) {
+	                errors.add('Segment ' + index + ': ' + Core_MDF_PFR_RestAPI_Constants.MISSING_SEGMENT_INCENTIVE);
+	                return null;
+	            }
+	            if (segment.incentiveAmountPerUnit <= 0) {
+	                errors.add('Segment ' + index + ': ' + Core_MDF_PFR_RestAPI_Constants.INVALID_SEGMENT_INCENTIVE);
+	                return null;
+	            }
             }
             
             // Parse product IDs

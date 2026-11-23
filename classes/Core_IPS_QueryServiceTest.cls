@@ -223,7 +223,7 @@ private class Core_IPS_QueryServiceTest {
             BillingStreet = '123 Test St'
         );
         insert existingAcc;
-        //delete existingAcc;
+        delete existingAcc;
 
         Account deletedAcc = new Account(Id = existingAcc.Id, Name = 'Fake Update Changed');
 
@@ -231,7 +231,7 @@ private class Core_IPS_QueryServiceTest {
         List<SObject> result = Core_IPS_QueryService.updateRecords(new List<SObject>{ deletedAcc });
         Test.stopTest();
 
-        //System.assertEquals(1, result.size(), 'Result list should be returned even when DML error occurs');
+        System.assertEquals(1, result.size(), 'Result list should be returned even when DML error occurs');
     }
 
     @isTest
@@ -242,7 +242,9 @@ private class Core_IPS_QueryServiceTest {
         Test.startTest();
         Core_IPS_QueryService.deleteRecords(new List<SObject>{ acc });
         Test.stopTest();
+
         List<Account> remaining = [SELECT Id FROM Account WHERE Id = :acc.Id];
+        System.assertEquals(0, remaining.size(), 'Record should be deleted');
     }
 
     @isTest
@@ -265,21 +267,14 @@ private class Core_IPS_QueryServiceTest {
 
     @isTest
     static void testDeleteRecordsDmlErrorLogsError() {
-        Account existingAcc = new Account(
-            Name = 'Delete Error Test',
-            BillingCountry = 'United States',
-            BillingStreet = '123 Test St'
-        );
-        insert existingAcc;
-        //delete existingAcc;
-
-        Account deletedAcc = new Account(Id = existingAcc.Id);
+        // Non-existent but well-formed Id to force a DML failure without deleting real org data
+        Account deletedAcc = new Account(Id = '001000000000001AAA');
 
         Test.startTest();
         List<SObject> result = Core_IPS_QueryService.deleteRecords(new List<SObject>{ deletedAcc });
         Test.stopTest();
 
-       // System.assertEquals(1, result.size(), 'Result list should be returned even when DML error occurs');
+        System.assertEquals(1, result.size(), 'Result list should be returned even when DML error occurs');
     }
 
     @isTest

@@ -82,6 +82,24 @@
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
 <th style="margin: 0px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;"> 
 <p class="h2" style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #0071c5; line-height: 19px; font-family: Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><span class="eloquaemail"></span></p>
+                                                                                                <p
+                                                                                                    style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
+                                                                                                    Parabéns, sua
+                                                                                                    solicitação de
+                                                                                                    adesão foi aprovada
+                                                                                                    e
+                                                                                                    processada!<br><br>Ao
+                                                                                                    fazer login no Aliança de     Parceiros Intel,
+                                                                                                    navegue até
+                                                                                                    Gerenciar benefícios
+                                                                                                    para visualizar todo
+                                                                                                    o conteúdo, recursos
+                                                                                                    e benefícios
+                                                                                                    disponíveis
+                                                                                                    para&nbsp;você<br><br>Faça
+                                                                                                    login em <a
+                                                                                                        href="https://intel--crmqa9.sandbox.my.site.com/ipa/s/post-launch-primary">https://intel--crmqa9.sandbox.my.site.com/ipa/s/post-launch-primary</a>
+                                                                                                    para começar!</p>
 <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
 Boas-vindas ao programa Intel&reg; Partner Alliance!
 <br> 
@@ -102,7 +120,7 @@ Com benefícios adaptados à sua empresa, você poderá:
 <li>Obter leads qualificados com a vitrine de seu parceiro no Intel&reg; Partner Showcase</li>
 </ul>
 <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
-<a href="https://partner.intel.com/s/post-launch-primary"> Faça logon para começar </a>
+<a href="https://intel--crmqa9.sandbox.my.site.com/ipa/s/post-launch-primary"> Faça logon para começar </a>
 <br>
 <br>
 Clique <a href="https://urldefense.com/v3/__https:/www.intel.com/content/www/us/en/support/articles/000092340/programs/access-entitlement-for-myintel-users.html?wapkw=mfa__;!!OrxsNty6D4my!4buZDlfdnsvirTD6XYVVBD1pnJ7qKMcJaVV6YzAZElmyQgjpWFG52NW6D3SLA49tvFBtnXgcv5RXUpcFtGHoaFbzfZ4aNs1K_A$"> aqui</a> se precisar de ajuda com o processo de login da Intel. 
@@ -179,7 +197,7 @@ Sua equipe do Intel&reg;&nbsp;Partner&nbsp;Alliance</p></td></tr>
 </tr>
 <tr>
 <td class="auto-style1" valign="top" style="font-size: 10px;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">
-                                                                                                                                                    © 2026
+                                                                                                                                                    © {!$Label.PRM_CurrentYear}
                                                                                                                                                     Intel
                                                                                                                                                     Corporation
 </td>
@@ -217,7 +235,6 @@ Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 950
 </tr>
 </tbody>
 </table>
-<p style="color: #000000; font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;"><img width="352" height="1" src="./sample_files/spacer.gif" border="0" _rte_src="https://www-ssl.intel.com/Assets/en_US/Image/tab/spacer.gif"></p>
 </th>
 </tr>
 </tbody>
@@ -246,6 +263,5 @@ Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 950
     </table>
     <p></p>
 </body>
-
 
 </html>

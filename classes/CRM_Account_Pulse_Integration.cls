@@ -9,12 +9,15 @@ public class CRM_Account_Pulse_Integration {
             PageReference newPage = Page.GetSessionIdPage;
             String content = newPage.getContent().toString();              
             String sid = content.substringBetween('<SessionId>', '</SessionId>'); 
+            System.debug('Session id '+UserInfo.getOrganizationId() + UserInfo.getSessionId().substring(15));
             
             for(Executive_Meeting_Brief__c execRec : execMeetingBriefList){
                 String token = getAuthToken(userId,sid);
+                system.debug('INSIDE ACC PULSE GET TOKEN:'+token);
                 if (String.isNotBlank(token)) {
                     // Pass the exec ID to getSummary method
                     Map<String,Object> getSummaryResponse = getSummary(execRec.Id, execRec.Account__c, token);
+                    //system.debug('SUMMARY RESPONSE:'+getSummaryResponse);
                     if (getSummaryResponse != null && !getSummaryResponse.isEmpty()) {
                         summaryMap.putAll(getSummaryResponse);
                     }
@@ -40,7 +43,7 @@ public class CRM_Account_Pulse_Integration {
         requestBody.put('sid', sessionToken);
         requestBody.put('app', 'pulse');
         
-        
+        system.debug('INSIDE ACC PULSE GET AUTH TOKEN REQ BODY:'+requestBody);
         HttpRequest req = new HttpRequest();
         req.setEndpoint(endpoint);
         req.setMethod('POST');
@@ -49,12 +52,14 @@ public class CRM_Account_Pulse_Integration {
         try {
             Http http = new Http();
             HttpResponse res = http.send(req);
-        
+        	system.debug('INSIDE ACC PULSE GET AUTH TOKEN STATUS:'+res.getStatusCode());
             if (res.getStatusCode() != 200) {
                 return null;
             }
             Map<String, Object> response = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
             Integer statusCode = (Integer) response.get('statusCode');
+            
+            system.debug('INSIDE ACC PULSE GET AUTH TOKEN RESPONSE:'+response);
             
             if (statusCode != 200) {
                 return null;
@@ -89,6 +94,10 @@ public class CRM_Account_Pulse_Integration {
         
         Http http = new Http();
         HttpResponse res = http.send(req);
+        system.debug('INSIDE ACC PULSE GET SUMMARY STATUS:'+res.getStatusCode());
+        system.debug('requestBody-->'+req);
+        system.debug('res-->'+res);
+        system.debug('DErequestBody'+JSON.serialize(requestBody));
         
         if (res.getStatusCode() != 200) {
             resultMap.put(execId, null);
@@ -96,8 +105,14 @@ public class CRM_Account_Pulse_Integration {
         }
         
         // Parse the JSON response
+         Map<String, Object> body;
         Map<String, Object> response = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
-        Map<String, Object> body = (Map<String, Object>) response.get('body');
+        if(response!=null){
+            body = (Map<String, Object>) response.get('body');
+        }
+        //Map<String, Object> body = (Map<String, Object>) response.get('body');
+       
+        //system.debug('INSIDE ACC PULSE GET SUMMARY RESPONSE:'+response);
         
         if (body != null) {
             Object summaryObj = body.get('summary');

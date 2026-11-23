@@ -30,7 +30,7 @@ export default class Custom_URL_Embed extends LightningElement {
         .then((data) => {
             
             var saveRes = JSON.parse(JSON.stringify(data));
-            console.log('saveRes: '+saveRes);
+            console.log('saveRes: '+JSON.stringify(saveRes));
             this.hasAccess = saveRes['hasAccess'];
             if(this.hasAccess){
                 if(saveRes['autoSSOEnabled']){

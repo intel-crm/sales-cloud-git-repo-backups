@@ -34,7 +34,7 @@
         <criteriaItems>
             <column>FK_$Account.PRM_IPA_Row_Level_Security__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>True</value>
         </criteriaItems>

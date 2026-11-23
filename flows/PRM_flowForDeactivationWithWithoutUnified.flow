@@ -348,6 +348,9 @@
         <label>get IPA Affiliation records not null</label>
         <locationX>666</locationX>
         <locationY>3206</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>not there</defaultConnectorLabel>
         <rules>
             <name>records_are_there</name>
@@ -505,6 +508,21 @@
             <label>if active</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>930</locationX>
+        <locationY>3314</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>446</locationX>
+        <locationY>2798</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>402</locationX>
+        <locationY>4406</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>PRM_flowForDeactivationWithWithoutUnified {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PRM_flowForDeactivationWithWithoutUnified</label>
@@ -588,6 +606,9 @@
         <label>Create Log Entry</label>
         <locationX>446</locationX>
         <locationY>2690</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -886,6 +907,9 @@
         <label>update affilitions</label>
         <locationX>402</locationX>
         <locationY>4298</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
             <targetReference>Create_Log_Entry</targetReference>

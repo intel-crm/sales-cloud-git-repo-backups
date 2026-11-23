@@ -27,6 +27,10 @@
         <name>CPT_BR_Allocated__c</name>
     </fields>
     <fields>
+        <label><!-- BR Allocation Editable --></label>
+        <name>CPT_BR_Allocation_Editable__c</name>
+    </fields>
+    <fields>
         <label><!-- BR (Allowed) --></label>
         <name>CPT_BR_Allowed__c</name>
     </fields>
@@ -35,12 +39,12 @@
         <name>CPT_BR_Assigned__c</name>
     </fields>
     <fields>
-        <label><!-- BR-CCG % Assigned --></label>
+        <label><!-- BR-CCPG % Assigned --></label>
         <name>CPT_BR_CCG_Assigned__c</name>
     </fields>
     <fields>
         <help><!-- Value is in whole dollars. --></help>
-        <label><!-- BR-CCG Quota --></label>
+        <label><!-- BR-CCPG Quota --></label>
         <name>CPT_BR_CCG_Quota__c</name>
     </fields>
     <fields>
@@ -108,6 +112,7 @@
         <name>CPT_CR_OEM_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- CR - OEM Quota --></label>
         <name>CPT_CR_OEM_Quota__c</name>
     </fields>
@@ -116,6 +121,7 @@
         <name>CPT_CR_Partner_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- CR - Partner Quota --></label>
         <name>CPT_CR_Partner_Quota__c</name>
     </fields>
@@ -124,6 +130,7 @@
         <name>CPT_CR_Retail_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- CR - Retail Quota --></label>
         <name>CPT_CR_Retail_Quota__c</name>
     </fields>
@@ -141,52 +148,52 @@
         <label><!-- Effective Month --></label>
         <name>CPT_Effective_Month__c</name>
         <picklistValues>
-            <masterLabel>Apr 2026</masterLabel>
-            <translation><!-- Apr 2026 --></translation>
+            <masterLabel>Apr 2027</masterLabel>
+            <translation><!-- Apr 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Aug 2026</masterLabel>
-            <translation><!-- Aug 2026 --></translation>
+            <masterLabel>Aug 2027</masterLabel>
+            <translation><!-- Aug 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Dec 2026</masterLabel>
-            <translation><!-- Dec 2026 --></translation>
+            <masterLabel>Dec 2027</masterLabel>
+            <translation><!-- Dec 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Feb 2026</masterLabel>
-            <translation><!-- Feb 2026 --></translation>
+            <masterLabel>Feb 2027</masterLabel>
+            <translation><!-- Feb 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Jan 2026</masterLabel>
-            <translation><!-- Jan 2026 --></translation>
+            <masterLabel>Jan 2027</masterLabel>
+            <translation><!-- Jan 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Jul 2026</masterLabel>
-            <translation><!-- Jul 2026 --></translation>
+            <masterLabel>Jul 2027</masterLabel>
+            <translation><!-- Jul 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Jun 2026</masterLabel>
-            <translation><!-- Jun 2026 --></translation>
+            <masterLabel>Jun 2027</masterLabel>
+            <translation><!-- Jun 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Mar 2026</masterLabel>
-            <translation><!-- Mar 2026 --></translation>
+            <masterLabel>Mar 2027</masterLabel>
+            <translation><!-- Mar 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>May 2026</masterLabel>
-            <translation><!-- May 2026 --></translation>
+            <masterLabel>May 2027</masterLabel>
+            <translation><!-- May 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Nov 2026</masterLabel>
-            <translation><!-- Nov 2026 --></translation>
+            <masterLabel>Nov 2027</masterLabel>
+            <translation><!-- Nov 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Oct 2026</masterLabel>
-            <translation><!-- Oct 2026 --></translation>
+            <masterLabel>Oct 2027</masterLabel>
+            <translation><!-- Oct 2027 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Sep 2026</masterLabel>
-            <translation><!-- Sep 2026 --></translation>
+            <masterLabel>Sep 2027</masterLabel>
+            <translation><!-- Sep 2027 --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -363,56 +370,56 @@
         <label><!-- Plan --></label>
         <name>CPT_Plan__c</name>
         <picklistValues>
-            <masterLabel>100</masterLabel>
-            <translation><!-- 100 --></translation>
+            <masterLabel>120</masterLabel>
+            <translation><!-- 120 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>101</masterLabel>
-            <translation><!-- 101 --></translation>
+            <masterLabel>121</masterLabel>
+            <translation><!-- 121 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>202</masterLabel>
-            <translation><!-- 202 --></translation>
+            <masterLabel>122</masterLabel>
+            <translation><!-- 122 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>300</masterLabel>
-            <translation><!-- 300 --></translation>
+            <masterLabel>240</masterLabel>
+            <translation><!-- 240 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>301</masterLabel>
-            <translation><!-- 301 --></translation>
+            <masterLabel>250</masterLabel>
+            <translation><!-- 250 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>305</masterLabel>
-            <translation><!-- 305 --></translation>
+            <masterLabel>330</masterLabel>
+            <translation><!-- 330 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>403</masterLabel>
-            <translation><!-- 403 --></translation>
+            <masterLabel>331</masterLabel>
+            <translation><!-- 331 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>600</masterLabel>
-            <translation><!-- 600 --></translation>
+            <masterLabel>620</masterLabel>
+            <translation><!-- 620 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>601</masterLabel>
-            <translation><!-- 601 --></translation>
+            <masterLabel>621</masterLabel>
+            <translation><!-- 621 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>602</masterLabel>
-            <translation><!-- 602 --></translation>
+            <masterLabel>630</masterLabel>
+            <translation><!-- 630 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>800</masterLabel>
-            <translation><!-- 800 --></translation>
+            <masterLabel>631</masterLabel>
+            <translation><!-- 631 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>801</masterLabel>
-            <translation><!-- 801 --></translation>
+            <masterLabel>640</masterLabel>
+            <translation><!-- 640 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>802</masterLabel>
-            <translation><!-- 802 --></translation>
+            <masterLabel>650</masterLabel>
+            <translation><!-- 650 --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -428,7 +435,7 @@
         <name>CPT_Quota_Period__c</name>
     </fields>
     <fields>
-        <label><!-- Sales Group --></label>
+        <label><!-- Region --></label>
         <name>CPT_Sales_Group__c</name>
     </fields>
     <fields>
@@ -548,10 +555,42 @@
         <name>CPT_Unique_Identifier__c</name>
     </fields>
     <fields>
+        <label><!-- PfR (Allocated) --></label>
+        <name>CPT_Wins_Allocated__c</name>
+    </fields>
+    <fields>
+        <label><!-- PfR (Allowed) --></label>
+        <name>CPT_Wins_Allowed__c</name>
+    </fields>
+    <fields>
+        <label><!-- PfR (% Assigned) --></label>
+        <name>CPT_Wins_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- PfR - Deal Wins % Assigned --></label>
+        <name>CPT_Wins_Deal_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins - Deal Quota --></label>
+        <name>CPT_Wins_Deal_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- PfR - Design Wins % Assigned --></label>
+        <name>CPT_Wins_Design_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins - Design Quota --></label>
+        <name>CPT_Wins_Design_Quota__c</name>
+    </fields>
+    <fields>
         <help><!-- If checked, system will validate the completeness of the data while updates are saved. --></help>
         <label><!-- XX_Complete --></label>
         <name>XX_CPT_Complete__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- Quota Setup Default --></label>
+        <name>Quota_Setup_Default</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Please select 0% instead of &quot;none&quot; for all the Assigned % fields. --></errorMessage>
@@ -568,6 +607,10 @@
     <validationRules>
         <errorMessage><!-- A Territory must be tied to selected Deal Win Rev BU&apos;s to Assign % and Quota. Please add quota for selected DR-BU(s) in Territory Assignments. --></errorMessage>
         <name>CPT_Avoid_DR_AssignPercent_WhenNoTarget</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- BR allocation is fixed. Plan 250 requires CCG 0% and DCG 40%. Plans 330, 630 and 650 require CCG 0% and DCG 20%. --></errorMessage>
+        <name>CPT_BR_Fixed_Plan_Allocation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- The BR % Assigned exceeds the allowed limit. --></errorMessage>
@@ -634,6 +677,18 @@
         <name>CPT_Prevent_OKR_Changes_When_Completed</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- For Plan 240, exactly one of Retail, or Partner Assigned % must be 100%, and the remaining one must be 0%. --></errorMessage>
+        <name>CPT_Prevent_more_than_100_for_240</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- For Plan 120, exactly one of OEM or Partner Assigned % must be 20%, and the remaining one must be 0%. --></errorMessage>
+        <name>CPT_Prevent_more_than_20_for_120</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- For Plan 122, exactly one of OEM or Partner Assigned % must be 40%, and the remaining one must be 0%. --></errorMessage>
+        <name>CPT_Prevent_more_than_40_for_122</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Please complete the Sales Team Goal Selection. --></errorMessage>
         <name>CPT_STG_Prevent_Incomplete_Data_Update</name>
     </validationRules>
@@ -653,6 +708,10 @@
     <validationRules>
         <errorMessage><!-- Volume DCG and Margin DCG must both be selected together. --></errorMessage>
         <name>Pair_DCG_Volume_and_Margin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- 33.333 and 33.334 percent can be selected only for 640 Plan --></errorMessage>
+        <name>Restrict_33_for_Plans_other_than_640</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Minimum 10% is allowed on CR Subelements for the selected plan. --></errorMessage>

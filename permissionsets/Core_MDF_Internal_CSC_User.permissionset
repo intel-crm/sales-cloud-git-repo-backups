@@ -110,6 +110,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account_Create_Request__c.IsAddressVerified__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account_Create_Request__c.Process_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4015,6 +4020,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Claim_Cancellation_Reason_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Claim_Comments__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6338,6 +6348,10 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <recordType>Core_MDF_Account_Onboarding__c.Core_MDF_Co_Inv</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <recordType>Core_MDF_Account_Onboarding__c.Core_MDF_Data_Center_Co_Marketing_Fund</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -6371,6 +6385,10 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Co_GTM</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Co_Inv</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

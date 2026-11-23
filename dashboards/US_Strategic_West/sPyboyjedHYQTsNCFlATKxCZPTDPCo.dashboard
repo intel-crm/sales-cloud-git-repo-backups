@@ -39,10 +39,6 @@
             <operator>contains</operator>
             <values>White Box</values>
         </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Pre Prod PTL</values>
-        </dashboardFilterOptions>
         <name>Program</name>
     </dashboardFilters>
     <dashboardGridLayout>

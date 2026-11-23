@@ -16,6 +16,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>6</value>
                 </componentInstanceProperties>
@@ -2983,7 +2987,7 @@
                     <value>Default</value>
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
-                <identifier>lst_dynamicRelatedList18</identifier>
+                <identifier>lst_dynamicRelatedList2</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.PRM_Is_Deal_Partner_Account__c}</leftValue>
@@ -3048,7 +3052,7 @@
                     <value>Default</value>
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
-                <identifier>lst_dynamicRelatedList19</identifier>
+                <identifier>lst_dynamicRelatedList</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.PRM_Is_Deal_End_Customer_Account__c}</leftValue>

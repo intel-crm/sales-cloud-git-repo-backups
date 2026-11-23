@@ -289,6 +289,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_IUPGMIntentClassifier</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_IUPGMReqStaging_Queueable</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -314,6 +318,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_IUPGM_ApprovalRequestData</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_MDF_IUPGM_CopyService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -558,14 +566,6 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_BankProgram_Entitlement_Mapping__mdt</name>
-    </customMetadataTypeAccesses>
-    <customMetadataTypeAccesses>
-        <enabled>true</enabled>
-        <name>Core_MDF_BudgetType_Benefit_Mapping__mdt</name>
-    </customMetadataTypeAccesses>
-    <customMetadataTypeAccesses>
-        <enabled>true</enabled>
         <name>Core_MDF_BudgetType_ProdCategory_Split__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
@@ -590,10 +590,6 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_ClaimActAllocRecTypeMapping__mdt</name>
-    </customMetadataTypeAccesses>
-    <customMetadataTypeAccesses>
-        <enabled>true</enabled>
         <name>Core_MDF_Custom_Approval_History_Config__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
@@ -615,10 +611,6 @@
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
         <name>Core_MDF_IUPGM_Rule_Config__mdt</name>
-    </customMetadataTypeAccesses>
-    <customMetadataTypeAccesses>
-        <enabled>true</enabled>
-        <name>Core_MDF_PFR_Event_Rule__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>

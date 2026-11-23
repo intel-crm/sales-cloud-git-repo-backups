@@ -315,7 +315,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
     static void testGetSIOrISVAccounts() {
         User usr1 = [SELECT Id FROM User WHERE LastName = 'TestClass TestUser' LIMIT 50000];
         System.runAs(usr1){
-            Account acc = [Select Id,Core_MDF_Partner_Type_nm__c from Account where Core_MDF_Partner_Type_nm__c = 'Primary Partner'];
+            Account acc = [Select Id from Account where Core_MDF_Partner_Type_nm__c = 'Primary Partner'];
             Core_MDF_CampaignCreatePage.getSIOrISVAccounts(acc.Id);
             // Unit Test Method should include System.Assert 
             System.assertEquals('Primary Partner', acc.Core_MDF_Partner_Type_nm__c, 'Account partner type should be Primary Partner');

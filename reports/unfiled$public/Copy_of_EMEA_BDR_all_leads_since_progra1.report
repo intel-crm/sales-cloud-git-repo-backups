@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>COMPANY</field>
-    </columns>
-    <columns>
-        <field>COUNTRY_CODE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.Core_LS_Company_Size_Employees__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.Core_LS_Company_Size_Range_Employees__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_LS_Company_Industry__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Covered_account_owner__c</field>
-    </columns>
-    <columns>
-        <field>FIRST_NAME</field>
-    </columns>
-    <columns>
-        <field>LAST_NAME</field>
-    </columns>
-    <columns>
-        <field>TITLE</field>
-    </columns>
-    <columns>
-        <field>EMAIL</field>
-    </columns>
-    <columns>
         <field>STATUS</field>
     </columns>
     <columns>
@@ -45,32 +13,32 @@
         <field>Lead.Core_Lead_Sub_Status__c</field>
     </columns>
     <columns>
-        <field>Lead.Core_Qualification_Notes__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.Core_Confirmed_Budget_Amount__c</field>
-    </columns>
-    <columns>
-        <field>LAST_ACTIVITY</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE</field>
-    </columns>
-    <columns>
-        <field>OWNER</field>
+        <field>LEAD_SOURCE</field>
     </columns>
     <columns>
         <field>Lead.Core_Lead_Conversion_Point__c</field>
     </columns>
     <columns>
-        <field>Lead.Core_Lead_Notes__c</field>
+        <field>COUNTRY_CODE</field>
     </columns>
     <columns>
-        <field>LEAD_ID</field>
+        <field>OWNER</field>
     </columns>
     <columns>
-        <field>Lead.Core_Entrance_Date_MQL__c</field>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Lead.Core_Confirmed_Budget_Amount__c</field>
     </columns>
     <description>RT:LEADS</description>
     <filter>

@@ -4,7 +4,7 @@
         <fullName>Core_Contact_Engagement</fullName>
         <apiVersion>36.0</apiVersion>
         <description>Triggered when Contact has Engagement added / removed</description>
-        <endpointUrl>https://proxydefault:WJ$K1ZmrZug7@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-sls-contacts-sf2erpm/contact</endpointUrl>
+        <endpointUrl>https://dummydefault:WJ$K1ZmrZug7@eip-crm-dummy.cloudhub.io/smit/api/eip-crm-sls-contacts-sf2erpm/contact</endpointUrl>
         <fields>Core_Active__c</fields>
         <fields>Core_Contact__c</fields>
         <fields>Core_Engagement_Code__c</fields>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>MEGA CHIPS Partner User</description>
+    <description>Marvel Account Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>MEGA CHIPS Partner User</name>
+    <name>Marvel Account Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>Admin</parentRole>
 </Role>

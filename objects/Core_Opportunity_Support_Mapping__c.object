@@ -506,9 +506,9 @@
             <value>COE</value>
         </filters>
         <filters>
-            <field>Core_Opportunity_Support_Is_Active__c</field>
+            <field>Core_Opp_Center_of_Excellence__c</field>
             <operation>equals</operation>
-            <value>1</value>
+            <value>Artificial Intelligence (AI)</value>
         </filters>
         <label>COE</label>
     </listViews>
@@ -524,6 +524,11 @@
             <field>Core_OSM_Record_Type__c</field>
             <operation>equals</operation>
             <value>CSA</value>
+        </filters>
+        <filters>
+            <field>Geo_Region__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
         </filters>
         <label>CSA</label>
     </listViews>
@@ -542,9 +547,14 @@
             <value>TSS</value>
         </filters>
         <filters>
-            <field>Core_Opportunity_Support_Is_Active__c</field>
+            <field>Geo_Region__c</field>
             <operation>equals</operation>
-            <value>1</value>
+            <value>APJ</value>
+        </filters>
+        <filters>
+            <field>Core_BU__c</field>
+            <operation>equals</operation>
+            <value>CCG TSS Support​</value>
         </filters>
         <label>TSS</label>
     </listViews>

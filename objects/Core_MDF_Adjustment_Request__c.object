@@ -86,17 +86,15 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
         <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
         <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>LightningComponent</type>
     </actionOverrides>

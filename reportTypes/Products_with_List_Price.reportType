@@ -675,6 +675,21 @@
             <field>SBQQ__UpgradeTarget__c</field>
             <table>Product2</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Profit_Center_Description__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Line_of_Business__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Line_Of_Business_Description__c</field>
+            <table>Product2</table>
+        </columns>
         <masterLabel>Products</masterLabel>
     </sections>
     <sections>

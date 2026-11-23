@@ -275,6 +275,11 @@
             <field>Core_Geo__c</field>
             <table>Account_Create_Request__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsRevertedOrUnverified__c</field>
+            <table>Account_Create_Request__c</table>
+        </columns>
         <masterLabel>Account Request Queues</masterLabel>
     </sections>
     <sections>

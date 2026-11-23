@@ -909,7 +909,7 @@
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!Iterate_Over_DRP.Core_Design_Product_Status_Nm__c})+ 
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!Iterate_Over_DRP.Core_Comment_Txt__c}+
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!Iterate_Over_DRP.CreatedDate})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!Iterate_Over_DRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://intel--crmqa9.sandbox.my.site.com/partneradmin/s/core-design-registration-product/&apos; + {!Iterate_Over_DRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
 &apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
     </formulas>
     <formulas>
@@ -921,7 +921,7 @@
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDRPS.Core_Design_Product_Status_Nm__c})+ 
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRPS.Core_Comment_Txt__c}+
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDRPS.CreatedDate})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!IterateOverDRPS.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://intel--crmqa9.sandbox.my.site.com/partneradmin/s/core-design-registration-product/&apos; + {!IterateOverDRPS.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
 &apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
     </formulas>
     <formulas>
@@ -933,7 +933,7 @@
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDRP.Core_Design_Product_Status_Nm__c})+ 
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRP.Core_Comment_Txt__c}+
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDRP.CreatedDate})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!IterateOverDRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://intel--crmqa9.sandbox.my.site.com/partneradmin/s/core-design-registration-product/&apos; + {!IterateOverDRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
 &apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
     </formulas>
     <formulas>

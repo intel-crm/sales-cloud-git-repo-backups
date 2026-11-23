@@ -43,7 +43,7 @@ public class ProductStagingDMLServiceTest {
         service.upsertStagingRecords(records, 'testLoadId');
         Test.stopTest();
 
-        //List<Product_Inbound_Staging__c> inserted = [SELECT Id FROM Product_Inbound_Staging__c WHERE iPaaS_Load_ID__c = 'testLoadId'];
+        List<Product_Inbound_Staging__c> inserted = [SELECT Id FROM Product_Inbound_Staging__c WHERE iPaaS_Load_ID__c = 'testLoadId'];
         //System.assertEquals(5, inserted.size());
     }
     
@@ -66,7 +66,7 @@ public class ProductStagingDMLServiceTest {
         service.upsertStagingRecordsOnly(records, 'testLoadId');
         Test.stopTest();
 
-        //List<Product_Inbound_Staging__c> inserted = [SELECT Id FROM Product_Inbound_Staging__c WHERE iPaaS_Load_ID__c = 'testLoadId'];
+        List<Product_Inbound_Staging__c> inserted = [SELECT Id FROM Product_Inbound_Staging__c WHERE iPaaS_Load_ID__c = 'testLoadId'];
         //System.assertEquals(5, inserted.size());
     }
 }

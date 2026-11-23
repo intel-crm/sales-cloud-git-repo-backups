@@ -495,7 +495,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
         <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
         <columns>Core_MDF_Payment_Status_Txt__c</columns>
-        <columns>Core_MDF_AccountCompany_Txt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -1766,7 +1765,7 @@ Core_MDF_RMF_Proposed_Payment_Amt__c)</errorConditionFormula>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_BlockPaidToPendingPayment</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND(
 ISCHANGED(Core_MDF_Payment_Status_Txt__c),
 TEXT(PRIORVALUE(Core_MDF_Payment_Status_Txt__c)) = &quot;Paid&quot;,

@@ -114,7 +114,7 @@ global class PMP_Batch_Group_Management_Scheduler implements Database.Batchable<
             and ContactId in (SELECT Core_Contact_Id__c
             FROM Core_Contact_Entitlement__c 
             WHERE Core_Selected__c =true 
-            and Core_Status__c = : system.label.PRM_ACR_Status
+            and Core_Status__c = 'Complete'
             and Core_Entitlement_Id__r.name in :entitlementLabelValues)
 
         ]) {

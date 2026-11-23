@@ -368,7 +368,7 @@
         <collection>false</collection>
         <dataType>Text</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_EMEA_DCG_Quantity_LTE_500</lookupName>
+        <lookupName>Pricing_Route_Rules_EMEA_DCG_Quantity_GT_500</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Application_Nm__c</name>
         <output>false</output>
@@ -408,7 +408,7 @@
         <collection>false</collection>
         <dataType>Boolean</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_EMEA_DCG_Quantity_LTE_500</lookupName>
+        <lookupName>Pricing_Route_Rules_EMEA_DCG_Quantity_GT_250_and_LTE_500</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Is_Covered_Account_Ind__c</name>
         <output>false</output>
@@ -430,7 +430,7 @@
         <dataType>Numeric</dataType>
         <decimalPlaces>2</decimalPlaces>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_EMEA_DCG_Quantity_GT_250_and_LTE_500</lookupName>
+        <lookupName>Pricing_Route_Rules_EMEA_DCG_Quantity_GT_500</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Overall_Quote_Quantity_Nbr__c</name>
         <output>false</output>

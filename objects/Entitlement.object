@@ -211,8 +211,12 @@
         <columns>SLA.NAME</columns>
         <columns>ENTITLEMENT.CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>ENTITLEMENT.NAME</field>
+            <operation>contains</operation>
+            <value>Resource</value>
+        </filters>
         <label>All Entitlements</label>
-        <language>en_US</language>
     </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>ENTITLEMENT.NAME</customTabListAdditionalFields>

@@ -66,13 +66,6 @@
             <operator>equals</operator>
             <value>Deal: Sell-to</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Owner_Manager_Email__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>haynes,phillips,constantino,glass,wood</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

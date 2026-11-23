@@ -87,14 +87,14 @@
     <actionOverrides>
         <actionName>New</actionName>
         <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>true</skipRecordTypeSelect>
         <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
         <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>true</skipRecordTypeSelect>
         <type>LightningComponent</type>
     </actionOverrides>
@@ -545,6 +545,7 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>{000000}</displayFormat>

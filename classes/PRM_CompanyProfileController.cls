@@ -95,7 +95,8 @@ public without sharing class PRM_CompanyProfileController {
                         partnerRoles = cont.Core_IPA_PartnerRole__c.split(';');
                     }
                     isPrimary=CheckIfContactIsPrimary(loggedInUser.ContactId);
-                    compnyInfo.CompanyInfo = getCompanyInfo(acct, isPrimary, partnerRoles[0], blacklistDomains);
+                    //compnyInfo.CompanyInfo = getCompanyInfo(acct, isPrimary, partnerRoles[0], blacklistDomains);
+                    compnyInfo.CompanyInfo = getCompanyInfo(acct, isPrimary, partnerRoles.isEmpty()?'':partnerRoles[0], blacklistDomains);
                     
                 }
                 if (!String.isEmpty(cont.Core_IPA_PartnerRole__c)) {
@@ -128,10 +129,12 @@ public without sharing class PRM_CompanyProfileController {
         User loggedInUser = [SELECT ContactId FROM User WHERE id = :UserInfo.getUserId()];
         if (!String.isEmpty(loggedInUser.ContactId)) {
             Contact cont = [
-                SELECT id, Name, AccountId, Account.Name, Core_IPA_PartnerRole__c, (SELECT Id, PRM_Relationship_Id__r.Name, PRM_Account_Id__r.Id FROM Account_Contact_Relationships__r)
+                SELECT id, Name, AccountId, /*Account.Name,*/ Core_IPA_PartnerRole__c, (SELECT Id, PRM_Relationship_Id__r.Name, PRM_Account_Id__r.Id FROM Account_Contact_Relationships__r) //ATHR Fix - TWC729-9556
                 FROM Contact
                 WHERE Id = :loggedInUser.ContactId
             ]; //:UserInfo.getUserName()];//'bullock.cart@mailinator.com'];
+            
+			Boolean isPrimaryContact=CheckIfContactIsPrimary(cont.Id); //ATHR Fix - TWC729-9556 - JB
             if (!String.isEmpty(cont.Core_IPA_PartnerRole__c)) {
                 for (Contact con : [
                     SELECT
@@ -155,7 +158,8 @@ public without sharing class PRM_CompanyProfileController {
                         
                         acctContact.isLoggedinUser = con.Id == cont.Id ? true : false;
                         
-                        acctContact.isPrimary = con.Id == cont.Id ? CheckIfContactIsPrimary(cont.Id):false;
+                        //acctContact.isPrimary = con.Id == cont.Id ? CheckIfContactIsPrimary(cont.Id):false; //ATHR Fix - TWC729-9556
+                        acctContact.isPrimary = con.Id == cont.Id ? isPrimaryContact :false;
                         String responsibilities = '';
                         for (Core_Contact_Entitlement__c ce : con.Contact_Entitlements__r) {
                             responsibilities = responsibilities + ce.Core_Entitlement_Id__r.Core_Display_Name__c + ', ';
@@ -188,7 +192,7 @@ public without sharing class PRM_CompanyProfileController {
     public static Map<String, Boolean> isLoggedInUserPrimaryContact() {
         Map<String, Boolean> result = new Map<String, Boolean>();
         Boolean isInternalUser = false;
-        User loggedInUser = [SELECT ContactId, Contact.AccountId,Email FROM User WHERE Id = :UserInfo.getUserId()];
+        User loggedInUser = [SELECT ContactId, /*Contact.AccountId,*/Email FROM User WHERE Id = :UserInfo.getUserId()]; //ATHR Fix - TWC729-9556
         String emailDomain = loggedInUser.email.split('@')[1];
             if(emailDomain == LabelConfiguration__mdt.getInstance('PRM_internalDomain').Value__c){
                 isInternalUser = true;
@@ -300,7 +304,8 @@ return Contacts;
         CompanyInfo.Specialties = new Set<String>();
         CompanyInfo.SelectBenefits = new Set<String>();
         //CompanyInfo.PartnerRole = role;
-        CompanyInfo.PartnerRole = getPartnerRoleLabel(role);
+        //CompanyInfo.PartnerRole = getPartnerRoleLabel(role);
+        CompanyInfo.PartnerRole = String.isEmpty(role)?'':getPartnerRoleLabel(role);
         CompanyInfo.PartnerRoleAPI = role;
         CompanyInfo.BlacklistDomains = blacklistDomains;
         CompanyInfo.ContactId = CONTACT_ID;
@@ -1021,7 +1026,7 @@ updatePartnerListRecord.add(updatePartnerList);
         List<PRM_Documents__c> docList = new List<PRM_Documents__c>();
         try {
         User loggedInUser = [SELECT ContactId FROM User WHERE id = :UserInfo.getUserId()];
-        Contact cont = [SELECT id, Name, AccountId FROM Contact WHERE Id = :loggedInUser.ContactId];
+        Contact cont = [SELECT id, /*Name,*/ AccountId FROM Contact WHERE Id = :loggedInUser.ContactId]; //ATHR Fix - TWC729-9556
         Account acc = new Account();
             if(cont != null){
                 acc = [SELECT id, Core_IPA_One_Partner_Id__c  FROM Account WHERE id=:cont.AccountId];

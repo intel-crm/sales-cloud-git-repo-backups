@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SamlSsoConfig xmlns="http://soap.sforce.com/2006/04/metadata">
-    <errorUrl>https://premiersupport.intel.com/IPS/Core_IPS_SSO_Error_Customer</errorUrl>
     <executionUserId>0053b00000BQZJu</executionUserId>
     <identityLocation>SubjectNameId</identityLocation>
     <identityMapping>FederationId</identityMapping>
-    <issuer>https://sts.windows.net/46c98d88-e344-4ed4-8496-4ed7712e255d/</issuer>
-    <loginUrl>https://login.microsoftonline.com/46c98d88-e344-4ed4-8496-4ed7712e255d/saml2</loginUrl>
-    <logoutUrl>https://login.microsoftonline.com/46c98d88-e344-4ed4-8496-4ed7712e255d/oauth2/logout?post_logout_redirect_uri=https://premiersupport.intel.com/IPS/login</logoutUrl>
+    <issuer>https://sts.windows.net/24d2eec2-c04e-4c44-830d-f374a7b9559e/</issuer>
+    <loginUrl>https://login.microsoftonline.com/24d2eec2-c04e-4c44-830d-f374a7b9559e/saml2</loginUrl>
+    <logoutUrl>https://login.microsoftonline.com/24d2eec2-c04e-4c44-830d-f374a7b9559e/saml2</logoutUrl>
     <name>sts-portal-ips</name>
-    <oauthTokenEndpoint>https://intel.my.salesforce.com/services/oauth2/token?so=00Do0000000aRcf</oauthTokenEndpoint>
+    <oauthTokenEndpoint>https://intel--crmqa9.sandbox.my.salesforce.com/services/oauth2/token?so=00Ddi000004mJ65</oauthTokenEndpoint>
     <redirectBinding>false</redirectBinding>
     <requestSignatureMethod>1</requestSignatureMethod>
-    <requestSigningCertId>0P1cv0000000nvB</requestSigningCertId>
-    <salesforceLoginUrl>https://intel.my.salesforce.com?so=00Do0000000aRcf</salesforceLoginUrl>
-    <samlEntityId>https://saml.salesforce.com.crm.ipsportal</samlEntityId>
+    <requestSigningCertId>0P1di000000tvo9</requestSigningCertId>
+    <salesforceLoginUrl>https://intel--crmqa9.sandbox.my.salesforce.com?so=00Ddi000004mJ65</salesforceLoginUrl>
+    <samlEntityId>https://saml.salesforce.com.crmqa9.ipsportal</samlEntityId>
     <samlJitHandlerId>01pHo00000EIK9x</samlJitHandlerId>
     <samlVersion>SAML2_0</samlVersion>
     <useConfigRequestMethod>true</useConfigRequestMethod>
     <useSameDigestAlgoForSigning>true</useSameDigestAlgoForSigning>
     <userProvisioning>true</userProvisioning>
-    <validationCert>MIIC8DCCAdigAwIBAgIQYfHJE1c1j5FBvS4jkuhNtDANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yNTExMTcwNTQ3NDVaFw0yODExMTcwNTQ3MjhaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ZthbaRX0NUAu26/PfI/dAzgZ9/i66XwfJm1g00NSm8wXBweqUJ7E53b+T1KxOtRqh0s5adiv3xqq9Xou9HmI0RjXwBR+3rnROZXcoEbY6DvmicxKT2w8PtqtBWRrQruEbo26+tlTBh0U0A+R/GDJdDDQKDJknidoUeJYe1wKs4aLEOgHLG4KTCiWSfIUlH/amzwGqpUlWcGBUR1bL5rCAhDtL2dkVRLMCQK27rXkRWhAGEwLp0kUI3LPkNo5ikyaWkKGFZoLEFyR6ScByaVrXj/6hv3W5PWmBfJUQjsKR/q09fF2ufoh5BaxnDPZ+5/hMQoTNYN6wFZQJkU7LppcQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAg4BPmt8gsDwvsyqATB2FaYTZpt1kgWjw7G85Mey6nl+vtztuxXkoHSIJBAitzV7N5qSvqh6Wm8N0PdMyjBToa75Bxmjcv+SfnjN3wk19vADW95Zkja3oORALHKW1q7kn0kKG/AYzRa9GttWvIGRQ7hjLLCsXUqjvLuiaWmoTwBXyCMAJObKBnycU/2mDjeU+c3lb3JU8eJhk71nR74LyvH2S6B9+SCU/CZkHled2GFhhud73uC8/KulVMl9SuFYmSpXUAGRPsTtSlzmdrMmKd4L1Pso844ypjwlGOJuPxKg3WnRxXjv138JhTESOoAAI1B3JSdt39g++xyid4A9Ia</validationCert>
+    <validationCert>MIIC8DCCAdigAwIBAgIQXPCTCH6UtZJJDvzQKb0SSTANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yNjAyMTYwNzU3NTdaFw0yOTAyMTYwNzU2MzhaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2DvSlRWB9g2yezmfq/GZ+gZmkWGSbAHWv/IxAGWsGtkKlktrb/k3fsiVuydJmqJpD5WR1QC+CY5B3suwcTeCMhBZEh/yW7+Dpj0aU3HLZ/E0eTSr3lNPUV8gsknHkZ5Azt5xNvC7ALZeZnzp34RYyX/rx3TeQmSXbYNofTMh6EVKweb+yfZmY76LU1ksHUKP3YuCR/jmtnhyST3PhKwdum3YhvsvpXJyCGuBrMVJViN7HfGiHx52aUgDaAky+uGWg2z2CdziEloSDqsV/xCD3aTmnKkqnoj0Wa9kGa+qn1fdjNKYS4YO0J7T9h2cR4xqeP+qyqedKHq/HpU4+8Z0LQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQCCmkZzpjQOghw9qRNz/cbzJ4vIfKq221epAjCChE3isULczoNx8pstQbSdbVR3gEXjBKP/73a2lkPTqXiOXDYnebw8VqYcOIHtbsx6GW4NLnd12Zsp9jt4otR2vQCEc8drGacpV0mn2AaqM8FSgwUeiRjbxZNc/dWPAtv8yAxl5WtDoLjw427doXRru+k+8H2WcNWUrt3IKxb4EIlCYVa6dSAhA67armh7xNzLY28o/Tc7MOMEKxEuCD0ZYQ+KHsjtOjXj3kvjAUiTaRlgaLqLjMq4HeXAB4Ishtal64C+E3wRidwiOeiy/8VTgEk/mhKlB3OalSgSBEfHJoWmtSrk</validationCert>
 </SamlSsoConfig>

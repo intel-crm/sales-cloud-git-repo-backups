@@ -531,6 +531,11 @@
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Processing_Status__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Source_System__c</field>
+            <operation>equals</operation>
+            <value>ERPM</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>

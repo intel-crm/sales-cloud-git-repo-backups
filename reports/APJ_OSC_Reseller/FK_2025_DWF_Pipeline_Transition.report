@@ -289,8 +289,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-01-01</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2023-12-31</startDate>
+        <interval>INTERVAL_PREV2FY</interval>
     </timeFrameFilter>
 </Report>

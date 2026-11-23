@@ -165,6 +165,22 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>PRM_Activity_earning_excluded_Start_Date__c</fullName>
+        <label>Activity earning excluded Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Activity_earning_excluded__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Activity earning excluded</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PRM_Branded_Point_earning_excl_Dt__c</fullName>
         <label>Branded Point earning excluded Date</label>
         <required>false</required>
@@ -177,6 +193,22 @@
         <defaultValue>false</defaultValue>
         <label>Branded Point earning excluded</label>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_ClientBusinessexcluded_StartDate__c</fullName>
+        <label>Client Business excluded Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Client_Business_earning_excluded__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Client Business earning excluded</label>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -195,6 +227,22 @@
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Ethernet_Business_earning_excluded__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Ethernet Business earning excluded</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Ethernet_BusinessexcludedStartDt__c</fullName>
+        <label>Ethernet Business excluded Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>PRM_Inactive_ind__c</fullName>
@@ -345,6 +393,22 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Server_Business_earning_excluded__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Server Business earning excluded</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Server_Business_excluded_Start_Date__c</fullName>
+        <label>Server Business excluded Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <label>IPA Membership Attribute</label>
     <nameField>

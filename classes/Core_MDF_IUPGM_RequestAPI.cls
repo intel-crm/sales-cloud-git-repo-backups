@@ -10,7 +10,167 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
     /** Captures the raw request body for audit logging in the finally block. */
     private static String capturedRequestBody;
 
-    /** Validates the incoming chatbot payload and returns a fully resolved request summary. */
+    public enum RequestIntentType { BULK_MODE, COPY_ACCESS, LIST_ACCESS, STATUS_ACCESS, NONE }
+
+    /******************************************************************************************************
+    Method Name:        resolveIntent
+    Description:        Determines which independent, early-returning top-level intent (if any) the
+                         current chatbot payload matches. Collects conditions that previously lived as
+                         separate inline `if` blocks in doValidateRequest() - every condition here is
+                         unchanged from before, just consolidated into one place. Returns
+                         RequestIntentType.NONE
+                         when nothing matches, which means "run the existing GRANT/REVOKE flow as-is".
+                         Does NOT handle GRANT/REVOKE detection itself - that logic (keyword inference,
+                         requestAction='REVOKE', etc.) stays exactly where it already was, further down
+                         in doValidateRequest(), untouched by this refactor.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    @testVisible
+    private static RequestIntentType resolveIntent(Map<String, Object> p, String rawUserQuery) {
+
+        //  Bulk mode detection 
+        // If the payload contains a "users" array the chatbot is requesting
+        // bulk validation. Route to the dedicated handler which resolves
+        // all users and duplicate checks in two SOQLs (not N).
+        if (p.containsKey('users')) {
+            return RequestIntentType.BULK_MODE;
+        }
+
+        //  COPY USER ACCESS detection 
+        // Checked BEFORE the GRANT/REVOKE flow below so that phrases like
+        // "copy user access" are never mistaken for a GRANT, and so that
+        // COPY's own account/region-free confirmation handshake never falls
+        // through into the single-role GRANT validation logic further down.
+        // Explicit requestAction wins; natural-language fallback only looks
+        // for COPY-specific phrases (never the bare word "access", which is
+        // also used by GRANT/REVOKE queries) and is checked before the
+        // REVOKE keyword inference later in doValidateRequest().
+        String explicitAction = str(p, 'requestAction');
+        String explicitActionNorm = String.isNotBlank(explicitAction)
+            ? explicitAction.trim().toUpperCase() : null;
+        Boolean isExplicitCopy = explicitActionNorm == 'COPY';
+        Boolean isInferredCopy = false;
+        if (!isExplicitCopy) {
+            String copyQueryLower = String.isNotBlank(rawUserQuery)
+                ? rawUserQuery.toLowerCase() : '';
+            isInferredCopy = copyQueryLower.contains('copy user access')
+                || copyQueryLower.contains('copy access')
+                || copyQueryLower.contains('copy the access')
+                || copyQueryLower.contains('same access as')
+                || copyQueryLower.contains('same roles as')
+                || copyQueryLower.contains('same role as')
+                || copyQueryLower.contains('mimic access')
+                || copyQueryLower.contains('mimic the access')
+                || copyQueryLower.contains('clone access')
+                || copyQueryLower.contains('clone the access')
+                || isCopyAllRolesPhrase(copyQueryLower)
+                || isCopyConfirmationReply(p, rawUserQuery)
+                || isPlainYesForPendingCopy(p, rawUserQuery);
+        }
+        if (p.containsKey('copyOperationId')
+            || p.containsKey('sourceUserInput')
+            || isExplicitCopy || isInferredCopy) {
+            return RequestIntentType.COPY_ACCESS;
+        }
+
+        //  LIST ACCESS detection 
+        // Read-only "what access does this user currently have" lookup - never
+        // creates a staging record, never touches AGS/IUPGM. Gated on a single
+        // targetUserInput WITHOUT sourceUserInput, so it can never collide with
+        // the COPY trigger above (COPY always implies a pairing of two users).
+        // Natural-language phrases are deliberately distinct from both the
+        // REVOKE keywords ("revoke", "deactivate", "remove access"...) and the
+        // COPY keywords ("copy access", "same access as"...) checked elsewhere,
+        // so there is no overlap with existing GRANT/REVOKE/COPY detection.
+        Boolean isExplicitListAccess = explicitActionNorm == 'LIST_ACCESS';
+        Boolean isInferredListAccess = false;
+        if (!isExplicitListAccess) {
+            isInferredListAccess = isListAccessPhrase(
+                String.isNotBlank(rawUserQuery) ? rawUserQuery.toLowerCase() : '');
+        }
+        if (p.containsKey('targetUserInput')
+            && !p.containsKey('sourceUserInput')
+            && (isExplicitListAccess || isInferredListAccess)) {
+            return RequestIntentType.LIST_ACCESS;
+        }
+
+        //  STATUS detection
+        // "What is the status of ..." reads existing staging rows only. Without this
+        // branch a status question was treated as a new GRANT and re-ran validation.
+        // Gated on the word "status" and on the absence of write-payload keys, so
+        // confirmation and COPY/GRANT submit payloads never reach this branch.
+        Boolean hasWriteKeys = p.containsKey('requestSummary')
+            || p.containsKey('requestSummaries')
+            || p.containsKey('users')
+            || p.containsKey('sourceUserInput')
+            || p.containsKey('copyOperationId');
+        String statusQueryLower = String.isNotBlank(rawUserQuery)
+            ? rawUserQuery.toLowerCase() : '';
+        Boolean isExplicitStatus = explicitActionNorm == 'STATUS';
+        Boolean isInferredStatus = !hasWriteKeys
+            && statusQueryLower.contains('status')
+            && !statusQueryLower.contains('grant')
+            && !statusQueryLower.contains('revoke');
+        if (isExplicitStatus || (!hasWriteKeys && isInferredStatus)) {
+            return RequestIntentType.STATUS_ACCESS;
+        }
+
+        return RequestIntentType.NONE;
+    }
+
+    /******************************************************************************************************
+    Method Name:        isCopyConfirmationReply
+    Description:        Recognises a "yes" reply that restates a from/to pair, e.g. "Yes, assign the roles
+                         ... from X to Y", which the chatbot sends after a COPY prompt without the
+                         copyOperationId. Ignores GRANT/REVOKE confirmations (requestSummary payloads).
+    *******************************************************************************************************/
+    @testVisible
+    private static Boolean isCopyConfirmationReply(Map<String, Object> p, String rawUserQuery) {
+        if (p.containsKey('requestSummary') || p.containsKey('requestSummaries') || p.containsKey('users')) {
+            return false;
+        }
+        if (!isAffirmativeConfirmation(rawUserQuery)) {
+            return false;
+        }
+        String[] users = extractCopyUsersFromQuery(rawUserQuery);
+        return users[0] != null && users[1] != null;
+    }
+
+    /******************************************************************************************************
+    Method Name:        isCopyAllRolesPhrase
+    Description:        Natural-language COPY detection for phrasings such as "copy all roles access from
+                         X to Y" or "copy all permissions from X" - also covers synonyms like "mimic
+                         access" / "clone access". Requires one of these copy-verbs AND an access, role
+                         or permission word, so GRANT/REVOKE/LIST_ACCESS phrasing never matches.
+    *******************************************************************************************************/
+    @testVisible
+    private static Boolean isCopyAllRolesPhrase(String queryLower) {
+        if (String.isBlank(queryLower)) {
+            return false;
+        }
+        return Pattern.compile('\\b(copy|mimic|clone|replicate|duplicate)\\b.*\\b(access|roles?|permissions?)\\b')
+            .matcher(queryLower).find();
+    }
+
+    /******************************************************************************************************
+    Method Name:        extractCopyUsersFromQuery
+    Description:        Pulls the source and target from "... from X to Y" or "... of X to Y" wording.
+                         Returns [source, target]; an element is null when it can't be parsed.
+    *******************************************************************************************************/
+    @testVisible
+    private static String[] extractCopyUsersFromQuery(String query) {
+        String[] users = new String[2];
+        if (String.isBlank(query)) {
+            return users;
+        }
+        Matcher m = Pattern.compile('(?i)\\b(?:from|of)\\s+([^\\s,;]+)\\s+to\\s+([^\\s,;]+)').matcher(query);
+        if (m.find()) {
+            users[0] = m.group(1).replaceAll('[.?!]+$', '');
+            users[1] = m.group(2).replaceAll('[.?!]+$', '');
+        }
+        return users;
+    }
+
     @HttpPost
     global static String validateRequest() {
 
@@ -80,13 +240,54 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
             Boolean inferredConfirmedFromQuery =
                 isAffirmativeConfirmation(rawUserQuery);
 
-            //  Bulk mode detection 
-            // If the payload contains a "users" array the chatbot is requesting
-            // bulk validation.  Route to the dedicated handler which resolves
-            // all users and duplicate checks in two SOQLs (not N).
-            if (p.containsKey('users')) {
-                return handleBulkValidate(p, res);
+            /*
+            ================================================================
+            AI INTENT ROUTING (new free-text requests only)
+            Structured payloads and confirmation replies never reach the
+            classifier, so they keep their existing paths unchanged.
+            ================================================================
+            */
+            Boolean aiHandledRouting = false;
+            if (shouldClassifyWithAi(p, rawUserQuery, inferredConfirmedFromQuery)) {
+                aiHandledRouting = true;
+                String aiResponse = routeWithAiIntent(p, res, rawUserQuery);
+                if (aiResponse != null) {
+                    return aiResponse;
+                }
+                // aiResponse == null means AI (or, only on AI technical failure, keywords)
+                // authoritatively identified GRANT or REVOKE. The legacy resolveIntent() dispatcher
+                // below must NOT re-evaluate rawUserQuery - it could match an unrelated COPY/LIST/STATUS
+                // phrase elsewhere in the same sentence and silently override a decision already made.
             }
+
+            /*
+            ================================================================
+            TOP-LEVEL INTENT DISPATCH
+            Skipped entirely once AI routing has already claimed this request -
+            see aiHandledRouting above.
+            ================================================================
+            */
+            if (!aiHandledRouting) {
+            RequestIntentType topLevelIntent = resolveIntent(p, rawUserQuery);
+            switch on topLevelIntent {
+                when BULK_MODE {
+                    return handleBulkValidate(p, res);
+                }
+                when COPY_ACCESS {
+                    return handleCopyUserAccessRequest(p, res, rawUserQuery, inferredConfirmedFromQuery);
+                }
+                when LIST_ACCESS {
+                    return handleListAccessRequest(p, res);
+                }
+                when STATUS_ACCESS {
+                    return handleStatusRequest(p, res);
+                }
+                when else {
+                    // RequestIntentType.NONE - fall through to the existing
+                    // GRANT/REVOKE flow below, completely unchanged.
+                }
+            }
+            } // end if (!aiHandledRouting)
 
             // â”€â”€ Confirmed submit shortcut â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
             // Chatbot sends back: { "requestSummary": { ...from Call 1... }, "userConfirmed": true }
@@ -234,8 +435,9 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
             String requestActionNorm = String.isNotBlank(requestAction)
                 ? requestAction.trim().toUpperCase() : null;
             
-            // If no explicit requestAction, infer from natural language keywords in userQuery
-            if (String.isBlank(requestActionNorm)) {
+            // If requestAction is blank or the chatbot's default GRANT, infer from natural language
+            // keywords in userQuery. An explicit GRANT default must not hide a clear revoke request.
+            if (String.isBlank(requestActionNorm) || requestActionNorm == 'GRANT') {
                 String queryLowercase = String.isNotBlank(rawUserQuery) ? rawUserQuery.toLowerCase() : '';
                 // Match patterns: "remove access", "removal", "revoke", "deactivate", "deny access"
                 // Simplified: explicitly check for key revoke-related keywords (case-insensitive)
@@ -252,6 +454,24 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
             
             Boolean isRevokeRequest = requestActionNorm == 'REMOVE' || requestActionNorm == 'REVOKE';
             
+            // Continuation turns (role/user/region answers) resend the requestSummary from the prior
+            // step. If that summary is a REVOKE, keep the REVOKE flow regardless of the wording or
+            // confirmation state of this turn.
+            if (!isRevokeRequest) {
+                try {
+                    Object summaryObj = p.get('requestSummary');
+                    if (summaryObj != null) {
+                        Map<String, Object> summaryMap = (Map<String, Object>) summaryObj;
+                        String summaryAction = str(summaryMap, 'requestAction');
+                        if (String.isNotBlank(summaryAction) && summaryAction.trim().toUpperCase() == 'REVOKE') {
+                            isRevokeRequest = true;
+                            requestActionNorm = 'REVOKE';
+                        }
+                    }
+                } catch (Exception e) {
+                    // Ignore - requestSummary might not be a Map or might not have requestAction
+                }
+            }
             // REVOKE CONTEXT PRESERVATION: If this is a confirmation request (userConfirmed=true or affirmative response)
             // and we detected "deactivate" anywhere in the query, treat it as REVOKE confirmation.
             // This handles the case where chatbot sends confirmation without explicit requestAction.
@@ -262,23 +482,23 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
                     isRevokeRequest = true;
                     requestActionNorm = 'REVOKE';
                 }
-                // Also check if requestSummary contains requestAction=REVOKE (for confirmation flows
-                // where chatbot resends the requestSummary object from prior step)
-                if (!isRevokeRequest) {
-                    try {
-                        Object summaryObj = p.get('requestSummary');
-                        if (summaryObj != null) {
-                            Map<String, Object> summaryMap = (Map<String, Object>) summaryObj;
-                            String summaryAction = str(summaryMap, 'requestAction');
-                            if (String.isNotBlank(summaryAction) && summaryAction.trim().toUpperCase() == 'REVOKE') {
-                                isRevokeRequest = true;
-                                requestActionNorm = 'REVOKE';
-                            }
-                        }
-                    } catch (Exception e) {
-                        // Ignore - requestSummary might not be a Map or might not have requestAction
-                    }
-                }
+            }
+            // A bare YES/confirm carries no intent on its own. Without the requestSummary from the
+            // previous step (or a revoke word), it would silently start a GRANT and ask for
+            // account/region, so ask the caller to resend the summary instead.
+            String confirmQueryLower = String.isNotBlank(rawUserQuery) ? rawUserQuery.trim().toLowerCase() : '';
+            Boolean isBareConfirmation = confirmQueryLower.startsWith('yes')
+                || confirmQueryLower.startsWith('confirm') || confirmQueryLower.startsWith('proceed');
+            if (!isRevokeRequest && (String.isBlank(requestActionNorm) || requestActionNorm == 'GRANT')
+                && p.get('requestSummary') == null
+                && isBareConfirmation && (userConfirmed || inferredConfirmedFromQuery)) {
+                res.statusCode = 400;
+                return JSON.serialize(new Map<String, Object>{
+                    'success'   => false,
+                    'errorCode' => 'CONFIRMATION_SUMMARY_MISSING',
+                    'message'   => 'Confirmation received without the requestSummary from the previous step. '
+                        + 'Resend the requestSummary returned by /access/validateRequest with userConfirmed=true.'
+                });
             }
             List<String> validationErrors = new List<String>();
             // Set true below (Step "user not found") once we have a full name AND
@@ -1907,6 +2127,9 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
                     'iupgmRequired'        => cfg.Core_MDF_IUPGM_Required__c
                 };
                 
+                // Carry the resolved intent so the follow-up turn stays on the same REVOKE/GRANT path.
+                partialRequestSummary.put('requestAction', isRevokeRequest ? 'REVOKE' : 'GRANT');
+
                 // Add optional fields if already resolved
                 if (userId == null && String.isNotBlank(userEmail)) {partialRequestSummary.put('userNeedsCreation', true);partialRequestSummary.put('newUserEmail', userEmail); if (String.isNotBlank(newUserFullName)) { partialRequestSummary.put('newUserFullName', newUserFullName);
                     }  if (String.isNotBlank(newUserFederationId)) {partialRequestSummary.put('newUserFederationId', newUserFederationId);
@@ -3057,6 +3280,1040 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
             'confirmationPrompt' => confirmPrompt
         });
     }
+
+/******************************************************************************************************
+    Method Name:        handleCopyUserAccessRequest
+    Description:        Orchestrates the "Copy User Access" flow: resolves source/target users
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    /** Entry point for the COPY intent: resolves users, diffs access via IDS, confirms, then submits. */
+    @testVisible
+    private static String handleCopyUserAccessRequest(
+        Map<String, Object> p,
+        RestResponse res,
+        String rawUserQuery,
+        Boolean inferredConfirmedFromQuery
+    ) {
+        Boolean userConfirmed = parseBool(p.get('userConfirmed')) || inferredConfirmedFromQuery;
+        String requestorEmail = str(p, 'requestorEmail');
+
+        // ── Confirmed submission: chatbot resends the eligibleRoles list + copyOperationId
+        // from the prior (unconfirmed) response, exactly like the existing requestSummary
+        // confirmation pattern used by GRANT/REVOKE. ──────────────────────────────────────
+        if (userConfirmed && p.containsKey('copyOperationId') && p.containsKey('eligibleRoles')) {
+            return submitConfirmedCopyUserAccess(p, res, requestorEmail);
+        }
+
+        String sourceUserInput = str(p, 'sourceUserInput');
+        String targetUserInput = str(p, 'targetUserInput');
+
+        // Chatbot COPY payloads don't reliably use userInput for the source (it has been the
+        // target in some calls), so the "from X to Y" wording in the query is authoritative.
+        // Payload fields are only a fallback. Only reached from the COPY branch.
+        String[] queryUsers = extractCopyUsersFromQuery(
+            String.isNotBlank(rawUserQuery) ? rawUserQuery : str(p, 'userQuery'));
+
+        // A plain "yes" with no from/to pair confirms the last Copy preview saved for this requestor.
+        if (userConfirmed && queryUsers[0] == null && queryUsers[1] == null) {
+            String pendingSubmit = submitPendingCopy(requestorEmail, res);
+            if (pendingSubmit != null) return pendingSubmit;
+        }
+
+        if (String.isBlank(sourceUserInput)) {
+            sourceUserInput = queryUsers[0] != null ? queryUsers[0] : str(p, 'userInput');
+        }
+        if (String.isBlank(targetUserInput)) {
+            targetUserInput = queryUsers[1] != null ? queryUsers[1] : str(p, 'newUserEmail');
+        }
+
+        if (String.isBlank(sourceUserInput) || String.isBlank(targetUserInput)) {
+            res.statusCode = 400;
+            return JSON.serialize(new Map<String, Object>{
+                'success'    => false,
+                'needsInput' => true,
+                'errorCode'  => 'COPY_USERS_REQUIRED',
+                'message'    => 'Please provide both the source user (whose access should be '
+                    + 'copied) and the target user (who should receive it), e.g. '
+                    + '"Copy <Source User>\'s access to <Target User>".'
+            });
+        }
+
+        UserLookupResult sourceLookup = resolveSingleUserByInput(sourceUserInput);
+        if (sourceLookup.ambiguous) {
+            res.statusCode = 300;
+            return JSON.serialize(new Map<String, Object>{
+                'success'       => false,
+                'needsInput'    => true,
+                'multipleUsers' => true,
+                'message'       => 'Multiple source users found for [' + sourceUserInput + ']. '
+                    + 'Please resend with the exact Intel email.',
+                'users'         => sourceLookup.options
+            });
+        }
+        if (sourceLookup.user == null) {
+            res.statusCode = 404;
+            return err('Source user [' + sourceUserInput + '] was not found. '
+                + 'Please provide a valid Intel email or full name.');
+        }
+
+        UserLookupResult targetLookup = resolveSingleUserByInput(targetUserInput);
+        if (targetLookup.ambiguous) {
+            res.statusCode = 300;
+            return JSON.serialize(new Map<String, Object>{
+                'success'       => false,
+                'needsInput'    => true,
+                'multipleUsers' => true,
+                'message'       => 'Multiple target users found for [' + targetUserInput + ']. '
+                    + 'Please resend with the exact Intel email.',
+                'users'         => targetLookup.options
+            });
+        }
+        if (targetLookup.user == null) {
+            return handleCopyTargetNeedsCreation(
+                p, res, targetUserInput, sourceLookup, requestorEmail, userConfirmed, rawUserQuery);
+        }
+
+        String sourceEnterpriseId = resolveEnterpriseIdForUser(sourceLookup.user);
+        String targetEnterpriseId = resolveEnterpriseIdForUser(targetLookup.user);
+        if (String.isBlank(sourceEnterpriseId) || String.isBlank(targetEnterpriseId)) {
+            res.statusCode = 400;
+            return err('Unable to resolve a Federation ID (Worldwide ID) for '
+                + (String.isBlank(sourceEnterpriseId) ? sourceLookup.user.Name : targetLookup.user.Name)
+                + '. Copy User Access requires both users to have a Federation ID on file.');
+        }
+        if (!isValidWwidFormat(sourceEnterpriseId) || !isValidWwidFormat(targetEnterpriseId)) {
+            res.statusCode = 400;
+            String invalidUserName = !isValidWwidFormat(sourceEnterpriseId)
+                ? sourceLookup.user.Name : targetLookup.user.Name;
+            return err(invalidUserName + '\'s Federation ID on file does not look like a valid '
+                + 'Intel WWID (expected digits only). Copy User Access cannot query IDS with this '
+                + 'value - please verify this user\'s Federation ID in Setup.');
+        }
+
+        List<Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment> sourceRoles;
+        List<Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment> targetRoles;
+        try {
+            Core_MDF_AGS_CalloutQueueable idsClient =
+                new Core_MDF_AGS_CalloutQueueable('IDS_OAuth_Config');
+            sourceRoles = idsClient.fetchUserAccessFromIds(sourceEnterpriseId);
+            targetRoles = idsClient.fetchUserAccessFromIds(targetEnterpriseId);
+        } catch (Core_MDF_AGS_CalloutQueueable.ConfigurationException ce) {
+            res.statusCode = 503;
+            return JSON.serialize(new Map<String, Object>{
+                'success'   => false,
+                'errorCode' => 'IDS_NOT_CONFIGURED',
+                'message'   => 'Copy User Access is not available yet: ' + ce.getMessage()
+            });
+        } catch (Exception e) {
+            res.statusCode = 502;
+            return err('Copy User Access could not retrieve role assignments from IDS: '
+                + e.getMessage());
+        }
+
+        // Compare by roleName (IDS identifier) - see the "NOT YET CONFIRMED" note on
+        // Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment/parseIdsRoleAssignments. Once a
+        // real sample response is available, confirm this is the correct comparison key.
+        Set<String> targetRoleNames = new Set<String>();
+        for (Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment r : targetRoles) {
+            if (String.isNotBlank(r.roleName)) targetRoleNames.add(r.roleName.trim().toUpperCase());
+        }
+
+        List<Map<String, Object>> eligibleRoles = new List<Map<String, Object>>();
+        List<String> alreadyAssignedRoles = new List<String>();
+        List<String> unresolvedRoles = new List<String>();
+        for (Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment r : sourceRoles) {
+            if (String.isBlank(r.roleName)) continue;
+            // The Core Access bootstrap role is a baseline prerequisite every active user already
+            // has (or gets automatically via the new-user flow) - not a business role to copy or
+            // compare, so it is excluded entirely from this comparison.
+            if (r.roleName.trim().equalsIgnoreCase(Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL)) {
+                continue;
+            }
+            // Resolve the MDT config BEFORE checking against the target's roles - a role with no
+            // mapping (e.g. a direct profile/permission-set assignment outside IUPGM, such as
+            // "SFDC Sales System Administrator") is not something this chatbot can request/revoke,
+            // so it must never be surfaced as "already assigned" either - only as unresolved,
+            // consistent with the same filtering already applied to LIST_ACCESS.
+            Core_MDF_IUPGM_Rule_Config__mdt cfg = findRuleConfigByAnyRoleName(r.roleName);
+            if (cfg == null) {
+                unresolvedRoles.add(r.roleName);
+                continue;
+            }
+            if (targetRoleNames.contains(r.roleName.trim().toUpperCase())) {
+                alreadyAssignedRoles.add(cfg.Core_MDF_Role_Label__c);
+                continue;
+            }
+            eligibleRoles.add(new Map<String, Object>{
+                'roleLabel'         => cfg.Core_MDF_Role_Label__c,
+                'program'           => cfg.Core_MDF_Program__c,
+                'permissionSetName' => cfg.Core_MDF_Permission_Set_Name__c,
+                'agsRoleName'       => cfg.Core_MDF_AGS_Role_Name__c
+            });
+        }
+
+        if (eligibleRoles.isEmpty()) {
+            res.statusCode = 200;
+            return JSON.serialize(new Map<String, Object>{
+                'success'              => true,
+                'noActionNeeded'       => true,
+                'alreadyAssignedRoles' => alreadyAssignedRoles,
+                'unresolvedRoles'      => unresolvedRoles,
+                'message'              => targetLookup.user.Name
+                    + ' already has every eligible role currently held by '
+                    + sourceLookup.user.Name + '. Nothing to copy.'
+            });
+        }
+
+        // Confirmation arrived without the prior copyOperationId/eligibleRoles payload (the chatbot
+        // sends back only "yes" plus the from/to wording). The diff above was just recomputed from
+        // IDS, so submit the same eligible roles directly instead of asking again.
+        if (userConfirmed) {
+            List<Object> confirmedRoles = new List<Object>();
+            for (Map<String, Object> r : eligibleRoles) confirmedRoles.add(r);
+            return submitConfirmedCopyUserAccess(new Map<String, Object>{
+                'copyOperationId' => Core_MDF_CCP_ConstantClass.newIupgmCorrelationId(),
+                'targetUserId'    => String.valueOf(targetLookup.user.Id),
+                'eligibleRoles'   => confirmedRoles
+            }, res, requestorEmail);
+        }
+
+        String copyOperationId = Core_MDF_CCP_ConstantClass.newIupgmCorrelationId();
+        if (String.isNotBlank(requestorEmail)) {
+            savePendingCopy(requestorEmail, copyOperationId, targetLookup.user.Id,
+                sourceLookup.user.Name, eligibleRoles);
+        }
+        List<String> roleLabelsForPrompt = new List<String>();
+        for (Map<String, Object> r : eligibleRoles) roleLabelsForPrompt.add((String) r.get('roleLabel'));
+        String alreadyAssignedText = alreadyAssignedRoles.isEmpty()
+            ? 'none' : String.join(alreadyAssignedRoles, ', ');
+
+        res.statusCode = 200;
+        return JSON.serialize(new Map<String, Object>{
+            'success'              => true,
+            'needsConfirmation'    => true,
+            'copyOperationId'      => copyOperationId,
+            'sourceUserId'         => sourceLookup.user.Id,
+            'sourceUserName'       => sourceLookup.user.Name,
+            'targetUserId'         => targetLookup.user.Id,
+            'targetUserName'       => targetLookup.user.Name,
+            'eligibleRoles'        => eligibleRoles,
+            'alreadyAssignedRoles' => alreadyAssignedRoles,
+            'unresolvedRoles'      => unresolvedRoles,
+            'requestorEmail'       => requestorEmail,
+            'message'              => 'Already assigned to ' + targetLookup.user.Name
+                + ' (no request needed): ' + alreadyAssignedText + '. '
+                + 'The following ' + eligibleRoles.size()
+                + ' role(s) held by ' + sourceLookup.user.Name + ' are not yet assigned to '
+                + targetLookup.user.Name + ': ' + String.join(roleLabelsForPrompt, ', ')
+                + '. Reply YES to request these roles for ' + targetLookup.user.Name
+                + ', or NO to cancel.'
+        });
+    }
+
+/******************************************************************************************************
+    Method Name:        submitConfirmedCopyUserAccess
+    Description:        Creates one staging record per confirmed eligible role from a Copy User Access
+                         operation, all sharing the same Core_MDF_Copy_Operation_Id__c, then returns the
+                         per-role submission outcomes. Each role is independent - one failure does not
+                         block the others (Section 9 of the requirement doc).
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    /** Minutes a Copy_Pending preview stays confirmable by a plain "yes". */
+    private static final Integer COPY_PENDING_TTL_MINUTES = 10;
+
+    /** True when the reply is a plain "yes" (no from/to pair) and this requestor has a live Copy preview. */
+    @testVisible
+    private static Boolean isPlainYesForPendingCopy(Map<String, Object> p, String rawUserQuery) {
+        if (p.containsKey('requestSummary') || p.containsKey('requestSummaries') || p.containsKey('users')) {
+            return false;
+        }
+        if (!isAffirmativeConfirmation(rawUserQuery)) return false;
+        String[] users = extractCopyUsersFromQuery(rawUserQuery);
+        if (users[0] != null || users[1] != null) return false;
+        String requestorEmail = str(p, 'requestorEmail');
+        return String.isNotBlank(requestorEmail) && !findLivePendingCopy(requestorEmail).isEmpty();
+    }
+
+    /** Returns the requestor's most recent Copy_Pending preview that is still within the TTL. */
+    private static List<Core_MDF_IUPGM_Request_Staging__c> findLivePendingCopy(String requestorEmail) {
+        return [
+            SELECT Id, Core_MDF_Copy_Operation_Id__c, Core_MDF_IUPGM_User__c,
+                   Core_MDF_Pending_Dependent_Role_txt__c
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Core_MDF_Request_Status_nm__c = 'Copy_Pending'
+              AND Core_MDF_Requestor_Email__c = :requestorEmail
+              AND CreatedDate >= :Datetime.now().addMinutes(-COPY_PENDING_TTL_MINUTES)
+            ORDER BY CreatedDate DESC
+            LIMIT 1
+        ];
+    }
+
+    /** Saves a previewed copy as a Copy_Pending staging row; earlier previews for the requestor are removed. */
+    private static void savePendingCopy(
+        String requestorEmail,
+        String copyOperationId,
+        Id targetUserId,
+        String sourceUserName,
+        List<Map<String, Object>> eligibleRoles
+    ) {
+        List<Core_MDF_IUPGM_Request_Staging__c> earlier = [
+            SELECT Id FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Core_MDF_Request_Status_nm__c = 'Copy_Pending'
+              AND Core_MDF_Requestor_Email__c = :requestorEmail
+        ];
+        if (!earlier.isEmpty()) delete earlier;
+
+        insert new Core_MDF_IUPGM_Request_Staging__c(
+            Core_MDF_Request_Status_nm__c = 'Copy_Pending',
+            Core_MDF_Copy_Operation_Id__c = copyOperationId,
+            Core_MDF_IUPGM_User__c = targetUserId,
+            Core_MDF_Requestor_Email__c = requestorEmail,
+            Core_MDF_Pending_Dependent_Role_txt__c =
+                JSON.serialize(new Map<String, Object>{
+                    'eligibleRoles'  => eligibleRoles,
+                    'sourceUserName' => sourceUserName
+                })
+        );
+    }
+
+    /** Submits the requestor's live Copy_Pending preview, then removes its staging row if submit did not fail. */
+    private static String submitPendingCopy(String requestorEmail, RestResponse res) {
+        List<Core_MDF_IUPGM_Request_Staging__c> pending = findLivePendingCopy(requestorEmail);
+        if (pending.isEmpty()) return null;
+
+        Core_MDF_IUPGM_Request_Staging__c row = pending[0];
+        Map<String, Object> payload = (Map<String, Object>) JSON.deserializeUntyped(
+            row.Core_MDF_Pending_Dependent_Role_txt__c);
+        payload.put('copyOperationId', row.Core_MDF_Copy_Operation_Id__c);
+        payload.put('targetUserId', String.valueOf(row.Core_MDF_IUPGM_User__c));
+
+        String result = submitConfirmedCopyUserAccess(payload, res, requestorEmail);
+        if (res.statusCode == null || res.statusCode < 400) delete row;
+        return result;
+    }
+
+    /******************************************************************************************************
+    Method Name:        handleCopyTargetNeedsCreation
+    Description:        Handles a COPY_ACCESS request whose TARGET user has no active Salesforce record
+                         (never existed or deactivated). Mirrors the existing GRANT "new user" Core
+                         Access bootstrap pattern: the target needs Full Name + Federation ID before
+                         anything can be requested for them; once provided, this computes the eligible
+                         roles from the SOURCE only (the target has no existing IUPGM roles since it
+                         doesn't exist yet) and, on confirmation, submits ONE Core Access staging row
+                         with every eligible role parked as a list in
+                         Core_MDF_Pending_Dependent_Role_txt__c. The existing
+                         Core_MDF_IUPGMReqStaging_ServiceHandler.submitPendingDependentRoles() (extended
+                         to also handle a list, not just a single role) raises each parked role as its
+                         own staging record once the Core Access request completes - exactly the same
+                         trigger/service-handler mechanism GRANT already relies on, unchanged.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    private static String handleCopyTargetNeedsCreation(
+        Map<String, Object> p, RestResponse res, String targetUserInput,
+        UserLookupResult sourceLookup, String requestorEmail, Boolean userConfirmed, String rawUserQuery
+    ) {
+        if (!targetUserInput.contains('@')) {
+            res.statusCode = 404;
+            return err('Target user [' + targetUserInput + '] was not found. '
+                + 'Please provide a valid Intel email or full name.');
+        }
+
+        String newUserFullName = str(p, 'newUserFullName');
+        String newUserFederationId = str(p, 'newUserFederationId');
+        Boolean readyToCreateTarget =
+            String.isNotBlank(newUserFullName) && String.isNotBlank(newUserFederationId);
+
+        if (!readyToCreateTarget) {
+            if (isNegativeReply(rawUserQuery)) {
+                res.statusCode = 200;
+                return JSON.serialize(new Map<String, Object>{
+                    'success' => false,
+                    'message' => 'Understood - no changes have been made. '
+                        + 'The copy request to [' + targetUserInput + '] was not processed because '
+                        + 'this user does not have an active Salesforce account.'
+                });
+            }
+            List<Map<String, Object>> missingFields = new List<Map<String, Object>>();
+            if (String.isBlank(newUserFullName)) {
+                missingFields.add(new Map<String, Object>{
+                    'field'  => 'newUserFullName',
+                    'label'  => 'Full Name (First Last)',
+                    'type'   => 'text',
+                    'prompt' => 'What is the full name (First and Last) for ' + targetUserInput + '?'
+                });
+            }
+            if (String.isBlank(newUserFederationId)) {
+                missingFields.add(new Map<String, Object>{
+                    'field'  => 'newUserFederationId',
+                    'label'  => 'Federation ID (Worldwide ID / WWID)',
+                    'type'   => 'text',
+                    'prompt' => 'What is the Worldwide ID (Federation ID) for ' + targetUserInput + '?'
+                });
+            }
+            res.statusCode = 206;
+            return JSON.serialize(new Map<String, Object>{
+                'success'             => false,
+                'needsInput'          => true,
+                'userNotFound'        => true,
+                'targetNeedsCreation' => true,
+                'suggestedRole'       => Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL,
+                'missingFields'       => missingFields,
+                'message'             =>
+                    targetUserInput + ' is not an active user in Salesforce.\n\n'
+                    + 'To copy access to them, we first need to request the '
+                    + Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL + ' role for them.\n\n'
+                    + 'Please also provide:\n'
+                    + 'Name (First Last):\n'
+                    + 'Federation ID (Worldwide ID):\n\n'
+                    + 'Reply NO if you do not want to proceed, and no changes will be made.'
+            });
+        }
+
+        // Ready to proceed - compute eligible roles from the SOURCE only (the target has no existing
+        // IUPGM roles since it doesn't exist yet in Salesforce, so nothing to compare against).
+        String sourceEnterpriseId = resolveEnterpriseIdForUser(sourceLookup.user);
+        if (String.isBlank(sourceEnterpriseId)) {
+            res.statusCode = 400;
+            return err('Unable to resolve a Federation ID (Worldwide ID) for '
+                + sourceLookup.user.Name + '. Copy User Access requires the source user to have a '
+                + 'Federation ID on file.');
+        }
+        if (!isValidWwidFormat(sourceEnterpriseId)) {
+            res.statusCode = 400;
+            return err(sourceLookup.user.Name + '\'s Federation ID on file does not look like a valid '
+                + 'Intel WWID (expected digits only). Copy User Access cannot query IDS with this '
+                + 'value - please verify this user\'s Federation ID in Setup.');
+        }
+
+        List<Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment> sourceRoles;
+        try {
+            Core_MDF_AGS_CalloutQueueable idsClient = new Core_MDF_AGS_CalloutQueueable('IDS_OAuth_Config');
+            sourceRoles = idsClient.fetchUserAccessFromIds(sourceEnterpriseId);
+        } catch (Core_MDF_AGS_CalloutQueueable.ConfigurationException ce) {
+            res.statusCode = 503;
+            return JSON.serialize(new Map<String, Object>{
+                'success'   => false,
+                'errorCode' => 'IDS_NOT_CONFIGURED',
+                'message'   => 'Copy User Access is not available yet: ' + ce.getMessage()
+            });
+        } catch (Exception e) {
+            res.statusCode = 502;
+            return err('Copy User Access could not retrieve role assignments from IDS: '
+                + e.getMessage());
+        }
+
+        List<Map<String, Object>> eligibleRoles = new List<Map<String, Object>>();
+        List<String> unresolvedRoles = new List<String>();
+        for (Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment r : sourceRoles) {
+            if (String.isBlank(r.roleName)) continue;
+            // The Core Access bootstrap role is already being requested as this very bootstrap
+            // submission (see below) - it must never also appear as one of the "eligible" roles to
+            // copy over afterward, which would request it a second time.
+            if (r.roleName.trim().equalsIgnoreCase(Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL)) {
+                continue;
+            }
+            Core_MDF_IUPGM_Rule_Config__mdt cfg = findRuleConfigByAnyRoleName(r.roleName);
+            if (cfg == null) {
+                unresolvedRoles.add(r.roleName);
+                continue;
+            }
+            eligibleRoles.add(new Map<String, Object>{
+                'roleLabel'         => cfg.Core_MDF_Role_Label__c,
+                'program'           => cfg.Core_MDF_Program__c,
+                'permissionSetName' => cfg.Core_MDF_Permission_Set_Name__c,
+                'agsRoleName'       => cfg.Core_MDF_AGS_Role_Name__c
+            });
+        }
+
+        if (eligibleRoles.isEmpty()) {
+            res.statusCode = 200;
+            return JSON.serialize(new Map<String, Object>{
+                'success'         => true,
+                'noActionNeeded'  => true,
+                'unresolvedRoles' => unresolvedRoles,
+                'message'         => sourceLookup.user.Name
+                    + ' has no IUPGM-managed roles to copy. Nothing to request.'
+            });
+        }
+
+        List<String> roleLabelsForPrompt = new List<String>();
+        for (Map<String, Object> r : eligibleRoles) roleLabelsForPrompt.add((String) r.get('roleLabel'));
+
+        if (!userConfirmed) {
+            res.statusCode = 200;
+            return JSON.serialize(new Map<String, Object>{
+                'success'             => true,
+                'needsConfirmation'   => true,
+                'targetNeedsCreation' => true,
+                'sourceUserId'        => sourceLookup.user.Id,
+                'sourceUserName'      => sourceLookup.user.Name,
+                'newUserFullName'     => newUserFullName,
+                'newUserFederationId' => newUserFederationId,
+                'newUserEmail'        => targetUserInput,
+                'eligibleRoles'       => eligibleRoles,
+                'unresolvedRoles'     => unresolvedRoles,
+                'requestorEmail'      => requestorEmail,
+                'message'             => targetUserInput + ' is not an active user in Salesforce. '
+                    + 'I will first request the ' + Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL
+                    + ' role for ' + newUserFullName + ', then automatically copy over the following '
+                    + eligibleRoles.size() + ' role(s) held by ' + sourceLookup.user.Name
+                    + ' once that is approved: ' + String.join(roleLabelsForPrompt, ', ')
+                    + '. Reply YES to proceed, or NO to cancel.'
+            });
+        }
+
+        // Confirmed - submit ONE Core Access staging row with every eligible role parked as a list.
+        Core_MDF_IUPGM_Rule_Config__mdt coreAccessCfg =
+            findRuleConfigByAnyRoleName(Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL);
+        if (coreAccessCfg == null) {
+            res.statusCode = 500;
+            return err('Core Access role configuration not found. Cannot bootstrap a new user.');
+        }
+        String copyOperationId = Core_MDF_CCP_ConstantClass.newIupgmCorrelationId();
+        Map<String, Object> summary = new Map<String, Object>{
+            'program'             => coreAccessCfg.Core_MDF_Program__c,
+            'permissionSetName'   => coreAccessCfg.Core_MDF_Permission_Set_Name__c,
+            'agsRoleName'         => coreAccessCfg.Core_MDF_AGS_Role_Name__c,
+            'roleLabel'           => coreAccessCfg.Core_MDF_Role_Label__c,
+            'requestorEmail'      => requestorEmail,
+            'requestAction'       => 'COPY',
+            'copyOperationId'     => copyOperationId,
+            'sourceUserName'      => sourceLookup.user.Name,
+            'userNeedsCreation'   => true,
+            'newUserFullName'     => newUserFullName,
+            'newUserFederationId' => newUserFederationId,
+            'newUserEmail'        => targetUserInput
+        };
+        Core_MDF_IUPGM_Request_Staging__c staging = createStagingFromSummary(summary);
+        // Park ALL eligible roles (not just one) - overwrites whatever the single-role chaining logic
+        // in createStagingFromSummary may have set, since that logic never triggers here (roleLabel is
+        // already the Core Access label itself, so isCoreAccessRole is true and chaining is skipped).
+        staging.Core_MDF_Pending_Dependent_Role_txt__c = JSON.serialize(new Map<String, Object>{
+            'eligibleRoles'  => eligibleRoles,
+            'sourceUserName' => sourceLookup.user.Name
+        });
+
+        try {
+            insert staging;
+        } catch (Exception e) {
+            res.statusCode = 500;
+            return err('Could not submit the Core Access request: ' + e.getMessage());
+        }
+        staging = [
+            SELECT Id, Name, Core_MDF_Request_Status_nm__c
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Id = :staging.Id LIMIT 1
+        ];
+
+        res.statusCode = 200;
+        return JSON.serialize(new Map<String, Object>{
+            'success'         => true,
+            'copyOperationId' => copyOperationId,
+            'requestNumber'   => staging.Name,
+            'status'          => staging.Core_MDF_Request_Status_nm__c,
+            'message'         => 'Request submitted: ' + staging.Name + '. The '
+                + Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL + ' role has been requested '
+                + 'for ' + newUserFullName + '. Once approved, the following ' + eligibleRoles.size()
+                + ' role(s) will be automatically requested: ' + String.join(roleLabelsForPrompt, ', ')
+        });
+    }
+
+    /** Inserts the confirmed per-role COPY staging records and reports per-role submission outcomes. */
+    private static String submitConfirmedCopyUserAccess(
+        Map<String, Object> p,
+        RestResponse res,
+        String requestorEmail
+    ) {
+        String copyOperationId = str(p, 'copyOperationId');
+        Id targetUserId;
+        try {
+            targetUserId = (Id) str(p, 'targetUserId');
+        } catch (Exception e) {
+            res.statusCode = 400;
+            return err('Invalid or missing targetUserId for Copy User Access confirmation.');
+        }
+        if (String.isBlank(copyOperationId) || targetUserId == null) {
+            res.statusCode = 400;
+            return err('Invalid Copy User Access confirmation payload - '
+                + 'copyOperationId and targetUserId are required.');
+        }
+
+        List<Object> eligibleRolesRaw = (List<Object>) p.get('eligibleRoles');
+        if (eligibleRolesRaw == null || eligibleRolesRaw.isEmpty()) {
+            res.statusCode = 400;
+            return err('No eligibleRoles provided to confirm.');
+        }
+
+        // Duplicate-submission guard: skip any role that already has a non-terminal-error
+        // staging request in flight for this target user (covers double-confirmation,
+        // chatbot retries, or re-running Copy User Access while a prior copy of the same
+        // role is still pending) - same safety requirement called out for GRANT/REVOKE.
+        Set<String> requestedPsNames = new Set<String>();
+        for (Object roleObj : eligibleRolesRaw) {
+            Map<String, Object> role = (Map<String, Object>) roleObj;
+            String psName = (String) role.get('permissionSetName');
+            if (String.isNotBlank(psName)) requestedPsNames.add(psName);
+        }
+        Set<String> inFlightKeys = new Set<String>();
+        if (!requestedPsNames.isEmpty()) {
+            for (Core_MDF_IUPGM_Request_Staging__c existing : [
+                SELECT Core_MDF_IUPGM_Role_nm__c, Core_MDF_IUPGM_Program__c
+                FROM Core_MDF_IUPGM_Request_Staging__c
+                WHERE Core_MDF_IUPGM_User__c = :targetUserId
+                  AND Core_MDF_IUPGM_Role_nm__c IN :requestedPsNames
+                  AND Core_MDF_Is_IUPGM_Processed__c = false
+                  AND Core_MDF_Request_Status_nm__c NOT IN (
+                      'Error', 'Validation_Failed', 'External_User_Blocked', 'AGS_Rejected'
+                  )
+            ]) {
+                inFlightKeys.add(existing.Core_MDF_IUPGM_Role_nm__c + '::' + existing.Core_MDF_IUPGM_Program__c);
+            }
+        }
+
+        List<Core_MDF_IUPGM_Request_Staging__c> toInsert =
+            new List<Core_MDF_IUPGM_Request_Staging__c>();
+        List<Map<String, Object>> perRoleResults = new List<Map<String, Object>>();
+        List<Integer> insertedIndexToRoleIndex = new List<Integer>();
+
+        for (Integer roleIdx = 0; roleIdx < eligibleRolesRaw.size(); roleIdx++) {
+            Map<String, Object> role = (Map<String, Object>) eligibleRolesRaw[roleIdx];
+            String psName = (String) role.get('permissionSetName');
+            String program = (String) role.get('program');
+            if (inFlightKeys.contains(psName + '::' + program)) {
+                perRoleResults.add(new Map<String, Object>{
+                    'roleLabel' => role.get('roleLabel'),
+                    'status'    => 'Skipped',
+                    'reason'    => 'A request for this role is already in flight for this user.'
+                });
+                continue;
+            }
+            Map<String, Object> summary = new Map<String, Object>{
+                'userId'             => String.valueOf(targetUserId),
+                'program'            => program,
+                'permissionSetName'  => psName,
+                'agsRoleName'        => role.get('agsRoleName'),
+                'requestorEmail'     => requestorEmail,
+                'requestAction'      => 'COPY',
+                'copyOperationId'    => copyOperationId,
+                'sourceUserName'     => str(p, 'sourceUserName')
+            };
+            Core_MDF_IUPGM_Request_Staging__c staging = createStagingFromSummary(summary);
+            toInsert.add(staging);
+            insertedIndexToRoleIndex.add(perRoleResults.size());
+            perRoleResults.add(new Map<String, Object>{
+                'roleLabel' => role.get('roleLabel'),
+                'status'    => 'Submitted'
+            });
+        }
+
+        // Each role is an independent request (Section 9) - insert allOrNone=false so one
+        // bad row never blocks the rest, and surface the per-row DML outcome.
+        List<Database.SaveResult> saveResults = Database.insert(toInsert, false);
+        for (Integer i = 0; i < saveResults.size(); i++) {
+            Integer resultIdx = insertedIndexToRoleIndex[i];
+            if (!saveResults[i].isSuccess()) {
+                List<String> msgs = new List<String>();
+                for (Database.Error dbErr : saveResults[i].getErrors()) msgs.add(dbErr.getMessage());
+                perRoleResults[resultIdx].put('status', 'Failed');
+                perRoleResults[resultIdx].put('error', String.join(msgs, ' | '));
+            } else {
+                perRoleResults[resultIdx].put('stagingId', saveResults[i].getId());
+            }
+        }
+
+        Map<Id, String> copyStagingNames = new Map<Id, String>();
+        Set<Id> copyInsertedIds = new Set<Id>();
+        for (Database.SaveResult sr : saveResults) {
+            if (sr.isSuccess()) copyInsertedIds.add(sr.getId());
+        }
+        if (!copyInsertedIds.isEmpty()) {
+            for (Core_MDF_IUPGM_Request_Staging__c s : [
+                SELECT Id, Name FROM Core_MDF_IUPGM_Request_Staging__c
+                WHERE Id IN :copyInsertedIds
+            ]) {
+                copyStagingNames.put(s.Id, s.Name);
+            }
+        }
+        for (Integer i = 0; i < saveResults.size(); i++) {
+            if (!saveResults[i].isSuccess()) continue;
+            perRoleResults[insertedIndexToRoleIndex[i]].put('requestNumber',
+                copyStagingNames.get(saveResults[i].getId()));
+        }
+
+        List<String> submittedNumbers = new List<String>();
+        for (Map<String, Object> pr : perRoleResults) {
+            if (pr.containsKey('requestNumber')) submittedNumbers.add(String.valueOf(pr.get('requestNumber')));
+        }
+
+        res.statusCode = 200;
+        return JSON.serialize(new Map<String, Object>{
+            'success'         => true,
+            'copyOperationId' => copyOperationId,
+            'results'         => perRoleResults,
+            'message'         => 'Copy User Access requests submitted: '
+                + String.join(submittedNumbers, ', ') + '. '
+                + 'Ask the status of any of these request numbers to see all requests in this copy. '
+                + 'Each role will be tracked and notified independently.'
+        });
+    }
+
+/******************************************************************************************************
+    Method Name:        handleListAccessRequest
+    Description:        Read-only "what access does this user have" lookup. Resolves one user, calls
+                         IDS for their current role/entitlement assignments, and returns the list -
+                         never creates a Core_MDF_IUPGM_Request_Staging__c row, never touches AGS/IUPGM,
+                         no confirmation handshake. Intentionally not modeled as a Request Type on the
+                         staging object: nothing is persisted here, so it does not belong in the
+                         picklist that drives the staging record's async lifecycle (GRANT/REVOKE/COPY).
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    /** Resolves one user and returns their current IDS role assignments, read-only. */
+    @testVisible
+    private static String handleListAccessRequest(
+        Map<String, Object> p,
+        RestResponse res
+    ) {
+        String targetUserInput = str(p, 'targetUserInput');
+        if (String.isBlank(targetUserInput)) {
+            res.statusCode = 400;
+            return err('Please provide the user whose access you want to list, e.g. '
+                + '"What access does <email> have?"');
+        }
+
+        UserLookupResult lookup = resolveSingleUserByInput(targetUserInput);
+        if (lookup.ambiguous) {
+            res.statusCode = 300;
+            return JSON.serialize(new Map<String, Object>{
+                'success'       => false,
+                'needsInput'    => true,
+                'multipleUsers' => true,
+                'message'       => 'Multiple users found for [' + targetUserInput + ']. '
+                    + 'Please resend with the exact Intel email.',
+                'users'         => lookup.options
+            });
+        }
+        if (lookup.user == null) {
+            // resolveSingleUserByInput only matches ACTIVE Salesforce users - this covers both "never
+            // existed" and "deactivated" the same way, since neither has any IUPGM access to report.
+            res.statusCode = 200;
+            return JSON.serialize(new Map<String, Object>{
+                'success'   => true,
+                'userId'    => null,
+                'userName'  => targetUserInput,
+                'roleCount' => 0,
+                'roles'     => new List<Object>(),
+                'message'   => targetUserInput + ' is not an active user in Salesforce, '
+                    + 'so they currently have no roles assigned.'
+            });
+        }
+
+        String enterpriseId = resolveEnterpriseIdForUser(lookup.user);
+        if (String.isBlank(enterpriseId)) {
+            res.statusCode = 400;
+            return err('Unable to resolve a Federation ID (Worldwide ID) for '
+                + lookup.user.Name + '. Cannot look up access via IDS.');
+        }
+        if (!isValidWwidFormat(enterpriseId)) {
+            res.statusCode = 400;
+            return err(lookup.user.Name + '\'s Federation ID on file does not look like a valid '
+                + 'Intel WWID (expected digits only). Cannot query IDS with this value - please '
+                + 'verify this user\'s Federation ID in Setup.');
+        }
+
+        List<Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment> roles;
+        try {
+            Core_MDF_AGS_CalloutQueueable idsClient =
+                new Core_MDF_AGS_CalloutQueueable('IDS_OAuth_Config');
+            roles = idsClient.fetchUserAccessFromIds(enterpriseId);
+        } catch (Core_MDF_AGS_CalloutQueueable.ConfigurationException ce) {
+            res.statusCode = 503;
+            return JSON.serialize(new Map<String, Object>{
+                'success'   => false,
+                'errorCode' => 'IDS_NOT_CONFIGURED',
+                'message'   => 'Access lookup is not available yet: ' + ce.getMessage()
+            });
+        } catch (Exception e) {
+            res.statusCode = 502;
+            return err('Could not retrieve role assignments from IDS: ' + e.getMessage());
+        }
+
+        List<Map<String, Object>> roleList = new List<Map<String, Object>>();
+        List<String> roleLabelsForMessage = new List<String>();
+        for (Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment r : roles) {
+            if (String.isBlank(r.roleName)) continue;
+            Core_MDF_IUPGM_Rule_Config__mdt cfg = findRuleConfigByAnyRoleName(r.roleName);
+            // Only include roles that are actually managed via Core_MDF_IUPGM_Rule_Config__mdt.
+            // A role with no mapping (e.g. a direct profile/permission-set assignment outside IUPGM)
+            // is not something this chatbot can request/revoke, so it is excluded from the list.
+            if (cfg == null) continue;
+            roleList.add(new Map<String, Object>{
+                'roleName'  => r.roleName,
+                'roleLabel' => cfg.Core_MDF_Role_Label__c,
+                'program'   => cfg.Core_MDF_Program__c
+            });
+            roleLabelsForMessage.add(cfg.Core_MDF_Role_Label__c);
+        }
+
+        res.statusCode = 200;
+        return JSON.serialize(new Map<String, Object>{
+            'success'   => true,
+            'userId'    => lookup.user.Id,
+            'userName'  => lookup.user.Name,
+            'roleCount' => roleList.size(),
+            'roles'     => roleList,
+            'message'   => roleList.isEmpty()
+                ? lookup.user.Name + ' currently has no roles on file.'
+                : lookup.user.Name + ' currently has ' + roleList.size() + ' role(s): '
+                    + String.join(roleLabelsForMessage, ', ')
+        });
+    }
+
+    /******************************************************************************************************
+    Method Name:        handleStatusRequest
+    Description:        Read-only status lookup for a user's recent access requests. Reads existing
+                         Core_MDF_IUPGM_Request_Staging__c rows from the last 30 days and returns each
+                         role's status, AGS status and error message. Never creates or updates a record
+                         and never calls AGS, IUPGM or IDS, so it cannot re-submit a request.
+    *******************************************************************************************************/
+    @testVisible
+    private static String handleStatusRequest(Map<String, Object> p, RestResponse res) {
+        String userInput = String.isNotBlank(str(p, 'targetUserInput'))
+            ? str(p, 'targetUserInput') : str(p, 'userInput');
+        if (String.isBlank(userInput)) {
+            res.statusCode = 400;
+            return err('Please provide the user whose request status you want to check.');
+        }
+
+        UserLookupResult lookup = resolveSingleUserByInput(userInput);
+        if (lookup.ambiguous) {
+            res.statusCode = 300;
+            return JSON.serialize(new Map<String, Object>{
+                'success'       => false,
+                'needsInput'    => true,
+                'multipleUsers' => true,
+                'message'       => 'Multiple users found for [' + userInput + ']. '
+                    + 'Please resend with the exact Intel email.',
+                'users'         => lookup.options
+            });
+        }
+        if (lookup.user == null) {
+            res.statusCode = 404;
+            return err('User [' + userInput + '] was not found. '
+                + 'Please provide a valid Intel email or full name.');
+        }
+
+        List<Core_MDF_IUPGM_Request_Staging__c> allRows = [
+            SELECT Name, Core_MDF_IUPGM_Role_nm__c, Core_MDF_IUPGM_Program__c,
+                   Core_MDF_Request_Status_nm__c, Core_MDF_AGS_Status_nm__c,
+                   Core_MDF_Error_Message_txt__c, Core_MDF_Copy_Operation_Id__c, CreatedDate
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Core_MDF_IUPGM_User__c = :lookup.user.Id
+              AND CreatedDate = LAST_N_DAYS:30
+              AND Core_MDF_Request_Status_nm__c != 'Copy_Pending'
+            ORDER BY CreatedDate DESC
+            LIMIT 50
+        ];
+
+        Set<String> namedRoleKeys = roleKeysMentionedIn(str(p, 'userQuery'));
+        String requestNumberInQuery = requestNumberIn(str(p, 'userQuery'));
+        String copyIdForRequest = null;
+        if (requestNumberInQuery != null) {
+            for (Core_MDF_IUPGM_Request_Staging__c r : allRows) {
+                if (r.Name == requestNumberInQuery) copyIdForRequest = r.Core_MDF_Copy_Operation_Id__c;
+            }
+        }
+        List<Core_MDF_IUPGM_Request_Staging__c> rows = new List<Core_MDF_IUPGM_Request_Staging__c>();
+        if (requestNumberInQuery != null && copyIdForRequest != null) {
+            for (Core_MDF_IUPGM_Request_Staging__c r : allRows) {
+                if (copyIdForRequest == r.Core_MDF_Copy_Operation_Id__c) rows.add(r);
+            }
+        } else if (requestNumberInQuery != null) {
+            for (Core_MDF_IUPGM_Request_Staging__c r : allRows) {
+                if (r.Name == requestNumberInQuery) rows.add(r);
+            }
+        } else if (!namedRoleKeys.isEmpty()) {
+            for (Core_MDF_IUPGM_Request_Staging__c r : allRows) {
+                if (String.isNotBlank(r.Core_MDF_IUPGM_Role_nm__c)
+                        && namedRoleKeys.contains(r.Core_MDF_IUPGM_Role_nm__c.toLowerCase())) {
+                    rows.add(r);
+                }
+            }
+        } else {
+            rows.addAll(allRows);
+        }
+
+        List<Map<String, Object>> requestList = new List<Map<String, Object>>();
+        List<String> lines = new List<String>();
+        for (Core_MDF_IUPGM_Request_Staging__c r : rows) {
+            requestList.add(new Map<String, Object>{
+                'requestNumber'   => r.Name,
+                'role'            => r.Core_MDF_IUPGM_Role_nm__c,
+                'program'         => r.Core_MDF_IUPGM_Program__c,
+                'status'          => r.Core_MDF_Request_Status_nm__c,
+                'agsStatus'       => r.Core_MDF_AGS_Status_nm__c,
+                'errorMessage'    => r.Core_MDF_Error_Message_txt__c,
+                'copyOperationId' => r.Core_MDF_Copy_Operation_Id__c,
+                'submittedOn'     => r.CreatedDate
+            });
+            lines.add(r.Name + ': ' + (String.isBlank(r.Core_MDF_IUPGM_Role_nm__c)
+                ? 'Copy request' : r.Core_MDF_IUPGM_Role_nm__c)
+                + ' - ' + r.Core_MDF_Request_Status_nm__c);
+        }
+
+        res.statusCode = 200;
+        return JSON.serialize(new Map<String, Object>{
+            'success'      => true,
+            'userId'       => lookup.user.Id,
+            'userName'     => lookup.user.Name,
+            'requestCount' => requestList.size(),
+            'requests'     => requestList,
+            'message'      => requestList.isEmpty()
+                ? 'No access requests found for ' + lookup.user.Name + ' in the last 30 days.'
+                : 'Requests for ' + lookup.user.Name + ' (last 30 days): ' + String.join(lines, '; ')
+        });
+    }
+
+    /******************************************************************************************************
+    Method Name:        roleKeysMentionedIn
+    Description:        Returns the lower-cased role names (label, permission set and AGS name) of every
+                         active rule config whose label appears in the question. Empty when no role is named.
+    *******************************************************************************************************/
+    @testVisible
+    private static Set<String> roleKeysMentionedIn(String query) {
+        Set<String> keys = new Set<String>();
+        if (String.isBlank(query)) return keys;
+        String queryLower = query.toLowerCase();
+        for (Core_MDF_IUPGM_Rule_Config__mdt cfg : [
+            SELECT Core_MDF_Role_Label__c, Core_MDF_Permission_Set_Name__c, Core_MDF_AGS_Role_Name__c
+            FROM Core_MDF_IUPGM_Rule_Config__mdt
+            WHERE Core_MDF_Is_Active__c = true
+        ]) {
+            if (String.isBlank(cfg.Core_MDF_Role_Label__c)
+                    || !queryLower.contains(cfg.Core_MDF_Role_Label__c.toLowerCase())) continue;
+            keys.add(cfg.Core_MDF_Role_Label__c.toLowerCase());
+            if (String.isNotBlank(cfg.Core_MDF_Permission_Set_Name__c)) {
+                keys.add(cfg.Core_MDF_Permission_Set_Name__c.toLowerCase());
+            }
+            if (String.isNotBlank(cfg.Core_MDF_AGS_Role_Name__c)) {
+                keys.add(cfg.Core_MDF_AGS_Role_Name__c.toLowerCase());
+            }
+        }
+        return keys;
+    }
+
+    /** Returns the REQ-... request number found in the text, or null when none is present. */
+    @testVisible
+    private static String requestNumberIn(String query) {
+        if (String.isBlank(query)) return null;
+        Matcher m = Pattern.compile('(?i)\\bREQ-[0-9]+\\b').matcher(query);
+        return m.find() ? m.group().toUpperCase() : null;
+    }
+
+    /** Lightweight result wrapper for resolveSingleUserByInput - mirrors the inline GRANT user lookup. */
+    private class UserLookupResult {
+        User user;
+        Boolean ambiguous = false;
+        List<String> options = new List<String>();
+    }
+
+/******************************************************************************************************
+    Method Name:        resolveSingleUserByInput
+    Description:        Resolves one chatbot-supplied user identifier (email or name) to exactly one
+                         active Standard user. Mirrors the inline email/name lookup already used by the
+                         single-role GRANT flow in doValidateRequest (STEP 4), factored out here so COPY
+                         can reuse the same matching behaviour without touching that existing code path.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    /** Resolves a user by exact email or partial name match, same rules as the GRANT flow. */
+    @testVisible
+    private static UserLookupResult resolveSingleUserByInput(String input) {
+        UserLookupResult result = new UserLookupResult();
+        if (String.isBlank(input)) return result;
+
+        List<User> users = input.contains('@')
+            ? [SELECT Id, Name, Email, FederationIdentifier FROM User
+               WHERE Email = :input AND IsActive = true LIMIT 5]
+            : [SELECT Id, Name, Email, FederationIdentifier FROM User
+               WHERE Name LIKE :('%' + input + '%') AND IsActive = true LIMIT 5];
+
+        if (users.size() > 1) {
+            result.ambiguous = true;
+            for (User u : users) result.options.add(u.Name + ' (' + u.Email + ')');
+            return result;
+        }
+        if (!users.isEmpty()) result.user = users[0];
+        return result;
+    }
+
+    /**
+     * Resolves the enterpriseId/WWID used for IDS callouts (Copy User Access, List Access).
+     * Uses the standard FederationIdentifier field, the same field AGS_CalloutQueueable uses.
+     * Core_Federation_ID__c is a formula derived from FederationIdentifier, so it is not read here.
+     */
+    private static String resolveEnterpriseIdForUser(User u) {
+        if (u == null || String.isBlank(u.FederationIdentifier)) return null;
+        return u.FederationIdentifier.trim();
+    }
+
+    /******************************************************************************************************
+    Method Name:        isValidWwidFormat
+    Description:        Lightweight sanity check that a resolved enterpriseId/WWID actually looks like a
+                         real Intel WWID (all digits) before it is sent to IDS, rather than silently
+                         calling out with a placeholder/typo value (e.g. a hand-typed test value like
+                         "anandxabarna" in Core_Federation_ID__c/FederationIdentifier) and getting back an
+                         empty role list that looks indistinguishable from "this user genuinely has no
+                         access". Every real WWID observed in this org (Core_WWID__c/Core_Federation_ID__c/
+                         FederationIdentifier, for every genuinely-provisioned user checked) is purely
+                         numeric, so a non-numeric value is treated as invalid/untrustworthy for IDS.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    @testVisible
+    private static Boolean isValidWwidFormat(String enterpriseId) {
+        return String.isNotBlank(enterpriseId) && Pattern.matches('^[0-9]+$', enterpriseId.trim());
+    }
+
+/******************************************************************************************************
+    Method Name:        findRuleConfigByAnyRoleName
+    Description:        Looks up an active Core_MDF_IUPGM_Rule_Config__mdt by matching an IDS-supplied
+                         role name against Role_Label, AGS_Role_Name, or IUPGM_Role_Name, in that order.
+                         ASSUMPTION: IDS returns a name comparable to one of these fields - confirm the
+                         exact match key once the real IDS response schema is available.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    /** Finds the active rule config matching a role name returned by IDS, trying each known name field. */
+    @testVisible
+    private static Core_MDF_IUPGM_Rule_Config__mdt findRuleConfigByAnyRoleName(String roleName) {
+        if (String.isBlank(roleName)) return null;
+        String trimmed = roleName.trim();
+
+        List<Core_MDF_IUPGM_Rule_Config__mdt> byLabel = [
+            SELECT Core_MDF_Role_Label__c, Core_MDF_Program__c,
+                   Core_MDF_Permission_Set_Name__c, Core_MDF_AGS_Role_Name__c
+            FROM Core_MDF_IUPGM_Rule_Config__mdt
+            WHERE Core_MDF_Role_Label__c = :trimmed AND Core_MDF_Is_Active__c = true
+            LIMIT 1
+        ];
+        if (!byLabel.isEmpty()) return byLabel[0];
+
+        List<Core_MDF_IUPGM_Rule_Config__mdt> byAgsName = [
+            SELECT Core_MDF_Role_Label__c, Core_MDF_Program__c,
+                   Core_MDF_Permission_Set_Name__c, Core_MDF_AGS_Role_Name__c
+            FROM Core_MDF_IUPGM_Rule_Config__mdt
+            WHERE Core_MDF_AGS_Role_Name__c = :trimmed AND Core_MDF_Is_Active__c = true
+            LIMIT 1
+        ];
+        if (!byAgsName.isEmpty()) return byAgsName[0];
+
+        List<Core_MDF_IUPGM_Rule_Config__mdt> byIupgmRoleName = [
+            SELECT Core_MDF_Role_Label__c, Core_MDF_Program__c,
+                   Core_MDF_Permission_Set_Name__c, Core_MDF_AGS_Role_Name__c
+            FROM Core_MDF_IUPGM_Rule_Config__mdt
+            WHERE Core_MDF_IUPGM_Role_Name__c = :trimmed AND Core_MDF_Is_Active__c = true
+            LIMIT 1
+        ];
+        return byIupgmRoleName.isEmpty() ? null : byIupgmRoleName[0];
+    }
+
 /******************************************************************************************************
     Method Name:        handleBulkConfirmedSubmit
     Description:       Submits bulk-confirmed request summaries by creating staging records after duplicate checks and returns per-user outcomes.
@@ -3249,6 +4506,7 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
         String  program       = str(summary, 'program');
         String  psName        = str(summary, 'permissionSetName');
         String  agsRoleName   = str(summary, 'agsRoleName');
+        String  roleLabel     = str(summary, 'roleLabel');
         String  geo           = str(summary, 'geo');
         String  approvalReg   = str(summary, 'approvalRegion');
         String  actClass      = str(summary, 'activityClassification');
@@ -3266,6 +4524,53 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
         Boolean allBudget     = summary.get('allBudgetAccess') != null
             ? parseBool(summary.get('allBudgetAccess')) : null;
 
+        /*
+        ====================================================================
+        CORE-ACCESS PREREQUISITE CHAINING
+        --------------------------------------------------------------------
+        ====================================================================
+        */
+        String  pendingDependentRoleJson = null;
+        String  chainingConfigError = null;
+        String  chainingRequestAction = str(summary, 'requestAction');
+        Boolean isGrantAction = String.isBlank(chainingRequestAction)
+            || chainingRequestAction.trim().equalsIgnoreCase('GRANT');
+        Boolean isCoreAccessRole = String.isNotBlank(roleLabel)
+            && roleLabel.trim().equalsIgnoreCase(
+                Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL);
+
+        if (userNeedsCreation && isGrantAction && !isCoreAccessRole) {
+            Core_MDF_IUPGM_Rule_Config__mdt coreAccessCfg = findRuleConfigByAnyRoleName(
+                Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL);
+            if (coreAccessCfg != null) {
+                pendingDependentRoleJson = JSON.serialize(new Map<String, Object>{
+                    'roleLabel'              => roleLabel,
+                    'program'                => program,
+                    'permissionSetName'      => psName,
+                    'agsRoleName'            => agsRoleName,
+                    'accountId'              => accountIdStr,
+                    'allAccountAccess'       => allAcct,
+                    'geo'                    => geo,
+                    'allBudgetAccess'        => allBudget,
+                    'geoBudgetType'          => geoBudget,
+                    'approvalRegion'         => approvalReg,
+                    'activityClassification' => actClass
+                });
+                // Submit Core-Access itself first - the real target role captured
+                // above is parked, not lost.
+                program     = String.isNotBlank(coreAccessCfg.Core_MDF_Program__c)
+                    ? coreAccessCfg.Core_MDF_Program__c : COMMON_PROGRAM;
+                psName      = coreAccessCfg.Core_MDF_Permission_Set_Name__c;
+                agsRoleName = coreAccessCfg.Core_MDF_AGS_Role_Name__c;
+            } else {
+                // Never fall back to requesting the target role directly - that
+                // would bypass the Core-Access-first rule. Surface it instead.
+                chainingConfigError = 'Core-Access rule config not found ('
+                    + Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL
+                    + '). Target role "' + roleLabel + '" was not submitted.';
+            }
+        }
+
         Core_MDF_IUPGM_Request_Staging__c staging =
             new Core_MDF_IUPGM_Request_Staging__c();
         staging.Core_MDF_IUPGM_User__c                   =
@@ -3282,6 +4587,9 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
         );
         staging.Core_MDF_IUPGM_Role_nm__c                = psName;
         staging.Core_MDF_AGS_Role_Name__c                = agsRoleName;
+        if (String.isNotBlank(pendingDependentRoleJson)) {
+            staging.Core_MDF_Pending_Dependent_Role_txt__c = pendingDependentRoleJson;
+        }
         // Only set checkbox fields when value is present - Salesforce rejects null on checkbox DML
         if (allAcct != null) {
             staging.Core_MDF_IUPGM_All_Account_Access__c = allAcct;
@@ -3297,14 +4605,28 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
         staging.Core_MDF_Activity_Classification_nm__c   = actClass;
         staging.Core_MDF_Request_Status_nm__c            =
             Core_MDF_CCP_ConstantClass.IUPGM_STATUS_NEW;
-        // Explicit request intent (GRANT/REVOKE) - only the REVOKE branch populates
-        // 'requestAction' on the summary; everything else defaults to GRANT so
-        // every existing GRANT caller is completely unaffected.
+        if (String.isNotBlank(chainingConfigError)) {
+            staging.Core_MDF_Request_Status_nm__c = 'Validation_Failed';
+            staging.Core_MDF_Error_Message_txt__c = chainingConfigError;
+        }
+        // Explicit request intent (GRANT/REVOKE/COPY) - only the REVOKE/COPY
+        // branches populate 'requestAction' on the summary; everything else
+        // defaults to GRANT so every existing GRANT caller is completely unaffected.
         String summaryRequestAction = str(summary, 'requestAction');
+        String normalizedAction = String.isNotBlank(summaryRequestAction)
+            ? summaryRequestAction.trim().toUpperCase() : null;
         staging.Core_MDF_Request_Type_nm__c               =
-            (String.isNotBlank(summaryRequestAction)
-                && summaryRequestAction.trim().toUpperCase() == 'REVOKE')
-                ? 'REVOKE' : 'GRANT';
+            (normalizedAction == 'REVOKE') ? 'REVOKE'
+            : (normalizedAction == 'COPY') ? 'COPY'
+            : 'GRANT';
+        // Correlation id grouping every role request raised by one Copy User
+        // Access operation. Blank/null for ordinary GRANT/REVOKE requests.
+        String copyOperationId = str(summary, 'copyOperationId');
+        if (String.isNotBlank(copyOperationId)) {
+            staging.Core_MDF_Copy_Operation_Id__c = copyOperationId;
+            // Source user name for the copy completion email sentence.
+            staging.Core_MDF_Copy_Source_User_txt__c = str(summary, 'sourceUserName');
+        }
         if (userNeedsCreation) {
             if (String.isBlank(newUserFedId) && String.isNotBlank(newUserEmail)) {
                 newUserFedId = deriveFederationFromEmail(newUserEmail);
@@ -3677,7 +4999,7 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
     *******************************************************************************************************/
     /** Checks for an equivalent in-flight or completed request to prevent duplicate submissions. */
     @testVisible
-    private static Map<String, Object> findExistingRequest(
+    public static Map<String, Object> findExistingRequest(
         String  userId,
         String  permissionSetName,
         String  program,
@@ -4738,14 +6060,15 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
     @testVisible
     private static Boolean isAffirmativeConfirmation(String query) {
         if (String.isBlank(query)) return false;
-        String q = query.toLowerCase();
-        Boolean hasAffirmativeToken =
-            q.contains('yes')
-            || q.contains('confirm')
-            || q.contains('proceed')
-            || q.contains('submit');
-        if (!hasAffirmativeToken) return false;
-        // Negation guard
+        String q = query.trim().toLowerCase();
+
+        // A question is never itself a yes/no confirmation reply, even if it contains the word
+        // "confirm" - e.g. "Can you confirm what access I have?" is a LIST-style question, not a
+        // reply to a prior yes/no prompt.
+        if (q.endsWith('?')) return false;
+
+        // Negation guard - a reply that also carries a clear decline must never be read as a
+        // confirmation, regardless of where an affirmative-looking word appears.
         if (q.contains(' no ')
             || q.startsWith('no ')
             || q.contains(' cancel')
@@ -4754,7 +6077,33 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
             || q.contains('dont ')) {
             return false;
         }
-       
+
+        // Word-boundary, LEADING-token match: a genuine reply to a yes/no prompt opens with the
+        // affirmative word (e.g. "Yes, proceed", "Confirm this request"). This avoids misreading an
+        // ordinary sentence that merely contains "confirm"/"proceed"/"submit" elsewhere in a longer
+        // sentence (e.g. "Where do I submit this form?" - already excluded above by the '?' check,
+        // but also "I need to submit a different request" does not start with the word).
+        Boolean startsWithAffirmative = Pattern.compile(
+            '(?i)^\\s*(yes|y|yeah|yep|sure|ok|okay|confirm(ed)?|proceed|submit|approve[d]?|go\\s+ahead)\\b'
+        ).matcher(q).find();
+
+        // Short non-interrogative replies (<= 6 words) may phrase the affirmative word mid-sentence,
+        // e.g. "I confirm" or "sure, please proceed" - but a long sentence merely mentioning the word
+        // is never treated as a confirmation, so this cannot reintroduce the original false-positive bug.
+        Boolean shortReplyWithAffirmativeWord = false;
+        if (!startsWithAffirmative) {
+            List<String> words = q.split('\\s+');
+            if (words.size() <= 6) {
+                shortReplyWithAffirmativeWord = Pattern.compile(
+                    '(?i)\\b(yes|confirm(ed)?|proceed|submit|approve[d]?)\\b'
+                ).matcher(q).find();
+            }
+        }
+
+        if (!startsWithAffirmative && !shortReplyWithAffirmativeWord) {
+            return false;
+        }
+
         if (q.contains('budget type')
             || q.contains('account plan')
             || q.contains('proposal')
@@ -4882,6 +6231,376 @@ global without sharing class Core_MDF_IUPGM_RequestAPI {
             'Invalid selection [' + userInput + ']. '
             + 'Valid options: ' + String.join(validOptions, ', ')
         );
+    }
+
+    /** Request keys that already carry explicit structure. AI routing never runs when one of these
+     *  has a MEANINGFUL (non-null, non-blank, non-empty) value - a present-but-empty/null field must
+     *  not disable AI, since the chatbot can legitimately send null placeholders for unused fields.
+     *  'roleOptions' is included so an in-progress role-selection continuation (reply to "which of
+     *  these roles did you mean?") also bypasses the classifier, same as other continuation payloads. */
+    private static final Set<String> AI_SKIP_KEYS = new Set<String>{
+        'users', 'requestSummary', 'requestSummaries', 'copyOperationId', 'eligibleRoles',
+        'sourceUserInput', 'targetUserInput', 'requestAction', 'roleLabel', 'roleOptions'
+    };
+    /** A reply strictly shaped like "Field: value" (e.g. "Region: APJ") is a continuation of an
+     *  earlier multi-field prompt - this shape check is independent of confirmation-word matching and
+     *  does not require a pending-workflow lookup, since it is not ambiguous with an ordinary question. */
+    private static final Pattern AI_FIELD_REPLY = Pattern.compile(
+        '^\\s*[A-Za-z][A-Za-z ]{0,40}:\\s*\\S');
+
+    private static final String AI_CLARIFY_MESSAGE = 'I could not tell which action you want. Please rephrase with one clear action, '
+        + 'for example "Give <name> the <role> role", "Remove <name> from the <role> role", '
+        + '"Copy access from <source> to <target>", "What access does <name> have?" or "What is the status of my request?"';
+    private static final String AI_COPY_USERS_MESSAGE = 'Please provide both the source user (whose access should be copied) '
+        + 'and the target user (who should receive it).';
+    private static final String AI_LIST_USER_MESSAGE = 'Please provide the user whose access you want to check.';
+    private static final String AI_STATUS_USER_MESSAGE = 'Please provide the user whose request status you want to check.';
+    private static final String AI_REQUESTOR_EMAIL_MESSAGE = 'Please provide your email address so I can identify your account.';
+
+    /** True only when the key is present AND carries a non-null, non-blank/non-empty value. */
+    private static Boolean hasMeaningfulValue(Map<String, Object> p, String key) {
+        if (!p.containsKey(key)) return false;
+        Object v = p.get(key);
+        if (v == null) return false;
+        if (v instanceof String) return String.isNotBlank((String) v);
+        if (v instanceof List<Object>) return !((List<Object>) v).isEmpty();
+        if (v instanceof Map<String, Object>) return !((Map<String, Object>) v).isEmpty();
+        return true;
+    }
+
+    /**
+     * True only for new free-text requests. A structured continuation payload (any AI_SKIP_KEYS field
+     * with a meaningful value, or a "Field: value" reply) always bypasses AI regardless of wording.
+     * A bare confirmation-shaped reply (userConfirmed=true, or text that reads as "yes"/"no"/"confirm"/
+     * "cancel") bypasses AI ONLY when there is an ACTUAL, server-verified pending operation it could be
+     * confirming - currently a live Copy_Pending preview (isPlainYesForPendingCopy, which queries the
+     * requestor's own staging rows). Without that corroborating state, a leading "confirm"/"proceed"/
+     * "yes" is NOT treated as a confirmation - e.g. "Confirm what access John has?" or "Proceed with
+     * checking the access?" are ordinary questions and must still reach the classifier like any other
+     * free-text request. This intentionally reuses isAffirmativeConfirmation()/isNegativeReply()/
+     * isPlainYesForPendingCopy() rather than a separate text-pattern regex, so there is exactly one
+     * definition of what a confirmation reply looks like.
+     */
+    @testVisible
+    private static Boolean shouldClassifyWithAi(Map<String, Object> p, String rawUserQuery, Boolean inferredConfirmed) {
+        if (String.isBlank(rawUserQuery)) {
+            return false;
+        }
+        for (String key : AI_SKIP_KEYS) {
+            if (hasMeaningfulValue(p, key)) {
+                return false;
+            }
+        }
+        if (AI_FIELD_REPLY.matcher(rawUserQuery).find()) {
+            return false;
+        }
+        Boolean looksLikeConfirmationReply = inferredConfirmed
+            || isNegativeReply(rawUserQuery)
+            || parseBool(p.get('userConfirmed'));
+        if (looksLikeConfirmationReply && isPlainYesForPendingCopy(p, rawUserQuery)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * AI-FIRST routing for a new free-text request. The AI classifier is the primary and only
+     * decision-maker whenever it returns a technically valid response - its intent is used whether
+     * confident or not (low confidence / ambiguous / CLARIFY all route to a clarification reply, never
+     * to a keyword-guessed intent). Deterministic keyword detection is consulted ONLY when the AI
+     * callout itself technically failed (unreachable, malformed JSON, unsupported intent, etc.) - never
+     * to second-guess or override a technically valid AI response. Returns a response when the request
+     * is finished; returns null only when the existing GRANT/REVOKE flow should continue (entities are
+     * already mapped into p by that point).
+     */
+    @testVisible
+    private static String routeWithAiIntent(Map<String, Object> p, RestResponse res, String rawUserQuery) {
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent(rawUserQuery);
+
+        if (ai.isValid) {
+            Boolean confident = ai.intent != 'CLARIFY'
+                && !ai.needsClarification
+                && ai.confidence != null
+                && (ai.confidence * 100) >= Core_MDF_IUPGMIntentClassifier.getConfidenceThresholdPercent();
+            if (!confident) {
+                // AI itself is unsure/ambiguous - clarify. Keywords never override a valid AI response.
+                String question = String.isNotBlank(ai.clarificationQuestion)
+                    ? ai.clarificationQuestion : AI_CLARIFY_MESSAGE;
+                return aiInputResponse(res, 'INTENT_CLARIFICATION_REQUIRED', question);
+            }
+            // An explicit revoke word (revoke / deactivate / remove access ...) is an unambiguous
+            // instruction. If the AI labels it GRANT, the GRANT flow would create a grant request, so
+            // the explicit word wins. The AI still decides every other case.
+            String intent = ai.intent;
+            if (intent == 'GRANT' && String.isNotBlank(rawUserQuery) && isRevokePhrase(rawUserQuery.toLowerCase())) {
+                intent = 'REVOKE';
+            }
+            return routeClassifiedIntent(intent, ai.sourceUser, ai.targetUser, ai.role, ai.program, p, res, rawUserQuery);
+        }
+
+        // AI technically unusable (callout failure, invalid JSON, unsupported intent, bad confidence
+        // value). Deterministic keyword detection is the fallback ONLY in this case.
+        String keywordIntent = detectKeywordIntent(p, rawUserQuery);
+        if (keywordIntent == null) {
+            // Never silently default an unidentified request to GRANT or REVOKE.
+            return aiInputResponse(res, 'INTENT_CLARIFICATION_REQUIRED', AI_CLARIFY_MESSAGE);
+        }
+        return routeClassifiedIntent(keywordIntent, null, null, null, null, p, res, rawUserQuery);
+    }
+
+    /**
+     * Maps a resolved intent (from AI or, on AI failure only, from keywords) onto the existing
+     * handlers. AI/keyword output is a search string only - every path still resolves the Salesforce
+     * user through the existing lookup logic (resolveSingleUserByInput / downstream GRANT-REVOKE flow),
+     * so AI extraction alone is never treated as proof that a user, role or program exists.
+     */
+    @testVisible
+    private static String routeClassifiedIntent(
+        String intent, String sourceUser, String targetUser, String role, String program,
+        Map<String, Object> p, RestResponse res, String rawUserQuery
+    ) {
+        if (intent == 'COPY_ACCESS') {
+            String source = sourceUser;
+            String target = targetUser;
+            if (String.isBlank(source) || String.isBlank(target)) {
+                String[] queryUsers = extractCopyUsersFromQuery(rawUserQuery);
+                if (String.isBlank(source)) source = queryUsers[0];
+                if (String.isBlank(target)) target = queryUsers[1];
+            }
+            // Self-reference: "Copy my access [to John]" - the SOURCE is the requestor, never the
+            // target (not in scope/examples for a self-referential copy target). Only runs when no
+            // explicit source was already found above, and only when the entity/query itself expresses
+            // self-reference - a missing source is never blindly defaulted otherwise.
+            if (String.isBlank(source) && isSelfReference(sourceUser, rawUserQuery)) {
+                String resolvedIdentity = resolveRequestorIdentity(p);
+                if (String.isBlank(resolvedIdentity)) {
+                    return aiInputResponse(res, 'REQUESTOR_EMAIL_REQUIRED', AI_REQUESTOR_EMAIL_MESSAGE);
+                }
+                source = resolvedIdentity;
+            }
+            if (String.isBlank(source) || String.isBlank(target)) {
+                return aiInputResponse(res, 'COPY_USERS_REQUIRED', AI_COPY_USERS_MESSAGE);
+            }
+            p.put('sourceUserInput', source);
+            p.put('targetUserInput', target);
+            p.put('requestAction', 'COPY');
+            // handleCopyUserAccessRequest resolves both users via the existing lookup and runs the
+            // existing preview/confirmation flow unchanged.
+            return handleCopyUserAccessRequest(p, res, rawUserQuery, false);
+        }
+        if (intent == 'LIST_ACCESS') {
+            String target = resolveSelfReferenceTarget(targetUser, p, rawUserQuery);
+            if (String.isBlank(target)) {
+                return aiInputResponse(res, 'LIST_USER_REQUIRED', AI_LIST_USER_MESSAGE);
+            }
+            p.put('targetUserInput', target);
+            p.put('requestAction', 'LIST_ACCESS');
+            return handleListAccessRequest(p, res);
+        }
+        if (intent == 'STATUS_ACCESS') {
+            String target = resolveSelfReferenceTarget(targetUser, p, rawUserQuery);
+            if (String.isBlank(target)) {
+                return aiInputResponse(res, 'STATUS_USER_REQUIRED', AI_STATUS_USER_MESSAGE);
+            }
+            p.put('targetUserInput', target);
+            p.put('requestAction', 'STATUS');
+            // handleStatusRequest only ever reads existing staging rows for the resolved user - it
+            // does not support looking a request up by request number alone (see its own code), so
+            // this message/flow never claims that capability.
+            return handleStatusRequest(p, res);
+        }
+
+        // GRANT or REVOKE: only targetUser can identify the subject of a grant/revoke - sourceUser is
+        // meaningless here (it only applies to COPY_ACCESS) and must never be used as a fallback.
+        // Map entities into the fields the existing flow already reads, then fall through (return
+        // null) so the existing GRANT/REVOKE validation, role resolution, duplicate checks and staging
+        // creation run completely unchanged. If targetUser is still blank, the existing flow's own
+        // "Who needs access?" validation error below handles it - and if no role was extracted, the
+        // existing flow's own missing-role prompt handles that too.
+        if (String.isNotBlank(targetUser) && !isPronounOnly(targetUser)) {
+            p.put('userInput', targetUser);
+        } else if (isSelfReference(targetUser, rawUserQuery)) {
+            // "Grant me ... access" / "Revoke my ... access" - the requestor is the subject. Only
+            // reached when no explicit employee was named above.
+            String resolvedIdentity = resolveRequestorIdentity(p);
+            if (String.isBlank(resolvedIdentity)) {
+                return aiInputResponse(res, 'REQUESTOR_EMAIL_REQUIRED', AI_REQUESTOR_EMAIL_MESSAGE);
+            }
+            p.put('userInput', resolvedIdentity);
+        }
+        if (String.isNotBlank(role)) {
+            p.put('roleLabel', role);
+        }
+        if (String.isNotBlank(program)) {
+            p.put('program', program);
+        }
+        if (intent == 'REVOKE') {
+            p.put('requestAction', 'REVOKE');
+        }
+        return null;
+    }
+
+    /** True for a value that is itself a first-person pronoun (e.g. "my", "me") rather than an
+     *  actual name/email - such a value must never be used as a Salesforce user search string. */
+    private static final Set<String> SELF_REFERENCE_PRONOUNS = new Set<String>{
+        'my', 'me', 'mine', 'myself', 'i'
+    };
+    private static Boolean isPronounOnly(String value) {
+        if (String.isBlank(value)) return true;
+        return SELF_REFERENCE_PRONOUNS.contains(value.trim().toLowerCase());
+    }
+
+    /** True when the raw query contains a first-person self-reference word ("my"/"me"/"mine"/
+     *  "myself"/standalone "I") as a standalone word. Used ONLY to decide whether a MISSING entity
+     *  (no explicit employee already found by AI or by existing keyword/regex extraction) should
+     *  resolve to the requestor's own identity - this is only ever checked after an explicit-entity
+     *  search has already failed, so it can never override an explicitly named employee. */
+    private static Boolean queryExpressesSelfReference(String rawUserQuery) {
+        if (String.isBlank(rawUserQuery)) return false;
+        return Pattern.compile('(?i)\\b(my|me|mine|myself|i)\\b').matcher(rawUserQuery).find();
+    }
+
+    /**
+     * Shared self-reference detector reused by COPY_ACCESS, GRANT and REVOKE (LIST_ACCESS/
+     * STATUS_ACCESS use resolveSelfReferenceTarget() below, which applies the same rule). True when
+     * EITHER the given entity value is itself a bare self-reference pronoun, OR the entity is blank/
+     * absent and the raw query text expresses self-reference. Deliberately distinct from
+     * isPronounOnly(), which treats blank as "not a valid search string" for an unrelated purpose -
+     * this method must NOT treat an entity as self-referential just because it happens to be blank for
+     * some other reason, per the requirement to never blindly default a missing employee to the
+     * requestor's identity.
+     */
+    private static Boolean isSelfReference(String entityValue, String rawUserQuery) {
+        if (String.isNotBlank(entityValue)) {
+            return SELF_REFERENCE_PRONOUNS.contains(entityValue.trim().toLowerCase());
+        }
+        return queryExpressesSelfReference(rawUserQuery);
+    }
+
+    /**
+     * Shared self-reference resolution for LIST_ACCESS and STATUS_ACCESS ("what access do I have",
+     * "status of my request"). A pronoun like "I"/"me"/"my" is never used as a Salesforce search
+     * string. Resolution order: a real, non-pronoun targetUser -> an email literally present in the
+     * query -> a non-pronoun structured userInput -> the requestor's identity (see
+     * resolveRequestorIdentity()), and ONLY when the entity/query actually expresses self-reference -
+     * never a blind default when nothing else resolved.
+     */
+    private static String resolveSelfReferenceTarget(String targetUser, Map<String, Object> p, String rawUserQuery) {
+        String target = (String.isNotBlank(targetUser) && !isPronounOnly(targetUser)) ? targetUser : null;
+        if (target == null) {
+            target = extractEmailFromQuery(rawUserQuery);
+        }
+        if (target == null) {
+            String structuredUserInput = str(p, 'userInput');
+            if (String.isNotBlank(structuredUserInput) && !isPronounOnly(structuredUserInput)) {
+                target = structuredUserInput;
+            }
+        }
+        if (target == null && isSelfReference(targetUser, rawUserQuery)) {
+            String resolvedIdentity = resolveRequestorIdentity(p);
+            if (String.isNotBlank(resolvedIdentity)) {
+                target = resolvedIdentity;
+            }
+        }
+        return target;
+    }
+
+    /**
+     * Resolves the requestor's own identity for a self-referencing request. Primary source is the
+     * chatbot-supplied requestorEmail payload field (the employee currently interacting with the
+     * chatbot). If that is blank, falls back to the identity that authenticated this API call (see
+     * resolveTrustedRequesterEmail() - the pre-existing resolution path). Returns null if neither is
+     * available, in which case the caller must ask for the user's email rather than proceed with
+     * business processing.
+     */
+    private static String resolveRequestorIdentity(Map<String, Object> p) {
+        String requestorEmail = str(p, 'requestorEmail');
+        if (String.isNotBlank(requestorEmail)) {
+            return requestorEmail;
+        }
+        return resolveTrustedRequesterEmail();
+    }
+
+    /**
+     * The identity used as a FALLBACK (behind requestorEmail - see resolveRequestorIdentity()) when
+     * resolving a self-referential "my access"/"my request status" request. Never a client-supplied
+     * payload field such as requestorEmail at THIS point (that is already tried first by the caller),
+     * and never used to override an explicitly named employee.
+     *
+     * CAVEAT (flagged for manual verification - cannot be confirmed from Apex code alone): UserInfo
+     * here reflects whoever's Salesforce session/OAuth token is calling this REST endpoint. This is
+     * only a trustworthy "self" identity if the chatbot integration authenticates EACH end user with
+     * their OWN Salesforce session/token. If instead a single shared integration/service account calls
+     * this API on behalf of every chatbot user, UserInfo will always resolve to that shared account -
+     * not the real employee.
+     */
+    private static String resolveTrustedRequesterEmail() {
+        return UserInfo.getUserEmail();
+    }
+
+    /** Best-effort single-email extraction from free text, used only for the AI/keyword fallback
+     *  entity mapping above. Never treated as a resolved user - existing lookup logic still runs. */
+    private static String extractEmailFromQuery(String query) {
+        if (String.isBlank(query)) return null;
+        Matcher m = Pattern.compile('[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}').matcher(query);
+        return m.find() ? m.group(0) : null;
+    }
+
+    /**
+     * Deterministic intent from the existing keyword checks, using the same phrase lists as dispatch.
+     * Used ONLY as a fallback when the AI classifier technically fails - never to second-guess a
+     * technically valid AI response. Returns the intent name, or null when no keyword applies.
+     */
+    private static String detectKeywordIntent(Map<String, Object> p, String rawUserQuery) {
+        RequestIntentType detected = resolveIntent(p, rawUserQuery);
+        if (detected == RequestIntentType.COPY_ACCESS) {
+            return 'COPY_ACCESS';
+        }
+        if (detected == RequestIntentType.STATUS_ACCESS) {
+            return 'STATUS_ACCESS';
+        }
+        String queryLower = rawUserQuery.toLowerCase();
+        if (isListAccessPhrase(queryLower)) {
+            return 'LIST_ACCESS';
+        }
+        if (isRevokePhrase(queryLower)) {
+            return 'REVOKE';
+        }
+        return null;
+    }
+
+    private static Boolean isListAccessPhrase(String queryLower) {
+        return queryLower.contains('what access does')
+            || queryLower.contains('what access do')
+            || queryLower.contains('what roles does')
+            || queryLower.contains('what roles do')
+            || queryLower.contains('show access for')
+            || queryLower.contains('show me access for')
+            || queryLower.contains('show me the access for')
+            || queryLower.contains('list access for')
+            || queryLower.contains('list the access for')
+            || queryLower.contains('list roles for')
+            || queryLower.contains('list the roles for');
+    }
+
+    private static Boolean isRevokePhrase(String queryLower) {
+        return queryLower.contains('deactivate')
+            || queryLower.contains('remove access')
+            || queryLower.contains('revoke')
+            || queryLower.contains('removal')
+            || queryLower.contains('deny access')
+            || queryLower.contains('remove the');
+    }
+
+    private static String aiInputResponse(RestResponse res, String errorCode, String message) {
+        res.statusCode = 400;
+        return JSON.serialize(new Map<String, Object>{
+            'success'    => false,
+            'needsInput' => true,
+            'errorCode'  => errorCode,
+            'message'    => message
+        });
     }
 
     /** Serializes a standard error response shape used by this REST API. */

@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">To create a Design Registration Product record, please provide the mmId, orderingCd or oldMMId.</value>
+        <value xsi:type="xsd:string">To create a Design Registration Product record, please provide the mmId or old mmId orderingCd</value>
     </values>
 </CustomMetadata>

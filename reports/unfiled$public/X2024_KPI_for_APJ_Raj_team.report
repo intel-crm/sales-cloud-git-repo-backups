@@ -140,9 +140,6 @@
     <columns>
         <field>Opportunity.Core_OpportunityTeamMembers__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.CventEvents__Attendee__c</field>
-    </columns>
     <filter>
         <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9)</booleanFilter>
         <criteriaItems>

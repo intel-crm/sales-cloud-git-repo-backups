@@ -1,15 +1,15 @@
-import {LightningElement, api} from 'lwc';
-import {
-  getHeadlessBindings,
-  loadDependencies,
-  setEngineOptions,
-  setInitializedCallback
-} from 'c/quanticHeadlessLoader';
 // @ts-ignore
 import getHeadlessConfiguration from '@salesforce/apex/HeadlessController.getHeadlessConfiguration';
 import LOCALE from '@salesforce/i18n/locale';
 import TIMEZONE from '@salesforce/i18n/timeZone';
+import {
+  getHeadlessBindings,
+  loadDependencies,
+  setEngineOptions,
+  setInitializedCallback,
+} from 'c/quanticHeadlessLoader';
 import {STANDALONE_SEARCH_BOX_STORAGE_KEY} from 'c/quanticUtils';
+import {LightningElement, api} from 'lwc';
 
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 /** @typedef {import("coveo").SearchEngineOptions} SearchEngineOptions */
@@ -24,12 +24,12 @@ import {STANDALONE_SEARCH_BOX_STORAGE_KEY} from 'c/quanticUtils';
  * It is used to correctly interpret dates in the query expression, facets, and result items.
  *
  *
- * The `locale` used in the search engine options is taken from the [Language Settings](https://help.salesforce.com/s/articleView?id=sf.setting_your_language.htm&type=5).
+ * The `locale` used in the search engine options is taken from the [Supported Locales](https://help.salesforce.com/s/articleView?id=sf.admin_supported_locales.htm&type=5).
  * Coveo Machine Learning models use this information to provide contextually relevant output.
  * Moreover, this information can be referred to in query expressions and QPL statements by using the `$locale` object.
  * @category Search
  * @example
- * <c-quantic-search-interface engine-id={engineId} search-hub="myhub" pipeine="mypipeline" disable-state-in-url skip-first-search></c-quantic-search-interface>
+ * <c-quantic-search-interface engine-id={engineId} search-hub="myhub" pipeline="mypipeline" disable-state-in-url skip-first-search></c-quantic-search-interface>
  */
 export default class QuanticSearchInterface extends LightningElement {
   /**
@@ -81,56 +81,98 @@ export default class QuanticSearchInterface extends LightningElement {
 
   /** @type {boolean} */
   hasRendered = false;
+
+  /** @type {boolean} */
+  ariaLiveEventsBound = false;
+
   connectedCallback() {
-    loadDependencies(this).then(() => {
-      if (!getHeadlessBindings(this.engineId)?.engine) {
-        getHeadlessConfiguration().then((data) => {
-          if (data) {
-            this.engineOptions = {
-              configuration: {
-                ...JSON.parse(data),
-                search: {
-                  searchHub: this.searchHub,
-                  pipeline: this.pipeline,
-                  locale: LOCALE,
-                  timezone: TIMEZONE,
+    loadDependencies(this)
+      .then(() => {
+        if (!getHeadlessBindings(this.engineId)?.engine) {
+          getHeadlessConfiguration()
+            .then((data) => {
+              const {organizationId, accessToken, ...rest} = JSON.parse(data);
+              this.engineOptions = {
+                configuration: {
+                  organizationId,
+                  accessToken,
+                  search: {
+                    searchHub: this.searchHub,
+                    pipeline: this.pipeline,
+                    locale: LOCALE,
+                    timezone: TIMEZONE,
+                  },
+                  analytics: {
+                    analyticsMode: 'legacy',
+                    ...(document.referrer && {
+                      originLevel3: document.referrer.substring(0, 256),
+                    }),
+                    analyticsClientMiddleware: (_event, payload) => {
+                      if (!payload.customData) {
+                        payload.customData = {};
+                      }
+                      payload.customData.coveoQuanticVersion =
+                        window.coveoQuanticVersion;
+                      return payload;
+                    },
+                  },
+                  ...rest,
                 },
-              },
-            };
-            setEngineOptions(
-              this.engineOptions,
-              CoveoHeadless.buildSearchEngine,
-              this.engineId,
-              this,
-              CoveoHeadless
-            );
-            setInitializedCallback(this.initialize, this.engineId);
-          }
-        });
-      } else {
-        setInitializedCallback(this.initialize, this.engineId);
-      }
-    });
+              };
+              setEngineOptions(
+                this.engineOptions,
+                CoveoHeadless.buildSearchEngine,
+                this.engineId,
+                this,
+                CoveoHeadless
+              );
+              setInitializedCallback(this.initialize, this.engineId);
+            })
+            .catch((error) => {
+              console.error(
+                'Error loading Headless endpoint configuration',
+                error
+              );
+            });
+        } else {
+          setInitializedCallback(this.initialize, this.engineId);
+        }
+      })
+      .catch((error) => {
+        console.error('Error loading Headless dependencies', error);
+      });
   }
 
   renderedCallback() {
-    if(!this.hasRendered && this.querySelector('c-quantic-aria-live')) {
+    if (!this.hasRendered && this.querySelector('c-quantic-aria-live')) {
       this.bindAriaLiveEvents();
     }
     this.hasRendered = true;
   }
+
   disconnectedCallback() {
+    this.initialized = false;
     this.unsubscribeUrlManager?.();
     window.removeEventListener('hashchange', this.onHashChange);
+    if (this.ariaLiveEventsBound) {
+      this.removeEventListener(
+        'quantic__arialivemessage',
+        this.handleAriaLiveMessage
+      );
+      this.removeEventListener(
+        'quantic__registerregion',
+        this.handleRegisterAriaLiveRegion
+      );
+    }
   }
 
   /**
    * @param {SearchEngine} engine
    */
   initialize = (engine) => {
-    // if (this.initialized) {
-    //   return;
-    // }
+    if (this.initialized) {
+      return;
+    }
     const {updateQuery} = CoveoHeadless.loadQueryActions(engine);
 
     if (!this.disableStateInUrl) {
@@ -162,6 +204,13 @@ export default class QuanticSearchInterface extends LightningElement {
     this.urlManager = CoveoHeadless.buildUrlManager(engine, {
       initialState: {fragment: this.fragment},
     });
+
+    const isFirstSearchExecuted = engine.state.search.response.searchUid !== '';
+    if (isFirstSearchExecuted) {
+      // Make sure to re-synchronize the search interface when the component gets disconnected and reconnected again.
+      this.urlManager.synchronize(this.fragment);
+    }
+
     this.unsubscribeUrlManager = this.urlManager.subscribe(() =>
       this.updateHash()
     );
@@ -177,23 +226,37 @@ export default class QuanticSearchInterface extends LightningElement {
   }
 
   bindAriaLiveEvents() {
-    this.template.addEventListener('arialivemessage', this.handleAriaLiveMessage.bind(this));
-    this.template.addEventListener('registerregion', this.handleRegisterAriaLiveRegion.bind(this));
+    this.template.addEventListener(
+      'quantic__arialivemessage',
+      this.handleAriaLiveMessage.bind(this)
+    );
+    this.template.addEventListener(
+      'quantic__registerregion',
+      this.handleRegisterAriaLiveRegion.bind(this)
+    );
+    this.ariaLiveEventsBound = true;
   }
 
   handleAriaLiveMessage(event) {
     /** @type {import('quanticAriaLive/quanticAriaLive').IQuanticAriaLive} */
     const ariaLiveRegion = this.querySelector('c-quantic-aria-live');
-    if(ariaLiveRegion) {
-      ariaLiveRegion.updateMessage(event.detail.regionName, event.detail.message, event.detail.assertive);
+    if (ariaLiveRegion) {
+      ariaLiveRegion.updateMessage(
+        event.detail.regionName,
+        event.detail.message,
+        event.detail.assertive
+      );
     }
   }
 
   handleRegisterAriaLiveRegion(event) {
     /** @type {import('quanticAriaLive/quanticAriaLive').IQuanticAriaLive} */
     const ariaLiveRegion = this.querySelector('c-quantic-aria-live');
-    if(ariaLiveRegion) {
-      ariaLiveRegion.registerRegion(event.detail.regionName, event.detail.assertive);
+    if (ariaLiveRegion) {
+      ariaLiveRegion.registerRegion(
+        event.detail.regionName,
+        event.detail.assertive
+      );
     }
   }
 

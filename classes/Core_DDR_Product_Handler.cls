@@ -278,7 +278,7 @@ DRLI - Design Registration Line Item (DR Product)
         }
         
         for (Core_Design_Registration_Product__c iDRLI : newUpdateList) {
-            //iDRLI.Core_Target_Resale_Amt__c = (iDRLI.Core_Target_Resale_Amt__c == null ? (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c)) : iDRLI.Core_Target_Resale_Amt__c); //TWC729-9048 
+            //iDRLI.Core_Target_Resale_Amt__c = (iDRLI.Core_Target_Resale_Amt__c == null ? (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c)) : iDRLI.Core_Target_Resale_Amt__c);
             iDRLI.Core_Product_List_Price_Amt__c = (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c));
            
         }
@@ -339,6 +339,7 @@ DRLI - Design Registration Line Item (DR Product)
             //Core_Design_Registration__c drInstance = new Core_Design_Registration__c(id = drRecId);
             drInstance.Core_Product_Group_Nm__c = LabelConfiguration__mdt.getInstance('DDR_Product_Group_FPGA').Value__c;
             //regToUpdate.add(drInstance);
+            system.debug('drInstance.Core_Product_Group_Nm__c-->'+drInstance.Core_Product_Group_Nm__c);
         }
         else if (drProdMap.get(drRecId).Core_Design_Registration_Id__r.Core_DDR_Partner_Type_Txt__c != 'ODM') {
            // Core_Design_Registration__c drInstance = new Core_Design_Registration__c(id = drRecId);

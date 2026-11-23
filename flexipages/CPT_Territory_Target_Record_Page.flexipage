@@ -101,34 +101,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CPT_BR_All_Target__c</fieldItem>
-                <identifier>RecordBR_All_Target__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-c8296c23-7cee-40ae-ba61-6b7315852fe7</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-c8296c23-7cee-40ae-ba61-6b7315852fe7</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column8</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-86120d9a-8de1-4289-b70e-34743ffbaf79</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.CPT_CR_OEM_Target__c</fieldItem>
                 <identifier>RecordCPT_CR_OEM_Target_cField</identifier>
             </fieldInstance>
@@ -168,84 +140,6 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-700734f7-9620-4c6a-9a42-725fe8be379f</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Margin_CCG_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Margin_CCG_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Margin_DCG_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Margin_DCG_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_CCG_LNL_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_CCG_LNL_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_CCG_PTL_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_CCG_PTL_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_DCG_GNR_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarVol_Next_Gen_CCG_WCL_Target__c</fieldItem>
-                <identifier>RecordCPT_MarVol_Next_Gen_CCG_WCL_Target_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-5443e2a6-fbe9-4f0b-98df-f609692ed33f</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-5443e2a6-fbe9-4f0b-98df-f609692ed33f</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column7</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-dcbea8d9-80c1-4bf6-940f-b1b6584aa5c3</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -351,28 +245,10 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>Billings Revenue Seller Targets</value>
+                    <value>Billings Revenue Targets</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-86120d9a-8de1-4289-b70e-34743ffbaf79</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Billings Revenue Manager Targets</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection6</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -391,24 +267,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-dcbea8d9-80c1-4bf6-940f-b1b6584aa5c3</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>MarginVolume Targets</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection5</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -469,25 +327,19 @@
                             <value>CPT_Employee_Name__c</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CPT_BR_All_Target__c</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>CPT_BR_Intel_AI_PC_Target__c</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>CPT_BR_DCAI_DAIS_Target__c</value>
-                        </valueListItems>
-                        <valueListItems>
                             <value>CPT_BR_CCG_Target__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>CPT_BR_DCAI_Target__c</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CPT_CR_CCG_Consumer_Target__c</value>
+                            <value>CPT_CR_OEM_Target__c</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CPT_CR_CCG_One_Intel_OEM_Target__c</value>
+                            <value>CPT_CR_Retail_Target__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CPT_CR_Partner_Target__c</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -610,6 +462,10 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSlackAction</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>

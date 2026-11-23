@@ -403,7 +403,6 @@ NULL,NULL,'ALBANIA','Reseller',
             indiaActivity4.Core_MDF_Reimbursement_Rate_txt__c  = '100%';
             indiaActivity4.RequestedAmount =1000;
             indiaActivity4.Amount=1000;
-            indiaActivity4.Core_MDF_Activity_Types__c='Collateral';
             indiaActivity4.Core_MDF_Product_Category_txt__c ='Desktop';
             indiaActivity4.Core_MDF_Budget_Type_nm__c = 'RSA MD';
             indiaActivity4.AllocationId = retailAlloc.Id;
@@ -418,7 +417,6 @@ NULL,NULL,'ALBANIA','Reseller',
             indiaActivity5.Core_MDF_Reimbursement_Rate_txt__c  = '100%';
             indiaActivity5.RequestedAmount =1000;
             indiaActivity5.Amount=1000;
-            indiaActivity5.Core_MDF_Activity_Types__c='Collateral';
             indiaActivity5.Core_MDF_Product_Category_txt__c ='Desktop';
             indiaActivity5.Core_MDF_Budget_Type_nm__c = 'RSA MD';
             indiaActivity5.Status = 'Approved';
@@ -741,7 +739,7 @@ Database.insert(esc); */
             rmfMdfClaim.Title = 'RMF MDF Claim';
             rmfMdfClaim.Core_MDF_Type_Txt__c ='Claim';
             rmfMdfClaim.Core_MDF_Currency__c='USD';
-            rmfMdfClaim.Core_MDF_Country_Location_nm__c= 'UNITED KINGDOM'; 
+            rmfMdfClaim.Core_MDF_Country_Location_nm__c= 'RUSSIAN FEDERATION'; 
             rmfMdfClaim.Core_MDF_Quarter_Year_Txt__c = 'Q1-2021';
             rmfMdfClaim.Core_MDF_Region_cd__c='EMEA';
             rmfMdfClaim.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';

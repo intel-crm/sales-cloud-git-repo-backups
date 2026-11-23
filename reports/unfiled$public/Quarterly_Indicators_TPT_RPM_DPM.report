@@ -80,7 +80,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessOrEqual</operator>
-            <value>12/27/2025 12:00 AM</value>
+            <value>12/13/2025 12:00 AM</value>
         </criteriaItems>
         <criteriaItems>
             <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Status_From__c</column>

@@ -37,6 +37,38 @@
         <url>https://intel--c.visualforce.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmqa9--gblite.sandbox.vf.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmqa9--c.sandbox.vf.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmqa9--c.visualforce.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmqa9.lightning.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>*.intel.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmqa9.sandbox.lightning.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmqa9.sandbox.vf.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://preprod-pulse.ai4sales.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
         <context>LightningOut</context>
         <url>*.slack.com</url>
     </iframeWhiteListUrls>

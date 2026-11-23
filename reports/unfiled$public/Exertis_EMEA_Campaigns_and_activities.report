@@ -34,14 +34,11 @@
         <field>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</field>
     </columns>
     <columns>
-        <field>PartnerFundRequest$Campaign.Core_MDF_Market__c</field>
-    </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_Activity_Reserved_Amount_txt__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>PartnerFundRequest$RequestedAmount</field>
+        <field>PartnerFundRequest$Core_MDF_MDFReimbursement_Amt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Campaign.Core_MDF_Market__c</field>
     </columns>
     <filter>
         <booleanFilter>1 AND (2 OR (3 AND 4)) AND 5 AND 6 AND 7 AND 8</booleanFilter>
@@ -71,7 +68,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Pending Review,Pending Approval,Revision Required,Planned,In-Progress,Closed</value>
+            <value>,Draft,Pending Review,Pending Approval,Revision Required,Planned,In-Progress,Declined,Closed,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Campaign.Core_MDF_Program__c</column>
@@ -99,7 +96,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Exertis</value>
+            <value>IPA - Exertis</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

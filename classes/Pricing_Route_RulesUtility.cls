@@ -58,6 +58,7 @@ public Without Sharing Class Pricing_Route_RulesUtility {
                 ];
                 FlowOutput finalOp = new FlowOutput();
                 if(searchResults != null && String.valueOf(searchResults).deleteWhitespace() != '(())' && String.valueOf(searchResults).deleteWhitespace() != '[[]]' && searchResults.size() > 0) {
+                    System.debug('inside seach results'+searchResults);
                     List<Pricing_Route_Rules_Utility__c> pricingRouteRulesEndCustList = (List<Pricing_Route_Rules_Utility__c>)searchResults[0];
                     if (!pricingRouteRulesEndCustList.isEmpty()) {
                         Pricing_Route_Rules_Utility__c pricingRouteRulesEndCustRec = pricingRouteRulesEndCustList[0];

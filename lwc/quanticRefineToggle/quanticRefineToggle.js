@@ -1,15 +1,15 @@
-import {LightningElement, api} from 'lwc';
+import LOCALE from '@salesforce/i18n/locale';
+import noFilterForCurrentTab from '@salesforce/label/c.quantic_NoFilterForCurrentTab';
+import noFiltersAvailableForThisQuery from '@salesforce/label/c.quantic_NoFiltersAvailableForThisQuery';
+import sortAndFilters from '@salesforce/label/c.quantic_SortAndFilters';
+import viewResults from '@salesforce/label/c.quantic_ViewResults';
 import {
   getHeadlessBundle,
   initializeWithHeadless,
   registerComponentForInit,
   getAllFacetsFromStore,
 } from 'c/quanticHeadlessLoader';
-import LOCALE from '@salesforce/i18n/locale';
-import sortAndFilters from '@salesforce/label/c.quantic_SortAndFilters';
-import viewResults from '@salesforce/label/c.quantic_ViewResults';
-import noFiltersAvailableForThisQuery from '@salesforce/label/c.quantic_NoFiltersAvailableForThisQuery';
-import noFilterForCurrentTab from '@salesforce/label/c.quantic_NoFilterForCurrentTab';
+import {LightningElement, api} from 'lwc';
 
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 /** @typedef {import("coveo").QuerySummary} QuerySummary */
@@ -32,7 +32,7 @@ import noFilterForCurrentTab from '@salesforce/label/c.quantic_NoFilterForCurren
  * @category Search
  * @category Insight Panel
  * @example
- * <c-quantic-refine-toggle engine-id={engineId} hide-sort full-screen title="Filters">
+ * <c-quantic-refine-toggle engine-id={engineId} hide-sort full-screen title="Filters" disable-dynamic-navigation>
  *   <div slot="refine-title">Custom Title</div>
  *   <div slot="button-content">
  *     Custom Label
@@ -75,6 +75,13 @@ export default class QuanticRefineToggle extends LightningElement {
    * @type {string}
    */
   @api title = this.labels.sortAndFilters;
+  /**
+   * Indicates whether to disable the dynamic navigation feature according to [the Dynamic Navigation Experience](https://docs.coveo.com/en/3383/leverage-machine-learning/about-dynamic-navigation-experience-dne).
+   * @api
+   * @type {boolean}
+   * @defaultValue `false`
+   */
+  @api disableDynamicNavigation = false;
 
   /** @type {QuerySummary} */
   querySummary;
@@ -92,12 +99,14 @@ export default class QuanticRefineToggle extends LightningElement {
   hasResults;
   /** @type {boolean} */
   modalIsOpen = false;
+  /** @type {boolean} */
+  hasInitializationError = false;
 
   renderedFacets = {};
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
-    this.addEventListener('renderfacet', this.handleRenderFacetEvent);
+    this.addEventListener('quantic__renderfacet', this.handleRenderFacetEvent);
   }
 
   /**
@@ -134,9 +143,6 @@ export default class QuanticRefineToggle extends LightningElement {
     Object.keys(registeredFacets).forEach((facetId) => {
       this.renderedFacets[facetId] = true;
     });
-
-    this.modal.fullScreen = this.fullScreen;
-    this.modalContent.hideSort = this.hideSort;
   };
 
   get refineButtonDisabled() {
@@ -156,11 +162,14 @@ export default class QuanticRefineToggle extends LightningElement {
     this.unsubscribeQuerySummary?.();
     this.unsubscribeBreadcrumbManager?.();
     this.unsubscribeSearchStatus?.();
-    this.removeEventListener('renderfacet', this.handleRenderFacetEvent);
+    this.removeEventListener(
+      'quantic__renderfacet',
+      this.handleRenderFacetEvent
+    );
   }
 
   get isContentEmpty() {
-    return this.hideSort && !this.someFacetsRendered;
+    return !!this.hideSort && !this.someFacetsRendered;
   }
 
   /**
@@ -249,7 +258,7 @@ export default class QuanticRefineToggle extends LightningElement {
    */
   get modal() {
     /** @type {Object} */
-    const modal =  this.template.querySelector(`[data-id=${this.modalId}]`);
+    const modal = this.template.querySelector(`[data-id=${this.modalId}]`);
     return modal;
   }
 
@@ -259,7 +268,9 @@ export default class QuanticRefineToggle extends LightningElement {
    */
   get modalContent() {
     /** @type {Object} */
-    const modalContent = this.template.querySelector('c-quantic-refine-modal-content');
+    const modalContent = this.template.querySelector(
+      'c-quantic-refine-modal-content'
+    );
     return modalContent;
   }
 
@@ -314,5 +325,12 @@ export default class QuanticRefineToggle extends LightningElement {
       detail: {isOpen},
     });
     this.dispatchEvent(refineModalEvent);
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
   }
 }

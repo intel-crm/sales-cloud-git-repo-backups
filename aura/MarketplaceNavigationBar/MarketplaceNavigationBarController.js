@@ -78,6 +78,7 @@
         var isEnhanced = false;
         var isPartnerUser = false;
         var is_Intel_Admin_Profile = false;
+       // var is_Partner_Admin_Profile = false;
         var is_PMP_Manage_Leads = false;
         var is_PMP_Manage_Storefront = false;
         // var is_PMP_Manage_Offerings = false;        // IPA2.0 + US TWC4497-1631
@@ -97,6 +98,7 @@
                 
                 var storeResponse = response.getReturnValue();
                 if(storeResponse != null){ 
+                    console.log('storeResponse',storeResponse);
                     if(storeResponse.PMP_Manage_Leads !== undefined){
                         is_PMP_Manage_Leads = true;
                     }
@@ -124,7 +126,8 @@
                      if(storeResponse.PMP_Manage_Storefront !== undefined){
                         is_PMP_Manage_Storefront = true;
                     }
-                    
+                     console.log('is_PMP_Manage_Storefront',is_PMP_Manage_Storefront);
+                   // console.log('PMP_Manage_Events',PMP_Manage_Events);
                 }
                 
                 var action = component.get("c.checkBenefitLevel");
@@ -146,17 +149,19 @@
                         var actionInternalPermCheck = component.get("c.fetchPermissionSetName");
                         actionInternalPermCheck.setCallback(this, function(response) {
                             var state = response.getState();
-                            
+                            console.log('state',state);
                             if (state === "SUCCESS") {
                                 var storeResponse = response.getReturnValue();
-                               
+                                console.log('storeResponse',storeResponse);
                                 // if(storeResponse != null && storeResponse.includes("PMP_Internal_Intel_Admin")){ 
                                // IPA2.0 + US TWC729-8177 - View Dashboard Removal
                                 if(storeResponse != null && (storeResponse.includes("PMP_Internal_Intel_Admin") || storeResponse.includes("PMP_Internal_Intel_Admin_Read_Only") || storeResponse.includes("PMP_Internal_Intel_Read_Only"))){
                                     is_Intel_Admin_Profile = true;
-                                     
+                                     console.log('storeResponseinside',storeResponse);
                                 }
-                              
+                               /* if(storeResponse != null && (storeResponse.includes("PMP_External_Partner_Admin") || storeResponse.includes("PMP_External_Marketing_Specialist") )){
+                                    is_Partner_Admin_Profile = true;
+                                }*/
                                 // IPA2.0 + US TWC729-8177 - View Dashboard Removal
                                 // Check if current page is dashboard and user is admin - redirect if admin
                                 var currentUrl = window.location.href;
@@ -187,6 +192,9 @@
                                         
                                           var isPortal = component.get("v.portal");
        									  var isLoggedincmp = component.get("v.loggedInCompany");
+                                       // console.log('is_Partner_Admin_Profile',is_Partner_Admin_Profile);
+                                         console.log('isPartnerUser',isPartnerUser);
+                                        console.log('is_Intel_Admin_Profile',is_Intel_Admin_Profile);
                                         
                                         //Visibility of buttons logic
                                         if(isPartnerUser == false){
@@ -209,6 +217,9 @@
                                         }else{
                                            // if(!isBasicAccess){
                                                 // Added isPortal == 'Partner Admin' to show manager storefront button on lead portal -27/01/2022
+                                               /* if((is_Partner_Admin_Profile || isPortal == 'Partner Admin') && isLoggedincmp == true){
+                                                    component.set('v.showManageStorefront', true);
+                                                }  */
                                              if(is_PMP_Manage_Storefront == true) {
                                                 component.set('v.showManageStorefront', true);
                                             }

@@ -205,19 +205,26 @@ public class Core_MDF_GetObjectDetailsTest {
             String criteriaFieldValue = eefCamp.Id; 
             String additionalCriteria = ' Core_MDF_Active_Ind__c=true';
             String sharingFlag = 'false';
-            String strLabels = '';
+			String strLabels = '';
 			String restrictFieldVisiblityCriteriaFieldAPIName = 'Core_MDF_CampOutcomeOpt_In_Ind__c = true';
             String tableHeader = 'Payment_Details';
-            Core_MDF_GetObjectDetails.getFieldsAndRecords(relatedobjectApiName, strFields,criteriaField,criteriaFieldValue,additionalCriteria,sharingFlag,strLabels);
-            Core_MDF_GetObjectDetails.getFilterCondition(eefCamp.Id, restrictFieldVisiblityCriteriaFieldAPIName);
-			Core_MDF_GetObjectDetails.getTableHeader(tableHeader);
-			Core_MDF_GetObjectDetails.evaluateVisibilityCriteria(eefCamp.Id,'Core_MDF_CampOutcomeOpt_In_Ind__c == true');
-            assert.isNotNull(eefCamp);
-             Test.stopTest();
+// FIX: Capture return value - getFieldsAndRecords returns objectDataWrapper, not void
+Core_MDF_GetObjectDetails.objectDataWrapper result = Core_MDF_GetObjectDetails.getFieldsAndRecords(relatedobjectApiName, strFields, criteriaField, criteriaFieldValue, additionalCriteria, sharingFlag,strLabels);
+assert.isNotNull(result, 'getFieldsAndRecords result should not be null');
+
+// Test other methods
+Boolean filterResult = Core_MDF_GetObjectDetails.getFilterCondition(eefCamp.Id, restrictFieldVisiblityCriteriaFieldAPIName);
+String tableHeaderResult = Core_MDF_GetObjectDetails.getTableHeader(tableHeader);
+Boolean visibilityResult = Core_MDF_GetObjectDetails.evaluateVisibilityCriteria(eefCamp.Id,'Core_MDF_CampOutcomeOpt_In_Ind__c == true');
+
+// Assertions
+assert.isNotNull(eefCamp);
+assert.isNotNull(result.recordsData);
+Test.stopTest();
         }
         
     }
-   @isTest
+     @isTest
     static void getTranslatedLabelsTest() {
         Test.startTest();
         List<String> emptyResult = Core_MDF_GetObjectDetails.getTranslatedLabels('');

@@ -60,6 +60,7 @@ public with sharing  class core_IPS_PortalEdqController {
         // End 23/01/2023 Shobhit Srivastav Added logic to check, Is selected country belong to embargoed
         if(newRecord.Core_Issue_Description__c != null) {
             string strDescValue;
+            System.debug('newRecord.Core_Issue_Description__c ='+newRecord.Core_Issue_Description__c); //kamala
             strDescValue =  Core_Utility.replaceSpecialChar(newRecord.Core_Issue_Description__c);
             //#TWC745-4419 FLS create and update added -Gangadhar #28-07-2023
         if(Schema.sObjectType.Case.fields.Description.isCreateable()||Schema.sObjectType.Case.fields.Description.isUpdateable()){

@@ -27,7 +27,7 @@ import redirecturlPrimary from '@salesforce/label/c.PRM_Partner_Admin_Link';
 import redirecturlNonPrimary from '@salesforce/label/c.PRM_Non_Partner_Admin_Link';
 
 import manageBenefits from '@salesforce/label/c.IPA_Benefits_Manage_Benefits';
-
+import IPA_Recommended_Learning from '@salesforce/label/c.PRM_Docebo_MainTag';
 import { getBenefitProfile } from 'c/ipaBenefitService';
 import { MockBenefitService } from 'c/ipaMockData';
 
@@ -35,6 +35,8 @@ import { MockBenefitService } from 'c/ipaMockData';
 import renewalLink from '@salesforce/label/c.PRM_RenewalLink';
 */ //IPA2.0 TWC727-3135
 
+import getChannelAssets
+    from '@salesforce/apex/PRM_DoceboController.getChannelAssets';
 
 
 export default class IpaBenefitCardList extends LightningElement {
@@ -48,7 +50,8 @@ export default class IpaBenefitCardList extends LightningElement {
     @track isLoading = true;
     //@wire(showMessage) showmessagevalue;
     dashboardUrl;
-
+doceboData;
+showDoceboBenefit = false;
     
 
     /**
@@ -61,12 +64,13 @@ export default class IpaBenefitCardList extends LightningElement {
 
     /*label = {
         showMore,
-        manageBenefits
-        //renewalLink
+        manageBenefits,
+        renewalLink
     };*/
     label = {
         showMore,
-        manageBenefits
+        manageBenefits,
+        IPA_Recommended_Learning
     };//IPA2.0 TWC727-3135
 
     render() {
@@ -80,11 +84,79 @@ export default class IpaBenefitCardList extends LightningElement {
         return this.benefits && this.benefits.slice(this.initialMobileCount);
     }
 
-    connectedCallback() {
+    /*connectedCallback() {
         // this.fetchBenefitProfile(); // we have merge the callout to single call
         this.fetchBenefits();
+    }*/
+   async connectedCallback() {
+    this.isLoading = true;
+    const startTime = Date.now();
+
+    // Start both requests before waiting for either result.
+    const results = await Promise.allSettled([
+        (async () => {
+            console.log('Benefits time start', startTime);
+            const res = await this.fetchBenefits();
+            console.log('Benefits time end', Date.now() - startTime);
+            return res;
+        })(),
+        (async () => {
+            const starttimedocebo = Date.now();
+            console.log('Docebo time start', starttimedocebo);
+            const res = await this.fetchDoceboCourses();
+            console.log('Docebo time end', Date.now() - starttimedocebo);
+            return res;
+        })()
+    ]);
+
+//await this.fetchDoceboCourses();
+
+    // Wait for both even if one fails unexpectedly.
+    results.forEach((result, index) => {
+
+        console.log('Result from Promise.allSettled for index', index, result);
+        if (result.status === 'rejected') {
+            console.error(
+                index === 0
+                    ? 'Benefits loading failed'
+                    : 'Docebo loading failed',
+                result.reason
+            );
+        }
+    });
+
+    // Filter only after benefits and Docebo have both finished.
+    if (!this.showDoceboBenefit) {
+        this.benefits = this.benefits.filter(
+            benefit => benefit.title !== IPA_Recommended_Learning
+        );
     }
 
+    // One loading gate for all blades.
+    this.isLoading = false;
+
+    console.log('All blades load time (ms):', Date.now() - startTime);
+}
+
+async fetchDoceboCourses() {
+    const startTime = Date.now();
+
+    try {
+        const result = await getChannelAssets();
+console.log('result from docebo -',result);
+        this.doceboData = result;
+        this.showDoceboBenefit =
+            result?.userExists === true &&
+            Array.isArray(result?.courses) &&
+            result.courses.length > 0;
+    } catch (error) {
+        this.doceboData = undefined;
+        this.showDoceboBenefit = false;
+        console.error('Docebo error', error);
+    } finally {
+        console.log('Docebo load time (ms):', Date.now() - startTime);
+    }
+}
     async fetchBenefits() {
         let result;
         const date1 = new Date();
@@ -125,15 +197,16 @@ export default class IpaBenefitCardList extends LightningElement {
                 }
          
         else{
-            this.benefits = result.benefitInfo;
-            this._description = result.summaryDescription;
+           /* this.benefits = result.benefitInfo;
+            this._description = result.summaryDescription;*/
+           this.benefits = [...result.benefitInfo];
+this._description = result.summaryDescription;
         }
     }
-        this.isLoading = false;
         const date2 = new Date();
         const endtime = date2.getTime();
         console.error('BenefitInfoend', +endtime);
-        const calTimeBenefits = starttime - endtime;
+        const calTimeBenefits = endtime - starttime;
         console.error('BenefitInfoDIFF', +calTimeBenefits);
     }
 
@@ -191,6 +264,5 @@ export default class IpaBenefitCardList extends LightningElement {
     renderedCallback() {
         this.dashboardUrl = window.location.origin+'/ipa/s/dashboard';
     }
-
 
 }

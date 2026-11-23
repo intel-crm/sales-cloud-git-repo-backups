@@ -42,6 +42,10 @@
                 <behavior>Readonly</behavior>
                 <field>Core_User_Fields_Merged__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_License_Reclaimed_on_Creation__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

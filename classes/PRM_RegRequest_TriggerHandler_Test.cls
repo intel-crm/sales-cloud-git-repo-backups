@@ -558,7 +558,9 @@ private class PRM_RegRequest_TriggerHandler_Test{
             acrList[0].Id => acrList[0],
             acrList[1].Id => acrList[1]
         };*/
-        PRM_RegistrationRequestUtility.partnerrelationship(lst,acrs,contMap,regMap,mapOfAccIdPartnerRole);
+        Set<Id> setOpidWithPA = new Set<Id>();
+        Map<Id, Id> mapAccIdToOpid = new Map<Id, Id>{acc.Id => acc.Id};
+        PRM_RegistrationRequestUtility.partnerrelationship(lst,acrs,contMap,regMap,mapOfAccIdPartnerRole,setOpidWithPA,mapAccIdToOpid);
        // PRM_RegistrationRequestUtility.getACRToUpdate(mapOfACR,regNewMap);
         //PRM_RegistrationRequestUtility.emailNotificationOnReceivingRegistration(reglst);
         Test.stopTest();
@@ -1689,4 +1691,63 @@ private class PRM_RegRequest_TriggerHandler_Test{
         System.assertEquals(false, PRM_RegistrationRequestUtility.shouldBypassBlockedDomainCheck('IND', 'gmail.com', null), 'Null bypass map should not bypass');
     }
     
-}
+    @isTest
+	static void testAdminDomainFeatureFlagCoverage() {
+
+    Account acct = [SELECT Id,
+                           Core_Intel_Partner_Alliance_PartnerGroup__c,
+                           Core_Deactivated__c
+                    FROM Account
+                    LIMIT 1];
+
+    Contact con = [SELECT Id, Email, AccountId
+                   FROM Contact
+                   LIMIT 1];
+
+    PRM_Registration_Request__c req = new PRM_Registration_Request__c();
+
+    req.RecordTypeId = PRM_IPA_Constants.ACCOUNT_CREATE_REQUEST_RT;
+    req.PRM_Status__c = 'New';
+    req.PRM_Email_Verification_Criteria__c = 'SUCCESS';
+    req.PRM_Email_ID__c = 'someone@testdomain.com'; // NOT mailinator.com
+    req.PRM_Salesforce_ID__c = acct.Id;
+    req.PRM_Subscriptions__c =LabelConfiguration__mdt.getInstance('PRM_Subscription_Mapping').Value__c.replace(',', ';');
+
+    List<PRM_Registration_Request__c> reqs =new List<PRM_Registration_Request__c>{req};
+
+    Map<String,Boolean> isSysAccMap = new Map<String,Boolean>();
+
+    Map<Id,List<Contact>> mapAccContacts =
+        new Map<Id,List<Contact>>{
+            acct.Id => new List<Contact>{con}
+        };
+
+    Map<Id,Account> mapAccount =
+        new Map<Id,Account>{
+            acct.Id => acct
+        };
+
+    List<PRM_AccountChannelMembership__c> acms =[SELECT Id,
+                PRM_Account_Id__c,
+                PRM_Partner_Role__c,
+                PRM_Status_Nm__c,
+                PRM_Account_Id__r.Core_Deactivated__c
+         FROM PRM_AccountChannelMembership__c
+         WHERE PRM_Account_Id__c = :acct.Id
+         LIMIT 1];
+
+    Test.startTest();
+
+    PRM_RegistrationRequestUtility.autoApproveEndUserRegistration(
+        reqs,
+        null,
+        isSysAccMap,
+        mapAccContacts,
+        mapAccount,
+        acms
+    );
+
+    Test.stopTest();
+	}
+    
+	}

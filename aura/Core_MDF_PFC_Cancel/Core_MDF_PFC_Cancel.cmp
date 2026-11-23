@@ -7,11 +7,15 @@
     <aura:attribute name="fadeTimeout" type="Integer" default="5000"/>
     <aura:attribute name="errorMsg" type="String" access="public"/>
     <aura:attribute name="isOpen" type="boolean" default="false"/>
-
+    <aura:attribute name="cancellationReason" type="String" default=""
+        description="Reason entered by the user for cancelling the claim."/>
+    <aura:attribute name="reasonRequired" type="Boolean" default="false"
+        description="Indicates whether a cancellation reason is mandatory."/>
+	<aura:attribute name="isSuperClaimOnHold" type="Boolean" default="false"
+        description="Indicates the claim is a Super Claim on hold; cancelling it also cancels all Payment Breakdown items (sub-claims)."/>
     <aura:attribute name="isCustomComp" type="boolean" default="false"/>
     <!--Spinner attribute-->
     <aura:attribute name="Spinner" type="boolean" default="false"/>
-    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler event="force:refreshView" action="{!c.isRefreshed}" />
     <!--Register Event-->
@@ -28,13 +32,27 @@
             <div class="slds-modal__header custom-header">
                 <h2 class="slds-text-heading_medium">{!$Label.c.Core_MDF_Cancel_Claim}</h2>
             </div>
-        </aura:if>    
+        </aura:if>     
 
         <lightning:icon iconName="utility:warning" alternativeText="Warning!" variant="warning"/>
         <aura:if isTrue="{!v.showCancelClaim}"> 
             <div>
                 <div class="slds-card">
                     <div class="slds-p-around_medium slds-align_absolute-center">{!$Label.c.Core_MDF_Claim_Cancellation_Confirmation_Message}</div>
+
+                    <!-- Super Claim on hold: warn that all Payment Breakdown items will also be cancelled -->
+                    <aura:if isTrue="{!v.isSuperClaimOnHold}">
+                        <div class="slds-p-horizontal_medium slds-align_absolute-center">{!$Label.c.Core_MDF_Hold_Super_Claim_Cancel_Warning}</div>
+                    </aura:if>
+
+                    <div class="slds-p-around_medium">
+                        <lightning:textarea
+                            aura:id="reasonInput"
+                            label="{!$Label.c.Core_MDF_ClaimCancellationReason}"
+                            value="{!v.cancellationReason}"
+                            maxlength="255"
+                            required="{!v.reasonRequired}"/>
+                    </div>
                 </div>
                 <div class="slds-card">
                     <div class="slds-p-around_medium slds-align_absolute-center">

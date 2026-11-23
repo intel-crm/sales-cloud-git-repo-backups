@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>silambarasan.munusamy@intel.com</contactEmail>
+    <description>eRPM SF Integration Contact Create/Update Flow Test</description>
+    <distributionState>Local</distributionState>
+    <isProtected>false</isProtected>
+    <label>eRPM SF Integration Contact Flow Test</label>
+    <orgScopedExternalApp>00Ddi000004mJ65:eRPM_SF_Integration_Contact_Flow_Test</orgScopedExternalApp>
+</ExternalClientApplication>

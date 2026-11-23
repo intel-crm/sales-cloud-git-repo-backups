@@ -105,7 +105,7 @@
         <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 OR 4) AND 5</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -126,6 +126,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Alastair Duncan,Michael OBrien,Rick Lisa,Alan Rose,Katherine Heidelman,Robert Udermann,David Minnaar,Hugues Morin,Mel Fekete</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Rick Lisa,Elizabeth McGee</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>

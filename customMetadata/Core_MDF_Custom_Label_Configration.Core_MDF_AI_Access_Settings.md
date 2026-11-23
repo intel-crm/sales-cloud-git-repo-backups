@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Core_MDF_Value3_Txt__c</field>
-        <value xsi:type="xsd:string">akashx.bawankar@intel.com;bandix.sumalatha@intel.com;chaitanyax.vedak@intel.com;bharathix.gundla@intel.com</value>
+        <value xsi:type="xsd:string">akashx.bawankar@intel.com;bandix.sumalatha@intel.com;chaitanyax.vedak@intel.com</value>
     </values>
     <values>
         <field>Core_MDF_Value4_Txt__c</field>

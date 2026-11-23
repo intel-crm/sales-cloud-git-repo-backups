@@ -374,37 +374,31 @@ public class Core_OpportunityTeamMemberHandler_Test {
         User oscUser       = users[0];
         oscUser.userName = 'test0'+ oscUser.userName ;
         oscUser.Department = OSC_DEPARTMENT;
-		oscUser.CommunityNickname = 'Test1';
         insert oscUser;
         
         User nonOSCUser       = users[1];
         nonOSCUser.userName =  'test1' + nonOSCUser.userName ;
-        nonOSCUser.Department = '';     
-		nonOSCUser.CommunityNickname = 'Test2';
+        nonOSCUser.Department = '';        
         insert nonOSCUser;
         
         User oscTm       = users[2];
         oscTm.userName = 'test2' + oscTm.userName ;
         oscTm.Department = OSC_DEPARTMENT;
-		oscTm.CommunityNickname = 'Test3';
         insert oscTm;
         
         User nonOSCTm       = users[3];
         nonOSCTm.userName = 'test3' + nonOSCTm.userName ;
-        nonOSCTm.Department = '';   
-		nonOSCTm.CommunityNickname = 'Test4';
+        nonOSCTm.Department = '';        
         insert nonOSCTm;
         
         User oscTo       = users[4];
         oscTo.userName = 'test4'+ oscTo.userName ;
         oscTo.Department = OSC_DEPARTMENT;
-		oscTo.CommunityNickname = 'Test5';
         insert oscTo;
         
         User nonOSCTo       = users[5];
         nonOSCTo.userName = 'test5' + nonOSCTo.userName ;
-        nonOSCTo.Department = '';      
-		nonOSCTo.CommunityNickname = 'Test6';
+        nonOSCTo.Department = '';        
         insert nonOSCTo;
         
         SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();

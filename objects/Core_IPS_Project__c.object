@@ -89,16 +89,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
+        <content>Core_New_IPSProject</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
         <content>core_IPS_ProjectLandingPage</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>LightningComponent</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>New</actionName>
-        <content>Core_New_IPSProject</content>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
@@ -746,6 +746,7 @@
             <value>Active</value>
         </filters>
         <label>All Projects</label>
+        <language>en_US</language>
         <sharedTo>
             <allPartnerUsers></allPartnerUsers>
             <group>Core_PG_IPS_External_Customer</group>
@@ -1014,7 +1015,7 @@ ISPICKVAL(Core_Status__c, &quot;Draft&quot;)
     <validationRules>
         <fullName>SubRegionNotNullIfRegionExistedOnNewProj</fullName>
         <active>true</active>
-        <description>Sub-Region is required when creating / Updating the Project with a specified Region</description>
+        <description>When the Region field is not empty then Sub Region should not be empty at the time of new Project Creation</description>
         <errorConditionFormula>AND(
 NOT(ISBLANK(TEXT(Region__c))),
 ISBLANK(TEXT(Sub_Region__c)),
@@ -1022,7 +1023,7 @@ NOT(ISCHANGED(Core_Number_of_Products__c)),
 NOT(ISCHANGED(Core_Number_of_Users__c))
 )</errorConditionFormula>
         <errorDisplayField>Sub_Region__c</errorDisplayField>
-        <errorMessage>Sub-Region is required when creating / Updating the Project with a specified Region</errorMessage>
+        <errorMessage>Sub-Region is required when creating / Updating the Project with a specified Region.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>

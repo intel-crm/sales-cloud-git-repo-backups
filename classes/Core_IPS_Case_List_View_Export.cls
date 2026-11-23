@@ -38,8 +38,7 @@ public with sharing class Core_IPS_Case_List_View_Export {
             // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
         //returnURL = ApexPages.currentPage().getParameters().get('retURL').escapeHtml4();
         returnURL = ApexPages.currentPage().getParameters().get('retURL');
-       
-        // For PDF:
+		// For PDF:
         // contentType = 'application/pdf#Export.pdf';
         // renderType  = 'PDF';
 
@@ -69,9 +68,12 @@ public with sharing class Core_IPS_Case_List_View_Export {
         loadFilterFields();
         
         Integer idx = strQuery.indexOf(' FROM ');
-        // TWC745-9117 - ATHR Critical fixed by Tushar
-        Integer limitValue = MAX_EXPORT_ROWS + 1;
-        String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT :limitValue';
+		
+
+        // String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT ' + (MAX_EXPORT_ROWS + 1); // commented by Tushar
+        
+        Integer limitValue = MAX_EXPORT_ROWS + 1; // line added by Tushar
+        String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT :limitValue'; //added by Tushar
         
         List<Object> lstObj = Database.query(strCountQuery);
         if (lstObj.size() > MAX_EXPORT_ROWS) {
@@ -159,11 +161,11 @@ public with sharing class Core_IPS_Case_List_View_Export {
                     strFieldValue = strFieldValue.subString(0, MAX_FIELD_LENGTH) + '...';                
                 
                 strFieldValue = strFieldValue.escapeCSV();        
-                // Avoid Deeply Nested IF Statements Kamala - TWC745-9117              
+                //Avoid Deeply Nested IF Statements Kamala              
                 if ((strFieldValue.length() > 0) && (strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE)) {
                         strFieldValue = '"' + strFieldValue + '"';                    
-                    }                               
                 }                                  
+            }
             
             mapRow.put(sc.fieldNameOrPath, strFieldValue);
         }
@@ -217,39 +219,41 @@ public with sharing class Core_IPS_Case_List_View_Export {
         req.setMethod('GET');      
         Http h = new Http();
         HttpResponse res = h.send(req);
-        Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody()); 
-        strQuery = (String)root.get('query');
-        strQuery = strQuery.replace('Owner.Alias', 'Owner.Name');
-   
-        if (Core_IPS_Case_Comments_Handler.isCurrentUserPortalUser() && strQuery.contains('USING SCOPE mine'))                            
-            strQuery = processScopeForCases(strQuery);
-        
-        
-        // This HAS to be reset every iteration.
-        lstColumn = new List<SingleColumn>();
-         
-        //Parsing JSON string to get the column details    
-        JSONParser parser = JSON.createParser(res.getBody());
-        while (parser.nextToken() != null){ 
-            if(parser.getCurrentToken() == JSONToken.START_ARRAY) {       
-                while (parser.nextToken() != null) {
-                    if (parser.getCurrentToken() == JSONToken.START_OBJECT) {
-                        
-                        SingleColumn col = (SingleColumn)parser.readValueAs(SingleColumn.class);
-                        if(col.hidden == false && col.fieldNameOrPath != NULL && !col.fieldNameOrPath.contains('Clone')) {            
-                            if (col.fieldNameOrPath == 'Owner.Alias') {
-                                col.fieldNameOrPath = 'Owner.Name';
-                                col.label = 'Case Owner';
-                            }
+        if(res.getStatusCode() == 200){ // TWC745-9175 - Exceptional Handling - Phani Start if condition
+            
+            Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody()); 
+            strQuery = (String)root.get('query');
+            strQuery = strQuery.replace('Owner.Alias', 'Owner.Name');
+            
+            if (Core_IPS_Case_Comments_Handler.isCurrentUserPortalUser() && strQuery.contains('USING SCOPE mine'))                            
+                strQuery = processScopeForCases(strQuery);
+            
+            
+            // This HAS to be reset every iteration.
+            lstColumn = new List<SingleColumn>();
+            
+            //Parsing JSON string to get the column details    
+            JSONParser parser = JSON.createParser(res.getBody());
+            while (parser.nextToken() != null){ 
+                if(parser.getCurrentToken() == JSONToken.START_ARRAY) {       
+                    while (parser.nextToken() != null) {
+                        if (parser.getCurrentToken() == JSONToken.START_OBJECT) {
                             
-                            col.label = col.label.replace(',', '');                            
-                            lstColumn.add(col);                    
-                        }    
+                            SingleColumn col = (SingleColumn)parser.readValueAs(SingleColumn.class);
+                            if(col.hidden == false && col.fieldNameOrPath != NULL && !col.fieldNameOrPath.contains('Clone')) {            
+                                if (col.fieldNameOrPath == 'Owner.Alias') {
+                                    col.fieldNameOrPath = 'Owner.Name';
+                                    col.label = 'Case Owner';
+                                }
+                                
+                                col.label = col.label.replace(',', '');                            
+                                lstColumn.add(col);                    
+                            }    
+                        }
                     }
                 }
             }
-         }
-
+        } // TWC745-9175 - Exceptional Handling - Phani End If Condition
     }
     
 

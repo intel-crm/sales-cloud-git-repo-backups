@@ -111,10 +111,11 @@ public With Sharing virtual class PMP_CustomPermissionsReader {
         List<CustomPermission> customPermissions = 
             [select Id, DeveloperName from CustomPermission where NamespacePrefix = :namespacePrefix];
         for(CustomPermission customPermission : customPermissions) {
+             system.debug('customPermission'+customPermission);
             customPermissionNames.add(customPermission.DeveloperName);
             customPermissionNamesById.put(customPermission.Id, customPermission.DeveloperName);
         }
-        
+        system.debug('customPermissionNamesById'+customPermissionNamesById);
         //System.debug('customPermissionNamesById = '+ customPermissionNamesById);
 
         // Query to determine which of these custome settings are assigned to this user
@@ -126,8 +127,10 @@ public With Sharing virtual class PMP_CustomPermissionsReader {
                         IN (SELECT PermissionSetId 
                             FROM PermissionSetAssignment
                             WHERE AssigneeId = :UserInfo.getUserId())];  /*'0050n000002XO02'*/
-        for(SetupEntityAccess setupEntity : setupEntities)
-            customPermissionsForCurrentUser.add(customPermissionNamesById.get(setupEntity.SetupEntityId));  
+        for(SetupEntityAccess setupEntity : setupEntities){
+             system.debug('setupEntity'+setupEntity);
+        customPermissionsForCurrentUser.add(customPermissionNamesById.get(setupEntity.SetupEntityId));  }
+         system.debug('customPermissionsForCurrentUser'+customPermissionsForCurrentUser);
     }
 
     public class CustomPermissionsException extends Exception {}

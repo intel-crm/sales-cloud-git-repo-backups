@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSecuritySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <externalClientApplication>gemini_gpc_sales_dev_sobjectall</externalClientApplication>
+    <label>gemini_gpc_sales_dev_sobjectall_oauthSecurity</label>
+</ExtlClntAppOauthSecuritySettings>

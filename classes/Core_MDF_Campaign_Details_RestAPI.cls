@@ -8,7 +8,7 @@
  * ----------------------------------------------------------------------------------
  */
 @RestResource(urlMapping='/v1.0/partnercenter/campaign/*')
-global without sharing class Core_MDF_Campaign_Details_RestAPI{
+global without sharing class Core_MDF_Campaign_Details_RestAPI {
 
     private static final Map<String, Map<String, String>> FIELD_LABEL_CACHE_BY_OBJECT = new Map<String, Map<String, String>>();
 

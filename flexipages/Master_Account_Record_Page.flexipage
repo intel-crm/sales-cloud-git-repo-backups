@@ -142,6 +142,16 @@
                     <name>uiBehavior</name>
                     <value>readonly</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.OwnerId</fieldItem>
+                <identifier>RecordOwnerIdField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_Account_Owner__c</fieldItem>
                 <identifier>RecordCore_Account_Owner_cField</identifier>
             </fieldInstance>
@@ -2675,7 +2685,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>height</name>
-                    <value>300</value>
+                    <value>400</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -2692,7 +2702,7 @@
                 <identifier>flexipage_visualforcePage</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-841b22bd-02bc-4265-9661-212cad7abef2</name>
+        <name>Facet-d319d0c0-cf5c-4c84-964e-0d792ffcbdb2</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -2906,7 +2916,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-841b22bd-02bc-4265-9661-212cad7abef2</value>
+                    <value>Facet-d319d0c0-cf5c-4c84-964e-0d792ffcbdb2</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -3769,11 +3779,11 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sortFieldAlias</name>
-                    <value>__DEFAULT__</value>
+                    <value>OPPORTUNITY_SCORE</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sortFieldOrder</name>
-                    <value>Default</value>
+                    <value>Descending</value>
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
                 <identifier>lst_dynamicRelatedList</identifier>
@@ -4781,7 +4791,7 @@
                     <value>Default</value>
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
-                <identifier>lst_dynamicRelatedList18</identifier>
+                <identifier>lst_dynamicRelatedList3</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.PRM_Is_Deal_Partner_Account__c}</leftValue>
@@ -4849,7 +4859,7 @@
                     <value>Default</value>
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
-                <identifier>lst_dynamicRelatedList19</identifier>
+                <identifier>lst_dynamicRelatedList13</identifier>
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.PRM_Is_Deal_End_Customer_Account__c}</leftValue>

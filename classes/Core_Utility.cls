@@ -179,6 +179,9 @@ public class Core_Utility{
     * Parameter    : 
     */
     public static String replaceSpecialCharacWithUnderscore(String sStringToBeReplaced){
+        // Exception Handling fix: Regex too complicated
+        try
+        {
         //Run the loop for the special characters
         for(String sSpecialCharc : System.Label.Core_SpecialCharacter.Split(';')){
             //if(String.isNotBlank(sStringToBeReplaced))
@@ -188,6 +191,13 @@ public class Core_Utility{
         sStringToBeReplaced = sStringToBeReplaced.removeEnd('_');
         
         return sStringToBeReplaced;
+    }
+        catch(exception ex)
+        {
+            system.debug('Unsucessful send email :::: ' + ex.getMessage());
+            
+        }        
+        return null;         
     }
     
     //Variable to store the User record
@@ -485,7 +495,7 @@ public class Core_Utility{
     public static String replaceSpecialChar(String str){    
  
         str = str.replaceAll('&#32;',' ');
-        str = str.replaceAll('&#33;','!');
+        str = str.replaceAll('&#3;3;','!');
         str = str.replaceAll('&#34;','"');
         str = str.replaceAll('&#35;','#');
         str = str.replaceAll('&#36;','$');

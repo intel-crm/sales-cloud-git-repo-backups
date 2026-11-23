@@ -296,10 +296,6 @@
             <masterLabel>PSG-DISTI</masterLabel>
             <translation><!-- PSG-DISTI --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Sovereign Cloud</masterLabel>
-            <translation><!-- Sovereign Cloud --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Account CCG Tier --></label>
@@ -346,10 +342,6 @@
             <translation><!-- End Customer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Extended Sales Force</masterLabel>
-            <translation><!-- Extended Sales Force --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hyperscaler (AWS, Azure, GCP)</masterLabel>
             <translation><!-- Hyperscaler (AWS, Azure, GCP) --></translation>
         </picklistValues>
@@ -393,10 +385,6 @@
         <picklistValues>
             <masterLabel>End Customer</masterLabel>
             <translation><!-- End Customer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Extended Sales Force</masterLabel>
-            <translation><!-- Extended Sales Force --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hyperscaler (AWS, Azure, GCP)</masterLabel>
@@ -1699,10 +1687,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <picklistValues>
             <masterLabel>Not Covered</masterLabel>
             <translation><!-- Not Covered --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other-led Account</masterLabel>
-            <translation><!-- Other-led Account --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -4054,6 +4038,22 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Comment_Preview__c</name>
     </fields>
     <fields>
+        <label><!-- Compliance Status --></label>
+        <name>Core_Compliance_Status__c</name>
+        <picklistValues>
+            <masterLabel>Blocked</masterLabel>
+            <translation><!-- Blocked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Released</masterLabel>
+            <translation><!-- Released --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review is pending</masterLabel>
+            <translation><!-- Review is pending --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Compliance Watch List Type --></label>
         <name>Core_Compliance_Watch_List_Type__c</name>
         <picklistValues>
@@ -4263,8 +4263,16 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Ship To --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Ship-to Party</masterLabel>
+            <translation><!-- Ship-to Party --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Sold To</masterLabel>
             <translation><!-- Sold To --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sold-to Party</masterLabel>
+            <translation><!-- Sold-to Party --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -4362,6 +4370,30 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Is B2B? --></label>
         <name>Core_ERPM_IsB2B__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Group --></label>
+        <name>Core_ER_Account_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Customer Relationship Code --></label>
+        <name>Core_ER_Direct_CustomerRelationship_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Area Order Block Code --></label>
+        <name>Core_ER_Sales_Area_Order_Block_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Area Order Block Name --></label>
+        <name>Core_ER_Sales_Area_Order_Block_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Disti Chnl Name --></label>
+        <name>Core_ER_Sales_Disti_Chnl_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Org Name --></label>
+        <name>Core_ER_Sales_Org_Name__c</name>
     </fields>
     <fields>
         <label><!-- English Only Name --></label>
@@ -7243,6 +7275,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <relationshipLabel><!-- Accounts (KCR Target Intermediate Name) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Last Reminder Sent --></label>
+        <name>Last_Reminder_Sent__c</name>
+    </fields>
+    <fields>
         <label><!-- Lead to Account on Contact_NoOpportunity --></label>
         <name>Lead_to_Account_on_Contact_NoOpportunity__c</name>
     </fields>
@@ -7947,22 +7983,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <webLinks>
         <label><!-- Core_Sales_Support --></label>
         <name>Core_Sales_Support</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- InviteAccountToEvent --></label>
-        <name>CventEvents__InviteAccountToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelAccountToEvent --></label>
-        <name>CventEvents__ModifyCancelAccountToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateAccountToEvent --></label>
-        <name>CventEvents__NominateAccountToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterAccountToEvent --></label>
-        <name>CventEvents__RegisterAccountToEvent</name>
     </webLinks>
     <webLinks>
         <label><!-- GoogleMaps --></label>

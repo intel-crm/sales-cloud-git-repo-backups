@@ -10450,20 +10450,6 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Core_vPro__c</name>
     </fields>
     <fields>
-        <label><!-- Attendee --></label>
-        <name>CventEvents__Attendee__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Cvent Event --></label>
-        <name>CventEvents__EventTitle__c</name>
-    </fields>
-    <fields>
-        <label><!-- Cvent Event Number --></label>
-        <name>CventEvents__Event__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Decision Date --></label>
         <name>Decision_Date__c</name>
     </fields>

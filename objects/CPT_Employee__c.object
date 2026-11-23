@@ -704,7 +704,7 @@
         <fullName>CPT_Sales_Group__c</fullName>
         <description>The Sales Group of the Commissionable Employee.</description>
         <externalId>false</externalId>
-        <label>Sales Group</label>
+        <label>Region</label>
         <length>100</length>
         <required>false</required>
         <trackHistory>true</trackHistory>

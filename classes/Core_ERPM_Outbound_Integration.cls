@@ -5,6 +5,7 @@ public without sharing class Core_ERPM_Outbound_Integration {
     public static boolean hasEntWithERPMEnga = false; //DRACO Change - Don't change ERPM Integration Status in case of 2.0 flow
     public static boolean UpdateERPMStatus = true; //DRACO Change - Don't change ERPM Integration Status in case of 2.0 flow
     public static boolean UpdateAGSStatus = false;
+    public static Map<String,Core_ACM_Control_Execution__c> mapAcmControlExecution = Core_ACM_Control_Execution__c.getAll();
     
     //public static boolean doNotPublishERPMOBM = true;
     public static List<Contact> contactsToUpdateOnCIMChange = new List<Contact>();
@@ -81,12 +82,14 @@ public without sharing class Core_ERPM_Outbound_Integration {
                                             //contactUpdateList.add(contact);                    
                                             //addedToContactList = true;
                                             contactsToBeUpdated.put(contact.id, contact);
-                                        } else if((contact.Core_ERPM_Integration_Status__c == 'Pending' || contact.Core_ERPM_Integration_Status__c == 'In-Progress' && UpdateERPMStatus && agsFlag==false) //Commented " && hasEntWithERPMEnga" and added "UpdateERPMStatus" as ERPM OBM was not sending while self registration
+                                        } else if((contact.Core_ERPM_Integration_Status__c == 'Pending' || contact.Core_ERPM_Integration_Status__c == 'In-Progress') && UpdateERPMStatus && agsFlag==false //Commented " && hasEntWithERPMEnga" and added "UpdateERPMStatus" as ERPM OBM was not sending while self registration
                                                     && contact.Core_ERPM_Integration_Queue_txt__c != 'Full') {
-                                                        contact.Core_ERPM_Integration_Queue_txt__c = 'Full';
-                                                        //contactUpdateList.add(contact);                    
-                                                        //addedToContactList = true;
-                                                        contactsToBeUpdated.put(contact.id, contact);
+                                                        if(mapAcmControlExecution.containsKey('SwitchERPMIntegrationQueueText') && mapAcmControlExecution.get('SwitchERPMIntegrationQueueText').IsActive__c){
+                                                            contact.Core_ERPM_Integration_Queue_txt__c = 'Full';
+                                                            //contactUpdateList.add(contact);                    
+                                                            //addedToContactList = true;
+                                                            contactsToBeUpdated.put(contact.id, contact);
+                                                        }
                                                     } 
                                         else {
                                             if(agsFlag) {

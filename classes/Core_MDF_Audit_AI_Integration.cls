@@ -234,6 +234,7 @@ public class Core_MDF_Audit_AI_Integration implements Database.Batchable<sObject
         // Process each payload
         for (String caseKey : caseKeyToJsonMap.keySet()) {
             String payload = caseKeyToJsonMap.get(caseKey);
+		System.debug('AUdit Payload'+payload);
             if (String.isBlank(payload)) {
             	continue;
              }
@@ -620,6 +621,7 @@ public static Map<Id, List<ActivitySegmentWrapper>> getSpifData(List<Case> cases
     public class DocumentWrapper {
         public String appFileId;
         public Boolean sftFileAvailableInd;
+        //public String sftFileDownloadURL;
         public String documentType;
         public String downloadDocumentTitle;
         public String documentTitle;
@@ -627,6 +629,7 @@ public static Map<Id, List<ActivitySegmentWrapper>> getSpifData(List<Case> cases
         public DocumentWrapper(Core_MDF_Audit_Document__c document) {
             this.appFileId = document.Core_MDF_Old_Document_Id__c;
             this.sftFileAvailableInd = document.Core_MDF_SFT_File_Download_Ind__c;
+            //this.sftFileDownloadURL = document.Core_MDF_SFT_File_Download_URL__c;
             this.documentType = document.Core_MDF_Document_Types__c;
             this.downloadDocumentTitle = document.Core_MDF_Download_Document_Title_txt__c;
             this.documentTitle = document.Core_MDF_Document_Title__c;

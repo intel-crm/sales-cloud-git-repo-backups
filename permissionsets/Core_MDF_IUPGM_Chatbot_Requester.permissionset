@@ -9,6 +9,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_IUPGMIntentClassifier</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_IUPGMReqStaging_Queueable</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -25,15 +29,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_IUPGM_CopyService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_IUPGM_RequestAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>Core_MDF_IUPGM_StatusAPI</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_MDF_IUPGM_SubmitAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <customMetadataTypeAccesses>
@@ -147,6 +151,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Core_MDF_IUPGM_Request_Staging__c.Core_MDF_Copy_Operation_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Core_MDF_IUPGM_Request_Staging__c.Core_MDF_Copy_Source_User_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Core_MDF_IUPGM_Request_Staging__c.Core_MDF_Error_Message_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -218,6 +232,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_IUPGM_Request_Staging__c.Core_MDF_New_User_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Core_MDF_IUPGM_Request_Staging__c.Core_MDF_Pending_Dependent_Role_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

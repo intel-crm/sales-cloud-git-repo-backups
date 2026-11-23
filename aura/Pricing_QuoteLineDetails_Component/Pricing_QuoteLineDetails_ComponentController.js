@@ -175,8 +175,8 @@
             if (component.get("v.isSVDActive") && component.get("v.isSmallVolumeQuote")) {
                 helper.showToastMessage(component, event, helper, "error", "Cloning an SVD quoteline is no longer allowed.", "Error", "sticky");
             } else {
-                component.set("v.menuItemDisable", true);
-                helper.clone(component, event, helper, quoteLineId);
+            component.set("v.menuItemDisable", true);
+            helper.clone(component, event, helper, quoteLineId);
             }
         } else if (menuValue == "Edit") {
             if (component.get("v.isPricingManager") && component.get("v.qliIdToQliTypeMap")[quoteLineId] != $A.get("$Label.c.Pricing_Tender_FinancialIncentive_Quote")) {
@@ -207,7 +207,7 @@
                 component.set("v.continueSoftWarningLabel", 'Continue');
                 component.set("v.qliSoftWarning", true);
                 component.set('v.quoteLineId', quoteLineId);
-            }
+            } 
             if (component.get("v.qliSoftWarning") == false && component.get("v.qliSoftWarningApprovedECAP") == false) {
                 helper.sendRequest(component, event, helper, quoteLineId, "Create");
             }
@@ -226,7 +226,7 @@
             if (component.get("v.qliSoftWarning") == false && component.get("v.qliSoftWarningApprovedECAP") == false) {
                 helper.sendRequest(component, event, helper, quoteLineId, "Update");
             }
-
+             
         } else if (menuValue == $A.get("$Label.c.Pricing_Tender_Cancel_Action")) {
             component.set("v.actionStr", menuValue);
             helper.requestChange(component, event, helper, quoteLineId);

@@ -482,6 +482,4 @@ private class Core_MDF_PIC_TestClass {
         
       }   
 
-
-
 }

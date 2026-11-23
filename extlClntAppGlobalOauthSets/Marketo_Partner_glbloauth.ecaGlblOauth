@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <callbackUrl>https://experience.adobe.com
-https://login.salesforce.com/services/oauth2/token</callbackUrl>
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6laqD3BvGKSr4ZILnV6_ZH8XXk01gubywD60.ryliov9D.7GW.db2ICOBJrB</consumerKey>
+https://test.salesforce.com/services/oauth2/token</callbackUrl>
+    <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBboVC8uDzsrH5DSSt58CuCSo03XWFFqxGGp0blTikZqS_EIWdWptdg7JBfMjN</consumerKey>
     <externalClientApplication>Marketo_Partner</externalClientApplication>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
     <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>

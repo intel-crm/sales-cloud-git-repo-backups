@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <callbackUrl>https://elt.varicent.com/importRedirect</callbackUrl>
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6hR0k4ETz9ztdvLkv97oYwLlKvS4AP9cyGT2sQLK9yNqmMnLj3DtqmazFbL3</consumerKey>
+    <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBbpzN4qAxg2Wu31e9LwXKnG9ViGxj.R5wHINDzFB4pjAs7EBWSBvtHwLtdf6o</consumerKey>
     <externalClientApplication>Symon_AI</externalClientApplication>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
     <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
     <isCodeCredPostOnly>false</isCodeCredPostOnly>
-    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isConsumerSecretOptional>true</isConsumerSecretOptional>
     <isDPopEnabled>false</isDPopEnabled>
     <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
     <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
@@ -15,7 +15,7 @@
     <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
     <isPkceRequired>true</isPkceRequired>
     <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
-    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
     <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
     <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
     <label>Symon_AI_glbloauth</label>

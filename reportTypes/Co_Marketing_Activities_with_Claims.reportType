@@ -763,11 +763,6 @@
             <field>Core_MDF_Review_Status_nm__c</field>
             <table>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_AI_PIC_Review_Ind__c</field>
-            <table>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r</table>
-        </columns>
         <masterLabel>PIC Reviews</masterLabel>
     </sections>
 </ReportType>

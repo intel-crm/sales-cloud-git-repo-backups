@@ -75,7 +75,14 @@
         <field>TOTAL_PRICE</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design</value>
+        </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>

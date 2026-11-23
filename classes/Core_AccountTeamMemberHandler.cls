@@ -19,6 +19,10 @@ public class Core_AccountTeamMemberHandler extends TriggerHandler{
     
     public static Boolean bypassValidationonAccountTeam = false;
   public override void afterInsert(){
+        // Asset sharing - controlled by Custom Label Core_IPS_Enable_Asset_Sharing (TRUE = on, FALSE = off)
+        //if (System.Label.Core_IPS_Enable_Asset_Sharing == 'TRUE') {
+        //    Core_IPS_AccountTeamMember_Handler.shareExistingAssets((List<AccountTeamMember>) Trigger.new);
+        //}
       Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     if(mapFunctionalityNameTriggerExecution.containsKey('SendingListOfTenderUsersTobatch') &&  mapFunctionalityNameTriggerExecution.get('SendingListOfTenderUsersTobatch').Core_Active__c){
            

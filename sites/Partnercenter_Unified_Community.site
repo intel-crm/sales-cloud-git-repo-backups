@@ -15,7 +15,6 @@
     <clickjackProtectionLevel>AllowAllFraming</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
     <customWebAddresses>
-        <certificate>partnercenter_intel_com12</certificate>
         <domainName>partnercenter.intel.com</domainName>
         <primary>false</primary>
     </customWebAddresses>

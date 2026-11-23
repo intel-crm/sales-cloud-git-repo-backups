@@ -24,7 +24,7 @@ BQXoHr54i9E/8Aqdp1hhwSQNs6vCT6qzjEWzTHxqCbNmy6H+P96PHsNMIqT+wgFC
 ACth5FZb4y+/f1+vjpRim93Nv5soMgBNzQEc0ZkgsX3qw71gD4zHJRf651V1iiB2
 ZiOkr7AmSTsEOKbfN2PEWCm0yk0cEX3QmogV6ZqX6FKj0UejLHkrWDl40S0UzIJw
 UgcZqulGheGxtmgi7ovJIBlBHZD6qLUt0VAJsOdy4g==</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6iqAYiZ0fiYLzRuMsDcrGtJ5djpgDcYfdiN.ahomlTSs3GlRcwjO48RHg0HS</consumerKey>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxGSh05F3e_cEQ6K2hLkei63BuHiKFgraSmKGc_3pwSo.VgMozjvGBGiMWHEU</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -37,9 +37,9 @@ UgcZqulGheGxtmgi7ovJIBlBHZD6qLUt0VAJsOdy4g==</certificate>
         <isIpBindingEnabled>false</isIpBindingEnabled>
         <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
-        <isPkceRequired>true</isPkceRequired>
+        <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>

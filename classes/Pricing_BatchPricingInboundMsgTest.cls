@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-16-2026
+ * @last modified on  : 03-06-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -150,7 +150,7 @@ public class Pricing_BatchPricingInboundMsgTest {
                 quoteLineIdToActionMap.put(quoteLine[3].Id,Label.Pricing_Tender_Integration_Header_Action_Create);
                 quoteLineIdToActionMap.put(quoteLine[4].Id,Label.Pricing_Tender_Integration_Header_Action_Update);
                 quoteLineIdToActionMap.put(quoteLine[5].Id,Label.Pricing_Tender_Integration_Header_Action_UpdateStatus);
-                
+
                 User loggedInUser = [SELECT Id,Name,Core_WWID__c from User where Id =: userInfo.getUserId()];
                 Pricing_IntegrationSFDCToPricingSystems.insertQuoteOutBoundMessage(quoteLineIdToActionMap, quoteLineMap,loggedInUser.Core_WWID__c,true,qlIdToRuleIdRuleNameMap);
                 Pricing_JSONString JSONVar;

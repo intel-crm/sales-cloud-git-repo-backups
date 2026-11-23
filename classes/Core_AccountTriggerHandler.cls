@@ -334,6 +334,52 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
       }
       unitwork.commitWork();
     }
+   
+      system.debug('newacc'+(List<Account>) Trigger.New);
+      list<account> accListNew=(List<Account>) Trigger.New;
+      for (Account acc : accListNew) {
+           system.debug('(Account) Trigger.oldMap.get(acc.Id)'+(Account) Trigger.oldMap.get(acc.Id));
+           Account oldAcc = (Account) Trigger.oldMap.get(acc.Id);
+          system.debug('oldAcc.ParentId'+oldAcc.ParentId);
+           system.debug('acc.ParentId'+acc.ParentId);
+      }
+      //update deal flag when parent account is changed
+  /*    Map<Id, Account> parentAccountMap = new Map<Id, Account>();
+	list<account> accListNew=(List<Account>) Trigger.New;
+for (Account acc : accListNew) {
+    Account oldAcc = (Account) Trigger.oldMap.get(acc.Id);
+
+    if (acc.ParentId != oldAcc.ParentId && acc.recordtype.name=='Intel Account') {
+
+        if (oldAcc.ParentId != null) {
+            parentAccountMap.put(
+                oldAcc.ParentId,
+                new Account(
+                    Id = oldAcc.ParentId,
+                    PRM_Impartner_Deal_Sync__c = false
+                )
+            );
+            system.debug(oldAcc.ParentId+'oldAcc.ParentId');
+        }
+
+        if (acc.ParentId != null) {
+            parentAccountMap.put(
+                acc.ParentId,
+                new Account(
+                    Id = acc.ParentId,
+                    PRM_Impartner_Deal_Sync__c = true
+                )
+            );
+              system.debug(acc.ParentId+'acc.ParentId');
+        }
+    }
+}
+
+if (!parentAccountMap.isEmpty()) {
+    system.debug(parentAccountMap.values()+'acctstoupdate');
+    update parentAccountMap?.values();
+}*/
+
   }
   
   public override void afterDelete() {

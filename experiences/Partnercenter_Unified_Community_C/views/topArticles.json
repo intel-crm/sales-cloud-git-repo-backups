@@ -2,10 +2,10 @@
   "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "2849d56a-9892-4d8e-9c09-6fbf4445dca8",
+  "id" : "834d7fdd-d9b3-4fc6-8dbd-22713981bc5c",
   "label" : "Top Articles",
   "regions" : [ {
-    "id" : "94d33bcb-f794-4d09-8a92-d1afc255739f",
+    "id" : "003ff42f-7c74-428b-b665-57ac7aba1511",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -14,7 +14,7 @@
         "richTextValue" : "             <h1 style=\"text-align: center;\">                 <b style=\"font-size: 20px; color: #1e2443;\">Top Articles</b>             </h1>             "
       },
       "componentName" : "forceCommunity:richTextInline",
-      "id" : "a6e99044-4ebf-4e60-835c-2e77b28138c1",
+      "id" : "761290b5-a620-4d52-92aa-4d5132422cdb",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -26,16 +26,16 @@
         "topicList" : [ ]
       },
       "componentName" : "forceCommunity:topArticleList",
-      "id" : "037a70be-39e1-4783-bf04-81a87e4bbbe6",
+      "id" : "8ab6e9ae-f6aa-4851-8562-7ee836614c04",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "551d9aab-9292-4aba-829d-3f3bc3b50a45",
+    "id" : "8bc955ac-d1c3-44f2-9a2a-7ddfe0506a4c",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "140bc544-0356-4fe7-a8fc-6e177fdb7055",
+    "id" : "91925ccf-8822-4eb1-b4c1-0cb142f30119",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -46,11 +46,11 @@
         "title" : "Top Articles"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "d450e509-6555-4eaf-ad5b-4c48022948f1",
+      "id" : "dfd21f05-8a04-4a8b-aba2-0968ba232924",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "f5a394ae-ce35-4167-ac74-4325b2afc6df",
+    "id" : "e8753f2d-8c15-4d9b-ba5c-a56d83d07ee3",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],

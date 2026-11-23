@@ -71,7 +71,13 @@
         <columns>UPDATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>NAME</field>
+            <operation>contains</operation>
+            <value>EMBED - HW L3</value>
+        </filters>
         <label>IPS - Case Queue Biz Hour Associations</label>
+        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>

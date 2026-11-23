@@ -224,6 +224,11 @@
         <columns>PRM_InActive_Ind__c</columns>
         <columns>PRM_Terms_and_Conditions_Type_Nm__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Content_Language_Nm__c</field>
+            <operation>equals</operation>
+            <value>ENG</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>

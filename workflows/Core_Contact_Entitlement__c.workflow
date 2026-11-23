@@ -5,7 +5,7 @@
         <ccEmails>rdcentitlement@fusionmedia.com</ccEmails>
         <description>Entitlement RDC Added E Moss EA</description>
         <protected>false</protected>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_Entitlement_RDC_Added_E_Moss_Role</template>
     </alerts>
@@ -14,7 +14,7 @@
         <ccEmails>rdcentitlement@fusionmedia.com</ccEmails>
         <description>Entitlement RDC Removed E Moss EA</description>
         <protected>false</protected>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_Entitlement_RDC_Removed_E_Moss_Role</template>
     </alerts>
@@ -23,7 +23,7 @@
         <ccEmails>rdcentitlement@fusionmedia.com</ccEmails>
         <description>Entitlement RDC Updated E Moss EA</description>
         <protected>false</protected>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_Entitlement_RDC_Updated_E_Moss_Role</template>
     </alerts>

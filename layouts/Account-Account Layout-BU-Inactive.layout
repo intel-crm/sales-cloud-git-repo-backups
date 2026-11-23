@@ -543,6 +543,10 @@
         <fields>RECORDTYPE</fields>
         <fields>CREATED_DATE</fields>
         <fields>LAST_UPDATE</fields>
+        <fields>CRM_Start_Date__c</fields>
+        <fields>CRM_Start_Time__c</fields>
+        <fields>CRM_Scheduled_End_Date__c</fields>
+        <fields>CRM_Scheduled_End_Time_Only__c</fields>
         <relatedList>Executive_Meeting_Brief__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>

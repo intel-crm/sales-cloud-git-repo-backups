@@ -3,5 +3,5 @@
     <description>Get real time points data from Collinsion</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
     <isActive>true</isActive>
-    <url>https://apis.intel.com</url>
+    <url>https://apis-sandbox.intel.com</url>
 </RemoteSiteSetting>

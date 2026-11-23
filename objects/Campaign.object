@@ -2477,6 +2477,11 @@
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>New CMP only</controllingFieldValue>
+                <valueName>Outcome-Based-&gt;Outcome-Based</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Video-&gt;Television</valueName>
             </valueSettings>
@@ -2968,11 +2973,6 @@
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Innovation -&gt;Engineering</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <valueName>Outcome-Based-&gt;Outcome-Based</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -5306,30 +5306,6 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>CventEvents__EventStub__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>true</externalId>
-        <label>Event Stub</label>
-        <length>36</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>CventEvents__SessionStub__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>true</externalId>
-        <label>Session Stub</label>
-        <length>36</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Description</fullName>
         <inlineHelpText>Free form text field used to describe the campaign in detail</inlineHelpText>
         <trackFeedHistory>false</trackFeedHistory>
@@ -5562,23 +5538,18 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
     <listViews>
         <fullName>All_IPA_Marketing_Campaigns</fullName>
         <columns>CAMPAIGN.NAME</columns>
-        <columns>CAMPAIGN.ACTIVE</columns>
-        <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
-        <columns>CAMPAIGN.STATUS</columns>
-        <columns>Core_Target_Geo__c</columns>
-        <columns>CAMPAIGN.START_DATE</columns>
-        <columns>CAMPAIGN.END_DATE</columns>
         <columns>CORE.USERS.FIRST_NAME</columns>
         <columns>CORE.USERS.LAST_NAME</columns>
         <columns>CAMPAIGN.CREATED_DATE</columns>
+        <columns>CAMPAIGN.LAST_UPDATE</columns>
+        <columns>CAMPAIGN.RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CAMPAIGN.RECORDTYPE</field>
             <operation>equals</operation>
-            <value>Campaign.PRM_Marketing_Campaign</value>
+            <value>Campaign.Core_MDF_Intel_Partner_Alliance</value>
         </filters>
         <label>All IPA Marketing Campaigns</label>
-        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -5594,7 +5565,18 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
         <columns>Core_SubSector__c</columns>
         <columns>Core_ICC_Campaign_ID__c</columns>
         <columns>CAMPAIGN.NUM_LEADS</columns>
+        <columns>Core_MDF_Program__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CAMPAIGN.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </filters>
         <label>All Marketing Campaigns</label>
     </listViews>
     <listViews>
@@ -5629,6 +5611,9 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
         <columns>CAMPAIGN.STATUS</columns>
         <columns>Core_MDF_Total_Campaign_Cost_Amt__c</columns>
         <columns>Core_MDF_Reimbursement_Amount_Amt__c</columns>
+        <columns>Core_MDF_Claims_Created_Ind__c</columns>
+        <columns>CORE.USERS.FIRST_NAME</columns>
+        <columns>CORE.USERS.LAST_NAME</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CAMPAIGN.RECORDTYPE</field>
@@ -5774,7 +5759,13 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
         <columns>CAMPAIGN.START_DATE</columns>
         <columns>CAMPAIGN.END_DATE</columns>
         <columns>Core_MDF_Priority__c</columns>
+        <columns>Core_MDF_Program__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operation>equals</operation>
+            <value>Data Center CoMarketing Fund</value>
+        </filters>
         <label>Co-Marketing Campaigns</label>
         <sharedTo>
             <group>CORE_MDF_CCP_CCFB_All</group>
@@ -9174,6 +9165,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>RUSSIAN FEDERATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>RWANDA</fullName>
                 <default>false</default>
             </values>
@@ -9549,6 +9544,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial Evo %28non-vPro%29</fullName>
                 <default>false</default>
             </values>
@@ -9578,6 +9577,18 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9620,6 +9631,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial Evo %28non-vPro%29</fullName>
                 <default>false</default>
             </values>
@@ -9649,6 +9664,18 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9691,6 +9718,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial Evo %28non-vPro%29</fullName>
                 <default>false</default>
             </values>
@@ -9720,6 +9751,18 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14423,10 +14466,6 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
-                <fullName>Core Solutions</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>DCF 1%2E0</fullName>
                 <default>false</default>
             </values>
@@ -15044,10 +15083,6 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Design Win vs%2E Comp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Transformation</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -16890,10 +16925,6 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
-                <fullName>Digital Transformation</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Digital Workplace</fullName>
                 <default>false</default>
             </values>
@@ -17370,10 +17401,6 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Design Win vs%2E Comp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Transformation</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21758,6 +21785,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>RUSSIAN FEDERATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>RWANDA</fullName>
                 <default>false</default>
             </values>
@@ -22141,7 +22172,19 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Network Transformation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -22192,6 +22235,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Security</fullName>
                 <default>false</default>
             </values>
@@ -22236,6 +22283,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Network Transformation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -24809,10 +24860,6 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Datacenter Modernization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Transformation</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -28968,6 +29015,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Arria%C2%AE</fullName>
                 <default>false</default>
             </values>
@@ -29101,6 +29152,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Intel%C2%AE Gaudi%C2%AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -29803,6 +29858,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial%E2%80%8B - Large enterprise</fullName>
                 <default>false</default>
             </values>
@@ -29891,6 +29950,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multi-Access Edge Computing</fullName>
                 <default>false</default>
             </values>
@@ -29908,6 +29971,14 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -31004,6 +31075,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>ROMANIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RUSSIAN FEDERATION</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -32940,6 +33015,14 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -35943,6 +36026,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>ROMANIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RUSSIAN FEDERATION</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -56364,42 +56451,6 @@ Core_MDF_External_Visibility_Date__c &gt;  StartDate)
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
         <url>/701/e?retURL=%2F701%2Fo&amp;RecordType=0122100000005rl&amp;ent=Campaign</url>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__LinkEventsToCampaign</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Link Cvent Events</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__CampaignManagementSettingsTab</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__SendInvitation</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Send Invitation</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__CampaignManagementTab</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
     </webLinks>
     <webLinks>
         <fullName>ViewAllCampaignMembers</fullName>

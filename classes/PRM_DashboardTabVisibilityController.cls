@@ -111,7 +111,7 @@ public without sharing class PRM_DashboardTabVisibilityController {
         if(relation =='Employee'){
             rr.userType = 'Employee';
             if(!legalAgreement){
-                rr.link = '/ipa/s/post-launch-non-primary';
+                //rr.link = '/ipa/s/post-launch-non-primary';
             }
               if(!isStepOneCompleted) {
                 rr.onBoardingReidrecturl = System.Label.PRM_Post_Launch_Non_Primary_Link;  

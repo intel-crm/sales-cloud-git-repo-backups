@@ -140,7 +140,9 @@ public without sharing class Core_ERPMInboundMessage_ContactService {
                 }
             // Did not find matching Contact so this the new contact insertion.
             else {
-                 if(mapCreateContact.containsKey('createContact') && mapCreateContact.get('createContact').IsActive__c){
+                person.ignoreMessage=true;
+                person.ignoreReason = 'No matching contact found';
+                if(mapCreateContact.containsKey('createContact') && mapCreateContact.get('createContact').IsActive__c){
                     if (!person.personAccounts.isEmpty()) {
                         //Insertion of contact if matching Contact is not found
                         createContact(person,matchingAccountMap,newContact,allAccountIds,acctIdRelationshipsMap,contactId,sfAcctId,queryFields);
@@ -198,7 +200,9 @@ public without sharing class Core_ERPMInboundMessage_ContactService {
             DisablePartnerPortalUser(ContactPartnerDisableList);
         }
         //processing Erpm Subscription
-        processContactOnErpmSubscription(updateContactSet1Map,eRPM_Subscriptions,eRPMChangeAgentId,contactId);
+        if (!person.ignoreMessage) {
+            processContactOnErpmSubscription(updateContactSet1Map,eRPM_Subscriptions,eRPMChangeAgentId,contactId);
+        }
     
         Map<String,Contact> allContactsMap = new Map<String,Contact>();
         Map<String,Contact> insertedContactsMap = new Map<String,Contact>();

@@ -145,7 +145,7 @@
         <field>Case$Core_Severity__c</field>
     </columns>
     <filter>
-        <booleanFilter>(((1 AND 2 AND 3 AND 4 AND (( 5 AND 6) OR (7 AND 8))) AND 9)) AND 10</booleanFilter>
+        <booleanFilter>((1 AND 2 AND 3 AND 4 AND ((5 AND 6) OR (7 AND 8))) AND 9) AND 10</booleanFilter>
         <criteriaItems>
             <column>Case$RecordType</column>
             <columnToColumn>false</columnToColumn>

@@ -13,7 +13,7 @@
     <enableInboxActivitySharing>false</enableInboxActivitySharing>
     <enableInsightsInTimeline>false</enableInsightsInTimeline>
     <enableInsightsInTimelineEacStd>false</enableInsightsInTimelineEacStd>
-    <provisionProductivityFeatures>true</provisionProductivityFeatures>
+    <provisionProductivityFeatures>false</provisionProductivityFeatures>
     <relationshipGraphPref>true</relationshipGraphPref>
     <s2XSvcAccEmail>true</s2XSvcAccEmail>
     <salesforceEventsOnlyPref>true</salesforceEventsOnlyPref>

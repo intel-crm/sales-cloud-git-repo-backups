@@ -86,6 +86,10 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                     ContactForPAD = objContact;
                 }
 
+                /*if(objConEnt.Core_Entitlement_Id__r.name == 'Partner Admin Delegate'){
+                    ContactForPAD = objConEnt.Core_Contact_Id__r;
+                }*/
+
             }else if(objConEntWrapper.isSelected){
                 objConEnt = new Core_Contact_Entitlement__c(Core_Contact_Id__c=sContactIdStr, 
                                                             Core_Entitlement_Id__c=objConEntWrapper.entitlementId,Core_Status__c='Pending',
@@ -97,6 +101,9 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                     ContactForPAD = objContact;
                 }
                 
+                /*if(objConEnt.Core_Entitlement_Id__r.name == 'Partner Admin Delegate'){
+                    ContactForPAD = objConEnt.Core_Contact_Id__r;
+                }*/
             }
         }
         System.debug('#55 lstCoreContactEntitlements: ' + lstCoreContactEntitlements);
@@ -121,7 +128,9 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
 				objContact.Core_AGS_Integration_Status__c = 'Pending';
 				update objContact;
 			}
+            System.debug('@RRT contact for pad:'+ContactForPAD);
             if(ContactForPAD != null  && ContactForPAD.Id != null && ContactForPAD.AccountId != null){
+                System.debug('@RRT contact for pad inside if:'+ContactForPAD);
                 EPUM_ContactEntitlement_Util.updateACR(ContactForPAD);
             }
         }
@@ -222,6 +231,8 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
         final string ENT_WITH_BENEFITS_RT = 'PRM_EntitlementWithBenefits';
         final string ENT_WITHOUT_BENEFITS_RT = 'PRM_EntitlementWithoutBenefits';
         final string ENT_IPA_EPUM = 'Entitlements for IPA EPUM';
+        final string DEAL_INCENTIVE_ENT = 'Deal Incentive User';
+        final string DEAL_INCENTIVE_AFFILIATION = 'Deal Incentive';
         Integer intTierRank; 
         
         Set<Id> setPartnerBenfitIds = new Set<Id>();
@@ -317,6 +328,19 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                                                           String[] names = (epa.Core_Entitlements_Allowed__c).split(';');                                    
                                                           setEntitlementNames.addAll(names);                                 
                                                       }
+        // Show 'Deal Incentive User' only when the OPID has an active Deal Incentive affiliation
+        if(setEntitlementNames.contains(DEAL_INCENTIVE_ENT)){
+            Integer dealIncentiveAffiliationCount = 0;
+            if(String.isNotBlank(onePartnerIdOfPC)){
+                dealIncentiveAffiliationCount = [SELECT count() FROM PRM_IPA_Affiliation__c 
+                                                 WHERE PRM_Account__c =:onePartnerIdOfPC 
+                                                 AND PRM_Active__c = true 
+                                                 AND PRM_Builder_Strategy__r.Name =:DEAL_INCENTIVE_AFFILIATION LIMIT 1];
+            }
+            if(dealIncentiveAffiliationCount == 0){
+                setEntitlementNames.remove(DEAL_INCENTIVE_ENT);
+            }
+        }
         System.debug('---setEntitlementNames--'+setEntitlementNames+'---setEntitlementIds--'+setEntitlementIds);
         lstCoreEntitlements =   [SELECT Name, Core_Display_Name__c,Id,Core_Sub_Category__c, Core_Help_Text__c,Core_Category__c 
                                  FROM Core_Entitlement__c
@@ -498,6 +522,7 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
 
     public static void updateACR(Contact contid){
             
+                System.debug('@RRT contid'+contid);
                 String STR_ELIGIBLE_ENTITLEMENT = 'Partner Admin Delegate';
 
                 Id contactid = contid.Id;
@@ -514,7 +539,13 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
 
                 List<PRM_Account_Contact_Relationship__c> existingContEnt = [SELECT id,PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_Relationship_Id__r.name,PRM_Status_Nm__c,PRM_Start_Date_Dt__c,PRM_InActive_Ind__c,PRM_Status_Reason_Txt__c FROM PRM_Account_Contact_Relationship__c WHERE /*PRM_Relationship_Id__r.name = :STR_ELIGIBLE_ENTITLEMENT*/ PRM_Relationship_Id__c = :relationId AND PRM_Contact_Id__c = :contactid];
 
+                //Id RelationId= [SELECT Id FROM PRM_ContactRelationships__c WHERE name = :STR_ELIGIBLE_ENTITLEMENT AND PRM_InActive_Ind__c = false LIMIT 1].Id;
 
+                /*for(PRM_ContactRelationships__c pcr : [SELECT Id FROM PRM_ContactRelationships__c WHERE name =: STR_ELIGIBLE_ENTITLEMENT AND PRM_InActive_Ind__c = false LIMIT 1]){
+                    RelationId = pcr.id;
+                }*/
+
+                System.debug('@RRT existingContEnt'+existingContEnt);
                 list<PRM_Account_Contact_Relationship__c> acrForPAD = new list<PRM_Account_Contact_Relationship__c>();
 
                 if(existingContEnt != null && !existingContEnt.isEmpty()){
@@ -539,6 +570,7 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                                     ));
                 }
 
+                System.debug('@RRT acrForPAD'+acrForPAD);
 
                     if(!acrForPAD.isEmpty()){
 

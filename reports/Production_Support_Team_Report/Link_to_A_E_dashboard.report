@@ -1735,12 +1735,6 @@
         <field>Contact.Core_Audience__c</field>
     </columns>
     <columns>
-        <field>Contact.mkto_si__Add_to_Marketo_Campaign__c</field>
-    </columns>
-    <columns>
-        <field>Contact.mkto_si__Current_Sales_Campaign__c</field>
-    </columns>
-    <columns>
         <field>Contact.Core_MINDS__c</field>
     </columns>
     <columns>
@@ -1792,9 +1786,6 @@
         <field>Contact.PRM_Wechat_Union_Id__c</field>
     </columns>
     <columns>
-        <field>Contact.mkto_si__HideDate__c</field>
-    </columns>
-    <columns>
         <field>Contact.Core_Deletion_Reason__c</field>
     </columns>
     <columns>
@@ -1819,15 +1810,6 @@
         <field>Contact.Core_LS_Company_Industry__c</field>
     </columns>
     <columns>
-        <field>Contact.mkto_si__Last_Activity_By_Sales__c</field>
-    </columns>
-    <columns>
-        <field>Contact.mkto_si__Last_Interesting_Moment_Date__c</field>
-    </columns>
-    <columns>
-        <field>Contact.CventEvents__ContactStub__c</field>
-    </columns>
-    <columns>
         <field>Contact.Core_Account_Primary_Name__c</field>
     </columns>
     <columns>
@@ -1838,9 +1820,6 @@
     </columns>
     <columns>
         <field>Contact.Core_Sales_Do_Not_Contact_Ind__c</field>
-    </columns>
-    <columns>
-        <field>Contact.mkto_si__Last_Interesting_Moment_Desc__c</field>
     </columns>
     <columns>
         <field>Contact.Core_LS_Company_Name__c</field>
@@ -1942,6 +1921,24 @@
         <field>Contact.Core_Suppress_IPA_Email__c</field>
     </columns>
     <columns>
+        <field>Contact.mkto_si__Add_to_Marketo_Campaign__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__Current_Sales_Campaign__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__HideDate__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__Last_Activity_By_Sales__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__Last_Interesting_Moment_Date__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__Last_Interesting_Moment_Desc__c</field>
+    </columns>
+    <columns>
         <field>Contact.mkto_si__Last_Interesting_Moment_Source__c</field>
     </columns>
     <columns>
@@ -1984,7 +1981,19 @@
         <field>Contact.mkto_si__Urgency__c</field>
     </columns>
     <columns>
+        <field>Contact.SWS_Priority__c</field>
+    </columns>
+    <columns>
+        <field>Contact.SWS_Relative_Urgency__c</field>
+    </columns>
+    <columns>
         <field>Contact.PRM_Impartner_Deal_Sync__c</field>
+    </columns>
+    <columns>
+        <field>Contact.SWS_Marketo_Email_Invalid_Cause__c</field>
+    </columns>
+    <columns>
+        <field>Contact.SWS_Marketo_Email_Invalid__c</field>
     </columns>
     <columns>
         <field>Account.Core_B2B_ERPM_Account_Number__c</field>
@@ -2446,9 +2455,6 @@
         <field>Account.Core_MDF_Parent_Fund_Account__c</field>
     </columns>
     <columns>
-        <field>Account.Core_IPA_Partner_Role_History__c</field>
-    </columns>
-    <columns>
         <field>Account.Core_Lead_to_Account_Conversion__c</field>
     </columns>
     <columns>
@@ -2851,30 +2857,6 @@
         <field>Account.Core_Parent_Business_Party_Id__c</field>
     </columns>
     <columns>
-        <field>Account.mkto_si__Current_Sales_Campaign__c</field>
-    </columns>
-    <columns>
-        <field>Account.mkto_si__Last_Activity_By_Sales__c</field>
-    </columns>
-    <columns>
-        <field>Account.mkto_si__Last_Sales_Engagement__c</field>
-    </columns>
-    <columns>
-        <field>Account.mkto_si__Sales_Insight__c</field>
-    </columns>
-    <columns>
-        <field>Account.mkto_si__Sales_Last_Replied__c</field>
-    </columns>
-    <columns>
-        <field>Account.PRM_Impartner_Deal_Sync__c</field>
-    </columns>
-    <columns>
-        <field>Account.PRM_Is_Deal_End_Customer_Account__c</field>
-    </columns>
-    <columns>
-        <field>Account.PRM_Is_Deal_Partner_Account__c</field>
-    </columns>
-    <columns>
         <field>Account.PRM_Count_IPA_Terms_And_Conditions__c</field>
     </columns>
     <columns>
@@ -3002,6 +2984,57 @@
     </columns>
     <columns>
         <field>Account.Core_Comment_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.mkto_si__Current_Sales_Campaign__c</field>
+    </columns>
+    <columns>
+        <field>Account.mkto_si__Last_Activity_By_Sales__c</field>
+    </columns>
+    <columns>
+        <field>Account.mkto_si__Last_Sales_Engagement__c</field>
+    </columns>
+    <columns>
+        <field>Account.mkto_si__Sales_Insight__c</field>
+    </columns>
+    <columns>
+        <field>Account.mkto_si__Sales_Last_Replied__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Compliance_Status__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ER_Account_Group__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ER_Direct_CustomerRelationship_Code__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ER_Sales_Area_Order_Block_Code__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ER_Sales_Area_Order_Block_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ER_Sales_Disti_Chnl_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ER_Sales_Org_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_Partner_Role_History__c</field>
+    </columns>
+    <columns>
+        <field>Account.PRM_Impartner_Deal_Sync__c</field>
+    </columns>
+    <columns>
+        <field>Account.PRM_Is_Deal_End_Customer_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.PRM_Is_Deal_Partner_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Last_Reminder_Sent__c</field>
     </columns>
     <description>This is a placeholder report to link to A&amp;E dashboard</description>
     <filter>

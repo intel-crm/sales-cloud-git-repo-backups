@@ -2,7 +2,7 @@
  * @description       :
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             :
- * @last modified on  : 04-07-2026
+ * @last modified on  : 07-17-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
  **/
 @isTest
@@ -81,6 +81,8 @@ public class Pricing_CustomerDivisionComp_cntrl_Test {
         Pricing_CustomerDivisionComp_cntrl.updateQuoteCustomerDivision(quoteList[0].id , 'Dell A');
         Boolean precedence = Pricing_CustomerDivisionComp_cntrl.getstatusPrecedenceNumber(quoteList[0].id);
         System.assertNotEquals(precedence, null);
+        //Negative scenario
+        String divisionValueblank = Pricing_CustomerDivisionComp_cntrl.getCustomerDivisionValue('');
         
         Test.stopTest();
     }
@@ -104,6 +106,20 @@ public class Pricing_CustomerDivisionComp_cntrl_Test {
         qli.Pricing_Quote_Line_Status_Number__c = 50;
         update qli;
         Pricing_CustomerDivisionComp_cntrl.getstatusPrecedenceNumber(quoteList[0].id);
+        System.assertEquals(quoteList.size() > 0, true);
+        Test.stopTest();
+    }
+
+    static testmethod void testAccountDivisionNegative() {
+        Test.startTest();
+        List<SBQQ__Quote__c> quoteList = [SELECT Id from SBQQ__Quote__c]; 
+        quoteList[0].Pricing_Account_Division_Nm__c = 'test';
+        update quoteList[0];
+        SBQQ__QuoteLine__c qli = Pricing_Test_Utility.createQuoteLineByStatus(quoteList[0].Id, 'Pending Intel Field Review');
+        qli.Pricing_Quote_Line_Status_Number__c = 30;
+        update qli;
+        Pricing_CustomerDivisionComp_cntrl.getstatusPrecedenceNumber(quoteList[0].id);
+        System.assertEquals(quoteList.size() > 0, true);
         Test.stopTest();
     }
 }

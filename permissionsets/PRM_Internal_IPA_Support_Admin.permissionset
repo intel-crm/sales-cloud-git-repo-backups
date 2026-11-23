@@ -283,11 +283,6 @@
         <field>PRM_Partner_Subscription__c.PRM_Subscription_Type_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>PRM_Registration_Request__c.PRM_Is_Returning_User__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>PRM Internal IPA Support Admin</label>
     <license>Salesforce</license>
@@ -1322,6 +1317,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>CreateReportFolders</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>CustomizeApplication</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

@@ -1,0 +1,6 @@
+A new change request record has been created and requires your approval:
+
+Type: {!Core_Change_Request__c.RecordType}
+Name: {!Core_Change_Request__c.Name}
+Submitted by: {!Core_Change_Request__c.CreatedBy}
+Record Link: {!Core_Change_Request__c.Link}

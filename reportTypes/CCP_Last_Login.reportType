@@ -402,11 +402,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>User_Unique__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>WirelessTrialExpirationDate</field>
             <table>User</table>
         </columns>
@@ -423,6 +418,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Contact.Contact_ID__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_License_Reclaimed_on_Creation__c</field>
             <table>User</table>
         </columns>
         <masterLabel>Users</masterLabel>

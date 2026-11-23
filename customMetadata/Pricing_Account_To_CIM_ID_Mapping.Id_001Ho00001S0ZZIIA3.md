@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>CIM_Id__c</field>
-        <value xsi:type="xsd:string">1001882030</value>
+        <value xsi:type="xsd:string">52583711</value>
     </values>
     <values>
         <field>Pricing_Number_of_Days__c</field>

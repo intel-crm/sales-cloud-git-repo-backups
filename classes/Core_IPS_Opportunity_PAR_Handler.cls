@@ -19,12 +19,14 @@ public without sharing class Core_IPS_Opportunity_PAR_Handler {
             Map<Id,String> approverMap = new Map<Id,String>();
             
             for(Core_IPS_Opportunity_PAR__c oppParApproval :oppParApprovalList){
-                ProcessInstanceHistory  processStep = oppParApproval.ProcessSteps[0];
-                if(processStep!=null && oppParIdMap.get(oppParApproval.Id).Core_IPS_Approval_Status__c == 'Approved'){
-                    queueIds.add(processStep.OriginalActorId);
-                    oppParIdMap.get(oppParApproval.Id).Approved_By__c = processStep.ActorId;
-                    
-                }    
+                if(oppParApproval.ProcessSteps.size()>0){  // TWC745-9175 - Exceptional Handling - Phani Start If Condition
+                    ProcessInstanceHistory  processStep = oppParApproval.ProcessSteps[0];
+                    if(processStep!=null && oppParIdMap.get(oppParApproval.Id).Core_IPS_Approval_Status__c == 'Approved'){
+                        queueIds.add(processStep.OriginalActorId);
+                        oppParIdMap.get(oppParApproval.Id).Approved_By__c = processStep.ActorId;
+                        
+                    }    
+                } // TWC745-9175 - Exceptional Handling - Phani End If Condition
             }
             
             
@@ -34,6 +36,7 @@ public without sharing class Core_IPS_Opportunity_PAR_Handler {
     @future
     public static void deleteGroup(List<Id> queueIds){
         List<Group> groupList = new List<Group>();
+
         for(Id queueId: queueIds){
             if(!Test.isRunningTest()){
                 groupList.add(new Group(Id=queueId));
@@ -42,7 +45,7 @@ public without sharing class Core_IPS_Opportunity_PAR_Handler {
         if(groupList.size()>0){
             
             if(Group.SObjectType.getDescribe().isDeletable()){ 
-                delete groupList;
+                Database.delete(groupList,false); // TWC745-9175 - Exceptional Handling - Phani
             }
         }
     }

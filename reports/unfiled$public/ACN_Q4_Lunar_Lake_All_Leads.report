@@ -73,7 +73,7 @@
         <field>COUNTRY_CODE</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
         <criteriaItems>
             <column>Lead.Core_Lead_Conversion_Point__c</column>
             <columnToColumn>false</columnToColumn>
@@ -121,14 +121,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessOrEqual</operator>
-            <value>1/2/2026 11:30 PM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>COUNTRY_CODE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CAN,USA</value>
+            <value>12/5/2025 11:30 PM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -148,7 +141,7 @@
         <field>Lead.Core_Lead_Conversion_Point__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>&lt;ACN&gt; Q4 Lunar Lake All Leads AMER</name>
+    <name>&lt;ACN&gt; Q4 Lunar Lake All Leads</name>
     <params>
         <name>co</name>
         <value>1</value>

@@ -96,8 +96,10 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
             }            
             //Get existing contact details
             if(!regReqIdExistingContIdMap.isEmpty() || !regReqEmails.isEmpty() || !regReqDuplicateAccIdSet.isEmpty()){
-                //Get any files attached to request record                
-                for(ContentDocumentLink contDocLinkRec: [Select id, ContentDocumentId, LinkedEntityId from ContentDocumentLink where LinkedEntityId IN: reordIds]){
+                //Get any files attached to request record      
+                system.debug('reordIdsssss'+reordIds);   
+                if(reordIds!=null && !reordIds.isEmpty())  {
+                    for(ContentDocumentLink contDocLinkRec: [Select id, ContentDocumentId, LinkedEntityId from ContentDocumentLink where LinkedEntityId IN: reordIds]){
                     if(regRequestFilesMap.containsKey(contDocLinkRec.LinkedEntityId)){
                         List<ContentDocumentLink> filesList = regRequestFilesMap.get(contDocLinkRec.LinkedEntityId);
                         filesList.add(contDocLinkRec);
@@ -105,7 +107,9 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
                     }else{
                         regRequestFilesMap.put(contDocLinkRec.LinkedEntityId, new List<ContentDocumentLink>{contDocLinkRec});	        
                     }    
-                }             
+                }    
+             }     
+                         
 
                 List<Contact> contList = new List <Contact>();
                 
@@ -731,13 +735,14 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
         }
     }
     
-    public static String getPartnerSegment(String segType) {
+    //ATHR Fix - TWC729-9556
+    /*public static String getPartnerSegment(String segType) {
         String partnerSegment = '';
         if(segType != '') {
             /* fetching role type from metadata */
             //Map<String,String> roleTypeMap = new Map<String,String>();
             
-            /* fetch segment type from metadata */
+            /* fetch segment type from metadata 
             Map<String,String> segTypeMap = new Map<String,String>();
             for(PRM_PartnerRoleTypeMappings__mdt segTypeReq : [Select Id,PRM_Partner_Role__c,PRM_Partner_Segment__c from PRM_PartnerRoleTypeMappings__mdt where PRM_Partner_Segment__c != null]){
                 segTypeMap.put(segTypeReq.PRM_Partner_Role__c,segTypeReq.PRM_Partner_Segment__c);
@@ -749,7 +754,7 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
             }
         }
         return partnerSegment;
-    }
+    }*/
     
     private class processRegRecordWrapper{
         Account acc;
@@ -849,16 +854,17 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
             }
             Map<Id, List<PRM_AccountLegalAgreemntAssociation__c>>  alaMap = new Map<Id, List<PRM_AccountLegalAgreemntAssociation__c>>();     
             //check for duplicates:
-            for(PRM_AccountLegalAgreemntAssociation__c ala : [Select id,PRM_Account_Id__c,PRM_InActive_Ind__c,PRM_Partner_Agreement_Id__c from PRM_AccountLegalAgreemntAssociation__c where PRM_Account_Id__c IN :accIdSet and PRM_Partner_Agreement_Id__c in : legalAgrmntMap.values() AND PRM_InActive_Ind__c = false])
-            {
-                List<PRM_AccountLegalAgreemntAssociation__c> alaList;
-                if(alaMap.containsKey(ala.PRM_Account_Id__c)){   alaList = alaMap.get(ala.PRM_Account_Id__c);
-                }else{
-                    alaList = new List<PRM_AccountLegalAgreemntAssociation__c>();    
-                }  
-                alaList.add(ala);
-                alaMap.put(ala.PRM_Account_Id__c, alaList);
-            }
+               for(PRM_AccountLegalAgreemntAssociation__c ala : [Select id,PRM_Account_Id__c,PRM_InActive_Ind__c,PRM_Partner_Agreement_Id__c from PRM_AccountLegalAgreemntAssociation__c where PRM_Account_Id__c IN :accIdSet and PRM_Partner_Agreement_Id__c in : legalAgrmntMap.values() AND PRM_InActive_Ind__c = false])
+                {
+                    List<PRM_AccountLegalAgreemntAssociation__c> alaList;
+                    if(alaMap.containsKey(ala.PRM_Account_Id__c)){   alaList = alaMap.get(ala.PRM_Account_Id__c);
+                    }else{
+                        alaList = new List<PRM_AccountLegalAgreemntAssociation__c>();    
+                    }  
+                    alaList.add(ala);
+                    alaMap.put(ala.PRM_Account_Id__c, alaList);
+                }
+        	
             Map<Id, List<PRM_AccountChannelMembership__c>> accountIdACMListMap = new Map<Id, List<PRM_AccountChannelMembership__c>>();
             if(accIdSet!=null && !accIdSet.isEmpty() && regRequestChannelProgramSet!=null && !regRequestChannelProgramSet.isEmpty() && regRequestPartnerRoleSet!=null && !regRequestPartnerRoleSet.isEmpty()){//NJ SOQL fix
                 for(PRM_AccountChannelMembership__c acm: [Select id,PRM_Account_Id__c,PRM_Partner_Role__c,PRM_Channel_Program_Id__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c IN :accIdSet and PRM_Channel_Program_Id__c  IN :regRequestChannelProgramSet and PRM_Partner_Role__c IN :regRequestPartnerRoleSet]){
@@ -1350,7 +1356,7 @@ inputParameters.put('EmailContent_Setup',emailSetup.Id);
             if(conList != null && conList.size()>0)
             {
                 List<User> userList = new List<User>();
-                userList = [Select id,Email,contactId from User where contactId=:conList[0].id];  
+                userList = [Select id/*,Email,contactId*/ from User where contactId=:conList[0].id];  //ATHR Fix - TWC729-9556
                 for(PRM_EmailLog__c log : emailLogList)
                 {
                     log.PRM_Contact__c = conList[0].id; 
@@ -1837,7 +1843,7 @@ inputParameters.put('EmailContent_Setup',emailSetup.Id);
                 {
                    
                     accConRel = existingACRMap.get(String.valueOf(accConRel.PRM_Account_Id__c)+String.valueOf(accConRel.PRM_Contact_Id__c)+String.valueOf(accConRel.PRM_Relationship_Id__c));
-                    
+                    //accConRel.PRM_Status_Reason_Txt__c = 'Approved as part of Self Registration';
                     if(regRequest.PRM_Is_Returning_User__c &&
                        String.isNotBlank(regRequest.PRM_Review_Note_txt__c))//TWC729-9379  PCR status reason should be UIOLI Return Journey when the contact has come through Self Reg process of UIOLI
                     {

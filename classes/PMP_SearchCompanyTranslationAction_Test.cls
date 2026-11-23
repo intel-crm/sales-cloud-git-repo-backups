@@ -11,7 +11,12 @@ Description : Test Class for PMP_SearchCompanyTranslationAction
 *************************************************************************************/
 @isTest
 private class PMP_SearchCompanyTranslationAction_Test {
-    
+   /* @isTest
+    static void testIsWorking() {
+        Boolean result = PMP_SearchCompanyTranslationAction.isWorking();
+        System.assertEquals(true, result);
+    }*/
+
     @testSetup
     static void setupTestData() {
         Core_Trigger_Executions__c cs = new Core_Trigger_Executions__c (Name = 'Company_Info_Handler',
@@ -22,7 +27,7 @@ private class PMP_SearchCompanyTranslationAction_Test {
                                                                         Core_Description__c = 'Update and create Partners');
         insert cs;
     }
-   
+ 
     @isTest static void testTranslationTrigger(){
         PMP_Company__c comp = new PMP_Company__c();
       	comp.Name = 'testCompany';

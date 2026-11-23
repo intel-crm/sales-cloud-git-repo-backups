@@ -8,6 +8,30 @@ Created By          :    Ramapriya
 @RestResource(urlMapping='/access/fetchstatus')
 global without sharing class Core_MDF_IUPGM_StatusAPI {
 
+    private static final Map<String, Map<String, String>> STATUS_LABELS_BY_TYPE = 
+        new Map<String, Map<String, String>>{
+            'GRANT' => new Map<String, String>{
+                'New' => 'Request Received',
+                'AGS_User_Creation_Pending' => 'Creating Salesforce User',
+                'AGS_PS_Pending' => 'Awaiting AGS Approval',
+                'Completed' => 'Access Granted',
+                'Validation_Failed' => 'Validation Failed',
+                'External_User_Blocked' => 'Request Blocked',
+                'AGS_Rejected' => 'AGS Request Rejected',
+                'Error' => 'Processing Error'
+            },
+            'REVOKE' => new Map<String, String>{
+                'New' => 'Request Received',
+                'AGS_User_Creation_Pending' => 'Deactivating Access',
+                'AGS_PS_Pending' => 'Deactivating Access',
+                'Completed' => 'Access Removed',
+                'Validation_Failed' => 'Validation Failed',
+                'External_User_Blocked' => 'Request Blocked',
+                'AGS_Rejected' => 'Processing Failed',
+                'Error' => 'Processing Error'
+            }
+        };
+
     private static final Map<String, String> STATUS_LABELS = new Map<String, String>{
        'New' => 'Request Received',
        'AGS_User_Creation_Pending' => 'Creating Salesforce User',
@@ -54,6 +78,8 @@ global without sharing class Core_MDF_IUPGM_StatusAPI {
                         Core_MDF_IUPGM_Role_nm__c,
                         Core_MDF_IUPGM_Program__c,
                         Core_MDF_Request_Status_nm__c,
+                        Core_MDF_Request_Type_nm__c,
+                        Core_MDF_Action_nm__c,
                         Core_MDF_AGS_Status_nm__c,
                         Core_MDF_AGS_Request_Type__c,
                         Core_MDF_AGS_Request_Id__c,
@@ -101,6 +127,7 @@ global without sharing class Core_MDF_IUPGM_StatusAPI {
             // Build human-readable message for chatbot to relay to user
             String humanMessage = buildHumanMessage(
                 currentStatus,
+                record.Core_MDF_Request_Type_nm__c,
                 record.Core_MDF_AGS_Status_nm__c,
                 record.Core_MDF_AGS_Request_Type__c,
                 record.Core_MDF_Error_Message_txt__c,
@@ -112,6 +139,8 @@ global without sharing class Core_MDF_IUPGM_StatusAPI {
                 'success'           => true,
                 'requestNumber'     => record.Name,
                 'userName'          => record.Core_MDF_IUPGM_User__r.Name,
+                'requestType'       => record.Core_MDF_Request_Type_nm__c,
+                'action'            => record.Core_MDF_Action_nm__c,
                 'userEmail'         => record.Core_MDF_IUPGM_User__r.Email,
                 'role'              => roleLabel,
                 'program'           => record.Core_MDF_IUPGM_Program__c,
@@ -161,27 +190,38 @@ global without sharing class Core_MDF_IUPGM_StatusAPI {
    /******************************************************************************************************
     Method Name:        buildHumanMessage
     Description:        Builds a user-facing status description from the internal staging and AGS state.
+                        Differentiates between GRANT and REVOKE request types.
     Added By:           Ramapriya
     *******************************************************************************************************/
     
     private static String buildHumanMessage(
         String status,
+        String requestType,
         String agsStatus,
         String agsType,
         String errorMessage,
         String userName
     ) {
         String name = String.isNotBlank(userName) ? userName : 'The user';
+        Boolean isRevoke = 'REVOKE'.equalsIgnoreCase(requestType);
 
         if (status == 'New') {
             return 'The request has been received and is queued for processing.';
 
         } else if (status == 'AGS_User_Creation_Pending') {
+            if (isRevoke) {
+                return 'The access deactivation is being processed. '
+                    + 'You will receive an email notification once the access has been removed.';
+            }
             return name + ' does not yet have a Salesforce account. '
                 + 'An AGS request has been submitted to create the user account. '
                 + 'You will receive an email notification once the user is created.';
 
         } else if (status == Core_MDF_CCP_ConstantClass.IUPGM_STATUS_AGS_PS_PENDING) {
+            if (isRevoke) {
+                return 'The access deactivation is being processed. '
+                    + 'You will receive an email notification once the access has been removed.';
+            }
             return name + ' does not yet have the required system access '
                 + 'for this role. An AGS request has been submitted to assign '
                 + 'the necessary permissions. '
@@ -200,11 +240,23 @@ global without sharing class Core_MDF_IUPGM_StatusAPI {
                    : 'Invalid input data.');
 
         } else if (status == Core_MDF_CCP_ConstantClass.IUPGM_STATUS_COMPLETED) {
+            if (isRevoke) {
+                return 'The access removal request for ' + name + ' has been completed successfully. '
+                    + 'All IUPGM records have been deactivated. '
+                    + name + ' no longer has the requested access.';
+            }
             return 'The access request for ' + name + ' has been completed successfully. '
                 + 'The IUPGM record has been created or updated. '
                 + name + ' should now have the requested access.';
 
         } else if (status == Core_MDF_CCP_ConstantClass.IUPGM_STATUS_AGS_REJECTED) {
+            if (isRevoke) {
+                return 'The access removal request for ' + name + ' could not be completed. '
+                    + (String.isNotBlank(errorMessage)
+                       ? Core_MDF_IUPGMReqStaging_ServiceHandler.humanizeError(errorMessage, name) + ' '
+                       : '')
+                    + 'Please contact your administrator with the request number.';
+            }
             return 'The AGS access request for ' + name + ' was rejected. '
                 + (String.isNotBlank(errorMessage)
                    ? Core_MDF_IUPGMReqStaging_ServiceHandler.humanizeError(errorMessage, name) + ' '
@@ -238,11 +290,21 @@ global without sharing class Core_MDF_IUPGM_StatusAPI {
         uiResponse.put('roleRequested', fullResponse.get('role'));
         uiResponse.put('program', fullResponse.get('program'));
 
-        // Format status with user-friendly label
+        // Format status with user-friendly label based on request type
         String rawStatus = (String) fullResponse.get('status');
-        String statusLabel = STATUS_LABELS.containsKey(rawStatus)
-            ? STATUS_LABELS.get(rawStatus)
-            : rawStatus.replace('_', ' ');
+        String requestType = (String) fullResponse.get('requestType');
+        String statusLabel = rawStatus;
+        
+        if (String.isNotBlank(requestType) && STATUS_LABELS_BY_TYPE.containsKey(requestType)) {
+            Map<String, String> typeLabels = STATUS_LABELS_BY_TYPE.get(requestType);
+            statusLabel = typeLabels.containsKey(rawStatus)
+                ? typeLabels.get(rawStatus)
+                : rawStatus.replace('_', ' ');
+        } else {
+            statusLabel = STATUS_LABELS.containsKey(rawStatus)
+                ? STATUS_LABELS.get(rawStatus)
+                : rawStatus.replace('_', ' ');
+        }
         uiResponse.put('statusLabel', statusLabel);
 
         // Format submitted date to user-friendly format
@@ -252,6 +314,9 @@ global without sharing class Core_MDF_IUPGM_StatusAPI {
         // Include context-aware message
         uiResponse.put('statusDescription', fullResponse.get('statusDescription'));
 
+        // Additive fields: expose request type, action, AGS request id, and error detail to UI
+        uiResponse.put('requestType', fullResponse.get('requestType'));
+        uiResponse.put('action', fullResponse.get('action'));
         uiResponse.put('agsRequestId', fullResponse.get('agsRequestId'));
         uiResponse.put('errorMessage', fullResponse.get('errorMessage'));
 

@@ -428,7 +428,7 @@ This field value cannot be changed once checked as Public Product.</inlineHelpTe
         <inlineHelpText>Reference to the Master Data product.</inlineHelpText>
         <label>Product Name</label>
         <lookupFilter>
-            <active>true</active>
+            <active>false</active>
             <booleanFilter>1 AND 2</booleanFilter>
             <errorMessage>Product Master Data record is not IPS Visible. Exit this screen and request Data Ops to set Product to IPS Visible.</errorMessage>
             <filterItems>

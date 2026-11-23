@@ -17,12 +17,12 @@ public class ER_SalesCloud_Integration_Test {
         String partnerAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         List<Account> lstAccts = new List<Account>();
             
-        Account partnerAccount1 = new Account(Name ='PartnerAccount1',Core_Account_Type__c = 'Distributor', /*Core_Sales_Groups__c= 'PRC Sales Group',*/
+        Account partnerAccount1 = new Account(Name ='PartnerAccount1',/*Core_Account_Type__c = 'Distributor',*/ /*Core_Sales_Groups__c= 'PRC Sales Group',*/
                                               Industry='Agriculture', BillingCity='delhi',BillingCountry='USA',BillingStreet='abc chowk delhi',BillingState='FL',
                                              ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_Intel_Partner_Alliance_PartnerGroup__c=True,OwnerId=UserInfo.getUserId(),
                                              Core_User_Defined_Website__c = 'www.testpartacc.com', Core_IPA_Partner_Role__c = 'Distributor',RecordTypeId=partnerAccRecTypeId);
         lstAccts.add(partnerAccount1);
-        Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)', /*Core_Sales_Groups__c= 'PRC Sales Group',*/
+        Account intelAccount1 = new Account(Name ='IntelAccount1',/*Core_Account_Type__c = 'Original Design Manufacturer (ODM)',*/ /*Core_Sales_Groups__c= 'PRC Sales Group',*/
                                             Industry='Agriculture', BillingCity='delhi',BillingCountry='USA',BillingStreet='cbc chowk delhi',BillingState='FL',
                                             ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_Intel_Partner_Alliance_PartnerGroup__c=True,
                                            Core_User_Defined_Website__c = 'www.testintelacc.com', Core_IPA_Partner_Role__c = 'Distributor',Core_CNDA_Number__c = '126545',RecordTypeId=partnerAccRecTypeId);
@@ -36,7 +36,7 @@ public class ER_SalesCloud_Integration_Test {
         
         //Get Contact Record Type
         Id IntelContRecTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Intel Contact').getRecordTypeId();
-        Contact cnt = new Contact(FirstName='Test',LastName='Contact1',Email='testcontact1@spamok.com',AccountId=partnerAccount1.Id,RecordTypeId=IntelContRecTypeId,
+        Contact cnt = new Contact(FirstName='Test',LastName='Contact1',Email='testcontact1@mailinator.com',AccountId=partnerAccount1.Id,RecordTypeId=IntelContRecTypeId,
                                  MailingCity='delhi',MailingState='FL',MailingCountry='USA',MailingPostalCode='123456', Core_IPA_PartnerRole__c = 'Distributor');
         insert cnt;
         
@@ -60,7 +60,7 @@ public class ER_SalesCloud_Integration_Test {
         legalAgrmnt.PRM_Account_Id__c = partnerAccount1.Id;
         legalAgrmnt.PRM_Agreement_Sign_Dt__c = system.now();
         legalAgrmnt.PRM_Partner_Agreement_Id__c = pa.Id;
-        //legalAgrmnt.PRM_Contact__c = cnt.Id;
+        legalAgrmnt.PRM_Contact__c = cnt.Id;
         insert legalAgrmnt;        
         
         PRM_Specialty__c specialty = new PRM_Specialty__c();
@@ -136,14 +136,14 @@ public class ER_SalesCloud_Integration_Test {
         
         PRM_BatchCustomSetting__c bm = new PRM_BatchCustomSetting__c();//Custom Setting Benefit Mapping
         bm.Name='BatchFieldValues';
-        bm.PRM_PartnerType__c='Cloud Service Provider (CSP)';
+        //bm.PRM_PartnerType__c='Cloud Service Provider (CSP)';
         bm.PRM_ChannelProgramLevel__c='Gold;Titanium;Member';
         bm.PRM_SchedulingHour__c=6;
         bm.PRM_NoOfRecords__c=300;
         bm.PRM_NoOfBatchEntRecords__c=10;
         bm.PRM_PartnerRole__c ='Service Provider';
         bm.PRM_MP_Benefits__c ='Solution Marketplace Enhanced';
-        insert bm; 
+        //insert bm; 
           
         PRM_AccountBenefitAssociation__c aba = new PRM_AccountBenefitAssociation__c();
         aba.PRM_Account_Id__c = partnerAccount1.Id;
@@ -237,7 +237,7 @@ public class ER_SalesCloud_Integration_Test {
         acctReq.PRM_First_Name__c = 'Test';
         acctReq.PRM_Last_Name__c = 'Account Request';
         acctReq.PRM_Email_ID__c = cnt.Email;
-        acctReq.PRM_Partner_Type__c = 'Cloud Service Provider (CSP)';
+        //acctReq.PRM_Partner_Type__c = 'Cloud Service Provider (CSP)';
         acctReq.PRM_Account_Name__c = 'Test Account Request'; 
         insert acctReq;
         
@@ -375,7 +375,7 @@ public class ER_SalesCloud_Integration_Test {
 		cmfGroupId.addAll(cmfGroupMap.keySet());
         ER_SalesCloud_Integration.GenerateCMFOutboundMessage(cmfGroupId);
         List<Contact> conList = new List<Contact>();
-        conList =[SELECT id from Contact where email ='testcontact1@spamok.com'];
+        conList =[SELECT id from Contact where email ='testcontact1@mailinator.com'];
         ER_SalesCloud_Integration.GenerateContactOBMAnE(new Set<Id>{conList[0].id});
         try{
             Integer i = 1/0;
@@ -388,7 +388,76 @@ public class ER_SalesCloud_Integration_Test {
        
     }
 
-    
+    @IsTest
+    static void testGetCMFDetails() {
+
+        User u = [SELECT Id, Name FROM User WHERE Id = :UserInfo.getUserId()];
+
+        ER_Customer_Master_File__c cmf = new ER_Customer_Master_File__c(
+            Name = 'CMF-001',
+            ER_CMF_Name__c = 'Test CMF',
+            ER_Direct_Customer_Relationship_Name__c = 'Primary',
+            ER_Direct_Customer_Relationship_Code__c = 'PR',
+            ER_Sales_Org_Code__c = '1000',
+            ER_Sales_Org_Name__c = 'North America',
+            ER_Sales_Disti_Chnl_Code__c = '10',
+            ER_Sales_Disti_Chnl_Name__c = 'Wholesale',
+            ER_CMF_Address__c = '123 Main St',
+            ER_Account_Group__c = 'AG1'
+        );
+        insert cmf;
+
+        ER_Customer_Master_File_Group__c groupRec =
+            new ER_Customer_Master_File_Group__c(
+                Name = 'Test Group',
+                ER_Active__c = true,
+                ER_Description__c = 'Test Description'
+                //ER_Count_of_Customer_Master_Files__c = 1,
+                //ER_Inactive_Customer_Master_Files__c = 0,
+                //ER_Count_of_Contacts__c = 2,
+                //ER_Inactive_Contacts__c = 0
+            );
+        insert groupRec;
+
+        ER_CMFGroupAssociation__c assoc =
+            new ER_CMFGroupAssociation__c(
+                ER_Customer_Master_File_Group__c = groupRec.Id,
+                ER_Customer_Master_File__c = cmf.Id
+            );
+        insert assoc;
+
+        List<ER_Customer_Master_File_Group__c> groupData =
+            [
+                SELECT Id, Name, CreatedDate, LastModifiedDate,
+                       CreatedBy.Name, LastModifiedBy.Name,
+                       ER_Active__c, ER_Description__c,
+                       ER_Count_of_Customer_Master_Files__c,
+                       ER_Inactive_Customer_Master_Files__c,
+                       ER_Count_of_Contacts__c,
+                       ER_Inactive_Contacts__c,
+                       (SELECT Id,
+                               ER_Customer_Master_File_Group__r.Name,
+                               ER_Customer_Master_File__r.Name,
+                               ER_Customer_Master_File__r.ER_CMF_Name__c,
+                               ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c,
+                               ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c,
+                               ER_Customer_Master_File__r.ER_Sales_Org_Code__c,
+                               ER_Customer_Master_File__r.ER_Sales_Org_Name__c,
+                               ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c,
+                               ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c,
+                               ER_Customer_Master_File__r.ER_CMF_Address__c,
+                               ER_Customer_Master_File__r.ER_Account_Group__c
+                        FROM CMFGroupAssociations__r)
+                FROM ER_Customer_Master_File_Group__c
+                WHERE Id = :groupRec.Id
+            ];
+
+        Test.startTest();
+            ER_SalesCloud_Integration.getCMFDetails(groupData);
+        Test.stopTest();
+    }
+
+
     
     
 }

@@ -146,9 +146,7 @@ public static String checkMandatoryFields(Id recordId){
                 mail.setTemplateId(request.emailTemplateId);
                 mail.setTargetObjectId(UserInfo.getUserId());
                 mail.setTreatTargetObjectAsRecipient(false);
-                if(!Test.isRunningTest()){
-                	mail.setWhatId(request.whatId);
-                }
+                mail.setWhatId(request.whatId);
                 mail.setSaveAsActivity(false);
                 mail.setOrgWideEmailAddressId(fromEmailAddress);
                 // Directly set attachment ID
@@ -157,7 +155,8 @@ public static String checkMandatoryFields(Id recordId){
                 }
                 mails.add(mail);
             }
-                        // Send emails
+            system.debug('MAILS:'+mails);
+            // Send emails
             List<Messaging.SendEmailResult> sendResults = Messaging.sendEmail(mails);
             
             // Process results

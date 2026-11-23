@@ -242,6 +242,10 @@ public with sharing class Core_MDF_PFR_Reimbursement_Handler_Test {
                                            /* Core_MDF_ProductType__c,*/ Campaign.Core_MDF_Account__r.Core_MDF_Channel_Program__c,Core_MDF_Start_Date__c,
                                             Campaign.Core_MDF_Technology__c
                                             FROM PartnerFundRequest WHERE Title ='Test CCF Activity 2' OR Title ='Test CCF Activity 2' Limit 2];
+        /*List<Core_MDF_CoMarketing_Activity_Inc_Rule__c> incentiveList = [SELECT Id, Core_MDF_Brand_Nm__c,Core_MDF_Product_Type_Txt__c,
+                                                                         Core_MDF_Activity_Category_Nm__c, Core_MDF_Activity_Type_Nm__c,
+                                                                         Core_MDF_Technology_Nm__c,Core_MDF_Effective_Dt__c, Core_MDF_Ineffective_Dt__c,
+                                                                         Core_MDF_Channel_Program_Id__c FROM Core_MDF_CoMarketing_Activity_Inc_Rule__c WHERE Core_MDF_Channel_Program_Id__c =: dcfCP.Id  LIMIT 1];*/
         
         Map<PartnerFundRequest, Id> pfrCPIdMap = new Map<PartnerFundRequest, Id>();
         for(PartnerFundRequest pfr : pfrList){

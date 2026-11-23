@@ -4,7 +4,6 @@
     <expressionSetDefinition>Pricing_Route_Rule_Expression_Set_ASMO_CCG</expressionSetDefinition>
     <label>Pricing Route Rule Expression Set  ASMO CCG V1</label>
     <processType>Bre</processType>
-    <rank>2</rank>
     <shouldShowExplExternally>false</shouldShowExplExternally>
     <startDate>2026-05-29T10:22:14.000Z</startDate>
     <status>Active</status>
@@ -150,8 +149,8 @@
             <type>DecisionTable</type>
         </decisionTable>
         <hasNestedExplainability>false</hasNestedExplainability>
-        <label>Pricing Route Rules ASMO CCG Quantity GTE</label>
-        <name>PricingRouteRulesASMOCCGQuantityGTE</name>
+        <label>Pricing Route Rules ASMO CCG Quantity GT</label>
+        <name>PricingRouteRulesASMOCCGQuantityGT</name>
         <parentStep>IsPricingRouteRulesASMOCCGQuantityLTEhasNoMatchingRules</parentStep>
         <resultIncluded>true</resultIncluded>
         <sequenceNumber>1</sequenceNumber>
@@ -277,7 +276,7 @@
         <collection>false</collection>
         <dataType>Text</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_ASMO_CCG_Quantity_LTE</lookupName>
+        <lookupName>Pricing_Route_Rules_ASMO_EMEA_CCG_Retail</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Market_Segment_Nm__c</name>
         <output>false</output>

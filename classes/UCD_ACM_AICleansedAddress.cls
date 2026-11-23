@@ -77,9 +77,11 @@ public without sharing class UCD_ACM_AICleansedAddress {
         Map<String, Map<String,String>> mapOfAllStateCodeAndNameByCountry = new Map<String, Map<String,String>>();
         mapOfAllStateCodeAndNameByCountry = UCD_ACM_Utils.getGlobalPickList();
         Map<String,String> mapOfstateCodeAndName=mapOfAllStateCodeAndNameByCountry.get(countryMap.get(response.cleansed.country));
-        for(String currentStatesCode : mapOfstateCodeAndName.keySet()){
-            if(mapOfstateCodeAndName.get(currentStatesCode)==response.cleansed.stateProvince){
-                aiResponse.stateCode=currentStatesCode;
+        if(mapOfstateCodeAndName!=null){
+            for(String currentStatesCode : mapOfstateCodeAndName.keySet()){
+                if(mapOfstateCodeAndName.get(currentStatesCode)==response.cleansed.stateProvince){
+                    aiResponse.stateCode=currentStatesCode;
+                }
             }
         }
         aiResponse.countryCode=countryMap.get(response.cleansed.country);

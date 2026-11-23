@@ -370,6 +370,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label>Grund für die Stornierung der Forderung</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>Wahlfreier Text für den Knoten, auf den sich der Antrag bezieht</help>
         <label>Kommentare zum Antrag</label>
         <name>Core_MDF_Claim_Comments__c</name>

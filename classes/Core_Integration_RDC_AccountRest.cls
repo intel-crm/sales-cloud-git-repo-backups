@@ -63,7 +63,9 @@ global class Core_Integration_RDC_AccountRest{
         Exception exceptionObj = null;
         if(mapIntegrationRDCAccountRest.containsKey('IntegrationRDCAccountRest') && mapIntegrationRDCAccountRest.get('IntegrationRDCAccountRest').IsActive__c){
             try{ 
-                for(Account acctRec: [SELECT Name,Id,/*Core_CIM_ID__c,*/Core_English_Only_Name__c,
+                //for(Account acctRec: [SELECT Name,Id,/*Core_CIM_ID__c,*/Core_English_Only_Name__c,
+				//Ganesh Changes
+                for(Account acctRec: [SELECT Name,Id,Core_English_Only_Name__c,
                                     BillingCountry,Core_Sub_Geo__c,Core_Geo__c,Core_RDC_Content_Restriction__c
                                     FROM Account WHERE  Core_B2B_Entitlement__c = true and Core_CNDA_Number__c!= null  ORDER BY Name limit 50000])
                 {   

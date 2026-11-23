@@ -390,7 +390,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Ultra Series 1 (Meteor Lake)</masterLabel>
-        <translation>Intel® Core™ Ultra serie 1 (Meteor Lake)</translation>
+        <translation><!-- Intel® Core™ Ultra Series 1 (Meteor Lake) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Ultra Series 2 (Arrow Lake)</masterLabel>
@@ -815,6 +815,14 @@
     <valueTranslation>
         <masterLabel>Scalable Video Technology (SVT)</masterLabel>
         <translation><!-- Scalable Video Technology (SVT) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Series 4 Intel® Core™ (Wildcat Lake Refresh)</masterLabel>
+        <translation><!-- Series 4 Intel® Core™ (Wildcat Lake Refresh) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Series 4 Intel® Core™ Ultra (Nova Lake)</masterLabel>
+        <translation><!-- Series 4 Intel® Core™ Ultra (Nova Lake) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>SigOpt</masterLabel>

@@ -15,7 +15,6 @@
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
     <customWebAddresses>
-        <certificate>marketplace_intel_com5</certificate>
         <domainName>marketplace.intel.com</domainName>
         <primary>false</primary>
     </customWebAddresses>
@@ -37,28 +36,7 @@
         <action>Permanent</action>
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
-        <source>/</source>
-        <target>https://www.intel.com/content/www/us/en/partner/showcase/overview.html</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
         <source>/login</source>
-        <target>https://www.intel.com/content/www/us/en/partner/showcase/overview.html</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/s</source>
-        <target>https://www.intel.com/content/www/us/en/partner/showcase/overview.html</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/s/</source>
         <target>https://www.intel.com/content/www/us/en/partner/showcase/overview.html</target>
     </siteRedirectMappings>
     <siteType>ChatterNetwork</siteType>

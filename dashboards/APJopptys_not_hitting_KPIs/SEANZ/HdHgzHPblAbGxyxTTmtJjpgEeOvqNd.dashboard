@@ -231,54 +231,6 @@
             <rowIndex>14</rowIndex>
             <rowSpan>14</rowSpan>
         </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>8</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>Core_Oppty_KPI_New__c.Core_KPI_Quantity__c</column>
-                </chartSummary>
-                <componentType>BarGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>FK_CREATED_DATE</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>CUST_NAME</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FK_CREATED_DATE</groupingColumn>
-                <groupingColumn>CUST_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>2025 New Created Opp by Month</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJLeadsReport/X2025_New_Created_Opp_by_Month</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>28</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>

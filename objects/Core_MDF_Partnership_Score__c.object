@@ -855,6 +855,16 @@
         <columns>Core_MDF_Quarter_nm__c</columns>
         <columns>NAME</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Account_Id__c</field>
+            <operation>contains</operation>
+            <value>marvel</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program_nm__c</field>
+            <operation>equals</operation>
+            <value>Client CoMarketing Fund</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

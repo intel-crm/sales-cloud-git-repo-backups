@@ -142,12 +142,14 @@ Modification Log :
                 
                 for(Case c : newList){
                     //if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)){
-                    if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && ((c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)) || (c.Core_IPS_gec_flag__c ==  true && oldMap.get(c.Id).Core_IPS_gec_status__c != c.Core_IPS_gec_status__c  && (c.Core_IPS_gec_status__c== 'Approved' || c.Core_IPS_gec_status__c== 'Approved with Guardrails')))){
+                    if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && ((c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)) || 
+                       (c.Core_IPS_gec_flag__c ==  true && oldMap.get(c.Id).Core_IPS_gec_status__c != c.Core_IPS_gec_status__c  && (c.Core_IPS_gec_status__c== 'Approved' || c.Core_IPS_gec_status__c== 'Approved with Guardrails')))){
                         Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired = true;
                         break;
                     } 
                 }
-                if(Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired){  triggerAssignmentRuleAndProvideAccess(newListStr ,oldMapStr,isUpdate);
+                if(Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired){
+                triggerAssignmentRuleAndProvideAccess(newListStr ,oldMapStr,isUpdate);
               }else {
               triggerAssignmentRuleWithFuture(newListStr ,oldMapStr,isUpdate);
             }
@@ -186,7 +188,8 @@ Modification Log :
                   
                         // FLS Fix Applied as Part of Apex Guru
                         //if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired && cs.Core_Product_Organization__c != OldCaseMap.get(cs.Id).Core_Product_Organization__c && (OldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.Id).ownerId != cs.OwnerId)  ){
-                         if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired && ( (cs.Core_Product_Organization__c != OldCaseMap.get(cs.Id).Core_Product_Organization__c && (OldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.Id).ownerId != cs.OwnerId)) || (cs.Core_IPS_gec_flag__c ==  true && oldCaseMap.get(cs.Id).Core_IPS_gec_status__c != cs.Core_IPS_gec_status__c  && ( cs.Core_IPS_gec_status__c== 'Approved' || cs.Core_IPS_gec_status__c== 'Approved with Guardrails')) ) ){     
+                         if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired && ( (cs.Core_Product_Organization__c != OldCaseMap.get(cs.Id).Core_Product_Organization__c && (OldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.Id).ownerId != cs.OwnerId))
+                              || (cs.Core_IPS_gec_flag__c ==  true && oldCaseMap.get(cs.Id).Core_IPS_gec_status__c != cs.Core_IPS_gec_status__c  && ( cs.Core_IPS_gec_status__c== 'Approved' || cs.Core_IPS_gec_status__c== 'Approved with Guardrails')) ) ){     
                             cs.Core_IPS_New_Backend_System__c = null; 
                             //Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired = false;
                    }

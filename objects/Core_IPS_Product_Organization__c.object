@@ -272,6 +272,15 @@
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
+    <listViews>
+        <fullName>IGT_Unassigned_Core_IPS_Product_Organization</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IGT – Unassigned</label>
+        <queue>IGT_Unassigned</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <nameField>
         <displayFormat>Org-{000}</displayFormat>
         <label>Support Org Number</label>

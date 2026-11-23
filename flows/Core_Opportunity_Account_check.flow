@@ -7,6 +7,9 @@
         <label>Opportunity Count check</label>
         <locationX>314</locationX>
         <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Opportunity_count_value</name>
@@ -26,7 +29,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Opportunity_account_check</targetReference>
+                <targetReference>Update_Account</targetReference>
             </connector>
             <label>Opportunity count value</label>
         </rules>
@@ -54,6 +57,21 @@
         </rules>
     </decisions>
     <description>This flow updates Opportunity Account flag whenever an opportunity is added or removed from an Account</description>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>578</locationX>
+        <locationY>395</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>50</locationX>
+        <locationY>503</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>Core Opportunity Account check {!$Flow.CurrentDateTime}</interviewLabel>
     <label>ACM Core Opportunity Account Check</label>
@@ -81,6 +99,9 @@
         <label>Opportunity account unchecked</label>
         <locationX>314</locationX>
         <locationY>395</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
         <inputAssignments>
             <field>Core_Is_Opportunity_Account__c</field>
             <value>
@@ -90,10 +111,13 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
-        <name>Update_Opportunity_account_check</name>
-        <label>Update Opportunity account check</label>
+        <name>Update_Account</name>
+        <label>Update Account</label>
         <locationX>50</locationX>
         <locationY>395</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <inputAssignments>
             <field>Core_Is_Opportunity_Account__c</field>
             <value>
@@ -155,7 +179,7 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>IntelAccount</name>
         <dataType>String</dataType>

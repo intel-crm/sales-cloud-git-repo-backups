@@ -64,14 +64,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1/1/2026</value>
+            <value>1/1/2025</value>
         </criteriaItems>
         <criteriaItems>
             <column>CAMPAIGN_STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Aborted,Campaign Accepted,Cancelled,Completed,In Progress,Planned,Proposal Accepted</value>
+            <value>Aborted,Cancelled,Completed,In Progress,Pending Approval,Planned,Proposal Accepted</value>
         </criteriaItems>
         <criteriaItems>
             <column>Campaign.Core_MDF_Budget_Type_txt__c</column>
@@ -85,7 +85,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>[#DCA-5CX03#],[#DCA-5KQ10#],[#NEX-5FU06#],[#NEX-5JR09#]</value>
+            <value>[#DCA-5CX03#]</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -105,7 +105,7 @@
         <field>Campaign.Core_MDF_Approval_Stage_nm__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>EMEA 2026 ISV</name>
+    <name>EMEA 2025 GLOBAL ISV</name>
     <params>
         <name>scopeid</name>
         <value></value>

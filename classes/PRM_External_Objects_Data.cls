@@ -227,7 +227,7 @@ public static List<PRM_WrapperForTrainingDetails> getExternalOPIDTrainingDetails
     }
     
     public static string getContactId(){
-        User user = [select Id,Name,ContactId from User where Id = :UserInfo.getUserId()];
+        User user = [select Id/*,Name*/,ContactId from User where Id = :UserInfo.getUserId()];//ATHR Fix - TWC729-9556 
         return user.ContactId;
     }
     

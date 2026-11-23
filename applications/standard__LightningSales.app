@@ -55,6 +55,24 @@
         <pageOrSobjectType>CRM_VBS_SOAR__c</pageOrSobjectType>
     </actionOverrides>
     <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Partner_Deal_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>PRM_Partner_Deal_Opportunity__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Partner_Deal_Opportunity_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>PRM_Partner_Deal_Opportunity__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>Tab</actionName>
         <content>Sales_Home_Page</content>
         <formFactor>Large</formFactor>
@@ -28910,21 +28928,51 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
+        <content>Partner_Deal_Opportunity_Record_Page</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <pageOrSobjectType>PRM_Partner_Deal_Opportunity__c</pageOrSobjectType>
         <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
+        <profile>IPA A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
+        <content>Partner_Deal_Opportunity_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <pageOrSobjectType>PRM_Partner_Deal_Opportunity__c</pageOrSobjectType>
         <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Deal_Opportunity_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>PRM_Partner_Deal_Opportunity__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Deal_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>PRM_Partner_Deal_Opportunity__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Deal_Opportunity_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>PRM_Partner_Deal_Opportunity__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Deal_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>PRM_Partner_Deal_Opportunity__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -28949,7 +28997,7 @@
         <content>Opportunity_Record_Page1</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_New_Solution_Group</recordType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>IPS Support Org Admin</profile>
     </profileActionOverrides>
@@ -28958,7 +29006,7 @@
         <content>Opportunity_Record_Page1</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_New_Solution_Group</recordType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>IPS Support Org Admin</profile>
     </profileActionOverrides>
@@ -28978,7 +29026,6 @@
     <tabs>standard-Task</tabs>
     <tabs>Account_Plan__c</tabs>
     <tabs>Executive_Meeting_Brief__c</tabs>
-    <tabs>PRM_Partner_Deal_Opportunity__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Sales_UtilityBar</utilityBar>
 </CustomApplication>

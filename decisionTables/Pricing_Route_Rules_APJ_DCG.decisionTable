@@ -101,6 +101,12 @@
         <sourceFieldName>Pricing_End_Customer_Country_Nm__c</sourceFieldName>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>IsNotNull</operator>
+        <sequenceNumber>5</sequenceNumber>
+        <sourceFieldName>Pricing_Application_Nm__c</sourceFieldName>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>
     <dtRowLevelOverrideType>None</dtRowLevelOverrideType>
     <filterResultBy>FirstMatch</filterResultBy>
@@ -109,7 +115,7 @@
     <isIncrementalSyncEnabled>false</isIncrementalSyncEnabled>
     <isVersioned>false</isVersioned>
     <setupName>Pricing Route Rules APJ DCG With End Customer HT List Criteria</setupName>
-    <sourceConditionLogic>1 AND 2 AND 3 AND 4</sourceConditionLogic>
+    <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND 5</sourceConditionLogic>
     <sourceObject>Pricing_Routing_Rules__c</sourceObject>
     <status>Active</status>
     <usageType>Bre</usageType>

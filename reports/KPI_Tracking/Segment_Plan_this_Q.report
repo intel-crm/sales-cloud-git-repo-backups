@@ -45,17 +45,26 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Smart Cities</sourceValue>
+            </sourceValues>
+            <value>CCID-Video</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Transportation</sourceValue>
+            </sourceValues>
+            <value>CCID-Transportation</value>
+        </values>
+        <values>
+            <sourceValues>
                 <sourceValue>Undefined</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Agriculture</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Sports</sourceValue>
             </sourceValues>
             <value>Others</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Agriculture</sourceValue>
+            </sourceValues>
             <sourceValues>
                 <sourceValue>Automotive</sourceValue>
             </sourceValues>
@@ -74,19 +83,10 @@
             <sourceValues>
                 <sourceValue>Government</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Sports</sourceValue>
+            </sourceValues>
             <value>Don&apos;t in put</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Transportation</sourceValue>
-            </sourceValues>
-            <value>CIFA-Transportation</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Smart Cities</sourceValue>
-            </sourceValues>
-            <value>CIFA-Video</value>
         </values>
     </buckets>
     <buckets>
@@ -131,17 +131,23 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Smart Cities</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Transportation</sourceValue>
+            </sourceValues>
+            <value>CCID</value>
+        </values>
+        <values>
+            <sourceValues>
                 <sourceValue>Undefined</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Sports</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Agriculture</sourceValue>
             </sourceValues>
             <value>Others</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Agriculture</sourceValue>
+            </sourceValues>
             <sourceValues>
                 <sourceValue>Automotive</sourceValue>
             </sourceValues>
@@ -160,16 +166,10 @@
             <sourceValues>
                 <sourceValue>Government</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Sports</sourceValue>
+            </sourceValues>
             <value>Don&apos;t in put</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Smart Cities</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Transportation</sourceValue>
-            </sourceValues>
-            <value>CIFA</value>
         </values>
     </buckets>
     <chart>
@@ -344,14 +344,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ECG,CCG,DCAI</value>
+            <value>ECG,NTG,CCG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner_Manager_Email__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>charlie.hu@intel.com,yixin.fu@intel.com,jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
+            <value>jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Manager_Email__c</column>

@@ -152,7 +152,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>org-005,Test Org-000,Test Org-014</value>
+            <value>org-005,Test Org-000,Test Org-014,Org-002</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case$Core_IPS_Issue_source__c</column>

@@ -282,6 +282,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label>청구 취소 사유</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>청구와 관련된 자유 텍스트 메모</help>
         <label>청구 의견</label>
         <name>Core_MDF_Claim_Comments__c</name>

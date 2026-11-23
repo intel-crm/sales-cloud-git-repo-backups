@@ -2658,7 +2658,7 @@ ROUND((NOW()- DATETimeVALUE(Core_ERPM_Status_Change_Date_Time__c))*24*60,0)
         <label>Core ERPM Integration Queue txt</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
@@ -4948,18 +4948,6 @@ True))</formula>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>CventEvents__ContactStub__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>true</externalId>
-        <label>Cvent Contact Stub</label>
-        <length>36</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Department</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -5276,6 +5264,51 @@ True))</formula>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>SWS_Marketo_Email_Invalid_Cause__c</fullName>
+        <description>Email Invalid Cause from Marketo</description>
+        <externalId>false</externalId>
+        <label>Marketo Email Invalid Cause</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWS_Marketo_Email_Invalid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Email Invalid flag from Marketo</description>
+        <label>Marketo Email Invalid</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Priority</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWS_Relative_Urgency__c</fullName>
+        <externalId>false</externalId>
+        <label>Relative Urgency</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Title</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -5532,12 +5565,21 @@ True))</formula>
     </fields>
     <listViews>
         <fullName>All_IPS_Customer_contact2</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>CONTACT.EMAIL</columns>
-        <columns>ACCOUNT.NAME</columns>
         <columns>CONTACT.CREATED_DATE</columns>
-        <columns>Core_Primary_Contact__c</columns>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>Core_Enterprise_Id__c</columns>
+        <columns>Core_eRPM_Person_Id__c</columns>
+        <columns>Core_Identity_Status__c</columns>
+        <columns>Core_Login_Status__c</columns>
+        <columns>Mailing_Country_Region__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>FULL_NAME</field>
+            <operation>contains</operation>
+            <value>recovery</value>
+        </filters>
         <label>All Contacts</label>
         <sharedTo>
             <allPartnerUsers></allPartnerUsers>
@@ -18892,78 +18934,6 @@ Account.Id
 }%2Fview&amp;defaultFieldValues=AccountId={!
 Account.Id
 }</url>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__InviteContactToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Invite</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__ContactInviteExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__ModifyCancelContactToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Modify/Cancel</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__ContactModifyCancelExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__NominateContactToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Nominate</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__ContactNominateExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__RegisterContactToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Register</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__ContactRegisterExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
     </webLinks>
     <webLinks>
         <fullName>GoogleMaps</fullName>

@@ -49,10 +49,6 @@
         <type>Network</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__LightningInstrumentation</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>standard__AllTabSet</name>
         <type>CustomApplication</type>
     </appMenuItems>
@@ -353,10 +349,6 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__ThreatDetection</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>SBQQ__QuoteQuickly</name>
         <type>CustomApplication</type>
     </appMenuItems>
@@ -383,14 +375,6 @@
     <appMenuItems>
         <name>IQR_HPE_B2B</name>
         <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CventEvents__CventClassicApp</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CventEvents__CventLightningApp</name>
-        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
         <name>CventSFDC</name>
@@ -445,10 +429,6 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>CventEvents__CventMobileApp</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>Intel_AE_Management</name>
         <type>CustomApplication</type>
     </appMenuItems>
@@ -486,10 +466,6 @@
     </appMenuItems>
     <appMenuItems>
         <name>Quota_Setup_Tool</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>espy__Batch_Monitoring</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -555,14 +531,6 @@
     <appMenuItems>
         <name>jiffle__Jifflenow_Lightning</name>
         <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PeopleAiCanvasApp</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PeopleAiCanvasAppSPI</name>
-        <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
         <name>timeline__Timeline</name>
@@ -661,16 +629,8 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Marketo_Partner</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>SFDX_CRMProd_Deployment_Actions</name>
         <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Unrival_External_App</name>
-        <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
         <name>Access_Agent</name>
@@ -833,14 +793,6 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Marketo</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CopilotForSalesConnectedApp</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>standard__Shield</name>
         <type>CustomApplication</type>
     </appMenuItems>
@@ -857,31 +809,71 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>CDB_Agent_Connected_App</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>standard__AgentforceStudio</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__AIWorkbench</name>
-        <type>CustomApplication</type>
+        <name>CDB_Agent_Connected_App</name>
+        <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Microsoft_Power_Query</name>
+        <name>SFDX_QA9_Deployment_Actions</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Marketo</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Unrival_External_App</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Workfront_User</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Marketo_Partner</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Coveo</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>IQR_DELL_B2B_v2</name>
+        <name>M365CopilotSalesExternalClientApp</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>IQR_My_Deals_v1</name>
+        <name>IQR_DELL_B2B_QA9</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Core_MDF_Chatbot_Integration</name>
+        <name>espy__Batch_Monitoring</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Test_Jason</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>SummarAI_DEMO</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Workfront_Fusion</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Testn8nApp</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>SFT_File_Downloader</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>IPIC_Dell_B2B</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -889,20 +881,20 @@
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>IPIC_AnETest_B2B</name>
+        <name>IPIC_HP_B2B</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__IndustriesEcm</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IPIC_Dell_B2B</name>
+        <name>IPIC_Marvel_B2B</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__CommerceStarter</name>
-        <type>CustomApplication</type>
+        <name>IPIC_Json_B2B</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>IQR_My_Deals_v1</name>
+        <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
         <name>ImpartnerPRM__ImpartnerPRM</name>
@@ -917,55 +909,103 @@
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Coveo</name>
-        <type>ConnectedApp</type>
+        <name>Core_MDF_Chatbot_Integration</name>
+        <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>IPS_AI_Agent_Integration</name>
+        <name>gemini_gpc_sales_dev_sobjectall</name>
         <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>eRPM_SF_Integration_Contact_Flow_Test</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>keren_test_app</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>IPIC_Prod_B2B</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__ScaleTestApp</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__CommerceStarter</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__IndustriesEcm</name>
+        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
         <name>Keren_App</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>BigID</name>
+        <name>IPS_AI_Agent_Integration</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>ips_agent_mcp</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>CCP_External_Integration_App</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Core_Informatica_SMG_App</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>scott_app</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>BigQuery_Data_Transfer</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>IPS_Quality_builder</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Microsoft_Power_Query</name>
         <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>BigID_Integration</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__AlmDevops</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CCP_External_Inbound_Integration_App</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__HealthInsights</name>
-        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
         <name>Symon_AI</name>
         <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Symon_AI</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Microsoft_Power_Query_Prod</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Microsoft_Power_Query_Refresh</name>
-        <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
         <name>Draco_AGS_JWT_Integration_App</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Mule_integration_user</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>file_integration_user</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Symon_AI</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Partner_MCP_Client_App</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>backend_Integration_user</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>PIM_Integration_User_App</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -974,6 +1014,10 @@
     </appMenuItems>
     <appMenuItems>
         <name>Headless_360</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Workflow_Plus</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
 </AppMenu>

@@ -18,18 +18,14 @@ public class Core_IPS_FileUploadConsole_Cont_LEX_test {
     public static Core_IPS_File_Assignment__c fileassign;
     public static List<Core_IPS_File_Assignment__c> fileassignList = new List<Core_IPS_File_Assignment__c>() ;
     public static List<User> ListOfUser = new List<User> ();
-
-    // Runs in its own transaction before every test method so the bypass is committed
-    // and visible to the $Setup merge field the validation rule evaluates against.
-    @testSetup
-    static void setupBypass(){
+    
+    public static void setup(){   
+        
+        // Bypass SMG Account Request Process validation rule for test data creation
         insert new Core_Account_Bypass_Validation_Rule__c(
             SetupOwnerId = UserInfo.getOrganizationId(),
             ByPass__c = true
         );
-    }
-
-    public static void setup(){   
 
         //Account 
         Accnt = new Account();

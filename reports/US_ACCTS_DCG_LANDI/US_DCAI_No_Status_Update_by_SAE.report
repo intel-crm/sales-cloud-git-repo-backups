@@ -47,7 +47,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
+            <value>Qualify,Define,Develop,Design,Lost,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>AMOUNT</column>
@@ -57,18 +57,18 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner_Email_Txt__c</column>
+            <column>Opportunity.Core_Status_Update__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Ben.karr@intel.com,jarred.l.abreo@intel.com,richard.t.trinh@intel.com,stephen.m.bigbee@intel.com,almanzo.t.ortiz@intel.com,terry.harper@intel.com,christopher.r.blevins@intel.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Status_Update__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
+            <value>Landi,Corredor</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -88,14 +88,14 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Ops with Empty Status</name>
+    <name>US DCAI No Status Update by SAE</name>
     <params>
         <name>terr</name>
         <value>all</value>
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -112,6 +112,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-22</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>

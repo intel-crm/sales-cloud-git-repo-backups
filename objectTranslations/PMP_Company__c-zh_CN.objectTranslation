@@ -334,6 +334,10 @@
             <translation><!-- Mixed --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Not Processed</masterLabel>
+            <translation><!-- Not Processed --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Scraped</masterLabel>
             <translation><!-- Scraped --></translation>
         </picklistValues>

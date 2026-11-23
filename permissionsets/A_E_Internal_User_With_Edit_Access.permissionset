@@ -2527,16 +2527,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>PRM_Registration_Request__c.ACM_SDP_Product_Code__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>PRM_Registration_Request__c.ACM_SDP_System_Serial_Number__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Registration_Request__c.AE_ApprovedRejectedTimeStamp__c</field>
         <readable>true</readable>

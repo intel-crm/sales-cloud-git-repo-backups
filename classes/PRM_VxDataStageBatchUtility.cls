@@ -50,11 +50,12 @@ public without sharing class PRM_VxDataStageBatchUtility {
                 }
             }
         } //loop ends here
-
+		
+        System.debug(LoggingLevel.INFO, 'Before building ID sets, heap=' + Limits.getHeapSize());
         
-
-        for(PRM_Value_Exchange_UCD_Stage__c vxStageWithOPID:[Select Id,PRM_Country_Market_Type_Nm__c,PRM_Account_Id__c,
-                                                         /*PRM_Partner_Role_Nm__c,*/PRM_Tier_Id__c ,PRM_Time_Period__c,PRM_One_Partner_Id__c
+    System.debug(LoggingLevel.INFO, 'Before SOQL loop, heap=' + Limits.getHeapSize());
+        for(PRM_Value_Exchange_UCD_Stage__c vxStageWithOPID:[Select Id,PRM_Country_Market_Type_Nm__c,PRM_Account_Id__c
+                                                         /*PRM_Partner_Role_Nm__c,PRM_Tier_Id__c ,PRM_Time_Period__c,PRM_One_Partner_Id__c*///ATHR Fix - TWC729-9556
                                                          from PRM_Value_Exchange_UCD_Stage__c where PRM_One_Partner_Id__c IN:opidSet OR PRM_Account_Id__c IN:intelaccountSet]){ //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
                                                              //loop start here
                                                                  String key= vxStageWithOPID.PRM_Account_Id__c/*+vxStageWithOPID.PRM_Partner_Role_Nm__c+vxStageWithOPID.PRM_Tier_Id__c*/; //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087 -- tier might cause a problem here if 1pid have more than 1 acm with diff tier, so removed tier as well
@@ -70,8 +71,12 @@ public without sharing class PRM_VxDataStageBatchUtility {
                                                                             opidPartnerCountryWithCountryTypeMap.put(key,vxStageWithOPID.PRM_Country_Market_Type_Nm__c);
                                                                     }
                                                          }//loop end here...
-
+		System.debug(LoggingLevel.INFO, 'After SOQL loop: map size=' 
+    + opidPartnerCountryWithCountryTypeMap.size() + ', heap=' + Limits.getHeapSize());
+		
+        System.debug(LoggingLevel.INFO, 'Before addVxDataList, heap=' + Limits.getHeapSize());
         addVxDataList(scope,opidPartnerCountryWithCountryTypeMap); //method to update VX data list with correct partner role and market type mapping 
+        System.debug(LoggingLevel.INFO, 'After addVxDataList, heap=' + Limits.getHeapSize());
     }
     
     //Method to populate VXStage fields Values to VxData field values with proper Partner Role and Market type field.
@@ -81,7 +86,7 @@ public without sharing class PRM_VxDataStageBatchUtility {
         Map<String,PRM_Value_Exchange_Data__c> ExistingVXData = new Map<String,PRM_Value_Exchange_Data__c>();// Map of Existing VX Data in main table
         List<PRM_Value_Exchange_UCD_Stage__c> FinalVXDataToInsert = new List<PRM_Value_Exchange_UCD_Stage__c>();//List of VXData records which needs to be updated
         List<Id> Accountfortiermap = new List<Id>();//list of Account Ids from VXStage records
-        // PB fix
+        //NJ PB fix
         Set<id> accountIds = new Set<id>();
         Set<String> salesCalcTextList = new Set<String>();
         Set<String> timePeriodList = new Set<String>();
@@ -111,6 +116,7 @@ public without sharing class PRM_VxDataStageBatchUtility {
                 UniqueVXDataRecordtoInsert.put(key,stageOPID); 
                 FinalVXDataToInsert.add(stageOPID);
                 Accountfortiermap.add(stageOPID.PRM_Account_Id__c);
+                System.debug('RRT-------uniquevxdatatoload--inside if'+stageOPID);
             }
         }
         List<PRM_Value_Exchange_Data__c> listOfVxData = new List<PRM_Value_Exchange_Data__c>();
@@ -137,6 +143,7 @@ public without sharing class PRM_VxDataStageBatchUtility {
                     vxData.PRM_Country_Market_Type_Nm__c=opidPartnerCountryWithCountryTypeMap.get(key);
                     vxData.PRM_Tier_Id__c=AccountTierMap.get(key);
                     listOfVxData.add(vxData);//list of VX data record with Account Id as location account.
+                  System.debug('RRT---------vxdatatoinsert--accountidopidnotequal'+vxData);
             }
             else{
                 listOfVxStageWithSameOpidAndAcc.add(vxStage);//list of non ipa account of VX stage record
@@ -148,6 +155,7 @@ public without sharing class PRM_VxDataStageBatchUtility {
             vxData.PRM_Country_Market_Type_Nm__c = opidPartnerCountryWithCountryTypeMap.get(key);
             vxData.PRM_Tier_Id__c=AccountTierMap.get(key);
             listOfVxData.add(vxData);
+            System.debug('RRT---------vxdatatoinsert--accountidopidequal'+vxData);
         }//loop ends here
 		upsertVxData(listOfVxData,vxExternalIdWithStageMap); //Calling upsertVxData method 
     }

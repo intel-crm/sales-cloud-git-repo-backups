@@ -9,7 +9,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CEP_Email_Templates/Core_CEP_Response_Email1</template>
     </alerts>

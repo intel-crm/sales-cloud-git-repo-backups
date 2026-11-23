@@ -155,6 +155,16 @@
                     <name>uiBehavior</name>
                     <value>readonly</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_VAT_Comments_txt__c</fieldItem>
+                <identifier>RecordCore_MDF_VAT_Comments_txt_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_VAT_CreatedBy_Nm__c</fieldItem>
                 <identifier>RecordCore_MDF_VAT_CreatedBy_Nm_cField</identifier>
             </fieldInstance>

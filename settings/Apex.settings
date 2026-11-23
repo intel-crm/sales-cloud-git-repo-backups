@@ -9,7 +9,7 @@
     <enableAuraApexCtrlAuthUserAccessCheckPref>false</enableAuraApexCtrlAuthUserAccessCheckPref>
     <enableAuraApexCtrlGuestUserAccessCheckPref>false</enableAuraApexCtrlGuestUserAccessCheckPref>
     <enableBlockPackagedApexExecAnon>false</enableBlockPackagedApexExecAnon>
-    <enableCompileOnDeploy>false</enableCompileOnDeploy>
+    <enableCompileOnDeploy>true</enableCompileOnDeploy>
     <enableDebugLogsDuringDeployment>false</enableDebugLogsDuringDeployment>
     <enableDisableParallelApexTesting>true</enableDisableParallelApexTesting>
     <enableEnforceSummer26ApexHeapLimit>false</enableEnforceSummer26ApexHeapLimit>

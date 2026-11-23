@@ -2,13 +2,10 @@
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
         <fullName>espy__WeeklyStatusEmail</fullName>
+        <ccEmails>rutuja.galande012@gmail.com</ccEmails>
         <description>WeeklyStatusEmail</description>
         <protected>false</protected>
-        <recipients>
-            <recipient>ESPY_Group</recipient>
-            <type>group</type>
-        </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
+        <senderType>CurrentUser</senderType>
         <template>espy__ESPY_Templates/espy__Weekly_Batch_Job_Status</template>
     </alerts>
 </Workflow>

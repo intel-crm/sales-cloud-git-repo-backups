@@ -469,10 +469,8 @@ Modification Log :
             for(Core_IPS_Project__c proj: newList){
                 projId.add(proj.Id);
             }
-            if(projId!=null && projId.size()>0){
-                if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){ //FLS Check already added - Aditya
+            if((projId!=null && projId.size()>0)&&(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible())){
                     accList=[Select Id,Core_IPS_Project__c,Core_Account__r.Core_CNDA_Number__c from Core_IPS_Account__c where Core_IPS_Project__c In :projId];
-                }
             }
             if(accList!=null && accList.size()>0){
                 for(Core_IPS_Project__c proj: newList){
@@ -655,23 +653,17 @@ Modification Log :
                     projList.add(proj);
                 }
             }
-            
-            if(projList!=null && projList.size()>0){
-                if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-                    projAccountList = [Select id,Core_Account__c,Core_Status__c,Core_IPS_Project__c from Core_IPS_Account__c where Core_IPS_Project__c IN: projList];  
-                }
-                if(projAccountList <> null && projAccountList.size()>0){
-                    Core_IPS_Account_Handler.addAccountFAEtoProject(projAccountList);
-                }    
+            if((projList!=null && projList.size()>0)&&(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible())){
+                  projAccountList = [Select id,Core_Account__c,Core_Status__c,Core_IPS_Project__c from Core_IPS_Account__c where Core_IPS_Project__c IN: projList];  
             }
-            
-            if(removeProjSharing!=null && removeProjSharing.size()>0){
-                if(Core_IPS_Project__Share.SObjectType.getDescribe().isAccessible()){ //FLS check added - Aditya
+            if(projAccountList <> null && projAccountList.size()>0){
+                  Core_IPS_Account_Handler.addAccountFAEtoProject(projAccountList);    
+            }
+            if((removeProjSharing!=null && removeProjSharing.size()>0)&&(Core_IPS_Project__Share.SObjectType.getDescribe().isAccessible())){
                     projShare=[Select Id from Core_IPS_Project__Share where RowCause='Manual' and ParentId IN: removeProjSharing.keySet() and USerOrGroupId NOT IN: projGroup];    
                 }
                 if(projShare!=null && projShare.size()>0){
                     Database.delete(projShare);
-                }
             }
         }
         }catch(Exception e){} 

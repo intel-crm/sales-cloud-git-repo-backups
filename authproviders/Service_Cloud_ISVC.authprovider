@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
-    <consumerKey>3MVG9QDx8IX8nP5Rh0X3B7gohGgp9itUQE4Jc3vJ2z3HQby0gUTWbQEHaLSDo2R9qRUJ503NeZ8WZ.VGNHL_m</consumerKey>
+    <consumerKey>3MVG902fWpQIZVvXIvvGe._8BW_PV7Z8aorvq9hairbryNDPUvljNjHZlrS.oQAXRwFaiHr_vkBM6wX6l4vGo</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
+    <defaultScopes>full refresh_token offline_access</defaultScopes>
     <friendlyName>Service_Cloud_ISVC</friendlyName>
     <includeOrgIdInIdentifier>true</includeOrgIdInIdentifier>
     <isPkceEnabled>false</isPkceEnabled>

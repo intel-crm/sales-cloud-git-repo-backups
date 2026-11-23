@@ -76,6 +76,13 @@
             <operator>contains</operator>
             <value>Ken Constantino</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Decision_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -113,8 +120,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2025-12-31</endDate>
+        <endDate>2026-11-22</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2025-01-01</startDate>
+        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>

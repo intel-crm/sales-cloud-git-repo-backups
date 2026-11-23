@@ -394,6 +394,7 @@ when futher request to sync to AGS is sent */
                     Core_IPA_PartnerRole__c,
                     Core_Enterprise_Id__c,
                     Core_Preferred_Language__c,
+                    Core_Login_Status__c,
                     Email,
                     (
                         SELECT
@@ -441,7 +442,7 @@ when futher request to sync to AGS is sent */
                            //String contPartnerRoles = cont.Core_IPA_Partner_Role__c;
                            String contPartnerRoles = cont.Core_IPA_PartnerRole__c;
                            //Restrict identity creation for non-IPA partner roles (configured)
-                           if(!String.isEmpty(contPartnerRoles) && !nonIPApartnerRoles.contains(contPartnerRoles)){  
+                           if((!String.isEmpty(contPartnerRoles) && !nonIPApartnerRoles.contains(contPartnerRoles))/*||(cont.Core_Login_Status__c=='Deleted' && String.isEmpty(contPartnerRoles))*/){  
                                String strTags = '';
                                if(!String.isEmpty(cont.Core_Enterprise_Id__c)){
                                    strTags = cont.Core_Enterprise_Id__c;
@@ -449,6 +450,11 @@ when futher request to sync to AGS is sent */
                                if(!String.isEmpty(cont.Email)){
                                    strTags = (strTags=='') ? cont.Email : strTags+' , '+cont.Email;
                                }       
+                               
+                                /*if(IS_DelayInviteEmail && (cont.Core_Login_Status__c=='Deleted' && String.isEmpty(contPartnerRoles))){
+                                      CreateBatchEntitlements(cont, null, strTags,'Admin Invite Email');
+                                } //JB*/
+                               
                                //system.debug('TestAcct contPartnerRoles ==>'+contPartnerRoles);
                                //if(!String.isEmpty(contPartnerRoles)){
                                for(String partnerRole : contPartnerRoles.split(';')){

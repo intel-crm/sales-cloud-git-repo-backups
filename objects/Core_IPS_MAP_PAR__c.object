@@ -571,6 +571,15 @@ This object will have related Line Items that capture the unique Account/Support
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
+    <listViews>
+        <fullName>IGT_Unassigned_Core_IPS_MAP_PAR</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IGT – Unassigned</label>
+        <queue>IGT_Unassigned</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <nameField>
         <displayFormat>IAR-{0000000000}</displayFormat>
         <label>Access Record</label>

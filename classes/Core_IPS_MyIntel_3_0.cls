@@ -49,23 +49,56 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
         this.projectMemberList = projMembers;
     }
     //End----US1005799
+    //Added By Tushar 02-April-2026
+    Boolean reduceBatchSize = false;
+    public Core_IPS_MyIntel_3_0(List<Id> caseIds, String operationMsg,List<Core_IPS_Project_Member__c> projMembers, List<Core_IPS_Case_Interested_Party__c> intrestedParties, Boolean reduceBatchSize) {
+        //casesIds = caseIds;
+        listCasesIds = caseIds;// Start ------ Tushar Garg
+        operationType = operationMsg; 
+        this.intrestedPartiesList = intrestedParties;
+        this.projectMemberList = projMembers;
+        this.reduceBatchSize = reduceBatchSize;
+    }
     //Queueable Execute Method
     public void execute(QueueableContext context) {
          // Start ------ Tushar Garg
         casesIds = new List<Id>();
-            List<Id> remainingCaseIds = listCasesIds;
-            if (listCasesIds.size() > batchSize) {
-                // casesIds = listCasesIds.subList(0, batchSize);
-                for (Integer i = 0; i < batchSize; i++) {
-                    casesIds.add(listCasesIds[i]);
-                    remainingCaseIds.remove(i);
-                }
-            } else {
-                casesIds = listCasesIds;
-                remainingCaseIds = new List<Id>();
+        List<Id> remainingCaseIds = new List<Id>();
+        //checking if batch is called to reduce the batch size
+        if(reduceBatchSize && batchSize > 3){
+            batchSize = 3;
+        }
+        if (listCasesIds.size() > batchSize) {
+            // Safely collect the first batch
+            for (Integer i = 0; i < batchSize; i++) {
+                casesIds.add(listCasesIds[i]);
             }
+            
+            // Add the remaining items after batchSize
+            for (Integer j = batchSize; j < listCasesIds.size(); j++) {
+                remainingCaseIds.add(listCasesIds[j]);
+            }
+        } else {
+            casesIds = new List<Id>(listCasesIds);
+            remainingCaseIds = new List<Id>();
+        }
          // End ------ Tushar Garg
         jsonString =  generateJsonBody(casesIds,operationType);
+        system.debug('jsonString.length()'+jsonString.length());
+        //Checking if length is exeeded then calling same batch but with reducing the size of 2
+        if (jsonString != null && jsonString.length() > 800000) {
+            // Already reduced to minimum supported size 3 -> do not retry again
+            if (reduceBatchSize) {
+                return;
+            }
+            // If current size is still above minimum, reduce to 3 and retry
+            // call batch again to calculate the size 
+            if(batchSize > 3){
+                System.enqueueJob(new Core_IPS_MyIntel_3_0(listCasesIds, operationType, projectMemberList, intrestedPartiesList, true));
+                return ;
+            }
+            
+        }
         if(!String.isBlank(jsonString)) {
             // start----US1005775----23-06-2021----Niyazuddin----IPS Exception Handling : Ability to store JSON in outbound msg
             MessageWrapper messageWrapperObj = sendCaseData(jsonString); 
@@ -209,8 +242,8 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
                         att.parentId = OutboundMsg.Id;
                     }
                     if(Schema.sObjectType.Attachment.fields.Body.isCreateable()){
-                        System.debug('Blob value'+Blob.valueOf(jsonString));
-                        System.debug('JSON String >>'+jsonString);
+                        //System.debug('Blob value'+Blob.valueOf(jsonString));
+                        //System.debug('JSON String >>'+jsonString);
                         att.Body = Blob.valueOf(jsonString);
                     }
                     
@@ -259,6 +292,7 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
         }
         // Start ----- Tushar
         if (remainingCaseIds.size() > 0) {
+            system.debug('calling from last end   ');
             System.enqueueJob(new Core_IPS_MyIntel_3_0(remainingCaseIds, operationType, projectMemberList, intrestedPartiesList));
         }
         // End ---- Tushar

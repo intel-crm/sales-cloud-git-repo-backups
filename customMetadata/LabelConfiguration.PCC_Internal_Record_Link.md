@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">https://intel.lightning.force.com/</value>
+        <value xsi:type="xsd:string">https://intel--crmqa9.sandbox.lightning.force.com/</value>
     </values>
 </CustomMetadata>

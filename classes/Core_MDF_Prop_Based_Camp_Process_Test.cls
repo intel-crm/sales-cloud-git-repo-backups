@@ -2004,7 +2004,7 @@ Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign(
         }
     }
 
-    // Additional Test Methods for Enhanced Coverage
+    // Additional Test Methods for Coverage
     
     @isTest
     static void testNullParametersHandling() {

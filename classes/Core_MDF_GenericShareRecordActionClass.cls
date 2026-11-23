@@ -12,6 +12,25 @@ public without sharing class Core_MDF_GenericShareRecordActionClass {
 
     public static String readAccessLevel = '';
     
+    // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+    // Static cache added at class level — shared across all 3 methods
+    private static Map<String, Schema.SObjectType> sObjectTypeCache = new Map<String, Schema.SObjectType>();
+
+    // Private helper replaces getGlobalDescribe() in all 3 methods
+    private static Schema.SObjectType getSObjectTypeToken(String objectName) {
+    	if (String.isBlank(objectName)) { return null; }
+    	String key = objectName.toLowerCase();
+    	if (!sObjectTypeCache.containsKey(key)) {
+        	try {
+            	Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+            	if (results != null && !results.isEmpty()) {
+                	sObjectTypeCache.put(key, results[0].getSObjectType());
+            	}
+        	} catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+    	}
+    	return sObjectTypeCache.containsKey(key) ? sObjectTypeCache.get(key) : null;
+	}
+    
     public static List<sObject> createShareRecordList(RecordManualShareClass recordManualShare){
         List<sObject> dynObjectList = new List<sObject>();
         Boolean hasUserId = false;
@@ -84,7 +103,8 @@ public without sharing class Core_MDF_GenericShareRecordActionClass {
                         standardObjectNameList.add(value);                        
                     }
                     
-                    Schema.SObjectType objToken = Schema.getGlobalDescribe().get(recordManualShare.typeName);
+	    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+            Schema.SObjectType objToken = getSObjectTypeToken(recordManualShare.typeName);
                     if(objToken != NULL)
                     {
                         //Iterate over the objectIdUserGroupIdListMap map to create share records
@@ -266,7 +286,8 @@ public static List<sObject> getShareRecordList(RecordManualShareClass recordManu
                         standardObjectNameList.add(value);                      
                     }
                     
-                    Schema.SObjectType objToken = Schema.getGlobalDescribe().get(recordManualShare.typeName);
+	    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+            Schema.SObjectType objToken = getSObjectTypeToken(recordManualShare.typeName);
                     if(objToken != NULL)
                     {
                         //Iterate over the objectIdUserGroupIdListMap map to create share records
@@ -395,7 +416,8 @@ public static List<sObject> getShareRecordList(RecordManualShareClass recordManu
                                                 
                     }
                     
-                    Schema.SObjectType objToken = Schema.getGlobalDescribe().get(recordManualShare.typeName);
+	    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+            Schema.SObjectType objToken = getSObjectTypeToken(recordManualShare.typeName);
                     if(objToken != NULL)
                     {
                         //Iterate over the objectIdUserGroupIdListMap map to create share records

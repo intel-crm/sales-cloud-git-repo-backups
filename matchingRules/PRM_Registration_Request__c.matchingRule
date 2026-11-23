@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <matchingRules>
+        <fullName>PRM_Duplicate_Registration_Check_Matching_Rule_Modified</fullName>
+        <description>Matching rule to avoid duplicate registrations.</description>
+        <label>PRM_Duplicate_Registration_Check_Matching_Rule_Modified</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>PRM_Email_ID__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Inactive</ruleStatus>
+    </matchingRules>
+    <matchingRules>
         <fullName>PRM_Duplicate_Registration_check_matching_rule</fullName>
         <booleanFilter>1 AND 2</booleanFilter>
         <description>Matching rule to avoid duplicate registrations.</description>

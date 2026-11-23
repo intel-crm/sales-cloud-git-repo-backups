@@ -366,6 +366,11 @@
         <columns>PRM_IsActive_Ind__c</columns>
         <columns>PRM_BenfitMatrix_Combination__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Approval_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Automatic</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -382,7 +387,6 @@
     </listViews>
     <listViews>
         <fullName>Copy_of_Copy_of_All</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <columns>NAME</columns>
         <columns>PRM_Partner_Benefit_Id__c</columns>
         <columns>PRM_Channel_Program_Level_Id__c</columns>
@@ -398,16 +402,6 @@
             <field>PRM_Approval_Type_Nm__c</field>
             <operation>equals</operation>
             <value>Automatic</value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program_Level_Id__c</field>
-            <operation>equals</operation>
-            <value>Partner</value>
-        </filters>
-        <filters>
-            <field>PRM_Partner_Role_Nm__c</field>
-            <operation>equals</operation>
-            <value>Builder</value>
         </filters>
         <label>Copy of Copy of All</label>
     </listViews>

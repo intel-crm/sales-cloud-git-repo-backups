@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2WHo000001BGDpMAO</value>
+        <value xsi:type="xsd:string">a2WD1000000dbTYMAY</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2WHo000001BGDuMAO</value>
+        <value xsi:type="xsd:string">a2WD1000000dbTnMAI</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>

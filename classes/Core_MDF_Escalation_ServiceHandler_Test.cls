@@ -1032,7 +1032,7 @@ public class Core_MDF_Escalation_ServiceHandler_Test{
         Id caseRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Claim_Case_Review_Result').getRecordTypeId();
         ChannelProgram cp = [Select Id, Name from ChannelProgram where Name ='Client'];
         
-        
+        System.debug('**profile**'+user1.Profile.Name);
         System.runAs(user1){
 
             Integer tempCounter = 0;

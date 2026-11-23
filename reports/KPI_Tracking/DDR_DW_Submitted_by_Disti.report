@@ -236,8 +236,8 @@
             <column>Opportunity.Core_Design_Registration_Id__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>startsWith</operator>
-            <value>DR</value>
+            <operator>notEqual</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Manager_Email__c</column>
@@ -251,7 +251,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com,charlie.hu@intel.com,yixin.fu@intel.com</value>
+            <value>jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -64,7 +64,7 @@ global without sharing class Core_RestAPI_SecureContent_Account {
 
         // Get the list of valid profiles
         Set<String> setProfileName = new Set<String>();
-        for (Core_AccountCoverage_Profiles__c record: [SELECT Id, Core_Profiles__c FROM Core_AccountCoverage_Profiles__c]) {
+        for (Core_AccountCoverage_Profiles__c record: [SELECT Id, Core_Profiles__c FROM Core_AccountCoverage_Profiles__c LIMIT 100]) { //Ganesh Changes
             setProfileName.Add(record.Core_Profiles__c);
         }
 

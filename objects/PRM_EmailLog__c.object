@@ -406,11 +406,6 @@
         <columns>PRM_Email_API_Response__c</columns>
         <columns>PRM_Timestamp__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Subject__c</field>
-            <operation>contains</operation>
-            <value>expire</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>

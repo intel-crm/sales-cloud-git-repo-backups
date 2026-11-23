@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>amal.thomas@intel.com</contactEmail>
-    <description>MDF Inquiry chatbot Integration</description>
+    <contactEmail>ramapriyax.rajesh@intel.com</contactEmail>
     <distributionState>Local</distributionState>
     <isProtected>false</isProtected>
     <label>MDF Chatbot Integration</label>
-    <orgScopedExternalApp>00Do0000000aRcf:Core_MDF_Chatbot_Integration</orgScopedExternalApp>
+    <orgScopedExternalApp>00Ddi000004mJ65:Core_MDF_Chatbot_Integration</orgScopedExternalApp>
 </ExternalClientApplication>

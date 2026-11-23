@@ -5,7 +5,7 @@
 * Description : This class is called from IPS_APIGEE_Case_Queueable class whenever a case is created or updated with relevant changes inorder to sent details to JIRA,HSD,RTC.
 * Test Class : 
 ************************************************/
-public without sharing class IPS_APIGEE_Case_Backend_System implements System.Queueable, Database.AllowsCallouts{ // TWC745-9117 - ATHR Critical fixed by Tushar
+public without sharing class IPS_APIGEE_Case_Backend_System implements System.Queueable, Database.AllowsCallouts{
     
     set<Id> caseIds= new set<Id>();
     

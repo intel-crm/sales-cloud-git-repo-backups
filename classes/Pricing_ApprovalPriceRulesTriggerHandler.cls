@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 05-05-2026
+* @last modified on  : 04-30-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_ApprovalPriceRulesTriggerHandler extends TriggerHandler {
@@ -51,6 +51,9 @@ public without sharing class Pricing_ApprovalPriceRulesTriggerHandler extends Tr
 
                         if(rule.Pricing_Rule_Start_Date__c == null){
                             rule.Pricing_Rule_Start_Date__c = Date.today();
+                            //rule.Pricing_Minimum_Requested_Unit_Price__c = 1;
+                            //rule.Pricing_Minimum_Quantity__c = 1;
+                            
                         }
                         if(rule.Pricing_Rule_End_Date__c == null){
                         rule.Pricing_Rule_End_Date__c = Date.today().addMonths(12); 

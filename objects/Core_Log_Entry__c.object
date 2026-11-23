@@ -985,6 +985,11 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
             <operation>equals</operation>
             <value>ACM</value>
         </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
         <label>UCD ACM Logs</label>
     </listViews>
     <nameField>

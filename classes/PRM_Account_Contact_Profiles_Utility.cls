@@ -517,7 +517,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
                                       Core_Partner_Alliance_Program__c, Core_IPA_Partner_Segment__c, Core_English_Only_Name__c,
                                       Core_Deactivated__c,Core_Deactivation_Reason__c,Core_B2B_Entitlement__c,Core_B2B_ERPM_Account_Number__c,RecordType.Name,
                                       Core_Business_Party_Id__c,core_data_simplified_account_nm__c,core_data_simplified_local_language_nm__c,core_customer_aggregation_type__c,Unified_Hierarchy_View__c,core_data_country_nm__c,Core_Account_Record_Type__c,Core_IPA_One_Partner_Id__c,
-                                      Owner.Name,Core_Account_Owner_Email__c,   
+                                      Owner.Name,Core_Account_Owner_Email__c,
                                       //Core_IPA_Partner_Prog_Application__c, (SELECT id,Name,Email From Contacts),
                                       (SELECT PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_Relationship_Id__r.Name,PRM_Status_Nm__c,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r WHERE PRM_InActive_Ind__c=false),
                                       (SELECT Core_Account_Id__r.Name,Core_ERPM_Engagement_Id__r.Name,Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c,Core_ERPM_Engagement_Id__r.Core_Technical_Tier_Code__c FROM Account_ERPM_Engagements__r),
@@ -769,11 +769,81 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
         }       
         
     }
+    
+    //As part of IAO- CMF TO BPID changes    
+     public static PRM_Account_Contact_Profiles_Model.Profiles getBPAccountDetails(String key,String value) {
+        List<ER_Account_Business_Partner__c> records;
+        List<Contact> contactrecList;
+        Map<String,List<ER_Account_Business_Partner__c>> bpAccountDataMap = new Map<String,List<ER_Account_Business_Partner__c>>();
+        for(ER_Account_Business_Partner__c associationRec : [SELECT Id,ER_Customer_Master_File_Grouping__r.id,ER_Account__r.Core_Direct_Account_Id__c,ER_Account__r.Name,ER_Customer_Master_File_Grouping__r.Name,ER_Customer_Master_File_Grouping__r.ER_Active__c,ER_Customer_Master_File_Grouping__r.ER_Description__c,ER_Customer_Master_File_Grouping__r.ER_Count_of_Contacts__c, ER_Customer_Master_File_Grouping__r.ER_Inactive_Contacts__c,ER_Customer_Master_File_Grouping__r.ER_Active_Account_Business_Partners__c, ER_Customer_Master_File_Grouping__r.ER_Inactive_Account_Business_Partners__c,ER_Account__r.BillingAddress,ER_Account__r.billingstate,ER_Account__r.billingcity,ER_Account__r.billingstreet,ER_Account__r.billingCountry,ER_Account__r.BillingCountryCode,ER_Account__r.BillingStateCode,ER_Account__r.billingPostalCode,ER_Account__r.Core_Direct_Account_Type_Nm__c, ER_Account__r.Core_ER_Direct_CustomerRelationship_Code__c,ER_Account__r.Core_ER_Sales_Org_Name__c, ER_Account__r.Core_Direct_Sales_Organization_Nm__c,ER_Account__r.Core_Direct_Distributor_Channel_Nm__c,ER_Account__r.Core_ER_Sales_Disti_Chnl_Name__c,ER_Account__r.Core_ER_Account_Group__c  FROM ER_Account_Business_Partner__c
+where ER_Customer_Master_File_Grouping__c IN (SELECT Er_Customer_Master_File_Group__c from ER_ContactGroupAssociation__c WHERE ER_Active__c = true AND (ER_Contact__r.Email =:key OR ER_Contact__r.Core_Enterprise_Id__c =:key))]){
+            if(bpAccountDataMap.containsKey(associationRec.ER_Customer_Master_File_Grouping__r.Name)){
+                List<ER_Account_Business_Partner__c> idsOfCmfGroup = bpAccountDataMap.get(associationRec.ER_Customer_Master_File_Grouping__r.Name);
+                idsOfCmfGroup.add(associationRec);
+                bpAccountDataMap.put(associationRec.ER_Customer_Master_File_Grouping__r.Name,idsOfCmfGroup);
+            }
+            else{
+                bpAccountDataMap.put(associationRec.ER_Customer_Master_File_Grouping__r.Name,new List<ER_Account_Business_Partner__c>{associationRec});
+            }
+        }
+        List<PRM_Account_Contact_Profiles_Model.cmfWrapper> cmfWrapperDataList = new List<PRM_Account_Contact_Profiles_Model.cmfWrapper>();
+        PRM_Account_Contact_Profiles_Model.cmfWrapperNew returnWrapper = new PRM_Account_Contact_Profiles_Model.cmfWrapperNew();
+        for(String GroupName : bpAccountDataMap.keySet()){
+            PRM_Account_Contact_Profiles_Model.cmfWrapper cmfWrapperData = new PRM_Account_Contact_Profiles_Model.cmfWrapper();
+            cmfWrapperData.GroupName = GroupName; 
+            cmfWrapperData.GroupId= bpAccountDataMap.get(GroupName)[0].ER_Customer_Master_File_Grouping__r.id;//Ganesh Changes
+            cmfWrapperData.Active = bpAccountDataMap.get(GroupName)[0].ER_Customer_Master_File_Grouping__r.ER_Active__c;
+            cmfWrapperData.Description= bpAccountDataMap.get(GroupName)[0].ER_Customer_Master_File_Grouping__r.ER_Description__c;
+            cmfWrapperData.ActiveCMFcount= String.valueof(bpAccountDataMap.get(GroupName)[0].ER_Customer_Master_File_Grouping__r.ER_Active_Account_Business_Partners__c);
+            cmfWrapperData.InActiveCMFcount= String.valueof(bpAccountDataMap.get(GroupName)[0].ER_Customer_Master_File_Grouping__r.ER_Inactive_Account_Business_Partners__c);
+            cmfWrapperData.ActiveContactCount= String.valueof(bpAccountDataMap.get(GroupName)[0].ER_Customer_Master_File_Grouping__r.ER_Count_of_Contacts__c);
+            cmfWrapperData.InActiveContactCount= String.valueof(bpAccountDataMap.get(GroupName)[0].ER_Customer_Master_File_Grouping__r.ER_Inactive_Contacts__c);
+            List<PRM_Account_Contact_Profiles_Model.cmfData> cmfdetails = new List<PRM_Account_Contact_Profiles_Model.cmfData> ();
+            for(ER_Account_Business_Partner__c rec :bpAccountDataMap.get(GroupName)){
+                PRM_Account_Contact_Profiles_Model.cmfData cmf = new PRM_Account_Contact_Profiles_Model.cmfData();
+                
+                cmf.CMFID = rec.ER_Account__r.Core_Direct_Account_Id__c;
+                cmf.Name=rec.ER_Account__r.Name;
+                cmf.DirectCustomerRoleName=rec.ER_Account__r.Core_Direct_Account_Type_Nm__c ;
+                cmf.SalesOrgName=rec.ER_Account__r.Core_ER_Sales_Org_Name__c;
+                cmf.SalesOrgCode=rec.ER_Account__r.Core_Direct_Sales_Organization_Nm__c;
+                cmf.SalesDistiChannelCode=rec.ER_Account__r.Core_Direct_Distributor_Channel_Nm__c; 
+				cmf.SalesDistiChannelName=rec.ER_Account__r.Core_ER_Sales_Disti_Chnl_Name__c;
+				cmf.AccountGroup=rec.ER_Account__r.Core_ER_Account_Group__c;
+				cmf.DirectCustomerRoleCode=rec.ER_Account__r.Core_ER_Direct_CustomerRelationship_Code__c;
+                cmf.Address=((rec.ER_Account__r.billingstate!=null)?rec.ER_Account__r.billingstate:'')+((rec.ER_Account__r.billingcity!=null)?rec.ER_Account__r.billingcity:'')+((rec.ER_Account__r.billingPostalCode!=null)?rec.ER_Account__r.billingPostalCode:'')+((rec.ER_Account__r.billingCountryCode!=null)?+rec.ER_Account__r.billingCountryCode:'');
+                cmfdetails.add(cmf);
+             }
+            cmfWrapperData.CMFs=cmfdetails;
+            cmfWrapperDataList.add(cmfWrapperData);
+        }
+        /*Ganesh Changes*/for(Contact contactRec : [SELECT id,Account.Core_CNDA_Number__c,name,FirstName,LastName,Core_Enterprise_Id__c,Email,Account.Core_IsODM__c, Account.Name,account.IsDeleted,Account.Core_Business_Party_Id__c,account.Core_Account_ID__c, account.Core_Deactivated__c,IsDeleted, Core_Deactivated__c  from Contact WHERE Email =:key OR Core_Enterprise_Id__c =:key LIMIT 1]){
+            returnWrapper.FirstName=contactRec.FirstName;
+            returnWrapper.LastName=contactRec.LastName;
+            returnWrapper.EnterpriseId=contactRec.Core_Enterprise_Id__c;
+            returnWrapper.Email=contactRec.Email;
+            returnWrapper.AccountName=contactRec.Account.Name;
+            returnWrapper.AccountID=contactRec.account.Core_Account_ID__c;
+            returnWrapper.AccountStatus=contactRec.account.Core_Deactivated__c;
+            returnWrapper.UCDID=contactRec.Account.Core_Business_Party_Id__c;//APi name is diffrent in devipa
+            returnWrapper.AccountIsdeleted=contactRec.Account.IsDeleted;
+            returnWrapper.Deactivated=contactRec.Core_Deactivated__c;
+            returnWrapper.IsDeleted=contactRec.IsDeleted;
+            returnWrapper.IsODMAccount=contactRec.Account.Core_IsODM__c;
+            returnWrapper.CMFGroups=cmfWrapperDataList;
+            returnWrapper.CNDANumber = contactRec.Account.Core_CNDA_Number__c;//Ganesh Changes
+        }
+         PRM_Account_Contact_Profiles_Model.Profiles profiles = new PRM_Account_Contact_Profiles_Model.Profiles();
+         profiles.ContactGroupResults=returnWrapper;
+         profiles.ResponseTimeMS = responseTimeCalc();
+         return profiles;
+    }
+    
     public static PRM_Account_Contact_Profiles_Model.Profiles getCMfDetails(String key,String value) {
         List<ER_CMFGroupAssociation__c> records;
         List<Contact> contactrecList;
         Map<String,List<ER_CMFGroupAssociation__c>> cmfDataMap = new Map<String,List<ER_CMFGroupAssociation__c>>();
-        for(ER_CMFGroupAssociation__c associationRec : [SELECT id,ER_Customer_Master_File__r.Name,ER_Customer_Master_File__r.ER_CMF_Name__c,ER_Customer_Master_File_Group__r.Name,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File__r.ER_Central_Block__c,ER_Customer_Master_File__r.ER_SalesAreaOrderBlockCd__c,ER_Customer_Master_File_Group__r.ER_Description__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c, ER_Customer_Master_File_Group__r.ER_Inactive_Contacts__c, ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c, ER_Customer_Master_File_Group__r.ER_Inactive_Customer_Master_Files__c, ER_Customer_Master_File__r.ER_Account_Group__c,ER_Customer_Master_File__r.ER_CMF_Address__c, ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c,ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c, ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c, ER_Customer_Master_File__r.ER_Sales_Org_Code__c, ER_Customer_Master_File__r.ER_Sales_Org_Name__c FROM ER_CMFGroupAssociation__c WHERE ER_Customer_Master_File_Group__c IN (SELECT Er_Customer_Master_File_Group__c from ER_ContactGroupAssociation__c WHERE ER_Active__c = true AND (ER_Contact__r.Email =:key OR ER_Contact__r.Core_Enterprise_Id__c =:key))]){
+        /*Ganesh Changes*/for(ER_CMFGroupAssociation__c associationRec : [SELECT id,/*ER_Customer_Master_File_Group__r.id,*/ER_Customer_Master_File__r.Name,ER_Customer_Master_File__r.ER_CMF_Name__c,ER_Customer_Master_File_Group__r.Name,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File__r.ER_Central_Block__c,ER_Customer_Master_File__r.ER_SalesAreaOrderBlockCd__c,ER_Customer_Master_File_Group__r.ER_Description__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c, ER_Customer_Master_File_Group__r.ER_Inactive_Contacts__c, ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c, ER_Customer_Master_File_Group__r.ER_Inactive_Customer_Master_Files__c, ER_Customer_Master_File__r.ER_Account_Group__c,ER_Customer_Master_File__r.ER_CMF_Address__c, ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c,ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c, ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c, ER_Customer_Master_File__r.ER_Sales_Org_Code__c, ER_Customer_Master_File__r.ER_Sales_Org_Name__c FROM ER_CMFGroupAssociation__c WHERE ER_Customer_Master_File_Group__c IN (SELECT Er_Customer_Master_File_Group__c from ER_ContactGroupAssociation__c WHERE ER_Active__c = true AND (ER_Contact__r.Email =:key OR ER_Contact__r.Core_Enterprise_Id__c =:key))]){
             if(cmfDataMap.containsKey(associationRec.ER_Customer_Master_File_Group__r.Name)){
                 List<ER_CMFGroupAssociation__c> idsOfCmfGroup = cmfDataMap.get(associationRec.ER_Customer_Master_File_Group__r.Name);
                 idsOfCmfGroup.add(associationRec);
@@ -788,6 +858,8 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
         for(String GroupName : cmfDataMap.keySet()){
             PRM_Account_Contact_Profiles_Model.cmfWrapper cmfWrapperData = new PRM_Account_Contact_Profiles_Model.cmfWrapper();
             cmfWrapperData.GroupName = GroupName; 
+            //cmfWrapperData.GroupId = cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__c;
+            //cmfWrapperData.GroupId =cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__r.id;//Ganesh Changes
             cmfWrapperData.Active = cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__r.ER_Active__c;
             cmfWrapperData.Description= cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__r.ER_Description__c;
             cmfWrapperData.ActiveCMFcount= String.valueof(cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c);
@@ -814,7 +886,8 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
             cmfWrapperData.CMFs=cmfdetails;
             cmfWrapperDataList.add(cmfWrapperData);
         }
-        for(Contact contactRec : [SELECT id,name,FirstName,LastName,Core_Enterprise_Id__c,Email,Account.Core_IsODM__c, Account.Name,account.IsDeleted,Account.Core_Business_Party_Id__c,account.Core_Account_ID__c, account.Core_Deactivated__c,IsDeleted, Core_Deactivated__c  from Contact WHERE Email =:key OR Core_Enterprise_Id__c =:key LIMIT 1]){
+        //returnWrapper.CMFGroups = cmfWrapperDataList; //Ganesh Changes
+        /*Ganesh Changes*/for(Contact contactRec : [SELECT id,/*Account.Core_CNDA_Number__c,*/name,FirstName,LastName,Core_Enterprise_Id__c,Email,Account.Core_IsODM__c, Account.Name,account.IsDeleted,Account.Core_Business_Party_Id__c,account.Core_Account_ID__c, account.Core_Deactivated__c,IsDeleted, Core_Deactivated__c  from Contact WHERE Email =:key OR Core_Enterprise_Id__c =:key LIMIT 1]){
             returnWrapper.FirstName=contactRec.FirstName;
             returnWrapper.LastName=contactRec.LastName;
             returnWrapper.EnterpriseId=contactRec.Core_Enterprise_Id__c;
@@ -828,6 +901,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
             returnWrapper.IsDeleted=contactRec.IsDeleted;
             returnWrapper.IsODMAccount=contactRec.Account.Core_IsODM__c;
             returnWrapper.CMFGroups=cmfWrapperDataList;
+            //returnWrapper.CNDANumber = contactRec.Account.Core_CNDA_Number__c;//Ganesh Changes
         }
          PRM_Account_Contact_Profiles_Model.Profiles profiles = new PRM_Account_Contact_Profiles_Model.Profiles();
          profiles.ContactGroupResults=returnWrapper;
@@ -954,7 +1028,7 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
                 ContAcct.ContactBasicProfile.ContactSubscriptions = getPersonSubscriptions(conts[0]);
                 ContAcct.ContactBasicProfile.ContactBusinessTypes = getContactBusinessType(conts[0]);
                 ContAcct.ContactBasicProfile.ContactEntitlements = getPersonEntitlements(conts[0]);
-                ContAcct.RegReqConsolidated = getRegistrationRequestDetails(accounts[0],conts[0]);//new method for consolidated regrequestpayload
+                ContAcct.RegReqConsolidated = getRegistrationRequestDetails(accounts[0],conts[0]);//@NJ new method for consolidated regrequestpayload
                 //ContAcct.AccountInformation.ComplianceWatchLists = getAccountComplianceWatchLists(accounts[0]);  //Commenting as part of TWC729-8872
                 return ContAcct;
             }else{
@@ -1089,6 +1163,7 @@ return null;
     private static PRM_Account_Contact_Profiles_Model.AccountInformationWrapper getAccountInformation(Account acct){     
         PRM_Account_Contact_Profiles_Model.AccountInformationWrapper accountInfo = new PRM_Account_Contact_Profiles_Model.AccountInformationWrapper();        
         accountInfo.AccountId = acct.Id;
+         accountInfo.OnePartnerId = acct.Core_IPA_One_Partner_Id__c;
         accountInfo.Name = acct.Name;
         accountInfo.BadgeTier = acct.Core_IPA_Badge_Tier__c;
         List<Schema.PicklistEntry> pickListValuesIPA = Account.Core_IPA_Badge_Tier__c.getDescribe().getPicklistValues();
@@ -1181,8 +1256,8 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
         accountInfo.UnifiedCountryCode=null;
             //ContAcct.ContactAccount = new ContactAccountWrapper();
         //ContAcct.ContactAccount.AccountInformation = accountInfo;
-        accountInfo.OwnerName = acct.Owner.Name; //TWC729-9198
-        accountInfo.OwnerEmail = acct.Core_Account_Owner_Email__c;//TWC729-9198
+        accountInfo.OwnerName = acct.Owner.Name; //varun reddy
+        accountInfo.OwnerEmail = acct.Core_Account_Owner_Email__c;
         return accountInfo;
     }
     private Static PRM_Account_Contact_Profiles_Model.Address getAccountPrimaryAddress(Account acct){

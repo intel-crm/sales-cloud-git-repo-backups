@@ -601,6 +601,26 @@
         <label>Design Win vs. Comp</label>
     </customValue>
     <customValue>
+        <fullName>Physical AI</fullName>
+        <default>false</default>
+        <label>Physical AI</label>
+    </customValue>
+    <customValue>
+        <fullName>Commercial Client</fullName>
+        <default>false</default>
+        <label>Commercial Client</label>
+    </customValue>
+    <customValue>
+        <fullName>Premium Client</fullName>
+        <default>false</default>
+        <label>Premium Client</label>
+    </customValue>
+    <customValue>
+        <fullName>Mainstream Client</fullName>
+        <default>false</default>
+        <label>Mainstream Client</label>
+    </customValue>
+    <customValue>
         <fullName>Server Refresh</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -611,6 +631,12 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Edge Computing </label>
+    </customValue>
+    <customValue>
+        <fullName>Hybrid Cloud</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Hybrid Cloud</label>
     </customValue>
     <customValue>
         <fullName>Test1</fullName>
@@ -629,12 +655,6 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>AI</label>
-    </customValue>
-    <customValue>
-        <fullName>Hybrid Cloud</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Hybrid Cloud</label>
     </customValue>
     <description>Store Priority values</description>
     <masterLabel>Priority</masterLabel>

@@ -93,10 +93,10 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                     gen.WriteEndArray();
                     finalJSONData.put(caseId+caseId, new List<String> {gen.getAsString()});
                 } catch(Exception e) {
-                   
+                   // System.debug('This is in the catch block');
                     Core_IPS_BES_LogEntry_Utility.insertLog(e,outboundRecsMap.get((String)systemMap.get(Label.Core_IPS_message_id)),null,null,caseId);
                 } finally {
-                   
+                    //System.debug('inside the finally block');
                 }
             }
             
@@ -150,7 +150,8 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                 }
                 }
             } catch(Exception e) {
-                
+                //System.debug('Exception occu '+e.getMessage());
+                //System.debug('reason '+e.getStackTraceString());
                 Core_IPS_BES_LogEntry_Utility.insertLog(e,outboundRecsMap.get((String)systemMap.get(Label.Core_IPS_message_id)),null,null,caseId);
             }
         }
@@ -182,7 +183,7 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                     }
                     //finalList.add((Map<String,String>)finalJSONData);
                 }catch(Exception e){
-                   
+                    //System.debug(e.getMessage()+'-'+e.getLineNumber());
                     Core_IPS_BES_LogEntry_Utility.insertLog(e,outboundRecsMap.get((String)systemMap.get(Label.Core_IPS_message_id)),null,null,caseId);
                 }
             }

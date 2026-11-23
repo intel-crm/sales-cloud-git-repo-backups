@@ -40,7 +40,6 @@ public without sharing class Core_Contact_AccountChange_Handler {
             ////System.debug('Queried old Account :'+contactRef.accountID);
             
             Account newAccountRec=newAccountMap.get(stContNewAccId.get(contactRef.id));
-            
             Boolean blnSelectedContactEntitlement=false;
             
             for(Core_Contact_Entitlement__c objConEntitlement : contactRef.Contact_Entitlements__r){
@@ -99,7 +98,8 @@ public without sharing class Core_Contact_AccountChange_Handler {
             if(newAccountRec.Core_Export_Compliance_Block__c){
                 AllErrorMessages = AllErrorMessages+'\n  Account :'+contactRef.Account.Name+' is on  GEC Hold , ';
                 lstNewContacts[ContactIndex].accountid.addError(AllErrorMessages);
-            } 
+            
+            
             // Inactive account validation 
             
             if(newAccountRec.Core_Deactivated__c && newAccountRec.Core_Deactivation_Reason__c!=null) {
@@ -115,7 +115,7 @@ public without sharing class Core_Contact_AccountChange_Handler {
         }
     }
 
-
+    }
     /*This method is called when account is changed on the contact. This method retrives cases and accounts related to the contact and sending updateAssetsToCase method*/
     public static void updateAssets(List<Contact> lstNewContacts){
         ////System.debug('*****>>in updateAssets method<<****');

@@ -389,18 +389,23 @@ public class ER_SearchCMFService {
     public static List<CMFGroupData> getCmfGroupDetails(String uniqueString) {
         List<ER_CMFGroupAssociation__c> associationRecList = [SELECT id,name,ER_Customer_Master_File_Group__r.Name,ER_Customer_Master_File_Group__r.Id,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c from ER_CMFGroupAssociation__c WHERE ER_Customer_Master_File__r.ER_CMFUnique__c =:uniqueString];
         List<CMFGroupData> CMFGroupDataList = new List<CMFGroupData>();
+        Map<Id, CMFGroupData> CMFGroupIdMap = new Map<Id, CMFGroupData>();
         for(ER_CMFGroupAssociation__c rec : associationRecList){
+            Id groupId = rec.ER_Customer_Master_File_Group__r.Id;
+            if (!CMFGroupIdMap.containsKey(groupId)) {
             CMFGroupData grouprec = new CmfGroupData();
             grouprec.GroupName = rec.ER_Customer_Master_File_Group__r.Name;
-            grouprec.GroupLink = System.URL.getOrgDomainUrl().toExternalForm()+'/'+rec.ER_Customer_Master_File_Group__r.Id;
+            grouprec.GroupLink = URL.getOrgDomainUrl().toExternalForm() + '/' + groupId;    
+           // grouprec.GroupLink = System.URL.getOrgDomainUrl().toExternalForm()+'/'+rec.ER_Customer_Master_File_Group__r.Id;
             grouprec.Active = rec.ER_Customer_Master_File_Group__r.ER_Active__c;
             grouprec.ActiveCMFCount = Integer.valueOf(rec.ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c);
             grouprec.ActiveContactCount = Integer.valueOf(rec.ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c);
-            CMFGroupDataList.add(grouprec);
-            
+            //CMFGroupDataList.add(grouprec);
+            CMFGroupIdMap.put(groupId, grouprec);
+            }
         }
-        return CMFGroupDataList;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-        
+        //return CMFGroupDataList;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+       return new List<CMFGroupData>(CMFGroupIdMap.values());
     }
      public class CMFGroupData {
         @AuraEnabled

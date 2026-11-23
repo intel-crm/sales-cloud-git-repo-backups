@@ -2,8 +2,11 @@ public without sharing class Core_MDF_Scorecard_Helper {
     @AuraEnabled
     public static ScorecardDetailsWrapper getScoreCardDetailsAndAccess(id caseRecord){
         ScorecardDetailsWrapper scorecardDetail = new ScorecardDetailsWrapper();
+	if(caseRecord == null) return scorecardDetail;
         try{
-            	Core_MDF_Scorecard__c scRec= [select id, Core_MDF_Case_Id__r.Core_MDF_Status__c,Core_MDF_Case_Id__r.CreatedDate,Core_MDF_AI_Processing_Status_Nm__c,Core_MDF_AI_Comments_Txt__c,Core_MDF_Case_Id__r.Core_MDF_Claim_Lookup_Id__r.Core_MDF_OutcomeBased_Ind__c,Core_MDF_Case_Id__r.Core_MDF_Audit_Reversal_Count_Nbr__c from Core_MDF_Scorecard__c where Core_MDF_Case_Id__c =:caseRecord LIMIT 1];
+            	List<Core_MDF_Scorecard__c> scorecards = [select id, Core_MDF_Case_Id__r.Core_MDF_Status__c,Core_MDF_Case_Id__r.CreatedDate,Core_MDF_AI_Processing_Status_Nm__c,Core_MDF_AI_Comments_Txt__c,Core_MDF_Case_Id__r.Core_MDF_Claim_Lookup_Id__r.Core_MDF_OutcomeBased_Ind__c,Core_MDF_Case_Id__r.Core_MDF_Audit_Reversal_Count_Nbr__c from Core_MDF_Scorecard__c where Core_MDF_Case_Id__c =:caseRecord LIMIT 1];
+                if(scorecards.isEmpty()) return scorecardDetail;
+                Core_MDF_Scorecard__c scRec = scorecards[0];
                 
                 Boolean statusFlag = scRec.Core_MDF_Case_Id__r.Core_MDF_Status__c == 'Under Review'? true:false;
                 Boolean editAccess = FeatureManagement.checkPermission('Core_MDF_ClaimCaseReviewer')? true:false;

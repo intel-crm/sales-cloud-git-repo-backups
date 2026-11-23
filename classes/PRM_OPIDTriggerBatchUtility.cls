@@ -259,15 +259,17 @@ public without sharing class PRM_OPIDTriggerBatchUtility
         Map<String,List<PRM_Account_Specialty_Association__c>> mapOfAccAndASA = new Map<String,List<PRM_Account_Specialty_Association__c>>();
         Map<String,Map<Decimal,Boolean>> rankingSatisfiedQuantativeMap = new Map<String,Map<Decimal,Boolean>>();
         set<Id> upgradeAccIds = new set<Id>();
-        list<PRM_Account_Specialty_Association__c> asaList = new list<PRM_Account_Specialty_Association__c>();
-        if(!opidVxDataCompleteList.isEmpty()){
-            for(PRM_Value_Exchange_Data__c upgradeList : opidVxDataCompleteList){
+        //list<PRM_Account_Specialty_Association__c> asaList = new list<PRM_Account_Specialty_Association__c>();
+        //ATHR Fix - TWC729-9556 -- start
+        /*if(!opidVxDataCompleteList.isEmpty()){
+            for(PRM_Value_Exchange_Data__c upgradeList : opidVxDatvaCompleteList){
                 upgradeAccIds.add(upgradeList.PRM_Account_Id__c);
             }
         }
         if(!upgradeAccIds.isEmpty()){  
             asaList  = [Select PRM_Account_Id__c,PRM_Partner_Role__c,PRM_Specialty_Id__r.Name,PRM_Specialty_Type__c from PRM_Account_Specialty_Association__c where PRM_Account_Id__c in:upgradeAccIds and  PRM_InActive_Ind__c = false] ;
-        }
+        }*/
+        //ATHR Fix - TWC729-9556 -- end
         /*if(!asaList.isEmpty() && (!ipaRefresh  || test.isrunningtest())){ //IPA2.0-TWC727-2861
             for(PRM_Account_Specialty_Association__c asa : asaList){
             if(asa.PRM_Specialty_Type__c.equalsIgnoreCase(System.Label.PRM_Source_Specialty)){//DE80439-Specialty ASA filter

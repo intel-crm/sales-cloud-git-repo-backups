@@ -18,6 +18,7 @@
             </value>
         </inputParameters>
         <nameSegment>c:ToastMessage</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
@@ -35,6 +36,7 @@
             </value>
         </inputParameters>
         <nameSegment>c:navigateToUrl</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <apiVersion>60.0</apiVersion>
@@ -1001,7 +1003,7 @@
         </faultConnector>
         <inputReference>Get_Valid_Registration_Record</inputReference>
     </recordUpdates>
-    <runInMode>DefaultMode</runInMode>
+    <runInMode>SystemModeWithoutSharing</runInMode>
     <screens>
         <name>Account_Warning</name>
         <label>Account_Warning</label>
@@ -1190,7 +1192,7 @@
             <targetReference>Get_Valid_Registration_Record</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>recordId</name>
         <dataType>String</dataType>

@@ -55,7 +55,7 @@ public class PCC_Constants {
         'Core_Manufacturing_Region_Cd__c' => 'manufacturingRegion',
         'Core_Design_Registration_Nm__c' => 'designRegistrationName',
         'DDR_Partner_FAE_Email__c' => 'partnerFAEEmail',
-        'MMID_or_Ordering_code__c' => 'mmId/oldMMId/orderingCd'
+        'MMID_or_Ordering_code__c' => 'mmId/orderingCd'
         }; 
             public static Map<String, String> drProductApiToLabelMapV2 = new Map<String, String>{'Core_Design_Registration_Id__c'=> 'designRegistration',
         'Core_Product_Id__c' => 'productId',
@@ -93,7 +93,7 @@ public class PCC_Constants {
         'Core_Manufacturing_Region_Cd__c' => 'manufacturingRegion',
         'Core_Design_Registration_Nm__c' => 'designRegistrationName',
         'DDR_Partner_FAE_Email__c' => 'partnerFAEEmail',
-        'MMID_or_Ordering_code__c' => 'mmId/oldMMId/orderingCd'
+        'MMID_or_Ordering_code__c' => 'mmId/orderingCd'
         }; 
           public static Set<String> allowedFieldsPostDR = new Set<String>{
         'productGroup',
@@ -166,7 +166,8 @@ public class PCC_Constants {
     'comments',
     'partnerTrackingNumber',
     'mmId',
-    'recordId','oldMMId','orderingCd','designRegId'
+    //'recordId','oldMMId','orderingCd','designRegId'
+    'recordId','orderingCd','designRegId'
         };
            
     public static Set<String> allowedFieldsPostDRP = new Set<String>{'quantity',
@@ -175,7 +176,7 @@ public class PCC_Constants {
     'partnerTrackingNumber',
     'mmId','oldMMId','orderingCd','externalId','designRegId'};
             public static Set<String> allowedFieldsDeleteAPI = new Set<String>{'recordId'};
-
+  public static final String MMID_ORDCODE = 'Please provide MMID or ordering code to get L4 &L5 product details';
      public static final String INSERT_DDR = 'Insert Design Registration';
      public static final String UPDATE_DDR = 'Update Design Registration';
      public static final String INSERT_DRP = 'Insert Design Registration Product';
@@ -196,7 +197,7 @@ public class PCC_Constants {
     public static final String INVALID_CROSS_REFERENCE_KEY = 'INVALID_CROSS_REFERENCE_KEY';
     public static final String DUPLICATE_VALUE = 'DUPLICATE_VALUE';
 
-	 public static final String static_DDR_MD_Label = 'PicklistValues';
+   public static final String static_DDR_MD_Label = 'PicklistValues';
      public static final Integer MAX_CHARACTER_TO_STORE = 131070;
      public static final String NO_FILE_UPLOADED ='No file(s) has been uploaded. Please upload the required supported documents';
      public static final String INVALID_TYPE = 'Invalid File Type';

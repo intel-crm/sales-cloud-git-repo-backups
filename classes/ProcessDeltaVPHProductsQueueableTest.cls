@@ -34,7 +34,7 @@ private class ProcessDeltaVPHProductsQueueableTest {
         Test.stopTest();
         
         List<Product_Inbound_Staging__c> records = [SELECT Id FROM Product_Inbound_Staging__c];
-        //Assert.areEqual(1, records.size(), 'Should create 1 staging record');
+        Assert.areEqual(1, records.size(), 'Should create 1 staging record');
     }
     
     @isTest
@@ -106,7 +106,7 @@ private class ProcessDeltaVPHProductsQueueableTest {
         Test.stopTest();
         
         List<Product_Inbound_Staging__c> records = [SELECT Id FROM Product_Inbound_Staging__c];
-        //Assert.areEqual(1, records.size(), 'Inactive product response should still create a staging record for processing');
+        Assert.areEqual(1, records.size(), 'Inactive product response should still create a staging record for processing');
     }
     
     @isTest
@@ -119,7 +119,7 @@ private class ProcessDeltaVPHProductsQueueableTest {
         Test.stopTest();
         
         List<Product_Inbound_Staging__c> records = [SELECT Id FROM Product_Inbound_Staging__c];
-        //Assert.areEqual(1, records.size(), 'Should create one staging record for the provided L1 product');
+        Assert.areEqual(1, records.size(), 'Should create one staging record for the provided L1 product');
     }
     
     @isTest

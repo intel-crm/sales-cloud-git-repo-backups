@@ -558,6 +558,11 @@
         <columns>Core_MDF_Program_Nm__c</columns>
         <columns>Core_MDF_Account_Id__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Program_Nm__c</field>
+            <operation>equals</operation>
+            <value>Co-GTM</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

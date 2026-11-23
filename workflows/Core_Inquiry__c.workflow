@@ -8,7 +8,7 @@
             <field>Core_Lead_Contact_Owner_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Inquiry_Email_Templates/Core_Inquiry_Asked_For_Contact_Follow_Up</template>
     </alerts>
@@ -20,7 +20,7 @@
             <field>Core_Lead_Contact_Owner_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Inquiry_Email_Templates/Core_Inquiry_Asked_For_Lead_Follow_Up</template>
     </alerts>
@@ -32,7 +32,7 @@
             <field>Core_Lead_Contact_Owner_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Inquiry_Email_Templates/Core_Inquiry_CNDA_Contact_Request</template>
     </alerts>
@@ -43,7 +43,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Inquiry_Email_Templates/Core_Inquiry_CNDA_Lead_Request</template>
     </alerts>
@@ -55,7 +55,7 @@
             <field>Core_Lead_Contact_Owner_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Inquiry_Email_Templates/Core_Inquiry_Asked_For_Lead_Follow_Up</template>
     </alerts>

@@ -82,6 +82,7 @@ export default class Core_IPS_CaseDetailView_Lex extends LightningElement {
             recordId : this.recordId,
         }).then( result =>{
             for(let key in result){
+                console.log('key ==== ',key);
                 if(key == 'Case Detail'){
                     this.caseDetailsfields = result[key];
                     if(this.caseDetailsfields.length == 0){

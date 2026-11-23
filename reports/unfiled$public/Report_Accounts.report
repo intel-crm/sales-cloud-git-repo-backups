@@ -30,6 +30,16 @@
     <columns>
         <field>LAST_UPDATE</field>
     </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Jim Gong</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Tabular</format>
     <name>Report - Accounts</name>
     <params>

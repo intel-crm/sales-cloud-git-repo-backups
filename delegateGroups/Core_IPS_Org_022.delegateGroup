@@ -46,9 +46,6 @@
     <groups>ADG PonyAI Lanner Gemini2.0 SPR</groups>
     <groups>Cranium Requirement</groups>
     <groups>ADG - Ford Projects</groups>
-    <groups>CCG-SSP - Android</groups>
-    <groups>CCG-SSP - Linux</groups>
-    <groups>CCG-SSP - Unassigned</groups>
     <groups>IPS - Org Admin - ADG</groups>
     <groups>ADG - ASMO</groups>
     <groups>ADG - EMEA</groups>
@@ -57,5 +54,5 @@
     <label>IPS - Org Admin - ADG</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
+    <roles>IPS Agent</roles>
 </DelegateGroup>

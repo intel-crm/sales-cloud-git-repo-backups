@@ -377,7 +377,6 @@ public with sharing class Core_IPS_BES_Generate_CaseJSON {
         string getEdqValue ;
         if(customRecList!=null && customRecList.size()>0  && quesAnsMap!=null){
         for(Core_IPS_BES_Questions__c customSettingValues : customRecList){
-	    // Avoid Deeply Nested IF Statements Kamala - TWC745-9117
             if((quesAnsMap.containskey(customSettingValues.Environmental_Detail_Question__c)) && (quesAnsMap.get(customSettingValues.Environmental_Detail_Question__c)!=null)){
                  getEdqValue = String.ValueOf(quesAnsMap.get(customSettingValues.Environmental_Detail_Question__c)).replaceAll('\n','<br>');   
                 }

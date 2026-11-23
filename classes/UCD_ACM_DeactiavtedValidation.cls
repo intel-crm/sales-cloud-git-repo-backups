@@ -35,7 +35,7 @@ public without sharing class UCD_ACM_DeactiavtedValidation implements UCD_ACM_Se
 
         if (Schema.sObjectType.Account.fields.RecordTypeId.isAccessible() && 
             Schema.sObjectType.Account.fields.Core_Parent_Business_Party_Id__c.isAccessible()  &&
-            Schema.sObjectType.Account.fields.ParentId.isAccessible()  ){
+            Schema.sObjectType.Account.fields.ParentId.isAccessible()){
 
                 childAccounts = [
                 Select Id, RecordTypeId, Core_Parent_Business_Party_Id__c, ParentId, Parent.Core_Business_Party_Id__c

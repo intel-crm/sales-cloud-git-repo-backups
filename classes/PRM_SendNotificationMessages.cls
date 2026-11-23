@@ -89,9 +89,10 @@ public without sharing class PRM_SendNotificationMessages {
             }else{
                 contactList = [Select Id,Name,AccountId from Contact where AccountId IN:accIds and Core_Do_Not_Contact__c=false];
             }*/
-            contactList = (messageCode == System.label.PRM_Msgcd_NewContact) ? [SELECT Id, Name, AccountId FROM Contact WHERE AccountId IN (
+            //ATHR Fix - TWC729-9556
+            contactList = (messageCode == System.label.PRM_Msgcd_NewContact) ? [SELECT Id, /*Name,*/ AccountId FROM Contact WHERE AccountId IN (
             SELECT PRM_Account_Id__c FROM PRM_Account_Contact_Relationship__c WHERE PRM_Contact_Id__c IN :accIds AND PRM_Status_Nm__c = 'Complete' AND PRM_InActive_Ind__c = false)
-            AND Core_Do_Not_Contact__c = false AND Id NOT IN :accIds] : [SELECT Id, Name, AccountId FROM Contact WHERE AccountId IN :accIds
+            AND Core_Do_Not_Contact__c = false AND Id NOT IN :accIds] : [SELECT Id, /*Name,*/ AccountId FROM Contact WHERE AccountId IN :accIds
             AND Core_Do_Not_Contact__c = false];
             //add Contact size
             if(contactList != null && !contactList.isEmpty()){

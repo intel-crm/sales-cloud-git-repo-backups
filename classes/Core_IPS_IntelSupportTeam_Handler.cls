@@ -162,7 +162,7 @@ Modification Log :
                         }
                     }
                 } 
-                // TWC745-9117 - Avoid Deeply Nested IF Statements Kamala
+                //Avoid Deeply Nested IF Statements Kamala
                 if((projId!=null && projId.size()>0) &&(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible())){
                         projMap = new Map<Id,Core_IPS_Project__c>([Select id,name,Core_IPS_InternalGroupId__c,Core_IPS_Unique_Project_Number__c from Core_IPS_Project__c where id IN: projId ]);
                 }   

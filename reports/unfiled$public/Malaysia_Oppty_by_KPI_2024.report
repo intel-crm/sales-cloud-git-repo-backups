@@ -7,9 +7,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.KPI_Opportunity__r$Core_KPI_Total_Price__c</field>
     </columns>
-    <columns>
-        <field>Opportunity$Core_Product_Segment__c</field>
-    </columns>
     <description>for forecasting</description>
     <filter>
         <booleanFilter>1 AND 2</booleanFilter>
@@ -21,11 +18,11 @@
             <value>,Lost,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity$Core_Technical_Owner__c</column>
+            <column>Opportunity$Owner</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Lawrence law</value>
+            <value>ida zulaika,harris sani</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -58,13 +55,13 @@
     <reportType>Opportunities_with_New_Opportunity_KPIs__c</reportType>
     <roleHierarchyFilter>SMG</roleHierarchyFilter>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity$CloseDate</dateColumn>
-        <endDate>2025-12-31</endDate>
+        <endDate>2024-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2023-01-01</startDate>
+        <startDate>2024-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>EMP_10649293_Helen_Edwards</sharedTo>
+        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>AGS_PG_EMEA_All_sales_group_Read</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>Core_Oppty_AllSalesGroups_EMEA_Read</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>SMG_Now_Territory_Model.EMEA_All_Sales_Groups</sharedTo>
+        <sharedToType>Territory</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>SMG_Now_Territory_Model.EMEA_All_Sales_Groups_EDIT</sharedTo>
+        <sharedToType>Territory</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>SMG_Now_Territory_Model.SMG_WW_Read</sharedTo>
+        <sharedToType>Territory</sharedToType>
+    </folderShares>
+    <name>MSWEET - EMEA Pipe reviews - Risk/Loss</name>
+</DashboardFolder>

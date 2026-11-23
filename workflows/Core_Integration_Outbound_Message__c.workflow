@@ -4,7 +4,7 @@
         <fullName>Core_IntegrationAGSOutboundMsg</fullName>
         <apiVersion>38.0</apiVersion>
         <description>Entitlement AGS OBM.</description>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-ags/type/SM_OBM</endpointUrl>
+        <endpointUrl>https://dummy_user3:j5s$S$Xo!s9w@eip-crm-dummy.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-ags/type/SM_OBM</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -18,7 +18,7 @@
         <fullName>Core_IntegrationAGSOutboundMsg2</fullName>
         <apiVersion>49.0</apiVersion>
         <description>Entitlement AGS OBM for A&amp;E 2.0</description>
-        <endpointUrl>https://069a99b8-e6a0-4828-a5a7-2b806d5514e5:WhX8Q~f_pSNssln4bZ9opatb6PkH6FBcPWwzBdjE@apis.intel.com/m2r/user-roles/v1/entitlements</endpointUrl>
+        <endpointUrl>https://069a99b8-e6a0-4828-a5a7-2b806d5514e5:WhX8Q~f_pSNssln4bZ9opatb6PkH6FBcPWwzBdjE@apis-sandbox.intel.com/m2r/user-roles/v1/entitlements</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -31,7 +31,7 @@
     <outboundMessages>
         <fullName>Core_IntegrationCIMOutboundMsg</fullName>
         <apiVersion>32.0</apiVersion>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-util-obm-consumer/eip-crm-sls-sf2cim</endpointUrl>
+        <endpointUrl>https://dummy_user3:j5s$S$Xo!s9w@eip-crm-dummy.cloudhub.io/smit/api/eip-crm-util-obm-consumer/eip-crm-sls-sf2cim</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -44,7 +44,7 @@
     <outboundMessages>
         <fullName>Core_IntegrationERPMOutboundMsg</fullName>
         <apiVersion>38.0</apiVersion>
-        <endpointUrl>https://876fa729-f55e-448e-a202-8003cd3b214e:PPN8Q~f6XwRKkhLcuafGkKAOltybdt3e_I_yncF2@apis.intel.com/m2r/crm/erpm/v1/contacts</endpointUrl>
+        <endpointUrl>https://876fa729-f55e-448e-a202-8003cd3b214e:PPN8Q~f6XwRKkhLcuafGkKAOltybdt3e_I_yncF2@apis-sandbox.intel.com/m2r/crm/erpm/v1/contacts</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -58,7 +58,7 @@
         <fullName>Core_IntegrationPSGOutboundMsg</fullName>
         <apiVersion>38.0</apiVersion>
         <description>Send PSG Opportunity details to Ipaas</description>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-sls-siebel/quote</endpointUrl>
+        <endpointUrl>https://dummy_user3:j5s$S$Xo!s9w@eip-crm-dummy.cloudhub.io/smit/api/eip-crm-sls-siebel/quote</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -72,7 +72,7 @@
         <fullName>Core_OnePartnerRequestOutboundMsg</fullName>
         <apiVersion>48.0</apiVersion>
         <description>One Partner Request Outbound message</description>
-        <endpointUrl>https://apis.intel.com/m2r/sales-cloud/opid/v1/partners/accounts?apikey=ddbf065e-4abc-4072-b625-5792c33e9b3d</endpointUrl>
+        <endpointUrl>https://apis-sandbox.intel.com/m2r/sales-cloud/opid/v1/partners/accounts?apikey=ddbf065e-4abc-4072-b625-5792c33e9b3d</endpointUrl>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
@@ -84,8 +84,8 @@
     <outboundMessages>
         <fullName>PMP_LTOutboundMsg</fullName>
         <apiVersion>46.0</apiVersion>
-        <description>Translation request sent to GLS via Apigee https://apis.intel.com/m2r/sales-cloud/translation/v1/articles</description>
-        <endpointUrl>https://apis.intel.com/m2r/sales-cloud/translation/v1/articles?apikey=a0ebe863-1b5c-461f-bcbd-e30284ff9fb1</endpointUrl>
+        <description>Translation request sent to GLS via Apigee https://apis-sandbox.intel.com/m2r/sales-cloud/translation/v1/articles</description>
+        <endpointUrl>https://apis-sandbox.intel.com/m2r/sales-cloud/translation/v1/articles?apikey=a0ebe863-1b5c-461f-bcbd-e30284ff9fb1</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -98,8 +98,8 @@
     <outboundMessages>
         <fullName>PMP_Partner_LTOutboundMsg</fullName>
         <apiVersion>48.0</apiVersion>
-        <description>Translation request sent to GLS via Apigee https://apis.intel.com/m2r/sales-cloud/translation/v1/articles</description>
-        <endpointUrl>https://apis.intel.com/m2r/sales-cloud/translation/v1/articles?apikey=a0ebe863-1b5c-461f-bcbd-e30284ff9fb1</endpointUrl>
+        <description>Translation request sent to GLS via Apigee https://apis-sandbox.intel.com/m2r/sales-cloud/translation/v1/articles</description>
+        <endpointUrl>https://apis-sandbox.intel.com/m2r/sales-cloud/translation/v1/articles?apikey=a0ebe863-1b5c-461f-bcbd-e30284ff9fb1</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -113,7 +113,7 @@
         <fullName>PRM_IPA_IntegrationOBM</fullName>
         <apiVersion>49.0</apiVersion>
         <description>IPA Integration Account/Contact Message</description>
-        <endpointUrl>https://79159eae-0011-4d83-98f7-9e0a16ff3bf9:Fe28Q~PnizvFSRWcI9RHgA4~wx-3eiK2snXcbbTX@apis.intel.com/m2r/sales-cloud/v1/customer-profiles/services/customer-details</endpointUrl>
+        <endpointUrl>https://79159eae-0011-4d83-98f7-9e0a16ff3bf9:Fe28Q~PnizvFSRWcI9RHgA4~wx-3eiK2snXcbbTX@apis-sandbox.intel.com/m2r/sales-cloud/v1/customer-profiles/services/customer-details</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -127,7 +127,7 @@
         <fullName>Pricing_IntegrationMydealOutboundMessage</fullName>
         <apiVersion>48.0</apiVersion>
         <description>Send Tenders Quote data to My Deals environment</description>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-sf2mydeals/type/SM_OBM</endpointUrl>
+        <endpointUrl>https://dummy_user3:j5s$S$Xo!s9w@eip-crm-dummy.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-sf2mydeals/type/SM_OBM</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>

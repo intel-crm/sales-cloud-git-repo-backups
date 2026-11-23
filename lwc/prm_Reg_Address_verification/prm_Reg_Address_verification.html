@@ -1,0 +1,115 @@
+<template>
+
+    <lightning-button label="Verify Address" variant="brand" onclick={openModal}>
+    </lightning-button>
+
+    <template if:true={showModal}>
+
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+
+            <div class="slds-modal__container">
+
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">
+                        Verify Address
+                    </h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium">
+
+                    <template if:true={loading}>
+                        <lightning-spinner alternative-text="Loading">
+                        </lightning-spinner>
+                    </template>
+
+                    <template if:true={showResults}>
+
+                        <template if:true={hasCleansedAddress}>
+
+                            <div class="slds-grid slds-gutters">
+
+                                <div class="slds-col">
+
+                                    <div class={cleansedClass} data-option="cleansed" onclick={handleSelect}>
+
+                                        <strong>Loqate Cleansed Address</strong>
+
+                                        <p>{cleansedAddress.streetName}</p>
+                                        <p>
+                                            {cleansedAddress.cityName},
+                                            {cleansedAddress.stateName}
+                                            {cleansedAddress.postalCode}
+                                        </p>
+                                        <p>{cleansedAddress.countryName}</p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="slds-col">
+
+                                    <div class={enteredClass} data-option="entered" onclick={handleSelect}>
+
+                                        <strong>Address As Entered</strong>
+
+                                        <p>{streetName}</p>
+                                        <p>{cityName}, {stateCode} {postalCode}</p>
+                                        <p>{countryCode}</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </template>
+
+                        <template if:false={hasCleansedAddress}>
+
+                            <p class="slds-m-bottom_medium">
+                                No matching address found. Please verify the entered address before proceeding with
+                                request submission.
+                            </p>
+
+                            <div class="slds-grid slds-grid_align-center slds-m-top_small">
+
+                                <div class="slds-size_1-of-2">
+                                    <div class={enteredClass} data-option="entered" onclick={handleSelect}>
+
+                                        <div class="slds-text-align_center">
+                                            <strong>Address As Entered</strong>
+
+                                            <p>{streetName}</p>
+                                            <p>{cityName}, {stateCode} {postalCode}</p>
+                                            <p>{countryCode}</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </template>
+                    </template>
+
+                </div>
+
+                <footer class="slds-modal__footer">
+
+                    <lightning-button label="Cancel" onclick={closeModal}>
+                    </lightning-button>
+
+                    <lightning-button variant="brand" label="Proceed" class="slds-m-left_small" onclick={handleProceed}>
+                    </lightning-button>
+
+                </footer>
+
+            </div>
+
+        </section>
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+
+    </template>
+
+</template>

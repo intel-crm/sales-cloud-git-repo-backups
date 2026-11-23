@@ -40,6 +40,16 @@
             <field>Core_Login_Id__c</field>
             <table>Account.Contacts</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_Priority__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_Relative_Urgency__c</field>
+            <table>Account.Contacts</table>
+        </columns>
         <masterLabel>Contacts</masterLabel>
     </sections>
     <sections>
@@ -67,6 +77,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>RecordType</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ACM_SDP_System_Serial_Number__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ACM_SDP_Product_Code__c</field>
             <table>Account.Contacts.Registration_Requests__r</table>
         </columns>
         <masterLabel>New Registrations</masterLabel>

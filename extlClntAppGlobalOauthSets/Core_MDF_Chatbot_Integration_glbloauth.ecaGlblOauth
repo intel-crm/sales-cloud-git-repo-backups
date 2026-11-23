@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
-    <callbackUrl>https://intel.my.salesforce.com/services/oauth2/success</callbackUrl>
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6hvf6qMCFR5vVyphNWIUruRKkterDpYxc8BVUyBZhzE5pbZtGt0aHscWfbN9</consumerKey>
+    <callbackUrl>https://intel--crmqa9.sandbox.my.salesforce.com/services/oauth2/success</callbackUrl>
+    <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBbkcdUdeBQ.1PLK8kxpjIlrQ0NhdFrSh0l8HaKIwn3YWuEJ5ASAjzbMmn.eux</consumerKey>
     <externalClientApplication>Core_MDF_Chatbot_Integration</externalClientApplication>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
     <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>

@@ -20,6 +20,7 @@
                 <componentType>Metric</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
+                <drillDownUrl>https://uat-managepoints-ipa.collinsontech.com/soapgateway</drillDownUrl>
                 <groupingSortProperties/>
                 <header>Points Current Balance</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
@@ -45,6 +46,7 @@
                 <componentType>Metric</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
+                <drillDownUrl>https://uat-managepoints-ipa.collinsontech.com/soapgateway</drillDownUrl>
                 <groupingSortProperties/>
                 <header>Points Due To Expire</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
@@ -64,7 +66,7 @@
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11540272@intel.com.crm</owner>
-    <runningUser>12016311@intel.com.crm</runningUser>
+    <runningUser>12324309@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Points</title>
     <titleColor>#000000</titleColor>

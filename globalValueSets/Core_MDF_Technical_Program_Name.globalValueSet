@@ -16,6 +16,11 @@
         <label>Co-GTM</label>
     </customValue>
     <customValue>
+        <fullName>CoInv</fullName>
+        <default>false</default>
+        <label>Co-Inv</label>
+    </customValue>
+    <customValue>
         <fullName>Data Center CoMarketing Fund</fullName>
         <default>false</default>
         <label>Datacenter</label>
@@ -47,5 +52,5 @@
         <label>Channel MDF</label>
     </customValue>
     <masterLabel>Technical Program Name</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

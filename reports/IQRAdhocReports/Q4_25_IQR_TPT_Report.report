@@ -156,7 +156,7 @@
         <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Current_QL_Approver__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Q3&apos;26 IQR TPT Report</name>
+    <name>Q4&apos;25 IQR TPT Report</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -168,8 +168,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Change_Time__c</dateColumn>
-        <endDate>2026-09-30</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-07-01</startDate>
+        <startDate>2025-10-01</startDate>
     </timeFrameFilter>
 </Report>

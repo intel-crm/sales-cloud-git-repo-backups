@@ -530,38 +530,6 @@ IF(TEXT(ActivitySubtype) == &apos;Event&apos;,&apos;Meeting&apos;, TEXT(Core_Tas
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>CventEvents__Attendee__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Attendee</label>
-        <referenceTo>CventEvents__Attendee__c</referenceTo>
-        <relationshipLabel>Tasks</relationshipLabel>
-        <relationshipName>Activities</relationshipName>
-        <required>false</required>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>CventEvents__EventTitle__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(&quot;/&quot; &amp; CventEvents__Event__r.CventEvents__pkg_Title__c, &quot;&quot;) &amp; HYPERLINK(&quot;/&quot; &amp; CventEvents__Event__c, CventEvents__Event__r.CventEvents__pkg_Title__c)</formula>
-        <label>Cvent Event</label>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>CventEvents__Event__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Cvent Event Number</label>
-        <referenceTo>CventEvents__Event__c</referenceTo>
-        <relationshipLabel>Tasks</relationshipLabel>
-        <relationshipName>Activities</relationshipName>
-        <required>false</required>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>jiffle__Meeting_UUID__c</fullName>
         <deprecated>false</deprecated>
         <externalId>true</externalId>

@@ -80,13 +80,14 @@
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Age__c</field>
+    </columns>
+    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>Account.Core_Account_ID__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_ID</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
@@ -120,42 +121,15 @@
     <columns>
         <field>Account.Core_English_Only_Name__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CDF1</field>
-    </columns>
-    <columns>
-        <field>Account.Core_CNDA_Number__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_LAST_ACTIVITY</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Loss_Cancel_Details__c</field>
-    </columns>
-    <customDetailFormulas>
-        <calculatedFormula>IF(
-    TEXT(STAGE_NAME) = &quot;Production Win&quot;,
-    Opportunity.Core_First_Customer_Ship_Date__c - DATEVALUE(CREATED_DATE),
-    TODAY() - DATEVALUE(CREATED_DATE)
-)</calculatedFormula>
-        <dataType>Double</dataType>
-        <developerName>CDF1</developerName>
-        <label>AGE</label>
-        <scale>0</scale>
-    </customDetailFormulas>
     <description>For Closed and Lost Opportunities</description>
     <filter>
-        <booleanFilter>2 AND (3 OR 11) AND 4 AND ((7 AND 8) OR (5 AND 6) OR 1) AND 9 AND 10</booleanFilter>
+        <booleanFilter>2 AND 3 AND 4 AND ((5 AND 6) OR 1)</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win</value>
+            <value>,Qualify,Define,Develop,Design,Design Win,Production Win,Lost,Cancelled,Group,Production Lost,Production Cancelled,Group Open,Group Cancelled,Group Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -183,7 +157,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>THIS_YEAR,LAST_YEAR</value>
+            <value>THIS_YEAR</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -191,41 +165,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Production Win</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design,Lost,Cancelled,Production Lost,Production Cancelled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2025</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Comms Infra. / Networking</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Concatenated_Application_workload__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Network</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Nischitha TS</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -238,14 +177,14 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>User.Core_User_Geo__c</field>
-        <sortOrder>Desc</sortOrder>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>!Opp Pipeline by Stage (Lost+Cancelled)</name>
+    <name>Opp Pipeline by Stage (Lost+Cancelled)</name>
     <params>
         <name>terr</name>
         <value>all</value>

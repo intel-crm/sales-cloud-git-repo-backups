@@ -22,6 +22,9 @@
         <field>CPT_Quota_Setup__c.CPT_Plan_Name__c</field>
     </columns>
     <columns>
+        <field>CPT_Quota_Setup__c.CPT_Plan_Type__c</field>
+    </columns>
+    <columns>
         <field>CPT_Quota_Setup__c.CPT_Sales_Org__c</field>
     </columns>
     <columns>

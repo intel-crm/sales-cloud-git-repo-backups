@@ -210,6 +210,7 @@ public class Pricing_Application_Agent_AI_Integration {
             for (String quoteId : quoteIdToJsonMap.keySet()) {
                 
                 String payload = quoteIdToJsonMap.get(quoteId);
+                System.debug('payload'+payload);
                 List<String> quoteLineIdStrings = quoteIdToQuoteLineIdsMap.get(quoteId);
                 
                 if (String.isBlank(payload) || quoteLineIdStrings == null || quoteLineIdStrings.isEmpty()) {

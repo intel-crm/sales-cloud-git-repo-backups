@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>FingerIT Karcz, Górniak Spółka Jawna Partner User</description>
+    <description>FingerIT Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>FingerIT Karcz, Górniak Spółka Jawna Partner User</name>
+    <name>FingerIT Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>Inactive_Accounts_Role</parentRole>
 </Role>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://test.salesforce.com/services/oauth2/callback</callbackUrl>
+    <certificate>MIIDazCCAlOgAwIBAgIUcLkO3k5rTWy6hfHE7TYxguzOf5gwDQYJKoZIhvcNAQEL
+BQAwRTELMAkGA1UEBhMCSU4xEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM
+GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yNjA3MDYxMTU0MzRaFw0yNzA3
+MDYxMTU0MzRaMEUxCzAJBgNVBAYTAklOMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw
+HwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQCvQE6Qr7TwBX2J1b8nwEOi8jWXOseN3kahnfLteIe0
+gUQ19nMrgfiu4wdE/f2yoOekSgVV0u+MaRSfRf85AKRJhaBql+PsVxlSkhgb9vl1
+j4yqcN1MClrr3fxhgOOQgid5HqWF8f3iQeVw52TXeu03ykJhUbqwpKN07O+daYbF
+6CtUNfNQgBHUTxbTp6EIDtZ+QcSMB8IYX0VhcFQ2S0d1OBcBQHfShcMnp64Ex7Pp
+1O6bJGJlehUPpIf6SV/YJykoZlg0nlSmEbQVSTrLS0nXvcwav+1yREnsRXPIXsYS
+8B1854HvxtanSxr4ERRM/WhKLoI3myVuzSRFiJ7VaSQZAgMBAAGjUzBRMB0GA1Ud
+DgQWBBRI2uV4eFe5C5iq449R8xEU96CQZzAfBgNVHSMEGDAWgBRI2uV4eFe5C5iq
+449R8xEU96CQZzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA2
+lCgd1FU9iNdkyGw8sTZ837wkoS0ZyLPG6BMJR2RX6dPD5WVT2ibmQfIn/l1c2bTM
+HFPKNGZhVhn80k1rJAe7nreO5nyZe+21qXtI4HFrDYx92QJWlpI5TXCAAbjuSlNp
+yXTr1BmsXtsnTWPs7W2XimZ49nWGS2gpzUve1FnBsJhDURTeSEYozDuyVe619pSg
+EsLoco/4TINVNpNtc9o40yjbJOwOh2CsuQbwy8Pn65Z7XOpLeQUYCdou+B/PPght
+jXYc6IsHRcT9y/yet9y+iUHT1E8GlNFC98RgH3zhykT07pMw33ktZAaamIuzsMuY
+9/Rk1adsqaXCGWALhzXG</certificate>
+    <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBbs3sS_cvJxhKF.8tah0h_nLE4CDgB1e2nAov4_9YjpaewDJsj69I3MaXPgWS</consumerKey>
+    <externalClientApplication>IPIC_Marvel_B2B</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>IPIC_Marvel_B2B_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

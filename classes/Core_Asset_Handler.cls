@@ -19,7 +19,7 @@ Modification Log :
     public static void changeAssetOwner(List<Asset> newList){
         // Venrublity Fix - Refering query to service class 
         // User userRec = [Select Id, Name, isActive from User where alias IN ('iowne')];
-        //sabira syed Vulnerability Fix - Refering query to service class
+        //added by sabira 24-07-2026  
         User userRec = ((List<User>) Core_IPS_QueryService.queryRecords('Select Id, Name, isActive from User where alias IN :aliases', new Map<String,Object>{'aliases' => new List<String>{'iowne'}}))[0];
         for(Asset ast: newList){
             if(userRec.isActive <> false)
@@ -131,7 +131,7 @@ Modification Log :
                 }
                 assetShareMap.put(assetObj.Id,userSetId);
             }              
-           
+            system.debug('assetShareMap'+assetShareMap);
             //[Calling the sharing method to grant the Access to all Users based on AssetIds.]
             if(assetShareMap <> null && assetShareMap.size() > 0){                        
                 Core_SharingUtility.provideAccess('Asset','assetshare','read',assetShareMap);
@@ -303,10 +303,9 @@ Modification Log :
             //[Processing Project specific Assets only.]
             if(projectIdSet.size() > 0){
                 //FLS check added-Venugopal
-//niyaz commented as part of vulnerability fix
                 //if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
                     //projectById = new Map<Id,Core_IPS_Project__c>([Select id, Core_IPS_GroupId__c,Core_IPS_InternalGroupId__c from Core_IPS_Project__c where id IN: projectIdSet]); //modified by Aayushi to share assets with Intel Support Team US102838
-                //Sabira Syed Venrublity Fix - Refering query to service class
+                
                 String projectQuery = 'SELECT Id, Core_IPS_GroupId__c, Core_IPS_InternalGroupId__c FROM Core_IPS_Project__c WHERE Id IN :projectIdSet';
                 List<Core_IPS_Project__c> projectList = (List<Core_IPS_Project__c>) Core_IPS_QueryService.queryRecords(projectQuery, new Map<String, Object>{ 'projectIdSet' => projectIdSet });
                 projectById = new Map<Id,Core_IPS_Project__c>(projectList);
@@ -343,7 +342,9 @@ Modification Log :
                     }
                 }
             }                                    
-           
+            system.debug('grantAccessToProjectBasedAsset'+grantAccessToProjectBasedAsset);
+            system.debug('grantInternalAccessToProjectBasedAsset'+grantInternalAccessToProjectBasedAsset);
+            system.debug('grantAccessToAccountBasedAsset'+grantAccessToAccountBasedAsset);
             //[Verifying if Project based Map is empty or not. If not empty then calling the provide access method.]
             if(grantAccessToProjectBasedAsset.size() > 0){
                 Core_SharingUtility.provideAccess('Asset', 'AssetShare','Read',grantAccessToProjectBasedAsset);                
@@ -445,7 +446,8 @@ Modification Log :
                 }   
                 supProdsandAssets.put(ast.Core_Supported_Product__c,ast.id);
             }
-            
+            System.debug('ProjectsandAssetsMap'+projectsandAssetsMap);
+            System.debug('SupProdsandAssets'+supProdsandAssets);
             if(projectsandAssetsMap <> null && projectsandAssetsMap.size()>0 && supProdsandAssets <> null && supProdsandAssets.size()>0){
                 //FLS check added-Venugopal
                 if(Core_IPS_Product__c.SObjectType.getDescribe().isAccessible()){
@@ -460,7 +462,7 @@ Modification Log :
                         projProduct.Core_Intel_Product__c = supProdsandAssets.get(projProduct.Core_Supported_Product__c);
                         projProducts.add(projProduct);
                     }
-                   
+                    System.debug('sab'+projProducts);//added by sabira
                     if(projProducts <> null && projProducts.size()>0)
                         //update ProjProducts; 
                         Core_IPS_QueryService.updateRecords(projProducts);      

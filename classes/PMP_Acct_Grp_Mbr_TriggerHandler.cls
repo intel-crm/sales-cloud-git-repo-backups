@@ -49,8 +49,8 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
                 }
                 
                 if(accId !=null){
-                    
-                    List<Contact> conList = [Select Id  from Contact  where AccountId  IN :accId];
+                    //List<Contact> conList = [Select Id  from Contact  where AccountId  IN :accId];
+                    List<Contact> conList = [Select Id,Core_IPA_PartnerRole__c  from Contact  where AccountId  IN :accId]; //JB
                     Set<ID> conId = new Set<ID>();
                     Set<ID> partneracctIds=new Set<ID>();
                     
@@ -610,7 +610,7 @@ public without sharing class PMP_Acct_Grp_Mbr_TriggerHandler {
         }
         //querying all IPA Membership Attribute record for OPID and Intel Account
         if(!intelAndOpidAccts.IsEmpty()){
-            for(PRM_IPAMembership_Attributes__c ipaMemAtt:[SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c WHERE PRM_Account_Id__c IN:intelAndOpidAccts And PRM_Inactive_ind__c= false]){
+            for(PRM_IPAMembership_Attributes__c ipaMemAtt:[SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c,PRM_Activity_earning_excluded__c,PRM_Activity_earning_excluded_Start_Date__c,PRM_Client_Business_earning_excluded__c,PRM_ClientBusinessexcluded_StartDate__c,PRM_Ethernet_Business_earning_excluded__c,PRM_Ethernet_BusinessexcludedStartDt__c,PRM_Server_Business_earning_excluded__c,PRM_Server_Business_excluded_Start_Date__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c WHERE PRM_Account_Id__c IN:intelAndOpidAccts And PRM_Inactive_ind__c= false]){
                 if(opidAcctIds.contains(ipaMemAtt.PRM_Account_Id__c)){
                     opidMemAttMap.put(ipaMemAtt.PRM_Account_Id__c,ipaMemAtt);
                 }

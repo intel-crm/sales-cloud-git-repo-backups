@@ -41,7 +41,7 @@ public without sharing class PRM_AccountActvityOverview {
     
         if(acc.RecordType.DeveloperName=='Core_Partner_Account_Group'){
             whereClause = 'where PRM_One_Partner_Id__c =:accID group by PRM_One_Partner_Id__c';
-            for(PRM_Value_Exchange_Data__c vxData: [SELECT Id,PRM_Account_Id__c,PRM_TimePeriod_Nm__c,PRM_Training_Credit_Points_Report_Nbr__c,PRM_To_Dt__c, PRM_Sales_Amount_Nbr__c,PRM_Sales_Calculation_Group_Txt__c,PRM_From_Dt__c, PRM_Training_Credit_Points_Count_Nbr__c,PRM_Number_Of_Employees_Nbr__c from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID order by PRM_Training_Credit_Points_Count_Nbr__c ]){
+            for(PRM_Value_Exchange_Data__c vxData: [SELECT Id,PRM_Account_Id__c,PRM_TimePeriod_Nm__c,PRM_Training_Credit_Points_Count_Nbr__c, PRM_Sales_Amount_Nbr__c,PRM_Sales_Calculation_Group_Txt__c/*,PRM_To_Dt__c,PRM_From_Dt__c,PRM_Training_Credit_Points_Report_Nbr__c ,PRM_Number_Of_Employees_Nbr__c*/ from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID order by PRM_Training_Credit_Points_Count_Nbr__c ]){//ATHR Fix - TWC729-9556
                 
                 trainingOldMap.put(vxData.PRM_TimePeriod_Nm__c+','+vxData.PRM_Account_Id__c,vxData.PRM_Training_Credit_Points_Count_Nbr__c);
                 String str = vxData.PRM_TimePeriod_Nm__c;
@@ -138,7 +138,7 @@ public without sharing class PRM_AccountActvityOverview {
         }
         if(acc.RecordType.DeveloperName=='Mastered_Account'){
             whereClause = 'where PRM_Account_Id__c =:accID group by PRM_Account_Id__c';
-            for(PRM_Value_Exchange_Data__c vxData: [SELECT Id,PRM_TimePeriod_Nm__c,PRM_From_Dt__c,PRM_Training_Credit_Points_Report_Nbr__c,PRM_Account_Id__c,PRM_To_Dt__c,PRM_Sales_Amount_Nbr__c,PRM_Sales_Calculation_Group_Txt__c, PRM_Training_Credit_Points_Count_Nbr__c,PRM_Number_Of_Employees_Nbr__c from PRM_Value_Exchange_Data__c WHERE PRM_Account_Id__c =:accID]){
+            for(PRM_Value_Exchange_Data__c vxData: [SELECT Id,PRM_TimePeriod_Nm__c,PRM_Account_Id__c,PRM_Sales_Amount_Nbr__c,PRM_Sales_Calculation_Group_Txt__c/*, PRM_Training_Credit_Points_Count_Nbr__c,PRM_To_Dt__c, PRM_Number_Of_Employees_Nbr__c,PRM_From_Dt__c,PRM_Training_Credit_Points_Report_Nbr__c*/ from PRM_Value_Exchange_Data__c WHERE PRM_Account_Id__c =:accID]){//ATHR Fix - TWC729-9556 - JB
                 if(!vxMap.containsKey(vxData.PRM_Account_Id__c)) {
                     if(vxData.PRM_Sales_Amount_Nbr__c !=null){
                         List<string> salesGrp = new List<string>();

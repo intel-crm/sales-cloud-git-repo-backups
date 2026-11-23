@@ -46,6 +46,9 @@
         <field>SBQQ__Quote__c$Name</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Quote_Line_Number__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Status_Nm__c</field>
     </columns>
     <columns>

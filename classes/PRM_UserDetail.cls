@@ -15,13 +15,11 @@ public without sharing class PRM_UserDetail {
     public static String contactPrefferedLanguage(){
         User u;
         Contact con;
-        u = [Select id,Name,ContactId From User where id=:UserInfo.getUserId()];
-        if(u.ContactId!=null)
-        { con = [Select Id,Name,Core_Preferred_Language__c From Contact where Id =:u.ContactId]; }
-        //system.debug('u.ContactId-->'+u.ContactId);
-        if(con!=null && con.Core_Preferred_Language__c!=null) 
-        { return con.Core_Preferred_Language__c; }
+        u = [Select id,Name,ContactId From User where id=:UserInfo.getUserId()];        
+     	con = [Select Id,/*Name,*/Core_Preferred_Language__c From Contact where Id =:u.ContactId]; //ATHR Fix - TWC729-9556
         
-        return null;
+        return con.Core_Preferred_Language__c;
+        
+        
     }
 }

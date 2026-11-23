@@ -2644,10 +2644,6 @@
         <name>Core_isEmailBounced_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Cvent Contact Stub --></label>
-        <name>CventEvents__ContactStub__c</name>
-    </fields>
-    <fields>
         <label><!-- External User State Change Date/Time --></label>
         <name>External_User_State_Change_Date_Times__c</name>
     </fields>
@@ -2735,6 +2731,22 @@
             <masterLabel>Yes</masterLabel>
             <translation><!-- Yes --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid Cause --></label>
+        <name>SWS_Marketo_Email_Invalid_Cause__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid --></label>
+        <name>SWS_Marketo_Email_Invalid__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>SWS_Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relative Urgency --></label>
+        <name>SWS_Relative_Urgency__c</name>
     </fields>
     <fields>
         <label><!-- Username --></label>
@@ -2964,22 +2976,6 @@ Please ensure that all of these fields are filled in. --></errorMessage>
     <webLinks>
         <label><!-- Create_new_Contact --></label>
         <name>Create_new_Contact</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- InviteContactToEvent --></label>
-        <name>CventEvents__InviteContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelContactToEvent --></label>
-        <name>CventEvents__ModifyCancelContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateContactToEvent --></label>
-        <name>CventEvents__NominateContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterContactToEvent --></label>
-        <name>CventEvents__RegisterContactToEvent</name>
     </webLinks>
     <webLinks>
         <label><!-- GoogleMaps --></label>

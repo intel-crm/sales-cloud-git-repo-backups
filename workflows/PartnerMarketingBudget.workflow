@@ -8,7 +8,7 @@
             <recipient>Core_MDF_CCP_CCFB_Fin_Mgr_Queue_Group</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
@@ -20,7 +20,7 @@
             <recipient>Core_MDF_CCP_CCF_Fin_Mgr_Queue_Group</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
@@ -32,7 +32,7 @@
             <recipient>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
@@ -44,7 +44,7 @@
             <recipient>Core_MDF_CCP_Retail_APJ_FinMgr_Q_Grp</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
@@ -56,7 +56,7 @@
             <recipient>Core_MDF_CCP_Retail_ASMOLAR_FinMgr_Q_Grp</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
@@ -68,7 +68,7 @@
             <recipient>Core_MDF_CCP_Retail_ASMONAR_FinMgr_Q_Grp</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
@@ -80,7 +80,7 @@
             <recipient>Core_MDF_CCP_Retail_EMEA_FinMgr_Q_Grp</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
@@ -92,7 +92,7 @@
             <recipient>Core_MDF_CCP_Retail_PRC_FinMgr_Q_Grp</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
@@ -104,7 +104,7 @@
             <recipient>Core_MDF_CCP_SPCF_Fin_Mgr_Queue_Group</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>

@@ -24,13 +24,6 @@ public class Core_IPS_CaseTriggerHandler_Test{
     static Core_IPS_Product_Issue_Category__c caseCat = new Core_IPS_Product_Issue_Category__c();
     static  Core_IPS_Product_Issue_Category__c subCategory = new Core_IPS_Product_Issue_Category__c();
     public static Id slaprocessId = [Select Id, Name, NameNorm, IsActive, VersionNumber from SlaProcess Where Name = 'IPS Standard SLA Entitlement' and IsActive=true].Id;
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
     
     
     /***************************************************************************************************
@@ -57,7 +50,7 @@ Modification Log :
         for(User usr : listOfUser){
             usr.ProfileID =  profiles.get('System Administrator');
         }
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.runAs(listOfUser.get(0)){
             //Create Group
@@ -667,7 +660,7 @@ Modification Log :
         List<user> ipsuserList = new List<user>();
         ipsuserList = TestUtilities.getListOfUser(1);
         ipsuserList[0].profileId=prof1.id;
-        insertUsersWithValidationBypass(ipsuserList);
+        insert ipsuserList[0];  
         Id intelSupportOwner = listOfUser.get(0).id;
         System.runAs(listOfUser.get(1)){
             // Create Accounts
@@ -960,7 +953,7 @@ Modification Log :
             listOfUser = TestUtilities.getListOfUser(2);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         listOfUser.get(1).ProfileID =  profiles.get('IPS Data Migration');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.assertEquals(listOfUser.get(1).profileid, profiles.get('IPS Data Migration'), 'IPS Data Migration');
         System.runAs(listOfUser.get(0)){
@@ -1188,7 +1181,7 @@ Modification Log :
         listOfUser = TestUtilities.getListOfUser(2);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         listOfUser.get(1).ProfileID =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.assertEquals(listOfUser.get(1).profileid, profiles.get('System Administrator'), 'System Admin');
         System.runAs(listOfUser.get(0)){
@@ -1409,7 +1402,7 @@ Modification Log :
         listOfUser = TestUtilities.getListOfUser(2);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         listOfUser.get(1).ProfileID =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.assertEquals(listOfUser.get(1).profileid, profiles.get('System Administrator'), 'System Admin');
         System.runAs(listOfUser.get(0)){
@@ -1792,7 +1785,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
         Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
@@ -2060,7 +2053,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
         //List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
@@ -2335,7 +2328,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
         List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
@@ -2642,7 +2635,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
         List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
@@ -3586,7 +3579,7 @@ Modification Log :
             listOfUser1.get(0).ProfileID =  profiles.get('System Administrator');
         //listOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1; 
         
         List<Core_IPS_Labels__c> listofIpsLables = TestUtilities.getIPSLabel();
         System.runAs(listOfUser.get(0)){
@@ -3777,7 +3770,7 @@ insert listOftriggerExecutions;
         listOfUser1.get(1).ProfileID =  profiles.get('Sales Rep-BB-Dual IPS');
         //listOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1; 
         
         /* List<Core_IPS_Labels__c> listofIpsLables = TestUtilities.getIPSLabel();
 System.runAs(listOfUser.get(0)){
@@ -4008,7 +4001,7 @@ update  c2;
         listOfUser1.get(1).ProfileID =  profiles.get('Sales Rep-BB-Dual IPS');
         //listOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1; 
         
         /* List<Core_IPS_Labels__c> listofIpsLables = TestUtilities.getIPSLabel();
 System.runAs(listOfUser.get(0)){
@@ -4323,7 +4316,7 @@ Modification Log :
         userRecord.UserName = 'newuser22' + String.valueOf(DateTime.Now().getTime()) + '@intel.com.' + UserInfo.getOrganizationId();
         userRecord.isActive = true;
         userRecord.ProfileID =  profileList[0].Id;  
-        insertUsersWithValidationBypass(new List<User>{userRecord});
+        insert userRecord;
         
         Map<String, Id> caseRecordtype = new Map<String, Id>();
         

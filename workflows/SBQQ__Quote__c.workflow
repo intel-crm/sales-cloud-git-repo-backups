@@ -8,7 +8,7 @@
             <field>Pricing_sw_Quote_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Pricing_SW_Email_Templates/Pricing_SW_ExpiryIn14days</template>
     </alerts>
@@ -20,7 +20,7 @@
             <field>Pricing_sw_Quote_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Pricing_SW_Email_Templates/Pricing_SW_ExpiryIn3days</template>
     </alerts>
@@ -32,7 +32,7 @@
             <field>Pricing_sw_Quote_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Pricing_SW_Email_Templates/Pricing_SW_ExpiryIn7days</template>
     </alerts>
@@ -44,7 +44,7 @@
             <field>Pricing_sw_Quote_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Pricing_SW_Email_Templates/Pricing_SW_QuoteExpiredNotification</template>
     </alerts>

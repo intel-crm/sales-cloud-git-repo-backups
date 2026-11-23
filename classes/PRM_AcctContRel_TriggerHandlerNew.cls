@@ -202,7 +202,10 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                 }
             }
         }
-       
+       /* Long usedHeap   = Limits.getHeapSize();        
+Long totalHeap  = Limits.getLimitHeapSize();
+Decimal percent = (Decimal.valueOf(usedHeap) / Decimal.valueOf(totalHeap)) * 100;
+System.debug('Heap Used (%)11144: ' + percent.setScale(2));*/
     }
     
     //*************************************afterUpdate******************************************** */
@@ -381,8 +384,8 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                                                                           FROM PRM_Account_Contact_Relationship__c
                                                                           WHERE PRM_InActive_Ind__c = FALSE
                                                                           AND PRM_Contact_Id__c IN :contactRelatedInactiveACRList
-                                                                          AND(PRM_Relationship_Id__c NOT IN :inactiveAcrRelList
-                                                                          OR id NOT IN :inactiveAcrList)
+                                                                          /*AND(PRM_Relationship_Id__c NOT IN :inactiveAcrRelList
+                                                                          OR id NOT IN :inactiveAcrList)*/ //ATHR Fix - TWC729-9556
                         ]){
                             if(!inactiveAcrRelList.contains(accRel.PRM_Relationship_Id__c)){
                                 acrListWorksfor.add(accRel);
@@ -470,6 +473,7 @@ public without sharing class PRM_AcctContRel_TriggerHandlerNew extends TriggerHa
                             && (em.PRM_Contact_Relationship_Id__r.name==System.label.PRM_PartnerAdmin_Rel 
                             || em.PRM_Contact_Relationship_Id__r.name==System.label.PRM_Admin_Delegate))
                             { 
+                                system.debug('emlist inside default false'+emList.size());
                                 emList.add(em);
                             }
                         }
@@ -604,7 +608,7 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                         
                         
                         //PRM_SendEmailsToPrimaryContacts.emailToContactWrapper wrapperRecForEmail = new PRM_SendEmailsToPrimaryContacts.emailToContactWrapper(oldMap,acrNewList,null,false,true, null);
-                        
+                       //JB 
                        PRM_SendEmailsToPrimaryContacts.emailToContactWrapper wrapperRecForEmail = new PRM_SendEmailsToPrimaryContacts.emailToContactWrapper(acrRelationMap,acrNewList,null,false,true, null);    
                         emailToContactWrapperList.add(wrapperRecForEmail); 
                         //PRM_EmailToPrimaryContact.sendEmailToAllPrimaryContact(oldMap, newMap, null, false, true);
@@ -622,7 +626,11 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                     if(!System.Isbatch() && System.Label.PRM_Tracker_Enabled == 'true' && contids.size() > 0){
                        // errMsg+='Line 495 contids is--'+contids+' \n';
                        errMsgs.add('Line 495 contids is--' + contids);
-                       
+                       /* Long usedHeap   = Limits.getHeapSize();        
+Long totalHeap  = Limits.getLimitHeapSize();
+Decimal percent = (Decimal.valueOf(usedHeap) / Decimal.valueOf(totalHeap)) * 100;
+System.debug('Heap Used (%): ' + percent.setScale(2));
+                        errMsgs.add('Heap size usedd--'+percent.setScale(2));*/
                         Core_Log_Entry.logEntryWithDetails('PRM_AcctContRel_TriggerHandlerNew','IPA','PRM_AcctContRel_TriggerHandlerNew','Info','PRM_AcctContRel_TriggerHandlerNew - line 497  Invoked at' + system.now(),errMsg,'','','');
                       //  Core_Log_Entry.logEntryWithDetails('PRM_AcctContRel_TriggerHandlerNew','IPA','PRM_AcctContRel_TriggerHandlerNew','Info','PRM_AcctContRel_TriggerHandlerNew - line 497  Invoked at' + system.now(),errMsg,'','','');
                         system.enqueueJob( new PRM_RegistrationTrackerUtility.createRegistrationTrackerQueuable( null, contids, false, false ));
@@ -660,7 +668,10 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                 }
             }
         }
-     
+      /*  Long usedHeap   = Limits.getHeapSize();        
+Long totalHeap  = Limits.getLimitHeapSize();
+Decimal percent = (Decimal.valueOf(usedHeap) / Decimal.valueOf(totalHeap)) * 100;
+System.debug('Heap Used (%)1113: ' + percent.setScale(2));*/
     }
     
     //*************************************beforeInsert******************************************** */
@@ -694,7 +705,12 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                     try {
                         PRM_AcctContRelUtility.firstRunBeforeInsert = false;
                         duplicateRecordCheck(acrRecNewList, oldMapAcr);
-                        if(!(System.isBatch() && (PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad || PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger))
+                       // validatePAPADConflict(acrRecNewList);//TWC729-9377-Validation needed when someone tries to create PA PCR when PAD is present and vice versa
+                       /*List<PRM_Account_Contact_Relationship__c> papadCheckList = getPAPADCandidates(acrRecNewList, null);
+                        if (!papadCheckList.isEmpty()) {
+                          //  validatePAPADConflict(papadCheckList);//TWC729-9377
+                        }*/
+                       if(!(System.isBatch() && (PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad || PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger))
                         ){
                             updateStartandEndDates(acrRecNewList, oldMapAcr);
                         }
@@ -749,7 +765,10 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                 PRM_AGS_IdentityCreation.updateAcctContRelation_StatusField(Trigger.new);
             }
         }
-      
+      /* Long usedHeap   = Limits.getHeapSize();        
+Long totalHeap  = Limits.getLimitHeapSize();
+Decimal percent = (Decimal.valueOf(usedHeap) / Decimal.valueOf(totalHeap)) * 100;
+System.debug('Heap Used (%)1112: ' + percent.setScale(2));*/
     }
     
     //*************************************beforeUpdate******************************************** */
@@ -816,9 +835,9 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                 }
                 
                 /*US808806 -UTKARSH - Bypass validation rule when ACM become inactive*/
-                if(accountIds != null && !accountIds.isEmpty()){
-                    for(PRM_AccountChannelMembership__c acm : [SELECT Id, Name, PRM_Account_Id__c, PRM_Account_Id__r.Name, PRM_Channel_Program_Id__c,
-                                                               PRM_Channel_Program_Level_Id__r.Name, PRM_Partner_Role__c, PRM_Account_Id__r.RecordTypeId, PRM_Status_Nm__c
+                if(accountIds != null && !accountIds.isEmpty()){//ATHR Fix - TWC729-9556
+                    for(PRM_AccountChannelMembership__c acm : [SELECT Id, Name, PRM_Account_Id__c, /*PRM_Account_Id__r.Name, PRM_Channel_Program_Id__c,
+                                                               PRM_Channel_Program_Level_Id__r.Name, PRM_Partner_Role__c, PRM_Account_Id__r.RecordTypeId, */PRM_Status_Nm__c
                                                                FROM PRM_AccountChannelMembership__c
                                                                WHERE PRM_Account_Id__c IN :accountIds
                                                                AND PRM_Partner_Role__c IN :acrPartnerRole
@@ -892,12 +911,20 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                      //validateACMsOnACRs(acrAccIds,trigger.new,oldMap);
                 }
                 duplicateRecordCheck(acrNewList, oldMap);
-                updateStartandEndDates(acrNewList, oldMap);
+               // validatePAPADConflict(acrNewList);//TWC729-9377-Validation needed when someone tries to create PA PCR when PAD is present and vice versa
+               /*List<PRM_Account_Contact_Relationship__c> papadCheckList = getPAPADCandidates(acrNewList, oldMap);
+                if (!papadCheckList.isEmpty()) {
+                 //   validatePAPADConflict(papadCheckList);//TWC729-9377
+                } */
+               updateStartandEndDates(acrNewList, oldMap);
                 suppressEmail(acrNewList, oldMap);
             } catch(Exception e){ PRM_ErrorUtilityClass.logError(e);
             }
         }
-        
+        Long usedHeap   = Limits.getHeapSize();        
+Long totalHeap  = Limits.getLimitHeapSize();
+Decimal percent = (Decimal.valueOf(usedHeap) / Decimal.valueOf(totalHeap)) * 100;
+System.debug('Heap Used (%)111: ' + percent.setScale(2));
     }
     
     //*************************************beforeDelete******************************************** */
@@ -988,17 +1015,18 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
                     }
                 }
                 
-                for(PRM_AccountBenefitAssociation__c aba : [SELECT Id, PRM_Partner_Benefit_Id__c, PRM_Account_Id__c, PRM_Status_Nm__c, PRM_Partner_Benefit_Id__r.Name
+               	for(PRM_AccountBenefitAssociation__c aba : [SELECT Id, PRM_Partner_Benefit_Id__c, PRM_Account_Id__c, PRM_Status_Nm__c/*, PRM_Partner_Benefit_Id__r.Name*/
                                                             FROM PRM_AccountBenefitAssociation__c
                                                             WHERE PRM_Account_Id__c IN :accIdList AND PRM_Status_Nm__c = :System.Label.PRM_Status_Active
-                ]){
-                    benefitList.add(aba.PRM_Partner_Benefit_Id__c);
-                    if(mapAccToBenefits.containsKey(aba.PRM_Account_Id__c)){
-                        mapAccToBenefits.get(aba.PRM_Account_Id__c).add(aba.PRM_Partner_Benefit_Id__c);
-                    }else {
-                        mapAccToBenefits.put(aba.PRM_Account_Id__c, new List<Id>{ aba.PRM_Partner_Benefit_Id__c});
+                    ]){//ATHR Fix - TWC729-9556
+                        benefitList.add(aba.PRM_Partner_Benefit_Id__c);
+                        if(mapAccToBenefits.containsKey(aba.PRM_Account_Id__c)){
+                            mapAccToBenefits.get(aba.PRM_Account_Id__c).add(aba.PRM_Partner_Benefit_Id__c);
+                        }else {
+                            mapAccToBenefits.put(aba.PRM_Account_Id__c, new List<Id>{ aba.PRM_Partner_Benefit_Id__c});
+                        }
                     }
-                }
+            	
             }
             
             if(benefitList != null && !benefitList.IsEmpty()){
@@ -1584,7 +1612,176 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
         } catch(exception e){ PRM_ErrorUtilityClass.logError(e);
         }
     }
-    
+
+    //******* */
+
+    /*******************************************************
+    Method: getPAPADCandidates
+    Returns only ACRs that need the PA/PAD conflict check:
+    - Insert: active ACR with a contact and a relationship
+    - Update: active ACR whose relationship or contact changed, or that was reactivated
+ ******************************************************/
+/*public static List<PRM_Account_Contact_Relationship__c> getPAPADCandidates(
+    List<PRM_Account_Contact_Relationship__c> acrList,
+    Map<Id, PRM_Account_Contact_Relationship__c> oldMap
+) {
+    List<PRM_Account_Contact_Relationship__c> candidates = new List<PRM_Account_Contact_Relationship__c>();
+    if (acrList == null || acrList.isEmpty()) {
+        return candidates;
+    }
+    for (PRM_Account_Contact_Relationship__c acr : acrList) {
+        if (acr.PRM_InActive_Ind__c == true
+            || acr.PRM_Contact_Id__c == null
+            || acr.PRM_Relationship_Id__c == null) {
+            continue;
+        }
+        PRM_Account_Contact_Relationship__c oldAcr = (oldMap == null) ? null : oldMap.get(acr.Id);
+        if (oldAcr == null
+            || oldAcr.PRM_InActive_Ind__c == true
+            || oldAcr.PRM_Relationship_Id__c != acr.PRM_Relationship_Id__c
+            || oldAcr.PRM_Contact_Id__c != acr.PRM_Contact_Id__c) {
+            candidates.add(acr);
+        }
+    }
+    return candidates;
+}*/
+/******** */
+
+/*******************************************************
+    Method: validatePAPADConflict
+    Validation to restrict when PA is added when PAD is active and vice versa
+    TWC729-9377
+ ******************************************************/
+/*public static void validatePAPADConflict(List<PRM_Account_Contact_Relationship__c> acrList) {
+    if (acrList == null || acrList.isEmpty()) {
+        return;
+    }
+    String paName  = System.Label.PRM_PartnerAdmin_Rel;   // 'Partner Admin'
+    String padName = System.Label.PRM_Admin_Delegate;     // 'Partner Admin Delegate'
+
+    Set<Id> contactIds = new Set<Id>();
+    Set<Id> relationshipIds = new Set<Id>();
+    Set<Id> currentAcrIds = new Set<Id>();
+    for (PRM_Account_Contact_Relationship__c acr : acrList) {
+        contactIds.add(acr.PRM_Contact_Id__c);
+        relationshipIds.add(acr.PRM_Relationship_Id__c);
+        if (acr.Id != null) {
+            currentAcrIds.add(acr.Id);
+        }
+    }
+
+    // Single query: names of the new relationships + contacts already holding active PA/PAD
+    Map<Id, String> relationshipMap = new Map<Id, String>();
+    Map<Id, Set<String>> contactRelationships = new Map<Id, Set<String>>();
+    for (PRM_ContactRelationships__c rel : [
+        SELECT Id, Name,
+            (SELECT PRM_Contact_Id__c
+             FROM Account_Contact_Relationships__r
+             WHERE PRM_Contact_Id__c IN :contactIds
+             AND PRM_InActive_Ind__c = false
+             AND Id NOT IN :currentAcrIds)
+        FROM PRM_ContactRelationships__c
+        WHERE Id IN :relationshipIds
+        OR Name IN (:paName, :padName)
+    ]) {
+        relationshipMap.put(rel.Id, rel.Name);
+        if (rel.Name != paName && rel.Name != padName) {
+            continue;
+        }
+        for (PRM_Account_Contact_Relationship__c existingAcr : rel.Account_Contact_Relationships__r) {
+            if (!contactRelationships.containsKey(existingAcr.PRM_Contact_Id__c)) {
+                contactRelationships.put(existingAcr.PRM_Contact_Id__c, new Set<String>());
+            }
+            contactRelationships.get(existingAcr.PRM_Contact_Id__c).add(rel.Name);
+        }
+    }
+
+    // Also catch PA + PAD for the same contact inside the same batch
+    Map<Id, Set<String>> batchRelationships = new Map<Id, Set<String>>();
+    for (PRM_Account_Contact_Relationship__c acr : acrList) {
+        String newRel = relationshipMap.get(acr.PRM_Relationship_Id__c);
+        if (newRel != paName && newRel != padName) {
+            continue;
+        }
+        Set<String> existingRels = new Set<String>();
+        if (contactRelationships.containsKey(acr.PRM_Contact_Id__c)) {
+            existingRels.addAll(contactRelationships.get(acr.PRM_Contact_Id__c));
+        }
+        if (batchRelationships.containsKey(acr.PRM_Contact_Id__c)) {
+            existingRels.addAll(batchRelationships.get(acr.PRM_Contact_Id__c));
+        }
+
+        if (newRel == paName && existingRels.contains(padName)) {
+            acr.addError(System.Label.PRM_PAD_VALIDATION);
+        } else if (newRel == padName && existingRels.contains(paName)) {
+            acr.addError(System.Label.PRM_PA_VALIDATION);
+        } else {
+            if (!batchRelationships.containsKey(acr.PRM_Contact_Id__c)) {
+                batchRelationships.put(acr.PRM_Contact_Id__c, new Set<String>());
+            }
+            batchRelationships.get(acr.PRM_Contact_Id__c).add(newRel);
+        }
+    }
+}*/
+    /*******************************************************
+     	Method:validatePAPADConflict
+		Validation to restrict when PA is added when PAD is active and viceversa
+		TWC729-9377-Validation needed when someone tries to create PA PCR when PAD is present and vice versa
+     ******************************************************/
+   /* public static void validatePAPADConflict(List<PRM_Account_Contact_Relationship__c> acrList){
+        Set<Id> contactIds = new Set<Id>();        
+        for(PRM_Account_Contact_Relationship__c acr : acrList){
+            if(acr.PRM_Contact_Id__c != null){
+                contactIds.add(acr.PRM_Contact_Id__c);
+            }
+        }
+        
+        Map<Id, Set<String>> contactRelationships = new Map<Id, Set<String>>();
+        if(!contactIds.isEmpty())
+        { for(PRM_Account_Contact_Relationship__c existingAcr : [
+            SELECT Id,
+            PRM_Contact_Id__c,
+            PRM_Relationship_Id__r.Name
+            FROM PRM_Account_Contact_Relationship__c
+            WHERE PRM_Contact_Id__c IN :contactIds
+            AND PRM_InActive_Ind__c = FALSE
+        ]){
+            if(!contactRelationships.containsKey(existingAcr.PRM_Contact_Id__c)){
+                contactRelationships.put(existingAcr.PRM_Contact_Id__c,new Set<String>());
+            }
+            
+            contactRelationships.get(existingAcr.PRM_Contact_Id__c).add(existingAcr.PRM_Relationship_Id__r.Name);
+        }
+   	   }
+        Set<Id> relationshipIds = new Set<Id>();
+        for(PRM_Account_Contact_Relationship__c acr : acrList){
+            if(acr.PRM_Relationship_Id__c != null){
+                relationshipIds.add(acr.PRM_Relationship_Id__c);
+            }
+        }
+        Map<Id,String> relationshipMap = new Map<Id,String>();
+        if(!relationshipIds.isEmpty()){
+        for(PRM_ContactRelationships__c rel : [ SELECT Id, Name FROM PRM_ContactRelationships__c WHERE Id IN :relationshipIds]){
+            relationshipMap.put(rel.Id, rel.Name);
+        }
+            
+        }
+        for(PRM_Account_Contact_Relationship__c acr : acrList){
+            
+            Set<String> existingRels = contactRelationships.containsKey(acr.PRM_Contact_Id__c)? contactRelationships.get(acr.PRM_Contact_Id__c): new Set<String>();
+            String newRel = relationshipMap.get(acr.PRM_Relationship_Id__c);
+            System.debug('newRel = ' + newRel);
+            System.debug('existingRels = ' + existingRels);
+            
+            if(newRel == System.Label.PRM_PartnerAdmin_Rel && existingRels.contains(System.Label.PRM_Admin_Delegate)){
+                acr.addError(System.Label.PRM_PAD_VALIDATION);
+            }
+            
+            else if(newRel == System.Label.PRM_Admin_Delegate && existingRels.contains(System.Label.PRM_PartnerAdmin_Rel)){
+                acr.addError(System.Label.PRM_PA_VALIDATION);
+            }
+        }
+    }*/
     /************************************************************
     Method:    updateStartandEndDates
         Return:    void
@@ -1704,14 +1901,16 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
             if(uniqstr != null && !uniqstr.IsEmpty()){
                 for(PRM_Account_Contact_Relationship__c acr : [SELECT Id, PRM_Account_Id__c, PRM_Contact_Id__c, PRM_Relationship_Id__c, PRM_Unique_Combination__c
                                                                 FROM PRM_Account_Contact_Relationship__c
-                                                                WHERE PRM_Unique_Combination__c IN :uniqstr
+                                                                WHERE PRM_Unique_Combination__c IN :uniqstr /*and PRM_InActive_Ind__c=false*///JB
                 ]){
                     if((oldMap != null && !idslist.contains(acr.Id)) || (oldMap == null)
                     ){
                         uniqmap.put(acr.PRM_Unique_Combination__c, acr.Id);
                     }
-                }
+                
+                }  
             }
+            
             //Added below code as part of TWC729-1189 Agate- Restrict Partner invites when there is a pending self registration request for a contact
             if(!contactIdSet.isEmpty() && contactIdSet.size() > 0){
                 for(Contact con : [SELECT Id, Email, Core_ERPM_Integration_Status__c FROM Contact WHERE id = :contactIdSet]
@@ -1732,7 +1931,7 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
             //System.debug('regReqEmailSet-->' + regReqEmailSet);
             //if( !regReqEmailSet.isEmpty() && regReqEmailSet.size() > 0 ){
                 for(PRM_Account_Contact_Relationship__c acr : acctContRelNewList){
-                    if(uniqmap.containsKey(acr.PRM_Unique_Combination__c)){
+                    if(uniqmap.containsKey(acr.PRM_Unique_Combination__c) && acr.PRM_InActive_Ind__c==false){
                         acr.addError(System.label.PRM_ACR_Error1);
                     }
                     if(!regReqEmailSet.isEmpty() && regReqEmailSet.size() > 0){
@@ -1793,7 +1992,8 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
     
     if(contIds != null ){
         Users = [SELECT Id, Name, ContactId FROM User WHERE ContactId IN :contIds];
-       
+        System.debug('Users found: ' + Users.size());
+        System.debug('User details: ' + Users);
     }
     
     if(Users != null && !Users.isEmpty() && allPartnerGroup != null){
@@ -1802,16 +2002,21 @@ System.debug('Heap Used (%): ' + percent.setScale(2));
         gm.UserOrGroupId = Users[0].Id;
         lstInsertGrpMembers.add(gm);
         
-       
+        System.debug('Creating GroupMember: GroupId=' + gm.GroupId + ', UserId=' + gm.UserOrGroupId);
         
         try {
             insert lstInsertGrpMembers;
-          
+            System.debug('SUCCESS: GroupMember inserted');
         } catch(Exception e) {
-           
+            System.debug('ERROR inserting GroupMember: ' + e.getMessage());
         }
-    }   
-          }
+    } else {
+        System.debug('Conditions not met:');
+        System.debug('Users null/empty: ' + (Users == null || Users.isEmpty()));
+        System.debug('Group null: ' + (allPartnerGroup == null));
+    }
+    
+            System.debug('=== addUsertoGroup END ===');}
 
     /************************************************************
     Method:    blockedDomainValidation

@@ -150,16 +150,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>NewCase</actionName>
-        <content>Core_Case_New_LandingPage</content>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Visualforce</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>NewCase</actionName>
         <content>Core_IPS_CaseLandingPage</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewCase</actionName>
+        <content>Core_Case_New_LandingPage</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>NewCase</actionName>
@@ -202,8 +202,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_IPS_Case_LEX_Layout</content>
         <formFactor>Large</formFactor>
-        <type>Default</type>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
@@ -1391,6 +1394,51 @@ Specify screens used</inlineHelpText>
                     <default>false</default>
                     <label>Workflow Trigger/Delete</label>
                 </value>
+                <value>
+                    <fullName>Access Granted / Access Not Granted</fullName>
+                    <default>false</default>
+                    <label>Access Granted / Access Not Granted</label>
+                </value>
+                <value>
+                    <fullName>Payee Setup Fixed</fullName>
+                    <default>false</default>
+                    <label>Payee Setup Fixed</label>
+                </value>
+                <value>
+                    <fullName>Defect Resolved / Defect Deferred</fullName>
+                    <default>false</default>
+                    <label>Defect Resolved / Defect Deferred</label>
+                </value>
+                <value>
+                    <fullName>Information Provided / Training Provided / Policy Clarified</fullName>
+                    <default>false</default>
+                    <label>Information Provided / Training Provided / Policy Clarified</label>
+                </value>
+                <value>
+                    <fullName>Enhancement Completed / Enhancement Deferred</fullName>
+                    <default>false</default>
+                    <label>Enhancement Completed / Enhancement Deferred</label>
+                </value>
+                <value>
+                    <fullName>Change request completed / Change request Deferred</fullName>
+                    <default>false</default>
+                    <label>Change request completed / Change request Deferred</label>
+                </value>
+                <value>
+                    <fullName>No Action</fullName>
+                    <default>false</default>
+                    <label>No Action</label>
+                </value>
+                <value>
+                    <fullName>HR / Revenue / Onboarding / Payroll / CRC / RPS</fullName>
+                    <default>false</default>
+                    <label>HR / Revenue / Onboarding / Payroll / CRC / RPS</label>
+                </value>
+                <value>
+                    <fullName>Approved / Not Approved</fullName>
+                    <default>false</default>
+                    <label>Approved / Not Approved</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1419,14 +1467,49 @@ Specify screens used</inlineHelpText>
                     <label>How Do I</label>
                 </value>
                 <value>
+                    <fullName>Access</fullName>
+                    <default>false</default>
+                    <label>Access</label>
+                </value>
+                <value>
+                    <fullName>Payee Setup</fullName>
+                    <default>false</default>
+                    <label>Payee Setup</label>
+                </value>
+                <value>
                     <fullName>Defect</fullName>
                     <default>false</default>
                     <label>Defect</label>
                 </value>
                 <value>
+                    <fullName>Inquiry</fullName>
+                    <default>false</default>
+                    <label>Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Enhancement Request</fullName>
+                    <default>false</default>
+                    <label>Enhancement Request</label>
+                </value>
+                <value>
                     <fullName>Change Request</fullName>
                     <default>false</default>
                     <label>Change Request</label>
+                </value>
+                <value>
+                    <fullName>User Not Responding</fullName>
+                    <default>false</default>
+                    <label>User Not Responding</label>
+                </value>
+                <value>
+                    <fullName>Upstreams</fullName>
+                    <default>false</default>
+                    <label>Upstreams</label>
+                </value>
+                <value>
+                    <fullName>Governance and control</fullName>
+                    <default>false</default>
+                    <label>Governance and control</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1708,41 +1791,36 @@ Please indicate the type of support you are requesting.</inlineHelpText>
         <label>Case Co-Owner</label>
         <lookupFilter>
             <active>true</active>
-            <booleanFilter>((1 OR 2 OR 3 OR 4 OR 6 OR 7) OR 5)</booleanFilter>
+            <booleanFilter>((1 OR 2 OR 3 OR 4 OR 6) OR 5)</booleanFilter>
             <filterItems>
-                <field>User.Profile.Name</field>
-                <operation>equals</operation>
-                <value>IPS Agent</value>
+                <field>User.Profile.Id</field>
+                <operation>startsWith</operation>
+                <value>00eo0000000f7GT</value>
             </filterItems>
             <filterItems>
-                <field>User.Profile.Name</field>
-                <operation>equals</operation>
-                <value>IPS Support Org Admin</value>
+                <field>User.Profile.Id</field>
+                <operation>startsWith</operation>
+                <value>00eo0000000f7Gi</value>
             </filterItems>
             <filterItems>
-                <field>User.Profile.Name</field>
-                <operation>equals</operation>
-                <value>Sales Rep-BB-Dual IPS</value>
+                <field>User.Profile.Id</field>
+                <operation>startsWith</operation>
+                <value>00eo0000000f7Gn</value>
             </filterItems>
             <filterItems>
-                <field>User.Profile.Name</field>
-                <operation>equals</operation>
-                <value>IPS Agent Enhanced</value>
+                <field>User.Profile.Id</field>
+                <operation>startsWith</operation>
+                <value>00eo0000000f7GY</value>
             </filterItems>
             <filterItems>
-                <field>$Profile.Name</field>
-                <operation>equals</operation>
-                <value>IPS Data Migration</value>
+                <field>User.Profile.Id</field>
+                <operation>startsWith</operation>
+                <value>00e1J000001B56m</value>
             </filterItems>
             <filterItems>
-                <field>User.Profile.Name</field>
-                <operation>equals</operation>
-                <value>IPS Agent-Partner</value>
-            </filterItems>
-            <filterItems>
-                <field>User.Profile.Name</field>
-                <operation>equals</operation>
-                <value>Sales Rep-BB</value>
+                <field>User.Profile.Id</field>
+                <operation>startsWith</operation>
+                <value>00eo0000000TVVr</value>
             </filterItems>
             <infoMessage>Case Co-Owner for Case should be an IPS Agent, IPS Agent-Partner or Support Org Admin</infoMessage>
             <isOptional>false</isOptional>
@@ -11933,16 +12011,13 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         <columns>Core_AAQC_Commissions_Subject__c</columns>
         <columns>CASES.STATUS</columns>
         <columns>CASES.CREATED_DATE</columns>
-        <columns>Core_AAQC_Case_Age__c</columns>
         <columns>OWNER_NAME</columns>
         <columns>CASES.LAST_UPDATE</columns>
         <columns>Core_AAQC_Category__c</columns>
-        <columns>Core_AAQC_Created_By_FullName__c</columns>
         <columns>Requestor_WWID__c</columns>
         <columns>Core_AAQC_Requestor_User_Region__c</columns>
         <columns>Core_AAQC_Requestor_Manager__c</columns>
         <columns>Core_AAQC_Requestor_Department__c</columns>
-        <columns>Core_AAQC_Initial_Response_Date_Time__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CASES.RECORDTYPE</field>
@@ -11955,7 +12030,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             <value>1</value>
         </filters>
         <label>My Commissions Inquiries</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_AAQC_Admin_Group_for_All_Admins</group>
         </sharedTo>
@@ -12029,6 +12103,10 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         <columns>CASES.PRIORITY</columns>
         <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <columns>CORE.USERS.ALIAS</columns>
+        <columns>Core_MDF_Channel_Program_txt__c</columns>
+        <columns>Core_MDF_Budget_Type_nm__c</columns>
+        <columns>Core_MDF_Right_to_Recover_Amt__c</columns>
+        <columns>Core_MDF_Manual_Recovery_Amount_USD_Amt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Cases</label>
         <sharedTo>
@@ -14036,23 +14114,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         <queue>Core_IPS_Org_007_EMBED_DG2_HW</queue>
         <sharedTo>
             <group>Core_IPS_Org_007_EMBED_DG2_HW</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_007_EMBED_Device_Management_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>EMBED - Device Management TK</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_007_EMBED_Device_Management</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_007_EMBED_Device_Management</group>
         </sharedTo>
     </listViews>
     <listViews>
@@ -18473,57 +18534,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_022_CCG_SSP_Android_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>CCG-SSP - Android</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_022_CCG_SSP_Android</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_022_CCG_SSP_Android</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_022_CCG_SSP_Linux_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>CCG-SSP - Linux</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_022_CCG_SSP_Linux</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_022_CCG_SSP_Linux</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_022_CCG_SSP_Unassigned_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>CCG-SSP - Unassigned</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_022_CCG_SSP_Unassigned</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_022_CCG_SSP_Unassigned</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>Core_IPS_Org_022_Cascade_Lake_UBER_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
@@ -20535,8 +20545,12 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Open,​Open,​​Open</value>
+        </filters>
         <label>All Cases</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_PG_IPS_External_Customer</group>
             <group>Core_PG_IPS_Partner_AE</group>
@@ -24453,64 +24467,48 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         <picklistValues>
             <picklist>Core_AAQC_Resolution_Type__c</picklist>
             <values>
-                <fullName>Access Issue</fullName>
+                <fullName>Access Granted %2F Access Not Granted</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>CE Setup Fixed</fullName>
+                <fullName>Approved %2F Not Approved</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Completed</fullName>
+                <fullName>Change request completed %2F Change request Deferred</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Defect Deferred</fullName>
+                <fullName>Defect Resolved %2F Defect Deferred</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Defect To Be Addressed</fullName>
+                <fullName>Enhancement Completed %2F Enhancement Deferred</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Enhancement Request Deferred</fullName>
+                <fullName>HR %2F Revenue %2F Onboarding %2F Payroll %2F CRC %2F RPS</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Enhancement Request to be Addressed</fullName>
+                <fullName>Information Provided %2F Training Provided %2F Policy Clarified</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Manual Adjustment</fullName>
+                <fullName>No Action</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>New%2FUpdated Policy</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pay Reconciliation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Training</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>User Not Responding to Info Required</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Workflow Data Issue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Workflow Trigger%2FDelete</fullName>
+                <fullName>Payee Setup Fixed</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_AAQC_Root_Cause_Category__c</picklist>
+            <values>
+                <fullName>Access</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Change Request</fullName>
                 <default>false</default>
@@ -24520,11 +24518,27 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>How Do I</fullName>
+                <fullName>Enhancement Request</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Setup</fullName>
+                <fullName>Governance and control</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Payee Setup</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upstreams</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User Not Responding</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -34857,6 +34871,10 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Infrastructure Power Manager</fullName>
                 <default>false</default>
             </values>
@@ -35346,10 +35364,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>BELARUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>BELGIUM</fullName>
                 <default>false</default>
             </values>
@@ -35678,10 +35692,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>LEBANON</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>LESOTHO</fullName>
                 <default>false</default>
             </values>
@@ -35779,10 +35789,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>MOZAMBIQUE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYANMAR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -35922,10 +35928,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>SOMALIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SOUTH AFRICA</fullName>
                 <default>false</default>
             </values>
@@ -36030,10 +36032,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>VENEZUELA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VIETNAM</fullName>
                 <default>false</default>
             </values>
@@ -36043,10 +36041,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>WESTERN SAHARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>YEMEN</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37401,6 +37395,14 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -41153,6 +41155,10 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Infrastructure Power Manager</fullName>
                 <default>false</default>
             </values>
@@ -41642,10 +41648,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>BELARUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>BELGIUM</fullName>
                 <default>false</default>
             </values>
@@ -41974,10 +41976,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>LEBANON</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>LESOTHO</fullName>
                 <default>false</default>
             </values>
@@ -42075,10 +42073,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>MOZAMBIQUE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYANMAR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -42218,10 +42212,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>SOMALIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SOUTH AFRICA</fullName>
                 <default>false</default>
             </values>
@@ -42326,10 +42316,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>VENEZUELA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VIETNAM</fullName>
                 <default>false</default>
             </values>
@@ -42339,10 +42325,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>WESTERN SAHARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>YEMEN</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -43697,6 +43679,14 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -55400,7 +55390,7 @@ OR(ISBLANK(Core_MDF_Checklist_Completion__c),Core_MDF_Checklist_Completion__c !=
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Data_Entry_Correction_Checked</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Check if the reason and note fields are populated but data entry correction checkbox is unchecked</description>
         <errorConditionFormula>IF(AND(RecordType.Name==&apos;Audit&apos;,AND(OR( NOT(ISBLANK(Core_MDF_Data_Correction_Note_Txt__c)),NOT(ISBLANK(Core_MDF_Data_Entry_Correction_Cd__c))), NOT(Core_MDF_Data_Entry_Correction__c))) , TRUE, FALSE)</errorConditionFormula>
         <errorDisplayField>Core_MDF_Data_Entry_Correction__c</errorDisplayField>

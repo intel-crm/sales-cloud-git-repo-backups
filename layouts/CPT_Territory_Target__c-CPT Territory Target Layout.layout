@@ -22,30 +22,6 @@
                 <field>CPT_CR_Retail_Target__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Margin_CCG_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Margin_DCG_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Name</field>
             </layoutItems>
@@ -127,12 +103,6 @@
         <fields>CPT_CR_OEM_Target__c</fields>
         <fields>CPT_CR_Partner_Target__c</fields>
         <fields>CPT_CR_Retail_Target__c</fields>
-        <fields>CPT_MarVol_Margin_CCG_Target__c</fields>
-        <fields>CPT_MarVol_Margin_DCG_Target__c</fields>
-        <fields>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</fields>
-        <fields>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</fields>
-        <fields>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</fields>
-        <fields>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</fields>
     </miniLayout>
     <platformActionList>
         <actionListContext>Record</actionListContext>

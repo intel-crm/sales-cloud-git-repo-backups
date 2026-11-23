@@ -9,7 +9,7 @@
 * ONYX Team - Raj                   06-26-2019                    Created for fetching partner details of given partner
 * Tanzanite Team - Nikhil           07-25-2019                    Added getRegionAttribute method
 ****************************************************************************************************************************************************************/
-public with sharing class PMP_ProductPartnerDetailsController extends PMP_SearchWrapperStore{
+public with sharing  class PMP_ProductPartnerDetailsController extends PMP_SearchWrapperStore{
     /**
 * Method added by raj to fetch partner detail of the given partnerId
 * @description - method to fetch partner detail for the given partnerId

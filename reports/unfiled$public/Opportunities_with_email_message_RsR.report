@@ -16,7 +16,7 @@
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -25,10 +25,10 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Opportunity.OpportunityEmailMessages$Subject</field>
+        <field>Opportunity$Account</field>
     </columns>
     <columns>
-        <field>Opportunity$Account</field>
+        <field>Opportunity.OpportunityEmailMessages$Subject</field>
     </columns>
     <columns>
         <field>Opportunity.OpportunityEmailMessages$FromAddress</field>
@@ -38,6 +38,9 @@
     </columns>
     <columns>
         <field>Opportunity.OpportunityEmailMessages$CcAddress</field>
+    </columns>
+    <columns>
+        <field>Opportunity$CreatedDate</field>
     </columns>
     <description>Opportunities with email messages</description>
     <filter>
@@ -66,7 +69,7 @@
         <value>1</value>
     </params>
     <reportType>Opportunities_with_Email_Messages__c</reportType>
-    <scope>salesteam</scope>
+    <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

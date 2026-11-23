@@ -214,10 +214,11 @@ Added on/by:: 29/12/22 - Gaurav
                     //Jahnavi 
                     //TWC3123-5678-PCC Deal - To bypass the hard stop warning when competitive architecture is blank when opportunity is submitted 
                     /**********************************START************************************************************/
-                    List<OpportunityTeamMember> oppsTM = [Select Id, Name, Core_Description_of_Contribution__c from OpportunityTeamMember  where opportunityid =:oppId AND (Opportunity.StageName ='Design' or Opportunity.StageName ='Design Win' ) /*and Opportunity.Core_Design_Registration_Id__c=null*/];
-                    
+                    //Vidyadhar
+                    //List<OpportunityTeamMember> oppsTM = [Select Id, Name, Core_Description_of_Contribution__c from OpportunityTeamMember  where opportunityid =:oppId AND (Opportunity.StageName ='Design' or Opportunity.StageName ='Design Win' ) /*and Opportunity.Core_Design_Registration_Id__c=null*/];
+                    List<OpportunityTeamMember> oppsTM = [SELECT Id, Name, TeamMemberRole, Core_Description_of_Contribution__c FROM OpportunityTeamMember WHERE OpportunityId = :oppId];
                     List<String> members = new List<String>();
-                    if(!isPCCDealReg){
+                    if(!isPCCDealReg && (oppObject.StageName == 'Design' || oppObject.StageName == 'Design Win')){
                         for(OpportunityTeamMember teamMember:oppsTM)
                         {
                             if(String.Isblank(teamMember.Core_Description_of_Contribution__c))
@@ -236,7 +237,40 @@ Added on/by:: 29/12/22 - Gaurav
                         } else {
                             errMsgMap.put('hardStop', new List<String> { err });
                         }
-                    }                      
+                    }
+                    
+                    //Commissions changes 2026
+                    //Warning for opporutunity with more than 4 team members with a 100% role
+                    //Start
+                    
+                    if(oppObject.Core_Opportunity_Coverage_Nm__c.equalsIgnoreCase('Intel-Led Opportunity')){
+                        Set<String> eligibleRoles = new Set<String>();
+                        
+                        for(String commissionableRole : System.Label.CRM_commissionEligibleRoles.split(';')){
+                            if(String.isNotBlank(commissionableRole)){
+                                eligibleRoles.add(commissionableRole.trim());
+                            }
+                        }
+                        //Integer oppEligibleOtmSize = [select COUNT() from OpportunityTeamMember where OpportunityId =:oppObject.Id and TeamMemberRole in :eligibleRoles];
+                        Integer oppEligibleOtmSize = 0;
+                        for (OpportunityTeamMember teamMember : oppsTM) {
+                            if (eligibleRoles.contains(teamMember.TeamMemberRole)) {
+                                oppEligibleOtmSize++;
+                            }
+                        }
+                        if(oppEligibleOtmSize > 4){
+                            softStop = true;
+                            String err= System.Label.CRM_maxCommissionEligibleWarning;
+                            if(errMsgMap.containsKey('softStop')) {
+                                List<String> errList = errMsgMap.get('softStop');
+                                errList.add(err);
+                                errMsgMap.put('softStop', errList);
+                            } else {
+                                errMsgMap.put('softStop', new List<String> { err });
+                            }
+                        }
+                    }
+                    //End - Commissions changes 2026
                     /**********************************END**************************************************************/
                     //Added By Hira for Opportunity Solutions validation before DW Submission
                     /**********************************Start************************************************************/
@@ -724,6 +758,27 @@ errMsgMap.put('hardStop', new List<String> { err });
                     }
                 }
                 
+                //Vidyadhar
+                //Commission changes 2026
+                //Restrict opportunity Submissions
+                //Start - Custom setting - switch approach
+                if(oppObject.Core_Opportunity_Coverage_Nm__c.equalsIgnoreCase('Intel-Led Opportunity')){
+                    CRM_OpportunitySubmissionSwitch__c intelLedSwitch = CRM_OpportunitySubmissionSwitch__c.getInstance('CRM_IntelLed');
+                    if(intelLedSwitch.Opportunity_Coverage__c.trim().equalsIgnoreCase(oppObject.Core_Opportunity_Coverage_Nm__c) && Date.today() >= intelLedSwitch.Start_Date__c &&
+                      Date.today() <= intelLedSwitch.End_Date__c && intelLedSwitch.Active__c == true){
+                          hardStop = true;
+                          String err= Core_CRM_Utility.getCRMLabel('CRM_restrictOpptySubmissionMsg');
+                          
+                          if(errMsgMap.containsKey('hardStop')) {
+                              List<String> errList = errMsgMap.get('hardStop');
+                              errList.add(err);
+                              errMsgMap.put('hardStop', errList);
+                          } else {
+                              errMsgMap.put('hardStop', new List<String> { err });
+                          }
+                    }
+                } // End of Intel-Led Opportunity check
+                //END
                 if(oppObject.Core_Opportunity_Type__c.containsIgnoreCase('Design') && (oppObject.Core_First_Customer_Ship_Date__c == null || String.valueOf(oppObject.Core_First_Customer_Ship_Date__c) == '' || oppObject.Core_First_Customer_Ship_Date__c < System.Today())){
                     softStop = true;
                     String err= System.Label.Core_Oppo_Approval_First_Customer_Ship_Date;

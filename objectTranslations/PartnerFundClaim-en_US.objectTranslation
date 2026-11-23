@@ -296,6 +296,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Claim Cancellation Reason --></label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help><!-- Free text note related to the Claim --></help>
         <label><!-- Claim Comments --></label>
         <name>Core_MDF_Claim_Comments__c</name>

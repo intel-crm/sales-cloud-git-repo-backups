@@ -116,12 +116,6 @@
     <columns>
         <field>Product2.Core_Product_Type__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Opp_Strategic_Opportunity__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Coverage_Nm__c</field>
-    </columns>
     <description>CCG Public Sector</description>
     <filter>
         <criteriaItems>

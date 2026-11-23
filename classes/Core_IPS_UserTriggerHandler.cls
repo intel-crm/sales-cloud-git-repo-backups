@@ -276,7 +276,7 @@ Modification Log :
                 //Added null check for email - US219056
                 if(objUN.Email!=null && objUN.Email.Contains('@intel.com') &&( (string.valueof(objUN.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id)) ||(string.valueof(objUN.ProfileId).contains(Label.Core_IPS_Partner_AE_Profile_Id))  )){
                     if(isSB)
-                        objUN.Email = objUN.Email + '.sndbx';
+                      //  objUN.Email = objUN.Email + '.sndbx';
                     setEmailIds.add(objUN.Email);
                 }
             } 
@@ -453,7 +453,7 @@ Modification Log :
                         }
                     	/*End of code by Tejaswini */ 
 
-                    }
+                    }//   mapUserIdGroupId.put(user.Id, groupId);
                 }
                 
             }
@@ -809,22 +809,26 @@ Modification Log :
         for(User ipsUser : ipsUsers){
             contactUserMap.put(ipsUser.ContactId,ipsUser.Id);
         }
+        system.debug('contactUserMap'+contactUserMap);
         List<Sobject> allProjectMemAndIntParty =new List<Sobject>();
         List<Core_IPS_Project_Member__c> ProjectMembers = new List<Core_IPS_Project_Member__c>();
         //FLS check added-Venugopal.
+        //TWC745-9507 ---- UIOLI issue on IPS Project---- removed Core_Status__c = 'active' condition
         if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){
-            ProjectMembers = [Select id,Core_IPS_Contact__c,Core_User__c from Core_IPS_Project_Member__c where Core_Status__c = 'active' and Core_IPS_Contact__c IN :contactUserMap.keySet() and Core_User__c NOT IN :contactUserMap.values()];
+            ProjectMembers = [Select id,Core_IPS_Contact__c,Core_User__c from Core_IPS_Project_Member__c where Core_IPS_Contact__c IN :contactUserMap.keySet() and Core_User__c NOT IN :contactUserMap.values()];
         }
+        system.debug('ProjectMembers'+ProjectMembers);
         for( Core_IPS_Project_Member__c projMem: ProjectMembers){
             projMem.Core_User__c = contactUserMap.get((Id)projMem.Core_IPS_Contact__c);
         }
+         system.debug('ProjectMembers'+ProjectMembers);
         //database.update(ProjectMembers);
         allProjectMemAndIntParty.addAll((List<Sobject>)ProjectMembers);
         //Interested party adding
         List<Core_IPS_Case_Interested_Party__c> interestedparties = new List<Core_IPS_Case_Interested_Party__c>();
         //FLS check added-Venugopal
         if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isAccessible()){
-            interestedparties = [Select id,Contact__c,User__c from Core_IPS_Case_Interested_Party__c where Active__c = true and Contact__c IN :contactUserMap.keySet() and User__c NOT IN :contactUserMap.values()];
+            interestedparties = [Select id,Contact__c,User__c from Core_IPS_Case_Interested_Party__c where Contact__c IN :contactUserMap.keySet() and User__c NOT IN :contactUserMap.values()];
         }
         for( Core_IPS_Case_Interested_Party__c interestedParty: interestedparties){
             interestedParty.User__c = contactUserMap.get((Id)interestedParty.Contact__c);
@@ -832,6 +836,7 @@ Modification Log :
         //database.update(interestedparties);
         allProjectMemAndIntParty.addAll((List<Sobject>)interestedparties);
         if(allProjectMemAndIntParty.size()>0){
+             system.debug('allProjectMemAndIntParty'+allProjectMemAndIntParty);
             ID jobID = System.enqueueJob(new UpdateProjectMemAndIntParty(allProjectMemAndIntParty));
         }
         
@@ -845,6 +850,7 @@ Modification Log :
         }
         public void execute(QueueableContext context) {
             if(allMemAndIntPartyList.size()>0){
+                system.debug('allMemAndIntPartyList'+allMemAndIntPartyList);
                 database.update(allMemAndIntPartyList);
             }      
         }

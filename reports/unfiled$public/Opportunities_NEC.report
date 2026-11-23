@@ -127,7 +127,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2028-12-31</endDate>
+        <endDate>2027-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2022-01-01</startDate>
     </timeFrameFilter>

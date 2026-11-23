@@ -75,14 +75,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessOrEqual</operator>
-            <value>12/31/2026 12:00 PM</value>
+            <value>12/31/2025 12:00 PM</value>
         </criteriaItems>
         <criteriaItems>
             <column>CLOSE_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessOrEqual</operator>
-            <value>12/31/2026</value>
+            <value>12/31/2025</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -92,7 +92,7 @@
         <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Ron  Opportunity Commits for 2H 26</name>
+    <name>Ron  Opportunity Commits for 2H 25</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -118,8 +118,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-07-01</startDate>
+        <startDate>2025-07-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -20,11 +20,11 @@
         <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>TOTAL_PRICE</field>
+        <field>PRODUCT_NAME</field>
     </columns>
     <columns>
-        <field>PRODUCT_NAME</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
     </columns>
     <columns>
         <field>ACCOUNT_OWNER</field>

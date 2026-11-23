@@ -160,6 +160,19 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>ER_Active_Account_Business_Partners__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Active Account Business Partners</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>ER_Active__c</fullName>
         <defaultValue>true</defaultValue>
         <label>Active</label>
@@ -205,6 +218,19 @@
         <visibleLines>5</visibleLines>
     </fields>
     <fields>
+        <fullName>ER_Inactive_Account_Business_Partners__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Inactive Account Business Partners</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>ER_Inactive_Contacts__c</fullName>
         <label>InActive Contacts Associations</label>
         <summaryFilterItems>
@@ -232,7 +258,7 @@
         <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
-    <label>Customer Master File Grouping</label>
+    <label>Business Partner Grouping</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
@@ -247,11 +273,11 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <label>Customer Master File Group Name</label>
+        <label>Business Partner Group Name</label>
         <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Customer Master File Groupings</pluralLabel>
+    <pluralLabel>Business Partner Groupings</pluralLabel>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>

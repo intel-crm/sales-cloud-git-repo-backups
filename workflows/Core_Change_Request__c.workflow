@@ -8,8 +8,9 @@
             <field>Core_Requestor__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>Testt/Account_Team_Request_Approval</template>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Account_Team_Request_Approval</template>
     </alerts>
     <alerts>
         <fullName>Account_Team_Rejection_Notification_to_the_requester</fullName>
@@ -19,8 +20,9 @@
             <field>Core_Requestor__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>Testt/Account_Team_Request_Rejection</template>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Account_Team_Request_Rejection</template>
     </alerts>
     <alerts>
         <fullName>Core_Change_Request_Territory_Notification</fullName>

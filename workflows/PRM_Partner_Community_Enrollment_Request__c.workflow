@@ -8,7 +8,7 @@
             <field>PRM_Approver_Id__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPA_English_Templates/COMMRQST</template>
     </alerts>

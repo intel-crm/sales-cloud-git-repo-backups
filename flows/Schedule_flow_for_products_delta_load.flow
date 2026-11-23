@@ -5,7 +5,7 @@
         <label>Products Delta Load</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <actionName>01pcv0000012FM5NotFound</actionName>
+        <actionName>01pdi00000Hd87RNotFound</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <offset>0</offset>
@@ -14,8 +14,7 @@
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <interviewLabel>Schedule flow for products delta load {!$Flow.CurrentDateTime}</interviewLabel>
-    <isAdditionalPermissionRequiredToRun>true</isAdditionalPermissionRequiredToRun>
-    <label>PIM Delta JOB</label>
+    <label>Schedule flow for products delta load</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -45,8 +44,8 @@
             <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
             <frequencyNumber>0</frequencyNumber>
-            <startDate>2026-06-29</startDate>
-            <startTime>00:00:00.000Z</startTime>
+            <startDate>2026-06-30</startDate>
+            <startTime>13:00:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

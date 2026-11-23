@@ -3,10 +3,6 @@
     <backgroundEndColor>#FFFFFF</backgroundEndColor>
     <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
     <backgroundStartColor>#FFFFFF</backgroundStartColor>
-    <chartTheme>light</chartTheme>
-    <colorPalette>unity</colorPalette>
-    <dashboardChartTheme>light</dashboardChartTheme>
-    <dashboardColorPalette>unity</dashboardColorPalette>
     <dashboardGridLayout>
         <dashboardGridComponents>
             <colSpan>3</colSpan>
@@ -616,7 +612,6 @@
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
-    <description>Copy of AMR Datacenter Dashboard with updated pricing (SPR, SPR HBM, PVC)</description>
     <isGridLayout>true</isGridLayout>
     <owner>12146936@intel.com.crm</owner>
     <runningUser>12146936@intel.com.crm</runningUser>

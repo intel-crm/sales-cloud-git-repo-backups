@@ -142,7 +142,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ G3 Processor</masterLabel>
-        <translation>英特尔锐炫™ G3 处理器</translation>
+        <translation>英特尔® Arc™ G3 处理器</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ GPU</masterLabel>
@@ -399,6 +399,10 @@
     <valueTranslation>
         <masterLabel>Intel® Gaudi®</masterLabel>
         <translation><!-- Intel® Gaudi® --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Intel® Geti™</masterLabel>
+        <translation><!-- Intel® Geti™ --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Infrastructure Power Manager</masterLabel>

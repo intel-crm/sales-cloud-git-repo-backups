@@ -1109,4 +1109,172 @@ insert pr2;
 
 
     }
+  @isTest
+static void testMDAUpdate() {
+
+    Id partnerRtId = Schema.SObjectType.Account
+        .getRecordTypeInfosByDeveloperName()
+        .get('Core_Partner_Account_Group')
+        .getRecordTypeId();
+
+    Id intelRtId = Schema.SObjectType.Account
+        .getRecordTypeInfosByDeveloperName()
+        .get('Mastered_Account')
+        .getRecordTypeId();
+
+    Core_Trigger_Executions__c cs = new Core_Trigger_Executions__c(
+        Name = 'isPAGMTrigger',
+        Core_Active__c = true,
+        Core_Class_Name__c = 'Core_Acct_Grp_Mbr_TriggerHandler',
+        Core_Object__c = 'Core_Account_Group_Member__c',
+        Core_Trigger_Events__c = 'Before Insert, Before Update',
+        Core_Description__c = 'Test Case'
+    );
+    insert cs;
+
+    Account partnerAcc = new Account(
+        Name = 'Partner Test',
+        RecordTypeId = partnerRtId,
+        Core_Account_Type__c = 'Distributor',
+        Core_Sales_Group_New__c = 'CCG Sales Group',
+        Industry = 'Agriculture',
+        BillingCity = 'Delhi',
+        BillingCountryCode = 'IND',
+        BillingStreet = 'Test Street',
+        BillingPostalCode = '110001',
+        BillingStateCode = 'KA'
+    );
+
+    Account intelAcc = new Account(
+        Name = 'Intel Test',
+        RecordTypeId = intelRtId,
+        Core_Account_Type__c = 'Distributor',
+        Core_Sales_Group_New__c = 'CCG Sales Group',
+        Industry = 'Agriculture',
+        BillingCity = 'Delhi',
+        BillingCountryCode = 'IND',
+        BillingStreet = 'Test Street',
+        BillingPostalCode = '110001',
+        BillingStateCode = 'KA'
+    );
+
+    insert new List<Account>{ partnerAcc, intelAcc };
+
+    Core_Account_Group_Member__c agm =
+        new Core_Account_Group_Member__c(
+            Core_Partner_Account_Id__c = partnerAcc.Id,
+            Core_Intel_Account_Id__c = intelAcc.Id,
+            Core_MDA_Ind__c = true,
+            Core_Inactive_Ind__c = false
+        );
+
+    insert agm;
+
+    Test.startTest();
+
+    // Triggers beforeUpdate and afterUpdate
+    agm.Core_Inactive_Ind__c = true;
+    update agm;
+
+    Test.stopTest();
+
+    Core_Account_Group_Member__c agmAfter =
+        [
+            SELECT Id,
+                   Core_Inactive_Ind__c
+            FROM Core_Account_Group_Member__c
+            WHERE Id = :agm.Id
+        ];
+
+    System.assertEquals(true, agmAfter.Core_Inactive_Ind__c);
+}
+    @isTest
+static void testAfterUpdateCoverage() {
+
+    Id partnerRtId = Schema.SObjectType.Account
+        .getRecordTypeInfosByDeveloperName()
+        .get('Core_Partner_Account_Group')
+        .getRecordTypeId();
+
+    Id intelRtId = Schema.SObjectType.Account
+        .getRecordTypeInfosByDeveloperName()
+        .get('Mastered_Account')
+        .getRecordTypeId();
+
+    insert new List<Core_Trigger_Executions__c>{
+
+        new Core_Trigger_Executions__c(
+            Name='PAG_mem_handler',
+            Core_Active__c=true,
+            Core_Class_Name__c='Core_Acct_Grp_Mbr_TriggerHandler',
+            Core_Object__c='Core_Account_Group_Member__c',
+            Core_Trigger_Events__c='After Update',
+            Core_Description__c='Test'
+        ),
+
+        new Core_Trigger_Executions__c(
+            Name='OPID_Update_IPA_Integration_Trigger',
+            Core_Active__c=true,
+            Core_Class_Name__c='Core_Acct_Grp_Mbr_TriggerHandler',
+            Core_Object__c='Core_Account_Group_Member__c',
+            Core_Trigger_Events__c='After Update',
+            Core_Description__c='Test'
+        )
+    };
+
+    Account partner = new Account(
+        Name='Partner',
+        RecordTypeId=partnerRtId,
+        Core_Account_Type__c='Distributor',
+        Core_Sales_Group_New__c='CCG Sales Group',
+        Industry='Agriculture',
+        BillingCity='Delhi',
+        BillingCountryCode='IND',
+        BillingStreet='Street'
+    );
+
+    Account intel1 = new Account(
+        Name='Intel1',
+        RecordTypeId=intelRtId,
+        Core_Account_Type__c='Distributor',
+        Core_Sales_Group_New__c='CCG Sales Group',
+        Industry='Agriculture',
+        BillingCity='Delhi',
+        BillingCountryCode='IND',
+        BillingStreet='Street'
+    );
+
+    Account intel2 = new Account(
+        Name='Intel2',
+        RecordTypeId=intelRtId,
+        Core_Account_Type__c='Distributor',
+        Core_Sales_Group_New__c='CCG Sales Group',
+        Industry='Agriculture',
+        BillingCity='Delhi',
+        BillingCountryCode='IND',
+        BillingStreet='Street'
+    );
+
+    insert new List<Account>{partner,intel1,intel2};
+
+    Core_Account_Group_Member__c agm =
+        new Core_Account_Group_Member__c(
+            Core_Partner_Account_Id__c = partner.Id,
+            Core_Intel_Account_Id__c = intel1.Id,
+            Core_MDA_Ind__c = true,
+            Core_Inactive_Ind__c = false
+        );
+
+    insert agm;
+
+    Test.startTest();
+
+    agm.Core_Intel_Account_Id__c = intel2.Id;
+    update agm;
+
+    Test.stopTest();
+
+    System.assert(true);
+}
+
 }

@@ -39,6 +39,7 @@ public with sharing class Pricing_FieldSetFormController {
          quoteLineType = quoteLine.Pricing_Program_Type_Nm__c;
         }
         String pfile = [Select Name from Profile where Id =: userinfo.getProfileid()].Name;
+        System.debug('Entered getFormFieldsAndSectionLabel method prile:'+pfile);
         Boolean isPartneruser = !String.isblank(pfile) && pfile == 'Partner' ? true : false;
         String objectName = 'SBQQ__QuoteLine__c';
         List<FieldSetForm> form = new List<FieldSetForm>(); 

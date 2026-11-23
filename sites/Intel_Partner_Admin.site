@@ -15,7 +15,6 @@
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
     <customWebAddresses>
-        <certificate>partner_admin_intel_com16</certificate>
         <domainName>partner-admin.intel.com</domainName>
         <primary>true</primary>
     </customWebAddresses>

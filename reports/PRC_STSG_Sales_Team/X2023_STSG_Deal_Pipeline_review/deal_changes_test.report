@@ -16,10 +16,6 @@
         <showChanges>false</showChanges>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity$TotalOpportunityQuantity</field>
-    </columns>
-    <columns>
         <field>Opportunity$Amount</field>
     </columns>
     <columns>
@@ -38,19 +34,32 @@
         <showChanges>false</showChanges>
     </columns>
     <columns>
-        <field>Opportunity$LastModifiedDate</field>
+        <field>Opportunity$ForecastCategoryName</field>
     </columns>
     <columns>
-        <field>Opportunity$Core_Opportunity_Products__c</field>
+        <field>Opportunity.Opportunity__hd$ForecastCategoryName__hst</field>
+        <isExtendedColumn>false</isExtendedColumn>
+        <reverseColors>false</reverseColors>
+        <showChanges>false</showChanges>
+    </columns>
+    <columns>
+        <field>Opportunity$LastModifiedDate</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6) AND 7</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6 OR 7)</booleanFilter>
         <criteriaItems>
             <column>Opportunity$Owner.Core_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>eric tang</value>
+            <value>bin liu,victoria yang,lei guo,eric tang</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>#</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity$LastModifiedDate</column>
@@ -91,20 +100,13 @@
             <snapshot>N_WEEKS_AGO:1</snapshot>
             <value>Opportunity$ForecastCategoryName</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity$RecordType</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Opportunity.Core_Deal_Opportunity</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
     <historicalSelector>
         <snapshot>N_WEEKS_AGO:1</snapshot>
     </historicalSelector>
-    <name>2026  Deal Weekly Changes</name>
+    <name>2024 PRC STSG Key Deal Weekly Changes</name>
     <params>
         <name>co</name>
         <value>1</value>

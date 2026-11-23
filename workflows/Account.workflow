@@ -65,7 +65,7 @@
         <recipients>
             <type>accountOwner</type>
         </recipients>
-        <senderAddress>crm.acm.system.user@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Account_Owner_Deactivation_Notification</template>
     </alerts>
@@ -214,7 +214,7 @@
         <fullName>Core_Intmsg_Account_New</fullName>
         <apiVersion>32.0</apiVersion>
         <description>Send new account to integration server</description>
-        <endpointUrl>https://8cc1c347-4525-4627-b9d8-0adb19ccbcbe:XHW8Q~ICPFmAqGH__wfPZ~MbLXSUdLthpuyMUduG@apis.intel.com/m2r/sales-cloud/v1/accounts</endpointUrl>
+        <endpointUrl>https://8cc1c347-4525-4627-b9d8-0adb19ccbcbe:XHW8Q~ICPFmAqGH__wfPZ~MbLXSUdLthpuyMUduG@apis-sandbox.intel.com/m2r/sales-cloud/v1/accounts</endpointUrl>
         <fields>BillingCity</fields>
         <fields>BillingCountry</fields>
         <fields>BillingCountryCode</fields>
@@ -244,7 +244,7 @@
         <fullName>Core_Intmsg_Account_PSG</fullName>
         <apiVersion>38.0</apiVersion>
         <description>Send PSG account to Siebel System (using integration server)</description>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-sls-siebel/account</endpointUrl>
+        <endpointUrl>https://dummy_user3:j5s$S$Xo!s9w@eip-crm-dummy.cloudhub.io/smit/api/eip-crm-sls-siebel/account</endpointUrl>
         <fields>BillingCity</fields>
         <fields>BillingCountryCode</fields>
         <fields>BillingPostalCode</fields>

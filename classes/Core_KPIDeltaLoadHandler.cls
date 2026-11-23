@@ -33,6 +33,7 @@ public without sharing class Core_KPIDeltaLoadHandler {
 * Parameter    : List<Core_KPI_Staging__c> newList,boolean KPIFullLoadCheck
 */
     public static void handleDeltaLoad(List<Core_KPI_Staging__c> newList,boolean KPIDeltaLoadCheck) {
+        System.debug('top list'+newList.size());
         KPIDeltaLoadCheck = false;
         List<Core_KPI_Staging__c> KPIAllFailure = new List<Core_KPI_Staging__c>();
         List<Core_KPI_Staging__c> isDeleteStaging = new List<Core_KPI_Staging__c>();
@@ -383,6 +384,9 @@ public without sharing class Core_KPIDeltaLoadHandler {
             }
         }
         catch(exception e){
+            system.debug('**exception** -->'+ e);
+            system.debug('**exception line** -->'+e.getLineNumber()); 
+            //System.debug('** Sizeee **'+ksListStatus.size());
             List<Core_KPI_Staging__c> excepList = new List<Core_KPI_Staging__c>();
             if(ksListStatus.size()>0){
                 for(Core_KPI_Staging__c KPIStage : ksListStatus){
@@ -552,6 +556,7 @@ public without sharing class Core_KPIDeltaLoadHandler {
             //TWC3123-961 end
         }//end of For Loop.
         upsert csList;
+        system.debug('deltaLoadList-->'+deltaLoadList);
         //TWC3123-691- adding changes to modify code to accomodate Opportunities having more than 100,200 KPIs.
         Set<String> DeltaLoadSyncBatchid = new Set<String>();
         Set<String> DeltaLoadAsyncBatchid = new Set<String>();

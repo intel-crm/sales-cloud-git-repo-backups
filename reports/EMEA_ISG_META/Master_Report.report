@@ -983,9 +983,6 @@
         <field>User.Core_User_Country_Code__c</field>
     </columns>
     <columns>
-        <field>User.User_Unique__c</field>
-    </columns>
-    <columns>
         <field>User.Core_WWID__c</field>
     </columns>
     <columns>

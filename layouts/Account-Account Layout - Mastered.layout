@@ -48,6 +48,7 @@
         </primaryTabComponents>
     </customConsoleComponents>
     <excludeButtons>Delete</excludeButtons>
+    <excludeButtons>GenerateKnowledge</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>

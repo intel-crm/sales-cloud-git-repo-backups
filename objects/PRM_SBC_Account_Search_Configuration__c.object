@@ -281,10 +281,6 @@
     <label>IPA Admin Configuration</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Account__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>Contact_Email__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -295,7 +291,6 @@
         <columns>PRM_Contact__c</columns>
         <columns>PRM_Type__c</columns>
         <columns>PRM_isActive__c</columns>
-        <columns>PRM_Comments__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>

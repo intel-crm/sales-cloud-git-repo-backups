@@ -14,11 +14,6 @@
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
-    <customWebAddresses>
-        <certificate>partner_intel_com14</certificate>
-        <domainName>partner.intel.com</domainName>
-        <primary>false</primary>
-    </customWebAddresses>
     <enableAuraRequests>true</enableAuraRequests>
     <favoriteIcon>favicon</favoriteIcon>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
@@ -30,21 +25,14 @@
     <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_iTypB_sf_default_cdn_Intel_Partner_Alliance1</serverIsDown>
+    <serverIsDown>SNA_dvOrw_sf_default_cdn_Intel_Partner_Alliance1</serverIsDown>
     <siteAdmin>11228279@intel.com.crm</siteAdmin>
     <siteGuestRecordDefaultOwner>11615861@intel.com.crm</siteGuestRecordDefaultOwner>
     <siteRedirectMappings>
         <action>Permanent</action>
-        <isActive>true</isActive>
+        <isActive>false</isActive>
         <isDynamic>false</isDynamic>
-        <source>/ipa</source>
-        <target>/</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/ipa/s/</source>
+        <source>/ipa*</source>
         <target>/</target>
     </siteRedirectMappings>
     <siteRedirectMappings>

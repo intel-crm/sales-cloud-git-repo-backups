@@ -7,6 +7,9 @@
         <locationY>0</locationY>
         <actionName>SWS_CampaignMemberCIAction</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>campaignMemberIds</name>
@@ -25,6 +28,9 @@
         <locationY>0</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>recipientAddresses</name>
@@ -102,6 +108,16 @@
             <label>Present</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>UserFullName</name>
@@ -156,7 +172,7 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <value>
-            <stringValue>shijasx.kunnappallil@intel.com,naveenx.muthuramalingam@intel.com,mandy.m.hackett@intel.com</stringValue>
+            <stringValue>shijasx.kunnappallil@intel.com,naveenx.muthuramalingam@intel.com</stringValue>
         </value>
     </variables>
 </Flow>

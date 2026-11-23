@@ -2,7 +2,7 @@
  * @description       : Class used to perform auto approval action from Flow
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 05-05-2026
+ * @last modified on  : 06-25-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteLine_AutoApprovalController extends TriggerHandler{
@@ -18,6 +18,9 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
     public static Map<String, List<Pricing_Product_Floor_Price__c>> ruleIdToFloorPriceRec = new Map<String, List<Pricing_Product_Floor_Price__c>>();
     public static Boolean isChangeRequestPriceRule = false;
     public static Boolean isCalledFromTrigger = false;
+    public static Boolean isNotRunByPriceRule = false;
+    public static Boolean isChangeRequestQl = false;
+
 
 
     /**
@@ -102,6 +105,7 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
                     }
                 }
             }
+
             //getting all products for each rule where product floor price record is active and Approval price rule is active
             for(Pricing_Product_Floor_Price__c prodEcap : [select id,Pricing_Product__c,Pricing_Approved_ECAP_Price__c,Pricing_Approval_Price_Rules__r.Name,Pricing_Approval_Price_Rules__r.Pricing_Rule_Name__c,Pricing_Approval_Price_Rules__c, 
                                                             Pricing_Approval_Price_Rules__r.Pricing_Intel_Sales_Rep_Email_Txt__c,Pricing_Approval_Price_Rules__r.Pricing_Intel_Account_Exec_Email_Txt__c,Pricing_Approval_Price_Rules__r.Pricing_RPM_Email__c 
@@ -149,7 +153,7 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
             if(actionToQuoteLineListMap.containsKey('RPM Approve')){
                 for(SBQQ__QuoteLine__c qli: actionToQuoteLineListMap.get('RPM Approve')){
                     
-                        qli.Pricing_ECAP_Price_Amt__c = qliIdtoECAPPrice.containsKey(qli.Id) && qliIdtoECAPPrice.get(qli.Id) != null ? qliIdtoECAPPrice.get(qli.Id) : 2000;
+                        qli.Pricing_ECAP_Price_Amt__c = qliIdtoECAPPrice.containsKey(qli.Id) && qliIdtoECAPPrice.get(qli.Id) != null ? qliIdtoECAPPrice.get(qli.Id) :  qli.Pricing_Req_Discounted_Unit_Price__c ;//2000;
                         qli.Pricing_Meet_Comp_Price_Amt__c = qliIdtoMeetCompPrice.containsKey(qli.Id) && qliIdtoMeetCompPrice.get(qli.Id) != null ? qliIdtoMeetCompPrice.get(qli.Id) : 1;
                         qli.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Approved;
                         qli.Pricing_Manager__c = rpmUserId != null ? rpmUserId : userInfo.getUserId();
@@ -159,14 +163,19 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
 
             if(actionToQuoteLineListMap.containsKey('RPM Create Deal')){
                 for(SBQQ__QuoteLine__c qli: actionToQuoteLineListMap.get('RPM Create Deal')){
-                    if(qli.Pricing_Additional_Comments_Txt__c == '#autoapprove'){
-                        qli.Pricing_ECAP_Price_Amt__c = qliIdtoECAPPrice.containsKey(qli.Id) && qliIdtoECAPPrice.get(qli.Id) != null ? qliIdtoECAPPrice.get(qli.Id) : 2000;
+                    if(qli.Pricing_New_Change_Request_cb__c == true){
+                        isChangeRequestQl = true;
+                    }
+                    if(qli.Pricing_Additional_Comments_Txt__c == '#autoapprove' ){
+                        isNotRunByPriceRule = true;
+                        qli.Pricing_ECAP_Price_Amt__c = qliIdtoECAPPrice.containsKey(qli.Id) && qliIdtoECAPPrice.get(qli.Id) != null ? qliIdtoECAPPrice.get(qli.Id) : qli.Pricing_Req_Discounted_Unit_Price__c ;//2000;
                         qli.Pricing_Meet_Comp_Price_Amt__c = qliIdtoMeetCompPrice.containsKey(qli.Id) && qliIdtoMeetCompPrice.get(qli.Id) != null ? qliIdtoMeetCompPrice.get(qli.Id) : 1;// build pre flow list of product and price
                         qli.Pricing_Manager__c = rpmUserId != null ? rpmUserId : userInfo.getUserId();
                         qli.Pricing_Deal_Description__c = '#IQRAutoApprove';
                         quoteLinesIds.add(qli.Id);
                         quoteLineListtoUpdate.add(qli);
                     }else{
+                        system.debug('entering else:');
                         accountId = 'Id_' +qlIdAccountIdMap.get(qli.Id);
                         Boolean isQlProdPricePodMatch = false;
                         isChangeRequestPriceRule = true;
@@ -188,11 +197,15 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
                             isEmptyAllorOneEmails = true;                        
                         }
 
+                        system.debug('priceRuleIds:'+priceRuleIds);
+                        system.debug('qlIdToRuleIdMap:'+qlIdToRuleIdMap);
                         if(isEmptyAllorOneEmails == true && (((!String.isBlank(accountExecutiveEmail) && accountExecutiveEmail != qlIdqlRecordMap.get(qli.Id).SBQQ__Quote__r.Pricing_Intel_Account_Exec_Email_Txt__c) && (!String.isBlank(salesRepEmail) && salesRepEmail != qlIdqlRecordMap.get(qli.Id).SBQQ__Quote__r.Pricing_Intel_Sales_Rep_Email_Txt__c)) 
                             || ((!String.isBlank(accountExecutiveEmail) && accountExecutiveEmail != qlIdqlRecordMap.get(qli.Id).SBQQ__Quote__r.Pricing_Intel_Account_Exec_Email_Txt__c) || (!String.isBlank(salesRepEmail) && salesRepEmail != qlIdqlRecordMap.get(qli.Id).SBQQ__Quote__r.Pricing_Intel_Sales_Rep_Email_Txt__c)))){
                             isEmptyAllorOneEmails = false;
                         }
-                        
+                        system.debug('isQlProdPricePodMatch:'+isQlProdPricePodMatch);
+                        system.debug('prodIdToFloorPriceRec:'+prodIdToFloorPriceRec);
+                        system.debug('isEmptyAllorOneEmails:'+isEmptyAllorOneEmails);
                         if((priceRuleIds.size() > 0 && qlIdToRuleIdMap.size() > 0 && isQlProdPricePodMatch && prodIdToFloorPriceRec.size() > 0 && qlIdToRuleIdMap.get(qli.Id) == prodIdToFloorPriceRec.get(qli.SBQQ__Product__c + ':' + qlIdToRuleIdMap.get(qli.Id)).Pricing_Approval_Price_Rules__c 
                             && prodIdToFloorPriceRec.get(qli.SBQQ__Product__c + ':' + qlIdToRuleIdMap.get(qli.Id)).Pricing_Approved_ECAP_Price__c != null) && isEmptyAllorOneEmails){ 
 
@@ -209,12 +222,13 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
                             if(qli.Pricing_New_Change_Request_cb__c == true && qli.Pricing_Reference_Quote_Line_Nbr__c != null && qli.Pricing_New_Quantity_qty__c != null){
                                 qli.Pricing_Approved_Unit_Qty__c = qli.Pricing_New_Quantity_qty__c;  
                             }
-                            
+                            system.debug('ruleIdToRPMEmail:'+ruleIdToRPMEmail);
                             qli.Pricing_Manager__c = rpmEmailToUserId.size() > 0 && rpmEmailToUserId.containsKey(ruleIdToRPMEmail.get(qlIdToRuleIdMap.get(qli.Id))) ? rpmEmailToUserId.get(ruleIdToRPMEmail.get(qlIdToRuleIdMap.get(qli.Id))) : null ;//rpmUserId;
                             qli.Pricing_Approval_Price_Rule_Name__c = qlIdToRuleIdRuleNameMap.get(qli.Id);
                             qli.Pricing_Price_Rule_Error_Message__c = null;
-
+                            system.debug('pricingmanager:'+qli.Pricing_Manager__c);
                             if(qli.Pricing_Manager__c != null){
+                                system.debug('pricingmanager:'+qli.Pricing_Manager__c);
                                 if(qli.Pricing_Program_Type_Nm__c == 'Data Center Xeon® CPU'){
                                     qli.Pricing_Approved_Start_Date_Dt__c = Date.today();
                                     qli.Pricing_Approved_End_Date_Dt__c = Date.today().addMonths(12);
@@ -249,9 +263,35 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
             createLogEntry();
         }
 
+        system.debug('isNotRunByPriceRule:'+isNotRunByPriceRule);
+        system.debug('quoteLinesIds:'+quoteLinesIds);
+        system.debug('priceRuleIds:'+priceRuleIds);
         if(actionToQuoteLineListMap.containsKey('RPM Create Deal') && quoteLinesIds.size() > 0){
-            quoteLineIdToMsgMap = Pricing_QuoteLine_BulkDealController.insertOutbound(quoteLinesIds, 'Create', qlIdToRuleIdRuleNameMap);
-            createLogEntry();
+            List<List<SBQQ__Quoteline__c>> qlList = new List<List<SBQQ__QuoteLine__c>>();
+            if(isNotRunByPriceRule){
+                //To Insert Submitted Payload in to IIM calling method.
+                qlList.add(quoteLineListtoUpdate);
+                Pricing_QuoteLine_Bulk_CR_Controller.manualInsertIIM(qlList);
+
+                //To insert offer payload in to IIM calling through flow by giving 1 min dealy.
+                if(!isChangeRequestQl){
+                    List<Id> qlRecords = new List<Id>();
+                        for(SBQQ__QuoteLine__c ql : quoteLineListtoUpdate){
+                            qlRecords.add(ql.Id);
+                        }
+                    
+                    // Call the Flow with parameters
+                    Map<String, Object> params = new Map<String, Object>();
+                    params.put('qlids', qlRecords);
+                    Flow.Interview.Pricing_ManualApproval_Delay flowInterview = new Flow.Interview.Pricing_ManualApproval_Delay(params);
+                    flowInterview.start();
+                }
+
+            }else if(actionToQuoteLineListMap.containsKey('RPM Create Deal') && quoteLinesIds.size() > 0 && priceRuleIds.size() > 0 && !isNotRunByPriceRule){
+                 system.debug('isNotRunByPriceRule:'+isNotRunByPriceRule);
+                quoteLineIdToMsgMap = Pricing_QuoteLine_BulkDealController.insertOutbound(quoteLinesIds, 'Create', qlIdToRuleIdRuleNameMap);
+                createLogEntry();
+            }
         }
         if(actionToQuoteLineListMap.containsKey('RPM Create Deal') && crQuoteLinesIds.size() > 0){
             quoteLineIdToMsgMap = Pricing_QuoteLine_BulkDealController.insertOutbound(crQuoteLinesIds, 'Update', qlIdToRuleIdRuleNameMap);
@@ -379,6 +419,7 @@ public without sharing class Pricing_QuoteLine_AutoApprovalController extends Tr
                         }
                     }
 
+                    
                     if(isOverlappingproduct && overLapApprovalRecNums.size() > 0){
                         overLapMsg = overLapApprovalRecNums;
                     }else{

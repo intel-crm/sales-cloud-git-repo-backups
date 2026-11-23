@@ -39,12 +39,6 @@
                 <identifier>runtime_sales_lead_pathAssistant</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>CventEvents:contactLeadManagementTab</componentName>
-                <identifier>CventEvents_contactLeadManagementTab</identifier>
-            </componentInstance>
-        </itemInstances>
         <mode>Replace</mode>
         <name>subheader</name>
         <type>Region</type>

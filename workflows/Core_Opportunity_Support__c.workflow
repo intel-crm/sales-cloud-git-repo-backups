@@ -8,7 +8,7 @@
             <recipient>Opportunity_Support_email_alert</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Marketing_Support_Request_Submitted</template>
     </alerts>
@@ -75,7 +75,7 @@
             <field>Core_Approver_5__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_Oppty_Support_Approve_Reject</template>
     </alerts>
@@ -103,7 +103,7 @@
             <field>Core_Approver_5__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_Oppty_Support_Submit</template>
     </alerts>
@@ -137,7 +137,7 @@
             <field>Core_Approver_5__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Opportunity_Support_Team_Member_Approved</template>
     </alerts>
@@ -165,7 +165,7 @@
             <field>Core_Approver_5__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Opportunity_Support_Team_Member_Denies</template>
     </alerts>
@@ -219,7 +219,7 @@
             <field>Core_Approver_9__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Oppty_Support_Team_Member_ReAssigned</template>
     </alerts>

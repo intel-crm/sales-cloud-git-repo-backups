@@ -3444,11 +3444,6 @@ The field allows only English letters, digits (0-9), and the following special c
                     <label>IQR_TANDC</label>
                 </value>
                 <value>
-                    <fullName>PSG_TANDC</fullName>
-                    <default>false</default>
-                    <label>PSG_TANDC</label>
-                </value>
-                <value>
                     <fullName>DZP_TANDC</fullName>
                     <default>false</default>
                     <label>DZP_TANDC</label>
@@ -3625,6 +3620,12 @@ The field allows only English letters, digits (0-9), and the following special c
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>PSG</label>
+                </value>
+                <value>
+                    <fullName>PSG_TANDC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PSG_TANDC</label>
                 </value>
                 <value>
                     <fullName>RDC_Priv_TC</fullName>
@@ -4041,11 +4042,6 @@ The field allows only English letters, digits (0-9), and the following special c
                     <label>Intel Authorized Distributor (IAD)</label>
                 </value>
                 <value>
-                    <fullName>Other</fullName>
-                    <default>false</default>
-                    <label>Other</label>
-                </value>
-                <value>
                     <fullName>CSP</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -4116,6 +4112,12 @@ The field allows only English letters, digits (0-9), and the following special c
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>OEM/LOEM</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other</label>
                 </value>
                 <value>
                     <fullName>Reseller</fullName>
@@ -5157,6 +5159,21 @@ IF(PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&a
                     <label>Intel® Cloud Insider Webinars</label>
                 </value>
                 <value>
+                    <fullName>FPGAPart_SUB01</fullName>
+                    <default>false</default>
+                    <label>FPGA Partner Program Newsletter</label>
+                </value>
+                <value>
+                    <fullName>FPGAPart_SUB03</fullName>
+                    <default>false</default>
+                    <label>Inside Edge Newsletter</label>
+                </value>
+                <value>
+                    <fullName>PSG_NEWSLETTER</fullName>
+                    <default>false</default>
+                    <label>Programmable Logic Newsletters</label>
+                </value>
+                <value>
                     <fullName>PRDSOLCOM</fullName>
                     <default>false</default>
                     <label>Product and Solution Communications</label>
@@ -5185,6 +5202,26 @@ IF(PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&a
                     <fullName>MEMBCOM</fullName>
                     <default>false</default>
                     <label>Membership Communications</label>
+                </value>
+                <value>
+                    <fullName>IDEV_sub1</fullName>
+                    <default>false</default>
+                    <label>Developer Zone Newsletter</label>
+                </value>
+                <value>
+                    <fullName>IDEV_sub6</fullName>
+                    <default>false</default>
+                    <label>Software Developer Product Insights</label>
+                </value>
+                <value>
+                    <fullName>IDEV_sub11</fullName>
+                    <default>false</default>
+                    <label>Edge Software Hub Product Communication</label>
+                </value>
+                <value>
+                    <fullName>PSG_PRODUCT</fullName>
+                    <default>false</default>
+                    <label>Programmable Logic Product Announcements</label>
                 </value>
                 <value>
                     <fullName>NEWSLETTER</fullName>
@@ -5235,48 +5272,6 @@ IF(PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&a
                     <fullName>OpenVINO_SUB01</fullName>
                     <default>false</default>
                     <label>OpenVINO &amp; AI Inference Newsletter</label>
-                </value>
-                <value>
-                    <fullName>IDEV_sub1</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Developer Zone Newsletter</label>
-                </value>
-                <value>
-                    <fullName>IDEV_sub11</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Edge Software Hub Product Communication</label>
-                </value>
-                <value>
-                    <fullName>FPGAPart_SUB01</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>FPGA Partner Program Newsletter</label>
-                </value>
-                <value>
-                    <fullName>FPGAPart_SUB03</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Inside Edge Newsletter</label>
-                </value>
-                <value>
-                    <fullName>PSG_NEWSLETTER</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Programmable Logic Newsletters</label>
-                </value>
-                <value>
-                    <fullName>PSG_PRODUCT</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Programmable Logic Product Announcements</label>
-                </value>
-                <value>
-                    <fullName>IDEV_sub6</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Software Developer Product Insights</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -5640,13 +5635,17 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PRM_Email_ID__c</columns>
+        <columns>PRM_Last_Name__c</columns>
         <columns>Entitlement_Details__c</columns>
-        <columns>Current_Status__c</columns>
         <columns>PRM_Enterprise_ID__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>Email_Verification_Status__c</columns>
+        <columns>PRM_Legal_Agreement_Criteria__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
         <columns>CREATED_DATE</columns>
         <columns>PRM_CIM_ID__c</columns>
-        <columns>ActualApprover__c</columns>
-        <columns>PRM_Status__c</columns>
+        <columns>Geo_Code__c</columns>
+        <columns>PRM_Country__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -5664,21 +5663,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             <field>PRM_Status__c</field>
             <operation>equals</operation>
             <value>Approved</value>
-        </filters>
-        <filters>
-            <field>UPDATEDBY_USER</field>
-            <operation>equals</operation>
-            <value>IPA Registration Integration User</value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </filters>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>PRM_Registration_Request__c.Account_Create_Request</value>
         </filters>
         <label>Approved Requests</label>
     </listViews>
@@ -5698,44 +5682,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             <value>1</value>
         </filters>
         <label>Auto Approved Requests</label>
-    </listViews>
-    <listViews>
-        <fullName>Copy_of_DZP_Open_Registrations_PRC</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Account_Name__c</columns>
-        <columns>Entitlement_Details__c</columns>
-        <columns>PRM_Email_ID__c</columns>
-        <columns>Assigned_To__c</columns>
-        <columns>PRM_Country__c</columns>
-        <columns>Geo_Code__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PRM_Review_Note_txt__c</columns>
-        <columns>PRM_Partner_Type__c</columns>
-        <columns>Current_Status__c</columns>
-        <columns>PRM_Salesforce_ID__c</columns>
-        <columns>PRM_Contact_Salesforce_Id__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>PRM_Registration_Request__c.Account_Create_Request,PRM_Registration_Request__c.Add_Contact_Request,PRM_Registration_Request__c.Add_Membership_Request,PRM_Registration_Request__c.Admin_Registration,PRM_Registration_Request__c.PRM_Email_Verification_Request</value>
-        </filters>
-        <filters>
-            <field>Entitlement_Details__c</field>
-            <operation>equals</operation>
-            <value>Resource &amp; Design Center for Secure Content</value>
-        </filters>
-        <filters>
-            <field>Geo_Code__c</field>
-            <operation>equals</operation>
-            <value>APJ,INDIA</value>
-        </filters>
-        <filters>
-            <field>Current_Status__c</field>
-            <operation>equals</operation>
-            <value>Open,A&amp;E Pending</value>
-        </filters>
-        <label>DZP Open Registrations-APJ</label>
     </listViews>
     <listViews>
         <fullName>Core_PRM_Manual_Approval_Members_Core_PRM_Registration_Request</fullName>
@@ -5767,6 +5713,11 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             <value>AF,AS,AU,BD,BN,BT,CC,CK,CX,FJ,FM,GS,HM,JP,KH,KI,KP,KR,LA,LK,MH,MM,MN,MP,MV,MY,NC,NF,NP,NR,NU,NZ,PF,PG,PH,PK,PN,PW,SB,SG,TF,TH,TK,TL,TO,TV,TW,VN,VU,WF,WS,CN,HK,MO,CHN</value>
         </filters>
         <filters>
+            <field>PRM_Partner_Role__c</field>
+            <operation>notEqual</operation>
+            <value>Service Provider,Guest</value>
+        </filters>
+        <filters>
             <field>RECORDTYPE</field>
             <operation>notEqual</operation>
             <value>PRM_Registration_Request__c.PRM_Email_Verification_Request</value>
@@ -5776,6 +5727,17 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <sharedTo>
             <group>IPA_All_Intel_Admin_Users</group>
         </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Created_Today</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Created Today</label>
     </listViews>
     <listViews>
         <fullName>DZP_Approved_Registration_Requests</fullName>
@@ -5876,15 +5838,17 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
     </listViews>
     <listViews>
         <fullName>DZP_Open_Registrations_PRC</fullName>
-        <columns>Geo_Code__c</columns>
-        <columns>PRM_Country__c</columns>
-        <columns>Current_Status__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>NAME</columns>
         <columns>PRM_Account_Name__c</columns>
         <columns>Entitlement_Details__c</columns>
         <columns>PRM_Email_ID__c</columns>
         <columns>Assigned_To__c</columns>
+        <columns>PRM_Country__c</columns>
+        <columns>Geo_Code__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>PRM_Review_Note_txt__c</columns>
+        <columns>PRM_Partner_Type__c</columns>
+        <columns>Current_Status__c</columns>
         <columns>PRM_Salesforce_ID__c</columns>
         <columns>PRM_Contact_Salesforce_Id__c</columns>
         <filterScope>Everything</filterScope>
@@ -6003,7 +5967,7 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <filters>
             <field>PRM_Status__c</field>
             <operation>equals</operation>
-            <value>Pending with Partner</value>
+            <value>Pending</value>
         </filters>
         <label>IPA - Pending</label>
     </listViews>
@@ -6059,43 +6023,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Internal_IPA_Registrations_Rejected</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Partner_Role__c</columns>
-        <columns>PRM_Email_ID__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>PRM_Dup_Status__c</columns>
-        <columns>PRM_Legal_Agreement_Criteria__c</columns>
-        <columns>PRM_Approve_Reject_Link__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>PRM_Submitted_Date__c</columns>
-        <columns>PRM_Partner_Type__c</columns>
-        <columns>PRM_Contact_Country__c</columns>
-        <filterScope>Queue</filterScope>
-        <filters>
-            <field>PRM_Status__c</field>
-            <operation>equals</operation>
-            <value>Rejected</value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </filters>
-        <filters>
-            <field>PRM_Country__c</field>
-            <operation>notEqual</operation>
-            <value>AF,AS,AU,BD,BN,BT,CC,CK,CX,FJ,FM,GS,HM,JP,KH,KI,KP,KR,LA,LK,MH,MM,MN,MP,MV,MY,NC,NF,NP,NR,NU,NZ,PF,PG,PH,PK,PN,PW,SB,SG,TF,TH,TK,TL,TO,TV,TW,VN,VU,WF,WS,CN,HK,MO,CHN</value>
-        </filters>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>notEqual</operation>
-            <value>PRM_Registration_Request__c.PRM_Email_Verification_Request</value>
-        </filters>
-        <label>Internal-IPA Registrations Rejected</label>
-        <queue>PRM_Manual_Approval_Members</queue>
     </listViews>
     <listViews>
         <fullName>New_Requests</fullName>
@@ -6173,23 +6100,11 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
         <columns>PRM_Country__c</columns>
         <columns>PRM_Contact_Salesforce_Id__c</columns>
         <columns>PRM_Salesforce_ID__c</columns>
-        <columns>Assigned_To__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>PRM_Status__c</field>
             <operation>equals</operation>
             <value>Pending</value>
-        </filters>
-        <filters>
-            <field>PRM_Country__c</field>
-            <operation>equals</operation>
-            <value>AF,AS,AU,BD,BN,BT,CC,CK,CX,FJ,FM,GS,HM,ID,IN,IO,JP,KH,KI,KP,KR,LA,LK,MH,MM,MN,MP,MV,MY,NC,NF,NP,NR,NU,NZ,PF,PG,PH,PK,PN,PW,SB,SG,TF,TH,TK,TL,TO,TV,TW,VN,VU,WF,WS</value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
         </filters>
         <label>Pending Requests</label>
     </listViews>
@@ -6225,6 +6140,11 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             <field>PRM_Status__c</field>
             <operation>equals</operation>
             <value>Rejected</value>
+        </filters>
+        <filters>
+            <field>PRM_Account_Name__c</field>
+            <operation>equals</operation>
+            <value>allion</value>
         </filters>
         <label>Rejected Requests</label>
     </listViews>
@@ -7960,10 +7880,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <fullName>IQR_TANDC</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>PSG_TANDC</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>PRM_PC_Approve_Reject_Flag__c</picklist>
@@ -8720,6 +8636,26 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
+                <fullName>FPGAPart_SUB01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGAPart_SUB03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub6</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>INDSTRYSOL</fullName>
                 <default>false</default>
             </values>
@@ -8757,6 +8693,14 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>PRESSRELES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_NEWSLETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_PRODUCT</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14881,6 +14825,26 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
+                <fullName>FPGAPart_SUB01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGAPart_SUB03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub6</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>INDSTRYSOL</fullName>
                 <default>false</default>
             </values>
@@ -14918,6 +14882,14 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>PRESSRELES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_NEWSLETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_PRODUCT</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -16591,10 +16563,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <fullName>IQR_TANDC</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>PSG_TANDC</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>PRM_PC_Approve_Reject_Flag__c</picklist>
@@ -17151,6 +17119,26 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
+                <fullName>FPGAPart_SUB01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGAPart_SUB03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub6</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>INDSTRYSOL</fullName>
                 <default>false</default>
             </values>
@@ -17188,6 +17176,14 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>PRESSRELES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_NEWSLETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_PRODUCT</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -18914,10 +18910,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <fullName>IQR_TANDC</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>PSG_TANDC</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>PRM_PC_Approve_Reject_Flag__c</picklist>
@@ -19115,10 +19107,6 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -19678,6 +19666,26 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
                 <default>false</default>
             </values>
             <values>
+                <fullName>FPGAPart_SUB01</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGAPart_SUB03</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IDEV_sub6</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>INDSTRYSOL</fullName>
                 <default>false</default>
             </values>
@@ -19715,6 +19723,14 @@ ROUND(MOD((Approved_Timestamp__c - CreatedDate)*1440,60),0)
             </values>
             <values>
                 <fullName>PRESSRELES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_NEWSLETTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PSG_PRODUCT</fullName>
                 <default>false</default>
             </values>
             <values>

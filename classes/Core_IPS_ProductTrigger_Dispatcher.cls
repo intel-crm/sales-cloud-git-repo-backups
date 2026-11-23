@@ -6,6 +6,7 @@ public class Core_IPS_ProductTrigger_Dispatcher{
              Core_IPS_ProductTriggerHandler.DuplicateRecordprevention(newList);
              Core_IPS_ProductTriggerHandler.preventAddingInactiveProduct(newList);      //added by Aayushi 14/05/2018 US105268
              Core_IPS_ProductTriggerHandler.partnerAgentAsProjectMember(newList,oldMap); // addded by Sumukh for US240170
+             System.debug('end of beforeInsert Method');
          }
          if(trigger.isUpdate){
              Core_IPS_ProductTriggerHandler.updateRecordType(newList,oldMap);

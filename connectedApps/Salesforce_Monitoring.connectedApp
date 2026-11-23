@@ -5,7 +5,7 @@
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
         <certificate>MIIDizCCAnMCFEXs8SPzMEeTy9c+wzX0Kr1c+CLWMA0GCSqGSIb3DQEBCwUAMIGBMQswCQYDVQQGEwJJTjESMBAGA1UECAwJS2FybmF0YWthMRIwEAYDVQQHDAlCZW5nYWx1cnUxDjAMBgNVBAoMBUludGVsMQswCQYDVQQLDAJJVDEtMCsGCSqGSIb3DQEJARYec2FsZXNjbG91ZC50ZWNobGVhZHNAaW50ZWwuY29tMB4XDTIzMDcwMzEwMjA1NFoXDTI0MDcwMjEwMjA1NFowgYExCzAJBgNVBAYTAklOMRIwEAYDVQQIDAlLYXJuYXRha2ExEjAQBgNVBAcMCUJlbmdhbHVydTEOMAwGA1UECgwFSW50ZWwxCzAJBgNVBAsMAklUMS0wKwYJKoZIhvcNAQkBFh5zYWxlc2Nsb3VkLnRlY2hsZWFkc0BpbnRlbC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCvB4NT1Kh4Ee+rx/qaUL2eRvGSEAGdoUogNLyEcUuJUpRcFkLhf5Nsv1paLakrcKWzfzcx4LnKLAPfXpGgw/lKSyzd8ACkBAs8BAz+zMWpmVwZYz6mJ3HYLFSx+7T4nB6tYV7ZOb3cACohOmkqI6iuADDz4WDuvI6Dn1n9TpaTGBXKYxAM9Tp55nvgrp+ynFTXtyGAVyHBzvniy6EtYhHNoirX9cv7z9ebLZ5K1ofJDs0gNVAPyawR5KmYnIDWdvLqj3+4hlvL8Bq6074G6X7GwHAwRlPsdvzYgzvpH3nHr7atP+zvIYnfjd1tCtpoU2b6naEgCUFFwLoSLEnEbj8tAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAE5wd6T57qhSzeilBihlxfFEaOdEUECQieG4N49hDLOEuizUb/NQ+LxY8Ai3UHBXZHpXRcev/Jp2boDtDRz4/2L/kI+fo7n3sgbG8okf+s7GcSQogC7VgnjIqOAQMr8RfLFOAjVlr+0bQIRTidcQgA91uP2W3b5pNnW/sYDvkwUl3vftrpaEP9/mCY5Q2Wmh1gKOdHZrKJhmNulK0rGzByg1/51UYJA5eZeBvhBJgrbGsr5vLGDNMdSUb7wb3VNcSPx2O4KDov7wQ4+zXdKrPbLFu7giDMgAaErBx2SJ/zkVZHgMgkWMJc9R5tUQe53l+0/+aOrcxkbppyotumSLlxY=</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6kpaE.r2wx.RBFnpC8ffO64uONh.TQCi4kRst6WAcCXT5k46YV1NpgiYqOda</consumerKey>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxGSh05F3e_cE_tsQl5ODxX11eL3FAHcfPYqKdFqGcxXfJ4titKQ_MZ8qCFX3</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -23,7 +23,7 @@
         <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>comarketing-flao-user@intel.com</oauthClientCredentialUser>
+        <oauthClientCredentialUser>comarketing-flao-user@intel.com.crmqa9</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>
     </oauthConfig>
@@ -44,7 +44,15 @@
     <permissionSetName>SMG One AI Plugin</permissionSetName>
     <profileName>Comarketing Support L1</profileName>
     <profileName>Comarketing Support L2</profileName>
+    <profileName>IPS Survey Profile</profileName>
+    <profileName>IPS Agent-Partner</profileName>
+    <profileName>IPS Lenovo B2B  M2M</profileName>
     <profileName>IT Admin</profileName>
+    <profileName>IPS External Customer</profileName>
+    <profileName>IPS Agent</profileName>
+    <profileName>IPS Agent Enhanced</profileName>
+    <profileName>IPS Support Org Admin</profileName>
+    <profileName>IPS Temp Profile</profileName>
     <profileName>System Administrator</profileName>
     <sessionPolicy>
         <sessionTimeout>60</sessionTimeout>

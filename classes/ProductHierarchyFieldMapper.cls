@@ -41,9 +41,11 @@ public class ProductHierarchyFieldMapper {
         pis.level_4_epm_name__c = ph.l4Name;
         pis.level_5_epm_id__c = ph.l5;
         pis.level_5_epm_name__c = ph.l5Name != Null? ph.l5name : ph.l5_name;
+        //Ganesh Start
 		if (Product_Utility.isProductDeprecationDateEnabled()) {
     		pis.Deactivation_Date__c = parseDeactivationDate(ph.L5DeprecationDate);
 		}
+		//Ganesh End
         pis.Core_IsActive__c = ph.l5_is_active == 0 ? False : True;
         pis.Core_Unique_ID__c = ph.l5 + ';' + ph.l4 + ';' + ph.l3 + ';' + ph.l2 + ';' + ph.l1;
         pis.Core_Hierarchy_ID__c = productType == 'VPH' ? '43' : '59';
@@ -52,6 +54,7 @@ public class ProductHierarchyFieldMapper {
         return pis;
     }
     
+    //Ganesh Start
 	public static Date parseDeactivationDate(String dateValue) {
     	if (String.isBlank(dateValue)) {
         return null;
@@ -72,6 +75,7 @@ public class ProductHierarchyFieldMapper {
         return null;
     }
 }
+//Ganesh End
     
     private void mapAttributes(Product_Inbound_Staging__c pis, ProductHierarchyWrapper.HierarchyItem ph) {
         if (ph.attributes == null || ph.attributes.isEmpty()) {

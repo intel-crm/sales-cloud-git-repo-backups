@@ -26466,43 +26466,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>CventEvents__Attendee__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Attendee</label>
-        <referenceTo>CventEvents__Attendee__c</referenceTo>
-        <relationshipLabel>Opportunities</relationshipLabel>
-        <relationshipName>Opportunities</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>CventEvents__EventTitle__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(&quot;/&quot; &amp; CventEvents__Event__r.CventEvents__pkg_Title__c, &quot;&quot;) &amp; HYPERLINK(&quot;/&quot; &amp; CventEvents__Event__c, CventEvents__Event__r.CventEvents__pkg_Title__c)</formula>
-        <label>Cvent Event</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>CventEvents__Event__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Cvent Event Number</label>
-        <referenceTo>CventEvents__Event__c</referenceTo>
-        <relationshipLabel>Opportunities</relationshipLabel>
-        <relationshipName>Opportunities</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Decision_Date__c</fullName>
         <formula>CloseDate</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -27190,6 +27153,11 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
         <columns>OPPORTUNITY.AMOUNT</columns>
         <columns>CRM_Opportunity_Revenue__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CREATED_DATE</field>
+            <operation>greaterThan</operation>
+            <value>1/1/2025 12:00 AM</value>
+        </filters>
         <label>All Opportunities</label>
         <sharedTo>
             <allPartnerUsers></allPartnerUsers>
@@ -27256,6 +27224,7 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
         <columns>OPPORTUNITY.CLOSE_DATE</columns>
         <columns>OPPORTUNITY.AMOUNT</columns>
         <columns>OPPORTUNITY.LAST_UPDATE</columns>
+        <columns>Core_Status_Update__c</columns>
         <filterScope>Mine</filterScope>
         <label>My Opportunities</label>
         <sharedTo>

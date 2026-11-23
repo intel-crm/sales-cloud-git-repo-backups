@@ -34,7 +34,7 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>0</decimalPrecision>
                 <displayUnits>Integer</displayUnits>
-                <drillDownUrl>https://partner.intel.com/s/company-training-credits</drillDownUrl>
+                <drillDownUrl>https://intel--crmqa9.sandbox.my.site.com/ipa/s/company-training-credits</drillDownUrl>
                 <groupingSortProperties/>
                 <header>Total Company Training Credits</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
@@ -54,7 +54,7 @@
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11540272@intel.com.crm</owner>
-    <runningUser>ipa-data-migration-user@intel.com</runningUser>
+    <runningUser>12276585@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>TRAINING</title>
     <titleColor>#000000</titleColor>

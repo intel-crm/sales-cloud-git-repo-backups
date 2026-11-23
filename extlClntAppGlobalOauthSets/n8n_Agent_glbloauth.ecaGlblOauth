@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <callbackUrl>https://agents.intel.com/rest/oauth2-credential/callback</callbackUrl>
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6sK4bxZsbdJun0Mso.Q0IjjfaWNAAfqRNuESR00QEQdtr_5CeJxcsPKLKE5Y</consumerKey>
+    <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBbhVkr4OqbWIkod0Og3XXavxNQtYEXEIsUSHo_PqxRUhrLNOVbmxedotRRFTH</consumerKey>
     <externalClientApplication>n8n_Agent</externalClientApplication>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
     <isCodeCredFlowEnabled>true</isCodeCredFlowEnabled>

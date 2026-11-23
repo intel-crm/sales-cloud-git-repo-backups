@@ -133,7 +133,7 @@ public without sharing class PRM_Partner_Assist_Utility {
 
     if(contactId != null){
             // Query on account to fetch details
-            for(Account accObj: [select id,name,BillingCountry,Core_Geo__c,Core_Sub_Geo__c from Account where Id =: accountId Limit 1]){
+            for(Account accObj: [select id,/*name,*/BillingCountry,Core_Geo__c,Core_Sub_Geo__c from Account where Id =: accountId Limit 1]){//ATHR Fix - TWC729-9556
                 
                 if(geoList.contains(accObj.Core_Geo__c)){
                     userGeoList.addall(geoList);

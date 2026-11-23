@@ -155,12 +155,12 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>PRM_Account_Id__c</fullName>
-        <deleteConstraint>Restrict</deleteConstraint>
+        <deleteConstraint>SetNull</deleteConstraint>
         <label>Account</label>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Value Exchange Data</relationshipLabel>
         <relationshipName>Value_Exchange_Data</relationshipName>
-        <required>true</required>
+        <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -465,12 +465,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Q4 2023 - Q3 2024</label>
-                </value>
-                <value>
-                    <fullName>Q4 2024 - Q3 2025</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Q4 2024 - Q3 2025</label>
                 </value>
                 <value>
                     <fullName>Q42020-Q32021</fullName>

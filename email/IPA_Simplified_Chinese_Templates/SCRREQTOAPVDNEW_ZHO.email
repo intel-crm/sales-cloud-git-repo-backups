@@ -95,7 +95,7 @@
 <li>在英特尔&reg; Partner Showcase 中，与合作伙伴店面互动，获取符合条件的潜在客户</li>
 </ul>
 <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
-<a href="https://partner.intel.com/s/post-launch-primary"> 登录并开始使用 </a>
+<a href="https://intel--crmqa9.sandbox.my.site.com/ipa/s/post-launch-primary"> 登录并开始使用 </a>
 <br>
 <br>
 如需英特尔登录方面的帮助，请点击<a href="https://urldefense.com/v3/__https:/www.intel.com/content/www/us/en/support/articles/000092340/programs/access-entitlement-for-myintel-users.html?wapkw=mfa__;!!OrxsNty6D4my!4buZDlfdnsvirTD6XYVVBD1pnJ7qKMcJaVV6YzAZElmyQgjpWFG52NW6D3SLA49tvFBtnXgcv5RXUpcFtGHoaFbzfZ4aNs1K_A$">此处。</a> 
@@ -157,7 +157,7 @@
                                                                                                                                                 <td class="auto-style1"
                                                                                                                                                     valign="top"
                                                                                                                                                     style="font-size: 10px;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">
-                                                                                                                                                    © 2026
+                                                                                                                                                    © {!$Label.PRM_CurrentYear}
                                                                                                                                                     英特尔公司
                                                                                                                                                 </td>
                                                                                                                                             </tr>

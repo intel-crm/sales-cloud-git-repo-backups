@@ -127,7 +127,7 @@ public class PRM_SendNotificationMessages_Test {
         bm.PRM_Partner_Benefit_Id__c = pb.id;
         bm.PRM_Channel_Program_Id__c = cp.id;
         bm.PRM_Channel_Program_Level_Id__c = cpl.id;
-        bm.PRM_Partner_Role_Nm__c = 'Manufacturer';
+        bm.PRM_Partner_Role_Nm__c = 'Builder';
         bm.PRM_IsActive_Ind__c  = true;
         bm.PRM_Approval_Type_Nm__c = 'Manual';
         insert bm;
@@ -137,7 +137,8 @@ public class PRM_SendNotificationMessages_Test {
         acm.PRM_Status_Nm__c='Approved';
         acm.PRM_Channel_Program_Id__c=cp.Id;
         acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
-        acm.PRM_Partner_Role__c='Manufacturer';
+        acm.PRM_Partner_Role__c='Builder';
+        acm.PRM_Status_Reason_Txt__c='Test01';
         insert acm;
         
        // Test Data for Message

@@ -21,7 +21,7 @@ global without sharing class PMP_NavigationBarAPIDetails {
         Boolean showManageSolutions= false; // to store manage offerings button visibility
         Boolean showManageStorefront = false; // to store manage storefront button visibility
         Boolean showManagePartners = false; // to store manage partners button visibility
-        //IPA 2.0 TWC729-7887  
+        //IPA 2.0 TWC729-7887	
        // Boolean isBasicAccess = false; 
        //Boolean isEnhanced = false;
         map<String,NavBarButtonAttributes> navigationBarButtons= new map<String,NavBarButtonAttributes>();
@@ -46,17 +46,30 @@ global without sharing class PMP_NavigationBarAPIDetails {
             boolean is_PMP_Manage_storefront=false;
             if (isMarketplaceUser){ //if user is MP partner user
                 String benefitName = checkBenefitLevel(usr); 
-                 //IPA 2.0 TWC729-7887  
+                 //IPA 2.0 TWC729-7887	
                 //isBasicAccess= benefitName == PMP_StaticConstants_Partner.Solution_Marketplace_Basic_Access? true:false;
                 //isEnhanced = benefitName == PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced? true:false;
-                 //IPA 2.0 TWC729-7887  
+                 //IPA 2.0 TWC729-7887	
                 //showManageOfferings = /*isEnhanced &&*/ customPermissions.contains('PMP_Manage_Offerings')? true: false;
               //IPA 2.0 TWC729-7887
              //   showManageStorefront= benefitName!=Null  /*&& !isBasicAccess*/? true:false;
+			
+          Boolean hasAccess = [
+            SELECT COUNT()
+            FROM PermissionSetAssignment
+            WHERE AssigneeId = :UserInfo.getUserId()
+            AND PermissionSet.Name IN ('PMP_External_Partner_Admin', 'PMP_External_Employee', 'PMP_Internal_Intel_Admin')
+        ] > 0; 
+          /*  Boolean hasAccess = FeatureManagement.checkPermission('PMP_Manage_Storefront');
+            if (hasAccess) {
+                showManageStorefront= true;
+            } else {
+                showManageStorefront= false;
+            } */
             
-      showManageStorefront=customPermissions.contains('PMP_Manage_Storefront');
-      system.debug('showManageStorefront'+showManageStorefront);
-                 //IPA 2.0 TWC729-7887  
+			showManageStorefront=customPermissions.contains('PMP_Manage_Storefront');
+			system.debug('showManageStorefront'+showManageStorefront);
+                 //IPA 2.0 TWC729-7887	
                showManageLeads = customPermissions.contains('PMP_Manage_Leads') /*&& benefitName!=Null && !isBasicAccess*/ ;
                 showDashboard= customPermissions.contains('PMP_View_Dashboard') /*&& benefitName!=Null && !isBasicAccess*/;
                 //showManageSolutions= customPermissions.contains('PMP_Manage_Solutions');

@@ -709,7 +709,8 @@ public without sharing class PRM_ProfileResponseOptIn {
     public static List<Core_Account_Group_Member__c> getCAGList(Set<Id> accIdSet){
         List<Core_Account_Group_Member__c> cagList = new List<Core_Account_Group_Member__c>();
         if(accIdSet!= null && !accIdSet.isEmpty()){
-          cagList = [SELECT Id, Name, Core_Partner_Account_Id__c, Core_Partner_Account_Id__r.Core_Account_Type__c,  Core_Partner_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Inactive_Ind__c,Core_Intel_Partner_Alliance_PartnerGroup__c from Core_Account_Group_Member__c WHERE Core_Intel_Account_Id__c in :accIdSet  AND Core_Inactive_Ind__c != true];    
+            //ATHR Fix - TWC729-9556
+          cagList = [SELECT Id, Name, Core_Partner_Account_Id__c, Core_Partner_Account_Id__r.Core_Account_Type__c,  Core_Partner_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Inactive_Ind__c,Core_Intel_Partner_Alliance_PartnerGroup__c from Core_Account_Group_Member__c WHERE Core_Intel_Account_Id__c in :accIdSet  AND  /* Core_Inactive_Ind__c != true*/ Core_Inactive_Ind__c=false];    
         }
         return cagList;
     }
@@ -749,7 +750,7 @@ public without sharing class PRM_ProfileResponseOptIn {
             
             if(!opidAccIdWithApprovedPartnerRole.isEmpty()){   
                 
-                List<PRM_IPAMembership_Attributes__c> profResList = [SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c,lastmodifieddate, PRM_Inactive_ind__c from PRM_IPAMembership_Attributes__c where PRM_Account_Id__c IN :opidAccIdWithApprovedPartnerRole.keyset()  order by PRM_Account_Id__c];
+                List<PRM_IPAMembership_Attributes__c> profResList = [SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c,PRM_Activity_earning_excluded__c,PRM_Activity_earning_excluded_Start_Date__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c,lastmodifieddate, PRM_Inactive_ind__c from PRM_IPAMembership_Attributes__c where PRM_Account_Id__c IN :opidAccIdWithApprovedPartnerRole.keyset()  order by PRM_Account_Id__c];
                 logEntryMsg+='\nprofResList:'+profResList;
                 Map<Id, List<PRM_IPAMembership_Attributes__c>> opidAccIdProdRespMap = new Map<Id, List<PRM_IPAMembership_Attributes__c>>();//check if its list or single record
         Map<String, String> fieldLabelsMap = PRM_IPAR_ProfileResponse_Utility.getProfResFieldNames();
@@ -874,7 +875,7 @@ public without sharing class PRM_ProfileResponseOptIn {
             for(PRM_IPAMembership_Attributes__c pr : [select id,PRM_Account_Id__c,PRM_Points_Not_Eligible_Ind__c,PRM_Points_Not_Eligible_Dt__c,PRM_Points_Opt_in_Ind__c,PRM_Points_Opt_in_Dt__c, PRM_Inactive_ind__c from PRM_IPAMembership_Attributes__c where PRM_Account_Id__c IN:accList]) { 
                 exisitngPRMap.put(pr.PRM_Account_Id__c , pr);
             }
-            for(PRM_AccountChannelMembership__c acm:[select id, PRM_Status_Nm__c, PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, PRM_Account_Id__c, PRM_Channel_Program_Level_Id__c, PRM_Partner_Role__c,PRM_Account_Id__r.RecordType.DeveloperName 
+            for(PRM_AccountChannelMembership__c acm:[select id, PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Role__c /*PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, PRM_Channel_Program_Level_Id__c, ,PRM_Account_Id__r.RecordType.DeveloperName */ //ATHR Fix - TWC729-9556
                                                     from PRM_AccountChannelMembership__c where PRM_Account_Id__c in: accList]){
                 if(acm.PRM_Status_Nm__c=='Inactive' ){
                     if (!accIdACMRecMap.containsKey(acm.PRM_Account_Id__c)) {

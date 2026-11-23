@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Case queue for 029 unassigned cases</description>
     <doesIncludeBosses>true</doesIncludeBosses>
-    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>IGT – Unassigned</name>
     <queueMembers>
         <publicGroups>
-            <publicGroup>IGT_Unassigned</publicGroup>
+            <publicGroup>IPS_Org_Admin_IGT</publicGroup>
         </publicGroups>
     </queueMembers>
     <queueSobject>

@@ -183,7 +183,7 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
             boolean hasStatusChanged = isValidOldRecord && oldContactEnt.Core_Status__c != contactEnt.Core_Status__c;
             boolean isCompleteStatus = contactEnt.Core_Status__c == 'Complete';
             boolean hasContactId = contactEnt.Core_Contact_Id__c != null;
-         
+            system.debug('contactEnt.name---'+contactEnt.name);
             if (isValidOldRecord && hasStatusChanged && isCompleteStatus && hasContactId) {
                 setContacIdForIPAWelcomeEmail.add(contactEnt.Core_Contact_Id__c);
                 logEntryMsg += '\nContact eligible for IPA welcome email: ' + contactEnt.Core_Contact_Id__c;

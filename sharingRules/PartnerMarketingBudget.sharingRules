@@ -22,7 +22,7 @@
         <sharedTo>
             <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
         </sharedTo>
-        <booleanFilter>1 OR 2 OR 3 or 4 OR 5 OR 6</booleanFilter>
+        <booleanFilter>1 OR 2 OR 3 or 4 OR 5 OR 6 OR 7</booleanFilter>
         <criteriaItems>
             <field>RecordTypeId</field>
             <operation>equals</operation>
@@ -52,6 +52,11 @@
             <field>RecordTypeId</field>
             <operation>equals</operation>
             <value>Co-GTM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Co-Inv</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

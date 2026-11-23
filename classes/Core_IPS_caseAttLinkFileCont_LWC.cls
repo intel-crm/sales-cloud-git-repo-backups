@@ -19,16 +19,23 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LWC {
             fileList = new List<uFile>();
             if (Schema.sObjectType.case.fields.Core_IPS_Supported_Product__c.isAccessible()) {
                 // Hassan Khan creating a "List<Case> caseList" to fix (List has no rows for assignment to Sobject) Exception Handling issue.
-                //caseObj = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
-                List<Case> caseList = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
+                String strCaseQry = 'SELECT Id, Core_IPS_Supported_Product__c FROM case WHERE id =:caseId';
+                List<Case> caseList = (List<Case>) Core_IPS_QueryService.queryRecords(
+                    strCaseQry,
+                    new Map<String, Object>{ 'caseId' => caseId }
+                );
                 if(!caseList.isEmpty()){
                     caseObj = caseList[0];
                 }
             }
             if(caseObj!= null && caseObj.Core_IPS_Supported_Product__c != null){ // TWC745-9175 - Exceptional Handling - Phani Added Null check
                 if (Schema.sObjectType.Core_IPS_File_Assignment__c.isAccessible()) {
-                    CoreIPSFILEAssignLst = [SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c 
-                                            WHERE Core_Supported_Product__c =: CaseObj.Core_IPS_Supported_Product__c];
+                    // Venrublity Fix - Refering query to service class
+                    String strFileAssignQry = 'SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c WHERE Core_Supported_Product__c =:supportedProductId';
+                    CoreIPSFILEAssignLst = (List<Core_IPS_File_Assignment__c>) Core_IPS_QueryService.queryRecords(
+                        strFileAssignQry,
+                        new Map<String, Object>{ 'supportedProductId' => caseObj.Core_IPS_Supported_Product__c }
+                    );
                 }
             }
             else{
@@ -46,20 +53,32 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LWC {
             }
             Set <String> CoreFileGUID_Existing = new Set<String>();
             if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_File_GUID__c.isAccessible()) {
-                ExistingCIPSCaseAttLst = [SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId];
+                // Venrublity Fix - Refering query to service class
+                String strExistingAttQry = 'SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId';
+                ExistingCIPSCaseAttLst = (List<Core_IPS_Case_Attachments__c>) Core_IPS_QueryService.queryRecords(
+                    strExistingAttQry,
+                    new Map<String, Object>{ 'caseId' => caseId }
+                );
             }
             for(Core_IPS_Case_Attachments__c CIPSFileAssignGUID : ExistingCIPSCaseAttLst){
                 CoreFileGUID_Existing.add(CIPSFileAssignGUID.Core_File_GUID__c);
             }
             //Check File Upload Master for related records
             //FLS Read permission added --Suresh ---23/11/2022
-            //if (Schema.sObjectType.Core_IPS_File_Upload_Master__c.isAccessible()){
-            CIPSUpMasLst = [SELECT id,Name, CreatedDate,Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, 
-                            Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c,Core_FileUploadedBy__r.Name, 
-                            Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c
-                            WHERE id IN :CIPSFAID and Core_Upload_Status__c = 'Complete' and 
-                            Core_Expiration_Date__c >: datetime.now() and 
-                            Core_File_GUID__c not IN :CoreFileGUID_Existing order by lastmodifieddate]; 
+            String strUpMasQry = 'SELECT id,Name, CreatedDate,Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, ' +
+                'Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c,Core_FileUploadedBy__r.Name, ' +
+                'Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c ' +
+                'WHERE id IN :CIPSFAID and Core_Upload_Status__c = \'Complete\' and ' +
+                'Core_Expiration_Date__c >:currentDateTime and ' +
+                'Core_File_GUID__c not IN :CoreFileGUID_Existing order by lastmodifieddate';
+            CIPSUpMasLst = (List<Core_IPS_File_Upload_Master__c>) Core_IPS_QueryService.queryRecords(
+                strUpMasQry,
+                new Map<String, Object>{
+                    'CIPSFAID' => CIPSFAID,
+                    'currentDateTime' => datetime.now(),
+                    'CoreFileGUID_Existing' => CoreFileGUID_Existing
+                }
+            );
             //}
             //Check to see if entries found   
             if(CIPSUpMasLst.size() > 0){
@@ -82,9 +101,14 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LWC {
             List<Core_IPS_File_Upload_Master__c> selectedRecords = new List<Core_IPS_File_Upload_Master__c>(); 
             Core_IPS_Case_Attachments__c tempCase = new Core_IPS_Case_Attachments__c();
             if (Schema.sObjectType.Core_IPS_File_Upload_Master__c.isAccessible()) {
-                selectedRecords = [SELECT id, Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, 
-                                   Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c, 
-                                   Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c WHERE Id IN : selectedRecordIds];
+                // Venrublity Fix - Refering query to service class
+                String strSelRecQry = 'SELECT id, Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, ' +
+                    'Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c, ' +
+                    'Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c WHERE Id IN :selectedRecordIds';
+                selectedRecords = (List<Core_IPS_File_Upload_Master__c>) Core_IPS_QueryService.queryRecords(
+                    strSelRecQry,
+                    new Map<String, Object>{ 'selectedRecordIds' => selectedRecordIds }
+                );
             }
             if(caseId != null){
                 for(Core_IPS_File_Upload_Master__c f : selectedRecords){
@@ -137,7 +161,9 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LWC {
                     selectedCaseAttachments.add(tempCase);
                 }
             }
-            database.insert(selectedCaseAttachments, false);        
+            // Venrublity Fix - Refering DML to service class
+            // database.insert(selectedCaseAttachments, false);
+            Core_IPS_QueryService.insertRecords(selectedCaseAttachments);
             FileList=null; 
         }catch(Exception ex) {
             throw new AuraHandledException(ex.getMessage());

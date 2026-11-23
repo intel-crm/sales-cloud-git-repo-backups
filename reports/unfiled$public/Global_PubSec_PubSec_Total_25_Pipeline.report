@@ -110,7 +110,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Win,Submitted</value>
+            <value>Pending,Win</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -154,6 +154,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2025-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

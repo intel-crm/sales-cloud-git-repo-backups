@@ -62,6 +62,7 @@ public class Core_Acct_Grp_Mbr_TriggerHandler extends TriggerHandler {
         }
         PMP_Acct_Grp_Mbr_TriggerHandler.populateOnePartnerIdOnIntelAccount(Trigger.new, null);
     PMP_Acct_Grp_Mbr_TriggerHandler.createTrackerMilestonesForOPIDUpdates(trigger.new, null);
+        shareUcdPrimaryAccountsWithIntelAdmins((List<Core_Account_Group_Member__c>) Trigger.new, null);
     }
     public override void afterUpdate(){
        //TWC729-210  Alert on the 1PID record in SFDC when all accounts under it are inactivated and also send email to IPA and MP Admins
@@ -123,6 +124,103 @@ public class Core_Acct_Grp_Mbr_TriggerHandler extends TriggerHandler {
   
         PMP_Acct_Grp_Mbr_TriggerHandler.populateOnePartnerIdOnIntelAccount(Trigger.new, (Map<Id, Core_Account_Group_Member__c>)Trigger.oldMap);
     PMP_Acct_Grp_Mbr_TriggerHandler.createTrackerMilestonesForOPIDUpdates(Trigger.new, (Map<Id, Core_Account_Group_Member__c>)Trigger.oldMap);
+        shareUcdPrimaryAccountsWithIntelAdmins((List<Core_Account_Group_Member__c>) Trigger.new, oldMap);
+    }
+        @TestVisible
+    private static void shareUcdPrimaryAccountsWithIntelAdmins(
+        List<Core_Account_Group_Member__c> members,
+        Map<Id, Core_Account_Group_Member__c> oldMembers
+    ) {
+        if (members == null || members.isEmpty()) {
+            return;
+        }
+        Set<Id> accountIdsToShare = new Set<Id>();
+        Set<Id> accountIdsToUnshare = new Set<Id>();
+        List<Core_Account_Group_Member__c> changedMembers = new List<Core_Account_Group_Member__c>();
+        for (Core_Account_Group_Member__c member : members) {
+            Core_Account_Group_Member__c oldMember = oldMembers == null ? null : oldMembers.get(member.Id);
+            Boolean wasPrimary = oldMember != null && oldMember.Primary_Account__c;
+            Id newAccountId = member.Core_Intel_Account_Id__c;
+            Id oldAccountId = oldMember == null ? null : oldMember.Core_Intel_Account_Id__c;
+            Boolean primaryChanged = member.Primary_Account__c != wasPrimary;
+            Boolean accountMovedWhilePrimary = wasPrimary && member.Primary_Account__c && newAccountId != oldAccountId;
+            // React when the UCD primary checkbox is checked/unchecked, or a primary membership moves to another Intel account.
+            if (!primaryChanged && !accountMovedWhilePrimary) {
+                continue;
+            }
+            Boolean affectsSharing = false;
+            if (member.Primary_Account__c && newAccountId != null) {
+                accountIdsToShare.add(newAccountId);
+                affectsSharing = true;
+            }
+            // Remove the share from the account the membership was primary on.
+            if (wasPrimary && oldAccountId != null && (!member.Primary_Account__c || newAccountId != oldAccountId)) {
+                accountIdsToUnshare.add(oldAccountId);
+                affectsSharing = true;
+            }
+            if (affectsSharing) {
+                changedMembers.add(member);
+            }
+        }
+        if (changedMembers.isEmpty()) {
+            return;
+        }
+        // An uncheck in the same transaction takes precedence over a check for the same account.
+        accountIdsToShare.removeAll(accountIdsToUnshare);
+        List<Group> adminGroups = [
+            SELECT Id FROM Group
+            WHERE DeveloperName = 'IPA_All_Intel_Admin_Users' AND Type = 'Regular'
+            LIMIT 1
+        ];
+        if (adminGroups.isEmpty()) {
+            for (Core_Account_Group_Member__c member : changedMembers) {
+                member.addError('Cannot synchronize UCD primary account sharing: public group IPA_All_Intel_Admin_Users was not found.');
+            }
+            return;
+        }
+
+        Id adminGroupId = adminGroups[0].Id;
+        Set<Id> allAccountIds = new Set<Id>(accountIdsToShare);
+        allAccountIds.addAll(accountIdsToUnshare);
+        Map<Id, AccountShare> existingShares = new Map<Id, AccountShare>();
+        List<AccountShare> sharesToDelete = new List<AccountShare>();
+        for (AccountShare existingShare : [
+            SELECT Id, AccountId, AccountAccessLevel FROM AccountShare
+            WHERE AccountId IN :allAccountIds AND UserOrGroupId = :adminGroupId AND RowCause = 'Manual'
+        ]) {
+            if (accountIdsToShare.contains(existingShare.AccountId)) {
+                existingShares.put(existingShare.AccountId, existingShare);
+            } else {
+                sharesToDelete.add(existingShare);
+            }
+        }
+        List<AccountShare> sharesToInsert = new List<AccountShare>();
+        List<AccountShare> sharesToUpdate = new List<AccountShare>();
+        for (Id accountId : accountIdsToShare) {
+            AccountShare existingShare = existingShares.get(accountId);
+            if (existingShare == null) {
+                sharesToInsert.add(new AccountShare(
+                    AccountId = accountId,
+                    UserOrGroupId = adminGroupId,
+                    AccountAccessLevel = 'Edit',
+                    OpportunityAccessLevel = 'None',
+                    CaseAccessLevel = 'None',
+                    RowCause = Schema.AccountShare.RowCause.Manual
+                ));
+            } else if (existingShare.AccountAccessLevel == 'Read') {
+                existingShare.AccountAccessLevel = 'Edit';
+                sharesToUpdate.add(existingShare);
+            }
+        }
+        if (!sharesToDelete.isEmpty()) {
+            delete sharesToDelete;
+        }
+        if (!sharesToInsert.isEmpty()) {
+            insert sharesToInsert;
+        }
+        if (!sharesToUpdate.isEmpty()) {
+            update sharesToUpdate;
+        }
     }
     /*public override void beforeInsert(){
 PMP_PartnerAccGroupMemHandler.beforeMethod(Trigger.old, Trigger.new);

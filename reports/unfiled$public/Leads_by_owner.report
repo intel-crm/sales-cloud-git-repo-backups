@@ -4,22 +4,10 @@
         <field>COUNTRY_CODE</field>
     </columns>
     <columns>
-        <field>COMPANY</field>
-    </columns>
-    <columns>
         <field>FIRST_NAME</field>
     </columns>
     <columns>
         <field>LAST_NAME</field>
-    </columns>
-    <columns>
-        <field>TITLE</field>
-    </columns>
-    <columns>
-        <field>EMAIL</field>
-    </columns>
-    <columns>
-        <field>STATUS</field>
     </columns>
     <columns>
         <field>Lead.Core_Lead_Status__c</field>
@@ -28,19 +16,31 @@
         <field>Lead.Core_Lead_Sub_Status__c</field>
     </columns>
     <columns>
-        <field>Lead.Core_Lead_Conversion_Point__c</field>
+        <field>Lead.Core_Lead_State__c</field>
     </columns>
     <columns>
-        <field>Lead.Core_Entrance_Date_MQL__c</field>
+        <field>TITLE</field>
     </columns>
     <columns>
-        <field>LAST_ACTIVITY</field>
+        <field>COMPANY</field>
     </columns>
     <columns>
-        <field>LAST_UPDATE</field>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>STREET</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
     </columns>
     <filter>
-        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7) AND 8</booleanFilter>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
@@ -91,32 +91,15 @@
             <value>yorck rabeler</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER</column>
+            <column>Lead.Core_Lead_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>adam muhammad arief bin</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>kimberly lee</value>
+            <value>New</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>Lead.Core_Lead_State__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Leads by owner</name>
     <params>
         <name>co</name>
@@ -127,6 +110,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>Lead.Core_Lead_Status__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

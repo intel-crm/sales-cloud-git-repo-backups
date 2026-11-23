@@ -4,6 +4,7 @@ public with sharing class UCD_ACM_UnifiedDataController {
     @AuraEnabled(cacheable=true)
     public static accountWrap getUnifiedData(String accountId){
         accountWrap accWrap = new accountWrap();
+        System.debug('AccWrap$$ '+accWrap);
         Map<Id,List<Business_Types__c>> mapOfBusinessTypesByAccountId = accountServiceInstance.getActiveBusinessTypeForAccount(new Set<Id>{accountId});
         
         if(mapOfBusinessTypesByAccountId != null && mapOfBusinessTypesByAccountId.size() > 0 && mapOfBusinessTypesByAccountId.containsKey(accountId)){

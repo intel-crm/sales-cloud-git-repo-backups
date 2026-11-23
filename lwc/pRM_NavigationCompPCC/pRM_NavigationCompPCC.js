@@ -83,18 +83,18 @@ export default class PRM_NavigationCompPCC extends NavigationMixin(LightningElem
 
   loadMenuItems() {
     if (this.isDealPartner) {
-      this.menus.push({ id: 1, label: 'Home', target: '/s/deal', className: '' });
-      this.menus.push({ id: 2, label: 'Deal Registration', target: '/s/deal-reg-list-view', className: '' });
+      this.menus.push({ id: 1, label: 'Home', target: '/partneradmin/s/deal', className: '' });
+      this.menus.push({ id: 2, label: 'Deal Registration', target: '/partneradmin/s/deal-reg-list-view', className: '' });
     }
     if (!this.isDealPartner) {
-      this.menus.push({ id: 1, label: 'Home', target: '/s/ddr', className: '' });
-      this.menus.push({ id: 3, label: 'Design Registration',target: '/s/core-design-registration/Core_Design_Registration__c/Default', className: ''
+      this.menus.push({ id: 1, label: 'Home', target: '/partneradmin/s/ddr', className: '' });
+      this.menus.push({ id: 3, label: 'Design Registration',target: '/partneradmin/s/core-design-registration/Core_Design_Registration__c/Default', className: ''
       });
-      this.menus.push({ id: 6, label: 'Bulk Upload', target: '/s/pcc-bulkupload', className: '' });
-      this.menus.push({ id: 7, label: 'User Preferences', target: '/s/user-preferences', className: '' });
+      this.menus.push({ id: 6, label: 'Bulk Upload', target: '/partneradmin/s/pcc-bulkupload', className: '' });
+      this.menus.push({ id: 7, label: 'User Preferences', target: '/partneradmin/s/user-preferences', className: '' });
     }
-    this.menus.push({ id: 4, label: 'Opportunity', target: '/s/opportunity/Opportunity/Default', className: '' });
-    this.menus.push({ id: 5, label: 'Reports', target: '/s/report/Report/Recent', className: '' });
+    this.menus.push({ id: 4, label: 'Opportunity', target: '/partneradmin/s/opportunity/Opportunity/Default', className: '' });
+    this.menus.push({ id: 5, label: 'Reports', target: '/partneradmin/s/report/Report/Recent', className: '' });
   }
 
   renderedCallback() {

@@ -63,9 +63,6 @@
     <columns>
         <field>User.Core_WWID__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Concatenated_Application_workload__c</field>
-    </columns>
     <description>Report is used to APJ Bonus Program 2025</description>
     <filter>
         <criteriaItems>

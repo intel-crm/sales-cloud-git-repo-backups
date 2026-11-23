@@ -10,20 +10,18 @@ Description    : This class is Test class for Core_HttpCallouts_Handler
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
         Profile itAdminPf = [select id, name from Profile where name = 'Data Ops' Limit 1];
     
-        String timestamp = String.valueOf(System.currentTimeMillis());
-        User dataops = new User(Alias = 'itAdm21',   Email='itAdminTestx213_main@intel.com', 
+        User dataops = new User(Alias = 'itAdm21',   Email='itAdminTestx213@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin12',
                                     LanguageLocaleKey='en_US',  LocaleSidKey='en_US', 
                                     ProfileId = itAdminPf.Id,  TimeZoneSidKey='America/Los_Angeles',
-                                    UserName='salesRepTestx213_main_' + timestamp + '@intel.com');
+                                    UserName='salesRepTestx213@intel.com');
         insert dataops;
         system.assertequals(dataops.LastName,'UnitTestAdmin12');
-        
-        User itAdminUser = new User(Alias = 'itAdm22',   Email='itAdminTestx21_main@intel.com', 
+        User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
                                     LanguageLocaleKey='en_US',  LocaleSidKey='en_US', 
                                     ProfileId = itAdminPrf.Id,  TimeZoneSidKey='America/Los_Angeles',
-                                    UserName='salesRepTestx21_main_' + timestamp + '@intel.com');
+                                    UserName='salesRepTestx21@intel.com');
         insert itAdminUser;
         system.assertequals(itAdminUser.LastName,'UnitTestAdmin1');
         
@@ -209,21 +207,20 @@ Description    : This class is Test class for Core_HttpCallouts_Handler
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
          Profile itAdminPf = [select id, name from Profile where name = 'Data Ops' Limit 1];
     
-        String timestamp = String.valueOf(System.currentTimeMillis());
-        User dataops = new User(Alias = 'itAdm23',   Email='itAdminTestx213_error1@intel.com', 
+        User dataops = new User(Alias = 'itAdm21',   Email='itAdminTestx213@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin12',
                                     LanguageLocaleKey='en_US',  LocaleSidKey='en_US', 
                                     ProfileId = itAdminPf.Id,  TimeZoneSidKey='America/Los_Angeles',
-                                    UserName='salesRepTestx213_error1_' + timestamp + '@intel.com');
+                                    UserName='salesRepTestx213@intel.com');
         insert dataops;
         system.assertequals(dataops.LastName,'UnitTestAdmin12');
         
         
-        User itAdminUser = new User(Alias = 'itAdm24',   Email='itAdminTestx21_error1@intel.com', 
+        User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
                                     LanguageLocaleKey='en_US',  LocaleSidKey='en_US', 
                                     ProfileId = itAdminPrf.Id,  TimeZoneSidKey='America/Los_Angeles',
-                                    UserName='salesRepTestx21_error1_' + timestamp + '@intel.com');
+                                    UserName='salesRepTestx21@intel.com');
         insert itAdminUser;
          system.assertequals(itAdminUser.LastName,'UnitTestAdmin1');
         
@@ -317,20 +314,19 @@ Description    : This class is Test class for Core_HttpCallouts_Handler
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
          Profile itAdminPf = [select id, name from Profile where name = 'Data Ops' Limit 1];
     
-        String timestamp = String.valueOf(System.currentTimeMillis());
-        User dataops = new User(Alias = 'itAdm25',   Email='itAdminTestx213_error2@intel.com', 
+        User dataops = new User(Alias = 'itAdm21',   Email='itAdminTestx213@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin12',
                                     LanguageLocaleKey='en_US',  LocaleSidKey='en_US', 
                                     ProfileId = itAdminPf.Id,  TimeZoneSidKey='America/Los_Angeles',
-                                    UserName='salesRepTestx213_error2_' + timestamp + '@intel.com');
+                                    UserName='salesRepTestx213@intel.com');
         insert dataops;
         system.assertequals(dataops.LastName,'UnitTestAdmin12');            
         
-        User itAdminUser = new User(Alias = 'itAdm26',   Email='itAdminTestx21_error2@intel.com', 
+        User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
                                     LanguageLocaleKey='en_US',  LocaleSidKey='en_US', 
                                     ProfileId = itAdminPrf.Id,  TimeZoneSidKey='America/Los_Angeles',
-                                    UserName='salesRepTestx21_error2_' + timestamp + '@intel.com');
+                                    UserName='salesRepTestx21@intel.com');
         insert itAdminUser;
         system.assertequals(itAdminUser.LastName,'UnitTestAdmin1');
         
@@ -559,7 +555,6 @@ Description    : This class is Test class for Core_HttpCallouts_Handler
     // HELPER METHODS:
 
     private static User createTestUser(Id profileId, String email, String lastName){
-        String timestamp = String.valueOf(System.currentTimeMillis());
         return new User(
             Alias = 'test', 
             Email = email, 
@@ -569,7 +564,7 @@ Description    : This class is Test class for Core_HttpCallouts_Handler
             LocaleSidKey = 'en_US', 
             ProfileId = profileId, 
             TimeZoneSidKey = 'America/Los_Angeles',
-            UserName = email.replace('@', '_' + timestamp + '@')
+            UserName = email
         );
     }
 

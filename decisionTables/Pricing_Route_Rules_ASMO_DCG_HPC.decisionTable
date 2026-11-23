@@ -34,16 +34,6 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_EndCustomer_CSP_List_Ind__c</fieldName>
-        <fieldPath>Pricing_EndCustomer_CSP_List_Ind__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>true</isRequired>
-        <operator>Equals</operator>
-        <sequence>3</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
         <fieldName>Pricing_Routing_Rule_Id__c</fieldName>
         <fieldPath>Pricing_Routing_Rule_Id__c</fieldPath>
         <isGroupByField>false</isGroupByField>
@@ -74,19 +64,16 @@
         <isRequired>false</isRequired>
         <usage>OUTPUT</usage>
     </decisionTableParameters>
-    <decisionTableSourceCriterias>
-        <operator>IsNull</operator>
-        <sequenceNumber>3</sequenceNumber>
-        <sourceFieldName>Pricing_Overall_Quote_Quantity_Nbr__c</sourceFieldName>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
+    <decisionTableParameters>
+        <dataType>String</dataType>
+        <fieldName>Pricing_EndCustomer_CSP_List_Ind__c</fieldName>
+        <fieldPath>Pricing_EndCustomer_CSP_List_Ind__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>true</isRequired>
         <operator>Equals</operator>
-        <sequenceNumber>4</sequenceNumber>
-        <sourceFieldName>Pricing_EndCustomer_CSP_List_Ind__c</sourceFieldName>
-        <value>false</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
+        <sequence>3</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>1</sequenceNumber>
@@ -103,8 +90,21 @@
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>IsNull</operator>
+        <sequenceNumber>3</sequenceNumber>
+        <sourceFieldName>Pricing_Overall_Quote_Quantity_Nbr__c</sourceFieldName>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>IsNull</operator>
         <sequenceNumber>5</sequenceNumber>
         <sourceFieldName>Pricing_Market_Segment_Nm__c</sourceFieldName>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>Equals</operator>
+        <sequenceNumber>4</sequenceNumber>
+        <sourceFieldName>Pricing_EndCustomer_CSP_List_Ind__c</sourceFieldName>
+        <value>false</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>

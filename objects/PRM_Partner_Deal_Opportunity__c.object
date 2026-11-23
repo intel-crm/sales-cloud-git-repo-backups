@@ -233,12 +233,12 @@
     <fields>
         <fullName>PRM_End_Customer_Account__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>Please provide Intel or End customer Deal account.</inlineHelpText>
+        <inlineHelpText>Please provide Intel or End customer Deal account or Requested Account</inlineHelpText>
         <label>End Customer Account</label>
         <lookupFilter>
             <active>true</active>
             <booleanFilter>1 OR 2 OR 3</booleanFilter>
-            <errorMessage>Please provide Intel or End customer Deal account or Requested Account.</errorMessage>
+            <errorMessage>Please provide Intel account or End customer Deal account.</errorMessage>
             <filterItems>
                 <field>Account.RecordType.DeveloperName</field>
                 <operation>equals</operation>
@@ -254,7 +254,7 @@
                 <operation>equals</operation>
                 <value>Requested_Account</value>
             </filterItems>
-            <infoMessage>End customer account record type should be Intel account or End Customer Deal Account or Requested Account</infoMessage>
+            <infoMessage>End customer account record type should be Intel account or End Customer Deal Account</infoMessage>
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>Account</referenceTo>
@@ -826,7 +826,6 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>PRM_Opportunity_Name__c</columns>
         <columns>PRM_Stage__c</columns>
         <columns>PRM_Estimated_Decision_Date__c</columns>
         <columns>PRM_Partner_Account__c</columns>

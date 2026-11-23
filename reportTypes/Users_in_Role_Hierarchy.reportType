@@ -443,11 +443,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>User_Unique__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Login_Id__c</field>
             <table>User</table>
         </columns>
@@ -630,6 +625,11 @@
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Users : Role : Parent Role : Parent Role</displayNameOverride>
             <field>UserRole.ParentRole.ParentRole</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_License_Reclaimed_on_Creation__c</field>
             <table>User</table>
         </columns>
         <masterLabel>Users</masterLabel>

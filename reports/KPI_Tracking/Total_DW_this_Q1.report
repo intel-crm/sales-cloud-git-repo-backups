@@ -226,7 +226,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ECG,NTG,CCG,CCG ECG,DCAI</value>
+            <value>ECG,NTG,CCG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

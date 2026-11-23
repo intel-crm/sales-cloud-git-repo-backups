@@ -75,13 +75,13 @@
         <field>TOTAL_PRICE</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND ((4 AND 5) OR (6 AND 7))</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design Win,Production Win</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Segment__c</column>
@@ -98,11 +98,25 @@
             <value>Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Consumption_Market__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Federal and Aerospace,Government</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>INDUSTRY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Education</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Defense and Space,Government</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Consumption_Market__c</column>
@@ -114,7 +128,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>2025 CCG Edu opportunities won</name>
+    <name>2025 CCG Edu opportunities</name>
     <params>
         <name>terr</name>
         <value>all</value>

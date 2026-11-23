@@ -24,26 +24,6 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_Region_Nm__c</fieldName>
-        <fieldPath>Pricing_Region_Nm__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>true</isRequired>
-        <operator>Equals</operator>
-        <sequence>2</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
-        <fieldName>Pricing_Program_Type_Nm__c</fieldName>
-        <fieldPath>Pricing_Program_Type_Nm__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>true</isRequired>
-        <operator>Equals</operator>
-        <sequence>3</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
         <fieldName>Pricing_Routing_Rule_Id__c</fieldName>
         <fieldPath>Pricing_Routing_Rule_Id__c</fieldPath>
         <isGroupByField>false</isGroupByField>
@@ -73,6 +53,26 @@
         <isGroupByField>false</isGroupByField>
         <isRequired>false</isRequired>
         <usage>OUTPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
+        <fieldName>Pricing_Region_Nm__c</fieldName>
+        <fieldPath>Pricing_Region_Nm__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>true</isRequired>
+        <operator>Equals</operator>
+        <sequence>2</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
+        <fieldName>Pricing_Program_Type_Nm__c</fieldName>
+        <fieldPath>Pricing_Program_Type_Nm__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>true</isRequired>
+        <operator>Equals</operator>
+        <sequence>3</sequence>
+        <usage>INPUT</usage>
     </decisionTableParameters>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>

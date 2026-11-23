@@ -3,6 +3,10 @@
     <backgroundEndColor>#FFFFFF</backgroundEndColor>
     <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
     <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <chartTheme>light</chartTheme>
+    <colorPalette>unity</colorPalette>
+    <dashboardChartTheme>light</dashboardChartTheme>
+    <dashboardColorPalette>unity</dashboardColorPalette>
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -844,7 +848,7 @@
     <description>Requests for gated content to Dev Zone</description>
     <isGridLayout>true</isGridLayout>
     <owner>10166818@intel.com.crm</owner>
-    <runningUser>11636835@intel.com.crm</runningUser>
+    <runningUser>10166818@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>OLD - CNDA Generated Leads</title>
     <titleColor>#000000</titleColor>

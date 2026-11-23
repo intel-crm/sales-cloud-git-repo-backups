@@ -351,6 +351,11 @@
                     <default>false</default>
                     <label>M2M</label>
                 </value>
+                <value>
+                    <fullName>Docebo Callout</fullName>
+                    <default>false</default>
+                    <label>Docebo Callout</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

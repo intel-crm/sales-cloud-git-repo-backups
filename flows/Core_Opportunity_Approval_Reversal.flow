@@ -2165,6 +2165,9 @@ Production Sales Price and Production Quantity on Product and Production Win amo
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Core_DesignWin_KPI_Txt__c</field>
+        </inputAssignments>
+        <inputAssignments>
             <field>Core_PW_Amount__c</field>
         </inputAssignments>
         <object>Opportunity</object>

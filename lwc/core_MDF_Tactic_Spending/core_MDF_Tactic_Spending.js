@@ -208,6 +208,12 @@ export default class Core_MDF_Tactic_Spending extends LightningElement {
             const contribution = (row.spendThisPeriod || 0);
             return sum + contribution;
         }, 0);
+
+        console.log('Por debug', {totalspendthisperiod: totalIntel,
+        reimbursableamountusd: this.reimbursableAmountUsd,
+        reimbusesableamounttype: typeof this.reimbursableAmountUsd,
+        numreimbursableamount: Number(this.reimbursableAmountUsd),
+        validationFailed: Number(totalIntel.toFixed(2)) != this.reimbursableAmountUsd});
     
         if (Number(totalIntel.toFixed(2)) != this.reimbursableAmountUsd) {
             this.showToast(

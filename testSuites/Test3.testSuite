@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Pricing_PricingAI_BulkControllerTest</testClassName>
+    <testClassName>Pricing_PricingAI_Controller_Test</testClassName>
+    <testClassName>Pricing_Publish_Quote_Test</testClassName>
+    <testClassName>Pricing_QLBulkCR_Test</testClassName>
+    <testClassName>Pricing_QLI_AutoApprovalController_Test</testClassName>
+    <testClassName>Pricing_QuoteCloneController_Test</testClassName>
+    <testClassName>Pricing_QuoteEmailAlertController_Test</testClassName>
+    <testClassName>Pricing_QuoteLineBusinessLogic_Test</testClassName>
+    <testClassName>Pricing_QuoteLineCloneController_Test</testClassName>
+    <testClassName>Pricing_QuoteLineController_Test</testClassName>
+    <testClassName>Pricing_QuoteLineStatusAgeTest</testClassName>
+</ApexTestSuite>

@@ -421,9 +421,6 @@
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
-        <field>Opportunity.CventEvents__Attendee__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Battery_Life_Target__c</field>
     </columns>
     <columns>
@@ -500,12 +497,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Current_Architecture__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.CventEvents__EventTitle__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.CventEvents__Event__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Date_Submitted_for_Approval__c</field>
@@ -1280,9 +1271,6 @@
     </columns>
     <columns>
         <field>User.Core_User_Sub_Geo__c</field>
-    </columns>
-    <columns>
-        <field>User.User_Unique__c</field>
     </columns>
     <columns>
         <field>User.Core_WWID__c</field>

@@ -324,8 +324,10 @@ public with Sharing class Core_Contact_Ent_BT_Handler {
             }
             if(conEntIdSet != null && conEntIdSet.size() > 0){
                 //Loop Through Entitlement Matrix records to related triggering contact Entitlements to form a map of Entitlement Id and Business Type Id.
-                for(PRM_VXEnttlmntMatrix__c mat : [SELECT Id,Name,PRM_Entitlement_Id__c,PRM_Entitlement_Id__r.Name,Business_Types__c,Business_Types__r.Name FROM PRM_VXEnttlmntMatrix__c WHERE PRM_Entitlement_Id__c IN :entIdSet AND Business_Types__c != null  AND PRM_Entitlement_Id__r.ER_Program__c!=null]){
-                    bisTypeEntIdMap.put(mat.PRM_Entitlement_Id__c,mat.Business_Types__c);
+                //for(PRM_VXEnttlmntMatrix__c mat : [SELECT Id,Name,PRM_Entitlement_Id__c,PRM_Entitlement_Id__r.Name,Business_Types__c,Business_Types__r.Name FROM PRM_VXEnttlmntMatrix__c WHERE PRM_Entitlement_Id__c IN :entIdSet AND Business_Types__c != null  AND PRM_Entitlement_Id__r.ER_Program__c!=null]){
+                for(PRM_VXEnttlmntMatrix__c mat : [SELECT Id, PRM_Entitlement_Id__c,Business_Types__c FROM PRM_VXEnttlmntMatrix__c WHERE PRM_Entitlement_Id__c IN :entIdSet AND Business_Types__c != null  AND PRM_Entitlement_Id__r.ER_Program__c!=null]){ //Ganesh Changes
+                      
+					bisTypeEntIdMap.put(mat.PRM_Entitlement_Id__c,mat.Business_Types__c);
                 }
                 if(bisTypeEntIdMap.keyset().size() > 0){
                     //Loop through all Entitlement Matrix Records related to the Business Type of the trigerring contact Entitlement Record to form map of Ids of Entitlements and Buss Type related to all Entitlements of matching Busi Type.
@@ -334,8 +336,14 @@ public with Sharing class Core_Contact_Ent_BT_Handler {
                     }
                     if(allBisTypeEntIdMap.keyset().size() > 0){
                         //Looping through all Contact Entitlements related to that Bus Type's all entitlements to make sure anyone of them is already assigned to the contact or not.
-                        for(Core_Contact_Entitlement__c existingEnt : [Select Id,Core_Contact_Id__c,Core_Entitlement_Id__c,Core_Status__c,Core_Source__c,Core_Selected__c FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c IN: cntIdSet AND Id NOT IN: conEntIdSet AND Core_Entitlement_Id__c IN: allBisTypeEntIdMap.keyset()]){
-                            if(existingEnt.Core_Status__c == System.Label.ER_Complete && existingEnt.Core_Selected__c == true){
+                        //for(Core_Contact_Entitlement__c existingEnt : [Select Id,Core_Contact_Id__c,Core_Entitlement_Id__c,Core_Status__c,Core_Source__c,Core_Selected__c FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c IN: cntIdSet AND Id NOT IN: conEntIdSet AND Core_Entitlement_Id__c IN: allBisTypeEntIdMap.keyset()]){
+                        //Ganesh Changes
+                        for(Core_Contact_Entitlement__c existingEnt : [Select Core_Contact_Id__c,Core_Entitlement_Id__c,Core_Status__c,Core_Selected__c FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c IN: cntIdSet AND Core_Entitlement_Id__c IN: allBisTypeEntIdMap.keyset()]){
+             				if(conEntIdSet.contains(existingEnt.Id)){
+        						continue;
+                            }
+                        //Ganesh Changes    
+							if(existingEnt.Core_Status__c == System.Label.ER_Complete && existingEnt.Core_Selected__c == true){
                                 contEntStatusMap.put(existingEnt.Core_Contact_Id__c+''+allBisTypeEntIdMap.get(existingEnt.Core_Entitlement_Id__c),system.label.ER_Approved); 
                             }else if(existingEnt.Core_Status__c == System.Label.ER_Complete && existingEnt.Core_Selected__c == false && contEntStatusMap.get(existingEnt.Core_Contact_Id__c+''+allBisTypeEntIdMap.get(existingEnt.Core_Entitlement_Id__c)) != system.label.ER_Approved && contEntStatusMap.get(existingEnt.Core_Contact_Id__c+''+allBisTypeEntIdMap.get(existingEnt.Core_Entitlement_Id__c)) != system.label.ER_Approval_Pending && contEntStatusMap.get(existingEnt.Core_Contact_Id__c+''+allBisTypeEntIdMap.get(existingEnt.Core_Entitlement_Id__c)) != system.label.ER_Rejection_Pending){
                                 contEntStatusMap.put(existingEnt.Core_Contact_Id__c+''+allBisTypeEntIdMap.get(existingEnt.Core_Entitlement_Id__c),System.Label.ER_Rejected); 

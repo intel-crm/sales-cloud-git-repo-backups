@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>CPT_Quota_Setup__c</entityName>
+    <fieldName>CPT_Stage__c</fieldName>
+    <masterLabel>Quota Setup</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;If this record is already marked as completed and you need to make an update, please 1) Select &amp;quot;In-Progress&amp;quot; then &amp;quot;Mark as Current Stage” 2) Make update and 3) select “Complete” then &amp;quot;Mark as Current Stage”&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Completed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>CPT_Effective_Month__c</fieldNames>
+        <fieldNames>CPT_Overlay__c</fieldNames>
+        <fieldNames>CPT_Notes__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Confirm sales plan assignment; Request a plan change through “Ask Sales Incentives”&lt;/li&gt;&lt;li&gt;Assign % for each applicable pay element&lt;/li&gt;&lt;li&gt;Assign applicable quota&lt;/li&gt;&lt;li&gt;Select &amp;quot;Mark Stage as Complete” when % weighting and quota is final&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>In-Progress</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Quota_Setup_Default</recordTypeName>
+</PathAssistant>

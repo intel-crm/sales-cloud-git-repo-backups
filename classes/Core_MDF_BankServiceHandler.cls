@@ -444,6 +444,7 @@ Modified By:        Date:       Changes:
                 //system.debug('bankIdProgramWithoutDashStringSetMap1'+bankIdProgramWithoutDashStringSetMap);
                 } else {
                     bankIdProgramWithoutDashStringSetMap.put(bankRecord.Id,new Set<String>{technicalProgramName});
+                    //system.debug('bankIdProgramWithoutDashStringSetMap2'+bankIdProgramWithoutDashStringSetMap);
                 }*/ // ATHR comment
                 //ATHR Fix
                 Set<String> techPrograms = bankIdProgramWithoutDashStringSetMap.get(bankRecord.Id);

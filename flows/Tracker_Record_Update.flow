@@ -78,6 +78,9 @@
         <label>ACR Inactive?</label>
         <locationX>633</locationX>
         <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Inactive</name>
@@ -196,6 +199,21 @@
         </rules>
     </decisions>
     <description>Update Tracker records to inactive</description>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>930</locationX>
+        <locationY>431</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>666</locationX>
+        <locationY>2963</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>336</locationX>
+        <locationY>2855</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>Tracker Record Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Tracker Record Update</label>
@@ -265,6 +283,9 @@
         <label>Error Logs</label>
         <locationX>666</locationX>
         <locationY>2855</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -395,6 +416,9 @@
         <label>Update Inactivated Records</label>
         <locationX>336</locationX>
         <locationY>2747</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <faultConnector>
             <targetReference>Error_Logs</targetReference>
         </faultConnector>

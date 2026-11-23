@@ -148,7 +148,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Technical Owner (100%),Technical Owner (100% commitment over the lifetime of the opportunity)</value>
+            <value>Technical Owner (100%)</value>
         </criteriaItems>
         <criteriaItems>
             <column>MEMBER_NAME</column>

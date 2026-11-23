@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>PRM_BusinessEvent__c</field>
-        <value xsi:type="xsd:string">OPID_AssociationFailure_Email</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>PRM_ChannelProgram__c</field>
@@ -48,7 +48,7 @@
     </values>
     <values>
         <field>PRM_Recipient__c</field>
-        <value xsi:type="xsd:string">Public Group: PRM Tech Email Recipient</value>
+        <value xsi:type="xsd:string">Public Group: L2 IPA Support</value>
     </values>
     <values>
         <field>PRM_Specialty__c</field>

@@ -17,14 +17,40 @@
                     </lightning-accordion> 
                 </template>
         </div>       -->
-        <h3 class="slds-p-horizontal_large icon-container">
+        <h3 class="slds-p-horizontal_large icon-container"> 
             <template if:true={faIcon}>
                 <span class={classes.iconClass}></span>
             </template>
             <span class="label">{title}</span>
         </h3>
-    
-        <div class="slds-grid slds-p-top_medium benefit-columns">
+    <!--DOCEBO WW44-->
+           <template lwc:if={isRecommendedLearning}>
+              <div class="docebo-section">
+    <c-ipa-docebo-loader course-data={doceboData}>
+    </c-ipa-docebo-loader></div>
+</template> 
+<!--<template lwc:if={isRecommendedLearning}>
+    <template lwc:if={doceboLoaded}>
+        <template lwc:if={hasCourses}>
+            <div class="docebo-full-width">
+                <c-docebo-assets
+                    course-data={doceboData}>
+                </c-docebo-assets>
+            </div>
+        </template>
+    </template>
+
+    <template lwc:else>
+        <div class="docebo-loading">
+            <lightning-spinner
+                alternative-text="Loading recommended courses"
+                size="medium">
+            </lightning-spinner>
+        </div>
+    </template>
+</template>-->
+
+    <div class="slds-grid slds-p-top_medium benefit-columns">        
         <template if:true={isMetricsEmpty}>
             <div class="description-container largecolumn"> <!-- Utkarsh - 904 - Created new class to give more width to description container in case matric container is not present. -->
                 <template for:each={alerts} for:item="alert">
@@ -108,12 +134,12 @@
                         <c-ipa-link label={link.label} external-url={link.externalUrl} community-page={link.communityPage} object-page={link.objectPage} record-id={link.recordId} hide-icon="false" ></c-ipa-link>
                     </div>
                 </template>
+                
         <template if:true={isIPA_DZS_RDC_Benefit}>
             <c-p-r-m_-dzp-registration></c-p-r-m_-dzp-registration>
         </template>
             </div>
         </div>
-        
         <template if:true={ifs.hasContacts}>
             <div class="slds-p-horizontal_large">
                 <h3>{contacts.label}</h3>
@@ -134,4 +160,4 @@
             </div>
         </template>
     </div>
-</template>
+    </template>

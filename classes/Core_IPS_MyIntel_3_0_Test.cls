@@ -116,10 +116,10 @@ global class Core_IPS_MyIntel_3_0_Test {
         customSetting.Name = 'Core_IPS_MyIntel_Integration';
         customSetting.MyIntel_Client_Id__c = '07e04e4c-dd0b-4b24-9c46-6056a822530833';
         customSetting.MyIntel_Client_Secret__c = 'XnK1KXtLthP4.778QgL-2fTS~OahSiL_qc';
-        customSetting.MyIntel_Endpoint_URL__c = 'https://apis.intel.com/m2r/intel-customers/v1/profiles';
+        customSetting.MyIntel_Endpoint_URL__c = 'https://apis-sandbox.intel.com/m2r/intel-customers/v1/profiles';
         customSetting.MyIntel_GrantType__c = 'client_credentials';
         customSetting.MyIntel_Integration_Class_Name__c = 'Core_IPS_MyIntel_3';
-        customSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis.intel.com/v1/auth/token';
+        customSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis-sandbox.intel.com/v1/auth/token';
         insert customSetting;
         system.assert(customSetting.Id != null,true);
         
@@ -164,8 +164,8 @@ global class Core_IPS_MyIntel_3_0_Test {
     @isTest static void testCRUDNegativeScenario(){
         String Message = 'Remove';
         Core_IPS_APIGEE_Custom_Settings__c integrationSetting = Core_IPS_APIGEE_Custom_Settings__c.getValues('Core_IPS_MyIntel_Integration');
-        integrationSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis.intel.com/v1/authenticate/token';
-        integrationSetting.MyIntel_Endpoint_URL__c ='https://apis.intel.com/m2r/intel-customer/v1/profiles';
+        integrationSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis-sandbox.intel.com/v1/authenticate/token';
+        integrationSetting.MyIntel_Endpoint_URL__c ='https://apis-sandbox.intel.com/m2r/intel-customer/v1/profiles';
       //integrationSetting.MyIntel_Endpoint_URL__c ='https://apis.intel.com/m2r/intel-customers/v1/profile';
         update integrationSetting;
         List<Id> caseIds = new List<Id>();
@@ -187,8 +187,8 @@ global class Core_IPS_MyIntel_3_0_Test {
         
         
        // Core_IPS_APIGEE_Custom_Settings__c integrationSetting = Core_IPS_APIGEE_Custom_Settings__c.getValues('Core_IPS_MyIntel_Integration');
-       // integrationSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis.intel.com/v1/auth/token';
-       // integrationSetting.MyIntel_Endpoint_URL__c ='https://apis.intel.com/m2r/intel-customers/v1/profile';
+       // integrationSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis-sandbox.intel.com/v1/auth/token';
+       // integrationSetting.MyIntel_Endpoint_URL__c ='https://apis-sandbox.intel.com/m2r/intel-customers/v1/profile';
        // update integrationSetting;
         List<Id> caseIds = new List<Id>();
         List<Case> caseupdate = new List<Case>(); //ATHR Blocker fix

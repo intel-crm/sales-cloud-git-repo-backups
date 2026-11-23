@@ -47,6 +47,11 @@
         <label>Other</label>
     </standardValue>
     <standardValue>
+        <fullName>List Import</fullName>
+        <default>false</default>
+        <label>List Import</label>
+    </standardValue>
+    <standardValue>
         <fullName>Webinar</fullName>
         <default>false</default>
         <label>Webinar</label>

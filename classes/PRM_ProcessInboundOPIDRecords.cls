@@ -88,6 +88,7 @@ global class PRM_ProcessInboundOPIDRecords  implements  Database.Batchable<sObje
                 }
                 //TWC729-6801 OPID Tracker End
             }
+            System.debug('mapOfStatusUpdateInbound-->'+mapOfStatusUpdateInbound);
             
 
             //Intial check of inboundMessage            
@@ -860,10 +861,12 @@ opidIds.remove(opIDvalue);
     
     global void finish(Database.BatchableContext bc) {
         //added by Anish - start
-        AsyncApexJob job = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed,  
+        //ATHR Fix - TWC729-9556
+        /*AsyncApexJob job = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed,  
                             TotalJobItems, CreatedBy.Email 
                             FROM AsyncApexJob 
-                            WHERE Id = :bc.getJobId()];        
+                            WHERE Id = :bc.getJobId()];   
+        */
         logEntryMsg+='\n*1st JOB END*';
         Integer numberofRecordstoProcess = !(Test.isRunningTest()) ? integer.valueof(System.Label.PRM_OPID_Batch_Processing) : 200;
         if(logEntryMsg!=''){// this block will create error log records on the basis of length of logEntryMsg and Field limit.

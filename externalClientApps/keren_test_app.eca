@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>rameshx.naidu.allu@intel.com</contactEmail>
+    <description>Test app for Keren</description>
+    <distributionState>Local</distributionState>
+    <isProtected>false</isProtected>
+    <label>keren_test_app</label>
+    <orgScopedExternalApp>00Ddi000004mJ65:keren_test_app</orgScopedExternalApp>
+</ExternalClientApplication>

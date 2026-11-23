@@ -66,23 +66,20 @@
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Commissionable__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>ACCOUNT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Dell Technologies,Dell U S A Corporation,HP Inc,Lenovo,samsung electronics,lg electronics,asus,acer,microsoft</value>
+            <value>Dell Technologies,Dell U S A Corporation,HP Inc,Lenovo</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled,Production Lost</value>
+            <value>Lost,Production Lost</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>

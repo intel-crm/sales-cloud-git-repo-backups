@@ -40,6 +40,7 @@ public class Core_SharingUtility{
                            share.put('ParentId', obj);
                            share.put('AccessLevel',recordAccessLevel);
                         }
+                        system.debug('provideAccess 1 uId'+uId);
                         share.put('UserOrGroupId', uId);
                         share.put('RowCause', 'Manual');
                         shareRecords.add(share);
@@ -47,8 +48,20 @@ public class Core_SharingUtility{
                 }
             }
         try{
-
-// Tushar Garg as part of vulnerabilty change
+           /* Database.SaveResult[] shareInsertResult = Database.insert(shareRecords,false);
+            for(Database.SaveResult sr:shareInsertResult){
+                if(sr.isSuccess()){
+                }
+                else {
+                   Database.Error err = sr.getErrors()[0];
+                
+                   if(err.getStatusCode() == StatusCode.FIELD_FILTER_VALIDATION_EXCEPTION  &&  
+                            err.getMessage().contains('AssetAccessLevel')){
+                   }
+                   else{
+                   }
+                 }
+            }*/
             if (!shareRecords.isEmpty()) {
                 Core_IPS_QueryService.insertRecords(shareRecords);
             }
@@ -98,8 +111,8 @@ public class Core_SharingUtility{
                 share.put('UserOrGroupId', recordUserList.get(obj));
                 share.put('RowCause', 'Manual');
                 shareRecords.add(share);
-            }    
- // Tushar Garg as part of vulnerabilty change
+            } 
+            //Database.SaveResult[] shareInsertResult = Database.insert(shareRecords,false);   
             if (!shareRecords.isEmpty()) {
                 Core_IPS_QueryService.insertRecords(shareRecords);
             }

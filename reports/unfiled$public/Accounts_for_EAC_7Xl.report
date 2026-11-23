@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.ContactEmailMessages$Subject</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.ContactEmailMessages$FromAddress</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.ContactEmailMessages$ToAddress</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.ContactEmailMessages$CcAddress</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Contacts.ContactEmailMessages$Source</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Accounts for EAC</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_for_EAC__c</reportType>
+    <scope>ownaccountteam</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

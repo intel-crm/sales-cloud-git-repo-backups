@@ -61,14 +61,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1/1/2026</value>
+            <value>1/1/2025</value>
         </criteriaItems>
         <criteriaItems>
             <column>CAMPAIGN_STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Aborted,Campaign Accepted,Cancelled,Completed,In Progress,Planned,Proposal Accepted</value>
+            <value>Aborted,Cancelled,Completed,In Progress,Pending Approval,Planned,Proposal Accepted</value>
         </criteriaItems>
         <criteriaItems>
             <column>Campaign.Core_MDF_Budget_Type_txt__c</column>
@@ -82,7 +82,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>[#DCA-5FU06#],[#DCA-5KT11#]</value>
+            <value>[#CCG-5BY02#],[#CCG-5CY13#],[#DCA-5AZ01#],[#DCA-5BY02#],[#DCA-5MN12#],[#NEX-5GT07#]</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -97,7 +97,7 @@
         <field>Campaign.Core_MDF_Focus_Area_nm__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Telco MDF Post L2</name>
+    <name>NSI/NSP/GSI IPA MDF Post L2 Approval</name>
     <params>
         <name>scopeid</name>
         <value></value>
@@ -110,5 +110,5 @@
     <scope>orgAll</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
 </Report>

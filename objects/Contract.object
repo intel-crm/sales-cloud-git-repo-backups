@@ -820,23 +820,6 @@
         <type>Picklist</type>
     </fields>
     <listViews>
-        <fullName>AllActivatedContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>A</value>
-        </filters>
-        <label>All Activated Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
         <fullName>AllContracts</fullName>
         <columns>CONTRACT.CONTRACT_NUMBER</columns>
         <columns>SALES.ACCOUNT.NAME</columns>
@@ -855,91 +838,6 @@
             <value>00001275</value>
         </filters>
         <label>All Contracts</label>
-    </listViews>
-    <listViews>
-        <fullName>AllDraftContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>D</value>
-        </filters>
-        <label>All Draft Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>AllInApprovalContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>P</value>
-        </filters>
-        <label>All In Approval Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>MyActivatedContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>A</value>
-        </filters>
-        <label>My Activated Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>MyDraftContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>D</value>
-        </filters>
-        <label>My Draft Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>MyInApprovalContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>P</value>
-        </filters>
-        <label>My In Approval Contracts</label>
-        <language>en_US</language>
     </listViews>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>

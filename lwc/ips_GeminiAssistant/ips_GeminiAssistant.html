@@ -1,0 +1,62 @@
+<template>
+    <lightning-card title="IPS Gemini Assistant" icon-name="utility:bot">
+
+        <div class="chat-container">
+
+            <!-- Chat Messages -->
+            <div class="chat-messages">
+
+                <template for:each={messages} for:item="msg">
+                    <div key={msg.id} class={msg.cssClass}>
+                        <div class="chat-bubble">
+                            <lightning-formatted-text
+                                value={msg.text}>
+                            </lightning-formatted-text>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={isLoading}>
+                    <div class="message-row bot-message">
+                        <div class="chat-bubble typing">
+                            Gemini is typing...
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+
+            <!-- Input Area -->
+            <div class="chat-input">
+
+                <div class="input-container">
+                    <lightning-input
+                        type="text"
+                        variant="label-hidden"
+                        placeholder="Ask IPS Agent..."
+                        value={question}
+                        onchange={handleChange}
+                        onkeydown={handleKeyDown}>
+                    </lightning-input>
+                </div>
+
+                <lightning-button
+                    label="Send"
+                    variant="brand"
+                    onclick={sendMessage}
+                    disabled={isLoading}>
+                </lightning-button>
+
+            </div>
+
+            <!-- Error Message -->
+            <template if:true={error}>
+                <div class="slds-text-color_error slds-p-around_small">
+                    {error}
+                </div>
+            </template>
+
+        </div>
+
+    </lightning-card>
+</template>

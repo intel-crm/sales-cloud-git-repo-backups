@@ -282,6 +282,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label>請求のキャンセル理由</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>請求に関するメモ (自由形式)</help>
         <label>請求コメント</label>
         <name>Core_MDF_Claim_Comments__c</name>

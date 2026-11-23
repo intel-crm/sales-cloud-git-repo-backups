@@ -811,8 +811,8 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Batch_Class_Name_Txt__c</field>
-            <operation>equals</operation>
-            <value>Core_Account_B2B_Flag_Cleanup_Batch</value>
+            <operation>contains</operation>
+            <value>PMP</value>
         </filters>
         <label>All</label>
     </listViews>
@@ -828,17 +828,11 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
         <columns>Core_MDF_Effective_Start_Time_Dt__c</columns>
         <columns>Core_MDF_Effective_End_Time_Dt__c</columns>
         <columns>Core_MDF_Inactive__c</columns>
-        <columns>Core_MDF_Next_Batch_Run_Time_Txt__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Program_Txt__c</field>
             <operation>equals</operation>
             <value>IPA</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Scheduler_Status_Txt__c</field>
-            <operation>notEqual</operation>
-            <value>Cancelled</value>
         </filters>
         <label>All IPA Batches</label>
     </listViews>
@@ -932,11 +926,6 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
             <operation>equals</operation>
             <value>Sales Pipeline</value>
         </filters>
-        <filters>
-            <field>Core_MDF_Inactive__c</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
         <label>Sales CRM</label>
     </listViews>
     <listViews>
@@ -948,7 +937,7 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
         <columns>Core_MDF_Job_Frequency__c</columns>
         <columns>Core_MDF_Program_Txt__c</columns>
         <columns>Core_MDF_Next_Batch_Run_Time_Txt__c</columns>
-        <filterScope>Everything</filterScope>
+        <filterScope>Mine</filterScope>
         <label>Scheduled Batches</label>
     </listViews>
     <nameField>

@@ -8,7 +8,7 @@ public without sharing class espy_ApexJobsEmail {
             return;
         }
         OrgWideEmailAddress orgAddress = [SELECT Id, Address, DisplayName from OrgWideEmailAddress where Address='wsm-postmaster@intel.com' LIMIT 1];
-        String subject = 'List of Holding Job Name - '+holdingJobs.size()+'.';        
+        String subject = 'Sandbox QA9: List of Holding Job Name - '+holdingJobs.size()+'.';        
         String fontStyle = 'font-family:intel clear;';
         String borderStyle = 'style="border: 1px solid #d3d3d3;padding-left:5px;padding-top:5px;padding-bottom:5px;font-size: 14px;"';
         String emailBody = '<html><body>';

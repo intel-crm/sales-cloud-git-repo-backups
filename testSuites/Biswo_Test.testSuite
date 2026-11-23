@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_PFR_RestAPI_Constants_Test</testClassName>
+    <testClassName>Core_MDF_PFR_RestAPI_InputWrapper_Test</testClassName>
+    <testClassName>Core_MDF_PFR_RestAPI_PicklistValues_Test</testClassName>
+    <testClassName>Core_MDF_PFR_RestAPI_Response_Test</testClassName>
+    <testClassName>Core_MDF_PFR_RestAPI_Test</testClassName>
+    <testClassName>Core_MDF_PFR_RestAPI_Utility_Test</testClassName>
+</ApexTestSuite>

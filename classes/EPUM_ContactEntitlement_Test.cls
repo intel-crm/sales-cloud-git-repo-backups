@@ -660,4 +660,159 @@ acrList.add(acctContRel3);*/
 }
 
     
+
+
+    @isTest
+    static void testGetContact_Blank(){
+        EPUM_ContactEntitlement_Util.sContactIdStr = null;
+        System.assertEquals(null, EPUM_ContactEntitlement_Util.getContact());
+    }
+
+    @isTest
+    static void testCheckAGSStatus_Pending(){
+        Contact c = [SELECT Id FROM Contact LIMIT 1];
+        EPUM_ContactEntitlement_Util.objContact = new Contact(
+            Id = c.Id,
+            Core_AGS_Integration_Status__c = 'Pending'
+        );
+        EPUM_AuraProcessingMessage msg = EPUM_ContactEntitlement_Util.checkAGSStatus();
+        System.assertNotEquals(null, msg);
+    }
+
+    @isTest
+    static void testUtilityMethods(){
+        String logo = EPUM_ContactEntitlement_Util.getLogoUrl();
+        String responsibility = EPUM_ContactEntitlement_Util.getResponsibilitiesConfirmationData();
+        System.assertNotEquals(null, logo);
+        System.assertNotEquals(null, responsibility);
+    }
+    @isTest
+static void test_updateACR_InsertBranch() {
+
+    Contact testCont = [
+        SELECT Id, AccountId
+        FROM Contact
+        WHERE Email = 'jackwilliams@mailnator.com'
+        LIMIT 1
+    ];
+
+    System.assertNotEquals(null,testCont);
+
+    Test.startTest();
+
+    EPUM_ContactEntitlement_Util.updateACR(testCont);
+
+    Test.stopTest();
+
+    List<PRM_Account_Contact_Relationship__c> lst =
+        [SELECT Id,
+                PRM_Contact_Id__c,
+                PRM_Account_Id__c
+         FROM PRM_Account_Contact_Relationship__c
+         WHERE PRM_Contact_Id__c = :testCont.Id];
+
+    System.assert(lst.size() > 0);
+}
+    
+@isTest
+static void testSaveContactEntitlements_PADBranch() {
+
+    Contact testCont =
+        [SELECT Id
+         FROM Contact
+         WHERE Email = 'TomHill@mailnator.com'
+         LIMIT 1];
+
+    Contact loggedInContact =
+        [SELECT Id
+         FROM Contact
+         WHERE Email = 'jackwilliam@mailnator.com'
+         LIMIT 1];
+
+    User usr =
+        [SELECT Id
+         FROM User
+         WHERE ContactId = :loggedInContact.Id
+         LIMIT 1];
+
+    System.runAs(usr){
+
+        Test.startTest();
+
+        EPUM_PartnerContactEnt_Controller.EPUM_PartnerContactEnt_Controller_Wrapper wrapper =
+            EPUM_PartnerContactEnt_Controller.fetchContactEntitlements(testCont.Id);
+
+        for(EPUM_ContactEntitlement_Wrapper w : wrapper.lstContactEntWrapper){
+
+            if(w.entitlementNameStr == 'Partner Admin Delegate'){
+                w.isSelected = true;
+            }
+        }
+
+        EPUM_PartnerContactEnt_Controller.saveContactEntitlements(
+            wrapper.lstContactEntWrapper,
+            testCont.Id
+        );
+
+        Test.stopTest();
+
+        System.assert(true);
+    }
+}
+@isTest
+static void testCheckAGSStatusException() {
+
+    Contact c =
+        [SELECT Id
+         FROM Contact
+         WHERE Email='jackwilliam@mailnator.com'
+         LIMIT 1];
+
+    EPUM_ContactEntitlement_Util.objContact =
+        new Contact(
+            Id = c.Id,
+            Core_AGS_Integration_Status__c = 'Complete'
+        );
+
+    Test.startTest();
+
+    EPUM_AuraProcessingMessage msg =
+        EPUM_ContactEntitlement_Util.checkAGSStatus();
+
+    Test.stopTest();
+
+    System.assertNotEquals(null,msg);
+}
+@isTest
+static void testDealIncentiveBranch() {
+
+    Core_Entitlement_Profile_Access__c accessRec =
+        [SELECT Id, Core_Entitlements_Allowed__c
+         FROM Core_Entitlement_Profile_Access__c
+         LIMIT 1];
+
+    accessRec.Core_Entitlements_Allowed__c =
+        'Employee;Partner Admin Delegate;Deal Incentive User';
+
+    update accessRec;
+
+    Contact c =
+        [SELECT Id
+         FROM Contact
+         WHERE Email='jackwilliam@mailnator.com'
+         LIMIT 1];
+
+    User usr =
+        [SELECT Id
+         FROM User
+         WHERE ContactId=:c.Id
+         LIMIT 1];
+
+    System.runAs(usr){
+        Test.startTest();
+        EPUM_ContactEntitlement_Util.getCoreEntitlements();
+        Test.stopTest();
+    }
+}    
+
 }

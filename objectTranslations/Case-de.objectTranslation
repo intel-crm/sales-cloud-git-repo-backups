@@ -305,12 +305,24 @@ Specify screens used --></help>
         <label><!-- Resolution Type --></label>
         <name>Core_AAQC_Resolution_Type__c</name>
         <picklistValues>
+            <masterLabel>Access Granted / Access Not Granted</masterLabel>
+            <translation><!-- Access Granted / Access Not Granted --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Access Issue</masterLabel>
             <translation><!-- Access Issue --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Approved / Not Approved</masterLabel>
+            <translation><!-- Approved / Not Approved --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>CE Setup Fixed</masterLabel>
             <translation><!-- CE Setup Fixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change request completed / Change request Deferred</masterLabel>
+            <translation><!-- Change request completed / Change request Deferred --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Completed</masterLabel>
@@ -321,8 +333,16 @@ Specify screens used --></help>
             <translation><!-- Defect Deferred --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Defect Resolved / Defect Deferred</masterLabel>
+            <translation><!-- Defect Resolved / Defect Deferred --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Defect To Be Addressed</masterLabel>
             <translation><!-- Defect To Be Addressed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enhancement Completed / Enhancement Deferred</masterLabel>
+            <translation><!-- Enhancement Completed / Enhancement Deferred --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Enhancement Request Deferred</masterLabel>
@@ -333,6 +353,14 @@ Specify screens used --></help>
             <translation><!-- Enhancement Request to be Addressed --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>HR / Revenue / Onboarding / Payroll / CRC / RPS</masterLabel>
+            <translation><!-- HR / Revenue / Onboarding / Payroll / CRC / RPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Information Provided / Training Provided / Policy Clarified</masterLabel>
+            <translation><!-- Information Provided / Training Provided / Policy Clarified --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Manual Adjustment</masterLabel>
             <translation><!-- Manual Adjustment --></translation>
         </picklistValues>
@@ -341,8 +369,16 @@ Specify screens used --></help>
             <translation><!-- New/Updated Policy --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>No Action</masterLabel>
+            <translation><!-- No Action --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Pay Reconciliation</masterLabel>
             <translation><!-- Pay Reconciliation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payee Setup Fixed</masterLabel>
+            <translation><!-- Payee Setup Fixed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Training</masterLabel>
@@ -366,6 +402,10 @@ Specify screens used --></help>
         <label><!-- Root Cause Category --></label>
         <name>Core_AAQC_Root_Cause_Category__c</name>
         <picklistValues>
+            <masterLabel>Access</masterLabel>
+            <translation><!-- Access --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Change Request</masterLabel>
             <translation><!-- Change Request --></translation>
         </picklistValues>
@@ -374,12 +414,36 @@ Specify screens used --></help>
             <translation><!-- Defect --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Enhancement Request</masterLabel>
+            <translation><!-- Enhancement Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Governance and control</masterLabel>
+            <translation><!-- Governance and control --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>How Do I</masterLabel>
             <translation><!-- How Do I --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Inquiry</masterLabel>
+            <translation><!-- Inquiry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payee Setup</masterLabel>
+            <translation><!-- Payee Setup --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Setup</masterLabel>
             <translation><!-- Setup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upstreams</masterLabel>
+            <translation><!-- Upstreams --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Not Responding</masterLabel>
+            <translation><!-- User Not Responding --></translation>
         </picklistValues>
     </fields>
     <fields>

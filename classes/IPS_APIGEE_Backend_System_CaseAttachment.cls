@@ -7,8 +7,7 @@
 *   
 ************************************************/
 
-public class IPS_APIGEE_Backend_System_CaseAttachment implements System.Queueable, Database.AllowsCallouts { //TWC745-9117 - ATHR Critical fixed by Tushar
-    
+public without sharing class IPS_APIGEE_Backend_System_CaseAttachment implements System.Queueable, Database.AllowsCallouts {
     set<Id> caseAttachmentIds= new set<Id>();
     
     public IPS_APIGEE_Backend_System_CaseAttachment(set<Id> ids){

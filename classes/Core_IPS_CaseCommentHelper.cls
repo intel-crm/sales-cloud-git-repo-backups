@@ -148,7 +148,7 @@ public with sharing class Core_IPS_CaseCommentHelper {
             partnerAuthrType  = Core_Utility.getPartnerUserType(Userid.substring(0,15));
             
             if(partnerAuthrType!=null){
-                if(partnerAuthrType.split(';').size()>0)
+               	if(partnerAuthrType.split(';').size()>0)
                     partnerType1 = partnerAuthrType.split(';')[0];
             }
             if(partnerType1 !=null && String.isNotBlank(partnerType1 )){

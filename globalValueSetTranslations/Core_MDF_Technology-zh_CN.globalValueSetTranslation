@@ -390,7 +390,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Ultra Series 1 (Meteor Lake)</masterLabel>
-        <translation>第一代英特尔® 酷睿™ Ultra (Meteor Lake)</translation>
+        <translation><!-- Intel® Core™ Ultra Series 1 (Meteor Lake) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Core™ Ultra Series 2 (Arrow Lake)</masterLabel>
@@ -546,7 +546,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® 6 Processors (Granite Rapids P-Core)</masterLabel>
-        <translation>英特尔® 至强® 6 处理器（Granite Rapids 性能核）</translation>
+        <translation>英特尔® 至强® 6 处理器 (Granite Rapids 性能核)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® 6 SoC (Granite Rapids-D)</masterLabel>
@@ -815,6 +815,14 @@
     <valueTranslation>
         <masterLabel>Scalable Video Technology (SVT)</masterLabel>
         <translation>可伸缩视频技术 (SVT)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Series 4 Intel® Core™ (Wildcat Lake Refresh)</masterLabel>
+        <translation><!-- Series 4 Intel® Core™ (Wildcat Lake Refresh) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Series 4 Intel® Core™ Ultra (Nova Lake)</masterLabel>
+        <translation><!-- Series 4 Intel® Core™ Ultra (Nova Lake) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>SigOpt</masterLabel>

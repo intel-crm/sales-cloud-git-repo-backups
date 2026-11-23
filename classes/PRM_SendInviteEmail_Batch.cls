@@ -43,7 +43,7 @@ global class PRM_SendInviteEmail_Batch implements Database.Batchable<sObject>,Da
       contactId.add(be.PRM_Contact_Id__c);
     }
     if(contactId != null && !contactId.IsEmpty()){
-      for(Contact con :[Select id,Core_IPA_PartnerRole__c,Core_Enterprise_Id__c,Email,Core_Preferred_Language__c,MailingCountryCode,AccountId,Account.Name,Account.AccountNumber,FirstName,LastName,Core_Do_Not_Contact__c,Account.BillingCountryCode,Core_ERPM_Integration_Status__c,CreatedDate from Contact where id IN :contactId]){
+      for(Contact con :[Select id,Core_IPA_PartnerRole__c/*,Core_Login_Status__c*/,Core_Enterprise_Id__c,Email,Core_Preferred_Language__c,MailingCountryCode,AccountId,Account.Name,Account.AccountNumber,FirstName,LastName,Core_Do_Not_Contact__c,Account.BillingCountryCode,Core_ERPM_Integration_Status__c,CreatedDate from Contact where id IN :contactId]){
         contactMap.put(con.Id, con);
       }
     }

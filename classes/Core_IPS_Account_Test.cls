@@ -48,10 +48,7 @@ Modification Log :
         ListOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         ListOfUser.get(1).ProfileID =  profiles.get('System Administrator');
         ListOfUser.get(1).UserRoleID = role.id;
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert ListOfUser;
-        }
+        insert ListOfUser;
         System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));
         System.assertEquals(ListOfUser.get(1).profileid, profiles.get('System Administrator'));
     }

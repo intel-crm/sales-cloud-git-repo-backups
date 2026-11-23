@@ -147,6 +147,10 @@
             <translation><!-- Co-Engineering --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Co-Investment</masterLabel>
+            <translation><!-- Co-Investment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>DCF 1.0</masterLabel>
             <translation><!-- DCF 1.0 --></translation>
         </picklistValues>
@@ -280,6 +284,16 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Marketing Approval required for funding Co-Selling Tactic(s) --></help>
+        <label><!-- Co-Marketing --></label>
+        <name>Core_MDF_Co_Marketing_ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field Sales Approval required for funding Co-Marketing Tactic(s) --></help>
+        <label><!-- Co-Selling --></label>
+        <name>Core_MDF_Co_Selling_ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
@@ -316,6 +330,11 @@
         <relationshipLabel><!-- Partner Marketing Budgets --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Revenue Segment --></help>
+        <label><!-- Revenue Segment --></label>
+        <name>Core_MDF_Revenue_Segment_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Ultimate Account Id --></label>
         <name>Core_MDF_Ultimate_Account_Id__c</name>
     </fields>
@@ -337,6 +356,11 @@
         <description><!-- Record Type for Co-GTM --></description>
         <label><!-- Co-GTM --></label>
         <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Co-Inv --></description>
+        <label><!-- Co-Inv --></label>
+        <name>Core_MDF_Co_Inv</name>
     </recordTypes>
     <recordTypes>
         <description><!-- It will be used for Co-Marketing purposes. --></description>
@@ -364,6 +388,10 @@
         <name>Core_MDF_Retail_Marketing_Funds</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Enter an amount that&apos;s greater than or equal to the allocations within this budget. --></errorMessage>
+        <name>Core_MDF_Amt_Not_Less_Than_Saved_CoInv</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Budget Type is mandatory for the selected program --></errorMessage>
         <name>Core_MDF_BudgetTypMandatoryForOEM</name>

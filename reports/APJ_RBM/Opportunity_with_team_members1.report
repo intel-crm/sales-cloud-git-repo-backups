@@ -4,13 +4,14 @@
         <field>OPPORTUNITY.NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Decision_Date__c</field>
-    </columns>
-    <columns>
         <field>MEMBER_NAME</field>
     </columns>
     <columns>
         <field>MEMBER_ROLE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Oppty_Approved_Total_Price__c</field>
     </columns>
     <columns>
         <field>OWNER_FULL_NAME</field>
@@ -33,27 +34,6 @@
     <columns>
         <field>OPPORTUNITY_TEAM_MEMBER_ID</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Oppty_Approved_Total_Price__c</field>
-    </columns>
-    <filter>
-        <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Submitted,Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>APJ,India</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Opportunity with team members</name>
     <params>
@@ -62,7 +42,7 @@
     </params>
     <params>
         <name>include</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>co</name>
@@ -74,9 +54,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2025-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2025-01-01</startDate>
+        <dateColumn>CLOSE_MONTH</dateColumn>
+        <interval>INTERVAL_PREVFY</interval>
     </timeFrameFilter>
 </Report>

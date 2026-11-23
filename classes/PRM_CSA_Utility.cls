@@ -29,17 +29,19 @@ public with sharing class PRM_CSA_Utility {
         }
         //system.debug('Hi from Set   '+partnerSubcriptionId);
         //system.debug('inside mehotd 12'+contactIds);
-        List<PRM_ContactSubscriptionAssociation__c> csaList = [Select Id , PRM_Contact_Id__c, PRM_Partner_Subscription_Id__c, PRM_Status_Nm__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c in :contactIds and PRM_Partner_Subscription_Id__c in :partnerSubcriptionId];
-        if(csaList.size()>0){
-            for(PRM_ContactSubscriptionAssociation__c csa : contSubAssociationNewList){
-                if(partnerSubcriptionId.contains(csa.PRM_Partner_Subscription_Id__c) && csa.PRM_Status_Nm__c == 'Inactive'){
-                    csa.addError ('This subscription is already assigned and currently inactive. Please activate the same subscription');
+        
+            List<PRM_ContactSubscriptionAssociation__c> csaList = [Select Id , PRM_Contact_Id__c, PRM_Partner_Subscription_Id__c, PRM_Status_Nm__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c in :contactIds and PRM_Partner_Subscription_Id__c in :partnerSubcriptionId];
+            if(csaList.size()>0){
+                for(PRM_ContactSubscriptionAssociation__c csa : contSubAssociationNewList){
+                    if(partnerSubcriptionId.contains(csa.PRM_Partner_Subscription_Id__c) && csa.PRM_Status_Nm__c == 'Inactive'){
+                        csa.addError ('This subscription is already assigned and currently inactive. Please activate the same subscription');
+                    } 
+                    else if(partnerSubcriptionId.contains(csa.PRM_Partner_Subscription_Id__c) && csa.PRM_Status_Nm__c == 'Active'){
+                        csa.addError ('This subscription is already assigned to the contact');
+                    }
                 } 
-                else if(partnerSubcriptionId.contains(csa.PRM_Partner_Subscription_Id__c) && csa.PRM_Status_Nm__c == 'Active'){
-                    csa.addError ('This subscription is already assigned to the contact');
-                }
             } 
-        } 
+        
     }
     
     //This method blanks out inactive status reason when a contact susbcription is activated again

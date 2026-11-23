@@ -100,7 +100,6 @@ public class Core_MDF_OPAL_Budget_Validation_Test {
             campaignBudgetRecord.isActive = true;
             campaignBudgetsList.add(campaignBudgetRecord);
             
-            //Map<id,string> campaignBudgets = Core_MDF_CampaignCreatePage.getBudgetsForCampaign(ccpCoMarketingAccount.id, System.today(), System.today(), budgetTypeList);
 
             //PartnerFundAllocation pfaRecord3 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('TestPFA3',opalbudgetMDF, ccpCoMarketingAccount, 15000, true);
 

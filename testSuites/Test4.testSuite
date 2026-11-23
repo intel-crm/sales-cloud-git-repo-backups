@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Pricing_BatchQuoteShare_ATM_Test</testClassName>
+    <testClassName>Pricing_BulkInsertUpdateAESR_Batch_Test</testClassName>
+    <testClassName>Pricing_BulkSalesRepActionControllerTest</testClassName>
+    <testClassName>Pricing_CommentsController_Test</testClassName>
+    <testClassName>Pricing_CompProductPriceBulkBatch_Test</testClassName>
+    <testClassName>Pricing_ConsumptionAttr_ControllerTest</testClassName>
+    <testClassName>Pricing_CustomerDivisionComp_cntrl_Test</testClassName>
+    <testClassName>Pricing_DataScrubBatch_Test</testClassName>
+    <testClassName>Pricing_FieldSetFormControllerTest</testClassName>
+    <testClassName>PricingIQREventBusinessLogic_Test</testClassName>
+</ApexTestSuite>

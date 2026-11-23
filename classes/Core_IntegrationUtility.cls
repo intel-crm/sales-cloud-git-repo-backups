@@ -458,7 +458,7 @@ global without sharing class Core_IntegrationUtility {
                 insert erpmEngagementsToInsert;
 
             // Re-pull our full set of ERPM Engagements now, and build a map of Engg Code to ID
-            fullSetERPMEngagements = [select Id, Core_Technical_Engagement_Code__c from Core_ERPM_Engagement__c];
+            fullSetERPMEngagements = [select Id, Core_Technical_Engagement_Code__c from Core_ERPM_Engagement__c LIMIT 1000]; //Ganesh Changes
             Map<String,Id> fullSetERPMEngagementCodeIdMap = new Map<String,Id>();
             for (Core_ERPM_Engagement__c erpmEngagement : fullSetERPMEngagements)
                 fullSetERPMEngagementCodeIdMap.put(erpmEngagement.Core_Technical_Engagement_Code__c, erpmEngagement.Id);

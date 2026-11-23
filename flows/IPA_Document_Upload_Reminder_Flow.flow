@@ -177,7 +177,7 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>RegRequestList</name>
         <dataType>SObject</dataType>

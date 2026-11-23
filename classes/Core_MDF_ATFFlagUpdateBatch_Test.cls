@@ -26,14 +26,14 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
             bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
             bypassFunctionKeys.add('Bypass_StampingOfActySubType_Check');
             bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
-           bypassFunctionKeys.add('Bypass_UpdateActivityFields');
+       		bypassFunctionKeys.add('Bypass_UpdateActivityFields');
             
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
             
-
+			
               
             permissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Retail_Finance_Usr' LIMIT 1];
             insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps.Id);
@@ -98,13 +98,13 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         opalbudget.Core_MDF_Budget_Type__c='MDF';
         opalbudget.Core_MDF_Budget_Type_Txt__c='MDF';
         system.runAs(usr1){
-             insert opalbudget;
+           	insert opalbudget;
         }
         PartnerFundAllocation pfaRecordOpal = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('TestPFA3',opalbudget, acc, 199999, false);
         insert pfaRecordOpal;
         test.stopTest();
         List<PartnerFundRequest> pfrList=new List<PartnerFundRequest>();
-         PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
+       	PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                           Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecordOpal,opalbudget,'INDIA','Small Business','Desktop',
                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr.Title = 'Test Activity';

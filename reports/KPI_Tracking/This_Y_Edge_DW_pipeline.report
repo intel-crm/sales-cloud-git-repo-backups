@@ -237,8 +237,8 @@
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled</value>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -252,14 +252,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>charlie.hu@intel.com,yixin.fu@intel.com,jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
+            <value>jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ECG,NTG,CCG,DCAI</value>
+            <value>ECG,NTG,CCG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Manager_Email__c</column>
@@ -273,7 +273,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Comms Infra. / Networking,Embedded / IOT</value>
+            <value>Embedded / IOT</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -288,7 +288,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Desc</sortOrder>
     </groupingsDown>
-    <name>This Y DW &amp; pipeline</name>
+    <name>This Y Edge DW &amp; pipeline</name>
     <params>
         <name>terr</name>
         <value>all</value>

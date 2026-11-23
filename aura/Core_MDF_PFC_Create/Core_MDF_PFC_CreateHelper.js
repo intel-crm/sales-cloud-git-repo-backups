@@ -1930,10 +1930,23 @@
             amountFields: JSON.stringify(amountFields)
         });
 
+        console.log('PT DEBUG - Before Apex', {
+    totalAmountLocal: amountFields.totalAmountLocal,
+    totalAmountType: typeof amountFields.totalAmountLocal,
+    currency: component.get('v.simpleNewClaim.Core_MDF_Currency__c'),
+    amountFields: JSON.stringify(amountFields)
+});
+
         action.setCallback(this, function(response) {
             var state = response.getState();
             if(state === "SUCCESS") {
                 var result = response.getReturnValue();
+                console.log('PT DEBUG - After Apex', {
+    reimbursableUsd: result.Core_MDF_Reimbursable_Transaction_Amount__c,
+    reimbursableLocal: result.Core_MDF_Reimbursable_TransactionAmt_Loc__c,
+    exchangeRate: result.Core_MDF_Exchange_rate__c,
+    requestedReimbursement: result.Core_MDF_Requested_Reimbursement_Amt__c
+});
                 if(result.Core_MDF_Reimbursable_Transaction_Amount__c){
                     //Core_MDF_Reimbursable_Transaction_Amount__c
                     component.set('v.reimbursableAmountUsd', result.Core_MDF_Reimbursable_Transaction_Amount__c);

@@ -21,7 +21,6 @@ public with sharing class Core_IPS_Portal_Project_Controller{
         List<Contact> sobjListAPM;
         try{
             Core_IPS_Project__c ipsProject = new Core_IPS_Project__c();
-   // Venrublity Fix - Refering query to service class
             loggedInUser = (User)Core_IPS_QueryService.queryRecords(
                 'Select Id, Name, profileId, ContactId, Contact.AccountId From User where Id = :userId',
                 new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
@@ -53,7 +52,6 @@ public with sharing class Core_IPS_Portal_Project_Controller{
 
         List<Asset> sobjListAprdos;
         try{
-            // Venrublity Fix - Refering query to service class
             loggedInUser = (User)Core_IPS_QueryService.queryRecords(
                 'Select Id, Name, profileId, ContactId, Contact.AccountId From User where Id = :userId',
                 new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
@@ -83,8 +81,7 @@ public with sharing class Core_IPS_Portal_Project_Controller{
     //create IPS Project
     @AuraEnabled
     public static Core_IPS_Project__c createProjects(String projName, String projDes, boolean parties, boolean notify, String userName){
- // Venrublity Fix - Refering query to service class        
-             loggedInUser = (User)Core_IPS_QueryService.queryRecords(
+        loggedInUser = (User)Core_IPS_QueryService.queryRecords(
             'Select Id, Name, profileId, ContactId, Contact.AccountId From User where Id = :userId',
             new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
         )[0];
@@ -192,8 +189,7 @@ public with sharing class Core_IPS_Portal_Project_Controller{
     //Insert Project Members,Activate Members
     @AuraEnabled
     public static List<Core_IPS_Project_Member__c> upsertProjectMembers(list<Id> selectedIdsInsecondPage, string ipsProject){
- // Venrublity Fix - Refering query to service class        
-   loggedInUser = (User)Core_IPS_QueryService.queryRecords(
+        loggedInUser = (User)Core_IPS_QueryService.queryRecords(
             'Select Id, Name, profileId, ContactId, Contact.AccountId From User where Id = :userId',
             new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
         )[0];
@@ -292,7 +288,6 @@ String assetQuery = 'Select Name, Account.Name, Core_Supported_Product__r.Core_P
     public static List<id> getChildIPSProdctsToProject(string ipsProject){
         List<id> prodIds = new List<id>();
         if (Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
-            // Venrublity Fix - Refering query to service class
             lstIPSProject = (List<Core_IPS_Project__c>)Core_IPS_QueryService.queryRecords(
                 'select id, (select id, Core_Intel_Product__c from IPS_Products__r) from Core_IPS_Project__c where id = :ipsProject',
                 new Map<String, Object>{ 'ipsProject' => ipsProject }

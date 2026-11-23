@@ -4,8 +4,8 @@
     <description>Allows access for dashboards, data flow jobs etc for Azure API user</description>
     <label>CRM Data Analytics</label>
     <oauthConfig>
-        <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6hBMcXJBD78UChAdoQAZ84F5vrBc6MdoEezknoEOOzbOjmvAhqBKo25qYJDs</consumerKey>
+        <callbackUrl>https://test.salesforce.com/services/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxMTpxBgO2ochS3V4M6uq2AnNXikWf0FLUUJIWl6LFoDUMlxYT8O8ULhpIpBB</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -23,7 +23,7 @@
         <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>azure@intel.com.crm</oauthClientCredentialUser>
+        <oauthClientCredentialUser>azure@intel.com.crm.crmqa9</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>
         <scopes>Wave</scopes>

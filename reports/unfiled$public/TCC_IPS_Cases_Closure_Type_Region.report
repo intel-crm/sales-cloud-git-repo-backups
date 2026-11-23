@@ -31,10 +31,6 @@
         <field>STATUS</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Case.Core_IPS_Age__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_IPS_Category_and_Subcategory__c</field>
     </columns>
     <filter>
@@ -66,8 +62,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2026-09-25</endDate>
+        <endDate>2025-11-05</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2024-01-01</startDate>
     </timeFrameFilter>
 </Report>

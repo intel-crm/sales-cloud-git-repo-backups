@@ -1045,9 +1045,9 @@
                     <label>Partner Portal- Deal Reg</label>
                 </value>
                 <value>
-                    <fullName>Deal Reg Financial Incentive Access</fullName>
+                    <fullName>Deal Incentive User</fullName>
                     <default>false</default>
-                    <label>Deal Reg Financial Incentive Access</label>
+                    <label>Deal Incentive User</label>
                 </value>
                 <value>
                     <fullName>Test Entitlement for Failure</fullName>
@@ -1063,6 +1063,11 @@
                     <fullName>EPS Verified Company</fullName>
                     <default>false</default>
                     <label>EPS Verified Company</label>
+                </value>
+                <value>
+                    <fullName>RPS Retailer</fullName>
+                    <default>false</default>
+                    <label>RPS Retailer</label>
                 </value>
                 <value>
                     <fullName>Intel Developer Cloud Enterprise</fullName>
@@ -1170,9 +1175,19 @@
                     <label>Platform Diagnostics External Upload</label>
                 </value>
                 <value>
-                    <fullName>Deal Incentive User</fullName>
+                    <fullName>Return for Credit( IAO - QA) - Dual</fullName>
                     <default>false</default>
-                    <label>Deal Incentive User</label>
+                    <label>Return for Credit( IAO - QA) - Dual</label>
+                </value>
+                <value>
+                    <fullName>Return for Credit( R4C - IAO(QA) )</fullName>
+                    <default>false</default>
+                    <label>Return for Credit( R4C - IAO(QA) )</label>
+                </value>
+                <value>
+                    <fullName>OTC IP Double Bailment External Reporting Users</fullName>
+                    <default>false</default>
+                    <label>OTC IP Double Bailment External Reporting Users</label>
                 </value>
                 <value>
                     <fullName>CCF Account Budget Administrator</fullName>
@@ -1361,6 +1376,12 @@
                     <label>External Content Viewer</label>
                 </value>
                 <value>
+                    <fullName>IP PBI OTC Double Bailment External Reports Read-Only</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IP PBI OTC Double Bailment External Reports Read-Only</label>
+                </value>
+                <value>
                     <fullName>Intel On Demand Purchase Agent VLS</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -1395,12 +1416,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>QDMS-Test</label>
-                </value>
-                <value>
-                    <fullName>RPS Retailer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>RPS Retailer</label>
                 </value>
                 <value>
                     <fullName>SEP for External DFAEs</fullName>

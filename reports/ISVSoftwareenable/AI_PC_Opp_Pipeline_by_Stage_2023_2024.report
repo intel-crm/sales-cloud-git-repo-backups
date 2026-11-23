@@ -91,9 +91,6 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Concatenated_Technology_Enabled__c</field>
-    </columns>
     <crossFilters>
         <criteriaItems>
             <column>Core_Solution_Areas__c</column>

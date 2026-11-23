@@ -229,6 +229,171 @@
     <enableFeeds>true</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <fieldSets>
+        <fullName>BT_User_EPIM</fullName>
+        <description>Fieldset for BT_User_EPIM Field Masking</description>
+        <displayedFields>
+            <field>Signature</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastModifiedById</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Phone</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>MobilePhone</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>BadgeText</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Longitude</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Division</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>ManagerId</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Latitude</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>City</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CompanyName</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SenderEmail</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SenderName</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CreatedById</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Username</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Fax</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Email</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Title</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>GeocodeAccuracy</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>PostalCode</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>EmployeeNumber</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Country</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Department</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>State</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Alias</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FederationIdentifier</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>AboutMe</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Street</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Extension</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>BT_User_EPIM</label>
+    </fieldSets>
+    <fieldSets>
         <fullName>CPQ_Lookup</fullName>
         <description>User Lookup</description>
         <displayedFields>
@@ -1222,7 +1387,6 @@ TRUE, FALSE)</formula>
     </fields>
     <fields>
         <fullName>User_Unique__c</fullName>
-        <description>Field is used to generate unique user counts on various reports</description>
         <externalId>false</externalId>
         <formula>1</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -1473,30 +1637,6 @@ TRUE, FALSE)</formula>
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>Aggregated_Users2</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <columns>CORE.USERS.USERNAME</columns>
-        <columns>CORE.USERS.SAML_SUBJECT</columns>
-        <columns>CORE.USERS.LAST_LOGIN</columns>
-        <columns>CORE.USER_ROLE.NAME</columns>
-        <columns>CORE.USERS.ACTIVE</columns>
-        <columns>CORE.PROFILE.NAME</columns>
-        <columns>MANAGER</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CORE.USERS.EMAIL</field>
-            <operation>equals</operation>
-            <value>jafetx.esquivel@intel.com</value>
-        </filters>
-        <label>Aggregated_Users2</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>AllUserLoginAs</fullName>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.COMPANY_NAME</columns>
@@ -1525,17 +1665,11 @@ TRUE, FALSE)</formula>
         <columns>CORE.PROFILE.NAME</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CORE.USERS.EMAIL</field>
+            <field>CORE.PROFILE.NAME</field>
             <operation>equals</operation>
-            <value>salvadorx.miguel.lacra@intel.com</value>
-        </filters>
-        <filters>
-            <field>CORE.USERS.FIRST_NAME</field>
-            <operation>equals</operation>
-            <value>daniela</value>
+            <value>Data Ops</value>
         </filters>
         <label>All Users -Data Ops</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>AllUsersProdSuppDisp</fullName>
@@ -1629,9 +1763,10 @@ TRUE, FALSE)</formula>
         <filters>
             <field>CORE.PROFILE.NAME</field>
             <operation>equals</operation>
-            <value>IT Admin</value>
+            <value>Core_Integration_Minimal</value>
         </filters>
         <label>All Users - IT Admins</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>AllUsers_SysAdmins</fullName>
@@ -1647,10 +1782,11 @@ TRUE, FALSE)</formula>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.PROFILE.NAME</field>
-            <operation>equals</operation>
+            <operation>contains</operation>
             <value>System Administrator</value>
         </filters>
         <label>All Users - System Admins</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>AllUsers_SystemAdmin</fullName>
@@ -1664,13 +1800,7 @@ TRUE, FALSE)</formula>
         <columns>CORE.USERS.ACTIVE</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CORE.PROFILE.NAME</field>
-            <operation>equals</operation>
-            <value>System Adminstrator</value>
-        </filters>
         <label>All Users - Syetem Admins</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>All_Partner_Users</fullName>
@@ -1726,15 +1856,52 @@ TRUE, FALSE)</formula>
         <filters>
             <field>CORE.USERS.SAML_SUBJECT</field>
             <operation>equals</operation>
-            <value>300010530861</value>
-        </filters>
-        <filters>
-            <field>CORE.USERS.EMAIL</field>
-            <operation>equals</operation>
-            <value>de.yoon@samsung.com</value>
+            <value>12248696</value>
         </filters>
         <label>Aris_View</label>
         <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>CPT_Commission_GCO</fullName>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.COMPANY_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>SMG/GMC Read Only</value>
+        </filters>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>Commissions Office Inquiries Admin User</value>
+        </filters>
+        <label>Commission GCO/SMG Users</label>
+    </listViews>
+    <listViews>
+        <fullName>CPT_Commission_Sales_Manager</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.COMPANY_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>Sales Manager</value>
+        </filters>
+        <label>Commission Sales Manager</label>
     </listViews>
     <listViews>
         <fullName>Core_Frozen_Users</fullName>
@@ -1826,7 +1993,6 @@ TRUE, FALSE)</formula>
         <columns>CORE.USERS.USERNAME</columns>
         <columns>CORE.USERS.EMAIL</columns>
         <columns>CORE.PROFILE.NAME</columns>
-        <columns>Core_Federation_ID__c</columns>
         <columns>CORE.USERS.LAST_LOGIN</columns>
         <columns>CREATED_BY_NAME</columns>
         <columns>CREATED_DATE</columns>

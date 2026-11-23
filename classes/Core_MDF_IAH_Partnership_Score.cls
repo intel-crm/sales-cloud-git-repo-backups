@@ -106,7 +106,7 @@ public without sharing class Core_MDF_IAH_Partnership_Score {
         
         try{
             wrapperPartnershipScoreObj wpsc = (wrapperPartnershipScoreObj)JSON.deserialize(input.getBody(),wrapperPartnershipScoreObj.class);
-            partnershipScoreList = wpsc.elements;
+            partnershipScoreList = wpsc.elements != null ? wpsc.elements : new List<Elements>();
             Map<Id,string> programIdToLabelMap = new Map<Id,string>();
 			for(Core_MDF_ChannelProgram__mdt channelProgram : [Select Id, Core_MDF_Technical_Program_Name__c,Core_MDF_Program_ID__c FROM Core_MDF_ChannelProgram__mdt LIMIT 1000]){
                 programIdToLabelMap.put(channelProgram.Core_MDF_Program_ID__c, channelProgram.Core_MDF_Technical_Program_Name__c);

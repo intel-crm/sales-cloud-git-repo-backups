@@ -1,0 +1,1 @@
+{"_metadata": {"count": 58320,"limit": 10000,"offset": 1},"categories": [{"id": "VPH_L1_100011","parentId": "root","sourceId": "100011","name": "Drones"},{"id": "VPH_L1_1201","parentId": "root","sourceId": "1201","name": "Server Products"}]}

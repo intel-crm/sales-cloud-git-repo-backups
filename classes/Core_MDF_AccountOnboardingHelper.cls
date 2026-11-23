@@ -414,7 +414,7 @@ Modified By:        Date:       Changes: s
                                 groupDeveloperName = 'Core_MDF_CCP_' + vcId + '_' + programCode + '_' + 'EXT';
                                 
                     //added EEF check for stamping all access group
-                    if(programCode == 'CCF' || programCode == 'DCF' || programCode == 'EEF'){
+                    if(Core_MDF_CCP_ConstantClass.allAccessGroupSupportedProgramsCode.contains(programCode)){
                                     //Use Virtual Corp Id for all access group as well
                                     String vcIdStr = String.valueOf(vcId);
                                     allAccessGroupName = 'CCP ALL ACCESS ' + vcIdStr.right(15) + ' ' + programCode + ' ' + 'EXT'; //38 charcters
@@ -430,7 +430,7 @@ Modified By:        Date:       Changes: s
                     grpAccOnboardMap.put(newGroup,accOnboard);
                     //Create a group for All_access_account_specific_group- added by NA for CCF/DCF Recovery admin access
                     //added EEF check for stamping all access group
-                    if(programCode == 'CCF' || programCode == 'DCF' || programCode == 'EEF'){
+                    if(Core_MDF_CCP_ConstantClass.allAccessGroupSupportedProgramsCode.contains(programCode)){
                         Group allAccessGrp = new Group();
                         allAccessGrp.Name = allAccessGroupName;
                         allAccessGrp.DeveloperName = allAccessGroupDeveloperName;

@@ -296,6 +296,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label>Motivo de Cancelamento da Reivindicação</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>Nota de texto relacionada à solicitação</help>
         <label>Comentários sobre a solicitação</label>
         <name>Core_MDF_Claim_Comments__c</name>

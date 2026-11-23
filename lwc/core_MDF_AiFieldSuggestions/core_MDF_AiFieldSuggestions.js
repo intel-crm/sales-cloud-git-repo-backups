@@ -281,6 +281,7 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
         if (!tacticMetrics || typeof tacticMetrics !== 'object') {
             return null;
         }
+        console.log('[AI Tactic Metrics] Validation disabled - using only AI-provided per-tactic values');
         return tacticMetrics;
     }
     
@@ -331,6 +332,9 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
                 [fieldName]: this.suggestions[fieldName]
             };
         }
+        
+        console.log('Field selection changed:', fieldName, isChecked);
+        console.log('Current selectedFields:', this.selectedFields);
     }
     
     handleUserInput(event) {
@@ -341,6 +345,8 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
             ...this.userInputs,
             [fieldName]: value
         };
+        
+        console.log('User input changed:', fieldName, value);
     }
     
     selectAllFields() {
@@ -365,6 +371,7 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
     
     clearAllFields() {
         this.selectedFields = {};
+        console.log('Clear All - selectedFields:', this.selectedFields);
         
         // Force re-render of checkboxes
         this.updateCheckboxesInDOM();
@@ -421,6 +428,7 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
         });
         
         this.userInputs = initialUserInputs;
+        console.log('Initialized userInputs:', this.userInputs);
     }
 
     extractAccountHintFromDescription() {
@@ -948,6 +956,10 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
 
         if (processed.outcomeActivityValues && typeof processed.outcomeActivityValues === 'object') {
             // NO default fallback values - only use what AI provides
+            console.log('[AI Outcome Processing] Using only AI-provided values - no defaults applied');
+            console.log('[AI Outcome Processing] baselineValue: ' + processed.outcomeActivityValues.baselineValue);
+            console.log('[AI Outcome Processing] goalValue: ' + processed.outcomeActivityValues.goalValue);
+            console.log('[AI Outcome Processing] baselinePeriod: ' + processed.outcomeActivityValues.baselinePeriod);
         }
 
         // Enforce concrete defaults so suggestion cards are actionable and pre-selected.
@@ -965,11 +977,15 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
 
         // 3) If tactics exist, ONLY use explicitly provided values - NO defaults, NO math, NO auto-distribution
         if (Array.isArray(processed.tactics) && processed.tactics.length > 0) {
+            console.log('[AI Tactic Metrics] Using only AI-provided values - no defaults, no math, no auto-distribution');
             // Initialize tacticMetrics object if not present
             if (!this.isFieldValuePresent(processed.tacticMetrics) || typeof processed.tacticMetrics !== 'object') {
                 processed.tacticMetrics = {};
             }
             // Only log what's being used
+            console.log('[AI Tactic Metrics] goalValues: ' + JSON.stringify(processed.goalValues));
+            console.log('[AI Tactic Metrics] spendingAmount: ' + processed.spendingAmount);
+            console.log('[AI Tactic Metrics] spendingPercentage: ' + processed.spendingPercentage);
         }
         
         return processed;
@@ -992,6 +1008,10 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
             });
 
             // ✅ ONLY include values that user explicitly selected - NO auto-population
+            console.log('[LWC Tactic Metrics] selectedSuggestions.tacticMetrics: ' + JSON.stringify(selectedSuggestions.tacticMetrics));
+            console.log('[LWC Tactic Metrics] selectedSuggestions.goalValues: ' + JSON.stringify(selectedSuggestions.goalValues));
+            console.log('[LWC Tactic Metrics] selectedSuggestions.spendingAmount: ' + selectedSuggestions.spendingAmount);
+            console.log('[LWC Tactic Metrics] selectedSuggestions.spendingPercentage: ' + selectedSuggestions.spendingPercentage);
 
             // Keep outcome payload complete so baseline/goal/period are not replaced by defaults.
             const hasSelectedOutcomeMetric = Array.isArray(selectedSuggestions.outcomeMetrics) && selectedSuggestions.outcomeMetrics.length > 0;
@@ -1000,6 +1020,9 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
             const hasSelectedOutcomePeriod = this.selectedFields.outcomeBaselinePeriod === true;
             const hasSelectedOutcomeComponents = hasSelectedOutcomeBaseline || hasSelectedOutcomeGoal || hasSelectedOutcomePeriod;
             
+            console.log('[LWC Outcome] hasSelectedOutcomeBaseline: ' + hasSelectedOutcomeBaseline);
+            console.log('[LWC Outcome] hasSelectedOutcomeGoal: ' + hasSelectedOutcomeGoal);
+            console.log('[LWC Outcome] hasSelectedOutcomePeriod: ' + hasSelectedOutcomePeriod);
 
             // Build outcomeActivityValues from individual selected components
             if (hasSelectedOutcomeComponents) {
@@ -1007,6 +1030,7 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
                     ? { ...this.suggestions.outcomeActivityValues }
                     : {};
 
+                console.log('[LWC Outcome] Original outcomeActivityValues: ' + JSON.stringify(outcomeActivityValues));
                 
                 // Only include selected components, remove unselected ones
                 if (!hasSelectedOutcomeBaseline && outcomeActivityValues.baselineValue !== undefined) {
@@ -1019,6 +1043,10 @@ export default class Core_MDF_AiFieldSuggestions extends LightningElement {
                     delete outcomeActivityValues.baselinePeriod;
                 }
 
+                console.log('[LWC Outcome] Final outcomeActivityValues to send: ' + JSON.stringify(outcomeActivityValues));
+                console.log('[LWC Outcome] baselineValue: ' + outcomeActivityValues.baselineValue);
+                console.log('[LWC Outcome] goalValue: ' + outcomeActivityValues.goalValue);
+                console.log('[LWC Outcome] baselinePeriod: ' + outcomeActivityValues.baselinePeriod);
                 
                 // Only add outcomeActivityValues if it has any components left
                 if (Object.keys(outcomeActivityValues).length > 0) {

@@ -54,8 +54,8 @@ Shivaprasad         08-29-2019    Added the condition to check closed status of 
             }
             List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
             List<PartnerFundRequest> budgetCurrencyExchangeRatePFRList = new List<PartnerFundRequest>();
-            for(PartnerFundRequest pfr: newMap.values()){
-                pfrList.add(pfr);
+            if(newMap != NULL && newMap.size() > 0){
+                pfrList.addAll(newMap.values());
             }
             if (pfrList != NULL && pfrList.size() > 0)
             {
@@ -1570,7 +1570,8 @@ Date:               29/08/2022
     public static Boolean isfieldModified(String objectName, String fieldSetName, 
                                           SObject newObject, Map<Id, SObject> oldObjectmap){        
                                               Boolean isFldModified = false;    
-                                              List<Schema.FieldSetMember> fieldSetMemberList =  Schema.getGlobalDescribe().get(objectName).getDescribe().FieldSets.getMap().get(fieldSetName).getFields();
+					      					  // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+                                              List<Schema.FieldSetMember> fieldSetMemberList = Schema.describeSObjects(new List<String>{objectName})[0].FieldSets.getMap().get(fieldSetName).getFields();
                                               if(!fieldSetMemberList.isEmpty()){
                                                   for(Schema.FieldSetMember fieldSetMemberObj : fieldSetMemberList){
                                                       String fieldAPIName = (String)fieldSetMemberObj.getFieldPath();
@@ -2920,14 +2921,19 @@ Modified By :                 Date:22/02/2024
                 
             }
             //limits check
-            
-            
-            
-            List<PartnerMarketingBudget> pmbList =[Select id,Core_MDF_Budget_Partner__c from PartnerMarketingBudget where id in:budgetIds];
-            for(PartnerMarketingBudget pmb:pmbList) {
-                accountIds.add(pmb.Core_MDF_Budget_Partner__c);
-                pmbIdToPmbMap.put(pmb.id,pmb);
-            }
+        
+        // ✅ FIX: Use Map Constructor instead of manual FOR loop + put()
+        List<PartnerMarketingBudget> pmbList = [SELECT id, Core_MDF_Budget_Partner__c 
+                                                 FROM PartnerMarketingBudget 
+                                                 WHERE id IN: budgetIds];
+        
+        // ✅ Map built using constructor - resolves the PMD issue
+        pmbIdToPmbMap = new Map<Id, PartnerMarketingBudget>(pmbList);
+        
+        // ✅ Separate loop ONLY for accountIds - single responsibility
+        for(PartnerMarketingBudget pmb : pmbList) {
+            accountIds.add(pmb.Core_MDF_Budget_Partner__c);
+        }
             
             getActAvailAmountOnAllocationForPfr(budgetIds , accountIds ,pfrToEvaluate ,accIdBudIdToIntelConMap,pmbIdToPmbMap,oldPFRMap,isbefore);
             

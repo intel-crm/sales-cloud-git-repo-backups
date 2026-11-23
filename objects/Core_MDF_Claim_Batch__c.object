@@ -404,6 +404,7 @@ $Label.Core_MDF_Intel_System_User
             <value>Successful</value>
         </filters>
         <label>Claim Batches - Successful</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>{000000}</displayFormat>

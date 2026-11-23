@@ -106,7 +106,6 @@ global class ProcessProfileResponseBatch implements Database.Batchable<sObject>,
     }
 
     global void finish(Database.BatchableContext BC) {
-
     }
 
     //Schedulable Implementation
@@ -171,7 +170,7 @@ global class ProcessProfileResponseBatch implements Database.Batchable<sObject>,
         objCLE.Core_sObjectId__c = reqId;
         objCLE.Core_sObjectType__c = 'PRM_Registration_Request__c';
         objCLE.Core_Tags__c = strTags;
-
         return objCLE; 
+        
     }
 }

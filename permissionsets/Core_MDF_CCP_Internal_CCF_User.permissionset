@@ -5,6 +5,16 @@
         <name>Core_MDF_CCP_Internal_CCF_User</name>
     </customPermissions>
     <description>Internal User for CCP Program</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Is_Outcome_Based_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Program__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP Internal CCF User</label>
     <license>Salesforce</license>

@@ -5,10 +5,11 @@
     <authenticationFailureAction>Discard</authenticationFailureAction>
     <authorizationFailureAction>Discard</authorizationFailureAction>
     <emailServicesAddresses>
+        <authorizedSenders>gangadharx.raju.udayabhanu@intel.com</authorizedSenders>
         <developerName>Core_IPS_AddCaseComment</developerName>
         <isActive>true</isActive>
         <localPart>core_ips_addcasecomment</localPart>
-        <runAsUser>salesforce.system.user@intel.com.crm</runAsUser>
+        <runAsUser>12123695@intel.com.crm.crmqa9</runAsUser>
     </emailServicesAddresses>
     <errorRoutingAddress>sriranjini.narasimhan@intel.com</errorRoutingAddress>
     <functionInactiveAction>Discard</functionInactiveAction>

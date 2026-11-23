@@ -55,12 +55,6 @@
     <columns>
         <field>Opportunity.Core_Concatenated_Technology_Enabled__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Concatenated_Application_workload__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Intel_Platform__c</field>
-    </columns>
     <filter>
         <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
         <criteriaItems>
@@ -131,7 +125,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

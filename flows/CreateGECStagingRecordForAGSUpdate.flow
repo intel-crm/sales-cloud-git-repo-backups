@@ -2,6 +2,17 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>60.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Ganesh Testing Flow</description>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>440</locationX>
+        <locationY>539</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>ContactName</name>
@@ -34,6 +45,9 @@
         <label>Create GEC Stagging Record</label>
         <locationX>176</locationX>
         <locationY>323</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </connector>
         <faultConnector>
             <targetReference>Create_Log_Entry_For_GEC_Staging_record</targetReference>
         </faultConnector>
@@ -93,6 +107,9 @@
         <label>Create Log Entry For GEC Staging record</label>
         <locationX>440</locationX>
         <locationY>431</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -154,14 +171,14 @@
         </filters>
         <filters>
             <field>Core_Enterprise_Id__c</field>
-            <operator>IsNull</operator>
+            <operator>NotEqualTo</operator>
             <value>
-                <booleanValue>false</booleanValue>
+                <stringValue></stringValue>
             </value>
         </filters>
         <object>Contact</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

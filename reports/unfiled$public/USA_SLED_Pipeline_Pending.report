@@ -102,11 +102,11 @@
             <value>Pending</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
+            <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Alastair Duncan,Rick Lisa,Alan Rose,Michael OBrien,Katherine Heidelman,Robert Udermann,David Minnaar,Hugues Morin,Mel Fekete</value>
+            <value>Rick Lisa,Elizabeth McGee</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -117,7 +117,7 @@
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsAcross>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>Year</dateGranularity>
         <field>CLOSE_DATE2</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
@@ -127,7 +127,6 @@
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>

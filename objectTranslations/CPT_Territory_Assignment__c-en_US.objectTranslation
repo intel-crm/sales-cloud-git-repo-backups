@@ -19,11 +19,11 @@
     </fields>
     <fields>
         <help><!-- Value is in whole dollars. --></help>
-        <label><!-- BR - CCG Target --></label>
+        <label><!-- BR - CCPG Target --></label>
         <name>CPT_BR_CCG_Target__c</name>
     </fields>
     <fields>
-        <label><!-- BR - CCG --></label>
+        <label><!-- BR - CCPG --></label>
         <name>CPT_BR_CCG__c</name>
     </fields>
     <fields>
@@ -210,7 +210,27 @@
         <label><!-- Unique Identifier --></label>
         <name>CPT_Unique_Identifier__c</name>
     </fields>
+    <fields>
+        <label><!-- Wins -Deal Target --></label>
+        <name>CPT_Wins_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins - Deal --></label>
+        <name>CPT_Wins_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins -Design Target --></label>
+        <name>CPT_Wins_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins - Design --></label>
+        <name>CPT_Wins_Design__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This Territory Assignment cannot be updated because its Quota Setup is Completed. --></errorMessage>
+        <name>CPT_Block_TA_Update_When_QS_Completed</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- The Billings Revenue Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee. --></errorMessage>
         <name>CPT_Prevent_BR_Territory_BU_Update</name>
@@ -218,6 +238,14 @@
     <validationRules>
         <errorMessage><!-- To assign a CR-KPI to an employee, the Consumption Revenue Target for the CR-KPI must be greater than $0. --></errorMessage>
         <name>CPT_Prevent_CR_Territory_BU_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- For Plans 120 and 122, select either Consumption Revenue OEM or Partner, not both, on this Territory Assignment. --></errorMessage>
+        <name>CPT_Prevent_Multiple_TT_CR_120and122</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- For Plan 240, select either Consumption Revenue Partner or Retail, not both, on this Territory Assignment. --></errorMessage>
+        <name>CPT_Prevent_Multiple_TT_CR_240</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You do not have permission to make updates to the Target field. --></errorMessage>

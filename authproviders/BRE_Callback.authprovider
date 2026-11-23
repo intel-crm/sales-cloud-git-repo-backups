@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6jXXUoDgm4rQxpXI3fJgdBrztzTplCELUZXe46OlkwTDswnogpndMchnFJR7</consumerKey>
+    <authorizeUrl>https://intel--crmqa9.sandbox.my.salesforce.com/services/oauth2/authorize</authorizeUrl>
+    <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxMTpxBgO2ochDbmIbEp1DYg6_QoNRFdb0TZU51koDMz_clr64jXYe9pSxjcV</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
     <defaultScopes>full</defaultScopes>
     <friendlyName>BRE_Callback</friendlyName>
@@ -11,4 +12,5 @@
     <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
     <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://intel--crmqa9.sandbox.my.salesforce.com/services/oauth2/token</tokenUrl>
 </AuthProvider>

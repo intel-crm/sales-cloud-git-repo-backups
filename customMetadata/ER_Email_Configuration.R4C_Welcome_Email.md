@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>BusinessType__c</field>
-        <value xsi:type="xsd:string">Return for Credit - Inactive</value>
+        <value xsi:type="xsd:string">Return for Credit</value>
     </values>
     <values>
         <field>Business_Event__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Entitlements__c</field>
-        <value xsi:type="xsd:string">Return for Credit (R4C) - Inactive</value>
+        <value xsi:type="xsd:string">Return for Credit (R4C)</value>
     </values>
     <values>
         <field>Folder_Name__c</field>
@@ -36,6 +36,6 @@
     </values>
     <values>
         <field>Template_Name__c</field>
-        <value xsi:type="xsd:string">SCRREQTOAPVD_R4C_Inactive</value>
+        <value xsi:type="xsd:string">SCRREQTOAPVD_R4C</value>
     </values>
 </CustomMetadata>

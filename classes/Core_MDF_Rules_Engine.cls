@@ -89,10 +89,7 @@ public without sharing class Core_MDF_Rules_Engine {
 		 for (String InputId: input.keyset()) {
 		   String inpruletyp = InputId;
 		   inpid = input.get(InputId);
-		   for (id singleinpid: inpid) {
-			 actinputid.add(singleinpid);
-		   }
- 
+		   actinputid.addAll(inpid);
 		 }
 		 for (string objectName: objtofields.keyset()) {
 		   Set < string > fields = objtofields.get(objectName);

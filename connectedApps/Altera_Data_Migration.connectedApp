@@ -6,14 +6,14 @@
         <callbackUrl>https://test.salesforce.com
 https://test.salesforce.com/services/oauth2/token
 https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6laVgS6c33Eth9yKqtXCSTS9WAYVKDcq0_mRPTayrhCI_GaghrxWr1XmwXBF</consumerKey>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxLPcGlZEtJdSkrqXppJZNzeAcwqJjOqj7HyPfBZOe7ndNSTPVTp9j4_TX8Hj</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isDPopEnabled>false</isDPopEnabled>
-        <isDeviceFlowEnabled>true</isDeviceFlowEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
         <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
         <isIpBindingEnabled>false</isIpBindingEnabled>

@@ -108,6 +108,15 @@
         <fullName>UsageType</fullName>
         <trackHistory>false</trackHistory>
     </fields>
+    <listViews>
+        <fullName>Active_Expression_Sets</fullName>
+        <columns>Name</columns>
+        <columns>CreatedBy</columns>
+        <columns>ApiName</columns>
+        <columns>UsageType</columns>
+        <filterScope>Mine</filterScope>
+        <label>Active Expression Sets</label>
+    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>ApiName</customTabListAdditionalFields>
         <customTabListAdditionalFields>CreatedBy</customTabListAdditionalFields>

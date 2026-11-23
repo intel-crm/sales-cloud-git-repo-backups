@@ -1,12 +1,5 @@
 @isTest(seeAllData=false)
 public class Core_IPS_CaseCreateHelperTest {
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
-
     @istest
     private static void testEditAccess(){
         User currentUser = [Select profile.Name from user where id=:userinfo.getUserId()];
@@ -33,7 +26,7 @@ public class Core_IPS_CaseCreateHelperTest {
         for(User usr : listOfUser){
             usr.ProfileID =  profiles.get('System Administrator');
         }
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'));  
         System.assert(listOfUser.get(0).profileid !=null, 'true');  
         System.runAs(listOfUser.get(0)){
@@ -270,12 +263,12 @@ public class Core_IPS_CaseCreateHelperTest {
                 Profile p = [Select id,Name from Profile Where Name like '%IPS Agent-Partner%'];
                 u.ProfileId = p.id;
                 u.ContactId = listOfContacts[0].Id;
-                insertUsersWithValidationBypass(new List<User>{u});
+                Insert u;
                 User u1 = TestUtilities.getListOfUser(1)[0];
                 Profile p1 = [Select id,Name from Profile Where Name like '%IPS External Customer%'];
                 u1.ProfileId = p1.Id;
                 u1.ContactId = ContactRecord.Id;
-                insertUsersWithValidationBypass(new List<User>{u1});
+                insert u1;
                 System.runas(u){
                     
                     new Core_IPS_CaseCreateHelper().SubmitCaseRecord(caseRecord,listOfContacts.get(0),edq);
@@ -311,7 +304,7 @@ public class Core_IPS_CaseCreateHelperTest {
             List<Profile> proflst = [select id, name from Profile where name = 'Sales Rep-BB' limit 1];
             userlist[0].profileid=proflst[0].id;
             userlist[0].username='salesrep020211.abc@user.com';
-            insertUsersWithValidationBypass(userlist);
+            insert userlist;
             System.runAs(userlist[0]) {
                 Core_IPS_CaseCreateHelper.getAccountList();
             }    
@@ -344,7 +337,7 @@ public class Core_IPS_CaseCreateHelperTest {
         for(User usr : listOfUser){
             usr.ProfileID =  profiles.get('System Administrator');
         }
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.runAs(listOfUser.get(0)){
             List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
             insert listOfAccounts;
@@ -429,7 +422,6 @@ public class Core_IPS_CaseCreateHelperTest {
         for(User usr : sysAdminUsr){
             usr.ProfileID =  profiles.get('System Administrator'); 
         }
-        insertUsersWithValidationBypass(sysAdminUsr);
         UserRole role = new UserRole();
         role.name='CEO';
         // Creating SETUP OBJECT (USERROLE) RECORD
@@ -444,11 +436,8 @@ public class Core_IPS_CaseCreateHelperTest {
             usr.ProfileID =  profiles.get('System Administrator');
             usr.userroleid = role.id; 
         }
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert listOfInternalSfUsers;
-        }
-        //insert listOfInternalSfUsers; 
+        
+        insert listOfInternalSfUsers; 
         Account accountRec1 = TestUtilities.getAccount();
         System.RunAs(listOfInternalSfUsers [0]){
             accountRec1.Name = 'DellProducts2';
@@ -587,7 +576,7 @@ public class Core_IPS_CaseCreateHelperTest {
         userlist[1].username='salesrep020212.abc@user.com';
         userlist[2].profileid=proflst[2].id;
         userlist[2].username='gecUser020212.abc@user.com';
-        insertUsersWithValidationBypass(userlist);
+        insert userlist;
         Map<string,ID> caseRecordType = new Map<string,ID>();
         for(Recordtype rt:[Select ID,Name from Recordtype where sobjectType = 'Case'])
         {  
@@ -835,7 +824,6 @@ Test.stopTest();
         sysAdminUsr = TestUtilities.getListOfUser(1);
         sysAdminUsr.get(0).UserName = 'SysAdminUsr'+sysAdminUsr.get(0).UserName;
         sysAdminUsr.get(0).ProfileID =  mapOfProfiles.get('System Administrator');
-        insertUsersWithValidationBypass(sysAdminUsr);
         // Create UserRole Record
         UserRole role = new UserRole();
         role.name='CEO';
@@ -1081,7 +1069,7 @@ Test.stopTest();
         for(User usr : listOfUser){
             usr.ProfileID =  profiles.get('System Administrator');
         }
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'));  
         System.assert(listOfUser.get(0).profileid !=null, 'true');  
         System.runAs(listOfUser.get(0)){
@@ -1337,12 +1325,12 @@ Test.stopTest();
                 Profile p = [Select id,Name from Profile Where Name like '%IPS Agent-Partner%'];
                 u.ProfileId = p.id;
                 u.ContactId = listOfContacts[0].Id;
-                insertUsersWithValidationBypass(new List<User>{u});
+                Insert u;
                 User u1 = TestUtilities.getListOfUser(1)[0];
                 Profile p1 = [Select id,Name from Profile Where Name like '%IPS External Customer%'];
                 u1.ProfileId = p1.Id;
                 u1.ContactId = ContactRecord.Id;
-                insertUsersWithValidationBypass(new List<User>{u1});
+                insert u1;
                 System.runas(u){
                     
                     new Core_IPS_CaseCreateHelper().SubmitCaseRecord(caseRecord,listOfContacts.get(0),edq);
@@ -1378,7 +1366,7 @@ Test.stopTest();
             List<Profile> proflst = [select id, name from Profile where name = 'Sales Rep-BB' limit 1];
             userlist[0].profileid=proflst[0].id;
             userlist[0].username='salesrep020211.abc@user.com';
-            insertUsersWithValidationBypass(userlist);
+            insert userlist;
             System.runAs(userlist[0]) {
                 Core_IPS_CaseCreateHelper.getAccountList();
             }    

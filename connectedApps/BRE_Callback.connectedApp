@@ -3,8 +3,8 @@
     <contactEmail>amal.thomas@intel.com</contactEmail>
     <label>BRE_Callback</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/services/authcallback/BRE_Callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6jXXUoDgm4rQxpXI3fJgdBrztzTplCELUZXe46OlkwTDswnogpndMchnFJR7</consumerKey>
+        <callbackUrl>https://intel--crmqa9.sandbox.my.salesforce.com/services/authcallback/BRE_Callback</callbackUrl>
+        <consumerKey>3MVG9_IS_Cbuy2eYpGLdUvVlhxMTpxBgO2ochDbmIbEp1DYg6_QoNRFdb0TZU51koDMz_clr64jXYe9pSxjcV</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -19,7 +19,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Basic</scopes>
@@ -52,7 +52,7 @@
         <scopes>PwdlessLogin</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>ENFORCE</ipRelaxation>
+        <ipRelaxation>BYPASS</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>

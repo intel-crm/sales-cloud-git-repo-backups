@@ -3,10 +3,13 @@
     <actionCalls>
         <name>Call_Apex_class</name>
         <label>Call Apex class</label>
-        <locationX>826</locationX>
-        <locationY>626</locationY>
+        <locationX>610</locationX>
+        <locationY>923</locationY>
         <actionName>PRM_CreateAccountAndRelatedRecords</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>regReqList</name>
@@ -20,10 +23,13 @@
     <actionCalls>
         <name>Manual_Approval_Process_Flow</name>
         <label>Manual Approval Process</label>
-        <locationX>387</locationX>
-        <locationY>265</locationY>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>processDefinitionNameOrId</name>
@@ -80,8 +86,12 @@
     <decisions>
         <name>Is_Not_Blocked_contact_or_account</name>
         <label>Is Not Blocked contact or account</label>
-        <locationX>157</locationX>
-        <locationY>671</locationY>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Manual_Approval_Process_Flow</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>True</name>
@@ -109,8 +119,11 @@
     <decisions>
         <name>Manual_Approval_Process</name>
         <label>Manual Approval Process</label>
-        <locationX>659</locationX>
-        <locationY>448</locationY>
+        <locationX>610</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_8</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_Returning_User</name>
@@ -229,6 +242,21 @@
         </rules>
     </decisions>
     <description>Used for the Manual Approval Process</description>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>610</locationX>
+        <locationY>1031</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>578</locationX>
+        <locationY>539</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_8</name>
+        <locationX>1018</locationX>
+        <locationY>431</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>PRM_Auto_Record_Submission {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PRM_Auto_Record_Submission</label>
@@ -241,7 +269,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -254,8 +282,8 @@
     <recordLookups>
         <name>get_IPA_Admin_Config</name>
         <label>get IPA Admin Config</label>
-        <locationX>132</locationX>
-        <locationY>466</locationY>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Is_Not_Blocked_contact_or_account</targetReference>
@@ -290,8 +318,8 @@
     <recordUpdates>
         <name>Set_Status_to_Approved</name>
         <label>Set Status to Approved</label>
-        <locationX>362</locationX>
-        <locationY>759</locationY>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
         <connector>
             <targetReference>Call_Apex_class</targetReference>
         </connector>
@@ -310,8 +338,8 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>543</locationX>
-        <locationY>48</locationY>
+        <locationX>484</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Manual_Approval_Process</targetReference>
         </connector>
@@ -327,7 +355,7 @@
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>Admin_Registration_RecordType</name>
         <dataType>String</dataType>

@@ -1,0 +1,52 @@
+<template>
+    <lightning-button label="Search Accounts" icon-name="utility:search"
+        onclick={handleSearch} disabled={searchDisabled}></lightning-button>
+    <template lwc:if={showClearSelection}>
+        <lightning-button class="slds-m-left_small" label="Clear Account Selection"
+            onclick={handleClearSelection}></lightning-button>
+        <p class="slds-m-top_small" role="status">Populated account and address fields are read-only. Partner Role remains editable. Complete any missing fields, or clear the selection to search for another account.</p>
+    </template>
+    <template lwc:if={errorMessage}>
+        <div class="slds-text-color_error slds-m-top_small" role="alert">{errorMessage}</div>
+    </template>
+    <template lwc:if={modalOpen}>
+        <section role="dialog" tabindex="-1" aria-modal="true"
+            aria-labelledby="account-search-title" class="slds-modal slds-fade-in-open"
+            onkeydown={handleKeyDown}>
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning-button-icon class="slds-button slds-button_icon slds-modal__close" icon-name="utility:close"
+                        alternative-text="Close account search" 
+                        onclick={closeModal}></lightning-button-icon>
+                    <h2 id="account-search-title" class="slds-text-heading_medium">Matching Accounts</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p class="slds-m-bottom_medium">Matches account name AND the domain in either User Defined Website or Website. Select one account to populate this registration form.</p>
+                    <template lwc:if={loading}>
+                        <lightning-spinner alternative-text="Searching accounts" size="small"></lightning-spinner>
+                    </template>
+                    <template lwc:if={hasAccounts}>
+                        <lightning-datatable key-field="Id" data={accounts} columns={columns}
+                            max-row-selection="1" selected-rows={selectedRows}
+                            onrowselection={handleRowSelection}></lightning-datatable>
+                    </template>
+                    <template lwc:if={showNoMatches}>
+                        <p role="status">No accounts match both the name and website. Update the search fields and try again.</p>
+                    </template>
+                    <template lwc:if={errorMessage}>
+                        <p class="slds-text-color_error" role="alert">{errorMessage}</p>
+                    </template>
+                    <template lwc:if={hasMore}>
+                        <p class="slds-m-top_small" role="status">Search results are limited. Enter a more specific account name to see all relevant matches.</p>
+                    </template>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={closeModal}></lightning-button>
+                    <lightning-button class="slds-m-left_small" label="Use Selected Account"
+                        variant="brand" disabled={selectionDisabled} onclick={handleUseAccount}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

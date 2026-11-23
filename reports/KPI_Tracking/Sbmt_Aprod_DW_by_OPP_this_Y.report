@@ -174,7 +174,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ECG,NTG,CCG,DCAI</value>
+            <value>ECG,NTG,CCG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Manager_Email__c</column>
@@ -188,7 +188,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>charlie.hu@intel.com,yixin.fu@intel.com,jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
+            <value>jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

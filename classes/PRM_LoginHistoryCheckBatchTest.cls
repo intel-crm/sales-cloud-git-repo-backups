@@ -1,9 +1,9 @@
 @istest
 Public class PRM_LoginHistoryCheckBatchTest{
     public static testMethod void testschedule() {
-	 Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(); 
+     Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(); 
      Account acc = PRM_TestUtility.getAccount();
-		acc.RecordTypeId = recordTypeIdAccount;
+        acc.RecordTypeId = recordTypeIdAccount;
         acc.Core_IPA_Partner_Role__c = 'Service Provider';
         acc.Core_Account_Type__c ='Distributor';
         acc.Industry ='';

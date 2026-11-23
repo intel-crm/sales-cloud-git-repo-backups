@@ -34,16 +34,6 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_EndCustomer_CSP_List_Ind__c</fieldName>
-        <fieldPath>Pricing_EndCustomer_CSP_List_Ind__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>true</isRequired>
-        <operator>Equals</operator>
-        <sequence>4</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
         <fieldName>Pricing_Routing_Rule_Id__c</fieldName>
         <fieldPath>Pricing_Routing_Rule_Id__c</fieldPath>
         <isGroupByField>false</isGroupByField>
@@ -84,6 +74,16 @@
         <isRequired>false</isRequired>
         <usage>OUTPUT</usage>
     </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
+        <fieldName>Pricing_EndCustomer_CSP_List_Ind__c</fieldName>
+        <fieldPath>Pricing_EndCustomer_CSP_List_Ind__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>true</isRequired>
+        <operator>Equals</operator>
+        <sequence>4</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>1</sequenceNumber>
@@ -96,13 +96,6 @@
         <sequenceNumber>2</sequenceNumber>
         <sourceFieldName>Pricing_Overall_Quote_Quantity_Nbr__c</sourceFieldName>
         <value>1500</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>Equals</operator>
-        <sequenceNumber>6</sequenceNumber>
-        <sourceFieldName>Pricing_EndCustomer_CSP_List_Ind__c</sourceFieldName>
-        <value>False</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
@@ -124,6 +117,13 @@
         <sequenceNumber>5</sequenceNumber>
         <sourceFieldName>Pricing_Is_Routing_Rule_Active_Ind__c</sourceFieldName>
         <value>true</value>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>Equals</operator>
+        <sequenceNumber>6</sequenceNumber>
+        <sourceFieldName>Pricing_EndCustomer_CSP_List_Ind__c</sourceFieldName>
+        <value>False</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>

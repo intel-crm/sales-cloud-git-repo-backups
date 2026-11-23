@@ -29,6 +29,7 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
         //Scenario 1 : ACM Is not there in ipa acc, but if there is any active acr, we need to inactivate acr
         ////ACR without ACM record(acm deleted) acm is not there but pcr is active
         logEntryMsgString+='Inside execute method, scope size: '+scope.size();
+        System.debug('IPA_ACR_ACM Scope size::'+scope.size());
          Decimal threshold=0;
             Map<String, Map<String, Object>> dqObjectsMap = getCustomMetadataRecords();
             if(dqObjectsMap != null && !dqObjectsMap.isEmpty()){
@@ -43,25 +44,32 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
             for (Account acc : scope) {
                 accIds.add(acc.Id);
             }
+            System.debug('IPA_ACR_ACM accIds:'+accIds);
             //list to store all intel acc acm
            //list<PRM_AccountChannelMembership__c> IntelLstAcms=[select id, PRM_Account_Id__c, PRM_Status_Nm__c from PRM_AccountChannelMembership__c  where PRM_Account_Id__c in: accIds AND PRM_Status_Nm__c = 'Approved'];
            //for (PRM_AccountChannelMembership__c acm:IntelLstAcms){
                 /*if(acm.PRM_Status_Nm__c!='Approved')//even if there is not acm this condition satisfies
                     mapAccIdWithoutStatus.put(acm.PRM_Account_Id__c,acm.PRM_Status_Nm__c);*/
+            System.debug('IPA_ACR_ACM Before Case 1 loop:');
             for (PRM_AccountChannelMembership__c acm:[select PRM_Account_Id__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c in: accIds AND PRM_Status_Nm__c = 'Approved']){
                //if(acm.PRM_Status_Nm__c == 'Approved'){
+                System.debug('IPA_ACR_ACM Inside Case 1 loop:');
                accIdsWithApprovedAcm.add(acm.PRM_Account_Id__c);
                     //mapAccIdWithStatus.put(acm.PRM_Account_Id__c,acm.PRM_Status_Nm__c);
                }
+             System.debug('IPA_ACR_ACM accIdsWithApprovedAcm:'+accIdsWithApprovedAcm);
             list<PRM_Account_contact_relationship__c> acrLstToUpdate = new list<PRM_Account_contact_relationship__c>();
           for(PRM_Account_Contact_Relationship__c acr:[Select Id,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c, PRM_Account_Id__c,PRM_InActive_Ind__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in :accIds and PRM_Status_Nm__c='Complete' and PRM_InActive_Ind__c=false]){
            //If in this map , the acr accid is not there that means there is no approved acm on the account , so inactivate your acr.
+                 System.debug('IPA_ACR_ACM Inside Case 1 loop:');
+                 System.debug('IPA_ACR_ACM ACR:'+acr);
               if(!accIdsWithApprovedAcm.contains(acr.PRM_Account_Id__c)){
                 acr.PRM_InActive_Ind__c=true;
                 acr.PRM_Status_Reason_Txt__c='Inactivate ACR when no approved ACM exist on the IPA account.';
                 acrLstToUpdate.add(acr);
             }
           }
+          System.debug('IPA_ACR_ACM acrLstToUpdate:'+acrLstToUpdate);
             //Write dml
            //Scenario 2: Acm Roll up not proper
            //get the associated opid accounts
@@ -97,6 +105,7 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
     //     );
     //     opidIds.add(cag.Core_Partner_Account_Id__c);
     // }
+    // System.debug('Case 2:opidIds::'+opidIds);
     // if(!opidIds.isEmpty()){
     //     /*****************************************************************
     //     * Get existing ACMs on OPID
@@ -132,6 +141,7 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
     //     opidAcmMap.get(acm.PRM_Account_Id__c)
     //               .put(acmKey, acm);
     // }
+    // System.debug('Case 2:opidAcmMap::'+opidAcmMap);
  
     //     /*****************************************************************
     //     * Get all Intel Accounts under OPID
@@ -158,6 +168,7 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
     //     opidLocationMap.get(cag.Core_Partner_Account_Id__c)
     //                    .add(cag.Core_Intel_Account_Id__c);
     // }
+    // System.debug('Case 2:opidLocationMap'+opidLocationMap);
  
     //     /*****************************************************************
     //     * Get Location ACMs
@@ -168,6 +179,7 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
     //     for(Set<Id> ids : opidLocationMap.values()){
     //         allLocationIds.addAll(ids);
     //     }
+    //     System.debug('Case 2:allLocationIds'+allLocationIds);
     //     Map<Id, Map<String,PRM_AccountChannelMembership__c>>
     // expectedAcmMap =
     // new Map<Id, Map<String,PRM_AccountChannelMembership__c>>();
@@ -201,6 +213,7 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
     //     expectedAcmMap.get(opidId)
     //                   .put(acmKey, locationAcm);
     // }
+    //     System.debug('Case 2:expectedAcmMap'+expectedAcmMap);
     //     /*****************************************************************
     //     * Compare Expected vs Existing
     //     *****************************************************************/
@@ -265,6 +278,10 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
     //     }
     // }
     // }
+    //     System.debug('Case 2:acmsToUpdate:'+acmsToUpdate);
+    // System.debug('Case 2:acmsToInsert:'+acmsToInsert);
+    //     System.debug('Case 2:acmsToUpdate size:'+acmsToUpdate.size());
+    // System.debug('Case 2:acmsToUpdate size:'+acmsToInsert.size());
  
  
     //     if(!acmsToInsert.isEmpty()){
@@ -417,7 +434,8 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
     }
     public void upsertData(List<SObject> newLst,String objectName,Decimal threshold)
    {
-      
+        System.debug('Inside Upsert PRM_IPA_ACRACM_DQBatch:'+objectName);
+        System.debug('Upsert PRM_IPA_ACRACM_DQBatch List:'+newLst);
         if(newLst == null || newLst.isEmpty()) {
             return;
         }
@@ -425,10 +443,15 @@ global class PRM_IPA_ACRACM_DQBatch implements Database.Batchable<sObject>,Datab
             sendWarningEmail(newLst,objectName);
             return;
         }
+       System.debug('Upsert before:');
         Database.UpsertResult[] urList =Database.upsert(newLst, false);
+        System.debug('UrList:'+urList);
         Integer index = 0;
+         System.debug('Before For before of urList:');
         for(Database.UpsertResult ur : urList){
+            System.debug('Inside For before of urList:');
             if(!ur.isSuccess()){
+                System.debug('Inside urSuccess:');
                 SObject currentRecord = newLst[index];
                 Id sId = currentRecord.Id;
                 String sObjectType = '';

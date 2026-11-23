@@ -1,3 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata"/>
-
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Pricing_Share_Routing_Rule_Expression_Sets</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Pricing Routing Rule Expression Sets</label>
+        <sharedTo>
+            <group>Pricing_BusinessUserAdmin_With_BREAccess</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>ApiName</field>
+            <operation>startsWith</operation>
+            <value>Pricing_Route_Rule</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

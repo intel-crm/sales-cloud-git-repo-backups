@@ -178,6 +178,20 @@
         <fullName>UtilisedWritebackLimit</fullName>
         <trackHistory>false</trackHistory>
     </fields>
+    <listViews>
+        <fullName>All_Batch_Jobs</fullName>
+        <columns>Name</columns>
+        <columns>Status</columns>
+        <columns>StartTime</columns>
+        <columns>EndTime</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Id</field>
+            <operation>equals</operation>
+            <value>707di0000GdZvmJ</value>
+        </filters>
+        <label>All Workflow Services</label>
+    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>Status</customTabListAdditionalFields>
         <customTabListAdditionalFields>StartTime</customTabListAdditionalFields>

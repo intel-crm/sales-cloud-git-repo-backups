@@ -60,18 +60,25 @@
             <value>Distributor</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Core_Design_Registration__c.Core_Product_Group_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Embedded/IOT</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Submitted,Pre-Approved,Approved,Rejected,Re-Submitted,Abandoned,Cancelled,Design accepted,Draft,Precheck Pending,Deal accepted,Pending with Partner</value>
+            <value>,Abandoned,Approved,Cancelled,Deal accepted,Design accepted,Draft,Pre-Approved,Precheck Pending,Re-Submitted,Rejected,Submitted</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_$Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA Sales Group,EMEA Hosted Sales Group,EMEA Partner Led</value>
+            <value>EMEA Hosted Sales Group,EMEA Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_$Opportunity.Core_Coverage_Type_Nm__c</column>
@@ -85,7 +92,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Intel-Led Opportunity,Partner-Led Opportunity</value>
+            <value>Partner-Led Opportunity</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_OPP_STAGE_NAME</column>
@@ -93,13 +100,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Define,Design,Develop,Qualify</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Design_Registration__c.Core_Product_Group_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Embedded/IOT</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -54,7 +54,7 @@
         <field>DESCRIPTION</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3 OR 4) AND 5 AND 6 AND 7 AND 8</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3 OR 4) AND 5 AND 6 AND 7</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -101,15 +101,8 @@
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>win,won</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Xeon,Rapids,Forest</value>
+            <operator>notContain</operator>
+            <value>deleted,delete,lost,cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -140,6 +133,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

@@ -2,10 +2,10 @@
   "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "d7580281-920e-4192-b9bd-6e69aea4db6a",
+  "id" : "741a5f6a-9ddc-4688-9a71-fbcf63fcf4b4",
   "label" : "Account Related List",
   "regions" : [ {
-    "id" : "89fe5ae2-0da6-41e7-a128-ba805dbc8d22",
+    "id" : "c624b025-cd38-43dc-91b8-80551f37f2eb",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -20,16 +20,16 @@
         "showRowNumbers" : true
       },
       "componentName" : "forceCommunity:relatedList",
-      "id" : "3fd56ed2-25de-433c-836a-299622350ddc",
+      "id" : "77a290b4-9dbe-456c-bfa5-d5fea8077ad2",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "280fcf14-4209-4047-b16a-c139d782b71e",
+    "id" : "c501fa8d-f212-4723-9251-445c96f62e05",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "5ddc1615-f8c2-43f3-83ff-44e459bcda93",
+    "id" : "ba34f4b8-218b-4621-8e51-becae2c2a808",
     "regionName" : "footer",
     "type" : "region"
   } ],

@@ -19,10 +19,6 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Unit_Qty__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_ECAP_Price_Amt__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c$SBQQ__Account__c</field>
     </columns>
     <columns>

@@ -24,7 +24,7 @@
         <field>DESCRIPTION</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND (2 OR 3 OR 6)) OR (7 AND (8 OR 9)) OR (8 AND (7 OR 3 OR 6)) OR (2 AND (1 OR 9)) OR (3 AND (1 OR 8)) OR (9 AND (7 OR 2 OR 6))) AND 4 AND 5 AND 10 AND (11 AND 12 AND 13) AND 14 AND 15</booleanFilter>
+        <booleanFilter>((1 AND (2 OR 3 OR 7)) OR (8 AND (9 OR 10)) OR (9 AND (8 OR 3 OR 7)) OR (2 AND (1 OR 10)) OR (3 AND (1 OR 9)) OR (10 AND (8 OR 2 OR 7))) AND 4 AND 5 AND 6 AND 11 AND (12 AND 13 AND 14) AND 15 AND 16</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Account_Level__c</column>
             <columnToColumn>false</columnToColumn>
@@ -59,6 +59,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Malhar Thakkar,Tonya Degance</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Covered_Account__c</column>

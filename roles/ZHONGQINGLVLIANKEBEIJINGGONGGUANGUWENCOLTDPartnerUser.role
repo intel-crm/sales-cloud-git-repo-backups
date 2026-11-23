@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>ZHONG QING LV LIAN KE (BEIJING) GONG GUAN GU WEN CO LTD Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>ZHONG QING LV LIAN KE (BEIJING) GONG GUAN GU WEN CO LTD Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>Admin</parentRole>
+</Role>

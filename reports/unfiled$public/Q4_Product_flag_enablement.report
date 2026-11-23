@@ -110,26 +110,19 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>wildcat lake</value>
+            <value>panther lake,Bartlett lake</value>
         </criteriaItems>
         <criteriaItems>
             <column>NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>arc,213PEF,310</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Product2.Core_Design_Registration_Eligible_Ind__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
+            <value>arc,213PEF</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Q2&apos;26 Product flag enablement</name>
+    <name>Q4 Product flag enablement</name>
     <params>
         <name>co</name>
         <value>1</value>

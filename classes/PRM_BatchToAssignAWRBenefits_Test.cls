@@ -17,7 +17,7 @@ private class PRM_BatchToAssignAWRBenefits_Test {
 
         Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         Id recordTypeIdOPIDAcc = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
-		String currentPeriod = System.Label.PRM_Current_measurement_period;
+        String currentPeriod = System.Label.PRM_Current_measurement_period;
         //Test Data for Accounts
         List<Account> acc = new List<Account>();
         Account newAccount = new Account();//Account
@@ -93,39 +93,39 @@ private class PRM_BatchToAssignAWRBenefits_Test {
         pb.PRM_Benefit_Cd__c = 'AWR';
         pb.PRM_Account_Type_Nm__c='Mastered_Account';
         insert pb;
-		
-		List<PRM_Value_Exchange_Data__c> vxRecords = new List<PRM_Value_Exchange_Data__c>();
+        
+        List<PRM_Value_Exchange_Data__c> vxRecords = new List<PRM_Value_Exchange_Data__c>();
 
         vxRecords.add(new PRM_Value_Exchange_Data__c(
-			Name='vx1',
+            Name='vx1',
             PRM_One_Partner_Id__c = acc[2].Id,
-			PRM_Account_Id__c = acc[0].Id,
+            PRM_Account_Id__c = acc[0].Id,
             PRM_Sales_Amount_Nbr__c = 30000,
-			PRM_Country_Market_Type_Nm__c = 'NA',
-			PRM_Tier_Id__c = cplList[0].Id,
+            PRM_Country_Market_Type_Nm__c = 'NA',
+            PRM_Tier_Id__c = cplList[0].Id,
             PRM_TimePeriod_Nm__c = currentPeriod,
-			PRM_Change_Date_Dt__c = System.today(),
-			PRM_From_Dt__c = Date.Today().addDays(-2),
-			PRM_To_Dt__c =Date.Today(),
-			PRM_Partner_Role_Nm__c = 'Distributor'
-		));
+            PRM_Change_Date_Dt__c = System.today(),
+            PRM_From_Dt__c = Date.Today().addDays(-2),
+            PRM_To_Dt__c =Date.Today(),
+            PRM_Partner_Role_Nm__c = 'Distributor'
+        ));
 
         vxRecords.add(new PRM_Value_Exchange_Data__c(
-			Name='vx2',
-			PRM_One_Partner_Id__c = acc[2].Id,
-			PRM_Account_Id__c = acc[0].Id,
+            Name='vx2',
+            PRM_One_Partner_Id__c = acc[2].Id,
+            PRM_Account_Id__c = acc[0].Id,
             PRM_Sales_Amount_Nbr__c = 25000,
             PRM_TimePeriod_Nm__c = currentPeriod,
-			PRM_Country_Market_Type_Nm__c = 'NA',
-			PRM_Tier_Id__c = cplList[0].Id,
-			PRM_Change_Date_Dt__c = System.today(),
-			PRM_From_Dt__c = Date.Today().addDays(-2),
-			PRM_To_Dt__c =Date.Today(),
-			PRM_Partner_Role_Nm__c = 'Distributor'
+            PRM_Country_Market_Type_Nm__c = 'NA',
+            PRM_Tier_Id__c = cplList[0].Id,
+            PRM_Change_Date_Dt__c = System.today(),
+            PRM_From_Dt__c = Date.Today().addDays(-2),
+            PRM_To_Dt__c =Date.Today(),
+            PRM_Partner_Role_Nm__c = 'Distributor'
         ));
 
         insert vxRecords;
-	}
+    }
 
     @isTest
     private static void testassignAWRBenefit(){

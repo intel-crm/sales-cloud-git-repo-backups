@@ -119,7 +119,7 @@
         <field>Opportunity$Core_Compliance_Sub_Status__c</field>
     </columns>
     <format>Tabular</format>
-    <name>2026 Opportunity Tracker - KPI</name>
+    <name>2025 Opportunity Tracker - KPI</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -133,6 +133,6 @@
         <dateColumn>Opportunity$CloseDate</dateColumn>
         <endDate>2049-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -70,6 +70,10 @@
         <relationshipLabel><!-- Executive Meeting Briefs (Brief Reviewer) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Bypass Timezone Validation --></label>
+        <name>CRM_Bypass_Timezone_Validation_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Dress Code --></label>
         <name>CRM_Dress_Code__c</name>
         <picklistValues>

@@ -87,6 +87,7 @@ public without sharing class PRM_AccountChangeEventSubscriber {
         }
                 
         if (!accIdToUcdResMap.isEmpty() && accIdToUcdResMap != null) {
+            System.debug('@RRT accIdToUcdResMap:'+accIdToUcdResMap);
             for(PRM_Registration_Request__c regReq : [SELECT id, PRM_Status__c, PRM_Review_Note_txt__c, PRM_Reject_Reason__c, PRM_Account_Request_Queue__c,
                                                       PRM_Account_Request_Queue__r.id
                                                       FROM PRM_Registration_Request__c
@@ -94,10 +95,13 @@ public without sharing class PRM_AccountChangeEventSubscriber {
                ) {
                    PRM_UCD_ResponseWrapper.arqResponseData ucdResponseData = accIdToUcdResMap.get(regReq.PRM_Account_Request_Queue__r.id);
                    PRM_UCD_ResponseWrapper.AccountResponseModel acc = ucdResponseData.Account;
-                   
+                   System.debug('@RRT ucdResponseData:'+ucdResponseData);
                    //update new Reg Req
                    PRM_Registration_Request__c req = new PRM_Registration_Request__c();
                    req.Id = regReq.Id;
+                   System.debug('@RRT req:'+req.Id);
+
+                   System.debug('@RRT acc:'+acc);
                    if (acc.RecordType == 'Intel Account' && String.isBlank(ucdResponseData.RejectionReason)) {
                        req.PRM_Salesforce_ID__c = acc.AccountId;
                        //for approval

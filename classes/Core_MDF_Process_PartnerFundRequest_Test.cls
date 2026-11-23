@@ -15,6 +15,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         bypassFunctionKeys.add('Core_MDF_PFR_Rule_Engine');
         bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
         bypassFunctionKeys.add('Core_MDF_Bypass_AccOnboardValidation');
+        bypassFunctionKeys.add('Core_MDF_Bypass_Campaign_ShareUnshare'); 
         Set<String> myset1 = new Set<String>();
         List<String> result1 = new List<String>();
         myset1.addAll(bypassFunctionKeys);
@@ -600,7 +601,7 @@ public with sharing class Core_MDF_Process_PartnerFundRequest_Test {
         Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP1',ipaCoMarketingAccount.id, System.today()-2, System.today().addDays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
         ipaCampaignForAP1.Core_MDF_Proposal_Based_Ind__c=true;
         insert ipaCampaignForAP1;
-        Test.stopTest();   
+          Test.stopTest();   
         
     }
 

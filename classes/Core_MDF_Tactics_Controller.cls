@@ -374,14 +374,34 @@ public static Map<String, String> getPicklistLabels() {
     return labelMap;
 }
 
+    // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+    // Static cache added at class level — shared across all methods
+    private static Map<String, Schema.DescribeSObjectResult> describeCache = new Map<String, Schema.DescribeSObjectResult>();
+
+    // Private helper replaces getGlobalDescribe() in all methods
+    private static Schema.DescribeSObjectResult getSObjectDescribe(String objectName) {
+        if (String.isBlank(objectName)) { return null; }
+        String key = objectName.toLowerCase();
+        if (!describeCache.containsKey(key)) {
+            try {
+                Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+                if (results != null && !results.isEmpty()) {
+                    describeCache.put(key, results[0]);
+                }
+            } catch (Exception e) {
+                Core_MDF_CCP_UtilityClass.logError(e);
+            }
+        }
+        return describeCache.containsKey(key) ? describeCache.get(key) : null;
+    }
+
     //Test Class: Core_MDF_PFC_IPAClaim_Test
     public static Map<String, String> getLocalizedPicklistLabels(String objectApiName, List<String> fieldApiNames) {
         Map<String, String> result = new Map<String, String>();
 
-        // Get object describe
-        Schema.SObjectType sObjectType = Schema.getGlobalDescribe().get(objectApiName);
-
-        Schema.DescribeSObjectResult objDescribe = sObjectType.getDescribe();
+        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        Schema.DescribeSObjectResult objDescribe = getSObjectDescribe(objectApiName);
+        if(objDescribe == null) { return result; }
         Map<String, Schema.SObjectField> fieldsMap = objDescribe.fields.getMap();
 
         for (String fieldName : fieldApiNames) {
@@ -403,10 +423,11 @@ public static Map<String, String> getPicklistLabels() {
         List<FieldInfo> result = new List<FieldInfo>();
 
         for (String objectName : objectList) {
-            Schema.SObjectType sObjectType = Schema.getGlobalDescribe().get(objectName);
-            if (sObjectType == null) continue;
+            // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+            Schema.DescribeSObjectResult objDescribe = getSObjectDescribe(objectName);
+            if (objDescribe == null) { continue; }
 
-            Map<String, Schema.SObjectField> fieldMap = sObjectType.getDescribe().fields.getMap();
+            Map<String, Schema.SObjectField> fieldMap = objDescribe.fields.getMap();
 
             for (String fieldName : fieldList) {
                 if (fieldMap.containsKey(fieldName)) {

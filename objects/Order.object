@@ -1617,105 +1617,6 @@
         <filterScope>Everything</filterScope>
         <label>All Orders</label>
     </listViews>
-    <listViews>
-        <fullName>All_Commercial_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Licensed Tool Order</value>
-        </filters>
-        <label>All Commercial Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All_Non_commercial_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Non Commercial Order</value>
-        </filters>
-        <label>All Non-commercial Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All_Sample_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Sample Order</value>
-        </filters>
-        <label>All Sample Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>My_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <label>My Orders</label>
-        <language>en_US</language>
-    </listViews>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Sales_Order_Record</fullName>
@@ -4282,7 +4183,7 @@ ISBLANK(TEXT(Sales_Order_Sub_Type__c))
     </validationRules>
     <validationRules>
         <fullName>Core_PSG_Valid_Quote_Filter_On_Order</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>This Validation rule which check quote selected on order should be active ,approved and  should have quote type as non non-budgetary. Else it will not allow to save record with non satisfying quotes.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,AND( NOT(ISBLANK(SBQQ__Quote__c)) ,
 OR( NOT(SBQQ__Quote__r.core_cpq_active_cb__c),
@@ -4387,7 +4288,7 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
     </validationRules>
     <validationRules>
         <fullName>Sales_ActivateOrd_ShipToAcc_Reqd</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Ship To Account field is required to Activate the order for license, sample ,non-commercial( fpga university order , corporate order)</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 AND(
@@ -4574,7 +4475,7 @@ ISBLANK(Sales_PO_Number_Txt__c)
     </validationRules>
     <validationRules>
         <fullName>Sales_OrderCreation_ShipToAcc_Reqd</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Ship To Account field is mandatory for Licensed tool order ,Sample order and FPGA University program license  order  in-order to create a order.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 AND(

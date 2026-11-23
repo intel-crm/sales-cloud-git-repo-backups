@@ -87,14 +87,14 @@
     <actionOverrides>
         <actionName>New</actionName>
         <content>Core_MDF_AccountUserContainer</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
         <content>Core_MDF_AccountUserContainer</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>LightningComponent</type>
     </actionOverrides>
@@ -332,17 +332,7 @@ $Label.Core_MDF_Intel_System_User
         <columns>Core_MDF_Account__c</columns>
         <columns>Core_MDF_User__c</columns>
         <columns>Core_MDF_Active_Ind__c</columns>
-        <filterScope>ScopingRule</filterScope>
-        <filters>
-            <field>Core_MDF_User__c</field>
-            <operation>contains</operation>
-            <value>rizzo</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operation>equals</operation>
-            <value>IPA - TD Synnex - UK - Component</value>
-        </filters>
+        <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>

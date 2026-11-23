@@ -71,10 +71,12 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
     
     //Process exception email.
     public static void sendExceptionEmailUpdate(String fromAdd, Case mailCase) {
+        System.debug('Email reply Exception check >>>>>1'+fromAdd);
         List<OrgWideEmailAddress> orgWideEmailList = new List<OrgWideEmailAddress>();
         //FLS check added-Venugopal
         if(OrgWideEmailAddress.SObjectType.getDescribe().isAccessible()){
-            orgWideEmailList = [select id, address from OrgWideEmailAddress where displayname = :'Intel Premier Support' limit 1];
+            orgWideEmailList = [select id, address from OrgWideEmailAddress where displayname = :'Intel Premier Support QA' limit 1]; //EmailRelay change -Gangadhar
+            System.debug('Email reply Exception check >>>>>2'+orgWideEmailList);
         }
         String orgWideEmailId = (orgWideEmailList!=null && orgWideEmailList.size()>0) ? orgWideEmailList[0].id : '';
         List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
@@ -82,7 +84,7 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         List<String> sendTo = new List<String>();
         sendTo.add(fromAdd);  
-        
+        System.debug('Email reply Exception check >>>>>3'+orgWideEmailId);
         mail = Messaging.renderStoredEmailTemplate(et.Id, null , mailCase.Id==null ? null : mailCase.Id);
         
         if(String.isNotBlank(orgWideEmailId)) {

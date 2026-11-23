@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Update Signal Code from Staging</description>
+        <name>Core_PSG_UpdateSignalCodeFromStaging</name>
+        <label>Core_PSG_UpdateSignalCodeFromStaging</label>
+        <locationX>378</locationX>
+        <locationY>370</locationY>
+        <actionName>01p3b0000019BcENotFound</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Update the Signalcode from Staging to Product2 Table - Time update to 3.15 on Sep-2-2023 as part of PIM Int</description>
+    <environments>Default</environments>
+    <interviewLabel>Core_PSG_UpdateSignalCodeFromStaging {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_PSG_UpdateSignalCodeFromStaging_3:15</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>261</locationX>
+        <locationY>100</locationY>
+        <connector>
+            <targetReference>Core_PSG_UpdateSignalCodeFromStaging</targetReference>
+        </connector>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2021-09-07</startDate>
+            <startTime>03:15:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

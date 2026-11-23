@@ -141,6 +141,11 @@
             <field>Core_MDF_Total_Claims_Already_Paid_nbr__c</field>
             <table>PartnerFundRequest</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Campaign</field>
+            <table>PartnerFundRequest</table>
+        </columns>
         <masterLabel>Co-Marketing Activities</masterLabel>
     </sections>
     <sections>

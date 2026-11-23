@@ -29,6 +29,7 @@ global with sharing class PRM_Contact_AGS_CallbackHandler {
             Map<String, Object> params = (Map<String, Object>)JSON.deserializeUntyped(
                 RestContext.request.requestBody.toString()
             );
+            System.debug('params: '+params);
             List<Core_Log_Entry__c> logEntryList = new List<Core_Log_Entry__c>();
             // Check the AGS response
             if(params.containskey('cidaas'))            
@@ -266,7 +267,7 @@ global with sharing class PRM_Contact_AGS_CallbackHandler {
         //List<String> contactPartnerRoles = cont.Core_IPA_Partner_Role__c.split(';');  
         List<String> contactPartnerRoles = String.isEmpty(cont.Core_IPA_PartnerRole__c)? new List<String>() : cont.Core_IPA_PartnerRole__c.split(';');  
         //Core_IPA_Partner_Role__c
-        if(!String.IsEmpty(cont.Core_IPA_PartnerRole__c) && !configPartnerRoles.contains(contactPartnerRoles[0]) ){
+        if((!String.IsEmpty(cont.Core_IPA_PartnerRole__c) && !configPartnerRoles.contains(contactPartnerRoles[0]))/*||(String.IsEmpty(cont.Core_IPA_PartnerRole__c) && cont.Core_Login_Status__c=='Deleted')*/ ){ //JB
             //if(System.isBatch()){
             List<PRM_Account_Contact_Relationship__c> acrList = new List<PRM_Account_Contact_Relationship__c>();
             
@@ -316,9 +317,10 @@ countryCodeCulture = countryCode+'/'+culture;
             //---------------- culture mapping country code ----------------
             
             boolean isAdmin = false;   
-            if([SELECT Id FROM PRM_AccountChannelMembership__c WHERE PRM_Account_Id__c=:cont.AccountId AND PRM_Status_Nm__c='Pending' AND PRM_Partner_Role__c = :contactPartnerRoles[0]].size() > 0){
-                isAdmin = True;
-            } 
+            /*if(!contactPartnerRoles.isEmpty()) //JB
+            {*/	if([SELECT Id FROM PRM_AccountChannelMembership__c WHERE PRM_Account_Id__c=:cont.AccountId AND PRM_Status_Nm__c='Pending' AND PRM_Partner_Role__c = :contactPartnerRoles[0]].size() > 0){
+                	isAdmin = True;} 
+        	//}
             map<String,Language_Translation__mdt> dynamicTranslations =  new map<String,Language_Translation__mdt>();
             
             for(Language_Translation__mdt langTrans : [select DeveloperName, DEU__c, ENG__c, ENU__c, FRA__c, IND__c, ITA__c,JPN__c, KOR__c, POL__c, POR__c, RUS__c, SPA__c, ESP__c,  THA__c, TUR__c, VIE__c, ZHO__c, ZHT__c, FRC__c from Language_Translation__mdt]){

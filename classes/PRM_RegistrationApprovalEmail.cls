@@ -72,13 +72,15 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
         Map<String, PRM_EmailLog__c> mapOfEmailLog = new Map<String, PRM_EmailLog__c>();
         Set<String> regIdSet = new Set<String>(); // TWC729-4865 : to store Registration Request Id
         //boolean ipaRefresh = Boolean.valueOf(label.PRM_IPARefresh); // :RUBY - IPA 2.0 ADDED BY DINESH
-        String errorMsg = '\n[sendWelcomeEmail START]';
+        String errorMsg='';
+        errorMsg = '***sendWelcomeEmail***';
         try {
             List<PRM_EmailConfiguration__mdt> emailConfigList = [
                 SELECT Id, PRM_BusinessEvent__c, PRM_PartnerRole__c, PRM_Entitlement_List__c, PRM_Priority__c, PRM_Tier__c
                 FROM PRM_EmailConfiguration__mdt
                 ORDER BY PRM_Priority__c
             ];
+            System.debug('@@JK emailConfigList' +emailConfigList);
             PRM_EmailConfiguration__mdt eConfig;
             for (PRM_EmailConfiguration__mdt emailCon : emailConfigList) {
                 // map of business event+partner role , emailCon
@@ -88,17 +90,22 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                     mapEmailConfigurationOnTier.put((eConfig.PRM_BusinessEvent__c + eConfig.PRM_PartnerRole__c + eConfig.PRM_Tier__c).toLowercase(), eConfig);
                     mapEmailConfigurationOnTier.put((emailCon.PRM_BusinessEvent__c + emailCon.PRM_PartnerRole__c + emailCon.PRM_Tier__c).toLowercase(), emailCon);
                     partnerRoleonTier.add(emailCon.PRM_PartnerRole__c.toLowercase());
+                     System.debug('@@JK partnerRoleonTier' +partnerRoleonTier);
                 } else if (partnerRoleonTier.contains(emailCon.PRM_PartnerRole__c.toLowercase())) {
                     mapEmailConfigurationOnTier.put((emailCon.PRM_BusinessEvent__c + emailCon.PRM_PartnerRole__c + emailCon.PRM_Tier__c).toLowercase(), emailCon);
+                    System.debug('@@JK under else block mapEmailConfigurationOnTier' +mapEmailConfigurationOnTier);
                 } else {
                     mapEmailConfiguration.put((emailCon.PRM_BusinessEvent__c + emailCon.PRM_PartnerRole__c).toLowercase(), emailCon);
+                    System.debug('@@JK mapEmailConfigurationOnTier else '+mapEmailConfigurationOnTier);
                  }
             }
-            errorMsg+= '\nmapEmailConfiguration : '+mapEmailConfiguration.keySet();
+            errorMsg = '***mapEmailConfiguration : '+mapEmailConfiguration+'***';
+            System.debug('@@JK errorMsg '+errorMsg);
             Map<id, Contact> mapContact = new Map<id, Contact>();
             List<Id> conIds = new List<Id>();
             for (PRM_EmailQueue__c eq : emailQueueList) {
                 conIds.add(eq.PRM_Contact__c);
+                System.debug('@@JK conIds'+conIds);
             }
 
             
@@ -221,9 +228,9 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
             }
 
             Map<String,Id> mapOfContactEmailtoId = new Map<String,Id>();
-            if (!contactIdsToProcess.isEmpty()) {
+            if (!contactIdsToProcess.isEmpty()) { //ATHR Fix - TWC729-9556
                 List<PRM_Bulk_Data_Upload__c> bulkUploadrecord = [
-                    SELECT Id, PRM_Contact_Id__c, PRM_Suppress_Email__c, PRM_ContactEmail__c
+                    SELECT Id, PRM_Contact_Id__c, PRM_Suppress_Email__c/*,PRM_ContactEmail__c*/
                     FROM PRM_Bulk_Data_Upload__c
                     WHERE PRM_Contact_Id__c IN :contactIdsToProcess
                     ORDER BY CreatedDate
@@ -249,7 +256,7 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
                     }
                     
                     if (/*(partnerRoleEmailQueueMap.keySet().contains(con.Id) && !ipaRefresh) ||*/ (/*ipaRefresh &&*/ partnerRoleEmailQueueMap.keySet().contains(con.Id) && contactWrapperMap.get(con.Id).onePartnerId!=null && accountIdToBnftMap.containsKey(contactWrapperMap.get(con.Id).onePartnerId) && accountIdToBnftMap.get(contactWrapperMap.get(con.Id).onePartnerId) > 0)) {
-                        errorMsg += '\n***next is email utility creation***';
+                        errorMsg = '***next is email utility creation***';
                         PRM_EmailUtility.EmailNotification objEmailNotif = new PRM_EmailUtility.EmailNotification();
                         map<String, String> inputParameters = new Map<String, String>();
                         objEmailNotif.InputParameters = inputParameters;

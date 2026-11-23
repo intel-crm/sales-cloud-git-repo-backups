@@ -412,13 +412,7 @@
         <columns>Core_MDF_Domains_txt__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>CREATEDBY_USER</columns>
-        <columns>Core_MDF_Payment_Type_nm__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operation>contains</operation>
-            <value>XIAOMI</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -441,8 +435,8 @@
         </filters>
         <filters>
             <field>Core_MDF_Account__c</field>
-            <operation>contains</operation>
-            <value>Quentin Faucher</value>
+            <operation>equals</operation>
+            <value>Qian</value>
         </filters>
         <label>IPA MDF Virtual Accounts</label>
     </listViews>
@@ -648,6 +642,70 @@
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Co_Inv</fullName>
+        <active>true</active>
+        <label>Co-Inv</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>CoInv</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Agency Account</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Intel Account</fullName>
                 <default>false</default>

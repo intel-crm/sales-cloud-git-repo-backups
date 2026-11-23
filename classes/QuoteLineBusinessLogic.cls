@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 09-18-2026
+* @last modified on  : 09-16-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class QuoteLineBusinessLogic { 
@@ -50,7 +50,8 @@ public without sharing class QuoteLineBusinessLogic {
             }
             for(SBQQ__QuoteLine__c quoteLine: lstquoteLines) {
                 if(quoteLine.Pricing_Change_Request_cb__c) {
-                    if(isOEMField) {
+                    //Pricing_QuoteLine_AutoApprovalController.isChangeRequestQl this change is related to autoApprove it should not go to production
+                    if(isOEMField && !Pricing_QuoteLine_AutoApprovalController.isChangeRequestQl) {
                         if(!Pricing_QuoteLine_AutoApprovalController.isChangeRequestPriceRule){
                         for(String field: changeRequestFieldsNonEditable) {
                             if(quoteLine.get(field) != oldMap.get(quoteLine.Id).get(field)) {
@@ -157,7 +158,7 @@ public without sharing class QuoteLineBusinessLogic {
                             || (quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote && quoteLine.Pricing_Program_Type_Nm__c != Label.Pricing_Tender_CCG_Quote)) {
                             String ErrorMsg = Label.Pricing_Quote_Line_Type_Error_Message.replace('{QliType}',quoteLine.Pricing_Program_Type_Nm__c );
                             ErrorMsg = ErrorMsg.replace('{QType}',quoteDtls.get(quoteLine.SBQQ__Quote__c).Pricing_Program_Type_Nm__c );
-                            quoteLine.addError(ErrorMsg);
+                           quoteLine.addError(ErrorMsg);
                         }
                         quoteLine.Pricing_Group_Type_nm__c = Label.Pricing_Tender_Default_Group_Type;
                         if(quoteLine.Pricing_Market_Segment_Nm__c == Label.Pricing_Tender_QuoteLine_Market_Segment_Non_Embedded 
@@ -973,7 +974,7 @@ public without sharing class QuoteLineBusinessLogic {
                         SBQQ__QuoteLine__c referenceQuoteLine = referenceQuoteLineMap.get(quoteLine.Pricing_Reference_Quote_Line_Nbr__c);
                         if(referenceQuoteLineUpdateMap.containsKey(referenceQuoteLine.Id)){
                             referenceQuoteLineUpdateMap.get(referenceQuoteLine.Id).Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
-                        }else{
+                        }else{//#ticket
                             if(referenceQuoteLine.Pricing_Status_Nm__c != Label.Pricing_Tender_QuoteLine_Status_Revised){
                                 referenceQuoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
                                 referenceQuoteLineUpdateMap.put(referenceQuoteLine.Id,referenceQuoteLine);

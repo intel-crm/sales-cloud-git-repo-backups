@@ -322,7 +322,9 @@ public without sharing class Pricing_IQR_UploadFile {
         //This method is called by LWC to check weather the logged in user is DPM User
         List<PermissionSetAssignment> pset = [SELECT Id, PermissionSet.Name, PermissionSet.Label FROM PermissionSetAssignment WHERE AssigneeId= :UserInfo.getUserId() AND 
                                               PermissionSet.Name =: Label.Pricing_Tender_PermissionSets_PricingDivisionalTenderPricingManager];
+       
         if(pset.size()>0){
+            
             return true;
         }
         return false;   

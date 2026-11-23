@@ -6,9 +6,9 @@
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback
 http://localhost:8081/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6hRh9XhJF9qK2EBmLI__xaa9tmrpnzYLCm2oVsNf_KsYFJsLnXSQrBnFLM1Q</consumerKey>
+        <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBbheuE11.o.xNMnInMS2YPyUMeyRvwKSE6fqOKmjw68TrDdCGsXi_s5bMrfLl</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
@@ -24,12 +24,13 @@ http://localhost:8081/callback</callbackUrl>
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <oauthClientCredentialUser>ipa_registration_integration.user@intel.com.crm.crmqa9</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>Full</scopes>
     </oauthConfig>
     <oauthPolicy>
         <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
-        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
     </oauthPolicy>
 </ConnectedApp>

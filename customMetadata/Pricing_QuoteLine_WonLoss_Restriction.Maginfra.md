@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Pricing_IsActive_Ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Pricing_Region_Nm__c</field>

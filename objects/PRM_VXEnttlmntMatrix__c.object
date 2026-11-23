@@ -530,6 +530,11 @@
         <columns>PRM_Channel_Program_Id__c</columns>
         <columns>PRM_IPA_Partner_Role_Nm__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_IPA_Partner_Role_Nm__c</field>
+            <operation>equals</operation>
+            <value>Solution Integrator</value>
+        </filters>
         <label>Entitlements With Benefits</label>
     </listViews>
     <listViews>

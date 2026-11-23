@@ -59,7 +59,7 @@ public class Core_MDF_BudgetTransfer_Test {
         myset1.addAll(bypassFunctionKeys);
         result1.addAll(myset1);
         
-        List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+		List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
         // Creating User with utility class 
@@ -151,7 +151,7 @@ public class Core_MDF_BudgetTransfer_Test {
         system.runAs(usr){
             Database.insert(pbm);
         }
-        PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm, acc2, 30000, true);
+
         Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
         Core_MDF_CCP_TestDataUtility.createCCPBudgetTransferData();
         
@@ -170,9 +170,8 @@ public class Core_MDF_BudgetTransfer_Test {
             pmbList.add(pbmEef);
 
             Database.insert(pmbList);
-            PartnerFundAllocation eefPFA2 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test EEF PFA', pbmEef, eefPrimaryVirtualCorp, 30000, true);
-            PartnerFundAllocation eefPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test EEF PFA', pbmEef, eefActivatingVirtualCorp, 30000, true);
-
+           
+         PartnerFundAllocation eefPFA = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test EEF PFA', pbmEef, eefActivatingVirtualCorp, 30000, true); 
         }
         
         
@@ -543,7 +542,7 @@ Database.insert(usr);*/
         myset1.addAll(bypassFunctionKeys);
         result1.addAll(myset1);
         
-        List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
+		List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         User usr1 = [Select id from user where lastname='MDF Budget Loader'  limit 1];
         
         
@@ -575,7 +574,7 @@ Database.insert(usr);*/
             insert testPartnerFundRequestRecord;
             Test.stopTest();
             Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', true,'1231231230');
-            Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank.Id, true);
+
             
             
             PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 5000.00, System.today(), bank.Id, true);
@@ -747,7 +746,7 @@ Database.insert(pbm1);
             
             
             // PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm1, acc2, 1000, true);
-            PartnerFundAllocation pfaRecord2 = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm1, acc3, 300, true);
+
             
             string response1 = Core_MDF_BudgetTransfer.TransferAllocationAmount((string)acc2.Id, (string)acc3.Id, (string)pbm1.Id, 500.00,Label.Core_MDF_Budget_Transfer_Type_Manual);
             System.assertEquals('Success', response1);
@@ -817,7 +816,7 @@ Database.insert(pbm1);
         Account acc1 =  [Select id,Core_MDF_Channel_Program__r.name from Account where name ='EEF Activating Virtual Corp' Limit 1];
         Account accNode =  [Select id,Core_MDF_Channel_Program__r.name from Account where name ='EEF Activating Node' Limit 1];
         PartnerMarketingBudget pmb =[select id,title from PartnerMarketingBudget where title ='Test Budget EEF' Limit 1 ];
-        PartnerFundAllocation pfa =[select id,title from PartnerFundAllocation where title ='Test EEF PFA' Limit 1];
+        PartnerFundAllocation pfa =[select id,title from PartnerFundAllocation where title ='Test EEF PFA' Limit 1];  
 
         map<id, Account> mapOfAcc = new map<id, Account>();
         PermissionSet eefBudLoader = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_Internal_EEF_Budget_Loader' LIMIT 1];

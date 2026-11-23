@@ -18,10 +18,7 @@
     userRecord = TestUtilities.getUser();
     userRecord.username = 'TestUserTest@intel.com';
     userRecord.ProfileID = profileRec.Id;
-    User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert userRecord;
-        }
+    insert userRecord;
         
     // Creating Queue
     QueueRecord = new Group(Name='SupportOrgQueue', 
@@ -150,7 +147,7 @@
         Test.startTest();
         	String str = Core_IPS_Add_To_Products_LEX.checkBusinessRules(EnvironmentalDetailMaster1.Id);
         Test.stopTest();
-       // System.assert(str == 'Success', true);
+        System.assert(str == 'Success', true);
     }
     
     // No Records to Display

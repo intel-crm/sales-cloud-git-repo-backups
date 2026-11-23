@@ -141,11 +141,12 @@ import Core_MDF_AccountPlan_StartDate_Error from '@salesforce/label/c.Core_MDF_A
 import Core_MDF_IPA_AccountBased_StartDate from '@salesforce/label/c.Core_MDF_IPA_AccountBased_StartDate';
 import userLocale from '@salesforce/i18n/locale';
 import Core_MDF_Activity_Purpose_Header from '@salesforce/label/c.Core_MDF_Activity_Purpose_Header';
-import getDomainsForAccount from '@salesforce/apex/Core_MDF_CampaignCreatePage.getDomainsForAccount';
+// Roshan - Commented as part of TWC3117-18965
+//import getDomainsForAccount from '@salesforce/apex/Core_MDF_CampaignCreatePage.getDomainsForAccount';
 import Core_MDF_InvalidEmailError from '@salesforce/label/c.Core_MDF_InvalidEmailError';
-import Core_MDF_IntelDomainError from '@salesforce/label/c.Core_MDF_IntelDomainError';
-import Core_MDF_UnsupportedDomain_Error from '@salesforce/label/c.Core_MDF_UnsupportedDomain_Error';
-import Core_MDF_No_Approved_Domains_Error from '@salesforce/label/c.Core_MDF_No_ApprovedDomain_Error';
+//import Core_MDF_IntelDomainError from '@salesforce/label/c.Core_MDF_IntelDomainError';
+//import Core_MDF_UnsupportedDomain_Error from '@salesforce/label/c.Core_MDF_UnsupportedDomain_Error';
+//import Core_MDF_No_Approved_Domains_Error from '@salesforce/label/c.Core_MDF_No_ApprovedDomain_Error';
 import Core_MDF_Other_Specify from '@salesforce/label/c.Core_MDF_Other_Specify';
 //TWC3117-17805 - Aditya 
 import Core_MDF_CCF_DCF_BlockCampaign_StartDate from '@salesforce/label/c.Core_MDF_CCF_DCF_BlockCampaign_StartDate';
@@ -247,8 +248,9 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 	@track initalLoad = false;
 	@track loadBudgetTypefields = false;
 	@track picklistSize = {}
-	@track availableDomains = [];
-	@track domainsLoaded = false;
+	// Roshan - Commented as part of TWC3117-18965
+	//@track availableDomains = [];
+	//@track domainsLoaded = false;
 	activityErrorMessage;
 	isAnyPicklistValueChanged = false;
 	campPickListValuesChangedObj = [];
@@ -899,8 +901,9 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 						}
 						this.campaignFieldValue["Core_MDF_Program__c"] = this.program;
 						this.campaignFieldValue["Core_MDF_Opal_Budget_Type_Txt__c"] = this.selectedBudType;
-						const virtualCorpId = this.selectedAccount.virtualCorpAcc ? this.selectedAccount.virtualCorpAcc: this.selectedAccount.Id;
-						this.fetchDomainsForAccount(virtualCorpId);
+						// Roshan - Commented as part of TWC3117-18965
+						//const virtualCorpId = this.selectedAccount.virtualCorpAcc ? this.selectedAccount.virtualCorpAcc: this.selectedAccount.Id;
+						//this.fetchDomainsForAccount(virtualCorpId);
 						this.populateDynamicfields(result);	
 					}
 					this.initalLoad = true;
@@ -2658,20 +2661,21 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 		this.virtualCorpAccId = (this.recordTypeDeveloperName === Core_MDF_Co_GTM_RecordType) ? (event.detail ? event.detail["Core_MDF_Virtual_Corp_Account_Id__c"] : '') : '';
 		this.program = this.program == undefined ? this.campaignFieldValue["Core_MDF_Program__c"] : this.program;
 		if (this.recordTypeDeveloperName === Core_MDF_IPA_RecordType) {
-			let virtualCorpId;
+			//let virtualCorpId;  // Roshan - Commented as part of TWC3117-18965
 			if ((this.mode == 'edit' || this.mode == 'clone') && event.detail == undefined) {
 				selectedAccount = event;
-				virtualCorpId = this.selectedAccount?.virtualCorpAcc || this.selectedAccount?.Id;
+				//virtualCorpId = this.selectedAccount?.virtualCorpAcc || this.selectedAccount?.Id;  // Roshan - Commented as part of TWC3117-18965
 			} else { 
 				selectedAccount = event.detail?.Id || event.detail; 
-				virtualCorpId = event.detail?.virtualCorpId || event.detail?.Id || event.detail;
+				//virtualCorpId = event.detail?.virtualCorpId || event.detail?.Id || event.detail;  // Roshan - Commented as part of TWC3117-18965
 			}		
 			if (selectedAccount == null || (selectedAccount != null && selectedAccount.length != 18))
 				this.campaignFieldValue['Core_MDF_Opal_Budget_Type_Txt__c'] = null;this.loadBudgetTypefields = false;this.dynamicload = false;
-			this.availableDomains = [];	
-			this.domainsLoaded = false;
+			// Roshan - Commented as part of TWC3117-18965
+			//this.availableDomains = [];	
+			//this.domainsLoaded = false;
 			this.campaignFieldValue["Core_MDF_Partner_Contact_txt__c"] = '';
-			this.fetchDomainsForAccount(virtualCorpId);
+			//this.fetchDomainsForAccount(virtualCorpId);  // Roshan - Commented as part of TWC3117-18965
 			await getBudgetType({accId: selectedAccount,operation: this.mode,isProposalBased: this.isProposalCampaign,program: this.program})
 				.then((result) => {
 					var budgetTypes = result;var budgetTypePicValues = [];
@@ -2779,7 +2783,8 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			if (this.campaignFieldValue["Core_MDF_Program__c"] == Core_MDF_IPA_Program_Name) {this.campaignFieldDisabled['Core_MDF_Opal_Budget_Type_Txt__c'] = true;}
 		}
 	}
-	fetchDomainsForAccount(accountId) {
+	// Roshan - Commented as part of TWC3117-18965
+	/*fetchDomainsForAccount(accountId) {
 		if (!accountId) { this.availableDomains = [];  this.domainsLoaded = false; return; }
 
 		getDomainsForAccount({ accountId: accountId })
@@ -2792,7 +2797,7 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				this.availableDomains = [];
 				this.domainsLoaded = false;
 			});
-	}
+	}*/
 	handlePartnerContactChange(event) {
 		const emailString = event.target.value?.trim();
 		const inputField = event.target; 
@@ -2803,7 +2808,12 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			inputField.reportValidity();
 			return;
 		}
-		if (this.domainsLoaded) {
+		// Roshan - Validate email format only.
+		inputField.setCustomValidity(this.validateEmails(emailString));
+		inputField.reportValidity();
+		
+		// Roshan - Commented as part of TWC3117-18965
+		/*if (this.domainsLoaded) {
 			const approvedDomains = this.availableDomains
 				.map(d => d.Name.toLowerCase().trim());
 
@@ -2844,12 +2854,14 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 				inputField.setCustomValidity('');
 				inputField.reportValidity();
 			});
+		*/
 	}
 	validateEmails(emailString, approvedDomains) {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-		if (approvedDomains.length === 0)
-        	return '';
+		// Roshan - Commented as part of TWC3117-18965
+		//if (approvedDomains.length === 0)
+        	//return '';
 		
 		if (/;;|^;/.test(emailString)) {
         	return Core_MDF_InvalidEmailError;
@@ -2860,14 +2872,15 @@ export default class Core_MDF_Create_Campaign extends NavigationMixin(LightningE
 			if (!emailRegex.test(email)) 
 				return Core_MDF_InvalidEmailError;
 
-			const domain = email.split('@')[1].toLowerCase();
+			// Roshan - Commented as part of TWC3117-18965
+			/*const domain = email.split('@')[1].toLowerCase();
 
 			if (domain === 'intel.com')
 				return Core_MDF_IntelDomainError;
 
 			if (!approvedDomains.includes(domain))
 				return `${Core_MDF_UnsupportedDomain_Error} ${approvedDomains.join(', ')}`;
-
+			*/
 		}
 		return '';
 	}

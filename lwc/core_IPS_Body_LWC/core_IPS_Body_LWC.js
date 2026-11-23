@@ -493,6 +493,7 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                     }
                     this.DataTableResponseWrappper = rows;
                     this.pdtRecToDisplay = sObjectRelatedFieldListValues;
+                    console.log('myintel product', this.pdtRecToDisplay);
                     this.storedPdtRecToDisplay = this.pdtRecToDisplay;
                     this.prodcolumnsResult = productColumns.concat(result.prodDataTableColumns);
                     let prodcopyresult = [];
@@ -503,12 +504,14 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                         prodcopyObj.hideDefaultActions = true;
                         prodcopyresult.push(prodcopyObj);
                     }
-                   
+                    //console.log('soma 1 '+JSON.stringify(this.pdtRecToDisplay));
                     this.prodcolumnsResult = prodcopyresult;
                     this.pdtRecToDisplay.forEach(record => {
-                      
+                        //let rec = JSON.stringify(record).replace('Core_IPS_Product_Organization__r.Name','ORGNAME');
+                        //let parsedrecord = JSON.parse(rec);
+                        //console.log('parsedrecord '+ JSON.stringify(parsedrecord));
                         record.linkProduct = communityPath + '/product-detail?recordId=' + record.Id;
-                       
+                        //console.log('get record',JSON.stringify(record.Core_Product_Organization__r.Name));
                         if (record.Status == 'Active') {
                             if ((record.Core_IPS_Project__c === undefined || record.Core_IPS_Project__c == undefined) && (record.Core_IPS_Project_Name__c === undefined || record.Core_IPS_Project_Name__c == undefined)) {
                                 record.linkProductNewCase = communityPath + '/new-case?assetId=' + record.Id + '&assetName=' + record.Name + '&mode=' + 'create' + '&supOrgNum=' + record?.Core_Product_Organization__r?.Name;
@@ -1069,7 +1072,7 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     @api caseInfo = 'democheck';
     hanldeProgressValueChange(event) {
         this.searchValue = event.detail;
-        
+        console.log('Ck>> global  search', this.searchValue);
         this.projects = false;
         this.products = false;
         this.contacts = false;
@@ -1103,10 +1106,11 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     //global search js method
     isprojectpagination;
     getSearchResult() {
-       
+        console.log('CK>> JS method called');
+
         getSearchResult({ searchKey: this.searchValue })
             .then(result => {
-               
+                console.log('CK>> Result fetched');
                 const timezone = TIME_ZONE;
                 const locale = LOCALE;
                 const options = {
@@ -1206,7 +1210,7 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                 this.globalProdrefreshPageination();
             })
             .catch(error => {
-                
+                console.log('Error Message--' + error);
                 const event = new ShowToastEvent({
                     title: 'Error',
                     variant: 'error',
@@ -1294,7 +1298,7 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     coltype;
     sortGlobalCaseDataData(fieldname, direction) {
         let parseData = JSON.parse(JSON.stringify(this.globalcaserecordsToDisplay));
-       
+        //console.log('parsedata--'+parseData.length);
         let column = this.globalcasecolumns.find(c => c.fieldName === fieldname);
         this.coltype = column.type;
 

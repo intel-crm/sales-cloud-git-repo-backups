@@ -72,7 +72,7 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">https://account360.ai4sales.com/insights?</value>
+        <value xsi:type="xsd:string">https://ci-account360.ai4sales.com/insights?</value>
     </values>
     <values>
         <field>User_Filter_and_Value_txt__c</field>

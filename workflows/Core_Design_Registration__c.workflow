@@ -7,7 +7,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ddr.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Design_Owner_On_Approval</template>
     </alerts>
@@ -18,7 +18,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ddr.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Design_Owner_On_Rejection</template>
     </alerts>
@@ -33,7 +33,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ddr.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Owners_On_Open_Design</template>
     </alerts>

@@ -16,11 +16,11 @@ public without sharing class Core_MDF_PGM_ServiceHandler {
         List<String> extPGMGrpNames = new List<String>();
         Set<Id> pgmGrpIds = new Set<Id>();
         List<id> cpId = new List<id>();
-        List<Core_MDF_ChannelProgram__mdt> cpList = [Select Core_MDF_Program_ID__c from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c in (:Core_MDF_CCP_ConstantClass.CCF_TECHNICAL_PROGRAM_NAME, :Core_MDF_CCP_ConstantClass.DCF_TECHNICAL_PROGRAM_NAME,:Core_MDF_CCP_ConstantClass.EEF_PROGRAM)];
+        List<Core_MDF_ChannelProgram__mdt> cpList = [Select Core_MDF_Program_ID__c from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c in :Core_MDF_CCP_ConstantClass.allAccessGroupSupportedPrograms];
 
-        cpId.add(cpList[0].Core_MDF_Program_ID__c);
-        cpId.add(cpList[1].Core_MDF_Program_ID__c);
-        cpId.add(cpList[2].Core_MDF_Program_ID__c);
+        for(Core_MDF_ChannelProgram__mdt cp : cpList){
+            cpId.add(cp.Core_MDF_Program_ID__c);
+        }
         Map<Id,Core_MDF_Partner_Group_Mapping__c> pgmGrpAllAccessGrpIdNameMap = new  Map<Id,Core_MDF_Partner_Group_Mapping__c>();
         List<string> subGrps = new List<string>();
         Map<Id,String> comarketingAccIds = new Map<Id,String>();

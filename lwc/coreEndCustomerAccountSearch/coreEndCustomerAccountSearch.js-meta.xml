@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle
+    xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <apiVersion>66.0</apiVersion>
+
+    <isExposed>true</isExposed>
+
+    <masterLabel>
+        End Customer Account Search
+    </masterLabel>
+
+    <description>
+        Searches and selects an End Customer Account
+        using the source record's End Customer Name.
+    </description>
+
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+
+    <targetConfigs>
+
+        <targetConfig targets="lightning__RecordPage">
+
+            <objects>
+                <object>Core_Design_Registration__c</object>
+                <object>PRM_Partner_Deal_Opportunity__c</object>
+            </objects>
+
+            <property
+                name="sourceNameFieldApiName"
+                type="String"
+                label="End Customer Name Field API Name"
+                description="API name of the field containing the End Customer Name."
+                required="true" />
+
+            <property
+                name="sourceCountryFieldApiName"
+                type="String"
+                label="End Customer Country Field API Name"
+                description="API name of the field containing the End Customer Country."
+                 />
+
+            <property
+                name="targetAccountLookupFieldApiName"
+                type="String"
+                label="End Customer Account Lookup Field API Name"
+                description="API name of the Account lookup populated after selection."
+                required="true" />
+
+            <property
+                name="sourceWebsiteFieldApiName"
+                type="String"
+                label="Source Website Field API Name"
+                description="API name of the source record Website field"/>
+
+            <supportedFormFactors>
+                <supportedFormFactor type="Large"/>
+            </supportedFormFactors>
+
+        </targetConfig>
+
+    </targetConfigs>
+
+</LightningComponentBundle>

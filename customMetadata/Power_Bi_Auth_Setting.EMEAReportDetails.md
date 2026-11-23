@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>ReportId__c</field>
-        <value xsi:type="xsd:string">5448f2e1-e9ef-4d6b-8532-cbcb1fe6c10f</value>
+        <value xsi:type="xsd:string">de9c35c3-5ca0-4906-b81f-42389ccb1f27</value>
     </values>
     <values>
         <field>Table_Name__c</field>
@@ -36,6 +36,6 @@
     </values>
     <values>
         <field>WorkspaceId__c</field>
-        <value xsi:type="xsd:string">ee76de2f-fcf2-4d13-93e6-0976ffbdb7d7</value>
+        <value xsi:type="xsd:string">315beb4c-20ff-4c26-9d07-a5b97b42f6ed</value>
     </values>
 </CustomMetadata>
