@@ -58,7 +58,6 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <comment>Overriding to enable redirection based on user profiles.</comment>
         <content>core_IPS_ProjectLandingPage</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -66,7 +65,9 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <type>Default</type>
+        <content>Core_Detail_IPSProject</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
@@ -86,13 +87,6 @@
         <actionName>List</actionName>
         <formFactor>Small</formFactor>
         <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>New</actionName>
-        <content>core_IPS_ProjectLandingPage</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
@@ -102,6 +96,13 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
+        <content>core_IPS_ProjectLandingPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
@@ -135,32 +136,42 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
         <content>Premier_Support_Project_Record_Page1</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Premier_Support_Project_Record_Page1</content>
-        <formFactor>Large</formFactor>
+        <content>Core_Detail_IPSProject</content>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>Premier_Support_Project_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>IPS_Project_Compact_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>IPS_Project_Compact_layout</compactLayoutAssignment>
     <compactLayouts>
-        <fullName>IPS_Project_Compact_Layout</fullName>
+        <fullName>Core_IPS_Project_Layout</fullName>
         <fields>Name</fields>
         <fields>Core_Status__c</fields>
         <fields>OwnerId</fields>
-        <label>IPS Project Compact Layout</label>
+        <label>Core_IPS_Project_Layout</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>IPS_Project_Compact_layout</fullName>
+        <fields>Name</fields>
+        <fields>Core_Status__c</fields>
+        <fields>OwnerId</fields>
+        <label>IPS Project Compact layout</label>
     </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>IPS Project</description>
@@ -299,6 +310,18 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_IPS_ProjectGroupID__c</fullName>
+        <description>This field stores new project group id for external customers.</description>
+        <externalId>false</externalId>
+        <label>External Customer Group ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_IPS_Project_ID__c</fullName>
         <description>Unique IPS Project object Identifier related to IPS Projects on Case</description>
         <displayFormat>IPJ-{000000}</displayFormat>
@@ -307,6 +330,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Core_IPS_Project_Partner_Support_Owner__c</fullName>
+        <description>to hold the selected value from drop down value for PSO</description>
+        <externalId>false</externalId>
+        <label>Core IPS Project Partner Support Owner</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_IPS_Remove_Notification_Details__c</fullName>
@@ -492,6 +527,27 @@
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>MarkByProductObject__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>When new Product Created then every time its it get Checked.&apos;Core_IPS_Product__c&apos; so flow will run and make this project Active.</description>
+        <label>MarkByProductObject</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Project_Partner_Support_Owner__c</fullName>
+        <description>to save the drop down list value</description>
+        <externalId>false</externalId>
+        <label>Project Partner Support Owner</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Region__c</fullName>
         <label>Region</label>
         <required>false</required>
@@ -620,6 +676,11 @@
                     <default>false</default>
                     <label>WEUR</label>
                 </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
@@ -648,6 +709,10 @@
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
                 <valueName>TAIWAN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>INDIA</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>ASMO</controllingFieldValue>
@@ -694,27 +759,31 @@
     <label>Premier Support Project</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
         <columns>Core_IPS_Project_ID__c</columns>
         <columns>Core_IPS_GroupId__c</columns>
+        <columns>NAME</columns>
         <columns>Core_MPNDA__c</columns>
         <columns>Core_Number_of_Accounts__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>Core_Number_of_Products__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Status__c</columns>
         <columns>RECORDTYPE</columns>
+        <columns>Core_IPS_Private__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATEDBY_USER</field>
+            <operation>contains</operation>
+            <value>Tejaswini</value>
+        </filters>
         <label>All</label>
-        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
         <fullName>All_Projects_Active</fullName>
-        <columns>NAME</columns>
         <columns>Core_IPS_Project_ID__c</columns>
+        <columns>NAME</columns>
         <columns>Core_Status__c</columns>
         <columns>Core_MPNDA__c</columns>
         <filterScope>Everything</filterScope>
@@ -722,11 +791,6 @@
             <field>Core_Status__c</field>
             <operation>equals</operation>
             <value>Active</value>
-        </filters>
-        <filters>
-            <field>Core_IPS_Private__c</field>
-            <operation>equals</operation>
-            <value>1</value>
         </filters>
         <label>All Active Projects</label>
         <sharedTo>
@@ -739,29 +803,17 @@
         <columns>NAME</columns>
         <columns>Core_Project_Description__c</columns>
         <columns>Core_Status__c</columns>
+        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_Status__c</field>
             <operation>equals</operation>
-            <value>Active</value>
+            <value>Active,Draft</value>
         </filters>
         <label>All Projects</label>
         <sharedTo>
             <allPartnerUsers></allPartnerUsers>
             <group>Core_PG_IPS_External_Customer</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_000_Core_IPS_Project</fullName>
-        <columns>NAME</columns>
-        <filterScope>Queue</filterScope>
-        <label>IPS - Org - Test Org 0</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_000</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_000</group>
-            <group>Core_IPS_Org_014</group>
-            <group>Core_PG_IT_Admin</group>
         </sharedTo>
     </listViews>
     <nameField>
@@ -852,6 +904,10 @@
             </values>
             <values>
                 <fullName>IJKK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -949,6 +1005,20 @@
         <errorMessage>Cannot enable more than 50 Project members in bulk. Please enable them individually from related records</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Cannot_Make_Active</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( OR(ISPICKVAL( Core_Status__c , &apos;Submitted Pending&apos;), ISPICKVAL( Core_Status__c , &apos;Active&apos;)), OR(Core_Number_of_Products__c==0,Core_Number_of_Accounts__c==0,Core_Number_of_Users__c==0))</errorConditionFormula>
+        <errorDisplayField>Core_Status__c</errorDisplayField>
+        <errorMessage>Project cannot be made Active without atleast one Account and one Product and one Project Member</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_OneContactRequired</fullName>
+        <active>false</active>
+        <description>When creating or editing a project, validation should ensure that at least one contact is associated to the projects</description>
+        <errorConditionFormula>Number_of_Active_Users__c&lt;1</errorConditionFormula>
+        <errorMessage>At least one contact should be associated to the Project</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_IPS_PreventCheckingPrivate</fullName>
         <active>true</active>
         <errorConditionFormula>ISCHANGED( Core_IPS_Private__c ) &amp;&amp; $User.Id !=  OwnerId &amp;&amp;  ISPICKVAL( Core_Status__c , &apos;Draft&apos;) &amp;&amp; $Profile.Name &lt;&gt; $Label.Core_IPS_Data_Migration_Profile_Name &amp;&amp; $Profile.Name &lt;&gt; $Label.Core_IPS_System_Admin_Profile_Name &amp;&amp;  
@@ -993,7 +1063,7 @@ $Profile.Name &lt;&gt; $Label.Core_IPS_IT_Admin_Profile &amp;&amp; $Setup.Core_I
     </validationRules>
     <validationRules>
         <fullName>Core_IPS_Project_Status_field_edit</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Project status field can&apos;t be changed to &quot;Draft&quot; value once the project record is active</description>
         <errorConditionFormula>AND(
 $Profile.Name!=$Label.Core_IPS_DataMigration_ProfileName,
@@ -1003,6 +1073,15 @@ ISPICKVAL(Core_Status__c, &quot;Draft&quot;)
 )</errorConditionFormula>
         <errorDisplayField>Core_Status__c</errorDisplayField>
         <errorMessage>Project Status value can&apos;t be changed to Draft once the project is active.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Project_cannot_be_activated</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISPICKVAL(Core_Status__c,&apos;New&apos;), 
+Core_Number_of_Accounts__c = 0,
+Core_Number_of_Products__c = 0
+)</errorConditionFormula>
+        <errorMessage>Project cannot be submitted without atleast one Account and one Product</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_IPS_Restrict_Changing_Private</fullName>
@@ -1035,6 +1114,73 @@ NOT(ISCHANGED(Core_Number_of_Users__c))
         <openType>noSidebar</openType>
         <page>Core_IPS_AddProjSupportOwner</page>
         <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>EditCustom</fullName>
+        <availability>online</availability>
+        <description>Redirects to standard page for internal users and custom page for external users</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Edit Custom</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>{!IF(AND(($Profile.Name != &apos;IPS External Customer&apos;),($Profile.Name != $Label.Core_IPS_Partner_AE_ProfileName),($Profile.Name != &apos;Partner&apos; )), URLFOR($Action.Core_IPS_Project__c.Edit, Core_IPS_Project__c.Id), URLFOR(&apos;/apex/Core_IPS_Project_Edit_Page?id=&apos; + Core_IPS_Project__c.Id))}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>NewCustomButton</fullName>
+        <availability>online</availability>
+        <description>For routing different pages for IPS External and internal Users</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>window.location =&quot;apex/Core_ExternalUser_IPS_Project&quot;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Custom</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Custom</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!IF(AND(($Profile.Name != &apos;IPS External Customer&apos;),($Profile.Name != $Label.Core_IPS_Partner_AE_ProfileName),($Profile.Name != &apos;Partner&apos; )), URLFOR($Action.Core_IPS_Project__c.New), URLFOR(&apos;/apex/Core_ExternalUser_IPS_Project&apos;))}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Status_Update</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Status Update</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/31.0/connection.js&quot;)}
+
+var statusUpdate=new sforce.SObject(&quot;Core_IPS_Project__c&quot;);
+statusUpdate.Id=&apos;{!Core_IPS_Project__c.Id}&apos;;
+statusCheck = &apos;{!Core_IPS_Project__c.Core_Status__c}&apos;;
+if(statusCheck==&quot;Active&quot;){
+statusUpdate.Core_Status__c=&quot;Inactive&quot;;
+}else
+{
+  statusUpdate.Core_Status__c=&quot;Active&quot;;
+}
+
+var result=sforce.connection.update([statusUpdate]);
+if (result[0].getBoolean(&quot;success&quot;)){
+        alert(&quot;Status updated successfully &quot;);
+	window.location.reload();
+}else
+{
+        console.log(result[0]);
+	alert(&quot;You are not having permission to update this project Status&quot;);
+}</url>
     </webLinks>
     <webLinks>
         <fullName>core_Submit</fullName>

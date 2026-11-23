@@ -172,7 +172,7 @@
         <defaultValue>false</defaultValue>
         <description>This field will determine whether the comment text field has to be picked up while sending status update or not</description>
         <label>Comment Only</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -181,7 +181,7 @@
         <description>Holds comment text for the closed case</description>
         <label>Closed Comment</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
@@ -199,7 +199,7 @@
         <label>Previous Source Value</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>

@@ -92,32 +92,9 @@
             <value>WEUR</value>
         </values>
     </buckets>
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>VerticalColumnStacked</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>Core_Solution_Milestone__c.Core_Owner__c</groupingColumn>
-        <legendPosition>Right</legendPosition>
-        <location>CHART_TOP</location>
-        <secondaryGroupingColumn>Core_Solution_Milestone__c.Core_Status__c</secondaryGroupingColumn>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>false</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_Status__c</field>
+    </columns>
     <columns>
         <field>CUST_CREATED_DATE</field>
     </columns>
@@ -126,6 +103,9 @@
     </columns>
     <columns>
         <field>Core_Solution_Milestone__c.Core_Milestone_Date__c</field>
+    </columns>
+    <columns>
+        <field>Core_Solution_Milestone__c.Core_Owner__c</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -150,36 +130,19 @@
             <column>Core_Solution_Milestone__c.Core_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Ekaterina Kotelnikova,Nikolay Panov,Dmitry Matchin,Vladimir Fedorov,Arkadiusz Drazkowski,Dunska,Barbara Barusova Maliszewska,Gosia Dzul</value>
+            <operator>equals</operator>
+            <value>Ekaterina Kotelnikova,Nikolay Panov,Dmitry Matchin,Vladimir Fedorov,Arkadiusz Drazkowski,Magdalena Dunska,Barbara Barusova Maliszewska,Gosia Dzul</value>
         </criteriaItems>
         <criteriaItems>
             <column>CUST_CREATED_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1/1/2017 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Solution_Milestone__c.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
+            <value>7/1/2017 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Core_Solution_Milestone__c.Core_Owner__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Core_Solution_Milestone__c.Core_Status__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Milestones H2 2017</name>
     <params>
         <name>terr</name>

@@ -9,11 +9,6 @@
         <value>Contact Messages</value>
     </caseValues>
     <fields>
-        <label><!-- ACM Integration Queue --></label>
-        <name>ACM_Integration_Queue__c</name>
-        <relationshipLabel><!-- Contact Messages --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Contact --></label>
         <name>Contact__c</name>
         <relationshipLabel><!-- Contact Messages --></relationshipLabel>

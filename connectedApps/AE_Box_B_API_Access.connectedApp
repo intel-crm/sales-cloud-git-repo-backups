@@ -3,8 +3,10 @@
     <contactEmail>zay.s.montalbo@intel.com</contactEmail>
     <label>AE Box B API Access</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6t4WOxhSmunnzJCnPtsRvbaoof7CHbPp9K59pJ7L4JtsK2ZWfK1YvrmqSr9R</consumerKey>
+        <callbackUrl>https://intel.my.salesforce.com/services/oauth2/callback
+https://intel.fusionmedia.com/ics-support-mobile-app/oauth2/callback
+https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG9JamK_x9K2XKK99OwezxYdwQmpn5s_3fZmPcuh118jQsnYupwofu2MgXKhxDNqYS.OMQbnO3P81AGY2lV</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -23,10 +25,15 @@
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>Full</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>ENFORCE</ipRelaxation>
+        <ipRelaxation>BYPASS</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
-        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
     </oauthPolicy>
+    <sessionPolicy>
+        <sessionTimeout>480</sessionTimeout>
+    </sessionPolicy>
 </ConnectedApp>

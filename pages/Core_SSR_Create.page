@@ -6,10 +6,10 @@
 * Modification Log  :
 * Developer           Date               Description
 * ----------------------------------------------------------------------------    
-* Rangesh Kona    : Version 1:  Aug 22nd, 2017  Initial Deployed Version
+* Rangesh Kona	  : Version 1:  Aug 22nd, 2017  Initial Deployed Version
 *************************************************************************************
 -->
-<apex:page controller="Core_SSR_Controller" id="Core_SSR_Controller" lightningStylesheets="True">
+<apex:page controller="Core_SSR_Controller" id="Core_SSR_Controller" >
     <apex:pageMessages id="validationErrors"></apex:pageMessages>
     <apex:outputPanel rendered="{!hasWebserviceCallFailed}" id="showmsg">
          <apex:pageMessage severity="INFO" title="{!$Label.Core_SSR_Creation_Error}" summary="{!$Label.Core_SSR_Integration_Issue}" strength="2"></apex:pageMessage>
@@ -54,7 +54,7 @@
             <apex:actionFunction action="{!InsertInboundMessage}" name="Update_Inbound" status="Status3" oncomplete="checkProcessFailorSuccess();" rerender="status3"/>
             <apex:actionFunction action="{!FinalPageRedirect}" name="allGoodRedirectToDetailPage" status="Status4" rerender="status4"/> 
             <apex:outputPanel id="runscript">
-                <script>    
+                <script>	
                 // Final check before redirecting user to a failed page
                 function checkProcessFailorSuccess() {
                     if ({!runAction}) {

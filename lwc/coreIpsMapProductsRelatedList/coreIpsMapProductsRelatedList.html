@@ -1,0 +1,57 @@
+<template>
+    <lightning-card title={lightningCardTitle}>
+        <div class="slds-form slds-grid slds-gutters">
+            <template if:false={isVisible}>
+                <div class="slds-align_absolute-center">
+                    <template if:true={isLookupQueryPresent}>
+                        <c-core-ips-custom-lookup 
+                            onselectedrec={handleSupportProductChange} 
+                            iconname={lookupIconName}
+                            searchfield-name={lookupSearchFieldName}
+                            query-string={lookupQueryString}
+                            query-execution-required=true>
+                        </c-core-ips-custom-lookup>
+                    </template>
+                    <lightning-button disabled={isAddProductBtnEnabled} variant="brand" label="Add Product" class="slds-m-left_medium" title="Add Product" onclick={openModalToSeeLineItems}></lightning-button>
+                </div>
+            </template>
+        </div>
+    
+        <template if:true={isDataAvailable}>
+            <c-core-ips-datatable-utility
+                hide-checkbox-column={hideCheckboxColumn} 
+                show-row-number-column={showRowNumberColumn} 
+                enable-infinite-loading={enableInfiniteLoading}
+                num-and-checkbox-both-cols={numAndCheckboxBothCols}
+                normal-data-table={normalDataTable}
+                records={dataToShow}
+                columns={columns}
+                number-of-rows-to-show={numberOfRowsToShow}
+                height-in-rem={heightInRem}
+                onrowactions={handleRowActions}>
+            </c-core-ips-datatable-utility>
+        </template>
+    </lightning-card>
+
+    <template if:true={bShowModal}>
+        <c-core-ips-model-to-view-datatable-utility
+                modal-title={modaltitle}
+                modal-hide-checkbox-column={modalHideCheckboxColumn}
+                modal-enable-infinite-loading={modalEnableInfiniteLoading}
+                modal-normal-data-table={modalNormalDataTable}
+                modal-num-and-checkbox-both-cols={modalNumAndCheckboxBothCols}
+                modal-table-height-in-rem={heightInRem}
+                modal-show-row-number-column={modalShowRowNumberColumn}
+                modal-table-pre-selected-rows={preSelectedLineItems}
+                message-text1={noteIfLineItemNotPresent}
+                records={draftLineItemsToShow}
+                columns={lineItemPreviewCols}
+                onrecordselection={getSelectedRecords}
+                onsubmitclick={saveRecords}
+                onclosemodal={closeModal}>
+        </c-core-ips-model-to-view-datatable-utility>
+    </template>
+    <template if:true={spinnerOn}>
+        <c-core-ips-spinner-utility></c-core-ips-spinner-utility>
+    </template>
+</template>

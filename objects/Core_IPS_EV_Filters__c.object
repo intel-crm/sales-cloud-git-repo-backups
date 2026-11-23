@@ -13,16 +13,5 @@
         <unique>false</unique>
     </fields>
     <label>Search Product EnvDet Criteria</label>
-    <listViews>
-        <fullName>All_Data</fullName>
-        <columns>NAME</columns>
-        <columns>SETUP_OWNER_NAME</columns>
-        <columns>Core_IPS_Param_Name__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>UPDATEDBY_USER.ALIAS</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Data</label>
-    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

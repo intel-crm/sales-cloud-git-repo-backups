@@ -9,6 +9,10 @@
         <value>Entitlement Subordinates</value>
     </caseValues>
     <fields>
+        <label><!-- External Id --></label>
+        <name>Core_External_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Parent Entitlement --></label>
         <name>Core_Parent_Entitlement_Id__c</name>
         <relationshipLabel><!-- Entitlements --></relationshipLabel>

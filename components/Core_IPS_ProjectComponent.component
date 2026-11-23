@@ -167,7 +167,7 @@
  <script>
   
   var flagToAppendText = true;
-  var HiddenProductValue = "{!hiddenProdIdField}";
+  var HiddenProductValue = "{!JSENCODE(hiddenProdIdField)}";
 function Init()
     {    
   $(document).on("keydown", function (e) {
@@ -181,8 +181,8 @@ function Init()
 
     
 
-  $("input[id*='{!autocomplete_textbox}'").on("blur",function(e){return  false;});
-   $("input[id*='{!autocomplete_textbox}'").on('keydown',function(e){
+  $("input[id*='{!JSENCODE(autocomplete_textbox)}'").on("blur",function(e){return  false;});
+   $("input[id*='{!JSENCODE(autocomplete_textbox)}'").on('keydown',function(e){
     
    if(e.which==13)
    {
@@ -198,11 +198,11 @@ function Init()
     }
    });
    
-   $("input[id*='{!autocomplete_textbox}']").on('keyup change',function(e){
+   $("input[id*='{!JSENCODE(autocomplete_textbox)}']").on('keyup change',function(e){
    
   
-  $("div[id*='{!Section_title}']").find('.pbSubsection').html('');
-  $("div[id*='{!Section_title}']").find('.pbSubsection').append("<span><img src=\'{!$Resource.Core_IPS_Typehead_Loader}\' alt=\'In progress\' /><span style='color:blue;font-size:15px;'>Please enter 3 or more characters of the product name or refer to the full list of products in the Intel Products tab. Wildcard search is not supported.</span>");
+  $("div[id*='{!JSENCODE(Section_title)}']").find('.pbSubsection').html('');
+  $("div[id*='{!JSENCODE(Section_title)}']").find('.pbSubsection').append("<span><img src=\'{!$Resource.Core_IPS_Typehead_Loader}\' alt=\'In progress\' /><span style='color:blue;font-size:15px;'>Please enter 3 or more characters of the product name or refer to the full list of products in the Intel Products tab. Wildcard search is not supported.</span>");
     
    if($(this).val().length > 2)
    {            
@@ -218,8 +218,8 @@ function Init()
       CallRemoteAction(true);
                         
    }else if($(this).val().length ==0){
-       $("input[id*='{!hiddenProductIdField}'").val('');    
-       $("div[id*='{!Section_title}']").find('.pbSubsection').html('');
+       $("input[id*='{!JSENCODE(hiddenProductIdField)}'").val('');    
+       $("div[id*='{!JSENCODE(Section_title)}']").find('.pbSubsection').html('');
        try
        {
           if(e.type=='keyup')
@@ -243,16 +243,16 @@ function Init()
     }
 function createTable(result)
     {
-       //$("div[id*='{!Section_title}']").show();
+       //$("div[id*='{!JSENCODE(Section_title)}']").show();
     var cols = [{!ColumnsName}];
     //console.log(cols);
-    $("div[id*='{!Section_title}']").find('.pbSubsection').html('');
+    $("div[id*='{!JSENCODE(Section_title)}']").find('.pbSubsection').html('');
                var  strFinalTable ="";
                
-               $("div[id*='{!Section_title}']").find(".pbSubsection").append("<table id='tblResult{!objectname}' class='productTable' width='100%'><thead></thead><tbody></tbody></table>");
+               $("div[id*='{!JSENCODE(Section_title)}']").find(".pbSubsection").append("<table id='tblResult{!JSENCODE(objectname)}' class='productTable' width='100%'><thead></thead><tbody></tbody></table>");
               
                
-               $("#"+"tblResult{!objectname}").DataTable({
+               $("#"+"tblResult{!JSENCODE(objectname)}").DataTable({
                "bDestroy": true,
                "bFilter": false, 
                "bInfo": false,
@@ -267,7 +267,7 @@ function createTable(result)
                
                });
    //console.log($( "input[name='{!objectname}_group']" ) + '>>>>>>>>>>>>>>>>>>>>>>>>>>>>');  
-var  tblObj=$("#tblResult{!objectname}");   
+var  tblObj=$("#tblResult{!JSENCODE(objectname)}");   
    BindDataEvent();
                
     }
@@ -300,7 +300,7 @@ function CallRemoteAction(Flag)
  {
  
   
-   autoCompleteController.findSObjects('{!objectname}',$("input[id*='{!autocomplete_textbox}'").val() , '{!fieldSetName}', '{!relatedId}', function(result, event){
+   autoCompleteController.findSObjects('{!JSENCODE(objectname)}',$("input[id*='{!JSENCODE(autocomplete_textbox)}'").val() , '{!JSENCODE(fieldSetName)}', '{!JSENCODE(relatedId)}', function(result, event){
                             console.log(JSON.stringify(result));
                             if(event.type == 'exception') {
                                   alert(event.message);
@@ -318,7 +318,7 @@ function CallRemoteAction(Flag)
   {
   
      
-     autoCompleteController.findSObjects('{!objectname}','', '{!fieldSetName}', '{!relatedId}', function(result, event){
+     autoCompleteController.findSObjects('{!JSENCODE(objectname)}','', '{!JSENCODE(fieldSetName)}', '{!JSENCODE(relatedId)}', function(result, event){
                             console.log(JSON.stringify(result));
                             if(event.type == 'exception') {
                                   alert(event.message);
@@ -335,7 +335,7 @@ function CallRemoteAction(Flag)
 } 
 function BindDataEvent()
 {
-$("#tblResult{!objectname}").find("tr").each(function(){
+$("#tblResult{!JSENCODE(objectname)}").find("tr").each(function(){
 console.log($(this).find('td').eq(0).find('input').val());
 if($(this).find('td').eq(0).find('input').val()!= HiddenProductValue)
 {
@@ -343,7 +343,7 @@ if($(this).find('td').eq(0).find('input').val()!= HiddenProductValue)
 }
 
 });
-    $("input[name='{!objectname}_group']" ).click(function(){  
+    $("input[name='{!JSENCODE(objectname)}_group']" ).click(function(){  
             UpdateIdiNHidden($(this).parent().parent());   
     });
 

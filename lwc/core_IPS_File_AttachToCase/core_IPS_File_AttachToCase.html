@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Attach File" icon-name="standard:file">
+       <lightning-record-view-form record-id={recordId} object-api-name="Case">
+          <div class="slds-grid">
+             <div class="slds-col slds-size_1-of-2">
+                   <!-- Your lightning-output-field components here -->
+                   <lightning-output-field field-name="CaseNumber"></lightning-output-field>
+                   <lightning-output-field field-name="Status"></lightning-output-field>
+                   <lightning-output-field field-name="Subject"></lightning-output-field>
+                   <lightning-output-field field-name="CreatedDate"></lightning-output-field>
+                   <lightning-output-field field-name="ClosedDate"></lightning-output-field>
+             </div>
+             <div class="slds-col slds-size_1-of-2">
+                   <!-- More lightning-output-field components here -->
+                   <lightning-output-field field-name="AccountId"></lightning-output-field>
+                   <lightning-output-field field-name="ContactId"></lightning-output-field>
+                   <lightning-output-field field-name="Priority"></lightning-output-field>
+                   <lightning-output-field field-name="Description"></lightning-output-field>
+             </div>
+          </div>
+          <iframe src={url} width="100%" height="600px" scrolling="false"></iframe>
+       </lightning-record-view-form>
+    </lightning-card>
+ </template>

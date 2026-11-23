@@ -269,6 +269,14 @@
         <label><!-- Test for plain --></label>
         <name>Test_fro_plain__c</name>
     </fields>
+    <fields>
+        <label><!-- formula test --></label>
+        <name>formula_test__c</name>
+    </fields>
+    <fields>
+        <label><!-- test --></label>
+        <name>test__c</name>
+    </fields>
     <recordTypes>
         <label><!-- Case comment --></label>
         <name>Case_comment</name>

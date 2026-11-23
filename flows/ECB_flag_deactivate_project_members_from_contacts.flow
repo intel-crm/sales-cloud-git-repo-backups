@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Project_members_count_more_than_one</name>
+        <label>Project members count more than one</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>user_count_more_than_one</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>project_members_check.Core_Number_of_Users__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Inactivate_Project_Members</targetReference>
+            </connector>
+            <label>user count more than one</label>
+        </rules>
+    </decisions>
+    <description>ECB flag deactivate project members from contacts</description>
+    <environments>Default</environments>
+    <interviewLabel>ECB flag deactivate project members from contacts {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>ECB flag deactivate project members from contacts</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>project_members_check</name>
+        <label>project members check</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Project_members_count_more_than_one</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Number_of_Users__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_IPS_Project_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Core_IPS_Project__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_IPS_Project__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Inactivate_Project_Members</name>
+        <label>Inactivate Project Members</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Active</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Status__c</field>
+            <value>
+                <stringValue>Inactive</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>project_members_check</targetReference>
+        </connector>
+        <filterFormula>ISCHANGED({!$Record.Core_IPS_Contact__r.Core_IPS_Active__c}) &amp;&amp; {!$Record__Prior.Core_IPS_Contact__r.Core_IPS_Active__c}=true &amp;&amp;{!$Record.Core_IPS_Contact__r.Core_IPS_Active__c}=false</filterFormula>
+        <object>Core_IPS_Project_Member__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

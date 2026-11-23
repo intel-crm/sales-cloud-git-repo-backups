@@ -11,11 +11,14 @@ public class IPS_APIGEE_Case_Status_Update_Queueable {
     @InvocableMethod
     public static void getcaseRecords(list<Case> getCaseIds){
         string strDetails;
+        System.debug('check caseId value>>>>'+getCaseIds);
         set<Id>caseIds = new set<Id>();
+        if(getCaseIds!=null){
         for(Case cs: getCaseIds){
             caseIds.add(cs.Id);              
-        } 
-        
+        }
+            System.debug('check set of caseId value>>>>'+caseIds);
+       }
         try{
             
             if(Limits.getQueueableJobs() < Limits.getLimitQueueableJobs())       

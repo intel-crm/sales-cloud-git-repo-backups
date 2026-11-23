@@ -18,6 +18,12 @@
             <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Sell-with</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Scale-Estimate (per Finance)</sourceValue>
+            </sourceValues>
             <value>Sell Thru-With</value>
         </values>
     </buckets>
@@ -520,6 +526,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

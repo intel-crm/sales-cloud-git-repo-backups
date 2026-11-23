@@ -103,50 +103,38 @@
     </dashboardFilters>
     <dashboardFilters>
         <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Consulting</values>
+            <operator>contains</operator>
+            <values>Service Providers</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Education</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
+            <operator>contains</operator>
             <values>Energy,Utilities</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Finance</values>
+            <operator>contains</operator>
+            <values>Education,Government</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Government</values>
+            <operator>contains</operator>
+            <values>Health and Life Sciences</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Healthcare</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Manufacturing</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
+            <operator>contains</operator>
             <values>Retail</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Technology</values>
+            <operator>contains</operator>
+            <values>Industrial</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Telecommunications</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
+            <operator>contains</operator>
             <values>Transportation</values>
         </dashboardFilterOptions>
-        <name>Industry</name>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Financial Services</values>
+        </dashboardFilterOptions>
+        <name>Vertical Market</name>
     </dashboardFilters>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>false</isGridLayout>
@@ -168,7 +156,7 @@
                 <column>FK_OPP_CLOSE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>FK_ACC_INDUSTRY</column>
+                <column>FK_$Opportunity.Core_Consumption_Market__c</column>
             </dashboardFilterColumns>
             <displayUnits>Millions</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -204,7 +192,7 @@
                 <column>FK_OPP_CLOSE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>FK_ACC_INDUSTRY</column>
+                <column>FK_$Opportunity.Core_Consumption_Market__c</column>
             </dashboardFilterColumns>
             <displayUnits>Millions</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -243,7 +231,7 @@
                 <column>FK_OPP_CLOSE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>FK_ACC_INDUSTRY</column>
+                <column>FK_$Opportunity.Core_Consumption_Market__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -280,7 +268,7 @@
                 <column>FK_OPP_CLOSE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>FK_ACC_INDUSTRY</column>
+                <column>FK_$Opportunity.Core_Consumption_Market__c</column>
             </dashboardFilterColumns>
             <displayUnits>Millions</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -299,6 +287,42 @@
             <sortBy>RowValueDescending</sortBy>
             <sortLegendValues>false</sortLegendValues>
             <title>ASMO NAR Revenue Won by Vendor</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked</componentType>
+            <dashboardFilterColumns>
+                <column>Core_Opportunity_Partner__c.Core_Partner_Type__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>FK_OPP_CLOSE_DATE</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>FK_$Opportunity.Core_Consumption_Market__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>false</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Status = Approved</footer>
+            <groupingColumn>FK_OPP_OWNER_MANAGER</groupingColumn>
+            <groupingColumn>Core_Opportunity_Partner__c.Core_Partner_Type__c</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Right</legendPosition>
+            <maxValuesDisplayed>15</maxValuesDisplayed>
+            <report>ASMO_ISG_Operations/Partners_Report_by_Partner_by_Manager</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Count of Opportunities with Vendor</title>
             <useReportChart>false</useReportChart>
         </components>
     </middleSection>
@@ -320,7 +344,7 @@
                 <column>FK_OPP_CLOSE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>FK_ACC_INDUSTRY</column>
+                <column>FK_$Opportunity.Core_Consumption_Market__c</column>
             </dashboardFilterColumns>
             <displayUnits>Thousands</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -345,33 +369,36 @@
             <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
             <chartSummary>
+                <aggregate>Sum</aggregate>
                 <axisBinding>y</axisBinding>
-                <column>RowCount</column>
+                <column>FK_OPP_AMOUNT</column>
             </chartSummary>
             <componentType>BarStacked</componentType>
             <dashboardFilterColumns>
-                <column>CLOSE_DATE</column>
+                <column>Core_Opportunity_Partner__c.Core_Partner_Type__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>INDUSTRY</column>
+                <column>FK_OPP_CLOSE_DATE</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>FK_$Opportunity.Core_Consumption_Market__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
             <drillToDetailEnabled>false</drillToDetailEnabled>
-            <enableHover>false</enableHover>
+            <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
             <footer>Status = Approved</footer>
-            <groupingColumn>INDUSTRY</groupingColumn>
-            <groupingColumn>OpportunityLineItem.Core_Vendor_Group__c</groupingColumn>
+            <groupingColumn>Core_Opportunity_Partner__c.Core_Partner_Type__c</groupingColumn>
+            <groupingColumn>FK_$Opportunity.Core_Product_Application__c</groupingColumn>
             <groupingSortProperties/>
             <legendPosition>Right</legendPosition>
-            <maxValuesDisplayed>11</maxValuesDisplayed>
-            <report>ASMO_ISG_Operations/PARTNER_OEM_Report</report>
+            <report>ASMO_ISG_Operations/Partners_report_by_Product_Application</report>
             <showPercentage>false</showPercentage>
             <showValues>false</showValues>
             <sortBy>RowValueDescending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>Count of Opportunities with Vendor</title>
+            <title>Revenue Won by Partner Application</title>
             <useReportChart>false</useReportChart>
         </components>
     </rightSection>

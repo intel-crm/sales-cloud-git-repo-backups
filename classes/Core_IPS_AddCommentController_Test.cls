@@ -12,21 +12,6 @@
 public class Core_IPS_AddCommentController_Test{
     list<string> selectedVisibilityOption = new list<string>();
     static List<User> ListOfUser = new List<User>();
-
-    private static void insertUserWithValidationBypass(User testUser) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert testUser;
-        }
-    }
-
-    private static void insertUsersWithValidationBypass(List<User> testUsers) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert testUsers;
-        }
-    }
-
     @testSetup 
     static void setup() { 
         Account accountRecord = new Account();
@@ -51,14 +36,14 @@ public class Core_IPS_AddCommentController_Test{
         contactRecord.MailingCountry = 'India';
         insert contactRecord; 
         
-        Case caseRecord = new Case(
+        Case CaseRecord = new Case(
             Status = 'New',
             Origin = 'Web',
             Priority = 'High',
             Subject = 'TestSubject56',
             Description = 'TestDescription'
         );
-        insert caseRecord;
+        insert CaseRecord;
         
         Account accountRecordPortal = new Account();
         accountRecordPortal.recordTypeId = [select id from Recordtype where Developername='Mastered_Account'].id;
@@ -87,8 +72,8 @@ public class Core_IPS_AddCommentController_Test{
     static void createusers(){
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> profileList = [select id, name from Profile where name in ('System Administrator','Sales Rep-BB-Dual IPS')];//,'Partner','IPS Agent-Partner')];
-        for(Profile prf : profileList){
+        List<Profile> ProfileList = [select id, name from Profile where name in ('System Administrator','Sales Rep-BB-Dual IPS')];//,'Partner','IPS Agent-Partner')];
+        for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         ListOfUser = TestUtilities.getListOfUser(2);
@@ -98,7 +83,7 @@ public class Core_IPS_AddCommentController_Test{
         /*ListOfUser[2].ProfileID =  profiles.get('Partner');
 		ListOfUser[3].ProfileID =  profiles.get('IPS Agent-Partner');*/
         // }
-        insertUsersWithValidationBypass(ListOfUser);
+        insert ListOfUser;
     }
     public static testmethod void Core_IPS_AddCommentControllerTest(){
         createusers();
@@ -113,10 +98,10 @@ public class Core_IPS_AddCommentController_Test{
         label1.value__c= 'Private to Agents';
         insert label1;
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        insert labelRecord2;
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        insert label2;
         
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
@@ -148,10 +133,10 @@ public class Core_IPS_AddCommentController_Test{
         label8.value__c='Partner';
         insert label8;
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        insert labelRecord9;
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        insert label9;
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
@@ -166,23 +151,23 @@ public class Core_IPS_AddCommentController_Test{
         System.runAs(ListOfUser[0]){
             Test.startTest();
             
-            Case caseList = [SELECT Id FROM Case WHERE Subject='TestSubject56' LIMIT 1];
+            Case CS = [SELECT Id FROM Case WHERE Subject='TestSubject56' LIMIT 1];
             RecordType rtype =[Select Name, Id From RecordType where sObjectType='Case' and isActive=true and RecordType.developerName='IPS_GEC_ReadOnly'];
             
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
-            ApexPages.CurrentPage().getparameters().put('id',caseList.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseList);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
-            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(StndContr);
             addComment.list_size=0;
-            Pagereference pageReference = addComment.saveComment();
+            Pagereference Pg = addComment.saveComment();
             // start - added by Ganapati for US336530
             PageReference pageRef1 = Page.Core_IPS_Case_ExportPDF;
             Test.setCurrentPage(pageRef1);
-            ApexPages.CurrentPage().getparameters().put('id',caseList.id);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
             
-            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(StndContr);
             List<Core_IPS_Case_Comments__c> commentsList1  = addComment1.getcaseComments();
             //end 
             Test.stopTest();
@@ -195,12 +180,12 @@ public class Core_IPS_AddCommentController_Test{
         
         createusers();
         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> profileList = [select id, name from Profile where name='Partner' OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops' OR name='Sales Rep-BB'];// OR name='Partner' OR name='IPS Agent-Partner'];
-        for(Profile prf : profileList){
+        List<Profile> ProfileList = [select id, name from Profile where name='Partner' OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops' OR name='Sales Rep-BB'];// OR name='Partner' OR name='IPS Agent-Partner'];
+        for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
       //  profiles.put('test', '00eo0001001TVVr');
-      profiles.put('test', profileList[0].Id); // Avoid Hardcoding Id Fix - Shipra
+      profiles.put('test', ProfileList[0].Id); // Avoid Hardcoding Id Fix - Shipra
 
         //system.debug('profiles'+ profiles);
         
@@ -214,10 +199,10 @@ public class Core_IPS_AddCommentController_Test{
         label1.value__c= 'Private to Agents';
         insert label1;
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        insert labelRecord2;
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        insert label2;
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
         label3.value__c='Customer';
@@ -248,10 +233,10 @@ public class Core_IPS_AddCommentController_Test{
         label8.value__c='Partner';
         insert label8;
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        insert labelRecord9;
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        insert label9;
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
@@ -264,7 +249,7 @@ public class Core_IPS_AddCommentController_Test{
         insert label11;
         
         System.runAs(ListOfUser[0]){
-            Case caseRecord =  TestUtilities.getCase(); 
+            Case Cs =  TestUtilities.getCase(); 
             Account testAccount=TestUtilities.getAccount();
             insert testAccount;
             
@@ -272,24 +257,24 @@ public class Core_IPS_AddCommentController_Test{
                                               AccountId=testAccount.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
             insert testContact;
             System.assertNotEquals(null, testAccount.id);
-            caseRecord.AccountId=testAccount.id;
-            caseRecord.contactid=testContact.id;
-            insert caseRecord;
-            system.assert(caseRecord!= null);
+            cs.AccountId=testAccount.id;
+            cs.contactid=testContact.id;
+            insert Cs;
+            system.assert(Cs!= null);
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseRecord);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
-            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(StndContr);
             addComment.list_size=0;           
             //system.debug('loginuserprofilename'+addComment.loginuserprofilename);
             addComment.externalUser = true;
             addComment.getcaseComments();
-            Pagereference pageReference = addComment.saveComment();
+            Pagereference Pg = addComment.saveComment();
             Core_IPS_AddCommentController.getAuthr(Profiles.get('Partner'),userinfo.getUserid());
             Core_IPS_AddCommentController.getAuthr(Profiles.get('Data Ops'),userinfo.getUserid());         
-           // Core_IPS_AddCommentController.getAuthr(Profiles.get('IPS Data Migration'),userinfo.getUserid()); 
+            Core_IPS_AddCommentController.getAuthr(Profiles.get('IPS Data Migration'),userinfo.getUserid()); 
             Core_IPS_AddCommentController.getAuthr(Profiles.get('Integration'),userinfo.getUserid());
             Core_IPS_AddCommentController.getAuthr(Profiles.get('Sales Rep-BB'),userinfo.getUserid());
             Core_IPS_AddCommentController.getAuthr(Profiles.get('Sales Rep-BB'), null);
@@ -317,8 +302,8 @@ public class Core_IPS_AddCommentController_Test{
         
         createusers();
         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> profileList = [select id, name from Profile where name='Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
-        for(Profile prf : profileList){
+        List<Profile> ProfileList = [select id, name from Profile where name='Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
+        for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         //system.debug('profiles'+profiles);
@@ -327,93 +312,93 @@ public class Core_IPS_AddCommentController_Test{
         User userRecord = new User();
         User userRecord1 = new User();
         
-        List<Core_IPS_Labels__c> ipsLabelList = new List<Core_IPS_Labels__c>();
+        List<Core_IPS_Labels__c> IPSLabelList = new List<Core_IPS_Labels__c>();
         Core_IPS_Labels__c label0 = new Core_IPS_Labels__c ();
         label0.name= 'PUBLIC_TO_CUSTOMERS';
         label0.value__c='Public to Customers';
-        ipsLabelList.add(label0);
+        IPSLabelList.add(label0);
         
         Core_IPS_Labels__c label1= new Core_IPS_Labels__c();
         label1.name= 'PRIVATE_TO_AGENTS';
         label1.value__c= 'Private to Agents';
-        ipsLabelList.add(label1);
+        IPSLabelList.add(label1);
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        ipsLabelList.add(labelRecord2);
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        IPSLabelList.add(label2);
         
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
         label3.value__c='Customer';
-        ipsLabelList.add(label3);
+        IPSLabelList.add(label3);
         
         Core_IPS_Labels__c label4 = new Core_IPS_Labels__c ();
         label4.name='FAE';
         label4.value__c='FAE';
-        ipsLabelList.add(label4);
+        IPSLabelList.add(label4);
         
         Core_IPS_Labels__c label5 = new Core_IPS_Labels__c();
         label5.name='Agent';
         label5.value__c='Agent';
-        ipsLabelList.add(label5);
+        IPSLabelList.add(label5);
         
         Core_IPS_Labels__c label6 = new Core_IPS_Labels__c();
         label6.name='Backend Integration';
         label6.value__c='Backend Integration';
-        ipsLabelList.add(label6);
+        IPSLabelList.add(label6);
         
         Core_IPS_Labels__c label7 = new Core_IPS_Labels__c();
         label7.name='Data Migration';
         label7.value__c='Data Migration';
-        ipsLabelList.add(label7);
+        IPSLabelList.add(label7);
         
         Core_IPS_Labels__c label8 = new Core_IPS_Labels__c();
         label8.name='Partner';
         label8.value__c='Partner';
-        ipsLabelList.add(label8);
+        IPSLabelList.add(label8);
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        ipsLabelList.add(labelRecord9);
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        IPSLabelList.add(label9);
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
         label10.value__c='Partner - DFAE';
-        ipsLabelList.add(label10);
+        IPSLabelList.add(label10);
         
         Core_IPS_Labels__c label11 = new Core_IPS_Labels__c();
         label11.name='Partner - Agent';
         label11.value__c='Partner - Agent';
-        ipsLabelList.add(label11);
+        IPSLabelList.add(label11);
         
         Core_IPS_Labels__c label12= new Core_IPS_Labels__c();
         label12.name='Comment Source - Customer';
         label12.value__c='Customer Portal';
-        ipsLabelList.add(label12);
+        IPSLabelList.add(label12);
         
         Core_IPS_Labels__c label13= new Core_IPS_Labels__c();
         label13.name='Comment Source - Internal';
         label13.value__c='Internal Portal';
-        ipsLabelList.add(label13);
+        IPSLabelList.add(label13);
         
         Core_IPS_Labels__c label14= new Core_IPS_Labels__c();
         label14.name='Comment Source - Email';
         label14.value__c='Email';
-        ipsLabelList.add(label14);
+        IPSLabelList.add(label14);
         
         Core_IPS_Labels__c label15= new Core_IPS_Labels__c();
         label15.name='Comment Source - N/A';
         label15.value__c='N/A';
-        ipsLabelList.add(label15);
+        IPSLabelList.add(label15);
         
         Core_IPS_Labels__c label16= new Core_IPS_Labels__c();
         label16.name='Comment Source - Data Migration';
         label16.value__c='Data Migration';
-        ipsLabelList.add(label16);
+        IPSLabelList.add(label16);
         
-        insert ipsLabelList;
+        insert IPSLabelList;
         
         Account testAccount1;
         Contact testContact ;
@@ -435,8 +420,7 @@ public class Core_IPS_AddCommentController_Test{
                 LocaleSidKey='en_US',
                 TimeZoneSidKey='America/Chicago'
             );
-            insertUserWithValidationBypass(portalAccountOwner1);
-           
+            Database.insert(portalAccountOwner1);
             //****************************************//
             
             testAccount1=TestUtilities.getAccount(); 
@@ -463,9 +447,8 @@ public class Core_IPS_AddCommentController_Test{
             userRecord.UserName = 'newuser' + String.valueOf(DateTime.Now().getTime()) + '@intel.com.' + UserInfo.getOrganizationId();
             userRecord.isActive = true;
             
-            userRecord.ProfileID =  profiles.get('Partner');
-            insertUserWithValidationBypass(userRecord);
-            
+            userRecord.ProfileID =  profiles.get('Partner');           
+            insert userRecord;
             
             PermissionSet ps = [SELECT Id,name FROM PermissionSet WHERE Name = 'Core_IPS_Permission_Set']; 
             PermissionSetAssignment psa = new PermissionSetAssignment();
@@ -482,23 +465,23 @@ public class Core_IPS_AddCommentController_Test{
         
         System.runAs(userRecord){
             
-            Case caseRecord =  TestUtilities.getCase(); 
+            Case Cs =  TestUtilities.getCase(); 
             //cs.AccountId=accountRecord.id;
-            caseRecord.contactid=testContact.id;
-            insert caseRecord;
+            cs.contactid=testContact.id;
+            insert Cs;
             // added by ganapati for US336530
             Core_IPS_Case_Comments__c casecomment = new Core_IPS_Case_Comments__c();
             casecomment.Core_IPS_Case_Comment_Type__c = Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c;
-            casecomment.Core_IPS_Case__c = caseRecord.Id;
+            casecomment.Core_IPS_Case__c = Cs.Id;
             casecomment.Core_IPS_Comment__c = 'TestString';
             insert casecomment;
             //end
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseRecord);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
-            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(StndContr);
             addComment.list_size=0;
             addComment.partnerType ='Partner';
             //System.debug('loginuserprofilename'+addComment.loginuserprofilename);
@@ -506,8 +489,8 @@ public class Core_IPS_AddCommentController_Test{
             addComment.list_size=0;
             addComment.searchText='TestString';
             addComment.search();
-            Pagereference pageReference = addComment.saveComment();
-            addComment.getcaseComments();            
+            Pagereference Pg = addComment.saveComment();
+            //addComment.getcaseComments();             
             Core_IPS_AddCommentController.getAuthr(Profiles.get('Partner'),userinfo.getUserid());
             /*Core_IPS_AddCommentController.getAuthr(Profiles.get('Data Ops'));         
             Core_IPS_AddCommentController.getAuthr(Profiles.get('IPS Data Migration')); 
@@ -515,7 +498,7 @@ public class Core_IPS_AddCommentController_Test{
             Core_IPS_AddCommentController.getAuthr(Profiles.get('Partner'));
             Core_IPS_AddCommentController.getAuthr(Profiles.get('IPS Agent-Partner'));*/
             
-            List<Core_IPS_Case_Comments__c> commentsList  = addComment.getcaseComments();
+            /*List<Core_IPS_Case_Comments__c> commentsList  = addComment.getcaseComments();
             boolean disablep=addComment.getdisableprevious();
             boolean disableN=addComment.getdisbaleNext();    
             integer i= addComment.getTotal_size();
@@ -524,25 +507,58 @@ public class Core_IPS_AddCommentController_Test{
             k=addComment.count;
             addComment.selectedRadioButton = 'Public to Customers'; 
             addComment.next();
-            addComment.previous();
+            addComment.previous();*/
+            
+           
             // addComment.sendEMail();
             // start - added by Ganapati for US336530
-            PageReference pageRef1 = Page.Core_IPS_Case_ExportPDF;
+            /*PageReference pageRef1 = Page.Core_IPS_Case_ExportPDF;
             Test.setCurrentPage(pageRef1);
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
             
-            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(StndContr);
             addComment1.selectedRadioButton = 'Public to Customers'; 
             List<Core_IPS_Case_Comments__c> commentsList1  = addComment1.getcaseComments();
-            //end
+            //end*/
         }
+       System.runAs(ListOfUser[0]) {
+
+    Case csForAdmin = [SELECT Id FROM Case LIMIT 1];
+    ApexPages.StandardController stndContrAdmin = new ApexPages.standardController(csForAdmin);
+
+    Core_IPS_AddCommentController addCommentAdmin = new Core_IPS_AddCommentController(stndContrAdmin);
+    addCommentAdmin.list_size = 0;
+    addCommentAdmin.partnerType = 'Partner';
+    addCommentAdmin.externalUser = true;
+    addCommentAdmin.searchText = 'TestString';
+    addCommentAdmin.selectedRadioButton = 'Public to Customers';
+
+    List<Core_IPS_Case_Comments__c> commentsList = addCommentAdmin.getcaseComments();
+    boolean disablep = addCommentAdmin.getdisableprevious();
+    boolean disableN = addCommentAdmin.getdisbaleNext();    
+    integer i = addCommentAdmin.getTotal_size();
+    integer j = addCommentAdmin.getPageNumber();
+    integer k = addCommentAdmin.getTotalPages();
+    k = addCommentAdmin.count;
+    addCommentAdmin.next();
+    addCommentAdmin.previous();
+
+    PageReference pageRef1 = Page.Core_IPS_Case_ExportPDF;
+    Test.setCurrentPage(pageRef1);
+    ApexPages.CurrentPage().getparameters().put('id', csForAdmin.id);
+
+    Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(stndContrAdmin);
+    addComment1.selectedRadioButton = 'Public to Customers'; 
+    List<Core_IPS_Case_Comments__c> commentsList1 = addComment1.getcaseComments();
+}
+        
     }
     
     public static testmethod void Core_IPS_AddCommentControllerPartnerDFAE(){
         createusers();
         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> profileList = [select id, name from Profile where name='Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
-        for(Profile prf : profileList){
+        List<Profile> ProfileList = [select id, name from Profile where name='Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
+        for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         //system.debug('profiles'+profiles);
@@ -551,93 +567,93 @@ public class Core_IPS_AddCommentController_Test{
         User userRecord = new User();
         User userRecord1 = new User();
         
-        List<Core_IPS_Labels__c> ipsLabelList = new List<Core_IPS_Labels__c>();
+        List<Core_IPS_Labels__c> IPSLabelList = new List<Core_IPS_Labels__c>();
         Core_IPS_Labels__c label0 = new Core_IPS_Labels__c ();
         label0.name= 'PUBLIC_TO_CUSTOMERS';
         label0.value__c='Public to Customers';
-        ipsLabelList.add(label0);
+        IPSLabelList.add(label0);
         
         Core_IPS_Labels__c label1= new Core_IPS_Labels__c();
         label1.name= 'PRIVATE_TO_AGENTS';
         label1.value__c= 'Private to Agents';
-        ipsLabelList.add(label1);
+        IPSLabelList.add(label1);
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        ipsLabelList.add(labelRecord2);
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        IPSLabelList.add(label2);
         
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
         label3.value__c='Customer';
-        ipsLabelList.add(label3);
+        IPSLabelList.add(label3);
         
         Core_IPS_Labels__c label4 = new Core_IPS_Labels__c ();
         label4.name='FAE';
         label4.value__c='FAE';
-        ipsLabelList.add(label4);
+        IPSLabelList.add(label4);
         
         Core_IPS_Labels__c label5 = new Core_IPS_Labels__c();
         label5.name='Agent';
         label5.value__c='Agent';
-        ipsLabelList.add(label5);
+        IPSLabelList.add(label5);
         
         Core_IPS_Labels__c label6 = new Core_IPS_Labels__c();
         label6.name='Backend Integration';
         label6.value__c='Backend Integration';
-        ipsLabelList.add(label6);
+        IPSLabelList.add(label6);
         
         Core_IPS_Labels__c label7 = new Core_IPS_Labels__c();
         label7.name='Data Migration';
         label7.value__c='Data Migration';
-        ipsLabelList.add(label7);
+        IPSLabelList.add(label7);
         
         Core_IPS_Labels__c label8 = new Core_IPS_Labels__c();
         label8.name='Partner';
         label8.value__c='Partner';
-        ipsLabelList.add(label8);
+        IPSLabelList.add(label8);
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        ipsLabelList.add(labelRecord9);
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        IPSLabelList.add(label9);
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
         label10.value__c='Partner - DFAE';
-        ipsLabelList.add(label10);
+        IPSLabelList.add(label10);
         
         Core_IPS_Labels__c label11 = new Core_IPS_Labels__c();
         label11.name='Partner - Agent';
         label11.value__c='Partner - Agent';
-        ipsLabelList.add(label11);
+        IPSLabelList.add(label11);
         
         Core_IPS_Labels__c label12= new Core_IPS_Labels__c();
         label12.name='Comment Source - Customer';
         label12.value__c='Customer Portal';
-        ipsLabelList.add(label12);
+        IPSLabelList.add(label12);
         
         Core_IPS_Labels__c label13= new Core_IPS_Labels__c();
         label13.name='Comment Source - Internal';
         label13.value__c='Internal Portal';
-        ipsLabelList.add(label13);
+        IPSLabelList.add(label13);
         
         Core_IPS_Labels__c label14= new Core_IPS_Labels__c();
         label14.name='Comment Source - Email';
         label14.value__c='Email';
-        ipsLabelList.add(label14);
+        IPSLabelList.add(label14);
         
         Core_IPS_Labels__c label15= new Core_IPS_Labels__c();
         label15.name='Comment Source - N/A';
         label15.value__c='N/A';
-        ipsLabelList.add(label15);
+        IPSLabelList.add(label15);
         
         Core_IPS_Labels__c label16= new Core_IPS_Labels__c();
         label16.name='Comment Source - Data Migration';
         label16.value__c='Data Migration';
-        ipsLabelList.add(label16);
+        IPSLabelList.add(label16);
         
-        insert ipsLabelList;
+        insert IPSLabelList;
         
         Contact testContact ;
         
@@ -659,8 +675,7 @@ public class Core_IPS_AddCommentController_Test{
                 LocaleSidKey='en_US',
                 TimeZoneSidKey='America/Chicago'
             );
-            insertUserWithValidationBypass(portalAccountOwner1);
-           
+            Database.insert(portalAccountOwner1);
             
             UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
             insert ur;
@@ -720,26 +735,26 @@ public class Core_IPS_AddCommentController_Test{
         insert contactRecord; 
         System.runAs(userRecord){
             
-            Case caseList = new Case(
+            Case CS = new Case(
                 Status = 'New',
                 Origin = 'Web',
                 Priority = 'High',
                 Subject = 'TestSubject56',
                 Description = 'TestDescription'
             );
-            insert caseList;
+            insert CS;
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
             
-            ApexPages.CurrentPage().getparameters().put('id',caseList.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseList);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
-            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(StndContr);
             addComment.list_size=0;
             //System.debug('loginuserprofilename'+addComment.loginuserprofilename);
             addComment.externalUser = true;
-            Pagereference pageReference = addComment.saveComment();
-            addComment.getcaseComments();
+            Pagereference Pg = addComment.saveComment();
+            //addComment.getcaseComments(); 
             Core_IPS_AddCommentController.getAuthr(Profiles.get('Partner'),userinfo.getUserid());
             /*Core_IPS_AddCommentController.getAuthr(Profiles.get('Data Ops'));         
             Core_IPS_AddCommentController.getAuthr(Profiles.get('IPS Data Migration')); 
@@ -747,7 +762,7 @@ public class Core_IPS_AddCommentController_Test{
             Core_IPS_AddCommentController.getAuthr(Profiles.get('Partner'));
             Core_IPS_AddCommentController.getAuthr(Profiles.get('IPS Agent-Partner'));*/
                         
-            List<Core_IPS_Case_Comments__c> commentsList  = addComment.getcaseComments();
+            /*List<Core_IPS_Case_Comments__c> commentsList  = addComment.getcaseComments();
             boolean disablep=addComment.getdisableprevious();
             boolean disableN=addComment.getdisbaleNext();    
             integer i= addComment.getTotal_size();
@@ -760,33 +775,63 @@ public class Core_IPS_AddCommentController_Test{
             // start - added by Ganapati for US336530
             PageReference pageRef1 = Page.Core_IPS_Case_ExportPDF;
             Test.setCurrentPage(pageRef1);
-            ApexPages.CurrentPage().getparameters().put('id',caseList.id);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
             
-            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(StndContr);
             List<Core_IPS_Case_Comments__c> commentsList1  = addComment1.getcaseComments();
-            //end
+            //end*/
         }
+        System.runAs(ListOfUser[0]) {
+
+    Case csForAdmin = [SELECT Id FROM Case LIMIT 1];
+    ApexPages.StandardController stndContrAdmin = new ApexPages.standardController(csForAdmin);
+
+    Core_IPS_AddCommentController addCommentAdmin = new Core_IPS_AddCommentController(stndContrAdmin);
+    addCommentAdmin.list_size = 0;
+    addCommentAdmin.partnerType = 'Partner';
+    addCommentAdmin.externalUser = true;
+    addCommentAdmin.searchText = 'TestString';
+    addCommentAdmin.selectedRadioButton = 'Public to Customers';
+
+    List<Core_IPS_Case_Comments__c> commentsList = addCommentAdmin.getcaseComments();
+    boolean disablep = addCommentAdmin.getdisableprevious();
+    boolean disableN = addCommentAdmin.getdisbaleNext();    
+    integer i = addCommentAdmin.getTotal_size();
+    integer j = addCommentAdmin.getPageNumber();
+    integer k = addCommentAdmin.getTotalPages();
+    k = addCommentAdmin.count;
+    addCommentAdmin.next();
+    addCommentAdmin.previous();
+
+    PageReference pageRef1 = Page.Core_IPS_Case_ExportPDF;
+    Test.setCurrentPage(pageRef1);
+    ApexPages.CurrentPage().getparameters().put('id', csForAdmin.id);
+
+    Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(stndContrAdmin);
+    addComment1.selectedRadioButton = 'Public to Customers'; 
+    List<Core_IPS_Case_Comments__c> commentsList1 = addComment1.getcaseComments();
+    }
         // start - added by Ganapati for US336530
-        System.runAs(ListOfUser[1]){
+        System.runAs(ListOfUser[0]){
             Test.startTest();
             
-            Case caseList = new Case(
+            Case CS = new Case(
                 Status = 'New',
                 Origin = 'Web',
                 Priority = 'High',
                 Subject = 'TestSubject56',
                 Description = 'TestDescription'
             );
-            insert caseList;
+            insert CS;
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
-            ApexPages.CurrentPage().getparameters().put('id',caseList.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseList);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             PageReference pageRef1 = Page.Core_IPS_Case_ExportPDF;
             Test.setCurrentPage(pageRef1);
-            ApexPages.CurrentPage().getparameters().put('id',caseList.id);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
             
-            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(StndContr);
             addComment1.selectedRadioButton = 'Public to Customers'; 
             List<Core_IPS_Case_Comments__c> commentsList1  = addComment1.getcaseComments();
             Test.stopTest();
@@ -797,8 +842,8 @@ public class Core_IPS_AddCommentController_Test{
     public static testmethod void Core_IPS_AddCommentControllerPartnerAgent(){
         createusers();
         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> profileList = [select id, name from Profile where name='IPS Agent-Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
-        for(Profile prf : profileList){
+        List<Profile> ProfileList = [select id, name from Profile where name='IPS Agent-Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
+        for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         //system.debug('profiles'+profiles);
@@ -817,10 +862,10 @@ public class Core_IPS_AddCommentController_Test{
         label1.value__c= 'Private to Agents';
         insert label1;
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        insert labelRecord2;
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        insert label2;
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
         label3.value__c='Customer';
@@ -851,10 +896,10 @@ public class Core_IPS_AddCommentController_Test{
         label8.value__c='Partner';
         insert label8;
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        insert labelRecord9;
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        insert label9;
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
@@ -925,24 +970,24 @@ public class Core_IPS_AddCommentController_Test{
             
         } 
         
-        System.runAs(userRecord){
-            Case caseRecord =  TestUtilities.getCase(); 
+        System.runAs(ListOfUser[0]){// run as admin user
+            Case Cs =  TestUtilities.getCase(); 
             //cs.AccountId=accountRecord.id;
-            caseRecord.contactid=testContact.id;
+            cs.contactid=testContact.id;
             //cs.RecordTypeId = '012o0000000TPVj';  //added to cover GEC Case check in Constructor by Ganapati
-            insert caseRecord;
+            insert Cs;
             
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseRecord);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
-            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(StndContr);
             addComment.list_size=0;
             //system.debug('loginuserprofilename'+addComment.loginuserprofilename);
             addComment.externalUser = true;
-            Pagereference pageReference = addComment.saveComment();
-            addComment.getcaseComments();
+            Pagereference Pg = addComment.saveComment();
+            //addComment.getcaseComments(); Commented
             Core_IPS_AddCommentController.getAuthr(Profiles.get('IPS Agent-Partner'),userinfo.getUserid());
             /*Core_IPS_AddCommentController.getAuthr(Profiles.get('Data Ops'));         
             Core_IPS_AddCommentController.getAuthr(Profiles.get('IPS Data Migration')); 
@@ -985,8 +1030,7 @@ public class Core_IPS_AddCommentController_Test{
             Firstname='Bruce',   
             lastname='lastname1'
         );
-        insertUserWithValidationBypass(portalAccountOwner1);
-       
+        Database.insert(portalAccountOwner1);
         System.assertEquals(portalAccountOwner1!=null, true, 'portalAccountOwner1 Inserted');
         System.runAs ( portalAccountOwner1 ) {
             Core_IPS_Labels__c labels = new Core_IPS_Labels__c ();
@@ -999,10 +1043,10 @@ public class Core_IPS_AddCommentController_Test{
             label1.value__c= 'Private to Agents';
             insert label1;
             
-            Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-            labelRecord2.name= 'PRIVATE_TO_INTEL';
-            labelRecord2.value__c= 'Private to Intel';
-            insert labelRecord2;
+            Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+            Label2.name= 'PRIVATE_TO_INTEL';
+            label2.value__c= 'Private to Intel';
+            insert label2;
             
             Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
             label3.name='Customer';
@@ -1034,10 +1078,10 @@ public class Core_IPS_AddCommentController_Test{
             label8.value__c='Partner';
             insert label8;
             
-            Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-            labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-            labelRecord9.value__c= 'Private to Partner';
-            insert labelRecord9;
+            Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+            Label9.name= 'PRIVATE_TO_PARTNERS';
+            label9.value__c= 'Private to Partner';
+            insert label9;
             
             Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
             label10.name='Partner - DFAE';
@@ -1072,8 +1116,7 @@ public class Core_IPS_AddCommentController_Test{
                 Core_CIM_ID__c = '11429344',
                 Core_B2B_Entitlement__c = true,
                 Core_Account_Legal_Name__c = 'TestLegalName',
-                OwnerId = portalAccountOwner1.Id,
-				recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId()
+                OwnerId = portalAccountOwner1.Id    
             );
             Database.insert(portalAccount1);
             //Create contact
@@ -1102,30 +1145,29 @@ public class Core_IPS_AddCommentController_Test{
                 Firstname='BruceS',   
                 lastname='lastname2'
             );
-            insertUserWithValidationBypass(user1);
-            
+            Database.insert(user1);
             system.runAs(user1){
                 Test.startTest();
-                Case caseList =  TestUtilities.getCase(); 
-                insert caseList;
+                Case CS =  TestUtilities.getCase(); 
+                insert CS;
                 List<Core_IPS_Case_Comments__c> lstcsecomment = TestUtilities.getCaseComments(1);
                 For (Core_IPS_Case_Comments__c casecomments : lstcsecomment){
-                    casecomments.Core_IPS_Case__c = caseList.id;
+                    casecomments.Core_IPS_Case__c = cs.id;
                     casecomments.Core_IPS_Comment_Author_Type__c ='Customer';
                 }
                 insert lstcsecomment;
                 
                 PageReference pageRef = Page.Core_IPS_AddComment;
                 Test.setCurrentPage(pageRef);
-                ApexPages.CurrentPage().getparameters().put('id',caseList.id);
-                ApexPages.StandardController standardController = new ApexPages.standardController(caseList);
-                Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(standardController);
+                ApexPages.CurrentPage().getparameters().put('id',CS.id);
+                ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
+                Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(StndContr);
                 addComment.externalUser = true;
                 addComment.showRecords();
                 addComment.list_size=0;
                 //addComment.selectedVisibilityOption.add('True');//commened as per sumukh suggestion.
                 // addComment.selectedNoteTypeOption.add('True');
-                Pagereference pageReference = addComment.saveComment();
+                Pagereference Pg = addComment.saveComment();
                 //List<Core_IPS_Case_Comments__c> commentsList  = addComment.getcaseComments();
                 addComment.getcaseattDisable();
                 addComment.getcaseintDisable();
@@ -1162,10 +1204,10 @@ Modification Log :
         label1.value__c= 'Private to Agents';
         insert label1;
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        insert labelRecord2;
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        insert label2;
         
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
@@ -1197,10 +1239,10 @@ Modification Log :
         label8.value__c='Partner';
         insert label8;
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        insert labelRecord9;
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        insert label9;
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
@@ -1218,7 +1260,7 @@ Modification Log :
         insert label12;
         
         System.runAs(ListOfUser[0]){
-            Case caseRecord =  TestUtilities.getCase(); 
+            Case Cs =  TestUtilities.getCase(); 
             Account testAccount=TestUtilities.getAccount();
             insert testAccount;
             
@@ -1226,10 +1268,10 @@ Modification Log :
                                               AccountId=testAccount.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
             insert testContact;
             System.assertNotEquals(null, testAccount.id);
-            caseRecord.AccountId=testAccount.id;
-            caseRecord.contactid=testContact.id;
+            cs.AccountId=testAccount.id;
+            cs.contactid=testContact.id;
             
-            insert caseRecord;
+            insert Cs;
             // below line commented by Prem while inserting comment records system administrator while insert case with record type "CEP Case" and we didn't have picklist value expose for Core_Latest_Case_Comment_Type__c
             //INVALID_OR_NULL_FOR_RESTRICTED_PICKLIST, bad value for restricted picklist field: Private to Agents: [Core_Latest_Case_Comment_Type__c]
             /*List<Core_IPS_Case_Comments__c> lstcsecomment = TestUtilities.getCaseComments(2);
@@ -1240,10 +1282,10 @@ Modification Log :
             
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseRecord);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
-            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(StndContr);
             addComment.list_size=0;
             List<Core_IPS_Case_Comments__c> commentsList  = addComment.getcaseComments();
             boolean disablep=addComment.getdisableprevious();
@@ -1258,9 +1300,9 @@ Modification Log :
             // start - added by Ganapati for US336530
             PageReference pageRef1 = Page.Core_IPS_Case_ExportPDF;
             Test.setCurrentPage(pageRef1);
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
             
-            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(StndContr);
             List<Core_IPS_Case_Comments__c> commentsList1  = addComment1.getcaseComments();   
             //end
         }
@@ -1280,125 +1322,127 @@ Modification Log :
 ****************************************************************************************************/
     
     Public Static testmethod void Core_IPS_getcaseComments_External_Test() {
+        createusers();
         user u1 = TestUtilities.getCustomerUser('IPS External Customer');
-        List<Core_IPS_Labels__c> ipsLabelList = new List<Core_IPS_Labels__c>();
+        List<Core_IPS_Labels__c> IPSLabelList = new List<Core_IPS_Labels__c>();
         Core_IPS_Labels__c label0 = new Core_IPS_Labels__c ();
         label0.name= 'PUBLIC_TO_CUSTOMERS';
         label0.value__c='Public to Customers';
-        ipsLabelList.add(label0);
+        IPSLabelList.add(label0);
         
         Core_IPS_Labels__c label1= new Core_IPS_Labels__c();
         label1.name= 'PRIVATE_TO_AGENTS';
         label1.value__c= 'Private to Agents';
-        ipsLabelList.add(label1);
+        IPSLabelList.add(label1);
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        ipsLabelList.add(labelRecord2);
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        IPSLabelList.add(label2);
         
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
         label3.value__c='Customer';
-        ipsLabelList.add(label3);
+        IPSLabelList.add(label3);
         
         Core_IPS_Labels__c label4 = new Core_IPS_Labels__c ();
         label4.name='FAE';
         label4.value__c='FAE';
-        ipsLabelList.add(label4);
+        IPSLabelList.add(label4);
         
         Core_IPS_Labels__c label5 = new Core_IPS_Labels__c();
         label5.name='Agent';
         label5.value__c='Agent';
-        ipsLabelList.add(label5);
+        IPSLabelList.add(label5);
         
         Core_IPS_Labels__c label6 = new Core_IPS_Labels__c();
         label6.name='Backend Integration';
         label6.value__c='Backend Integration';
-        ipsLabelList.add(label6);
+        IPSLabelList.add(label6);
         
         Core_IPS_Labels__c label7 = new Core_IPS_Labels__c();
         label7.name='Data Migration';
         label7.value__c='Data Migration';
-        ipsLabelList.add(label7);
+        IPSLabelList.add(label7);
         
         Core_IPS_Labels__c label8 = new Core_IPS_Labels__c();
         label8.name='Partner';
         label8.value__c='Partner';
-        ipsLabelList.add(label8);
+        IPSLabelList.add(label8);
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        ipsLabelList.add(labelRecord9);
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        IPSLabelList.add(label9);
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
         label10.value__c='Partner - DFAE';
-        ipsLabelList.add(label10);
+        IPSLabelList.add(label10);
         
         Core_IPS_Labels__c label11 = new Core_IPS_Labels__c();
         label11.name='Partner - Agent';
         label11.value__c='Partner - Agent';
-        ipsLabelList.add(label11);
+        IPSLabelList.add(label11);
         
         Core_IPS_Labels__c label12= new Core_IPS_Labels__c();
         label12.name='Comment Source - Customer';
         label12.value__c='Customer Portal';
-        ipsLabelList.add(label12);
+        IPSLabelList.add(label12);
         
         Core_IPS_Labels__c label13= new Core_IPS_Labels__c();
         label13.name='Comment Source - Internal';
         label13.value__c='Internal Portal';
-        ipsLabelList.add(label13);
+        IPSLabelList.add(label13);
         
         Core_IPS_Labels__c label14= new Core_IPS_Labels__c();
         label14.name='Comment Source - Email';
         label14.value__c='Email';
-        ipsLabelList.add(label14);
+        IPSLabelList.add(label14);
         
         Core_IPS_Labels__c label15= new Core_IPS_Labels__c();
         label15.name='Comment Source - N/A';
         label15.value__c='N/A';
-        ipsLabelList.add(label15);
+        IPSLabelList.add(label15);
         
         Core_IPS_Labels__c label16= new Core_IPS_Labels__c();
         label16.name='Comment Source - Data Migration';
         label16.value__c='Data Migration';
-        ipsLabelList.add(label16);
+        IPSLabelList.add(label16);
         
-        insert ipsLabelList;
+        insert IPSLabelList;
         
         
         system.runAs(u1){
             
             
-            Case caseRecord =  TestUtilities.getCase(); 
-            insert caseRecord;
+            Case Cs =  TestUtilities.getCase(); 
+            insert Cs;
             List<Core_IPS_Case_Comments__c> lstcsecomment = TestUtilities.getCaseComments(2);
             For (Core_IPS_Case_Comments__c casecomments : lstcsecomment){
-                casecomments.Core_IPS_Case__c = caseRecord.id;
+                casecomments.Core_IPS_Case__c = cs.id;
                 casecomments.Core_IPS_Comment_Author_Type__c ='Customer';
             }
             insert lstcsecomment;
-            
+        }System.runas(ListOfUser[0]){
+            case cs = [select id from case limit 1];
             Core_IPS_Case_Comments__c casecomment = new Core_IPS_Case_Comments__c();
             casecomment.Core_IPS_Case_Comment_Type__c = Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c;
-            casecomment.Core_IPS_Case__c = caseRecord.Id;
+            casecomment.Core_IPS_Case__c = Cs.Id;
             casecomment.Core_IPS_Comment__c = 'TestString';
             insert casecomment;
             
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseRecord);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
-            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(StndContr);
             addComment.list_size=0;
             List<Core_IPS_Case_Comments__c> commentsList  = addComment.getcaseComments();
             
             //Updated by Sandeep as per Sumukh 
-            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment1 = new Core_IPS_AddCommentController(StndContr);
             addComment1.externalUser = true;
             addComment1.selectedVisibilityOption = new List<String>();
             addComment1.visibilityOptions = new List<SelectOption>();
@@ -1410,9 +1454,9 @@ Modification Log :
             // start - added by Ganapati for US336530
             PageReference pageRef1 = Page.Core_IPS_Case_ExportPDF;
             Test.setCurrentPage(pageRef1);
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
             
-            Core_IPS_AddCommentController addComment2 = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment2 = new Core_IPS_AddCommentController(StndContr);
             addComment2.externalUser = true;
             addComment2.selectedVisibilityOption = new List<String>();
             addComment2.visibilityOptions = new List<SelectOption>();
@@ -1421,9 +1465,9 @@ Modification Log :
             
             PageReference pageRef2 = Page.Core_IPS_Case_ExportPDF;
             Test.setCurrentPage(pageRef2);
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
             
-            Core_IPS_AddCommentController addComment3 = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment3 = new Core_IPS_AddCommentController(StndContr);
             List<Core_IPS_Case_Comments__c> commentsList3  = addComment3.getcaseComments();
             //end
         }
@@ -1455,10 +1499,10 @@ Modification Log :
         label1.value__c= 'Private to Agents';
         insert label1;
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        insert labelRecord2;
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        insert label2;
         
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
@@ -1490,10 +1534,10 @@ Modification Log :
         label8.value__c='Partner';
         insert label8;
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        insert labelRecord9;
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        insert label9;
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
@@ -1536,14 +1580,14 @@ Modification Log :
             insert contactRecord; 
             
             
-            Case caseList = new Case(
+            Case CS = new Case(
                 Status = 'New',
                 Origin = 'Web',
                 Priority = 'High',
                 Subject = 'TestSubject56',
                 Description = 'TestDescription'
             );
-            insert caseList;
+            insert CS;
             
             //System.assertNotEquals(null, testAccount.id);
             //cs.AccountId=testAccount.id;
@@ -1552,13 +1596,13 @@ Modification Log :
             //insert CS;
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
-            ApexPages.CurrentPage().getparameters().put('id',caseList.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseList);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
-            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController addComment = new Core_IPS_AddCommentController(StndContr);
             addComment.list_size=0;
             addComment.selectedRadioButton = 'Public to Customers'; 
-            Pagereference pageReference = addComment.saveComment();
+            Pagereference Pg = addComment.saveComment();
             Test.stopTest();
         }
     }
@@ -1589,10 +1633,10 @@ Modification Log :
         label1.value__c= 'Private to Agents';
         insert label1;
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        insert labelRecord2;
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        insert label2;
         
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
@@ -1624,10 +1668,10 @@ Modification Log :
         label8.value__c='Partner';
         insert label8;
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        insert labelRecord9;
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        insert label9;
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
@@ -1639,7 +1683,7 @@ Modification Log :
         label11.value__c='Partner - Agent';
         insert label11;
         
-        Case caseList =  TestUtilities.getCase(); 
+        Case CS =  TestUtilities.getCase(); 
         Account testAccount=TestUtilities.getAccount();
         insert testAccount;
         Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test12345@testing11.com.testsetup',
@@ -1647,11 +1691,11 @@ Modification Log :
         insert testContact;
         
         System.assertNotEquals(null, testAccount.id);
-        caseList.AccountId=testAccount.id;
-        caseList.contactid=testContact.id;
+        cs.AccountId=testAccount.id;
+        cs.contactid=testContact.id;
         
-        insert caseList;
-        System.assertEquals(caseList!=null, true, 'CS Inserted');
+        insert CS;
+        System.assertEquals(CS!=null, true, 'CS Inserted');
         
         System.runAs(ListOfUser[0]){
             Test.startTest();
@@ -1666,11 +1710,11 @@ Modification Log :
             
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
-            ApexPages.CurrentPage().getparameters().put('id',caseList.id);
+            ApexPages.CurrentPage().getparameters().put('id',CS.id);
             
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseList);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
-            Core_IPS_AddCommentController inst = new Core_IPS_AddCommentController(standardController);
+            Core_IPS_AddCommentController inst = new Core_IPS_AddCommentController(StndContr);
             inst.list_size=0;
             List<Core_IPS_Case_Comments__c> commentsList  = inst.getcaseComments();
             inst.searchText='TestString';
@@ -1770,135 +1814,135 @@ Modification Log :
             
         }       
         
-        List<Core_IPS_Labels__c> ipsLabelList = new List<Core_IPS_Labels__c>();
+        List<Core_IPS_Labels__c> IPSLabelList = new List<Core_IPS_Labels__c>();
         Core_IPS_Labels__c label0 = new Core_IPS_Labels__c ();
         label0.name= 'PUBLIC_TO_CUSTOMERS';
         label0.value__c='Public to Customers';
-        ipsLabelList.add(label0);
+        IPSLabelList.add(label0);
         
         Core_IPS_Labels__c label1= new Core_IPS_Labels__c();
         label1.name= 'PRIVATE_TO_AGENTS';
         label1.value__c= 'Private to Agents';
-        ipsLabelList.add(label1);
+        IPSLabelList.add(label1);
         
-        Core_IPS_Labels__c labelRecord2 = new Core_IPS_Labels__c ();
-        labelRecord2.name= 'PRIVATE_TO_INTEL';
-        labelRecord2.value__c= 'Private to Intel';
-        ipsLabelList.add(labelRecord2);
+        Core_IPS_Labels__c Label2 = new Core_IPS_Labels__c ();
+        Label2.name= 'PRIVATE_TO_INTEL';
+        label2.value__c= 'Private to Intel';
+        IPSLabelList.add(label2);
         
         Core_IPS_Labels__c label3= new Core_IPS_Labels__c();
         label3.name='Customer';
         label3.value__c='Customer';
-        ipsLabelList.add(label3);
+        IPSLabelList.add(label3);
         
         Core_IPS_Labels__c label4 = new Core_IPS_Labels__c ();
         label4.name='FAE';
         label4.value__c='FAE';
-        ipsLabelList.add(label4);
+        IPSLabelList.add(label4);
         
         Core_IPS_Labels__c label5 = new Core_IPS_Labels__c();
         label5.name='Agent';
         label5.value__c='Agent';
-        ipsLabelList.add(label5);
+        IPSLabelList.add(label5);
         
         Core_IPS_Labels__c label6 = new Core_IPS_Labels__c();
         label6.name='Backend Integration';
         label6.value__c='Backend Integration';
-        ipsLabelList.add(label6);
+        IPSLabelList.add(label6);
         
         Core_IPS_Labels__c label7 = new Core_IPS_Labels__c();
         label7.name='Data Migration';
         label7.value__c='Data Migration';
-        ipsLabelList.add(label7);
+        IPSLabelList.add(label7);
         
         Core_IPS_Labels__c label8 = new Core_IPS_Labels__c();
         label8.name='Partner';
         label8.value__c='Partner';
-        ipsLabelList.add(label8);
+        IPSLabelList.add(label8);
         
-        Core_IPS_Labels__c labelRecord9 = new Core_IPS_Labels__c ();
-        labelRecord9.name= 'PRIVATE_TO_PARTNERS';
-        labelRecord9.value__c= 'Private to Partner';
-        ipsLabelList.add(labelRecord9);
+        Core_IPS_Labels__c Label9 = new Core_IPS_Labels__c ();
+        Label9.name= 'PRIVATE_TO_PARTNERS';
+        label9.value__c= 'Private to Partner';
+        IPSLabelList.add(label9);
         
         Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
         label10.name='Partner - DFAE';
         label10.value__c='Partner - DFAE';
-        ipsLabelList.add(label10);
+        IPSLabelList.add(label10);
         
         Core_IPS_Labels__c label11 = new Core_IPS_Labels__c();
         label11.name='Partner - Agent';
         label11.value__c='Partner - Agent';
-        ipsLabelList.add(label11);
+        IPSLabelList.add(label11);
         
         Core_IPS_Labels__c label12= new Core_IPS_Labels__c();
         label12.name='Comment Source - Customer';
         label12.value__c='Customer Portal';
-        ipsLabelList.add(label12);
+        IPSLabelList.add(label12);
         
         Core_IPS_Labels__c label13= new Core_IPS_Labels__c();
         label13.name='Comment Source - Internal';
         label13.value__c='Internal Portal';
-        ipsLabelList.add(label13);
+        IPSLabelList.add(label13);
         
         Core_IPS_Labels__c label14= new Core_IPS_Labels__c();
         label14.name='Comment Source - Email';
         label14.value__c='Email';
-        ipsLabelList.add(label14);
+        IPSLabelList.add(label14);
         
         Core_IPS_Labels__c label15= new Core_IPS_Labels__c();
         label15.name='Comment Source - N/A';
         label15.value__c='N/A';
-        ipsLabelList.add(label15);
+        IPSLabelList.add(label15);
         
         Core_IPS_Labels__c label26= new Core_IPS_Labels__c();
         label26.name='Comment Source - Data Migration';
         label26.value__c='Data Migration';
-        ipsLabelList.add(label26);
+        IPSLabelList.add(label26);
         
         Core_IPS_Labels__c label116= new Core_IPS_Labels__c();
         label116.name='Case_RT_Name_IPS_NoAssignedContact';
         label116.value__c='Case_RT_Name_IPS_NoAssignedContact';
-        ipsLabelList.add(label116);
+        IPSLabelList.add(label116);
         
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'myIntelIntegration';
-        triggerExecution.Core_Active__c = true;
-        triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-        triggerExecution.Core_Description__c = 'prevent duplicate account addition to project';
-        triggerExecution.Core_Object__c = 'Case';
-        triggerExecution.Core_Trigger_Events__c = 'before insert';
-        insert triggerExecution;
+        Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
+        TriggerExecution.Name = 'myIntelIntegration';
+        TriggerExecution.Core_Active__c = true;
+        TriggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
+        TriggerExecution.Core_Description__c = 'prevent duplicate account addition to project';
+        TriggerExecution.Core_Object__c = 'Case';
+        TriggerExecution.Core_Trigger_Events__c = 'before insert';
+        insert TriggerExecution;
         
-        insert ipsLabelList;
-        Case caseRecord ;
+        insert IPSLabelList;
+        Case CaseRecord ;
         Core_IPS_Case_Comments__c casecomment=null;
         system.runAs(portalAccountOwner1){
             Test.startTest();
-            RecordType recordType = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_GEC_ReadOnly'];
-            ApexPages.currentPage().getParameters().put('rType',recordType.Id);
+            RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'IPS_GEC_ReadOnly'];
+            ApexPages.currentPage().getParameters().put('rType',RT.Id);
             PageReference pageRef = Page.Core_IPS_AddComment;
             Test.setCurrentPage(pageRef);
             
-            caseRecord = new Case(
+            CaseRecord = new Case(
                 Status = 'New',
                 Origin = 'Web',
                 Priority = 'High',
                 Subject = 'TestSubjectnullcheck1',
                 Description = 'TestDescription',
-                RecordTypeId =recordType.Id
+                RecordTypeId =RT.Id
             );
-            Database.insert(caseRecord);
+            Database.insert(CaseRecord);
             //Case CS =  TestUtilities.getCase();
             casecomment = new Core_IPS_Case_Comments__c();
             casecomment.Core_IPS_Case_Comment_Type__c = Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c;
-            casecomment.Core_IPS_Case__c = caseRecord.Id;
+            casecomment.Core_IPS_Case__c = CaseRecord.Id;
             casecomment.Core_IPS_Comment__c = 'TestString';
             insert casecomment;
             
-            ApexPages.CurrentPage().getparameters().put('id',caseRecord.id);
-            ApexPages.StandardController standardController = new ApexPages.standardController(caseRecord);
-            Core_IPS_AddCommentController inst = new Core_IPS_AddCommentController(standardController);
+            ApexPages.CurrentPage().getparameters().put('id',CaseRecord.id);
+            ApexPages.StandardController StndContr = new ApexPages.standardController(CaseRecord);
+            Core_IPS_AddCommentController inst = new Core_IPS_AddCommentController(StndContr);
             inst.ExternalUser=true;
             inst.list_size=0;
             List<Core_IPS_Case_Comments__c> commentsList  = inst.getcaseComments();
@@ -1906,15 +1950,14 @@ Modification Log :
             inst.search();
             Test.stopTest();        
         }
-        List<Profile> profileList = [select id, name from Profile where name = 'partner'];
+        List<Profile> ProfileList = [select id, name from Profile where name = 'partner'];
         
         User userTest = new User(alias = 'test123', email='test123@inteltest.com',
-                                 emailencodingkey='UTF-8', lastname='Testing', languagelocalekey='en_US',LocaleSidKey='en_US',TimeZoneSidKey='America/Los_Angeles',ProfileId=profileList[0].id,
+                                 emailencodingkey='UTF-8', lastname='Testing', languagelocalekey='en_US',LocaleSidKey='en_US',TimeZoneSidKey='America/Los_Angeles',ProfileId=ProfileList[0].id,
                                  IsActive =true,
                                  ContactId = contact2.Id, username='tester@inteltest.com',PortalRole = 'Manager');
-          insertUserWithValidationBypass(userTest);
-		
-       // System.assertEquals(userTest!=null, true, 'User Inserted');
+        insert userTest;
+        System.assertEquals(userTest!=null, true, 'User Inserted');
        /* System.runAs(userTest){
             PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
             insert new PermissionSetAssignment(AssigneeId = userTest.id, PermissionSetId = ps.Id );

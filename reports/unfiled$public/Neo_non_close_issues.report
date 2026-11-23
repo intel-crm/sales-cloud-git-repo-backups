@@ -76,7 +76,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Closed</value>
+            <value>Closed,​​Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>

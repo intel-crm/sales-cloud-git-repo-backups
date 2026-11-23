@@ -10,10 +10,6 @@
     </caseValues>
     <fieldSets>
         <label><!-- Commision_Info_FieldSet --></label>
-        <name>Commision_Info_FieldSet</name>
-    </fieldSets>
-    <fieldSets>
-        <label><!-- Commision_Info_FieldSet --></label>
         <name>Core_AAQC_Commision_Info_FieldSet</name>
     </fieldSets>
     <fields>
@@ -52,7 +48,7 @@ such as:
     <fields>
         <label><!-- Case --></label>
         <name>Core_AAQC_Case__c</name>
-        <relationshipLabel><!-- Commissions Inquiries --></relationshipLabel>
+        <relationshipLabel><!-- Commissions Inquiries  Detail --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- 1. Commissions Calculation/Accuracy 
@@ -135,7 +131,7 @@ such as:
         <name>Core_AAQC_Edit</name>
     </webLinks>
     <webLinks>
-        <label><!-- Edit --></label>
-        <name>Edit</name>
+        <label><!-- New_Commission_Case --></label>
+        <name>New_Commission_Case</name>
     </webLinks>
 </CustomObjectTranslation>

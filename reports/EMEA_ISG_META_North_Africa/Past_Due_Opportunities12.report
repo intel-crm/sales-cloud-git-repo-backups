@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OWNER_FULL_NAME</groupingColumn>
+        <groupingColumn>ACCOUNT.ADDRESS1_COUNTRY_CODE</groupingColumn>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -35,6 +35,9 @@
     </columns>
     <columns>
         <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_FULL_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
@@ -87,11 +90,25 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Regional Sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OWNER_DEPARTMENT</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA Territory Billings META team</value>
+            <value>EMEA RSG META</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -105,7 +122,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OWNER_FULL_NAME</field>
+        <field>ACCOUNT.ADDRESS1_COUNTRY_CODE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Past Due - Opportunities</name>
@@ -122,12 +139,14 @@
         <value>1</value>
     </params>
     <reportType>OpportunityTeam</reportType>
-    <scope>organization</scope>
+    <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVCUR2FY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

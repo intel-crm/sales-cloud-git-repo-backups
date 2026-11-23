@@ -16,6 +16,7 @@
         <connector>
             <targetReference>myDecision12</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -37,6 +38,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Support_Assigned_New_EA</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -58,6 +60,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Partner_Comment_New_EA</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -79,6 +82,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Create_New_EA</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -100,6 +104,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Contact_Update_New_EA</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -124,6 +129,7 @@
         <connector>
             <targetReference>myDecision8</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -145,6 +151,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -169,6 +176,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_13_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -193,6 +201,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_5_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -203,22 +212,6 @@
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>myVariable_waitStartTimeAssignment</name>
-        <label>myVariable_waitStartTimeAssignment</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>myPreWaitDecision_myWait_myRule_13</targetReference>
-        </connector>
-    </assignments>
     <assignments>
         <name>myWaitAssignment_myWait_myRule_13</name>
         <label>myWaitAssignment_myWait_myRule_13</label>
@@ -1882,7 +1875,7 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
 
 )</expression>
     </formulas>
-    <interviewLabel>Core_IPS_Case_Notif_External_PB-32_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_IPS_Case_Notif_External_PB-39_InterviewLabel</interviewLabel>
     <label>Core IPS Case Notif External PB R4.2</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -1917,6 +1910,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -1927,6 +1923,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_11_A1</name>
         <label>Update Email Text</label>
@@ -1995,6 +1994,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -2005,6 +2007,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_15_A1</name>
         <label>Update Email Text</label>
@@ -2073,6 +2078,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -2083,6 +2091,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_17_A1</name>
         <label>Update Email Text</label>
@@ -2151,6 +2162,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -2161,6 +2175,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_1_A1</name>
         <label>Update Email Text</label>
@@ -2229,6 +2246,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -2239,6 +2259,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_3_A1</name>
         <label>Update Email Text</label>
@@ -2307,6 +2330,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -2317,6 +2343,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_7_A1</name>
         <label>Update Email Text</label>
@@ -2385,6 +2414,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -2395,6 +2427,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_9_A1</name>
         <label>Update Email Text</label>
@@ -2463,6 +2498,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -2473,6 +2511,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myWaitEvent_myWait_myRule_13_event_0_SA1</name>
         <label>Update Email Text</label>
@@ -2541,6 +2582,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -2551,6 +2595,9 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <value>
                 <stringValue>[Case]</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myWaitEvent_myWait_myRule_5_event_0_SA1</name>
         <label>Update Email Text</label>
@@ -2611,8 +2658,8 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
         </inputAssignments>
         <object>Case</object>
     </recordUpdates>
-    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Obsolete</status>
+    <startElementReference>myPreWaitDecision_myWait_myRule_13</startElementReference>
+    <status>Draft</status>
     <variables>
         <name>cancelWaits</name>
         <dataType>String</dataType>
@@ -2635,16 +2682,6 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>Case</objectType>
-    </variables>
-    <variables>
-        <name>myVariable_waitStartTimeVariable</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <elementReference>$Flow.CurrentDateTime</elementReference>
-        </value>
     </variables>
     <variables>
         <name>myWaitEvent_myWait_myRule_13_event_0_postActionExecutionVariable</name>
@@ -2754,7 +2791,7 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
             <inputParameters>
                 <name>AlarmTime</name>
                 <value>
-                    <elementReference>myVariable_waitStartTimeVariable</elementReference>
+                    <elementReference>$Flow.InterviewStartTime</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>

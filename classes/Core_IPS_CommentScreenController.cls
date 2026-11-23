@@ -11,7 +11,7 @@
     * ----------------------------------------------------------------------------                 
     * Sumukh                        11/08/2017              MODIFIED as part of - US67444,US67633,US83446
     ****************************************************************************************************/ 
-   
+// Done changes by tushar for vanuability fixes 5.1 Sharing Model Recommendation  
 public with sharing class Core_IPS_CommentScreenController{
     
     public Static Case newcase = new Case();
@@ -45,9 +45,18 @@ public with sharing class Core_IPS_CommentScreenController{
                         from Core_IPS_Case_Comments__c where Core_IPS_Case__c=:newCase.id ORDER BY CreatedDate DESC NULLS LAST Limit :CommentsLimit];      
             }
             else{
-                commentRecords = [select id,CreatedBy_Name__c, CreatedBy.Name,name,Core_IPS_Comment__c,CreatedBy.Accountid,CreatedBy.Account.Name,Core_IPS_Rich_Comment__c,createdbyId,CreatedBy.ContactId,CreatedBy.Profileid,CreatedBy.FirstName,
-                        CreatedDate,CreatedBy_FirstName__c,Core_IPS_Comment_Author_Type__c,Core_IPS_BgColor__c,Core_IPS_Migrated_Note_Type__c,Core_IPS_NickName__c,CreatedBy.Email,CreatedBy.Contact.Account.Name,Core_IPS_Case_Comment_Type__c
-                        from Core_IPS_Case_Comments__c where Core_IPS_Case__c=:newCase.id and Core_IPS_Case_Comment_Type__c=:PUBLIC_TO_CUSTOMERS ORDER BY CreatedDate DESC NULLS LAST Limit :CommentsLimit];     //  Added By Prem CreatedBy.Name external user to this query  
+                Boolean isPartnerUser = Label.Core_Partner_Profile_Id.contains(
+                    String.valueOf(UserInfo.getProfileId()).substring(0, 15));
+                String privateToPartners = Core_IPS_Labels__c.getValues('PRIVATE_TO_PARTNERS').value__c;
+                if (isPartnerUser) {
+                    commentRecords = [select id,CreatedBy_Name__c, CreatedBy.Name,name,Core_IPS_Comment__c,CreatedBy.Accountid,CreatedBy.Account.Name,Core_IPS_Rich_Comment__c,createdbyId,CreatedBy.ContactId,CreatedBy.Profileid,CreatedBy.FirstName,
+                            CreatedDate,CreatedBy_FirstName__c,Core_IPS_Comment_Author_Type__c,Core_IPS_BgColor__c,Core_IPS_Migrated_Note_Type__c,Core_IPS_NickName__c,CreatedBy.Email,CreatedBy.Contact.Account.Name,Core_IPS_Case_Comment_Type__c
+                            from Core_IPS_Case_Comments__c where Core_IPS_Case__c=:newCase.id and (Core_IPS_Case_Comment_Type__c=:PUBLIC_TO_CUSTOMERS OR Core_IPS_Case_Comment_Type__c=:privateToPartners) ORDER BY CreatedDate DESC NULLS LAST Limit :CommentsLimit];
+                } else {
+                    commentRecords = [select id,CreatedBy_Name__c, CreatedBy.Name,name,Core_IPS_Comment__c,CreatedBy.Accountid,CreatedBy.Account.Name,Core_IPS_Rich_Comment__c,createdbyId,CreatedBy.ContactId,CreatedBy.Profileid,CreatedBy.FirstName,
+                            CreatedDate,CreatedBy_FirstName__c,Core_IPS_Comment_Author_Type__c,Core_IPS_BgColor__c,Core_IPS_Migrated_Note_Type__c,Core_IPS_NickName__c,CreatedBy.Email,CreatedBy.Contact.Account.Name,Core_IPS_Case_Comment_Type__c
+                            from Core_IPS_Case_Comments__c where Core_IPS_Case__c=:newCase.id and Core_IPS_Case_Comment_Type__c=:PUBLIC_TO_CUSTOMERS ORDER BY CreatedDate DESC NULLS LAST Limit :CommentsLimit];
+                }
             }
             return commentRecords;
         }

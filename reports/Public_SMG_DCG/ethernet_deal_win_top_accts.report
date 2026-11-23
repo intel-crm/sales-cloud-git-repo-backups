@@ -37,9 +37,6 @@
         <field>EXP_PRODUCT_AMOUNT</field>
     </columns>
     <columns>
-        <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
-    </columns>
-    <columns>
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
@@ -111,7 +108,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ethernet discrete,high speed</value>
+            <value>ethernet discrete</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -126,6 +123,20 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>consulting</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Technology,Telecommunications</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>industry</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -174,6 +185,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2017-12-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

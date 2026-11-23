@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Ask_Commissions_Letterhead</letterhead>
+    <name>Ask Commissions-Notification to Requester on Status =Awaiting Requestor’s Info H</name>
+    <style>freeForm</style>
+    <subject>Case Number: {!Case.CaseNumber} - Action required on your Ask Commissions case</subject>
+    <textOnly>A Commissions Office Analyst has requested more information regarding your case.
+
+Case Number: {!Case.CaseNumber}
+Status: {!Case.Status}
+
+Your immediate attention is required. Click the link below to view the requested information in the &quot;Commissions Case Comments&quot; section.  Add a new Case Comment to provide requested information or ask clarifying questions.
+
+{!Case.Core_AAQC_Commission_InquiryId_Hyperlink__c}
+
+
+If no response/Case Comment is received from you within 3-5 business days of this email we will send you one, follow up email. If no response/Case Comment is received within 5 business days of the follow up email the case will be closed automatically.
+
+***NOTE: Do not reply to this mail as there is no inbox being monitored***</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -68,43 +68,13 @@
         <field>OpportunityLineItem.Core_KPI_CPU_Units__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Solution_Area__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Type__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Solution_Focus__c</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Socket__c</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Group__c</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>ACCOUNT_OWNER</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Focus_Area__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Play__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
@@ -125,7 +95,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
@@ -174,6 +144,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Account.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Industry Sales</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -188,7 +165,7 @@
             <value>lost,cancelled,deleted</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -255,6 +232,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

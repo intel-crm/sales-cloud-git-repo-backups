@@ -67,6 +67,8 @@ public class Core_IPS_CaseUtility_V1_Test{
             Core_IPS_Active__c = true
         );
         insert accountRecord;
+     	System.assert(accountRecord.Id != null, 'Record not created');
+
         Contact contactRecord = new Contact(
             FirstName = 'Ding Dong', 
             Lastname = 'Dell3',
@@ -77,21 +79,23 @@ public class Core_IPS_CaseUtility_V1_Test{
             MailingCountry = 'India'
         );
         insert contactRecord;
+     	System.assert(contactRecord.Id != null, 'Record not created');
+
          
      	//Added by Sowmya -21/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
         Profile p =   [select Id,name from Profile where Name = 'IPS External Customer' limit 1];
        	user u1 = new User(
         //UserRoleId = ur.Id,
-        profileId = p.id,
-        username = 'newUser100@yahoo.com',
-        email = 'newUser100@g.com',
-        emailencodingkey = 'UTF-8',
-        localesidkey = 'en_US',
-        languagelocalekey = 'en_US',
-        timezonesidkey = 'America/Los_Angeles',
-        alias='nuser',
-        lastname='lastname',
-        contactId = contactRecord.id
+            profileId = p.id,
+            username = 'newUser100@yahoo.com',
+            email = 'newUser100@g.com',
+            emailencodingkey = 'UTF-8',
+            localesidkey = 'en_US',
+            languagelocalekey = 'en_US',
+            timezonesidkey = 'America/Los_Angeles',
+            alias='nuser',
+            lastname='lastname',
+            contactId = contactRecord.id
         );
       contactRecord.Core_IPS_Intel_Support_Owner__c = u1.Id;
       Update contactRecord;
@@ -99,19 +103,21 @@ public class Core_IPS_CaseUtility_V1_Test{
        //Sowmya End -21/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
           
           Core_IPS_Project__c cipspro=new Core_IPS_Project__c();
-         insert cipspro;
-        
+          insert cipspro;
+          System.assert(cipspro.Id != null, 'Record not created');
+
             Core_IPS_Account__c  ipsAccount = new Core_IPS_Account__c();
             ipsAccount.Core_Account__c=accountRecord.id;
             ipsAccount.Core_IPS_Project__c=cipspro.id;
             insert ipsAccount;
-            
+            System.assert(ipsAccount.Id != null, 'Record not created');
+
             Core_IPS_Project_Member__c proMember = new Core_IPS_Project_Member__c();
             proMember.Core_IPS_Contact__c = contactRecord.id;
             proMember.Core_IPS_Project__c = cipspro.id;
-            
             insert proMember;
-            
+            System.assert(proMember.Id != null, 'Record not created');
+
           /*  
             UserRole ur = [Select PortalType, PortalAccountId From UserRole where PortalType =:'CustomerPortal' limit 1];
             //Profile p = [select Id,name from Profile where name = 'System Administrator' limit 1];
@@ -139,7 +145,7 @@ public class Core_IPS_CaseUtility_V1_Test{
             Test.startTest();
             //Core_IPS_CaseUtility.IssueSubCategories IssueSubCategoriesWrapper = new Core_IPS_CaseUtility.IssueSubCategories(CoreProdIssCategory_CaseCat,CoreSupportedProd);
             //Core_IPS_CaseUtility.getIPSParentAccountList(cipspro.id);
-           // List<SelectOption> getIPSParentAccountList=Core_IPS_CaseUtility_dup.getIPSParentAccountList(cipspro.id);
+            List<SelectOption> getIPSParentAccountList=Core_IPS_CaseUtility_dup.getIPSParentAccountList(cipspro.id);
             Test.stopTest();
         }   
     }

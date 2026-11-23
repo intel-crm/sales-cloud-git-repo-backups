@@ -1,0 +1,3 @@
+Please note that the Account {!Account.Name} has been deactivated by Data Operations for the following reason:
+
+{!Account.Core_Deactivation_Reason__c}

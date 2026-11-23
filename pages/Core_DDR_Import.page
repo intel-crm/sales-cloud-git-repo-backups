@@ -1,0 +1,66 @@
+<apex:page controller="Core_DDR_Import_Controller"  id="pgId1" >
+<style type="text/css">
+    .myClass1
+    { 
+        color: green; 
+        font-weight:bold;
+    }
+</style>
+<style>    
+    #el_loading
+    {
+        display: none;
+    }
+</style>
+
+<apex:form enctype="multipart/form-data" id="formId1" >
+    <apex:pagemessages id="msgId" />
+    <apex:pageBlock id="pgBlkId1" >
+        <apex:outputPanel id="panelId1">
+            <apex:actionStatus startText="Bulk Uploading Is In-Progress.." stopText="{!stopText}" id="syncStatus" />    
+            <br/> <br/>
+        </apex:outputPanel>
+
+        <apex:pageBlockSection columns="2" id="pgBlkSecId1"> 
+            <apex:inputFile value="{!csvFileBody}"  filename="{!csvAsString}" id="inputFileId1"/>
+            <!--   <apex:commandButton value="Import Design Registration"  action="{!importCSVFile}" onclick="onUpload();"  /> -->
+            <apex:commandButton value="Import Design Registration"  action="{!importCSVFile}" onclick="checkForNoFileAndProceed();"  /> 
+        </apex:pageBlockSection>
+
+    </apex:pageBlock>    
+    <apex:pageBlock >
+        <apex:outputPanel styleClass="myClass1">
+        <apex:outputlink value="{!BatchId}">{!BatchMessage}</apex:outputlink>  
+        </apex:outputPanel>    
+    </apex:pageBlock> 
+</apex:form>
+
+<div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.75;width:100%;">
+<div class="waitingHolder" style="top: 100px; width: 91px;">
+<img class="waitingImage" src="/img/loading.gif" title="Please Wait..."  style="width: 40;height:40;"/>
+<span class="waitingDescription">Attachment is Uploading . . . .</span>
+</div>
+</div>
+
+<script>
+function onUpload()
+{
+    var ul = document.getElementById('el_loading');
+    ul.style.display = 'inline';
+}
+
+function checkForNoFileAndProceed()
+{
+    var name=document.getElementById('pgId1:formId1:pgBlkId1:pgBlkSecId1:inputFileId1').value;
+    if(name == '' || name == null)
+    {
+        alert('Please Choose A CSV File To Upload...');
+        return false;
+    }
+    else
+    {
+        onUpload(); 
+    }
+}
+</script>
+</apex:page>

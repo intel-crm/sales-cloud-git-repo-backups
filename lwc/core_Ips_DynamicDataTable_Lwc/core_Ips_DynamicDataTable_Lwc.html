@@ -1,0 +1,35 @@
+<template>
+    
+  <lightning-card>
+    <div class="slds-clearfix">
+        <div class="slds-float_left slds-p-left_medium">
+           <lightning-combobox style="width:230px;" name="selectedCasevalue" value={selectedCasevalue}
+              options={caseoptions} onchange={handleChangeCaseListView}></lightning-combobox>
+        </div>
+    </div>
+    <!-- <template if:true={isLoading}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template> -->
+        <template if:true={isLoading}>
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+            </template>
+        <div class="slds-p-horizontal_small"></div>
+        
+        <lightning-layout multiple-rows="true" vertical-align="end">
+            <lightning-layout-item size="12" padding="around-small">
+                <div if:true={DataTableResponseWrappper} style="height:15rem;">
+                    <lightning-datatable data={finalSObjectDataList} 
+                                        columns={columnsResult} 
+                                        load-more-offset="10"
+                                        enable-infinite-loading="true"
+                                        onloadmore={loadMoreData}
+                                        key-field="Id"
+                                        hide-checkbox-column="true"
+                                        onrowaction={handleRowAction1}
+                                        ></lightning-datatable>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+    hello
+</template>

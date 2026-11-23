@@ -55,16 +55,10 @@
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>PRODUCT_NAME</field>
+        <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>TYPE</field>
@@ -73,7 +67,7 @@
         <field>OpportunityLineItem.Core_Approved_Quantity__c</field>
     </columns>
     <columns>
-        <field>FULL_NAME</field>
+        <field>PRODUCT_NAME</field>
     </columns>
     <columns>
         <field>AMOUNT</field>
@@ -85,7 +79,7 @@
         <field>QUANTITY</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
@@ -118,7 +112,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>lost,cancelled,deleted,approved</value>
+            <value>lost,cancelled,deleted</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Risk_Reason__c</column>
@@ -169,6 +163,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2017-12-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

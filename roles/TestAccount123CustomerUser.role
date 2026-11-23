@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Test Account 123 Test for long account name how it is showing Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Test Account 123 Test for long account name how it is showing Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>TestAccount123CustomerManager</parentRole>
+</Role>

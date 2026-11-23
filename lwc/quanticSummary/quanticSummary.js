@@ -1,26 +1,24 @@
-import {LightningElement, track, api} from 'lwc';
 import LOCALE from '@salesforce/i18n/locale';
-
+import noResults from '@salesforce/label/c.quantic_NoResults';
+import noResultsFor from '@salesforce/label/c.quantic_NoResultsFor';
+import showingResultsOf from '@salesforce/label/c.quantic_ShowingResultsOf';
+import showingResultsOfWithQuery from '@salesforce/label/c.quantic_ShowingResultsOfWithQuery';
+import showingResultsOfWithQuery_plural from '@salesforce/label/c.quantic_ShowingResultsOfWithQuery_plural';
+import showingResultsOf_plural from '@salesforce/label/c.quantic_ShowingResultsOf_plural';
 import {
   registerComponentForInit,
   initializeWithHeadless,
   getHeadlessBundle,
 } from 'c/quanticHeadlessLoader';
 import {AriaLiveRegion, I18nUtils} from 'c/quanticUtils';
-
-import noResults from '@salesforce/label/c.quantic_NoResults';
-import noResultsFor from '@salesforce/label/c.quantic_NoResultsFor';
-import showingResultsOf from '@salesforce/label/c.quantic_ShowingResultsOf';
-import showingResultsOf_plural from '@salesforce/label/c.quantic_ShowingResultsOf_plural';
-import showingResultsOfWithQuery from '@salesforce/label/c.quantic_ShowingResultsOfWithQuery';
-import showingResultsOfWithQuery_plural from '@salesforce/label/c.quantic_ShowingResultsOfWithQuery_plural';
+import {LightningElement, track, api} from 'lwc';
 
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 /** @typedef {import("coveo").QuerySummary} QuerySummary */
 /** @typedef {import("coveo").QuerySummaryState} QuerySummaryState */
 
 /**
- * The `QuanticSummary` component displays information about the current range of results (e.g., "Results 1-10 of 123").
+ * The `QuanticSummary` component displays information about the current range of results (for example, "Results 1-10 of 123").
  * @category Search
  * @category Insight Panel
  * @example
@@ -45,6 +43,8 @@ export default class QuanticSummary extends LightningElement {
   headless;
   /** @type {import('c/quanticUtils').AriaLiveUtils} */
   summaryAriaMessage;
+  /** @type {boolean} */
+  hasInitializationError = false;
 
   labels = {
     noResults,
@@ -61,10 +61,6 @@ export default class QuanticSummary extends LightningElement {
 
   renderedCallback() {
     initializeWithHeadless(this, this.engineId, this.initialize);
-        const passEvent = new CustomEvent('queryevent', {
-          detail: {qry: this.query}
-      });
-    this.dispatchEvent(passEvent);
   }
 
   /**
@@ -74,8 +70,6 @@ export default class QuanticSummary extends LightningElement {
     this.headless = getHeadlessBundle(this.engineId);
     this.querySummary = this.headless.buildQuerySummary(engine);
     this.summaryAriaMessage = AriaLiveRegion('summary', this);
-    const { logCustomEvent } = CoveoHeadless.loadGenericAnalyticsActions(engine)
-    this.logCustomEvent = (payload) => engine.dispatch(logCustomEvent(payload));
     this.unsubscribe = this.querySummary.subscribe(() => this.updateState());
   };
 
@@ -85,7 +79,7 @@ export default class QuanticSummary extends LightningElement {
 
   updateState() {
     this.state = this.querySummary.state;
-    if(this.state?.hasResults) {
+    if (this.state?.hasResults) {
       this.updateAriaMessage();
     }
   }
@@ -155,28 +149,11 @@ export default class QuanticSummary extends LightningElement {
       )
     );
   }
-  
-   handleContinueToCaseCreation(){
-   // this.coveoClickEventForDeflection();
-      // this.logCustomEvent({
-      //   evt: 'Continue to Case Creation1',
-      //   type: 'clicked'
-      // });
-      let event = new CustomEvent('clickofcontinuecasecreation',{
-        detail: {
-            value: true
-        },
-        bubbles: true,
-        composed: true
-    });
-    this.dispatchEvent(event)
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
   }
-
-  // @api coveoClickEventForDeflection(){
-  //   this.logCustomEvent({
-  //     evt: 'Continue to Case Creation2',
-  //     type: 'clicked'
-  //   });
-  // }
-
 }

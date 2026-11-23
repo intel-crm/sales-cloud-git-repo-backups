@@ -23,6 +23,8 @@ public class Core_IPS_ProductTrigger_Dispatcher{
          if(trigger.isInsert){
              Core_IPS_ProductTriggerHandler.UpdateIsSubmittedHeader(newList); 
              Core_IPS_ProductTriggerHandler.addDefaultCaseOwnerToIST(newList,oldMap);
+			
+			
          }
          if(trigger.isUpdate){
              Core_IPS_ProductTriggerHandler.SumbittingIPSProductforApproval(newList);

@@ -9,12 +9,15 @@ public class Core_ips_surveyrep_CTRL_Test {
         sysadmin.username='sysAdmin@intel.com.test.' + String.valueOf(System.Now().getTime());     
         sysadmin.Core_User_Country_Code__c ='DEU'; 
         insert sysadmin;
-        
+        System.assert(sysadmin.Id != null, 'Record not created');  
+
         System.runAs(sysadmin) {
             Case objCase = TestUtilities.getCase();
             String caseRecordType=Schema.SObjectType.Case.getRecordTypeInfosByName().get('IPS Case Create').getRecordTypeId();
             objCase.RecordTypeId = caseRecordType;
             insert objCase;
+            System.assert(objCase.Id != null, 'Record not created');  
+
             objCase.Status = 'Closed';
             objCase.Core_Sub_Status__c = 'Closed';
             update objCase;
@@ -28,18 +31,25 @@ public class Core_ips_surveyrep_CTRL_Test {
             lstQues.add(new Core_IPS_Question__c( RecordTypeId=surveyRecordTypeId, Core_IPS_Order_No__c=3, Core_IPS_Question__c='Question 3', Core_IPS_DataType__c='Text Area', Core_IPS_Status__c = 'Active', Core_IPS_Survey_Type__c = 'Sales Rep'));
              
             insert lstQues;
+            System.assert(lstQues[0].Id != null, 'Record not created');  
+
             
             List<Core_IPS_Answer__c> lstAns = new List<Core_IPS_Answer__c>();
             lstAns.add(new Core_IPS_Answer__c(Core_IPS_Question__c=lstQues[0].Id, Core_IPS_Order_No__c=1, Core_IPS_Answer__c='Yes', Core_IPS_Status__c = 'Active'));
             lstAns.add(new Core_IPS_Answer__c(Core_IPS_Question__c=lstQues[0].Id, Core_IPS_Order_No__c=2, Core_IPS_Answer__c='No', Core_IPS_Status__c = 'Active'));
             insert lstAns;
+            System.assert(lstAns[0].Id != null, 'Record not created');  
+
               List<Core_IPS_Answer__c> lstAns1 = new List<Core_IPS_Answer__c>();
             lstAns.add(new Core_IPS_Answer__c(Core_IPS_Question__c=lstQues[0].Id, Core_IPS_Order_No__c=1, Core_IPS_Answer__c='Yes', Core_IPS_Status__c = 'Active'));
             lstAns.add(new Core_IPS_Answer__c(Core_IPS_Question__c=lstQues[0].Id, Core_IPS_Order_No__c=2, Core_IPS_Answer__c='No', Core_IPS_Status__c = 'Active'));
             insert lstAns1;
+           
+
             
             Core_IPS_Survey_Settings__c surveySetting = new Core_IPS_Survey_Settings__c(Name='Customer');
             insert surveySetting;
+			System.assert(surveySetting.Id != null, 'Record not created');  
           
             
         }
@@ -52,16 +62,20 @@ public class Core_ips_surveyrep_CTRL_Test {
         salesRep.username='salesrepbb@intel.com.test.' + String.valueOf(System.Now().getTime());     
         salesRep.Core_User_Country_Code__c ='IND'; 
         insert salesRep;
+		System.assert(salesRep.Id != null, 'Record not created');  
         
         Core_IPS_Labels__c ipsLabel = new Core_IPS_Labels__c(Name = 'IPS_SalesRep_ProfilesId', Value__c = salesRepBBId.substring(0, 15));
             insert ipsLabel;
-        
+        System.assert(ipsLabel.Id != null, 'Record not created');  
+
         
      System.runAs(salesRep) {
          Case objCase = TestUtilities.getCase();
             String caseRecordType=Schema.SObjectType.Case.getRecordTypeInfosByName().get('IPS Case Create').getRecordTypeId();
             objCase.RecordTypeId = caseRecordType;
             insert objCase;
+         	System.assert(objCase.Id != null, 'Record not created');  
+
             objCase.Status = 'Closed';
             objCase.Core_Sub_Status__c = 'Closed';
             update objCase;
@@ -74,7 +88,8 @@ public class Core_ips_surveyrep_CTRL_Test {
     //   Core_ips_surveyrep_CTRL.getProfilename();
           Core_ips_surveyrep_CTRL.caseOwnerRedirectPage(objCase.Id);
          Core_ips_surveyrep_CTRL.skipSurveyDisable(objCase.Id);
-        Test.stopTest();
+   
+       Test.stopTest();
     }
     }
     
@@ -104,16 +119,17 @@ public class Core_ips_surveyrep_CTRL_Test {
         salesRep.username='salesrepbb@intel.com.test.' + String.valueOf(System.Now().getTime());     
         salesRep.Core_User_Country_Code__c ='IND'; 
         insert salesRep;
-       User salesRep1 = TestUtilities.getUser();
+        System.assert(salesRep.Id != null, 'Record not created');  
+
+        User salesRep1 = TestUtilities.getUser();
         salesRep1.ProfileID =  salesRepBBId;  
         salesRep1.username='salesrepbb@intel.com.test.' + String.valueOf(System.Now().getTime());     
         salesRep1.Core_User_Country_Code__c ='IND'; 
         insert salesRep1;
+        System.assert(salesRep1.Id != null, 'Record not created');  
+ 
          
-         
-        
-        
-        Case objCase = [SELECT Id,Core_IPS_Survey_Captured__c,OwnerId FROM Case LIMIT 1];
+         Case objCase = [SELECT Id,Core_IPS_Survey_Captured__c,OwnerId FROM Case LIMIT 1];
         objCase.OwnerId=salesRep.id;
         update objCase;
         
@@ -122,11 +138,25 @@ public class Core_ips_surveyrep_CTRL_Test {
         
         CaseHistory objectHistory = new CaseHistory(CaseId = objCase.Id, Field = 'Owner');
         insert objectHistory;
-        
+        System.assert(objectHistory.Id != null, 'Record not created');  
+
         
    
         Core_ips_surveyrep_CTRL.caseOwnerRedirectPage(objCase.Id);
-          Core_ips_surveyrep_CTRL.init(objCase.Id,'');
+        Core_ips_surveyrep_CTRL.init(objCase.Id,'');
+         
+        //Added by Sowmya - Start - 08/11/2024 - TWC745-7027 - Fix test coverage for all failed classes 
+        Core_IPS_Survey_Settings__c surveysetting = new Core_IPS_Survey_Settings__c();
+        surveysetting.Name = 'Customer';
+        surveysetting.Core_IPS_Footer_Label__c = 'Core_IPS_Survey_Footer';
+        surveysetting.Core_IPS_Header_Label__c = 'Core_IPS_Survey_Header_2';
+        surveysetting.Core_IPS_Image_Resource__c ='Core_IPS_New_Logo';
+        Insert surveysetting;
+        System.assert(surveysetting.Id != null, 'Record not created');  
+
+        Core_ips_surveyrep_CTRL.fetchSurveySetting('Customer');
+       	//Sowmya - end - 08/11/2024 - TWC745-7027 - Fix test coverage for all failed classes 
+        
         Test.stopTest();       
      }
 

@@ -130,22 +130,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Case_Category_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Case_Category_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -162,7 +156,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>false</enableSharing>
     <enableStreamingApi>false</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>Read</externalSharingModel>
     <fieldSets>
         <fullName>Case_Category_Edit_Fields</fullName>
         <description>This Field-set is for Edit fields</description>
@@ -205,6 +199,17 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_External_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>12</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Issue_Category_Name__c</fullName>
@@ -318,6 +323,22 @@
         </valueSet>
     </fields>
     <label>Case Category</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Issue_Category_Name__c</columns>
+        <columns>Core_Issue_Sub_Category_Name__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Product_Issue_Category__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Supported_Product__c</columns>
+        <columns>Core_Type__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_External_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>IC-{00000000}</displayFormat>
         <label>Case Category ID</label>
@@ -455,6 +476,28 @@ Press Cancel to exit.</errorMessage>
         <masterLabel>Add Subcategories</masterLabel>
         <openType>sidebar</openType>
         <page>Core_addSubCategories</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_IPS_Add_Environment_Variables</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add Environment Variables</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_addEnvironmentDetailsToIssueSubCat</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Core_IPS_Add_Environment_Variables</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add Environment Details</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_IPS_addEnvironmentDetailsToSubCat</page>
         <protected>false</protected>
     </webLinks>
 </CustomObject>

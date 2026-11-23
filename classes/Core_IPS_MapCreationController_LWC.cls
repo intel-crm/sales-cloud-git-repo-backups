@@ -38,6 +38,7 @@ public with sharing class Core_IPS_MapCreationController_LWC {
         if(Label.Core_IPS_UCD_Toggle_Switch == 'CIM_ID') {
             fieldSetFields = fieldSetFields.replace('Core_Business_Party_Id__c', 'Core_CIM_ID__c');
         }
+        System.debug('fieldSetFields'+ fieldSetFields);
         // SOQL Injection Fix  - Start- Shipra
         Map<String, Object> bindMap = new Map<String, Object>{'cndaNumber' => '','searchText'  => searchTxt };
         AccountListQuery =fieldSetFields+'Phone, Owner.Name from Account where (Core_CNDA_Number__c != :cndaNumber OR Core_CNDA_Number__c != Null) and Core_IPS_Active__c=true and name like :searchText ORDER BY Account.Name ASC NULLS LAST LIMIT ' +limitSize + ' OFFSET '+ offset; 
@@ -173,8 +174,9 @@ public with sharing class Core_IPS_MapCreationController_LWC {
                     litem.selected=true;
                     litem.prodOrgId = prodOrg.id;  //prod.selectedProductOrganization
                     litem.prodOrgName = prodOrg.Core_IPS_Support_Org_Name__c;
-                    
-                    litem.FlagStatus = mapProdToSupProd1.get(prod.prod.id).Core_Flag_Status__c;
+                    if(mapProdToSupProd1 != null && mapProdToSupProd1.get(prod.prod.id) != null){
+                    	litem.FlagStatus = mapProdToSupProd1.get(prod.prod.id).Core_Flag_Status__c;
+                    }
                     for(Asset a: assetlist){                   
                         if(a.accountid==acc.id && a.product2id==prod.prod.id && a.Core_Product_Organization__c == prodOrg.id ){                        
                             litem.color='background-color:gold';

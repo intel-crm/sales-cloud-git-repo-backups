@@ -7,10 +7,6 @@ public class Core_OpportunityPartnerHandler_Test {
         'Existing Partner 0','Existing Partner 1','Existing Partner 2','Existing Partner 3',
         'Existing Partner 4','Existing Partner 5','Existing Partner 6'};
     private static final Integer numExistingPartners = 7;
-    
-    private static final List<String> existingPartnerNew = new List<String>{
-        'Existing Partner 11','Existing Partner 12','Existing Partner 13','Existing Partner 14',
-        'Existing Partner 15','Existing Partner 16','Existing Partner 17'};
             
     private static final List<String> newPartnerNames = new List<String>{
         'New Partner 00','New Partner 01','New Partner 02','New Partner 03','New Partner 04',
@@ -42,7 +38,6 @@ public class Core_OpportunityPartnerHandler_Test {
         
         Test.startTest();
         insert newOppPartners;
-        Database.executeBatch(new Core_OpportunityPartnerBatchUpdate());
         Test.stopTest();
         
         List<Core_Opportunity_Facts__c> oppFacts = [select Id, Core_Opportunity_ID__c, Core_LOEM__c,
@@ -70,7 +65,7 @@ public class Core_OpportunityPartnerHandler_Test {
         List<Core_Opportunity_Partner__c> newOppPartners = new List<Core_Opportunity_Partner__c>();
         for (Integer i=0; i<5; i++)
             for (Integer j=0; j<20; j++)
-                newOppPartners.add(new Core_Opportunity_Partner__c(Core_Opportunity__c=opps[i].Id, Core_Partner__c=newPartnerAccts[j].Id,
+            	newOppPartners.add(new Core_Opportunity_Partner__c(Core_Opportunity__c=opps[i].Id, Core_Partner__c=newPartnerAccts[j].Id,
                                                                    Core_Partner_Type__c=partnerTypes[Math.mod(j,4)], Core_Partner_Role__c='testing'));
         
         Test.startTest();
@@ -79,7 +74,7 @@ public class Core_OpportunityPartnerHandler_Test {
                 
         // If we make it here, we can assume it worked in bulk. Correctness of the field values is covered elsewhere.
         // We just need to check to make sure we have as many Opportunity Facts records as we expect.
-        Integer numFacts = [select count() from Core_Opportunity_Facts__c LIMIT 10];
+        Integer numFacts = [select count() from Core_Opportunity_Facts__c];
         System.assertEquals(5, numFacts);
     }
     
@@ -162,31 +157,22 @@ public class Core_OpportunityPartnerHandler_Test {
 
     @testSetup
     static void setupTestData() {
-        Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' and sobjecttype = 'Account' limit 1][0].Id;
+        
         // Account & partner account test data
-        Account acct = new Account(Name = 'Test Account', BillingStreet = '123 Fake St',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',Core_Sub_Industry__c= 'Crop Production',
-                                   BillingPostalCode = '12345', RecordTypeId =  newAccountRecTypeId,
-                                   //Core_CIM_ID__c = '8675309',
-                                   Core_Sales_Groups__c='Americas US Sales Group');
+        Account acct = new Account(Name='Test Account', BillingCountryCode='USA', BillingStateCode='OR',
+                                   BillingCity='Portland', BillingStreet='123 Fake St.');
         insert acct;
         
         List<Account> existingPartnerAccts = new List<Account>();
         for (Integer i=0; i < numExistingPartners; i++)
-            existingPartnerAccts.add(new Account(Name=existingPartnerNames[i], BillingStreet = '123 Fake St',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',Core_Sub_Industry__c= 'Crop Production',
-                                   BillingPostalCode = '12345', RecordTypeId =  newAccountRecTypeId,
-                                  // Core_CIM_ID__c = '8675309',
-                                   Core_Sales_Groups__c='Americas US Sales Group'));
+        	existingPartnerAccts.add(new Account(Name=existingPartnerNames[i], BillingCountryCode='USA', BillingStateCode='OR',
+                                                 BillingCity='Portland', BillingStreet='123 Fake St.'));
         insert existingPartnerAccts;
         
         List<Account> newPartnerAccts = new List<Account>();
         for (Integer i=0; i < numNewPartners; i++)
-            newPartnerAccts.add(new Account(Name=newPartnerNames[i], BillingStreet = '123 Fake St',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',Core_Sub_Industry__c= 'Crop Production',
-                                   BillingPostalCode = '12345', RecordTypeId =  newAccountRecTypeId,
-                                   //Core_CIM_ID__c = '8675309',
-                                   Core_Sales_Groups__c='Americas US Sales Group'));
+        	newPartnerAccts.add(new Account(Name=newPartnerNames[i], BillingCountryCode='USA', BillingStateCode='OR',
+                                            BillingCity='Portland', BillingStreet='123 Fake St.'));
         insert newPartnerAccts;
         
         // Existing Opportunity Facts data
@@ -200,12 +186,11 @@ public class Core_OpportunityPartnerHandler_Test {
         
         // Opportunity test data
         List<Opportunity> opps = new List<Opportunity>();
-          Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
         for (Integer i=0; i < 2; i++)
-            opps.add(new Opportunity(Name='Test Opportunity '+i, RecordTypeId = newOppRecTypeId, AccountId=acct.Id, StageName='Develop', CloseDate=System.Today().addDays(24),
+        	opps.add(new Opportunity(Name='Test Opportunity '+i, AccountId=acct.Id, StageName='Develop', CloseDate=System.Today().addDays(24),
                                      Core_Opportunity_Facts_ID__c=oppFacts[i].Id));
         for (Integer i=2; i < numOpportunities; i++)
-            opps.add(new Opportunity(Name='Test Opportunity '+i, RecordTypeId = newOppRecTypeId, AccountId=acct.Id, StageName='Develop', CloseDate=System.Today().addDays(24),
+        	opps.add(new Opportunity(Name='Test Opportunity '+i, AccountId=acct.Id, StageName='Develop', CloseDate=System.Today().addDays(24),
                                      Core_Opportunity_Facts_ID__c=null));
         insert opps;
         
@@ -237,89 +222,5 @@ public class Core_OpportunityPartnerHandler_Test {
             Name='opportunityPartnerFactsUpdate', Core_Class_Name__c='Core_OpportunityPartnerHandler', Core_Object__c='Core_Opportunity_Partner__c',
             Core_Trigger_Events__c='after insert, after update, after delete', Core_Active__c=true, Core_Description__c = 'blah blah');
         insert triggerExec;
-        Core_Trigger_Executions__c triggerExec1 = new Core_Trigger_Executions__c(
-            Name='OppPartnerJSON', Core_Class_Name__c='Core_OpportunityPartnerHandler', Core_Object__c='Core_Opportunity_Partner__c',
-            Core_Trigger_Events__c='after insert, after update, after delete', Core_Active__c=true, Core_Description__c = 'blah blah');
-        insert triggerExec1;
-        
-        Core_OpportunityPartnerHandler.createOppPartnerJSONInsert(existingOppPartners);
     }
-    
-    static testMethod void checkPCCOpptyLock_test(){
-        Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' and sobjecttype = 'Account' limit 1][0].Id;
-        // Account & partner account test data
-		Account acct = new Account(Name = 'Test Account1', Industry = 'Agriculture', Core_Sub_Industry__c = 'Forestry', RecordTypeId = newAccountRecTypeId,
-                                   BillingStreet = '123 Fake St',BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                   BillingPostalCode = '12345', Core_Sales_Groups__c='PRC Sales Group');
-            insert acct;
-        
-        List<Account> existingPartnerAccts = new List<Account>();
-        for (Integer i=0; i < 7; i++)
-            existingPartnerAccts.add(new Account(Name=existingPartnerNew[i], BillingStreet = '123 Fake St',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',Core_Sub_Industry__c= 'Crop Production',
-                                   BillingPostalCode = '12345', RecordTypeId = newAccountRecTypeId,
-                                  // Core_CIM_ID__c = '8675309',
-                                   Core_Sales_Groups__c='PRC Sales Group'));
-        insert existingPartnerAccts;
-        
-        // Existing Opportunity Facts data
-        List<Core_Opportunity_Facts__c> oppFacts = new List<Core_Opportunity_Facts__c>();
-        oppFacts.add(new Core_Opportunity_Facts__c(Core_LOEM__c=null, Core_ODM__c=existingPartnerNew[0] + ';',
-                                                   Core_OEM__c=existingPartnerNew[1] + ';' + existingPartnerNew[2] + ';', Core_Reseller__c=null));
-        oppFacts.add(new Core_Opportunity_Facts__c(Core_LOEM__c=null, Core_ODM__c=null,
-                                                   Core_OEM__c=existingPartnerNew[3] + ';', Core_Reseller__c=existingPartnerNew[4] + ';' +
-                                                   existingPartnerNew[5] + ';' + existingPartnerNew[6] + ';'));
-        insert oppFacts;
-        
-        // Opportunity test data
-        List<Opportunity> opps = new List<Opportunity>();
-		
-		Id DealOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Deal_Opportunity' limit 1][0].Id;
-
-        for (Integer i=0; i < 2; i++)
-            opps.add(new Opportunity(Name = 'PCC Opportunity'+i, RecordTypeId = DealOppRecTypeId,
-                                          AccountId = acct.Id, OwnerId= UserInfo.getUserId(),Core_Coverage_Type_Nm__c = 'Deal Registration',
-                                          StageName = 'Qualify', CloseDate = System.Date.today().addYears(1), Core_Opportunity_Coverage_Nm__c ='Partner-Led Opportunity',
-                                     Core_Opportunity_Facts_ID__c=oppFacts[i].Id));
-        for (Integer i=2; i < 5; i++)
-            opps.add(new Opportunity(Name = 'PCC Opportunity'+i, RecordTypeId = DealOppRecTypeId,
-                                          AccountId = acct.Id, OwnerId= UserInfo.getUserId(),Core_Coverage_Type_Nm__c = 'Deal Registration',
-                                          StageName = 'Qualify', CloseDate = System.Date.today().addYears(1), Core_Opportunity_Coverage_Nm__c ='Partner-Led Opportunity',
-                                     Core_Opportunity_Facts_ID__c=null));
-        insert opps;
-        
-        // Now that we have opportunities, update the Opportunity Facts records with their IDs
-        oppFacts[0].Core_Opportunity_ID__c = (String) opps[0].Id;
-        oppFacts[1].Core_Opportunity_ID__c = (String) opps[1].Id;
-        update oppFacts;
-        
-        // Add our existing partners into the system
-        List<Core_Opportunity_Partner__c> existingOppPartners = new List<Core_Opportunity_Partner__c>();
-        existingOppPartners.add(new Core_Opportunity_Partner__c(Core_Opportunity__c=opps[0].Id, Core_Partner__c=existingPartnerAccts[0].Id,
-                                                                Core_Partner_Type__c='ODM', Core_Partner_Role__c='testing'));
-        existingOppPartners.add(new Core_Opportunity_Partner__c(Core_Opportunity__c=opps[0].Id, Core_Partner__c=existingPartnerAccts[1].Id,
-                                                                Core_Partner_Type__c='OEM', Core_Partner_Role__c='testing'));
-        existingOppPartners.add(new Core_Opportunity_Partner__c(Core_Opportunity__c=opps[0].Id, Core_Partner__c=existingPartnerAccts[2].Id,
-                                                                Core_Partner_Type__c='OEM', Core_Partner_Role__c='testing'));
-        existingOppPartners.add(new Core_Opportunity_Partner__c(Core_Opportunity__c=opps[1].Id, Core_Partner__c=existingPartnerAccts[3].Id,
-                                                                Core_Partner_Type__c='OEM', Core_Partner_Role__c='testing'));
-        existingOppPartners.add(new Core_Opportunity_Partner__c(Core_Opportunity__c=opps[1].Id, Core_Partner__c=existingPartnerAccts[4].Id,
-                                                                Core_Partner_Type__c='Reseller', Core_Partner_Role__c='testing'));
-        existingOppPartners.add(new Core_Opportunity_Partner__c(Core_Opportunity__c=opps[1].Id, Core_Partner__c=existingPartnerAccts[5].Id,
-                                                                Core_Partner_Type__c='Reseller', Core_Partner_Role__c='testing'));
-        existingOppPartners.add(new Core_Opportunity_Partner__c(Core_Opportunity__c=opps[1].Id, Core_Partner__c=existingPartnerAccts[6].Id,
-                                                                Core_Partner_Type__c='Reseller', Core_Partner_Role__c='testing'));
-        insert existingOppPartners;
-        
-        // Now enable the actual Trigger execution
-        Core_Trigger_Executions__c triggerEntry = new Core_Trigger_Executions__c(Name='lockPCCOpportunity', Core_Object__c='Opportunity',
-					Core_Class_Name__c='Core_OpportunityLineItemHandler',Core_Trigger_Events__c='before update, before insert', 
-                    Core_Active__c=true, Core_Description__c='for PCC Lock');
-        	insert triggerEntry;
-        
-        Core_OpportunityPartnerHandler.checkPCCOpptyLock(existingOppPartners);
-        System.assertEquals(true,true);
-    }
-    
-    
 }

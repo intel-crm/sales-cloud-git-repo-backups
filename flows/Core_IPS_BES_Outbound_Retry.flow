@@ -11,7 +11,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce BES Outbound Retry process didn&apos;t start: No matching records found</stringValue>
+                <stringValue>Salesforce BES Outbound Retry_Tejaswini process didn&apos;t start: No matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -23,7 +23,7 @@
         <inputParameters>
             <name>emailAddresses</name>
             <value>
-                <stringValue>farooqx.ahmed@intel.com</stringValue>
+                <stringValue>tejaswinix.prafulla.harpanhalli@intel.com</stringValue>
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
@@ -39,7 +39,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce BES Outbound Retry process didn&apos;t start: Multiple matching records found</stringValue>
+                <stringValue>Salesforce BES Outbound Retry_Tejaswini process didn&apos;t start: Multiple matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -51,7 +51,7 @@
         <inputParameters>
             <name>emailAddresses</name>
             <value>
-                <stringValue>farooqx.ahmed@intel.com</stringValue>
+                <stringValue>tejaswinix.prafulla.harpanhalli@intel.com</stringValue>
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
@@ -88,9 +88,9 @@
                 <stringValue>Core_IPS_BES_Support_Notification</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_5_A1</name>
-        <label>To Support Team</label>
-        <locationX>500</locationX>
+        <name>myRule_7_A1</name>
+        <label>Support Email</label>
+        <locationX>700</locationX>
         <locationY>200</locationY>
         <actionName>Core_IPS_BES_Error_Log__c.Core_IPS_BES_Support_Notification</actionName>
         <actionType>emailAlert</actionType>
@@ -107,17 +107,78 @@
         <processMetadataValues>
             <name>apexSelection</name>
             <value>
-                <stringValue>Core_IPS_BES_JSONTriggerHandler</stringValue>
+                <stringValue>Core_IPS_BES_Invoke_HeapSize_Batch</stringValue>
             </value>
         </processMetadataValues>
         <name>myWaitEvent_myWait_myRule_3_event_0_SA1</name>
-        <label>Core_IPS_BES_JSONTriggerHandler</label>
+        <label>BES_Invoke_HeapSize_Apex</label>
         <locationX>300</locationX>
+        <locationY>200</locationY>
+        <actionName>Core_IPS_BES_Invoke_HeapSize_Batch</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>myWaitEvent_myWait_myRule_3_event_0_postWaitExecutionAssignment</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>recordIdList</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>recordIdList</name>
+            <value>
+                <elementReference>myVariable_event_context.Core_IPS_Outbound_Message_Id__r.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_IPS_BES_Invoke_HeapSize_Batch</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>Core_IPS_BES_JSONTriggerHandler</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myWaitEvent_myWait_myRule_5_event_0_SA1</name>
+        <label>call JSON Handler</label>
+        <locationX>500</locationX>
         <locationY>200</locationY>
         <actionName>Core_IPS_BES_JSONTriggerHandler</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>myWaitEvent_myWait_myRule_3_event_0_postWaitExecutionAssignment</targetReference>
+            <targetReference>myWaitEvent_myWait_myRule_5_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -183,6 +244,22 @@
         </connector>
     </assignments>
     <assignments>
+        <name>myWaitAssignment_myWait_myRule_5</name>
+        <label>myWaitAssignment_myWait_myRule_5</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>cancelWaits</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>myWait_myRule_5</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myPreWaitDecision_myWait_myRule_3</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>myWaitEvent_myWait_myRule_3_event_0_postWaitExecutionAssignment</name>
         <label>myWaitEvent_myWait_myRule_3_event_0_postWaitExecutionAssignment</label>
         <locationX>0</locationX>
@@ -196,6 +273,22 @@
         </assignmentItems>
         <connector>
             <targetReference>myWait_myRule_3</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>myWaitEvent_myWait_myRule_5_event_0_postWaitExecutionAssignment</name>
+        <label>myWaitEvent_myWait_myRule_5_event_0_postWaitExecutionAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myWaitEvent_myWait_myRule_5_event_0_postActionExecutionVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myWait_myRule_5</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -227,7 +320,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myPreWaitDecision_myWait_myRule_3</targetReference>
+            <targetReference>myPreWaitDecision_myWait_myRule_5</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -388,7 +481,7 @@
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>Boolean</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
@@ -398,15 +491,9 @@
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
-                    <name>leftHandSideReferenceTo</name>
-                    <value>
-                        <stringValue>Core_IPS_BES_Outbound_Message__c</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>ID</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
@@ -418,19 +505,19 @@
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>Boolean</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_event_context.Core_IPS_Outbound_Message_Id__c</leftValueReference>
-                <operator>IsNull</operator>
+                <leftValueReference>myVariable_event_context.Core_IPS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <stringValue>Failed due to heap size issue</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myWait_myRule_3</targetReference>
             </connector>
-            <label>Email send to support team</label>
+            <label>BES_Handle_HeapSize</label>
         </rules>
     </decisions>
     <decisions>
@@ -444,59 +531,12 @@
         <label>myDecision4</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision6</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_5</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_myRule_5</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_5_A1</targetReference>
-            </connector>
-            <label>Emil send to support team</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_3_event_0</name>
-        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_3_event_0</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myWaitEvent_myWait_myRule_3_event_0_postWaitExecutionAssignment</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>myPostWaitRule_myWaitEvent_myWait_myRule_3_event_0</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_event_context.Core_IPS_Schedule_Time__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myWaitEvent_myWait_myRule_3_event_0_SA1</targetReference>
-            </connector>
-            <label>myPostWaitRule_myWaitEvent_myWait_myRule_3_event_0</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>myPreWaitDecision_myWait_myRule_3</name>
-        <label>myPreWaitDecision_myWait_myRule_3</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myWaitAssignment_myWait_myRule_3</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>myPreWaitRule_myWait_myRule_3</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -616,9 +656,351 @@
                 </rightValue>
             </conditions>
             <connector>
+                <targetReference>myWait_myRule_5</targetReference>
+            </connector>
+            <label>Email send to support team</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision6</name>
+        <label>myDecision6</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_7</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_7</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <label>Email send to support Team</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_3_event_0</name>
+        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_3_event_0</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitEvent_myWait_myRule_3_event_0_postWaitExecutionAssignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPostWaitRule_myWaitEvent_myWait_myRule_3_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_event_context.Core_IPS_Schedule_Time__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWaitEvent_myWait_myRule_3_event_0_SA1</targetReference>
+            </connector>
+            <label>myPostWaitRule_myWaitEvent_myWait_myRule_3_event_0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_5_event_0</name>
+        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_5_event_0</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitEvent_myWait_myRule_5_event_0_postWaitExecutionAssignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPostWaitRule_myWaitEvent_myWait_myRule_5_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_event_context.Core_IPS_Schedule_Time__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWaitEvent_myWait_myRule_5_event_0_SA1</targetReference>
+            </connector>
+            <label>myPostWaitRule_myWaitEvent_myWait_myRule_5_event_0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPreWaitDecision_myWait_myRule_3</name>
+        <label>myPreWaitDecision_myWait_myRule_3</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitAssignment_myWait_myRule_3</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPreWaitRule_myWait_myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>inputSourceType</name>
+                    <value>
+                        <stringValue>workflow</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_event_context.Core_IPS_Retry_Count__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>3.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>inputSourceType</name>
+                    <value>
+                        <stringValue>workflow</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_event_context.Core_IPS_Eligible_for_retry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>inputSourceType</name>
+                    <value>
+                        <stringValue>workflow</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_event_context.Core_IPS_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Failed due to heap size issue</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
                 <targetReference>myDecision</targetReference>
             </connector>
             <label>myPreWaitRule_myWait_myRule_3</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPreWaitDecision_myWait_myRule_5</name>
+        <label>myPreWaitDecision_myWait_myRule_5</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitAssignment_myWait_myRule_5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPreWaitRule_myWait_myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>inputSourceType</name>
+                    <value>
+                        <stringValue>workflow</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_event_context.Core_IPS_Retry_Count__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>3.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>inputSourceType</name>
+                    <value>
+                        <stringValue>workflow</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_event_context.Core_IPS_Eligible_for_retry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>inputSourceType</name>
+                    <value>
+                        <stringValue>workflow</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideReferenceTo</name>
+                    <value>
+                        <stringValue>Core_IPS_BES_Outbound_Message__c</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_event_context.Core_IPS_Outbound_Message_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPreWaitDecision_myWait_myRule_3</targetReference>
+            </connector>
+            <label>myPreWaitRule_myWait_myRule_5</label>
         </rules>
     </decisions>
     <formulas>
@@ -636,12 +1018,12 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>Not(CONTAINS([Core_IPS_BES_Error_Log__c].Core_IPS_Error_Description__c , &quot;Class.&quot;))</stringValue>
+                <stringValue>(NOT(CONTAINS([Core_IPS_BES_Error_Log__c].Core_IPS_Error_Description__c, &quot;request_end_time_utc&quot;)) &amp;&amp; NOT(CONTAINS([Core_IPS_BES_Error_Log__c].Core_IPS_Error_Description__c, &quot;Class.&quot;)))</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_5</name>
+        <name>formula_myRule_7</name>
         <dataType>Boolean</dataType>
-        <expression>Not(CONTAINS({!myVariable_event_context.Core_IPS_Error_Description__c} , &quot;Class.&quot;))</expression>
+        <expression>(NOT(CONTAINS({!myVariable_event_context.Core_IPS_Error_Description__c}, &quot;request_end_time_utc&quot;)) &amp;&amp; NOT(CONTAINS({!myVariable_event_context.Core_IPS_Error_Description__c}, &quot;Class.&quot;)))</expression>
     </formulas>
     <formulas>
         <name>OrganizationName</name>
@@ -649,7 +1031,7 @@
         <expression>{!$Organization.Name}</expression>
     </formulas>
     <interviewLabel>Core_IPS_BES_Outbound_Retry-51_InterviewLabel</interviewLabel>
-    <label>BES Outbound Retry</label>
+    <label>BES Outbound Retry_Tejaswini</label>
     <loops>
         <name>eventContextCheckLoop</name>
         <label>ContextCheckLoop</label>
@@ -739,6 +1121,7 @@
         </filters>
         <object>Core_IPS_BES_Error_Log__c</object>
         <outputReference>myVariable_event_context_collection</outputReference>
+        <queriedFields>Core_IPS_Status__c</queriedFields>
         <queriedFields>Core_IPS_Retry_Count__c</queriedFields>
         <queriedFields>Core_IPS_Schedule_Time__c</queriedFields>
         <queriedFields>Core_IPS_Eligible_for_retry__c</queriedFields>
@@ -746,14 +1129,14 @@
         <queriedFields>Core_IPS_Error_Description__c</queriedFields>
     </recordLookups>
     <startElementReference>myEventContextRecordLookup</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <textTemplates>
         <description>text template for when multiple records are records found</description>
         <name>multipleRecordsFoundTextTemplate</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>Hello {!OrganizationName} Admin, 
 
-The BES Outbound Retry process is configured to start when a Backend Exception handling platform event message occurs. A Backend Exception handling message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
+The BES Outbound Retry_Tejaswini process is configured to start when a Backend Exception handling platform event message occurs. A Backend Exception handling message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
 
 Here are the values from the Backend Exception handling message.
 Error Log Id: {!myVariable_myEvent.Core_IPS_Error_Log_Id__c}
@@ -769,7 +1152,7 @@ Salesforce Process Automation</text>
         <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>Hello {!OrganizationName} Admin, 
 
-The BES Outbound Retry process is configured to start when a Backend Exception handling platform event message occurs. A Backend Exception handling message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
+The BES Outbound Retry_Tejaswini process is configured to start when a Backend Exception handling platform event message occurs. A Backend Exception handling message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
 
 Here are the values from the Backend Exception handling message.
 Error Log Id: {!myVariable_myEvent.Core_IPS_Error_Log_Id__c}
@@ -839,6 +1222,16 @@ Salesforce Process Automation</text>
             <booleanValue>false</booleanValue>
         </value>
     </variables>
+    <variables>
+        <name>myWaitEvent_myWait_myRule_5_event_0_postActionExecutionVariable</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
     <waits>
         <name>myWait_myRule_3</name>
         <label>myWait_myRule_3</label>
@@ -884,6 +1277,53 @@ Salesforce Process Automation</text>
                 </value>
             </inputParameters>
             <label>myWaitEvent_myWait_myRule_3_event_0</label>
+        </waitEvents>
+    </waits>
+    <waits>
+        <name>myWait_myRule_5</name>
+        <label>myWait_myRule_5</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>defaultLabel</defaultConnectorLabel>
+        <waitEvents>
+            <processMetadataValues>
+                <name>inputParameterType</name>
+                <value>
+                    <stringValue>referenced</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>myWaitEvent_myWait_myRule_5_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myWaitEvent_myWait_myRule_5_event_0_postActionExecutionVariable</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPostWaitDecision_myWaitEvent_myWait_myRule_5_event_0</targetReference>
+            </connector>
+            <eventType>AlarmEvent</eventType>
+            <inputParameters>
+                <name>AlarmTime</name>
+                <value>
+                    <elementReference>myVariable_event_context.Core_IPS_Schedule_Time__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+                <value>
+                    <stringValue>Hours</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </inputParameters>
+            <label>myWaitEvent_myWait_myRule_5_event_0</label>
         </waitEvents>
     </waits>
 </Flow>

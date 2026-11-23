@@ -1,341 +1,148 @@
-<apex:page id="thePage" title="Opportunity Clone" docType="html-5.0" sidebar="true" standardStylesheets="true" lightningStylesheets="{!$User.UITheme != 'Theme3'}"
+<apex:page id="thePage" title="Opportunity Clone" docType="html-5.0" sidebar="true" standardStylesheets="true"
            standardController="Opportunity" extensions="Core_Opportunity_Clone_Controller">
-    
-    <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
-        <apex:slds />
-    </apex:outputPanel>
+
+    <apex:includeScript value="{!$Resource.Core_Jquery}"/>  
+    <apex:includeScript value="{!$Resource.Core_JqueryUIBlock}"/> 
+        
     <style>
         .sectionLabel
         {
-        font-size: 18px;        
+            font-size: 18px;        
         }
         .searchAndClear
         {
-        float: left; 
-        margin-left: 40%;
+            float: left; 
+            margin-left: 40%;
         }
-        
+                
         .lightWeightDivider
         {
-        border-width: 1px; 
-        border-style: solid; 
-        border-color: #EEEEEE;            
+            border-width: 1px; 
+            border-style: solid; 
+            border-color: #EEEEEE;            
         }
-        
+    
         .heavyWeightDivider
         {
-        border-width: 2px; 
-        border-style: solid;
+            border-width: 2px; 
+            border-style: solid;
         }
         
         .searchMessageStyle
         {
-        width: 400px;
+            width: 400px;
         }
-        
-        #theForm.blur{
-            filter: blur(5px);
-            -webkit-filter: blur(5px);
-            -moz-filter:blur(5px);
-            -o-filter:blur(5px);
-            -ms-filter:blur(5px);
-        }
-
-        #spinner{
-            display: none;
-            position: fixed;
-            margin-top: -25px;
-            margin-left: -25px;
-            z-index:999999;
-
-        }
-        .requiredDiv{
-        border-left: 4px solid #c00;
-        }  
-        
-        .apexp .bPageBlock.apexDefaultPageBlock .pbBody .pbSubheader h3 {
-        display: initial;
-        }
-        .apexp .bPageBlock.apexDefaultPageBlock .pbBody .pbSubheader .hideListButton {
-        vertical-align: top;
-        }
+                
+        .spin
+        {
+            position:relative;
+            left:52%;
+            top:3px;
+            height:20px;
+            width:20px;
+        }        
     </style>
-    
-    <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
-        <style>
-            img.helpOrb {
-            width : 14px;
-            height : 14px;
-            }
-        </style>
-    </apex:outputPanel>
-    
-    <apex:includeLightning />
     
     <apex:form id="theForm">
         <br/>
-
-        <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
-            <div>
-                <div>
-                    <apex:outputPanel style="float:left;width:4%;padding-left: 10px;">
-                        <img src="/s.gif" alt="Opportunity" class="pageTitleIcon" title="Opportunity"/>
-                    </apex:outputPanel>
-                </div>
-                <div>
-                    <apex:outputPanel style="width:96%;">
-                        <apex:outputText style="font-size:0.9em;font-weight:bold;" value="New Opportunity"/>
-                        <br/>
-                        <apex:outputText style="font-size:22px;" value="Clone of {!currentOpportunity.Name}"/>
-                    </apex:outputPanel>
-                </div>
-            </div>
-        </apex:outputPanel>
-        <apex:outputPanel rendered="{!$User.UITheme == 'Theme4d'}">
-            <!-- PAGE HEADER -->
-            <div class="slds-page-header">
-                <!-- LAYOUT GRID -->
-                <div class="slds-grid">
-                    <!-- GRID COL -->
-                    <div class="slds-col slds-has-flexi-truncate">
-                        <!-- HEADING AREA -->
-                        <div style="float: left;width: 3%;">
-                            <span class="slds-icon_container slds-icon-standard-opportunity"> 
-                                <svg aria-hidden="true" class="slds-icon"
-                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <use xlink:href="/apexpages/slds/latest/assets/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
-                                </svg>   
-                                <span class="slds-assistive-text">opportunity</span>
-                            </span>
-                        </div>
-                        <div style="float: right;width: 97%;text-align: left;">
-                            <p class="slds-text-title--caps slds-line-height--reset">New Opportunity</p>
-                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Clone of {!currentOpportunity.Name}</h1>
-                        </div>
-                        <!-- / HEADING AREA --> 
-                    </div>
-                    <!-- ACTION BUTTONS -->
-                    <!-- / ACTION BUTTONS -->
-                </div>
-                <!-- / LAYOUT GRID -->
-                <!-- PAGE HEADER DETAIL ROW -->
-                <!-- / PAGE HEADER DETAIL ROW -->
-            </div>
-            <!-- / PAGE HEADER -->
-        </apex:outputPanel>
+        <apex:panelGrid columns="2">
+            <apex:outputPanel style="float:left">
+                <img src="/s.gif" alt="Opportunity" class="pageTitleIcon" title="Opportunity"/>
+            </apex:outputPanel>
+            <apex:outputPanel style="float:left">
+                <apex:outputText style="font-size:0.9em;font-weight:bold;" value="New Opportunity"/>
+                <br/>
+                <apex:outputText style="font-size:22px;" value="Clone of {!currentOpportunity.Name}"/>
+            </apex:outputPanel>
+        </apex:panelGrid>
         <br/>       
-        
+
         <apex:pageMessages />        
         <!-- Section to show the error message if does not enter search criteria -->
         <apex:outputPanel id="errorMessage" rendered="{!searchShowMessage}">
             <apex:outputPanel styleClass="searchMessageStyle" layout="block">
                 <br/>
-                <apex:pageMessage escape="true" title="{!searchMessage}" severity="{!searchSeverity}" strength="1" ></apex:pageMessage>
+                    <apex:pageMessage escape="true" title="{!searchMessage}" severity="{!searchSeverity}" strength="1" ></apex:pageMessage>
                 <br/>
             </apex:outputPanel>
         </apex:outputPanel>
-        
+
         <apex:pageBlock id="thePageBlock" tabStyle="Opportunity" rendered="{!searchShowPage}">
-            
+
             <apex:outputPanel >
                 <apex:outputLabel style="font-Size:12px">Please unselect any items you don’t want to copy to the new opportunity.</apex:outputLabel>
                 <br/>
             </apex:outputPanel>
-            <hr class="lightWeightDivider" style="margin-top: 10px;"/>
-            
-            <!-- START Added by Laxmana for S247790 ,  Decision Date added as a mandatory field on the cloning screen  for Solution Group record type-->
-            <apex:pageBlockSection columns="1" title="Opportunity Clone Mandatory Field" rendered="{!(Opportunity.RecordType.Name='Solution Group')}" >
-                <apex:inputField value="{!currentOpportunity.Name}" Id="OpportunityName"/> <!----New change Added by Gaurav---->
-                <apex:inputField value="{!currentOpportunity.CloseDate}" Id="CloseDateId" />
-                
-            </apex:pageBlockSection>
-            <!-- END  S247790 ,  Decision Date added as a mandatory field on the cloning screen -->
-            
-            <apex:pageBlockSection id="thePageBlockSection" columns="1" title="Opportunity Clone Mandatory Field" rendered="{!NOT(ISBLANK(Opportunity.Core_Opportunity_Type__c))}" >
-                
-                <apex:inputField value="{!currentOpportunity.Name}" Id="OpportunityName" required="TRUE"  rendered="{!NOT(Opportunity.RecordType.Name='Solution Group')}" />
 
-                <!-- START Added by Laxmana for S247790 ,  Decision Date added as a mandatory field on the cloning screen -->
-                <apex:inputField value="{!currentOpportunity.CloseDate}" Id="CloseDateId" showDatePicker="TRUE" rendered="{!NOT(Opportunity.RecordType.Name='Solution Group')}" />
-               <!-- <apex:inputField value="{!currentOpportunity.Core_First_Customer_Ship_Date__c}"  Id="DateId" required="TRUE" rendered="{!(CONTAINS(Opportunity.Core_Opportunity_Type__c,'Design'))}" /> -->
-                <!-- styleClass="requiredDiv" --> 
-             <!--   <apex:inputField value="{!currentOpportunity.Core_Solution_Area__c}" Id="SoluId" rendered="{!(CONTAINS(Opportunity.Core_Opportunity_Type__c,'Deal'))}"  required="TRUE" /> -->
-                <!-- styleClass="requiredDiv" -->
-                <!-- END  S247790 ,  Decision Date added as a mandatory field on the cloning screen -->
-                <apex:inputField value="{!currentOpportunity.Core_Military_Aerospace_Govmt_End_Use__c}" Id="mindsId" rendered="{!NOT(Opportunity.RecordType.Name='Solution Group')}" required="TRUE"/>
-            </apex:pageBlockSection>
-            
+            <hr class="lightWeightDivider" style="margin-top: 10px;"/>
+
             <apex:outputpanel id="relatedListPanel">                
-                <apex:pageBlockSection title="CLONE Related Lists"  rendered="{!showOppFeatures || showOppPartner || showOpportunityProductOption || showOpportunitySolution || showAttachment || showNote || showContentlink}">
+                <apex:pageBlockSection title="CLONE Related Lists"  rendered="{!showOppFeatures || showOppPartner || showOpportunityProductOption}">
                     <table class="declarativeFilterTable">
-                        <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
-                            <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px">
-                                <apex:outputLabel style="font-weight: bold">Related List</apex:outputLabel>
-                                <apex:outputLabel style="font-weight: bold">Selected</apex:outputLabel>
-                            </apex:pageBlockSection>          
-                            
-                            <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px" rendered="{!showOppFeatures}">
-                                <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                    <apex:outputLabel >Descriptive Features</apex:outputLabel>
-                                </apex:pageblockSectionItem>                           
-                                <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                    <apex:inputCheckbox style="margin-left:16px" value="{!opportunityFeaturesSelected}">
-                                        <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="descFeaturePanel"/>
-                                    </apex:inputCheckbox>
-                                </apex:pageblockSectionItem>                           
-                            </apex:pageBlockSection> 
-                            
-                            <!--  The line feed needed to be outside of the previous block  -->
-                            <apex:pageBlockSection columns="1" rendered="{!showOppFeatures}">
-                                <br/>                                     
-                            </apex:pageBlockSection>     
-                            
-                            <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px" rendered="{!showOppPartner}">
-                                <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                    <apex:outputLabel >Opportunity Partners</apex:outputLabel>
-                                </apex:pageblockSectionItem>                           
-                                <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                    <apex:inputCheckbox style="margin-left:16px" value="{!opportunityPartnersSelected}">
-                                            <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="oppPartnerPanel"/>
-                                    </apex:inputCheckbox>
-                                </apex:pageblockSectionItem>                           
-                            </apex:pageBlockSection>     
-                            
-                            <!--  The line feed needed to be outside of the previous block  -->
-                            <apex:pageBlockSection columns="1" rendered="{!showOppPartner}">
-                                <br/>                                     
-                            </apex:pageBlockSection>     
-                            
-                            <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px" rendered="{!showOpportunityProductOption}">
-                                <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                    <apex:outputLabel >Opportunity Products</apex:outputLabel>
-                                </apex:pageblockSectionItem>                           
-                                <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                    <apex:inputCheckbox style="margin-left:16px" value="{!opportunityProductSelected}">
-                                        <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="oppProductPanel"/>
-                                    </apex:inputCheckbox>
-                                </apex:pageblockSectionItem>                           
-                            </apex:pageBlockSection>  
-                            
-                            <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px" rendered="{!showOpportunitySolution}">
-                                <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                    <apex:outputLabel >Solutions</apex:outputLabel>
-                                </apex:pageblockSectionItem>                           
-                                <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                    <apex:inputCheckbox style="margin-left:16px" value="{!opportunitySolutionSelected}">
-                                     <!--   <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="oppProductPanel"/>--->
-                                    </apex:inputCheckbox>
-                                </apex:pageblockSectionItem>                           
-                            </apex:pageBlockSection> 
-                            
-                            <!--*************Start Notes and Attachment Block**************--->
-                            <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">  
-                                <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px" rendered="{!isAttachment}">
-                                    <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                        <apex:outputLabel >Attachment</apex:outputLabel>
-                                    </apex:pageblockSectionItem>                           
-                                    <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
-                                        <apex:inputCheckbox style="margin-left:16px" value="{!isAttachmentSelected}"/>
-                                    </apex:pageblockSectionItem>                           
-                                </apex:pageBlockSection>
-                            </apex:outputPanel> 
-                            
-                            <!--************End Notes and Attachment Block****************--->   
-                            
-                            <!--  The line feed needed to be outside of the previous block  -->
-                            <apex:pageBlockSection columns="1" rendered="{!showOpportunityProductOption}">
-                                <br/>                                     
-                            </apex:pageBlockSection>     
-                        </apex:outputPanel>
-                        <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
-                            <tr>
-                                <th>
-                                    <apex:outputLabel style="font-weight: bold">Related List</apex:outputLabel>
-                                </th>
-                                <th>
-                                    <apex:outputLabel style="font-weight: bold">Selected</apex:outputLabel>
-                                </th>
-                            </tr>
-                            <apex:outputPanel rendered="{!showOppFeatures}">
-                                <tr>
-                                    <td>
-                                        <apex:outputLabel >Descriptive Features</apex:outputLabel>
-                                    </td>
-                                    <td>
-                                        <apex:inputCheckbox style="margin-left:16px" value="{!opportunityFeaturesSelected}">
-                                            <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="descFeaturePanel"/>
-                                        </apex:inputCheckbox>
-                                    </td>
-                                </tr>
-                            </apex:outputPanel>
-                            <apex:outputPanel rendered="{!showOppPartner}">
-                                <tr>
-                                    <td>
-                                        <apex:outputLabel >Opportunity Partners</apex:outputLabel>
-                                    </td>
-                                    <td>
-                                        <apex:inputCheckbox style="margin-left:16px" value="{!opportunityPartnersSelected}">
-                                            <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="oppPartnerPanel"/>
-                                        </apex:inputCheckbox>
-                                    </td>
-                                </tr>
-                            </apex:outputPanel>
-                            <apex:outputPanel rendered="{!showOpportunityProductOption}">
-                                <tr>
-                                    <td>
-                                        <apex:outputLabel >Opportunity Products</apex:outputLabel>
-                                    </td>
-                                    <td>
-                                        <apex:inputCheckbox style="margin-left:16px" value="{!opportunityProductSelected}" styleClass="slds-checkbox" >
-                                            <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="oppProductPanel"/>
-                                        </apex:inputCheckbox>
-                                    </td>
-                                </tr>
-                            </apex:outputPanel>
-                            <apex:outputPanel rendered="{!showOpportunitySolution}">
-                                <tr>
-                                    <td>
-                                        <apex:outputLabel >Solutions</apex:outputLabel>
-                                    </td>
-                                    <td>
-                                        <apex:inputCheckbox style="margin-left:16px" value="{!opportunitySolutionSelected}" styleClass="slds-checkbox" >
-                                        <!--  <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="oppProductPanel"/> --->
-                                        </apex:inputCheckbox>
-                                    </td>
-                                </tr>
-                            </apex:outputPanel> 
-                            
-                            <apex:outputPanel rendered="{!isAttachment}">
-                                <tr>
-                                    <td>
-                                        <apex:outputLabel >Attachment </apex:outputLabel>
-                                    </td>
-                                    <td>
-                                        <apex:inputCheckbox style="margin-left:16px" value="{!isAttachmentSelected}"/>
-                                    </td>
-                                </tr>
-                            </apex:outputPanel>                          
-                        </apex:outputPanel>
+                        <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px">
+                            <apex:outputLabel style="font-weight: bold">Related List</apex:outputLabel>
+                            <apex:outputLabel style="font-weight: bold">Selected</apex:outputLabel>
+                        </apex:pageBlockSection>          
+                    
+                        <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px" rendered="{!showOppFeatures}">
+                            <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                                <apex:outputLabel >Descriptive Features</apex:outputLabel>
+                            </apex:pageblockSectionItem>                           
+                            <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                                <apex:inputCheckbox style="margin-left:16px" value="{!opportunityFeaturesSelected}">
+                                    <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="descFeaturePanel"/>
+                                </apex:inputCheckbox>
+                            </apex:pageblockSectionItem>                           
+                        </apex:pageBlockSection>     
+
+                        <!--  The line feed needed to be outside of the previous block  -->
+                        <apex:pageBlockSection columns="1" rendered="{!showOppFeatures}">
+                            <br/>                                     
+                        </apex:pageBlockSection>     
+
+
+                        <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px" rendered="{!showOppPartner}">
+                            <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                                <apex:outputLabel >Opportunity Partners</apex:outputLabel>
+                            </apex:pageblockSectionItem>                           
+                            <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                                <apex:inputCheckbox style="margin-left:16px" value="{!opportunityPartnersSelected}">
+                                    <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="oppPartnerPanel"/>
+                                </apex:inputCheckbox>
+                            </apex:pageblockSectionItem>                           
+                        </apex:pageBlockSection>     
+
+                        <!--  The line feed needed to be outside of the previous block  -->
+                        <apex:pageBlockSection columns="1" rendered="{!showOppPartner}">
+                            <br/>                                     
+                        </apex:pageBlockSection>     
+                                        
+                        <apex:pageBlockSection columns="2" html-style="width:500px; margin-top:-8px; margin-bottom:-8px" rendered="{!showOpportunityProductOption}">
+                            <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                                <apex:outputLabel >Opportunity Products</apex:outputLabel>
+                            </apex:pageblockSectionItem>                           
+                            <apex:pageblockSectionItem dataStyle="max-width:70px" labelStyle="max-width:0px">
+                                <apex:inputCheckbox style="margin-left:16px" value="{!opportunityProductSelected}">
+                                    <apex:actionSupport event="onclick" action="{!toggleDisplay}" reRender="oppProductPanel"/>
+                                </apex:inputCheckbox>
+                            </apex:pageblockSectionItem>                           
+                        </apex:pageBlockSection>     
+
+                        <!--  The line feed needed to be outside of the previous block  -->
+                        <apex:pageBlockSection columns="1" rendered="{!showOpportunityProductOption}">
+                            <br/>                                     
+                        </apex:pageBlockSection>     
+                                 
                     </table>            
                 </apex:pageBlockSection>            
             </apex:outputpanel>
-            
+
             <apex:outputpanel id="oppTeamPanel">
                 <apex:pageBlockSection title="CLONE Opportunity Team Members" Columns="1" rendered="{!opportunityTeamSelected}">
-                    <apex:pageBlockTable value="{!lstSelectOppTeam}" var="lc" border="1" width="200%" styleClass="slds-table slds-table--bordered slds-table--striped"> 
+                    <apex:pageBlockTable value="{!lstSelectOppTeam}" var="lc" border="1" width="200%"> 
                         <apex:column style="width:40px">
                             <apex:facet name="header">Clone</apex:facet>
-                            <apex:outputPanel rendered="{!OR($User.UITheme == 'Theme3',!lc.readOnly)}">
-                                <apex:InputCheckbox value="{!lc.memberSelected}" disabled="{!lc.readOnly}"/>
-                            </apex:outputPanel>
-                            <apex:outputPanel rendered="{!AND($User.UITheme != 'Theme3',lc.readOnly)}">
-                                <apex:outputPanel rendered="{!lc.memberSelected}">
-                                    <apex:image url="{!$Resource.Core_DisabledCheckedBox}" alt="Disabled" style="height: 1rem;width: 1rem;"/>
-                                </apex:outputPanel>
-                                <apex:outputPanel rendered="{!!lc.memberSelected}">
-                                    <apex:InputCheckbox value="{!lc.memberSelected}" disabled="{!lc.readOnly}"/>
-                                </apex:outputPanel>
-                            </apex:outputPanel>
+                            <apex:InputCheckbox value="{!lc.memberSelected}" disabled="{!lc.readOnly}"/>
                         </apex:column>                
                         <apex:column >
                             <apex:facet name="header">Team Member</apex:facet>
@@ -353,10 +160,10 @@
                             <apex:facet name="header">Team Member Region</apex:facet>
                             <apex:outputText value="{!lc.core_Team_Member_Geo}"/>
                         </apex:column>                
-                    </apex:pageBlockTable>
+                    </apex:pageBlockTable> 
                 </apex:pageBlockSection>            
             </apex:outputpanel>
-            
+
             <apex:outputPanel id="inactiveOppTeamPanel">
                 <apex:pageBlockSection title="NOT COPIED - Inactive Opportunity Team Members" Columns="1" rendered="{!showInactiveOppTeam && opportunityTeamSelected}">
                     <apex:pageBlockTable value="{!lstInactiveOppTeam}"  var="lc" border="1" width="200%"> 
@@ -379,9 +186,9 @@
                     </apex:pageBlockTable> 
                 </apex:pageBlockSection>            
             </apex:outputPanel>
-            
+
             <hr class="heavyWeightDivider colorChoice primaryPalette"/>
-            
+
             <apex:outputpanel id="descFeaturePanel">
                 <apex:pageBlockSection title="NOT COPIED - Inactive Descriptive Features" Columns="1" rendered="{!showInactiveOppFeatures && opportunityFeaturesSelected}">
                     <apex:pageBlockTable value="{!lstInactiveOppFeatures}"  var="lc" border="1" width="200%"> 
@@ -400,7 +207,7 @@
                     </apex:pageBlockTable> 
                 </apex:pageBlockSection>            
             </apex:outputpanel>
-            
+
             <apex:outputPanel id="oppPartnerPanel">
                 <apex:pageBlockSection title="NOT COPIED - Opportunity Partner (Vendor or Inactive)" Columns="1" rendered="{!showInactiveOppPartner && opportunityPartnersSelected}">
                     <apex:pageBlockTable value="{!lstInactiveOppPartner}"  var="lc" border="1" width="200%"> 
@@ -428,8 +235,8 @@
                     </apex:pageBlockTable> 
                 </apex:pageBlockSection>            
             </apex:outputPanel>
-            
-            
+
+
             <apex:outputPanel id="oppProductPanel">
                 <apex:pageBlockSection title="NOT COPIED - Inactive Opportunity Products" Columns="1" rendered="{!showInactiveOppProduct && opportunityProductSelected}">
                     <apex:pageBlockTable value="{!lstInactiveOppProduct}"  var="lc" border="1" width="200%"> 
@@ -460,54 +267,30 @@
                     </apex:pageBlockTable> 
                 </apex:pageBlockSection>            
             </apex:outputPanel>
-            
+
             <br/>
             <br/>
-            
-            <!--  SEARCH AND CANCEL BUTTONS  -->  
-            
-          
-       
+
+            <!--  SEARCH AND CANCEL BUTTONS  -->                      
             <apex:outputPanel >
                 <div class="searchAndClear">
-                    <apex:commandButton id="continueButton" value="Save & Create" onclick="showSpinner()" action="{!continueClone}"/>
-                    <apex:commandButton id="cancelButton" value="Cancel" action="{!cancelClone}" immediate="true" html-formnovalidate="formnovalidate"/>
-                    <!--<apex:commandButton id="cancelButton" value="Cancel" onclick="return cancelPage();"  /> -->
+                    <apex:commandButton id="continueButton" value="Continue" status="counterStatus" action="{!continueClone}"/> 
+                    <apex:actionstatus id="counterStatus">
+                        <apex:facet name="start">
+                            <apex:image url="/img/loading32.gif" width="20" />
+                        </apex:facet>
+                    </apex:actionstatus>                  
+                    <apex:commandButton id="cancelButton" value="Cancel" action="{!cancelClone}"/> 
                 </div>
-                
-                <div class="slds-scope">
-                <div id="spinner" class="slds-spinner_container slds-is-relative">
-                    <div role="status" class="slds-spinner slds-spinner--large slds-spinner--brand">
-                        <div class="slds-spinner__dot-a"></div>
-                        <div class="slds-spinner__dot-b"></div>
-                    </div>
-                </div>
-            </div>
-           
+            </apex:outputPanel>
             <br/>
             <br/>
-        </apex:outputPanel>
-       
         </apex:pageBlock>
-    
+        <apex:outputPanel rendered="{!!searchShowPage}">
+            <hr class="heavyWeightDivider colorChoice primaryPalette"/>
+            <div class="searchAndClear">
+                <apex:commandButton id="returnButton" value="Return" action="{!cancelClone}"/> 
+            </div>
+        </apex:outputPanel>
     </apex:form>
-    
-    <script>
-
-
-    
-    function showSpinner(){
-        if(document.getElementById('{!$Component.theForm.thePageBlock.thePageBlockSection.CloseDateId}').value == '' || document.getElementById('{!$Component.theForm.thePageBlock.thePageBlockSection.mindsId}').value == ''){
-            document.getElementById('spinner').style.display = 'none';
-        }
-        else{
-            document.getElementById('spinner').style.display = 'block';
-        }
-    }
-
-    /*function cancelPage(){
-        cancelFunction();
-    }*/
-    </script>
-    
 </apex:page>

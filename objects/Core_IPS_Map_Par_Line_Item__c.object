@@ -128,22 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Product_Access_Line_Item_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Product_Access_Line_Item_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -260,7 +254,7 @@ Indicates if the PAR line item requires approval or will automatically be approv
     <fields>
         <fullName>Core_IPS_ProfileBasedRecordLink__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( CreatedBy.Profile.Name  = &quot;IPS Support Org Admin&quot;,  &quot;https://intel.my.salesforce.com//&quot;&amp;Id , &quot;https://intel.lightning.force.com/lightning/r/Core_IPS_Map_Par_Line_Item__c/&quot;&amp;Id&amp;&quot;/view&quot;)</formula>
+        <formula>IF( CreatedBy.Profile.Name  = &quot;IPS Support Org Admin&quot;,  &quot;Environment.Core_IPS_Notification_Internal_URL/&quot;&amp;Id , &quot;https://intel.lightning.force.com/lightning/r/Core_IPS_Map_Par_Line_Item__c/&quot;&amp;Id&amp;&quot;/view&quot;)</formula>
         <label>ProfileBasedRecordLink</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -480,6 +474,48 @@ Boolean used by MAP/PAR VF page logic to determine if an asset should be created
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Subscription_Expiration_Date__c</fullName>
+        <description>created as part of Taurus POC, please ignore</description>
+        <inlineHelpText>created as part of Taurus POC, please ignore</inlineHelpText>
+        <label>Subscription Expiration Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Support_Tier__c</fullName>
+        <description>Created as part of Taurus POS, please ignore
+hold the info of support purchased by customer</description>
+        <inlineHelpText>Created as part of Taurus POS, please ignore</inlineHelpText>
+        <label>Support Tier</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Tier1</fullName>
+                    <default>false</default>
+                    <label>Tier1</label>
+                </value>
+                <value>
+                    <fullName>Tier2</fullName>
+                    <default>false</default>
+                    <label>Tier2</label>
+                </value>
+                <value>
+                    <fullName>Tier3</fullName>
+                    <default>false</default>
+                    <label>Tier3</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <label>Product Access Line Item</label>
     <nameField>
         <displayFormat>IAL-{0000000000}</displayFormat>
@@ -535,6 +571,21 @@ Boolean used by MAP/PAR VF page logic to determine if an asset should be created
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Support_Tier__c</picklist>
+            <values>
+                <fullName>Tier1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier3</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>PAR</fullName>
@@ -582,6 +633,21 @@ Boolean used by MAP/PAR VF page logic to determine if an asset should be created
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Support_Tier__c</picklist>
+            <values>
+                <fullName>Tier1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier3</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
@@ -595,6 +661,19 @@ Boolean used by MAP/PAR VF page logic to determine if an asset should be created
 PLEASE NOTE:  You cannot manually create new Product Access Line Items through this screen.  Instead, you must add Accounts to the Accounts List or you must add products to the Products List.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_IPS_Inactivate_Line_Item</fullName>
+        <availability>online</availability>
+        <description>Lightning</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Inactivate Line Item Test</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/Core_IPS_Inactivate_Line_Item_VF</url>
+    </webLinks>
     <webLinks>
         <fullName>Core_Line_Item_Inactivate</fullName>
         <availability>online</availability>

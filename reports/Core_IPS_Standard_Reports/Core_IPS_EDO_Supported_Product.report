@@ -13,9 +13,6 @@
         <field>Core_IPS_Supported_Product__c.Environment_Detail_Operationals__r$Core_IPS_Question_Text__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Supported_Product__c.Environment_Detail_Operationals__r$Core_IPS_Question__c</field>
-    </columns>
-    <columns>
         <field>Core_IPS_Supported_Product__c.Environment_Detail_Operationals__r$Core_Required__c</field>
     </columns>
     <columns>
@@ -28,6 +25,16 @@
         <field>Core_IPS_Supported_Product__c$LastModifiedBy</field>
     </columns>
     <description>Environment Details displayed on Case, per Supported Product.</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_IPS_Supported_Product__c$Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Org-052</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <name>Environment Details Opertnl - Supp Prod</name>
     <params>

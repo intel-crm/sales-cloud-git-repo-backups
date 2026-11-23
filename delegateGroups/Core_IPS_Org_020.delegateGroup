@@ -1,86 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
-    <groups>NSG/FB/QT</groups>
-    <groups>NSG/FB/WW</groups>
-    <groups>NSG/FB</groups>
-    <groups>NSGTSS - Citrix</groups>
-    <groups>NSGTSS - Riverbed</groups>
-    <groups>NSGTSS - F5</groups>
-    <groups>NSGTSS - Palo Alto Networks</groups>
-    <groups>NSGTSS - DataOn</groups>
-    <groups>NSGTSS - Barracuda</groups>
-    <groups>NSGTSS - ASA / Racklive</groups>
-    <groups>NSGTSS - Qumulo</groups>
-    <groups>NSGTSS - Sourcecode</groups>
-    <groups>NSGTSS - IX Systems</groups>
-    <groups>NSGTSS - Penguin</groups>
-    <groups>NSGTSS - Colfax Computer</groups>
-    <groups>NSGTSS - Harmonic</groups>
-    <groups>NSGTSS - Provantage</groups>
-    <groups>NSGTSS - Fortinet</groups>
-    <groups>NSGTSS - Nutanix</groups>
-    <groups>NSGTSS - Pure Storage</groups>
-    <groups>NSGTSS - Hitachi Vantara</groups>
-    <groups>NSGTSS - Cohesity</groups>
-    <groups>NSGTSS - Datera</groups>
-    <groups>NSGTSS - Vexata</groups>
-    <groups>NSGTSS - Equus</groups>
-    <groups>NSGTSS - Teradata</groups>
-    <groups>NSGTSS - Pivot 3</groups>
-    <groups>NSGTSS - Tintri</groups>
-    <groups>NSGTSS - Radisys</groups>
-    <groups>NSGTSS - Rave Computer Association</groups>
-    <groups>NSGTSS - Silicon</groups>
-    <groups>NSG - EMEA_ISVC</groups>
-    <groups>NPG WAND FlexRAN</groups>
-    <groups>NSG-IBM Storage</groups>
-    <groups>NSG EMEA ADC</groups>
-    <groups>NSG_Lenovo_Client</groups>
-    <groups>NSG-Channel Sustaining_ISVC</groups>
-    <groups>NSG-HP-Client</groups>
-    <groups>NSG-Dell-Client</groups>
-    <groups>NSG-Wistron Client</groups>
-    <groups>NPG - GRX750</groups>
-    <groups>NSG-LCFC Client</groups>
-    <groups>NSG-NetApp</groups>
-    <groups>NSG-Google</groups>
-    <groups>NSG - Unassigned</groups>
-    <groups>NSG - ASMO</groups>
-    <groups>NSG - EMEA</groups>
-    <groups>NSG - APJ</groups>
-    <groups>NSG - APJ-IJKK</groups>
-    <groups>NSG - APJ-India</groups>
-    <groups>NSG - APJ-South Korea</groups>
-    <groups>NSG - PRC</groups>
-    <groups>NSG - Dell Enterprise</groups>
-    <groups>NSG - HPE</groups>
-    <groups>NSG - Lenovo Enterprise</groups>
-    <groups>NSG - Wistron</groups>
-    <groups>NSG - Wiwynn</groups>
-    <groups>NSG - EMC</groups>
-    <groups>NSG - Quanta</groups>
-    <groups>NSG - Sugon</groups>
-    <groups>NSG - Inspur</groups>
-    <groups>NSG - Huawei</groups>
-    <groups>NSG - Baidu</groups>
-    <groups>NSG - Alibaba</groups>
-    <groups>NSG - Tencent</groups>
-    <groups>NSG - PCSD</groups>
-    <groups>NSG - Cray</groups>
-    <groups>NSG - Supermicro</groups>
-    <groups>NSG - Oracle</groups>
-    <groups>NSG - Microsoft</groups>
-    <groups>NSG - Cisco</groups>
-    <groups>NSG - Direct-PRC</groups>
-    <groups>NSG - Direct-APJ</groups>
-    <groups>NSG - Direct-EMEA</groups>
-    <groups>NSG - Direct-ASMO</groups>
-    <groups>NSG - Amazon</groups>
-    <groups>NSG - Facebook</groups>
     <groups>IPS - Org Admin - NGS</groups>
     <groups>NGS - Unassigned</groups>
     <label>IPS - Org Admin - NGS</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
+    <roles>IPS Agent</roles>
 </DelegateGroup>

@@ -1,0 +1,16 @@
+<apex:page >
+ <!--form action="{!$Label.Core_IPS_File_SCFT_URL}" method="post" target="my_iframe"-->
+ <form action="https://intel--crmdevcase--c.sandbox.vf.force.com/apex/Core_IPS_File_AttachToCase" method="post" target="my_iframe" id="myForm">
+ <input type="hidden" name="id" value="{!$CurrentPage.Parameters.id}"/>
+ <input type = "hidden" name ="Type" value="{!$CurrentPage.Parameters.Type}"/>
+ <!--input type="submit" value="Do Stuff!" /-->
+  
+</form>
+
+<!-- when the form is submitted, the server response will appear in this iframe -->
+<iframe name="my_iframe" src="" style="width:100%;height:500px;"></iframe>
+
+<script>
+window.onload = function(){ document.getElementById("myForm").submit(); }
+</script>
+</apex:page>

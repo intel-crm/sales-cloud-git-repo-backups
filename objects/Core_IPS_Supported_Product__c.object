@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Supported_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Supported_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -147,13 +147,12 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>Supported_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>New_Compact</compactLayoutAssignment>
     <compactLayouts>
-        <fullName>Supported_Layout</fullName>
+        <fullName>New_Compact</fullName>
         <fields>Core_Product__c</fields>
-        <fields>Core_Product_Organization__c</fields>
-        <fields>Core_Flag_Status__c</fields>
-        <label>Supported Layout</label>
+        <fields>Name</fields>
+        <label>New Compact</label>
     </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
@@ -266,6 +265,18 @@ IF (CONTAINS(Core_Code_Name_Hidden_Insert_Spaces__c, &apos;NOCONA&apos;), SUBSTI
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_External_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Flag_Status__c</fullName>
@@ -423,6 +434,18 @@ This field value cannot be changed once checked as Public Product.</inlineHelpTe
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Core_Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Type</label>
+        <length>15</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Product__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <inlineHelpText>Reference to the Master Data product.</inlineHelpText>
@@ -470,6 +493,20 @@ This field value cannot be changed once checked as Public Product.</inlineHelpTe
         <externalId>false</externalId>
         <formula>Core_Product_Organization__r.Core_IPS_Support_Org_Name__c</formula>
         <label>Support Org Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Support_Org_and_Product_Name__c</fullName>
+        <description>Support Org and Product Name for Search Layout to add Project Product.</description>
+        <externalId>false</externalId>
+        <formula>Core_Product_Organization__r.Core_IPS_Support_Org_Name__c  +&apos; : &apos;+  Core_Product__r.Name
+/*Core_Product_Organization__r.Name +&apos; : &apos;+ &apos;Intel® Integrated RAID Module RMS3HC080&apos;*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Support Org and Product Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -544,6 +581,17 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <type>Text</type>
         <unique>true</unique>
     </fields>
+    <fields>
+        <fullName>IPS_Enabled_For_Subscriptions__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Created as part of Taurus POC. please ignore</description>
+        <inlineHelpText>Created as part of Taurus POC. please ignore</inlineHelpText>
+        <label>Enabled For Subscriptions</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Supported Product</label>
     <listViews>
         <fullName>All</fullName>
@@ -557,6 +605,24 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <columns>Core_Unique_Supported_Product__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Public_Products</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Supported_Product_Name__c</columns>
+        <columns>Core_Product_EPM_ID__c</columns>
+        <columns>Core_Product__c</columns>
+        <columns>Core_Code_Name__c</columns>
+        <columns>Core_Product_Organization__c</columns>
+        <columns>Core_Support_Org_Name__c</columns>
+        <columns>Core_Unique_Supported_Product__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IPS_Public_Product__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>All Public Products</label>
     </listViews>
     <nameField>
         <displayFormat>SP-{0000000000}</displayFormat>
@@ -592,14 +658,15 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <searchFilterFields>Core_Flag_Status__c</searchFilterFields>
         <searchFilterFields>Core_Product__c</searchFilterFields>
         <searchFilterFields>Core_Supported_Product_Name__c</searchFilterFields>
+        <searchResultsAdditionalFields>Core_Support_Org_and_Product_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Supported_Product_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Product__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Code_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Supported_Product_Alias__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Flag_Status__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Product_Organization__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Support_Org_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Product_Application__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Code_Name__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Supported_Product_Alias__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
@@ -620,7 +687,7 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
     </validationRules>
     <validationRules>
         <fullName>Core_IPS_Cannot_change_Public_Product</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>To restrict reverting from Public Product</description>
         <errorConditionFormula>AND(
 	OR(
@@ -731,6 +798,17 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <url>/lightning/n/CopyCategories_EDQ?c__recordId={!Core_IPS_Supported_Product__c.Id}</url>
     </webLinks>
     <webLinks>
+        <fullName>Core_Add_Environment_Variables</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add Environment Variables</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_addEnvironmentDetailsToProduct</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
         <fullName>Core_Add_Issue_categories</fullName>
         <availability>online</availability>
         <displayType>button</displayType>
@@ -835,7 +913,7 @@ if (cnfrm) {
         <masterLabel>Set to EOIS</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)} 
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/19.0/connection.js&quot;)} 
 
 // Get the record
 var SP = new sforce.SObject(&quot;Core_IPS_Supported_Product__c&quot;); 
@@ -850,22 +928,22 @@ if(&quot;{!Core_IPS_Supported_Product__c.Core_EOIS__c}&quot; === &quot;1&quot;) 
 else {
 
 	function confirmEOIS() {
- //ask if they are sure 
+	 //ask if they are sure 
 	 var isConfirm = confirm(&quot;**WARNING**  \nSetting the Access Flag to EOIS (End Of Interactive Support) can only be undone by KTBR!  \n\nAre you sure you want to set this Supported Product\&apos;s Access Flag to EOIS?&quot;);
 	 if (isConfirm) return true; 
- return false; 
-}
+	 return false; 
+	}
 
-//if they say OK then save the change
+	//if they say OK then save the change
 	if (confirmEOIS()) {
 	 // change status to EOIS and Access Flag to EOIS
 	 SP.Core_Flag_Status__c=&apos;EOIS&apos;;
- SP.Core_EOIS__c = &quot;1&quot;;
- // update the record
- result = sforce.connection.update([SP]);
+	 SP.Core_EOIS__c = &quot;1&quot;;
+	 // update the record
+	 result = sforce.connection.update([SP]);
 	 if (result[0].success == &apos;true&apos;) {
- //reload the page to show the updated status if the save was successful
- window.location.reload();
+			//reload the page to show the updated status if the save was successful
+			window.location.reload();
 		} else {
 			console.log(result[0].errors);
         var exceptionMsg = &apos;&apos;;
@@ -880,7 +958,30 @@ else {
 				exceptionMsg = &apos;Something went wrong, Please contact Support Team !!&apos;;
 			alert(exceptionMsg);
 		}	 
-}
+	}
 }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Core_Add_Environment_Variables</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add Environment Details</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_IPS_addEnvironmentDetailsToProduct</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Refresh_Name</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Refresh Name</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/Core_IPS_Refresh_SupProdName?id={!Core_IPS_Supported_Product__c.Id}</url>
     </webLinks>
 </CustomObject>

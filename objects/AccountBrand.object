@@ -131,15 +131,6 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>AccountId</fullName>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>Account.RecordType.Name</field>
-                <operation>notEqual</operation>
-                <value>Direct Account</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -165,6 +156,15 @@
     <fields>
         <fullName>Website</fullName>
     </fields>
+    <listViews>
+        <fullName>Core_IPS_Org2_090_AccountBrand</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS-IOG2</label>
+        <queue>Core_IPS_Org2_090</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>CompanyName</customTabListAdditionalFields>
         <customTabListAdditionalFields>Account</customTabListAdditionalFields>

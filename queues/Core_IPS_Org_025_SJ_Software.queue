@@ -3,11 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>PSG-SJ-Software!</name>
-    <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_IPS_Org_025_SJ_Software</publicGroup>
-        </publicGroups>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

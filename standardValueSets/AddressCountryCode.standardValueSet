@@ -299,7 +299,7 @@
     <standardValue>
         <fullName>CZE</fullName>
         <default>false</default>
-        <label>Czechia</label>
+        <label>Czech Republic</label>
     </standardValue>
     <standardValue>
         <fullName>COD</fullName>
@@ -357,11 +357,6 @@
         <label>Estonia</label>
     </standardValue>
     <standardValue>
-        <fullName>SWZ</fullName>
-        <default>false</default>
-        <label>Eswatini</label>
-    </standardValue>
-    <standardValue>
         <fullName>ETH</fullName>
         <default>false</default>
         <label>Ethiopia</label>
@@ -410,11 +405,6 @@
         <fullName>GAB</fullName>
         <default>false</default>
         <label>Gabon</label>
-    </standardValue>
-    <standardValue>
-        <fullName>GMB</fullName>
-        <default>false</default>
-        <label>Gambia</label>
     </standardValue>
     <standardValue>
         <fullName>GEO</fullName>
@@ -652,6 +642,11 @@
         <label>Macao SAR China</label>
     </standardValue>
     <standardValue>
+        <fullName>MKD</fullName>
+        <default>false</default>
+        <label>Macedonia</label>
+    </standardValue>
+    <standardValue>
         <fullName>MDG</fullName>
         <default>false</default>
         <label>Madagascar</label>
@@ -827,11 +822,6 @@
         <label>North Korea</label>
     </standardValue>
     <standardValue>
-        <fullName>MKD</fullName>
-        <default>false</default>
-        <label>North Macedonia</label>
-    </standardValue>
-    <standardValue>
         <fullName>NOR</fullName>
         <default>false</default>
         <label>Norway</label>
@@ -977,6 +967,11 @@
         <label>Serbia</label>
     </standardValue>
     <standardValue>
+        <fullName>SCG</fullName>
+        <default>false</default>
+        <label>Serbia and Montenegr</label>
+    </standardValue>
+    <standardValue>
         <fullName>SYC</fullName>
         <default>false</default>
         <label>Seychelles</label>
@@ -1077,6 +1072,11 @@
         <label>Svalbard &amp; JM</label>
     </standardValue>
     <standardValue>
+        <fullName>SWZ</fullName>
+        <default>false</default>
+        <label>Swaziland</label>
+    </standardValue>
+    <standardValue>
         <fullName>SWE</fullName>
         <default>false</default>
         <label>Sweden</label>
@@ -1112,6 +1112,11 @@
         <label>Thailand</label>
     </standardValue>
     <standardValue>
+        <fullName>GMB</fullName>
+        <default>false</default>
+        <label>The Islamic Republic of the Gambia</label>
+    </standardValue>
+    <standardValue>
         <fullName>TLS</fullName>
         <default>false</default>
         <label>Timor-Leste</label>
@@ -1144,7 +1149,7 @@
     <standardValue>
         <fullName>TUR</fullName>
         <default>false</default>
-        <label>Turkiye</label>
+        <label>Turkey</label>
     </standardValue>
     <standardValue>
         <fullName>TKM</fullName>

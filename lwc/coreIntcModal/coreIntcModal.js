@@ -422,20 +422,6 @@ class CoreIntcModal extends LightningElement {
 
 
   /**
-   * Accessibility: close modal event handler
-   *
-   * @param {object} evt keydown event
-   * @private
-   */
-  handleCloseModalAccessibility(evt) {
-    if (evt.key === 'Enter') {
-      this.closeModal();
-    }
-  }
-
-
-
-  /**
    * Determines the appropriate CSS class for a slot's container element based
    * on whether the slot has content.
    *

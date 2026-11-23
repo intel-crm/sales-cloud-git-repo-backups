@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="utility:user" size="small"></lightning-icon>
+            Infinite Loading Account List
+            <div style="float:right">
+                <template if:true={disableLoadMore}>
+                    Showing All
+                </template>
+                <template if:false={disableLoadMore}>
+                    Showing {currentCount} of {totalRecordCount}
+                </template>
+            </div>
+        </h3>
+        <div style="height:310px">
+            <!-- Lightning data table markup    -->
+            <lightning-datatable data={accountData} columns={accountColumns} key-field="Id" hide-checkbox-column
+                show-row-number-column enable-infinite-loading onloadmore={handleLoadMore}>
+            </lightning-datatable>
+        </div>
+        <div slot="footer">
+            {loadMoreStatus} {error}
+        </div>
+    </lightning-card>
+</template>

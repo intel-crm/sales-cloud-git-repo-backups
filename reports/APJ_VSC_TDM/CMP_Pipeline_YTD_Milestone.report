@@ -88,6 +88,12 @@
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_OSC_Collaboration_Type__c</field>
+    </columns>
+    <columns>
+        <field>User.Core_Is_OSC__c</field>
+    </columns>
+    <columns>
         <field>OWNER_MANAGER</field>
     </columns>
     <columns>
@@ -260,7 +266,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Ryan Golez,Amit Surve,Muhammad Safuan,Mahendran Moorthy,Anugrah Ramadhan,Hadrian Tung,Bomin Kim,Juhak Chang,Hui Min Pee Yong,Choong Fai Chao,Yoshino Hayes,Masahiko Sawada,Sujith Radhakrishnan,Afrina Khan,Jamshed Iqbal,Kunal Sharma,Shah Jahan,Madhumati Chungani,Pooja Kanani,Steven Phuah,Frederick Siew,Wanhou Sam,Elzaki Hidayatullah,Yockie Witarto,Nurul Hayati,Citra Laila Utami,Citra Utami,Francis Tillain,Habibah Mat Rozali,Fatihah Abdulromae,Sadawut Kaenphet,Huong Nguyen,Dinh Thu,Lan Luong,Vivian Tee,Nella Litison,Syed Ahad,Zoe Yeoh,Erica Tor,Rocielle Manaloto Barandino,Joe Han Loh,Roy Yoo,EunYoung Jang,Clifford Tan,Chooi Li Tan,Mioko Hayashi,Chee Chee Thee,Yoichiro Tanaka,Arun Raghavan,Rahul Yadav,Pankaj Garg,Hussain Fakrudeen,Faisal Qamar,Jason Kay Siah Ang,Herney Herman,Susanto Wijaya,Josh Pendejito,Yong Pin Goh,Songphol Tamcharoen,BINH VO PHAM NGHIA,Hong Hai Le,Sok Peng Lim,Dinesh Devendra,Boon Hau Poh,Marcus Mook</value>
+            <value>Ryan Golez,Amit Surve,Muhammad Safuan,Mahendran Moorthy,Anugrah Ramadhan,Hadrian Tung,Bomin Kim,Juhak Chang,Hui Min Pee Yong,Choong Fai Chao,Yoshino Hayes,Masahiko Sawada,Sujith Radhakrishnan,Afrina Khan,Jamshed Iqbal,Kunal Sharma,Shah Jahan,Madhumati Chungani,Pooja Kanani,Steven Phuah,Frederick Siew,Wanhou Sam,Elzaki Hidayatullah,Yockie Witarto,Nurul Hayati,Citra Laila Utami,Citra Utami,Francis Tillain,Habibah Mat Rozali,Fatihah Abdulromae,Sadawut Kaenphet,Huong Nguyen,Dinh Thu,Lan Luong,Vivian Tee,Nella Litison,Syed Ahad,Zoe Yeoh,Erica Tor,Rocielle Manaloto Barandino,Joe Han Loh,Roy Yoo,EunYoung Jang,Clifford Tan,Chooi Li Tan,Mioko Hayashi,Chee Chee Thee,Yoichiro Tanaka,Arun Raghavan,Rahul Yadav,Pankaj Garg,Hussain Fakrudeen,Fq Qamar,Jason Kay Siah Ang,Herney Herman,Susanto Wijaya,Josh Pendejito,Yong Pin Goh,Songphol Tamcharoen,BINH VO PHAM NGHIA,Hong Hai Le,Sok Peng Lim,Dinesh Devendra,Boon Hau Poh,Marcus Mook</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Solution_Milestone__c.Core_Status__c</column>
@@ -311,6 +317,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

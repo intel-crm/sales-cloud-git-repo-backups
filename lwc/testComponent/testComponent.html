@@ -1,0 +1,64 @@
+<template>
+    <div class="slds-card" style="font-family: 'Open Sans', sans-serif">
+
+        <!-- Header -->
+        <header class="slds-card__header slds-media slds-media_center">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+            </div>
+            <div class="slds-media__body slds-card__header-title slds-text-title_bold" style="font-size: 14px">
+                Account Creation
+            </div>
+        </header>
+
+        <!-- Table -->
+        <table class=" mytable slds-table slds-table_bordered slds-no-row-hover slds-table_cell-buffer" role="grid">
+            <thead>
+            <tr>
+                <th scope="col" height="22" style="width: 3rem">SNo.</th>
+                <th scope="col" height="22">Supported Product</th>
+                <th scope="col" height="22">Account</th>
+                <th scope="col" height="22">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <template for:each={listOfAccounts} for:item="rec">
+                <tr key={rec} class="slds-hint-parent">
+                    <td style="font-weight: bold">
+                        <lightning-formatted-number value={rec.index}></lightning-formatted-number>.
+                    </td>   
+                    <td scope="col">
+                        <c-core_ips_custom-Lookup-Lex icon-name="standard:account"
+                            s-object-api-name="Core_IPS_Supported_Product__c"
+                            onlookupupdate={lookupSpRecord}
+                            placeholder="Search Supported Product here..." is-required=true> 
+                        </c-core_ips_custom-Lookup-Lex>
+                    </td>
+
+                    <td scope="col">
+                        <c-core_ips_custom-Lookup-Lex icon-name="standard:account"
+                            s-object-api-name="Account"
+                            onlookupupdate={lookupAccountRecord}
+                            placeholder="Search Account here..." is-required=false>
+                        </c-core_ips_custom-Lookup-Lex>
+                    </td>
+                    <td scope="col">
+                        <lightning-button-icon variant="neutral" alternative-text="add row" title="Add row" icon-name="utility:add" onclick={addNewRow}></lightning-button-icon> &nbsp;&nbsp;&nbsp;
+                        <lightning-button-icon icon-name="utility:delete" alternative-text="Remove" title="Remove" name={rec.index} onclick={removeRow}></lightning-button-icon>
+                    </td>
+                </tr>
+            </template>
+            </tbody>
+        </table>
+        <div class="slds-p-left_small slds-p-vertical_small">
+            <lightning-button class="slds-p-right_small" variant="destructive" label="delete all rows" title="delete all rows" icon-name="utility:recycle_bin_full" onclick={removeAllRows}></lightning-button>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer class="slds-modal__footer" style="padding: 0.50rem 1rem;">
+            <lightning-button icon-name="utility:save" variant="brand" label="Create Accounts" title="Create Accounts" onclick={createAccounts}></lightning-button>
+        </footer>
+    </div>
+
+</template>

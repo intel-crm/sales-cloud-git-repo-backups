@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <narrowComponents>Search</narrowComponents>
+    <narrowComponents>NDAcomponent</narrowComponents>
+    <narrowComponents>standard-Tags</narrowComponents>
+    <narrowComponents>Links</narrowComponents>
+    <narrowComponents>standard-RecentItems</narrowComponents>
+    <narrowComponents>standard-DocumentSearch</narrowComponents>
+    <narrowComponents>standard-ProductSearch</narrowComponents>
+    <narrowComponents>standard-SolutionSearch</narrowComponents>
+    <narrowComponents>standard-StandardSearch</narrowComponents>
+    <wideComponents>Partner Portal Welcome Page</wideComponents>
+</HomePageLayout>

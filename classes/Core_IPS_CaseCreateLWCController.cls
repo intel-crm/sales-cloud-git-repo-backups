@@ -12,6 +12,7 @@ public with sharing class Core_IPS_CaseCreateLWCController {
     
     @AuraEnabled(cacheable=true)
     public static Core_IPS_CaseEditWrapper getCaseData(String caseId){
+        System.debug('Hk 15 ---> Core_IPS_CaseCreateLWCController');
         return new Core_IPS_CaseEditWrapper(caseId);
     }
     @AuraEnabled(cacheable=true)
@@ -28,6 +29,7 @@ public with sharing class Core_IPS_CaseCreateLWCController {
     }
     @AuraEnabled
     public static List<Core_IPS_CaseCreateHelper.DynamicField> getProductEDQ(String supportedProductId, String subCategoryid,Boolean isAgent){
+        System.debug('Shipra - supportedProductId'+supportedProductId);
         List<Core_IPS_EnvironmentDetailQuestion> edqs = helper.displayedqQuestions(supportedProductId,subCategoryid,isAgent);
         return helper.getDynmicFields(edqs);
     }
@@ -148,20 +150,25 @@ public with sharing class Core_IPS_CaseCreateLWCController {
     @Auraenabled(cacheable=true)
     public static List<Contact> getcountryfields(){
         Usr = [Select id, Name, ContactId,Contact.Name, TimeZoneSidKey from User where id=:UserInfo.getUserId()];
+        System.debug('contactId'+Usr.ContactId);
         contactInContext = [Select id, Name,Core_IPS_Email_Opt_Out__c,Core_MINDS__c,Core_Country_Region__c  from Contact where id=: Usr.Contactid];
-        // TWC745-9175 - Exceptional Handling - Phani Start If Condition 04/05/2026
-        if(contactInContext.size() > 0)
+ 
+        selectedCountry = contactInContext[0].Core_Country_Region__c ;
+        radioCheckbox = contactInContext[0].Core_MINDS__c;
+        //Exception Handling: Fix for List index out of bounds: 0 by Mohan
+        /*if(contactInContext.size() > 0)
         {
         	selectedCountry = contactInContext[0].Core_Country_Region__c ;
         	radioCheckbox = contactInContext[0].Core_MINDS__c;
-        } // TWC745-9175 - Exceptional Handling - Phani End If Condition 04/05/2026
+        }*/
+        
         return contactInContext;    
     }
     @Auraenabled
     public static void Submitcountryvalue(String countryValue,Boolean radioCheckbox){
         
         List<Contact>  userContact = new List<Contact>();   
-        List<User>  users = new List<User>();    
+        List<User>  Users = new List<User>();    
         List<user> usrRecord = [SELECT Id,TimeZoneSidKey, ContactId FROM User where id =:UserInfo.getUserId()   ];
         
         userContact = [SELECT Id,Name,AccountId,Account.Name,Core_IPS_Email_Opt_Out__c,Core_MINDS__c,Core_Country_Region__c From Contact where id =:usrRecord[0].ContactId  ]; 
@@ -232,7 +239,7 @@ public with sharing class Core_IPS_CaseCreateLWCController {
     public static Case caseRecord = new Case();
     @AuraEnabled
     public static boolean checkcloseCaseEditPermission(Id caseId) {
-        User u = [Select profile.Name from user where id=:userinfo.getUserId()];
+        User U = [Select profile.Name from user where id=:userinfo.getUserId()];
         if (Schema.sObjectType.Case.isAccessible()) {
             caseRecord = [Select Id,recordtype.DeveloperName From Case Where Id =:caseId];
         }
@@ -288,8 +295,8 @@ public with sharing class Core_IPS_CaseCreateLWCController {
         List<User> searchList = new List<User>();
         String queryString = '';
         Id accId;
-        List<String> pSOIds = new List<String>();
-        String profileId = System.Label.Core_IPS_Agent_Partner_Profile_id;
+        List<String> PSOIds = new List<String>();
+        String profile_Id = System.Label.Core_IPS_Agent_Partner_Profile_id;
         try{
             //set of all users assigned to  IPS FAE Partner Permission set 
             Set<Id> userIds = new Set<Id>();
@@ -312,23 +319,23 @@ public with sharing class Core_IPS_CaseCreateLWCController {
             
             //Senario 1: Project Based Cases: The Partner Support Owner field should be a lookup that displays users with the Partner FAE/IPS Agent-Partner profile who are part of the project on the case.
             if(selectedprojId != '' && selectedprojId != null){
-                queryString = 'SELECT Id, Name, FirstName, LastName, Email, Contact.Account.Name FROM User WHERE Id IN (SELECT Core_User__c FROM Core_IPS_Project_Member__c WHERE Core_IPS_Project__r.Id = :selectedprojId and Core_Status__c = \'Active\') AND (ProfileID =:profileId  OR Id IN :userIds) ORDER BY Name ASC LIMIT 300';
+                queryString = 'SELECT Id, Name, FirstName, LastName, Email, Contact.Account.Name FROM User WHERE Id IN (SELECT Core_User__c FROM Core_IPS_Project_Member__c WHERE Core_IPS_Project__r.Id = :selectedprojId and Core_Status__c = \'Active\') AND (ProfileID =:profile_Id  OR Id IN :userIds) ORDER BY Name ASC LIMIT 300';
                 searchList = Database.query(queryString);
                 
             }                    
             //Senario 2: Non Project Based Cases:The Partner Support Owner field should be a lookup that displays users with the Partner FAE/IPS Agent-Partner profile who are members of the account on the case.
             else if(selectedcontId != '' && selectedcontId != null){
-                queryString = 'SELECT Id, Name, FirstName, LastName, Email, Contact.Account.Name FROM User WHERE Contact.AccountId =:accId AND isActive = True AND (ProfileID =:profileId  OR Id IN :userIds) ORDER BY Name ASC LIMIT 300';               
+                queryString = 'SELECT Id, Name, FirstName, LastName, Email, Contact.Account.Name FROM User WHERE Contact.AccountId =:accId AND isActive = True AND (ProfileID =:profile_Id  OR Id IN :userIds) ORDER BY Name ASC LIMIT 300';               
                 searchList = Database.query(queryString);
                 
             }
             //For all other senario return null
             if(searchList.size()>0){
                 for(User u : searchList){
-                    pSOIds.add(u.Id);
+                    PSOIds.add(u.Id);
                 }
                 
-                return pSOIds;
+                return PSOIds;
                 
             }
             else{
@@ -371,15 +378,15 @@ public with sharing class Core_IPS_CaseCreateLWCController {
             if(caseRecordType!='' && caseRecordType!=null && caseRecordType=='Core_IPS_Case_Create_Self_Assigned' && String.isBlank(selectedProjectId)){
                 return 'true';
             } 
-            List<Contact> conRecList = new List<Contact>(); // TWC745-9175 - Exceptional Handling - Phani
-            if(Schema.sObjectType.Contact.isAccessible()) {  
+            List<Contact> conRecList = new List<Contact>();
+            if(Schema.sObjectType.Contact.isAccessible()) {   
                 conRecList = [SELECT Id,Name,AccountId from Contact WHERE Id =: selectedContacttId LIMIT 1];
-                if(conRecList.size()>0) // TWC745-9175 - Exceptional Handling - Phani Strat If Condition
+                if(conRecList.size()>0)
                 {
                     conRec = conRecList[0];
-                } // TWC745-9175 - Exceptional Handling - Phani End If Condition
+                }
             }
-            if(conRec!= null && Schema.sObjectType.Asset.isAccessible()) { // TWC745-9175 - Exceptional Handling - Phani
+            if(conRec!= null && Schema.sObjectType.Asset.isAccessible()) {
                 ast = [SELECT Id,Name FROM Asset WHERE  Id =: selectedProductId AND (RecordType.Name= 'IPS Public Product' OR AccountId =: conRec.AccountId) LIMIT 1];
             }
             if(conRec!=null && !ast.isEmpty()){ 

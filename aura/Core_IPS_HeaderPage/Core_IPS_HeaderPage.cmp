@@ -1,0 +1,39 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <div class="Fill-1">
+        <div class="logo-energyblue-white-3000px"></div>
+        <span class="By-Product">
+            Premier Support
+        </span>
+    </div>
+    <div class="Fill-2">
+        <span class="By-Product1">
+            <a href="#" onclick="{!c.navigateToComTwo}">HOME</a>
+        </span>
+        <span class="By-Product1">
+            <a href="" onclick="{!c.navigateToComTwo}">PREFERENCES</a>
+        </span>
+    </div>
+    
+    <div class="Rectangle">
+        <span class="By-Product2">
+        Dashboard
+        </span></div>
+    
+    <div class="Mask">
+        <div class="Fill-1-Copy-15">
+        </div>
+
+        <span class="Hi-John-Welcome-to">
+            Hi John, Welcome to Intel® Premier Support
+        </span>
+            <div class="search">
+                <input type="text" class="SearchBox" placeholder="Search Case comments and projects">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </input>
+            </div>
+        </div>
+    
+</aura:component>

@@ -3,8 +3,8 @@
     <contactEmail>minhajx.ameen@intel.com</contactEmail>
     <label>SalesforceCaseRecordsExport</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/services/authcallback/SalesforceCaseListExportAuth</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6neSQDDa10OqOYsXKrjwOk0KNPoJUHj3tia29RhthNrbyZiHA_DXrshj0HPL</consumerKey>
+        <callbackUrl>https://intel--CRMDEVCASE.sandbox.my.salesforce.com/services/authcallback/SalesforceCaseListExportAuth</callbackUrl>
+        <consumerKey>3MVG9JamK_x9K2XIz6FKasGquU42p54K0Jg_wTTrim_YYOkt0heiE9H4kjVARvu6JegaHY8LUNDmvBnG8vgAn</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -27,7 +27,7 @@
         <scopes>RefreshToken</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>BYPASS</ipRelaxation>
+        <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>

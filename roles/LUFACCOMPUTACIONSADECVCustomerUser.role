@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>LUFAC COMPUTACION SA DE CV Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>LUFACCOMPUTACIONSADECVCustomerManager</parentRole>
 </Role>

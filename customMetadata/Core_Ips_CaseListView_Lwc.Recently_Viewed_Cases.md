@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>FieldValue__c</field>
-        <value xsi:type="xsd:string">Subject:text,Status:text,CreatedDate:date/time,Owner.Alias:text</value>
+        <value xsi:type="xsd:string">Subject:text,Status:text,Core_Sub_Status__c:text,CreatedDate:date/time,Owner.FirstName:text,LastModifiedDate:text</value>
     </values>
     <values>
         <field>HeaderValue__c</field>
-        <value xsi:type="xsd:string">Subject, Status,Date/Time Opened,Case Owner Alias</value>
+        <value xsi:type="xsd:string">Subject, Status,Sub Status,Date/Time Opened,Owner First Name,Last Modified Date</value>
     </values>
     <values>
         <field>Query__c</field>

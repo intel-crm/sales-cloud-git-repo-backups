@@ -185,6 +185,15 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_IPS_Submitter_Comments__c</fullName>
+        <label>Submitter Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_MAP_PAR__c</fullName>
         <description>Reference to the MAP/PAR header record</description>
         <inlineHelpText>MAP/PAR header record</inlineHelpText>

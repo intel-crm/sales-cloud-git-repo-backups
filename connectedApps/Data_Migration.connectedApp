@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>sourabhx.shrivastava@intel.com</contactEmail>
+    <contactEmail>gouravx.anand@intel.com</contactEmail>
     <label>Core_IPS_Data Migration</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/home/home.jsp</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6qzROiDk7oflDxtcbIXJ8rCyhbfpbld_K7DrpoHtJaHtwqr2sk8_1P5D7cr3</consumerKey>
+        <callbackUrl>https://intel--crmdevcase.cs92.my.salesforce.com/home/home.jsp</callbackUrl>
+        <consumerKey>3MVG9JamK_x9K2XIz6FKasGquUzhI3SNrJp57rpCKlLWxTTbieuhAXdH893JPTuDnQpq5gmQVjld7aGUa0bb8</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -25,8 +25,8 @@
         <scopes>Full</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>ENFORCE</ipRelaxation>
+        <ipRelaxation>BYPASS</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
-        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
     </oauthPolicy>
 </ConnectedApp>

@@ -1,0 +1,11 @@
+<apex:page standardController="Core_Goal__c" extensions="Core_Goal_UnlockRecExtController" action="{!unlockGoal}">
+
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="TOP">
+               <apex:commandButton value="Back To Deal Win Goal" id="Back_To_Goal"  action="{!backToGoal}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

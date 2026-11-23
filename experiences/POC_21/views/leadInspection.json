@@ -1,0 +1,33 @@
+{
+  "appPageId" : "ed67c0d9-ce36-4d35-a400-63c3262360f1",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "5543d10f-35c6-458c-9952-fc2b1b0f1f46",
+  "label" : "Lead Inspection",
+  "regions" : [ {
+    "id" : "a64bd13c-8f03-44d7-be4f-44c27b31a71b",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "objectApiName" : "Lead"
+      },
+      "componentName" : "runtime_pipeline_inspector:pipelineInspectorHomeExperienceContainer",
+      "id" : "82cad086-9b23-4707-82aa-b495d85cde7b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4fe71763-9765-4cf9-8794-db9ca4e49368",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e13838da-ab84-46f6-9e69-079c919a1955",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "lead-inspection"
+}

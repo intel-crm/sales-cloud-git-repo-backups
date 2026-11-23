@@ -126,7 +126,7 @@
             System.assertEquals(true, apiResponse.isSuccess);
             System.assertNotEquals(null, apiResponse.successContent);
             //check for all sharing Categories and SubCategories are retrieved
-            System.assertEquals(apiResponse.successContent.size() != null, true);
+            System.assertEquals(5,apiResponse.successContent.size(), 'All Admin user Categories and SubCategories retrieved ');
         }
         //Common Asserts for all versions
         //Verify the transaction log is created

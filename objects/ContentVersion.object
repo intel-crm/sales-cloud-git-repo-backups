@@ -50,64 +50,6 @@
         <fullName>IsAssetEnabled</fullName>
     </fields>
     <fields>
-        <fullName>LEXMAGICMOVER__LegacyNoteConvertedDate__c</fullName>
-        <deprecated>false</deprecated>
-        <description>The created Date of the Legacy Note Converted</description>
-        <label>LegacyNoteConvertedDate</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>LEXMAGICMOVER__LegacyNoteConvertedId__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>LegacyNoteConvertedId</label>
-        <length>30</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>LEXMAGICMOVER__LegacyNoteConvertedLastModifiedDateTime__c</fullName>
-        <deprecated>false</deprecated>
-        <label>LegacyNoteConvertedLastModifiedDateTime</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>LEXMAGICMOVER__LegacyNoteConvertedLastModifiedDate__c</fullName>
-        <deprecated>false</deprecated>
-        <label>LegacyNoteConvertedLastModifiedDate</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>LEXMAGICMOVER__LegacyNoteConvertedOwnerId__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>LegacyNoteConvertedOwnerId</label>
-        <length>20</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>LEXMAGICMOVER__LegacyNoteConvertedParentId__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>LegacyNoteConvertedParentId</label>
-        <length>20</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Language</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -130,17 +72,6 @@
     <fields>
         <fullName>Title</fullName>
         <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>src_sys_id_c__c</fullName>
-        <description>Source System Id will be filled with Siebel ROW ID</description>
-        <externalId>false</externalId>
-        <label>Source System Id</label>
-        <length>100</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <searchLayouts>
         <searchResultsAdditionalFields>VERSION.TITLE</searchResultsAdditionalFields>

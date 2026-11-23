@@ -1,0 +1,18 @@
+<!--<apex:page standardController="Case" cache="false" showheader="false" sidebar="false" standardstylesheets="false" docType="html-5.0">
+     <CoveoV2:CaseCreation name="CaseCreationPage"/>
+ </apex:page>-->
+ <apex:page standardstylesheets="false" sidebar="false" docType="html-5.0" standardController="Case">
+   <CoveoV2:SearchInterface mobile="false" name="myCustomPage"/>
+   <apex:variable var="OrgID" value="{!IF(LEN($Organization.Id)==18, LEFT($Organization.Id, 15), $Organization.Id)}" />
+    <script>
+        (function(){
+            Coveo.SFContext = {
+                Current_Page: '{!$CurrentPage.Name}',
+                Session_ID : '{!$Api.Session_ID}',
+                Partner_Server_URL_200: '{!$Api.Partner_Server_URL_200}',
+                Org_ID: '{!OrgID}',
+                HiddenExpression: '@sforganizationid=={!OrgID} OR @uri (NOT @sforganizationid<>{!OrgID})'
+            }
+        })();
+    </script>
+ </apex:page>

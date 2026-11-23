@@ -4,10 +4,22 @@
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Sales_Objectives__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Project_Size__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Count__c</field>
+    </columns>
+    <columns>
         <field>ACCOUNT_OWNER</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Milestone_Count__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Customer_Project_Name__c</field>
@@ -25,6 +37,9 @@
         <field>RECORDTYPE</field>
     </columns>
     <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
         <field>AMOUNT</field>
     </columns>
     <columns>
@@ -35,6 +50,15 @@
     </columns>
     <columns>
         <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Intel_Authenicate__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Focus_Area__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
@@ -96,6 +120,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

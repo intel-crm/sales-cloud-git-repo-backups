@@ -30,9 +30,10 @@ public without sharing class Core_IPS_InsertGroupMemberBatch implements Database
                 for(Database.Error err : result.getErrors()) {
                     String errorMessage = 'Error occurred: ' + err.getStatusCode() + ' - ' + err.getMessage()+' - '+err.getFields();
                     errorRecs.add(errorMessage);
-    }
+                }  
             }
             else if(result.isSuccess()){
+                
 		groupMemSet.add(result.getId());
             }
         } 

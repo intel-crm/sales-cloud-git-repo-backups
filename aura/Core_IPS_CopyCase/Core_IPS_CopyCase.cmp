@@ -1,0 +1,5 @@
+<aura:component implements="force:hasRecordId,lightning:isUrlAddressable,lightning:hasPageReference" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="recordId" type="String" />
+	<c:core_IPS_CreateCase recordId="{!v.recordId}" mode="copy"  />
+</aura:component>

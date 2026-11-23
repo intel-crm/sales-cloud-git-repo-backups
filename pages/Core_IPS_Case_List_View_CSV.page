@@ -15,4 +15,11 @@ Case List Export
             </apex:repeat>{!newline}
         </apex:repeat>                                                                                    
     </apex:repeat>
+   <script type = "text/javascript">
+    window.onload=function()      
+    {        console.log('abcdd');
+        alert("Hi");
+        window.history.back();
+    };
+</script>
 </apex:page>

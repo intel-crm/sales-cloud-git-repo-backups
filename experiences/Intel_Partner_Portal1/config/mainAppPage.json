@@ -1,10 +1,10 @@
 {
   "cmsSettings" : { },
   "currentThemeId" : "bc0bf596-dd86-4add-9c25-737b9053a69a",
-  "headMarkup" : "<script type=\"text/javascript\">\n//configure tms\n    var wapLocalCode = 'us-en'; //dynamically set per localized site, see mapping table for values\n    var wapSection = \"ips-portal\";\n    var wa_env = \"prod\"; //set to “prod” when implementing on production site.\n    //var wapSinglePage = true; // Include this variable if your application comes under single page ,otherwise don’t include\n    //load tms\n    (function() {\n        var url = \"https://www.intel.com/content/dam/www/global/wap/tms-loader.js\"; //wap file url\n        var po = document.createElement('script'); \n            po.type = 'text/javascript'; \n            po.async = true;  \n            po.src = url;\n        console.log('po src=='+po.src);\n        var s = document.getElementsByTagName('script')[0]; \n            s.parentNode.insertBefore(po, s);\t\t\t\n    })();\n</script>",
+  "headMarkup" : "<script>\n\n</script>",
   "id" : "5a305cf4-135f-47a4-84a6-71d8c5d04ae1",
   "isLockerServiceEnabled" : true,
-  "isRelaxedCSPLevel" : true,
+  "isRelaxedCSPLevel" : false,
   "label" : "main",
   "templateName" : "PRM Community Template",
   "type" : "appPage"

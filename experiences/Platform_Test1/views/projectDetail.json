@@ -1,0 +1,86 @@
+{
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "46c1c4b2-48fd-4355-90e0-0ee3a6ee1da4",
+  "label" : "project detail",
+  "regions" : [ {
+    "id" : "15f8c7e2-fc7e-4638-ac36-62c843561d79",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_projectDetail",
+      "id" : "2e1e7d91-220b-40ca-91a9-8e7b62651c8a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e05eb183-e369-468a-a65d-015d5e330239",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "d46830f6-d45e-4b04-8f3c-6ff567cdd926",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "d14552c0-4631-4c16-aa05-0a59b619cdfb",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "abe887cf-a8ab-455c-90bf-1924eb9a55cc",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "50d8edb4-a980-445f-996b-16b0d6be199f",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "4426e717-baee-4dc2-90d4-1c347cd584bd",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "1b1efb7b-91cd-4a4f-9099-ba0f4493848f",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "cefa6a7f-2043-4ee1-aab2-ab3328e28169",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "e47b0aec-1230-4e01-8b4a-817e99aace59",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "5dba5e1d-1144-4bfa-aa05-ccc3e4d0381f",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "bb94566c-4aa2-4165-93e1-ff10ea91c5aa",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "da87eb70-549b-4da5-86e4-46833f853c22",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "project detail"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "8a38400d-f086-4476-ae0b-4b0317689e80",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ddf64279-79c3-45f2-9bab-3d93af2add69",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "qbwA0O606VoVdt9qmVmy30Ap0RqvoL",
+  "type" : "view",
+  "viewType" : "custom-project-detail"
+}

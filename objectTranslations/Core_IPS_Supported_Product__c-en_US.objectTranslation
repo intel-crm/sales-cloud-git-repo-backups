@@ -35,6 +35,10 @@
         <name>Core_EOIS__c</name>
     </fields>
     <fields>
+        <label><!-- External Id --></label>
+        <name>Core_External_Id__c</name>
+    </fields>
+    <fields>
         <help><!-- A value is mandatory for this field. --></help>
         <label><!-- Access Flag --></label>
         <name>Core_Flag_Status__c</name>
@@ -100,6 +104,10 @@ This field value cannot be changed once checked as Public Product. --></help>
         <relationshipLabel><!-- Supported Products --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Product Type --></label>
+        <name>Core_Product_Type__c</name>
+    </fields>
+    <fields>
         <help><!-- Reference to the Master Data product. --></help>
         <label><!-- Product Name --></label>
         <lookupFilter>
@@ -117,6 +125,10 @@ This field value cannot be changed once checked as Public Product. --></help>
     <fields>
         <label><!-- Support Org Name --></label>
         <name>Core_Support_Org_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support Org and Product Name --></label>
+        <name>Core_Support_Org_and_Product_Name__c</name>
     </fields>
     <fields>
         <help><!-- Shown on Save. Copied from the Product Master Data name. Cannot be edited. --></help>
@@ -141,6 +153,11 @@ This field value cannot be changed once checked as Public Product. --></help>
     <fields>
         <label><!-- Unique Supported Product --></label>
         <name>Core_Unique_Supported_Product__c</name>
+    </fields>
+    <fields>
+        <help><!-- Created as part of Taurus POC. please ignore --></help>
+        <label><!-- Enabled For Subscriptions --></label>
+        <name>IPS_Enabled_For_Subscriptions__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>
@@ -188,6 +205,10 @@ This field value cannot be changed once checked as Public Product. --></help>
         <name>Copy_Categories_EDQ_Lex</name>
     </webLinks>
     <webLinks>
+        <label><!-- Core_Add_Environment_Variables --></label>
+        <name>Core_Add_Environment_Variables</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Core_Add_Issue_categories --></label>
         <name>Core_Add_Issue_categories</name>
     </webLinks>
@@ -206,5 +227,13 @@ This field value cannot be changed once checked as Public Product. --></help>
     <webLinks>
         <label><!-- Core_Supported_Product_Make_EOIS --></label>
         <name>Core_Supported_Product_Make_EOIS</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Core_Add_Environment_Variables --></label>
+        <name>New_Core_Add_Environment_Variables</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Refresh_Name --></label>
+        <name>Refresh_Name</name>
     </webLinks>
 </CustomObjectTranslation>

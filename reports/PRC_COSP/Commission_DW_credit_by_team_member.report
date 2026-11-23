@@ -8,14 +8,6 @@
         <field>AMOUNT</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_DW_Count__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>WON</field>
-    </columns>
-    <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
@@ -35,27 +27,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>milestone</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>China Telecom,China Unicom,China Mobile</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_MONTH</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessOrEqual</operator>
-            <value>1/1/2019</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Approved_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessOrEqual</operator>
-            <value>1/1/2019 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -99,6 +70,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Commissionable_Transaction__c.Core_Claim_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

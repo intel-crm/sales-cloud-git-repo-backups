@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>caseAttachmentLinkFileController_test</testClassName>
+    <testClassName>Core_IPS_CaseAdvanceSearch_CTRL_Test</testClassName>
+    <testClassName>Core_IPS_caseAttLinkFileCont_LWC_Test</testClassName>
+    <testClassName>Core_IPS_CaseCreate_Test</testClassName>
+    <testClassName>Core_IPS_CaseCreateLWCControllerTest</testClassName>
+    <testClassName>Core_IPS_ContactloginDisclaimerCtrl_Test</testClassName>
+    <testClassName>Core_IPS_CoveoPageCtrl_LWC_Test</testClassName>
+    <testClassName>Core_IPS_DeflectedObject_LWC_Ctrl_Test</testClassName>
+    <testClassName>Core_Ips_DynamicDataTable_Lwc_Ctrl_Test</testClassName>
+    <testClassName>Core_IPS_File_AttachToCase_Cont_Test</testClassName>
+    <testClassName>core_IPS_InterestedParties_CTRL_Test1</testClassName>
+    <testClassName>Core_IPS_NewMapHomePageControllerTest</testClassName>
+    <testClassName>Core_IPS_Portal_Project_Controller_Test</testClassName>
+    <testClassName>Core_IPS_Portal_Project_CTL_new_t</testClassName>
+    <testClassName>core_IPS_PortalEdqController_test</testClassName>
+    <testClassName>Core_IPS_PrefPage_CTRL_Test</testClassName>
+    <testClassName>Core_IPS_ProductDetailCtrlLWC_Test</testClassName>
+    <testClassName>Core_IPS_ProductDetailCtrlLWC_Test_new</testClassName>
+    <testClassName>Core_IPS_ProjectDetailPrint_Ctrl_Test</testClassName>
+    <testClassName>Core_IPS_TestAllRecords_Test</testClassName>
+</ApexTestSuite>

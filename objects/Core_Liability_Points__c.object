@@ -157,15 +157,6 @@
     <fields>
         <fullName>Core_Account__c</fullName>
         <label>Account</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>Account.RecordType.Name</field>
-                <operation>notEqual</operation>
-                <value>Direct Account</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Liability Points</relationshipLabel>
         <relationshipName>Liability_Points</relationshipName>

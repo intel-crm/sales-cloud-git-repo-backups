@@ -73,7 +73,7 @@ function makeAnalyticsCall(analyticsData) {
     const metaData = window.focus('meta');
     if (metaData) {
       // Update pageType based on meta tags
-        addAnalyticsProperty(metaData.pageType || '', 'pageType', analyticsData);
+      addAnalyticsProperty(metaData.pageType || '', 'pageType', analyticsData);
       addAnalyticsProperty(metaData.title || '', 'title', analyticsData);
     }
   }

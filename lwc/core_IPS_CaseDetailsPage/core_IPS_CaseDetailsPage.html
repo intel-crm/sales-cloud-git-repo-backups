@@ -1,0 +1,20 @@
+<template>
+    <lightning-card>
+        <lightning-accordion allow-multiple-sections-open active-section-name="A">
+            <lightning-accordion-section name="A" label="Life Cycle Managment" >
+        <lightning-layout>
+            <lightning-layout-item>
+                <lightning-record-form
+                    record-id={recordId}
+                    object-api-name="Case"
+                    fields={selectedFields}
+                    layout-type="Compact"
+                    columns="2"
+                    mode="readonly">
+                </lightning-record-form>
+            </lightning-layout-item>
+        </lightning-layout>
+        </lightning-accordion-section>
+        </lightning-accordion>
+</lightning-card>
+</template>

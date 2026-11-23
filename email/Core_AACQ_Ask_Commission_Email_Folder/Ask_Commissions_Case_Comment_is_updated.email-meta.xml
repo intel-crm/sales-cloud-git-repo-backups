@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email template when a new case comment has been added</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Ask Commissions Case Comment is updated</name>
+    <style>none</style>
+    <subject>Case comment has been added</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

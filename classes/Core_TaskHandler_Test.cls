@@ -17,7 +17,6 @@ private class Core_TaskHandler_Test {
 
     // List to store tasks to be inserted
     Static List<Task> lstTaskInsertion;
-    Static List<Task> lstoldTaskInsertion;
 
 
     /*
@@ -56,9 +55,8 @@ private class Core_TaskHandler_Test {
 
         // Inserting leads for testing
         lstLeadInsertion = new List<Lead>();
-       // lstLeadInsertion = Core_Test_Utility.createLead(200);
-       lstLeadInsertion = [Select id from lead limit 1];
-        //insert lstLeadInsertion;
+        lstLeadInsertion = Core_Test_Utility.createLead(200);
+        insert lstLeadInsertion;
     }
 
     /*
@@ -67,116 +65,21 @@ private class Core_TaskHandler_Test {
      * Return Type  : None
      * Parameter    : None
      */
-    
-     
     static void createTasks() {
-        Lead l= new lead();
         // populating and inserting tasks related to lead
         lstTaskInsertion = new List<Task>();
-        lstoldTaskInsertion = new List<Task>();
-        //lstTaskInsertion = Core_Test_Utility.createTask(200);
-        Task taskInstance = new Task();
-            taskInstance.ActivityDate = System.Today().addDays(1);
-            taskInstance.Priority = 'Medium';
-            taskInstance.status = 'Pending';
-            taskInstance.Subject = 'Email';
-      // l=[Select id from lead limit 1];
-	  
-	  
-        String Rid = [Select id from Recordtype where Name = 'Sales Lead'].id;
-        
-              Lead leadInstance = new Lead();
-        leadInstance.FirstName = 'Test 123';
-        
-        leadInstance.lastName = 'CS';
-        leadInstance.Company = 'XYZ';
-        leadInstance.CountryCode = 'USA';
-        leadInstance.StateCode = 'AL';
-        leadInstance.City = 'Alabama';
-        leadInstance.Street = 'test';
-        leadInstance.status = 'Sales Generated Lead';
-        leadInstance.leadSource = 'Email';
-        leadInstance.email = 'test@infosys.com';
-        leadInstance.Core_Last_Activity_Date__c = NULL;
-        leadInstance.Core_Lead_Status__c='Accepted';
-        leadInstance.PostalCode = '577101';
-        leadInstance.Title = 'Hello';
-        leadInstance.Core_Current_Architecture__c='Test';
-        leadInstance.Phone='9777787888';
-        leadInstance.Core_Product_Interest__c='10';
-        leadInstance.Core_Project_Phase__c='testing';
-        leadInstance.Core_Project_Size__c='4';
-        leadInstance.Core_Project_Timeframe__c='12-24 Months';
-        leadInstance.Core_Lead_State__c = 'In Pursuit';
-        leadInstance.recordtypeid = RId ;  
-        leadInstance.Core_Job_Function__c = 'Branch Manager';
-        
-        insert leadInstance;
-           taskInstance.WhoId = leadInstance.id;
-            
-        system.debug('lead id'+l.Id);
+        lstTaskInsertion = Core_Test_Utility.createTask(200);
 
-            lstTaskInsertion.add(taskInstance);
-        lstoldTaskInsertion.add(taskInstance);
-        insert lstTaskInsertion;
-        
-        /*Core_TaskHandler.updatetaskflag(lstTaskInsertion);
-        update lstoldTaskInsertion;
-         Core_TaskHandler.UpdateTaskflagOnUpdate(lstTaskInsertion,lstoldTaskInsertion);*/
+        for (Integer i = 0; i < lstTaskInsertion.size(); i++) {
+            lstTaskInsertion.get(i).whoId = lstLeadInsertion.get(i).Id;
+        }
 
+        System.runAs(Core_Test_Utility.systemAdminUser) {            
+            insert lstTaskInsertion;
+        }
     }
 
- static void createTasks1() {
-        Lead l= new lead();
-        // populating and inserting tasks related to lead
-        lstTaskInsertion = new List<Task>();
-        lstoldTaskInsertion = new List<Task>();
-        Task taskInstance = new Task();
-            taskInstance.ActivityDate = System.Today().addDays(1);
-            taskInstance.Priority = 'Medium';
-            taskInstance.status = 'Pending';
-            taskInstance.Subject = 'Meeting';
-	  
-	  
-        String Rid = [Select id from Recordtype where Name = 'Sales Lead'].id;
-        
-              Lead leadInstance = new Lead();
-        leadInstance.FirstName = 'T 123';
-        
-        leadInstance.lastName = 'CS123';
-        leadInstance.Company = 'XYZ123';
-        leadInstance.CountryCode = 'USA';
-        leadInstance.StateCode = 'AL';
-        leadInstance.City = 'Alabam11a';
-        leadInstance.Street = 'test1';
-        leadInstance.status = 'Sales Generated Lead';
-        leadInstance.leadSource = 'Email';
-        leadInstance.email = 'testhjjhh@infosys.com';
-        leadInstance.Core_Last_Activity_Date__c = NULL;
-        leadInstance.Core_Lead_Status__c='Accepted';
-        leadInstance.PostalCode = '577107';
-        leadInstance.Title = 'Hello';
-        leadInstance.Core_Current_Architecture__c='Test';
-        leadInstance.Phone='9777787866';
-        leadInstance.Core_Product_Interest__c='10';
-        leadInstance.Core_Project_Phase__c='testing';
-        leadInstance.Core_Project_Size__c='4';
-        leadInstance.Core_Project_Timeframe__c='12-24 Months';
-        leadInstance.Core_Lead_State__c = 'In Pursuit';
-        leadInstance.recordtypeid = RId ;  
-		leadInstance.Core_Job_Function__c = 'Branch Manager';
-        
-        insert leadInstance;
-        taskInstance.WhoId = leadInstance.id;
-            
-        lstTaskInsertion.add(taskInstance);
-        lstoldTaskInsertion.add(taskInstance);
-        insert lstTaskInsertion;
-        
-       /* Core_TaskHandler.updatetaskflag(lstTaskInsertion);
-        update lstoldTaskInsertion;
-         Core_TaskHandler.UpdateTaskflagOnUpdate(lstTaskInsertion,lstoldTaskInsertion);*/
-    }
+
 
 
     /*
@@ -197,13 +100,20 @@ private class Core_TaskHandler_Test {
 
             // inserting tasks
             createTasks();
-          createTasks1();
     
             // Fetching all the leads which were inserted with updated details
             List<Lead> lstLeadInserted = [SELECT Id, Core_Last_Activity_Date__c, (SELECT Id, LastModifiedDate From Tasks) FROM Lead];
     
             System.debug(lstLeadInserted);
-   
+    
+            // Asserting lead's activity date is within 60 seconds of tasks last modified date related to lead
+            for (Lead leadInstance: lstLeadInserted) {
+                System.debug('##### ' + Math.abs(leadInstance.Core_Last_Activity_Date__c.getTime() - leadInstance.tasks.get(0).LastModifiedDate.getTime()));
+                System.assert(Math.abs(leadInstance.Core_Last_Activity_Date__c.getTime() - leadInstance.tasks.get(0).LastModifiedDate.getTime()) < (60*1000));
+                // [DH 8/10/15] This assertion was failing because an exact match can't be expected when there is slight latency in the system
+                //System.assertEquals(leadInstance.Core_Last_Activity_Date__c, leadInstance.tasks.get(0).LastModifiedDate);
+            }
+    
             Core_ActivityHandler.blastActivityDateUpdateOnUpsert = true;
     
             // Creating task instance
@@ -219,14 +129,32 @@ private class Core_TaskHandler_Test {
                 update lstTaskInsertion;
             }    
     
-               // Deleting tasks related to lead
+            // Fetching all the leads which were updated
+            lstLeadInserted = [SELECT Id, Core_Last_Activity_Date__c, (SELECT Id, LastModifiedDate From Tasks) FROM Lead];
+    
+            // Asserting lead's activity date with tasks last modified date related to lead
+            for (Lead leadInstance: lstLeadInserted) {
+                System.debug('##### ' + Math.abs(leadInstance.Core_Last_Activity_Date__c.getTime() - leadInstance.tasks.get(0).LastModifiedDate.getTime()));
+                System.assert(Math.abs(leadInstance.Core_Last_Activity_Date__c.getTime() - leadInstance.tasks.get(0).LastModifiedDate.getTime()) < (60*1000));
+                // [DH 8/10/15] This assertion was failing because an exact match can't be expected when there is slight latency in the system
+                //System.assertEquals(leadInstance.Core_Last_Activity_Date__c, leadInstance.tasks.get(0).LastModifiedDate);
+            }
+    
+            // Deleting tasks related to lead
             System.runAs(Core_Test_Utility.systemAdminUser) {            
                 delete lstTaskInsertion;
             }
     
             Core_ActivityHandler.bLastActivityDateUpdateOnDelete = true;
-        System.assertEquals('true', String.valueOf(Core_ActivityHandler.bLastActivityDateUpdateOnDelete));
     
+            // Fetching all the leads which were updated
+            lstLeadInserted = [SELECT Id, Core_Last_Activity_Date__c, (SELECT Id, LastModifiedDate From Tasks) FROM Lead];
+    
+            // Asserting lead's activity date with NUll since related tasks were deleted
+            for (Lead leadInstance: lstLeadInserted) {
+                System.assertEquals(leadInstance.Core_Last_Activity_Date__c, NULL);
+            }
+
         Test.stopTest();
 
 

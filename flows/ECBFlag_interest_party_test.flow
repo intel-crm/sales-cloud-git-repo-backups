@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>change  Active (Active__c) = false
+Interested Party (Core_IPS_Case_Interested_Party__c)</description>
+        <name>deactivate_interested_parties_on_case</name>
+        <label>deactivate interested parties on case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>contact_interested_parties.Active__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>contact_interested_parties</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>change the status to Core_Status__c = inactive on 
+Premier Support Project Member (Core_IPS_Project_Member__c)</description>
+        <name>deactivate_the_project_members</name>
+        <label>deactivate the project members</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>contact_related_project_members.Core_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Inactive</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>contact_related_project_members</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <interviewLabel>ECBFlag interest party test {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>ECBFlag interest party test</label>
+    <loops>
+        <name>contact_interested_parties</name>
+        <label>contact interested parties</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>get_related_interested_parties</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>deactivate_interested_parties_on_case</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>updates_the_interested_parties</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>contact_related_project_members</name>
+        <label>contact related project members</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>get_related_project_members</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>deactivate_the_project_members</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>update_project_members</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>get_related_interested_parties</name>
+        <label>get related interested parties</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>contact_interested_parties</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Active__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_IPS_Case_Interested_Party__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_related_project_members</name>
+        <label>get related project members</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>contact_related_project_members</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_IPS_Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Core_IPS_Project_Member__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Deactivate the project members Status (Core_Status__c) = Inactive</description>
+        <name>update_project_members</name>
+        <label>update project members</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>contact_related_project_members</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>updates_the_interested_parties</name>
+        <label>updates the interested parties</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>get_related_project_members</targetReference>
+        </connector>
+        <inputReference>contact_interested_parties</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>get_related_interested_parties</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_IPS_Active__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_IPS_Active__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -3,7 +3,7 @@
   <div class="CoveoAnalytics" data-search-hub="Core_IPS_CustomCoveoPanel"></div>
   <div class="coveo-box-query-section">
   </div>
-  <div class="CoveoBoxHeader" data-open-sub-section-by-default="false" data-allow-non-contextual-search="true">
+  <div class="CoveoBoxHeader" data-include-search-box="true" data-open-sub-section-by-default="false" data-allow-non-contextual-search="true">
     <div class="CoveoShareQuery">
     </div>
     <div class="CoveoPreferencesPanel">
@@ -15,29 +15,22 @@
     <div class="coveo-box-popups-section">
       <div class="coveo-tab-section coveo-inline-tab-section">
         <a class="CoveoTab" data-id="SalesforceCase" data-caption="Results"></a>
-
-        <!--<a class="CoveoAttachedResultsTab" data-id="AttachedResults" data-caption="Attached results"></a>-->
         <div class="CoveoBoxPopup" data-full-height="true" data-full-width="true" data-title="Filters">
           <div class="coveo-box-facet-column">
             <div class="CoveoDynamicFacetManager">
               <div class="CoveoDynamicFacet" data-title="Source" data-field="@datasource" data-tab="SalesforceCase" data-sort-criteria="occurrences"></div>
-            </div>
-            <div class="CoveoDynamicFacetManager">
-
-              <!--<div class="CoveoDynamicFacet" data-title="Source" data-field="@datasource" data-tab="SalesforceCase"></div>-->
-              <!--<div class="CoveoDynamicFacet" data-title="Type" data-id="sfcase-objecttype" data-field="@objecttype" data-tab="SalesforceCase"></div>-->
-              <div class="CoveoDynamicFacet" data-title="Case Status" data-id="sfcase-sfcasestatus" data-field="@sfcasestatus" data-tab="SalesforceCase"></div>
-              <div class="CoveoDynamicFacet" data-title="Case Priority" data-id="sfcase-sfcasespriority" data-field="@sfpriority" data-tab="SalesforceCase"></div>
-              <div class="CoveoDynamicFacet" data-title="Account Name" data-id="sfcase-sfaccountname" data-field="@sfaccountname" data-tab="SalesforceCase"></div>
-              <div class="CoveoDynamicFacet" data-title="Owner" data-id="sfcase-sfownername" data-field="@sfownername" data-tab="SalesforceCase"></div>
               <div class="CoveoDynamicFacet" data-title="Last Assigned Queue" data-id="sfcoreipsassignedqueuec" data-field="@sfcoreipsassignedqueuec" data-tab="SalesforceCase"></div>
+              <div class="CoveoDynamicFacet" data-title="Case Priority" data-id="sfcase-sfcasespriority" data-field="@sfpriority" data-tab="SalesforceCase"></div>
+              <div class="CoveoDynamicFacet" data-title="Case Status" data-id="sfcase-sfcasestatus" data-field="@sfcasestatus" data-tab="SalesforceCase"></div>
               <div class="CoveoDynamicFacet" data-title="Contact Name" data-id="sfcontactname" data-field="@sfcontactname" data-tab="SalesforceCase"></div>
-              <div class="CoveoDynamicFacet" data-title="Sub Status" data-id="sfcoresubstatusc" data-field="@sfcoresubstatusc" data-tab="SalesforceCase"></div>
-              <div class="CoveoDynamicFacet" data-title="Product Name" data-id="sfcoreipsproductnamec" data-field="@sfcoreipsproductnamec" data-tab="SalesforceCase"></div>
-              <div class="CoveoDynamicFacet" data-title="Project" data-id="sfcoreipsprojectcasername" data-field="@sfcoreipsprojectcasername" data-tab="SalesforceCase"></div>
+              <div class="CoveoDynamicFacet" data-title="Account Name" data-id="sfcase-sfaccountname" data-field="@sfaccountname" data-tab="SalesforceCase"></div>
               <div class="CoveoDynamicFacet" data-title="Product Organization" data-id="sfcoreproductorganizationc" data-field="@sfcoreproductorganizationc" data-tab="SalesforceCase"></div>
+              <div class="CoveoDynamicFacet" data-title="Product Name" data-id="sfcoreipsproductnamec" data-field="@sfcoreipsproductnamec" data-tab="SalesforceCase"></div>
+              <div class="CoveoDynamicFacet" data-title="Owner" data-id="sfcase-sfownername" data-field="@sfownername" data-tab="SalesforceCase"></div>
               <div class="CoveoDynamicFacet" data-title="Year" data-id="Year" data-field="@year" data-tab="SalesforceCase"></div>
               <div class="CoveoDynamicFacet" data-title="Month" data-id="Month" data-field="@month" data-tab="SalesforceCase"></div>
+              <div class="CoveoDynamicFacet" data-title="Sub Status" data-id="sfcoresubstatusc" data-field="@sfcoresubstatusc" data-tab="SalesforceCase"></div>
+              <div class="CoveoDynamicFacet" data-title="Project" data-id="sfcoreipsprojectcasername" data-field="@sfcoreipsprojectcasername" data-tab="SalesforceCase"></div>
             </div>
           </div>
         </div>
@@ -106,8 +99,8 @@
           </div>
         </div>
         <div class="coveo-result-row">
-          <div class="coveo-result-cell coveo-no-wrap">
-            <span class="CoveoFieldValue" data-field="@sfcorecaseresolutionreasonc" data-text-caption="Case Closure Detail:" ></span>
+          <div class="coveo-result-cell coveo-no-wrap" style="">
+            <span class="CoveoFieldValue" data-field="@sfcorecaseresolutionreasonc" data-text-caption="Case Closure Detail:" data-field-source="ips-devcase"></span> 
           </div>
         </div>
         <div class="coveo-result-row">
@@ -126,5 +119,5 @@
       </div>
     </script>
   </div>
-  <div class="CoveoBoxQuerySome" data-include="Subject" data-use-some-q-r-e="false" data-best="5" data-match="5"></div>
+  <div class="CoveoBoxQuerySome"  data-include="Subject" data-disable-on-non-contextual-search="true" data-include-current-record="true" data-use-some-q-r-e="false"></div>
 </div></apex:component>

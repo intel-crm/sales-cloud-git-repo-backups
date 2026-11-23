@@ -16,17 +16,19 @@ public  with sharing class Core_RestAPI_ProjectV1_Handler {
     public Core_RestAPI_Response response = new Core_RestAPI_Response();
     
     private static final String GET_PROJECTS_SOQL = 'SELECT Core_IPS_Project_ID__c,Name,Core_Status__c '+
-        'FROM Core_IPS_Project__c ORDER BY Core_IPS_Project_ID__c DESC LIMIT'+ ' '+Label.Core_RestAPI_ProjectsV1_Records_Limit;
+        'FROM Core_IPS_Project__c ORDER BY Core_IPS_Project_ID__c DESC  WITH SECURITY_ENFORCED LIMIT'+ ' '+Label.Core_RestAPI_ProjectsV1_Records_Limit;
     
     //Default Constructor
     public Core_RestAPI_ProjectV1_Handler(DateTime currTime, String APIname){
         this.entryTime = currTime;
         this.apiName= APIname;
         response.successContent = new List<ProjectWrapper>();
+        System.debug('Core_RestAPI_ProjectV1_Handler  URI '+RestContext.request.requestURI  );
     }
     
     //Retrieve Projects for the logged in User
     public Core_RestAPI_Response getProjects(){
+        System.debug(' Core_RestAPI_ProjectV1_Handler getProjects Entered  \n ');
         try{
             //Validations if need to be handled in util class      
             Boolean isRequestValid = doValidations();
@@ -36,16 +38,19 @@ public  with sharing class Core_RestAPI_ProjectV1_Handler {
         }catch(Exception e){
             Core_RestAPI_Util.processException(e,ERROR_CODE_500,response,apiName,entryTime);
         }finally{  
+            System.debug('Core_RestAPI_ProjectV1_Handler Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
         }     
+        System.debug(' Core_RestAPI_ProjectV1_Handler getProjects Exiting ');
         return response;
     } 
     
     // Validation if any for the API goes here
     @testVisible
     private Boolean doValidations(){
+        System.debug('Core_RestAPI_ProjectV1_Handler doValidations Invoked ');
         Boolean isRequestValid = true; 
         return isRequestValid;
     } 
@@ -53,6 +58,7 @@ public  with sharing class Core_RestAPI_ProjectV1_Handler {
     // Execute the SOQL and populate the result to wrapper list objects 
     public void processRequest(){
         
+        System.debug(' Core_RestAPI_ProjectV1_Handler processRequest Entering SOQL  \n '+GET_PROJECTS_SOQL);
         // In this for loop retrieving fields of Core_IPS_Project__c Custom Object
         for(Core_IPS_Project__c objProj: DATABASE.Query(GET_PROJECTS_SOQL))
         {  
@@ -62,6 +68,7 @@ public  with sharing class Core_RestAPI_ProjectV1_Handler {
             objProjectWrapp.status=objProj.Core_Status__c;        
             response.successContent.add(objProjectWrapp);
         }
+        System.debug('processRequest response.successContent '+response.successContent);
     }       
     // Here below ProjectWrapper Wrapper class must implements the interface Core_RestAPI_SuccessContent
     // Wrapper to build name,status and ProjectId structure

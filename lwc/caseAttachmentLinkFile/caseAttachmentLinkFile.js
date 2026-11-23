@@ -91,7 +91,7 @@ export default class CaseAttachmentLinkFile extends NavigationMixin(LightningEle
     wiredRecords =[];
     @api recordId;
     @api refreshData;
-
+    dwnldUrl;
 
 
     @wire(getFileList, { caseId: '$recordId' })
@@ -103,22 +103,20 @@ export default class CaseAttachmentLinkFile extends NavigationMixin(LightningEle
                 let FileUploadedById;
                 for (let i = 0; i < data.length; i++) {
                     this.row = data[i];
-                    console.log('FileUploadedbyId',data[i].Core_FileUploadedBy__c);
                     if (this.row.Core_FileUploadedBy__r) {
                          
                         let upldBy = JSON.stringify(this.row.Core_FileUploadedBy__r);
                          FileUploadByName = JSON.parse(upldBy);
-                         FileUploadedById = FileUploadByName.Id;
                         this.coreFileUploadedBy = FileUploadByName.Name;
+                        FileUploadedById = FileUploadByName.Id;
                     }
-                    console.log('FilesName',FileUploadByName);
                     var effdate = new Date(data[i].Core_Effective_Date__c);
-                    var effectivedate = effdate.toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+                    var effectivedate = effdate.toLocaleString("en-US", {timeZone: "America/Los_Angeles",year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'});
                     var expdate = new Date(data[i].Core_Expiration_Date__c);
-                    var expirationdate = expdate.toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+                    var expirationdate = expdate.toLocaleString("en-US", {timeZone: "America/Los_Angeles",year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'});
                     var uploaddate = new Date(data[i].Core_Last_Status_Updated_At__c);
-                    var uploaddateStatus = uploaddate.toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
-                    //let uploadedbyName = data[i].Core_FileUploadedBy__c != undefined ? data[i].Core_FileUploadedBy__r.Name : '';
+                    var uploaddateStatus = uploaddate.toLocaleString("en-US", {timeZone: "America/Los_Angeles",year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+                    //let uploadedbyName = data[i].Core_FileUploadedBy__c != undefined ? data[i].Core_FileUploadedBy__r.Name : '';                  
                     let obj = {
                         'Id' : data[i].Id,
                         'fileName': data[i].Core_File_Name__c,
@@ -159,6 +157,7 @@ export default class CaseAttachmentLinkFile extends NavigationMixin(LightningEle
             this.refreshList();
             console.log('After refresh==',this.wiredRecords);
     }
+    
     refreshList(){
         if(this.refreshData === 'Load Data'){
             console.log('load data in link file');
@@ -219,14 +218,15 @@ export default class CaseAttachmentLinkFile extends NavigationMixin(LightningEle
         
     }
     navigateCaseView(){
-        this[NavigationMixin.Navigate]({
-            type: 'standard__recordPage',
-            attributes: {
-                recordId: this.recordId,
-                objectApiName: 'Case',
-                actionName: 'view'
-            },
-        });
+        // this[NavigationMixin.Navigate]({
+        //     type: 'standard__recordPage',
+        //     attributes: {
+        //         recordId: this.recordId,
+        //         objectApiName: 'Case',
+        //         actionName: 'view'
+        //     },
+        // });
+        this.dispatchEvent(new CustomEvent('close'));
     }
     navigateToList(){
         this[NavigationMixin.Navigate]({

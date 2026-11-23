@@ -16,7 +16,7 @@ Business Hours is specified on Case and should NOT be set on the Entitlement Pro
         <operation>equals</operation>
         <value>Close-Pending</value>
     </exitCriteriaFilterItems>
-    <isVersionDefault>true</isVersionDefault>
+    <isVersionDefault>false</isVersionDefault>
     <milestones>
         <isDisplayedOnLinkedEntity>false</isDisplayedOnLinkedEntity>
         <milestoneCriteriaFilterItems>
@@ -101,6 +101,6 @@ Business Hours is specified on Case and should NOT be set on the Entitlement Pro
         <useCriteriaStartTime>true</useCriteriaStartTime>
     </milestones>
     <name>IPS Standard SLA Entitlement</name>
-    <versionMaster>552o00000006AJz</versionMaster>
+    <versionMaster>5523F0000000014</versionMaster>
     <versionNumber>2</versionNumber>
 </EntitlementProcess>

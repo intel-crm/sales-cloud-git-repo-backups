@@ -5,7 +5,7 @@ Modification Log :
 * ----------------------------------------------------------------------------
 * Pavani                    20/09/2024              Code Refactor changes TWC745-6459
 ****************************************************************************************************/  
-    
+
     public static boolean triggerAssignmentRule=true; 
     //public static boolean triggerProvideCaseAccess=true;  //Commented as part of Code Refactor TWC745-6459
     //public static boolean assignUserManagerVar= true;  //Commented as part of Code Refactor TWC745-6459
@@ -20,6 +20,7 @@ Modification Log :
     public static Boolean backendPromotionRecursive = true;      //added for DE34358
     Public Static Final String IPS_FILE_INTEGRATION_USER = Label.Core_IPS_File_Integration_User; //'ips.file.integrationuser'; //Converted to Label as part of Code Refactor TWC745-6459
     public static Boolean IsAutoPromoteRequired = false; // Added as part of Code Refactor TWC745-6459
+    public static List<String> userIdvalidation;
     // Added by chetan as part of COG fix for GEC cases
     public static Boolean isupdateCOG = true;
     public static void beforeMethod(Map<Id,Case> oldMap,Map<Id,Case> newMap, List<Case> oldList, List<Case> newList ) {      
@@ -29,7 +30,6 @@ Modification Log :
         List<Case> ipsOldRecordList = Core_IPS_Helper_Utility.getIPSRecords('Case',oldList);
         //Added logic as part of Code Refactor TWC745-6459
         if(ipsNewRecordList != null && !ipsNewRecordList.isEmpty()){
-            
             Core_IPS_CaseTriggerHandler.PrepareGlobalData(ipsNewRecordList,ipsOldRecordList,oldMap);
         }
         isLoggeInUserMigrationUser = Core_IPS_CaseTriggerHandler.isMigrationUser(string.valueof(userinfo.getuserId()));         
@@ -46,16 +46,23 @@ Modification Log :
             }              
         }
         else  if(!isLoggeInUserMigrationUser) 
-        {                             
+        {         
             if(trigger.isInsert){
-                
                 Core_IPS_CaseTriggerHandler.updateSupportedContact(ipsNewRecordList); //US191343
                 // Added by : Aparna   ----Last Modified/Added Date: 16-05-2017 : Iteration 5----
                 Core_IPS_CaseTriggerHandler.IPSCaseFieldsInit(ipsNewRecordList); 
                 Core_IPS_CaseTriggerHandler.assignCaseInformationfromProject(ipsNewRecordList,oldMap);  //added for US113466,US113488                 
                 //moved by Aayushi to this block to resolve 101 SOQL error DE36384 02-23-2018
                 Core_IPS_CaseTriggerHandler.updateSupportLevelOnCase(ipsNewRecordList,oldMap);
-                Core_IPS_CaseTriggerHandler.assignUserManager(ipsNewRecordList,oldMap);  //added for US176778                      
+                Core_IPS_CaseTriggerHandler.assignUserManager(ipsNewRecordList,oldMap);  //added for US176778   
+                 // added logic for Code refactor -- added by chiru -- added toggle to enable 
+                /* if(System.label.Core_IPS_Code_Refactor_Changes_Toggle == 'false' && triggerAssignmentRule && Core_IPS_CaseTriggerHandler.CheckQuiddity()){
+                    triggerAssignmentRule=false;                                    
+                    if(!System.isfuture() && !System.isBatch() && !isLoggeInUserMigrationUser && ipsNewRecordList <> null && ipsNewRecordList.size() > 0){                 
+                    Core_IPS_CaseTriggerHandler.executeCaseAssignmentRuleWithOptimization(oldMap,ipsNewRecordList);                
+                    } 
+                } */                    
+                
             }
             if(trigger.isUpdate){  
                 //Core_IPS_CaseTriggerHandler.insertIPSCustomerGroupId(newList);                  
@@ -80,24 +87,22 @@ Modification Log :
                         //Core_IPS_CaseTriggerHandler.updateCaseOwnerGroup(ipsNewRecordList,oldMap); //Added by Aparna                                                 
                     }                 
                 }
+                     
                 //moved for DE34358 to resolve 101 error -Aparna-20/2/2019
                 if(ipsNewRecordList <> null && ipsNewRecordList.size() > 0 && ipsOldRecordList <> null && ipsOldRecordList.size() > 0){                   
                      //backendPromotionRecursive = false;  
                     Boolean isLoggeInUserIntegrationUser = false;
                     //Added logic and Converted to Label as part of Code Refactor TWC745-6459
                     if(Core_IPS_CaseTriggerHandler.GlobalUserRecords!=null && Core_IPS_CaseTriggerHandler.GlobalUserRecords.size()>0 && Core_IPS_CaseTriggerHandler.GlobalUserRecords.containskey(userinfo.getuserId()) ){
-                       
                         if(Core_IPS_CaseTriggerHandler.GlobalUserRecords.get(userinfo.getuserId()).Profile.Name == Label.Core_Integration_Profile_Name){ isLoggeInUserIntegrationUser = true; }
                     }
                     else{
-                        
                         isLoggeInUserIntegrationUser = Core_IPS_Case_Comments_Handler.isIntegrationUser(string.valueof(userinfo.getuserId())); 
                     }
-                    
                     if(!isLoggeInUserIntegrationUser){
                         Core_IPS_CasePromotion_Handler.executeBackendRoutingfromCaseTrigger(ipsOldRecordList, ipsNewRecordList, oldMap, newMap);  //IPS Backend CasePromotion
                         //Added by Prem for HSD * please dont delete*
-                       Core_IPS_BES_CasePromotion_Handler.executeBackendRoutingfromCaseTrigger(ipsOldRecordList, ipsNewRecordList, oldMap, newMap); 
+                        Core_IPS_BES_CasePromotion_Handler.executeBackendRoutingfromCaseTrigger(ipsOldRecordList, ipsNewRecordList, oldMap, newMap); 
                         Core_IPS_CaseTriggerHandler.backendEndSystemProcessCase(oldMap, newMap);  
                         //Start - US1005666 - Update scenario for MyIntel 3.0 integration.
                         if(backendPromotionRecursive){
@@ -113,8 +118,7 @@ Modification Log :
                             backendPromotionRecursive = false;
                         }                        
                     }
-                } 
-                             
+                }                  
                 //added bt ranjini for US476474
                 //if(assignUserManagerVar){   //Commented as part of Code Refactor TWC745-6459 - Always boolean is set to TRUE and it never changes
                     Core_IPS_CaseTriggerHandler.assignUserManager(ipsNewRecordList, oldMap);                     
@@ -122,7 +126,6 @@ Modification Log :
             } 
             
             if(trigger.isDelete) {    
-                       
             }
              
             //Below Lines are added by Shridhar from CCP Weezer to validate claim case reviewer 04/02/2019
@@ -132,7 +135,7 @@ Modification Log :
             if(trigger.isInsert || trigger.isUpdate){ 
                 Core_MDF_ProcessCCP_Case.caseReviewerCheck(newList, oldMap, trigger.isInsert, trigger.isUpdate);
             }
-             
+            
         } 
     }  
     
@@ -140,20 +143,28 @@ Modification Log :
         //[Below 2 lines are making sure to process only IPS records.]       
         List<Case> ipsNewRecordList = Core_IPS_Helper_Utility.getIPSRecords('Case',newList);
         List<Case> ipsOldRecordList = Core_IPS_Helper_Utility.getIPSRecords('Case',oldList);
+        Map<Id,User> userRecords = new Map<Id,User>();
         //Added logic as part of Code Refactor TWC745-6459
         if(ipsNewRecordList != null && !ipsNewRecordList.isEmpty()){
             Core_IPS_CaseTriggerHandler.PrepareGlobalData(ipsNewRecordList,ipsOldRecordList,oldMap);
-            
         }
         if(trigger.isInsert){                
-            
-            if(triggerAssignmentRule){
+            // Toggle added for Code refactor to Disable Logic Added by Chiru
+            //&& (System.Label.Core_IPS_Code_Refactor_Changes_Toggle == 'true' || !Core_IPS_CaseTriggerHandler.CheckQuiddity()) 
+            if(triggerAssignmentRule ){ 
                 triggerAssignmentRule=false;                                    
                 if(!System.isfuture() && !System.isBatch() && !isLoggeInUserMigrationUser && ipsNewRecordList <> null && ipsNewRecordList.size() > 0){                 
                     Core_IPS_CaseTriggerHandler.executeCaseAssignmentRule(oldMap,ipsNewRecordList);                
                 } 
             }
             /* US358368 - FAE an automatic Interested Party if creating a Case and not the Contact ISO  -- START */
+            // New Change code refactor Change added by chiru
+            /* else if (System.Label.Core_IPS_Code_Refactor_Changes_Toggle == 'false'){
+                if(Core_IPS_CaseTriggerHandler.CheckQuiddity()){
+                String str = JSON.serialize(ipsNewRecordList);
+                Core_IPS_CaseTriggerHandler.callingProvideCaseAccessToCreatedFAE(str);
+                }
+            }*/
             if(ipsNewRecordList != null && !ipsNewRecordList.isEmpty()){
                 Core_IPS_CaseTriggerHandler.createFAEASInterestedParty(ipsNewRecordList);
                 Core_IPS_CaseTriggerHandler.createInsterestedPartiesUsingCase(ipsNewRecordList);  
@@ -163,28 +174,26 @@ Modification Log :
             
             //Start - US1005666 - Create Scenario for MyIntel 3.0 Integration
             
-            	Core_IPS_CaseTriggerHandler.myIntelIntegration(ipsOldRecordList, ipsNewRecordList, 'Create');
+                Core_IPS_CaseTriggerHandler.myIntelIntegration(ipsOldRecordList, ipsNewRecordList, 'Create');
             
             //End - US1005666
         }
-        
         if(trigger.isUpdate){
             
             if(ipsNewRecordList <> null && ipsNewRecordList.size() > 0){
                 
                 /* US368211  STOWD Sub Status & Last Assigned Queue fields must capture transactional snapshot data in each record START  */
-                // Commented by Vishal as part of TWC777-3013- STOWD deprecation (26/12/2024)
-                /*
                 if(updateSTOWD){
                     updateSTOWD = false;  
                     Core_IPS_Calc_Durations_Trigger_Handler.calcDurations(ipsNewRecordList);
-                } */             
+                }               
                 /* US368211  STOWD Sub Status & Last Assigned Queue fields must capture transactional snapshot data in each record END */
                 
                 if(recursiveError<=2){
                     recursiveError++ ;  //Added for DE34358 to resolve 101 error -Aparna-20/2/2019
                     Core_IPS_CaseTriggerHandler.manageCaseAccessForCustomer(oldMap,ipsNewRecordList);   //modified by Aayushi to resolve 101 SOQL error DE36384 02-23-2018                          
-                }//end for DE34358               
+                }//end for DE34358 
+        
             }
             
             if(triggerAssignmentRule){
@@ -210,14 +219,11 @@ Modification Log :
             boolean isLoggeInUserIntegrationUser = false;
             //Added logic and Converted to Label as part of Code Refactor TWC745-6459
             if(Core_IPS_CaseTriggerHandler.GlobalUserRecords!=null && Core_IPS_CaseTriggerHandler.GlobalUserRecords.size()>0 && Core_IPS_CaseTriggerHandler.GlobalUserRecords.containskey(userinfo.getuserId())	){
-                
                 if(Core_IPS_CaseTriggerHandler.GlobalUserRecords.get(userinfo.getuserId()).Profile.Name == Label.Core_Integration_Profile_Name){ isLoggeInUserIntegrationUser = true; }
             }
             else{ 
-                
                 isLoggeInUserIntegrationUser = Core_IPS_Case_Comments_Handler.isIntegrationUser(string.valueof(userinfo.getuserId())); 
             }
-           
             if(isLoggeInUserIntegrationUser) {
                 List<Id> caseIds = new List<Id>();
                 for(Integer i=0; i<ipsNewRecordList.size(); i++) {
@@ -231,12 +237,10 @@ Modification Log :
             }
             //End- Chandra
         }
-        
         if(trigger.isDelete) {    
-                    
         }                 
-    }  
-// Addes By Shubham 10/Oct/20205 Hercules Team workflow to Apex trigger ---------Start---------------
+    }
+
     public static void UpdateLastAssignQueufield(List<Case> caselist){
         // Map<Id,String> groupIdMap = new Map<Id,String>();
         List<Case> caseUpsert = new List<Case>();
@@ -245,8 +249,7 @@ Modification Log :
             if(String.valueOf(ca.OwnerId).startsWith('00G')){
  				caseid.add(ca.Id);          
 }		
-		} 
-        if(!caseid.isEmpty()){
+		}
 List<Case> casel = [Select Id,Owner.Name,recordtype.DeveloperName from case where Id In:caseid];
      for(Case cc : casel){
 	 Case oldCase = Trigger.isUpdate? (Case) Trigger.oldMap.get(cc.id): null;
@@ -258,11 +261,10 @@ List<Case> casel = [Select Id,Owner.Name,recordtype.DeveloperName from case wher
           caseUpsert.add(c);   
 }
      
-     }}
+}
      if(!caseUpsert.isEmpty()){
   update caseUpsert;
  }
         
-    }
-    //-----------END--------------
+    } 
 }

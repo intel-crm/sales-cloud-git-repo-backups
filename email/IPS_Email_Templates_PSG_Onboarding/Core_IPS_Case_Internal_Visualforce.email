@@ -1,0 +1,9 @@
+<messaging:emailTemplate subject="test" recipientType="Contact" >
+<apex:image id="Campaign_email_template_1_header"
+value="https://intel--CRMDEVCASE.my.salesforce.com/servlet/servlet.ImageServer?id=015o0000001vfPt&amp;oid=00D3F0000000Nmr"
+height="64" width="64"/>
+<messaging:plainTextEmailBody >
+Congratulations!
+This is your new Visualforce Email Template.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,6 @@
+<!-- Quick Action for Invalid Case 02-04-2020 
+	Created for US591026 LEX: Case Create: Invalid Case
+-->
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:isUrlAddressable" access="global">
+	<c:Core_IPS_LQA_Utility sourceBtn="Invalid Case" showPopup="true" recordId="{!v.recordId}"></c:Core_IPS_LQA_Utility>
+</aura:component>

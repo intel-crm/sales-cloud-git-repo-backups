@@ -1,3 +1,5 @@
 <apex:page standardController="Core_IPS_Project__c" extensions="Core_IPS_Project_Controller" action="{!changeStatusToSubmitted}">
-    <apex:pageMessages ></apex:pageMessages>
+<a href="{!$Page.Core_IPS_submitProject}"></a> <!-- US1027852-- 6/14/2021 -- Niyazuddin -- XSRF With VF Call for appsec security vulnerability and enabled check box for this Page "Require CSRF protection on GET requests"-->
+<a href="{!URLFOR($Page.Core_IPS_submitProject)}"></a> <!-- US1027852-- 6/14/2021 -- Niyazuddin -- XSRF With VF Call for appsec security vulnerability and enabled check box for this Page "Require CSRF protection on GET requests"-->
+<apex:pageMessages ></apex:pageMessages>
 </apex:page>

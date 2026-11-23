@@ -275,25 +275,17 @@
     <label>Deflected Object</label>
     <listViews>
         <fullName>All</fullName>
-        <booleanFilter>1</booleanFilter>
         <columns>NAME</columns>
-        <columns>Core_IPS_Contact_Id__c</columns>
+        <columns>Core_IPS_Product__c</columns>
+        <columns>Core_IPS_Description__c</columns>
+        <columns>Core_IPS_Contact_Email__c</columns>
+        <columns>Core_IPS_Description_on_Coveo__c</columns>
         <columns>Core_IPS_Status__c</columns>
+        <columns>Core_IPS_Contact_Id__c</columns>
         <columns>Core_IPS_Case_ID__c</columns>
         <columns>Core_IPS_Search_JSON__c</columns>
-        <columns>Core_IPS_Description__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Core_IPS_Description_on_Coveo__c</columns>
-        <columns>Core_IPS_Product__c</columns>
-        <columns>Core_IPS_Contact_Email__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IPS_Contact_Email__c</field>
-            <operation>equals</operation>
-            <value>Helen.Herzog@gd-ms.com</value>
-        </filters>
         <label>All</label>
-        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -301,9 +293,10 @@
     <listViews>
         <fullName>All_User</fullName>
         <columns>NAME</columns>
+        <columns>Core_IPS_Description__c</columns>
+        <columns>Core_IPS_Description_on_Coveo__c</columns>
         <columns>Core_IPS_Case_ID__c</columns>
         <columns>Core_IPS_Contact_Id__c</columns>
-        <columns>Core_IPS_Search_String__c</columns>
         <columns>Core_IPS_Status__c</columns>
         <columns>OWNER.ALIAS</columns>
         <columns>OWNER.FIRST_NAME</columns>

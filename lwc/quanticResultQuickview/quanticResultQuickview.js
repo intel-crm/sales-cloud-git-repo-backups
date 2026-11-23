@@ -8,7 +8,11 @@ import {
   HeadlessBundleNames,
   isHeadlessBundle,
 } from 'c/quanticHeadlessLoader';
-import {I18nUtils, getLastFocusableElement} from 'c/quanticUtils';
+import {
+  I18nUtils,
+  getLastFocusableElement,
+  unwrapLockerProxiedObject,
+} from 'c/quanticUtils';
 import {LightningElement, api, track} from 'lwc';
 
 /** @typedef {import("coveo").Result} Result */
@@ -17,11 +21,18 @@ import {LightningElement, api, track} from 'lwc';
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 
 /**
+ * @typedef {Object} ResultWithFolding
+ * @mixes Result
+ * @property {Result} parentResult
+ * @property {Result[]} childResults
+ */
+
+/**
  * The `QuanticResultQuickview` component renders a button which the end user can click to open a modal box containing certain information about a result.
  * @category Result Template
- * @fires CustomEvent#haspreview
+ * @fires CustomEvent#quantic__haspreview
  * @example
- * <c-quantic-result-quickview engine-id={engineId} result={result} maximum-preview-size="100" use-case="search"></c-quantic-result-quickview>
+ * <c-quantic-result-quickview engine-id={engineId} result={result} maximum-preview-size="100" onquantic__haspreview={handleHasPreview}></c-quantic-result-quickview>
  */
 export default class QuanticResultQuickview extends LightningElement {
   /**
@@ -33,9 +44,15 @@ export default class QuanticResultQuickview extends LightningElement {
   /**
    * The result to retrieve a quickview for.
    * @api
-   * @type {Result}
+   * @type {ResultWithFolding}
    */
-  @api result;
+  @api
+  get result() {
+    return this._result;
+  }
+  set result(result) {
+    this._result = unwrapLockerProxiedObject(result);
+  }
   /**
    * The maximum preview size to retrieve, in bytes. By default, the full preview is retrieved.
    * @api
@@ -65,14 +82,6 @@ export default class QuanticResultQuickview extends LightningElement {
    */
   @api previewButtonVariant;
   /**
-   * Indicates the use case where this quickview component is used.
-   * @api
-   * @type {'search'|'case-assist'}
-   * @deprecated The component uses the same Headless bundle as the interface it is bound to.
-   * @defaultValue `'search'`
-   */
-  @api useCase = 'search';
-  /**
    * The label displayed in the tooltip of the quick view button.
    * @api
    * @type {boolean}
@@ -85,6 +94,8 @@ export default class QuanticResultQuickview extends LightningElement {
 
   /** @type {Quickview} */
   quickview;
+  /** @type {ResultWithFolding} */
+  _result;
   /** @type {boolean} */
   isQuickviewOpen = false;
   /** @type {Function} */
@@ -97,6 +108,8 @@ export default class QuanticResultQuickview extends LightningElement {
   resultActionOrderClasses;
   /** @type {boolean} */
   _isLoading = false;
+  /** @type {AnyHeadless} */
+  engine;
 
   labels = {
     close,
@@ -143,6 +156,7 @@ export default class QuanticResultQuickview extends LightningElement {
    * @param {SearchEngine} engine
    */
   initialize = (engine) => {
+    this.engine = engine;
     this.headless = getHeadlessBundle(this.engineId);
     const options = {
       result: this.result,
@@ -166,7 +180,7 @@ export default class QuanticResultQuickview extends LightningElement {
   openQuickview() {
     this.isQuickviewOpen = true;
     this._isLoading = true;
-    if (!isHeadlessBundle(this.engineId, HeadlessBundleNames.caseAssist)) {
+    if (isHeadlessBundle(this.engineId, HeadlessBundleNames.search)) {
       this.addRecentResult();
     }
     this.quickview.fetchResultContent();
@@ -174,12 +188,15 @@ export default class QuanticResultQuickview extends LightningElement {
   }
 
   addRecentResult() {
-    getHeadlessEnginePromise(this.engineId).then((engine) => {
-      const {pushRecentResult} = this.headless.loadRecentResultsActions(engine);
-      engine.dispatch(
-        pushRecentResult(JSON.parse(JSON.stringify(this.result)))
-      );
-    });
+    const {pushRecentResult} = this.headless.loadRecentResultsActions(
+      this.engine
+    );
+
+    // Exclude parentResult and childResults to prevent Salesforce Proxy extensibility errors.
+    // These nested result objects remain proxied after spreading, causing 'isExtensible' trap violations when accessed by the Headless library.
+    // eslint-disable-next-line no-unused-vars
+    const {parentResult, childResults, ...result} = this.result;
+    this.engine.dispatch(pushRecentResult({...result, raw: {...result.raw}}));
   }
 
   closeQuickview() {
@@ -194,7 +211,7 @@ export default class QuanticResultQuickview extends LightningElement {
 
   dispatchHasPreview(hasPreview) {
     this.dispatchEvent(
-      new CustomEvent('haspreview', {
+      new CustomEvent('quantic__haspreview', {
         detail: {
           hasPreview,
         },
@@ -216,6 +233,34 @@ export default class QuanticResultQuickview extends LightningElement {
         slotContent.dataset.id = this.result.uniqueId;
       }
     });
+  }
+
+  handleLoadingStateChange(event) {
+    event.stopPropagation();
+    this._isLoading = false;
+  }
+
+  showTooltip() {
+    this.tooltipComponent?.showTooltip();
+  }
+
+  hideTooltip() {
+    this.tooltipComponent?.hideTooltip();
+  }
+
+  /**
+   * @returns {Object}
+   */
+  get tooltipComponent() {
+    return this.template.querySelector('c-quantic-tooltip');
+  }
+
+  get contentURL() {
+    return this.state.contentURL?.includes(
+      encodeURIComponent(this.result.uniqueId)
+    )
+      ? this.state.contentURL
+      : undefined;
   }
 
   get isLoading() {
@@ -274,14 +319,6 @@ export default class QuanticResultQuickview extends LightningElement {
     return !!this.previewButtonLabel;
   }
 
-  get contentURL() {
-    return this.state.contentURL?.includes(
-      encodeURIComponent(this.result.uniqueId)
-    )
-      ? this.state.contentURL
-      : undefined;
-  }
-
   setFocusToHeader() {
     const focusTarget = this.template.querySelector('c-quantic-result-link');
 
@@ -317,10 +354,6 @@ export default class QuanticResultQuickview extends LightningElement {
         this.setFocusToHeader();
       }
     }
-  }
-
-  onIframeLoaded() {
-    this._isLoading = false;
   }
 
   get lastFocusableElementInFooterSlot() {

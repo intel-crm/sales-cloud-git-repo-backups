@@ -199,11 +199,11 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
                    caseIds.add(att.Core_Case__c);  
                   }  
                }  
-               if(caseIds.size()>0){
-                   //FLS check added-Venugopal
-                   if(case.SObjectType.getDescribe().isAccessible()){
+				//Avoid Deeply Nested IF Statements - Kamala
+				//FLS check added-Venugopal
+               if((caseIds.size()>0) && (case.SObjectType.getDescribe().isAccessible())){
                  	caseList=[SELECT id, core_ips_backend_System__c, assetid, Core_IPS_Product_Org1__c, productID, Core_Case_Issue_Category__c, Core_External_Issue_Category__c, Core_Case_Issue_Sub_Category__c, Core_External_Issue_Subcategory__c,status,Core_IPS_Backend_ID__c,Core_IPS_gec_flag__c,Core_IPS_gec_status__c,core_promote_status__c,Core_IPS_Supported_Product__c FROM case WHERE id=:caseIds];                  
-                   }
+                   
                }
             }
             if(caseList.size()>0){
@@ -483,12 +483,19 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 		Map<Id, List<Core_IPS_Backend_Supported_Product_Map__c>> csBKSuppProdMap;
 		Set<ID> caseSubCatIds = new Set<ID>();
 		Map<Id, Case> csMapUpdate = new Map<Id, Case>();
+        Boolean handleRecursion = false;
 
 		try{      
 			for(Case cs: ListCase){
 				if(cs.id==null){
 					continue; 
 				}
+                //Added by chetan to handle recursion for SOQL Error
+                if(cs.Core_IPS_BackendID__c == null  && cs.Core_IPS_Supported_Product__c != oldMap.get(cs.Id).Core_IPS_Supported_Product__c 
+                   && cs.Core_IPS_Case_Owner__c != oldMap.get(cs.Id).Core_IPS_Case_Owner__c){
+                    handleRecursion = true;
+                }
+                
 				if(cs.core_ips_backend_system__c != null && 
 				// ( cs.Core_IPS_Restricted_Secret_Content__c == null || ( cs.Core_IPS_Restricted_Secret_Content__c != null && cs.Core_IPS_Restricted_Secret_Content__c == false ))&&
 				(cs.core_promote_status__c != null && (cs.core_promote_status__c.equalsignorecase('Promote')|| cs.core_promote_status__c.equalsignorecase('Failed') || cs.core_promote_status__c.equalsignorecase('Done')))){
@@ -528,7 +535,7 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 					Core_IPS_SP_EIOS_Status__c = false];
 					*/
 				//FLS check added-Venugopal
-                		if(Core_IPS_Backend_Supported_Product_Map__c.SObjectType.getDescribe().isAccessible()){
+                if(Core_IPS_Backend_Supported_Product_Map__c.SObjectType.getDescribe().isAccessible()){
 				mapsupptBackend = [SELECT ID, Name, Core_IPS_Backend_System__c, Core_IPS_Default__c,Core_IPS_Queue__c,Core_IPS_Auto_Promote__c, Core_IPS_Supported_Product__c, Core_IPS_Back_Sys_No_Restricted_Secret__c,
                             ( 
                               SELECT Id, Core_IPS_Backend_SP_Map__c, Core_IPS_Case_Category__C, Core_IPS_Case_Category_Name__c, Core_IPS_Case_SubCategory__c, Core_IPS_Case_SubCategory_Name__c 

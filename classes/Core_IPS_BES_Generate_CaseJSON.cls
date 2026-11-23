@@ -308,6 +308,7 @@ public with sharing class Core_IPS_BES_Generate_CaseJSON {
                     }
                     gen.writeStringField(Label.Core_IPS_additional_information, formedAttachemntBody);
                     gen.writeEndObject();
+                    system.debug('comment length'+gen.getAsString().length());
                     
                     genMap.put(String.ValueOf(sObj.get('Id')), gen);
                     
@@ -316,6 +317,7 @@ public with sharing class Core_IPS_BES_Generate_CaseJSON {
         }
         catch(Exception e){
             Core_IPS_BES_LogEntry_Utility.insertLog(e, null, null, null, String.join(caseIdList,','));
+            System.debug('exception'+e.getStackTraceString());
         }
         return genMap;
     }
@@ -377,10 +379,10 @@ public with sharing class Core_IPS_BES_Generate_CaseJSON {
         string getEdqValue ;
         if(customRecList!=null && customRecList.size()>0  && quesAnsMap!=null){
         for(Core_IPS_BES_Questions__c customSettingValues : customRecList){
-	    // Avoid Deeply Nested IF Statements Kamala - TWC745-9117
+            //Avoid Deeply Nested IF Statements Kamala
             if((quesAnsMap.containskey(customSettingValues.Environmental_Detail_Question__c)) && (quesAnsMap.get(customSettingValues.Environmental_Detail_Question__c)!=null)){
                  getEdqValue = String.ValueOf(quesAnsMap.get(customSettingValues.Environmental_Detail_Question__c)).replaceAll('\n','<br>');   
-                }
+            }
         }
     }
         return getEdqValue;

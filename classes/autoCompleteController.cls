@@ -45,7 +45,9 @@ global with sharing class autoCompleteController {
             List<String> fieldList;
             // check to see if the object passed is valid
             Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
-            Schema.SObjectType sot = gd.get(obj);
+            String ob = String.escapeSingleQuotes(obj);
+
+            Schema.SObjectType sot = gd.get(ob);
             if (sot == null) {
                 // Object name not valid
                 return null;
@@ -59,13 +61,13 @@ global with sharing class autoCompleteController {
                 /*for (String s : fieldList) {
                     soql += ', ' + s;
                 }*/
-                for(Schema.FieldSetMember f : Core_Utility.readFieldSet(fieldSetName,obj)) {                        
+                for(Schema.FieldSetMember f : Core_Utility.readFieldSet(fieldSetName,ob)) {                        
                     //ColumnList += '{"mDataProp": "' + f.getFieldPath() + '","sTitle":"' + f.getLabel() + '","defaultContent":""'+ (string.valueOf(f.getType()).contains('DATE') ? ',"Type":"date"':'') +'},';            
                     soql += ', ' + f.getFieldPath();
                 }
             }
             // add the object and filter by name to the soql
-            soql += ' from ' + obj + ' Where ' ;
+            soql += ' from ' + ob + ' Where ' ;
             if(qry.length() > 0)
             {
              soql += '( name ' + filter  + ' OR Core_Code_Name__c ' + filter  + ' OR Core_Platform__c ' + filter + ' OR Core_Alias__c ' + filter + ' ) ';             
@@ -104,8 +106,8 @@ global with sharing class autoCompleteController {
         // else if(qry.trim().length()>1){
             // List<List <sObject>> searchList;
             // String soslQuery = '';
-            // soslQuery = 'find {'+String.escapeSingleQuotes(qry)+'*} IN ALL FIELDS RETURNING '+obj+' (';
-            // List<Schema.FieldSetMember> fieldSetMemberList =  Core_Utility.readFieldSet(fieldSetName,obj);
+            // soslQuery = 'find {'+String.escapeSingleQuotes(qry)+'*} IN ALL FIELDS RETURNING '+ob+' (';
+            // List<Schema.FieldSetMember> fieldSetMemberList =  Core_Utility.readFieldSet(fieldSetName,ob);
             // for(Schema.FieldSetMember fieldSetMemberObj : fieldSetMemberList) {
                 // soslQuery += fieldSetMemberObj.getFieldPath() + ', ';
             // }

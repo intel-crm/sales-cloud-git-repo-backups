@@ -1,0 +1,7 @@
+<apex:page Standardcontroller="Core_IPS_Backend_System2__c">
+    <script>
+      if(!Core_IPS_Backend_System2__c.Core_IPS_Deactivated__c){
+          alert('Display alert');
+      }
+    </script>
+</apex:page>

@@ -11,7 +11,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce BES Inbound message process didn&apos;t start: No matching records found</stringValue>
+                <stringValue>Salesforce BES Inbound message_Test process didn&apos;t start: No matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -23,7 +23,7 @@
         <inputParameters>
             <name>emailAddresses</name>
             <value>
-                <stringValue>sriranjini.narasimhan@intel.com</stringValue>
+                <stringValue>tejaswinix.prafulla.harpanhalli@intel.com</stringValue>
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
@@ -39,7 +39,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce BES Inbound message process didn&apos;t start: Multiple matching records found</stringValue>
+                <stringValue>Salesforce BES Inbound message_Test process didn&apos;t start: Multiple matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -51,7 +51,7 @@
         <inputParameters>
             <name>emailAddresses</name>
             <value>
-                <stringValue>sriranjini.narasimhan@intel.com</stringValue>
+                <stringValue>tejaswinix.prafulla.harpanhalli@intel.com</stringValue>
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
@@ -217,8 +217,8 @@
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>Core_IPS_BES_Inbound-1_InterviewLabel</interviewLabel>
-    <label>BES Inbound message</label>
+    <interviewLabel>Core_IPS_BES_Inbound-2_InterviewLabel</interviewLabel>
+    <label>BES Inbound message_Test</label>
     <loops>
         <name>eventContextCheckLoop</name>
         <label>ContextCheckLoop</label>
@@ -318,7 +318,7 @@
         <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>Hello {!OrganizationName} Admin, 
 
-The BES Inbound message process is configured to start when a Backend Inbound Integration platform event message occurs. A Backend Inbound Integration message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
+The BES Inbound message_Test process is configured to start when a Backend Inbound Integration platform event message occurs. A Backend Inbound Integration message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
 
 Here are the values from the Backend Inbound Integration message.
 Core IPS BES InboundId: {!myVariable_myEvent.Core_IPS_BES_InboundId__c}
@@ -334,7 +334,7 @@ Salesforce Process Automation</text>
         <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>Hello {!OrganizationName} Admin, 
 
-The BES Inbound message process is configured to start when a Backend Inbound Integration platform event message occurs. A Backend Inbound Integration message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
+The BES Inbound message_Test process is configured to start when a Backend Inbound Integration platform event message occurs. A Backend Inbound Integration message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
 
 Here are the values from the Backend Inbound Integration message.
 Core IPS BES InboundId: {!myVariable_myEvent.Core_IPS_BES_InboundId__c}

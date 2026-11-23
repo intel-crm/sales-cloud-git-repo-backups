@@ -1,0 +1,77 @@
+<apex:page controller="Core_IPS_Cache_Checker_Controller">
+    <apex:pageBlock >
+        <table border="0">
+            <tr>
+                <th>Key</th>
+                <th>Data</th>
+                <th>capacity</th>
+                <th>maxTime</th>
+            </tr>
+            <apex:repeat var="cacheVar" value="{!sessionkey}">
+                <tr>
+                    <td>{!cacheVar}</td>
+                    <td>{!cacheData[cacheVar]}</td>
+                    <td>{!capacity}</td>
+                    <td>{!maxTime}</td>
+                </tr>
+            </apex:repeat>
+        </table>
+        
+        <table border="0">
+            <tr>
+                <th>Key</th>
+                <th>Data</th>
+             </tr>
+            <apex:repeat var="otherMethodkey" value="{!otherMethodkey}">
+                <tr>
+                    <td>{!otherMethodkey}</td>
+                    <td>{!otherCacheMethod[otherMethodkey]}</td>
+            
+                </tr>
+            </apex:repeat>
+        </table>
+        <apex:form >
+        <apex:commandButton action="{!createDeflected}" value="PKcreatdeflected"/>
+        </apex:form>
+             </apex:pageBlock>
+        <apex:pageBlock >
+  <apex:outputLabel value="{!deflectedObj.id}"></apex:outputLabel>
+  <apex:outputLabel value="PKTest"></apex:outputLabel>
+  <apex:outputLabel value="{!deflectedId}"></apex:outputLabel>
+    </apex:pageBlock>
+        <apex:pageBlock >
+  <apex:outputLabel value="PKTest"></apex:outputLabel>
+  <apex:outputLabel value="{!deflectedName}"></apex:outputLabel>
+   
+    </apex:pageBlock>
+    
+    <apex:pageBlock >
+    <div style="margin: 10px; font-size: 15px"> Cache Timer: <br/>
+        <div id="get"></div>
+        <div id="put"></div>
+    
+    </div>  
+ 
+    <script>
+        /*Visualforce.remoting.Manager.invokeAction('Core_IPS_Cache_Checker_Controller.putCache', function(result, event) {
+                document.getElementById('put').innerHTML = result;
+            }, { escape: false }
+        );*/
+     
+        var tentative = 1;
+     
+        var timer = setInterval(function () {
+     
+           // if (tentative == 352) clearInterval(timer);
+     
+            Visualforce.remoting.Manager.invokeAction('Core_IPS_Cache_Checker_Controller.getCache', tentative, function (result, event) {
+                    document.getElementById('get').innerHTML = result + '<br/>';
+                }, { escape: false }
+            );
+     
+            tentative++;
+     
+        }, 1000);
+    </script>
+    </apex:pageBlock>
+</apex:page>

@@ -205,7 +205,7 @@
     <columns>
         <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
-    <description>2018 PSG Consumption Revenue Dashboard</description>
+    <description>08/07/17</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Group__c</column>
@@ -236,7 +236,7 @@
             <value>Deal: Sell-to,Deal: Sell-through,Deal: Sell-with</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
@@ -246,20 +246,6 @@
             <column>Opportunity.Core_Commissionable__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Yes</value>
         </criteriaItems>
@@ -305,6 +291,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

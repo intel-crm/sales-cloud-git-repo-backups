@@ -4,25 +4,19 @@
         <field>CONTACT_ID</field>
     </columns>
     <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
         <field>FIRST_NAME</field>
     </columns>
     <columns>
         <field>LAST_NAME</field>
     </columns>
     <columns>
-        <field>EMAIL</field>
-    </columns>
-    <columns>
         <field>CONTACT_OWNER</field>
     </columns>
     <columns>
         <field>Contact.Core_IPS_Intel_Support_Owner__c</field>
-    </columns>
-    <columns>
-        <field>Contact.Core_IPS_Active__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_B2B_Entitlement__c</field>
     </columns>
     <columns>
         <field>Account.Core_Account_ID__c</field>
@@ -36,13 +30,16 @@
     <columns>
         <field>OWNER_FULL_NAME</field>
     </columns>
+    <columns>
+        <field>Contact.Core_IPS_Active__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_CIM_ID__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>10102936</value>
+            <value>10101695</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

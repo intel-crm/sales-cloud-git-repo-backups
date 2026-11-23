@@ -304,6 +304,28 @@ NULL
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <listViews>
+        <fullName>All_Today</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Case__c</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>Core_IPS_Answer__c</columns>
+        <columns>Core_IPS_Agent_Only__c</columns>
+        <columns>Core_IPS_Answer_Master__c</columns>
+        <columns>Core_IPS_Question_Master__c</columns>
+        <columns>Core_IPS_Language__c</columns>
+        <columns>Core_IPS_NPS_Category_Indicator__c</columns>
+        <columns>Core_IPS_Numeric_Answer__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>All Today</label>
+    </listViews>
     <nameField>
         <displayFormat>Resp-{000000}</displayFormat>
         <label>Response No</label>

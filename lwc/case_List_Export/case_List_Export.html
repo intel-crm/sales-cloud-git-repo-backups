@@ -15,7 +15,9 @@
                             <lightning-button variant="brand" label="Case List Export" title="Primary action"
                                 onclick={downloadCSVFile} class="slds-m-left_x-small">
                             </lightning-button>
-                          
+
+                        <lightning-button class="slds-m-left_x-small" variant="brand" label="Private Case List Export" onclick={openVfPage}></lightning-button>
+                        <!-- <p class="note"><strong> Note: </strong> Please use this button to get only Private List Views.</p> -->
 
                         </div>
                     </div>
@@ -29,14 +31,9 @@
             <template if:true={ShowCseTable}>
                 <template if:true={showTable}>
 
-                    <div class="myTable">
-
-                      
+                    <div class="myTable">  
                         <lightning-datatable key-field="CaseNumber" data={paginatedCases} columns={columnsDynamic}
                     hide-checkbox-column="true" min-column-width="130" ></lightning-datatable>
-
-                
-
                         <template if:false={isrefreshPageination}>
                             <c-core_-i-p-s_-paginator_-l-w-c records={finalRecords} total-records={finalRecords.length}
                                 show-search-box="true" onpaginatorchange={handleCasePaginatorChange}>
@@ -58,5 +55,4 @@
             </template>
         </lightning-card>
     </div>
-
 </template>

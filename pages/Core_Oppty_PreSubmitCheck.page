@@ -10,21 +10,39 @@ Description : inline vf page embedded in opportunity page field as 'Pre-Submit C
 * Rajesh infy Team            16/6/2017               Initial Revision
 
 --->
-<apex:page standardController="Opportunity" extensions="Core_OppApproveChecklistCont"  lightningStylesheets="true"> 
-<apex:form id="theForm" > 
-<apex:outputPanel rendered="{!$User.UIThemeDisplayed == 'Theme3'}"> 
-     <apex:outputLink target="_blank" value="{!$Page.Core_OppApproveChecklist}?id={!opportunity.id}" rendered="{!ListtoReview}" title="Link to the checklist of opportunity input needed before submitting for approval" style="font-weight:bold; color:black;margin-left:-1%"> List to Review Before Approval</apex:outputLink> <!-- <span style= "font-weight:bold;color:black;margin-left: 3%;" > </span>  -->
+<apex:page standardController="Opportunity" extensions="Core_OppApproveChecklistCont" > 
+    <!-- Style Panel Satrts--->   
+    <!--<style type="text/css">    
+        .imgclass:hover{   
+            <!-- background-image:url(/img/help/helpOrbs.gif);  
+            background-repeat: no-repeat;   
+            width: 15px;   
+            height: 16px;      
+            background-position:right;
+             
+          
+        }   
+        .imgclass{   
+            background-image:url(/img/help/helpOrbs.gif);   
+            background-repeat: no-repeat;  
+            width: 15px;   
+            height: 16px;         
+        } 
+          </style>   
+    <!-- Style Panel Ends---> 
+    
+<apex:form id="theForm" >  
+                        
+    <!--<span style="color:#4a4a56; padding-left:17%" title="Link to the checklist of opportunity input needed before submitting for approval">-->
+    <!--<apex:outputText><b style="padding-left:16%;">Pre-Submit Check</b> <!--<img src="/img/help/helpOrbs.gif" Class="imgclass" title="Link to the checklist of opportunity input needed before submitting for approval" style="margin-left: -0.7%;height:9%;width:3%"/> -->
+    <!--</apex:outputText>
+    <!--</span>-->
+    
+    <apex:outputLink target="_blank" value="{!$Page.Core_OppApproveChecklist}?id={!opportunity.id}" rendered="{!ListtoReview}" title="Link to the checklist of opportunity input needed before submitting for approval" style="font-weight:bold; color:black;margin-left:-1%"> List to Review Before Approval</apex:outputLink> <!-- <span style= "font-weight:bold;color:black;margin-left: 3%;" > </span>  -->
     <apex:outputLink target="_blank" value="{!$Page.Core_OppApproveChecklist}?id={!opportunity.id}" rendered="{!ARReviewtheList}" title="Link to the checklist of opportunity input needed before submitting for approval" style="font-weight:bold;color:red;margin-left:-1%">AR: Review the List</apex:outputLink>
     <apex:outputLink target="_blank"   value="{!$Page.Core_OppApproveChecklist}?id={!opportunity.id}" rendered="{!Completeflag}" title="Link to the checklist of opportunity input needed before submitting for approval" style="font-weight:bold;color:green;margin-left:-1%">Complete</apex:outputLink>
     <apex:outputLink target="_blank"   value="{!$Page.Core_OppApproveChecklist}?id={!opportunity.id}" rendered="{!Approvedflag}" title="Link to the checklist of opportunity input needed before submitting for approval" style="font-weight:bold;color:black;margin-left:-1%">Approved</apex:outputLink>
     <apex:outputLink target="_blank"   value="{!$Page.Core_OppApproveChecklist}?id={!opportunity.id}" rendered="{!noLinkflag}" ></apex:outputLink>
-</apex:outputPanel>
-<apex:outputPanel rendered="{!$User.UIThemeDisplayed !='Theme3'}">
-    <apex:outputLink target="_self"  value="/one/one.app#/alohaRedirect/apex/Core_OppApproveChecklist?id={!opportunity.id}"   rendered="{!ListtoReview}" title="Link to the checklist of opportunity input needed before submitting for approval" style="font-weight:bold; color:black;margin-left:-1%"> List to Review Before Approval</apex:outputLink> <!-- <span style= "font-weight:bold;color:black;margin-left: 3%;" > </span>  -->
-    <apex:outputLink target="_self"  value="/one/one.app#/alohaRedirect/apex/Core_OppApproveChecklist?id={!opportunity.id}"   rendered="{!ARReviewtheList}" title="Link to the checklist of opportunity input needed before submitting for approval" style="font-weight:bold;color:red;margin-left:-1%">AR: Review the List</apex:outputLink>
-    <apex:outputLink target="_self"  value="/one/one.app#/alohaRedirect/apex/Core_OppApproveChecklist?id={!opportunity.id}"   rendered="{!Completeflag}" title="Link to the checklist of opportunity input needed before submitting for approval" style="font-weight:bold;color:green;margin-left:-1%">Complete</apex:outputLink>
-    <apex:outputLink target="_self"  value="/one/one.app#/alohaRedirect/apex/Core_OppApproveChecklist?id={!opportunity.id}"   rendered="{!Approvedflag}" title="Link to the checklist of opportunity input needed before submitting for approval" style="font-weight:bold;color:black;margin-left:-1%">Approved</apex:outputLink>
-    <apex:outputLink target="_self"  value="/one/one.app#/alohaRedirect/apex/Core_OppApproveChecklist?id={!opportunity.id}"   rendered="{!noLinkflag}" ></apex:outputLink>
- </apex:outputPanel>
- </apex:form>
+  
+</apex:form>
 </apex:page>

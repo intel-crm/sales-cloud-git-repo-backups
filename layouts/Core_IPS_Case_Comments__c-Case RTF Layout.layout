@@ -17,6 +17,14 @@
                 <field>Core_IPS_Case__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CreatedBy_FirstName__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CreatedBy_Name__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Case_Comment_Type__c</field>
             </layoutItems>
@@ -42,7 +50,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_IPS_BES_ExtCommentID__c</field>
+                <field>Core_IPS_BES_Promote_Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>formula_test__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -76,7 +88,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_IPS_BES_Promote_Status__c</field>
+                <field>Core_IPS_BES_ExtCommentID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_BgColor__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

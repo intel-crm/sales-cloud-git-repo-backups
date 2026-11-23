@@ -1,0 +1,10 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute type ="String" name ="recordId"/>  
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" access="global" />
+
+    <div class="slds-text-heading_small slds-align_absolute-center">
+
+
+         <c:core_IPS_Interested_Party_Internal recordId="{!v.recordId}" onclose="{!c.closeQA}"/> recordId
+    </div>
+</aura:component>

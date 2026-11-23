@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>http://localhost:7171/OauthRedirect</callbackUrl>
+    <certificate>MIIDOTCCAiGgAwIBAgIUH3G/fJslBEIE7U0e1XB9/q0KFdswDQYJKoZIhvcNAQEL
+BQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM
+GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yNjA2MDIxMDA0MThaFw0yNzA2
+MDIxMDA0MThaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw
+HwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQCY8km54OMaPyyTXN8xqhdQIe8qvCOHkRiidtZFkndc
+niFNeW4tfl/cjPaPH7iOqGqHRuWvh1sGthn0PqQIrmLAc7vzl5o60yQyd2l9yrhS
+1+umSGvSubqwdVbATRc/zD7f6QukLE9cTz831eq6zsy3wGiA9R5WsnDZWsclvZej
+ds+Yc8REw3dCbQ8CLI/ws7U76ULIsJWxyN+vhWT6gpxA9EiypiQN4FgdeMLaRr+o
+FfI/OpurBhsvCzVyOJf5jUwPv5J2QzvRSL/W0RlvaKezohFkzapyDdwJhDm2tatN
+/1lqAO081EAkFR2X8cIeRUQ0V1U9AzWLF8c02r6UW7a5AgMBAAGjITAfMB0GA1Ud
+DgQWBBS+3gTMLy7/f0K84mKkbU9D3xtMnDANBgkqhkiG9w0BAQsFAAOCAQEAQzoO
+1uy0HJXT21EFK6+Ey5G7jeXtBGb9JFbALzePBtCLdHc/ei6RTHPbI0zSKC8Ztzdz
+FIcI9XkAosknd1xJ785irR7digeGJ5Rjxq2Ondt7gDO5T4R72/iBUtStqoZpSR1r
+/I81slgDh5BvGfid6r8NI0yyXl0ggp37FMp4+mrdr5DGP+8NPTvuiclsO8eU6dXL
+OojXTalHSXSuGzKaV+VUyZACYtdGj3MPRlJ93yItT1jdwFoXZHpzu4t8ybJFkLmO
+n4FpwJogFGo7/jXLfmAJquZ27viz2fyUyAIL9VW32L7S956VI3R2ReNP3ZH+FST1
+wyNvFivCsHU1NY06og==</certificate>
+    <consumerKey>3MVG9JamK_x9K2XIz6FKasGquU4aLMl2gAc2_TnkXvLglp3defimxUvQFvvAXXVtP.mU2MSOeZhfImvl2DhL.</consumerKey>
+    <externalClientApplication>Test_Jason</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>Test_Jason_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

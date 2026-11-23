@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>HANGZHOU H3C TECHNOLOGIES CO., LTD. Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>HANGZHOU H3C TECHNOLOGIES CO., LTD. Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_10650534_Jeff_C_Ma</parentRole>
+</Role>

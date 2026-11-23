@@ -1,0 +1,86 @@
+{
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "a06b628e-5570-4da4-aa80-0885f4d868e9",
+  "label" : "Create Form 2",
+  "regions" : [ {
+    "id" : "92b4147c-e318-4232-b0e1-9edc37996bae",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_caseCreation_Form_Full",
+      "id" : "54375132-62d0-4f06-b26b-84772efac590",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "740c0e36-d02b-45be-870d-44820eee5b7d",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "fe09f99b-8eb0-4b19-ba6c-83e131c07adb",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "7d7e6396-e26c-453c-8bb8-6b4d952fe598",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "229778e9-ec86-4600-b2b6-b06292c602a7",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "7ff903ed-afa8-4481-a319-8feb1174e0a5",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "b06fa144-74a3-47ce-983b-5c126060eecb",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "d4268bd6-ed81-47c8-b49d-21ce079144ed",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "8609b016-fa0f-4914-9828-c66be49ea79b",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "d98b37d4-be4b-4435-ad34-915f9eece5c4",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "f963f07a-80c1-4041-ae7b-01798d311c22",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "76ffeff7-d0f1-499f-947f-7f0bcaef4c4b",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "a2093d62-c64a-4679-9035-4f493c1aeeea",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Create Form 2"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "838f6d78-2d32-4c2f-806f-bfe95e96b4a0",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "98951953-9fb5-4a84-a3aa-bb14ebc07ccf",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "qbwA0O606VoVdt9qmVmy30Ap0RqvoL",
+  "type" : "view",
+  "viewType" : "custom-create-form-2"
+}

@@ -11,8 +11,6 @@
     // $Label.c.PMP_SSO_Leads
     // $Label.c.PMP_SSO_Licensing
     // $Label.c.PMP_SSO_Marketplace
-    // $Label.c.PMP_SSO_Credit
-    // $Label.c.PRM_CiDaaS_Enabled
 
     // There is a listener in the community's HEAD script that will listen for this message
     const fullLocation = `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}`;

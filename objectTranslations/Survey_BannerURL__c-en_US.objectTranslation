@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Survey_BannerURL</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Survey_BannerURL</value>
+    </caseValues>
+    <fields>
+        <label><!-- core_IPS_SurveyBanner_Url --></label>
+        <name>core_IPS_SurveyBanner_Url__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

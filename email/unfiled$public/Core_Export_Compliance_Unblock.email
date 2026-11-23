@@ -1,0 +1,1 @@
+Account {!Account.Name} with CIM ID: {!Account.Core_CIM_ID__c} which was previously blocked for transactions by export compliance team has been unblocked. It is available for transactions. Please check account and make necessary changes, like account owner, account tier, if any.

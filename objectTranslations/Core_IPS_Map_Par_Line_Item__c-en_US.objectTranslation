@@ -145,6 +145,28 @@
         <label><!-- Map Item Internal Assigned Subject --></label>
         <name>Map_Item_internal_Subject__c</name>
     </fields>
+    <fields>
+        <help><!-- created as part of Taurus POC, please ignore --></help>
+        <label><!-- Subscription Expiration Date --></label>
+        <name>Subscription_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Created as part of Taurus POS, please ignore --></help>
+        <label><!-- Support Tier --></label>
+        <name>Support_Tier__c</name>
+        <picklistValues>
+            <masterLabel>Tier1</masterLabel>
+            <translation><!-- Tier1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier2</masterLabel>
+            <translation><!-- Tier2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier3</masterLabel>
+            <translation><!-- Tier3 --></translation>
+        </picklistValues>
+    </fields>
     <recordTypes>
         <description><!-- Record Type for Managed Access Policies (MAP) --></description>
         <label><!-- MAP --></label>
@@ -162,6 +184,10 @@
 PLEASE NOTE:  You cannot manually create new Product Access Line Items through this screen.  Instead, you must add Accounts to the Accounts List or you must add products to the Products List. --></errorMessage>
         <name>Core_Account_Required</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Core_IPS_Inactivate_Line_Item --></label>
+        <name>Core_IPS_Inactivate_Line_Item</name>
+    </webLinks>
     <webLinks>
         <label><!-- Core_Line_Item_Inactivate --></label>
         <name>Core_Line_Item_Inactivate</name>

@@ -16,9 +16,6 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
-        <field>field_key</field>
-    </columns>
-    <columns>
         <field>CASE_OWNER</field>
     </columns>
     <filter>
@@ -29,12 +26,24 @@
             <operator>equals</operator>
             <value>CHD - Retail-WW</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>closed.,created.</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
-        <field>CASE_CREATED_DATEONLY</field>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>field_key</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -57,7 +66,9 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CASE_CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2017-08-07</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-03-01</startDate>
     </timeFrameFilter>
 </Report>

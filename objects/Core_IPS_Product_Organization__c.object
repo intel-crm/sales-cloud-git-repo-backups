@@ -128,22 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Support_Org_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Support_Org_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -153,7 +147,7 @@
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>true</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
@@ -172,12 +166,25 @@
         <label>SupportOrgFieldSet</label>
     </fieldSets>
     <fields>
+        <fullName>Core_External_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_IPS_Support_Org_Name__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Brief name or acronym of the IPS Support Org. May or may not align with the Intel Business Unit aka Division name.</inlineHelpText>
         <label>Support Org Name</label>
         <length>255</length>
         <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -191,10 +198,20 @@
         <label>Product Focus Area</label>
         <length>255</length>
         <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>no_of_edqs_del__c</fullName>
+        <label>no:of edqs</label>
+        <summaryForeignKey>Core_IPS_Environment_Variables__c.Core_Product_Organization__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
     </fields>
     <label>Support Org</label>
     <listViews>
@@ -205,10 +222,8 @@
         <columns>OWNER.ALIAS</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>IPS Support Orgs - All</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>Core_IPS_Org_003_Client_LAN_Core_IPS_Product_Organization</fullName>
@@ -226,7 +241,7 @@
         <filters>
             <field>Core_IPS_Support_Org_Name__c</field>
             <operation>contains</operation>
-            <value>CHD</value>
+            <value>IPS - Org - Test Org 0</value>
         </filters>
         <label>IPS - PSG</label>
         <language>en_US</language>
@@ -235,39 +250,19 @@
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_026_Core_IPS_Product_Organization</fullName>
+        <fullName>Core_IPS_Org_090_Core_IPS_Product_Organization</fullName>
         <filterScope>Queue</filterScope>
-        <label>IPS - IOG</label>
-        <queue>Core_IPS_Org_026</queue>
+        <label>IPS-IOG</label>
+        <queue>Core_IPS_Org_090</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_027_Core_IPS_Product_Organization</fullName>
+        <fullName>Sample_Queue_AM_Core_IPS_Product_Organization</fullName>
         <filterScope>Queue</filterScope>
-        <label>IPS - AXG-XCC</label>
-        <queue>Core_IPS_Org_027</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_028_Core_IPS_Product_Organization</fullName>
-        <columns>NAME</columns>
-        <filterScope>Queue</filterScope>
-        <label>IPS-SMG</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_028</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_028</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_029_Core_IPS_Product_Organization</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IGT</label>
-        <queue>Core_IPS_Org_029</queue>
+        <label>Sample Queue AM</label>
+        <queue>Sample_Queue_AM</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -275,10 +270,12 @@
     <nameField>
         <displayFormat>Org-{000}</displayFormat>
         <label>Support Org Number</label>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Support Orgs</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>IPS_Support_Org</fullName>
@@ -290,6 +287,7 @@
         <customTabListAdditionalFields>Core_Organization_Description__c</customTabListAdditionalFields>
         <excludedStandardButtons>Accept</excludedStandardButtons>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <lookupDialogsAdditionalFields>Core_IPS_Support_Org_Name__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Core_Organization_Description__c</lookupDialogsAdditionalFields>
         <searchResultsAdditionalFields>Core_IPS_Support_Org_Name__c</searchResultsAdditionalFields>
@@ -318,6 +316,17 @@
         <url>/00Oo00000056kZk</url>
     </webLinks>
     <webLinks>
+        <fullName>Core_IPS_Create_Map</fullName>
+        <availability>online</availability>
+        <description>Create Product Access - Create MAP</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create Product Access</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>window.open(&quot;/apex/Core_IPS_Create_MAP?scontrolCaching=1&amp;id={!Core_IPS_Product_Organization__c.Id}&amp;eType=Map&quot;,&quot;_blank&quot;);</url>
+    </webLinks>
+    <webLinks>
         <fullName>Core_IPS_Env_Details_Master_Q_A_Report</fullName>
         <availability>online</availability>
         <description>All Master Environment Details configured for the Support Org, together with Answers, DataType and Status</description>
@@ -335,7 +344,7 @@
         <protected>false</protected>
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
-        <url>/00O1J000005tLk9?pv1={!Core_IPS_Product_Organization__c.Name}</url>
+        <url>/00O3F000000SFtT?fvo={!Core_IPS_Product_Organization__c.Name}</url>
     </webLinks>
     <webLinks>
         <fullName>Core_IPS_Environment_Details_Subcategories</fullName>
@@ -355,7 +364,7 @@
         <protected>false</protected>
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
-        <url>/00Oo00000056kZj?pv0={!Core_IPS_Product_Organization__c.Name}</url>
+        <url>/00Oo00000056kZj?fv0={!Core_IPS_Product_Organization__c.Name}</url>
     </webLinks>
     <webLinks>
         <fullName>Core_IPS_Environment_Details_Supported_Products</fullName>
@@ -375,7 +384,7 @@
         <protected>false</protected>
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
-        <url>&quot;/00Oo00000056kZn?pv0={!Core_IPS_Product_Organization__c.Name}&quot;</url>
+        <url>/00Oo00000056kZnEAI?fv0={!Core_IPS_Product_Organization__c.Name}</url>
     </webLinks>
     <webLinks>
         <fullName>Core_IPS_Pending_PAR_Report_Link</fullName>

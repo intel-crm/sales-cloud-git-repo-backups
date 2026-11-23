@@ -11,15 +11,15 @@
 public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
     public static user userRecord;
     static testMethod  void userTest(){
-            ID recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
             Account acc = new Account();
             acc.Name='Test Account';
             acc.Core_IPS_Active__c=True;
             acc.BillingCity='Hyderabad';
             acc.BillingCountry='India';
             acc.BillingStreet='Banjara Hills Hyderabad';
-            acc.RecordTypeId = recordTypeId;
             insert acc;
+        	System.assert(acc.Id != null, 'Record not created');
+
             Contact cont =new Contact();
             cont.Core_IPS_Email_Opt_Out__c= true;
             cont.FirstName='test';
@@ -37,7 +37,8 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
             userRecord.username = 'TestClassUser@intel.com';
             userRecord.ProfileID = ProfileRec.id;
             insert userRecord;
-            
+            System.assert(userRecord.Id != null, 'Record not created');
+
             system.runAs(userRecord){
             
             Core_IPS_Project__c Project = new Core_IPS_Project__c();
@@ -46,15 +47,16 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
             Project.Core_IPS_Private__c= true; //US230261
             insert Project;
             update Project;
-            
-            
+            System.assert(Project.Id != null, 'Record not created');
+
             
             PermissionSet ps = [SELECT Id,Name FROM PermissionSet WHERE Name = 'Core_IPS_Permission_Set'];
-            
             PermissionSetAssignment psa = new PermissionSetAssignment();
             psa.AssigneeId = userRecord.Id;
             psa.PermissionSetId = ps.Id;
-            insert psa;           
+            insert psa; 
+            System.assert(psa.Id != null, 'Record not created');
+
           /*  PageReference pageRef = Page.Core_IPS_Project_Detail_Page;
             Test.setCurrentPage(pageRef); */
             ApexPages.Standardcontroller sc = new ApexPages.Standardcontroller(Project);
@@ -73,7 +75,8 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
             coreIpsProjList.add(coreIpsProj);
             coreIpsProjList.add(coreIpsProj1);
             insert coreIpsProjList;
-            
+            System.assert(coreIpsProjList[0].Id != null, 'Record not created');
+
             Test.startTest();
             ApexPages.StandardController stdContrl = new ApexPages.StandardController(Project);
             Core_IPS_Project_Edit_Detail_Controller contr = new Core_IPS_Project_Edit_Detail_Controller(stdContrl);
@@ -91,15 +94,15 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
         }
    }
    static testMethod  void userTestNegative(){
-            ID recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
             Account acc = new Account();
             acc.Name='Test Account';
             acc.Core_IPS_Active__c=True;
             acc.BillingCity='Hyderabad';
             acc.BillingCountry='India';
             acc.BillingStreet='Banjara Hills Hyderabad';
-            acc.RecordTypeId = recordTypeId;
             insert acc;
+       		System.assert(acc.Id != null, 'Record not created');
+
             Contact cont =new Contact();
             cont.Core_IPS_Email_Opt_Out__c= true;
             cont.FirstName='test';
@@ -109,6 +112,7 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
             cont.Core_IPS_Active__c= True;
        		cont.MailingCountry = 'India';
             insert cont;
+			System.assert(cont.Id != null, 'Record not created');
             
             //Create User        
             Profile prof = [SELECT Id FROM Profile WHERE Name='IPS Agent-Partner' LIMIT 1]; 
@@ -118,12 +122,14 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
             LocaleSidKey='en_US', ProfileId = prof.Id, ContactId=cont.id, 
             TimeZoneSidKey='America/Los_Angeles', UserName='popconrnapp@intel.com',isActive=true);
             insert u;
-            
+            System.assert(u.Id != null, 'Record not created');
+
             Core_IPS_Project__c Project = new Core_IPS_Project__c();
             Project.Name = 'Test';
             Project.Core_Status__c = 'Draft';
             insert Project;
-            
+            System.assert(Project.Id != null, 'Record not created');
+
         /*    PageReference pageRef = Page.Core_IPS_Project_Detail_Page;
             Test.setCurrentPage(pageRef); */
             ApexPages.Standardcontroller sc = new ApexPages.Standardcontroller(Project);
@@ -140,7 +146,7 @@ public class Core_IPS_Project_Edit_Detail_Ctrl_Test {
             coreIpsProjList.add(coreIpsProj);
             coreIpsProjList.add(coreIpsProj1);
             insert coreIpsProjList;
-            system.assert(coreIpsProjList!= null);
+       		system.assert(coreIpsProjList!= null);
             Test.startTest();
             ApexPages.StandardController stdContrl = new ApexPages.StandardController(Project);
             Core_IPS_Project_Edit_Detail_Controller contr = new Core_IPS_Project_Edit_Detail_Controller(stdContrl);

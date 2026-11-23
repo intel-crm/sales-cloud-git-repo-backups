@@ -275,7 +275,7 @@
     </fields>
     <label>Routing Criterion</label>
     <listViews>
-        <fullName>All</fullName>
+        <fullName>All1</fullName>
         <columns>Core_IPS_Backend_System__c</columns>
         <columns>NAME</columns>
         <columns>Core_IPS_Product__c</columns>
@@ -288,13 +288,14 @@
         <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
+        <columns>Core_IPS_Queue__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_IPS_Support_Organization__c</field>
-            <operation>contains</operation>
-            <value>client computing</value>
+            <operation>equals</operation>
         </filters>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Rule Name</label>

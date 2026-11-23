@@ -54,10 +54,6 @@
                 <behavior>Edit</behavior>
                 <field>Description</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Status_Update__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
@@ -153,12 +149,12 @@
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewTask</actionName>
+            <actionName>NewContact</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewEvent</actionName>
+            <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>4</sortOrder>
         </platformActionListItems>
@@ -169,18 +165,28 @@
         </platformActionListItems>
         <platformActionListItems>
             <actionName>SendEmail</actionName>
-            <actionType>QuickAction</actionType>
+            <actionType>StandardButton</actionType>
             <sortOrder>6</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Core_Lex_Opp_Sharing</actionName>
-            <actionType>CustomButton</actionType>
+            <actionName>Submit</actionName>
+            <actionType>StandardButton</actionType>
             <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Sales_Support</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>8</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Core_Opportunity_Clone_Button</actionName>
             <actionType>CustomButton</actionType>
-            <sortOrder>8</sortOrder>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SendEmail</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>10</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedContent>
@@ -235,16 +241,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Core_Opp_Hist_Approved_By__c</fields>
-        <fields>Core_Opp_Hist_Manager_Approved_Date__c</fields>
-        <fields>Core_Opp_Hist_Claim_Date__c</fields>
-        <fields>Core_Opp_Hist_Approved_Quantity__c</fields>
-        <fields>Core_Opp_Hist_Approved_Sales_Group__c</fields>
-        <fields>Core_Opp_Hist_Approved_Sales_Price__c</fields>
-        <fields>Core_Opp_Hist_Approved_Total_Price__c</fields>
-        <fields>Core_Opp_Hist_Product__c</fields>
-        <fields>Core_Opp_Hist_Approved_BU_Short_Name__c</fields>
-        <relatedList>Core_Opportunity_Approval_History__c.Core_Opp_Hist_Core_Opportunity__c</relatedList>
+        <relatedList>Core_IPS_Opportunity_PAR__c.Opportunity__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

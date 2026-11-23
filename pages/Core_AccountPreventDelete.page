@@ -1,8 +1,8 @@
 <apex:page action="{!if(($Profile.Name <> "Integration") && ($Profile.Name <> "System Administrator") && ($Profile.Name <> "IT Admin"),
-                        null,
-                        urlFor($Action.Account.Delete, $CurrentPage.Parameters.id, [retURL='/001'], true))}"
+						null,
+						urlFor($Action.Account.Delete, $CurrentPage.Parameters.id, [retURL='/001'], true))}"
            standardController="Account">
-    <apex:pageBlock >
+	<apex:pageBlock >
         <apex:pageMessage summary="You are not allowed to delete Accounts" severity="Warning" strength="3"/>
         <apex:pageMessages />
     </apex:pageBlock>

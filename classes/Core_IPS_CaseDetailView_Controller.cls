@@ -75,7 +75,7 @@ public with sharing class Core_IPS_CaseDetailView_Controller {
              if(subStatusPickList.getValue() != 'Closed'){
                 if(subStatusValue.contains(subStatusPickList.getValue())){
                     selection.add(new CustomSection(subStatusPickList.getLabel(),subStatusPickList.getValue()));
-                } else {
+                } else{
                       if((caseRecord.Core_Sub_Status__c == subStatusPickList.getValue()) && (currentSubStatus != '')){
                         selection.add(new CustomSection(subStatusPickList.getLabel(),subStatusPickList.getValue()));
                       }
@@ -88,9 +88,9 @@ public with sharing class Core_IPS_CaseDetailView_Controller {
                     if(subStatusValue.contains(subStatusPickList.getValue())){
                         selection.add(new CustomSection(subStatusPickList.getLabel(),subStatusPickList.getValue()));
                     } else {
-                        if((caseRecord.Core_Sub_Status__c == subStatusPickList.getValue()) && (currentSubStatus != '')){
+                          if((caseRecord.Core_Sub_Status__c == subStatusPickList.getValue()) && (currentSubStatus != '')){
                             selection.add(new CustomSection(subStatusPickList.getLabel(),subStatusPickList.getValue()));
-                          }
+                         }
                     }
                 }
             } 

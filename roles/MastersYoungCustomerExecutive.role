@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Masters &amp; Young Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Masters &amp; Young Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11554283_Wei_Jing_Tan</parentRole>
+</Role>

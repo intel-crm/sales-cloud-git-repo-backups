@@ -127,11 +127,11 @@
             <value>Deal: Sell-to,Deal: Sell-through,Deal: Sell-with,Deal: Scale-Estimate (per Finance)</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
+            <column>Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>PRC Sales Group</value>
+            <value>Regional Sales</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -154,7 +154,6 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <roleHierarchyFilter>SMG</roleHierarchyFilter>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
@@ -163,6 +162,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2020-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

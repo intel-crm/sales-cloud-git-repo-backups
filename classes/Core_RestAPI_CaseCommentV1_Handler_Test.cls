@@ -69,7 +69,7 @@ public class Core_RestAPI_CaseCommentV1_Handler_Test{
             requestObj.requestUri ='/v1.0/cases/'+objCase.CaseNumber+'/comments';
             requestObj.httpMethod = 'GET';
             RestContext.request = requestObj;
-           
+            
             Core_RestAPI_CaseCommentV1_Handler handler = new Core_RestAPI_CaseCommentV1_Handler(System.now(), 'Core_RestAPI_CaseCommentsV1'); 
             Core_RestAPI_Response finalResponse = null;
             handler.response.successContent = null;

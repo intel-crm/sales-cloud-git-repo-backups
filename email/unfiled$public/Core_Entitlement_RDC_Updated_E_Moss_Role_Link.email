@@ -1,0 +1,18 @@
+<br/>
+{ <br/>
+
+     "Operation": "UPDATE", <br/>
+
+     "Entitlement": "Resource & Design Center Collaboration Spaces", <br/>
+
+     "LoginId": "{!Contact.Core_Login_Id__c}", <br/>
+
+     "EmailAddress": "{!Contact.Email}", <br/>
+
+     "SFDCAccountId": "{!Account.Id}", <br/>
+
+     "SFDCAccountName": "{!Account.Name}"<br/>
+
+{!Contact.Link}
+    
+}

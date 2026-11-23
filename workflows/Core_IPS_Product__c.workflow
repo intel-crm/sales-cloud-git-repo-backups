@@ -7,7 +7,11 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <recipients>
+            <recipient>gangadharx.raju.udayabhanu.devcase@intel.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Project_Item_Internal_Item_Updated</template>
     </alerts>
@@ -18,7 +22,11 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <recipients>
+            <recipient>gangadharx.raju.udayabhanu.devcase@intel.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Project_Item_Internal_Item_Updated</template>
     </alerts>
@@ -101,6 +109,7 @@
             <operation>notEqual</operation>
             <value>Active</value>
         </criteriaItems>
+        <failedMigrationToolVersion>254.9.4</failedMigrationToolVersion>
         <triggerType>onAllChanges</triggerType>
     </rules>
 </Workflow>

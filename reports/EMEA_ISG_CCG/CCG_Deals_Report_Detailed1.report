@@ -18,6 +18,9 @@
             <value>ENY</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
             <value>FSI</value>
         </values>
         <values>
@@ -33,6 +36,12 @@
             <value>HLS</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
             <value>IND</value>
         </values>
         <values>
@@ -78,6 +87,9 @@
             <value>ENY</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
             <value>FSI</value>
         </values>
         <values>
@@ -93,6 +105,12 @@
             <value>HLS</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
             <value>IND</value>
         </values>
         <values>
@@ -204,6 +222,9 @@
             <value>ENY</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
             <value>FSI</value>
         </values>
         <values>
@@ -219,6 +240,12 @@
             <value>HLS</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
             <value>IND</value>
         </values>
         <values>
@@ -283,7 +310,7 @@
         <field>INDUSTRY</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Solution_Focus__c</field>
@@ -392,7 +419,7 @@
             <value>OSC Solo</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -434,6 +461,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

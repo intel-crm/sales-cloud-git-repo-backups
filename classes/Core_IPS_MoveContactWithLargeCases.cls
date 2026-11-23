@@ -66,7 +66,7 @@ public without sharing class  Core_IPS_MoveContactWithLargeCases {
     private Account getTargetAccountObj(){
         if(targetAccount.AccountId != null){
             try{
-                targetAccountObj = [select Id, Name, Core_IsODM__c, Core_CNDA_Number__c, Core_CIM_ID__c,Core_Business_Party_Id__c, Core_English_Only_Name__c, Core_Export_Compliance_Block__c , 
+                targetAccountObj = [select Id, Name, Core_IsODM__c, Core_CNDA_Number__c, Core_CIM_ID__c, Core_English_Only_Name__c, Core_Export_Compliance_Block__c , 
                                     Core_IPS_Active__c, Core_B2B_Entitlement__c, Core_Export_Compliance_Block_Reason__c, Owner.UserRole.Name, Core_PSG_Account__c
                                     FROM Account where ID =:targetAccount.AccountId Limit 1];
             }catch(Exception e){
@@ -113,7 +113,7 @@ public without sharing class  Core_IPS_MoveContactWithLargeCases {
         contactLookUp = new Case();
         //FLS Check Added - Yasasvi
         if(Case.SObjectType.getDescribe().isAccessible()){
-          contactLookUp.Id = [select Id from Case Limit 1].Id;
+        	contactLookUp.Id = [select Id from Case Limit 1].Id;
         }
         targetAccount = new Contact();
         userAuthorized = false;
@@ -326,13 +326,8 @@ public without sharing class  Core_IPS_MoveContactWithLargeCases {
             return flag;
         }
         
-        /*if(String.isBlank(targetAccountObj.Core_CIM_ID__c)  && keepEntitlements == true ){
+        if(String.isBlank(targetAccountObj.Core_CIM_ID__c)  && keepEntitlements == true ){
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'CIM ID must be filled manually by the user on the Account record : '+targetAccountObj.Name));
-            return flag;
-        }*/
-        
-        if(String.isBlank(targetAccountObj.Core_Business_Party_Id__c)  && keepEntitlements == true ){
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Unified Id must be filled manually by the user on the Account record : '+targetAccountObj.Name));
             return flag;
         }
         
@@ -430,9 +425,9 @@ public without sharing class  Core_IPS_MoveContactWithLargeCases {
                 //if (Schema.sObjectType.Contact.fields.Core_AGS_Integration_Status__c.isUpdateable()) {
                 currContact1.Core_AGS_Integration_Status__c = PENDING;
                 //}
-                //if (Schema.sObjectType.Contact.fields.AccountId.isUpdateable()) {
+                if (Schema.sObjectType.Contact.fields.AccountId.isUpdateable()) {
                 currContact1.AccountId = targetAccount.accountId;
-                //}
+                }
                 //if (Schema.sObjectType.Contact.fields.Core_Account_Changeable__c.isUpdateable()) {
                 currContact1.Core_Account_Changeable__c= true;
                 //}
@@ -562,7 +557,6 @@ public without sharing class  Core_IPS_MoveContactWithLargeCases {
                     ceObject.Core_Selected__c = false;
                     ceObject.Core_Status__c = PENDING;
                     ceObject.Core_Update_Reason__c = UPDATE_REASON_CHANGE_ACCOUNT;
-                    ceObject.Core_Status_of_Assignment_Failure__c = 'Pending Removal';
                     //ceList.add(ceObject);
                 }
                 update ceMap.values();
@@ -640,8 +634,9 @@ public without sharing class  Core_IPS_MoveContactWithLargeCases {
         
         
         for(Case objCaseRef : lstCases){
-            
+             if (Schema.sObjectType.case.fields.AccountId.isCreateable()) {
             objCaseRef.AccountId = accId;
+             }
             
             if(objCaseRef.Core_IPS_Project_Case__c == null && objCaseRef.AccountID != null && objCaseRef.Core_IPS_Product_Org1__c !=null && objCaseRef.Core_IPS_Supported_Product__c!= null && objCaseRef.Asset.recordtypeid!=assetPublicRecordId){
                 string strKey_Asset = string.valueof(objCaseRef.AccountID) + string.valueof(objCaseRef.Core_IPS_Product_Org1__c)  +  string.valueof(objCaseRef.Core_IPS_Supported_Product__c) ;
@@ -668,9 +663,9 @@ public without sharing class  Core_IPS_MoveContactWithLargeCases {
                         //if (Schema.sObjectType.Asset.fields.recordtypeid.isCreateable()) {
                         objAsset.recordtypeid = schema.sobjecttype.Asset.getrecordtypeinfosbyname().get('IPS Asset').getRecordTypeId();
                         //}
-                        //if (Schema.sObjectType.Asset.fields.AccountId.isCreateable()) {
+                        if (Schema.sObjectType.Asset.fields.AccountId.isCreateable()) {
                         objAsset.AccountId = objCaseRef.AccountId;
-                        //}
+                        }
                         //if (Schema.sObjectType.Asset.fields.Core_Product_Organization__c.isCreateable()) {
                         objAsset.Core_Product_Organization__c = objCaseRef.Core_IPS_Product_Org1__c;
                         //}

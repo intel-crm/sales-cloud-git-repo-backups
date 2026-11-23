@@ -21,6 +21,6 @@
             <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_CEP_Response_Email</template>
+        <template>unfiled$public/Core_CEP_Response_Email</template>
     </alerts>
 </Workflow>

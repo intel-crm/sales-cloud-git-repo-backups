@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "f311f649-e0e5-478a-a359-a0f4f0d64d70",
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "configurationTags" : [ ],
+  "devName" : "Core_IPS_CaseAdvanceSearch__c",
+  "id" : "4f7eea18-9724-4833-a6ce-cb65e5c9b0bf",
+  "label" : "Advance Search",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-advance-search",
+  "type" : "route",
+  "urlPrefix" : "advance-search"
+}

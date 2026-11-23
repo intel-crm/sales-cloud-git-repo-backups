@@ -9,20 +9,8 @@
         <value>Opportunity Facts</value>
     </caseValues>
     <fields>
-        <label><!-- AI Content in System --></label>
-        <name>Core_AI_Content_in_System__c</name>
-    </fields>
-    <fields>
         <label><!-- Ambient Temp Req --></label>
         <name>Core_Ambient_Temp_Req__c</name>
-    </fields>
-    <fields>
-        <label><!-- Athena Candidate? --></label>
-        <name>Core_Athena_Candidate__c</name>
-    </fields>
-    <fields>
-        <label><!-- Battery Life Target --></label>
-        <name>Core_Battery_Life_Target__c</name>
     </fields>
     <fields>
         <label><!-- Biz MFA --></label>
@@ -59,14 +47,6 @@
     <fields>
         <label><!-- Consumer Factor Login --></label>
         <name>Core_Consumer_Factor_Login__c</name>
-    </fields>
-    <fields>
-        <label><!-- Consumer Sales Category --></label>
-        <name>Core_Consumer_Sales_Category__c</name>
-    </fields>
-    <fields>
-        <label><!-- Consumer Sales System --></label>
-        <name>Core_Consumer_Sales_System__c</name>
     </fields>
     <fields>
         <label><!-- Contains 2:1 --></label>
@@ -117,20 +97,12 @@
         <name>Core_Distributor__c</name>
     </fields>
     <fields>
-        <label><!-- Dynamic Tuning Technology --></label>
-        <name>Core_Dynamic_Tuning_Technology__c</name>
-    </fields>
-    <fields>
         <label><!-- EMS --></label>
         <name>Core_EMS__c</name>
     </fields>
     <fields>
         <label><!-- ESF Firm --></label>
         <name>Core_ESF_Firm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Early Access Status --></label>
-        <name>Core_Early_Access_Status__c</name>
     </fields>
     <fields>
         <label><!-- Embedded Board Manufacturer --></label>
@@ -151,10 +123,6 @@
     <fields>
         <label><!-- Far Field Audio --></label>
         <name>Core_Far_Field_Audio__c</name>
-    </fields>
-    <fields>
-        <label><!-- Firmware --></label>
-        <name>Core_Firmware__c</name>
     </fields>
     <fields>
         <label><!-- First Board Build Date --></label>
@@ -205,10 +173,6 @@
         <name>Core_Intel_QAT_BW_Gbps__c</name>
     </fields>
     <fields>
-        <label><!-- Intended Usage --></label>
-        <name>Core_Intended_Usage__c</name>
-    </fields>
-    <fields>
         <label><!-- Interface Protocol IP --></label>
         <name>Core_Interface_Protocol_IP__c</name>
     </fields>
@@ -241,24 +205,8 @@
         <name>Core_Low_Power_Connectivity__c</name>
     </fields>
     <fields>
-        <label><!-- Memory Config(Dual-Channel 128b) --></label>
-        <name>Core_Memory_Config_Dual_Channel_128b__c</name>
-    </fields>
-    <fields>
         <label><!-- Memory DSP and Embedded IP --></label>
         <name>Core_Memory_DSP_and_Embedded_IP__c</name>
-    </fields>
-    <fields>
-        <label><!-- Modern Standby --></label>
-        <name>Core_Modern_Standby__c</name>
-    </fields>
-    <fields>
-        <label><!-- Multi boarded --></label>
-        <name>Core_Multi_boarded__c</name>
-    </fields>
-    <fields>
-        <label><!-- New ID? --></label>
-        <name>Core_New_ID__c</name>
     </fields>
     <fields>
         <label><!-- Node Controller --></label>
@@ -303,14 +251,6 @@
     <fields>
         <label><!-- PAN Radio --></label>
         <name>Core_PAN_Radio__c</name>
-    </fields>
-    <fields>
-        <label><!-- Performance Features Enabled --></label>
-        <name>Core_Performance_Features_Enabled__c</name>
-    </fields>
-    <fields>
-        <label><!-- Product Capability/Technology --></label>
-        <name>Core_Product_Capability_Technology__c</name>
     </fields>
     <fields>
         <label><!-- Production Lifecycle --></label>
@@ -365,28 +305,12 @@
         <name>Core_Screen_Size__c</name>
     </fields>
     <fields>
-        <label><!-- Security/Data Protection --></label>
-        <name>Core_Security_Data_Protection__c</name>
-    </fields>
-    <fields>
         <label><!-- Security Software --></label>
         <name>Core_Security_Software__c</name>
     </fields>
     <fields>
-        <label><!-- Segment --></label>
-        <name>Core_Segment__c</name>
-    </fields>
-    <fields>
         <label><!-- Service Providers/Telco --></label>
         <name>Core_Service_Providers_Telco__c</name>
-    </fields>
-    <fields>
-        <label><!-- Single Rail Power Supply --></label>
-        <name>Core_Single_Rail_Power_Supply__c</name>
-    </fields>
-    <fields>
-        <label><!-- Socket Count --></label>
-        <name>Core_Socket_Count__c</name>
     </fields>
     <fields>
         <label><!-- Socket --></label>
@@ -409,10 +333,6 @@
         <name>Core_Stylus__c</name>
     </fields>
     <fields>
-        <label><!-- Sustainability Compliance --></label>
-        <name>Core_Sustainability_Compliance__c</name>
-    </fields>
-    <fields>
         <label><!-- System Integrator --></label>
         <name>Core_System_Integrator__c</name>
     </fields>
@@ -431,14 +351,6 @@
     <fields>
         <label><!-- Ultrabook --></label>
         <name>Core_Ultrabook__c</name>
-    </fields>
-    <fields>
-        <label><!-- Unit Height --></label>
-        <name>Core_Unit_Height__c</name>
-    </fields>
-    <fields>
-        <label><!-- Use Condition --></label>
-        <name>Core_Use_Condition__c</name>
     </fields>
     <fields>
         <label><!-- User Experience (UX) --></label>

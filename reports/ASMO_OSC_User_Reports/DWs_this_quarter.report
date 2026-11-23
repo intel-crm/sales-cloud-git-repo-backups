@@ -60,7 +60,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Halversen,Tatel,Swyers,Wood</value>
+            <value>Halversen,Tatel</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
@@ -113,6 +113,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

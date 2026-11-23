@@ -28,16 +28,12 @@
                 <field>Core_IPS_Routing_Casetype__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Environment_Detail_Question__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Environment_Question_Answer__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Support_Org__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Environment_Detail_Question__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -64,6 +60,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_IPS_Support_Organization__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Environment_Question_Answer__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

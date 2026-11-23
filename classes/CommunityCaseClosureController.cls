@@ -2,7 +2,7 @@ public with sharing class  CommunityCaseClosureController{ // Changed by tushar 
 
     public static final String CUSTOMER_REQUESTING_CLOSE = 'Customer Requesting Close';
 
-    public String closureComments{get;set;}    
+    public String ClosureComments{get;set;}    
     public Case newCase{get;set;}
     public Boolean isEditable{get;set;}
     public Boolean showError{get;set;}
@@ -37,7 +37,7 @@ public with sharing class  CommunityCaseClosureController{ // Changed by tushar 
     }
     
 
-    public PageReference requestCaseClosure(){
+    public PageReference RequestCaseClosure(){
                        
         //FLS Check Added - Nishitha
         if (Schema.sObjectType.Case.fields.Status.isUpdateable()) {            
@@ -71,7 +71,7 @@ public with sharing class  CommunityCaseClosureController{ // Changed by tushar 
     }
 
 
-    public PageReference cancelOperation(){
+    public PageReference CancelOperation(){
         return new PageReference('/' + newCase.id);
     }
 }

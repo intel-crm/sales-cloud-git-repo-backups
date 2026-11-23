@@ -39,9 +39,6 @@
         <field>Account.Core_Account_Type__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Solution_Focus__c</field>
     </columns>
     <columns>
@@ -130,14 +127,22 @@
     <columns>
         <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
-    <description>2018 Consumption Revenue Quarterly Pending 03.01.17</description>
+    <description>03.01.17</description>
     <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND( 5 or 6)</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Industry Sales</value>
+        </criteriaItems>
         <criteriaItems>
             <column>INDUSTRY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Telecommunications</value>
+            <value>Communications,Telecommunications</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -154,32 +159,18 @@
             <value>Deal: Sell-to,Deal: Sell-through,Deal: Sell-with</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>Service Provider,Telco/Service Provider</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>DCG,IOTG,NSG,CCG,PSG</value>
+            <value>DCG,IoTG,NSG</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
+            <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled,Deleted,Production Lost,Production Cancelled</value>
+            <operator>equals</operator>
+            <value>CCG-Connected Home</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -218,11 +209,13 @@
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

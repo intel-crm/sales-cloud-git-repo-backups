@@ -119,7 +119,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Millions</displayUnits>
             <footer>WW Target is ...</footer>
@@ -147,7 +147,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Millions</displayUnits>
             <drillEnabled>true</drillEnabled>
@@ -181,7 +181,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Millions</displayUnits>
             <drillEnabled>true</drillEnabled>
@@ -215,7 +215,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -249,7 +249,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>true</drillEnabled>
@@ -279,7 +279,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>ACCOUNT_NAME</column>
@@ -318,7 +318,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>Opportunity.Core_Loss_Cancel_Reason__c</column>
@@ -364,7 +364,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Millions</displayUnits>
             <footer>Target is ...</footer>
@@ -392,7 +392,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>true</drillEnabled>
@@ -426,7 +426,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -460,7 +460,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -494,7 +494,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -524,7 +524,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>ACCOUNT_NAME</column>
@@ -563,7 +563,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>Opportunity.Core_Loss_Cancel_Reason__c</column>

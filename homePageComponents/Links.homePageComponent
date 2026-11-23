@@ -2,5 +2,6 @@
 <HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
     <links>Core_My_Profile</links>
     <links>Core_Intel_Support</links>
+    <links>Show_Contacts</links>
     <pageComponentType>links</pageComponentType>
 </HomePageComponent>

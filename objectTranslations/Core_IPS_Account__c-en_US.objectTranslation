@@ -52,6 +52,10 @@
         <name>Core_IPS_PreventEdit</name>
     </validationRules>
     <webLinks>
+        <label><!-- Add_Accounts --></label>
+        <name>Add_Accounts</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Add_Accounts_LEX --></label>
         <name>Add_Accounts_LEX</name>
     </webLinks>

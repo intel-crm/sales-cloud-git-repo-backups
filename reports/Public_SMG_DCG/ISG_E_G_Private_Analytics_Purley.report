@@ -110,7 +110,7 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
@@ -161,7 +161,6 @@
         <field>PROBABILITY</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8 and 9) or (1 and 2 and 3 and 4 and 5 and 6 and 10 and 8 and 11 and 12)</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
@@ -180,11 +179,11 @@
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>approve,win</value>
+            <operator>notContain</operator>
+            <value>lost,cancelled,deleted</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -212,39 +211,11 @@
             <value>consulting</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PRODUCT_NAME</column>
+            <column>Product2.Core_Code_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>xeon</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>INDUSTRY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
             <operator>notContain</operator>
-            <value>technology,telecommunications,communications</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>INDUSTRY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>consulting</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>ae-cov,ae cov,aecov,non ae,ae non,non-ae,nonae,ae-non,aenon,non cov</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Consumption_Market__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Automation/Building Management,Consumer,Education,Energy/Utilities,Enterprise,Financial Services,Government,Health and Life Sciences,Industrial,Retail,Small Medium Business,Sports,Transportation</value>
+            <value>atlaspeak</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -293,8 +264,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2018-03-31</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2017-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

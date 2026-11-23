@@ -23,16 +23,5 @@
         <unique>false</unique>
     </fields>
     <label>Create Case Default Data</label>
-    <listViews>
-        <fullName>All_Data</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Default_Data__c</columns>
-        <columns>Core_IPS_Default_data_Id__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>SETUP_OWNER_NAME</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Data</label>
-    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

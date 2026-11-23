@@ -4,7 +4,7 @@
     <label>IPS_B2B_HPE</label>
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6uMN88l8TdVqZyadXpSIB_VJ8h5gzNnqGPry1yz2c7OWUbemeqDs6X6Nd.gw</consumerKey>
+        <consumerKey>3MVG9JamK_x9K2XIz6FKasGquU1E1JHdbu73aHBbrwRXCWZVpydG9abivpFUwNAEnAVJxIEzjOGbvPvP4.CGZ</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -30,4 +30,5 @@
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>
+    <profileName>IPS HP B2B M2M</profileName>
 </ConnectedApp>

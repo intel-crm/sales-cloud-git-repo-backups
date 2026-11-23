@@ -162,6 +162,9 @@
             <value>ENY</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Financial Services</sourceValue>
+            </sourceValues>
             <value>FSI</value>
         </values>
         <values>
@@ -177,6 +180,12 @@
             <value>HLS</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
             <value>IND</value>
         </values>
         <values>
@@ -363,6 +372,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

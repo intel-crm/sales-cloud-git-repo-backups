@@ -48,9 +48,6 @@
         <field>STATUS</field>
     </columns>
     <columns>
-        <field>BucketField_29258635</field>
-    </columns>
-    <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>
@@ -62,41 +59,23 @@
     <columns>
         <field>AGE</field>
     </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>Case.Core_IPS_Assigned_Queue__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>CHD - Retail-WW,CHD – WiFi-Retail</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STATUS</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Closed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_CaseType__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Feature Request</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CONTACT.ACCOUNT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>radwin</value>
+            <value>CHD - Retail-WW</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT.NAME</field>
+        <field>BucketField_29258635</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Open cases-Retail</name>

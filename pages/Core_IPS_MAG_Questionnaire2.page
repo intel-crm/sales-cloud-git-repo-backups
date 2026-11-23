@@ -1,0 +1,362 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_IPS_MAG_Questionnaire
+Version     : 1.0 
+Function    : Visualforce Page to Submit MAG Questionnaire for GEC cases 
+Modification Log :
+* Developer                    Date                   Description
+* ----------------------------------------------------------------------------                 
+* Sugandha                   17/08/2018               Created
+------------------------------------------------------------------------------------------------------------>
+<apex:page standardController="Case" extensions="Core_IPS_MAG_Questionnaire_Controller" sidebar="false" >
+  <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
+    <apex:includeScript value="{!Urlfor($Resource.Core_IPS_DataTable,'jquery-ui.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery-ui.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Jquery_Dropdown, 'jquery.dropdown.min.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Jquery_Dropdown, 'jquery.dropdown.js')}"/>
+    
+    <style>
+        .custom-combobox {
+        position: relative;
+        display: inline-block;
+        }
+        .custom-combobox-toggle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-left: -1px;
+        padding: 0;
+        }
+        .custom-combobox-input {
+        margin: 0;
+        padding: 5px 10px;
+        background-color:white;
+        }
+        .dropdown-display{
+        height: 16px;
+        }
+        
+    </style>
+    <script>
+    
+    $( function() {
+        
+        $.widget( "custom.combobox", {
+            _create: function() {
+                
+                this.wrapper = $( "<span>" )
+                .addClass( "custom-combobox" )
+                .insertAfter( this.element );
+                
+                this.element.hide();
+                this._createAutocomplete();
+                this._createShowAllButton();
+            },
+            
+            _createAutocomplete: function() {
+                
+                var selected = this.element.children( ":selected" ),
+                    value = selected.val() ? selected.text() : "";
+                
+                this.input = $( "<input>" )
+                .appendTo( this.wrapper )
+                .val( value )
+                .attr( "title", "" )
+                .attr( "placeholder", "--Select--" )
+                .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
+                .autocomplete({
+                    delay: 0,
+                    minLength: 0,
+                    source: $.proxy( this, "_source" ),
+                })
+                .tooltip({
+                    classes: {
+                        "ui-tooltip": "ui-state-highlight"
+                    }
+                });
+                /*.click(function() { 
+                        $(this).autocomplete("search", ""); 
+                    });*/
+                    
+                    this._on( this.input, {
+                        autocompleteselect: function( event, ui ) {
+                            
+                            ui.item.option.selected = true;
+                            //-- Fire the Event --
+                            $(this.element).trigger( "change" );
+                            
+                            this._trigger( "select", event, {
+                                item: ui.item.option
+                            });
+                            
+                        },
+                        
+                        autocompletechange: "_removeIfInvalid"
+                    });
+                    
+                   
+                    $(this.input).width($(this.element).width() > 50 ? $(this.element).width()-10 : $(this.element).width());  
+                    
+                    $(this.input).data("uiAutocomplete").menu._isDivider = function( item ) {
+                        return false;
+                    }
+                },
+                
+                _createShowAllButton: function() {
+                    var input = this.input,
+                        wasOpen = false;
+                    
+                    $( "<a>" )
+                    .attr( "tabIndex", -1 )
+                    .attr( "title", "Type to autocomplete or click to show All options" )
+                    .tooltip()
+                    .appendTo( this.wrapper )
+                    .button({
+                        icons: {
+                            primary: "ui-icon-triangle-1-s"
+                        },
+                        text: false
+                    })
+                    .removeClass( "ui-corner-all" )
+                    .addClass( "custom-combobox-toggle ui-corner-right" )
+                    .on( "mousedown", function() {
+                        wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+                    })
+                    .on( "click", function() {
+                        input.trigger( "focus" );
+                        
+                        // Close if already visible
+                        if ( wasOpen ) {
+                            return;
+                        }
+                        
+                        // Pass empty string as value to search for, displaying all results
+                        input.autocomplete( "search", "" );
+                    });
+                },
+                
+                _source: function( request, response ) {
+                    var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+                    
+                    response( this.element.children( "option" ).map(function() {
+                        var text = $( this ).text();
+                        if ( this.value && ( !request.term || matcher.test(text) ) )
+                            return {
+                                label: text,
+                                value: text,
+                                option: this
+                            };
+                    }) );
+                },
+                
+                _removeIfInvalid: function( event, ui ) {
+                    
+                    // Selected an item, nothing to do
+                    if ( ui.item ) {
+                        return;
+                    }
+                    
+                    // Search for a match (case-insensitive)
+                    var value = this.input.val(),
+                        valueLowerCase = value.toLowerCase(),
+                        valid = false;
+                    this.element.children( "option" ).each(function() {
+                        if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+                            this.selected = valid = true;
+                            return false;
+                        }
+                    });
+                    
+                    // Found a match, nothing to do
+                    if ( valid ) {
+                        return;
+                    }
+                    if(value!='' && value!=null){
+                        
+                        // Remove invalid value
+                        this.input
+                        .val( "" )
+                        .attr( "title", value + " didn't match any item" )
+                        .tooltip( "open" );
+                        //this.element.val( "" );
+                        this._delay(function() {                            
+                            this.input.tooltip( "close" ).attr( "title", "" );
+                        }, 1500 );
+                    }
+                    this.element.val( "" );
+                    this.input.autocomplete( "instance" ).term = "";
+                    
+                    //-- Fire the Event --
+                    $(this.element).trigger( "change" );
+                },
+                
+                _destroy: function() {
+                    this.wrapper.remove();
+                    this.element.show();
+                }                
+            });
+            renderCombobox();             
+            renderCombobox1();
+        });
+    
+    function renderCombobox1() { 
+        $('.cust-combobox').combobox();        
+                               }
+    
+    
+    
+    function renderCombobox() {
+        //update the select list which has to be made autocomplete with styleClass/class="cust-combobox"
+        $('.cust-combobox').combobox();
+        
+        
+        disableMSP();
+    }
+    
+    
+    function register_MultiSelect() {
+        //multiselect dropdown           
+        // $(".custom-multiselect select option[value='']").remove();
+        //$('.multiselect-dropdown').css({'display':'none'});
+        $('.custom-multiselect').dropdown({                
+            //multipleMode: 'label',
+            
+            
+            // search field
+            input: '<input type="text" maxLength="20" placeholder="Search and Select Multiple..." class="textbox">',
+            choice: function () {
+                renderQues();}
+            
+
+        });
+        
+        
+        
+       
+        console.log('---End register_MultiSelect--');         
+    }
+    
+    function disableMSP(){
+        var isEditable = '{!isEditable}';        
+        if(isEditable == 'false'){
+            $(".textbox").attr("disabled", "disabled");
+            $('.custom-multiselect').dropdown({                
+            
+            disabled:true
+        });
+		}
+        
+        else{
+            //alert('test'+$(".dropdown-selected").text());
+            register_MultiSelect();
+            $(".dropdown-display").attr("height", "16px");
+        }
+            
+      
+        }
+   
+    	
+    
+    </script>
+    <apex:form >
+        
+        <apex:actionFunction action="{!renderMSPDepQues}" name="renderQues" reRender="magQues" status="status1" oncomplete="renderCombobox1();register_MultiSelect();">
+        </apex:actionFunction>
+        
+       
+        
+        <apex:outputPanel rendered="{!showError}" >
+            <div>
+                <apex:pageMessages />
+            </div>               
+            <hr class="lightWeightDivider"/>   
+        </apex:outputPanel> 
+        
+        <apex:outputPanel id="magQues" rendered="{!!showError}">
+            <apex:actionRegion >
+                <apex:actionstatus id="status1">
+                    <apex:facet name="start">
+                        <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                                                                             height: 100%;opacity:0.65;width:100%;">
+                            <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                                <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                                <span class="waitingDescription">Please Wait...</span>
+                            </div>
+                        </div>
+                    </apex:facet>
+                </apex:actionstatus> 
+                <apex:pageBlock >
+                    <!-- Page Buttons -->                    
+                    <apex:pageBlockButtons >
+                        <apex:commandButton action="{!SaveAnswer}" value="Save" reRender="none" status="status1" rendered="{!isEditable}" />
+                        <apex:commandButton action="{!CancelOperation}" value="Cancel" status="status1" reRender="none" rendered="{!isEditable}" />
+                        <apex:commandButton action="{!CancelOperation}" value="Return" status="status1" reRender="none" rendered="{!!isEditable}" />
+                    </apex:pageBlockButtons>
+                    <!-- MAG Questionnaire section -->
+                    <apex:pageblockSection title="MAG Questionnaire" columns="1" > 
+                        <apex:repeat var="magQ" value="{!lstQuestions}">
+                            <apex:pageBlockSectionItem id="section1" labelStyle="width:30%" dataStyle="width50%" rendered="{!!magQ.dependentQues}">
+                                <apex:outputLabel value="{!magQ.question}" escape="true" rendered="{!!magQ.dependentQues}" ></apex:outputLabel>
+                                <apex:outputPanel id="panel" >
+                                    <!-- Picklist -->
+                                    <apex:outputPanel rendered="{!magQ.answerType = 'picklist' && !magQ.dependentQues}">                          
+                                        <apex:outputPanel styleClass="{!IF(magQ.required,'requiredInput','')}" layout="block">
+                                            <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!magQ.required}"/>
+                                            <apex:selectList value="{!magQ.answer}" size="1" id="targetId"  rendered="{!isEditable}" styleClass="cust-combobox">
+                                                <apex:selectOptions value="{!magQ.options}"/>
+                                                <apex:actionSupport event="onchange" action="{!renderDependentQuestions}" reRender="magQues"  oncomplete="renderCombobox()" status="status1">                                                    
+                                                    <apex:param name="ans" value="{!magQ.orderNo}" assignTo="{!selectedAnswerOrder}" />
+                                                </apex:actionSupport>                                                
+                                            </apex:selectList>
+                                            <apex:selectList value="{!magQ.answer}" size="1" id="targetId5" disabled="true"  rendered="{!!isEditable}" >
+                                                <apex:selectOptions value="{!magQ.options}"/>                                                                                             
+                                            </apex:selectList>                                            
+                                        </apex:outputPanel>                                     
+                                        <br/>
+                                    </apex:outputPanel>                                    
+                                    
+                                    <!-- Multiselect Picklist -->
+                                    <apex:outputPanel rendered="{!magQ.answerType = 'Multiselect Picklist' && !magQ.dependentQues}">                          
+                                        <apex:outputPanel styleClass="custom-multiselect {!IF(magQ.required,'requiredInput','')}" layout="block">
+                                            <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!magQ.required}"/>                                            
+                                            <apex:selectList value="{!magQ.selectedValues}" size="3" id="targetId1"  rendered="{!isEditable}" multiselect="true" >
+                                                <apex:selectOptions value="{!magQ.options}"  />
+                                                <apex:actionSupport event="onchange" action="{!renderDependentQuestions}" reRender="magQues"  oncomplete="renderCombobox()" status="status1" >                                                     
+                                                    <apex:param name="ans" value="{!magQ.orderNo}" assignTo="{!selectedAnswerOrder}" />
+                                                </apex:actionSupport>
+                                            </apex:selectList>
+                                            <apex:selectList value="{!magQ.selectedValues}" size="3" id="targetId2"  rendered="{!!isEditable}" multiselect="true" disabled="true">
+                                                <apex:selectOptions value="{!magQ.options}"/>
+                                            </apex:selectList>
+                                        </apex:outputPanel>                                     
+                                        <br/>
+                                    </apex:outputPanel>
+                                    
+                                    <apex:outputPanel rendered="{!if(magQ.answerType=='textarea' && magQ.dependentQues,true,false)}" id="textP">
+                                        <apex:outputPanel styleClass="{!IF(magQ.required,'requiredInput','')}" layout="block">
+                                            <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!magQ.required}"/>
+                                            <apex:inputText value="{!magQ.answer}" disabled="{!!isEditable}">
+                                            </apex:inputText>
+                                        </apex:outputPanel> 
+                                        <br/>
+                                    </apex:outputPanel>
+                                    
+                                    <!-- Dependent Question -->
+                                    <apex:outputPanel id="depQues">
+                                    <apex:outputPanel rendered="{!if(magQ.answerType=='textarea' && !magQ.dependentQues,true,false)}" id="panel1">
+                                        <apex:outputPanel styleClass="{!IF(magQ.required,'requiredInput','')}" layout="block">
+                                            <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!magQ.required}"/>
+                                            <apex:inputText value="{!magQ.answer}" disabled="{!!isEditable}">
+                                            </apex:inputText>
+                                        </apex:outputPanel> 
+                                        <br/>
+                                    </apex:outputPanel>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>                            
+                        </apex:repeat>                                                                  
+                    </apex:pageblockSection>
+                </apex:pageBlock>
+            </apex:actionRegion>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,10 +1,8 @@
 @isTest
 private class Core_IntegrationBoxBContactRest_Test {
-     
-      private static testmethod void testIntegrationBoxBContactRest() {
+    private static testmethod void testIntegrationBoxBContactRest() {
         
         Contact testContact = createTestContact();
-        insert new Core_ACM_Control_Execution__c(Name='IntegrationBoxBContactRest',IsActive__c = true);
         Test.startTest();
         
         RestResponse res = new RestResponse();
@@ -93,7 +91,6 @@ private class Core_IntegrationBoxBContactRest_Test {
         acctObj.Core_B2B_ERPM_Account_Number__c = 'ERPM1234';
         acctObj.Core_English_Only_Name__c = 'Outbound Test Account';
         acctObj.Core_Alternate_Language_Name__c = 'Alternate Name Account';
-        acctObj.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         
         insert acctObj;
         

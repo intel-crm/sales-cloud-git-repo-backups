@@ -41,7 +41,6 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 4) AND 3</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -54,7 +53,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Yulia Smelkova,Eran Gal,Uros Huzjak,Maciek Osiecki,Krzysztof Janicki,Jaroslaw Tomala</value>
+            <value>Yulia Smelkova,Eran Gal,Uros Huzjak,Maciek Osiecki,Carey Williams,Krzysztof Janicki,Jaroslaw Tomala</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</column>
@@ -62,13 +68,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>lessOrEqual</operator>
             <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Dzul</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

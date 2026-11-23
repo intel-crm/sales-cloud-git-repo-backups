@@ -33,6 +33,9 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -56,6 +59,13 @@
             <value>Not Submitted</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>7</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
@@ -69,23 +79,14 @@
             <operator>equals</operator>
             <value>PRC</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessOrEqual</operator>
-            <value>0</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Tabular</format>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opportunity_Past_Due__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>PRC Past due opptys within 1 week</name>
     <params>
         <name>terr</name>
@@ -112,6 +113,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

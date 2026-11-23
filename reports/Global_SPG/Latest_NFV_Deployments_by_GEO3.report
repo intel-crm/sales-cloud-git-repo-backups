@@ -18,7 +18,7 @@
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
         <showValues>true</showValues>
-        <size>Large</size>
+        <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
@@ -188,6 +188,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

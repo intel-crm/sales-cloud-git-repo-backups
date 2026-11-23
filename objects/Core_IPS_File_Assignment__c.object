@@ -495,6 +495,15 @@ HYPERLINK( Core_IPS_File_Upload_Master__r.Core_File_URL__c , &apos;Download&apos
         <customTabListAdditionalFields>Core_Expiration_Date__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATEDBY_USER</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>Core_File_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_File_Size__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Category__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Supported_Product_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Effective_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Expiration_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>

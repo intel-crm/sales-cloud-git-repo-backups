@@ -170,100 +170,6 @@
         <unique>true</unique>
     </fields>
     <fields>
-        <fullName>Core_Feature_BU__c</fullName>
-        <description>Note: Please update the Platform BU field on the Descriptive Feature Object whenever a new picklist value is added or updated.</description>
-        <label>Feature BU</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>CCG</fullName>
-                    <default>false</default>
-                    <label>CCG</label>
-                </value>
-                <value>
-                    <fullName>DCG</fullName>
-                    <default>false</default>
-                    <label>DCAI</label>
-                </value>
-                <value>
-                    <fullName>PSG</fullName>
-                    <default>false</default>
-                    <label>PSG</label>
-                </value>
-                <value>
-                    <fullName>NTG</fullName>
-                    <default>false</default>
-                    <label>NTG</label>
-                </value>
-                <value>
-                    <fullName>CCG ECG</fullName>
-                    <default>false</default>
-                    <label>CCG ECG</label>
-                </value>
-                <value>
-                    <fullName>ADG</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>ADG</label>
-                </value>
-                <value>
-                    <fullName>DCAI AXG</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>AXG</label>
-                </value>
-                <value>
-                    <fullName>CCG AMS</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCG AMS</label>
-                </value>
-                <value>
-                    <fullName>CORP</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CORP</label>
-                </value>
-                <value>
-                    <fullName>IOTG</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>IOTG</label>
-                </value>
-                <value>
-                    <fullName>NEX CG</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>NEX CG</label>
-                </value>
-                <value>
-                    <fullName>NEX NCCG</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>NEX NCCG</label>
-                </value>
-                <value>
-                    <fullName>NEX NPG</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>NEX NPG</label>
-                </value>
-                <value>
-                    <fullName>NSG</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>NSG</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Core_Feature_Long_ID__c</fullName>
         <externalId>false</externalId>
         <formula>CASESAFEID(Id)</formula>
@@ -315,7 +221,6 @@
         <columns>Core_Feature_Value__c</columns>
         <columns>NAME</columns>
         <columns>Core_Multi_Select__c</columns>
-        <columns>Core_Feature_BU__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Fan Li</description>
+    <description>EMP of Edison Gimenes Rodrigues</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10614328_Stephen_Bigbee</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10689983_Fan_Li</parentRole>
+    <parentRole>EMP_10691502_Edison_Gimenes_Rodrigues</parentRole>
 </Role>

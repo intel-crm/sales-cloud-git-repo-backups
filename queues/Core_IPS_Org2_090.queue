@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>IPS-IOG2</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_IPS_Org_022_ASMO</publicGroup>
+        </publicGroups>
+        <users>
+            <user>11449510@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>APTS_Account_Criteria__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>AccountBrand</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Account_Meeting_Brief__c</sobjectType>
+    </queueSobject>
+</Queue>

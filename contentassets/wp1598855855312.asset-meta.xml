@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentAsset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <isVisibleByExternalUsers>false</isVisibleByExternalUsers>
+    <language>en_US</language>
+    <masterLabel>wp1598855855312</masterLabel>
+    <originNetwork>POC</originNetwork>
+    <relationships>
+        <network>
+            <access>VIEWER</access>
+            <name>POC</name>
+        </network>
+        <workspace>
+            <access>INFERRED</access>
+            <isManagingWorkspace>true</isManagingWorkspace>
+            <name>sfdc_asset_company_assets</name>
+        </workspace>
+    </relationships>
+    <versions>
+        <version>
+            <number>1</number>
+            <pathOnClient>wp-1598855855312.jpg</pathOnClient>
+        </version>
+    </versions>
+</ContentAsset>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c.Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c.Core_IPS_Premier_Support_Project__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c.Core_IPS_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Opportunity_PAR__c.Core_IPS_Request_Justification__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_IPS_Opportunity_PAR__c.Core_IPS_Approval_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>In Progress</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Opportunity PAR Pending</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_IPS_Opportunity_PAR__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

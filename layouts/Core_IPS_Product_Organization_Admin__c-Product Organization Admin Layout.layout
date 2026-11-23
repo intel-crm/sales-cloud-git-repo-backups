@@ -16,6 +16,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_Primary_Admin__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_Supported_Org_Admin__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -306,6 +306,30 @@
         <type>Lookup</type>
     </fields>
     <label>Premier Support Project Member</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Contact_Account__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>No_Records</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>NAME</field>
+            <operation>equals</operation>
+        </filters>
+        <label>No Records</label>
+        <sharedTo>
+            <allCustomerPortalUsers></allCustomerPortalUsers>
+            <allPartnerUsers></allPartnerUsers>
+        </sharedTo>
+    </listViews>
     <nameField>
         <displayFormat>IPS UN-{00000000}</displayFormat>
         <label>Premier Support Users Number</label>
@@ -322,12 +346,41 @@
         <errorMessage>You cannot remove the owner of a project.  If you would like to remove this user from this project, change the owner first to someone else.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_IPS_PreventEdit</fullName>
+        <active>false</active>
+        <errorConditionFormula>OR((ISCHANGED(Core_User__c)),(AND((ISPICKVAL( Core_IPS_Project__r.Core_Status__c , &quot;Submitted Pending&quot;)),(ISCHANGED(Core_Status__c)))))</errorConditionFormula>
+        <errorMessage>User value cannot be changed/Status value cannot be changed when Project is Submitted</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_IPS_PreventUserLookupChange</fullName>
         <active>true</active>
         <errorConditionFormula>AND(ISCHANGED(Core_User__c),  NOT( CONTAINS( $Label.core_IPS_ProfileIds_Migration_Validation, LEFT($Profile.Id, 15))))</errorConditionFormula>
         <errorMessage>User value cannot be changed.</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Core_Project_Member_User_is_required</fullName>
+        <active>false</active>
+        <description>User and Contact are always required while creating project member</description>
+        <errorConditionFormula>ISNULL(Core_User__c ) || ISNULL( Core_IPS_Contact__c )</errorConditionFormula>
+        <errorMessage>User &amp; Contact are always required</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Members</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Members</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/support/console/41.0/integration.js&apos;)}
+if(sforce.console.isInConsole()){ //Checks that it is in console 
+window.open(&quot;apex/Core_addProjectMembersInformation?isdtp=vw&amp;projectId={!Core_IPS_Project__c.Id}&quot;,&apos;_self&apos;); 
+}else{ 
+window.open(&quot;/apex/Core_addProjectMembersInformation?projectId={!Core_IPS_Project__c.Id}&quot;,&apos;_self&apos;); 
+}</url>
+    </webLinks>
     <webLinks>
         <fullName>Add_Members_For_External_Customers</fullName>
         <availability>online</availability>
@@ -342,13 +395,25 @@
         <url>/IPS/Core_ExternalUser_IPS_Project?id={!Core_IPS_Project__c.Id}&amp;stepIndex=1&amp;modeStr=add&amp;editProj=true</url>
     </webLinks>
     <webLinks>
+        <fullName>Add_Members_LWC</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Add Members LWC</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/c/core_IPS_CallAddMembers_Lex.app?recordId={!Core_IPS_Project__c.Id}</url>
+    </webLinks>
+    <webLinks>
         <fullName>Core_IPS_Add_Members</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
         <encodingKey>UTF-8</encodingKey>
         <height>600</height>
         <linkType>url</linkType>
-        <masterLabel>Add Members LEX</masterLabel>
+        <masterLabel>Add Members</masterLabel>
         <openType>sidebar</openType>
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>

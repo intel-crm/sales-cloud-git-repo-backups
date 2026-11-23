@@ -7,6 +7,9 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
@@ -25,7 +28,7 @@ This report look for all &quot;Intel FPGA&quot; Product Type.</description>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Intel® FPGAs</value>
         </criteriaItems>
@@ -36,29 +39,17 @@ This report look for all &quot;Intel FPGA&quot; Product Type.</description>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>FiscalQuarter</dateGranularity>
-        <field>CLOSE_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
+    <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Business_Unit_Territory__c</field>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Pipeline Opportunities w Decision Date</name>
@@ -76,7 +67,7 @@ This report look for all &quot;Intel FPGA&quot; Product Type.</description>
     </params>
     <params>
         <name>co</name>
-        <value>0</value>
+        <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
@@ -85,8 +76,8 @@ This report look for all &quot;Intel FPGA&quot; Product Type.</description>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>IPS_Internal_Notifications_2</destinationFlowDefinition>
+    <destinationFlowVersion>IPS_Internal_Notifications_2-2</destinationFlowVersion>
+    <developerName>myRule_37_301DU000000aF4JYAU</developerName>
+    <masterLabel>IPS Internal Notifications_2</masterLabel>
+    <migratedCriteriaLabel>US78261 - NAC Close Pending - Reminder</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_37</migratedCriteriaName>
+    <processVersion>Core_IPS_Internal_Notifications-93</processVersion>
+</ProcessFlowMigration>

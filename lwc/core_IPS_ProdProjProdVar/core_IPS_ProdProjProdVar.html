@@ -1,0 +1,127 @@
+<template>
+    <div class="slds-grid slds-wrap custom-container"> 
+        <div class="slds-size_1-of-5 slds-max-small-size_1-of-1"></div>
+       <div class="slds-size_3-of-5 slds-max-small-size_1-of-1"> 
+             <header class="slds-text-heading--large slds-align--absolute-center header">
+                <h2>Case Create</h2>
+            </header>
+         <lightning-card> 
+                <div class="" style="margin-left:10%;">
+                   <lightning-accordion allow-multiple-sections-open active-section-name={activeSection}> 
+                        <lightning-accordion-section name="A" label="Case Information">
+                            <!-- Project start-->
+                            <template if:true={isLookupQueryPresentProject}>
+                                <div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+                                    <div class="slds-size_1-of-12"></div>
+                                    <div class="slds-size_9-of-12">
+                                        <template if:false={isSelectedProjectPresent}>
+												
+                                            <c-core_-i-p-s_-custom-lookup 
+                                                onselectedrec={handleChangeProject}
+                                                iconname={lookupIconNameProject} label="Project"
+                                                searchfield-name={lookupSearchFieldNameProject}
+                                                query-string={lookupQueryStringProject}
+                                                is-sosl="true"
+                                                count-query-string={lookupCountQueryStringProject}
+                                                query-execution-required=true
+                                                extra-field1-label="Premier Support Project ID"
+                                                extra-field1="Core_IPS_Project_ID__c">
+                                            </c-core_-i-p-s_-custom-lookup>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+                            <!-- Project end-->
+                            <!-- Product -->
+								<template if:true={isLookupQueryPresentProduct}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<c-core_-i-p-s_-custom-lookup onselectedrec={handleChangeProduct}
+												iconname={lookupIconNameProduct} label="Product"
+												is-required-field="true"
+												searchfield-name={lookupSearchFieldNameProduct}
+												query-string={lookupQueryStringProduct}
+												is-sosl="true"
+												count-query-string={lookupCountQueryStringProduct}
+												selected-record={asset}
+												query-execution-required=true
+												extra-field1-label="Product Focus Area"
+												extra-field1="core_Product_Application__c"
+												extra-field2-label="Premier Support Project"
+												extra-field2="Core_IPS_Project_Name__c"
+												>
+											</c-core_-i-p-s_-custom-lookup>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Product -->
+                                <!-- Product Variant -->
+                                <template if:true={renderProductVariant}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<lightning-combobox name="progress" label="Product Variant" value={productVariant}
+												placeholder="-Select Variant-" options={productVariantOptions}
+												onchange={handleChangeProductVariant} disabled={disableEdit}>
+											</lightning-combobox>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+                                <!-- Product Variant -->
+                                <!-- Category -->
+								<template if:true={renderProductCategory}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<lightning-combobox name="progress" label="Category" value={caseCategory}
+												placeholder="-Select Category-" options={caseCategoryOptions}
+												onchange={handleChangeSubCategory} disabled={disableEdit}> 
+											</lightning-combobox>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Category -->
+								<!-- Sub Category -->
+								<template if:true={renderProductSubCategory}>
+									<div class="slds-grid slds-wrap slds-size_12-of-12 slds-m-top_small">
+										<div class="slds-size_1-of-12"></div>
+										<div class="slds-size_9-of-12">
+											<lightning-combobox name="progress" label="Sub Category" value={caseSubCategory}
+												placeholder="-Select Sub Category-" options={subcategoryoptions}
+												onchange={handleChangeRenderSubCategoryedq} disabled={disableEdit}>
+											</lightning-combobox>
+										</div>
+										<div class="slds-size_2-of-12"></div>
+									</div>
+								</template>
+								<!-- Sub Category -->
+								<div if:true={showEdqSection}>
+									<div class="line"></div>
+									<div class="headline slds-col">
+										<span>
+											Environmental Details
+										</span>
+									</div>
+									<div if:true={showProdEdqs}>
+										<c-dynamic-form-builder iscommunity={communityCheck} fields={prodEdqRecs}>
+										</c-dynamic-form-builder>
+									</div>
+									<div if:true={showSubCatEdqs}>
+										<c-dynamic-form-builder iscommunity={communityCheck} fields={subCatRecEdqs}>
+										</c-dynamic-form-builder>
+									</div>
+								</div>
+                        </lightning-accordion-section> 
+                         <lightning-accordion-section name="B" label="Case Details">
+
+                        </lightning-accordion-section> 
+                    </lightning-accordion>
+                </div>
+            </lightning-card>
+        </div> 
+     </div>
+</template>

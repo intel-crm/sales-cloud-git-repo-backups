@@ -65,8 +65,7 @@ public with sharing class Core_Ips_DynamicDataTable_Lwc_Ctrl {
             }
         for( Case cs:caseList ){
                 lstDataTableData.add(cs);
-            }
-            
+            }        	
         }
         if(caseListView=='All_Cases_Detail_View'){
             List<Case> caseList=new List<Case>();
@@ -93,6 +92,7 @@ public with sharing class Core_Ips_DynamicDataTable_Lwc_Ctrl {
             List<Case> caseList = [SELECT Id, CaseNumber, Status, Core_Sub_Status__c, Core_Severity__c, Subject, Core_IPS_Product_name__c, Core_IPS_Project_Case__c, Core_Contact_Name__c, CreatedDate, LastModifiedDate, Core_IPS_Legacy_IPS_ID__c, Core_External_Issue_Category__c, Core_External_Issue_Subcategory__c, ClosedDate, Core_Customer_Reference_ID__c,Core_IPS_Premier_Support_Project_ID__c, ownerId,Account.Name FROM Case where (AccountId=:loggedInUserAcctId AND Core_IPS_Customer_Visible__c=true AND LastModifiedDate != null AND Core_IPS_Project_Case__c = null  AND (RecordTypeId=:devCaseCreate OR RecordTypeId=:devCloseCase OR RecordTypeId=:devGec ) AND LastModifiedDate = LAST_N_DAYS: 14) OR (AccountId=:loggedInUserAcctId AND Core_IPS_Customer_Visible__c=true AND LastModifiedDate != null AND LastModifiedDate = LAST_N_DAYS: 14 AND (RecordTypeId=:devCaseCreate OR RecordTypeId=:devCloseCase OR RecordTypeId=:devGec ) AND Core_IPS_Project_Case__c != null AND Core_IPS_Project_Case__c IN :idSet) ORDER BY LastModifiedDate Desc]; // CaseNumber];
             for( Case cs:caseList ){
                 lstDataTableData.add(cs);
+            
             }
         }
         if(caseListView=='Recently_Viewed_Cases'){
@@ -108,18 +108,43 @@ public with sharing class Core_Ips_DynamicDataTable_Lwc_Ctrl {
             }
         }
         if(caseListView=='My_Open_Cases'){
-            
-            List<Case> caseList = [SELECT Id, CaseNumber, Status, Core_Sub_Status__c, Core_Severity__c, Subject, Core_IPS_Product_name__c, Core_IPS_Project_Case__c, Core_Contact_Name__c, CreatedDate, LastModifiedDate, Core_IPS_Legacy_IPS_ID__c, Core_External_Issue_Category__c, Core_External_Issue_Subcategory__c, ClosedDate, Core_Customer_Reference_ID__c,Core_IPS_Premier_Support_Project_ID__c, ownerId,Account.id,ContactId,Core_IPS_Project_Case__r.Name,Account.Name FROM Case where AccountId=:loggedInUserAcctId AND Core_IPS_Customer_Visible__c=true AND (Status = 'Open' OR Status = 'On Hold' OR Status = 'New') AND Core_Sub_Status__c!='Close-Pending' AND ContactId=:conId AND (RecordTypeId=:devCaseCreate OR RecordTypeId=:devCloseCase OR RecordTypeId=:devGec ) ORDER BY LastModifiedDate Desc];
+            List<String> values = new List<String>();
+            values.add('2nd Level Support Investigating');
+            values.add('Deferred');
+            values.add('Design Team Investigating');
+            values.add('Duplicate Issue');
+            values.add('Escalated to Engineering');
+            values.add('Investigating');
+            values.add('Reopened - Customer Request');
+            values.add('Reproduced');
+            values.add('Waiting for Customer Clarification*');
+            values.add('Waiting for Customer Verification*');
+            values.add('Waiting for Ingredient*');
+            values.add('GEC Hold');
+            values.add('Closed');
+            values.add('Waiting for intel clarification');
+            values.add('Invalid');
+            // Capture the start time
+            Long startTime = System.now().getTime();
+           List<Case> caseList = [SELECT Id, CaseNumber, Status, Core_Sub_Status__c, Core_Severity__c, Subject, Core_IPS_Product_name__c, Core_IPS_Project_Case__c, Core_Contact_Name__c, CreatedDate, LastModifiedDate, Core_IPS_Legacy_IPS_ID__c, Core_External_Issue_Category__c, Core_External_Issue_Subcategory__c, ClosedDate, Core_Customer_Reference_ID__c,Core_IPS_Premier_Support_Project_ID__c, ownerId,Account.id,ContactId,Core_IPS_Project_Case__r.Name,Account.Name FROM Case 
+                                   where AccountId=:loggedInUserAcctId AND Core_IPS_Customer_Visible__c=true AND (Status = 'Open' OR Status = 'On Hold' OR Status = 'New') AND 
+                                   Core_Sub_Status__c IN:values  AND ContactId=:conId AND (RecordTypeId=:devCaseCreate OR RecordTypeId=:devCloseCase OR RecordTypeId=:devGec ) ORDER BY LastModifiedDate Desc];
+           // List<Case> caseList = [SELECT Id, CaseNumber, Status, Core_Sub_Status__c, Core_Severity__c, Subject, Core_IPS_Product_name__c, Core_IPS_Project_Case__c, Core_Contact_Name__c, CreatedDate, LastModifiedDate, Core_IPS_Legacy_IPS_ID__c, Core_External_Issue_Category__c, Core_External_Issue_Subcategory__c, ClosedDate, Core_Customer_Reference_ID__c,Core_IPS_Premier_Support_Project_ID__c, ownerId,Account.id,ContactId,Core_IPS_Project_Case__r.Name,Account.Name FROM Case where AccountId=:loggedInUserAcctId AND Core_IPS_Customer_Visible__c=true AND (Status = 'Open' OR Status = 'On Hold' OR Status = 'New') AND Core_Sub_Status__c!='Close-Pending' AND ContactId=:conId AND (RecordTypeId=:devCaseCreate OR RecordTypeId=:devCloseCase OR RecordTypeId=:devGec ) ORDER BY LastModifiedDate Desc];
+            Long endTime = System.now().getTime();
+            // Calculate the time taken in milliseconds
+            Long timeTaken = endTime - startTime;
+            System.debug('Query took ' + timeTaken + ' milliseconds.');
             for( Case cs:caseList ){
                 lstDataTableData.add(cs);
+                        
             }
         }
         if(caseListView == 'My_Closed_Cases'){
-            List<Case> caseList = [SELECT Id, CaseNumber, Status, Core_Sub_Status__c, Core_Severity__c, Subject, Core_IPS_Product_name__c, Core_IPS_Project_Case__c, Core_Contact_Name__c, CreatedDate, LastModifiedDate, Core_IPS_Legacy_IPS_ID__c, Core_External_Issue_Category__c, Core_External_Issue_Subcategory__c, ClosedDate, Core_Customer_Reference_ID__c,Core_IPS_Premier_Support_Project_ID__c, ownerId,Core_IPS_Project_Case__r.Name,Account.Name FROM Case where (AccountId=:loggedInUserAcctId AND Core_IPS_Customer_Visible__c=true AND Core_IPS_Project_Case__c = null AND Status = 'Closed' AND Core_IPSPortal_Check__c=true  AND (RecordTypeId=:devCaseCreate OR RecordTypeId=:devCloseCase OR RecordTypeId=:devGec )) OR (AccountId=:loggedInUserAcctId AND Core_IPS_Customer_Visible__c=true AND Status = 'Closed' AND (RecordTypeId=:devCaseCreate OR RecordTypeId=:devCloseCase OR RecordTypeId=:devGec ) AND Core_IPSPortal_Check__c=true AND Core_IPS_Project_Case__c != null AND Core_IPS_Project_Case__c IN :idSet) ORDER BY LastModifiedDate Desc];
+			List<Case> caseList = [SELECT Id, CaseNumber, Status, Core_Sub_Status__c, Core_Severity__c, Subject, Core_IPS_Product_name__c, Core_IPS_Project_Case__c, Core_Contact_Name__c, CreatedDate, LastModifiedDate, Core_IPS_Legacy_IPS_ID__c, Core_External_Issue_Category__c, Core_External_Issue_Subcategory__c, ClosedDate, Core_Customer_Reference_ID__c, Core_IPS_Premier_Support_Project_ID__c, ownerId,Core_IPS_Project_Case__r.Name, Account.Name FROM Case where (AccountId=:loggedInUserAcctId AND Core_IPS_Customer_Visible__c=true AND Core_IPS_Project_Case__c = null AND Status = 'Closed' AND Core_IPSPortal_Check__c=true  AND (RecordTypeId=:devCaseCreate OR RecordTypeId=:devCloseCase OR RecordTypeId=:devGec )) OR (AccountId=:loggedInUserAcctId AND Core_IPS_Customer_Visible__c=true AND Status = 'Closed' AND (RecordTypeId=:devCaseCreate OR RecordTypeId=:devCloseCase OR RecordTypeId=:devGec ) AND Core_IPSPortal_Check__c=true AND Core_IPS_Project_Case__c != null AND Core_IPS_Project_Case__c IN :idSet) ORDER BY LastModifiedDate Desc];            
             for( Case cs:caseList ){
                 lstDataTableData.add(cs);
             }
-        }
+			}
         
         DataTableResponse finalWrapper   = new DataTableResponse();
         finalWrapper.lstDataTableColumns = lstDataColumns;

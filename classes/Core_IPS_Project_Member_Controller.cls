@@ -1,6 +1,6 @@
 /*
-  Cretaed By:G.Krishnareddy G
-  Description :We need to display IPS Project Member information based on ProjectID,IPS Project Account information.
+Cretaed By:G.Krishnareddy G
+Description :We need to display IPS Project Member information based on ProjectID,IPS Project Account information.
 */
 
 Public with sharing class Core_IPS_Project_Member_Controller{ // added with sharing by tushar for vanuability changes--- Also change class public to global
@@ -14,7 +14,7 @@ Public with sharing class Core_IPS_Project_Member_Controller{ // added with shar
         public boolean selected; 
         public User user;
         
-         public Integer compareTo(Object o) {
+        public Integer compareTo(Object o) {
             IPSMemberWrapper  that = (IPSMemberWrapper) o;
             if (this.conObj.FirstName==null || this.conObj.FirstName==null){ return -1; }
             else if(this.conObj.FirstName<that.conObj.FirstName) { return -1; }
@@ -28,9 +28,9 @@ Public with sharing class Core_IPS_Project_Member_Controller{ // added with shar
         set < string > existingIPSContIdsInfo = new set < string > ();
         //FLS Check Added - Nishitha
         if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){
-        for (Core_IPS_Project_Member__c objCoreIpsContact: [select id, name, Core_IPS_Contact__r.firstname, Core_IPS_Contact__r.lastname, core_ips_contact__c from Core_IPS_Project_Member__c where core_ips_project__c =: projectId and Core_Selective_Member__c = true]) {
-            existingIPSContIdsInfo.add(objCoreIpsContact.core_ips_contact__c);
-        }
+            for (Core_IPS_Project_Member__c objCoreIpsContact: [select id, name, Core_IPS_Contact__r.firstname, Core_IPS_Contact__r.lastname, core_ips_contact__c from Core_IPS_Project_Member__c where core_ips_project__c =: projectId and Core_Selective_Member__c = true]) {
+                existingIPSContIdsInfo.add(objCoreIpsContact.core_ips_contact__c);
+            }
         }
         return existingIPSContIdsInfo;
     }
@@ -43,10 +43,10 @@ Public with sharing class Core_IPS_Project_Member_Controller{ // added with shar
             ipsAcctList = [select id, core_account__c from core_ips_account__c where core_ips_project__c =: projectId and core_members__c = 'Selective'];
         }
         return ipsAcctList;
-    
+        
     }
-
-
+    
+    
     
     //Display the Current IPS Project Account having the IPS Project Member Information for JSREMOTING.
     public static string getlstProjectMemberWrapperInfo() {
@@ -63,26 +63,26 @@ Public with sharing class Core_IPS_Project_Member_Controller{ // added with shar
         //string QueryString = 'select id, firstName, lastName, account.name from contact where Core_IPS_Active__c = true and accountId in:  \'' + selActSet + '\'';
         //FLS Check Added - Nishitha
         if(Contact.SObjectType.getDescribe().isAccessible()){
-        if (existingConIdSet != null && existingConIdSet.size() > 0) {
-           contList = [select id, firstName, lastName, account.name from contact where Core_IPS_Active__c = true and accountId in:selActSet and id not in:existingConIdSet];
-        } else{
-           //FLS Check Added - Nishitha
-            if(Contact.SObjectType.getDescribe().isAccessible()){
-                contList = [select id, firstName, lastName, account.name from contact where Core_IPS_Active__c = true and accountId in:selActSet];
+            if (existingConIdSet != null && existingConIdSet.size() > 0) {
+                contList = [select id, firstName, lastName, account.name from contact where Core_IPS_Active__c = true and accountId in:selActSet and id not in:existingConIdSet];
+            } else{
+                //FLS Check Added - Nishitha
+                if(Contact.SObjectType.getDescribe().isAccessible()){
+                    contList = [select id, firstName, lastName, account.name from contact where Core_IPS_Active__c = true and accountId in:selActSet];
+                }
             }
         }
-                                                            }
         
         //contList  = database.query(QueryString);
         map < id, User > mapofContactInfoWithUserDetails = new map < id, User > ();
-
+        
         if (contList <> null && contList.size() > 0) {
             for (User objUser: [Select id, contactid from User where Contactid IN: contList and IsActive = true]) {
                 mapofContactInfoWithUserDetails.put(ObjUser.ContactId, ObjUser);
             }
         }
         for (Contact con: contList) {
-           
+            
             IPSMemberWrapper wrapper = new IPSMemberWrapper();
             wrapper.selected = false;
             wrapper.conObj = con;
@@ -90,9 +90,9 @@ Public with sharing class Core_IPS_Project_Member_Controller{ // added with shar
             wrapper.conLastName  = con.LastName;
             wrapper.accountName  = con.account.Name;
             if (mapofContactInfoWithUserDetails!=null && mapofContactInfoWithUserDetails.ContainsKey(con.id)) {
-            wrapper.user = mapofContactInfoWithUserDetails.get(con.id);
-            
-            
+                wrapper.user = mapofContactInfoWithUserDetails.get(con.id);
+                
+                
             }
             wrapperInContext.add(wrapper);
         }
@@ -103,10 +103,10 @@ Public with sharing class Core_IPS_Project_Member_Controller{ // added with shar
     
     //Getting the existing IPS Project Members information for JSREMOTING.
     public static string getlstExistingProjectMembers(){
-     
-     list<Core_IPS_Project_Member__c>  existingMembers = [select id, name,Core_IPS_Contact__r.firstname,Core_IPS_Contact__r.lastname, core_ips_contact__c from Core_IPS_Project_Member__c where core_ips_project__c= :apexpages.currentpage().getparameters().get('projectId') and Core_Selective_Member__c = true];
-
-     return JSON.serialize(existingMembers);
+        
+        list<Core_IPS_Project_Member__c>  existingMembers = [select id, name,Core_IPS_Contact__r.firstname,Core_IPS_Contact__r.lastname, core_ips_contact__c from Core_IPS_Project_Member__c where core_ips_project__c= :apexpages.currentpage().getparameters().get('projectId') and Core_Selective_Member__c = true];
+        
+        return JSON.serialize(existingMembers);
     }
     
     
@@ -149,5 +149,4 @@ Public with sharing class Core_IPS_Project_Member_Controller{ // added with shar
             return 'exception';
         }
     }
-
 }

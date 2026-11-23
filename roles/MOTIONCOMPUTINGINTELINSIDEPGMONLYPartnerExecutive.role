@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>MOTION COMPUTING (INTEL INSIDE PGM ONLY) Partner Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>MOTION COMPUTING (INTEL INSIDE PGM ONLY) Partner Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_10648135_Gina_C_Mcfarland</parentRole>
+</Role>

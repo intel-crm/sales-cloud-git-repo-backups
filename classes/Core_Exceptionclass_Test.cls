@@ -69,7 +69,7 @@ public class Core_Exceptionclass_Test{
                 string str = obj.InsertException('test','test','test','test','test',excep);
             }catch(exception e){
                 string str = obj.InsertException('test','test','test','test','test',e);
-            }            
+            }           
             Test.stopTest();
         }
     }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Core_IPS_RDC_Provisioned_User_Activation_Email_Notification_1</destinationFlowDefinition>
+    <destinationFlowVersion>Core_IPS_RDC_Provisioned_User_Activation_Email_Notification_1-1</destinationFlowVersion>
+    <developerName>myRule_1_301DU000000kD1kYAE</developerName>
+    <masterLabel>Core IPS RDC Provisioned User Activation Email Notification_1</masterLabel>
+    <migratedCriteriaLabel>Check for Active External User with RDC priviledge</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Core_IPS_RDC_Provisioned_User_Activation_Email_Notification-1</processVersion>
+</ProcessFlowMigration>

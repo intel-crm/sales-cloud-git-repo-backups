@@ -17,6 +17,10 @@
         <name>Core_Description__c</name>
     </fields>
     <fields>
+        <label><!-- External Id --></label>
+        <name>Core_External_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Case Category Name --></label>
         <name>Core_Issue_Category_Name__c</name>
         <relationshipLabel><!-- Case Categories (Case Category Name) --></relationshipLabel>
@@ -86,5 +90,13 @@ Press Cancel to exit. --></errorMessage>
     <webLinks>
         <label><!-- Core_Add_Sub_Categories --></label>
         <name>Core_Add_Sub_Categories</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Add_Environment_Variables --></label>
+        <name>Core_IPS_Add_Environment_Variables</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Core_IPS_Add_Environment_Variables --></label>
+        <name>New_Core_IPS_Add_Environment_Variables</name>
     </webLinks>
 </CustomObjectTranslation>

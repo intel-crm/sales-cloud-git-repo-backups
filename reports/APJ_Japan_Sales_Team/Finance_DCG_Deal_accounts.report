@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_Approved_Total_Price__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -29,8 +19,8 @@
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>startsWith</operator>
-            <value>Deal</value>
+            <operator>equals</operator>
+            <value>Deal: Sell-to,Deal: Sell-through,Deal: Sell-with,Deal: Scale-Estimate (per Finance)</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -40,11 +30,11 @@
             <value>Lost,Cancelled,Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled,Deleted,Production Lost,Production Cancelled</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>startsWith</operator>
+            <value>DCG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -55,16 +45,16 @@
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_Vendor__c</field>
+        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>(Deal)JP Account and Vendor</name>
+    <name>(Finance) DCG Deal accounts</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -87,7 +77,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

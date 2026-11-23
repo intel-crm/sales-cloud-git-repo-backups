@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Renpeng Huang</description>
+    <description>Wang_Qiang_Q_VSC_PRC</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>VSC_PRC_Chinabyte_Wang_Qiang_Q</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11638094_Renpeng_Huang</parentRole>
+    <parentRole>EMP_10691054_Qiang_Q_Wang</parentRole>
 </Role>

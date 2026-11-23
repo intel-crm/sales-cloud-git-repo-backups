@@ -54,7 +54,7 @@
                 <stringValue>now()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_1943713644</name>
+        <name>formula_2_myRule_1_A1_5328150274</name>
         <dataType>DateTime</dataType>
         <expression>now()</expression>
     </formulas>
@@ -71,7 +71,7 @@
         <expression>({!myVariable_current.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.RecordType.DeveloperName} ==&apos;Core_AAQC_Case_recordType&apos;) &amp;&amp;
 ({!myVariable_current.CreatedBy.Profile.Name} == &apos;Commissions Office Inquiries Admin User&apos;)</expression>
     </formulas>
-    <interviewLabel>Ask_Commissions_Update_Initial_Response_field_when_Admin_First_Commented-1_InterviewLabel</interviewLabel>
+    <interviewLabel>Ask_Commissions_Update_Initial_Response_field_when_Admin_First_Commented-2_InterviewLabel</interviewLabel>
     <label>Ask Commissions - Update Initial Response field when Admin First Commented</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -106,6 +106,9 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -116,6 +119,9 @@
             <value>
                 <stringValue>[Core_AAQC_Case_Comments__c].Commissions Case.Case</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_1_A1</name>
         <label>UpdateInitialResponseTime&amp;Date</label>
@@ -168,13 +174,13 @@
             </processMetadataValues>
             <field>Core_AAQC_Initial_Response_Date_Time__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_1943713644</elementReference>
+                <elementReference>formula_2_myRule_1_A1_5328150274</elementReference>
             </value>
         </inputAssignments>
         <object>Case</object>
     </recordUpdates>
     <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

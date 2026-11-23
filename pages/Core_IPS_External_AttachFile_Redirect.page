@@ -1,0 +1,60 @@
+<!--*********************************************************************************************************************
+VF Page Name   :  Core_IPS_External_AttachFile_Redirect.
+US no          :  Iteration 13,US108333.
+Version        :  1.0 .
+Created Date   :  18/06/2018.
+Function       :  VF page to Add Attachments on the Case Detail Page Button.
+*Developer                 Date                    Description
+* -----------------------------------------------------------------------------------------------------------------------             
+* Raj Kommera            18/06/2018                 Created.                                         
+**********************************************************************************************************************-->
+
+<apex:page sidebar="true" showHeader="true" >    <!--StandardController="Case" extensions="Core_IPS_Ext_AttachFile_Redirect_Ctrl"  action="{!redirectPage}" -->
+ <!--<script>
+    //Attach File-Private to Partners Button
+	function privateToPartnerURL(){
+        window.top.location ='{!JSENCODE(privateToPartnerURL)}'; 
+    }
+    
+    //Attach File-Public To Customers Button
+    function publicFileURL(){
+        window.top.location = '{!JSENCODE(publicFileURL)}';
+    } </script>-->
+<!--    <apex:form rendered="{!caseid != null}">        
+        <apex:sectionHeader title="Case Attachments" subtitle="Attach File"/>
+-->        
+        <!--This section displays the back button to users-->
+<!--        <apex:outputPanel layout="block" html-align="center" >
+            <apex:commandButton value="{!$Label.Core_IPS_File_CSAttachPgRetBtnTxt}" action="{!returnToCasePage}" />
+        </apex:outputPanel>
+-->        
+        <!--Case Details Block-->
+<!--   
+       <apex:pageBlock >
+            <apex:pageBlockSection title="{!$Label.Core_IPS_Case_Information}">
+                <apex:outputfield value="{!case.Core_IPS_Classification__c}"/>
+                <apex:outputfield value="{!case.Status}"/>
+                <apex:outputfield value="{!case.CaseNumber}"/>
+                <apex:outputfield value="{!case.Core_Sub_Status__c}"/>
+                <apex:outputfield value="{!case.Subject}"/>
+                <apex:outputfield value="{!case.Core_IPS_Project_Case__r.Name}"/> 
+                <apex:outputfield value="{!case.account.Name}"/>
+                <apex:outputfield value="{!case.Product.Name}"/>
+            </apex:pageBlockSection> 
+-->
+            
+            <!--This section displays the buttons to users-->
+<!--
+              <apex:outputPanel layout="block" html-align="center">
+                <apex:commandButton value="Attach File-Public To Customers" onclick="publicFileURL(); return false;">
+                    <apex:param name="publicParameter" value="{!case.id}"/>
+                </apex:commandbutton>
+                &nbsp;&nbsp;&nbsp;
+                <apex:commandButton value="Attach File-Private to Partners" onclick="privateToPartnerURL(); return false;">  
+                    <apex:param name="partnerParameter" value="{!case.id}"/>
+                </apex:commandbutton> 
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+-->
+</apex:page>

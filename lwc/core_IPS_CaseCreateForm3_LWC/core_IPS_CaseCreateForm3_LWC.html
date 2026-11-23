@@ -1,0 +1,192 @@
+<template>
+    <template if:true={createmode}>
+        <div class="divclass">
+        </br>
+        <p class="slds-text-align_center">Case Creation</p>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_3-of-12"></div>
+            <div class="slds-col slds-size_6-of-12">
+                <ul class="slider">
+                    <li class="slider-item">
+                        <label class="text" for="f-option">&emsp;Case Details</label>
+                        <span class="dot1"></span>
+                    </li>
+                    <li class="slider-item">
+                        <label class="text" for="g-option">Check for Answers</label>
+                        <span class="dot1"></span>
+                    </li>
+                    <li class="slider-item">
+                        <label class="text" for="k-option">&emsp;Case Creation</label>
+                        <span class="dot2"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="slds-col slds-size_3-of-12"></div>
+        </div>
+    </div>
+    <div>
+        <div class="line"></div>
+        <div class="slds-grid slds-wrap">
+            <div class="headline slds-col">
+                <span>
+                        Case information
+                    </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Project</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                </br>
+                {casedatainfo.projectName}
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Product</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                </br>
+                {casedatainfo.ProductName}
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Product Variant</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                </br>
+                {casedatainfo.productvariantName}
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="slds-grid slds-wrap">
+            <div class="headline slds-col">
+                <span>
+                        Case Details
+                    </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Subject</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                </br>
+                <lightning-input data-id="subjectField" class="inputs" value={casedatainfo.Subject} onchange={handleChange}></lightning-input>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Case Description</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                </br>
+                <lightning-input-rich-text data-id="descriptionFeild" class="inputs" value={myVal} onchange={handleChange}></lightning-input-rich-text>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Case Type</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                        <lightning-combobox data-id="CaseType" class="inputs" name="CaseType" value={value} placeholder="Please Select" options={CaseTypeOptions}
+                            onchange={handleChange}></lightning-combobox>
+                    </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Severity</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                        <lightning-combobox data-id="Severity" class="inputs" name="Severity" value={severityValue} placeholder="Please Select" options={caseSeverityoptions}
+                            onchange={handleChange}></lightning-combobox>
+                    </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Customer Reference ID</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                </br>
+                <lightning-input data-id="custmerreference" class="custmerreference" onchange={handleChange}></lightning-input>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">End Customer</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                </br>
+                <lightning-input data-id="endcustomer" class="endcustomer" onchange={handleChange}></lightning-input>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="slds-grid slds-wrap">
+            <div class="headline slds-col">
+                <span>
+                        Product/Project Info
+                    </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Case Category</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">{casedatainfo.CategoryName}
+                <!-- <span>
+                        <lightning-combobox class="inputs" name="CaseCategory" value={CaseCategoryy} placeholder="Please Select" options={CaseCategoryoptions}
+                            onchange={handleChange}></lightning-combobox>
+                    </span> -->
+                <!-- <span> -->
+                <!-- <lightning-input class="inputs" value={casedatainfo.CategoryName}></lightning-input> -->
+                <!--  <div class="slds-col slds-grid slds-size_1-of-3"></br>{casedatainfo.CategoryName}</div> -->
+                <!-- </span> -->
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Case Subcategory</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">{casedatainfo.SubCategoryName}
+                <!-- <span>
+                        <lightning-combobox class="inputs" name="CaseSubcategory" value={CaseSubcategoryy} placeholder="Please Select" options={CaseSubcategoryoptions}
+                            onchange={handleChange}></lightning-combobox>
+                    </span> -->
+                <!-- <span>
+                         <lightning-input class="inputs" value={casedatainfo.SubCategoryName}></lightning-input> -->
+                <!-- <div class="slds-col slds-grid slds-size_1-of-3"></br>{casedatainfo.SubCategoryName}</div>
+                    </span> -->
+            </div>
+        </div>
+        <!-- Environmental Details START-->
+        <div class="line"></div>
+        <div class="headline slds-col">
+            <span>Environmental Details</span>
+             <!-- <div if:true={casedatainfo.showProdEdqs}>
+                <c-core_-i-p-s_dynamicformbuilder iscommunity={communityCheck} fields={casedatainfo.prodEdqRecs}> </c-core_-i-p-s_dynamicformbuilder>
+            </div> -->
+            <div if:true={showcubcatedqs}>
+                <c-core_-i-p-s_dynamicformbuilder iscommunity={communityCheck} fields={subcatrecedqs}></c-core_-i-p-s_dynamicformbuilder>
+             </div> 
+        </div>
+        <!-- Environmental Details END -->
+<template if:true={hideButton}>
+                <div class="slds-p-bottom_small" align="right">
+                    <input type="button" class="btn" value="Create Case" onclick={hanldeSaveReport}></input>
+                </div>
+        </template>
+<template if:true={spinnerOn}>
+			<c-core_-i-p-s_-spinner-utility></c-core_-i-p-s_-spinner-utility>
+		</template>
+</div>
+</template>
+<template if:true={sslcmode}>
+ANil in sslcMode
+    </template>
+</template>

@@ -143,12 +143,12 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <enableActivities>true</enableActivities>
+    <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
+    <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
+    <enableReports>false</enableReports>
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
@@ -156,10 +156,9 @@
     <fields>
         <fullName>AccountId__c</fullName>
         <externalId>false</externalId>
-        <label>Account Id</label>
+        <label>AccountId</label>
         <length>25</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -170,16 +169,24 @@
         <label>Account Action Refrence</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Primary_Coverage__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Primary Coverage</label>
+        <length>50</length>
+        <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Action__c</fullName>
-        <label>Action</label>
+        <label>Core Action</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -187,12 +194,12 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>DEACTIVATE</fullName>
+                    <fullName>Deactivate</fullName>
                     <default>false</default>
                     <label>Deactivate</label>
                 </value>
                 <value>
-                    <fullName>REACTIVATE</fullName>
+                    <fullName>Reactivate</fullName>
                     <default>false</default>
                     <label>Reactivate</label>
                 </value>
@@ -202,12 +209,12 @@
                     <label>MDMUpdate</label>
                 </value>
                 <value>
-                    <fullName>ADD_CPE</fullName>
+                    <fullName>Add CPE</fullName>
                     <default>false</default>
                     <label>Add CPE</label>
                 </value>
                 <value>
-                    <fullName>REMOVE_CPE</fullName>
+                    <fullName>Remove CPE</fullName>
                     <default>false</default>
                     <label>Remove CPE</label>
                 </value>
@@ -216,31 +223,24 @@
                     <default>false</default>
                     <label>IPSECBFlagCheck</label>
                 </value>
-                <value>
-                    <fullName>REMOVE_MPSHARE</fullName>
-                    <default>false</default>
-                    <label>REMOVE_MPSHARE</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Core_Retry_Counter__c</fullName>
         <externalId>false</externalId>
-        <label>Retry Counter</label>
+        <label>Core Retry Counter</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Status__c</fullName>
-        <label>Status</label>
+        <label>Core Status</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -248,55 +248,48 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>NEW</fullName>
+                    <fullName>New</fullName>
                     <default>false</default>
                     <label>New</label>
                 </value>
                 <value>
-                    <fullName>CANCELLED</fullName>
+                    <fullName>Cancelled</fullName>
                     <default>false</default>
                     <label>Cancelled</label>
                 </value>
                 <value>
-                    <fullName>FAILED</fullName>
+                    <fullName>Failed</fullName>
                     <default>false</default>
                     <label>Failed</label>
                 </value>
                 <value>
-                    <fullName>COMPLETED</fullName>
+                    <fullName>Completed</fullName>
                     <default>false</default>
                     <label>Completed</label>
-                </value>
-                <value>
-                    <fullName>DEACTIVATED</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Deactivated</label>
-                </value>
-                <value>
-                    <fullName>REACTIVATED</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Reactivated</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
+        <fullName>Name__c</fullName>
+        <displayFormat>A-{000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
         <fullName>Status_Details__c</fullName>
         <label>Status Details</label>
         <length>32768</length>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
     <label>ACM Account Staging</label>
     <nameField>
-        <displayFormat>A-{000000}</displayFormat>
-        <label>Name</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
+        <label>ACM Account Staging Name</label>
+        <type>Text</type>
     </nameField>
     <pluralLabel>ACM Account Staging</pluralLabel>
     <searchLayouts/>

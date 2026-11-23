@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Core_IPS_Case_Notif_External_PB_R4_2_3</destinationFlowDefinition>
+    <destinationFlowVersion>Core_IPS_Case_Notif_External_PB_R4_2_3-13</destinationFlowVersion>
+    <developerName>myRule_11_301DU000000kEFOYA2</developerName>
+    <masterLabel>Core IPS Case Notif External PB R4.2_3</masterLabel>
+    <migratedCriteriaLabel>External - Close Pending</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_11</migratedCriteriaName>
+    <processVersion>Core_IPS_Case_Notif_External_PB-38</processVersion>
+</ProcessFlowMigration>

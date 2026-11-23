@@ -21,6 +21,8 @@ public with sharing class Core_MilestoneScreenController{
             
             for(CaseMileStone CMRecforBHoursId: MileStoneQueryList){
                 BusinesshoursIdList.add(CMRecforBHoursId.BusinessHoursId);
+                system.debug('244444444444444444 ' + BusinesshoursIdList);
+                  system.debug(' 255555555555555555555 ' + MileStoneQueryList );
             }
             
             BusinessHoursQureryList = [Select Id,Name from BusinessHours where id IN: BusinesshoursIdList ];

@@ -76,7 +76,7 @@ Public with sharing class Core_IPS_AdminUtility
             Core_IPS_AdminUtility.DeleteEnvDetails(lstExistingCoreResponse);
         }
         
-        
+        system.debug('kamala1 upsertEnvDetailsToCreate = '+insertEnvDetails );
         insertEnvDetailsToCreate(insertEnvDetails);
     }
     
@@ -143,6 +143,9 @@ Public with sharing class Core_IPS_AdminUtility
         }
         caseWrapperObj.selectedRadioButton = (getPartnerType()!=null && getPartnerType()!='') ? getPartnerType() : caseWrapperObj.selectedRadioButton;
         Case cs = new Case();
+        system.debug('test1');
+        system.debug('newCase'+newCase);
+        system.debug('caseWrapperObj.selectedRadioButton'+caseWrapperObj.selectedRadioButton);
         if(newCase != null && newcase.Core_Sub_Status__c != Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Close_Pending_SubStatus') && newCase.Core_IPS_Date_Time_Close_Pending__c != null
            && caseWrapperObj.selectedRadioButton == Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c && (System.Label.Core_IPS_Agent_Profile_Ids.Contains(String.valueOf(userInfo.getprofileId()).substring(0, 15)) 
                                                                                                                      || System.Label.Core_IPS_DataOps.contains(String.valueOf(userInfo.getprofileId()).substring(0, 15)))) {
@@ -173,16 +176,25 @@ Public with sharing class Core_IPS_AdminUtility
             else {
                 newComment.Core_IPS_Case_Comment_Type__c = Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c;
             }
+             System.debug('Hk 141 ---> '+newComment.Core_IPS_Comment_Author_Type__c);
             if(newComment.Core_IPS_Comment_Attachment_Id__c!=null){
+                System.debug('Hk if');
                 if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Author_Type__c.isCreateable()) { //TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access
                 	newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId(), newAttachment.Core_FileUploadedBy__c);
                 }
+                System.debug('Hk 147 ---> '+newComment.Core_IPS_Comment_Author_Type__c);
             }
             else if(newComment.Core_IPS_Comment_Attachment_Id__c==null){
-                if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Author_Type__c.isCreateable()) { //TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access
-                	newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId(), userinfo.getuserid());
+                System.debug('Hk else');
+                  system.debug('Sowmya'+userinfo.getuserid());
+             
+                system.debug('Somya'+Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Author_Type__c.isCreateable());
+               if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Author_Type__c.isCreateable()) { //TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access
+                	
+                    newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId(), userinfo.getuserid());
                  }
               }
+	      System.debug('Hk 155 ---> '+newComment.Core_IPS_Comment_Author_Type__c);
             try{
                 if(newComment!=null){       
                     // Venrublity Fix - Refering query to service class
@@ -238,6 +250,8 @@ Public with sharing class Core_IPS_AdminUtility
     
     public static String getAuthr(String loggedUserId,String userid){
         String authroTyp='';
+        System.debug('Hk 201---loggedUserId---> '+loggedUserId);
+        System.debug('Hk 202---userid---> '+userid);
         
         if(Label.Core_IPS_External_Customer_Profile_Ids.contains(loggedUserId.substring(0,15))){
             return authroTyp=Core_IPS_Labels__c.getValues('Customer').value__c;         
@@ -265,7 +279,6 @@ Public with sharing class Core_IPS_AdminUtility
             return authroTyp=Core_IPS_Labels__c.getValues('Partner - Agent').value__c;
         }        
         else if(Label.Core_Partner_Profile_Id.contains(loggedUserId.substring(0,15))){
-            
             String partnerAuthrType = '';
             String partnerType1;                      
             partnerAuthrType  = Core_Utility.getPartnerUserType(Userid.substring(0,15));
@@ -297,12 +310,11 @@ Public with sharing class Core_IPS_AdminUtility
         
         List<Asset> assetList = new List<Asset>();
         List<Core_Flat_Product_Hierarchy__c> prodHierarchyList = new List<Core_Flat_Product_Hierarchy__c>();
-        Set<String> ids = new Set<String>();
-        List<Product2> productList = new List<Product2>();
+        Set<String> Ids = new Set<String>();
+        List<Product2> ProductList = new List<Product2>();
         try{
             if(prodId != null || prodId != ''){
                 List<sObject> listprod = new List<sObject>();
-//Syed Vulnerability fix-- query refering to the service class
                 assetList = (List<Asset>) Core_IPS_QueryService.queryRecords(
                     'select id, Name, Core_Product_Organization__c, core_supported_product__c, core_supported_product__r.Core_IPS_Is_Show_Variant__c, Core_IPS_Project__c, Core_Product_EPM_ID__c from asset where id = :productId',
                     new Map<String, Object>{ 'productId' => productId }
@@ -310,7 +322,6 @@ Public with sharing class Core_IPS_AdminUtility
                 if(!assetList.isEmpty() || assetList.size() > 0){
                     if(assetList[0].core_supported_product__r.Core_IPS_Is_Show_Variant__c== true){
                         if (Schema.sObjectType.Core_Flat_Product_Hierarchy__c.isAccessible()) {
-                           //Syed Vulnerability fix-- query refering to the service class
                             String hierarchyFilter = '%' + assetList[0].Core_Product_EPM_ID__c + '%';
                             prodHierarchyList = (List<Core_Flat_Product_Hierarchy__c>) Core_IPS_QueryService.queryRecords(
                                 'select id, Core_EPM_Hierarchy_Name__c, Core_L1_EPM_ID__c, Core_L1_EPM_Name__c, Core_L2_EPM_ID__c, Core_L2_EPM_Name__c, Core_Unique_ID__c from Core_Flat_Product_Hierarchy__c where Core_Unique_ID__c LIKE :hierarchyFilter',
@@ -326,44 +337,51 @@ Public with sharing class Core_IPS_AdminUtility
                                     if(recorddata[i]==assetList[0].Core_Product_EPM_ID__c){
                                         if(System.label.Core_IPS_MAG_Support_Org.Contains((assetList[0].Core_Product_Organization__c+'').substring(0,15))){
                                             if(i>0 && i==1){
-                                                ids.add(recorddata.get(i-1));
+                                                Ids.add(recorddata.get(i-1));
                                             }else if(i>0 && i==2){
-                                                ids.add(recorddata.get(i-2));
+                                                Ids.add(recorddata.get(i-2));
                                             }else if(i>0 && i==3){
-                                                ids.add(recorddata.get(i-1));
+                                                Ids.add(recorddata.get(i-1));
                                             }
                                         } else {
                                             if(i>0){
-                                                ids.add(recorddata.get(i-1));
+                                                Ids.add(recorddata.get(i-1));
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                        ids.remove(assetList[0].Core_Product_EPM_ID__c);
+                        Ids.remove(assetList[0].Core_Product_EPM_ID__c);
                         String strIPS = 'IPS';
                         if(ids!=null && ids.size()>0){
                             
-                            productList = [SELECT Id, Name FROM Product2 WHERE Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :Ids order by Name];
+                            ProductList = [SELECT Id, Name FROM Product2 WHERE Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :Ids order by Name];
                         }
                     }
                 }
             }
         } catch(Exception e){
         }
-        if(!productlist.isEmpty()){
-            return productlist;
+        if(!Productlist.isEmpty()){
+            return Productlist;
         }
         return null;
     }
     public static Case createCase(Case caseDetails){
-//Syed Vulnerability fix-- query refering to the service class
-         List<SObject> caseDetailsList = Core_IPS_QueryService.upsertRecords(new List<SObject>{ caseDetails });
+        /*string ruleId = ((AssignmentRule)Database.query(System.Label.SOQL_Case_Assignment_Rule)).Id;
+                Database.DMLOptions dmo = new Database.DMLOptions();
+                dmo.AssignmentRuleHeader.assignmentRuleId = ruleId;
+                dmo.EmailHeader.triggerUserEmail = false;
+                caseDetails.setOptions(dmo); */
+                // Venrublity Fix - Refering query to service class
+                // upsert caseDetails;
+                List<SObject> caseDetailsList = Core_IPS_QueryService.upsertRecords(new List<SObject>{ caseDetails });
                 if(!caseDetailsList.isEmpty()){
                     caseDetails = (Case) caseDetailsList[0];
                 }
-        return caseDetails;
+                //Database.upsert(caseDetails, AccessLevel.USER_MODE);
+                return caseDetails;
     }
     
 }

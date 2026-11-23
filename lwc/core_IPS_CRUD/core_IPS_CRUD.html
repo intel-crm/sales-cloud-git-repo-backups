@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-m-top_small slds-m-bottom_medium">
+        <h2 class="slds-text-heading_small slds-m-bottom_small">
+            Click the buttons to activate the <code>onclick</code> handler and view the label of the clicked button.
+        </h2>
+        <template if:true={isInserPresent}>
+            <c-crudcmp input-s-object-list-sent = {inputSObjectListSent} operation = 'insert'> </c-crudcmp>
+            {inputSObjectListSent}
+        </template>
+        <lightning-button variant="brand" label="Insert" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+        <template if:true={isUpdatePresent}>
+            <c-crudcmp input-s-object-list-sent = {inputSObjectListSent} operation = 'Update'> </c-crudcmp>
+            {inputSObjectListSent}
+        </template>
+        <lightning-button variant="brand" label="Update" title="Primary action" onclick={handleClickEdit} class="slds-m-left_x-small"></lightning-button>
+        <template if:true={isDataRead}>
+            <c-crudcmp input-s-object-list-sent = {inputSObjectListSent} operation = 'Read'> </c-crudcmp>
+            {inputSObjectListSent}
+        </template>
+        <lightning-button variant="brand" label="Read" title="Primary action" onclick={handleClickRead} class="slds-m-left_x-small"></lightning-button>
+        <template if:true={isRecordDelete}>
+            <c-crudcmp input-s-object-list-sent = {inputSObjectListSent} operation = 'Delete'> </c-crudcmp>
+            {inputSObjectListSent}
+        </template>
+        <lightning-button variant="brand" label="Delete" title="Primary action" onclick={handleClickDelete} class="slds-m-left_x-small"></lightning-button>
+    </div> 
+</template>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <actionOnInsert>Block</actionOnInsert>
-    <actionOnUpdate>Allow</actionOnUpdate>
+    <actionOnUpdate>Block</actionOnUpdate>
     <alertText>A duplicate record exists with the same name and primary address.</alertText>
     <description xsi:nil="true"/>
     <duplicateRuleFilter>
         <booleanFilter xsi:nil="true"/>
         <duplicateRuleFilterItems>
+            <field>Core_Lead_Conversion_Flag__c</field>
+            <operation>equals</operation>
+            <value>false</value>
+            <sortOrder>1</sortOrder>
+            <table>Account</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
             <field>Profile</field>
             <operation>notEqual</operation>
             <value>Integration</value>
-            <sortOrder>1</sortOrder>
-            <table>User</table>
-        </duplicateRuleFilterItems>
-        <duplicateRuleFilterItems>
-            <field>RecordType</field>
-            <operation>equals</operation>
-            <value>Intel Account</value>
             <sortOrder>2</sortOrder>
-            <table>Account</table>
+            <table>User</table>
         </duplicateRuleFilterItems>
     </duplicateRuleFilter>
     <duplicateRuleMatchRules>

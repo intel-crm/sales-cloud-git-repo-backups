@@ -34,10 +34,10 @@
         <itemInstances>
             <componentInstance>
                 <componentName>core_IPS_MAG_Response_LEX</componentName>
-                <identifier>core_IPS_MAG_Response_LEX</identifier>
+                <identifier>c_core_IPS_MAG_Response_LEX</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-31351f74-5af1-48ca-896c-60abf29d437b</name>
+        <name>Facet-7edf9692-e821-4e0e-8d6f-bdf60f755ac2</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -45,7 +45,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-31351f74-5af1-48ca-896c-60abf29d437b</value>
+                    <value>Facet-7edf9692-e821-4e0e-8d6f-bdf60f755ac2</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -59,7 +59,7 @@
                 <identifier>flexipage_accordionSection</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-b8f1026d-cd1c-414e-9b50-26216d303e17</name>
+        <name>Facet-fbfa61a1-6606-4304-8139-138aee09684f</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -93,15 +93,11 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>accordionSections</name>
-                    <value>Facet-b8f1026d-cd1c-414e-9b50-26216d303e17</value>
+                    <value>Facet-fbfa61a1-6606-4304-8139-138aee09684f</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>allowMultipleSectionsOpen</name>
                     <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>defaultSectionName</name>
-                    <value>accordionSection1</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:accordion</componentName>
                 <identifier>flexipage_accordion</identifier>
@@ -205,7 +201,7 @@
                 <identifier>c_ips_AgentLuncher</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-dc4a3884-b6d6-4703-9234-b0f3ec359a4c</name>
+        <name>Facet-0adefbcf-b10c-4474-afbc-2ac0decf25d4</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -227,7 +223,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>active</name>
-                    <value>true</value>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
@@ -273,7 +269,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>active</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
@@ -319,7 +315,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-dc4a3884-b6d6-4703-9234-b0f3ec359a4c</value>
+                    <value>Facet-0adefbcf-b10c-4474-afbc-2ac0decf25d4</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>

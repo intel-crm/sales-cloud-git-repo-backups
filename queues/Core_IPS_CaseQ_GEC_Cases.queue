@@ -7,6 +7,12 @@
         <publicGroups>
             <publicGroup>Core_IPS_CaseQ_GEC_Cases</publicGroup>
         </publicGroups>
+        <users>
+            <user>aayushix.singhal@intel.com</user>
+            <user>11738854@intel.com.crm</user>
+            <user>karthickx.saravanan@intel.com</user>
+            <user>11632695@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>

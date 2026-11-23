@@ -13,6 +13,10 @@
         <name>Core_IPS_Description__c</name>
     </fields>
     <fields>
+        <label><!-- Error Log Id --></label>
+        <name>Core_IPS_Error_Log_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Status --></label>
         <name>Core_IPS_Status__c</name>
     </fields>

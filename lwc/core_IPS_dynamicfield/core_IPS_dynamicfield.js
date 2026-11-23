@@ -27,6 +27,9 @@ export default class core_IPS_DynamicQuestion extends LightningElement {
        
     };
     //Sowmya End
+    @track isValid = true;
+    
+    
     connectedCallback() {
         
         if(this.type == 'Picklist'){
@@ -174,6 +177,12 @@ export default class core_IPS_DynamicQuestion extends LightningElement {
         });
         this.dispatchEvent(selectedquestionanswerin);
     }
+    /*@api resetValuesOnParentChange() {
+        console.log('resetValuesOnParentChange got called ')
+        this.template.querySelectorAll('lightning-combobox[data-id="reset"]').forEach(element => {
+            element.value = '';
+        });
+    }*/
     //Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
     handletextchange(){
           if(this.type === 'Text Area') {
@@ -183,4 +192,5 @@ export default class core_IPS_DynamicQuestion extends LightningElement {
     }
     //Sowmya end
 
+ 
 }

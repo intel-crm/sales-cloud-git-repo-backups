@@ -1,0 +1,112 @@
+<!--**************************************************************************************************
+   VF Page Name   :  Core_IPS_CaseAttachment_Visibility
+   US no          :  Iteration 3,4-US67638,US67639,US79605
+   Version        :  1.0 
+   Created Date   :  11/11/2017
+   Function       :  VF page to restrict Attachments visibility on a 
+                     case based on logged in user's profile
+   Modification Log :
+   *Developer                 Date                    Description
+   * ----------------------------------------------------------------------------                 
+   * Aparna                 11/11/2017                 Created
+   ****************************************************************************************************-->
+<apex:page StandardController="Case" extensions="Core_IPS_Attachment_Extension_V1" sidebar="true" showHeader="true" >
+   
+  <script>
+     var url = location.href;
+     var match = url.match(/inline=1/);
+    if (match != null) { 
+        var newUrl = url.replace(/inline=1/, '');
+        window.top.location=newUrl;
+    }
+    function CheckGEC(){
+        if('{!Case.Core_IPS_GEC_Flag__c}'=='true'){ 
+            // GEC flag checked true. 
+            if('{!JSENCODE($Label.Core_IPS_MAG_Support_Org)}'==('{!JSENCODE( Case.Core_IPS_Product_Org1__c )}'.substr(0, 15))){ 
+                // Equal Support org Id with custom label "Core_IPS_MAG_Support_Org" 
+                alert("{!JSENCODE($Label.Core_IPS_GEC_FileAttach_Message)}"); 
+                return false;
+            }
+        }
+        return true;
+    }
+   
+</script>
+
+   <apex:form target="_blank">
+      
+      <apex:pageBlock >
+              
+        <!--US67638;Developer Name:Aparna;Created Date:11/11/2017-->
+         <!--This section displays the buttons to users-->
+               
+         <apex:pageBlockButtons location="top" >
+            <div class="center">
+               <apex:commandButton value="Attach File" action="{!URL2}" rendered="{!IF(OR($Profile.Name = $Label.Core_IPS_External_Customer_Profile,$Profile.Name=partnerVal),true,false)}" onclick="return CheckGEC();" >  <!--CheckGEC(Case.Core_IPS_GEC_Flag__c,Case.Core_IPS_Product_Org1__c);-->
+                  <apex:param name="publicParameter" value="{!case.id}" />
+               </apex:commandbutton>
+               <apex:commandButton value="Attach File-Public To Customers" action="{!URL}" rendered="{!AND($Profile.Name !=$Label.Core_IPS_External_Customer_Profile,$Profile.Name!=partnerVal)}" onclick="window.location.reload()">
+                  <apex:param name="publicParameter" value="{!case.id}" />
+               </apex:commandbutton>
+               <apex:commandButton value="Attach File-Private To Intel" action="{!URL1}" rendered="{!AND($Profile.Name !=$Label.Core_IPS_External_Customer_Profile,$Profile.Name!=partnerVal)}">
+                  <apex:param name="privateParameter" value="{!case.id}"/>
+               </apex:commandbutton>
+               <apex:commandButton value="Refresh to see New Attachments" rendered="{!!externalUser}" onclick="window.top.location='/apex/Core_IPS_ViewCase?id={!case.id}'; return false"/>
+                <apex:commandButton value="Refresh to see New Attachments" rendered="{!externalUser}" onclick="window.top.location='/IPS/Core_IPS_ViewCase?id={!case.id}'; return false"/>
+            </div>
+         </apex:pageBlockButtons>
+         
+         <!--US67639,US79605;Developer Name:Aparna;Created Date:11/11/2017-->
+         <!--This section handles the attachments functionality-->
+         
+         <apex:pageBlockTable value="{!myListFilter}" var="item" cellspacing="2" rendered="{!IF((myListFilter.size != 0 && AND($Profile.Name !=$Label.Core_IPS_External_Customer_Profile,$Profile.Name!=partnerVal)),true,false)}">
+         
+         <apex:column width="105px" rendered="{!$Profile.Name !=$Label.Core_IPS_External_Customer_Profile}">
+          <apex:facet name="header">Action
+          </apex:facet>
+                <apex:commandLink action="{!editAttachments}" value="Edit" target="_parent" >
+                  <apex:param name="attachmentId" value="{!item.id}"/>
+                  </apex:commandLink>
+               &nbsp; | &nbsp;   
+               <apex:commandLink action="{!deleteAttachments}" value="Delete" oncomplete="location.reload();" onclick="if(!confirm('Are you sure?')){return false;}">
+                  <apex:param name="attachmentId" value="{!item.id}"/>
+                         </apex:commandLink>
+            </apex:column>
+            <apex:column headerValue="IPS Case Attachment Number" >
+                    <apex:commandLink value="{!item.name}" onclick="window.open('/{!item.id}')"></apex:commandLink>
+            </apex:column>
+            <apex:column value="{!item.Core_File_Name__c}"  />
+            <apex:column value="{!item.Core_File_Description__c}" />
+            <apex:column value="{!item.Core_File_Size__c}"  />
+            <apex:column value="{!item.Core_Category__c}" />
+            <apex:column value="{!item.Core_IPS_Attachment_Visibility__c}" rendered="{!$Profile.Name !=$Label.Core_IPS_External_Customer_Profile}"/>
+            <apex:column value="{!item.Core_Upload_Status__c}" />
+            <apex:column value="{!item.Core_File_Hyperlink__c}" />
+            <apex:column value="{!item.CreatedDate}" />
+            <apex:column value="{!item.Core_FileUploadedBy__c}" />
+            <apex:column value="{!item.CreatedByID}"  />
+         </apex:pageBlockTable>
+         
+          <apex:pageBlockTable value="{!myPublicAttachFilter}" var="item" cellspacing="2" rendered="{!IF((myPublicAttachFilter.size != 0 && !AND($Profile.Name !=$Label.Core_IPS_External_Customer_Profile,$Profile.Name!=partnerVal)),true,false)}">
+         
+            <apex:column headerValue="IPS Case Attachment Number" >
+                    <apex:commandLink value="{!item.name}" onclick="window.open('/{!item.id}')"></apex:commandLink>
+            </apex:column>
+            <apex:column value="{!item.Core_File_Name__c}"  />
+            <apex:column value="{!item.Core_File_Description__c}" />
+            <apex:column value="{!item.Core_File_Size__c}"  />
+            <apex:column value="{!item.Core_Category__c}" />
+            <apex:column value="{!item.Core_Upload_Status__c}" />
+            <apex:column value="{!item.Core_File_Hyperlink__c}" />
+            <apex:column value="{!item.CreatedDate}" />
+            <apex:column value="{!item.Core_FileUploadedBy__c}" />
+            <apex:column value="{!item.CreatedByID}"  />
+         </apex:pageBlockTable>
+        <apex:outputText rendered="{!(myPublicAttachFilter.size = 0)}" value="No records to display" />
+      </apex:pageBlock>
+      
+   </apex:form>
+   
+</apex:page>
+
+<!--end by Aparna on 14/12/2017-->

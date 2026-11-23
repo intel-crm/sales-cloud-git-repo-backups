@@ -292,6 +292,21 @@
         <unique>false</unique>
     </fields>
     <label>Backend Routing</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Backend_Routing_Order__c</columns>
+        <columns>Core_IPS_Queue__c</columns>
+        <columns>Core_IPS_Supported_Product_Name__c</columns>
+        <columns>Core_IPS_Routing_Casetype__c</columns>
+        <columns>Core_IPS_New_Backend_System__c</columns>
+        <columns>Core_IPS_Auto_Promote__c</columns>
+        <columns>Core_IPS_Supported_Product__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <displayFormat>BR-{0000}</displayFormat>
         <label>Backend Routing Rule Name</label>

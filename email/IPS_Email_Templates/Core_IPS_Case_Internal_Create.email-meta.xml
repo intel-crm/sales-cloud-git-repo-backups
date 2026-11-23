@@ -5,7 +5,7 @@
     <letterhead>IPS_Letterhead</letterhead>
     <name>Core IPS Case Internal Create</name>
     <style>freeForm</style>
-    <subject>IPS - Created Case {!Case.CaseNumber} - {!Case.Account} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot; - &quot;)} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Subject)}</subject>
+    <subject>IPS - Created Case {!Case.CaseNumber} - {!Case.Account} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot; - &quot;)} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Subject)}[{!Case.00N3F000000JwoI}] RefId# {!Case.Id}</subject>
     <textOnly>Intel® Premier Support 
 
 Case #{!Case.CaseNumber}, has been created.

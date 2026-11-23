@@ -236,6 +236,11 @@
         </valueSet>
     </fields>
     <label>Premier Support Project Account</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>IPS AN-{00000000}</displayFormat>
         <label>Premier Support Account Number</label>
@@ -252,6 +257,17 @@
         <errorMessage>Please do not attempt to change the values once created</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Accounts</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Accounts</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>window.open(&quot;/apex/Core_addProjectAccounts?projectId={!Core_IPS_Project__c.Id}&quot;,&apos;_self&apos;);</url>
+    </webLinks>
     <webLinks>
         <fullName>Add_Accounts_LEX</fullName>
         <availability>online</availability>

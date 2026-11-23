@@ -12,9 +12,6 @@
         <field>Core_Solution_Milestone__c.Core_Milestone_Focus__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Owner_Sub_Geo__c</field>
     </columns>
     <columns>
@@ -150,8 +147,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2017-12-30</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2017-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

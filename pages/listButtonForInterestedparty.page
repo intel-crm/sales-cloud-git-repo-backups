@@ -1,0 +1,23 @@
+<apex:page standardController="Core_IPS_Case_Interested_Party__c" extensions="Core_IPS_Interested_Party_Controller"  recordSetVar="parties" >
+ <apex:includeLightning />
+
+ <div style="width:100%;height:700px;" id="FlipcardContainer" />
+
+ <script>
+   var csId = '{! CaseId}';
+
+ $Lightning.use("c:callInterestedPartyAura", function() {
+ $Lightning.createComponent("c:ipsInternalInterestedParty",{
+     // accId : csId
+	recorddataId:csId
+ },
+ "FlipcardContainer",
+ function(cmp) {
+ console.log('Component created, do something cool here');
+ 
+console.log('csid>'+csId);
+  component.set("v.accId" , "5000afafafafaf");
+ });
+ });
+ </script>
+</apex:page>

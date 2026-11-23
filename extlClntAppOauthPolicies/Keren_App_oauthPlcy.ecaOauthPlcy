@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
-    <clientCredentialsFlowUser>11637316@intel.com.crm</clientCredentialsFlowUser>
-    <commaSeparatedPermissionSet>One_AI_VITA,Ask_a_Question,PMP_Internal_Intel_Read_Only,MSTeamsIntegration</commaSeparatedPermissionSet>
-    <commaSeparatedProfile>IPS Support Org Admin</commaSeparatedProfile>
+    <clientCredentialsFlowUser>basupallyx.nuthana@intel.com</clientCredentialsFlowUser>
+    <commaSeparatedProfile>System Administrator</commaSeparatedProfile>
     <externalClientApplication>Keren_App</externalClientApplication>
     <ipRelaxationPolicyType>Enforce</ipRelaxationPolicyType>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
@@ -10,8 +9,8 @@
     <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
     <label>Keren_App_oauthPlcy</label>
     <permittedUsersPolicyType>AdminApprovedPreAuthorized</permittedUsersPolicyType>
-    <refreshTokenPolicyType>SpecificLifetime</refreshTokenPolicyType>
-    <refreshTokenValidityPeriod>365</refreshTokenValidityPeriod>
+    <refreshTokenPolicyType>SpecificInactivity</refreshTokenPolicyType>
+    <refreshTokenValidityPeriod>30</refreshTokenValidityPeriod>
     <refreshTokenValidityUnit>Days</refreshTokenValidityUnit>
     <requiredSessionLevel>STANDARD</requiredSessionLevel>
 </ExtlClntAppOauthConfigurablePolicies>

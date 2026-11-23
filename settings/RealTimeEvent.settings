@@ -2,7 +2,7 @@
 <RealTimeEventSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <realTimeEvents>
         <entityName>ApiEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>ApiEventStream</entityName>
@@ -14,11 +14,11 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>ApiAnomalyEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>BulkApiResultEventStore</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>BulkApiResultEvent</entityName>
@@ -26,7 +26,7 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>ConcurLongRunApexErrEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>CredentialStuffingEventStore</entityName>
@@ -34,11 +34,11 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>CredentialStuffingEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>FileEventStore</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>FileEvent</entityName>
@@ -50,7 +50,7 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>GuestUserAnomalyEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>LoginAnomalyEventStore</entityName>
@@ -62,19 +62,19 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>IdentityVerificationEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>IdentityProviderEventStore</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>LightningUriEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>LightningUriEventStream</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>ListViewEvent</entityName>
@@ -90,7 +90,7 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>LoginEventStream</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>LoginAsEvent</entityName>
@@ -98,7 +98,7 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>LoginAsEventStream</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>LogoutEvent</entityName>
@@ -110,7 +110,7 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>PermissionSetEventStore</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>PermissionSetEvent</entityName>
@@ -130,7 +130,7 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>ReportAnomalyEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>SecurityDefenseActionEventStore</entityName>
@@ -146,7 +146,7 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>SessionHijackingEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>UniversalAnomalyEventStore</entityName>
@@ -158,7 +158,7 @@
     </realTimeEvents>
     <realTimeEvents>
         <entityName>UriEvent</entityName>
-        <isEnabled>true</isEnabled>
+        <isEnabled>false</isEnabled>
     </realTimeEvents>
     <realTimeEvents>
         <entityName>UriEventStream</entityName>

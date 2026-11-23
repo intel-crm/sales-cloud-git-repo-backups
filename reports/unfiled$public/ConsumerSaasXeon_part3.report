@@ -78,7 +78,7 @@
             <value>Pandora,Paramount,PayPal Inc,Paytm,Perfect World,PINTEREST,Pixar,Priceline,Qihoo,Rakuten,Riot Games,Scalar Animal Logic,ShopClues,sify,Sina,SK Planet,Slack,Snapchat,Snapdeal,Sohu,Sony,SOUNDHOUND,Spotify,Square,SurveyMonkey</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

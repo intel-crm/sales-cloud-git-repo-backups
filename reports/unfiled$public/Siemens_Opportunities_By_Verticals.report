@@ -1,35 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_52907700</developerName>
-        <masterLabel>Verticals</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>Opportunity.Core_Consumption_Market__c</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <value>1. Industrial</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Health and Life Sciences</sourceValue>
-            </sourceValues>
-            <value>2. Healthcare</value>
-        </values>
-        <values>
-            <value>3. Energy</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Transportation</sourceValue>
-            </sourceValues>
-            <value>4. Mobility</value>
-        </values>
-        <values>
-            <value>5. Building Technology</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -39,17 +9,15 @@
             <axisBinding>y</axisBinding>
             <column>AMOUNT</column>
         </chartSummaries>
-        <chartType>HorizontalBarStacked</chartType>
-        <enableHoverLabels>true</enableHoverLabels>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Opportunity.Core_Consumption_Market__c</groupingColumn>
-        <legendPosition>Bottom</legendPosition>
+        <groupingColumn>CLOSE_DATE</groupingColumn>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>CLOSE_DATE</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>false</showValues>
+        <showValues>true</showValues>
         <size>Large</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -92,36 +60,17 @@
             <value>Lost,Cancelled,Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>design</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>joerg matschke,angelo</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opp_Prime_Account_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Siemens</value>
+            <value>Henning Eid</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Consumption_Market__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>FiscalYear</dateGranularity>
+        <dateGranularity>FiscalQuarter</dateGranularity>
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -149,6 +98,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVCUR2Y</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -13,6 +13,9 @@
         <field>AMOUNT</field>
     </columns>
     <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -41,9 +44,6 @@
         <field>SERVICE_MONTH</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
         <field>PRODUCT_DESCRIPTION</field>
     </columns>
     <columns>
@@ -61,22 +61,8 @@
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
-    </columns>
     <description>Open Account Opportunities for the Quarter</description>
-    <filter>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>DeBello</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
-    <format>Tabular</format>
+    <format>Summary</format>
     <name>DeBello Open Opps Report</name>
     <params>
         <name>terr</name>
@@ -103,6 +89,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

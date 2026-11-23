@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Product_Issue_Category__c.Core_Type__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Product_Issue_Category__c.Core_Product_Issue_Category__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Product_Issue_Category__c.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Product_Issue_Category__c.Core_Description__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <description>Master Case category available as Case categories under different Supported Products</description>
+    <filter>
+        <criteriaItems>
+            <column>CUST_CREATED_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel Support Representative</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_IPS_Product_Issue_Category__c.Core_Issue_Category_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Master CC with Prod CCs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_IPS_Product_Issue_Category__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <endDate>2017-11-07</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-11-06</startDate>
+    </timeFrameFilter>
+</Report>

@@ -2,7 +2,6 @@
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <defaultLandingTab>standard-Case</defaultLandingTab>
     <description>IPS Pre-Sales</description>
-    <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
@@ -29,7 +28,18 @@
     <tabs>Core_Ask_a_Question_Grid_Mgt</tabs>
     <tabs>Core_Batch_Header__c</tabs>
     <tabs>CaseMilestoneCompare__c</tabs>
+    <tabs>Core_Account_Team_Review</tabs>
+    <tabs>Core_Account_Team_Review_Data_Ops</tabs>
     <tabs>Ask_a_Question</tabs>
+    <tabs>Core_Flat_Product_Hierarchy__c</tabs>
+    <tabs>Core_RestAPI_Transaction_Entry__c</tabs>
+    <tabs>Core_AAQC_Case_Comments__c</tabs>
     <tabs>Core_IPS_Case_Owner_Group__c</tabs>
-    <tabs>Account_Create_Request__c</tabs>
+    <tabs>Core_IPS_BES_Outbound_Message__c</tabs>
+    <tabs>Core_IPS_BES_Inbound_Message__c</tabs>
+    <tabs>Core_IPS_Backend_System2__c</tabs>
+    <tabs>Core_IPS_Backend_Routing__c</tabs>
+    <tabs>Core_IPS_Opportunity_PAR__c</tabs>
+    <tabs>Core_IPS_BES_Error_Log__c</tabs>
+    <tabs>Core_IPS_MyIntel_Outbound_Message__c</tabs>
 </CustomApplication>

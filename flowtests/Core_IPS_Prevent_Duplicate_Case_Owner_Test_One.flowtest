@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Create Record</description>
+    <flowApiName>Core_IPS_Prevent_Duplicate_Case_Owner</flowApiName>
+    <label>Test One</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Core_IPS_Case_Owner_Email__c&quot;:&quot;Shubhammay56@gmail.com&quot;,&quot;Core_IPS_Case_Owner__c&quot;:&quot;0053F000005oA3SQAU&quot;,&quot;Core_IPS_Owner_Team_1__c&quot;:&quot;Shubham&quot;,&quot;Core_IPS_Owner_Team_2__c&quot;:&quot;Shubham&quot;,&quot;Core_IPS_Unique_Owner_Group__c&quot;:&quot;&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.Core_IPS_Unique_Owner_Group__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Shubhammay56a28o0000000qoa3AAA</stringValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

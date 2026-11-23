@@ -39,7 +39,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
     @track progressbarImg = progressbarImg;
     @api myVal = '';
     @api subject;
-    @api description='';//new
+    @api description = '';//new
     @api caseType;
     @api caseseverity;
     @api custmerreference = '';
@@ -94,6 +94,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             { label: "Design Review", value: "Design Review" },
             { label: "Feature Request", value: "Feature Request" },
             { label: "Debug Request", value: "Debug Request" },
+            
         ];
     }
     @api mode;
@@ -114,6 +115,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
         var s, c;
         var obj = {};
         var vb;
+
         if (event.detail.val === false) {
             this.valCheck = false;
             vb = event.detail.val;
@@ -129,41 +131,33 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             "edq": [{ "qquestion": event.detail.qquestion, "llabel": event.detail.llabel, "vvalue": event.detail.vvalue, "rrequired": event.detail.rrequired, "ttype": event.detail.ttype, "val": event.detail.val }]
         };
 
-       
+
         this.savealldataedqMap.set(s.edq[0].qquestion, s);
 
         for (const x of this.savealldataedqMap.keys()) {
             console.log('132 => ' + 'Key=' + x + ', Value=' + JSON.stringify(this.savealldataedqMap.get(x)));
         }
-
-
-
-        //this.savealldataedq.push(s);
-       
-
     }
     CaseCategoryy;
     CaseSubcategoryy;
-    booleanRequired = false;
+    booleanRequired = true;
     isAgent;
     connectedCallback() {
-        
         getLoggedInContacts({})
-        .then((result) => {
-            this.selectedContactRecord = result[0];
-            
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then((result) => {
+                this.selectedContactRecord = result[0];
 
-       
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+
         loadStyle(this, EdqAlignLast);
-      
-        if(this.casedatainfo.project == undefined){
-           
-            this.booleanRequired = true;
-          
+        if (this.casedatainfo.project == undefined || this.casedatainfo.project == null) {
+
+            this.booleanRequired = false;
+
         }
 
         this.passSupportedProductID = this.casedatainfo.passSupportedProductID;
@@ -172,21 +166,14 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
         this.caseseverity = this.severityValue;
         this.CaseCategoryoptions = this.casedatainfo.CategoryOptions;
         this.CaseSubcategoryoptions = this.casedatainfo.SubCategoryOptions;
-        //this.CaseCategoryy = this.casedatainfo.CategoryName;
         this.CaseCategoryy = this.casedatainfo.CategoryId;
         this.CaseSubcategoryy = this.casedatainfo.SubCategoryId;
-        
-        //this.CaseSubcategoryy = this.casedatainfo.SubCategoryName;
-       
-        this.renderProductCategory=this.casedatainfo.renderProductCategory;//new
-       
-        this.renderProductSubCategory =this.casedatainfo.renderProductSubCategory;//newly added
-       
-        //this.createSubCategorylabel=this.casedatainfo.SubCategoryName; //new
-       
+        this.renderProductCategory = this.casedatainfo.renderProductCategory;//new       
+        this.renderProductSubCategory = this.casedatainfo.renderProductSubCategory;//newly added       
         let projectURL = window.location.href;
         let newURL = new URL(projectURL).searchParams;
         this.mode = newURL.get('mode');
+
         if (this.mode == 'create') {
             this.createmode = true;
             this.sslcmode = false;
@@ -204,7 +191,6 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             this.checkProdVarient = true;
         }
         if (this.casedatainfo.SubCategoryName == '' || this.casedatainfo.SubCategoryName == undefined) {
-            //
             this.showSubCategories = false;
         } else {
             this.showSubCategories = true;
@@ -295,31 +281,30 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             this.endcustomer = value;
         }
 
-        //'this.caseType!= undefined && this.caseType!= null' added by Kamala on 30-04-2026 - TWC745-9174 as part of Lightening Component exception 
-        
-        if ( this.caseType!= undefined && this.caseType!= null && this.caseType.length > 0) {
+        //'this.caseType!= undefined && this.caseType!= null' added by Kamala on 30-04-2026 - TWC745-9174 as part of Lightening Component exception    
+        if (this.caseType!= undefined && this.caseType!= null && this.caseType.length > 0) {
             this.isCasetypeEmpty = false;
         }
-        if(this.caseType == 'Question'){
-            
+        if (this.caseType == 'Question') {
+
             this.isSeverity_Question = true;
             this.isSeverity_Debug = false;
             this.isSeverity_Feature = false;
             this.isSeverity_Design = false;
         }
-        if(this.caseType == 'Design Review'){
+        if (this.caseType == 'Design Review') {
             this.isSeverity_Question = false;
             this.isSeverity_Debug = false;
             this.isSeverity_Feature = false;
             this.isSeverity_Design = true;
         }
-        if(this.caseType == 'Feature Request'){
+        if (this.caseType == 'Feature Request') {
             this.isSeverity_Question = false;
             this.isSeverity_Debug = false;
             this.isSeverity_Feature = true;
             this.isSeverity_Design = false;
         }
-        if(this.caseType == 'Debug Request'){
+        if (this.caseType == 'Debug Request') {
             this.isSeverity_Question = false;
             this.isSeverity_Debug = true;
             this.isSeverity_Feature = false;
@@ -375,26 +360,25 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             this.template.querySelector('.caseTypeInput')?.classList.add('showRequired');
             this.template.querySelector('.caseTypeInput')?.scrollIntoView();
         }
-        //Added by chetan as part of Bug assist validation
         if(this.casedatainfo.isBugAssitCase === true && this.casedatainfo.selectedReason === 'Case Type is not “Debug Request"' && this.caseType == ''){
             createValid = false;
             this.isRequiredCaseType = false;
         }
         if (this.CaseCategoryy == null || this.CaseCategoryy == undefined || this.CaseCategoryy == '') {
-            if(this.CaseCategoryoptions == true){
-             createValid = false;
-            this.categoryReq = true;
-            this.template.querySelector('.categoryInput')?.classList.add('showRequired');
-            this.template.querySelector('.categoryInput')?.scrollIntoView();
+            if (this.CaseCategoryoptions == true) {
+                createValid = false;
+                this.categoryReq = true;
+                this.template.querySelector('.categoryInput')?.classList.add('showRequired');
+                this.template.querySelector('.categoryInput')?.scrollIntoView();
             }
 
         }
         if (this.CaseSubcategoryy == null || this.CaseSubcategoryy == undefined || this.CaseSubcategoryy == '') {
-            if(this.showSubCategories == true){
-             createValid = false;
-            this.subCategoryReq = true;
-            this.template.querySelector('.subCategoryInput')?.classList.add('showRequired');
-            this.template.querySelector('.subCategoryInput')?.scrollIntoView();
+            if (this.showSubCategories == true) {
+                createValid = false;
+                this.subCategoryReq = true;
+                this.template.querySelector('.subCategoryInput')?.classList.add('showRequired');
+                this.template.querySelector('.subCategoryInput')?.scrollIntoView();
             }
 
         }
@@ -406,15 +390,10 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             event.preventDefault();
             this.template.querySelector('.slds-textarea').style = "margin-bottom:-4px";
         }
-        if (this.partnerSupportAccount == null || this.partnerSupportAccount == undefined || this.partnerSupportAccount == ''){
-            console.log('boolean',this.booleanRequired);
-            //if(this.booleanRequired == false && this.agentCheck == true){ // Niyaz removed this.booleanRequired == false && because the combination was not correct
-            if(this.booleanRequired == true && this.agentCheck == true){
-            createValid = false;
+        if (this.booleanRequired == true && this.agentCheck == true && (this.partnerSupportAccount == null || this.partnerSupportAccount == undefined || this.partnerSupportAccount == '')) {
             this.template.querySelector('.PSArequired')?.classList.add('showRequired');
             this.template.querySelector('.PSArequired')?.scrollIntoView();
             this.isPSArequired = true;
-            }
         }
 
         this.primaryDetailsValid = createValid;
@@ -443,7 +422,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
         if (this.showcubcatedqs === true) {
             this.template.querySelector('c-dynamic-form-builder[data-id="subCatEDQ"]').callhandleQuestionAnswer();
         }
-        
+
 
 
         for (const x of this.savealldataedqMap.keys()) {
@@ -452,11 +431,11 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
         var strEdq = JSON.stringify(this.savealldataedq);
         let finStr = JSON.parse(strEdq);
         this.validateedq();
-       
+
         if (this.valCheck && this.primaryDetailsValid) {
 
             this.spinnerOn = true;
-            
+
             var caseObj = {
                 Core_IPS_Project_Case__c: this.casedatainfo.project,
                 ContactId: this.casedatainfo["contactId"],
@@ -470,13 +449,13 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                 Core_Case_Issue_Category__c: (this.casedatainfo.CategoryId != this.createCategory) && (this.createCategory != null || this.createCategory != undefined) ? this.createCategory : this.casedatainfo.CategoryId,
                 Core_Case_Issue_Sub_Category__c: (this.casedatainfo.SubCategoryId != this.createSubCategory) && (this.createSubCategory != null || this.createSubCategory != undefined) ? this.createSubCategory : this.casedatainfo.SubCategoryId,
                 Core_External_Issue_Category__c: (this.casedatainfo.CategoryName != this.createCategoryLabel) && (this.createCategoryLabel != null || this.createCategoryLabel != undefined) ? this.createCategoryLabel : this.casedatainfo.CategoryName,
-                
+
                 Core_External_Issue_Subcategory__c: (this.createSubCategorylabel == undefined) ? '' : this.createSubCategorylabel,//this.casedatainfo.SubCategoryName
                 Core_IPS_Customer_Visible__c: true,
                 Core_Customer_Reference_ID__c: this.custmerreference,
                 Core_End_Customer__c: this.endcustomer,
                 Core_IPS_Country_Region__c: this.casedatainfo.country,
-                    Core_IPS_Embargoed_State__c: this.casedatainfo.state,
+                Core_IPS_Embargoed_State__c: this.casedatainfo.state,
                 Core_Product_Variant__c: this.casedatainfo.productvariantName,
                 Core_IPS_Minds__c: this.casedatainfo.mindsValue,
                 Core_Partner_Supported_Account__c: this.agentCheck == true ? this.partnerSupportAccount : null,
@@ -509,7 +488,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                     }
                 })
                 .catch(error => {
-                     this.spinnerOn = false;
+                   this.spinnerOn = false;
                     this.showToast('ERROR', error.body.message, 'error');
                 });
         }
@@ -534,6 +513,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             });
         }
     }
+
     @api contactCountry;
     value = this.contactCountry;
     handleChangeMINDS(event) {
@@ -561,7 +541,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
     @api Projectdefault;
     @api Assetdefault;
     @api subjectvaluesslc;
-    @api descriptiondefault='';
+    @api descriptiondefault = '';
     @api CaseTypedefault;
     @api Case_Categorydefault;
     @track CaseSubcategorydefault;
@@ -572,63 +552,63 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
     caseCategoryOptions = [];
     handleLoad() {
         getCustomSettingLogs().then(result => {
-                this.defaultdatainfo = result;
-               
-                for (let key in this.defaultdatainfo) {
-                    for (let key1 in this.defaultdatainfo[key]) {
-                        if (key == 0 && key1 == "Core_IPS_Default_Data__c") {
-                            this.descriptiondefault = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 1 && key1 == 'Core_IPS_Default_Data__c') {
-                            this.Assetdefault = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 1 && key1 == 'Core_IPS_Default_data_Id__c') {
-                            this.Assetdefaultid = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 2 && key1 == 'Core_IPS_Default_Data__c') {
-                            this.Projectdefault = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 2 && key1 == 'Core_IPS_Default_data_Id__c') {
-                            this.Projectdefaultid = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 3 && key1 == 'Core_IPS_Default_Data__c') {
-                            this.CaseTypedefault = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 4 && key1 == 'Core_IPS_Default_Data__c') {
-                            this.CaseSubcategoryDetaildefalut = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 4 && key1 == 'Core_IPS_Default_data_Id__c') {
-                            this.CaseSubcategoryDetaildefalutid = this.defaultdatainfo[key][key1];
-                            this.getSubCategoryDefaultEdqs(this.CaseSubcategoryDetaildefalutid);
-                        }
-                        if (key == 5 && key1 == 'Core_IPS_Default_Data__c') {
-                            this.Supported_Productdefault = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 5 && key1 == 'Core_IPS_Default_data_Id__c') {
-                            this.Supported_ProductdefaultID = this.defaultdatainfo[key][key1];
-                            this.getCatergories(this.Supported_ProductdefaultID);
-                            this.defaultgetProductEdqs(this.Supported_ProductdefaultID);
-                        }
-                        if (key == 6 && key1 == 'Core_IPS_Default_Data__c') {
-                            this.IssueSourcedefault = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 7 && key1 == 'Core_IPS_Default_Data__c') {
-                            this.Case_Categorydefault = this.defaultdatainfo[key][key1];
-                            this.CaseCategoryName = this.defaultdatainfo[key][key1];
-                        }
-                        if (key == 7 && key1 == 'Core_IPS_Default_data_Id__c') {
-                            this.Case_Categorydefaultid = this.defaultdatainfo[key][key1];
-                            this.getCatergories(this.Case_Categorydefaultid);
-                            this.getProductEdqs(this.Case_Categorydefaultid);
-                            this.showCasedefaultSubCategory(this.Case_Categorydefaultid);
-                        }
-                        
-                        if (key == 8 && key1 == 'Core_IPS_Default_Data__c') {}
-                        if (key == 8 && key1 == 'Core_IPS_Default_data_Id__c') {}
-                    }
-                }
+            this.defaultdatainfo = result;
 
-            })
+            for (let key in this.defaultdatainfo) {
+                for (let key1 in this.defaultdatainfo[key]) {
+                    if (key == 0 && key1 == "Core_IPS_Default_Data__c") {
+                        this.descriptiondefault = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 1 && key1 == 'Core_IPS_Default_Data__c') {
+                        this.Assetdefault = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 1 && key1 == 'Core_IPS_Default_data_Id__c') {
+                        this.Assetdefaultid = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 2 && key1 == 'Core_IPS_Default_Data__c') {
+                        this.Projectdefault = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 2 && key1 == 'Core_IPS_Default_data_Id__c') {
+                        this.Projectdefaultid = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 3 && key1 == 'Core_IPS_Default_Data__c') {
+                        this.CaseTypedefault = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 4 && key1 == 'Core_IPS_Default_Data__c') {
+                        this.CaseSubcategoryDetaildefalut = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 4 && key1 == 'Core_IPS_Default_data_Id__c') {
+                        this.CaseSubcategoryDetaildefalutid = this.defaultdatainfo[key][key1];
+                        this.getSubCategoryDefaultEdqs(this.CaseSubcategoryDetaildefalutid);
+                    }
+                    if (key == 5 && key1 == 'Core_IPS_Default_Data__c') {
+                        this.Supported_Productdefault = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 5 && key1 == 'Core_IPS_Default_data_Id__c') {
+                        this.Supported_ProductdefaultID = this.defaultdatainfo[key][key1];
+                        this.getCatergories(this.Supported_ProductdefaultID);
+                        this.defaultgetProductEdqs(this.Supported_ProductdefaultID);
+                    }
+                    if (key == 6 && key1 == 'Core_IPS_Default_Data__c') {
+                        this.IssueSourcedefault = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 7 && key1 == 'Core_IPS_Default_Data__c') {
+                        this.Case_Categorydefault = this.defaultdatainfo[key][key1];
+                        this.CaseCategoryName = this.defaultdatainfo[key][key1];
+                    }
+                    if (key == 7 && key1 == 'Core_IPS_Default_data_Id__c') {
+                        this.Case_Categorydefaultid = this.defaultdatainfo[key][key1];
+                        this.getCatergories(this.Case_Categorydefaultid);
+                        this.getProductEdqs(this.Case_Categorydefaultid);
+                        this.showCasedefaultSubCategory(this.Case_Categorydefaultid);
+                    }
+
+                    if (key == 8 && key1 == 'Core_IPS_Default_Data__c') { }
+                    if (key == 8 && key1 == 'Core_IPS_Default_data_Id__c') { }
+                }
+            }
+
+        })
             .catch(error => { this.error = error; });
         const childEvent = new CustomEvent('getmode', {
             detail: {
@@ -663,6 +643,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             { label: "Critical", value: "Critical" },
         ];
     }
+
     defaultycaseseverity;
     handlesevdefChange(event) {
         this.severitydefValue = event.detail.value;
@@ -672,6 +653,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             this.sslcSeverityReason = false;
         }
     }
+
     handlesslcChange(event) {
         this.severityReasondefValue = event.detail.value;
         this.severityResSSLC = false;
@@ -681,9 +663,9 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
     createCategoryLabel;
     handleChangeCategory(event) {
         this.CaseSubcategoryy = undefined;// '' removed
-       
+
         this.CaseCategoryy = event.target.value;
-        
+
         this.createCategory = this.CaseCategoryy;
         this.createSubCategory = null;
         this.CaseSubcategoryy = '';
@@ -697,50 +679,41 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             this.template.querySelector('.categoryInput')?.classList.remove('showRequired');
             this.showCaseSubCategory(this.CaseCategoryy);
             this.getSubCategoryEdqs(null);
-            
+
         }
     }
     showCaseSubCategory(caseCategory) {
-        
+
         showsubCategory({
-                categorySelected: caseCategory,
-            }).then(result => {
-               
-                if (result !== undefined || result !== null) {
-                    this.CaseSubcategoryoptions = result;
-                    
-                    this.error = undefined;
-                    //if (this.subcategoryoptions.length > 0) {
-                    if (this.CaseSubcategoryoptions.length > 0) {
-                        // this.renderProductSubCategory = true;
-                        // console.log('data present case this.renderProductSubCategory----->',this.renderProductSubCategory);
-                        this.showSubCategories = true;
-                    }
-                    else{
-                        // this.renderProductSubCategory =false;
-                        // console.log('Nodata case this.renderProductSubCategory----->',this.renderProductSubCategory);
-                        this.showSubCategories = false;
-                        // this.createSubCategorylabel=undefined;//new need to remove
-                        // console.log('undefined sub label-->',this.createSubCategorylabel);
-                        
-                    }
+            categorySelected: caseCategory,
+        }).then(result => {
+
+            if (result !== undefined || result !== null) {
+                this.CaseSubcategoryoptions = result;
+                this.error = undefined;
+                if (this.CaseSubcategoryoptions.length > 0) {
+                    this.showSubCategories = true;
                 }
-            })
+                else {
+                    this.showSubCategories = false;
+                }
+            }
+        })
             .catch(error => {
                 this.error = error;
-                console.log('error in subcategory options----->',this.error);
+                console.log('error in subcategory options----->', this.error);
             });
     }
     @api renderProductSubCategory;
     @api CaseSubCategory;
     getSubCategoryEdqs(subcategoryId) {
-       
+
         let tempVar = subcategoryId;
         getSubCatEdq({
-                supportedProductId: null,
-                subCategoryid: tempVar,
-                isAgent: this.casedatainfo.isAgent
-            })
+            supportedProductId: null,
+            subCategoryid: tempVar,
+            isAgent: this.casedatainfo.isAgent
+        })
             .then(data => {
                 let subCatEdq = [];
                 for (let i = 0; i < data.length; i++) {
@@ -752,22 +725,22 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                 }
                 let finalEdqSet = [];
                 for (let k = 0; k < data.length; k++) {
-                    if (prodEdq.includes(data[k].id)) {} else {
+                    if (prodEdq.includes(data[k].id)) { } else {
                         finalEdqSet.push(data[k]);
                     }
                 }
                 this.subcatrecedqs = finalEdqSet;
-               
-                if(this.subcatrecedqs.length>0){
+                if (this.subcatrecedqs.length > 0) {
                     this.showcubcatedqs = true;
                 }
-                else{
+                else {
                     this.showcubcatedqs = false;
                 }
-               
+
             })
-            .catch(error => {})
+            .catch(error => { })
     }
+
     createSubCategory;
     createSubCategorylabel;
     handleChangeRenderSubCategoryedq(event) {
@@ -779,21 +752,21 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
         }
         this.CaseSubcategoryy = selectedSubCategory;//new
         this.createSubCategory = selectedSubCategory;
-       
+
         this.CaseSubcategoryoptions.forEach(option => {
             if (option.value == this.createSubCategory) {
                 this.createSubCategorylabel = option.label;
-                
+
             }
         });
         this.getSubCategoryEdqs(selectedSubCategory);
     }
+
     hanldeSaveDefaultReport() {
-       
         this.trackvalidation = [];
         this.template.querySelector('c-dynamic-form-builder[data-id="prodEDQ"]').callhandleQuestionAnswer();
         this.template.querySelector('c-dynamic-form-builder[data-id="subCatEDQ"]').callhandleQuestionAnswer();
-      
+
         this.validateedq();
         let validSSLC = true;
         if (this.CaseSubcategoryDetaildefalutid == '' || this.CaseSubcategoryDetaildefalutid == undefined) {
@@ -855,8 +828,6 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                 Core_CaseType__c: this.CaseTypedefault,
                 Core_Case_Issue_Category__c: (this.casedatainfo.CategoryId !== undefined && this.casedatainfo.CategoryId !== null) ? this.casedatainfo.CategoryId : this.Case_Categorydefaultid,
                 Core_Case_Issue_Sub_Category__c: (this.casedatainfo.SubCategoryId != undefined && this.casedatainfo.SubCategoryId != null) ? this.casedatainfo.SubCategoryId : this.CaseSubcategoryDetaildefalutid,
-                
-                //Core_External_Issue_Subcategory__c: (this.casedatainfo.SubCategoryName != this.createSubCategorylabel) && (this.createSubCategorylabel != null || this.createSubCategorylabel != undefined) ? this.createSubCategorylabel : this.casedatainfo.SubCategoryName,
                 Core_IPS_Customer_Visible__c: true,
                 Core_IPS_Country_Region__c: this.selectedCountryValue,
                 Core_IPS_Embargoed_State__c: this.casedatainfo.state,
@@ -867,12 +838,10 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             if (validSSLC) {
                 for (const x of this.savealldataedqMap.keys()) {
                     this.savealldataedq.push(this.savealldataedqMap.get(x));
-                    console.log('Key=' + x + ', Value=' + JSON.stringify(this.savealldataedqMap.get(x)));
                 }
                 var strEdq = JSON.stringify(this.savealldataedq);
-               
-                this.spinnerOn = true;
-                
+               this.spinnerOn = true;
+              
                 SubmitCaseRecord({ newRecord: caseObj, contactRecord: this.selectedContactRecord, caseEDQdata: strEdq })
                     .then(result => {
                         if (result !== undefined || result !== null) {
@@ -900,7 +869,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
             .then(result => {
 
             })
-            .catch(error => {})
+            .catch(error => { })
     }
     getCatergories(prodId) {
         let tempVar;
@@ -911,8 +880,8 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
         }
         if (tempVar != null || tempVar != undefined) {
             getCategoryOptions({
-                    prodId: tempVar
-                })
+                prodId: tempVar
+            })
                 .then(data => {
                     if (data) {
                         this.showCategories = true;
@@ -924,18 +893,18 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                         this.caseCategoryOptions = options;
                     }
                 })
-                .catch(error => {})
+                .catch(error => { })
         }
     }
     prodEdqRecs;
     getProductEdqs(supportedId) {
-       
+
         let tempVar = supportedId;
         getProdEdq({
-                supportedProductId: tempVar,
-                subCategoryid: null,
-                isAgent: this.agentCheck
-            })
+            supportedProductId: tempVar,
+            subCategoryid: null,
+            isAgent: this.agentCheck
+        })
             .then(data => {
                 if (data) {
                     this.prodEdqRecs = data;
@@ -945,7 +914,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                     }
                 }
             })
-            .catch(error => {})
+            .catch(error => { })
     }
     getSubcategories(categoryId) {
         let tempVar;
@@ -956,8 +925,8 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
         }
         if (tempVar != null || tempVar != undefined) {
             getSubCategoryOptions({
-                    categoryId: tempVar
-                })
+                categoryId: tempVar
+            })
                 .then(data => {
                     if (data) {
                         this.showSubCategories = true;
@@ -973,7 +942,7 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                         }
                     }
                 })
-                .catch(error => {})
+                .catch(error => { })
         }
 
     }
@@ -985,13 +954,13 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
     }
     defaultprodEdqRecs = [];
     defaultgetProductEdqs(supportedId) {
-       
+
         let tempVar = supportedId;
         getProdEdq({
-                supportedProductId: tempVar,
-                subCategoryid: null,
-                isAgent: this.agentCheck
-            })
+            supportedProductId: tempVar,
+            subCategoryid: null,
+            isAgent: this.agentCheck
+        })
             .then(data => {
                 if (data) {
                     this.defaultprodEdqRecs = data;
@@ -1001,40 +970,40 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                     }
                 }
             })
-            .catch(error => {})
+            .catch(error => { })
     }
     showCaseSubCategory(caseCategory) {
         showsubCategory({
-                categorySelected: caseCategory,
-            }).then(result => {
-               
-                if (result !== undefined || result !== null) {
-                    this.CaseSubcategoryoptions = result;
-                    this.error = undefined;
-                    //if (this.subcategoryoptions.length > 0) {
-                    if (this.CaseSubcategoryoptions.length > 0) {
-                        this.renderProductSubCategory = true;
-                        
-                        this.showSubCategories = true;
-                       
-                    }
-                    else{
-                        this.renderProductSubCategory =false;//new
-                       
-                        this.CaseSubcategoryy=undefined;//new
-                        
-                        this.showSubCategories = false;
-                        this.createSubCategorylabel=undefined; //new *
-                       
-                    }
-                    
+            categorySelected: caseCategory,
+        }).then(result => {
+
+            if (result !== undefined || result !== null) {
+                this.CaseSubcategoryoptions = result;
+                this.error = undefined;
+                if (this.CaseSubcategoryoptions.length > 0) {
+                    this.renderProductSubCategory = true;
+
+                    this.showSubCategories = true;
+
                 }
-                
-            })
+                else {
+                    this.renderProductSubCategory = false;//new
+
+                    this.CaseSubcategoryy = undefined;//new
+
+                    this.showSubCategories = false;
+                    this.createSubCategorylabel = undefined; //new *
+
+                }
+
+            }
+
+        })
             .catch(error => {
                 this.error = error;
             });
     }
+
     handleChangedefaultCategory(event) {
         this.Case_Categorydefault = event.target.value;
         this.Case_Categorydefaultid = event.target.value;
@@ -1050,21 +1019,21 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
     CaseSubDefaultcategoryoptions;
     showCasedefaultSubCategory(defaultCaseCategory) {
         showsubCategory({
-                categorySelected: defaultCaseCategory,
-            }).then(result => {
-                if (result !== undefined || result !== null) {
-                    this.CaseSubDefaultcategoryoptions = result;
-                    this.error = undefined;
-                    if (this.CaseSubDefaultcategoryoptions.length > 0) {
-                        this.renderProductSubCategory = true;
-                        this.showSubCategories = true;
-                    }
-                    else{
-                        this.showSubCategories = false; 
-                    }
-                    
+            categorySelected: defaultCaseCategory,
+        }).then(result => {
+            if (result !== undefined || result !== null) {
+                this.CaseSubDefaultcategoryoptions = result;
+                this.error = undefined;
+                if (this.CaseSubDefaultcategoryoptions.length > 0) {
+                    this.renderProductSubCategory = true;
+                    this.showSubCategories = true;
                 }
-            })
+                else {
+                    this.showSubCategories = false;
+                }
+
+            }
+        })
             .catch(error => {
                 this.error = error;
 
@@ -1092,14 +1061,16 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                 this.accounts = undefined;
             })
     }
+
     handlePicklistChange(event) {
         let strCheck = JSON.stringify(event.detail.value);
         this.selectedCountryValue = strCheck.replace(/['"]+/g, '');
-       
+
         this.value = this.selectedCountryValue;
         this.countrySSLCReq = false;
         this.template.querySelector('.countrySSLCInput')?.classList.remove('showRequired');
     }
+
     subCatId
     handleChangeDefaultSubCategoryedq(event) {
         let selectedSubCategory = event.detail.value;
@@ -1139,10 +1110,10 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
     getSubCategoryDefaultEdqs(subCatId) {
         let tempVar = subCatId;
         getSubCatEdq({
-                supportedProductId: null,
-                subCategoryid: tempVar,
-                isAgent: false
-            })
+            supportedProductId: null,
+            subCategoryid: tempVar,
+            isAgent: false
+        })
             .then(data => {
                 let subCatEdq = [];
                 for (let i = 0; i < data.length; i++) {
@@ -1154,32 +1125,28 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                 }
                 let finalEdqSet = [];
                 for (let k = 0; k < data.length; k++) {
-                    if (prodEdq.includes(data[k].id)) {} else {
+                    if (prodEdq.includes(data[k].id)) { } else {
                         finalEdqSet.push(data[k]);
                     }
                 }
                 this.defaultsubcatrecedqs = finalEdqSet;
-               
-                //console.log('subcatedqs==- mode sslc'+this.mode+this.sslcmode);
             })
-            .catch(error => {})
+            .catch(error => { })
     }
     @track agentCheck;
     @track partnerSupportOwner;
     getUserProfile() {
         getcurrentuserprofile({})
             .then(data => {
-                console.log('data ==1==== ',data);
                 if (data === 'PartnerAgent' || data === 'PartnerFAE') {
                     this.agentCheck = true;
                     this.getPartnerSupportOwnerApex(this.casedatainfo.project);
                     this.getPartnerSupportedAccountApex(this.casedatainfo.project, this.userId);
                 } else {
                     this.agentCheck = false;
-                    
                 }
             })
-            .catch(error => {})
+            .catch(error => { })
     }
 
     partnerSupportOwnerId;
@@ -1191,8 +1158,8 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                 let tempSupportOwner = JSON.parse(JSON.stringify(data));
                 this.partnerSupportOwner = tempSupportOwner.Name;
                 this.partnerSupportOwnerId = tempSupportOwner.Id;
-            } else {}
-        }).catch(error => {})
+            } else { }
+        }).catch(error => { })
     }
     partnerSupportAccount;
     @track partnerSupportedAccount = [];
@@ -1208,39 +1175,36 @@ export default class Core_IPS_caseCreation_form3_LWC extends NavigationMixin(Lig
                     options.push({ label: tempPartnerAccounts[key], value: key });
                 }
                 this.partnerSupportedAccount = options;
-            } else {}
-        }).catch(error => {})
+            } else { }
+        }).catch(error => { })
     }
-    
+
     handleChangePartnerAccount(event) {
         this.partnerSupportAccount = event.detail.value;
         this.template.querySelector('.PSArequired')?.classList.remove('showRequired');
         this.isPSArequired = false;
     }
-    openSeverityhelptextModal(){
+    openSeverityhelptextModal() {
         this.isOpenSeverityModal = true;
     }
-    closeSeverityhelptextModal(){
+    closeSeverityhelptextModal() {
         this.isOpenSeverityModal = false;
     }
     getUserProfileData(event) {
         getcurrentuserprofile({})
             .then(data => {
-                console.log('data ====== ',data);
                 if (data === 'PartnerAgent') {
                     this.agentCheck = true;
-                    
                 } else {
                     this.agentCheck = false;
-                    
                 }
-                
+
             })
             .catch(error => {
-    
+
             })
     }
-    sendEventTOCoveo(){
+    sendEventTOCoveo() {
         this.template.querySelector('c-core_-i-p-s_-coveo-event-on-submit_-lex').sendEventTOCoveo();
     }
     handleRequired() {

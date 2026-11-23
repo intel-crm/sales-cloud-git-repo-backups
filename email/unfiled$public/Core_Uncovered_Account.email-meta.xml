@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email template to notify an Opportunity owner that they created an Opportunity against an uncovered Account</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Uncovered Account</name>
+    <style>none</style>
+    <subject>Please review the Account for your Opportunity</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

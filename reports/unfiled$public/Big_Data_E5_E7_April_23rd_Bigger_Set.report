@@ -19,9 +19,6 @@
         <field>Opportunity.Core_Status_Update__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Socket__c</field>
-    </columns>
-    <columns>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
     </columns>
     <columns>
@@ -56,7 +53,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -150,7 +147,7 @@
     </columns>
     <description>Variant of SDI Bigger Set. Oppty Focus removed for largest aperture</description>
     <filter>
-        <booleanFilter>((((1 AND 2 and (3 or 4 or 5 or 6 or 10) AND 7 AND 8 AND (9 or 12)) OR ((1 AND 2 and (3 or 4 or 5 or 6 or 10) AND 8 and (9 or 12) and 11)))))</booleanFilter>
+        <booleanFilter>(((1 AND 2 and (3 or 4 or 5 or 6 or 10) AND 7 AND 8 AND (9 or 12)) OR ((1 AND 2 and (3 or 4 or 5 or 6 or 10) AND 8 and (9 or 12) and 11))))</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
@@ -159,7 +156,7 @@
             <value>Industry Sales</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -170,28 +167,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>hadoop,cloudera,mapr,horton,hortonworks,horton works,sas,sap,apache hadoop,sql(msft),marklogic,cassandra,mongo,new sql,no sql,memsql,vora,NuoDB,VoltDB,Tibco Active Spaces,TensorFlow,Caffe,Theano,Torch,Neon,Splunk,H20.AI,BlueData,Skymind,Skytree,Data Robot,big data,analytics,exadata</value>
+            <value>hadoop,cloudera,mapr,horton,hortonworks,horton works,sas,sap,apache hadoop,sql(msft),marklogic,cassandra,mongo,new sql,no sql,memsql,vora,NuoDB,VoltDB,Tibco Active Spaces,TensorFlow,Caffe,Theano,Torch,Neon,Splunk,H20.AI,BlueData,Skymind,Skytree,Data Robot</value>
         </criteriaItems>
         <criteriaItems>
             <column>DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>hadoop,cloudera,mapr,horton,hortonworks,horton works,sas,sap,apache hadoop,sql(msft),marklogic,cassandra,mongo,new sql,no sql,memsql,vora,NuoDB,VoltDB,Tibco Active Spaces,TensorFlow,Caffe,Theano,Torch,Neon,Splunk,H20.AI,BlueData,Skymind,Skytree,Data Robot,big data,analytics,exadata</value>
+            <value>hadoop,cloudera,mapr,horton,hortonworks,horton works,sas,sap,apache hadoop,sql(msft),marklogic,cassandra,mongo,new sql,no sql,memsql,vora,NuoDB,VoltDB,Tibco Active Spaces,TensorFlow,Caffe,Theano,Torch,Neon,Splunk,H20.AI,BlueData,Skymind,Skytree,Data Robot</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Status_Update__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>hadoop,cloudera,mapr,horton,hortonworks,horton works,sas,sap,apache hadoop,sql(msft),marklogic,cassandra,mongo,new sql,no sql,memsql,vora,NuoDB,VoltDB,Tibco Active Spaces,TensorFlow,Caffe,Theano,Torch,Neon,Splunk,H20.AI,BlueData,Skymind,Skytree,Data Robot,big data,analytics,exadata</value>
+            <value>hadoop,cloudera,mapr,horton,hortonworks,horton works,sas,sap,apache hadoop,sql(msft),marklogic,cassandra,mongo,new sql,no sql,memsql,vora,NuoDB,VoltDB,Tibco Active Spaces,TensorFlow,Caffe,Theano,Torch,Neon,Splunk,H20.AI,BlueData,Skymind,Skytree,Data Robot</value>
         </criteriaItems>
         <criteriaItems>
             <column>OPPORTUNITY_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>hadoop,cloudera,mapr,horton,hortonworks,horton works,sas,sap,apache hadoop,sql(msft),marklogic,cassandra,mongo,new sql,no sql,memsql,vora,NuoDB,VoltDB,Tibco Active Spaces,TensorFlow,Caffe,Theano,Torch,Neon,Splunk,H20.AI,BlueData,Skymind,Skytree,Data Robot,big data,analytics,exadata</value>
+            <value>hadoop,cloudera,mapr,horton,hortonworks,horton works,sas,sap,apache hadoop,sql(msft),marklogic,cassandra,mongo,new sql,no sql,memsql,vora,NuoDB,VoltDB,Tibco Active Spaces,TensorFlow,Caffe,Theano,Torch,Neon,Splunk,H20.AI,BlueData,Skymind,Skytree,Data Robot</value>
         </criteriaItems>
         <criteriaItems>
             <column>INDUSTRY</column>
@@ -219,7 +216,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Big Data/Analytics,Big Data/Analytics Scale Out (E5 or Purley 2S),Big Data/Analytics Scale Up (E7 or Purley 4S+),Deep Learning,Machine Learning/Artificial Intelligence</value>
+            <value>Big Data/Analytics,Big Data/Analytics Scale Out (E5 or Purley 2S),Big Data/Analytics Scale Up (E7 or Purley 4S+)</value>
         </criteriaItems>
         <criteriaItems>
             <column>OPPORTUNITY_NAME</column>
@@ -229,11 +226,11 @@
             <value>ae cov,ae non,ae-non,ae-,nonae-</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PRODUCT_NAME</column>
+            <column>Product2.Core_Code_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>bronze,silver,gold,platinum</value>
+            <value>skylake</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

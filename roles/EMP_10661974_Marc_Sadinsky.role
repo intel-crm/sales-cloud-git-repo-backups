@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Jen Bossin</description>
+    <description>EMP of Jared Quoyeser</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10661974_Marc_Sadinsky</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11574063_Jen_Bossin</parentRole>
+    <parentRole>EMP_10631974_Jared_Quoyeser</parentRole>
 </Role>

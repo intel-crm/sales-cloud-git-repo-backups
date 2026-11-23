@@ -31,6 +31,10 @@
         <name>Core_IPS_Account_Name__c</name>
     </fields>
     <fields>
+        <label><!-- IPS Active --></label>
+        <name>Core_IPS_Active_Flag__c</name>
+    </fields>
+    <fields>
         <label><!-- Case Remove Notifi Detail --></label>
         <name>Core_IPS_Case_Remove_Notifi_Detail__c</name>
     </fields>
@@ -97,7 +101,39 @@
         <name>Add_External_Interested_Party</name>
     </webLinks>
     <webLinks>
+        <label><!-- Add_External_Interested_Party_LWC --></label>
+        <name>Add_External_Interested_Party_LWC</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Internal_Interested_Party --></label>
+        <name>Add_Internal_Interested_Party</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Internal_Interested_Party_LEX --></label>
+        <name>Add_Internal_Interested_Party_LEX</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Internal_Interested_Party_Test --></label>
+        <name>Add_Internal_Interested_Party_Test</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Test --></label>
+        <name>Add_Test</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Del_Ext_Part_Add --></label>
+        <name>Del_Ext_Part_Add</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Del_Int_Party_Add --></label>
+        <name>Del_Int_Party_Add</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Manage_Interested_Parties_LWC --></label>
         <name>Manage_Interested_Parties_LWC</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- adding_attachment --></label>
+        <name>adding_attachment</name>
     </webLinks>
 </CustomObjectTranslation>

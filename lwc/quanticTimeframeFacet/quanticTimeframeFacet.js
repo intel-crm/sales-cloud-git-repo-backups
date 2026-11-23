@@ -1,9 +1,17 @@
+import apply from '@salesforce/label/c.quantic_Apply';
+import clearFilter from '@salesforce/label/c.quantic_ClearFilter';
+import clearFilterFacet from '@salesforce/label/c.quantic_ClearFilterFacet';
+import collapseFacet from '@salesforce/label/c.quantic_CollapseFacet';
+import endLabel from '@salesforce/label/c.quantic_EndLabel';
+import expandFacet from '@salesforce/label/c.quantic_ExpandFacet';
+import startLabel from '@salesforce/label/c.quantic_StartLabel';
+import timeframeInputApply from '@salesforce/label/c.quantic_TimeframeInputApply';
 import {
-  getHeadlessBindings,
   getHeadlessBundle,
   initializeWithHeadless,
   registerComponentForInit,
   registerToStore,
+  getBueno,
 } from 'c/quanticHeadlessLoader';
 import {
   DateUtils,
@@ -11,19 +19,12 @@ import {
   I18nUtils,
   RelativeDateFormatter,
   Store,
+  generateFacetDependencyConditions,
 } from 'c/quanticUtils';
 import {api, LightningElement, track} from 'lwc';
 
-import expandFacet from '@salesforce/label/c.quantic_ExpandFacet';
-import collapseFacet from '@salesforce/label/c.quantic_CollapseFacet';
-import clearFilter from '@salesforce/label/c.quantic_ClearFilter';
-import clearFilterFacet from '@salesforce/label/c.quantic_ClearFilterFacet';
-import startLabel from '@salesforce/label/c.quantic_StartLabel';
-import endLabel from '@salesforce/label/c.quantic_EndLabel';
-import apply from '@salesforce/label/c.quantic_Apply';
-import timeframeInputApply from '@salesforce/label/c.quantic_TimeframeInputApply';
-
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
+/** @typedef {import("coveo").InsightEngine} InsightEngine */
 /** @typedef {import("coveo").SearchStatus} SearchStatus */
 /** @typedef {import("coveo").DateFacet} DateFacet */
 /** @typedef {import("coveo").DateFacetState} DateFacetState */
@@ -33,6 +34,8 @@ import timeframeInputApply from '@salesforce/label/c.quantic_TimeframeInputApply
 /** @typedef {import("coveo").DateFacetValue} DateFacetValue */
 /** @typedef {import("coveo").RelativeDatePeriod} RelativeDatePeriod */
 /** @typedef {import("coveo").RelativeDateUnit} RelativeDateUnit */
+/** @typedef {import("coveo").FacetConditionsManager} FacetConditionsManager */
+/** @typedef {import('../quanticUtils/facetDependenciesUtils').DependsOn} DependsOn */
 /**
  * @typedef {Object} DatepickerElement
  * @property {string} min
@@ -69,7 +72,7 @@ import timeframeInputApply from '@salesforce/label/c.quantic_TimeframeInputApply
  * @category Search
  * @category Insight Panel
  * @example
- * <c-quantic-timeframe-facet engine-id={engineId} field="Date" label="Indexed Date" is-collapsed with-date-picker>
+ * <c-quantic-timeframe-facet engine-id={engineId} field="Date" label="Indexed Date" is-collapsed with-date-picker generate-automatic-ranges>
  *   <c-quantic-timeframe period="past" unit="year" amount="10" label="Past decade"></c-quantic-timeframe>
  * </c-quantic-timeframe-facet>
  */
@@ -134,6 +137,32 @@ export default class QuanticTimeframeFacet extends LightningElement {
    * @defaultValue `1000`
    */
   @api injectionDepth = 1000;
+  /**
+   * This property defines the relationship between this facet and a parent facet, indicating
+   * the specific parent facet that this facet relies on and the selected value required
+   * from that parent facet for this facet to be displayed.
+   *
+   * When this property is defined, the facet will only display if the specified `parentFacetId`
+   * has the `expectedValue` selected. If `expectedValue` is omitted or set to `undefined`,
+   * the facet will display as long as any value is selected in the parent facet.
+   *
+   * **Supported facets:** Dependencies can only be created on a basic or category facet.
+   * Dependencies on numeric, timeframe, or date facets are not supported.
+   *
+   * For example usage and more details, see:
+   * https://docs.coveo.com/en/quantic/latest/usage/display-facet-based-on-selection-of-another-facet/
+   *
+   * @api
+   * @type {DependsOn}
+   */
+  @api dependsOn;
+  /**
+   * Whether to generate automatic ranges for the facet in addition to the manually defined `c-quantic-timeframe` ranges.
+   * @api
+   * @type {boolean}
+   * @defaultValue `false`
+   */
+  @api generateAutomaticRanges = false;
 
   static attributes = [
     'facetId',
@@ -142,6 +171,8 @@ export default class QuanticTimeframeFacet extends LightningElement {
     'withDatePicker',
     'noFilterFacetCount',
     'injectionDepth',
+    'dependsOn',
+    'generateAutomaticRanges',
   ];
 
   /** @type {DateFacetState} */
@@ -173,6 +204,14 @@ export default class QuanticTimeframeFacet extends LightningElement {
   focusTarget;
   /** @type {boolean} */
   focusShouldBeInFacet = false;
+  /** @type {boolean} */
+  hasInitializationError = false;
+  /** @type {FacetConditionsManager} */
+  dateFacetConditionsManager;
+  /** @type {FacetConditionsManager} */
+  dateFilterConditionsManager;
+  /** @type {SearchEngine | InsightEngine} */
+  engine;
 
   _isCollapsed = false;
   _showValues = true;
@@ -204,21 +243,46 @@ export default class QuanticTimeframeFacet extends LightningElement {
     this.unsubscribeFacet?.();
     this.unsubscribeSearchStatus?.();
     this.unsubscribeDateFilter?.();
+    this.dateFacetConditionsManager?.stopWatching();
+    this.dateFilterConditionsManager?.stopWatching();
+  }
+
+  get isFacetEnabled() {
+    return this.facetState?.enabled;
   }
 
   /**
    * Gets whether to show the facet.
    */
   get showFacet() {
-    const facetIsActivated =
-      this.hasActiveValues || !!this.dateFilterState?.range;
-    const canRefineWithCustomRange = this.hasResults && this.withDatePicker;
+    const canRefineWithCustomRange =
+      this.hasResults && this.shouldDisplayDatePicker;
     const canRefineWithTimeframes =
       this.hasResults && this.formattedValues.length > 0;
-
     return (
-      facetIsActivated || canRefineWithCustomRange || canRefineWithTimeframes
+      this.hasActiveValues ||
+      canRefineWithCustomRange ||
+      canRefineWithTimeframes
     );
+  }
+
+  /**
+   * Indicates whether to display the date picker.
+   */
+  get shouldDisplayDatePicker() {
+    if (!this.withDatePicker) {
+      return false;
+    }
+    if (this.dateFilterState?.range) {
+      return true;
+    }
+    if (!this.hasResults) {
+      return false;
+    }
+    const atLeastOneValueWithResultsOrActive = this.facetState?.values.some(
+      (value) => value.numberOfResults || value.state === 'selected'
+    );
+    return atLeastOneValueWithResultsOrActive;
   }
 
   /**
@@ -266,7 +330,7 @@ export default class QuanticTimeframeFacet extends LightningElement {
   get currentValues() {
     return this.timeframes.map((timeframe) => {
       return timeframe.period === 'past'
-        ? getHeadlessBundle(this.engineId).buildDateRange({
+        ? this.headless.buildDateRange({
             start: {
               period: timeframe.period,
               unit: timeframe.unit,
@@ -274,7 +338,7 @@ export default class QuanticTimeframeFacet extends LightningElement {
             },
             end: {period: 'now'},
           })
-        : getHeadlessBundle(this.engineId).buildDateRange({
+        : this.headless.buildDateRange({
             start: {period: 'now'},
             end: {
               period: timeframe.period,
@@ -319,10 +383,7 @@ export default class QuanticTimeframeFacet extends LightningElement {
   }
 
   get hasActiveValues() {
-    return (
-      this.formattedValues.some((v) => v.selected) ||
-      this.dateFilterState?.range
-    );
+    return this.facetState?.hasActiveValues || !!this.dateFilterState?.range;
   }
 
   get clearFilterLabel() {
@@ -334,16 +395,16 @@ export default class QuanticTimeframeFacet extends LightningElement {
   }
 
   get datepickerFormat() {
-    return I18nUtils.getShortDatePattern();
+    return DateUtils.getShortDatePattern();
   }
 
   /**
    * @returns {DatepickerElement|null}
    */
   get startDatepicker() {
-    // @ts-ignore
     return this.withDatePicker
-      ? this.template.querySelector('.timeframe-facet__start-input')
+      ? // @ts-ignore
+        this.template.querySelector('.timeframe-facet__start-input')
       : null;
   }
 
@@ -351,9 +412,9 @@ export default class QuanticTimeframeFacet extends LightningElement {
    * @returns {DatepickerElement|null}
    */
   get endDatepicker() {
-    // @ts-ignore
     return this.withDatePicker
-      ? this.template.querySelector('.timeframe-facet__end-input')
+      ? // @ts-ignore
+        this.template.querySelector('.timeframe-facet__end-input')
       : null;
   }
 
@@ -368,18 +429,42 @@ export default class QuanticTimeframeFacet extends LightningElement {
    * @param {SearchEngine} engine
    */
   initialize = (engine) => {
+    this.engine = engine;
+    this.validateDependsOnProperty();
     this.headless = getHeadlessBundle(this.engineId);
     this.initializeSearchStatusController(engine);
     this.initializeFacetController(engine);
-    this.initializeDateFilterController(engine);
+    if (this.withDatePicker) {
+      this.initializeDateFilterController(engine);
+    }
     registerToStore(this.engineId, Store.facetTypes.DATEFACETS, {
       label: this.label,
       facetId: this.facet.state.facetId,
       format: this.formatFacetValue,
       element: this.template.host,
-      metadata: {timeframes: this.timeframes}
+      metadata: {timeframes: this.timeframes},
     });
   };
+
+  validateDependsOnProperty() {
+    if (this.dependsOn) {
+      getBueno(this).then(() => {
+        const {parentFacetId, expectedValue} = this.dependsOn;
+        if (!Bueno.isString(parentFacetId)) {
+          console.error(
+            `The ${this.field} ${this.template.host.localName} requires dependsOn.parentFacetId to be a valid string.`
+          );
+          this.setInitializationError();
+        }
+        if (expectedValue && !Bueno.isString(expectedValue)) {
+          console.error(
+            `The ${this.field} ${this.template.host.localName} requires dependsOn.expectedValue to be a valid string.`
+          );
+          this.setInitializationError();
+        }
+      });
+    }
+  }
 
   /**
    * @param {SearchEngine} engine
@@ -399,7 +484,7 @@ export default class QuanticTimeframeFacet extends LightningElement {
       options: {
         field: this.field,
         currentValues: this.currentValues,
-        generateAutomaticRanges: false,
+        generateAutomaticRanges: this.generateAutomaticRanges,
         sortCriteria: 'descending',
         filterFacetCount: !this.noFilterFacetCount,
         injectionDepth: Number(this.injectionDepth),
@@ -407,6 +492,12 @@ export default class QuanticTimeframeFacet extends LightningElement {
       },
     });
     this.unsubscribeFacet = this.facet.subscribe(() => this.updateFacetState());
+    if (this.dependsOn) {
+      this.dateFacetConditionsManager = this.initFacetConditionManager(
+        engine,
+        this.facet.state?.facetId
+      );
+    }
   }
 
   /**
@@ -426,6 +517,21 @@ export default class QuanticTimeframeFacet extends LightningElement {
     this.unsubscribeDateFilter = this.dateFilter.subscribe(() =>
       this.updateDateFilterState()
     );
+    if (this.dependsOn) {
+      this.dateFilterConditionsManager = this.initFacetConditionManager(
+        engine,
+        this.dateFilter.state?.facetId
+      );
+    }
+  }
+
+  initFacetConditionManager(engine, facetId) {
+    return this.headless.buildFacetConditionsManager(engine, {
+      facetId,
+      conditions: generateFacetDependencyConditions({
+        [this.dependsOn.parentFacetId]: this.dependsOn.expectedValue,
+      }),
+    });
   }
 
   updateSearchStatusState() {
@@ -434,20 +540,12 @@ export default class QuanticTimeframeFacet extends LightningElement {
       !this.searchStatus?.state?.firstSearchExecuted;
 
     this.hasResults = this.searchStatus.state.hasResults;
-
-    const renderFacetEvent = new CustomEvent('renderfacet', {
-      detail: {
-        id: this.facetId ?? this.field,
-        shouldRenderFacet: this.showFacet,
-      },
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(renderFacetEvent);
+    this.sendFacetRenderEvent();
   }
 
   updateFacetState() {
     this.facetState = this.facet?.state;
+    this.sendFacetRenderEvent();
   }
 
   updateDateFilterState() {
@@ -466,6 +564,22 @@ export default class QuanticTimeframeFacet extends LightningElement {
       this.disableRangeValidation();
       this._showValues = true;
     }
+    this.sendFacetRenderEvent();
+  }
+
+  /**
+   * Fires the 'quantic__renderfacet' custom event.
+   */
+  sendFacetRenderEvent() {
+    const renderFacetEvent = new CustomEvent('quantic__renderfacet', {
+      detail: {
+        id: this.facetId ?? this.field,
+        shouldRenderFacet: this.showFacet,
+      },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(renderFacetEvent);
   }
 
   /**
@@ -515,10 +629,10 @@ export default class QuanticTimeframeFacet extends LightningElement {
     }
 
     const start = fromSearchApiDate(facetValue.start);
-    const startDate = I18nUtils.formatDate(new Date(start));
+    const startDate = DateUtils.formatDate(new Date(start));
 
     const end = fromSearchApiDate(facetValue.end);
-    const endDate = I18nUtils.formatDate(new Date(end));
+    const endDate = DateUtils.formatDate(new Date(end));
 
     return `${startDate} - ${endDate}`;
   };
@@ -681,15 +795,14 @@ export default class QuanticTimeframeFacet extends LightningElement {
   }
 
   updateRangeInHeadless(startDate, endDate) {
-    const engine = getHeadlessBindings(this.engineId).engine;
-    engine.dispatch(
-      getHeadlessBundle(this.engineId)
-        .loadDateFacetSetActions(engine)
+    this.engine.dispatch(
+      this.headless
+        .loadDateFacetSetActions(this.engine)
         .deselectAllDateFacetValues(this.facet.state.facetId)
     );
 
     this.dateFilter.setRange(
-      getHeadlessBundle(this.engineId).buildDateRange({
+      this.headless.buildDateRange({
         start: DateUtils.toLocalSearchApiDate(startDate),
         end: DateUtils.toLocalSearchApiDate(endDate),
       })
@@ -756,5 +869,12 @@ export default class QuanticTimeframeFacet extends LightningElement {
       // @ts-ignore
       focusTarget.focus();
     }
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
   }
 }

@@ -1,0 +1,39 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="CORE_IPS_Lightning" >
+    hello
+    <aura:attribute name="recordId" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:attribute name="lstPositions" 
+                    type="CORE_IPS_Lightning.uFile[]" />
+    <div class="slds">
+        <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-max-medium-table--stacked-horizontal">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th scope="col" class="nobordertop" title="File Name">
+                        <div>File Name</div>
+                    </th>
+                    <th scope="col" class="nobordertop" title="File Description">
+                        <div>File Description</div>
+                    </th>
+                    <th scope="col" class="nobordertop" title="File Category">
+                        <div>File Category</div>
+                    </th>
+                    <th scope="col" class="nobordertop" title="File Size">
+                        <div>File size</div>
+                    </th>      
+                </tr>
+            </thead>
+            <tbody>
+                
+                <aura:iteration var="position" items="{!v.lstPositions}" >
+                    
+                    <tr>
+                        <td><ui:outputText value="{!position.file.Core_File_Name__c}"/></td>
+                        <td><ui:outputText value="{!position.file.Core_File_Description__c}"/></td>
+                        <td><ui:outputText value="{!position.file.Core_Category__c}"/></td>
+                        <td><ui:outputText value="{!position.file.Core_File_Size__c}"/></td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

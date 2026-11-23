@@ -154,10 +154,28 @@
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Case_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Owner:Queue.QueueName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Owner</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Comment__c</fullName>
+        <label>comment to delete</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
     <fields>
         <fullName>Core_AAQC_Comment__c</fullName>
         <description>Ask Commissions :  Comment Field for End users and Admins for Communications</description>
@@ -179,7 +197,23 @@
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
+    <fields>
+        <fullName>CreatedBy__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Core_AAQC_Created_By_FullName__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CreatedBy</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Commissions Case Comment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>Comment{000}</displayFormat>
         <label>Case Comment Name</label>

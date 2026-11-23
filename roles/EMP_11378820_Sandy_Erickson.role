@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Christopher Peters</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11378820_Sandy_Erickson</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10637381_Chris_Peters</parentRole>
+</Role>

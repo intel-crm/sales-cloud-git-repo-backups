@@ -308,10 +308,11 @@ Modification Log :
         Map<String, String> businessHoursByOwner = new Map<String, String>();
         List<Group> grpList = [SELECT Id,DeveloperName,Name FROM Group where id in :ownerIds];
         for(Group grp:grpList){
-            String userOrGroupName = grp.DeveloperName;
+            String userOrGroupName = grp.developerName;
             String bizHrId;
-            if(userOrGroupName!=null && userOrGroupName.length()>0){                
+            if(userOrGroupName!=null && userOrGroupName.length()>0){ 
                 Core_IPS_Q_Biz_hours_mapping__c bizHourSetting = Core_IPS_Q_Biz_hours_mapping__c.getValues(userOrGroupName);
+                System.debug('bizHourSetting-->' + bizHourSetting);
                 if(bizHourSetting!=null){
                     bizHrId= bizHourSetting.Business_Hours_ID__c;
                 }else{

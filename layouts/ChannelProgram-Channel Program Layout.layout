@@ -69,43 +69,7 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <relatedLists>
-        <fields>ACCOUNT.NAME</fields>
-        <fields>Core_Prime_Account_Name__c</fields>
-        <fields>Core_Sales_Groups__c</fields>
-        <fields>Core_Account_Country__c</fields>
-        <fields>Core_Alt_Language_State_Province__c</fields>
-        <fields>Core_Geo__c</fields>
-        <fields>CORE.USERS.FIRST_NAME</fields>
-        <fields>CORE.USERS.LAST_NAME</fields>
-        <relatedList>Account.Core_MDF_Channel_Program__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Name</fields>
-        <fields>Description</fields>
-        <fields>Amount</fields>
-        <fields>Type</fields>
-        <fields>StartDate</fields>
-        <fields>EndDate</fields>
-        <relatedList>PartnerMarketingBudget.Core_MDF_Program__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>CAMPAIGN.NAME</fields>
-        <fields>CAMPAIGN.STATUS</fields>
-        <fields>CAMPAIGN.START_DATE</fields>
-        <relatedList>Campaign.Core_MDF_Channel_Program__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Core_MDF_Partner_Group_Mapping__c.Core_MDF_Channel_Program__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
-    <summaryLayout>
-        <masterLabel>00h1J00000Av2yG</masterLabel>
-        <sizeX>4</sizeX>
-        <sizeY>0</sizeY>
-        <summaryLayoutStyle>Default</summaryLayoutStyle>
-    </summaryLayout>
 </Layout>

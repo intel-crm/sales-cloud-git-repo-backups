@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_if_Project_product_has_a_default_case_owner</name>
+        <label>Check if Project product has a default case owner</label>
+        <locationX>176</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>Update_owner_to_default_owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Default_Owner_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ProjProduct.Core_IPS_Prod_Def_Case_Owner_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+            </conditions>
+            <label>Default Owner Null</label>
+        </rules>
+    </decisions>
+    <description>THis flow is to fix the issue where in Assignment rule runs by default and assigns queue rather than default owner</description>
+    <environments>Default</environments>
+    <interviewLabel>Assign default Case Owner If Assgnment Rule Assigned Wrong Owner {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Assign default Case Owner If Assgnment Rule Assigned Wrong Owner</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>get the project product record</description>
+        <name>Get_Project_Product_record</name>
+        <label>Get Project Product record</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Project_product_has_a_default_case_owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_IPS_Project__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Project</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Supported_Product__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Asset</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_IPS_Product__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_owner_to_default_owner</name>
+        <label>Update owner to default owner</label>
+        <locationX>308</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>null__NotFound</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Project_Product_record</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND(CONTAINS(&apos;IOT&apos;, {!$Record.Core_IPS_New_Backend_System__r.Name}),BEGINS(&apos;00G&apos;, {!$Record.OwnerId}), PRIORVALUE({!$Record.OwnerId})&lt;&gt; {!$Record.CreatedById})</filterFormula>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+    <variables>
+        <name>Asset</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>$Record.Asset.Core_Supported_Product__r.Id</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>Project</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>$Record.Core_IPS_Project_Case__c</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>ProjProduct</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_IPS_Product__c</objectType>
+    </variables>
+</Flow>

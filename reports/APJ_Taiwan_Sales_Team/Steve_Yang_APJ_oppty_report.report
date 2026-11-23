@@ -9,11 +9,14 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Desktop</sourceValue>
+            </sourceValues>
             <value>Client</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>Workstation</sourceValue>
+                <sourceValue>Server</sourceValue>
             </sourceValues>
             <value>Server</value>
         </values>
@@ -140,6 +143,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

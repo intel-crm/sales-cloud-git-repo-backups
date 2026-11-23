@@ -1,0 +1,327 @@
+<!-------------------------------------------------------------------------------------------------
+*VF Page Name:  Core_IPS_AddDepenendAnswers
+*Version     : 1.0 
+*Created Date: Dec 28 2017
+*Description:  VF Page for selecting dependent answers
+*Modification Log :
+* Developer                   Date                        Description
+* --------------------------------------------------------------------------------------------------                 
+* Karthick                  12/28/2017                  Created for selecting dependent core answers.
+---------------------------------------------------------------------------------------------------->
+<apex:page standardController="Core_IPS_Answer__c" tabStyle="Core_IPS_Answer__c" extensions="Core_IPS_AddDependentAnswersExt" action="{!init}">
+    <style>
+        
+    </style>
+    <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock title="Select Dependent Questions & Answers" rendered="{!!isError}">
+            <apex:pageBlockSection columns="1">
+                <apex:outputField value="{!parentAnswer.Core_IPS_Question__r.Core_IPS_Question__c}" label="Parent Question"/>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Parent Answer</apex:outputLabel>
+                    <apex:outputPanel >
+                        <apex:selectList value="{!parentAnsId}" size="1" multiselect="false" style="max-width:615px;">
+                            <apex:selectOptions value="{!lstSelAnswers}" />
+                            <apex:actionSupport event="onchange" action="{!redirectToSelectedParentAnswer}"/>
+                        </apex:selectList>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>                
+            </apex:pageBlockSection>
+            <br/>
+            <apex:outputPanel id="QuestTable" rendered="{!wrapperQusAnsList.size >0}" >
+            <table border="0" cellpadding="1" cellspacing="0" class="list">
+                <tr>
+                    <th width="80">Dependent Questions</th>
+                    <th width="80">Dependent Answers</th>
+                    <!--<apex:repeat value="{!wrapperQusAnsList}" var="wrapQues">
+                        <td>{!wrapQues.question.Core_IPS_Question__c}</td>
+                    </apex:repeat>
+                    -->
+                </tr>
+                
+                    <!--
+                    <apex:repeat value="{!wrapperQusAnsList}" var="wrapQues">
+                        <td style="min-width:220px;">
+                            <apex:repeat value="{!wrapQues.answerList}" var="wrapAns">
+                                <apex:inputCheckbox value="{!wrapAns.selected}" id="answer-input" disabled="{!wrapAns.disabled}" title="{!IF(wrapAns.disabled, 'Already assigned to another answer','')}"/>
+                                <apex:outputLabel for="answer-input" value="{!wrapAns.answer.Core_IPS_Answer__c}" />
+                                <br/>
+                            </apex:repeat>
+                        </td>
+                    </apex:repeat> -->
+                    <apex:repeat value="{!wrapperQusAnsList}" var="wrapQues">
+                    <tr>
+                        <td>
+                            <apex:inputCheckbox />
+                            <apex:outputLabel for="answer-input" value="{!wrapQues.question.Core_IPS_Question__c}" />
+                        </td>
+                        <td style="min-width:220px;">
+                            <!--
+                            <apex:repeat value="{!wrapQues.answerList}" var="wrapAns">
+                            
+                                <apex:inputCheckbox value="{!wrapAns.selected}" id="answer-input" disabled="{!wrapAns.disabled}" title="{!IF(wrapAns.disabled, 'Already assigned to another answer','')}"/>
+                                
+                                <apex:outputLabel for="answer-input" value="{!wrapAns.answer.Core_IPS_Answer__c}" />
+                                <br/>
+                            </apex:repeat>
+                            -->
+                            
+                            <apex:outputPanel id="multiselectPanel" layout="block" styleClass="duelingListBox">
+                                <table class="layout">
+                                  <tbody>
+                                    <tr>
+                                      <td class="selectCell">
+                                        <apex:outputPanel layout="block" styleClass="selectTitle">
+                                          <!-- 
+                                            Visualforce prepends the correct prefix to the outputLabel's 
+                                            'for' attribute
+                                          -->
+                                          <apex:outputLabel value="Available Answers" 
+                                            for="multiselectPanel:leftList" />
+                                        </apex:outputPanel>
+                                        <select id="{!$Component.multiselectPanel}:leftList" 
+                                          class="multilist" multiple="multiple" size="6" 
+                                          style="width: 150px;">
+                                          <apex:repeat value="{!wrapQues.answerList}" var="wrapAns">
+                                            <apex:outputPanel rendered="{!!wrapAns.selected}">
+                                                
+                                                
+                                                <apex:outputPanel rendered="{!!wrapAns.disabled}">
+                                                    <option value="{!wrapAns.selected}" >{!wrapAns.answer.Core_IPS_Answer__c}</option>
+                                                </apex:OutputPanel>                                             
+                                            </apex:OutputPanel>
+                                            <apex:outputPanel rendered="{!wrapAns.selected}">
+                                                <apex:outputPanel rendered="{!wrapAns.disabled}">
+                                                    <option value="{!wrapAns.selected}" disabled="{!wrapAns.disabled}" title="{!IF(wrapAns.disabled, 'Already assigned to another answer','')}">{!wrapAns.answer.Core_IPS_Answer__c}</option>
+                                                </apex:OutputPanel>
+                                            </apex:OutputPanel>
+                                          </apex:repeat>
+                                        </select>
+                                      </td>
+                                      <td class="buttonCell">
+                                        <apex:outputPanel layout="block" styleClass="text">Add</apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text">
+                                          <apex:outputLink value="javascript:moveSelectedOptions('{!$Component.multiselectPanel}:leftList', 
+                                              '{!$Component.multiselectPanel}:rightList');"
+                                            id="btnRight">
+                                            <apex:image value="/s.gif" alt="Add" styleClass="rightArrowIcon"
+                                              title="Add" />
+                                          </apex:outputLink>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text">
+                                          <apex:outputLink value="javascript:moveSelectedOptionsRTL('{!$Component.multiselectPanel}:rightList', 
+                                              '{!$Component.multiselectPanel}:leftList');"
+                                            id="btnLeft">
+                                            <apex:image value="/s.gif" alt="Remove"
+                                              styleClass="leftArrowIcon" title="Remove" />
+                                          </apex:outputLink>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="duelingText">Remove</apex:outputPanel>
+                                      </td>
+                                      <td class="selectCell">
+                                        <apex:outputPanel layout="block" styleClass="selectTitle">
+                                          <apex:outputLabel value="Selected Answers" for="multiselectPanel:rightList" />
+                                        </apex:outputPanel>
+                                        <select id="{!$Component.multiselectPanel}:rightList" 
+                                          class="multilist" multiple="multiple" size="6" 
+                                          style="width:150px;">
+                                          <apex:repeat value="{!wrapQues.answerList}" var="wrapAns">
+                                            <apex:outputPanel rendered="{!wrapAns.selected}">
+                                                <apex:outputPanel rendered="{!!wrapAns.disabled}">
+                                                    <option value="{!wrapAns.selected}" >{!wrapAns.answer.Core_IPS_Answer__c}</option>
+                                                </apex:OutputPanel>
+                                            </apex:outputPanel>             
+                                          </apex:repeat>
+                                        </select>
+                                      </td>
+                                      <!--
+                                      <td class="buttonCell"><apex:outputPanel layout="block"
+                                          styleClass="text" rendered="{!showUpDownButtons}">Up</apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text" rendered="{!showUpDownButtons}">
+                                          <apex:outputLink value="javascript:slideSelectedOptionsUp('{!$Component.multiselectPanel}:rightList', 
+                                              '{!$Component.rightHidden}');"
+                                            id="upBtn">
+                                            <apex:image value="/s.gif" alt="Up" styleClass="upArrowIcon"
+                                              title="Up" />
+                                          </apex:outputLink>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text" rendered="{!showUpDownButtons}">
+                                          <apex:outputLink value="javascript:slideSelectedOptionsDown('{!$Component.multiselectPanel}:rightList', 
+                                              '{!$Component.rightHidden}');"
+                                            id="downBtn">
+                                            <apex:image value="/s.gif" alt="Down" styleClass="downArrowIcon"
+                                              title="Down" />
+                                          </apex:outputLink>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text" rendered="{!showUpDownButtons}">Down</apex:outputPanel>
+                                      </td> -->
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                
+                              </apex:outputPanel>
+                              <script type="text/javascript">
+                                /*
+                                if (!buildOutputString) {
+                                  // Create a string from the content of a listbox
+                                  var buildOutputString = function(listBox, hiddenInput) {
+                                    var str = '';
+
+                                    for ( var x = 0; x < listBox.options.length; x++) {
+                                      str += encodeURIComponent(listBox.options[x].value) + '&'
+                                          + encodeURIComponent(listBox.options[x].text) + '&';
+                                    }
+                                    str.length--;
+
+                                    hiddenInput.value = str.slice(0, -1);
+                                  }
+                                } */
+                                
+                                //Left to Right
+                                if (!moveSelectedOptions) {
+                                  // Move the selected options in the idFrom listbox to the idTo
+                                  // listbox, updating the corresponding strings in idHdnFrom and
+                                  // idHdnTo
+                                  var moveSelectedOptions = function(idFrom, idTo) {
+                                    listFrom = document.getElementById(idFrom);
+                                    listTo = document.getElementById(idTo);
+
+                                    for ( var x = 0; x < listTo.options.length; x++) {
+                                      listTo.options[x].selected = false;
+                                    }
+
+                                    for ( var x = 0; x < listFrom.options.length; x++) {
+                                      if (listFrom.options[x].selected == true) {
+                                        //Update the value of wrapAns.selected as true
+                                        listFrom.options[x].value = true;
+                                        console.log('---Right to Left 2nd Label::'+listFrom.options[x].label);
+                                        console.log('---Left to right 2nd value::'+listFrom.options[x].value);
+                                        
+                                        listTo.appendChild(listFrom.options[x]);
+                                        x--;
+                                        
+                                      }                                 
+
+                                    }
+
+                                    listTo.focus();
+
+                                    //buildOutputString(listFrom, document.getElementById(idHdnFrom));
+                                    //buildOutputString(listTo, document.getElementById(idHdnTo));
+                                  }
+                                }
+                                
+                                //For right to Left
+                                if (!moveSelectedOptionsRTL) {
+                                  // Move the selected options in the idFrom listbox to the idTo
+                                  // listbox, updating the corresponding strings in idHdnFrom and
+                                  // idHdnTo
+                                  var moveSelectedOptionsRTL = function(idFrom, idTo) {
+                                    listFrom = document.getElementById(idFrom);
+                                    listTo = document.getElementById(idTo);
+
+                                    for ( var x = 0; x < listTo.options.length; x++) {
+                                      listTo.options[x].selected = false;
+                                      
+                                    }
+
+                                    for ( var x = 0; x < listFrom.options.length; x++) {
+                                      if (listFrom.options[x].selected == true) {
+                                        //Update the value of wrapAns.selected as true
+                                      listFrom.options[x].value = false;
+                                      console.log('---Right to Left 2nd Label::'+listFrom.options[x].label);
+                                      console.log('---Right to Left 2nd value::'+listFrom.options[x].value);
+                                        listTo.appendChild(listFrom.options[x]);
+                                        x--;
+                                        
+                                      }
+                                      
+                                        
+                                    }
+
+                                    listTo.focus();
+
+                                    //buildOutputString(listFrom, document.getElementById(idHdnFrom));
+                                    //buildOutputString(listTo, document.getElementById(idHdnTo));
+                                  }
+                                }
+                                /*
+                                if (!slideSelectedOptionsUp) {
+                                  // Slide the selected options in the idList listbox up by one position,
+                                  // updating the corresponding string in idHidden
+                                  var slideSelectedOptionsUp = function(idList, idHidden) {
+                                    listBox = document.getElementById(idList);
+
+                                    var len = listBox.options.length;
+
+                                    if (len > 0 && listBox.options[0].selected == true) {
+                                      return;
+                                    }
+
+                                    for ( var x = 1; x < len; x++) {
+                                      if (listBox.options[x].selected == true) {
+                                        listBox.insertBefore(listBox.options[x],
+                                            listBox.options[x - 1]);
+                                      }
+                                    }
+
+                                    listBox.focus();
+
+                                    buildOutputString(listBox, document.getElementById(idHidden));
+                                  }
+                                }
+
+                                if (!slideSelectedOptionsDown) {
+                                  // Slide the selected options in the idList listbox down by one position,
+                                  // updating the corresponding string in idHidden
+                                  var slideSelectedOptionsDown = function(idList, idHidden) {
+                                    listBox = document.getElementById(idList);
+
+                                    var len = listBox.options.length;
+
+                                    if (len > 0 && listBox.options[len - 1].selected == true) {
+                                      return;
+                                    }
+
+                                    for ( var x = listBox.options.length - 2; x >= 0; x--) {
+                                      if (listBox.options[x].selected == true) {
+                                        listBox.insertBefore(listBox.options[x + 1],
+                                            listBox.options[x]);
+                                      }
+                                    }
+
+                                    listBox.focus();
+
+                                    buildOutputString(listBox, document.getElementById(idHidden));
+                                  }
+                                }
+                                
+                                // initialize the string representations
+                                buildOutputString(document.getElementById('{!$Component.multiselectPanel}:leftList'), 
+                                    document.getElementById('{!$Component.leftHidden}'));
+                                buildOutputString(document.getElementById('{!$Component.multiselectPanel}:rightList'), 
+                                    document.getElementById('{!$Component.rightHidden}')); */
+                              </script>
+                            
+                        </td>
+                        </tr>
+                    </apex:repeat>
+                
+            </table>
+            </apex:outputPanel>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!SaveDetails}" value="Save"/>
+                <apex:commandButton action="{!SaveandReturn}" value="Save & Return"/>
+                <apex:commandButton action="{!Cancel}" value="Cancel" immediate="true"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+        <apex:outputPanel >
+            <apex:commandButton action="{!Cancel}" value="Back" rendered="{!isError && showBackButton}"/>
+        </apex:outputPanel>
+        
+        
+    </apex:form>
+  
+  
+</apex:page>

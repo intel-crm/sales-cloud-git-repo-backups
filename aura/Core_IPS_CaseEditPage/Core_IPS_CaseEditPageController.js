@@ -7,10 +7,10 @@
         // console.log('minhaj edit comp', pageReference);
         helper.helperMethod(component, event, helper);
         //var recordTypeId = component.get( "v.pageReference" ).state.recordTypeId; 
-        //console.log('page ref',component.get( "v.pageReference" ) )
+        console.log('page ref',component.get( "v.pageReference" ) )
         //alert( recordTypeId ); 
         var rTypeIdNameMap = component.get('v.recordTypeName');
-        //console.log('PBS Aura Init ');
+        console.log('PBS Aura Init ');
        
         
     },

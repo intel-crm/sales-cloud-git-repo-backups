@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>TQ-Group Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10698482_Martin_Strobel</parentRole>
+    <parentRole>TQGroupCustomerManager</parentRole>
 </Role>

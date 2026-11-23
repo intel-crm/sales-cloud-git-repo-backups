@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Tiffiny Fisher</description>
+    <description>EMP of Tim Swyers</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11636197_Taylor_McNearney</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10695500_Tiffiny_Fisher</parentRole>
+    <parentRole>EMP_10660507_Tim_Swyers</parentRole>
 </Role>

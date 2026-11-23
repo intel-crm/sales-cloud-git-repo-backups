@@ -50,6 +50,13 @@
             <value>Design Win,Production Win,Lost,Cancelled,Group</value>
         </criteriaItems>
         <criteriaItems>
+            <column>FK_$Opportunity.Core_Sales_Segments__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>includes</operator>
+            <value>Embedded</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>FK_$Account.Core_Sub_Geo__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
@@ -61,7 +68,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>siu chone,christine khor,kelvin lum,caseen sze,jason wei loong ong,jae jiun,george neah,rathi,ming han,jamie ng,stephanie teoh,rachel chu,i&apos;ng chin,wei jing,shik chen,hong dinh,takahiro katayama,thomas kam,yoshiki usami,swee sing,Meihua Wu,Weeraporn Pienpitak</value>
+            <value>christine want sent khor,kelvin lum,swee sing,takahiro katayama,gen kawai,naoto mori,shigeyuki shoda,niam,jamie,stephanie teoh,rachel chu,caseen sze,jason wei loong ong,wei jing,jae jiun,rathi,shik chen,yuen wei neah,i&apos;ng chin tan,hsiang boon ng,shinichiro kamei,atsushi kubo,hong dinh do,yamamoto yoko</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_$Opportunity.Core_Approval_Status__c</column>

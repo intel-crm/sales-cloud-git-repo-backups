@@ -55,14 +55,14 @@ public class Core_Batch_Populate_Territory_Test {
                 // Create a new account  
                 Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' limit 1][0].Id;
                 Account acct = new Account(Name = 'Test Account territory', BillingStreet = '123 Fake St',RecordTypeId = newAccountRecTypeId,
-                                            Industry='Agriculture',BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                           BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Americas Brazil Sales Group');
+                                           BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                           BillingPostalCode = '12345', Core_CIM_ID__c = '8675309');
                 Account acct1 = new Account(Name = 'Test Account territory1', BillingStreet = '123 Fake St',RecordTypeId = newAccountRecTypeId,
-                                            Industry='Agriculture',BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                           BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Americas Brazil Sales Group');
+                                           BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                           BillingPostalCode = '12345', Core_CIM_ID__c = '8675309');
                 Account acct2 = new Account(Name = 'Test Account territory2', BillingStreet = '123 Fake St',RecordTypeId = newAccountRecTypeId,
-                                            Industry='Agriculture',BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                           BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='Americas Brazil Sales Group');
+                                           BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                           BillingPostalCode = '12345', Core_CIM_ID__c = '8675309');
                 
                 acclist.add(acct);acclist.add(acct1);acclist.add(acct2);
                 insert acclist;

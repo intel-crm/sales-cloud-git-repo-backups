@@ -50,7 +50,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Not Submitted,Submitted,Rejected,Recalled</value>
+            <value>Not Submitted,Submitted</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
@@ -86,7 +86,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>EMEA OSC PIPELINE 2017 MATRIX - CSP</name>
+    <name>ISG CSP PIPELINE</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -110,6 +110,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

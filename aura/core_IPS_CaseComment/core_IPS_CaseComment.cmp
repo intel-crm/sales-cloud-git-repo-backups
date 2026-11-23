@@ -1,0 +1,3 @@
+<aura:component implements="force:lightningQuickAction,force:hasRecordId,lightning:isUrlAddressable" access="global" >
+    <c:core_IPS_DynamicTab sourceBtn="Case Comment" showPopup="false" recordId="{!v.recordId}"/> 
+</aura:component>

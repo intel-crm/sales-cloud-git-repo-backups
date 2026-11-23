@@ -54,7 +54,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Smelkova,Janicki,Tomala,Huzjak,Eran Gal</value>
+            <value>Smelkova,Janicki,Tomala,Huzjak,Eran Gal,Osiecki</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -100,8 +100,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

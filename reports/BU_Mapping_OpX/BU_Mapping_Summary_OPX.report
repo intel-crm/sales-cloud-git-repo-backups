@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
-        <calculatedFormula>TOTAL_PRICE:SUM/PARENTGROUPVAL(TOTAL_PRICE:SUM, OpportunityLineItem.Core_BU_Short_Name_Old__c)</calculatedFormula>
+        <calculatedFormula>TOTAL_PRICE:SUM/PARENTGROUPVAL(TOTAL_PRICE:SUM, OpportunityLineItem.Core_BU_Short_Name__c)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA1</developerName>
-        <downGroupingContext>OpportunityLineItem.Core_BU_Product_Segment_Old__c</downGroupingContext>
+        <downGroupingContext>OpportunityLineItem.Core_BU_Product_Segment__c</downGroupingContext>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>% of Segment to BU</masterLabel>
@@ -59,12 +59,12 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>BU Mapping Summary OPX</name>

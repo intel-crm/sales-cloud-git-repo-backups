@@ -52,6 +52,8 @@ public class Core_IPS_Entitlement_For_Migrated_Test {
         ListOfContacts.get(0).Core_IPS_Intel_Support_Owner__c = ListOfInternalSfUsers.get(0).id;
         ListOfContacts.get(0).ownerid = ListOfInternalSfUsers.get(0).id;
         insert ListOfContacts;
+        
+       
         System.assert(ListOfContacts[0].Id != null, 'Contact Record not created');
         // Create support org Record
         List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(1);
@@ -101,7 +103,9 @@ public class Core_IPS_Entitlement_For_Migrated_Test {
         CaseRecord.Core_IPS_Legacy_IPS_ID__c ='123';
         CaseRecord.recordtypeID =[select id from  recordtype where sobjecttype='case' and name='IPS Case Create'].Id;
         insert CaseRecord;
+    
         List<CaseMilestone> CaseMls=[select Id, completionDate, isCompleted,MileStoneTypeId,MileStoneType.Name from CaseMilestone where caseId =:CaseRecord.id];
+       system.debug('CaseMls'+CaseMls);
         Test.startTest();
     Core_IPS_Entitlement_For_Migrated_Cases Entitlement = new Core_IPS_Entitlement_For_Migrated_Cases();
         Database.executeBatch(Entitlement);

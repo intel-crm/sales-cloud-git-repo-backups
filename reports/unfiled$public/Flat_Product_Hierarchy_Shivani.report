@@ -72,6 +72,16 @@
     <columns>
         <field>CUST_LAST_UPDATE_ALIAS</field>
     </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_Flat_Product_Hierarchy__c.Core_Unique_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>94229</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Tabular</format>
     <name>Flat Product Hierarchy</name>
     <params>

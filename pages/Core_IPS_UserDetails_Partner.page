@@ -1,0 +1,12 @@
+<apex:page standardController="User" tabStyle="User"> <!--controller="TestUserDetails" -->
+<!--<apex:sectionheader title="{!$ObjectType.User.label} Detail" subtitle="{!Usr.FirstName} {!Usr.LastName}"/>
+  <apex:pageBlock mode="maindetail" tabStyle="user" >
+            <apex:pageBlockSection collapsible="false" columns="1">
+                <apex:outputField value="{!usr.firstname}"/>
+                <apex:outputField value="{!usr.lastname}"/>
+               <apex:outputField value="{!usr.Email}"/>
+             </apex:pageBlockSection>
+  </apex:pageBlock>  -->
+ 
+  <apex:detail id="user"  subject="{!User.id}"/>
+</apex:page>

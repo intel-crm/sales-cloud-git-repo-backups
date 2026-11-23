@@ -27,7 +27,10 @@ Public class Core_RestAPI_ProjectCaseV1_Handler_Test{
             Case caseObj=Core_RestAPI_TestUtilities.getCase();
             caseObj.ownerId=adminuser.id;
             caseObj.Core_IPS_Project_Case__c=objproject.Id;
-            caseObj.Core_IPS_Customer_Visible__c = true;
+            //Added by Sowmya - Start - 24/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+             caseObj.Core_IPS_Customer_Visible__c = true;
+            //Sowmya - End - 27/09/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+        
             insert caseObj;//inserting Case record for admin user
         }
         

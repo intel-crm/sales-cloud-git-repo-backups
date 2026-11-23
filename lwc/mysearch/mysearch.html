@@ -1,0 +1,148 @@
+<template>
+        
+<!-- START OF ACCOUNTS-->
+<lightning-card if:true={displayAccountsCard}>
+        <lightning-card title="Search Accounts:" icon-name="standard:search" >
+                <div class="slds-m-around_medium">
+                <lightning-input onchange={handleKeyChange} class="slds-m-bottom_small"  value={searchtextacc} placeholder="Search here ...">
+                </lightning-input>				
+                </div>  
+        </lightning-card>
+        <template if:true={isLoadingAccounts}>
+                <div class="demo-only" style="height:6rem">
+                  <div class="slds-spinner_container">
+                      <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                      <span class="slds-assistive-text">Loading</span>
+                      <div class="slds-spinner__dot-a"></div>
+                      <div class="slds-spinner__dot-b"></div>
+                      </div>
+                  </div>
+              </div>
+              </template>
+    </br>
+    <lightning-card title="Selected Accounts:" icon-name="standard:product_required" if:false={isGoToProductsDisabled}>
+            <div class="slds-m-around_medium">
+                    <lightning-datatable
+                        key-field="Id"
+                        show-row-number-column
+                        data={selectedacc}
+                        columns={acc_columns}>
+                    </lightning-datatable>
+            </div>
+    </lightning-card>
+    </br>
+    <lightning-card title="Searched Accounts:" icon-name="standard:lead_list" if:true={displayAccounts}>
+    <div class="slds-m-around_medium">
+                <template if:true={showWarningAccounts}>
+                        <p style="color:red;"><lightning-formatted-text value="More than 100 records found. Latest 100 records are displayed" ></lightning-formatted-text></p>   
+                </br>
+                </template>
+            <lightning-datatable
+                key-field="Id"
+                show-row-number-column
+                data={account_wire}
+                columns={acc_columns}
+                onrowselection={getSelectedAccounts}>
+            </lightning-datatable>
+        </br>
+            <lightning-button variant="brand" label="<< Previous" title="<< Previous" onclick={AccPrev} class="slds-button__icon_small" disabled={isAccPrevDisabled}></lightning-button>&nbsp;&nbsp;&nbsp;
+            {pagination_status}&nbsp;&nbsp;&nbsp;
+            <lightning-button variant="brand" label="Next >>" title="Next >>" onclick={AccNext} class="slds-button__icon_small" disabled={isAccNextDisabled}></lightning-button>
+
+
+    </div>
+</br>
+</lightning-card>
+
+<lightning-button variant="brand" label="Go to Products"
+title="Go to Products" onclick={handleGotoProducts}
+class="slds-align_absolute-center" disabled={isGoToProductsDisabled}></lightning-button>
+</lightning-card>
+
+<!-- END OF ACCOUNTS-->
+
+
+
+<!-- START OF PRODUCTS-->
+<lightning-card if:true={displayProductsCard}>
+        <lightning-card title="Search Products:" icon-name="standard:search" >
+                        <div class="slds-m-around_medium">
+                        <lightning-input onchange={handleKeyChange2} class="slds-m-bottom_small"  value={searchtextproducts} placeholder="Search here ...">
+                        </lightning-input>				
+                        </div>  
+        </lightning-card>
+        <template if:true={isLoadingProducts}>
+                <div class="demo-only" style="height:6rem">
+                  <div class="slds-spinner_container">
+                      <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                      <span class="slds-assistive-text">Loading</span>
+                      <div class="slds-spinner__dot-a"></div>
+                      <div class="slds-spinner__dot-b"></div>
+                      </div>
+                  </div>
+              </div>
+              </template>
+        </br>
+        <lightning-card title="Selected Products:" icon-name="standard:task" if:false={isGoToAllDisabled}>
+                <div class="slds-m-around_medium">
+                        <lightning-datatable
+                            key-field="Id"
+                            show-row-number-column
+                            data={selectedproducts}
+                            columns={product_columns}>
+                        </lightning-datatable>
+                </div>
+        </lightning-card>
+        </br>
+        <lightning-card title="Searched Products:" icon-name="standard:picklist_type" if:true={displayProducts}>
+        <div class="slds-m-around_medium">
+                <template if:true={showWarningProducts}>
+                        <p style="color:red;"><lightning-formatted-text value="More than 100 records found. Latest 100 records are displayed" ></lightning-formatted-text></p>   
+                </template>
+
+                <lightning-datatable
+                    key-field="Id"
+                    show-row-number-column
+                    data={product_wire}
+                    columns={product_columns}
+                    onrowselection={getSelectedProducts}>
+                </lightning-datatable>
+        </br>
+        <lightning-button variant="brand" label="<< Previous" title="<< Previous" onclick={ProdPrev} class="slds-button__icon_small" disabled={isProdPrevDisabled}></lightning-button>&nbsp;&nbsp;&nbsp;
+        {pagination_status2}&nbsp;&nbsp;&nbsp;
+        <lightning-button variant="brand" label="Next >>" title="Next >>" onclick={ProdNext} class="slds-button__icon_small" disabled={isProdNextDisabled}></lightning-button>
+
+        </div>
+        </lightning-card>
+        <lightning-card>
+                        <div class="slds-m-around_medium">
+    <lightning-button variant="brand" label="Back to Accounts" title="Back to Accounts" onclick={handleBacktoAccounts} class="slds-button__icon_small"></lightning-button>&nbsp;&nbsp;&nbsp;
+    <lightning-button variant="brand" label="Review Selections"
+    title="Review Selections" onclick={handleReviewSelections}
+    class="slds-button__icon_small" disabled={isGoToAllDisabled}></lightning-button>
+</div>    
+</lightning-card>
+        
+    </lightning-card>
+    
+    <!-- END OF PRODUCTS-->
+
+
+    <!-- START OF ALL-->
+<lightning-card if:true={displayAll}>
+        <lightning-card title="Selected Combination:" icon-name="standard:task2">
+                <div class="slds-m-around_medium">
+                        <lightning-datatable
+                            key-field="Id"
+                            show-row-number-column
+                            data={selectedaccproducts}
+                            columns={acc_product_columns}>
+                        </lightning-datatable>
+                </div>
+        </lightning-card>
+        </br>
+    <lightning-button  variant="brand" label="Back to Products" title="Back to Products" onclick={handleBacktoProducts} class="slds-m-left_x-small"></lightning-button>
+    </lightning-card>
+    
+    <!-- END OF ALL-->
+</template>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Legal_Name__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <filter>
+        <booleanFilter>(((1 or 2) AND 3) AND 4) AND 5</booleanFilter>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Hildegard Pisoke,Frank Rehberg,Frank Kuth,Hesham Ahmed,DominicX A Jerriho,Yaganah Amiri,Ismael Ledesma Rodriguez,Maciej Narojczyk,Tomasz Czekaj,Konstantinidis Stefanos,Natalia Eni,Mohamed Zamil,GilbertX R Barquero,Astrid Mader,Antoine Perignon,Lukas Podsiedlik,Lorenzo Barabucci,Nouhad Jaber,Rafiqul Chowdhury,Vital Dehenn,Sascha Klingelhofer,Deniz Sahin,Hany Dhannoon,Orna Borek,Hariharasudan Ganesan,Sven Rogatschew,Jakob Janzen,Drissia Lazaar,Joanna Florczak,Johanne Salla,Jalaj Batta,Aamir Sultan,Serhan Szman,Octavian ENE,Ozcan Kucukbal,Abdallah Salim,Philippe Bruss,Robert Gray,Necla Kilic,Michael Dostert,Olga Speranskaya,Ekaterina Minkova,Natalia Zaitseva,Anastasia Smyslova,Ivan Pankov,Ekaterina Smirnova,Ksenia Zabegalova,Svetlana Dorovskikh,Ekaterina Chernova,Yulia Kargapoltseva,Tatiana Fedotova,Anna Shkurova,Maria Demacheva,Tatiana Bugrezova,Tatiana Kisel,Mikhail Polozov,EkaterinaX A Popova,Oksana Smolina,Michael Shehata,Aneta Bryniak,Heidi Skov,Michal Poterek</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Anastasiia Lukina,Katarzyna Makowska,Dmitry Matchin,Michal Juszczak,Amr Adam,Corentin Bernard,Vladimir Fedorov,Magdalena Dunska,Kathleen M Kallot,Malgorzata J Dzul,Roberto Lipari,Patrik Staaf,Nick Christopher Day,Marek Lesiewski,Murat Simsek,Mariusz Jadwiszczok,Ewelina Kusmierczyk Flazinska,Tobias Grimm,Marta Muszynska,Marco Iacopini,Dorian Witkowski,Gabor Lochte,Nikolay Panov,Marcin Majchrzak,Agnieszka Kania,Gregoire Armand,Ariel Hako,Lukasz Chrzanowski,Katarzyna Bielak,Jean-Luc Momprivé,Kamil Guzik,Dawid Studzinski,Aaron Voelker,Bartosz Filipowicz,Vasily Lizunov,Barbara Barusova Maliszewska,Marcin Sochacki,Karim Ghatwary,Joaquim Martin,Benedetta Cazzamali,Jason Holtom,Maciej Osiecki</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Team Member,Technical Owner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Hildegard Pisoke,Frank Rehberg,Frank Kuth,Hesham Ahmed,DominicX A Jerriho,Yaganah Amiri,Ismael Ledesma Rodriguez,Maciej Narojczyk,Tomasz Czekaj,Konstantinidis Stefanos,Natalia Eni,Mohamed Zamil,GilbertX R Barquero,Astrid Mader,Antoine Perignon,Lukas Podsiedlik,Lorenzo Barabucci,Nouhad Jaber,Rafiqul Chowdhury,Vital Dehenn,Sascha Klingelhofer,Deniz Sahin,Hany Dhannoon,Orna Borek,Hariharasudan Ganesan,Sven Rogatschew,Jakob Janzen,Drissia Lazaar,Joanna Florczak,Johanne Salla,Jalaj Batta,Aamir Sultan,Serhan Szman,Octavian ENE,Ozcan Kucukbal,Abdallah Salim,Philippe Bruss,Robert Gray,Necla Kilic,Michael Dostert,Olga Speranskaya,Ekaterina Minkova,Natalia Zaitseva,Anastasia Smyslova,Ivan Pankov,Ekaterina Smirnova,Ksenia Zabegalova,Svetlana Dorovskikh,Ekaterina Chernova,Yulia Kargapoltseva,Tatiana Fedotova,Anna Shkurova,Maria Demacheva,Tatiana Bugrezova,Tatiana Kisel,Mikhail Polozov,EkaterinaX A Popova,Oksana Smolina,Michael Shehata,Aneta Bryniak,Heidi Skov,Michal Poterek</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Anastasiia Lukina,Katarzyna Makowska,Dmitry Matchin,Michal Juszczak,Amr Adam,Corentin Bernard,Vladimir Fedorov,Magdalena Dunska,Kathleen M Kallot,Malgorzata J Dzul,Roberto Lipari,Patrik Staaf,Nick Christopher Day,Marek Lesiewski,Murat Simsek,Mariusz Jadwiszczok,Ewelina Kusmierczyk Flazinska,Tobias Grimm,Marta Muszynska,Marco Iacopini,Dorian Witkowski,Gabor Lochte,Nikolay Panov,Marcin Majchrzak,Agnieszka Kania,Gregoire Armand,Ariel Hako,Lukasz Chrzanowski,Katarzyna Bielak,Jean-Luc Momprivé,Kamil Guzik,Dawid Studzinski,Aaron Voelker,Bartosz Filipowicz,Vasily Lizunov,Barbara Barusova Maliszewska,Marcin Sochacki,Karim Ghatwary,Joaquim Martin,Benedetta Cazzamali,Jason Holtom,Maciej Osiecki</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>OSG Team members in Field Opptys</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
+    </timeFrameFilter>
+</Report>

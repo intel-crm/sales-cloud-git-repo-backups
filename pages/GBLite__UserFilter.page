@@ -1,6 +1,6 @@
 <apex:page controller="GBLite.GridWizardController" action="{!initUserFilter}" showHeader="false" sidebar="false">
     <!--[if IE 8]>
-        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.gb_resources, 'ie8-styles.css')}" />
+        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.GBLite__gb_resources, 'ie8-styles.css')}" />
     <![endif]-->
 	<div class="gbAppPage gbwPage gbUserFilter gb{!lang.langCode}{!IF(lightningStylesEnabled, ' gbLightning', '')}">
 		<c:EmptyComponent rendered="{!errors.showErrorMessages}">
@@ -38,7 +38,7 @@
 		</c:EmptyComponent>
 	
 		<div class="msgBox warningMsg" id="vldWarning" style="display:none"> <!-- if SF loads slow it will display the X before the whole page loads, so hide the content by using an inline style -->
-			<div class="closeX" tabindex="0">{!lang.CloseWarningBoxLbl}&nbsp;&nbsp;<b>X</b></div>
+			<div class="closeX">{!lang.CloseWarningBoxLbl}&nbsp;&nbsp;<b>X</b></div>
 			<div class="msgBody"></div>
 		</div>
 			
@@ -49,8 +49,7 @@
 			operators="{!operators}" orderByOptions="{!orderByOptions}" filterParentByChildOptions="{!filterParentByChildOptions}" errors="{!errors}"
 			cloneFilter="{!cloneUDFFilter}" savedFilterOptions="{!savedFilterOptions}" enableFilterClone="{!enableFilterClone}"
 			isCreatingNewFilter="{!isCreatingNewFilter}" adminFilteringEnabled="{!adminFilteringEnabled}"
-			selectedFilterPicklistVal="{!selectedFilterPicklistVal}" isDefaultFilterLoaded="{!isDefaultFilterLoaded}" lightningStylesEnabled="{!lightningStylesEnabled}"
-			groupByOrder="{!groupByOrder}" summarizedFields="{!summarizedFields}" enterpriseEditionEnabled="{!enterpriseEditionEnabled}"/>	
+			selectedFilterPicklistVal="{!selectedFilterPicklistVal}" isDefaultFilterLoaded="{!isDefaultFilterLoaded}" lightningStylesEnabled="{!lightningStylesEnabled}"/>	
 		
 		<c:LangJSComponent lang="{!lang}"/>
 		<!--  do not use includeScript for the jquery include, as this will add the javascript to the <head> tag and slow down the page load -->
@@ -60,9 +59,8 @@
 			var currentLocale = '{!localeForDate}',
                 loadUserFilter = {!loadUserFilter},
                 isAdminFilterLoaded = {!wrapper.gridConfig.isAdminFilterLoaded},
-                SUMMARY_PREFIXES = {!supportedAggregateFunctions},
 				// TODO move to all the variable below to GridFilterComopnent, and remove them from here
-				gridName = '{!JSENCODE(wrapper.gridConfig.Name)}',
+				gridName = '{!wrapper.gridConfig.Name}',
                 baseRelativeURLForVFManaged = '{!baseRelativeURLForVFManaged}',
                 lookupAjaxResponderPageURL = '{!lookupAjaxResponderPageURL}',
                 orgId = '{!$Organization.Id}',

@@ -1,91 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_64087808</developerName>
-        <masterLabel>Domain</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>IT Leadership / Biz Value</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>IT Leadership and Strategy</sourceValue>
-            </sourceValues>
-            <value>IT Leadership &amp; Strategy</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Innovative Workplace</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Workplace of the Future</sourceValue>
-            </sourceValues>
-            <value>Workplace of the Future</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Data Center</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Datacenter and Infrastructure</sourceValue>
-            </sourceValues>
-            <value>Data Center &amp; Infrastructure</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Cloud</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Cloud Journey</sourceValue>
-            </sourceValues>
-            <value>Cloud Journey</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Software and Enterprise Applications</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Enterprise Applications</sourceValue>
-            </sourceValues>
-            <value>Software &amp; Enterprise Applications</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Data, Analytics and AI</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Analytics and Data Architecture</sourceValue>
-            </sourceValues>
-            <value>AI &amp; Data Architecture</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Manufacturing and Industrial</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Industry 4.0</sourceValue>
-            </sourceValues>
-            <value>Industry 4.0</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Security</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Security &amp; Privacy</sourceValue>
-            </sourceValues>
-            <value>Security &amp; Privacy</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Sustainability</sourceValue>
-            </sourceValues>
-            <value>Sustainability</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -100,7 +14,7 @@
         <groupingColumn>Core_Sales_Support_Request__c.Core_IT_Intel_Geo__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>Core_Sales_Support_Request__c.Status__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -120,18 +34,25 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>CUST_RECORDTYPE</column>
+            <column>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>1/1/2017</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_OPP_CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Core_Sales_Support_Request__c.Core_DS_IT_Intel</value>
+            <value>THIS_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_64087808</field>
+        <field>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
@@ -156,6 +77,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

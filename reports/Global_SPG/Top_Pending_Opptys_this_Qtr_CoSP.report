@@ -58,11 +58,18 @@
     <description>09.21.16</description>
     <filter>
         <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Industry Sales</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>INDUSTRY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Telecommunications</value>
+            <value>Communications,Telecommunications</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -84,13 +91,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Comms Infrastructure / Networking,Data Center Computing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Service Provider,Telco/Service Provider</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -134,6 +134,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

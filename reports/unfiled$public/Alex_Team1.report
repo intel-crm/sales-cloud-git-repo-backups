@@ -86,7 +86,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>100</value>
+            <value>100.0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

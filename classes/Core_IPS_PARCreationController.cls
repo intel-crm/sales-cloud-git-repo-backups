@@ -78,18 +78,11 @@ public with sharing class Core_IPS_PARCreationController{
         
         String userId = UserInfo.getUserId();
             if(ApexPages.currentPage().getParameters().get('orgid')!=null){
-                //Fix already applied
-		prodOrg = new Core_IPS_Product_Organization__c();
-                if(Core_IPS_Product_Organization__c.SObjectType.getDescribe().isAccessible()){
                 prodOrg = [select id,name from Core_IPS_Product_Organization__c where id = :ApexPages.currentPage().getParameters().get('orgid')];
-                }
                 selectedOrg= prodOrg.name;
                 }
             if(ApexPages.currentPage().getParameters().get('id')!=null){
-	    	acc = new Account();
-                if(Account.SObjectType.getDescribe().isAccessible()){
                 acc = [select id,name,Core_IPS_Active__c,ownerId from Account where id = :ApexPages.currentPage().getParameters().get('id')];
-                }
                 accname= acc.name;
                 if(acc.Core_IPS_Active__c){
                     IPSActiveAccount = true;
@@ -192,14 +185,17 @@ public with sharing class Core_IPS_PARCreationController{
         processSelectedProducts();
         prodIdList=new List<Id>();
         String searchTxt = '%'+searchTextProd+'%';
-        if(engagementType =='Map'){
+        if(engagementType =='Map') {
             //Iteration#-2 User story#-US72182 DeveloperName-Sugandha Description- added where clouse condition core_IPS_public_product__c = false
             if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
-            supProds = [select id,name, Core_Product__c,Core_Product_Organization__c,Core_Product__r.name, Core_Product__r.description, Core_Product__r.id,Core_Flag_Status__c,Core_Supported_Product_Name__c, Core_Product_EPM_ID__c  from Core_IPS_Supported_Product__c where Core_Product__r.name like :searchTxt and Core_Product_Organization__c = :prodOrg.id and Core_EOIS__c = false and core_IPS_public_product__c = false  /*limit 100*/]; 
+                supProds = [select id,name, Core_Product__c,Core_Product_Organization__c,Core_Product__r.name, Core_Product__r.description, Core_Product__r.id,Core_Flag_Status__c,Core_Supported_Product_Name__c, Core_Product_EPM_ID__c  from Core_IPS_Supported_Product__c where Core_Product__r.name like :searchTxt and Core_Product_Organization__c = :prodOrg.id and Core_EOIS__c = false and core_IPS_public_product__c = false  /*limit 100*/]; 
             }
-        } else 
+        } else {
             //Iteration#-2 User story#-US72182 DeveloperName-Sugandha Description- added where clouse condition core_IPS_public_product__c = false
-            supProds = [select id,name, Core_Product__c, Core_Product_Organization__c,Core_Product_Organization__r.id, Core_Product_Organization__r.Core_IPS_Support_Org_Name__c, Core_Product_Organization__r.Core_Organization_Description__c, Core_Product_EPM_ID__c, Core_Product__r.name, Core_Product__r.description, Core_Product__r.id,Core_Flag_Status__c,Core_Supported_Product_Name__c from Core_IPS_Supported_Product__c where Core_Flag_Status__c!='Par Hidden' and Core_EOIS__c = false and core_IPS_public_product__c = false and Core_Product__r.name like :searchTxt and Core_Product_EPM_ID__c <> null order by Core_Product__r.name  /*limit 100*/]; 
+            if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
+                supProds = [select id,name, Core_Product__c, Core_Product_Organization__c,Core_Product_Organization__r.id, Core_Product_Organization__r.Core_IPS_Support_Org_Name__c, Core_Product_Organization__r.Core_Organization_Description__c, Core_Product_EPM_ID__c, Core_Product__r.name, Core_Product__r.description, Core_Product__r.id,Core_Flag_Status__c,Core_Supported_Product_Name__c from Core_IPS_Supported_Product__c where Core_Flag_Status__c!='Par Hidden' and Core_EOIS__c = false and core_IPS_public_product__c = false and Core_Product__r.name like :searchTxt and Core_Product_EPM_ID__c <> null order by Core_Product__r.name  /*limit 100*/]; 
+            }
+	    }
             for(Core_IPS_Supported_Product__c sp:supProds){
                 prodIdList.add(sp.Core_Product__r.id);
                 if(!mapProdToSupProd.containsKey(sp.core_Product__r.id))
@@ -215,7 +211,7 @@ public with sharing class Core_IPS_PARCreationController{
             prodQuery +=' id,name from Product2 where id in:prodIdList ORDER BY Product2.Name ASC NULLS LAST';
             prodList = Database.queryWithBinds(prodQuery,bindMap,AccessLevel.USER_MODE);
             // SOQL Injection Fix  - ENd - Shipra
-        
+            
             
         if(engagementType =='Par'){
             if(prodOrgsMap==null)
@@ -370,25 +366,17 @@ public with sharing class Core_IPS_PARCreationController{
                 distinctProductOrgIds.add(wl.prodOrgId);
             }
         }
+        // Modified By Hassan (DML Statement outside the Loop)
         List<Core_IPS_MAP_PAR__c> mapParListObj = new List<Core_IPS_MAP_PAR__c>();
+
         for(Id orgId : orgItWithLineItems.KeySet()){
             map2 = new Core_IPS_MAP_PAR__c();
-            /*US1021249 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
-            if (Schema.sObjectType.Core_IPS_MAP_PAR__c.fields.Core_Product_Organization__c.isCreateable()) {
             map2.Core_Product_Organization__c= orgId;
-            }
-            if (Schema.sObjectType.Core_IPS_MAP_PAR__c.fields.Core_isPARRequest__c.isCreateable()) {
             map2.Core_isPARRequest__c= true;
-            }
-            if (Schema.sObjectType.Core_IPS_MAP_PAR__c.fields.Core_Name__c.isCreateable()) {
             map2.Core_Name__c = mapName;
-            }
-            if (Schema.sObjectType.Core_IPS_MAP_PAR__c.fields.RecordTypeId.isCreateable()) {
             map2.RecordTypeId = schema.sobjecttype.Core_IPS_MAP_PAR__c.getrecordtypeinfosbyname().get('PAR').getRecordTypeId(); 
-            }
-            if (Schema.sObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.isCreateable()) {
             map2.Core_Submitter_Comments__c=submitterCommentsText;
-            }
+            
             mapParListObj.add(map2);
         }
         // Performing a single insert outside the loop
@@ -407,63 +395,37 @@ public with sharing class Core_IPS_PARCreationController{
             distinctAccountIds = new Set<Id>();
             for(WrapLineItem wl : orgItWithLineItems.get(orgId)){
                 Core_IPS_Map_Par_Line_Item__c lineItem = new Core_IPS_Map_Par_Line_Item__c();
-                if (Schema.sObjectType.Core_IPS_Map_Par_Line_Item__c.fields.Core_Account__c.isCreateable()) {
                 lineItem.Core_Account__c = wl.acc.id;
-                }
-                if (Schema.sObjectType.Core_IPS_Map_Par_Line_Item__c.fields.Core_isPARRequest__c.isCreateable()) {
-                lineItem.Core_isPARRequest__c=true;    
-                }
-                if (Schema.sObjectType.Core_IPS_Map_Par_Line_Item__c.fields.Core_Approval_Type__c.isCreateable()) {            
+                lineItem.Core_isPARRequest__c=true;                
                 lineItem.Core_Approval_Type__c= OrgbySupProd.get(wl.UniqueOrgEPMId).Core_Flag_Status__c;
-                }
-                if (Schema.sObjectType.Core_IPS_Map_Par_Line_Item__c.fields.Core_Supported_Product__c.isCreateable()) {
                 lineItem.Core_Supported_Product__c=OrgbySupProd.get(wl.UniqueOrgEPMId).id;
-                }
                 if(OrgbySupProd.get(wl.UniqueOrgEPMId).Core_Flag_Status__c == 'Auto Approve'){
-                    if (Schema.sObjectType.Core_IPS_Map_Par_Line_Item__c.fields.Core_Status__c.isCreateable()) {
                     lineItem.Core_Status__c='ACTIVE';
-                    }
                 }else{
-                    if (Schema.sObjectType.Core_IPS_Map_Par_Line_Item__c.fields.Core_Status__c.isCreateable()) {
                     lineItem.Core_Status__c='PENDING';
-                    }
                 }
-                if (Schema.sObjectType.Core_IPS_Map_Par_Line_Item__c.fields.Core_MAP_PAR__c.isCreateable()) {
+                
                 lineItem.Core_MAP_PAR__c = mapIdbyPO.get(orgId);
-                }
-                if (Schema.sObjectType.Core_IPS_Map_Par_Line_Item__c.fields.Core_Submitter_Comments__c.isCreateable()) {
                 lineItem.Core_Submitter_Comments__c=submitterCommentsText;
-                }
-                if (Schema.sObjectType.Core_IPS_Map_Par_Line_Item__c.fields.RecordTypeId.isCreateable()) {
                 lineItem.RecordTypeId = schema.sobjecttype.Core_IPS_Map_Par_Line_Item__c.getrecordtypeinfosbyname().get('PAR').getRecordTypeId();                
-                }
                 lineItems.add(lineItem);
                 distinctOrgEPMIds.add(wl.UniqueOrgEPMId);
                 distinctAccountIds.add(wl.acc.id);
             }
             for(String OrgEPMId : distinctOrgEPMIds){
                 Core_IPS_MAP_Product__c corePrd= new Core_IPS_MAP_Product__c();
-                if (Schema.sObjectType.Core_IPS_MAP_Product__c.fields.Core_MAP_PAR__c.isCreateable()) {
-                corePrd.Core_MAP_PAR__c = mapIdbyPO.get(orgId);  
-                }
-                if (Schema.sObjectType.Core_IPS_MAP_Product__c.fields.Core_MAP_Supported_Product__c.isCreateable()) {             
+                corePrd.Core_MAP_PAR__c = mapIdbyPO.get(orgId);               
                 corePrd.Core_MAP_Supported_Product__c = OrgbySupProd.get(OrgEPMId).id;
-                }
                 coreMapPrdToInsert.add(corePrd); 
             }
                 Core_IPS_MAP_Account__c mapAcc = new Core_IPS_MAP_Account__c();
-                if (Schema.sObjectType.Core_IPS_MAP_Account__c.fields.Core_MAP_PAR__c.isCreateable()) {
                 mapAcc.Core_MAP_PAR__c = mapIdbyPO.get(orgId);
-                }
-                if (Schema.sObjectType.Core_IPS_MAP_Account__c.fields.Core_Account__c.isCreateable()) {
                 mapAcc.Core_Account__c = selectedAcc.id;
-                }
                 coreMapAccToInsert.add(mapAcc);
             
         }
-            if(lineItems <> null && lineItems.size()>0){
-        		Core_IPS_AdminUtility.insertLineItems(lineItems);
-            }
+        if(lineItems <> null && lineItems.size()>0)
+        Core_IPS_AdminUtility.insertLineItems(lineItems);
         Core_IPS_MAPAccount_Dispatcher.DontExecuteTrigger=true;
             Core_IPS_AdminUtility.insertProdAccessAccJOs(coreMapAccToInsert);
             Core_IPS_AdminUtility.insertProdAccessProdJOs(coreMapPrdToInsert);
@@ -474,7 +436,6 @@ public with sharing class Core_IPS_PARCreationController{
     }
     
     public Map<String,Core_IPS_Supported_Product__c> OrgbySupProd;
-    List<Core_IPS_Product_Organization__c> ProdOrgList = new List<Core_IPS_Product_Organization__c>();
     public List<WrapLineItem> getLineItemsmethod(){
         LineItemlist = new List<WrapLineItem>();
                 
@@ -498,9 +459,7 @@ public with sharing class Core_IPS_PARCreationController{
                 UnqOrgEPMId.add(prodWrapper.selectedProductOrganization+prodWrapper.ProductEPMId);
             }
         }
-        if(Core_IPS_Product_Organization__c.SObjectType.getDescribe().isAccessible()){
-        ProdOrgList = [Select id,name,Core_IPS_Support_Org_Name__c,Core_Organization_Description__c,(Select id, name,Core_Supported_Product_Name__c, Core_Product_Organization__r.id,Core_Product_EPM_ID__c,Core_Flag_Status__c from Supported_Products__r where Core_Product_EPM_ID__c IN: ProductEPMIds) from Core_IPS_Product_Organization__c where id IN:ProdOrgIds];
-        }
+        List<Core_IPS_Product_Organization__c> ProdOrgList = [Select id,name,Core_IPS_Support_Org_Name__c,Core_Organization_Description__c,(Select id, name,Core_Supported_Product_Name__c, Core_Product_Organization__r.id,Core_Product_EPM_ID__c,Core_Flag_Status__c from Supported_Products__r where Core_Product_EPM_ID__c IN: ProductEPMIds) from Core_IPS_Product_Organization__c where id IN:ProdOrgIds];
         Map<String,Core_IPS_Product_Organization__c> MapProdOrgNames =  new Map<String,Core_IPS_Product_Organization__c>();
         OrgbySupProd =  new Map<String,Core_IPS_Supported_Product__c>();
         
@@ -513,7 +472,7 @@ public with sharing class Core_IPS_PARCreationController{
         
         List<Asset> assetlist=new List<Asset>();
         //Fix applied by - T Nishitha
-        if(Core_IPS_Labels__c.SObjectType.getDescribe().isAccessible()){ 
+        if(asset.SObjectType.getDescribe().isAccessible()){ 
          assetlist= [select id,name,accountid,product2id,product2.name, account.name,Core_Product_Organization__c,Core_Supported_Product__c from asset where Status != 'Inactive' and accountid =: acc.id and product2id IN: prodselected];   
         }
         //and accountid =: acc.id and product2id IN: prodselected 

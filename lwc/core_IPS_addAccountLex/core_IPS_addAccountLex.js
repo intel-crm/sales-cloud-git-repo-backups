@@ -46,6 +46,7 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
     loading = false;
     enableSorting = false;
     isMemberTypeAll = false;
+    inactiveAccIds = [];//Added by Nuthana
     Project_AllMemberType_Msg = Project_AllMemberType_Message;
     currentPageReference;
     @wire(CurrentPageReference)
@@ -148,7 +149,13 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
                         
                     } 
                     this.existingData = [...this.existingData, obj];
-                    this.accntIds = [...this.accntIds, data[i].Core_Account__c];
+                    //this.accntIds = [...this.accntIds, data[i].Core_Account__c]; commented by Nuthana
+                    if(data[i].Core_Status__c === 'Active'){
+                        this.accntIds = [...this.accntIds, data[i].Core_Account__c];
+                    }
+                    else {
+                        this.inactiveAccIds = [...this.inactiveAccIds, data[i].Core_Account__c];
+                    }
                     
                     
                 }
@@ -178,8 +185,10 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
                 
                 if(this.searchText != undefined && this.searchText != '' && this.searchText != null && this.searchText.length >= 3){
                    this.accountsData = [];
-                }   
+                } 
+                  
                 for (let i = 0; i < data.length; i++) {
+                    if(this.inactiveAccIds.includes(data[i].Id)) continue;//Added By Nuthana
                     let obj = {
                         'name' : data[i].Name,
                         'owner' : data[i].Owner.Name,
@@ -195,20 +204,23 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
             
                     }
                     this.accountsData = [...this.accountsData, obj];
-                    
+                    console.log(obj);
                 }
             }
             this.rowOffSet = this.rowOffSet + this.rowLimit;
-            if(this.accountsData.length == 0 && this.searchText.length >= 3){
+            //if(this.accountsData.length == 0 && this.searchText.length >= 3){ - Commented by Nuthana
+            if(this.accountsData.length == 0 && this.searchText && this.searchText.length >= 3){
+               
                 this.showTable = false;
             }
             else{
-                this.loading = false;
+                //this.loading = false;
                 this.showTable = true;
             }
+            this.loading = false;
             let tempAccId = this.recsToInsertId;
             this.clonedSelectedIds = JSON.parse(JSON.stringify(tempAccId));
-            
+            console.log('clonedids==='+JSON.stringify(this.clonedSelectedIds));
             if(this.accountsData.length != 0 && this.enableSorting){
                 this.accountRecords = this.accountsData;
                 this.sortData(this.sortedBy,this.customsortDirection,this.accountRecords,'accountsData');
@@ -218,6 +230,7 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
         })
         .catch(error=>{
             console.log(' Error: '+error.message);
+            this.loading = false;
         })
     }
 
@@ -231,20 +244,20 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
     }
 
     handleKeyChange(event) {      
-        
+        console.log('Hk 230');
      
         this.searchText = event.target.value; 
         this.rowOffSet = 0;
         this.accountsData = [];
        // this.recsToInsert = [];
-        
+        //console.log('@@@@@ pavani >>> Key' , JSON.stringify(this.recsToInsert ));
         this.evaluateSelected();  
-       
+        //console.log('@@@@@ pavani >>> key1 ' , JSON.stringify(this.recsToInsert )); 
         if(this.searchText.length >=3){ 
             this.searchMsg = false;      
-             
+           // console.log('@@@@@ pavani >>> key3 ' , JSON.stringify(this.recsToInsert ));    
             this.getAccounts('All Data');
-           
+           // console.log('@@@@@ pavani >>> key4 ' , JSON.stringify(this.recsToInsert ));
         }
         else{
             if(this.searchText.length >= 1 && this.searchText.length < 3)
@@ -252,36 +265,39 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
             else
                 this.searchMsg = false;    
             this.searchText = '';
-           
+            //console.log('@@@@@ pavani >>> key5 ' , JSON.stringify(this.recsToInsert ));
             this.getAccounts('Load Data');
-           
+           // console.log('@@@@@ pavani >>> key6 ' , JSON.stringify(this.recsToInsert ));
         }
     }
 
     getSelected(event) {
-        
+        console.log('@@@@@ pavani >>> ' , JSON.stringify(this.recsToInsert ));
+        console.log("selected rows" + JSON.stringify(event.detail.selectedRows));
+        console.log("selected rows1" + JSON.stringify(event.detail));
         /*let tempsel = []; "selection":"rowSelect"rowDeselect
         tempsel = JSON.parse(JSON.stringify(event.detail.selectedRows));
         let copyOfRecToInsert = [...this.copyOfRecToInsert, ...tempsel];
         */
        let selectedRowIds=this.recsToInsertId;
-        
+        console.log('Hk 264>> ', event.detail.config.value);
+        console.log('Hk 265>> ', event.detail.config.selection);
         if(event.detail.config.selection == 'rowDeselect'){
-            
+            console.log('Deselection');
             this.recsToInsert = this.recsToInsert.filter(item => item.accid != event.detail.config.value);
             selectedRowIds = selectedRowIds.filter(item => item != event.detail.config.value);
     
-            
+            console.log('@@@@@ pavani after deselection >>> ' , JSON.stringify(this.recsToInsertId ));
         }
         else{
             
             if(!selectedRowIds.includes(event.detail.config.value)){
-                
+                console.log('@@@@@ pavani First If>>> ' , JSON.stringify(this.recsToInsert ));
                 selectedRowIds.push(event.detail.config.value);
                 event.detail.selectedRows.forEach(element => {
-                   
+                    console.log('@@@@@ pavani For >>> ' ,event.detail.config.value+'--'+element.accid );
                     if(event.detail.config.value==element.accid){
-                        
+                        console.log('@@@@@ pavani If >>> ' , JSON.stringify(this.recsToInsert ));
                         this.recsToInsert.push(element);
                     }
                 });
@@ -289,7 +305,8 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
             }
         }
        this.recsToInsertId = selectedRowIds;
-        
+        console.log('@@@@@ pavani after push >>> ' , JSON.stringify(this.recsToInsert ));
+        //console.log('@@@@@ pavani >>> copy after ' , copyOfRecToInsert );
 
 
       //  this.recsToInsert = this.reevent.detail.selectedRows;
@@ -327,7 +344,7 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
     //@api
     handleAdd(event) { 
         this.spinner= true;
-        this.isMemberTypeAll = false;      //As part of Vulnerability Fix       
+        this.isMemberTypeAll = false;      //As part of Vulnerability Fix 
         var param = event.currentTarget.dataset.key;
         if(this.recsToInsert.length == 0){
             this.dispatchEvent(new ShowToastEvent({
@@ -341,6 +358,7 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
             for(let i = 0; i<this.recsToInsert.length;i++) {
                 finalList = [...finalList , JSON.stringify(this.recsToInsert[i])];
                 if(this.recsToInsert[i].Members == 'All' && this.isMemberTypeAll == false){
+                    console.log('adding acct if conditon');
                     this.isMemberTypeAll = true;
                 }
             }
@@ -354,11 +372,13 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
                     this.dispatchEvent(new ShowToastEvent({
                         message: 'Accounts added sucessfully',
                         variant: 'success',
-                    }));   
+                    }));  
                     if(this.isMemberTypeAll == true){
+                        console.log('addin acct warbing message');
                         this.dispatchEvent(new ShowToastEvent({
                             message: Project_AllMemberType_Message,
                             variant: 'warning'
+                            /*mode: 'sticky'*/
                         }));
                     } 
                     if(param === 'Add'){                
@@ -387,7 +407,7 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
                         variant: 'error',
                     })); 
                     this.spinner = false;
-                    this.resetSelection();//As part of Vulnerability Fix
+                    this.resetSelection(); //As part of Vulnerability Fix 
                 }
                 if(data === 4){
                     this.dispatchEvent(new ShowToastEvent({
@@ -395,13 +415,13 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
                         variant: 'error',
                     })); 
                     this.spinner = false;
-                    this.resetSelection();//As part of Vulnerability Fix
+                    this.resetSelection();//As part of Vulnerability Fix 
                 }
             })
             .catch(error=>{
-                console.log('error occured: '+JSON.stringify(error)); 
+                console.log('error occured: '+JSON.stringify(error));
                 this.spinner = false;
-                this.resetSelection(); //As part of Vulnerability Fix               
+                this.resetSelection(); //As part of Vulnerability Fix            
             })
         }
     }
@@ -428,7 +448,7 @@ export default class Core_IPS_addAccountLex extends NavigationMixin(LightningEle
         this.accountRecords = this.accountsData;
         this.sortData(this.sortedBy,this.customsortDirection,this.accountRecords,'accountsData');       
     }
-     //Added this method as once the mpnda error is shown, the recsToInsert is not resetting and its showing the error message again - Nuthana(As part of Vulnerability Fix - deffered issue)
+    //Added this method as once the mpnda error is shown, the recsToInsert is not resetting and its showing the error message again - Nuthana(As part of Vulnerability Fix - deffered issue)
     resetSelection() {
     this.recsToInsert = [];
     this.recsToInsertId = [];

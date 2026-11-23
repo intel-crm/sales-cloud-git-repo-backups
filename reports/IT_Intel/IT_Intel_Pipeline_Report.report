@@ -9,11 +9,13 @@
             <axisBinding>y</axisBinding>
             <column>FK_OPP_AMOUNT</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>FK_OPP_CLOSE_DATE</groupingColumn>
+        <groupingColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
+        <secondaryGroupingColumn>FK_OPP_CLOSE_DATE</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -26,13 +28,13 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</field>
-    </columns>
-    <columns>
         <field>FK_$Opportunity.Core_Milestone_Count__c</field>
     </columns>
     <columns>
         <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Sales_Support_Request__c.Core_IT_Geo_Manager__c</field>
     </columns>
     <columns>
         <field>Core_Sales_Support_Request__c.Status__c</field>
@@ -50,8 +52,22 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>FK_OPP_AMOUNT</field>
     </columns>
-    <description>2018 BV</description>
+    <description>2017 $ by Won and by Multiple Sortable Fields</description>
     <filter>
+        <criteriaItems>
+            <column>FK_OPP_CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_OPP_CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
         <criteriaItems>
             <column>FK_OPP_WON</column>
             <columnToColumn>false</columnToColumn>
@@ -60,18 +76,25 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CUST_RECORDTYPE</column>
+            <column>FK_OPP_CLOSE_DATE</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Core_Sales_Support_Request__c.Core_DS_IT_Intel</value>
+            <value>THIS_YEAR</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Core_Sales_Support_Request__c.Status__c</column>
+            <column>FK_OPP_CLOSE_DATE</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Open,Cancelled,Rejected</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_OPP_CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -83,10 +106,10 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Core_Sales_Support_Request__c.Core_IT_Geo_Manager__c</field>
+        <field>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IT@Intel BV 2018</name>
+    <name>IT@Intel BV Pipeline Report</name>
     <params>
         <name>co</name>
         <value>0</value>
@@ -98,6 +121,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

@@ -1,11 +1,18 @@
 /****************************************************************************************************
+Apex Class Name:  Core_OpportunitySearchController_Test
+Version     : 1.0 
+Created Date: 06 OCT 2014
 Function    : Test class for testing the "Core_GlobalOpportunitySearch" Page
+Modification Log :
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Harshith M L             06/10/2014              Original Version
 *****************************************************************************************************/
 @isTest
 private class Core_OpportunitySearchController_Test {
     
-    Static Final Integer TEST_RECORD_SIZE   = 10;   // 1010
-    Static Final String  INTEL_PLATFORM     = 'Agilex';
+    Static Final Integer TEST_RECORD_SIZE   = 60;   // 1010
+    Static Final String  INTEL_PLATFORM     = 'Broadwell';
     Static Final String  SOL_FOCUS_SELECT_1 = 'Big Data/Analytics';
     Static Final String  SOL_FOCUS_SELECT_2 = 'Client: Sell Up/Refresh';
     
@@ -44,8 +51,6 @@ private class Core_OpportunitySearchController_Test {
             opp.Core_Opportunity_Geo_EMEA__c = true;
             opp.Core_Opportunity_Geo_APJ__c  = true;
             opp.Core_Opportunity_Geo_PRC__c  = true;
-            opp.Opportunity_Focus__c= 'Core';
-            opp.Core_Opportunity_Type__c ='Design: Original';
         }
 
         System.runAs(Core_Test_Utility.systemAdminUser) {
@@ -88,7 +93,8 @@ private class Core_OpportunitySearchController_Test {
                                                  Owner.Name, Name, Account.Name 
                                           FROM OPPORTUNITY 
                                           WHERE  Core_Intel_Platform__c = 'Broadwell'];
-          
+            for (Opportunity opp : testOpps)
+                System.debug('#9 Opportunity: ' + opp);
 
 
 
@@ -126,9 +132,6 @@ private class Core_OpportunitySearchController_Test {
                     try{
                         fieldSetInstance.add();
                     }catch(Exception e){
-                         Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            			 insert logEntry;
-
                     }
 
                     List<SelectOption> chosentoRemoveMultiselect = new List<SelectOption>();
@@ -138,8 +141,6 @@ private class Core_OpportunitySearchController_Test {
                     try{
                         fieldSetInstance.remove();
                     }catch(Exception e){
-                         Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            			 insert logEntry;
                     }
                 }
 
@@ -152,9 +153,12 @@ private class Core_OpportunitySearchController_Test {
 
             pageController.search();
 
-            
+            System.debug('pageController: ' + pageController);
 
-            
+            if (pageController.lstSearchOpportunities == NULL)
+                System.debug('pageController.lstSearchOpportunities IS NULL');
+            else    
+                System.debug('pageController.lstSearchOpportunities.size(): ' + pageController.lstSearchOpportunities.size());
 
             // Asserting that search retunred more than TEST_RECORD_SIZE records
             // System.assertEquals(pageController.bmoreRecords, true);
@@ -163,15 +167,12 @@ private class Core_OpportunitySearchController_Test {
 //[BM] 8/7            System.assertEquals(pageController.lstSearchOpportunities.size(), 50);
 
             Opportunity selectedOpportunity = lstOpportunityInsertion.get(0);
-            
+            System.debug('selectedOpportunity: ' + selectedOpportunity);
 
             pageController.selectedOpportunityId = selectedOpportunity.id;
             try{
                 pageController.sendEmail();
             }catch(Exception e){
-                 Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            	 insert logEntry;
- 
             }
 
             // Asserting whether email was sent
@@ -242,7 +243,8 @@ private class Core_OpportunitySearchController_Test {
                                           FROM OPPORTUNITY 
                                           WHERE  Core_Intel_Platform__c = :INTEL_PLATFORM];
 
-            
+            for (Opportunity opp : testOpps)
+                System.debug('#9 Opportunity: ' + opp);
 
 
             // Creating the instance of controller to be tested      
@@ -285,9 +287,6 @@ private class Core_OpportunitySearchController_Test {
                     try{
                         fieldSetInstance.add();
                     }catch(Exception e){
-                         Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            			 insert logEntry;
- 
                     }
 
                     List<SelectOption> chosentoRemoveMultiselect = new List<SelectOption>();
@@ -297,9 +296,6 @@ private class Core_OpportunitySearchController_Test {
                     try{
                         fieldSetInstance.remove();
                     }catch(Exception e){
-                        Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OpportunitySearchController_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
-            			insert logEntry;
- 
                     }
                 }
 
@@ -307,7 +303,10 @@ private class Core_OpportunitySearchController_Test {
 
             pageController.autoPartnerSearch();
 
-            
+            if (pageController.lstSearchOpportunities == NULL)
+                System.debug('pageController.lstSearchOpportunities IS NULL');
+            else    
+                System.debug('pageController.lstSearchOpportunities.size(): ' + pageController.lstSearchOpportunities.size());
 
             pageController.next();
             pageController.first();

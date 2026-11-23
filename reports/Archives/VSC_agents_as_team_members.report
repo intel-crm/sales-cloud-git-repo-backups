@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 or 2 or 3 or 4 or 5</booleanFilter>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Matthias Schmidt,Herman Stel,Philippe Bruss,Michael Shehata,Miroslav Stefanov,Anastasia Smyslova,DominicX A Jerriho,MARIA DEMACHEVA,Lorenzo Barabucci,Lucy Eley,Natalia Zaitseva,Benjamin Kitenge,Ekaterina Smirnova,Nardine Rizk,Patryk Pabich,Mohammad Abd El Aziz,Aleksandra Patryn,Elzbieta Marcinkevic,Mouna Agourram,Moustafa Hussein,Maciej Bogucki,Leori Bockos,Ibrahima Camara,ERIC YAPI</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Anna Dopieralska,Margarita Marinits,Michal Kisman,Astrid Mader,Jacek Borkowski,Marcin Kurek,Caroline Mwangi,Ekaterina Chernova,Emmanuel Musese,Diana Stackievic,Mohamed Marzouki,Ismael Ledesma Rodriguez,Claudia Goergen,Kristina Hercher,Daria Shutova,Diane Kameni,Ksenia Zabegalova,Mikolaj Danilowicz,Marion Beftan,Michael Dostert,Metin Yavuz,Hisham Hussein,Ercole Vanore,Heidi Noack,MARIA SORAGNESE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Iona Mortimer,Ralf Radtke,Robert Gray,Caroline Franzen,PETRA LIENING,Orna Borek,Konstantinidis Stefanos,Sascha Strack,Dagmar Hurter,Kathy van den Hende,Ozcan Kucukbal,Tatiana Kisel,Mikhail Polozov,Tobias Gran,Olga Speranskaya,Maciej Narojczyk,Vital Dehenn,Anna Shkurova,Rasha Ganam,Sarah Runge,Patricia Friesenhausen,Davor Kucera,Meryem Vogt,Besime Ugurlu,Oksana Smolina</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Ivan Pankov,Tanja Holst,Alina Husek,Juergen Seubert,Yulia Kargapoltseva,Monica Atef,Mariam Toema,GilbertX R Barquero,Stefan Hessler,Armando Mozo,Ekaterina Minkova,EkaterinaX A Popova,Tatiana Bugrezova,Mohamed Zamil,Sarah Hussein,Marianne Awad,Zakhar Aleshko,Sini Ikonen</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Kamil Grzesik,Tobias Hoffmann,Calin Muresan,Karin Klaus,Bastian Gerkum,Dominika Kargut,Nurije Mendjiqi,Petra Liening,Yaganah Amiri,Victor Becerra,Alina Grabovska,Aleksanda Mieliska,Adam Mrozik,Hamit Boran,Christina Fugh,Mohamed Marzouk,Nil Auberge,Martin Kieserg</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>VSC agents as team members</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

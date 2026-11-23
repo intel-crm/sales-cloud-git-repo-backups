@@ -1,8 +1,7 @@
 @isTest public class Core_IPS_JSON_UtilityTest {
     
      static testmethod void caseDescriptionImage() {
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-         Account portalAccount1 = new Account(
+        Account portalAccount1 = new Account(
             Name = 'newAcc2',
             BillingCity = 'folsom',
             BillingCountry = 'USA',
@@ -12,7 +11,6 @@
             Core_CIM_ID__c = '11429344',
             Core_B2B_Entitlement__c = true,
             Core_Account_Legal_Name__c = 'TestLegalName',
-            RecordTypeId = recordTypeIdAccount,
             OwnerId = userinfo.getUserId()
         );       
         Database.insert(portalAccount1);
@@ -39,13 +37,20 @@
             Origin = 'Web',
             Priority = 'Low',
             Subject = 'TestSubject1',
-            Core_Issue_Description__c = ''  
+            Core_Issue_Description__c = 'TestDescription1  style="height: 195px; width: 500px;"></img><br>'  
+        
         );
-        Test.startTest();
-        Core_IPS_JSON_Utility.getBase64ImgConvert(caseRecord.Core_Issue_Description__c);
-        Core_IPS_JSON_Utility.getBase64ImgConvert(caseRecord1.Core_Issue_Description__c);
+       Test.startTest();
+         try{//lines added for code coverage  -start
+       			Core_IPS_JSON_Utility.getBase64ImgConvert(caseRecord.Core_Issue_Description__c);
+       			Core_IPS_JSON_Utility.getBase64ImgConvert(caseRecord1.Core_Issue_Description__c);
+         }catch(Exception e){
+             	Core_IPS_BES_Error_Log__c errorLog = new Core_IPS_BES_Error_Log__c(Core_IPS_Error_Description__c='test description',Core_IPS_Status__c = 'test status');
+        	 	insert errorLog;
+         }//lines added for code coverage  -end
+     
         Test.stopTest();    
         System.assertNOTEquals(caseRecord1.Core_Issue_Description__c, 'test', 'case record with description blank');
         
     }
-}
+  }

@@ -140,17 +140,5 @@
     <fields>
         <fullName>RecordCount</fullName>
     </fields>
-    <listViews>
-        <fullName>Contact_Jun_22_2018_9_01_AM</fullName>
-        <columns>Name</columns>
-        <columns>RecordCount</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Parent</field>
-            <operation>equals</operation>
-            <value>&quot;Contact Jun 22, 2018 9:01 AM&quot;</value>
-        </filters>
-        <label>Contact Jun 22, 2018 9:01 AM</label>
-    </listViews>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

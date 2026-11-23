@@ -1,0 +1,7 @@
+<aura:component implements="force:hasrecordId,force:lightningQuickActionWithoutHeader" access="global">
+    <aura:attribute name="caseId" type="String"   />
+
+   Prasad test Id  "{!v.recordId}"
+   case Id passed <b>{!v.caseId}</b>
+  <c:prasadLWC recordId="{!v.recordId}"/> 
+</aura:component>

@@ -27,7 +27,6 @@
     <columns>
         <field>Account$CreatedDate</field>
     </columns>
-    <description>Weekly backup report - OMS Account Backup</description>
     <filter>
         <criteriaItems>
             <column>Account$Core_Geo__c</column>
@@ -60,7 +59,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Backup_OMS Account APJ</name>
+    <name>OMS Account backup_APJ</name>
     <params>
         <name>co</name>
         <value>1</value>

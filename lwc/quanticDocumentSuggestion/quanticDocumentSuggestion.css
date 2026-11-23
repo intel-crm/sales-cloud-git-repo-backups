@@ -1,21 +1,15 @@
 .excerpt {
-  font-size: 14px;
+  font-size: var(--slds-g-font-scale-1, 14px);
 }
 .loading-holder {
   position: relative;
   height: 3.5rem;
 }
 
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.slds-card {
-  border: 1px solid #dddbda;
+.card-border {
+  border: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-1, #dddbda);
 }
 
 .no-suggestion-message {
-  background-color: #f6f7f9;
+  background-color: var(--slds-g-color-surface-2, #f6f7f9);
 }

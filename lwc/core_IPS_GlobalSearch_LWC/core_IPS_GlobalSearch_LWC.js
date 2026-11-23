@@ -3,6 +3,7 @@ import uId from '@salesforce/user/Id';
 import getUserRecord from '@salesforce/apex/Core_IPS_UserInfoCtrl.fetchUser';
 import getFormatedLabel from '@salesforce/apex/Core_IPS_UserInfoCtrl.formatLabels';
 import getCustomSetting from '@salesforce/apex/Core_IPS_UserInfoCtrl.fetchCustomSetting';
+import fetchCustomSettingHierarchy from '@salesforce/apex/Core_IPS_UserInfoCtrl.fetchCustomSettingHierarchy';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 import { NavigationMixin } from 'lightning/navigation';
 import getLoggedInPermissonSet from '@salesforce/apex/core_IPS_getPermssionSetName_Ctrl.getLoggedInPermissonSets';
@@ -67,15 +68,18 @@ export default class Core_IPS_GlobalSearch_LWC extends NavigationMixin(Lightning
     searchKeyword(event) {
         //Added by chetan as part of slow execution
         this.searchValue = event.target.value;
+        if(this.searchValue.length > 3){
         window.clearTimeout(this.delayTimeout);
         this.delayTimeout = setTimeout(() => {
-        this.handlesubject(event);
-        }, 300);
+           this.handlesubject(event);
+        }, 300);}
         
         //this.handlesubject(event);
     }
+    
     // Creates the event with the data.
     handlesubject(event) {
+        console.log('CK>> 1 sent2');
         const selectedEvent = new CustomEvent("searchvaluechange", {
             detail: this.searchValue,
         });
@@ -95,8 +99,10 @@ export default class Core_IPS_GlobalSearch_LWC extends NavigationMixin(Lightning
     async getLoggedInPermissonSetOfUser() {
         await getLoggedInPermissonSet()
             .then(res => {
+                console.log('inside then getloggedinpermissonset');
                 this.permissionSetNames = res.map(rec => {
                     if (rec.PermissionSet.Label.includes('DDR Permission Set')) {
+                        console.log('inside if ddr available true');
                         this.isDddAvailable = true;
                     }
                     return rec.PermissionSet.Label
@@ -108,8 +114,15 @@ export default class Core_IPS_GlobalSearch_LWC extends NavigationMixin(Lightning
     }
     ddrBannerActive = false;
     onLoad() {
+        fetchCustomSettingHierarchy()
+        .then(async (result) => {
+            console.log('OUTPUT : result fetchCustomSettingHierarchy',result);
+        }).catch(err=>{
+             console.log('OUTPUT : error fetchCustomSettingHierarchy',result);
+        })
         getCustomSetting()
             .then(async (result) => {
+                console.log('OUTPUT : result',result);
                 result = await result.filter(element => {
                     if (element.Core_Ips_BannerMessage_Text_LWC__c.includes('partners.intel.com/DDR/') == true && this.isDddAvailable == false) {
                         return false;

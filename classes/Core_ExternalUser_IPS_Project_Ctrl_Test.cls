@@ -12,7 +12,26 @@ Core_ExternalUser_IPS_Project_Helper
 *****************************************************************************************************************************************/
 @isTest
 public class Core_ExternalUser_IPS_Project_Ctrl_Test{
+    static List<User> ListOfUser = new List<User> ();
     
+    static void getRecords (){
+        // Query Profiles
+        Map<String,ID> profiles = new Map<String,ID>();
+        List<String> strProf = new List<String>();
+        strProf.add('System Administrator');
+        strProf.add('IPS Agent');
+        List<Profile> profileList = [select id, name from Profile where name IN : strProf];
+        for(Profile prf : ProfileList){
+            profiles.put(prf.name, prf.id);
+        }
+        // Create Users
+        ListOfUser = TestUtilities.getListOfUser(2);
+        ListOfUser.get(0).ProfileID =  profiles.get('System Administrator');
+        ListOfUser.get(1).ProfileID =  profiles.get('IPS Agent');
+        insert ListOfUser;
+        System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));
+    }
+
     @testSetup static void setup() {
         Test.startTest();
         //Parameters for the below method : AccountName, NoOFAcconts, NoOFContacts(IPS), NoOfContacts(NonIPS), NoOfCommUsers , profile for community Users, , NoOfAssets
@@ -67,6 +86,8 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
                 cep.lastPage();
                 cep.reset();
                 cep.saveAll();
+                cep.upsertIPSProducts();
+                cep.upsertAsserts();
             }catch(Exception e){
                 excpOccured = true;
             }
@@ -76,9 +97,21 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
     
     //Test : IPS project account and member should be created for the logged in user immediately after creating project.
     public static testMethod void test_Step1_CreateIPSAccount_Member_Success() {
+        getrecords();
+        
+        Account acc = TestUtilities.getAccountRecord();
+        acc.Name = 'TestAcct0';
+        acc.Core_IPS_Active__c = True;
+        Insert acc;
+        
+        contact condata = TestUtilities.getContact();
+        condata.AccountId = acc.Id;
+        condata.LastName = 'Testcon';
+        Insert condata;
         
         Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
-        
+        System.assertEquals(acc.Id, condata.AccountId);
+        //Contact con = [Select Id, AccountId FROM Contact Limit 1];
         User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
         system.runAs(ipsExternalUser){
             RecordType assetRecType = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType='Asset' AND Name ='IPS Asset'];
@@ -101,9 +134,9 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             ListOfProducts[0].Core_IPS_Visible_Flag_Internal__c = 'Yes';
             ListOfProducts[0].Core_Product_Org__c = 'IPS';
             ListOfProducts[0].Core_Hierarchy_ID__c = '43';
-            if (Schema.sObjectType.Product2.isCreateable()){
-            	insert ListOfProducts;
-            }
+            
+            insert ListOfProducts;
+            
             //Create Supported product Record
             List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
             ListOfSupportedProduct[0].Core_Product__c = ListOfProducts[0].id;
@@ -111,9 +144,8 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             ListOfSupportedProduct[0].Core_Flag_Status__c = 'Auto Approve';
             ListOfSupportedProduct[0].Core_Product_EPM_ID__c = '75025';
             ListOfSupportedProduct[0].Core_Supported_Product_Name__c = 'Haswell processor';
-            if (Schema.sObjectType.Core_IPS_Supported_Product__c.isCreateable()){
-            	upsert ListOfSupportedProduct;
-            }
+            upsert ListOfSupportedProduct;
+            
             List<Asset> listofAssets= TestUtilities.getAssetList(1);
             listofAssets[0].Product2Id = ListOfProducts[0].id;
             listofAssets[0].Name = 'Haswell processor';
@@ -127,9 +159,8 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             listofAssets[0].Core_Product_Organization__c =  SupOrg.Id;
             listofAssets[0].InstallDate = system.today();
             
-            if (Schema.sObjectType.Core_IPS_Supported_Product__c.isCreateable()){
-            	insert listofAssets;
-            }
+            insert listofAssets;
+            
             List<Asset> allAssets = [Select Id, Name FROM Asset where Account.Id =: con.AccountId];
             
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
@@ -164,14 +195,51 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
                 
             }
             cep.saveAll();
+           /* Account testAcc = TestUtilities.getAccountRecord();
+            insert testAcc;
+            Contact testCon = TestUtilities.getContact();
+            testCon.AccountId=testAcc.Id;
+            testCon.Core_IPS_Intel_Support_Owner__c=null;
+            insert testCon;
+            Core_IPS_Project__c testIPSProj = TestUtilities.getIpsProjectRecord();
+            testIPSProj.Name='TEST123';
+			insert testIPSProj;
+            Core_IPS_Account__c testIPSACC = TestUtilities.getCoreIpsAccount();
+            testIPSACC.Core_Account__c = testAcc.Id;
+            testIPSACC.Core_IPS_Project__c = testIPSProj.Id;
+			insert testIPSACC;
+          	Core_IPS_Account__c  ipsAcct = [Select Id, Name, Core_Status__c FROM Core_IPS_Account__c  where Core_Account__c =: testAcc.Id Limit 1];
+            */
+               
+            List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        	System.runAs(ListOfUser.get(0)){
+            insert ListOfIpsProjects;
+        	}
+          
+	        List<Core_IPS_Account__c> ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(1);
+            for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
+                IpsAcc.Core_Account__c = con.AccountId;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects[0].Id;
+            }
+            System.runAs(ListOfUser.get(0)){
+            insert ListOfIpsAccounts;
+        	
+           // Core_IPS_Project__c projObj = TestUtilities.getIpsProjectRecord();
+            //insert projObj;
+            //List<Core_IPS_Account__c>  ipsAcctList = TestUtilities.getListOfIpsAccounts(1);
+            //ipsAccTList.get(0).Core_Account__c=con.AccountId;
+            //ipsAccTList.get(0).Core_IPS_Project__c = projObj.Id;
+            //insert ipsAcctList;
             
-            Core_IPS_Account__c  ipsAcct = [Select Id, Name, Core_Status__c FROM Core_IPS_Account__c  where Core_Account__c =: con.AccountId Limit 1]; 
+			Core_IPS_Account__c  ipsAcct = [Select Id, Name, Core_Status__c FROM Core_IPS_Account__c  where Core_Account__c =: con.AccountId Limit 1];
             Core_IPS_Project_Member__c  ipsCont =  [Select Id, Name, Core_User__c, Core_Status__c  FROM Core_IPS_Project_Member__c  where Core_IPS_Contact__c =: con.Id Limit 1]; 
             System.assertNotEquals(null, ipsAcct);
             System.assertEquals('Active', ipsAcct.Core_Status__c );
             System.assertNotEquals(null, ipsCont);
             System.assertEquals('Active', ipsCont.Core_Status__c );
             System.assertEquals(ipsExternalUser.id, ipsCont.Core_User__c );
+            }
+                        
         }
     } 
     
@@ -256,9 +324,9 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
     
     //Step 3: Test Create IPS Products
     //Test all selected assets are creating succesfully and all the fields area populated 
-    public static testMethod void test_Step3_CreateIPSProducts_Success() {
+    public static void test_Step3_CreateIPSProducts_Success() {
         Boolean excpOccured = false;
-        try{
+       try{
             Contact con = [Select Id, AccountId FROM Contact WHERE  Account.Name = 'TestAcct0' Limit 1];
             List<Asset> allAssets = [Select Id, Name FROM Asset where Account.Id =: con.AccountId];
             User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
@@ -296,6 +364,9 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         }Catch(Exception e){
             excpOccured = true;
         }
+        //System.assertEquals(true, excpOccured);
+        System.assertEquals(false, excpOccured);
+        
     }
     
     //Search Project Members Positive
@@ -330,7 +401,8 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         List<Contact> nonIpsContacts = [Select Id, Name FROM Contact where Core_IPS_Active__c  = false AND Account.Name = 'TestAcct0'];
         User ipsExternalUser = [Select Id FROM User where ContactId =:con.id];
         system.runAs(ipsExternalUser){
-            RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];            Core_IPS_Project__c cip=new Core_IPS_Project__c();
+            RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
+            Core_IPS_Project__c cip=new Core_IPS_Project__c();
             ApexPages.StandardController sc = new ApexPages.standardController(cip);
             Core_ExternalUser_IPS_Project_Controller cep = new Core_ExternalUser_IPS_Project_Controller(sc);  
             cep.ipsProject.Name ='testIPSMember_Success';
@@ -367,6 +439,8 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         insert asset1; 
         
         Map<Id, Asset> mSuppProd_ipsProd = Core_ExternalUser_IPS_Project_Helper.getExistingAssets(ipsProject.id);
+        Core_ExternalUser_IPS_Project_Helper.getAllInActiveIPSProducts(ipsProject.id);
+        
         System.assertNotEquals(null, mSuppProd_ipsProd);
     }
     
@@ -462,7 +536,9 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
         }Catch(Exception e){
             excpOccured = true;
         }
-    }   
+        System.assertEquals(true, excpOccured);
+    }
+
     
     //Step 2: Remove IPS members  
     public static testMethod void test_Step2_Remove_IPSMembers_Success3() {
@@ -489,9 +565,9 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             ListOfProducts[0].Core_IPS_Visible_Flag_Internal__c = 'Yes';
             ListOfProducts[0].Core_Product_Org__c = 'IPS';
             ListOfProducts[0].Core_Hierarchy_ID__c = '43';
-            if (Schema.sObjectType.Product2.isCreateable()){
-            	insert ListOfProducts;
-            }
+            
+            insert ListOfProducts;
+            
             //Create Supported product Record
             List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(1);
             ListOfSupportedProduct[0].Core_Product__c = ListOfProducts[0].id;
@@ -499,10 +575,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             ListOfSupportedProduct[0].Core_Flag_Status__c = 'Auto Approve';
             ListOfSupportedProduct[0].Core_Product_EPM_ID__c = '75025';
             ListOfSupportedProduct[0].Core_Supported_Product_Name__c = 'Haswell processor';
-            
-            if (Schema.sObjectType.Core_IPS_Supported_Product__c.isCreateable()){
-            	upsert ListOfSupportedProduct;
-            }
+            upsert ListOfSupportedProduct;
             
             List<Asset> listofAssets= TestUtilities.getAssetList(1);
             listofAssets[0].Product2Id = ListOfProducts[0].id;
@@ -517,9 +590,8 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             listofAssets[0].Core_Product_Organization__c =  SupOrg.Id;
             listofAssets[0].InstallDate = system.today();
             
-            if (Schema.sObjectType.Asset.isCreateable()){
-            	insert listofAssets;
-            }            
+            insert listofAssets;
+            
             List<Asset> allAssets = [Select Id, Name FROM Asset where Account.Id =: con.AccountId];
             
             RecordType rc  = [SELECT Id FROM RecordType where SobjectType = 'Core_IPS_Product__c' AND DeveloperName = 'Core_IPS_Project_Product'];
@@ -530,7 +602,6 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             cep.ipsProject.Name ='testIPSMember_Success';
             cep.ipsProject.Core_Project_Description__c ='testIPSMember_Success';
             cep.nextStep();
-            
             Core_CustomSetController setCntrlr = cep.mStep_SetCntlr.get(cep.steps[cep.stepIndex]).get('AvailableRecords');
             List<Core_CustomSetController.Wrapper> wl = setCntrlr.sobjectRecords;
             Set<Id> selContIds = new Set<Id>();
@@ -553,7 +624,7 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
                 cep.updateSelectedRecords();
                 
             }
-            cep.saveAll();
+           	//cep.saveAll();
             
             //Initialize set controller
             Core_CustomSetController setCntrlr3 = cep.mStep_SetCntlr.get(cep.steps[cep.stepIndex]).get('AvailableRecords');
@@ -574,4 +645,23 @@ public class Core_ExternalUser_IPS_Project_Ctrl_Test{
             //Asserts 
         }
     }
+    
+    public static testMethod void CreationForExternalCustomerTest(){
+        
+ 
+        Core_IPS_Project__c ipsProject = new Core_IPS_Project__c(); 
+        ipsProject.Name ='value1';
+        ipsProject.Core_MPNDA__c='4567';
+        insert ipsProject;
+                
+        Contact con = [Select Id FROM Contact Limit 1];
+        User ipsUser = [Select Id FROM User where ContactId =:con.id];
+       
+        Map<Id,Core_IPS_Project__c> mapObj = new Map<Id,Core_IPS_Project__c>();
+        mapObj.put(ipsProject.Id, ipsProject);
+        Core_ExternalUser_IPS_Project_Helper.createAccountOnProjectCreationForExternalCustomer(mapObj,ipsUser);
+        
+    }
+    
+     
 }

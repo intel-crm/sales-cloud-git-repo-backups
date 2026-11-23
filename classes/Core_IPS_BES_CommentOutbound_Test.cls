@@ -75,29 +75,28 @@ public class Core_IPS_BES_CommentOutbound_Test {
         insert cs;
         
         Test.startTest();
-            Core_IPS_Case_Comments__c objCmt = new Core_IPS_Case_Comments__c();
-            objCmt.Core_IPS_Case__c = cs.id;
-            objCmt.Core_IPS_Comment_Author_Type__c = 'Agent';
-            objCmt.Core_IPS_Case_Comment_Type__c = 'Public to Customers'; 
-            objCmt.Core_IPS_Rich_Comment__c = 'Test from test class';
-            objCmt.Core_IPS_Comment_Authored_By_Name__c = 'Test Farooq'; 
-            objCmt.Core_IPS_Comment_Authored_By__c = userInfo.getUserId();
-            objCmt.Core_IPS_Case_Comment_Source__c = 'Internal Portal';
+        Core_IPS_Case_Comments__c objCmt = new Core_IPS_Case_Comments__c();
+        objCmt.Core_IPS_Case__c = cs.id;
+        objCmt.Core_IPS_Comment_Author_Type__c = 'Agent';
+        objCmt.Core_IPS_Case_Comment_Type__c = 'Public to Customers'; 
+        objCmt.Core_IPS_Rich_Comment__c = 'Test from test class';
+        objCmt.Core_IPS_Comment_Authored_By_Name__c = 'Test Farooq'; 
+        objCmt.Core_IPS_Comment_Authored_By__c = userInfo.getUserId();
+        objCmt.Core_IPS_Case_Comment_Source__c = 'Internal Portal';
         insert objCmt;
         Test.stopTest();
-         List<Core_IPS_BES_Outbound_Message__c> outboundObject = new List<Core_IPS_BES_Outbound_Message__c>();
-         outboundObject.add(new Core_IPS_BES_Outbound_Message__c(core_IPS_Outbound_Message_ID__c = '123',
-                                                                 Core_IPS_Case_ID__c = cs.Id,
-                                                                 Comment_Id__c = objCmt.Id));
-        
+            List<Core_IPS_BES_Outbound_Message__c> outboundObject = new List<Core_IPS_BES_Outbound_Message__c>();
+            outboundObject.add(new Core_IPS_BES_Outbound_Message__c(core_IPS_Outbound_Message_ID__c = '123',
+                                                                    Core_IPS_Case_ID__c = cs.Id,
+                                                                    Comment_Id__c = objCmt.Id));        
         insert outboundObject;
         if(outboundObject.size()>0){
-            //Core_IPS_BES_JSONTriggerHandler.getJson(new List<Id>{outboundObject[0].Id});
-        }
-        
-        
-        System.assert(objCmt.Id!=null);
-    }
+            Core_IPS_BES_JSONTriggerHandler.getJson(new List<Id>{outboundObject[0].Id});
+    }    
+    
+    System.assert(objCmt.Id!=null);
+}
+
     @isTest
     public static void negitiveTest(){
         Case cs =  TestUtilities.getCase();
@@ -114,9 +113,9 @@ public class Core_IPS_BES_CommentOutbound_Test {
         insert objCmt1;
         Test.stopTest();
         List<Core_IPS_BES_Outbound_Message__c> outboundObject1 = new List<Core_IPS_BES_Outbound_Message__c>();
-         outboundObject1.add(new Core_IPS_BES_Outbound_Message__c(core_IPS_Outbound_Message_ID__c = '123',
-                                                                 Core_IPS_Case_ID__c = cs.Id,
-                                                                 Comment_Id__c = objCmt1.Id));
+            outboundObject1.add(new Core_IPS_BES_Outbound_Message__c(core_IPS_Outbound_Message_ID__c = '123',
+                                                                    Core_IPS_Case_ID__c = cs.Id,
+                                                                    Comment_Id__c = objCmt1.Id));
         insert outboundObject1;
         List<IPS_Case_Comment_Fields__c> caseCommentFields = new List<IPS_Case_Comment_Fields__c>();
         caseCommentFields.add(new IPS_Case_Comment_Fields__c(Name= 'Comment Type', Comment_Field_API_Name__c = 'Core_IPS_Case_Comment_Type_',
@@ -125,7 +124,7 @@ public class Core_IPS_BES_CommentOutbound_Test {
         if(outboundObject1.size()>0){
             Core_IPS_BES_JSONTriggerHandler.getJson(new List<Id>{outboundObject1[0].Id});
         }
-         System.assert(objCmt1.Id!=null);
+            System.assert(objCmt1.Id!=null);
     }
 
     @isTest

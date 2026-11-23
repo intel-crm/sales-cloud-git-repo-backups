@@ -56,7 +56,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Closed</value>
+            <value>Closed,​​Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Sub_Status__c</column>

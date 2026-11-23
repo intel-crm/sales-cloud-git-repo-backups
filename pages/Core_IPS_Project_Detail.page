@@ -1,0 +1,12 @@
+<!--------------------------------------------------------------------------------------------------------------------------------------
+* Page Name  : Core_IPS_Project_Detail 
+* Version     : 1.0
+* Created Date: 6 Dec 2018
+* Modification Log :
+* Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* vamsi                   6 Dec 2018               Page for Detail view of Premier Support Projects for internal users 
+----------------------------------------------------------------------------------------------------------------------------------------->
+ <apex:page standardController="Core_IPS_Project__c">
+        <apex:detail subject="{!Core_IPS_Project__c.Id}" relatedList="true" inlineEdit="true"/> 
+   </apex:page>

@@ -19,7 +19,7 @@ public with sharing class Core_IPS_ProjectDetailPrint_Ctrl {
     public Core_IPS_ProjectDetailPrint_Ctrl(){
             // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
         currentProjRecordId = ApexPages.CurrentPage().getparameters().get('recordId').escapeHtml4();
-        
+
         projRecord = [SELECT Id,Name,Core_MPNDA__c,Core_Project_Description__c,
                       Core_Status__c,Core_IPS_EnableMemberasInterestedParties__c,
                       Core_IPS_Enable_ISTasInterested_Parties__c,Core_IPS_Project_ID__c    

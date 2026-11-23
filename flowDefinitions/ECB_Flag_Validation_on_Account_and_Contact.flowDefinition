@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>ECB Flag Validation on Account and Contact: When ever a ECB flag is enabled on the Account then dependent contacts must become IPS Active as false</description>
+    <masterLabel>ECB Flag Validation on Account and Contact</masterLabel>
+</FlowDefinition>

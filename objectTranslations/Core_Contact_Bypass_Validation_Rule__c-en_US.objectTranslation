@@ -12,5 +12,9 @@
         <label><!-- Bypass --></label>
         <name>Bypass__c</name>
     </fields>
+    <fields>
+        <label><!-- Bypass_flow --></label>
+        <name>Bypass_flow__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

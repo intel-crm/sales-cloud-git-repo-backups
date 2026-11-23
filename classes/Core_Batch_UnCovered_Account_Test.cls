@@ -40,14 +40,8 @@ public class Core_Batch_UnCovered_Account_Test {
               
               RecordType conRecordType = [select id from recordType where sObjectType='Contact' and name = 'Intel Contact' limit  1];
               Contact Cont = new Contact(recordtypeid=conRecordType.id,Email='testcepcontact1111@gmail.com',LastName = 'CEPLast98',FirstName = 'CEPFirst98',AccountId = acclist[0].id,MailingCountry='USA');
-              insert Cont;
-             /* commented for US265805
-              RecordType caseRecordType = [select id from recordType where sObjectType='Case' and name ='CEP Case' limit 1];
-              Case cepCase = new Case(contactId=Cont.id,Status ='New',Origin='Email',Core_CEP_Case_Region__c = 'ASMO',Core_CEP_Account_Name__c = acclist[0].id,recordTypeId = caseRecordType.id,Subject='This is a test case');
-             //insert cepCase; 
-             */
-            
-                      
+              insert Cont;            
+                                 
          }
      
      

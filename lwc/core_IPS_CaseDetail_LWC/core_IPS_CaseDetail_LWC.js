@@ -8,7 +8,6 @@ import showsubCategory from "@salesforce/apex/Core_IPS_CaseCreateLWCController.g
 import retriveCaseData from '@salesforce/apex/Core_IPS_Case_Clone_Controller_LEX.geCloneCaseDetails'; //Anil Case Copy
 import getCaseData from '@salesforce/apex/Core_IPS_Case_Clone_Controller_LEX.getCaseDetails'; //Anil Case Copy
 import getCaseonLoad from "@salesforce/apex/Core_IPS_CaseCreateLWCController.getCaseData";
-// import scftlabel from "@salesforce/label/c.Core_IPS_File_SCFT_URL_Azure_Migration";
 import getProductVariants from '@salesforce/apex/Core_IPS_AdminUtility.getProductVariants';
 import displaySubCategoryData from '@salesforce/apex/Core_IPS_Case_Clone_Controller_LEX.displaySubCategoryData'; //Anil Case Copy
 import displayCategoryData from '@salesforce/apex/Core_IPS_Case_Clone_Controller_LEX.displayCategoryData'; //Anil Case Copy
@@ -23,9 +22,7 @@ import getCaseClosed from '@salesforce/apex/Core_IPS_TestAllRecords.getCaseClose
 import saveNewComment from '@salesforce/apex/Core_IPS_TestAllRecords.saveNewComment';
 import updateCaseDetails from '@salesforce/apex/Core_IPS_TestAllRecords.updateCaseDetails';
 import getEnvDetails from '@salesforce/apex/Core_IPS_TestAllRecords.getEnvDetails';
-// import prepareUrl from '@salesforce/apex/Core_IPS_File_AttachToCase_Controller.prepareUrl'; // krishna
 import getcurrentuserprofile from '@salesforce/apex/Core_IPS_TestAllRecords.getcurrentuserprofile';
-// import getcurcasestatus from '@salesforce/apex/Core_IPS_TestAllRecords.getcurcasestatus';
 import getcurUsername from '@salesforce/apex/Core_IPS_TestAllRecords.getcurUsername';
 import getFileList from '@salesforce/apex/Core_IPS_caseAttLinkFileCont_LWC.getFiles';
 import saveRecords from '@salesforce/apex/Core_IPS_caseAttLinkFileCont_LWC.saveFile';
@@ -35,14 +32,9 @@ import addOrRemovePartyMembers from '@salesforce/apex/core_Ips_InterestedParties
 import IPS_Survey_BannerLink from '@salesforce/label/c.IPS_Survey_BannerLink';
 import IPS_Survey_LOGO from '@salesforce/resourceUrl/Core_IPS_New_Logo';
 import Core_IPS_No_External_Active_Member from '@salesforce/label/c.Core_IPS_No_External_Active_Member';
-// import submitCaseClosureRes from '@salesforce/apex/Core_IPS_TestAllRecords.submitCaseClosureRes';
-// import Core_IPS_CaseRTF_Intel_Technical_Specialist from '@salesforce/label/c.Core_IPS_CaseRTF_Intel_Technical_Specialist';
 import { getRecord, getRecordNotifyChange } from 'lightning/uiRecordApi';
-// import Comments from '@salesforce/schema/Case.Comments';
-// import { refreshApex } from '@salesforce/apex';
 import surveyMessage from '@salesforce/label/c.Core_IPS_PortalSurveyMessage'
 
-//minhaj
 //minhaj
 import Core_Country_Region__c from '@salesforce/schema/Contact.Core_Country_Region__c';
 import { getPicklistValues } from 'lightning/uiObjectInfoApi';
@@ -54,14 +46,12 @@ import getLoggedInContacts from "@salesforce/apex/core_IPS_caseCreate_LEX.getCon
 import TIME_ZONE from '@salesforce/i18n/timeZone';
 
 //Added by Shruti
-// import getPartnerSupportOwner from '@salesforce/apex/Core_IPS_TestAllRecords.getPartnerSupportOwner';
 import getSupportedAccount from '@salesforce/apex/Core_IPS_TestAllRecords.getSupportedAccount';
 import getSupOwnerAndSupAccountforEditCase from '@salesforce/apex/Core_IPS_TestAllRecords.getSupOwnerAndSupAccountforEditCase';
 import Id from '@salesforce/user/Id';
 import EdqAlignLast from '@salesforce/resourceUrl/EdqAlignmentLast';
 import EdqAlignment from '@salesforce/resourceUrl/EdqAlignment';
-import { loadStyle } from 'lightning/platformResourceLoader'
-// import TickerSymbol from '@salesforce/schema/Account.TickerSymbol';
+import { loadStyle } from 'lightning/platformResourceLoader';
 import Core_IPS_Required from '@salesforce/label/c.Core_IPS_Required'; 
 import Core_IPS_Minds_Message from '@salesforce/label/c.Core_IPS_Minds_Message';
 import Core_IPS_Preferences_Message from '@salesforce/label/c.Core_IPS_Preferences_Message';
@@ -203,10 +193,10 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     @track defaultTabItem = null;
     @track caseSubCategoryValue;
     isRequiredDesc = false;
-    @track PSAReadonly = true;
+
     //Added By Shruti
     userId = Id;
-    @track PSAReadonly = true; // Added by tushar---- vanuability changes
+
     @track surveyMessage = surveyMessage;
 
     @track currentPageReference;
@@ -256,12 +246,10 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 this.statedefaultvalue = this.contactData[0].Core_IPS_Embargoed_State__c;
                 this.selectedCountry = this.selectedValuecountry;
                 this.selectedState = this.statedefaultvalue;
-
             })
             .catch((error) => {
                 this.error = error;
             });
-        //console.log('call comments--'+this.recordId);    
         this.getCurrentCaseComments();
     }
     
@@ -388,9 +376,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 this.showProdEdqs = true;
                 this.subCatRecEdqs = res.subCatFields;
                 this.showSubCatEdqs = true;
-                console.log('DEBUG openEditModal prodEdqRecs=' + JSON.stringify(this.prodEdqRecs));
-                console.log('DEBUG openEditModal subCatRecEdqs=' + JSON.stringify(this.subCatRecEdqs));
-                  this.getSubCategoryEdqs(this.casesubcatedq);
+                this.getSubCategoryEdqs(this.casesubcatedq);
                 setTimeout(() => {this.enableEdit();}, 100);
             }
             else{
@@ -410,7 +396,9 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     }
     closeEditModal() {
         this.isEditCase = false;
-
+        this.theRecord={};
+        this.showCatError=true;
+        this.showSubCatError=true;
        
     }
     @track theRecord = {};
@@ -437,7 +425,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
         }
         if (event.target.dataset.id === 'Subject') {
             this.SubjectRequired = event.target.value.trim();
-            console.log('SubjectRequired',this.SubjectRequired);
             if(this.SubjectRequired !=''){
             this.isRequiredSubject = false;
             this.template.querySelector('.editSubjectInput')?.classList.remove('showRequired');
@@ -529,10 +516,22 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
         let validationCaseDescription = caseObj.Core_Issue_Description__c.replaceAll('<p>', '').replaceAll('</p>', '').replaceAll('<br>', '');
        
         let editValid = true;
+        if(this.showCategory ==true && this.showCatError == false){
+            editValid=false;
+            this.template.querySelector('.editCatInput')?.classList.add('showRequired');
+            this.template.querySelector('.editCatInput')?.scrollIntoView();  
+        }
+          
         if( this.showSubCat == true && (caseObj.Core_Case_Issue_Sub_Category__c == null || caseObj.Core_Case_Issue_Sub_Category__c == undefined || caseObj.Core_Case_Issue_Sub_Category__c =='')){
             this.isRequiredSubCat = true;
             this.template.querySelector('.editSubCatInput')?.classList.add('showRequired');
             this.template.querySelector('.editSubCatInput')?.scrollIntoView();
+        }
+        if(this.showSubCat == true && this.showSubCatError == false){
+            editValid=false;
+            this.isRequiredSubCat = true;
+            this.template.querySelector('.editSubCatInput')?.classList.add('showRequired');
+            this.template.querySelector('.editSubCatInput')?.scrollIntoView(); 
         }
         if((this.editSeverityReason == true) && (caseObj.Core_Severity_Reason__c == null || caseObj.Core_Severity_Reason__c == undefined || caseObj.Core_Severity_Reason__c == '')){
             editValid = false;
@@ -559,7 +558,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
             this.template.querySelector('.partnerAccreq')?.classList.add('showRequired');
             this.template.querySelector('.partnerAccreq')?.scrollIntoView();  
         }    
-
         if (this.showProdEdqs === true) {
             this.template.querySelector('c-dynamic-form-builder[data-id="prodEDQ"]').callhandleQuestionAnswer();
         }
@@ -567,11 +565,12 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
             this.template.querySelector('c-dynamic-form-builder[data-id="subCatEDQ"]').callhandleQuestionAnswer();
         }
         this.validateedq();
-        if (this.valCheck) {   
+        if (this.valCheck) {  
             if(editValid == true) {
-                for (const x of this.savealldataedqMap.keys()) {
-                    this.savealldataedq.push(this.savealldataedqMap.get(x));
-                    console.log('Key=' + x + ', Value=' + JSON.stringify(this.savealldataedqMap.get(x)));
+                if(this.savealldataedqMap != undefined){
+                   for (const x of this.savealldataedqMap.keys()) {
+                         this.savealldataedq.push(this.savealldataedqMap.get(x));
+                     }
                 }
                 let strEdq = JSON.stringify(this.savealldataedq);
                 this.isSpinner = true;
@@ -618,8 +617,8 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     @track strResCaseCloseData;
     resCaseCloseHandleChange(event) {
             this.resCaseCloseValueChanged[event.target.name] = event.target.value;
-        }
-        //@track currentCaseData;
+    }
+    
     supportedProdIdTest;
     showCloseCaseSurveyValue;
     hasAccess = true;
@@ -629,8 +628,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     getCurCase({ error, data }) {
     
         this.isSpinner = true;
-        //if(data){
-        // this.hasAccess=true;
         if (data) {
             this.isSpinner = false;
             this.hasAccess = true;
@@ -645,9 +642,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 }
             }
 
-            /*else if(tabItem == 'false'){
-                this.selectedItem = 'caseComments';
-                }*/
 
             let cData = JSON.parse(JSON.stringify(data));
             this.showCloseCaseSurveyValue = this.surveyLink + '=' + cData.CaseNumber;
@@ -687,7 +681,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 this.isCaseCmt = true;
                 
             }
-            //if (cData.Core_IPS_GEC_Flag__c == true) {
+
             let recordTypeName = cData.RecordType.DeveloperName;
             
             if (recordTypeName == 'IPS_GEC_ReadOnly') {
@@ -705,15 +699,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
             } else {
                 this.isCaseClosedCmt = false;
             }
-            /*if (this.currentUserProfile == 'PartnerAgent' && cData.Status == 'Closed') {
-                this.isCaseClosedCmt = true;
-                this.isCaseCmt = true;
-
-            } else {
-                this.isCaseClosedCmt = false;
-                this.isCaseCmt = false;
-
-            }*/
+            
             if (cData.Status == 'Closed' && this.currentUserProfile != 'PartnerAgent') {
                 this.isCaseClosedCmt = true;
                 this.ClosedCase = false;
@@ -777,7 +763,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
         } else {
             this.editProjandProd = true;
         }
-       
+               
     }
 
     projectDetailRecId;
@@ -799,7 +785,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
         getProjStatus({ projectId: this.currentCaseData.Core_IPS_Project_Case__c })
             .then((result) => {
                 //if ((result != null && result != undefined && result?.length > 0)
-                //Kamala 26-05-2026 PRB10067533 -- removed 'result?.length > 0' condition
+                //Kamala 26-05-2026 PRB10067533 - removed 'result?.length > 0' condition
                 if ((result != null && result != undefined)) { 
                     this.projectStatus = result.Core_Status__c;
                     if (result.Core_Status__c == 'Active') {
@@ -818,7 +804,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     }
     ProductStatus;
     getProductStatus() {
-        console.log('this.currentCaseData.AssetId ',this.currentCaseData.AssetId);
         getProdStatus({ assetId: this.currentCaseData.AssetId })
             .then((result) => {
                 //if ((result != null || result != undefined || result?.length > 0) && result.Status == 'Active') 
@@ -855,9 +840,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
             this.isProjectProjuctActive = false;
         }
     }
-
-
-
 
     newCaseEvnList = [];
     @track currentCaseEnvDetails;
@@ -954,10 +936,9 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     @track recentCommentsList = [];
    
     getCurrentCaseComments(){
-         getCurrentCaseComments({csId: this.recordId})
+        getCurrentCaseComments({ csId: this.recordId })
             .then(async (data) => {
                 if (data) {
-                   // console.log('wire comments'+JSON.stringify(data));
                     await this.getCurUserprofile();
                     let cmts = [];
                     data.forEach(element => {
@@ -967,7 +948,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                         rowobj.Id = element.Id;
                         if (element.Core_IPS_Rich_Comment__c.includes('New Case Attachment uploaded:') && (this.currentUserProfile == 'PartnerAgent' || this.currentUserProfile == 'PartnerFAE')) {
                             rowobj.Core_IPS_Comment_Authored_By_Name__c = element.Core_IPS_Comment_Authored_By_Name__c;
-                            if(this.currentUserProfile == 'PartnerAgent' && (element.Core_IPS_Comment_Authored_By_Name__c==null || element.Core_IPS_Comment_Authored_By_Name__c=='' || element.Core_IPS_Comment_Authored_By_Name__c==undefined || !element.Core_IPS_Comment_Authored_By_Name__c.includes(element.CreatedBy_Name__c))){
+                            if (this.currentUserProfile == 'PartnerAgent' && (element.Core_IPS_Comment_Authored_By_Name__c == null || element.Core_IPS_Comment_Authored_By_Name__c == '' || element.Core_IPS_Comment_Authored_By_Name__c == undefined || !element.Core_IPS_Comment_Authored_By_Name__c.includes(element.CreatedBy_Name__c))) {
                                 rowobj.Core_IPS_Comment_Authored_By_Name__c = element.CreatedBy_Name__c;
                             }
                             
@@ -1008,15 +989,14 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                     }
                     this.currentCaseComments = cmts;
                     this.initialCaseComments = cmts;
-                 //   console.log('wire comments end'+JSON.stringify(this.currentCaseComments));
                     this.error = undefined;
-                } 
+                }
             })
             .catch(error => {
-                console.log('wire comments error'+JSON.stringify(error));
+                console.log('wire comments error' + JSON.stringify(error));
                 this.error = error;
                 this.currentCaseComments = undefined;
-            })
+            });
     }    
         // Recent comments collapse view
     showcmts = true;
@@ -1377,18 +1357,18 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
         saveRecords({ selectedRecordIds: this.fileRecords, caseId: this.recordId })
             .then(result => {
                 if (this.fileRecords != null) {
-		    this.isSpinner = false;
+                    this.isSpinner = false;
                     this.showToast('SUCCESS!!', 'Files has been Attached successfully', 'success');
                     this.template.querySelector('lightning-datatable').selectedRows = [];
                     this.recordsCount = 0;
                     this.showdata = false;
                 } else {
-		    this.isSpinner = false;
+                    this.isSpinner = false;
                     this.showToast('Error!!', 'Please Select Files ', 'error');
                 }
             })
             .catch(error => {
-		this.isSpinner = false;
+                this.isSpinner = false;
                 this.showToast('ERROR', error.body.message, 'error');
                 this.showdata = false;
             });
@@ -1396,6 +1376,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
 
     onCancelHandler() {
         this.showdata = false;
+        
     }
 
     handleRowActions(event) {
@@ -1423,7 +1404,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                     
 		    localStorage.setItem('resume','resume');
                     localStorage.setItem('iframeurl', record.detail.row.Core_File_URL__c);
-                    //localStorage.setItem('recordId', this.recordId);
                     const newWindow = window.open('attachment-upload?c__recordId='+this.recordId+'+'+record.detail.row.Core_IPS_Attachment_Visibility__c, '_blank');
                     newWindow.opener = null; //Added for Vulnerability issue
                 }
@@ -1500,8 +1480,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
             if (rslt == 'PartnerAgent') {
                  this.isCaseCmt = true;
             }
-            console.log('this.currentCaseData.Status',this.currentCaseData);
-            console.log('this.currentCaseData.Status',this.currentCaseData.Status);
             if (this.currentCaseData.Status == 'Closed') {
                 this.isCaseCmt = false;
                 
@@ -1700,7 +1678,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 }
                 if (key == 'Core_IPS_Supported_Product__c') {
                     if (this.getdatafromwire[key] != undefined) {
-                       // this.prodId = JSON.parse(this.getdatafromwire[key]);
                         this.prodId = this.getdatafromwire[key];
                         this.getcategoryData();
                     }
@@ -1722,15 +1699,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
 
         if (this.ProjectData == true && (this.projectStatus != 'Active' && this.projectStatus != undefined) || (this.ProductStatus != 'Active' && this.ProductStatus != undefined)) {
             this.showToast('Error', 'You cannot copy the Case as Project/Product is Inactive', 'error');
-        } else {
-            //this.showCopycmp = true;
-            //this.getProductEdqs(this.prodId);
-            //this.getcloneCaseData();
-            /*this.getProdVariants(this.selectedProductId);
-            this.getsubcategoryData();
-            this.getcategoryData();
-            this.getUserProfile();*/
-            
+        } else {            
             this.showEdqSection = false;
             this.showProdEdqs = false;
             this.showSubCatEdqs = false;
@@ -1739,17 +1708,15 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                     this.showEdqSection = true;
                     this.prodEdqRecs = res.fields;
                     this.showProdEdqs = true;
-                    //this.subCatRecEdqs = res.subCatFields;
                     this.showSubCatEdqs = true;
-                    setTimeout(() => {this.enableCopyCase();}, 100);
+                    setTimeout(() => { this.enableCopyCase(); }, 100);
                 }
-                else{
-                    setTimeout(() => {this.enableCopyCase();}, 100);
+                else {
+                    setTimeout(() => { this.enableCopyCase(); }, 100);
                 }
             }).catch(err => {
-                setTimeout(() => {this.enableCopyCase();}, 100);
-            })
-            //this.showCopycmp = true;
+                setTimeout(() => { this.enableCopyCase(); }, 100);
+            });
             this.getcloneCaseData();
             this.getProdVariants(this.selectedProductId);
             this.getcategoryData();
@@ -1765,49 +1732,46 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     gobackToCase() {
         this.showmaincmp = true;
         this.showCopycmp = false;
+        this.copyCaseDetails={};
+        this.showCatError=true;
+        this.showSubCatError=true;
     }
     envQAs = new Map();
     edqdata;
     //Call Apex clone Method
-    CopyPartnerAccountRequired = false;
+    CopyPartnerAccountRequired = true;
     getcloneCaseData() {
         retriveCaseData({ recId: this.recordId })
-        
             .then(result => {
-                console.log('Clone Case1' +JSON.stringify(result));
                 if (result != '' && result != undefined && result != null) {
                     this.caseinsertion = result;
                     this.clonedCase = result[0];
-                    console.log(this.clonedCase);
-                    if ((this.clonedCase.Core_External_Issue_Category__c == '' || this.clonedCase.Core_External_Issue_Category__c == undefined) && this.CaseCategoryoptions.length == 0){
+                    console.log('BUG Assist cloned case : ',JSON.stringify(this.clonedCase));
+                    if (this.clonedCase.Core_External_Issue_Category__c == '' || this.clonedCase.Core_External_Issue_Category__c == undefined){
                         this.showCategory = false;
                     } else {
                         this.showCategory = true;
                     }
-                    if ((this.clonedCase.Core_External_Issue_Subcategory__c == '' || this.clonedCase.Core_External_Issue_Subcategory__c == undefined) && this.CaseSubcategoryoptions.length == 0) {
+
+                    if (this.clonedCase.Core_External_Issue_Subcategory__c == '' || this.clonedCase.Core_External_Issue_Subcategory__c == undefined) {
                         this.showSubCategory = false;
                     } else {
                         this.showSubCategory = true;
                     }
                     if (this.clonedCase.Core_IPS_Project_Case__r == undefined) {
-                        this.CopyPartnerAccountRequired = true;
+                        this.CopyPartnerAccountRequired = false;
                     }
                     for (let key in this.clonedCase) {
-                        console.log(key);
                         if (key == 'ContactId') {
                             if (this.clonedCase[key] != undefined) {
                                 this.contactId = this.clonedCase[key];
-                                console.log(this.contactId);
                             }
                         }
-                       
                         if (key == 'Subject') {
                             console.log(key);
                             if (this.clonedCase[key] != undefined) {
                                 this.subject = this.clonedCase[key];
                                 this.caseInfo["Subject"] = this.subject;
-                                console.log(this.subject);
-                                console.log(this.caseInfo);
                             }
                         }
                         if (key == 'Core_Severity__c') {
@@ -1910,12 +1874,8 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                                 this.partnerSupportAccount = this.clonedCase[key];
                             }
                         }
-                        if (this.clonedCase['Asset'] != null && this.clonedCase['Asset'] != undefined &&
-                            this.clonedCase['Asset']['Core_Supported_Product__c'] != null &&
-                            this.clonedCase['Asset']['Core_Supported_Product__c'] != '' &&
-                            this.clonedCase['Asset']['Core_Supported_Product__c'] != undefined) {
+                        if (this.clonedCase['Asset']['Core_Supported_Product__c'] != null || this.clonedCase['Asset']['Core_Supported_Product__c'] != '' || this.clonedCase['Asset']['Core_Supported_Product__c'] != undefined) {
                             this.passSupportedProductID = this.clonedCase['Asset']['Core_Supported_Product__c'];
-                            console.log(' this.passSupportedProductID', this.passSupportedProductID);
                         }
                     }
                     if (this.caseIssueSubCategoryId != '' || this.caseIssueSubCategoryId != null || this.caseIssueSubCategoryId != undefined) {
@@ -1928,7 +1888,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
             })
             .catch(error => {
                 console.log('Error in Clone Case-' + JSON.stringify(error));
-                console.log('Error in Clone Case-' + error);
                 this.errorMsg = error;
             })
     }
@@ -1962,6 +1921,8 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 })
         } else {}
     }
+    subCatIdList=[];
+    showSubCatError;
     @track showSubCategory;
     getsubcategoryData() {
         displaySubCategoryData({ caseIssueCategoryId: this.caseIssueCategoryId })
@@ -1973,6 +1934,12 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                             ...this.CaseSubcategoryoptions,
                             { value: result[i].Id, label: result[i].Core_Issue_Sub_Category_Name__r.Name }
                         ];
+                       this.subCatIdList=[...this.subCatIdList, result[i].Id]; 
+                    }
+                    if(this.subCatIdList.includes(this.caseIssueSubCategoryId)){
+                        this.showSubCatError=true;
+                    }else{
+                        this.showSubCatError=false;
                     }
                     this.showSubCategory = true;
                     if (this.CaseSubcategoryoptions.length > 0) {
@@ -1994,6 +1961,8 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 this.showSubCategory = false;
             })
     }
+    catList=[];
+    showCatError;
     @track showCategory;
     getcategoryData() {
         displayCategoryData({ prodId: this.prodId })
@@ -2007,8 +1976,14 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                             ...this.CaseCategoryoptions,
                             { value: result[i].Id, label: result[i].Core_Issue_Category_Name__r.Name }
                         ];
+                        this.catList=[...this.catList, result[i].Id];
                     }
                     this.showCategory = true;
+                        if(this.catList.includes(this.caseIssueCategoryId)){
+                          this.showCatError=true;
+                        }else{
+                            this.showCatError=false;
+                        }
                 } else {
                     this.hideCaseCategory = false;
 
@@ -2044,24 +2019,13 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     @api showSubCatEdqs;
     getSubCategoryEdqs(subcategoryId) {
         let tempVar = subcategoryId;
-        // capture values already resolved (e.g. from getCaseonLoad's subCatFields) before this.subCatRecEdqs gets overwritten below
-        let existingValueById = new Map((this.subCatRecEdqs || []).filter(f => f && f.value).map(f => [f.id, f.value]));
-
-	Promise.all([
-            getSubCatEdq({ supportedProductId: null, subCategoryid: tempVar, isAgent: this.profileattach }),
-            // getCaseonLoad resolves true saved answers (via setCurrentEnvironmentDetails) that getSubCatEdq never populates
-            this.recordId ? getCaseonLoad({ caseId: this.recordId }).catch(() => null) : Promise.resolve(null)
-        ])
-            .then(([data, caseLoadRes]) => {
-               console.log('DEBUG getSubCategoryEdqs raw data from apex=' + JSON.stringify(data));
-               console.log('DEBUG getSubCategoryEdqs prodEdqRecs=' + JSON.stringify(this.prodEdqRecs));
-               if (caseLoadRes && caseLoadRes.subCatFields) {
-                   caseLoadRes.subCatFields.filter(f => f && f.value).forEach(f => existingValueById.set(f.id, f.value));
-               }
-            
+        
+	getSubCatEdq({ supportedProductId: null, subCategoryid: tempVar, isAgent: this.profileattach })
+            .then(data => {
 		let subCateboryEDQ = new Set();
                 let eDQSet = new Set();
                 let i;
+                console.log('data11',data);
                 for (i = 0; i < data.length; i++) {
                     subCateboryEDQ.add(data[i].id);
                 }
@@ -2076,20 +2040,16 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                     }
                     i++;
                 });
-                //this.subCatRecEdqs = JSON.parse(categoryEDQ);
                 this.subCatRecEdqs = JSON.parse(JSON.stringify(categoryEDQ));
-                let tempSubCatRecEdqs = JSON.parse(JSON.stringify(this.subCatRecEdqs));
                 
-                console.log('sab temp subcatrecedqs' +JSON.stringify(tempSubCatRecEdqs));
+                let tempSubCatRecEdqs = JSON.parse(JSON.stringify(this.subCatRecEdqs));
                 let tempEDQData = JSON.parse(JSON.stringify(this.edqdata));
-                // trim/case-insensitive compare so saved answers still match if the question label has leading/trailing spaces or casing drift
-                const isSameQuestion = (qstn, label) => qstn && label && qstn.trim().toLowerCase() === label.trim().toLowerCase();
                 tempEDQData['Env Dtl Resp'].forEach(item => {
                     tempSubCatRecEdqs.forEach(item2 => {
-                        if (isSameQuestion(item.Qstn, item2.label) && !item2.lovs) {
+                        if (item.Qstn === item2.label && !item2.lovs) {
                             item2.value = item.Ansr;
                         }
-                        if (isSameQuestion(item.Qstn, item2.label) && item2.lovs) {
+                        if (item.Qstn === item2.label && item2.lovs) {
                             let tempValArr = [];
                             item2.lovs.forEach(item3 => {
                                 if (item3.label === item.Ansr && item2.type === 'Picklist') {
@@ -2117,17 +2077,11 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                         }
                     })
                 })
-                // restore values already resolved server-side (e.g. Text answers from getCaseonLoad) when the edqdata JSON had no match
-                tempSubCatRecEdqs.forEach(item2 => {
-                    if (!item2.value && existingValueById.has(item2.id)) {
-                        item2.value = existingValueById.get(item2.id);
-                    }
-                })
                 this.subCatRecEdqs = tempSubCatRecEdqs;
                 let tempprodEdqRecs = JSON.parse(JSON.stringify(this.prodEdqRecs));
                 tempEDQData['Env Dtl Resp'].forEach(item => {
                     tempprodEdqRecs.forEach(item2 => {
-                        if (isSameQuestion(item.Qstn, item2.label) && item2.lovs) {
+                        if (item.Qstn === item2.label && item2.lovs) {
                             item2.lovs.forEach(item3 => {
                                 if (item3.label === item.Ansr) {
                                     item2.value = item3.value;
@@ -2151,7 +2105,10 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 
             })
             .catch(error => {
-                console.log('in sub cate edq error'+JSON.stringify(error)+error);
+                console.log('in sub cate edq error 1'+JSON.stringify(error)+error);
+                console.log('in sub cate edq error 2'+error);
+                console.log('in sub cate edq error 3'+categoryEDQ.length);
+
             })
     }
     activeSectionsMessage = '';
@@ -2259,6 +2216,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                     let communityName = result;
                     let baseUrl = communityName ? '/' + communityName + '/apex' : '/apex';
                     this.applicationPageUrl = this.generateIframeUrl(baseUrl);
+                    console.log('applicationPageUrl',this.applicationPageUrl);
                 } else {
                     this.applicationPageUrl = '';
                 }
@@ -2316,8 +2274,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
         obj.edq.value = [event.detail.vvalue];
         obj.edq.require = [event.detail.rrequired];
         obj.edq.type = [event.detail.ttype];
-        // this.savealldataedq.push(s);
-        this.savealldataedqMap.set(s.edq[0].qquestion, s);
+	this.savealldataedqMap.set(s.edq[0].qquestion, s);
         this.myobjectdata.push(obj);
     }
     validateedq() {
@@ -2379,6 +2336,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     isRequiredCountrycpy = false;
     isRequiredSubjectCpy = false;
     isRequiredDescCpy = false;
+
     saveHandler() {
         this.trackvalidation = [];
         let tempCurrentCaseData = JSON.parse(JSON.stringify(this.copyCaseDetails));
@@ -2452,13 +2410,25 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
             this.isRequiredSeverityRsncpy = true;
             this.template.querySelector('.cpySrnsInput')?.classList.add('showRequired');
             this.template.querySelector('.cpySrnsInput')?.scrollIntoView();
-        }  
+        }
+          if(this.showCategory ==true && this.showCatError == false){
+            copyValid = false;
+            this.template.querySelector('.copyCatInput')?.classList.add('showRequired');
+            this.template.querySelector('.copyCatInput')?.scrollIntoView();  
+        }
         if(this.showSubCat == true && (caseObj.Core_Case_Issue_Sub_Category__c ==  null || caseObj.Core_Case_Issue_Sub_Category__c == undefined || caseObj.Core_Case_Issue_Sub_Category__c ==  '')) {
             copyValid = false;
             this.isRequiredSubCatcpy = true;
             this.template.querySelector('.cpysubCatInput')?.classList.add('showRequired');
             this.template.querySelector('.cpysubCatInput')?.scrollIntoView();
         } 
+        if(this.showSubCategory == true && this.showSubCatError == false){
+           copyValid = false;
+            this.isRequiredSubCatcpy = true;
+            this.template.querySelector('.cpysubCatInput')?.classList.add('showRequired');
+            this.template.querySelector('.cpysubCatInput')?.scrollIntoView(); 
+        }
+
 
         if (this.showProdEdqs === true) {
             this.template.querySelector('c-dynamic-form-builder[data-id="prodEDQ"]').callhandleQuestionAnswer();
@@ -2620,6 +2590,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 );
             });
     }
+
     onchangevalue = [];
     handleChangeintrsdpartymembers(event) {
         this.onchangevalue = event.detail.value;
@@ -2723,10 +2694,15 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
         this.isRequiredSubCatcpy = false;
         this.isRequiredSubCat = false;
         
+            if(this.subCatIdList.includes(this.caseIssueSubCategoryId)){
+                this.showSubCatError=true;
+            }else{
+                this.showSubCatError=false;
+            }
     }
 
     categoryLabel;
-    //tempSubCat ;
+
     handleChangeCategory(event) {
         let categoryNameForEdit = event.target.value;
         this.caseIssueCategoryId = categoryNameForEdit;
@@ -2746,6 +2722,13 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
         this.theRecord.caseCategory = categoryNameForEdit;
         this.theRecord.caseCategoryLabel = this.categoryLabel;
         this.CategoryName = this.categoryLabel;
+        this.template.querySelector('.copyCatInput')?.classList.remove('showRequired');
+        this.template.querySelector('.editCatInput')?.classList.remove('showRequired');
+        if(this.catList.includes(this.caseIssueCategoryId)){
+            this.showCatError=true;
+            }else{
+            this.showCatError=false;
+            }
     }
 
     @track showSubCat;
@@ -2764,6 +2747,14 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                         this.showSubCategory = false;
                         this.subCatRecEdqs = [];
                     }
+                     this.CaseSubcategoryoptions.forEach(subCat =>{
+                     this.subCatIdList=[...this.subCatIdList,subCat.value];
+                      });
+                      if(this.subCatIdList.includes(this.caseIssueSubCategoryId)){
+                          this.showSubCatError=true;
+                      }else{
+                         this.showSubCatError=false 
+                      }
                 }
             })
             .catch(error => {

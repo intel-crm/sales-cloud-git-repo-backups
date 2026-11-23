@@ -27,8 +27,9 @@ private class Core_IPS_CommEmailOptController_Test{
         update cont;
         }
         System.runAs(u){
-            PageReference pageRef = Page.Core_IPS_EmailOpt;
-            Test.setCurrentPage(pageRef);
+             //commented for Classic EOL :Tejaswini
+        /*    PageReference pageRef = Page.Core_IPS_EmailOpt;
+            Test.setCurrentPage(pageRef); */
             controller = new Core_IPS_CommEmailOptController();
             List<String> choices = new List<String>();
             choices.add('OptOut');
@@ -55,8 +56,9 @@ private class Core_IPS_CommEmailOptController_Test{
         
         }
         System.runAs(u){
-            PageReference pageRef = Page.Core_IPS_EmailOpt;
-            Test.setCurrentPage(pageRef);
+             //commented for Classic EOL :Tejaswini
+        /*    PageReference pageRef = Page.Core_IPS_EmailOpt;
+            Test.setCurrentPage(pageRef); */
             controller = new Core_IPS_CommEmailOptController();
             List<String> choices = new List<String>();
             choices.add('OptIn');

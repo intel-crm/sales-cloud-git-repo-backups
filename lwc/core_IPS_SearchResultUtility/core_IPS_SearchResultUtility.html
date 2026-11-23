@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-m-around_medium" style="height: 20rem" >
+        <template if:true={isDataAvailable}>
+            <lightning-datatable 
+            class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout slds-table_edit mystles" role="grid" style="width: 66.75rem;"
+            key-field="Id" 
+            show-row-number-column enable-infinite-loading={enableInfiniteLoading}
+                onloadmore={onLoadMoreHandler}
+                 data={dataToShow} 
+                 columns={columns} 
+                 hide-checkbox-column="true" 
+                 onclick={handleDataElementClick}>
+            </lightning-datatable> 
+        </template>
+        <template if:true={ifDataNotAvailable}>
+            <div class="slds-p-left_xx-large">
+                <h2>0 Results</h2>
+            </div>
+        </template>
+    </div>
+</template>

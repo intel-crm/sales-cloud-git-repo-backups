@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Embedded PRC OSC - General</name>
+    <queueMembers>
+        <users>
+            <user>10683035@intel.com.crm</user>
+            <user>11548278@intel.com.crm</user>
+            <user>11560090@intel.com.crm</user>
+            <user>10786195@intel.com.crm</user>
+            <user>11540038@intel.com.crm</user>
+            <user>11340607@intel.com.crm</user>
+            <user>11374856@intel.com.crm</user>
+            <user>11540032@intel.com.crm</user>
+            <user>10720889@intel.com.crm</user>
+            <user>11548126@intel.com.crm</user>
+            <user>10786286@intel.com.crm</user>
+            <user>11148363@intel.com.crm</user>
+            <user>11440078@intel.com.crm</user>
+            <user>11557579@intel.com.crm</user>
+            <user>10669784@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

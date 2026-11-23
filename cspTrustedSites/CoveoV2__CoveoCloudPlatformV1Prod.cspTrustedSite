@@ -7,9 +7,9 @@
     <endpointUrl>https://cloudplatform.coveo.com</endpointUrl>
     <isActive>true</isActive>
     <isApplicableToConnectSrc>true</isApplicableToConnectSrc>
-    <isApplicableToFontSrc>false</isApplicableToFontSrc>
-    <isApplicableToFrameSrc>false</isApplicableToFrameSrc>
-    <isApplicableToImgSrc>false</isApplicableToImgSrc>
-    <isApplicableToMediaSrc>false</isApplicableToMediaSrc>
-    <isApplicableToStyleSrc>false</isApplicableToStyleSrc>
+    <isApplicableToFontSrc>true</isApplicableToFontSrc>
+    <isApplicableToFrameSrc>true</isApplicableToFrameSrc>
+    <isApplicableToImgSrc>true</isApplicableToImgSrc>
+    <isApplicableToMediaSrc>true</isApplicableToMediaSrc>
+    <isApplicableToStyleSrc>true</isApplicableToStyleSrc>
 </CspTrustedSite>

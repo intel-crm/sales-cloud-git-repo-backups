@@ -35,7 +35,7 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 5 OR 8) AND 3 AND 4 AND 6 AND 7</booleanFilter>
+        <booleanFilter>(1 AND (2 OR 5) AND 3 AND 4) AND 6</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Consumption_Market__c</column>
             <columnToColumn>false</columnToColumn>
@@ -78,20 +78,6 @@
             <operator>equals</operator>
             <value>Regional Sales</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>jason holtom</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -103,7 +89,7 @@
         <sortOrder>Desc</sortOrder>
         <sortType>Aggregate</sortType>
     </groupingsDown>
-    <name>EMEA OSC PIPELINE 2017 LIST - CSP</name>
+    <name>ISG CSP PIPE REGIONS - LIST</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -129,6 +115,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

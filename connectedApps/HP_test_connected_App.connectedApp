@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>sriranjini.narasimhan@intel.com</contactEmail>
+    <label>HP test connected App</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+        <certificate>MIIDoDCCAogCCQCrkYsAto+lazANBgkqhkiG9w0BAQsFADCBkTELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMQswCQYDVQQHDAJDQTEOMAwGA1UECgwFSW50ZWwxGjAYBgNVBAsMEXF1aXgyaWlwc0BocGUuY29tMRowGAYDVQQDDBFxdWl4MmlpcHNAaHBlLmNvbTEgMB4GCSqGSIb3DQEJARYRcXVpeDJpaXBzQGhwZS5jb20wHhcNMjAwNDMwMDc1MDQxWhcNMjEwNDMwMDc1MDQxWjCBkTELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMQswCQYDVQQHDAJDQTEOMAwGA1UECgwFSW50ZWwxGjAYBgNVBAsMEXF1aXgyaWlwc0BocGUuY29tMRowGAYDVQQDDBFxdWl4MmlpcHNAaHBlLmNvbTEgMB4GCSqGSIb3DQEJARYRcXVpeDJpaXBzQGhwZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDTozZGwqBShKR+6OqV4jWlDpX5dG+M6SsrNuWnRCHdeFLbh6VvJTHc5ATTGIBthyW02tl2aV6AW+Lhng60gX8q4+pQ2LdK1g6wDkUuqEA10b3qFVNsYkHsbpGZmTNq92zXpVeINs5+Ig6w2p18kLK80/iBedTSC/lKIhekCNWLEIPEGxLBwowJE1u/t5UzZqNBxCu/kg4xjqwvJPKKadgykp8XE7KxolflVi5N8YF1bYHEQ0rf/osSFJ0cuh2zQUMkwAKP9o41dHeuEEQETC6g2xT+gjb2Ro8yY5NBS8wSferYsP4chixiAoEfg8v5sl0s5CeqaNDOy50b69TtO22ZAgMBAAEwDQYJKoZIhvcNAQELBQADggEBACDBzgzTxm46WQ+cFIx+ZvBJhS5NWzr/GER/N0445GyulMSkYqmDOotmEGL8v5mAuqLCgCmg5DCTaeQSKBUnYkAqd/dnVcV22Llk4TfwF17qrWclJg/ybZV9qkLJFahrAv2HkJsCSCbJMKrenSKdf/R0ga7wlLPvM8gFr4K/5i9UHKsv4qq8nwRcXUzb/SEVV0IcPdf3PPEZjKF3lN7nF0iIQGm5UJB5Zy7KbBN27XYhaHj+TwXXj0tATGQ+za4Z0h+xDm1qPd3kWqJfDFYRJZ/nbrfaRyho22zYaQCKCJ5kyLJ5cfntZRRDsmv7CzgPUW4mYTEknbvKR7445PrmTJc=</certificate>
+        <consumerKey>3MVG9JamK_x9K2XIz6FKasGquU_.mkkj4a6L9JxmbWuglO_BLPjtap0tUZm5ocwd5s13YmPjoUgO78EI4UYcv</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>true</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <profileName>IPS HP B2B M2M</profileName>
+</ConnectedApp>

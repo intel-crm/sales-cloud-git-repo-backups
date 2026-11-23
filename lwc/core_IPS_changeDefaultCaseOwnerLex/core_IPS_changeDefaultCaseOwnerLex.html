@@ -3,8 +3,9 @@
     <div if:false={spinner}> 
     <div if:true={userAccess}>     
     <div if:true={projAccess}> 
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_large">   
+    <div class="slds-modal__container">
     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-    <div class="slds-text-heading_medium slds-text-align_center slds-m-bottom_medium">Change Default Case Owner</div>
     <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
         <lightning-accordion-section name="Selected" label="Selected Default Case Owner" class="slds-accordion">
             </br>
@@ -92,7 +93,7 @@
                 <lightning-button label="Add" variant="brand" title="Non-primary action" onclick={handleAdd} class="slds-m-left_x-small"></lightning-button>
             </template>
             <lightning-button label="Cancel" title="Non-primary action" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
-        </div></div>
+        </div></div></div></section>
 </div>
 <div if:false={projAccess}>
     <div align="center" class="error">
@@ -103,7 +104,7 @@
 <div if:false={userAccess}>
     <lightning-card>
         <div class="privilegeMsg"><p>Insufficient Privileges</p></div><br/>
-        <div class="accessMsg"><p>You do not have the level of access necessary to perform the operation you requested. Please contact the owner of the record or your administrator if access is necessary. For more information, <a href="https://help.salesforce.com/s/login/?startURL=%2Fapex%2Fhtdoor%3Floc%3Dhelp%26target%3Dadmin_insufficient_privileges_flowchart.htm%26language%3Den_US%26release%3D236.18.1%26instance%3DCS92%26showSplash%3Dtrue&ec=302&inst=Hx" target="_blank"> <span style="color:black"><u>see Insufficient Privileges Errors.</u></span></a></p></div><br/>
+        <div class="accessMsg"><p>You do not have the level of access necessary to perform the operation you requested. Please contact the owner of the record or your administrator if access is necessary. For more information, <a href="https://help.salesforce.com/Partnercenter/s/login/?startURL=%2Fapex%2Fhtdoor%3Floc%3Dhelp%26target%3Dadmin_insufficient_privileges_flowchart.htm%26language%3Den_US%26release%3D236.18.1%26instance%3DCS92%26showSplash%3Dtrue&ec=302&inst=Hx" target="_blank"> <span style="color:black"><u>see Insufficient Privileges Errors.</u></span></a></p></div><br/>
         <div align="center"><lightning-button label="Go Back" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button></div><br/><br/>
     
 </lightning-card>

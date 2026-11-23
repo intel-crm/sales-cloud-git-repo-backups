@@ -27,6 +27,9 @@
             <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Sell-with</sourceValue>
+            </sourceValues>
             <value>Sell Thru-With</value>
         </values>
     </buckets>
@@ -39,6 +42,9 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Desktop</sourceValue>
+            </sourceValues>
             <value>Desktop</value>
         </values>
         <values>

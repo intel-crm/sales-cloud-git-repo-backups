@@ -108,18 +108,25 @@
             <value>Win Approved</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Industry Sales</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLLUP_DESCRIPTION</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Courtney Harrison,Foote,O&apos;Donnell,Swanger,Rodman,Weston,Herrmann,Descheemaeker</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -164,6 +171,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

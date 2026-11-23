@@ -1,0 +1,11 @@
+Your Salesforce Question {!Core_Ask_A_Question__c.Name} is On Hold. Please see below for the reason.
+
+I Need Assistance With:  {!Core_Ask_A_Question__c.Core_I_Need_Assistance_With__c}
+Subject:  {!Core_Ask_A_Question__c.Core_Subject__c}
+Severity Level:  {!Core_Ask_A_Question__c.Core_Severity_Level__c}
+
+On Hold Reason:  {!Core_Ask_A_Question__c.Core_On_Hold_Reason__c}
+
+Detail Link:  {!Core_Ask_A_Question__c.Link}
+
+Please expect to hear from the Sales Enablement team regarding future progress.

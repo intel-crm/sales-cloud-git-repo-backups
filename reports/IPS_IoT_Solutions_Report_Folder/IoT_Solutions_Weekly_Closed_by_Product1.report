@@ -71,13 +71,13 @@
     </columns>
     <description>Chart of the number of cases closed each week over the last 60 days (8wks) with breakout by Product</description>
     <filter>
-        <booleanFilter>((1 AND (2 or 3 or 4 or 5 or 6 or 7 or 8)))</booleanFilter>
+        <booleanFilter>(1 AND (2 or 3 or 4 or 5 or 6 or 7))</booleanFilter>
         <criteriaItems>
             <column>STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Closed</value>
+            <value>Closed,​​Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Product_name__c</column>
@@ -120,13 +120,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Smart Lighting*</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Product_name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Health Application Platform</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -56,13 +56,13 @@
     </columns>
     <description>Cases Closed during the last week for Intel IoT Solutions Support.  Used for the weekly sync meeting.</description>
     <filter>
-        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10)</booleanFilter>
+        <booleanFilter>(1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8))</booleanFilter>
         <criteriaItems>
             <column>STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Closed</value>
+            <value>Closed,​​Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Product_name__c</column>
@@ -111,21 +111,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Health Application Platform</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Product_name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Connected Worker</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Product_name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Intel® LIQD</value>
+            <value>Medical Gateway</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

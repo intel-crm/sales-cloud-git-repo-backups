@@ -152,6 +152,6 @@
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_Claim_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2018-01-01</startDate>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

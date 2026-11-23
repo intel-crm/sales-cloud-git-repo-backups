@@ -53,7 +53,7 @@ export default class Core_IPS_UserRedirection_LWC extends NavigationMixin(Lightn
         //         pageName: 'home'
         //     },
         // });
-        location.href = location.origin + '/IPS/s/'
+        location.href = location.origin + '/IPS/Partnercenter/s/'
     }
 
 

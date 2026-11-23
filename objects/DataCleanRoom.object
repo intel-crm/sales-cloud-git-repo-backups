@@ -11,11 +11,6 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>DataSpaceId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Description</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -24,9 +19,7 @@
         <trackHistory>false</trackHistory>
     </fields>
     <searchLayouts>
-        <customTabListAdditionalFields>DataSpace</customTabListAdditionalFields>
         <customTabListAdditionalFields>DataCleanRoomStatus</customTabListAdditionalFields>
-        <searchResultsAdditionalFields>DataSpace</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>DataCleanRoomStatus</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>

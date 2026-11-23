@@ -2,14 +2,19 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
-    <name>PSG Lead ASMO Covered Accts</name>
+    <name>ASMO DESIGN NAR PSG</name>
     <queueMembers>
         <users>
-            <user>11645521@intel.com.crm</user>
+            <user>11666775@intel.com.crm</user>
+            <user>11677650@intel.com.crm</user>
+            <user>10166818@intel.com.crm</user>
+            <user>11561709@intel.com.crm</user>
             <user>11644379@intel.com.crm</user>
-            <user>11684506@intel.com.crm</user>
-            <user>11938055@intel.com.crm</user>
-            <user>serena@inteliotsolutionsalliance.com.crm</user>
+            <user>11580296@intel.com.crm</user>
+            <user>11527029@intel.com.crm</user>
+            <user>10640362@intel.com.crm</user>
+            <user>11637623@intel.com.crm</user>
+            <user>11602552@intel.com.crm</user>
         </users>
     </queueMembers>
     <queueSobject>

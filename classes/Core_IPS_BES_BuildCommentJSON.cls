@@ -20,7 +20,9 @@ public with sharing class Core_IPS_BES_BuildCommentJSON {
             Map<String,String> caseIdMap = new Map<String,String>();
             //Set<String> caseIdList = new Set<String>();
             List<String> case_rev = new List<String>();
+            System.debug('heap size batchclass 41 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
             for(String response: responseList){
+                System.debug('heap size batchclass 42 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
                // Map<String, Object> responseMap = (Map<String, Object>)JSON.deserializeUntyped(response);
                 Map<String,Object> systemJSONMap = (Map<String,Object>)JSON.deserializeUntyped(JSON.serialize(((Map<String, Object>)JSON.deserializeUntyped(response)).get('system_details')));
                 //for(String inboundJSON: systemJSONMap.keySet()){
@@ -31,7 +33,9 @@ public with sharing class Core_IPS_BES_BuildCommentJSON {
                 caseList = String.join(stringList, ',');
                 stringList.clear();
             }
+            System.debug('heap size batchclass 43 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
 		responseList.clear();
+        System.debug('heap size batchclass 44 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
            
 	   
 	   
@@ -48,11 +52,14 @@ public with sharing class Core_IPS_BES_BuildCommentJSON {
                 case_rev = cn.split(',');
 				commentMap.put(caseIdMap.get(case_rev[0])+','+case_rev[1], caseMap.get(cn));
             }
-            
+            System.debug('heap size batchclass 45 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
 		caseMap.clear();
+        System.debug('heap size batchclass 46 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
             for(String caseId: commentMap.keySet()){
+                System.debug('heap size batchclass 47 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
                JSONGenerator gen = JSON.createGenerator(true); // added this line after commenting
                 Map<String,Object> commentJSONMap = (Map<String,Object>)JSON.deserializeUntyped(commentMap.get(caseId));
+                System.debug('heap size batchclass 48 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
                  
                 if(commentJSONMap.get('comment_text')!=null){
                     Core_IPS_Comment_JSON__c commentJSON = Core_IPS_Comment_JSON__c.getInstance('Comment JSON');
@@ -92,12 +99,15 @@ public with sharing class Core_IPS_BES_BuildCommentJSON {
                    
                 }
             }
+            System.debug('heap size batchclass 48 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
 		commentMap.clear();
+        System.debug('heap size batchclass 49 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
         }catch(Exception e){
             //Core_IPS_BES_LogEntry_Utility.insertLog(e, null, null, null, String.join((Iterable<String>)responseList,','));
               Core_IPS_BES_LogEntry_Utility.insertLog(e, null, null, null,caseList);
             
         }
+        System.debug('heap size batchclass 50 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
         return commentUpdate; 
     }
 }

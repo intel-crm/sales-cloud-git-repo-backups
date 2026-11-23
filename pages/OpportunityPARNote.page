@@ -6,7 +6,8 @@
         	border-left		:2px solid red;
         	border-right	:2px solid red;
         	background-color:yellow;
-        	width: 64%;
+        	width: 90%;
+        	height: 50%
         }
         h3 {
 			color:blue;
@@ -15,7 +16,11 @@
    	<apex:outputText rendered="{!IF(show,true,false)}">
        	<div>
            	<h3>
-               	Note: Premier Support Project will be in draft status.
+               	Opportunity PAR Process:
+				1. Approve/Reject PAR
+				If approved:
+				2. Finish setting up project (add contacts, optional: add IST/members/default owners/etc.) 
+				3. Change project Status to “Active” if in “Draft” state
             </h3> 
         </div>
      </apex:outputText>

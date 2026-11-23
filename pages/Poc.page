@@ -1,0 +1,26 @@
+<apex:page standardController="Account" recordSetVar="accounts" >
+    <apex:form id="theForm">
+        <apex:pageBlock title="Viewing Accounts">
+            <apex:pageBlockSection >
+                <apex:pageBlockTable value="{!accounts}" var="acct" columns="2" rows="5">
+                    <apex:column value="{!acct.name}"/>
+                    <apex:column >
+                        <apex:pageBlockSection id="section1" columns="2" collapsible="true" title="Opportunities" >
+                            <apex:pageBlockTable value="{!acct.opportunities}" var="opp" columns="1">
+                                <apex:column value="{!opp.name}"/>
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection>
+                    </apex:column>
+                    
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!first}" value="<<First"/>
+                <apex:commandButton action="{!next}" value="Next>"/>
+                <apex:commandButton action="{!previous}" value="<Previous"/>
+                <apex:commandButton action="{!last}" value="Last >>"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

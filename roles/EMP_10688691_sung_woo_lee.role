@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Joon Byun</description>
+    <description>EMP of Chris Song</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10688691_sung_woo_lee</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11567921_Joon_Byun</parentRole>
+    <parentRole>EMP_10655727_Chris_Song</parentRole>
 </Role>

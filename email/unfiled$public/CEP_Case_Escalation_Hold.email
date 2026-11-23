@@ -1,0 +1,10 @@
+Thank you for reaching out to your customer with the 3 Business days to follow up on the CEP case.  This is a curtesy reminder that the CEP Case is still in a  Hold status.  Action plans should be created (not executed) within 10 Business days of initial contact. Please document your action plans and update your case status within Salesforce. 
+
+To access the customer's alert details and update your action plan, please log into Salesforce and reference the case number above.
+
+
+Case details
+{!Case.00No000000DVoPz}
+Contact: {!Case.00No000000DVoQ2}
+Case Opened:{!Case.CreatedDate}
+Case last modified on:{!Case.LastModifiedDate}

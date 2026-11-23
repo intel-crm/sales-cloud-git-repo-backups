@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
-    <caseAccessLevel>None</caseAccessLevel>
+    <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Joydeep Chatterjee</description>
+    <description>EMP of Steve Long</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10553013_Andrew_McGuire</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10715330_Joydeep_chatterjee</parentRole>
+    <parentRole>EMP_10642593_Steve_Long</parentRole>
 </Role>

@@ -3,12 +3,14 @@
     <div if:false={spinner}>
         <template if:true={updateProj}>
             <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_large">
-                <div class="slds-modal__container" style="width:100%!important">
-                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon" onclick={handleCancel}>
-                        <lightning-icon icon-name="utility:close" alternative-text="close"  size="small" ></lightning-icon>
-                        <span class="slds-assistive-text">Close</span>
-                    </button>
-                <div class="slds-modal__header" > 
+                <div class="slds-modal__container">
+                 <!--<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                  </button>-->
+                   <div class="slds-modal__header" > 
                     <lightning-record-view-form record-id={recordId} object-api-name="Core_IPS_Project__c">
                        <lightning-output-field field-name="Name"></lightning-output-field>
                     </lightning-record-view-form>
@@ -17,7 +19,6 @@
                     <header class="slds-text-heading--small slds-align--absolute-center header" style="margin:0 30px;">
                        <b><h4>Select Intel Support Owner</h4></b>
                     </header>
-                    
                 <div class="slds-grid slds-wrap slds-grid--vertical-align-center" style="padding:0 30px;">
                         &nbsp;<p>Enter Search Text</p>&nbsp;<lightning-helptext content="Search by user name or email"></lightning-helptext>
                         <div class="slds-size_5-of-12 slds-m-left_x-small">

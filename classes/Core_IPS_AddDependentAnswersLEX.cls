@@ -58,13 +58,13 @@ public with sharing class Core_IPS_AddDependentAnswersLEX {
     @AuraEnabled(cacheable=true)
     public static boolean validateParentAnswers(String recordId){
         List<Core_IPS_Answer__c> parentAnswer;
-        Core_IPS_Question__c parentQuestion;
+        Core_IPS_Question__c ParentQuestion;
         if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
-            parentQuestion = [SELECT Id, Name, Core_IPS_Question__c FROM Core_IPS_Question__c WHERE Id =: recordId];
+            ParentQuestion = [SELECT Id, Name, Core_IPS_Question__c FROM Core_IPS_Question__c WHERE Id =: recordId];
         }
         
         if(Core_IPS_Answer__c.SObjectType.getDescribe().isAccessible()){
-            parentAnswer = [SELECT Id from Core_IPS_Answer__c where Core_IPS_Question__c =: parentQuestion.Id]; 
+            parentAnswer = [SELECT Id from Core_IPS_Answer__c where Core_IPS_Question__c =: ParentQuestion.Id]; 
         }
         
         
@@ -92,24 +92,24 @@ public with sharing class Core_IPS_AddDependentAnswersLEX {
     @AuraEnabled(cacheable=false)
     public static List<selectDependentQuestion> getChildQuestions(String recordId){  
         
-        dependentQuestion = new List<selectDependentQuestion>();
+        DependentQuestion = new List<selectDependentQuestion>();
         if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
             for(Core_IPS_Question__c css : [SELECT Id, Name, Core_IPS_Question__c FROM Core_IPS_Question__c WHERE Core_IPS_Parent_Question__c =: recordId AND (Core_IPS_Datatype__c = 'Picklist' OR Core_IPS_Datatype__c = 'Multiselect Picklist')] ){
                selectDependentQuestion selQuestion = new selectDependentQuestion();
                selQuestion.Name = css.Core_IPS_Question__c;
                selQuestion.Id = css.Id; 
-               dependentQuestion.add(selQuestion); 
+               DependentQuestion.add(selQuestion); 
             }
         }
         
-        return dependentQuestion;   
+        return DependentQuestion;   
     }
     
     @AuraEnabled(cacheable=false)
     public static boolean validateChildQuestions(String recordId){        
-      List<selectDependentQuestion> dependentQuestion = getChildQuestions(recordId); 
+      List<selectDependentQuestion> DependentQuestion = getChildQuestions(recordId); 
       
-        if(dependentQuestion.size() > 0 ){
+        if(DependentQuestion.size() > 0 ){
             return true;
         }
         else
@@ -125,8 +125,8 @@ public with sharing class Core_IPS_AddDependentAnswersLEX {
        }
         
        Set<Id> quesId = new Set<Id>();
-        for(Core_IPS_Question__c qaId : childQuestion){
-           quesId.add(qaId.Id); 
+        for(Core_IPS_Question__c QAid : childQuestion){
+           quesId.add(QAid.Id); 
         }
         if(Core_IPS_Answer__c.SObjectType.getDescribe().isAccessible()){
             childAnswer = [SELECT Id from Core_IPS_Answer__c where Core_IPS_Question__c IN : quesId];  

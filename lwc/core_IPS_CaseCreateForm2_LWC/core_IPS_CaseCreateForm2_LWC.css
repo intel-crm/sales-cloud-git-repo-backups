@@ -1,0 +1,121 @@
+label {
+    width: 120px;
+    display: block;
+    margin-bottom: -40%;
+    margin-left: -30%;    
+  }
+  .button{
+    position: relative;
+    padding: 50px;
+  }
+    
+  .field-title{
+      font-size: 22px;
+      color: black;
+      font-family: inherit;
+  }
+  p{
+      font-size: 16px;
+      font-family: inherit;
+  }
+  .forsize {
+    font-size: x-large;
+    font-weight: 300;
+  }
+  .slds-border_bottom{
+      padding: 0px;
+      border-bottom-color: black;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      
+  }
+  .slds-text-link_reset{
+      color: #0071C5;
+      font-size: 20px;
+      font-family: inherit;
+  }
+  
+  
+  .slider {
+    display: flex;
+    margin: 80 auto; 
+       
+  }
+  .slider-item{
+    margin: 57px;
+  }
+  .text{
+    color: white;
+    font-size: small;
+  }
+  .dot1 {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #653171;
+    margin: 9.5px;
+    border: 1px solid white;
+    background-clip:border-box;
+    padding: 0.5px;
+  }
+  .dot2 {
+    display:inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 8px;
+    border: 1px solid white;
+    background-clip: content-box;
+    padding: 1px;
+  }
+  li {
+    flex: 0 1 33%;
+    list-style: none;
+    position: relative;
+  }
+  
+  li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    height: 0.5px;
+    width: 179%;
+    background: white;
+    top: 47px;
+    margin-top: -48%;
+    margin-left: -8.5px;
+  }
+  label {
+    width: 120px;
+    display: block;
+    margin-bottom: -40%;
+    margin-left: -30%;    
+  }
+  .divclass{
+    background-color: #653171;
+    color: white;
+    font-size: x-large;
+    font-weight: 300;
+  }
+  .text{
+    color: white;
+    font-size: small;
+    font-weight: 300;
+  }
+  .btn{
+    color:white;
+    border: 1px solid #ddd;
+    background-color: #0068b5;
+    padding: 4px 12px;
+    height:40px;
+    width:190px;
+    margin-left:30px;
+  }
+  .rectangle {
+    width: 1650px;
+    height: 38px;
+    margin: 1px 0 0;
+    padding: 9px 1565px 9px 33.9px;
+    background-color: #fff;
+  }

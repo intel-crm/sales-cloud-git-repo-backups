@@ -43,10 +43,10 @@ private class Core_OpportunityProductController_Test {
         lstProducts = Core_Test_Utility.createProduct(20);
 
         Product2 productInstance = lstProducts.get(19);
-        productInstance.Core_Division_Code__c = '11111;2222';
-        productInstance.Core_Division_Code_Short_Name__c = 'Division 1;Division 2';
-        productInstance.Core_Group_Code__c = '55555;6666';
-        productInstance.Core_Group_Code_Short_Name__c = 'Group 1;Group 2';
+        productInstance.Core_Division_Code__c = '11111';
+        productInstance.Core_Division_Code_Short_Name__c = 'Division 1';
+        productInstance.Core_Group_Code__c = '55555';
+        productInstance.Core_Group_Code_Short_Name__c = 'Group 1';
 
         Product2 productInstance2 = lstProducts.get(18);
         productInstance2.Core_Division_Code__c = '';
@@ -65,42 +65,10 @@ private class Core_OpportunityProductController_Test {
         // Creating a list of Pricebookentry and inserting it
         List<PriceBookEntry> lstPriceBookEntry = Core_Test_Utility.createPriceBookEntry(20, lstProducts, Test.getStandardPricebookId());
         insert lstPriceBookEntry;
-         list<Account> acclist = new list<Account>();
-          list<Opportunity> lstOpportunity = new list<Opportunity>();
-          //Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' limit 1][0].Id;
-            /***
-        	Account acct = new Account(Name = 'Test Account territory', BillingStreet = '123 Fake St',
-                                       BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                       BillingPostalCode = '12345',Core_Sales_Groups__c='Americas Brazil Sales Group',Industry = 'Gaming',Core_Sub_Industry__c='eSports');
-            Account acct1 = new Account(Name = 'Test Account territory1', BillingStreet = '123 Fake St',
-                                       BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                       BillingPostalCode = '12345',Core_Sales_Groups__c='Americas Brazil Sales Group',Industry = 'Gaming',Core_Sub_Industry__c='eSports');
-            Account acct2 = new Account(Name = 'Test Account territory2', BillingStreet = '123 Fake St',
-                                       BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                       BillingPostalCode = '12345',Core_Sales_Groups__c='Americas Brazil Sales Group',Industry = 'Gaming',Core_Sub_Industry__c='eSports');
-            ***/
-        
-      		Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-	        Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
-        	Account acct1 = new Account(Name ='Test Account2',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
-        	Account acct2 = new Account(Name ='Test Account3',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
-        
-            acclist.add(acct);acclist.add(acct1);acclist.add(acct2);
-            insert acclist;
-        
-          Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
-            Opportunity opp = new Opportunity(Name = 'Test Opportunity1', RecordTypeId = newOppRecTypeId,
-                                                   AccountId = acclist[0].Id, StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
-            Opportunity opp1 = new Opportunity(Name = 'Test Opportunity1', RecordTypeId = newOppRecTypeId,
-                                                   AccountId = acclist[1].Id, StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
-            Opportunity opp2 = new Opportunity(Name = 'Test Opportunity1', RecordTypeId = newOppRecTypeId,
-                                                   AccountId = acclist[2].Id, StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
-            lstOpportunity.add(opp);lstOpportunity.add(opp1);lstOpportunity.add(opp2);
-            insert lstOpportunity;
         
         // Creating a list of opportunity and inserting it
-       // lstOpportunity = Core_Test_Utility.createOpportunity(2);
-        //insert lstOpportunity;
+        lstOpportunity = Core_Test_Utility.createOpportunity(2);
+        insert lstOpportunity;
         
         // Creating a list of Opportunity line item and inserting it
         List<OpportunityLineItem> lstOpportunityLineItem = Core_Test_Utility.createOpportunityLineItems(20, lstPriceBookEntry, lstOpportunity.get(0));
@@ -139,8 +107,7 @@ private class Core_OpportunityProductController_Test {
         setupTestData();
 
         Test.startTest();
-        
-			List<Opportunity> oppList = [select Id, Name, RecordTypeId, AccountId, StageName, CloseDate from Opportunity Limit 10];
+
             // Setting up the page to be tested
             PageReference productEditPage = Page.Core_OpportunityProduct;
     
@@ -148,7 +115,7 @@ private class Core_OpportunityProductController_Test {
     
             ApexPages.StandardController sc = new ApexPages.StandardController(opportunityLineItemInstance);
     
-            ApexPages.currentPage().getParameters().put('oppId', oppList[0].id);
+            ApexPages.currentPage().getParameters().put('oppId', lstOpportunity.get(0).id);
     
             // Creating the instance of controller to be tested      
             Core_OpportunityProductController pageController = new Core_OpportunityProductController(sc);
@@ -173,7 +140,7 @@ private class Core_OpportunityProductController_Test {
 //[BM] 8/7            System.assertEquals(wrapperInstance1.bIsSingleDivisionCode, true);
             
             // Passing opportunity Id which doesn't have opportunity product records
-            ApexPages.currentPage().getParameters().put('oppId', oppList.get(1).id);
+            ApexPages.currentPage().getParameters().put('oppId', lstOpportunity.get(1).id);
     
             ApexPages.StandardController sc1 = new ApexPages.StandardController(opportunityLineItemInstance);
             

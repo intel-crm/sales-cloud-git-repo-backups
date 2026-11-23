@@ -33,6 +33,3 @@ border: 2px solid #cc0000;
 .showRequired .slds-form-element__control{
 border:2px solid #cc0000;
 }
-.fix-slds-input_faux[lwc-4kb6kaqheak] {
-    line-height: max(2.5rem, calc(1.2em - 2px)) !important;
-}

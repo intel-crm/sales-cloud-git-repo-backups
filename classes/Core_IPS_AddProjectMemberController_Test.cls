@@ -100,9 +100,10 @@ public class Core_IPS_AddProjectMemberController_Test {
     static testMethod void Test_Core_IPS_AddProjectMemberController() {
         
         Id projectId = [SELECT Id FROM Core_IPS_Project__c LIMIT 1].Id;
+        //Commented for classic EOL :Tejaswini
         Pagereference pgref = Page.Core_addProjectMembersInformation;
         pgref.getParameters().put('projectId', projectId);
-        Test.setCurrentPage(pgref);
+        Test.setCurrentPage(pgref); 
         
         Test.startTest();
         Core_IPS_AddProjectMember_Controller inst_AddProjMember = new Core_IPS_AddProjectMember_Controller();

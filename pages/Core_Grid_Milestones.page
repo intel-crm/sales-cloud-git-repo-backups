@@ -1,4 +1,4 @@
-<apex:page sidebar="false" showHeader="true" lightningStylesheets="{!if($User.UIThemeDisplayed=='Theme3', false, true)}">
+<apex:page sidebar="false" showHeader="true">
 
  <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/versioning.css" />
  <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />

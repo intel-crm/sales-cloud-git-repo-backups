@@ -1,0 +1,123 @@
+<template>
+    <!--text-->
+
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <!-- <h2 class="slds-text-heading_medium slds-m-bottom_medium"></h2>-->
+        <div class="slds-p-around_medium lgc-bg">
+
+            <template if:true={parentiterate}>
+                <div class="main" data-id={questionid}>
+                    <template if:true={textcheck}>
+                        <lightning-input type="text" class="inputdat" value={placeholdertext} name={questionid}
+                            required={requiredfields} label={questionlist} onchange={handleChangemm}>
+                        </lightning-input>
+                    </template>
+                </div>
+                <div class="main" data-id={questionid}>
+                    <template if:false={isChildQuestion}>
+                        <template if:true={piclistcheck}>
+                            <lightning-combobox class="inputdat" required={requiredfields} name={questionid}
+                                label={questionlist} value={value} placeholder="-Select Options-" options={answerlist}
+                                onchange={handleChangemm}>
+                            </lightning-combobox>
+                        </template>
+                    </template>
+                </div>
+                <div class="main" data-id={questionid}>
+                    <template if:true={multiselectpiclistcheck}>
+                        <!--MultiSelect-->
+                        <lightning-dual-listbox name={questionid} required={requiredfields} class="inputdat"
+                            label={questionlist} source-label="Available" selected-label="Selected" value={value}
+                            field-level-help="Select your preferred languages" options={answerlist}
+                            onchange={handleChangemm}>
+                        </lightning-dual-listbox>
+                        <div class="slds-box">
+                            <p>Selected values are: {selected}</p>
+                        </div>
+                    </template>
+                </div>
+                <div class="main" data-id={questionid}>
+                    <template if:true={textareacheck}>
+                        <lightning-textarea name={questionid} value={placeholdertext} class="inputdat"
+                            placeholder={placeholdertext} required={requiredfields} label={questionlist}
+                            onchange={handleChangemm}></lightning-textarea>
+
+                    </template>
+                </div>
+            </template>
+            <div class="main" data-id={questionid}>
+                <template if:true={isChildQuestion}>
+
+                    <template if:true={piclistcheck}>
+
+                        <lightning-combobox class="inputdat" name={questionid} required={requiredfields}
+                            label={questionlist} value={placeholdertext} options={answerlist}
+                            placeholder="-Select Options-" onchange={loadDependentQuestion}>
+                        </lightning-combobox>
+                    </template>
+                </template>
+            </div>
+            <template if:true={parentid}>
+                <template if:true={childiterate}>
+
+                    <div class="main" data-id={questionid}>
+                        <template if:true={textcheck}>
+                            <lightning-input type="text" class="inputdat" title="ani" aria-labelledby="test"
+                                value={value} name={questionid} required={requiredfields} label={questionlist}
+                                onchange={handleChange}>
+                            </lightning-input>
+                        </template>
+                    </div>
+                    <div class="main" data-id={questionid}>
+                        <template if:false={isChildQuestion}>
+                            <template if:true={piclistcheck}>
+                                <lightning-combobox class="inputdat" title="ani" aria-labelledby="test"
+                                    required={requiredfields} name={questionid} label={questionlist}
+                                    value={placeholdertext} placeholder="-Select Options-" options={answerlist}
+                                    onchange={handleChange}>
+                                </lightning-combobox>
+                            </template>
+                        </template>
+                    </div>
+                    <div class="main" data-id={questionid}>
+                        <template if:true={multiselectpiclistcheck}>
+                            <!--MultiSelect-->
+                            <lightning-dual-listbox name={questionid} title="ani" aria-labelledby="test"
+                                required={requiredfields} class="inputdat" label={questionlist} source-label="Available"
+                                selected-label="Selected" value={value}
+                                field-level-help="Select your preferred languages" options={answerlist}
+                                onchange={handleChange}>
+                            </lightning-dual-listbox>
+                            <div class="slds-box">
+                                <p>Selected values are: {selected}</p>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="main" data-id={questionid}>
+                        <template if:true={textareacheck}>
+                            <lightning-textarea name={questionid} aria-labelledby="test" title="ani"
+                                value={placeholdertext} class="inputdat" placeholder={placeholdertext}
+                                required={requiredfields} label={questionlist} onchange={handleChange}>
+                            </lightning-textarea>
+
+                        </template>
+                    </div>
+                </template>
+            </template>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+</template>

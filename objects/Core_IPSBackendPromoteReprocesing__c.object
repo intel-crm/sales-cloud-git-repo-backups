@@ -34,5 +34,17 @@
         <unique>false</unique>
     </fields>
     <label>IPSBackendPromoteReprocesing</label>
+    <listViews>
+        <fullName>AllValues</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Group_Lookup_Name__c</columns>
+        <columns>Core_Sequence_Number__c</columns>
+        <columns>Core_Translate_Value__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>AllValues</label>
+        <language>en_US</language>
+    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

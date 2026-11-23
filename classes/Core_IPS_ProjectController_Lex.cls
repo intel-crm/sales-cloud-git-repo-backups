@@ -59,7 +59,8 @@ return isAccntMemTypeAll;
         if(Core_IPS_Account__c.SObjectType.getDescribe().isQueryable()) {
             //US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id 
             //10/7/2024 venkatesh added CIM ID and Businesss_Party_Id 
-            coreAccList =[SELECT Id, Name,Core_Account__r.Name,Core_Account__r.Owner.Name,Core_Account__r.Core_Business_Party_Id__c,Core_Account__r.Core_CIM_ID__c,Core_Account__c, Core_Members__c FROM Core_IPS_Account__c WHERE core_ips_project__c= :projectId LIMIT 100];
+            //Core_Status__c Added to the query by Nuthana
+            coreAccList =[SELECT Id, Name,Core_Status__c, Core_Account__r.Name,Core_Account__r.Owner.Name,Core_Account__r.Core_Business_Party_Id__c,Core_Account__r.Core_CIM_ID__c,Core_Account__c, Core_Members__c FROM Core_IPS_Account__c WHERE core_ips_project__c= :projectId LIMIT 100];
         }
         if(!coreAccList.isEmpty()) {
             return coreAccList;
@@ -134,7 +135,8 @@ return isAccntMemTypeAll;
             }
         }
         else if(!extAccList.isEmpty() && !checkNDAAccount){
-            allAccounts = null;
+            //allAccounts = null;
+            allAccounts = new List<Account>(); //To avoid null pointer exception when loading the Accounts when existing accounts are inactive-Nuthana
         }
         else{
             if(fetchType == 'Load Data') {
@@ -152,7 +154,9 @@ return isAccntMemTypeAll;
         if(!allAccounts.isEmpty()) {
             return allAccounts;
         }
-        return null;
+        //return null;
+        return allAccounts; //To avoid null pointer exception when loading the Accounts when existing accounts are inactive-Nuthana
+    
     }
     
     @AuraEnabled
@@ -252,7 +256,7 @@ return isAccntMemTypeAll;
         List<Core_IPS_Project_Member__c> existingMembers = new List<Core_IPS_Project_Member__c>();
         List <IPSMemberWrapper> wrapperInContext = new List <IPSMemberWrapper> ();      
         if(core_ips_account__c.SObjectType.getDescribe().isQueryable())
-           existingAccounts = [select id, core_account__r.OwnerId, core_account__c from core_ips_account__c where core_ips_project__c =: projectId and Core_Status__c='Active' and(core_members__c = 'Selective' OR core_members__c = 'All')];//added Core_Status__c='Active' by sabira  as part of TWC745-9522                     
+         existingAccounts = [select id, core_account__r.OwnerId, core_account__c from core_ips_account__c where core_ips_project__c =: projectId and Core_Status__c='Active' and(core_members__c = 'Selective' OR core_members__c = 'All')];//added Core_Status__c='Active' by sabira 30-10-2026 as part of TWC745-9522    
         for (Core_ips_account__c ipsAct: existingAccounts) {
             setAcctIds.add(ipsAct.core_account__c); 
             if(ipsAct.core_account__r.OwnerId == userinfo.getUserId()){
@@ -266,18 +270,18 @@ return isAccntMemTypeAll;
         for (Core_IPS_Project_Member__c ipsMem: existingMembers) {
             setMemIds.add(ipsMem.core_ips_contact__c);        
         }
-        System.debug('### getAddMembers DEBUG ### projectId=' + projectId + ' fetchType=' + fetchType);
+System.debug('### getAddMembers DEBUG ### projectId=' + projectId + ' fetchType=' + fetchType);
         System.debug('### setAcctIds (all project accounts)=' + setAcctIds);
         System.debug('### setMemIds (existing member contacts)=' + setMemIds);
         //In case of FAE only those contacts should be vailable where FAE is Account Team Member
         if(System.Label.Core_IPS_SalesRep_Profile_Ids.Contains(String.ValueOf(userinfo.getProfileId()).substring(0,15))){ 
-            System.debug('### Running as FAE/SalesRep profile: ' + UserInfo.getProfileId());
+  System.debug('### Running as FAE/SalesRep profile: ' + UserInfo.getProfileId());
             //if(AccountTeamMember.SObjectType.getDescribe().isAccessible()){
             for(AccountTeamMember accteam : [Select Id, AccountId From AccountTeamMember WHERE UserId =:UserInfo.getUserId() AND AccountId IN: setAcctIds]){
                 setAccTeamIds.add(accteam.AccountId); 
             }
             //}
-            System.debug('### setAccTeamIds (owned/team accounts)=' + setAccTeamIds);
+ System.debug('### setAccTeamIds (owned/team accounts)=' + setAccTeamIds);
             // Use all project accounts so members from every project account are visible.
             // The original narrow fallback (setAccTeamIds when non-empty) caused accounts where
             // the FAE is neither owner nor ATM to be silently excluded even though the project
@@ -306,7 +310,7 @@ return isAccntMemTypeAll;
         }
         
         else{
-            System.debug('### Running as non-FAE profile: ' + UserInfo.getProfileId());
+ System.debug('### Running as non-FAE profile: ' + UserInfo.getProfileId());
             System.debug('### queryAcctIds (setAcctIds for non-FAE)=' + setAcctIds);
             if(fetchType == 'Load Data') {
                 //if(User.SObjectType.getDescribe().isQueryable())
@@ -408,8 +412,8 @@ return isAccntMemTypeAll;
     public static List<Core_IPS_Intel_Support_Team__c> getIntelSupportOwner(String projectId) {
         List<Core_IPS_Intel_Support_Team__c> intelSupportOwner = new List<Core_IPS_Intel_Support_Team__c>();
         if(Core_IPS_Intel_Support_Team__c.SObjectType.getDescribe().isQueryable()) {
-            //Moved query to Without sharing class as part of vulnerability fix - Nuthana
-            String ownerQuery = 'SELECT Id,Core_IPS_User__c,Core_IPS_User__r.FirstName,Core_IPS_User__r.LastName,Core_IPS_User__r.Email FROM Core_IPS_Intel_Support_Team__c WHERE Status__c=\'Active\' AND Core_IPS_User__r.isActive=true AND Core_IPS_Project__c=:projectId ORDER BY Core_IPS_User__r.Name';
+ //Moved query to Without sharing class as part of vulnerability fix - Nuthana
+             String ownerQuery = 'SELECT Id,Core_IPS_User__c,Core_IPS_User__r.FirstName,Core_IPS_User__r.LastName,Core_IPS_User__r.Email FROM Core_IPS_Intel_Support_Team__c WHERE Status__c=\'Active\' AND Core_IPS_User__r.isActive=true AND Core_IPS_Project__c=:projectId ORDER BY Core_IPS_User__r.Name';
             intelSupportOwner = (List<Core_IPS_Intel_Support_Team__c>) Core_IPS_QueryService.queryRecords(ownerQuery, new Map<String, Object>{ 'projectId' => projectId });
         }
         if(!intelSupportOwner.isEmpty()) {
@@ -451,8 +455,8 @@ return isAccntMemTypeAll;
         }      
         if(isUpdate){
             if (Schema.sObjectType.Core_IPS_Project__c.isUpdateable()){
-                //update proj;
-                List<Core_IPS_Project__c> projects = new List<Core_IPS_Project__c>{ proj };
+              // update proj;
+ List<Core_IPS_Project__c> projects = new List<Core_IPS_Project__c>{ proj };
                 Core_IPS_QueryService.updateRecords(projects);
                 return 'Success';
             }
@@ -468,7 +472,7 @@ return isAccntMemTypeAll;
         List<Core_IPS_Intel_Support_Team__c> existingTeamMems = new List<Core_IPS_Intel_Support_Team__c>();
         
         if(Core_IPS_Intel_Support_Team__c.SObjectType.getDescribe().isQueryable()) {
-            String teamQuery = 'SELECT Id,Core_IPS_User__c,Core_IPS_User__r.FirstName,Core_IPS_User__r.LastName,Core_IPS_User__r.Email,Core_IPS_Profile__c,Core_IPS_Project__c FROM Core_IPS_Intel_Support_Team__c WHERE Core_IPS_Project__c = :projId';
+          String teamQuery = 'SELECT Id,Core_IPS_User__c,Core_IPS_User__r.FirstName,Core_IPS_User__r.LastName,Core_IPS_User__r.Email,Core_IPS_Profile__c,Core_IPS_Project__c FROM Core_IPS_Intel_Support_Team__c WHERE Core_IPS_Project__c = :projId';
             existingTeamMems = (List<Core_IPS_Intel_Support_Team__c>) Core_IPS_QueryService.queryRecords(teamQuery, new Map<String, Object>{ 'projId' => projId });
         }
         if(!existingTeamMems.isEmpty()) {
@@ -487,14 +491,14 @@ return isAccntMemTypeAll;
     @AuraEnabled(cacheable = true)
     public static teamMembersWrapper getAddTeamMembers(String projId, String searchTxt, List<Core_IPS_Intel_Support_Team__c> existingData){
         String searchableString = '';
-        Set<Id> accountId = new Set<Id>();
+        Set<Id> accountId = new Set<Id>(); 
         List<User> userList = new List<User>();
         teamMembersWrapper wrapperObj = new teamMembersWrapper();
         try {
             String activeStatus=Core_IPS_Helper_Utility.getIPSLabel('CoreStatus_Active');
             List<Core_IPS_Account__c>  projAccList;
             if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){
-                projAccList=[SELECT Id,Core_Account__c,Core_IPS_Project__c FROM Core_IPS_Account__c WHERE Core_IPS_Project__c=:projId AND Core_Status__c=:activeStatus];    
+                projAccList=[SELECT Id,Core_Account__c,Core_IPS_Project__c FROM Core_IPS_Account__c WHERE Core_IPS_Project__c=:projId AND Core_Status__c=:activeStatus];     
             }
             if(projAccList!=null && projAccList.size()>0) {
                 for(Core_IPS_Account__c projAcc: projAccList) {
@@ -502,14 +506,14 @@ return isAccntMemTypeAll;
                 }
                 if(accountId!=null && accountId.size()>0) {
                     for(Set<Id> setId: Core_IPS_Helper_Utility.getFAEsByAccount(accountId).values()) {
-                        faeId.addAll(SetId);
-                    }  
+                        faeId.addAll(SetId); 
+                    }   
                 }
             }
             AgentProfileId.addall(new List<String>(label.Core_IPS_Agent_Profile_Ids.split(',')));
             List<Id> orgAdminPermUser = new List<Id>();    
             //if(PermissionSetAssignment.SObjectType.getDescribe().isAccessible()){
-            for(PermissionSetAssignment permSetUser: [SELECT Id,AssigneeId FROM PermissionSetAssignment WHERE PermissionSet.name ='Core_IPS_SupportOrgAdmin' ]) {              
+            for(PermissionSetAssignment permSetUser: [SELECT Id,AssigneeId FROM PermissionSetAssignment WHERE PermissionSet.name ='Core_IPS_SupportOrgAdmin' ]) {               
                 orgAdminPermUser.add(permSetUser.AssigneeId);
             }
             //}
@@ -519,20 +523,23 @@ return isAccntMemTypeAll;
                 }
             }
             searchableString = searchTxt + '%';
-            String sQuery;                                                                                                
+            String sQuery;                                                                                                 
             if((AgentProfileId!=null && AgentProfileId.size()>0) || (FaeId!=null && FaeId.size()>0) || orgAdminPermUser .size()>0) {
                 // SOQL Injection Fix - Start -  Shipra
                 // ATHR fix-start
                 Integer limitValue = Integer.valueOf(System.Label.Core_IPS_Interested_Party_Limit);
-           
-                Map<String, Object> bindMap = new Map<String, Object>{ 'agentProfileId' => AgentProfileId, 'searchableString' => searchTxt + '%', 'ExistingUser' => existingUser, 'faeId' => FaeId, 'OrgAdminPermUser' => orgAdminPermUser, 'limitValue' => limitValue };
-                    sQuery = 'SELECT Id,Profile.Name, Name, FirstName, LastName, Email FROM User ' +
+                //Removed user_mode from query(As part of vulnerability fixes) - Nuthana
+                //Map<String, Object> bindMap = new Map<String, Object>{ 'agentProfileId' => AgentProfileId, 'searchableString' => searchTxt + '%', 'ExistingUser' => existingUser, 'faeId' => FaeId, 'OrgAdminPermUser' => orgAdminPermUser, 'limitValue' => limitValue };
+                    sQuery = 'SELECT Id,Profile.Name, Name, FirstName, LastName, Email FROM User ' + 
                     'WHERE (ProfileID In :AgentProfileId  AND (FirstName like :searchableString OR LastName like :searchableString OR Email like :searchableString) AND (NOT(ID IN :existingUser)) AND (IsActive = true)) OR (ID in :FaeId AND (FirstName like :searchableString OR LastName like :searchableString OR Email like :searchableString) AND (NOT(ID IN : existingUser))  AND (IsActive = true))  OR (ID IN :orgAdminPermUser AND (FirstName like :searchableString OR LastName like :searchableString OR Email like :searchableString) AND (NOT(ID IN : existingUser))  AND (IsActive = true))' +
                     ' Limit :limitValue';
-                     
-           
-                UserList = (List<User>) Core_IPS_QueryService.queryRecords(sQuery, bindMap);
-                System.debug(UserList);
+            
+                if(User.sObjectType.getDescribe().isQueryable()) {
+                   // UserList = (List<User>) Core_IPS_QueryService.queryRecords(sQuery, bindMap);
+                    UserList = Database.query(sQuery);
+                    System.debug(UserList);
+                    
+                }
                 if(UserList!=null && UserList.size()>0) {
                     if(isMoreThanThousand(searchableString)) {
                         wrapperObj.Message = System.label.Core_IPS_Interested_Party_Warning_Msg;
@@ -573,12 +580,12 @@ return isAccntMemTypeAll;
                 tMember.Status__c = 'Active';
             }
             teamMemberList.add(tMember);
-            System.debug('teamMemberList'+teamMemberList);
+System.debug('teamMemberList'+teamMemberList);
         }
         if(teamMemberList.size()>0) {
             if(Schema.sObjectType.Core_IPS_Intel_Support_Team__c.isCreateable()){
                 //insert teamMemberList; Commented As part of Vulnerability fix-moved DML to Without sharing class - Nuthana
-                Core_IPS_QueryService.insertRecords(teamMemberList);
+ Core_IPS_QueryService.insertRecords(teamMemberList);
                 return 1;
             }
         }
@@ -589,7 +596,7 @@ return isAccntMemTypeAll;
         // SOQL Injection Fix - Start -  Shipra                
         // ATHR fix - start
         //Map<String, Object> bindMap = new Map<String, Object>{ 'agentProfileId' => AgentProfileId, 'SearchableString' => searchableString, 'ExistingUser' => existingUser, 'faeId' => FaeId};
-            
+            //Removed user_mode from query(As part of vulnerability fixes) - Nuthana
             String sQueryCount = 'Select Count() FROM User ' + 
             'WHERE (ProfileID IN :agentProfileId AND (FirstName like :SearchableString OR LastName like :SearchableString OR Email like :SearchableString) AND (NOT(ID IN :ExistingUser)) AND (IsActive = true)) OR (ID in :faeId AND (FirstName like :SearchableString OR LastName like :SearchableString OR Email like :SearchableString) AND (NOT(ID IN : ExistingUser)) AND (IsActive = true)) ';
         //Integer recordCount = Database.countQueryWithBinds(sQueryCount,bindMap,AccessLevel.USER_MODE);
@@ -763,10 +770,10 @@ return isAccntMemTypeAll;
                 selectedQueue = [Select Id,Name from Group where Id =: inputString];
             }
             /*START Niyaz -- 12/06/2025 --- added as part of vulnerability fix */
-            //Commented by Nuthana-As part of Vulnerability fixes - 19-08-2026
+//Commented by Nuthana-As part of Vulnerability fixes - 19-08-2026
             //if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Prod_Default_Case_Owner__c.isUpdateable()) {
             prodObj.Core_IPS_Prod_Default_Case_Owner__c = selectedQueue[0].Name;
-            //}
+          //  }
             
             if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Prod_Def_Case_Owner_ID__c.isUpdateable()) {
             prodObj.Core_IPS_Prod_Def_Case_Owner_ID__c = selectedQueue[0].Id;
@@ -776,9 +783,9 @@ return isAccntMemTypeAll;
                 selectedUser = [Select Id,Name from User where Id =: inputString];
             }
             //Commented by Nuthana-As part of Vulnerability fixes - 19-08-2026
-            //if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Prod_Default_Case_Owner__c.isUpdateable()) {
+           // if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Prod_Default_Case_Owner__c.isUpdateable()) {
             prodObj.Core_IPS_Prod_Default_Case_Owner__c = selectedUser[0].Name;
-            //}
+           // }
             
             if (Schema.sObjectType.Core_IPS_Product__c.fields.Core_IPS_Prod_Def_Case_Owner_ID__c.isUpdateable()) {   
             prodObj.Core_IPS_Prod_Def_Case_Owner_ID__c = selectedUser[0].Id;  
@@ -815,7 +822,7 @@ return isAccntMemTypeAll;
         if(project.core_status__c=='Draft' && (project.Core_Number_of_Accounts__c == 0 || project.Core_Number_of_Products__c ==0 || project.Core_Number_of_Users__c == 0)){
             return 2;
         }
-        Boolean alreadySubmitted = false;
+        Boolean AlreadySubmitted = false;
         if (Schema.sObjectType.core_ips_project__c.fields.core_status__c.isUpdateable()) {
             project.core_status__c = 'Submitted Pending';
         }

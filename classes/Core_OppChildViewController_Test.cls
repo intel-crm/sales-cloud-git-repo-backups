@@ -1,5 +1,5 @@
-@isTest (seeAllData=false)
-public class Core_OppChildViewController_Test {
+@isTest (seeAllData=true)
+private class Core_OppChildViewController_Test {
 
     // 
     // Test a fully-populated Solution Group with fully-populated Opportunities
@@ -8,7 +8,7 @@ public class Core_OppChildViewController_Test {
         
         //-----------------------------------------------------------------
         // Data setup
-        Test.startTest();
+        
         // Need to use System.runAs to avoid MIXED_DML_OPERATION error
         System.runAs(new User(Id = UserInfo.getUserId())) {
         
@@ -23,12 +23,9 @@ public class Core_OppChildViewController_Test {
                                   Core_Employee_Type_Code__c='Blue Badge');
             insert user1;
             insert user2;
-            
-            Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        	Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',
-                                       Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c='Americas Partner Holding');
-            Database.insert(acct);
-            
+        
+            Account acct = new Account(Name='Test Account from test method', BillingStreet='a', BillingCity='a', BillingState='MI', BillingCountry='USA');
+            insert acct;
             
             // Solution Group with Opportunities
             Opportunity solutionGroup = new Opportunity(
@@ -77,7 +74,7 @@ public class Core_OppChildViewController_Test {
                     oppProducts.add(new OpportunityLineItem(OpportunityId=opp.Id, PricebookEntryId=bookEntry.Id, Quantity=5, TotalPrice=50));
                 }
             }
-            //insert oppProducts;
+            insert oppProducts;
             
             // Team members
             List<OpportunityTeamMember> oppTeams = new List<OpportunityTeamMember>();
@@ -104,18 +101,6 @@ public class Core_OppChildViewController_Test {
             // Now try adding an Opportunity after the fact
             oppChildViewController.solutionGroup.Core_Solution_Group__c = existingOppId;
             System.assertNotEquals(oppChildViewController.save(), null);    // Saving it should return non-null PageReference
-            //Core_OppChildViewController obj = new Core_OppChildViewController();
-            List<SelectOption> recordTypeOptions = new List<SelectOption>();
-            for(RecordType rt : [Select name, Id from RecordType where SobjectType = 'Opportunity'])
-            {
-                recordTypeOptions.add(new SelectOption(rt.Id,rt.name));
-            }
-            SelectOption defaultOption = recordTypeOptions[0];
-            oppChildViewController.selectedRecordType2 = defaultOption.getValue();
-        	oppChildViewController.getNewOppUrl();
-        	oppChildViewController.setIsNewOppClickedTotrue();
-        	oppChildViewController.getRecordTypeOptions();
-        	Test.stopTest();
         }
     }
     
@@ -126,11 +111,9 @@ public class Core_OppChildViewController_Test {
         
         //-----------------------------------------------------------------
         // Data setup
-               
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',
-                                   Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c='Americas Partner Holding');
-        Database.insert(acct);
+        
+        Account acct = new Account(Name='Test Account', BillingStreet='a', BillingCity='a', BillingState='MI', BillingCountry='USA');
+        insert acct;
         
         // Master Opportunity with No Subs
         Opportunity solutionGroupNoSubs = new Opportunity(

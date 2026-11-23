@@ -334,8 +334,8 @@ function replaceLabelText(label, replacements) {
 
   // Loop through each property and replace it in the label
   properties.forEach((property) => {
-    regTest = `<%%${property}%%>`;
-    replacedValue = replacedValue.replaceAll(regTest, replacements[property]);
+    regTest = new RegExp(`<%%${property}%%>`, 'g');
+    replacedValue = replacedValue.replace(regTest, replacements[property]);
   });
 
   // Check if a replacement references another replacement

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Decision_1</name>
+        <label>Decision 1</label>
+        <locationX>667</locationX>
+        <locationY>371</locationY>
+        <defaultConnector>
+            <targetReference>Decision_2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_condition_One_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CheckEscalatedLevel</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_IPS_Case_Escalated_Date</targetReference>
+            </connector>
+            <label>If condition One True</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_2</name>
+        <label>Decision 2</label>
+        <locationX>933</locationX>
+        <locationY>433</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_condition_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_IPS_GEC_Case__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Profile.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>IPS Data Migration</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Formula2</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_GroupId_For_IPS_GEC_Cases</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If condition True</label>
+        </rules>
+    </decisions>
+    <description>This Flow is used to update Case field i.e Date/Time Escalated , GEC, Sub status, OwnerId , Recordtype , Status.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CheckEscalatedLevel</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISCHANGED( {!$Record.Core_IPS_Escalated_Level__c} ),OR(ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Level 2&quot;), ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Level 3&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Domain Expert&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Engineering&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Level 1 / Front Line&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Level 2&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Level 3&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Domain Expert&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Engineering&quot;)))</expression>
+    </formulas>
+    <formulas>
+        <description>If Case Record Typeequals IPS No Assigned Contact Case,IPS Case Create,IPS Closed Case,IPS GEC ReadOnly
+then it return true</description>
+        <name>Formula2</name>
+        <dataType>Boolean</dataType>
+        <expression>OR({!$Record.RecordType.Name}=&apos;IPS No Assigned Contact Case&apos;,{!$Record.RecordType.Name}=&apos;IPS Case Create&apos;,{!$Record.RecordType.Name}=&apos;IPS Closed Case&apos;,{!$Record.RecordType.Name}=&apos;,IPS GEC ReadOnly&apos;)</expression>
+    </formulas>
+    <interviewLabel>Core IPS Case Escalated Date Stamp and Core IPS GEC Flow Changes {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core IPS Case Escalated Date Stamp and Core IPS GEC Flow Changes</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Case_Record_Type_Id_IPS_GEC_Readonly</name>
+        <label>Get Case Record Type Id IPS GEC Readonly</label>
+        <locationX>692</locationX>
+        <locationY>723</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Case_Fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>IPS_GEC_ReadOnly</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_GroupId_For_IPS_GEC_Cases</name>
+        <label>Get GroupId For IPS GEC Cases</label>
+        <locationX>924</locationX>
+        <locationY>595</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Case_Record_Type_Id_IPS_GEC_Readonly</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core_IPS_CaseQ_GEC_Cases</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Stamp Case Escalated Date with current date and time</description>
+        <name>Core_IPS_Case_Escalated_Date</name>
+        <label>Core IPS Case Escalated Date</label>
+        <locationX>538</locationX>
+        <locationY>542</locationY>
+        <connector>
+            <targetReference>Decision_2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_Case_Escalated_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Case_Fields</name>
+        <label>Update  Case Fields</label>
+        <locationX>987</locationX>
+        <locationY>784</locationY>
+        <inputAssignments>
+            <field>Core_IPS_GEC_Flag__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Sub_Status__c</field>
+            <value>
+                <stringValue>GEC Hold</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_GroupId_For_IPS_GEC_Cases.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Case_Record_Type_Id_IPS_GEC_Readonly.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>On Hold</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>542</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Decision_1</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

@@ -1,0 +1,8 @@
+<apex:page standardController="Case" extensions="Core_Case_CloseController" action="{!redirect}">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:outputPanel style="color:red;font-size:14;" >{!ErrorMsg}</apex:outputPanel><br/>
+            <apex:commandButton action="{!Cancel}" value="Cancel"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

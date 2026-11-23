@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>myWaitEvent_myWait_myRule_5_event_0_SA2</name>
+        <label>Email Alert</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>Case.Core_IPS_Case_Notif_Ext_Close_New_EA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Close_New_EA</nameSegment>
+    </actionCalls>
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the Core IPS Case Notif External PB R4.2 process using External Close criteria.
+Process Builder to send IPS notifications - External</description>
+    <label>Core IPS Case Notif External PB R4.2_1</label>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>myWaitEvent_myWait_myRule_5_event_0_SA1</name>
+        <label>Update Email Text</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myWaitEvent_myWait_myRule_5_event_0_SA2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_email_text__c</field>
+            <value>
+                <stringValue>IPS has Closed Case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND(    
+               NOT(IF(({!$User.ProfileId}={!$Label.Core_IPS_Data_Migration_ProfileId}),true,false)), 
+	       OR(  {!$Record.RecordType.DeveloperName}=
+                                           {!$Label.Core_IPS_CaseCreateRecordType_Name},
+                         {!$Record.RecordType.DeveloperName}= 
+                                           {!$Label.Core_IPS_ClosedCase_RecordType_Name},
+		         {!$Record.RecordType.DeveloperName}= 
+                                           {!$Label.Core_IPS_GECRecordTypeName}),
+              NOT(ISNULL({!$Record.ContactId} )) , 
+              NOT( ISBLANK({!$Record.ContactId} )),
+
+                 {!$Record.Core_IPS_Is_Notification_Active__c} = TRUE,
+                 {!$Record.Contact.Core_IPS_Active__c} = TRUE, 
+		 {!$Record.Contact.Core_IPS_Email_Opt_Out__c} = FALSE,  
+                 {!$Record.Core_IPS_Customer_Visible__c} = TRUE,
+
+	        ISPICKVAL({!$Record.Status}, &apos;Closed&apos;)
+                       
+ 
+   )</filterFormula>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>myWaitEvent_myWait_myRule_5_event_0</name>
+            <connector>
+                <targetReference>myWaitEvent_myWait_myRule_5_event_0_SA1</targetReference>
+            </connector>
+            <label>ScheduledPath_1</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

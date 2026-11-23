@@ -7,12 +7,6 @@
         <field>Account.Core_CIM_ID__c</field>
     </columns>
     <columns>
-        <field>OWNER_ROLE_DISPLAY</field>
-    </columns>
-    <columns>
-        <field>Contact.Core_Primary_Contact__c</field>
-    </columns>
-    <columns>
         <field>Account.Core_Account_ID__c</field>
     </columns>
     <columns>

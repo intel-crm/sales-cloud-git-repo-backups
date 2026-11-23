@@ -7,7 +7,17 @@
 * Tejaswi                  04/09/2020                                                          
 ****************************************************************************************************/
 public without sharing class Core_IPS_Opportunity_PAR_Handler {
-    
+    /*START -- TWC745-9085 --- Niyaz 13-10-26 Provide Org Admin the ability to select an "existing Project" when OPAR request is requested for approval. */
+    public static void resetAddNewProjectOnProjectChange(Map<Id,Core_IPS_Opportunity_PAR__c> oldMap, List<Core_IPS_Opportunity_PAR__c> newList) {
+        for (Core_IPS_Opportunity_PAR__c oppPar : newList) {
+            if (oppPar.Core_IPS_AddNewProject__c == true && oldMap.get(oppPar.Id).Core_IPS_Premier_Support_Project__c == null 
+            && oppPar.Core_IPS_Premier_Support_Project__c != null 
+            && oldMap.get(oppPar.Id).Core_IPS_Premier_Support_Project__c != oppPar.Core_IPS_Premier_Support_Project__c) {
+                oppPar.Core_IPS_AddNewProject__c = false;
+            }
+        }
+    }
+    /*END -- TWC745-9085 --- Niyaz 13-10-26 Provide Org Admin the ability to select an "existing Project" when OPAR request is requested for approval. */
     public static void initApprovalProcess(Map<Id,Core_IPS_Opportunity_PAR__c> oppParIdMap) {
         List<Id> queueIds = new List<Id>();
         
@@ -15,16 +25,29 @@ public without sharing class Core_IPS_Opportunity_PAR_Handler {
             List<Core_IPS_Opportunity_PAR__c> oppParApprovalList = [Select Id, Core_IPS_Approval_Status__c,(Select TargetObjectId, SystemModstamp, StepStatus, RemindersSent, ProcessInstanceId, OriginalActorId, IsPending, IsDeleted, Id, CreatedDate,
                                                                                                             CreatedById, Comments, ActorId From ProcessSteps order by SystemModstamp desc) from 
                                                                     Core_IPS_Opportunity_PAR__c where Id = :oppParIdMap.keySet() WITH SECURITY_ENFORCED];
-            
+
+           /* //Added By Hassan Khan as a Part of Oppotunity Par Approve / Rejected Comment
+            //Start
+            System.debug('Hk 21 ----> '+ oppParApprovalList);
+            List<Id> oppParIds = new List<Id>();
+            for (Core_IPS_Opportunity_PAR__c oppPardata : oppParApprovalList) {
+                oppParIds.add(oppPardata.Id);
+            }
+            List <ProcessInstanceStep> historyRecords = [Select Id, ProcessInstance.TargetObjectId, StepStatus, Comments from ProcessInstanceStep where ProcessInstance.TargetObjectId =: oppParIds and StepStatus != 'Started'];
+            System.debug('Hk 27 ----> '+ historyRecords);
+            //End */
+
             Map<Id,String> approverMap = new Map<Id,String>();
             
             for(Core_IPS_Opportunity_PAR__c oppParApproval :oppParApprovalList){
+                if(oppParApproval.ProcessSteps !=null && oppParApproval.ProcessSteps.size()>0){
                 ProcessInstanceHistory  processStep = oppParApproval.ProcessSteps[0];
                 if(processStep!=null && oppParIdMap.get(oppParApproval.Id).Core_IPS_Approval_Status__c == 'Approved'){
                     queueIds.add(processStep.OriginalActorId);
                     oppParIdMap.get(oppParApproval.Id).Approved_By__c = processStep.ActorId;
                     
                 }    
+                }
             }
             
             
@@ -34,11 +57,14 @@ public without sharing class Core_IPS_Opportunity_PAR_Handler {
     @future
     public static void deleteGroup(List<Id> queueIds){
         List<Group> groupList = new List<Group>();
-        for(Id queueId: queueIds){
+        if(!Test.isRunningTest()){
+        	groupList = [Select Id from Group where Id in :queueIds];           
+        }
+       /* for(Id queueId: queueIds){
             if(!Test.isRunningTest()){
                 groupList.add(new Group(Id=queueId));
             }
-        }
+        }*/
         if(groupList.size()>0){
             
             if(Group.SObjectType.getDescribe().isDeletable()){ 

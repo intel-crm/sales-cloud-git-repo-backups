@@ -11,6 +11,7 @@ const DELAY = 300;
 
 export default class ApexWireMethodToFunction extends NavigationMixin(LightningElement) {
 @api inputSObjectListSent;
+//@api insertSObjectListSent;
  @api CruderCntrl  =[];    
  @api message;    
  @api operation;

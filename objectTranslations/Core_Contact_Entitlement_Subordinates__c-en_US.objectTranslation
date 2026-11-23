@@ -29,13 +29,7 @@
         <name>Core_Is_CNDA_True__c</name>
     </fields>
     <fields>
-        <help><!-- Upon checked, the subordinate will be assigned to a contact with Non-ODM Account. --></help>
-        <label><!-- Is Non ODM --></label>
-        <name>Core_Is_ODM_False__c</name>
-    </fields>
-    <fields>
-        <help><!-- Upon checked, the subordinate will be assigned to a contact with ODM Account. --></help>
-        <label><!-- Is ODM --></label>
+        <label><!-- Is ODM True --></label>
         <name>Core_Is_ODM_True__c</name>
     </fields>
     <startsWith>Consonant</startsWith>

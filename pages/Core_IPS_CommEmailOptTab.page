@@ -117,7 +117,6 @@
             {
                 document.getElementById('opaque').style.display='block';
                 var popUp = document.getElementById('spinner');
-                console.log('called');
                 popUp.style.display = 'block'; 
             }
          /*Start--US254983--Trade Compliance Settings under My Settings tab*/   
@@ -125,13 +124,12 @@
             {
                 document.getElementById('opaque').style.display='none';
                 var popUp = document.getElementById('spinner');
-                console.log('called');
                 popUp.style.display = 'none';
             }
         /*End--US254983--Trade Compliance Settings under My Settings tab*/
         </script>
         
-        <apex:actionFunction name="SubmitChoice" action="{!SubmitChoice}" oncomplete="hideSpinner();afterSave('{!statusMessage}');" rerender="Message" />
+        <apex:actionFunction name="SubmitChoice" action="{!SubmitChoice}" oncomplete="hideSpinner();afterSave('{!HTMLENCODE(statusMessage)}');" rerender="Message" />
         <apex:pageBlock >
             <!--<apex:pageMessages />-->
             <div id='Status'></div>

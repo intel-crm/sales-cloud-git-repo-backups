@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Lead.Core_Lead_Time_SAL_to_SQL__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>LEAD_CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>JoseX A Bolanos,DaliaX K Morales,Cinthya Padilla,DiegoX B Pires,Carlos Araya,GabrielX S Panceri,Noelia de Guadalupe Perez,Fabiola Mora Chaves,Jose Alexis Nogueara Jimenez,Karen Gabriela Jara Salazar,Stephanie Maria Castro Ugalde,Charay Acevedo,Dayana Castro,Wendy Brenes,Leonel Carroasco Ramirez,Mildred Guerrero,Roberto Fernandes,Cleverton Conceicao,Juliane Diniz,Luis Silva,Bruon Pereira,Katiane Custodio,Talita Ghizoni,Esvami Niclevisk,Rodrigo Luiz</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Lead Stage</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>JoseX A Bolanos,DaliaX K Morales,Cinthya Padilla,DiegoX B Pires,Carlos Araya,GabrielX S Panceri,Noelia de Guadalupe Perez,Fabiola Mora Chaves,Jose Alexis Nogueara Jimenez,Karen Gabriela Jara Salazar,Stephanie Maria Castro Ugalde,Charay Acevedo,Dayana Castro,Wendy Brenes,Leonel Carroasco Ramirez,Mildred Guerrero,Roberto Fernandes,Cleverton Conceicao,Juliane Diniz,Luis Silva,Bruon Pereira,Katiane Custodio,Talita Ghizoni,Esvami Niclevisk,Rodrigo Luiz</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Lead.Core_Lead_State__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>LEADS-SYKES SGL Conversion Matrix</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadAuditHistory</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>LEAD_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

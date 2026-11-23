@@ -39,10 +39,6 @@
     </chart>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Oppty_Count__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>EXP_PRODUCT_AMOUNT</field>
     </columns>
     <columns>
@@ -126,6 +122,13 @@
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Industry Sales</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -173,8 +176,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2017-12-30</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2017-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

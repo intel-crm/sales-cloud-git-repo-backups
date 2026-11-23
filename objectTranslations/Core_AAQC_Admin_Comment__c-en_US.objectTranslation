@@ -9,6 +9,11 @@
         <value>Admin Comments</value>
     </caseValues>
     <fields>
+        <label><!-- admin case to delete --></label>
+        <name>Core_AAQC_Admin_Case__c</name>
+        <relationshipLabel><!-- Admin Comments --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Comments --></label>
         <name>Core_AAQC_Admin_Comments__c</name>
     </fields>

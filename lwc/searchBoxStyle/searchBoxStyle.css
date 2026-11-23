@@ -1,69 +1,55 @@
 /* Shared style between the searchBox and the standaloneSearchBox */
 
-.searchbox__container{
+.searchbox__container {
   display: flex;
-  position: initial;
-  border-color: white;
-  height: 48px;
+  position: relative;
+  border-color: var(--slds-g-color-border-1, #e5e8e8);
+  min-height: var(--slds-g-sizing-10, 48px);
   box-sizing: border-box;
-  border-radius: 0px;
+  border-radius: var(--slds-g-radius-border-2, 0.25rem);
   overflow: hidden;
-  border: 1px solid #aeaeae;
 }
 
 .searchbox__input {
   display: flex;
-  border-radius: 0rem;
-  border-bottom-left-radius: 0rem;
+  border-radius: var(--slds-g-radius-border-2, 0.25rem);
+  border-bottom-left-radius: var(--slds-g-radius-border-2, 0.25rem);
   position: relative;
-  height: 48px;
+  height: var(--slds-g-sizing-10, 48px);
   box-sizing: border-box;
-  border-radius: 0px;
-  border: white;
 }
 
 .searchbox__input-with-button {
-  border-bottom-right-radius: 0rem;
-  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
   border-right: none;
 }
 
 .searchbox__submit-button {
   width: 46.75px;
-  border-radius: 0px;
-  font-size: 1.25rem;
-  background-color: white;
-  color: #0068b5;
-  float: left;
-  display: inline-block;
-  height: 100%;
-  width: 30px;
-  border: none;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-content: stretch;
+  border-radius: 0;
+  height: var(--slds-g-sizing-10, 48px);
 }
 
 .searchbox__submit-button:focus {
   border: none;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: var(--slds-g-radius-border-2, 0.25rem);
+  border-bottom-right-radius: var(--slds-g-radius-border-2, 0.25rem);
+}
+
+.searchbox__icon-container {
+  height: var(--slds-g-sizing-10, 48px);
 }
 
 .searchbox__clear-button {
   box-shadow: none;
+  height: 15px;
 }
 
 .slds-input-has-icon .slds-input__icon.input__icon_cursor:not(button) {
   pointer-events: auto;
 }
 
-input[type="search"] {
+input[type='search'] {
   -webkit-appearance: none;
-  padding-left: 16px !important;
-  border: white;
-  position: initial;
-  padding-left: 16px !important;
 }

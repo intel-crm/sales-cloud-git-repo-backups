@@ -9,7 +9,7 @@
     <textOnly>Intel® Premier Support 
 
 {!Case.Core_IPS_email_text__c } {!Case.CaseNumber}  Click Here
-{!$Label.Core_IPS_Notification_External_URL}/{!Case.Id} to view
+{!$Label.Core_IPS_Notification_External_URL} {!Case.Id} to view
 
 
 To update this Case with a comment by email use &apos;Reply&apos; only, not &apos;Reply All&apos;, and do not change the email subject line; replies to Closed Cases will be ignored as well as any email file attachments.

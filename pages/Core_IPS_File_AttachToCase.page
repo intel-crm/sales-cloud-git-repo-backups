@@ -17,7 +17,6 @@ Modification Log :
 <apex:page sidebar="false" standardController="Case" extensions="Core_IPS_File_AttachToCase_Controller" >
  
  <script>
- <!--FLS Check Added- Madhuri -->
      var url = {JSENCODE(location.href)};
      var match = url.match(/&inline=1/);
     if (match != null) { 
@@ -100,7 +99,7 @@ Modification Log :
             </apex:pageblock>     
             <!-- END ---------> 
                             
-    <apex:iframe width="100%" height="600px" frameborder="true" scrolling="false" src="{!URL}"/>
+    <apex:iframe width="100%" height="600px" frameborder="true" scrolling="false" src="{!JSENCODE(URL)}"/>
    
 </apex:form>
 </apex:page>

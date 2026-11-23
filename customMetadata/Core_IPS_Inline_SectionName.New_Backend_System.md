@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>Fields_Name__c</field>
-        <value xsi:type="xsd:string">Core_IPS_New_Backend_System__c,Core_IPS_BES_Promote_Status__c,Core_IPS_BackendID__c,Core_IPS_Backend_Rev__c,Core_IPS_Backed_ID_URL__c</value>
+        <value xsi:type="xsd:string">Core_IPS_New_Backend_System__c,Core_IPS_BES_Promote_Status__c,Core_IPS_BackendID__c,Core_IPS_Backend_Rev__c,Core_IPS_Backed_ID_URL__c,Core_IPS_New_Backend_System__r.Name,HSD_Mirror_Status__c,HSD_Mirror_Reason__c</value>
     </values>
 </CustomMetadata>

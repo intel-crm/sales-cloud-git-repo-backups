@@ -62,17 +62,19 @@
     </fields>
     <label>RestAPI Response codes</label>
     <listViews>
-        <fullName>All_Data</fullName>
+        <fullName>All_RestApi</fullName>
         <columns>NAME</columns>
         <columns>Core_Code__c</columns>
+        <columns>Core_Http_Status_Code__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Core_Message__c</columns>
         <columns>Core_Context_of_Error__c</columns>
         <columns>Core_RestAPI_Error_Severity__c</columns>
-        <columns>Core_Http_Status_Code__c</columns>
         <columns>Core_Log_Entry__c</columns>
-        <columns>Core_Message__c</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <label>All Data</label>
+        <label>All</label>
     </listViews>
     <visibility>Public</visibility>
 </CustomObject>

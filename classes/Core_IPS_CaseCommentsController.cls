@@ -42,21 +42,23 @@ public with sharing class Core_IPS_CaseCommentsController{
     public boolean isRendered_IntDataMigCommLog_Name{get;set;}
     public boolean isRendered_IntDataMigCommLogPublic_Name{get;set;}
     
-/*******************************************************************/    
-
-public Core_IPS_CaseCommentsController(ApexPages.StandardController controller){
-    cmmntList = new List<Core_IPS_Case_Comments__c>();
-    cmmntList =[select id,name,Core_IPS_Comment__c,Core_IPS_Rich_Comment__c,CreatedBy.name,CreatedBy.Profile.Name,
-                                    CreatedBy.Firstname,CreatedBy_FirstName__c,CreatedBy_Name__c,CreatedDate,Core_IPS_BgColor__c,Core_IPS_NickName__c,Core_IPS_Case_Comment_Type__c 
-                                  from Core_IPS_Case_Comments__c  where Core_IPS_Case__c=:controller.getrecord().Id 
-                                    ORDER BY CreatedDate DESC NULLS LAST limit 1000
-                                    ]; 
+    /*******************************************************************/    
     
-    if(!cmmntList.isEmpty())
-    getStatus(cmmntList);
-
-}
-
+    public Core_IPS_CaseCommentsController(ApexPages.StandardController controller){
+        cmmntList = new List<Core_IPS_Case_Comments__c>();
+        if(Core_IPS_Case_Comments__c.SObjectType.getDescribe().isAccessible()){
+            cmmntList =[select id,name,Core_IPS_Comment__c,Core_IPS_Rich_Comment__c,CreatedBy.name,CreatedBy.Profile.Name,
+                        CreatedBy.Firstname,CreatedBy_FirstName__c,CreatedBy_Name__c,CreatedDate,Core_IPS_BgColor__c,Core_IPS_NickName__c,Core_IPS_Case_Comment_Type__c 
+                        from Core_IPS_Case_Comments__c  where Core_IPS_Case__c=:controller.getrecord().Id 
+                        ORDER BY CreatedDate DESC NULLS LAST limit 1000
+                       ]; 
+            
+        }
+        if(!cmmntList.isEmpty())
+            getStatus(cmmntList);
+        
+    }
+    
     Profile loggedInUserProfile =[select id,name from Profile where Id=:userInfo.getProfileId()]; 
     
     /*****************/

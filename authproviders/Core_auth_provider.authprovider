@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customMetadataTypeRecord>Core_Apigee_Field__mdt.Core_auth_provider</customMetadataTypeRecord>
+    <executionUser>ips.backend.integrationuser@intel.com.crm.crmdevcase</executionUser>
+    <friendlyName>Core_auth_provider</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <isPkceEnabled>false</isPkceEnabled>
+    <plugin>Core_IPS_Apigee_Auth_Provider</plugin>
+    <providerType>Custom</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>false</sendSecretInApis>
+</AuthProvider>

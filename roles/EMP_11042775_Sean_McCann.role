@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Sherri Madison</description>
+    <description>EMP of Bradley L Schwartz</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11042775_Sean_McCann</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10531639_Sherri_Madison</parentRole>
+    <parentRole>EMP_10587993_Brad_Schwartz</parentRole>
 </Role>

@@ -128,14 +128,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Deal_Win_Goal_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -157,74 +154,8 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_Approved_KPI_Revenue__c</fullName>
-        <label>Approved KPI Revenue</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_Bypass_Submission__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Ability for IT to Bypass Submission Block</description>
-        <label>Bypass Submission</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_Deal_Win_Goal_Id__c</fullName>
-        <description>To display record Id on Page layout</description>
-        <externalId>false</externalId>
-        <formula>Id</formula>
-        <label>Deal Win Goal Id</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Deal_Win_Goal_Owner_Email__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Goal_Owner__r.Email</formula>
-        <label>Deal Win Goal Owner Email</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Deal_Win_Goal_Owner_Manager_Email__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Goal_Owner__r.Manager.Email</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Deal Win Goal Owner Manager Email</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Deal_Win_Goal_Owner_Manager__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Goal_Owner__r.Core_Manager__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Deal Win Goal Owner Manager</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Goal_Accept_Date__c</fullName>
-        <inlineHelpText>Date the goal was last &apos;Accepted&apos; by the Owner.</inlineHelpText>
+        <inlineHelpText>Date the goal last moved to the Accepted state by the Owner.</inlineHelpText>
         <label>Accept Date</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -234,7 +165,7 @@
     <fields>
         <fullName>Core_Goal_Approved_By__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Name of the individual who approved the Deal Win Goal.</inlineHelpText>
+        <inlineHelpText>Date the goal was last approved by the manager.</inlineHelpText>
         <label>Approved By</label>
         <length>255</length>
         <required>false</required>
@@ -265,56 +196,356 @@
     </fields>
     <fields>
         <fullName>Core_Goal_BU_Focus_Area__c</fullName>
-        <inlineHelpText>Select the Tier 1 BU KPI with which the goal is aligned.</inlineHelpText>
-        <label>KPI Name</label>
+        <inlineHelpText>Select the BU KPI the goal is aligned with.</inlineHelpText>
+        <label>BU KPI</label>
         <required>true</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
+            <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
-                    <fullName>CCG Commercial Deal Revenue $</fullName>
+                    <fullName>CCG: Authenticate</fullName>
                     <default>false</default>
-                    <label>CCG Commercial Deal Revenue $</label>
+                    <label>CCG: Authenticate</label>
                 </value>
                 <value>
-                    <fullName>CCG Strategic Next Gen Design #</fullName>
+                    <fullName>CCG: Data Guard</fullName>
                     <default>false</default>
-                    <label>CCG Strategic Next Gen Design #</label>
+                    <label>CCG: Data Guard</label>
                 </value>
                 <value>
-                    <fullName>CCG vPro Platform Deal Revenue $</fullName>
+                    <fullName>CCG: Gateway</fullName>
                     <default>false</default>
-                    <label>CCG vPro Platform Deal Revenue $</label>
+                    <label>CCG: Gateway</label>
                 </value>
                 <value>
-                    <fullName>DCAI Compute Deal $</fullName>
+                    <fullName>CCG: Operators</fullName>
                     <default>false</default>
-                    <label>DCAI Compute Deal $</label>
+                    <label>CCG: Operators</label>
                 </value>
                 <value>
-                    <fullName>DC Growth Deal $</fullName>
+                    <fullName>DCG: &gt;10G Ethernet + Smart NIC</fullName>
                     <default>false</default>
-                    <label>DC Growth Deal $</label>
+                    <label>DCG: &gt;10G Ethernet + Smart NIC</label>
                 </value>
                 <value>
-                    <fullName>DC Strategic Next Gen Design #</fullName>
+                    <fullName>DCG: Advanced Technology</fullName>
                     <default>false</default>
-                    <label>DC Strategic Next Gen Design #</label>
+                    <label>DCG: Advanced Technology</label>
                 </value>
                 <value>
-                    <fullName>NEX Deal (Sell-To) $</fullName>
+                    <fullName>DCG: Apache Pass</fullName>
                     <default>false</default>
-                    <label>NEX Deal (Sell-To) $</label>
+                    <label>DCG: Apache Pass</label>
+                </value>
+                <value>
+                    <fullName>DCG: Big Data Analytics</fullName>
+                    <default>false</default>
+                    <label>DCG: Big Data Analytics</label>
+                </value>
+                <value>
+                    <fullName>DCG: Discrete FPGA</fullName>
+                    <default>false</default>
+                    <label>DCG: Discrete FPGA</label>
+                </value>
+                <value>
+                    <fullName>DCG: eNFV</fullName>
+                    <default>false</default>
+                    <label>DCG: eNFV</label>
+                </value>
+                <value>
+                    <fullName>DCG: HPC</fullName>
+                    <default>false</default>
+                    <label>DCG: HPC</label>
+                </value>
+                <value>
+                    <fullName>DCG: Hybrid Cloud</fullName>
+                    <default>false</default>
+                    <label>DCG: Hybrid Cloud</label>
+                </value>
+                <value>
+                    <fullName>DCG: Integrated FPGA</fullName>
+                    <default>false</default>
+                    <label>DCG: Integrated FPGA</label>
+                </value>
+                <value>
+                    <fullName>DCG: Intel Select SKUs</fullName>
+                    <default>false</default>
+                    <label>DCG: Intel Select SKUs</label>
+                </value>
+                <value>
+                    <fullName>DCG: MEC</fullName>
+                    <default>false</default>
+                    <label>DCG: MEC</label>
+                </value>
+                <value>
+                    <fullName>DCG: Network Function Virtualization</fullName>
+                    <default>false</default>
+                    <label>DCG: Network Function Virtualization</label>
+                </value>
+                <value>
+                    <fullName>DCG: OPA</fullName>
+                    <default>false</default>
+                    <label>DCG: OPA</label>
+                </value>
+                <value>
+                    <fullName>DCG: Purley/Cascade Lake</fullName>
+                    <default>false</default>
+                    <label>DCG: Purley/Cascade Lake</label>
+                </value>
+                <value>
+                    <fullName>DCG: Ramp 5G</fullName>
+                    <default>false</default>
+                    <label>DCG: Ramp 5G</label>
+                </value>
+                <value>
+                    <fullName>DCG: Si Photonics</fullName>
+                    <default>false</default>
+                    <label>DCG: Si Photonics</label>
+                </value>
+                <value>
+                    <fullName>DCG: Software Defined Storage</fullName>
+                    <default>false</default>
+                    <label>DCG: Software Defined Storage</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Automated Mfg</fullName>
+                    <default>false</default>
+                    <label>IOTG: Automated Mfg</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Building Management</fullName>
+                    <default>false</default>
+                    <label>IOTG: Building Management</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Energy/Pipeline Monitoring</fullName>
+                    <default>false</default>
+                    <label>IOTG: Energy/Pipeline Monitoring</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Environmental Monitoring</fullName>
+                    <default>false</default>
+                    <label>IOTG: Environmental Monitoring</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Inventory Management</fullName>
+                    <default>false</default>
+                    <label>IOTG: Inventory Management</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Logistics &amp; Asset Management</fullName>
+                    <default>false</default>
+                    <label>IOTG: Logistics &amp; Asset Management</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Predictive Maintenance</fullName>
+                    <default>false</default>
+                    <label>IOTG: Predictive Maintenance</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Responsive Retail</fullName>
+                    <default>false</default>
+                    <label>IOTG: Responsive Retail</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Smart &amp; Managed Terminals (POS)</fullName>
+                    <default>false</default>
+                    <label>IOTG: Smart &amp; Managed Terminals (POS)</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Smart Outdoor Lighting</fullName>
+                    <default>false</default>
+                    <label>IOTG: Smart Outdoor Lighting</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Smart Visual Display</fullName>
+                    <default>false</default>
+                    <label>IOTG: Smart Visual Display</label>
+                </value>
+                <value>
+                    <fullName>IOTG: Surveilence</fullName>
+                    <default>false</default>
+                    <label>IOTG: Surveilence</label>
+                </value>
+                <value>
+                    <fullName>NSG: 110s</fullName>
+                    <default>false</default>
+                    <label>NSG: 110s</label>
+                </value>
+                <value>
+                    <fullName>NSG: Datacenter</fullName>
+                    <default>false</default>
+                    <label>NSG: Datacenter</label>
+                </value>
+                <value>
+                    <fullName>NSG - Optane Client</fullName>
+                    <default>false</default>
+                    <label>NSG - Optane Client</label>
+                </value>
+                <value>
+                    <fullName>NTG: Drone Intel Insight Platform: Agriculture</fullName>
+                    <default>false</default>
+                    <label>NTG: Drone Intel Insight Platform: Agriculture</label>
+                </value>
+                <value>
+                    <fullName>NTG: Drone Intel Insight Platform: Construction</fullName>
+                    <default>false</default>
+                    <label>NTG: Drone Intel Insight Platform: Construction</label>
+                </value>
+                <value>
+                    <fullName>NTG: Drone Intel Insight Platform: Oil &amp; Gas</fullName>
+                    <default>false</default>
+                    <label>NTG: Drone Intel Insight Platform: Oil &amp; Gas</label>
+                </value>
+                <value>
+                    <fullName>NTG: Drone Intel Insight Platform: Utilities</fullName>
+                    <default>false</default>
+                    <label>NTG: Drone Intel Insight Platform: Utilities</label>
+                </value>
+                <value>
+                    <fullName>NTG: Saffron FSI</fullName>
+                    <default>false</default>
+                    <label>NTG: Saffron FSI</label>
+                </value>
+                <value>
+                    <fullName>NTG: Saffron Government</fullName>
+                    <default>false</default>
+                    <label>NTG: Saffron Government</label>
+                </value>
+                <value>
+                    <fullName>NTG: Saffron Industrial</fullName>
+                    <default>false</default>
+                    <label>NTG: Saffron Industrial</label>
+                </value>
+                <value>
+                    <fullName>PSG: FPGAs</fullName>
+                    <default>false</default>
+                    <label>PSG: FPGAs</label>
+                </value>
+                <value>
+                    <fullName>CCG - AMT Activation</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG - AMT Activation</label>
+                </value>
+                <value>
+                    <fullName>CCG - Kaby Lake / Win 10</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG - Kaby Lake / Win 10</label>
+                </value>
+                <value>
+                    <fullName>CCG - Unite</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCG - Unite</label>
+                </value>
+                <value>
+                    <fullName>DCG - Big Data Analytics - Scale Up</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Big Data Analytics - Scale Up</label>
+                </value>
+                <value>
+                    <fullName>DCG - NFV - CoSP</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - NFV - CoSP</label>
+                </value>
+                <value>
+                    <fullName>DCG - NFV - Enterprise</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - NFV - Enterprise</label>
+                </value>
+                <value>
+                    <fullName>DCG - Network Transformation</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Network Transformation</label>
+                </value>
+                <value>
+                    <fullName>DCG - Next Gen Connectivity - OmniPath</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Next Gen Connectivity - OmniPath</label>
+                </value>
+                <value>
+                    <fullName>DCG - Phi</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Phi</label>
+                </value>
+                <value>
+                    <fullName>DCG - Private Cloud Enterprise On-Premise</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Private Cloud Enterprise On-Premise</label>
+                </value>
+                <value>
+                    <fullName>DCG - Purley</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Purley</label>
+                </value>
+                <value>
+                    <fullName>DCG - Rackcscale</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCG - Rackcscale</label>
+                </value>
+                <value>
+                    <fullName>IOTG - Smart Outdoor - MRS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG - Smart Outdoor - MRS</label>
+                </value>
+                <value>
+                    <fullName>IOTG - Visual Retail - MRS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>IOTG - Visual Retail - MRS</label>
+                </value>
+                <value>
+                    <fullName>NSG - 3D NAND PCIe Datacenter</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG - 3D NAND PCIe Datacenter</label>
+                </value>
+                <value>
+                    <fullName>NSG - Optane Datacenter</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG - Optane Datacenter</label>
+                </value>
+                <value>
+                    <fullName>NSG: Optane DC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NSG: Optane DC</label>
+                </value>
+                <value>
+                    <fullName>NTG - Drones</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG - Drones</label>
+                </value>
+                <value>
+                    <fullName>NTG - Industrial &amp; Manufacturing</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>NTG - Industrial &amp; Manufacturing</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Core_Goal_Category__c</fullName>
-        <inlineHelpText>Select &apos;Assigned&apos; if you are the primary AE/ITS responsible for delivering KPI as part of your base quota. Select &apos;Team Member&apos; if helping to complete the goal, and select &apos;Overachievement&apos; if applicable per the Overachievement guidance.</inlineHelpText>
+        <inlineHelpText>Select the category the goal falls into.   List of values will include:  Assigned, Team Member, Overachievement. Select “Assigned” if given to you by your manager as primary AE/ITS responsible for delivering KPI as part of base quota.</inlineHelpText>
         <label>Category</label>
         <required>true</required>
         <trackHistory>true</trackHistory>
@@ -330,14 +561,14 @@
                     <label>Assigned</label>
                 </value>
                 <value>
-                    <fullName>Overachievement</fullName>
-                    <default>false</default>
-                    <label>Overachievement</label>
-                </value>
-                <value>
                     <fullName>Team Member</fullName>
                     <default>false</default>
                     <label>Team Member</label>
+                </value>
+                <value>
+                    <fullName>Overachievement</fullName>
+                    <default>false</default>
+                    <label>Overachievement</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -353,20 +584,8 @@
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>Core_Goal_Commissionable__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_Opportunity__r.Core_Commissionable__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Commissionable?</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Goal_Criteria__c</fullName>
-        <inlineHelpText>The criteria which should be met to achieve the goal. This is a system populated field based on KPI selected.</inlineHelpText>
+        <inlineHelpText>The criteria which should be met to achieve the goal. This is a systemically pre-populated field based on KPI selected.</inlineHelpText>
         <label>Criteria</label>
         <required>true</required>
         <trackHistory>true</trackHistory>
@@ -374,53 +593,174 @@
         <type>Picklist</type>
         <valueSet>
             <controllingField>Core_Goal_BU_Focus_Area__c</controllingField>
+            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Please refer to criteria on https://saleskpi.intel.com/</fullName>
+                    <fullName>New</fullName>
                     <default>false</default>
-                    <label>Please refer to https://saleskpi.intel.com/</label>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Example</fullName>
+                    <default>false</default>
+                    <label>Example</label>
+                </value>
+                <value>
+                    <fullName>Win must include at least 25 clients within a user group who use Authenticate regularly for at least 2 weeks. IT uses a process to inteall Authenticate on the customer&apos;s production IT image, applies policy management and uses 2 or more factors.</fullName>
+                    <default>false</default>
+                    <label>Win must include at least 25 clients within a user group who use Authenticate regularly for at least 2 weeks. IT uses a process to inteall Authenticate on the customer&apos;s production IT image, applies policy management and uses 2 or more factors.</label>
+                </value>
+                <value>
+                    <fullName>Win must include at least 25 clients within a user group who use Intel Data Guard regularly for at least 2 weeks, IT uses a process to install Intel Data Guard on the customer&apos;s production IT image, uses their own KMS AND applies policy management. E</fullName>
+                    <default>false</default>
+                    <label>Win must include at least 25 clients within a user group who use Intel Data Guard regularly for at least 2 weeks, IT uses a process to install Intel Data Guard on the customer&apos;s production IT image, uses their own KMS AND applies policy management. E</label>
+                </value>
+                <value>
+                    <fullName>Drive  Financial Services Industry players to adopt AI-based Saffron technology for use in identifying financial crimes, customer personalization and portfolio management. Eligible products include V10, and V11; Sledgehammer.</fullName>
+                    <default>false</default>
+                    <label>Drive  Financial Services Industry players to adopt AI-based Saffron technology for use in identifying financial crimes, customer personalization and portfolio management. Eligible products include V10, and V11; Sledgehammer.</label>
+                </value>
+                <value>
+                    <fullName>Drive Government players to adopt AI-based Saffron technology for use in security monitoring and risk identification. Eligible products include V10, and V11; Sledgehammer.</fullName>
+                    <default>false</default>
+                    <label>Drive Government players to adopt AI-based Saffron technology for use in security monitoring and risk identification. Eligible products include V10, and V11; Sledgehammer.</label>
+                </value>
+                <value>
+                    <fullName>Drive Manufacturing players to adopt AI-based Saffron technology for use in issue and defect triage, expertise and resolution. Eligible products include V10, and V11; Sledgehammer.</fullName>
+                    <default>false</default>
+                    <label>Drive Manufacturing players to adopt AI-based Saffron technology for use in issue and defect triage, expertise and resolution. Eligible products include V10, and V11; Sledgehammer.</label>
+                </value>
+                <value>
+                    <fullName>Drive 3D NAND adoption in the data center. Minimum opportunity size must contain at least 50 SSDs. The following products are eligible: S3520, S4X00, D4X00P31XX, P3520, D3XX</fullName>
+                    <default>false</default>
+                    <label>Drive 3D NAND adoption in the data center. Minimum opportunity size must contain at least 50 SSDs. The following products are eligible: S3520, S4X00, D4X00P31XX, P3520, D3XX</label>
+                </value>
+                <value>
+                    <fullName>Drive Optane SSD apoption both in data center and in client. Minimum 40 SSDs per Data Center Win and 100 SSDs per Client win. Includes the following eligible products.</fullName>
+                    <default>false</default>
+                    <label>Drive Optane SSD apoption both in data center and in client. Minimum 40 SSDs per Data Center Win and 100 SSDs per Client win. Includes the following eligible products.</label>
+                </value>
+                <value>
+                    <fullName>This Solution Area focuses on attaching RTU/RCU sensors with GWs and/or Edge Servers to extract data to drive new levels of productivity in brownfield installations of manufacturing equipment. This includes any solution that combines Intel ingredient</fullName>
+                    <default>false</default>
+                    <label>This Solution Area focuses on attaching RTU/RCU sensors with GWs and/or Edge Servers to extract data to drive new levels of productivity in brownfield installations of manufacturing equipment. This includes any solution that combines Intel ingredient</label>
+                </value>
+                <value>
+                    <fullName>Intel Responsive Retail Sensor Platform is an end-to-end retail analytics-based solution designed to help ecosystem solution providers and retailers create and deploy innovative retail solutions. Components include</fullName>
+                    <default>false</default>
+                    <label>Intel Responsive Retail Sensor Platform is an end-to-end retail analytics-based solution designed to help ecosystem solution providers and retailers create and deploy innovative retail solutions. Components include</label>
+                </value>
+                <value>
+                    <fullName>Drive adoption of Intel-based digital signage systems.  Eligible products include:  Intel Core based Retail Signage solutions, Interactive Whiteboards, Public and Private Kiosks, Self-Service Kiosks, Digital Menus, etc.</fullName>
+                    <default>false</default>
+                    <label>Drive adoption of Intel-based digital signage systems.  Eligible products include:  Intel Core based Retail Signage solutions, Interactive Whiteboards, Public and Private Kiosks, Self-Service Kiosks, Digital Menus, etc.</label>
+                </value>
+                <value>
+                    <fullName>Drive POS (Point of Sale) refresh and sell up via vPro acgivation to accelerate POS revenue growth. Include fixed and mobile POS and mobility payment penetration.</fullName>
+                    <default>false</default>
+                    <label>Drive POS (Point of Sale) refresh and sell up via vPro acgivation to accelerate POS revenue growth. Include fixed and mobile POS and mobility payment penetration.</label>
+                </value>
+                <value>
+                    <fullName>Drive Purley Revenue. Includes both Skylake and Cascade Lake CPUs</fullName>
+                    <default>false</default>
+                    <label>Drive Purley Revenue. Includes both Skylake and Cascade Lake CPUs</label>
+                </value>
+                <value>
+                    <fullName>Drive next network transformation at Comms Service Providers on new workloads as follows: 5G, vRAN/MEC, cable network vCPE, vCCAP, MANO/CIM/Service Assurance, Machine Learning/AI. Eligible products include ALL Intel Processor products (Xeon, Xeon SOC</fullName>
+                    <default>false</default>
+                    <label>Drive next network transformation at Comms Service Providers on new workloads as follows: 5G, vRAN/MEC, cable network vCPE, vCCAP, MANO/CIM/Service Assurance, Machine Learning/AI. Eligible products include ALL Intel Processor products (Xeon, Xeon SOC</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
-                <controllingFieldValue>CCG Commercial Deal Revenue $</controllingFieldValue>
-                <controllingFieldValue>CCG Strategic Next Gen Design #</controllingFieldValue>
-                <controllingFieldValue>CCG vPro Platform Deal Revenue $</controllingFieldValue>
-                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
-                <controllingFieldValue>DC Growth Deal $</controllingFieldValue>
-                <controllingFieldValue>DC Strategic Next Gen Design #</controllingFieldValue>
-                <controllingFieldValue>NEX Deal (Sell-To) $</controllingFieldValue>
-                <valueName>Please refer to criteria on https://saleskpi.intel.com/</valueName>
+                <controllingFieldValue>IOTG: Smart Outdoor Lighting</controllingFieldValue>
+                <controllingFieldValue>DCG: Integrated FPGA</controllingFieldValue>
+                <controllingFieldValue>IOTG: Surveilence</controllingFieldValue>
+                <controllingFieldValue>DCG: Apache Pass</controllingFieldValue>
+                <controllingFieldValue>DCG: Intel Select SKUs</controllingFieldValue>
+                <controllingFieldValue>DCG: Hybrid Cloud</controllingFieldValue>
+                <controllingFieldValue>DCG: Network Function Virtualization</controllingFieldValue>
+                <controllingFieldValue>DCG: eNFV</controllingFieldValue>
+                <controllingFieldValue>DCG: MEC</controllingFieldValue>
+                <controllingFieldValue>DCG: Software Defined Storage</controllingFieldValue>
+                <controllingFieldValue>DCG: Advanced Technology</controllingFieldValue>
+                <controllingFieldValue>DCG: Big Data Analytics</controllingFieldValue>
+                <controllingFieldValue>IOTG: Building Management</controllingFieldValue>
+                <controllingFieldValue>DCG: HPC</controllingFieldValue>
+                <controllingFieldValue>IOTG: Energy/Pipeline Monitoring</controllingFieldValue>
+                <controllingFieldValue>IOTG: Logistics &amp; Asset Management</controllingFieldValue>
+                <controllingFieldValue>DCG: &gt;10G Ethernet + Smart NIC</controllingFieldValue>
+                <controllingFieldValue>DCG: Si Photonics</controllingFieldValue>
+                <controllingFieldValue>IOTG: Automated Mfg</controllingFieldValue>
+                <controllingFieldValue>DCG: OPA</controllingFieldValue>
+                <controllingFieldValue>IOTG: Environmental Monitoring</controllingFieldValue>
+                <controllingFieldValue>DCG: Discrete FPGA</controllingFieldValue>
+                <valueName>Example</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IOTG: Inventory Management</controllingFieldValue>
+                <valueName>Intel Responsive Retail Sensor Platform is an end-to-end retail analytics-based solution designed to help ecosystem solution providers and retailers create and deploy innovative retail solutions. Components include</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IOTG: Smart Visual Display</controllingFieldValue>
+                <valueName>Drive adoption of Intel-based digital signage systems.  Eligible products include:  Intel Core based Retail Signage solutions, Interactive Whiteboards, Public and Private Kiosks, Self-Service Kiosks, Digital Menus, etc.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IOTG: Smart &amp; Managed Terminals (POS)</controllingFieldValue>
+                <valueName>Drive POS (Point of Sale) refresh and sell up via vPro acgivation to accelerate POS revenue growth. Include fixed and mobile POS and mobility payment penetration.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG: Purley/Cascade Lake</controllingFieldValue>
+                <valueName>Drive Purley Revenue. Includes both Skylake and Cascade Lake CPUs</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NTG: Saffron FSI</controllingFieldValue>
+                <valueName>Drive  Financial Services Industry players to adopt AI-based Saffron technology for use in identifying financial crimes, customer personalization and portfolio management. Eligible products include V10, and V11; Sledgehammer.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NTG: Saffron Government</controllingFieldValue>
+                <valueName>Drive Government players to adopt AI-based Saffron technology for use in security monitoring and risk identification. Eligible products include V10, and V11; Sledgehammer.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NTG: Saffron Industrial</controllingFieldValue>
+                <valueName>Drive Manufacturing players to adopt AI-based Saffron technology for use in issue and defect triage, expertise and resolution. Eligible products include V10, and V11; Sledgehammer.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NSG: Datacenter</controllingFieldValue>
+                <controllingFieldValue>PSG: FPGAs</controllingFieldValue>
+                <controllingFieldValue>CCG: Operators</controllingFieldValue>
+                <controllingFieldValue>CCG: Gateway</controllingFieldValue>
+                <controllingFieldValue>NTG: Drone Intel Insight Platform: Oil &amp; Gas</controllingFieldValue>
+                <controllingFieldValue>NTG: Drone Intel Insight Platform: Utilities</controllingFieldValue>
+                <controllingFieldValue>NTG: Drone Intel Insight Platform: Agriculture</controllingFieldValue>
+                <controllingFieldValue>NTG: Drone Intel Insight Platform: Construction</controllingFieldValue>
+                <valueName>New</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG: Ramp 5G</controllingFieldValue>
+                <valueName>Drive next network transformation at Comms Service Providers on new workloads as follows: 5G, vRAN/MEC, cable network vCPE, vCCAP, MANO/CIM/Service Assurance, Machine Learning/AI. Eligible products include ALL Intel Processor products (Xeon, Xeon SOC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NSG: 110s</controllingFieldValue>
+                <valueName>Drive 3D NAND adoption in the data center. Minimum opportunity size must contain at least 50 SSDs. The following products are eligible: S3520, S4X00, D4X00P31XX, P3520, D3XX</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IOTG: Predictive Maintenance</controllingFieldValue>
+                <valueName>This Solution Area focuses on attaching RTU/RCU sensors with GWs and/or Edge Servers to extract data to drive new levels of productivity in brownfield installations of manufacturing equipment. This includes any solution that combines Intel ingredient</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NSG - Optane Client</controllingFieldValue>
+                <valueName>Drive Optane SSD apoption both in data center and in client. Minimum 40 SSDs per Data Center Win and 100 SSDs per Client win. Includes the following eligible products.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG: Authenticate</controllingFieldValue>
+                <valueName>Win must include at least 25 clients within a user group who use Authenticate regularly for at least 2 weeks. IT uses a process to inteall Authenticate on the customer&apos;s production IT image, applies policy management and uses 2 or more factors.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG: Data Guard</controllingFieldValue>
+                <valueName>Win must include at least 25 clients within a user group who use Intel Data Guard regularly for at least 2 weeks, IT uses a process to install Intel Data Guard on the customer&apos;s production IT image, uses their own KMS AND applies policy management. E</valueName>
             </valueSettings>
         </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_KPI_Achieved_Flag__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>KPI Achieved Flag</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_KPI_Match_Flag__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>KPI Match Flag</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Match_Opportunity_KPI__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(Core_Opportunity__c != null, IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = FALSE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0151J000003lqFq&apos;,&apos;No KPI Match&apos;), IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0151J000003lqFp&apos;,&apos;KPI Not Achieved&apos;), IF(Core_Goal_KPI_Achieved_Flag__c = TRUE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0151J000003lqFo&apos;,&apos;KPI Achieved&apos;), &apos;&apos;))),&apos;&apos;)</formula>
-        <inlineHelpText>Field Help: 1.No KPI Match: Opportunity doesn’t meet KPI criteria--&gt;CAN’T submit  2.KPI Not Achieved: Opportunity meets KPI criteria but not yet ‘win approved’--&gt;CAN’T submit  3.KPI Achieved: Opportunity meets KPI criteria &amp; ‘win approved’--&gt;CAN submit.</inlineHelpText>
-        <label>Match Opportunity KPI?</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Goal_Name__c</fullName>
@@ -428,7 +768,7 @@
         <inlineHelpText>Enter a name that uniquely defines the goal</inlineHelpText>
         <label>Name</label>
         <length>80</length>
-        <required>false</required>
+        <required>true</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -440,7 +780,7 @@
         <label>Opportunities Added History</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -450,7 +790,7 @@
         <inlineHelpText>A list of the opportunity IDs that were associated with the Deal Win Goal at the time of approval.</inlineHelpText>
         <label>Opportunities at Approval</label>
         <length>131072</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -458,151 +798,11 @@
     <fields>
         <fullName>Core_Goal_Opportunity_Identified__c</fullName>
         <defaultValue>false</defaultValue>
-        <inlineHelpText>If an opportunity is associated with the goal, this will be automatically checked.</inlineHelpText>
+        <inlineHelpText>If an opportunity is associated with the goal, this will be systematically set to yes.</inlineHelpText>
         <label>Opportunity Identified?</label>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Account_Name__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity__r.Account.Name</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Account Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Amount__c</fullName>
-        <formula>Core_Opportunity__r.Amount</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Amount</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Approval_Status__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_Opportunity__r.Core_Approval_Status__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Approval Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Approved_Date__c</fullName>
-        <formula>Core_Opportunity__r.Core_Approved_Date__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Approved Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Decision_Date__c</fullName>
-        <formula>Core_Opportunity__r.CloseDate</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Decision Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Owner_FullName__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity__r.Owner.FirstName + &apos; &apos; +  Core_Opportunity__r.Owner.LastName</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Owner Full Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Owner__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity__r.Owner.FirstName +Core_Opportunity__r.Owner.LastName</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Owner</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Region__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity__r.Core_Opportunity_Owner_Geo__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Region</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Sales_Group__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity__r.Core_Sales_Groups__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Sales Group</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Solution_Area__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_Opportunity__r.Core_Solution_Area__c )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Solution Area</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Stage__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_Opportunity__r.StageName )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Stage</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Goal_Oppty_Technical_Owner__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity__r.Core_Technical_Owner__r.FirstName +  Core_Opportunity__r.Core_Technical_Owner__r.LastName</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Technical Owner</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Goal_Owner_WWID__c</fullName>
@@ -619,7 +819,7 @@
     <fields>
         <fullName>Core_Goal_Owner__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>Individual responsible for achieving and receiving credit for the Deal Win Goal (DWG), typically the user who created the DWG.</inlineHelpText>
+        <inlineHelpText>Owner of achieving the goal, the person who will receive credit.</inlineHelpText>
         <label>Owner</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Deal_Win_Goals</relationshipName>
@@ -630,7 +830,7 @@
     </fields>
     <fields>
         <fullName>Core_Goal_Status__c</fullName>
-        <inlineHelpText>FIELD KEY:  DRAFT: new (can&apos;t submit); ACCEPTED: Manager accepts DWG (can&apos;t submit); APPROVED: Manager has approved DWG (can submit ONLY if Oppty is approved); CANCELLED: DWG has been cancelled (can be put back to Draft status); more at goto/dealwingoals</inlineHelpText>
+        <inlineHelpText>The current status of the goal.  New goals will be in “Draft” status.  After manager approval, the status will be “Approved”.</inlineHelpText>
         <label>Status</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -645,6 +845,11 @@
                     <label>Accepted</label>
                 </value>
                 <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
                     <fullName>Cancelled</fullName>
                     <default>false</default>
                     <label>Cancelled</label>
@@ -654,109 +859,19 @@
                     <default>true</default>
                     <label>Draft</label>
                 </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <fields>
-        <fullName>Core_KPI_Revenue_Difference__c</fullName>
-        <formula>Core_KPI_Revenue__c -  Core_Approved_KPI_Revenue__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>KPI Revenue Difference</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_KPI_Revenue_Update__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This Checkbox will be used to calculate the KPI revenue</description>
-        <label>KPI Revenue Update</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_KPI_Revenue__c</fullName>
-        <label>KPI Revenue</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_MatchOppKPI_2ndPrev_Backend__c</fullName>
-        <externalId>false</externalId>
-        <label>Core_MatchOppKPI_2ndPrev_Backend</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MatchOppKPI_Backend__c</fullName>
-        <description>This is a backend field used to populate the actual value of &apos;Match Opportunity KPI&apos; field.
-Do not add it in the layout.</description>
-        <externalId>false</externalId>
-        <label>Core_MatchOppKPI_Backend</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MatchOppKPI_Prev_Backend__c</fullName>
-        <description>This is a backend field used to populate the previous value of &apos;Match Opportunity KPI&apos; field.
-Do not add it in the layout.</description>
-        <externalId>false</externalId>
-        <label>Core_MatchOppKPI_Prev_Backend</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Opportunity__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Opportunity Name</label>
-        <referenceTo>Opportunity</referenceTo>
-        <relationshipName>Deal_Win_Goals</relationshipName>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_Recall_Reason__c</fullName>
-        <label>Recall Comments</label>
-        <length>131072</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Validate_KPI_Flag__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Validate KPI Flag</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <label>Deal Win Goal EOLd</label>
+    <label>Deal Win Goal</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
+        <columns>Core_Goal_Name__c</columns>
         <columns>Core_Goal_Owner__c</columns>
         <columns>Core_Goal_Status__c</columns>
         <columns>Core_Goal_Category__c</columns>
@@ -774,6 +889,7 @@ Do not add it in the layout.</description>
     <listViews>
         <fullName>Deal_Wins_Not_Cancelled</fullName>
         <columns>NAME</columns>
+        <columns>Core_Goal_Name__c</columns>
         <columns>Core_Goal_Owner__c</columns>
         <columns>Core_Goal_Status__c</columns>
         <columns>Core_Goal_Category__c</columns>
@@ -794,12 +910,14 @@ Do not add it in the layout.</description>
         <label>Deal Wins (Not Cancelled)</label>
     </listViews>
     <nameField>
-        <label>Deal Win Goal Name</label>
-        <trackHistory>true</trackHistory>
-        <type>Text</type>
+        <displayFormat>DWG-{0000000}</displayFormat>
+        <label>Deal Win Goal ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Deal Win Goals EOLd</pluralLabel>
+    <pluralLabel>Deal Win Goals</pluralLabel>
     <searchLayouts>
+        <customTabListAdditionalFields>Core_Goal_Name__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_Goal_Owner__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_Goal_Status__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_Goal_Category__c</customTabListAdditionalFields>
@@ -811,7 +929,6 @@ Do not add it in the layout.</description>
         <searchFilterFields>NAME</searchFilterFields>
         <searchResultsAdditionalFields>Core_Goal_BU_Focus_Area__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Goal_Status__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Goal_Owner__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <sharingReasons>
@@ -836,28 +953,29 @@ Do not add it in the layout.</description>
         <masterLabel>Clone</masterLabel>
         <openType>replace</openType>
         <protected>false</protected>
-        <url>/{!Core_Goal__c.Id}/e?clone=1&amp;00N1J00000FGeQh=Draft&amp;retURL=%2F{!Core_Goal__c.Id}&amp;_CONFIRMATIONTOKEN=VmpFPSxNakF4TnkweE1TMHdPVlF4TURvME1Eb3dNQzQ0TlRoYSxxMm1TWEpES3JGc19WTUh1YWNSRFNhLFlUYzRZelk1&amp;common.udd.actions.ActionsUtilORIG_URI=%2F{!Core_Goal__c.Id}%2Fe</url>
+        <url>/{!Core_Goal__c.Id}/e?clone=1&amp;00N2D000000NrvE=Draft&amp;retURL=%2F{!Core_Goal__c.Id}&amp;_CONFIRMATIONTOKEN=VmpFPSxNakF4TnkweE1TMHdPVlF4TURvME1Eb3dNQzQ0TlRoYSxxMm1TWEpES3JGc19WTUh1YWNSRFNhLFlUYzRZelk1&amp;common.udd.actions.ActionsUtilORIG_URI=%2F{!Core_Goal__c.Id}%2Fe</url>
     </webLinks>
     <webLinks>
         <fullName>Core_Goal_Credit</fullName>
         <availability>online</availability>
         <displayType>button</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
         <masterLabel>Goal Credit</masterLabel>
-        <openType>sidebar</openType>
-        <page>Core_Deal_Win_Goal_Credit</page>
+        <openType>replace</openType>
         <protected>false</protected>
+        <url>/00O2D000000JI2yUAG?pv0={!Core_Goal__c.Id}</url>
     </webLinks>
     <webLinks>
-        <fullName>Core_Lex_DWG_Sharing</fullName>
+        <fullName>Core_Goal_Recall_Approval</fullName>
         <availability>online</availability>
+        <description>Used by the manager only</description>
         <displayType>button</displayType>
         <height>600</height>
         <linkType>page</linkType>
-        <masterLabel>Sharing</masterLabel>
-        <openType>noSidebar</openType>
-        <page>Core_Lex_DWG_Sharing</page>
+        <masterLabel>Recall Approval</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_Goal_UnclockRecord_Int</page>
         <protected>false</protected>
     </webLinks>
 </CustomObject>

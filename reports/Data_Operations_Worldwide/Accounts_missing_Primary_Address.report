@@ -4,16 +4,13 @@
         <field>Account.Core_Account_ID__c</field>
     </columns>
     <columns>
-        <field>CREATED</field>
-    </columns>
-    <columns>
         <field>Account.Core_CIM_ID__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Sales_Groups__c</field>
+        <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>ACCOUNT.NAME</field>
+        <field>Account.Core_Sales_Group__c</field>
     </columns>
     <columns>
         <field>LAST_UPDATE</field>
@@ -29,6 +26,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>USERS.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Uncovered Account</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_CIM_ID__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
@@ -42,24 +46,12 @@
             <operator>equals</operator>
             <value>0</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>RECORDTYPE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Account.Mastered_Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Account.Core_Geo__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Account.Core_Covered_Account__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Accounts missing Primary Address</name>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_Status_to_Inactive</name>
+        <label>Update Status to Inactive</label>
+        <locationX>368</locationX>
+        <locationY>63</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Core_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>INACTIVE</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <interviewLabel>Inactivate PALIs {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Inactivate PALIs</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Inactive_PALI</name>
+        <label>Inactive PALI</label>
+        <locationX>226</locationX>
+        <locationY>57</locationY>
+        <connector>
+            <targetReference>Update_Status_to_Inactive</targetReference>
+        </connector>
+        <inputReference>recordId</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Inactive_PALI</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_IPS_Map_Par_Line_Item__c</objectType>
+    </variables>
+</Flow>

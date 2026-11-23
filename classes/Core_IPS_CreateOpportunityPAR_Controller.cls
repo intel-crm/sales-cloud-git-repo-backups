@@ -14,7 +14,6 @@ public without sharing class Core_IPS_CreateOpportunityPAR_Controller {
         List<Core_IPS_Product_Organization_Admin__c> orgAdmins = new List<Core_IPS_Product_Organization_Admin__c>();
         List<Core_IPS_Product_Organization_Admin__c> orgAdminsList = new List<Core_IPS_Product_Organization_Admin__c>();
         List<Core_IPS_Opppar_SuppOrgAdmin__c> oppOrgAdminsList = new List<Core_IPS_Opppar_SuppOrgAdmin__c>();
-        List<Core_IPS_Product__c> projProdList = new List<Core_IPS_Product__c>(); //US1020017 ---Opportunity linkage Enhancement--
         List<String> oppTeamMem = new List<String>();
         List<OpportunityTeamMember> oppTeamMemList = new List<OpportunityTeamMember>();
         
@@ -28,7 +27,7 @@ public without sharing class Core_IPS_CreateOpportunityPAR_Controller {
         String commaSepratedProdNameList='';
         
         Core_IPS_Opportunity_PAR__c oppParRecord = new Core_IPS_Opportunity_PAR__c();
-    //    try{
+        try{
             WrapOpportunityPAR wrpOppRecord = (WrapOpportunityPAR)JSON.deserialize(oppParJsonRecord, wrapOpportunityPAR.class);
             prodIdList = wrpOppRecord.productList;
             orgAdmins = wrpOppRecord.orgAdminList;
@@ -120,29 +119,16 @@ public without sharing class Core_IPS_CreateOpportunityPAR_Controller {
                     if(oppTeamMemList.size()>0){
                         insert oppTeamMemList;  
                     }
-                 //modified as a part of TWC3123-5372
-                 //start   
-                }catch(exception ex){
-                    String errorMessage ;
-                    if(ex.getMessage() != NULL)
-                    {
-                        
-                       if(ex.getMessage().contains(System.Label.Core_OppoAccessError))
-                       {
-                           errorMessage= 'One or more users from the Opportunity Team Additions section below is not having access to Opportunity . You cannot create this request at the moment ';
-                       }
-                        
-                        else if(ex.getMessage(). contains('FIELD_CUSTOM_VALIDATION_EXCEPTION'))
-                        {
-                            errorMessage= ex.getDmlMessage(0);
-                        }
-                    }
                     
-                    throw new AuraHandledException(errorMessage);
+                }catch(exception e){
+                    throw new AuraHandledException('oppTeamMemList '+e.getMessage());
                 }
                 
             }
-            // end  
+        }
+        catch(Exception e){
+            throw new AuraHandledException('Final '+e.getMessage());    
+        }
         return oppParRecord.Id;
     }
     public class WrapOpportunityPAR {
@@ -154,10 +140,4 @@ public without sharing class Core_IPS_CreateOpportunityPAR_Controller {
         @AuraEnabled public List<Core_IPS_Product_Organization_Admin__c> orgAdminList {get; set;}
         @AuraEnabled public Boolean createProjCheckbox {get; set;}
     }
-    @AuraEnabled  
-    public Static Boolean getOpportunityProject (String oppParJsonRecord){
-        
-        return null;
-    }
-    
 }

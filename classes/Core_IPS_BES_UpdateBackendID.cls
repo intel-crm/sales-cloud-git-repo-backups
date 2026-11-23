@@ -1,4 +1,4 @@
-/********************************************* 
+/*********************************************
 * Name : Core_IPS_BES_UpdateBackendID 
 * Author : Farooq Ahmed
 * Date Created : 18/08/2020
@@ -25,21 +25,29 @@ public with sharing class Core_IPS_BES_UpdateBackendID {
                 //sourceDetailsMap.put((String)backendJsonObj.get('target_id'), (String)backendJsonObj.get('source_id')); 
                 //START - Added as part of Code Refactor TWC745-6459
                 String caseNumber = (String)backendJsonObj.get('target_id');
-                
+                system.debug('COG Issue Validation---- Updatebackendid before revmap--'+Core_IPS_BES_InboundMessage.revisionMap);
+                system.debug('COG Issue Validation---- Updatebackendid before srcMap--'+Core_IPS_BES_InboundMessage.sourceDetailsMap);
                 //if((!Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber)) || (Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber) && (Integer.ValueOf(backendJsonObj.get('backend_rev')) > Integer.ValueOf(Core_IPS_BES_InboundMessage.revisionMap.get(caseNumber))))){
-                       
+                
                 //Added by Pavani for Null check Fix
                 if(backendJsonObj.containskey('backend_rev') && String.isNotBlank((String)backendJsonObj.get('backend_rev')) && ((!Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber)) || (Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber) && (Integer.ValueOf(backendJsonObj.get('backend_rev')) > Integer.ValueOf(Core_IPS_BES_InboundMessage.revisionMap.get(caseNumber)))))){        
-                    Core_IPS_BES_InboundMessage.revisionMap.put(caseNumber, (String)backendJsonObj.get('backend_rev'));  }
+                    Core_IPS_BES_InboundMessage.revisionMap.put(caseNumber, (String)backendJsonObj.get('backend_rev'));  
+                }
                 //if(!Core_IPS_BES_InboundMessage.sourceDetailsMap.containskey(caseNumber)){ 
                 if(backendJsonObj.containskey('source_id') && String.isNotBlank((String)backendJsonObj.get('source_id')) && (!Core_IPS_BES_InboundMessage.sourceDetailsMap.containskey(caseNumber))){     
-                    Core_IPS_BES_InboundMessage.sourceDetailsMap.put(caseNumber, (String)backendJsonObj.get('source_id'));  }
-               
+                    Core_IPS_BES_InboundMessage.sourceDetailsMap.put(caseNumber, (String)backendJsonObj.get('source_id'));  
+                }
+                
+                system.debug('COG Issue Validation---- Updatebackendid after revmap--'+Core_IPS_BES_InboundMessage.revisionMap);
+                system.debug('COG Issue Validation---- Updatebackendid after srcMap--'+Core_IPS_BES_InboundMessage.sourceDetailsMap);
             }
            
             if (Case.SObjectType.getDescribe().isQueryable()) {
                 for(Case cs: [SELECT ID, casenumber,Core_IPS_New_Backend_System__c, Core_IPS_BackendID__c  FROM case WHERE caseNumber IN : caseMap.keySet()]){
-                     
+                    /*Database.DMLOptions dmo = new Database.DMLOptions();
+					dmo.assignmentRuleHeader.useDefaultRule= false;
+                    cs.setOptions(dmo);  */
+                
                     /*US1038991 - 09/07/2021 - Karthik - FLS Check for security vulnerability --*/
                     if(Schema.sObjectType.case.fields.Core_IPS_BackendID__c.isUpdateable()){
                         cs.Core_IPS_BackendID__c = caseMap.get(cs.CaseNumber);

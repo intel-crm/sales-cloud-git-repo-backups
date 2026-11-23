@@ -19,9 +19,6 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
@@ -41,7 +38,7 @@
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Intel® FPGAs</value>
         </criteriaItems>
@@ -49,8 +46,8 @@
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Lost,Cancelled,Deleted,Production Win,Production Lost,Win Approved,Production Cancelled</value>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Deleted,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Past_Due__c</column>
@@ -61,12 +58,12 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
+    <format>Summary</format>
+    <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
         <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
+    </groupingsDown>
     <groupingsDown>
         <dateGranularity>FiscalQuarter</dateGranularity>
         <field>CLOSE_DATE</field>
@@ -87,7 +84,7 @@
     </params>
     <params>
         <name>co</name>
-        <value>0</value>
+        <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
@@ -96,6 +93,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

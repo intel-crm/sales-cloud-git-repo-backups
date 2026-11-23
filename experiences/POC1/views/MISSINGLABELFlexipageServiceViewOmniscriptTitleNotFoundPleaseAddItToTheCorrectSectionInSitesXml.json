@@ -1,0 +1,31 @@
+{
+  "appPageId" : "680badb4-13e4-4719-bdec-d80153ae69cc",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "67c1e802-14e5-447d-b44d-dd15b1347bab",
+  "label" : "__MISSING LABEL__ Flexipage_service_view-omniscript_title not found! Please add it to the correct section in sites.xml",
+  "regions" : [ {
+    "id" : "84952560-cb90-41d4-a3d9-e5d484bce027",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "industries_service_excellence:omniscriptContainer",
+      "id" : "466b0549-766e-44a1-b200-938218ff825d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1b1f1b27-1352-4aea-b705-a2b26fac2012",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "daf399ec-6db3-46a2-a0f3-03a66db09fdb",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "omniscript"
+}

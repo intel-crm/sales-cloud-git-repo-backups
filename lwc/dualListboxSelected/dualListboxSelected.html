@@ -1,0 +1,22 @@
+<template>
+    <lightning-dual-listbox name="languages"
+                            label="Select Languages"
+                            source-label="Available"
+                            selected-label="Selected"
+                            field-level-help="This is a dual listbox"
+                            options={options}
+                            value={values}></lightning-dual-listbox>
+    <lightning-dual-listbox
+        id="selectOptions"
+        name="Select Options"
+        label="Select Options"
+        source-label="Available Options"
+        selected-label="Selected Options"
+        options={listOptions}
+        value={defaultOptions}
+        required-options={requiredOptions}
+        onchange={handleChange}
+    >
+    </lightning-dual-listbox>
+
+</template>

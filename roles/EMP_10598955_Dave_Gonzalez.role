@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Andy Marsee</description>
+    <description>EMP of Rupal Hollenbeck</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10598955_Dave_Gonzalez</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10639877_Andy_Marsee</parentRole>
+    <parentRole>EMP_10075364_Rupal_Hollenbeck</parentRole>
 </Role>

@@ -11,12 +11,14 @@ public class IPS_APIGEE_Backend_Integration_Queueable {
     public static void getcaseAttachmentRecords(list<Core_IPS_Case_Attachments__c> getCaseAttachmentIds){
         string strDetails;
         set<Id>caseAttachmentIds = new set<Id>();
-        
+		system.debug('getCaseAttachmentIds --->'+getCaseAttachmentIds);
+        if(getCaseAttachmentIds!=null){
         for(Core_IPS_Case_Attachments__c ca: getCaseAttachmentIds){
             caseAttachmentIds.add(ca.Id);
             
         }
-        
+            system.debug('caseAttachmentIds --->'+caseAttachmentIds);
+        }
         try{
             
             if(Limits.getQueueableJobs() < Limits.getLimitQueueableJobs()) 

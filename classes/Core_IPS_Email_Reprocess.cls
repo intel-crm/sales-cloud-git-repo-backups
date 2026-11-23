@@ -1,4 +1,4 @@
-global without sharing class Core_IPS_Email_Reprocess {
+global class Core_IPS_Email_Reprocess {
 /***************************************************************************************************
 * Apex Class Name: Core_IPS_Email_Reprocess 
 * Version     : 1.0 
@@ -95,10 +95,7 @@ global without sharing class Core_IPS_Email_Reprocess {
                                     ErrorMsg = ErrorMsg.substring(0,255);    
                                 } 
                             }             
-                        /*US1038991 - 07/08/2021 - Vishal - FLS Check for security vulnerability --*/
-                       // if (Schema.sObjectType.Core_IPS_Email_Log__c.fields.Core_Message__c.isUpdateable()) {
-                            EmailUpdObj.Core_Message__c  = ErrorMsg;
-                      //  }
+                        EmailUpdObj.Core_Message__c  = ErrorMsg;
                         ToBeUpdatedEmailLst.add(EmailUpdObj);   
                     } else {
                         //Build ToBeDeleted

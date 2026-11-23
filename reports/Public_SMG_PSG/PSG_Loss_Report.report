@@ -4,9 +4,6 @@
         <field>Account.Core_Geo__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <columns>
@@ -82,12 +79,12 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <field>LINEITEM_CREATED_DATE</field>
+        <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
-    <description>Product Level PSG Loss Report for Approval Meeting</description>
+    <description>PSG Loss Report for Approval Meeting</description>
     <filter>
         <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
@@ -105,21 +102,21 @@
             <value>Lost,Production Lost</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_Claim_Date__c</column>
+            <column>LAST_STAGE_CHANGE_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>1/1/2022 12:00 AM</value>
+            <value>1/1/2017 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>FiscalQuarter</dateGranularity>
-        <field>OpportunityLineItem.Core_Claim_Date__c</field>
+        <field>LAST_STAGE_CHANGE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PSG Loss Report - Product Level</name>
+    <name>PSG Loss Report</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -141,6 +138,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>OPPORTUNITY_NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

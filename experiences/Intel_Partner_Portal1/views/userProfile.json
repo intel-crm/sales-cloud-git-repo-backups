@@ -10,78 +10,9 @@
     "type" : "region"
   }, {
     "components" : [ {
-      "componentAttributes" : {
-        "id" : "{!recordId}",
-        "showFullPhotoAsCircle" : true,
-        "showReputation" : false
-      },
-      "componentName" : "forceCommunity:userProfileHeader",
-      "id" : "d81a7361-0856-4668-aea0-7d426af77d4f",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "tabsetConfig" : {
-          "UUID" : "e771276f-4ab4-42a0-8141-f612883e85bf",
-          "activeTab" : "tab1",
-          "tabs" : [ {
-            "UUID" : "93617f67-9cc4-48c2-823b-2bf9c121cf4d",
-            "allowGuestUser" : false,
-            "locked" : false,
-            "seedComponents" : [ {
-              "attributes" : { },
-              "fqn" : "forceCommunity:userProfileDetail"
-            } ],
-            "tabKey" : "tab1",
-            "tabName" : "Details"
-          }, {
-            "UUID" : "bce0c6a0-ce71-40fb-bb1a-5348462dec7d",
-            "allowGuestUser" : false,
-            "locked" : false,
-            "seedComponents" : [ {
-              "attributes" : { },
-              "fqn" : "forceCommunity:userRelatedList"
-            } ],
-            "tabKey" : "tab2",
-            "tabName" : "Related"
-          } ],
-          "useOverflowMenu" : false
-        }
-      },
-      "componentName" : "forceCommunity:tabset",
-      "id" : "e771276f-4ab4-42a0-8141-f612883e85bf",
-      "regions" : [ {
-        "components" : [ {
-          "componentAttributes" : {
-            "id" : "{!recordId}"
-          },
-          "componentName" : "forceCommunity:userProfileDetail",
-          "id" : "1ff817c6-49a2-43bc-9953-9039d754aa44",
-          "renditionMap" : { },
-          "type" : "component"
-        } ],
-        "id" : "93617f67-9cc4-48c2-823b-2bf9c121cf4d",
-        "regionLabel" : "Details",
-        "regionName" : "tab1",
-        "renditionMap" : { },
-        "type" : "region"
-      }, {
-        "components" : [ {
-          "componentAttributes" : {
-            "userId" : "{!recordId}"
-          },
-          "componentName" : "forceCommunity:userRelatedList",
-          "id" : "1f8c3fbb-27f4-4df0-844a-f933410f6e20",
-          "renditionMap" : { },
-          "type" : "component"
-        } ],
-        "id" : "bce0c6a0-ce71-40fb-bb1a-5348462dec7d",
-        "regionLabel" : "Related",
-        "regionName" : "tab2",
-        "renditionMap" : { },
-        "type" : "region"
-      } ],
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_HandleDeepLinks",
+      "id" : "4068419c-08d8-4203-8be3-3bef81221bc9",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

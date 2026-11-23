@@ -20,10 +20,14 @@
     <tabs>standard-Asset</tabs>
     <tabs>Account_Meeting_Brief__c</tabs>
     <tabs>standard-ProfilePlatformFeed</tabs>
+    <tabs>DFSS_SnapShot_Push__c</tabs>
     <tabs>Account_Meeting_Summary</tabs>
+    <tabs>BLND_TableTop</tabs>
     <tabs>standard-OtherUserProfile</tabs>
     <tabs>standard-Order</tabs>
     <tabs>standard-ProfilePlatformOverview</tabs>
+    <tabs>BLND_Snapshot</tabs>
+    <tabs>BLND_Monarch</tabs>
     <tabs>Core_AccountCoverage_Export__c</tabs>
     <tabs>standard-Campaign</tabs>
     <tabs>standard-Idea</tabs>
@@ -60,15 +64,21 @@
     <tabs>standard-DuplicateRecordSet</tabs>
     <tabs>GBLite__Buy_GridBuddy</tabs>
     <tabs>GBLite__All_Grids</tabs>
+    <tabs>APXTConga4__Conga_Template__c</tabs>
     <tabs>Core_Tab_Newsfeeds</tabs>
     <tabs>MaritzCX__Allegiance_Configuration_Settings</tabs>
     <tabs>standard-AppLauncher</tabs>
+    <tabs>APXTConga4__Conga_Setup</tabs>
     <tabs>standard-Solution</tabs>
     <tabs>MaritzCX__Survey_Response__c</tabs>
     <tabs>MaritzCX__Survey_Question__c</tabs>
+    <tabs>APXTConga4__CongaMerge</tabs>
+    <tabs>APXTConga4__About_Conga_Composer</tabs>
     <tabs>Core_IPS_Backend_Field_Mapping__c</tabs>
+    <tabs>APXTConga4__Conga_Merge_Query__c</tabs>
     <tabs>Core_Opportunity_Stages</tabs>
     <tabs>Core_IPS_Backend_Supported_Product_Map__c</tabs>
+    <tabs>APXTConga4__Conga_Email_Template__c</tabs>
     <tabs>Core_Opportunity_Review</tabs>
     <tabs>Core_IPS_Backend_System__c</tabs>
     <tabs>Core_Opportunity_Teams</tabs>
@@ -76,7 +86,15 @@
     <tabs>Core_My_Tasks</tabs>
     <tabs>standard-Contact</tabs>
     <tabs>standard-report</tabs>
+    <tabs>LID__LinkedIn_Activity</tabs>
     <tabs>Ask_a_Question</tabs>
     <tabs>Core_Channel_Sales_Analysis</tabs>
     <tabs>Core_Opportunity_Search</tabs>
+    <tabs>Core_Flat_Product_Hierarchy__c</tabs>
+    <tabs>Core_RestAPI_Transaction_Entry__c</tabs>
+    <tabs>Core_AAQC_Case_Comments__c</tabs>
+    <tabs>Core_IPS_BES_Outbound_Message__c</tabs>
+    <tabs>Core_IPS_BES_Inbound_Message__c</tabs>
+    <tabs>Core_IPS_Backend_System2__c</tabs>
+    <tabs>Core_IPS_Opportunity_PAR__c</tabs>
 </CustomApplication>

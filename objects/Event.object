@@ -256,69 +256,31 @@
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
-    <listViews>
-        <fullName>Events_for_Copilot</fullName>
-        <columns>SUBJECT</columns>
-        <columns>ALL_DAY</columns>
-        <columns>START_DATE_TIME</columns>
-        <columns>END_DATE_TIME</columns>
-        <columns>WHO_NAME</columns>
-        <columns>WHAT_NAME</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <label>Events for Copilot</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Expert_Engagement</fullName>
         <active>true</active>
         <description>Page layout for logging expert engagement</description>
-        <label>Event</label>
-        <picklistValues>
-            <picklist>Core_Activity_Source__c</picklist>
-            <values>
-                <fullName>6QPS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Groove</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LinkedIn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Manual</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PMP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seismic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Unknown</fullName>
-                <default>true</default>
-            </values>
-        </picklistValues>
+        <label>Expert Engagement</label>
         <picklistValues>
             <picklist>Core_Task_Type__c</picklist>
             <values>
-                <fullName>Meeting</fullName>
-                <default>true</default>
+                <fullName>Customer Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Presentation</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
             <picklist>Subject</picklist>
             <values>
-                <fullName>Coaching %28Managers only%29</fullName>
+                <fullName>Call</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -330,15 +292,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Phone</fullName>
+                <fullName>Other</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Seeds or Samples</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video</fullName>
+                <fullName>Send Letter%2FQuote</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -364,16 +322,6 @@
     </recordTypes>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
-    <validationRules>
-        <fullName>Prevent_Task_Subtype_Update</fullName>
-        <active>true</active>
-        <description>Prevent &quot;Core_Task_Type__c&quot; update for all records other than the one with TaskSubtype as “Task”</description>
-        <errorConditionFormula>AND(
-      ISCHANGED(Core_Task_Type__c),
-       Core_Type_of_Activity__c != &quot;Task&quot;
-   )</errorConditionFormula>
-        <errorMessage>Invalid Task Subtype for the &quot;Type of activity&quot;</errorMessage>
-    </validationRules>
     <webLinks>
         <fullName>Log_Expert_Engagement</fullName>
         <availability>online</availability>

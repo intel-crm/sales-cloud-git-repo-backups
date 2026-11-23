@@ -56,7 +56,7 @@
         <field>FK_$Opportunity.Core_Open_Oppty__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2) AND 3</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <column>Core_Opportunity_Partner__c.Core_Partner__c</column>
             <columnToColumn>false</columnToColumn>
@@ -70,13 +70,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>aviation,digital,energy,research,healthcare,india,medical,oil,power,renewables,transportation,ultrasound</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opportunity_Partner__c.Core_Partner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>genius</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -108,6 +101,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

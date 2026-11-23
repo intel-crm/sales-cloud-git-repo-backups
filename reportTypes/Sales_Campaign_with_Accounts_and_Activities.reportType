@@ -624,6 +624,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Campaign.ContactCampaignMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Member_Token__c</field>
+            <table>Campaign.ContactCampaignMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Address_Line_1__c</field>
             <table>Campaign.ContactCampaignMembers</table>
         </columns>

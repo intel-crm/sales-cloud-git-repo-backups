@@ -9,7 +9,7 @@ Modifications   :
 * ----------------------------------------------------------------------------                 
 * Rajadinakaran             11/03/2017             Created
 *****************************************************************************************************/
-global with sharing Class Core_Batch_DDR_PriceBook_Scheduler implements Schedulable 
+global Class Core_Batch_DDR_PriceBook_Scheduler implements Schedulable 
 {
 
     global void execute(SchedulableContext sc) 
@@ -21,7 +21,7 @@ global with sharing Class Core_Batch_DDR_PriceBook_Scheduler implements Schedula
     Public static void SchedulerMethod() 
     {
         
-        String strJobName = 'DDR - Update Partner Price Book';
+        String strJobName = 'NotifyDesignApprovers-Job';
         
           System.schedule(strJobName, '0 0 * * * ?',  new Core_Batch_DDR_PriceBook_Scheduler());
         //System.schedule(strJobName, '0 10 * * * ?', new Core_Batch_DDR_PriceBook_Scheduler());

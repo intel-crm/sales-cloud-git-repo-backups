@@ -87,59 +87,6 @@
         <filterScope>Everything</filterScope>
         <label>All Trigger Execution Entries</label>
     </listViews>
-    <listViews>
-        <fullName>Biswa</fullName>
-        <columns>MasterLabel</columns>
-        <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
-        <columns>Active__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>MasterLabel</field>
-            <operation>contains</operation>
-            <value>Core_Commission_NO_KPI_OTM_Changes</value>
-        </filters>
-        <label>Biswa</label>
-        <language>en_US</language>
-        <sharedTo>
-            <group>IQR_Tech_Team</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>License_Triggers</fullName>
-        <columns>MasterLabel</columns>
-        <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
-        <columns>Active__c</columns>
-        <columns>Inactive_for_User__c</columns>
-        <columns>Object__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Object__c</field>
-            <operation>equals</operation>
-            <value>License,Sales_License__c</value>
-        </filters>
-        <label>License Triggers</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>Order_and_Order_Products</fullName>
-        <columns>MasterLabel</columns>
-        <columns>Object__c</columns>
-        <columns>DeveloperName</columns>
-        <columns>Active__c</columns>
-        <columns>NamespacePrefix</columns>
-        <columns>Inactive_for_User__c</columns>
-        <columns>Inactive_for_Profile__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Object__c</field>
-            <operation>equals</operation>
-            <value>Order,OrderItem,OrderProduct</value>
-        </filters>
-        <label>Order and Order Products</label>
-        <language>en_US</language>
-    </listViews>
     <pluralLabel>Trigger Executions</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

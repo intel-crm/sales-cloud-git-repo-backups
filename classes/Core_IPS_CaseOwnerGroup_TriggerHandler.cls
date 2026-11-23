@@ -1,17 +1,20 @@
-public without sharing class Core_IPS_CaseOwnerGroup_TriggerHandler {
+public with sharing class Core_IPS_CaseOwnerGroup_TriggerHandler {
     public static void assignUserValues(list<Core_IPS_Case_Owner_Group__c>ownerListValues){
         
         list<id>userIDlist = new list<id>();
         for(Core_IPS_Case_Owner_Group__c cc:ownerListValues){
             userIDlist.add(cc.Core_IPS_Case_Owner__c);
         }
+        
         //get user records
         map<id,user> userMap = new map<id,user>([select id, ManagerId,Manager.Name, Email, Manager.Manager.Name from user where id in:userIDlist]);
        
         for(Core_IPS_Case_Owner_Group__c cc:ownerListValues){
             if(cc.Core_IPS_Case_Owner__c!=null){
+             
                 if(userMap.containsKey(cc.Core_IPS_Case_Owner__c)){
                      if(cc.Core_IPS_Case_Owner__c == userMap.get(cc.Core_IPS_Case_Owner__c).id){
+                       
                         cc.Core_IPS_Case_Owner_Email__c = userMap.get(cc.Core_IPS_Case_Owner__c).Email;
                         if(String.isBlank(cc.Core_IPS_Owner_Team_1__c)){
                             cc.Core_IPS_Owner_Team_1__c = userMap.get(cc.Core_IPS_Case_Owner__c).Manager.Name;

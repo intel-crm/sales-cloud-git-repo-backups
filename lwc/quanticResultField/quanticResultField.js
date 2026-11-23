@@ -14,6 +14,7 @@ import stringTemplate from './stringTemplate.html';
 
 /**
  * The `QuanticResultField` component properly displays a given result field according to its type.
+ * Make sure the field specified in this component is also included in the field array for the relevant template. See the this example: [Quantic usage](https://docs.coveo.com/en/quantic/latest/usage/#javascript).
  * @category Result Template
  * @example
  * <template if:true={result.raw.source}>
@@ -22,7 +23,7 @@ import stringTemplate from './stringTemplate.html';
  */
 export default class QuanticResultField extends LightningElement {
   /**
-   * The [result item](https://docs.coveo.com/en/headless/latest/reference/search/controllers/result-list/#result) to use.
+   * The [result item](https://docs.coveo.com/en/headless/latest/reference/interfaces/Search.Result.html) to use.
    * @api
    * @type {Result}
    */

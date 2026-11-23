@@ -8,10 +8,10 @@ Modification Log :
 * ----------------------------------------------------------------------------    
 * Dave Hood                 03/18/2015              Original version
 *****************************************************************************************************************************************/
+
 public class Core_CustomAccountTeamHandler {
 
     public static void manageSharing(List<Core_Account_Team__c> newList) {
-        
         Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
         if(mapFunctionalityNameTriggerExecution.containsKey('shareAccountMeetingBrief') &&
            mapFunctionalityNameTriggerExecution.get('shareAccountMeetingBrief').Core_Active__c) {
@@ -30,7 +30,7 @@ public class Core_CustomAccountTeamHandler {
                    userIds.add(teamMember.Core_Team_Member__c);
                    accountIdUserIdMap.put(teamMember.Core_Account__c, userIds);
                }
-               List<Account_Meeting_Brief__c> acctMeetingBriefs = new  List<Account_Meeting_Brief__c>();
+               List<Account_Meeting_Brief__c> acctMeetingBriefs=new  List<Account_Meeting_Brief__c>();
                //FLS check added-Venugopal
                if(Account_Meeting_Brief__c.SObjectType.getDescribe().isAccessible()){
                     acctMeetingBriefs = [select Id, Account__c from Account_Meeting_Brief__c
@@ -67,7 +67,7 @@ public class Core_CustomAccountTeamHandler {
     }
     
     public static void revokeAccessForDelete(List<Core_Account_Team__c> oldList) {
-        List<Account_Meeting_Brief__c> acctMeetingBriefs = new List<Account_Meeting_Brief__c>();
+        List<Account_Meeting_Brief__c> acctMeetingBriefs=new List<Account_Meeting_Brief__c>();
         system.debug('inside delete access method');
         Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
         if(mapFunctionalityNameTriggerExecution.containsKey('shareAccountMeetingBrief') &&
@@ -97,7 +97,7 @@ public class Core_CustomAccountTeamHandler {
                }
                
                Set<Id> acctMeetingBriefIds = new Set<Id>();
-               List<Account_Meeting_Brief__Share> allBriefShares = new List<Account_Meeting_Brief__Share>();
+               List<Account_Meeting_Brief__Share> allBriefShares=new List<Account_Meeting_Brief__Share>();
                for (Account_Meeting_Brief__c brief : acctMeetingBriefs)
                    acctMeetingBriefIds.add(brief.Id);
                //FLS check added-Venugopal
@@ -119,7 +119,9 @@ public class Core_CustomAccountTeamHandler {
                if (briefSharesToDelete.size() > 0) {
                    try {
                        System.debug('##### deleting briefSharesToDelete: ' + briefSharesToDelete);
+                       if (Schema.sObjectType.Account_Meeting_Brief__Share.isDeletable()) {
                        delete briefSharesToDelete;
+                   }
                    }
                    catch (Exception e) {
                        System.debug('##### Exception: ' + e.getMessage());

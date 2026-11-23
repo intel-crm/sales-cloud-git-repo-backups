@@ -31,19 +31,27 @@ Business Hours is specified on Case and should NOT be set on the Entitlement Pro
         </successActions>
         <timeTriggers>
             <actions>
-                <name>Core_IPS_Case_Notif_SLA_Reminder_EA</name>
+                <name>Core_IPS_Case_Notif_SLA_Overdue_New_EA</name>
                 <type>Alert</type>
             </actions>
-            <timeLength>-4</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
-        </timeTriggers>
-        <timeTriggers>
             <actions>
-                <name>Core_IPS_Case_Notif_SLA_Overdue_EA</name>
-                <type>Alert</type>
+                <name>Core_IPS_Update_Email_Text_SLA_Overdue</name>
+                <type>FieldUpdate</type>
             </actions>
             <timeLength>1</timeLength>
             <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>Core_IPS_Case_Notif_SLA_Reminder_New_EA</name>
+                <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Core_IPS_Update_Email_Text_SLA_Reminder</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>-4</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <useCriteriaStartTime>false</useCriteriaStartTime>
     </milestones>
@@ -73,16 +81,24 @@ Business Hours is specified on Case and should NOT be set on the Entitlement Pro
         <minutesCustomClass>Core_IPS_GetNextResponseDueDateInMis</minutesCustomClass>
         <timeTriggers>
             <actions>
-                <name>Core_IPS_Case_Notif_SLA_Reminder_EA</name>
+                <name>Core_IPS_Case_Notif_SLA_Reminder_New_EA</name>
                 <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Core_IPS_Update_Email_Text_SLA_Reminder</name>
+                <type>FieldUpdate</type>
             </actions>
             <timeLength>-4</timeLength>
             <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </timeTriggers>
         <timeTriggers>
             <actions>
-                <name>Core_IPS_Case_Notif_SLA_Overdue_EA</name>
+                <name>Core_IPS_Case_Notif_SLA_Overdue_New_EA</name>
                 <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Core_IPS_Update_Email_Text_SLA_Overdue</name>
+                <type>FieldUpdate</type>
             </actions>
             <timeLength>1</timeLength>
             <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
@@ -90,6 +106,6 @@ Business Hours is specified on Case and should NOT be set on the Entitlement Pro
         <useCriteriaStartTime>true</useCriteriaStartTime>
     </milestones>
     <name>IPS Standard SLA Entitlement</name>
-    <versionMaster>552o00000006AJz</versionMaster>
+    <versionMaster>5523F0000000014</versionMaster>
     <versionNumber>1</versionNumber>
 </EntitlementProcess>

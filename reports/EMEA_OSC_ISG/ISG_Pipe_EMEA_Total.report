@@ -36,7 +36,6 @@
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 6) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>AMOUNT</column>
             <columnToColumn>false</columnToColumn>
@@ -52,7 +51,7 @@
             <value>Lost,Cancelled,Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -64,20 +63,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Cloud Service Providers,Education</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Osiecki,Holtom</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -94,7 +79,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
+        <field>Opportunity.Core_Consumption_Market__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>ISG Pipe EMEA Total</name>
@@ -123,8 +108,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

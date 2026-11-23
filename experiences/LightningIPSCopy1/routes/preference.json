@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "11ecdeda-c4c2-4b8f-b64f-8ca2cd5505a1",
+  "appPageId" : "112ae48a-877d-4a55-876f-cf12046a3576",
+  "configurationTags" : [ ],
+  "devName" : "Core_IPS_PreferencePage__c",
+  "id" : "db406876-47ab-4f3f-bc7e-f93695f13216",
+  "label" : "Preference",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-preference",
+  "type" : "route",
+  "urlPrefix" : "preference"
+}

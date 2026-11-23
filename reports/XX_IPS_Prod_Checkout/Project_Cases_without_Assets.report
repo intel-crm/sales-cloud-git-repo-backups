@@ -52,7 +52,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.Core_IPS_Case_Create_Self_Assigned,Case.CEP_Case</value>
+            <value>Case.Core_IPS_Case_Create_Self_Assigned,012o0000000pEh8</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_CUSTENT_ID</column>

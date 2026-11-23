@@ -1,0 +1,58 @@
+<template>
+    <div class="main-body">
+
+        <header class="slds-text-heading--large slds-align--absolute-center header">
+            <h2>Manage Interested Party</h2>
+        </header>
+
+        <div class="containerC">
+            <div class="form">
+                <div class="form-body" style="height:4rem;width:1750px">
+                    <div class="slds-align_absolute-center">
+                        <div class="slds-size--10-of-12 slds-medium-size--10-of-12 slds-large-size--10-of-12 slds-p-around--xx-small">
+                            <lightning-input type="text" value={sVal} label="Interested Party Name"
+                                onchange={updateSeachKey}></lightning-input>
+                                <template if:true={isSearchValueBlank}>
+                            <lightning-button label="Search" onclick={handleSearch} variant="brand" >
+                            </lightning-button>
+                            </template>
+                            <div class="slds-size--10-of-12 slds-medium-size--10-of-12 slds-large-size--10-of-12 slds-p-around--xx-small">
+                                <template if:false={isLoaded}>
+                                    <template if:true={isMapResultPresent}>
+                                        <c-core_-i-p-s_-datatable-utility hide-checkbox-column=true
+                                        enable-infinite-loading=true records={mapRecords} columns={column}
+                                        height-in-rem="20" onrecordselection={getSelectedRecords}
+                                        onrowaction={handleRowActions}>
+                                    </c-core_-i-p-s_-datatable-utility>
+                                    </template>
+                                </template>
+                                <div if:true={isLoaded}>
+                                    <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+                                </div>
+                            </div>
+                            
+                            <template if:true={isMapResultPresent}>
+                                <template if:true={isSaveButtonShow}>
+                            <div class="slds-align_absolute-center" if:true={isSaveButtonShow}>
+                                <center>
+                                    <lightning-button label="Add Interested Party" onclick={saveHandler}
+                                        class="slds-m-left_x-small" variant="brand">
+                                    </lightning-button>
+                                    <lightning:button label="Cancel"></lightning:button>
+                                </center>
+                            </div>
+                            <div if:true={isLoaded}>
+                                <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+                    </div>
+                    
+                            </template>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</template>

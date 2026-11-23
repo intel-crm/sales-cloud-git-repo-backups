@@ -1,0 +1,51 @@
+<template>
+    <div>
+        <div class="line"></div>
+        <div class="headline slds-col" if:true={showEDQsection}>
+            <span>
+                Environmental Details
+            </span>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Case Subcategory Details</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select"
+                        options={options} onchange={handleChange}></lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">IP Product</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select"
+                        options={options} onchange={handleChange}></lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">FPGA Development Tools</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select"
+                        options={options} onchange={handleChange}></lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Version</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3"></br>
+                Test Version
+            </div>
+        </div>
+    </div>
+</template>

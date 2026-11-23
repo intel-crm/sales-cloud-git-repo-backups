@@ -7,9 +7,11 @@ import getattachments from '@salesforce/apex/Core_IPS_caseAttLinkFileCont_LEX.ge
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
 import {refreshApex} from '@salesforce/apex';
+import { getRecord, getFieldValue} from 'lightning/uiRecordApi';
 import prepareUrl from '@salesforce/apex/Core_IPS_File_AttachToCase_Controller.prepareUrl'; // krishna
 import showButtons from '@salesforce/apex/Core_IPS_caseAttLinkFileCont_LEX.showButtons';
 import getCurrentCase from '@salesforce/apex/Core_IPS_caseAttLinkFileCont_LEX.getCurrentCase';
+import CASEPRODUCT_ORG from '@salesforce/schema/Case.Core_IPS_Product_Org_Number__c';
 
 
 
@@ -44,6 +46,7 @@ let attachmentcolumns = [
 ];
 
 
+const FIELDS = [CASEPRODUCT_ORG];
 export default class caseAttachmentList extends NavigationMixin(LightningElement) {
      
     @track isDataAvailable = false;
@@ -92,7 +95,12 @@ export default class caseAttachmentList extends NavigationMixin(LightningElement
         this.getRecords('Load Data');
         this.getRecords('All Data');
     }
-
+    //Mohan
+    @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
+        fetchCase(response) {
+            this.record = response;
+            console.log('test ck >> ',response);
+        }
 
     //@wire(getAttachmentsRefresh,{ caseID: '$recordId'})
       @wire(getattachments,{caseID: '$recordId', limitSize : '$rowLimit',
@@ -343,6 +351,7 @@ export default class caseAttachmentList extends NavigationMixin(LightningElement
               
             console.log('url=',this.url);
             const newWindow = window.open(this.url+this.addParamSymbole+'c__recordId='+this.recordId+'+'+'Public_to_Customers');
+            console.log('newWindow', newWindow);
             newWindow.opener = null;//window.open(this.url,'_blank');
     }
     getAttachmentUrlPartners(){
@@ -369,13 +378,16 @@ export default class caseAttachmentList extends NavigationMixin(LightningElement
             console.log('recordtype=',result);
             if( (result ==='IPS Case Create' || result=='IPS No Assigned Contact Case') && (this.caseStatus !='Closed') ){
                 this.showbtnprfle = true;
-            } 
+            }
+            //Mohan
+            if(getFieldValue(this.record.data, CASEPRODUCT_ORG) == '025'){
+                this.showbtnprfle = false;
+            }
         })
         .catch((error) => {
             this.error = error;
             console.log('error=>',this.error);
         });
-        
     }
     checkCaseStatus(){
         getCurrentCase({csId: this.recordId})
@@ -401,15 +413,15 @@ export default class caseAttachmentList extends NavigationMixin(LightningElement
             console.log('url==',this.url);
         }
         else if(this.url.includes('crmdevcase--c.sandbox.vf.force.com/apex')){
-            this.url =  'https://intel--crmdevcase.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
+            this.url =  'https://intel--crmdevcase.sandbox.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
         }
         else if(this.url.includes('crmqa3--c.sandbox.vf.force.com/apex')){
             this.url =  'https://intel--crmqa3.sandbox.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
         }
         else if(this.url.includes('crmdevint3--c.sandbox.vf.force.com/apex')){
-            this.url =  'https://intel--crmdevint3.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
+            this.url =  'https://intel--crmdevint3.sandbox.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
         }
-        else if(this.url.includes('intel--c.visualforce.com/apex') || this.url.includes('intel--c.vf.force.com/apex')){
+        else if(this.url.includes('c.visualforce.com/apex') || this.url.includes('c.vf.force.com/apex')){
             this.url ='https://intel.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
         }
     }

@@ -1,0 +1,9 @@
+<messaging:emailTemplate subject="Test" recipientType="User" relatedToType="Case">
+<messaging:plainTextEmailBody >
+Congratulations!
+Case Number --- {!relatedTo.CaseNumber}
+Id ::: {!relatedTo.Id}
+OwnerId ::: {!relatedTo.OwnerId}
+This is your new Visualforce Email Template.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

@@ -58,7 +58,7 @@ public class Core_IPS_Copy_EDQ_Controller_Test {
         
         Pagereference pgref = Page.Core_IPS_Copy_EnvironmentDetails;
         pgref.getParameters().put('id', lstSupProd[0].Id);
-        Test.setCurrentPage(pgref);
+        Test.setCurrentPage(pgref); 
         
         Core_IPS_Copy_EDQ_Controller instCopyED = new Core_IPS_Copy_EDQ_Controller(new ApexPages.StandardController(lstSupProd[0]));
         instCopyED.selectedSupProd = lstSupProd[1].Id;

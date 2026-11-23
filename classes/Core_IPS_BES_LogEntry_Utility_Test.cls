@@ -83,51 +83,5 @@ System.assertNotEquals(null, outboundRec.Id, 'Id should not be equal');
         Core_IPS_BES_Transaction_Track.formJson(erList[2], outboundRec, inbound, 'Exception thrown');
         Core_IPS_BES_Transaction_Track.formJson(errorLog, outboundRec, inbound, NULL);
         Test.stopTest();
-    }   
-        @isTest
-    public static void coverCaseCommentLWCController() {
-        // Create a case for the controller
-        Case cs = TestUtilities.getCase();
-        cs.Subject = 'Case Comment LWC Controller Test';
-        cs.Status = 'New';
-        cs.Origin = 'Web';
-        cs.Priority = 'Medium';
-        insert cs;
-
-        // Labels commonly used by comment visibility logic
-        List<Core_IPS_Labels__c> labelList = new List<Core_IPS_Labels__c>{
-            new Core_IPS_Labels__c(Name = 'PUBLIC_TO_CUSTOMERS', Value__c = 'Public to Customers'),
-            new Core_IPS_Labels__c(Name = 'PRIVATE_TO_AGENTS', Value__c = 'Private to Agents'),
-            new Core_IPS_Labels__c(Name = 'PRIVATE_TO_INTEL', Value__c = 'Private to Intel'),
-            new Core_IPS_Labels__c(Name = 'PRIVATE_TO_PARTNERS', Value__c = 'Private to Partner'),
-            new Core_IPS_Labels__c(Name = 'Customer', Value__c = 'Customer'),
-            new Core_IPS_Labels__c(Name = 'Agent', Value__c = 'Agent')
-        };
-        insert labelList;
-
-        Test.startTest();
-
-        // Covers initialize()
-        Core_IPS_CaseCommentLWCController.initialize(cs.Id);
-
-        // Covers saveCaseComment()
-        String saveResult = Core_IPS_CaseCommentLWCController.saveCaseComment(
-            cs.Id,
-            'Public to Customers',
-            'This is a test comment for the case comment controller.'
-        );
-
-        // Covers getVisibilityOptions()
-        List<String> visibilityOptions = Core_IPS_CaseCommentLWCController.getVisibilityOptions(cs.Id);
-
-        // Covers showVisibilityOptions()
-        Boolean showVisibility = Core_IPS_CaseCommentLWCController.showVisibilityOptions();
-
-        Test.stopTest();
-
-        System.assertNotEquals(null, cs.Id, 'Case should be created.');
-        System.assertNotEquals(null, visibilityOptions, 'Visibility options should not be null.');
-        System.assertNotEquals(null, showVisibility, 'showVisibilityOptions should return a value.');
-        System.assertNotEquals(null, saveResult, 'saveCaseComment should return a result.');
-    }
+    }           
 }

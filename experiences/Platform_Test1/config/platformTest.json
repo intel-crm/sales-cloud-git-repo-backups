@@ -1,0 +1,18 @@
+{
+  "forgotPasswordRouteId" : "ea293979-7d79-4f72-8e13-40ad4d4b97e1",
+  "isAvailableToGuests" : false,
+  "isFilteredComponentsView" : false,
+  "isProgressiveRenderingEnabled" : false,
+  "loginAppPageId" : "1ad505ee-c99e-4a12-9aa8-8ad8b5b862ac",
+  "mainAppPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "preferredDomain" : "none",
+  "selfRegistrationRouteId" : "b9c3e20d-22b0-4b7f-918d-3fdca630a7f8",
+  "trustedSitesForScript" : [ {
+    "id" : "48f5c3aa-b381-4571-b9de-6a68508318f4",
+    "isActive" : true,
+    "trustedSiteName" : "intel.com",
+    "trustedSiteUrl" : "https://*.intel.com",
+    "type" : "trustedSitesForScripts"
+  } ],
+  "type" : "site"
+}

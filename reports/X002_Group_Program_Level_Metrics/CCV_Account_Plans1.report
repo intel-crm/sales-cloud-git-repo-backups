@@ -19,9 +19,6 @@
         <field>CUST_OWNER_NAME</field>
     </columns>
     <columns>
-        <field>CUST_CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>CUST_LAST_UPDATE</field>
     </columns>
     <description>Shows all CCV Account Plans with last modified date.</description>

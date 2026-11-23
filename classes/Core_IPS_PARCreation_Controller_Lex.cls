@@ -30,10 +30,9 @@ public with sharing class Core_IPS_PARCreation_Controller_Lex {
     @AuraEnabled
     public static CheckFAEWrapper checkAccounts(String accId){
         checkFAEWrapper wrapper = new CheckFAEWrapper();
-        // TWC745-9175 - Exceptional Handling - Phani
-        List<Account> accountRecordList = new  List<Account>();
-        accountRecordList = [SELECT Id, Name, Core_IPS_Active__c, OwnerId, Core_CNDA_Number__c FROM Account WHERE Id = :accId];
-        if(accountRecordList.size()>0) // TWC745-9175 - Exceptional Handling - Phani Start If Condition
+        
+        List<Account> accountRecordList = [SELECT Id, Name, Core_IPS_Active__c, OwnerId, Core_CNDA_Number__c FROM Account WHERE Id = :accId];
+        if(accountRecordList.size()>0)
         {            
             List<String> UserIDPAR = new List<String>();
             UserIDPAR.add(UserInfo.getUserid());
@@ -43,7 +42,7 @@ public with sharing class Core_IPS_PARCreation_Controller_Lex {
             }
             wrapper.accountRecord = accountRecordList[0];
             wrapper.userPresent = userPresent;
-        } // TWC745-9175 - Exceptional Handling - Phani End If Condition
+        }
         return wrapper;
     }
     

@@ -78,12 +78,28 @@
         <name>Core_IPS_Inactivating_ProjectOwner</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- User value cannot be changed/Status value cannot be changed when Project is Submitted --></errorMessage>
+        <name>Core_IPS_PreventEdit</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- User value cannot be changed. --></errorMessage>
         <name>Core_IPS_PreventUserLookupChange</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- User &amp; Contact are always required --></errorMessage>
+        <name>Core_Project_Member_User_is_required</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Members --></label>
+        <name>Add_Members</name>
+    </webLinks>
     <webLinks>
         <label><!-- Add_Members_For_External_Customers --></label>
         <name>Add_Members_For_External_Customers</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Members_LWC --></label>
+        <name>Add_Members_LWC</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_IPS_Add_Members --></label>

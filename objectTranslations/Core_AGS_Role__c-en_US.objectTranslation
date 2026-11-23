@@ -13,6 +13,10 @@
         <name>Core_Description__c</name>
     </fields>
     <fields>
+        <label><!-- External Id --></label>
+        <name>Core_External_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Active --></label>
         <name>Core_IsActive__c</name>
     </fields>

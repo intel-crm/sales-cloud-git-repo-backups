@@ -1,0 +1,2 @@
+<apex:page standardController="Core_IPS_Project__c" action="{!IF(AND(($Profile.Name != 'IPS External Customer'),($Profile.Name != $Label.Core_IPS_Partner_AE_ProfileName),($Profile.Name != 'Partner' )),URLFOR($Action.Core_IPS_Project__c.View,null,[retURL='https://intel--crmdevcase.sandbox.my.salesforce.com/a2Bo0000000dPDs'],true),URLFOR('/apex/Core_IPS_Project_detai_override_Page',null,[retURL='vamsi']))}" >
+</apex:page>

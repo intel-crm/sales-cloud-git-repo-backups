@@ -23,11 +23,13 @@ public class Core_IPS_Survey_Page_Controller_Test {
         sysadmin.username='sysAdmin@intel.com.test.' + String.valueOf(System.Now().getTime());     
         sysadmin.Core_User_Country_Code__c ='DEU'; 
         insert sysadmin;
-        
+        System.assert(sysadmin.Id != null, 'Record not created');
         System.runAs(sysadmin) {
             Case objCase = TestUtilities.getCase();
             objCase.RecordTypeId = schema.sobjecttype.Case.getrecordtypeinfosbyname().get('IPS Case Create').getRecordTypeId();
             insert objCase;
+            System.assert(objCase.Id != null, 'Record not created');
+        
             objCase.Status = 'Closed';
             objCase.Core_Sub_Status__c = 'Closed'; // added by amritesh - US103747
             update objCase;
@@ -38,14 +40,18 @@ public class Core_IPS_Survey_Page_Controller_Test {
             lstQues.add(new Core_IPS_Question__c( RecordTypeId=surveyRecordTypeId, Core_IPS_Order_No__c=2, Core_IPS_Question__c='Question 2', Core_IPS_DataType__c='Select Radio', Core_IPS_Status__c = 'Active', Core_IPS_Survey_Type__c = 'Customer'));
             lstQues.add(new Core_IPS_Question__c( RecordTypeId=surveyRecordTypeId, Core_IPS_Order_No__c=3, Core_IPS_Question__c='Question 3', Core_IPS_DataType__c='Text Area', Core_IPS_Status__c = 'Active', Core_IPS_Survey_Type__c = 'Customer'));
             insert lstQues;
-            
+            System.assert(lstQues[0].Id != null, 'Record not created');
+        
             List<Core_IPS_Answer__c> lstAns = new List<Core_IPS_Answer__c>();
             lstAns.add(new Core_IPS_Answer__c(Core_IPS_Question__c=lstQues[0].Id, Core_IPS_Order_No__c=1, Core_IPS_Answer__c='Yes'));
             lstAns.add(new Core_IPS_Answer__c(Core_IPS_Question__c=lstQues[0].Id, Core_IPS_Order_No__c=2, Core_IPS_Answer__c='No'));
             insert lstAns;
-            
+            System.assert(lstAns[0].Id != null, 'Record not created');
+        
             Core_IPS_Survey_Settings__c surveySetting = new Core_IPS_Survey_Settings__c(Name='Customer');
             insert surveySetting;
+            System.assert(surveySetting.Id != null, 'Record not created');
+        
         }
     }
     

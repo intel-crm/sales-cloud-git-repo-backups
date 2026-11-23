@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>AllInternalUsers</sharedTo>
-        <sharedToType>Organization</sharedToType>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10166818@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
     </folderShares>
-    <name>Global Pipeline Mgmt DB</name>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10621232@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11379856@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>11629736@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10544994@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>11540912@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <name>OSC Leads (Leita)</name>
 </DashboardFolder>

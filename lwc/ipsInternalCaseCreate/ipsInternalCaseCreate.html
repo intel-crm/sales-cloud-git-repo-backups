@@ -1,0 +1,193 @@
+<template>
+
+    <div if:true={isLoaded}>
+        <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+        <div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+    <lightning-card>
+        <h1 style="font-size: large;margin-left:3%;margin-right:3%;">Case Create</h1>
+        <div class="slds-align_absolute-center">
+            <lightning-button variant="brand-outline" label="Cancel" onclick={onCancelHandler}
+                class="slds-m-left_x-small">
+            </lightning-button>
+
+            <lightning-button variant="brand-outline" label="Submit" onclick={onSaveHandler}
+                class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+        <div style="margin-left:3%;margin-right:3%;">
+            <template if:true={showMindSection}>
+                <lightning-accordion active-section-name="D">
+                    <lightning-accordion-section name="D" label="MINDS">
+                        <c-ips-mind-section contact-id={conid}></c-ips-mind-section>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </template>
+
+            <lightning-accordion active-section-name="A">
+
+                <lightning-accordion-section name="A" label="Case Information">
+
+                    <!-- <lightning-checkbox-group name="Checkbox Group" label="Customer Visible" options={options} value={value}
+                    onchange={handleChange1}></lightning-checkbox-group>-->
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-13 slds-p-right_x-small">
+                            <p>Customer Visible</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-12">
+
+                            <lightning-input type="checkbox" onchange={handleCustomerVisibleChange}></lightning-input>
+                        </div>
+                    </div>
+                    </br>
+                    <template if:true={isLookupQueryPresent}>
+                        <label class="slds-form-element__label required" style="color:rgb(62, 62, 60) ;">Contact Name</label>
+            
+                        <c-core_-i-p-s_-custom-lookup onselectedrec={handleAccountChange} iconname={lookupIconName}
+                            required searchfield-name={lookupSearchFieldName} query-string={lookupQueryString}
+                            count-query-string={lookupCountQueryStringContact}>
+
+                        </c-core_-i-p-s_-custom-lookup>
+
+                    </template>
+                    <br />
+                    <template if:true={isLookupQueryPresentProject}>
+                        <label class="slds-form-element__label" style="margin-right: 0.5rem;">Project</label>
+                    
+                        <c-core_-i-p-s_-custom-lookup onselectedrec={handleChangeProject}
+                            iconname={lookupIconNameProject} searchfield-name={lookupSearchFieldNameProject}
+                            query-string={lookupQueryStringProject} count-query-string={lookupCountQueryStringProject}>
+                        </c-core_-i-p-s_-custom-lookup>
+                    </template>
+                    <br />
+                    <template if:true={isLookupQueryPresentProduct}>
+                        <label class="slds-form-element__label required" style="margin-right: 0.5rem; color:rgb(62, 62, 60) ;">Product</label>
+                    
+                        <c-core_-i-p-s_-custom-lookup onselectedrec={handleChangeProduct}
+                            iconname={lookupIconNameProduct} searchfield-name={lookupSearchFieldNameProduct}
+                            query-string={lookupQueryStringProduct} count-query-string={lookupCountQueryStringProduct}
+                            required>
+                        </c-core_-i-p-s_-custom-lookup>
+                    </template>
+                    <br />
+                    <lightning-combobox name="progress" label="Case Source" value={value}
+                        placeholder="-Select Case Source-" options={sourceValues} onchange={handleChangecaseSource}
+                        required>
+                    </lightning-combobox>
+
+                    <br />
+                        
+                        <lightning-combobox name="progress" label="Case Type" fieldlevelhelp= "Please indicate the type of support you are requesting."  title= "Please indicate the type of support you are requesting." value={value} placeholder="-Select Case Type-"
+                            options={typeValues} onchange={handleChangecaseType} required>
+                        </lightning-combobox> 
+                    
+                    <br />
+                    <template if:true={renderProductVariant}>
+                        <lightning-combobox name="progress" label="Product Variant" value={value}
+                            placeholder="-Select Variant-" options={records} onchange={handleChangeProductVariant}>
+                        </lightning-combobox>
+                    </template><br />
+                    <template if:true={showplatform}>
+                        <lightning-combobox name="progress" label="Platform" value={value3}
+                            placeholder="-Select Platform-" options={platformoptions} onchange={handleChangeplatform}>
+                        </lightning-combobox>
+                    </template>
+                    </br>
+                    <template if:true={renderProductCategory}>
+                        <lightning-combobox name="progress" label="Category" value={value1}
+                            placeholder="-Select Category-" options={categoryoptions}
+                            onchange={handleChangeSubCategory}>
+                        </lightning-combobox>
+
+
+                    </template>
+                    <br />
+                    <label class="slds-form-element__label" for="input">
+                        <template if:true={required}>
+                            <abbr class="slds-required" title="required">* </abbr>
+                        </template>
+                        Category
+                    </label>
+                    <input id="input" name="Category" list="valueList" placeholder="-Select Category-"
+                        required={required} class="slds-input" type="text" onchange={handleChangeSubCategory} />
+                    <datalist id="valueList" class="">
+                        <template for:each={categoryoptions} for:item='item'>
+                            <option key={item.key} value={item.value}>{item.label}</option>
+                        </template>
+                    </datalist>
+                    <!--  <select class="slds-select" id="valueList1">
+                        <template for:each={categoryoptions} for:item='listViewItem'>
+                            <option key={listViewItem.key} value={listViewItem.value}>{listViewItem.label}</option>
+                        </template>
+                    </select>-->
+                    <br />
+                    <template if:true={renderProductSubCategory}>
+                        <lightning-combobox name="progress" label=" Sub Category" value={value2}
+                            placeholder="-Select Sub Category-" options={subcategoryoptions}
+                            onchange={handleChangeRenderSubCategoryedq}>
+                        </lightning-combobox>
+                    </template>
+                </lightning-accordion-section>
+            </lightning-accordion>
+            <lightning-accordion active-section-name="B">
+
+                <lightning-accordion-section name="B" label="Case Details">
+                    </br>
+                    <lightning-input type="text" label="Subject" name="subject" onchange={handleChangeSubject} required>
+                    </lightning-input>
+                    </br>
+                    <lightning-input-rich-text label="Description" label-visible="true" title= "Note : If you are pasting images into this field, the size limit is 100KB."  onchange={handleChangeDescription} required>
+                    </lightning-input-rich-text>
+                    </br>
+                    <lightning-combobox name="progress" label="Severity" value={value} placeholder="-Select Severity-"
+                        options={severityValues} onchange={handleChangecaseSeverity} required>
+                    </lightning-combobox>
+                    <template if:true={showPriority}>
+                        <lightning-textarea label="Severity Reason" onchange={handePriorityChange}></lightning-textarea>
+                    </template>
+                    </br>
+                    <lightning-input type="text" label="Customer Reference ID"  title="If you have already entered this case in your internal case management tool, you can use your internal identification to track your case by entering it here." name="input1"></lightning-input>
+                    </br>
+                    <lightning-input type="text" label="End Customer" title="If you are submitting the case on behalf of another company, please fill in the company's name here." name="input2"></lightning-input>
+
+
+
+
+
+
+                </lightning-accordion-section>
+
+            </lightning-accordion>
+
+            <!--  <c-dependent-custom-picklist primary-pick-list={map2}></c-dependent-custom-picklist> -->
+
+        </div>
+        <template if:true={showProductSection}>
+            <div style="margin-left:3%;margin-right:3%;">
+                <lightning-accordion active-section-name="C">
+                    <lightning-accordion-section name="C" label="Environment Details">
+                        <template if:true={showSubCatEDQ}>
+                            <c-show-sub-categoryedq-section sub-cat-i-d={subsCatedqi}>
+                            </c-show-sub-categoryedq-section>
+                        </template>
+                        <template if:true={showProductSection}>
+                            <c-show-dynamicedq-section supported-product-i-d={passSupportedProductID}
+                                agent-visibility-e-d-q={agentTrack}>
+                            </c-show-dynamicedq-section>
+                        </template>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+        </template>
+        <div class="slds-align_absolute-center">
+            <lightning-button variant="brand-outline" label="Cancel" onclick={onCancelHandler}
+                class="slds-m-left_x-small">
+            </lightning-button>
+
+            <lightning-button variant="brand-outline" label="Submit" onclick={onSaveHandler}
+                class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+    </lightning-card>
+
+</template>

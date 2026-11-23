@@ -82,7 +82,7 @@
         <timeFrameFilter>
             <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
             <interval>INTERVAL_CUSTOM</interval>
-            <startDate>2018-01-01</startDate>
+            <startDate>2017-01-01</startDate>
         </timeFrameFilter>
     </block>
     <block>
@@ -144,7 +144,7 @@
         <timeFrameFilter>
             <dateColumn>FK_$Opportunity.Core_Approved_Date__c</dateColumn>
             <interval>INTERVAL_CUSTOM</interval>
-            <startDate>2018-01-01</startDate>
+            <startDate>2017-01-01</startDate>
         </timeFrameFilter>
     </block>
     <blockInfo>

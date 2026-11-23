@@ -10,9 +10,8 @@ public class Core_IPS_Opportunity_Test{
         
         // inserting accoutn one
         Account acc = TestUtilities.getAccountRecord();
+        acc.Core_Sales_Groups__c = 'CCG Sales Group';
         acc.Industry ='Software and Services';
-        acc.Core_Sales_Groups__c = 'PRC Sales Group';
-
         acc.Core_Sub_Industry__c	='IT Services';
         insert acc;
         
@@ -43,8 +42,8 @@ public class Core_IPS_Opportunity_Test{
              Account acc1 = TestUtilities.getAccountRecord();
         acc1.Name='Testaccount2';
         acc1.BillingCity='Bezawada';
+        acc1.Core_Sales_Groups__c = 'CCG Sales Group';
         acc1.Industry ='Software and Services';
-        acc1.Core_Sales_Groups__c = 'PRC Sales Group';
         acc1.Core_Sub_Industry__c	='IT Services';
         insert acc1;
             

@@ -1,0 +1,6 @@
+.THIS .IconColorBack{
+color:black;
+}
+.THIS .socialFooter { align-items:center; display:flex; justify-content:center; }
+.THIS .socialFooter .socialLink { padding:10px; }
+.THIS .socialFooter .socialLink img { width:32px; }

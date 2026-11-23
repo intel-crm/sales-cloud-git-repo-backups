@@ -4,9 +4,9 @@
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>PSG-SJ-PRISM!</name>
     <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_IPS_Org_025_SJ_PRISM</publicGroup>
-        </publicGroups>
+        <users>
+            <user>pramod.kulkarni@intel.com</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>

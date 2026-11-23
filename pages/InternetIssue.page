@@ -1,0 +1,106 @@
+<!--<apex:page standardController="Account">
+  <apex:form >
+    <apex:commandButton rerender="outputIt" value="Update It"/>
+    <apex:inputText value="{!Account.name}"/>
+  </apex:form>
+
+  <apex:outputPanel id="outputIt"> 
+    Value of myTextField is <apex:outputText value="{!HTMLENCODE(Account.name)}" escape="false"/>
+  </apex:outputPanel> 
+
+Page:--> 
+<apex:page controller="ActionSupportofflineIssue" action="{!testFunction}" docType="html-5.0" > 
+<head>
+    <script type="text/javascript">
+        window.addEventListener('message', receiveMessage, false);
+
+function receiveMessage(event) {
+           // alert("got message: " + event.data);
+        }
+    </script>
+</head>
+<script type="text/javascript"> 
+function onMyFrameLoad() {
+
+  //alert('myframe is loaded');
+
+}
+function checkNetwork(){ 
+var ifConnected = window.navigator.onLine; 
+if (ifConnected) { 
+testFunction();
+alert('Connection available'); 
+} else { 
+    //alert('Connection not available');
+    location.reload();
+} 
+    //document.
+} 
+</script> 
+<apex:form > 
+
+<apex:outputText escape="false">Hello
+{!$CurrentPage.parameters.userName}</apex:outputText>
+
+<apex:outputText escape="false"> Hello
+{!HTMLENCODE($CurrentPage.parameters.userName)}
+</apex:outputText>
+
+<script>var
+userId='{!JSENCODE($CurrentPage.parameters.username)}';
+</script>
+<apex:pageBlock > 
+<apex:pageBlockSection title="this Section contain Action support" columns="1"> 
+{!counter}
+<apex:outputpanel id="counter"> {!counter}
+<apex:outputText value="<br/><b> Click Me!: </b>{!count}" escape="false"/> 
+<apex:actionSupport event="onclick" 
+oncomplete="checkNetwork();" 
+action="{!incrementCounter}" 
+rerender="counter" status="counterStatus"/> 
+</apex:outputpanel> 
+<apex:actionStatus id="counterStatus" 
+startText=" (incrementing...)" 
+stopText=" (done)"/> 
+{!counter}
+<table border="0" width="450" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td id="unableDisplayAlign" align="left" valign="middle" width="*">
+<h1 id="unableDisplay" style="text-align: center;">This content cannot be displayed in a frame</h1>
+</td>
+</tr>
+<tr>
+<td id="errorAlign" class="errorCodeAndDivider" align="right">&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;To help protect the security of information you enter into this website, the publisher of this content does not allow it to be displayed in a frame.</td>
+<td>
+<p id="errorExplanation1">&nbsp;</p>
+</td>
+</tr>
+<tr id="whatToDoIntro">
+<td>&nbsp;
+<h2 id="whatToTry">What you can try:</h2>
+</td>
+<td id="whatToTryAlign">
+<h2 id="whatToTry">&nbsp;</h2>
+</td>
+</tr>
+<tr id="whatToDoBody">
+<td>&nbsp;<a href="http://www.intel.com">Open this content in a new window</a></td>
+<td id="openNewAlign">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<apex:iframe src="https://www.intel.com/content/www/us/en/programmable/references/sbs.html?env=dev&sub=test&lang=en_us&prod=Intel®%20Arria®%2010%20FPGAs&srno=DO-00803&cat=&area="/>
+<iframe  height="600px" id="theIframe" name="theIframe" src="https://www.intel.com/content/www/us/en/programmable/references/sbs.html?env=dev&sub=test&lang=en_us&prod=Intel®%20Arria®%2010%20FPGAs&srno=DO-00803&cat=&area=" width="100%" oncomplete="onMyFrameLoad();"></iframe>
+
+<apex:iframe src="https://www.popcornapps.com/who-we-are/#contact"/>
+</apex:pageBlockSection> 
+</apex:pageBlock> 
+
+</apex:form> 
+</apex:page>
+<!--  
+</apex:page>-->

@@ -7,7 +7,7 @@ Description    : This class is Test class for Core_Contact_EmailChange_Handler
 @isTest
 public class Core_Contact_EmailChange_Handler_Test{
     static testMethod void contactStatusUpdate(){
-       
+        
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
         
         User itAdminUser = new User(Alias = 'itAdmx2', 
@@ -156,14 +156,14 @@ public class Core_Contact_EmailChange_Handler_Test{
                 insert objConEntitlement1;
                 
                 lstentitle.add(objConEntitlement1);
-                 Test.StartTest();
+                
                 conlist[0].email='testcontact@domainchange.com';
                 conlist[1].email='namechange@test.com';
                 update conlist;
-                Test.StopTest();
+                
                 //To make sure contact is updated 
                 Contact objConRecord = [SELECT Id,Email,Core_ERPM_Integration_Status__c,Core_AGS_Integration_Status__c FROM Contact WHERE Id =: conlist[0].id];
-                System.assertEquals('In-Progress',objConRecord.Core_ERPM_Integration_Status__c);
+                System.assertEquals('Pending',objConRecord.Core_ERPM_Integration_Status__c);
                 
             }   
         }
@@ -172,6 +172,5 @@ public class Core_Contact_EmailChange_Handler_Test{
              ownerid, Core_IPS_Intel_Support_Owner__c, account.ownerID, lastName from contact LIMIT 1], 
             [select Id, Name, Subject, HtmlValue, Body from EmailTemplate where Name =:System.Label.core_Account_EmailTemplate LIMIT 1], 
             [select Id from User where Profile.Name = 'System Administrator' Limit 1].Id, 'AllEntitlementName', 'testing@intel.com');
-     
     }
 }

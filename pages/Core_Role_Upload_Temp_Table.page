@@ -1,0 +1,36 @@
+<apex:page controller="Core_Role_Upload_Temp_Table">
+    <style>
+        .wideButton
+        {
+            width: 300px;
+        }
+    </style>
+    <apex:Form id="thePage">
+        <apex:pageBlock title="{!NOW()}">                
+            <apex:commandButton style="width:190px" value="1. DeleteRoleUpdateTempTable"  action="{!deleteRoleUpdateTempTable}"     reRender="thePage"    disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:150px" value="2. *USE DATA LOADER*"                                                    reRender="thePage"    disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:180px" value="3. ClearUsers (200/press)"     action="{!clearUsers}"                    reRender="thePage"    disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:130px" value="4. DeleteUserRoles"            action="{!deleteUserRoles}"               reRender="thePage"    disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:120px" value="5. TopLevel"                   action="{!topLevel}"                      reRender="thePage"    disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:170px" value="6. AssignRolesToTopLevel"      action="{!assignRolesToTopLevel}"         reRender="thePage"    disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:130px" value="7. LoadManagersIds"            action="{!loadManagerIds}"                reRender="thePage"    disabled="{!reloadDisabled}"/>            
+        </apex:pageBlock>
+        <apex:pageBlock title="{!NOW()}">                
+            <apex:commandButton style="width:170px" value="8. AssignRolesToManagers"              action="{!assignRolesToManagers}"         reRender="thePage" disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:130px" value="9. LoadSubordinateIds"                 action="{!loadSubordinateIds}"            reRender="thePage" disabled="{!reloadDisabled}"/>            
+            <apex:commandButton style="width:150px" value="10. UpdateRolesToMidLevel (400/press)" action="{!topUpdateRolesToMidLevel}"      reRender="thePage" disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:130px" value="11. LoadSubordinateIds"                action="{!loadSubordinateIds}"            reRender="thePage" disabled="{!reloadDisabled}"/>            
+        </apex:pageBlock>
+        <apex:pageBlock title="{!mgrCounts}">                
+            <apex:commandButton style="width:140px" value="Update Managers" action="{!updateManagers}"          reRender="thePage" disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:140px" value="Update Counters" action="{!updateManagersCounters}"  reRender="thePage" disabled="{!reloadDisabled}"/>           
+        </apex:pageBlock>
+        <apex:pageBlock title="{!subCounts}">                
+            <apex:commandButton style="width:120px" value="Update Subs"     action="{!updateSubordinates}" reRender="thePage" disabled="{!reloadDisabled}"/>
+            <apex:commandButton style="width:120px" value="Update Counters" action="{!updateSubsCounters}" reRender="thePage" disabled="{!reloadDisabled}"/>            
+        </apex:pageBlock>
+        <apex:pageBlock title="{!NOW()}">                
+            <apex:commandButton styleClass="wideButton" value="Role Hierarchy Access Update (90 / press)" action="{!updateRoleHierarchyAccess}" reRender="thePage" disabled="{!!reloadDisabled}"/>
+        </apex:pageBlock>
+    </apex:Form>
+</apex:page>

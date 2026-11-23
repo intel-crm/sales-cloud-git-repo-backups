@@ -70,16 +70,16 @@
         <field>Case.Core_IPS_Issue_source__c</field>
     </columns>
     <columns>
-        <field>Case.Core_Case_Closure__c</field>
+        <field>Case.Core_IPS_Legacy_IPS_ID__c</field>
     </columns>
     <columns>
-        <field>Case.Core_Case_Resolution_Reason__c</field>
+        <field>Case.Core_IPS_Self_Assigned__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_CaseSource_of_Resolution__c</field>
+        <field>Case.Core_IPS_GEC_Case__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND 13 AND (2 or 3 or 4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12)</booleanFilter>
         <criteriaItems>
             <column>Case.Core_IPS_Product_Org1__c</column>
             <columnToColumn>false</columnToColumn>
@@ -92,15 +92,92 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>sdk</value>
+            <value>EMGD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>HDGraphics</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>BIOS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>FSP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>BLDK</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>TXE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Yocto</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>manageability</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Other</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Android</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>rst</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Category__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Hardware</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>MediaSDK</name>
+    <name>007 - Incoming All</name>
     <params>
         <name>units</name>
-        <value>d</value>
+        <value>h</value>
     </params>
     <params>
         <name>co</name>
@@ -113,6 +190,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_PREV1</interval>
     </timeFrameFilter>
 </Report>

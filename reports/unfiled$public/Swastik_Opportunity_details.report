@@ -20,7 +20,7 @@
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
         <showValues>false</showValues>
-        <size>Large</size>
+        <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
@@ -28,31 +28,22 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>OPPORTUNITY.NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Solution_Focus_Area__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Detail__c</field>
+        <field>Opportunity.Core_Solution_Focus__c</field>
     </columns>
     <columns>
         <field>LINEITEM_CREATED_DATE</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Approved_Quantity__c</field>
-    </columns>
-    <columns>
-        <field>PRODUCT_PRICE</field>
-    </columns>
-    <columns>
-        <field>EXP_AMOUNT</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -69,30 +60,15 @@
     <columns>
         <field>MEMBER_ROLE</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_INDUSTRY</field>
+        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT.NAME</field>
+        <field>ACCOUNT_INDUSTRY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Swastik_Opportunity_details</name>
@@ -126,7 +102,9 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <dateColumn>LAST_UPDATE</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

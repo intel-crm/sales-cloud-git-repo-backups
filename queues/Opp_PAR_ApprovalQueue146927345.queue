@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Opp PAR ApprovalQueue146927345</name>
+    <queueMembers>
+        <users>
+            <user>12001918@intel.com.crm</user>
+            <user>10068646@intel.com.crm</user>
+            <user>10660044@intel.com.crm</user>
+        </users>
+    </queueMembers>
+</Queue>

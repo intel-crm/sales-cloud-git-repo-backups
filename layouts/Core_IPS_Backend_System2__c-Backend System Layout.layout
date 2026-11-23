@@ -104,21 +104,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Submit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>13</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Share</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>14</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>RecordShareHierarchy</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>12</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>0</sortOrder>
@@ -178,6 +163,21 @@
             <actionType>StandardButton</actionType>
             <sortOrder>11</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>RecordShareHierarchy</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>12</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Submit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>13</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Share</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>14</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <relatedLists>
         <fields>NAME</fields>
@@ -200,6 +200,7 @@
         <fields>Core_IPS_Supported_Product_Name__c</fields>
         <fields>Core_IPS_Deactivated__c</fields>
         <fields>Core_IPS_Auto_Promote__c</fields>
+        <fields>Core_IPS_Backend_Routing_Order__c</fields>
         <relatedList>Core_IPS_Backend_Routing__c.Core_IPS_New_Backend_System__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -222,14 +223,15 @@
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>CASES.CASE_NUMBER</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Contact_Name__c</fields>
+        <fields>CASES.SUBJECT</fields>
         <fields>CASES.STATUS</fields>
         <fields>Core_Sub_Status__c</fields>
-        <fields>CASES.SUBJECT</fields>
-        <fields>CASES.LAST_UPDATE</fields>
-        <fields>CASES.PRIORITY</fields>
-        <fields>CASES.CREATED_DATE</fields>
-        <fields>CASES.MILESTONE_STATUSICON</fields>
+        <fields>OWNER_NAME</fields>
+        <fields>Core_IPS_Assigned_Queue__c</fields>
+        <fields>Core_IPS_Project_Case__c</fields>
+        <fields>Core_AAQC_Created_By_FullName__c</fields>
         <relatedList>Case.Core_IPS_New_Backend_System__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -241,7 +243,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000Ju1u</masterLabel>
+        <masterLabel>00h3F0000027Yup</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>SK Enpulse Customer User</description>
+    <description>SK TELESYS Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>SK Enpulse Customer User</name>
+    <name>SK TELESYS Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11336504_Chung_Hyun_Kim</parentRole>
+    <parentRole>SKTELESYSCustomerManager</parentRole>
 </Role>

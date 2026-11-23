@@ -74,6 +74,7 @@ Modification Log :
             Test.startTest();
                Case CS =  TestUtilities.getCase(); 
                insert CS;
+               system.assert(CS!= null);
                PageReference pageRef = Page.Core_IPS_CommentScreen;
                Test.setCurrentPage(pageRef);
                ApexPages.CurrentPage().getparameters().put('id',CS.id);
@@ -125,7 +126,7 @@ Modification Log :
         listofIpsLables.addAll(ipsLabelsForGlobalAsset);  
         
         insert listofIpsLables;
-
+        system.assert(listofIpsLables!= null);
         Core_IPS_Labels__c labels = new Core_IPS_Labels__c ();
          labels.name= 'PUBLIC_TO_CUSTOMERS';
          labels.value__c='Public to Customers';
@@ -281,9 +282,9 @@ Modification Log :
                 //end by rajeswari for codecoverage 21 June 22
             }
         insert lstcsecomment;
-        
+        system.assert(lstcsecomment!= null);
       
-        //ApexPages.Standardcontroller sc = new ApexPages.Standardcontroller(Cs);
+        //ApexPages.Standardcontroller sc = new ApexPages.Standardcontroller(Cs);
         ApexPages.currentPage().getParameters().put('Id',Cs.id); 
         ApexPages.StandardController StndContr = new ApexPages.standardController(cs);
       Core_IPS_CommentScreenController CommentScreen = new Core_IPS_CommentScreenController(StndContr);
@@ -381,6 +382,7 @@ Modification Log :
                 
             }
         insert lstcsecomment;
+        system.assert(lstcsecomment!= null);
         ApexPages.StandardController StndContr = new ApexPages.standardController(cs);
         Core_IPS_CaseCommentsController caseComments = new Core_IPS_CaseCommentsController(StndContr);
         //Commented by Sugandha as per Sumukh

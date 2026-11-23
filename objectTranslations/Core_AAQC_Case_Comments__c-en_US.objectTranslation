@@ -9,6 +9,14 @@
         <value>Commissions Case Comments</value>
     </caseValues>
     <fields>
+        <label><!-- Case Owner --></label>
+        <name>Case_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- comment to delete --></label>
+        <name>Comment__c</name>
+    </fields>
+    <fields>
         <label><!-- Comment --></label>
         <name>Core_AAQC_Comment__c</name>
     </fields>
@@ -16,6 +24,10 @@
         <label><!-- Commissions Case --></label>
         <name>Core_AAQC_Commissions_Case__c</name>
         <relationshipLabel><!-- Commissions Case Comments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CreatedBy --></label>
+        <name>CreatedBy__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

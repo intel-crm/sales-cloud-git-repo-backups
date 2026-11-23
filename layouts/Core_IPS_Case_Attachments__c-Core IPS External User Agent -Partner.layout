@@ -49,6 +49,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Uploaded_By_Email__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_BES_Promote_Status__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

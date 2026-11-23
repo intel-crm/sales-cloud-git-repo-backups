@@ -12,4 +12,6 @@
     <tabs>CoveoV2__Search</tabs>
     <tabs>CoveoV2__CommunitySearch</tabs>
     <tabs>CoveoV2__CaseCreation</tabs>
+    <tabs>Core_IPS_Backend_System2__c</tabs>
+    <tabs>Core_IPS_Opportunity_PAR__c</tabs>
 </CustomApplication>

@@ -23,9 +23,6 @@ public class Core_OpportunityLineItemHandler_Test3 {
         Account testAcct = Core_Test_Utility.createAccount(1)[0];
         insert testAcct;
         
-        List<RecordType> recIds = [select id from RecordType where DeveloperName = 'Mastered_Account' limit 1];
-        testAcct.RecordTypeId = recIds[0].id;
-        Update testAcct;
         // Simple test data
         Opportunity testOpp = Core_Test_Utility.createOpportunity(1)[0];
         testOpp.AccountId = testAcct.Id;
@@ -41,15 +38,15 @@ public class Core_OpportunityLineItemHandler_Test3 {
         // opportunity product history object later (can't sort on Description or any other attribute)
         OpportunityLineItem testOppLineItem;
         testOppLineItem = new OpportunityLineItem(OpportunityId=testOpp.Id, PricebookEntryId=testPBEs[0].Id,
-                                                  Description='Test 11', UnitPrice=11, Quantity=11,
+                                                  Description='Test 11', UnitPrice=11, Quantity=11, Core_BU_Short_Name__c='T11',
                                                   Core_Loss_Cancel_Reason__c=null, Core_Status__c='Pending');
         insert testOppLineItem;
         testOppLineItem = new OpportunityLineItem(OpportunityId=testOpp.Id, PricebookEntryId=testPBEs[1].Id,
-                                                  Description='Test 12', UnitPrice=12, Quantity=12,
+                                                  Description='Test 12', UnitPrice=12, Quantity=12, Core_BU_Short_Name__c='T12',
                                                   Core_Loss_Cancel_Reason__c='', Core_Status__c='Pending');
         insert testOppLineItem;
         testOppLineItem = new OpportunityLineItem(OpportunityId=testOpp.Id, PricebookEntryId=testPBEs[2].Id,
-                                                  Description='Test 13', UnitPrice=13, Quantity=13,
+                                                  Description='Test 13', UnitPrice=13, Quantity=13, Core_BU_Short_Name__c='T13',
                                                   Core_Loss_Cancel_Reason__c=null, Core_Status__c='Pending');
         insert testOppLineItem;
         
@@ -69,7 +66,7 @@ public class Core_OpportunityLineItemHandler_Test3 {
         for (Opportunity opp : bulkTestOpps) {
             for (PricebookEntry pbe : bulkTestPBEs) {
                 bulkTestOppLineItems.add(new OpportunityLineItem(OpportunityId=opp.Id, PricebookEntryId=pbe.Id,
-                                                                 Description='Bulk 11', UnitPrice=11, Quantity=11,
+                                                                 Description='Bulk 11', UnitPrice=11, Quantity=11, Core_BU_Short_Name__c='B11',
                                                                  Core_Loss_Cancel_Reason__c=null, Core_Status__c='Pending'));
             }
         }
@@ -83,7 +80,7 @@ public class Core_OpportunityLineItemHandler_Test3 {
         //System.assertEquals(0, [select count() from Core_Opportunity_Product_History__c]);
         
         // Update a bunch of fields on multiple records
-        List<OpportunityLineItem> testOppLineItems = [select Description, UnitPrice, Quantity,
+        List<OpportunityLineItem> testOppLineItems = [select Description, UnitPrice, Quantity, Core_BU_Short_Name__c,
                                                              Core_Loss_Cancel_Reason__c, Core_Status__c
                                                       from OpportunityLineItem where Description like 'Test%'];
         
@@ -94,10 +91,8 @@ public class Core_OpportunityLineItemHandler_Test3 {
         testOppLineItems[0].UnitPrice = 21;
         testOppLineItems[1].Core_Loss_Cancel_Reason__c = 'Testing testing';
         testOppLineItems[1].Core_Status__c = 'Lost';
-        testOppLineItems[1].Core_Competitor__c ='Acer';
-        testOppLineItems[1].Core_Competitor_Product__c='AMD Athlon';
         testOppLineItems[1].Description = '';
-        testOppLineItems[1].Core_Loss_Cancel_Details__c = 'Lost';
+        testOppLineItems[2].Core_BU_Short_Name__c = 'T23';
         testOppLineItems[2].Core_Group_Code__c = 'GC23'; // We're not tracking this field!
         
         Test.startTest();
@@ -107,7 +102,7 @@ public class Core_OpportunityLineItemHandler_Test3 {
         List<Core_Opportunity_Product_History__c> oppProdHistory = [select Core_Opportunity__c, Core_Opportunity_Product_ID__c,
                                                                            Core_Field__c, Core_Old_Value__c, Core_New_Value__c
                                                                     from Core_Opportunity_Product_History__c
-                                                                    order by Core_Opportunity_Product_ID__c, Core_Field__c LIMIT 10];
+                                                                    order by Core_Opportunity_Product_ID__c, Core_Field__c];
         //for (Core_Opportunity_Product_History__c oppProdHist : oppProdHistory)
         //  System.debug(oppProdHist);
         
@@ -126,7 +121,6 @@ public class Core_OpportunityLineItemHandler_Test3 {
         //System.assertEquals('Description', oppProdHistory[7].Core_Field__c);
         //System.assertEquals('Test 12', oppProdHistory[7].Core_Old_Value__c);
         //System.assertEquals(null, oppProdHistory[7].Core_New_Value__c);
-	System.assertEquals(true,true);
     }
     
     // Test a simple delete of a few line items
@@ -145,7 +139,7 @@ public class Core_OpportunityLineItemHandler_Test3 {
         List<Core_Opportunity_Product_History__c> oppProdHistory = [select Core_Opportunity__c, Core_Opportunity_Product_ID__c,
                                                                            Core_Field__c, Core_Old_Value__c, Core_New_Value__c
                                                                     from Core_Opportunity_Product_History__c
-                                                                    order by Core_Opportunity_Product_ID__c, Core_Field__c LIMIT 10];
+                                                                    order by Core_Opportunity_Product_ID__c, Core_Field__c];
         //for (Core_Opportunity_Product_History__c oppProdHist : oppProdHistory)
         //  System.debug(oppProdHist);
         
@@ -156,7 +150,6 @@ public class Core_OpportunityLineItemHandler_Test3 {
         //System.assertEquals('Core_BU_Short_Name__c', oppProdHistory[0].Core_Field__c);
         //System.assertEquals('T11', oppProdHistory[0].Core_Old_Value__c);
         //System.assertEquals(null, oppProdHistory[0].Core_New_Value__c);
-	System.assertEquals(true,true);
     }
     
     // Test a bulk update of many line items
@@ -166,7 +159,7 @@ public class Core_OpportunityLineItemHandler_Test3 {
         //System.assertEquals(0, [select count() from Core_Opportunity_Product_History__c]);
         
         // Update a bunch of fields on multiple records
-        List<OpportunityLineItem> testOppLineItems = [select Description, UnitPrice, Quantity, Core_BU_ShortName__c,
+        List<OpportunityLineItem> testOppLineItems = [select Description, UnitPrice, Quantity, Core_BU_Short_Name__c,
                                                              Core_Loss_Cancel_Reason__c, Core_Status__c
                                                       from OpportunityLineItem where Description like 'Bulk%'];
         
@@ -174,7 +167,7 @@ public class Core_OpportunityLineItemHandler_Test3 {
             oppLineItem.Description = oppLineItem.Description + ' after update';
             oppLineItem.UnitPrice = oppLineItem.UnitPrice * 2;
             oppLineItem.Quantity = oppLineItem.Quantity * 3;
-            //oppLineItem.Core_BU_Short_Name__c = oppLineItem.Core_BU_Short_Name__c + 'X';
+            oppLineItem.Core_BU_Short_Name__c = oppLineItem.Core_BU_Short_Name__c + 'X';
             oppLineItem.Core_Loss_Cancel_Reason__c = 'Testing';
             oppLineItem.Core_Status__c = 'On Hold';
         }
@@ -182,7 +175,9 @@ public class Core_OpportunityLineItemHandler_Test3 {
         Test.startTest();
         update testOppLineItems;
         Test.stopTest();
-        System.assertEquals(true,true);
+        
+        // Make sure we now have the expected amount of field history entries
+        //System.assertEquals(300, [select count() from Core_Opportunity_Product_History__c]);
     }
     
     // Test a bulk delete of many line items
@@ -197,6 +192,8 @@ public class Core_OpportunityLineItemHandler_Test3 {
         Test.startTest();
         delete testOppLineItems;
         Test.stopTest();
-        System.assertEquals(true,true);
+        
+        // Make sure we now have the expected amount of field history entries
+        //System.assertEquals(400, [select count() from Core_Opportunity_Product_History__c]);
     }
 }

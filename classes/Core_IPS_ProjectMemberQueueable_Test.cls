@@ -42,8 +42,7 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         // Create Users
         ListOfUser = TestUtilities.getListOfUser(1);
         ListOfUser.get(0).ProfileID =  profiles.get('System Administrator');
-	ListOfUser.get(0).UserRoleId = role.Id;
-	insert ListOfUser;
+        insert ListOfUser;
         System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));
         
         // Create Ips Labels
@@ -146,6 +145,7 @@ private class Core_IPS_ProjectMemberQueueable_Test {
             ProjMem.Core_IPS_Contact__c = ListOfContacts.get(0).Id;
             ProjMem.Core_IPS_Project__c = ListOfIpsProjects.get(j).Id;
             ProjMem.Core_User__c = customerUser.Id;            //added by Amritesh
+            ProjMem.Core_Status__c = 'Active';  //added by Rajashekar
             if(j==0){ j=j+1; }
         }
         //Test.startTest();
@@ -207,20 +207,31 @@ private class Core_IPS_ProjectMemberQueueable_Test {
     * Amritesh			          11/08/2017              Created
     ****************************************************************************************************/ 
     static testmethod void AddorRemoveProjMembertoGroup_Test(){
+        
         insertProjectMember(); 
         String query = 'SELECT ' + String.join(new List<String>(Core_IPS_Project_Member__c.sObjectType.getDescribe().fields.getMap().keySet()), ',')
             			+ ' FROM Core_IPS_Project_Member__c';
         List<Core_IPS_Project_Member__c> lstProjMember = Database.query(query);
 		List<Core_IPS_Project_Member__c> lstProjMember_New = lstProjMember.deepClone(true,true,true);
+        List<Core_IPS_Project_Member__c> lstProjMember_old = lstProjMember.deepClone(true,true,true);// added by Rajashekar
         Test.startTest();
-        for(Core_IPS_Project_Member__c ProjMem : lstProjMember){
+        for(Core_IPS_Project_Member__c ProjMem : lstProjMember_New){
             ProjMem.Core_Status__c = 'Inactive';
         }
         ID batchId = System.enqueueJob(new Core_IPS_ProjectMemberQueueable(lstProjMember, lstProjMember_New)); 
-        System.assert(batchId!=null , 'Not in Queue'); 
+       System.assert(batchId!=null , 'Not in Queue');        
         Test.stopTest();
         ID batchId2 = System.enqueueJob(new Core_IPS_ProjectMemberQueueable(lstProjMember_New, lstProjMember)); 
         System.assert(batchId2!=null , 'Not in Queue'); 
+        //Rajashekar---Start
+         for(Core_IPS_Project_Member__c ProjMem : lstProjMember){
+            ProjMem.Core_Status__c = 'Inactive';
+        } 
+        for(Core_IPS_Project_Member__c ProjMem : lstProjMember_New){
+            ProjMem.Core_Status__c = 'Active';
+        }
+        ID batchId3 = System.enqueueJob(new Core_IPS_ProjectMemberQueueable(lstProjMember_New ,lstProjMember ));
+        //Rajashekar---Ends
     }
     
     
@@ -246,7 +257,41 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         System.assert(batchId!=null , 'Not in Queue'); 
         Test.stopTest();
     }
-    
+    //Rajashekar starts
+    static testmethod void RemoveProjectMemberfromGroupAfterDelete_Test1(){
+       
+         // Step 1: Create a 'Standard User' profile (or use an existing one) without delete permissions
+    Profile standardProfile = [SELECT Id FROM Profile WHERE Name = 'Analytics Cloud Integration User' LIMIT 1]; // Adjust the profile name if necessary
+
+    // Step 2: Create test users with the 'Standard User' profile
+    User testUser1 = new User(
+        Username = 'testuser1@example22.com',
+        LastName = 'testName',
+        Email = 'testuser18@example.com',
+        Alias = 'test1',
+        ProfileId = standardProfile.Id,
+        TimeZoneSidKey = 'America/New_York',
+        LocaleSidKey = 'en_US',
+        LanguageLocaleKey = 'en_US',
+        EmailEncodingKey = 'UTF-8',
+        UserRoleId = null
+    );
+    insert testUser1;
+     System.assert(testUser1.Id != null, 'Record not created');
+          
+        insertProjectMember();
+         System.runAs(testUser1) {
+        Test.startTest();
+        String query = 'SELECT ' + String.join(new List<String>(Core_IPS_Project_Member__c.sObjectType.getDescribe().fields.getMap().keySet()), ',')
+            			+ ' FROM Core_IPS_Project_Member__c';
+        List<Core_IPS_Project_Member__c> lstProjMember = Database.query(query);
+       
+        ID batchId = System.enqueueJob(new Core_IPS_ProjectMemberQueueable(lstProjMember, 'removeprojectmemfromgroup'));
+        }
+        //System.assert(batchId!=null , 'Not in Queue'); 
+        Test.stopTest();
+    }
+    //Rajashekar Ends
     /***************************************************************************************************
     Method Name:  InsertProjMember_Test
     Method Type: Test Method
@@ -273,9 +318,9 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
-	User thisUser = [ select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
         Account accountRecord = new Account(
                 recordTypeId =   (Id)Schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId(),
+                ownerid=ListOfUser.get(0).id,
                 Name = 'Dell Products Test',
                 Core_Account_Type__c = 'Distributor',
                 Core_Sales_Segment__c = 'Compute',
@@ -284,13 +329,12 @@ private class Core_IPS_ProjectMemberQueueable_Test {
                 BillingCountry = 'USA',
                 billingState = 'AK',
                 billingStreet = 'Bratislava 1',
-                Core_IPS_Active__c = true,
-		Ownerid =thisUser.id
+                Core_IPS_Active__c = true
           );
-		 //insert accountRecord;
         //Create Users
         System.runAs(ListOfUser.get(0)){
         	//UserList.add(TestUtilities.getCustomerUser('IPS External Customer')); 
+            
             insert accountRecord;
             List<Contact> ListOfContacts = TestUtilities.getListOfContact(1);
             for(Contact ContactRec : ListOfContacts){
@@ -346,7 +390,7 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         for(Account objAcc : ListOfAccounts) {
             lstAccountId.add(objAcc.Id);
         }
-        
+        System.debug('UserList in Core_IPS_PeojectMemberQueueable_Test = '+UserList);
         Test.startTest();
         ID batchId = System.enqueueJob(new Core_IPS_ProjectMemberQueueable(lstUserId, lstAccountId)); 
         System.assert(batchId!=null , 'Not in Queue'); 
@@ -393,15 +437,15 @@ private class Core_IPS_ProjectMemberQueueable_Test {
         Test.stopTest();
     }
     static testmethod void InsertException_PositiveTestMethod(){
-	 String result = 'true';
+        String result = 'true';
             Test.startTest();
             try{
                 Exception excep;
                 integer i = 1/0;
             }catch(exception e){
                 Core_IPS_ProjectMemberQueueable.insertExceptionInFuture('001','Core_IPS_ProjectMemberQueueable','Project Member','Test Exception','Test Method',e.getMessage());
-            }         
-	 System.assert(String.isNotBlank(result) , 'Result Not Empty'); 
+            }          
+            System.assert(String.isNotBlank(result) , 'Result Not Empty');  
             Test.stopTest();
     }
 }

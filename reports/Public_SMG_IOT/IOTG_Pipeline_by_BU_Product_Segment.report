@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>EXP_PRODUCT_AMOUNT:SUM*1</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Weighted $</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_70194091</developerName>
+        <masterLabel>Prod App Groups</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
+            <value>Energy</value>
+        </values>
+        <values>
+            <value>Transportation</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Industrial - Automation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - HMI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - PLC &amp; PAC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - Robotics</sourceValue>
+            </sourceValues>
+            <value>Industrial</value>
+        </values>
+        <values>
+            <value>Medical</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Home Gateway</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
+            <value>Smart Home</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Retail - ATM</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Digital Signage</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Kiosk</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - PC Cash Register</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Point of Sale</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Thin Client</sourceValue>
+            </sourceValues>
+            <value>Retail</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Blade SBC (Single Board Computer)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Interactive Whiteboard</sourceValue>
+            </sourceValues>
+            <value>Emb Other</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>FORMULA1</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>OpportunityLineItem.Core_BU_Product_Segment__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>STAGE_NAME</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Competitor_Architecture__c</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Technical_Owner__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Oppty_Count__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <description>USED IN SMG IOTG PIPELINE DASHBOARD</description>
+    <filter>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IOTG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending,On Hold,Win Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Group</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>IOTG Pipeline by BU Product Segment</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
+    </timeFrameFilter>
+</Report>

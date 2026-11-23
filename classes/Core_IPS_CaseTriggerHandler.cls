@@ -104,11 +104,8 @@ Modification Log :
                 
                 assignProjectCasesOwner(newList);
                 if(Case.SObjectType.getDescribe().isQueryable()){ //FLS already added - Aditya
-               	// APEX GURU - SOQL FIX
                     Map<Id, Case> newListMap = new Map<Id, Case>(newList);
                     caselist = [SELECT Id,RecordTypeId,OwnerId,Core_IPS_GEC_Status__c,ProductId,Asset.Core_Supported_Product__c,Core_IPS_Supported_Product__c,Core_IPS_Project_Case__c,Core_IPS_Project_Case__r.OwnerId,Core_IPS_Project_Case__r.Core_IPS_Private__c,Core_IPS_Private_Project__c,Core_Partner_Supported_Account__c from Case where Id in :newListMap.keyset()];  
-             
-                   // caselist = [SELECT Id,RecordTypeId,OwnerId,Core_IPS_GEC_Status__c,ProductId,Asset.Core_Supported_Product__c,Core_IPS_Supported_Product__c,Core_IPS_Project_Case__c,Core_IPS_Project_Case__r.OwnerId,Core_IPS_Project_Case__r.Core_IPS_Private__c,Core_IPS_Private_Project__c,Core_Partner_Supported_Account__c from Case where Id in :newList];  
                 //US257271 - added GEC recordtype to fix GEC routing
                 Id gECRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('IPS GEC ReadOnly').getRecordTypeId();               
                 for(Case cs : caselist) {
@@ -138,19 +135,25 @@ Modification Log :
         }else if(trigger.isUpdate){
             isUpdate='update';          
             if(!String.isBlank(newListStr)){
-	     // Change Related to HSD Auto Promote                                      
-                
+                // Added New Change For Loop To Check the Product/Owner Change
+                /*for(Case c : newList){
+if(System.Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.ownerId ){
+isAutoPromoteCase = true;
+}
+}*/
                 for(Case c : newList){
-                    //if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)){
-                    if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && ((c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)) || (c.Core_IPS_gec_flag__c ==  true && oldMap.get(c.Id).Core_IPS_gec_status__c != c.Core_IPS_gec_status__c  && (c.Core_IPS_gec_status__c== 'Approved' || c.Core_IPS_gec_status__c== 'Approved with Guardrails')))){
+                    //if(c.Core_IPS_New_Backend_System__c != null && c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)){
+                    if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && ((c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)) || 
+                       (c.Core_IPS_gec_flag__c ==  true && oldMap.get(c.Id).Core_IPS_gec_status__c != c.Core_IPS_gec_status__c && (c.Core_IPS_gec_status__c== 'Approved' || c.Core_IPS_gec_status__c== 'Approved with Guardrails')))){
                         Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired = true;
                         break;
                     } 
                 }
-                if(Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired){  triggerAssignmentRuleAndProvideAccess(newListStr ,oldMapStr,isUpdate);
-              }else {
-              triggerAssignmentRuleWithFuture(newListStr ,oldMapStr,isUpdate);
-            }
+                if(Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired){
+                    triggerAssignmentRuleAndProvideAccess(newListStr ,oldMapStr,isUpdate);
+                }else {
+                    triggerAssignmentRuleWithFuture(newListStr ,oldMapStr,isUpdate);
+                }
         }
     }
     }
@@ -177,19 +180,22 @@ Modification Log :
                 assignProjectCasesOwner(newCaseList);                
                 cases = new List<Case>();  
                 if(Case.SObjectType.getDescribe().isQueryable()){ //FLS check already added - Aditya
-                 // APEX GURU - SOQL FIX
-                 Map<Id, Case> newCaseListMap = new Map<Id, Case>(newCaseList);
-                 // caseList= [select id,Contact.id,OwnerId,Core_IPS_GEC_Status__c,ProductId,Core_IPS_Supported_Product__c,Asset.Core_Supported_Product__c,Core_IPS_Project_Case__c,Core_IPS_Project_Case__r.OwnerId,Core_IPS_Private_Project__c,Core_Partner_Supported_Account__c from Case where Id in : newCaseList];
+                    // Apex Guru
+                    Map<Id, Case> newCaseListMap = new Map<Id, Case>(newCaseList);
                     caseList= [select id,Contact.id,OwnerId,Core_IPS_GEC_Status__c,ProductId,Core_IPS_Supported_Product__c,Asset.Core_Supported_Product__c,Core_IPS_Project_Case__c,Core_IPS_Project_Case__r.OwnerId,Core_IPS_Private_Project__c,Core_Partner_Supported_Account__c,Core_IPS_New_Backend_System__c,Core_Product_Organization__c from Case where Id in : newCaseListMap.keyset()];
-               for(case cs: caseList){
-		 // Change Related to HSD Auto Promote
-                  
-                        // FLS Fix Applied as Part of Apex Guru
+                for(case cs: caseList){
+                        //added by chiru
+                        /*if(Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && isAutoPromoteCase && cs.Core_IPS_Supported_Product__c != oldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c || cs.ownerId != oldCaseMap.get(cs.Id).ownerId){
+cs.Core_IPS_New_Backend_System__c = null;
+isAutoPromoteCase = false;
+}*/
+                        // FLS Fix Applied By Chiru as Part of Apex Guru
                         //if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired && cs.Core_Product_Organization__c != OldCaseMap.get(cs.Id).Core_Product_Organization__c && (OldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.Id).ownerId != cs.OwnerId)  ){
-                         if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired && ( (cs.Core_Product_Organization__c != OldCaseMap.get(cs.Id).Core_Product_Organization__c && (OldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.Id).ownerId != cs.OwnerId)) || (cs.Core_IPS_gec_flag__c ==  true && oldCaseMap.get(cs.Id).Core_IPS_gec_status__c != cs.Core_IPS_gec_status__c  && ( cs.Core_IPS_gec_status__c== 'Approved' || cs.Core_IPS_gec_status__c== 'Approved with Guardrails')) ) ){     
+                         if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired && ( (cs.Core_Product_Organization__c != OldCaseMap.get(cs.Id).Core_Product_Organization__c && (OldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.Id).ownerId != cs.OwnerId))
+                              || (cs.Core_IPS_gec_flag__c ==  true && oldCaseMap.get(cs.Id).Core_IPS_gec_status__c != cs.Core_IPS_gec_status__c  && ( cs.Core_IPS_gec_status__c== 'Approved' || cs.Core_IPS_gec_status__c== 'Approved with Guardrails') )) ){  
                             cs.Core_IPS_New_Backend_System__c = null; 
-                            //Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired = false;
-                   }
+                            Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired = false;
+                        }
                     String caseKey = (cs.Core_IPS_Supported_Product__c==null ? String.valueOf(cs.Asset.Core_Supported_Product__c) : String.valueOf(cs.Core_IPS_Supported_Product__c)) + 
                         String.valueOf(cs.Core_IPS_Project_Case__c);
                     //added to future for email issue US257271
@@ -267,13 +273,11 @@ Modification Log :
             Set<string> subStatusSet = new Set<String>();        
             subStatusSet.addAll(Label.Core_IPS_Case_Stop_SLA.split(','));                
             for (Case cs:newList){     
-                
-                if( String.isNotBlank(cs.Core_Sub_Status__c) && subStatusSet.contains(cs.Core_Sub_Status__c)){
-                    //US92741 - Complete the first response 
-                    if(!cs.Core_First_Response_Completed__c){
+                //Avoid Deeply Nested IF Statements - Kamala
+                if(( String.isNotBlank(cs.Core_Sub_Status__c) && subStatusSet.contains(cs.Core_Sub_Status__c)) && (!cs.Core_First_Response_Completed__c)){
+                    //US92741 - Complete the first response   
                         cs.Core_First_Response_Completed__c  = true;
-                        //   cs.Core_Next_Response_Due_Date__c = milestoneutils.getSetNextResponseDueDate(cs);
-                    }
+                        //   cs.Core_Next_Response_Due_Date__c = milestoneutils.getSetNextResponseDueDate(cs); 
                 }
             }
             
@@ -339,13 +343,11 @@ Modification Log :
                 maxStartDate     = mapMaxStartDate.get(cs.Id);
                 
                 Boolean changedNRDD  = (oldMap.get(cs.Id).Core_Next_Response_Due_Date__c != cs.Core_Next_Response_Due_Date__c);
-                if (maxStartDate != NULL && changedNRDD) 
+                //Avoid Deeply Nested IF Statements - Kamala
+                if ((maxStartDate != NULL && changedNRDD) && (cs.Core_Next_Response_Due_Date__c < maxStartDate))
                 {                    
-                    if (cs.Core_Next_Response_Due_Date__c < maxStartDate) {
                         String strStartDate = maxStartDate.format('MM-dd-YY HH:mm:ss z');
-                            cs.addError(Label.Core_IPS_Case_Milestone_Error + strStartDate);
-                        
-                    }
+                            cs.addError(Label.Core_IPS_Case_Milestone_Error + strStartDate);     
                 }
                 
                 if (cs.Core_Sub_Status__c == NULL){
@@ -368,7 +370,7 @@ Modification Log :
                       if(!caseSLAManagementUserResult.isPortalEnabled) {
                           
                           objCaseMilestone = mapCaseMilestone.get(cs.Id);
-                          if (objCaseMilestone <> null) {
+                          if (objCaseMilestone <> null && objCaseMilestone.CompletionDate == null) {// Added by Tushar part of Core IPS Attachment Update Case Field WF issue
                               
                               objCaseMilestone.completionDate = System.now();                            
                               
@@ -431,7 +433,7 @@ Modification Log :
 ****************************************************************************************************/      
     public static void assignCaseInformation(List<case> newList, Map<Id,Case> oldMap, Boolean isMigrationUser){
 
-        //added as part of code refactor
+        //added by AJ
         String groupName=System.Label.Core_IPS_GEC_Queue_DeveloperName;
         list<Group>listwithgroup=[SELECT Id, Name, DeveloperName 
                                   FROM Group 
@@ -481,14 +483,11 @@ Modification Log :
         boolean isLoggeInUserMigrationUser   = Core_IPS_CaseTriggerHandler.isMigrationUser(string.valueof(userinfo.getuserId()));
         boolean isLoggeInUserIntegrationUser = false;
         if(Core_IPS_CaseTriggerHandler.GlobalUserRecords!=null && Core_IPS_CaseTriggerHandler.GlobalUserRecords.size()>0 && Core_IPS_CaseTriggerHandler.GlobalUserRecords.containskey(userinfo.getuserId()) ){
-          
             if(Core_IPS_CaseTriggerHandler.GlobalUserRecords.get(userinfo.getuserId()).Profile.Name == Label.Core_Integration_Profile_Name){ isLoggeInUserIntegrationUser = true; }
         }
         else{
-          
             isLoggeInUserIntegrationUser = Core_IPS_Case_Comments_Handler.isIntegrationUser(string.valueof(userinfo.getuserId())); 
         }
-        
         //Modified byUS221486 Gourav-for Supported Contact
         Map<Id,Contact> mapIdToContact = new Map<Id,Contact>(Core_IPS_Helper_Utility.getIntelSupportOwnerByContact_ResultList); // added by Sugandha
         
@@ -628,7 +627,7 @@ cs.Core_IPS_Restricted_Secret_Content__c =  true;
                 
                 cs.RecordTypeId = Core_IPS_CaseTriggerHandler.getCaseRecordtypeIDByName('IPS GEC ReadOnly');
                 // Add to map IF it isn't already in the map  
-                // added as part of code refactor
+                // added by AJ  
                 mapGroupByName = loadGroupByName(listwithgroup, mapGroupByName);
                 Group objGroup = mapGroupByName.get(System.Label.Core_IPS_GEC_Queue_DeveloperName);
                 if (objGroup != NULL)        
@@ -679,6 +678,7 @@ cs.Core_IPS_Restricted_Secret_Content__c =  true;
             //Core IPS GEC Status For Approved
             //added by Abhishek Rajput for "Approved with Guardrails" condition on 28/07/2016 -- US37717 
             //Modified By: Neeti Jain(DE33336) to bypass this condition for migration user
+
             if((!isLoggeInUserMigrationUser &&(oldMap == null && (cs.Core_IPS_GEC_Status__c == 'Approved' || cs.Core_IPS_GEC_Status__c == 'Approved with Guardrails') && (cs.Core_IPS_GEC_Flag__c || cs.Core_IPS_GEC_Case__c)) || (oldMap!=null && (oldMap.get(cs.Id).Core_IPS_GEC_Status__c  <> cs.Core_IPS_GEC_Status__c || oldMap.get(cs.Id).Core_IPS_GEC_Flag__c  <> cs.Core_IPS_GEC_Flag__c || oldMap.get(cs.Id).Core_IPS_GEC_Case__c <> cs.Core_IPS_GEC_Case__c) && (cs.Core_IPS_GEC_Status__c == 'Approved' || cs.Core_IPS_GEC_Status__c == 'Approved with Guardrails') &&  (cs.Core_IPS_GEC_Flag__c || cs.Core_IPS_GEC_Case__c)))){             
                 /* Sneha Iteration 11 DE43292 START */ 
                 // When Minds use/GEC is set to false and If 'No Contact Assigned' checkbox is true, reverting the Case to NAC; defaulting to IPS Case Create otherwise.
@@ -864,9 +864,8 @@ Modification Log :
             if(getCaseInformationByAssetResultList == null || Core_Utility.executeQuery(getCaseInformationByAssetOrSuppProdNewContIdList,getCaseInformationByAssetOldContIdList))
             {
                 if(Asset.SObjectType.getDescribe().isAccessible()){ // FLS check already added
-                    // added as part of code refactor
+                    // added by chiru code refactor
                     if(Core_IPS_CaseTriggerHandler.GlobalAssetRecords!=null &&  Core_IPS_CaseTriggerHandler.GlobalAssetRecords.size()>0 && !isQueryRequired(idList,Core_IPS_CaseTriggerHandler.GlobalAssetRecords,null)){
-                      
                         for(Id value : idSet){
                             if(Core_IPS_CaseTriggerHandler.GlobalAssetRecords.containskey(value)){
                                 getCaseInformationByAssetResultList.add(Core_IPS_CaseTriggerHandler.GlobalAssetRecords.get(value));   
@@ -875,8 +874,7 @@ Modification Log :
                     }
                     //FLS Added as Part of code refactor
                     else if(Asset.SObjectType.getDescribe().isQueryable()){
-                     
-                getCaseInformationByAssetResultList = [select id, name,core_supported_product__c,product2Id, Core_Product_Organization__c from asset where id in:idSet];
+                        getCaseInformationByAssetResultList = [select id, name,core_supported_product__c,product2Id, Core_Product_Organization__c from asset where id in:idSet];
                     }
                     //END
                 }
@@ -1057,11 +1055,10 @@ Modification Log :
                 {   //FLS Check alredy added - Aditya
                     //Added as part of Code Refactor TWC745-6459
                     if (Core_IPS_CaseTriggerHandler.GlobalContactRecords != null && Core_IPS_CaseTriggerHandler.GlobalContactRecords.size()>0 && !isQueryRequired(contactIdsList,Core_IPS_CaseTriggerHandler.GlobalContactRecords,null)){
-                       
                         contactResultList = Core_IPS_CaseTriggerHandler.GlobalContactRecords.values();
                     }
-                    else if(Contact.SObjectType.getDescribe().isAccessible()){
-                    	contactResultList = [select id,accountid from Contact where id in :contactIds];
+                    else if(Contact.SObjectType.getDescribe().isQueryable()){
+                        contactResultList = [select id,accountid from Contact where id in :contactIds];
                     }
                     oldContIdList.clear();
                     oldContIdList.addAll(contactIds);
@@ -1223,11 +1220,9 @@ Modification Log :
             //Added as part of Code Refactor TWC745-6459
             if (Core_IPS_CaseTriggerHandler.GlobalContactRecords != null && Core_IPS_CaseTriggerHandler.GlobalContactRecords.size()>0 && !isQueryRequired(new List<Id>(SetContactID),Core_IPS_CaseTriggerHandler.GlobalContactRecords,null)){
                 MapContact = Core_IPS_CaseTriggerHandler.GlobalContactRecords;
-              
             }
             else{
-            MapContact =  new Map<Id,Contact>([Select id,AccountID from Contact where id in :SetContactID]);           
-              
+                MapContact =  new Map<Id,Contact>([Select id,AccountID from Contact where id in :SetContactID]);
             }
             //END
         }
@@ -1446,24 +1441,20 @@ Account value when project is null but NAC will not have account so need to chec
                     }   
                     if(Core_IPS_Project__c.SObjectType.getDescribe().isQueryable()){
                     if(projectIdbyCaseId <> null && projectIdbyCaseId.size() > 0){
-                        // Start : Code Refactor Changes to Reduce Project Query **********************************************************
-                        List<String> ProjectIds = new List<String>(); // Code Refactor changes
+                        // Start : Code Refactor Changes Made By chiru to Reduce Project Query **********************************************************
+                        List<String> ProjectIds = new List<String>(); // Code Refactor Added By chiru
                         for(Id value : projectIdbyCaseId.Values()){
                             ProjectIds.add(String.ValueOf(value));
                         }
-                       
                         if( !ProjectIds.isEmpty() && Core_Utility.executeQuery(ProjectIds,OldprojectIdList) ) {
-                          
                             // END
-                        projList = [select Id,Core_IPS_GroupId__c,Core_IPS_InternalGroupId__c from Core_IPS_Project__c where Id in:projectIdbyCaseId.values()];
+                            
+                            projList = [select Id,Core_IPS_GroupId__c,Core_IPS_InternalGroupId__c from Core_IPS_Project__c where Id in:projectIdbyCaseId.values()];
                             // Start
-                          
                             if(!projList.isEmpty()){  GlobalProjectRecordsList = new List<Core_Ips_Project__c>(projList); }
                             OldprojectIdList = new List<String>(ProjectIds);
                         } else if(GlobalProjectRecordsList != null && GlobalProjectRecordsList.size()>0){
-                          
                             projList = new List<Core_IPS_Project__c>(GlobalProjectRecordsList);
-                          
                         }
                         //END *****************************************************************************************************************************
                     }
@@ -1544,16 +1535,15 @@ Account value when project is null but NAC will not have account so need to chec
                     Map<Id,Id> groupIdbyProjectId = new Map<Id,Id>();
                     Map<Id,Id> internalGroupIdbyProjectId = new Map<Id,Id>();       //added by Aayushi US102841
                     if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){ // FLS Check already added - aditya
-                    // Start : Code Refactor Changes to Reduce Project Query **********************************************************
-                    List<String> ProjectIds = new List<String>( ); // Code Refactor changes
+                    // Start : Code Refactor Changes Made By chiru to Reduce Project Query **********************************************************
+                    List<String> ProjectIds = new List<String>( ); // Code Refactor Added By chiru
                     for(Id value : projectIdSet){
                         ProjectIds.add(String.ValueOf(value));
                     }
+                    
                     if( !ProjectIds.isEmpty() && Core_Utility.executeQuery(ProjectIds,OldprojectIds) ) {
-                      
                         OldprojectIds = new List<String>(ProjectIds);
-                       
-                        // FLS FIX
+                        // FLS FIX ADDED BY CHIRU
                         // START
                         List<Core_IPS_Project__c> ProjectList = new List<Core_IPS_Project__c>();
                         if(Core_IPS_Project__c.SObjectType.getDescribe().isQueryable()){
@@ -1564,16 +1554,16 @@ Account value when project is null but NAC will not have account so need to chec
                         for(Core_IPS_Project__c projObj : ProjectList){
                             GlobalProjectRecords = new List<Core_IPS_Project__c>();
                             GlobalProjectRecords.add(projObj);
-                        groupIdbyProjectId.put(projObj.Id,projObj.Core_IPS_GroupId__c);
-                        //added by Aayushi US102841
-                        if(projObj.Core_IPS_InternalGroupId__c!=null){
-                            internalGroupIdbyProjectId.put(projObj.Id,projObj.Core_IPS_InternalGroupId__c);
-                        }
+                            
+                            groupIdbyProjectId.put(projObj.Id,projObj.Core_IPS_GroupId__c);
+                            //added by Aayushi US102841
+                            if(projObj.Core_IPS_InternalGroupId__c!=null){
+                                internalGroupIdbyProjectId.put(projObj.Id,projObj.Core_IPS_InternalGroupId__c);
+                            }
                         }
                         //Start
-                    } 
+                    }  
                     else if(GlobalProjectRecords != null && GlobalProjectRecords.size()>0){
-                       
                         for(Core_IPS_Project__c projObj: GlobalProjectRecords){
                             groupIdbyProjectId.put(projObj.Id,projObj.Core_IPS_GroupId__c);
                             //added by Aayushi US102841
@@ -1662,7 +1652,7 @@ Account value when project is null but NAC will not have account so need to chec
                     Map<Id,Set<Id>> caseContactUserCustomerVisibleFalseMap = new Map<Id,Set<Id>>();
                     Map<Id,Set<Id>> caseContactUserCustomerVisibleTrueMap = new Map<Id,Set<Id>>();
                     
-                //added as part of Code Refactor 
+                //added by chiru, Code Refactor 
                 List<user> uList = new List<user>();
                 List<ID> caseContactIds = new List<ID>();
                 if(caseContactIdsCustomerVisibleFalseSet != null){ caseContactIds.addAll(caseContactIdsCustomerVisibleFalseSet); }
@@ -1677,15 +1667,13 @@ Account value when project is null but NAC will not have account so need to chec
                             uList.add(userRecordsMap.get(contactUserIdsMap.get(value)));
                         }
                     }
-                 
                 }
                 else  {
                     uList = [Select ContactId,Id from User where ContactId IN : caseContactIdsCustomerVisibleFalseSet OR contactID in :caseContactIdsCustomerVisibleTrueSet]; /***/
-                  
                 }
                 //end
                 
-                    //Retrieving the users of ContactId vs User id  -- Added by Eswar 0n 08-11-2017  (US72553 Iteration 2)
+                //Retrieving the users of ContactId vs User id  -- Added by Eswar 0n 08-11-2017  (US72553 Iteration 2)
                 //commmented for loop query - code Refactor
                 //  for(User uObj: [Select ContactId,Id from User where ContactId IN : caseContactIdsCustomerVisibleFalseSet OR contactID in :caseContactIdsCustomerVisibleTrueSet]){
                 for(User uObj: uList){
@@ -1796,7 +1784,7 @@ Account value when project is null but NAC will not have account so need to chec
         if (mapGroupByName == NULL){
             mapGroupByName = new Map<String,Group>();
         }else {
-            
+            //give proper name in place of g
             for(Group g:listwithgroup){
                 if (mapGroupByName.keySet().contains(g.developerName)){
                 return mapGroupByName;
@@ -1903,12 +1891,11 @@ accountIds.add(cc.accountId);
                     
                 } 
                 supContIds.add(cc.Core_IPS_Supported_Contact__c);  //Added for US221489
-                
-                if((cc.Status!=null) && (cc.RecordTypeId!=null) && (caseRTId!=null))       
-                {       
-                    if((cc.Status=='New') && (cc.Core_Severity__c!=null) && (caseRTId.contains(cc.RecordTypeId))){      
-                        cc.Priority=cc.Core_Severity__c;        
-                    }       
+                // Avoid Deeply Nested IF Statements - Kamala
+                if(((cc.Status!=null) && (cc.RecordTypeId!=null) && (caseRTId!=null)) 
+					&& ((cc.Status=='New') && (cc.Core_Severity__c!=null) && (caseRTId.contains(cc.RecordTypeId))))       
+                {                    
+                        cc.Priority=cc.Core_Severity__c;           
                 } 
                 
                 //US253168: Gourav - Logic for new MINDS routing to GEC Queue
@@ -1931,11 +1918,9 @@ accountIds.add(cc.accountId);
             }
             //Start - Added as part of Code Refactor TWC745-6459
             if(supContIds !=null && supContIds.size()>0 && Core_IPS_CaseTriggerHandler.GlobalContactRecords!= null && Core_IPS_CaseTriggerHandler.GlobalContactRecords.size()>0 && !isQueryRequired(new List<Id>(supContIds),Core_IPS_CaseTriggerHandler.GlobalContactRecords,null)){
-              
                 contMap = Core_IPS_CaseTriggerHandler.GlobalContactRecords;
             }
             else if(supContIds !=null && supContIds.size()>0 && Contact.SObjectType.getDescribe().isAccessible()){ //FLS Check already added - Aditya
-              
                 contMap = new Map<Id,Contact>([Select Id,AccountId,Account.Core_CNDA_Number__c from Contact where Id in :supContIds AND Account.Core_CNDA_Number__c!=null]); //Added for US221489
             }
             //End 
@@ -2033,11 +2018,10 @@ Modification Log :
             }
             //Added as part of Code Refactor TWC745-6459
             if(!supportedContId.isEmpty() && Core_IPS_CaseTriggerHandler.GlobalContactRecords!= null && Core_IPS_CaseTriggerHandler.GlobalContactRecords.size()>0 && !isQueryRequired(new List<Id>(supportedContId),Core_IPS_CaseTriggerHandler.GlobalContactRecords,null)){
-             
                 suppContAccMap = Core_IPS_CaseTriggerHandler.GlobalContactRecords;
             }
-            else if(!supportedContId.isEmpty() && Contact.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-            suppContAccMap = new Map<Id,Contact>([Select Id,AccountId from Contact where Id in :supportedContId]);
+            else if(!supportedContId.isEmpty() && Contact.SObjectType.getDescribe().isQueryable()){ //FLS check already added - Aditya
+                suppContAccMap = new Map<Id,Contact>([Select Id,AccountId from Contact where Id in :supportedContId]);
             }
             //End 
             for(Case c : triggerNew){
@@ -2055,10 +2039,10 @@ Modification Log :
                         String key = String.valueOf(accountID) + String.valueOf(c.assetId);
                         accountAssetIdComboToAccountIdMap.put(key, accountID );
                         assetIds.add(c.assetId);
-                        if(Trigger.isUpdate){
-                            if(c.AssetId != oldmap.get(c.Id).AssetId){
+                        
+                        //Avoid Deeply Nested IF Statements - Kamala
+                        if((Trigger.isUpdate) && (c.AssetId != oldmap.get(c.Id).AssetId)){
                                 assetIds.add(oldmap.get(c.Id).AssetId);        
-                            }
                         }  
                     }
                 }
@@ -2066,11 +2050,9 @@ Modification Log :
             
             //Start - Added as part of Code Refactor TWC745-6459
             if(!assetIds.isEmpty() && Core_IPS_CaseTriggerHandler.GlobalAssetRecords!= null && Core_IPS_CaseTriggerHandler.GlobalAssetRecords.size()>0 && !isQueryRequired(new List<Id>(assetIds),Core_IPS_CaseTriggerHandler.GlobalAssetRecords,null)){
-              
                 assetMap = Core_IPS_CaseTriggerHandler.GlobalAssetRecords;
             }
             else if(!assetIds.isEmpty()){
-              
                 assetMap = new Map<Id,Asset>([SELECT Id,Core_Product_Organization__c FROM Asset WHERE isDeleted = false AND  Id IN : assetIds]);
             }
             //End 
@@ -2120,9 +2102,12 @@ Modification Log :
                         }  
                     }
                 }
-                if(Trigger.isInsert && c.recordTypeId == noAssignedContactCaseId){
-                    if(String.isNotBlank(supportLevelDefaultValueNoAssignedContact) && String.isBlank(c.Core_IPS_Support_Level__c)) {
-                        c.Core_IPS_Support_Level__c = supportLevelDefaultValueNoAssignedContact; }
+                
+                //Avoid Deeply Nested IF Statements - Kamala
+                if((Trigger.isInsert && c.recordTypeId == noAssignedContactCaseId) 
+                   && (String.isNotBlank(supportLevelDefaultValueNoAssignedContact) && String.isBlank(c.Core_IPS_Support_Level__c))){
+                    
+                        c.Core_IPS_Support_Level__c = supportLevelDefaultValueNoAssignedContact; 
                 }
                 
             }
@@ -2464,13 +2449,11 @@ Modification Log :
         if(!setNewCsOwnerIds.isEmpty() || !setNewCsCoOwnerIds.isEmpty()){
             //Added as part of Code Refactor TWC745-6459
             if(Core_IPS_CaseTriggerHandler.GlobalUserRecords!= null && Core_IPS_CaseTriggerHandler.GlobalUserRecords.size()>0  && !isQueryRequired(new List<Id>(setNewCsOwnerIds),Core_IPS_CaseTriggerHandler.GlobalUserRecords,null)  && !isQueryRequired(new List<Id>(setNewCsCoOwnerIds),Core_IPS_CaseTriggerHandler.GlobalUserRecords,null)){
-             
                 mapPartUsers = Core_IPS_CaseTriggerHandler.GlobalUserRecords;
             }
             else{
-            for(User usr: [Select id,ProfileId,Profile.Name,UserType from User where (Id IN :setNewCsOwnerIds OR Id IN :setNewCsCoOwnerIds) /* and ProfileId = : System.Label.Core_IPS_Agent_Partner_Profile_id */ ]){
-                //setPartUsers.add(u.Id);
-                mapPartUsers.put(usr.id,usr);
+                for(User usr: [Select id,ProfileId,Profile.Name,UserType from User where (Id IN :setNewCsOwnerIds OR Id IN :setNewCsCoOwnerIds)  ]){
+                    mapPartUsers.put(usr.id,usr);
                 }
             }
             //End
@@ -2699,11 +2682,9 @@ Modification Log :
             if(!mapOwnerId.isEmpty()) {
                 //Added as part of Code Refactor TWC745-6459
                 if(Core_IPS_CaseTriggerHandler.GlobalUserRecords!= null && Core_IPS_CaseTriggerHandler.GlobalUserRecords.size()>0 && !isQueryRequired(mapOwnerId.values(),Core_IPS_CaseTriggerHandler.GlobalUserRecords,null)){
-                 
                     mapUser = Core_IPS_CaseTriggerHandler.GlobalUserRecords;
                 }
                 else{
-                 
                     mapUser = new Map<Id,User>([SELECT Id,ManagerId,Manager.ManagerId FROM User WHERE Id IN: mapOwnerId.values()]);
                 }
                 if(!mapUser.isEmpty()) { 
@@ -2791,7 +2772,7 @@ Modification Log :
                 //US257271 added compliance Status check
                 
                 if(OldCaseMap.get(cs.id).productid != cs.productid|| OldCaseMap.get(cs.id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.id).assetId != cs.AssetId  || (OldCaseMap.get(cs.id).Core_IPS_GEC_Status__c != cs.Core_IPS_GEC_Status__c && (cs.Core_IPS_GEC_Status__c == Core_IPS_Helper_Utility.getIPSLabel('GEC_Status_Approved')||cs.Core_IPS_GEC_Status__c == Core_IPS_Helper_Utility.getIPSLabel('GEC_Status_Approved_WithG')))){
-                    caseKey = (mapCaseAssetSupProd.containskey(cs.AssetId)? String.valueOf(mapCaseAssetSupProd.get(cs.AssetId)):'') + String.valueOf(cs.Core_IPS_Project_Case__c);//changes done as part of code refactor
+                    caseKey = (mapCaseAssetSupProd.containskey(cs.AssetId)? String.valueOf(mapCaseAssetSupProd.get(cs.AssetId)):'') + String.valueOf(cs.Core_IPS_Project_Case__c);//changes done by chiru as part of code refactor
                     if(mapProjProdOwner !=null && mapProjProdOwner.containsKey(caseKey)){  cs.OwnerId=mapProjProdOwner.get(caseKey);
                                                                                          
                                                                                         } else if(mapProjProdOwner !=null && mapProjProdOwner.containsKey(cs.Core_IPS_Project_Case__c) && cs.Core_IPS_Private_Project__c){
@@ -2833,7 +2814,7 @@ Modification Log :
                 projIDs.add(c.Core_IPS_Project_Case__c);
                 if(c.AssetId!=null){
                     caseAssetids.add(c.AssetId);
-                    // added as part of Code Refactor - 21/09/2024
+                    // added by chiru Code Refactor - 21/09/2024
                     // Start
                     if(GlobalAssetRecords != null && GlobalAssetRecords.size()>0 && GlobalAssetRecords.containsKey(c.AssetId)){
                         Asset record = GlobalAssetRecords.get(c.AssetId);
@@ -2844,7 +2825,7 @@ Modification Log :
                     //End
                 }
             }
-          
+            // fls added  by chiru
             // Code Refactor Changes - condition Added - 21/09/2024
             if(caseAssetids.size()>0 && projIDs!=null && projIDs.size()>0 && AssetList.isEmpty() && Asset.SObjectType.getDescribe().isAccessible()) { //FLS Already added - Aditya
                 for(Asset objAst : [SELECT Id,Core_Supported_Product__c FROM Asset WHERE Id IN :caseAssetids]){
@@ -2904,6 +2885,7 @@ Modification Log :
             
     //         for(case cs : newList){
     //            if(Integer.valueOf(System.Label.Core_IPS_EnableDebug)>0){
+    //             }
 
     //             //if(oldMap==null || (oldMap!=null && (cs.OwnerId!=oldMap.get(cs.id).OwnerId || cs.Core_IPS_Product_Org1__c != oldMap.get(cs.id).Core_IPS_Product_Org1__c))) // Commented by Ganapati for - US431208
     //            // if(oldMap==null || (oldMap!=null && (cs.Core_IPS_Case_Owner_Email__c!=oldMap.get(cs.id).Core_IPS_Case_Owner_Email__c || cs.Core_IPS_Product_Org1__c != oldMap.get(cs.id).Core_IPS_Product_Org1__c))) // Modified by Ganapati for - US431208
@@ -2968,13 +2950,15 @@ Modification Log :
             // Added Core_IPS_Case_Owner_Groups__c field in below query by chetan to fix COG issue while updating the cases.
             list<case> newcasedatalist = [Select id ,Core_IPS_Case_Owner_Email__c ,Core_IPS_Product_Org1__c ,Core_IPS_New_Backend_System__c ,Core_IPS_Case_Owner_Groups__c from case WHERE Id In : caseIdmap.keyset() ];
             for(case cs : newcasedatalist){
-              
+               if(Integer.valueOf(System.Label.Core_IPS_EnableDebug)>0){
+                }
                 //if(oldMap==null || (oldMap!=null && (cs.OwnerId!=oldMap.get(cs.id).OwnerId || cs.Core_IPS_Product_Org1__c != oldMap.get(cs.id).Core_IPS_Product_Org1__c))) // Commented by Ganapati for - US431208
                // if(oldMap==null || (oldMap!=null && (cs.Core_IPS_Case_Owner_Email__c!=oldMap.get(cs.id).Core_IPS_Case_Owner_Email__c || cs.Core_IPS_Product_Org1__c != oldMap.get(cs.id).Core_IPS_Product_Org1__c))) // Modified by Ganapati for - US431208
                 if(oldMap==null || (oldMap!=null && ((cs.Core_IPS_Case_Owner_Email__c!=oldMap.get(cs.id).Core_IPS_Case_Owner_Email__c || cs.Core_IPS_Product_Org1__c != oldMap.get(cs.id).Core_IPS_Product_Org1__c) ||
                                                      (cs.Core_IPS_Case_Owner_Email__c!=null && cs.Core_IPS_Case_Owner_Groups__c == null && cs.Core_IPS_New_Backend_System__c!=null))))
                 {
-                 
+                 if(Integer.valueOf(System.Label.Core_IPS_EnableDebug)>0){
+                 }
                     cs.Core_IPS_Case_Owner_Groups__c = null;    
                     //caseOwnerSet.add(cs.OwnerId);
                     caseOwnerEmailSet.add(cs.Core_IPS_Case_Owner_Email__c);
@@ -2998,9 +2982,11 @@ Modification Log :
                     for(case cs : lstScope){     
                         //String key = String.valueOf(cs.ownerId) + String.valueOf(cs.Core_IPS_Product_Org1__c);
                         String key = String.valueOf(cs.Core_IPS_Case_Owner_Email__c) + String.valueOf(cs.Core_IPS_Product_Org1__c); // Modified by Ganapati for - US431208
-                        
+                        if(Integer.valueOf(System.Label.Core_IPS_EnableDebug)>0){
+                    	}
                         if(mapCaseOwnerGroup.containsKey(key)) {
-                                
+                                if(Integer.valueOf(System.Label.Core_IPS_EnableDebug)>0){
+                    		}
                             cs.Core_IPS_Case_Owner_Groups__c = mapCaseOwnerGroup.get(key);
                         }
                       caseListtoUpdate.add(cs);  
@@ -3153,10 +3139,9 @@ Modification Log :
             //Added as part of Code Refactor TWC745-6459
             if(Core_IPS_CaseTriggerHandler.GlobalUserRecords != null && Core_IPS_CaseTriggerHandler.GlobalUserRecords.size()>0 && !isQueryRequired(new List<Id>(createByUserIds),Core_IPS_CaseTriggerHandler.GlobalUserRecords,null)){
                 userProfileMap = Core_IPS_CaseTriggerHandler.GlobalUserRecords;
-              
             }    
             else{
-            userProfileMap = new Map<Id,User>([SELECT ProfileID from User where ID IN:createByUserIds]);
+                userProfileMap = new Map<Id,User>([SELECT ProfileID from User where ID IN:createByUserIds]);
             }
         }
         for(Case cs : ipsNewRecordList){
@@ -3223,12 +3208,9 @@ Modification Log :
                     backendIds.add(newMap.get(getCase.Id).Core_IPS_New_Backend_System__c);
                 }
             }
-         
             getNewBackendIdList.clear();
             getNewBackendIdList.addAll(backendIds);
-       
             if(backendIds.size()>0 && Core_Utility.executeQuery(getNewBackendIdList,getOldBackendIdList)){
-         
                 backendRecMap = new Map<Id,Core_IPS_Backend_System2__c>([SELECT Id,Name,Core_IPS_Deactivated__c FROM Core_IPS_Backend_System2__c where ID IN:backendIds]);
                 getOldBackendIdList.clear();
                 getOldBackendIdList.addAll(backendIds);
@@ -3305,11 +3287,11 @@ Modification Log :
                     /* allCustomSettings =[Select id, Object_Name__c, API_Name__c, JSON_Field_Name__c,Order__c,Additional_Info__c from IPS_Case_Fields__c where Object_Name__c = 'case' order by Order__c DESC Limit 100];
                     for(IPS_Case_Fields__c setting: allCustomSettings){
                         customSettingMap.put(setting.JSON_Field_Name__c, setting.API_Name__c);
+
 }*/
                     for(IPS_Case_Fields__c setting: IPS_Case_Fields__c.getAll().values()){
                         if(setting.Object_Name__c == 'Case'){
                             customSettingMap.put(setting.JSON_Field_Name__c, setting.API_Name__c);
-                        
                         }
                     }
                 }
@@ -3320,17 +3302,19 @@ Modification Log :
                 List<Core_IPS_Backend_System2__c> backendMappings = new List<Core_IPS_Backend_System2__c>();
                 String query = 'SELECT ID, (SELECT ID, Core_IPS_New_Backend_System__c, Core_Object_Name__c, Core_IPS_Source_Field__c, Core_IPS_Direction__c, Support_Update__c FROM Backend_Field_Mappings__r WHERE Support_Update__c = true and Core_IPS_Direction__c =\''+
                                 String.escapesinglequotes(direction)+'\') from Core_IPS_Backend_System2__c WHERE Id IN (Select Core_IPS_New_Backend_System__c from case where ID IN:newKeys)';
-             
                 //Added as part of Code Refactor TWC745-6459
                 if(Core_IPS_Backend_System2__c.SObjectType.getDescribe().isQueryable() && backendIds.size()>0 && Core_Utility.executeQuery(getNewBackendIdList,getOldCaseBackendIdList)){
-                 
+                 //   system.debug('CODE REFACTOR PBDDD BK1 old-- BackendSystem AND CASE QUERY executed');
                     backendMappings = Database.query(query);
-                 
+                 //   system.debug('CODE REFACTOR PBDDD BK4 old--'+getOldBackendIdList+'---'+getOldCaseBackendIdList);
+                 //   system.debug('CODE REFACTOR PBDDD BK4 new --'+getNewBackendIdList+'---'+getOldCaseBackendIdList);
                     getOldCaseBackendIdList.clear();
                     getOldCaseBackendIdList.addAll(backendIds);
-                 
+                 //   system.debug('CODE REFACTOR PBDDD BK5 old--'+getOldBackendIdList+'---'+getOldCaseBackendIdList);
+                 //   system.debug('CODE REFACTOR PBDDD BK5 new --'+getNewBackendIdList+'---'+getOldCaseBackendIdList);
                 } 
-              
+              //  system.debug('CODE REFACTOR PBDDD BK6 old--'+getOldBackendIdList);
+               // system.debug('CODE REFACTOR PBDDD BK6 new --'+getNewBackendIdList);
                 Map<Id,List<String>> caseFieldMap = new Map<Id, List<String>>();
                 Map<Id,List<String>> edqFieldMap = new Map<Id, List<String>>();
                //Logic to get API names from field value mapping of the backend system for both case fields and edq fields.
@@ -3427,9 +3411,9 @@ Modification Log :
             caseComment.Core_IPS_Case__c = csId; 
         commentList.add(caseComment);
         }
-        //fls added as part of code refactor
+        //fls addede by chiru
         if(Schema.sObjectType.Core_IPS_Case_Comments__c.isCreateable() && !commentList.isEmpty()){
-        insert commentList;
+            insert commentList;
         }
         // return commentList;
     }
@@ -3470,7 +3454,7 @@ Modification Log :
         }
         //FLS Added as Part of code refactor
         if((Schema.sObjectType.Core_IPS_Case_Comments__c.isCreateable() && listOfCommentInsert!=null  && !listOfCommentInsert.isEmpty()) || !Test.isRunningTest() ){
-             insert listOfCommentInsert;
+            insert listOfCommentInsert;
         }
         return listOfCommentInsert;
     }   
@@ -3584,11 +3568,98 @@ Modification Log :
         }
         return edqMap;
     }
+    
+    /*Start - TWC777-2514 - 08/08/2024 - Vishal - STOWD - Custom Implementation - Method invoked to create the Status & Ownership Records on Case update*/
+    public static Boolean hasHandlerExecuted = false;
+    public static void handleBeforeUpdate(List<Case> newCases, Map<Id, Case> oldCaseMap){
+        if(System.Label.isCustomSTOWDEnabled == '1'){
+            Map<String,STOWD_Tracking_Field__mdt> obj = STOWD_Tracking_Field__mdt.getAll();
+            List<Id> caseObjIds = new List<Id>();
+            for (Case newCase : newCases) {
+                Case oldCase = oldCaseMap.get(newCase.Id);
+                if (((obj.get('Case_Create_Status').IsActive__c) && newCase.Status != oldCase.Status && obj.containsKey('Case_Create_Status') && obj.get('Case_Create_Status').FieldType__c == 'Status' && obj.get('Case_Create_Status').RecordType__c == 'IPS Case Create') ||
+                    ((obj.get('Case_Create_Owner').IsActive__c) && newCase.OwnerId != oldCase.OwnerId && obj.containsKey('Case_Create_Owner') && obj.get('Case_Create_Owner').FieldType__c == 'OwnerId'  && obj.get('Case_Create_Owner').RecordType__c == 'IPS Case Create') ||
+                    ((obj.get('Case_Create_Escalated_Level').IsActive__c) && newCase.Core_IPS_Escalated_Level__c != oldCase.Core_IPS_Escalated_Level__c && obj.containsKey('Case_Create_Escalated_Level') && obj.get('Case_Create_Escalated_Level').FieldType__c == 'Core_IPS_Escalated_Level__c'  && obj.get('Case_Create_Escalated_Level').RecordType__c == 'IPS Case Create') ||
+                    ((obj.get('Case_Create_Sub_Status').IsActive__c) && newCase.Core_Sub_Status__c != oldCase.Core_Sub_Status__c && obj.containsKey('Case_Create_Sub_Status') && obj.get('Case_Create_Sub_Status').FieldType__c == 'Core_Sub_Status__c'  && obj.get('Case_Create_Sub_Status').RecordType__c == 'IPS Case Create') || 
+                    ((obj.get('Case_Create_Queue').IsActive__c) && newCase.Core_IPS_Assigned_Queue__c != oldCase.Core_IPS_Assigned_Queue__c && obj.containsKey('Case_Create_Queue') && obj.get('Case_Create_Queue').FieldType__c == 'Core_IPS_Assigned_Queue__c' && obj.get('Case_Create_Queue').RecordType__c == 'IPS Case Create')) {
+                        caseObjIds.add(newCase.Id);  
+                    }else if (((obj.get('Closed_Case_Status').IsActive__c) && newCase.Status != oldCase.Status && obj.containsKey('Closed_Case_Status') && obj.get('Closed_Case_Status').FieldType__c == 'Status' && obj.get('Closed_Case_Status').RecordType__c == 'IPS Closed Case') ||
+                              ((obj.get('Closed_Case_Owner').IsActive__c) && newCase.OwnerId != oldCase.OwnerId && obj.containsKey('Closed_Case_Owner') && obj.get('Closed_Case_Owner').FieldType__c == 'OwnerId'  && obj.get('Closed_Case_Owner').RecordType__c == 'IPS Closed Case') ||
+                              ((obj.get('Closed_Case_Escalated_Level').IsActive__c) && newCase.Core_IPS_Escalated_Level__c != oldCase.Core_IPS_Escalated_Level__c && obj.containsKey('Closed_Case_Escalated_Level') && obj.get('Closed_Case_Escalated_Level').FieldType__c == 'Core_IPS_Escalated_Level__c'  && obj.get('Closed_Case_Escalated_Level').RecordType__c == 'IPS Closed Case') ||
+                              ((obj.get('Closed_Case_Sub_Status').IsActive__c) && newCase.Core_Sub_Status__c != oldCase.Core_Sub_Status__c && obj.containsKey('Closed_Case_Sub_Status') && obj.get('Closed_Case_Sub_Status').FieldType__c == 'Core_Sub_Status__c'  && obj.get('Closed_Case_Sub_Status').RecordType__c == 'IPS Closed Case') || 
+                              ((obj.get('Closed_Case_Queue').IsActive__c) && newCase.Core_IPS_Assigned_Queue__c != oldCase.Core_IPS_Assigned_Queue__c && obj.containsKey('Closed_Case_Queue') && obj.get('Closed_Case_Queue').FieldType__c == 'Core_IPS_Assigned_Queue__c' && obj.get('Closed_Case_Queue').RecordType__c == 'IPS Closed Case')) {
+                                  caseObjIds.add(newCase.Id);  
+                              }else if (((obj.get('GEC_Case_Status').IsActive__c) && newCase.Status != oldCase.Status && obj.containsKey('GEC_Case_Status') && obj.get('GEC_Case_Status').FieldType__c == 'Status' && obj.get('GEC_Case_Status').RecordType__c == 'IPS GEC ReadOnly') ||
+                                        ((obj.get('GEC_Case_Owner').IsActive__c) && newCase.OwnerId != oldCase.OwnerId && obj.containsKey('GEC_Case_Owner') && obj.get('GEC_Case_Owner').FieldType__c == 'OwnerId'  && obj.get('GEC_Case_Owner').RecordType__c == 'IPS GEC ReadOnly') ||
+                                        ((obj.get('GEC_Case_Escalated_Level').IsActive__c) && newCase.Core_IPS_Escalated_Level__c != oldCase.Core_IPS_Escalated_Level__c && obj.containsKey('GEC_Case_Escalated_Level') && obj.get('GEC_Case_Escalated_Level').FieldType__c == 'Core_IPS_Escalated_Level__c'  && obj.get('GEC_Case_Escalated_Level').RecordType__c == 'IPS GEC ReadOnly') ||
+                                        ((obj.get('GEC_Case_Sub_Status').IsActive__c) && newCase.Core_Sub_Status__c != oldCase.Core_Sub_Status__c && obj.containsKey('GEC_Case_Sub_Status') && obj.get('GEC_Case_Sub_Status').FieldType__c == 'Core_Sub_Status__c'  && obj.get('GEC_Case_Sub_Status').RecordType__c == 'IPS GEC ReadOnly') || 
+                                        ((obj.get('GEC_Case_Queue').IsActive__c) && newCase.Core_IPS_Assigned_Queue__c != oldCase.Core_IPS_Assigned_Queue__c && obj.containsKey('GEC_Case_Queue') && obj.get('GEC_Case_Queue').FieldType__c == 'Core_IPS_Assigned_Queue__c' && obj.get('GEC_Case_Queue').RecordType__c == 'IPS GEC ReadOnly')) {
+                                            caseObjIds.add(newCase.Id);  
+                                        }else if (((obj.get('No_Contact_Case_Status').IsActive__c) && newCase.Status != oldCase.Status && obj.containsKey('No_Contact_Case_Status') && obj.get('No_Contact_Case_Status').FieldType__c == 'Status' && obj.get('No_Contact_Case_Status').RecordType__c == 'IPS No Assigned Contact Case') ||
+                                                  ((obj.get('No_Contact_Case_Owner').IsActive__c) && newCase.OwnerId != oldCase.OwnerId && obj.containsKey('No_Contact_Case_Owner') && obj.get('No_Contact_Case_Owner').FieldType__c == 'OwnerId'  && obj.get('No_Contact_Case_Owner').RecordType__c == 'IPS No Assigned Contact Case') ||
+                                                  ((obj.get('No_Contact_Case_Escalated_Level').IsActive__c) && newCase.Core_IPS_Escalated_Level__c != oldCase.Core_IPS_Escalated_Level__c && obj.containsKey('No_Contact_Case_Escalated_Level') && obj.get('No_Contact_Case_Escalated_Level').FieldType__c == 'Core_IPS_Escalated_Level__c'  && obj.get('No_Contact_Case_Escalated_Level').RecordType__c == 'IPS No Assigned Contact Case') ||
+                                                  ((obj.get('No_Contact_Case_Sub_Status').IsActive__c) && newCase.Core_Sub_Status__c != oldCase.Core_Sub_Status__c && obj.containsKey('No_Contact_Case_Sub_Status') && obj.get('No_Contact_Case_Sub_Status').FieldType__c == 'Core_Sub_Status__c'  && obj.get('No_Contact_Case_Sub_Status').RecordType__c == 'IPS No Assigned Contact Case') || 
+                                                  ((obj.get('No_Contact_Case_Queue').IsActive__c) && newCase.Core_IPS_Assigned_Queue__c != oldCase.Core_IPS_Assigned_Queue__c && obj.containsKey('No_Contact_Case_Queue') && obj.get('No_Contact_Case_Queue').FieldType__c == 'Core_IPS_Assigned_Queue__c' && obj.get('No_Contact_Case_Queue').RecordType__c == 'IPS No Assigned Contact Case')) {
+                                                      caseObjIds.add(newCase.Id);  
+                                                  }  
+            }
+            if(!caseObjIds.isEmpty()){
+                createStatusOwnershipRecord(caseObjIds);
+            }
+        }
+    }
+    /*End - TWC777-2514 - 08/08/2024 - Vishal - STOWD - Custom Implementation - Method invoked to create the Status & Ownership Records on Case update*/
+    
+    /*Start - TWC777-2303 - 07/05/2024 - Vishal - Below method is added to create the Status & Ownership record on Case Update scenarios*/
+    public static void  createStatusOwnershipRecord(List<Id> caseIds){
+        try{
+            DateTime nowDateTime = DateTime.now();
+            List<Case> caseObjList = new List<Case>();
+            //FLS Added as Part of code refactor
+            if(Case.SObjectType.getDescribe().isAccessible() && !caseIds.isEmpty()){
+                //Below query is added to assign Owner.Name value to newly created Status & Ownership record as we get only OwnerId in CaseList from Trigger
+                caseObjList = [SELECT id, caseNumber, Owner.Name, Status, Core_Sub_Status__c, Core_IPS_Assigned_Queue__c, Core_IPS_Escalated_Level__c, LastModifiedDate, (SELECT CreatedDate,Id FROM Histories order by Createddate DESC limit 1) FROM Case WHERE Id IN : caseIds WITH SECURITY_ENFORCED];  /***/  
+            }
+            List<Status_Ownership_Duration__c> statusOwnershipList = new List<Status_Ownership_Duration__c>();
+            if(!caseObjList.isEmpty()){
+                for(Case caseobj : caseObjList){
+                    Status_Ownership_Duration__c statusOwnershipObj = new Status_Ownership_Duration__c();
+                    CaseHistory caseHistory = new CaseHistory();
+                    if(!caseobj.Histories.isEmpty()){
+                        caseHistory = caseobj.Histories;
+                    }
+                    //statusOwnershipObj.From__c = caseHistory.Createddate;
+                    statusOwnershipObj.From__c = caseHistory.Createddate!=null ?  caseHistory.Createddate : caseobj.LastModifiedDate;
+                    statusOwnershipObj.Until__c = nowDateTime;  
+                    Long diffMilliseconds = statusOwnershipObj.Until__c.getTime() - statusOwnershipObj.From__c.getTime();
+                    Long diffSeconds = diffMilliseconds / 1000;  
+                    statusOwnershipObj.Calculated_Business_Seconds__c = diffSeconds;
+                    statusOwnershipObj.Parent__c = caseobj.Id;
+                    statusOwnershipObj.Owner__c = caseobj.Owner.Name;
+                    statusOwnershipObj.Status__c = caseobj.Status;
+                    statusOwnershipObj.Sub_Status__c = caseobj.Core_Sub_Status__c;
+                    statusOwnershipObj.Last_Assigned_Queue__c = caseobj.Core_IPS_Assigned_Queue__c;
+                    statusOwnershipObj.Escalated_Level__c = caseobj.Core_IPS_Escalated_Level__c;
+                    statusOwnershipList.add(statusOwnershipObj);
+                }
+                if(Schema.sObjectType.Status_Ownership_Duration__c.isCreateable() && !statusOwnershipList.isEmpty() && hasHandlerExecuted == false){
+                    insert statusOwnershipList;
+                    hasHandlerExecuted = true;
+                }
+            }
+        }catch(Exception e){
+            Core_IPS_ExceptionHandling.logEntryWithException(e,'Core_IPS_CaseTriggerHandler','STOWD');
+        }
+    } 
+      /*End - TWC777-2303 - 07/05/2024 - Vishal - Below method is added to create the Status & Ownership record on Case Update scenarios*/
+    
     //Added as part of Code Refactor TWC745-6459
     public static void PrepareGlobalData(List<Case> newList, List<Case> oldList,Map<Id,Case> oldMap){
         try{
             Map<string,Boolean> queryDatamap = new Map<string,Boolean>();
-            
+            /* if(!Trigger.isInsert && !Trigger.isDelete){
+queryDatamap = compareFields(newList,oldList);
+}*/
             Set<String> ContactIds = new Set<String>();
             Set<String> AssetIds = new Set<String>();
             Set<String> UserIds = new Set<String>();
@@ -3616,19 +3687,19 @@ Modification Log :
                 }
             }
             
-        
-	
-	 if(!contactIds.isEmpty() && Core_Utility.executeQuery(new List<String>(ContactIds),oldRecIds.get('ContactID')) && Contact.SObjectType.getDescribe().isAccessible() ){
-        
+        //    system.debug('CODE REFACTOR Global Data NEW DATA con-'+contactIds+' user--'+UserIds+' asset-'+AssetIds);
+         //   system.debug('CODE REFACTOR Global Data OLD DATA con-'+oldRecIds.get('ContactID')+' user--'+oldRecIds.get('UserID')+' asset-'+oldRecIds.get('AssetID'));
+            if(!contactIds.isEmpty() && Core_Utility.executeQuery(new List<String>(ContactIds),oldRecIds.get('ContactID')) && Contact.SObjectType.getDescribe().isAccessible() ){
+         //       system.debug('CODE REFACTOR GLOBAL CONTACT QUERY EXECUTED');
                 GlobalContactRecords = new Map<Id,Contact>([Select Id, Core_Country_Region__c, Core_IPS_Embargoed_State__c, AccountId,Account.Core_CNDA_Number__c, Core_IPS_Intel_Support_Owner__c, Core_IPS_Alternate_Support_Owner__c, Core_IPS_Alternate_Support_Org__c From Contact where Id In: contactIds]);
             }
             //FLS Added as Part of code refactor
             if(Asset.SObjectType.getDescribe().isQueryable() && !AssetIds.isEmpty() && Core_Utility.executeQuery(new List<String>(AssetIds),oldRecIds.get('AssetID'))){
-          
+          //      system.debug('CODE REFACTOR GLOBAL ASSET QUERY EXECUTED');
                 GlobalAssetRecords = new Map<Id,Asset>([select id, name, core_supported_product__c, Core_Product_Organization__c,product2Id From Asset where Id in: AssetIds]); /***/
             }
             if( (!UserIds.isEmpty() || !ContactIds.isEmpty()) && (Core_Utility.executeQuery(new List<String>(ContactIds),oldRecIds.get('ContactID')) || (Core_Utility.executeQuery(new List<String>(UserIds),oldRecIds.get('UserID')))  )  ){
-         
+          //      system.debug('CODE REFACTOR GLOBAL USER QUERY EXECUTED');
                 GlobalUserRecords = new  Map<Id,User>([Select Id, ManagerId, Manager.ManagerId,Profile.Name, IsPortalEnabled , Name, ContactId, ProfileID,UserType From User where id in : UserIds or ContactId in : ContactIds]);
             }
             if(GlobalUserRecords!=null && GlobalUserRecords.size()>0){
@@ -3669,11 +3740,12 @@ Modification Log :
             }
             return isQueryRequired;
         } Catch (Exception Ex){
+            System.debug('Core_IPS_CaseTriggerHandler.isQueryRequired Method Has Exception : '+ ex.GetMessage());
             return false;
         }
     }
      
-    // Added as part of code refactor
+    // created by chiru - 21/Sep/2024
     public static void querySupportedProduct(List<Id> suppProductIdList){
         try {
             List<String> productIds = new List<String>();
@@ -3682,7 +3754,7 @@ Modification Log :
                     productIds.add(value);
                 }
                 if(Core_Utility.executeQuery(productIds,oldProductIds) && Core_IPS_Supported_Product__c.SObjectType.getDescribe().isQueryable()){
-                 
+                 //   system.debug('CODE REFCATOR querySupportedProduct - Global Data');
                     Core_IPS_CaseUtility.GlobalProductRecords = new Map<Id,Core_IPS_Supported_Product__c>([Select Id,Core_Flag_Status__c,Core_Code_Name__c,Core_EOIS__c,Core_Prod_EPM_Id__c,Core_Product__r.Core_Unique_ID__c,Core_Product__r.Core_Sales_Visible_Flag__c,Core_Product__r.Core_Hierarchy_ID__c, Core_Product__r.Core_Code_Name__c FROM Core_IPS_Supported_Product__c where Id in: suppProductIdList]);
                     oldProductIds = new List<String>(productIds);
                 }
@@ -3692,5 +3764,5 @@ Modification Log :
         }
     }
     
-    // END - Code Refactor changes
+    // END - Code Refactor Changes Added By CHIRU, Handling Existing and New Logic With Toggle - added by Chiru
 }

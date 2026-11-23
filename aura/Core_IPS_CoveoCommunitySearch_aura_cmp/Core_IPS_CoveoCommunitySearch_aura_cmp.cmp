@@ -1,0 +1,6 @@
+<aura:component implements='forceCommunity:availableForAllPageTypes'>
+  <aura:attribute name="name" type="String" default="customCommunitySearch" access="global" />
+  <CoveoV2:CommunitySearch name="{!v.name}"/>
+    <aura:attribute name="vfhost" type="String" default="intel--crmdevcase--c.sandbox.vf.force.com"></aura:attribute>
+    <iframe aura:id="vfFrame" src="{!'https://' + v.vfhost + '/apex/Core_IPS_CustomCoveoPanel'}"></iframe>
+</aura:component>

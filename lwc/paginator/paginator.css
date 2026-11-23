@@ -18,3 +18,10 @@
     border-radius: 3px;
     background-color:#fff;
 }
+.slds-col{
+    padding-right: 450px;
+    
+}
+.recordPerPage{
+    width: 20%;
+}

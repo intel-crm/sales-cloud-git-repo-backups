@@ -113,7 +113,7 @@
             system.assert(Message != null); 
             //check log
             LogCount = 0;
-            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix
             System.assertEquals(FileCount,LogCount);  
             //Correct Entry
             List<Contact> lstTobeUpdatedContact = new List<Contact>();
@@ -128,7 +128,7 @@
             system.assert(Message != null); 
             //check log
             LogCount = 0;
-            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix
             System.assertEquals(0,LogCount);              
         }        
     }    

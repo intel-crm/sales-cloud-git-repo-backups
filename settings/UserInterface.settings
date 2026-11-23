@@ -3,12 +3,12 @@
     <alternateAlohaListView>true</alternateAlohaListView>
     <dynamicMruActionsOff>false</dynamicMruActionsOff>
     <enableAsyncRelatedLists>false</enableAsyncRelatedLists>
-    <enableClickjackUserPageHeaderless>true</enableClickjackUserPageHeaderless>
+    <enableClickjackUserPageHeaderless>false</enableClickjackUserPageHeaderless>
     <enableCollapsibleSections>true</enableCollapsibleSections>
     <enableCollapsibleSideBar>false</enableCollapsibleSideBar>
     <enableCustomObjectTruncate>false</enableCustomObjectTruncate>
     <enableCustomeSideBarOnAllPages>true</enableCustomeSideBarOnAllPages>
-    <enableDeleteFieldHistory>false</enableDeleteFieldHistory>
+    <enableDeleteFieldHistory>true</enableDeleteFieldHistory>
     <enableExternalObjectAsyncRelatedLists>false</enableExternalObjectAsyncRelatedLists>
     <enableHoverDetails>true</enableHoverDetails>
     <enableInlineEdit>true</enableInlineEdit>

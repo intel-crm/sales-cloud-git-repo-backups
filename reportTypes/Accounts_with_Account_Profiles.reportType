@@ -345,36 +345,14 @@
             <field>Core_Version__c</field>
             <table>Account.Account_Profiles__r</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Category_Preview__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Primary_Coverage_Preview__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Category__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Primary_Coverage__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Group_Name__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Group_Id__c</field>
-            <table>Account</table>
-        </columns>
         <masterLabel>Account Profiles</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Business_Party_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <masterLabel>Accounts</masterLabel>
     </sections>
 </ReportType>

@@ -52,16 +52,13 @@
     <label>Trigger Executions</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
         <columns>Core_Object__c</columns>
         <columns>Core_Trigger_Events__c</columns>
         <columns>Core_Class_Name__c</columns>
+        <columns>NAME</columns>
         <columns>Core_Active__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>All_IPS</fullName>
@@ -76,7 +73,23 @@
             <operation>equals</operation>
             <value>Case</value>
         </filters>
-        <label>All-IPS</label>
+        <label>All-IPS-Case</label>
+    </listViews>
+    <listViews>
+        <fullName>IPS</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Trigger_Events__c</columns>
+        <columns>Core_Description__c</columns>
+        <columns>Core_Class_Name__c</columns>
+        <columns>Core_Object__c</columns>
+        <columns>Core_Active__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Class_Name__c</field>
+            <operation>contains</operation>
+        </filters>
+        <label>IPS</label>
+        <language>en_US</language>
     </listViews>
     <visibility>Public</visibility>
 </CustomObject>

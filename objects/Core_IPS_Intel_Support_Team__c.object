@@ -230,7 +230,11 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Intel Support Teams</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Core_IPS_User__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Project__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
         <fullName>Restrict_PrivateProjOwner_Inactive_IST</fullName>
@@ -253,5 +257,22 @@
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
         <url>/lightning/n/Add_Intel_Support_Team_Members?c__recordId={!Core_IPS_Project__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_IPS_Add_Intel_Support_Team_Members</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Intel Support Team Members</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/support/console/41.0/integration.js&apos;)} 
+
+if(sforce.console.isInConsole()){ //Checks that it is in console 
+window.open(&quot;apex/Core_IPS_Add_IntelSupportTeam?isdtp=vw&amp;projectId={!Core_IPS_Project__c.Id}&quot;,&apos;_self&apos;); 
+}else{ 
+window.open(&quot;/apex/Core_IPS_Add_IntelSupportTeam?projectId={!Core_IPS_Project__c.Id}&quot;,&apos;_self&apos;); 
+}</url>
     </webLinks>
 </CustomObject>

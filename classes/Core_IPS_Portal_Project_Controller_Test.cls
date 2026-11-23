@@ -1,12 +1,5 @@
 @isTest
 public class Core_IPS_Portal_Project_Controller_Test {
-
-    private static void insertUserWithValidationBypass(User testUser) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert testUser;
-        }
-    }
     
     
     @isTest
@@ -14,24 +7,21 @@ public class Core_IPS_Portal_Project_Controller_Test {
         try{
             Set<String> customerUserTypes = new Set<String> {'Executive', 'Manager', 'Worker'};
              Profile pf= [Select Id from profile where Name='IPS External Customer'];
-        //User AccountOwner= TestUtilities.getAccountOwner();
-          User accountOwner= TestUtilities.getAccountOwner();
-              System.runas(accountOwner){
-          account accountRecord=new account();
-          accountRecord.Name='test';
-          accountRecord.BillingCity='new york';
-          accountRecord.BillingCountry='united states';
-          accountRecord.BillingCountryCode='';
- 		//Acc.OwnerId = AccountOwner.Id; //Added by Nuthana
-        accountRecord.BillingStreet='st 124563 louis street';
-        insert accountRecord;
-        System.assert(accountRecord.Id != null, 'Record not created');
+        
+        account Acc=new account();
+        Acc.Name='test';
+        Acc.BillingCity='new york';
+        Acc.BillingCountry='united states';
+        Acc.BillingCountryCode='';
+        Acc.BillingStreet='st 124563 louis street';
+        insert Acc;
+        System.assert(Acc.Id != null, 'Record not created');
          
         Contact con=new Contact();
         con.Firstname='test';
         con.lastname='test contact';
         con.Email='test@gmail.com';
-        con.AccountId=accountRecord.Id;
+        con.AccountId=Acc.Id;
         con.Core_MINDS__c = false;
         con.Core_Country_Region__c = 'India';
         con.Core_IPS_Email_Opt_Out__c = false;
@@ -40,45 +30,44 @@ public class Core_IPS_Portal_Project_Controller_Test {
         conLst.add(con);
         insert conLst;
         System.assert(conLst[0].Id != null, 'Record not created');
-              }
-        Contact con = [select Id from Contact Limit 1];
-        User userAccount=new User();
-        userAccount.Username='Genjiuser@apttus.com';
-        userAccount.FirstName='Testing';
-        userAccount.LastName='user';
-        userAccount.ContactId=con.Id;
-        userAccount.Email='genjitesting@apttus.com';
-        userAccount.Alias='Testuser';
-        userAccount.EmailEncodingKey='ISO-8859-1';
-        userAccount.LanguageLocaleKey = 'en_US';
-        userAccount.TimeZoneSidKey='America/New_York';
-        userAccount.ProfileId= pf.Id;
-        userAccount.LocaleSidKey='en_US';
-        insertUserWithValidationBypass(userAccount);
-        System.assert(userAccount.Id != null, 'Record not created');
         
-            system.runas(userAccount) {
-                Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
-                projectRecord.Name='test project';
-                projectRecord.Core_Project_Description__c='test description';
-                projectRecord.Core_Status__c='Active';
-                insert projectRecord;
-                System.assert(projectRecord.Id != null, 'Record not created');
+        User UserAcc=new User();
+        UserAcc.Username='Genjiuser@apttus.com';
+        UserAcc.FirstName='Testing';
+        UserAcc.LastName='user';
+        UserAcc.ContactId=con.Id;
+        UserAcc.Email='genjitesting@apttus.com';
+        UserAcc.Alias='Testuser';
+        UserAcc.EmailEncodingKey='ISO-8859-1';
+        UserAcc.LanguageLocaleKey = 'en_US';
+        UserAcc.TimeZoneSidKey='America/New_York';
+        UserAcc.ProfileId= pf.Id;
+        UserAcc.LocaleSidKey='en_US';
+        insert UserAcc;
+        System.assert(UserAcc.Id != null, 'Record not created');
         
-                Core_IPS_Project_Member__c projectMember=new Core_IPS_Project_Member__c();
-                projectMember.Core_IPS_Project__c=projectRecord.id;
-                projectMember.Core_Status__c='Active';
-                projectMember.Core_IPS_Contact__c = con.Id; //Added by Nuthana
-                insert projectMember;
-                System.assert(projectMember.Id != null, 'Record not created');
+            system.runas(UserAcc) {
+                Core_IPS_Project__c Project=new Core_IPS_Project__c();
+                Project.Name='test project';
+                Project.Core_Project_Description__c='test description';
+                Project.Core_Status__c='Active';
+                insert Project;
+                System.assert(Project.Id != null, 'Record not created');
+        
+                Core_IPS_Project_Member__c ProjectMember=new Core_IPS_Project_Member__c();
+                ProjectMember.Core_IPS_Project__c=Project.id;
+                ProjectMember.Core_Status__c='Active';
+                ProjectMember.Core_IPS_Contact__c = con.Id; //Added by Nuthana
+                insert ProjectMember;
+                System.assert(ProjectMember.Id != null, 'Record not created');
         
                 list<Id> lstId = new list<Id>();
                 lstId.add(con.Id);          
-                Core_IPS_Portal_ProjectUtility_LWC.upsertProjectMembers(lstId,projectRecord.id);
+                Core_IPS_Portal_ProjectUtility_LWC.upsertProjectMembers(lstId,Project.id);
 
                     Test.startTest();
-                    Core_IPS_Portal_ProjectUtility_LWC.existingProjectMembers(projectRecord.id);
-                    Core_IPS_Portal_Project_Controller.upsertProjectMembers(lstId,projectRecord.id); 
+                    Core_IPS_Portal_ProjectUtility_LWC.existingProjectMembers(Project.id);
+                    Core_IPS_Portal_Project_Controller.upsertProjectMembers(lstId,Project.id); 
                     
                     //  Core_IPS_Portal_ProjectUtility_LWC.addProjectMem(lstId,Project.id); 
                     // Core_IPS_Portal_ProjectUtility_LWC.removeProjectMem(lstId,Project.id);
@@ -93,12 +82,12 @@ public class Core_IPS_Portal_Project_Controller_Test {
     
     @isTest
     public static void AvailablecontactsforaddingtoprojectMembers_Test(){
-        Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
-        projectRecord.Name='test project';
-        projectRecord.Core_Project_Description__c='test description';
-        projectRecord.Core_Status__c='Draft';
-        insert projectRecord;
-        System.assert(projectRecord.Id != null, 'Record not created');
+        Core_IPS_Project__c Project=new Core_IPS_Project__c();
+        Project.Name='test project';
+        Project.Core_Project_Description__c='test description';
+        Project.Core_Status__c='Draft';
+        insert Project;
+        System.assert(Project.Id != null, 'Record not created');
         
         // Contact con=new Contact();
         //con.Firstname='test';
@@ -108,7 +97,7 @@ public class Core_IPS_Portal_Project_Controller_Test {
         //insert con;
         Test.startTest();
         try{
-            Core_IPS_Portal_Project_Controller.AvailablecontactsforaddingtoprojectMembers(projectRecord.id);
+            Core_IPS_Portal_Project_Controller.AvailablecontactsforaddingtoprojectMembers(Project.id);
             
         }
         catch(exception e)
@@ -118,22 +107,22 @@ public class Core_IPS_Portal_Project_Controller_Test {
     }
     @isTest
     public static void existingIPSProducts_Test(){
-        Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
-        projectRecord.Name='test project';
-        projectRecord.Core_Project_Description__c='test description';
-        projectRecord.Core_Status__c='Draft';
-        insert projectRecord;
-        System.assert(projectRecord.Id != null, 'Record not created');
+        Core_IPS_Project__c Project=new Core_IPS_Project__c();
+        Project.Name='test project';
+        Project.Core_Project_Description__c='test description';
+        Project.Core_Status__c='Draft';
+        insert Project;
+        System.assert(Project.Id != null, 'Record not created');
         
         Core_IPS_Product__c projectProduct = new Core_IPS_Product__c();
-        projectProduct.Core_IPS_Project__c = projectRecord.Id;
+        projectProduct.Core_IPS_Project__c = Project.Id;
         projectProduct.Core_IPS_IsAutoApprove__c=true;
         projectProduct.Status__c='Submitted Pending';
         projectProduct.Core_IsSubmitted_Header__c=true;
         //insert projectProduct;
         Test.startTest();
         try{
-            Core_IPS_Portal_ProjectUtility_LWC.existingIPSProducts(projectRecord.id);
+            Core_IPS_Portal_ProjectUtility_LWC.existingIPSProducts(Project.id);
             // Core_IPS_Portal_Project_Controller.upsertProjectMembers(,Project.id);
         }
         catch(exception e)
@@ -144,16 +133,16 @@ public class Core_IPS_Portal_Project_Controller_Test {
     }
     @isTest
     public static void AvailableIPSProducts_Test(){
-        Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
-        projectRecord.Name='test project';
-        projectRecord.Core_Project_Description__c='test description';
-        projectRecord.Core_Status__c='Draft';
-        insert projectRecord;
-        System.assert(projectRecord.Id != null, 'Record not created');
+        Core_IPS_Project__c Project=new Core_IPS_Project__c();
+        Project.Name='test project';
+        Project.Core_Project_Description__c='test description';
+        Project.Core_Status__c='Draft';
+        insert Project;
+        System.assert(Project.Id != null, 'Record not created');
         
         asset assetProduct=new asset();
         assetProduct.Name='TestAsset';
-        assetProduct.Core_IPS_Project__c=projectRecord.Id;
+        assetProduct.Core_IPS_Project__c=Project.Id;
         insert assetProduct;
         System.assert(assetProduct.Id != null, 'Record not created');
         
@@ -161,7 +150,7 @@ public class Core_IPS_Portal_Project_Controller_Test {
         lstId.add(assetProduct.Id);
         Test.startTest();
         try{
-            Core_IPS_Portal_Project_Controller.AvailableIPSProducts(projectRecord.id);
+            Core_IPS_Portal_Project_Controller.AvailableIPSProducts(Project.id);
             // Core_IPS_Portal_Project_Controller.upsertIPSProducts(lstId,Project.id);
         }
         catch(exception e){}     
@@ -175,22 +164,22 @@ public class Core_IPS_Portal_Project_Controller_Test {
     public static void createProjects_Test(){
          Set<String> customerUserTypes = new Set<String> {'Executive', 'Manager', 'Worker'};
          Profile pf= [Select Id from profile where Name='IPS External Customer'];
-            User accountOwner= TestUtilities.getAccountOwner();
-                System.runas(accountOwner){
-                    account accountRecord=new account();
-           accountRecord.Name='test';
-           accountRecord.BillingCity='new york';
-           accountRecord.BillingCountry='united states';
-           accountRecord.BillingCountryCode='';
-           accountRecord.BillingStreet='st 124563 louis street';
-           insert accountRecord;
-           System.assert(accountRecord.Id != null, 'Record not created');
+         User AccountOwner= TestUtilities.getAccountOwner();
+              System.runas(AccountOwner){
+                   account Acc=new account();
+        Acc.Name='test';
+        Acc.BillingCity='new york';
+        Acc.BillingCountry='united states';
+        Acc.BillingCountryCode='';
+        Acc.BillingStreet='st 124563 louis street';
+        insert Acc;
+        System.assert(Acc.Id != null, 'Record not created');
         
         Contact con=new Contact();
         con.Firstname='test';
         con.lastname='test contact';
         con.Email='test@gmail.com';
-        con.AccountId=accountRecord.Id;
+        con.AccountId=Acc.Id;
         con.Core_MINDS__c = false;
         con.Core_Country_Region__c = 'India';
         con.Core_IPS_Email_Opt_Out__c = false;
@@ -205,63 +194,63 @@ public class Core_IPS_Portal_Project_Controller_Test {
         
        
         
-        User userAccount=new User();
-        userAccount.Username='Genjiuser@apttus.com';
-        userAccount.FirstName='Testing';
-        userAccount.LastName='user';
-        userAccount.ContactId=con.Id;
-        userAccount.Email='genjitesting@apttus.com';
-        userAccount.Alias='Testuser';
-        userAccount.EmailEncodingKey='ISO-8859-1';
-        userAccount.LanguageLocaleKey = 'en_US';
-        userAccount.TimeZoneSidKey='America/New_York';
-        userAccount.ProfileId= pf.Id;
-        userAccount.LocaleSidKey='en_US';
-        insertUserWithValidationBypass(userAccount);
-        System.assert(userAccount.Id != null, 'Record not created');
+        User UserAcc=new User();
+        UserAcc.Username='Genjiuser@apttus.com';
+        UserAcc.FirstName='Testing';
+        UserAcc.LastName='user';
+        UserAcc.ContactId=con.Id;
+        UserAcc.Email='genjitesting@apttus.com';
+        UserAcc.Alias='Testuser';
+        UserAcc.EmailEncodingKey='ISO-8859-1';
+        UserAcc.LanguageLocaleKey = 'en_US';
+        UserAcc.TimeZoneSidKey='America/New_York';
+        UserAcc.ProfileId= pf.Id;
+        UserAcc.LocaleSidKey='en_US';
+        insert UserAcc; 
+        System.assert(UserAcc.Id != null, 'Record not created');
         
-                system.runas(userAccount){
-                Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
-                projectRecord.Name='test project';
-                projectRecord.Core_Project_Description__c='test description';
-                projectRecord.Core_Status__c='Draft';
-                insert projectRecord;
-                System.assert(projectRecord.Id != null, 'Record not created');
+                system.runas(UserAcc){
+                Core_IPS_Project__c Project=new Core_IPS_Project__c();
+                Project.Name='test project';
+                Project.Core_Project_Description__c='test description';
+                Project.Core_Status__c='Draft';
+                insert Project;
+                System.assert(Project.Id != null, 'Record not created');
         
                 Test.startTest();
-                Core_IPS_Portal_Project_Controller.createProjects(projectRecord.Name,projectRecord.Core_Project_Description__c,true,true,userAccount.Username);
+                Core_IPS_Portal_Project_Controller.createProjects(Project.Name,Project.Core_Project_Description__c,true,true,UserAcc.Username);
                 Test.stopTest();
              }
               
         }
     @isTest
     public static void editProjectRecord_Test(){
-        List<Core_IPS_Project__c> projects=new List<Core_IPS_Project__c>();
-        Core_IPS_Project__c projectRecord=new  Core_IPS_Project__c();
-        projectRecord.Name='test project';
-        projectRecord.Core_Project_Description__c='test description';
-        projectRecord.Core_Status__c='Draft';
-        projects.add(projectRecord);
-        insert projects;
-        System.assert(projects[0].Id != null, 'Record not created');
+        List<Core_IPS_Project__c> Proj=new List<Core_IPS_Project__c>();
+        Core_IPS_Project__c Project=new  Core_IPS_Project__c();
+        Project.Name='test project';
+        Project.Core_Project_Description__c='test description';
+        Project.Core_Status__c='Draft';
+        Proj.add(project);
+        insert Proj;
+        System.assert(Proj[0].Id != null, 'Record not created');
         
         Test.startTest();
-        Core_IPS_Portal_ProjectUtility_LWC.editProjectRecord(projects[0].id,projects[0]);
+        Core_IPS_Portal_ProjectUtility_LWC.editProjectRecord(Proj[0].id,Proj[0]);
         Test.stopTest();   
     }
     @istest
     public static void getChildIPSProdctsToProject_test(){
-        List<Core_IPS_Project__c> projects=new List<Core_IPS_Project__c>();
-        Core_IPS_Project__c projectRecord=new  Core_IPS_Project__c();
-        projectRecord.Name='test project';
-        projectRecord.Core_Project_Description__c='test description';
-        projectRecord.Core_Status__c='Draft';
-        projects.add(projectRecord);
-        insert projects;
-        System.assert(projects[0].Id != null, 'Record not created');
+        List<Core_IPS_Project__c> Proj=new List<Core_IPS_Project__c>();
+        Core_IPS_Project__c Project=new  Core_IPS_Project__c();
+        Project.Name='test project';
+        Project.Core_Project_Description__c='test description';
+        Project.Core_Status__c='Draft';
+        Proj.add(project);
+        insert Proj;
+        System.assert(Proj[0].Id != null, 'Record not created');
         
         Test.startTest();
-        Core_IPS_Portal_Project_Controller.getChildIPSProdctsToProject(projects[0].id);
+        Core_IPS_Portal_Project_Controller.getChildIPSProdctsToProject(Proj[0].id);
         Test.stopTest();   
         
     }
@@ -270,45 +259,45 @@ public class Core_IPS_Portal_Project_Controller_Test {
     @isTest
     public static void getcaseRecordsUnderprojectTest(){
         
-        Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
-        projectRecord.Name='test project';
-        projectRecord.Core_Project_Description__c='test description';
-        projectRecord.Core_Status__c='Draft';
-        insert projectRecord;
-        System.assert(projectRecord.Id != null, 'Record not created');
+        Core_IPS_Project__c Project=new Core_IPS_Project__c();
+        Project.Name='test project';
+        Project.Core_Project_Description__c='test description';
+        Project.Core_Status__c='Draft';
+        insert Project;
+        System.assert(Project.Id != null, 'Record not created');
        
         
-        Case caseRecord=new Case();
-        caseRecord.Subject='Test Demo';
-        caseRecord.Status='Open';
-        caseRecord.Core_Sub_Status__c='Core_Sub_Status__c';
-        caseRecord.Core_Severity__c='Low';
-        caseRecord.Core_Severity_Reason__c='Testing case';
-        caseRecord.Core_CaseType__c='Question';
-        caseRecord.Description='case test description';
-        caseRecord.Core_IPS_Restricted_Secret_Content__c=True;
-        caseRecord.Core_IPS_Knowledge_Base_Link__c='Case knowledge test';
-        caseRecord.Core_IPS_Product_name__c='Test product';
-        caseRecord.Core_IPS_Project_Case__c=projectRecord.Id;
-        insert caseRecord;
-        System.assert(caseRecord.Id != null, 'Record not created');
+        Case CaseRec=new Case();
+        CaseRec.Subject='Test Demo';
+        CaseRec.Status='Open';
+        CaseRec.Core_Sub_Status__c='Core_Sub_Status__c';
+        CaseRec.Core_Severity__c='Low';
+        CaseRec.Core_Severity_Reason__c='Testing case';
+        CaseRec.Core_CaseType__c='Question';
+        CaseRec.Description='case test description';
+        CaseRec.Core_IPS_Restricted_Secret_Content__c=True;
+        CaseRec.Core_IPS_Knowledge_Base_Link__c='Case knowledge test';
+        CaseRec.Core_IPS_Product_name__c='Test product';
+        CaseRec.Core_IPS_Project_Case__c=Project.Id;
+        insert CaseRec;
+        System.assert(CaseRec.Id != null, 'Record not created');
        
-        String projId = projectRecord.Id; 
-        Core_IPS_Portal_Project_Controller.getcaseRecordsUnderproject(projectRecord.Id,'Load Data');
-        Core_IPS_Portal_Project_Controller.getcaseRecordsUnderproject(projectRecord.Id,'All Data');
+        String projId = Project.Id; 
+        Core_IPS_Portal_Project_Controller.getcaseRecordsUnderproject(Project.Id,'Load Data');
+        Core_IPS_Portal_Project_Controller.getcaseRecordsUnderproject(Project.Id,'All Data');
     }
     
     @isTest
     public static void removeIPSProductsfromProjTest(){
-        Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
-        projectRecord.Name='test project';
-        projectRecord.Core_Project_Description__c='test description';
-        projectRecord.Core_Status__c='Draft';
-        insert projectRecord;
-        System.assert(projectRecord.Id != null, 'Record not created');
+        Core_IPS_Project__c Project=new Core_IPS_Project__c();
+        Project.Name='test project';
+        Project.Core_Project_Description__c='test description';
+        Project.Core_Status__c='Draft';
+        insert Project;
+        System.assert(Project.Id != null, 'Record not created');
        
         Core_IPS_Product__c projectProduct = new Core_IPS_Product__c();
-        projectProduct.Core_IPS_Project__c = projectRecord.Id;
+        projectProduct.Core_IPS_Project__c = Project.Id;
         projectProduct.Core_IPS_IsAutoApprove__c=true;
         projectProduct.Status__c='Submitted Pending';
         projectProduct.Core_IsSubmitted_Header__c=true;
@@ -336,21 +325,21 @@ public class Core_IPS_Portal_Project_Controller_Test {
         insert prodOrgList;
         System.assert(prodOrgList[0].Id != null, 'Record not created');
        
-        Core_IPS_Supported_Product__c supportedProductRecord = new Core_IPS_Supported_Product__c();
-        supportedProductRecord.Core_Product__c = pdtObj.id;
-        supportedProductRecord.Core_Product_Organization__c = prodOrgList.get(0).id;
-        supportedProductRecord.Core_Product_EPM_ID__c=pdtObj.core_code_name_EPM_ID__c;
-        supportedProductRecord.core_EOIS__C=false; 
-        supportedProductRecord.Core_Flag_Status__c = 'Approval Required';
-        insert supportedProductRecord;
-        System.assert(supportedProductRecord.Id != null, 'Record not created');
+        Core_IPS_Supported_Product__c SupportedProductRecord = new Core_IPS_Supported_Product__c();
+        SupportedProductRecord.Core_Product__c = pdtObj.id;
+        SupportedProductRecord.Core_Product_Organization__c = prodOrgList.get(0).id;
+        SupportedProductRecord.Core_Product_EPM_ID__c=pdtObj.core_code_name_EPM_ID__c;
+        SupportedProductRecord.core_EOIS__C=false; 
+        SupportedProductRecord.Core_Flag_Status__c = 'Approval Required';
+        insert SupportedProductRecord;
+        System.assert(SupportedProductRecord.Id != null, 'Record not created');
        
         
         
         asset assetProduct=new asset();
         assetProduct.Name='TestAsset';
-        assetProduct.Core_IPS_Project__c=projectRecord.Id;
-        assetProduct.Core_Supported_Product__c=supportedProductRecord.Id;
+        assetProduct.Core_IPS_Project__c=Project.Id;
+        assetProduct.Core_Supported_Product__c=SupportedProductRecord.Id;
         insert assetProduct;
         System.assert(assetProduct.Id != null, 'Record not created');
        
@@ -368,7 +357,7 @@ public class Core_IPS_Portal_Project_Controller_Test {
         selectedIdList.add(assetProduct.Id);
         selectedIdList.add(assetProduct2.Id);
         Test.startTest();
-        String projectID=projectRecord.Id;
+        String projectID=project.Id;
         Core_IPS_Portal_Project_Controller.upsertIPSProducts(lstId, projectID);
         //       Core_IPS_Portal_ProjectUtility_LWC.upsertIPSProducts(lstId, projectID);
         Core_IPS_Portal_ProjectUtility_LWC.removeIPSProductsfromProj(lstId, projectID);
@@ -381,15 +370,15 @@ public class Core_IPS_Portal_Project_Controller_Test {
     
     @isTest
     public static void removeIPSProductsfromProjTest2(){
-        Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
-        projectRecord.Name='test project';
-        projectRecord.Core_Project_Description__c='test description';
-        projectRecord.Core_Status__c='Draft';
-        insert projectRecord;
-        System.assert(projectRecord.Id != null, 'Record not created');
+        Core_IPS_Project__c Project=new Core_IPS_Project__c();
+        Project.Name='test project';
+        Project.Core_Project_Description__c='test description';
+        Project.Core_Status__c='Draft';
+        insert Project;
+        System.assert(Project.Id != null, 'Record not created');
        
         Core_IPS_Product__c projectProduct = new Core_IPS_Product__c();
-        projectProduct.Core_IPS_Project__c = projectRecord.Id;
+        projectProduct.Core_IPS_Project__c = Project.Id;
         projectProduct.Core_IPS_IsAutoApprove__c=true;
         projectProduct.Status__c='Submitted Pending';
         projectProduct.Core_IsSubmitted_Header__c=true;
@@ -417,28 +406,28 @@ public class Core_IPS_Portal_Project_Controller_Test {
         insert prodOrgList;
         System.assert(prodOrgList[0].Id != null, 'Record not created');
        
-        Core_IPS_Supported_Product__c supportedProductRecord = new Core_IPS_Supported_Product__c();
-        supportedProductRecord.Core_Product__c = pdtObj.id;
-        supportedProductRecord.Core_Product_Organization__c = prodOrgList.get(0).id;
-        supportedProductRecord.Core_Product_EPM_ID__c=pdtObj.core_code_name_EPM_ID__c;
-        supportedProductRecord.core_EOIS__C=false; 
-        supportedProductRecord.Core_Flag_Status__c = 'Approval Required';
-        insert supportedProductRecord;
-        System.assert(supportedProductRecord.Id != null, 'Record not created');
+        Core_IPS_Supported_Product__c SupportedProductRecord = new Core_IPS_Supported_Product__c();
+        SupportedProductRecord.Core_Product__c = pdtObj.id;
+        SupportedProductRecord.Core_Product_Organization__c = prodOrgList.get(0).id;
+        SupportedProductRecord.Core_Product_EPM_ID__c=pdtObj.core_code_name_EPM_ID__c;
+        SupportedProductRecord.core_EOIS__C=false; 
+        SupportedProductRecord.Core_Flag_Status__c = 'Approval Required';
+        insert SupportedProductRecord;
+        System.assert(SupportedProductRecord.Id != null, 'Record not created');
        
         
         
         asset assetProduct=new asset();
         assetProduct.Name='TestAsset';
-        assetProduct.Core_IPS_Project__c=projectRecord.Id;
-        assetProduct.Core_Supported_Product__c=supportedProductRecord.Id;
+        assetProduct.Core_IPS_Project__c=Project.Id;
+        assetProduct.Core_Supported_Product__c=SupportedProductRecord.Id;
         insert assetProduct;
         System.assert(assetProduct.Id != null, 'Record not created');
        
         asset assetProduct2=new asset();
         assetProduct2.Name='TestAsset2';
-        assetProduct2.Core_IPS_Project__c=projectRecord.Id;
-        assetProduct2.Core_Supported_Product__c=supportedProductRecord.Id;
+        assetProduct2.Core_IPS_Project__c=Project.Id;
+        assetProduct2.Core_Supported_Product__c=SupportedProductRecord.Id;
         insert assetProduct2;
         System.assert(assetProduct2.Id != null, 'Record not created');
        
@@ -449,7 +438,7 @@ public class Core_IPS_Portal_Project_Controller_Test {
         selectedIdList.add(assetProduct.Id);
         selectedIdList.add(assetProduct2.Id);
         Test.startTest();
-        String projectID=projectRecord.Id;
+        String projectID=project.Id;
         Core_IPS_Portal_Project_Controller.upsertIPSProducts(lstId, projectID);
         //       Core_IPS_Portal_ProjectUtility_LWC.upsertIPSProducts(lstId, projectID);
         Core_IPS_Portal_ProjectUtility_LWC.removeIPSProductsfromProj(lstId, projectID);
@@ -467,20 +456,20 @@ public class Core_IPS_Portal_Project_Controller_Test {
               Set<String> customerUserTypes = new Set<String> {'Executive', 'Manager', 'Worker'};
              Profile pf= [Select Id from profile where Name='IPS External Customer'];
         
-        account accountRecord=new account();
-        accountRecord.Name='test';
-        accountRecord.BillingCity='new york';
-        accountRecord.BillingCountry='united states';
-        accountRecord.BillingCountryCode='';
-        accountRecord.BillingStreet='st 124563 louis street';
-        insert accountRecord;
-        System.assert(accountRecord.Id != null, 'Record not created');
+        account Acc=new account();
+        Acc.Name='test';
+        Acc.BillingCity='new york';
+        Acc.BillingCountry='united states';
+        Acc.BillingCountryCode='';
+        Acc.BillingStreet='st 124563 louis street';
+        insert Acc;
+        System.assert(Acc.Id != null, 'Record not created');
 
          Contact con=new Contact();
         con.Firstname='test';
         con.lastname='test contact';
         con.Email='test@gmail.com';
-        con.AccountId=accountRecord.Id;
+        con.AccountId=Acc.Id;
         con.Core_MINDS__c = false;
         con.Core_Country_Region__c = 'India';
         con.Core_IPS_Email_Opt_Out__c = false;
@@ -489,31 +478,31 @@ public class Core_IPS_Portal_Project_Controller_Test {
         insert conLst;
 		System.assert(conLst[0].Id != null, 'Record not created');
         
-        User userAccount=new User();
-        userAccount.Username='Genjiuser@apttus.com';
-        userAccount.FirstName='Testing';
-        userAccount.LastName='user';
-        userAccount.ContactId=con.Id;
-        userAccount.Email='genjitesting@apttus.com';
-        userAccount.Alias='Testuser';
-        userAccount.EmailEncodingKey='ISO-8859-1';
-        userAccount.LanguageLocaleKey = 'en_US';
-        userAccount.TimeZoneSidKey='America/New_York';
-        userAccount.ProfileId= pf.Id;
-        userAccount.LocaleSidKey='en_US';
-        insertUserWithValidationBypass(userAccount);
-        System.assert(userAccount.Id != null, 'Record not created');
+        User UserAcc=new User();
+        UserAcc.Username='Genjiuser@apttus.com';
+        UserAcc.FirstName='Testing';
+        UserAcc.LastName='user';
+        UserAcc.ContactId=con.Id;
+        UserAcc.Email='genjitesting@apttus.com';
+        UserAcc.Alias='Testuser';
+        UserAcc.EmailEncodingKey='ISO-8859-1';
+        UserAcc.LanguageLocaleKey = 'en_US';
+        UserAcc.TimeZoneSidKey='America/New_York';
+        UserAcc.ProfileId= pf.Id;
+        UserAcc.LocaleSidKey='en_US';
+        insert UserAcc;
+        System.assert(UserAcc.Id != null, 'Record not created');
         
-                Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
-                projectRecord.Name='test project';
-                projectRecord.Core_Project_Description__c='test description';
-                projectRecord.Core_Status__c='Draft';
-                projectRecord.OwnerId = userAccount.id;
-                insert projectRecord;
-                System.assert(projectRecord.Id != null, 'Record not created');
+                Core_IPS_Project__c Project=new Core_IPS_Project__c();
+                Project.Name='test project';
+                Project.Core_Project_Description__c='test description';
+                Project.Core_Status__c='Draft';
+                Project.OwnerId = UserAcc.id;
+                insert Project;
+                System.assert(Project.Id != null, 'Record not created');
 
                 
-                Core_IPS_Portal_ProjectUtility_LWC.getOwnerOfProject(projectRecord.id);
+                Core_IPS_Portal_ProjectUtility_LWC.getOwnerOfProject(Project.id);
               
         }catch(Exception e){
         }
@@ -560,7 +549,7 @@ insert con1;
                             EmailEncodingKey = 'UTF-8',
                             LocaleSidKey = 'en_US'
                            );
-        insertUserWithValidationBypass(usr);
+        insert usr;
         System.assert(usr.Id != null, 'Record not created');
        
         Account newAccount = new Account (
@@ -570,8 +559,7 @@ insert con1;
             BillingCity = 'Fremont',
             BillingPostalCode = '54321',
             BillingState = 'CA',
-            BillingCountry = 'USA',
-			recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId()
+            BillingCountry = 'USA'
         );
         
         insert newAccount;        
@@ -590,7 +578,6 @@ insert con1;
             MailingCity=newAccount.BillingCity,
             MailingPostalCode=newAccount.BillingPostalCode,
             MailingCountry = newAccount.BillingCountry,
-		
             Phone=newAccount.Phone);
         insert cc;
         System.assert(cc.Id != null, 'Record not created');
@@ -629,7 +616,7 @@ insert con1;
         insert caselst;  
         System.assert(caselst[0].Id != null, 'Record not created');
 
-        List<Core_IPS_Case_Interested_Party__c> interestedParties = new List<Core_IPS_Case_Interested_Party__c>(); 
+        List<Core_IPS_Case_Interested_Party__c> Iparty = new List<Core_IPS_Case_Interested_Party__c>(); 
         
         Core_IPS_Case_Interested_Party__c party = new Core_IPS_Case_Interested_Party__c();
         party.User__c = usr.id;
@@ -637,17 +624,17 @@ insert con1;
         party.Contact__c=cc.id;
         party.Active__c= true ;
         party.Type__c= 'External';
-        interestedParties.add(party);
+        Iparty.add(party);
         
         Core_IPS_Case_Interested_Party__c party1 = new Core_IPS_Case_Interested_Party__c();
         party1.User__c = usr.id;
         party1.Case__c = cas1.id;
         party1.Contact__c=cc.id;
-        interestedParties.add(party1);   
-        insert interestedParties;
-        System.assert(interestedParties[0].Id != null, 'Record not created');
+        Iparty.add(party1);   
+        insert Iparty;
+        System.assert(Iparty[0].Id != null, 'Record not created');
 
-        List<Core_IPS_Project_Member__c> projectMembers = new List<Core_IPS_Project_Member__c>();
+        List<Core_IPS_Project_Member__c> Pmem = new List<Core_IPS_Project_Member__c>();
         
         Core_IPS_Project_Member__c mem = new Core_IPS_Project_Member__c();
         mem.Core_IPS_Project__c = pr.id;
@@ -657,7 +644,7 @@ insert con1;
         mem.Core_IPS_Project__c=cas.Core_IPS_Project_Case__c;
         
         
-        projectMembers.add(mem);
+        Pmem.add(mem);
         //Core_IPS_Project__c =: CaseObj.Core_IPS_Project_Case__c AND Core_Status__c = 'Active' 
         //AND Core_IPS_Contact__r.Core_IPS_Active__c = true AND Core_IPS_Contact__r.Core_IPS_Email_Opt_Out__c=false
         Core_IPS_Project_Member__c mem1 = new Core_IPS_Project_Member__c();
@@ -667,10 +654,10 @@ insert con1;
         mem1.Core_Status__c='Active';
         mem1.Core_Status__c='Active';
         mem1.Core_IPS_Project__c=cas.Core_IPS_Project_Case__c;
-        projectMembers.add(mem1);  
+        Pmem.add(mem1);  
         
-        insert projectMembers;
-        System.assert(projectMembers[0].Id != null, 'Record not created');
+        insert Pmem;
+        System.assert(Pmem[0].Id != null, 'Record not created');
 
         Contact cc1 = new Contact(  
             
@@ -769,7 +756,7 @@ insert con1;
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
+        insert uu;
         System.runas(uu){
             Core_IPS_Project__c project = new Core_IPS_Project__c();
     		project.Name = 'test project';

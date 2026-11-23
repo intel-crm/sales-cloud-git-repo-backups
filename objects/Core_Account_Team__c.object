@@ -323,6 +323,12 @@
         </valueSet>
     </fields>
     <label>Account Team</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <filterScope>Mine</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>ATM-{0000}</displayFormat>
         <label>Account Team Name</label>

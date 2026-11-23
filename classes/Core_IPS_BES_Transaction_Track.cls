@@ -5,7 +5,7 @@
 * Description : When an BES error log is created, this class sends the error details to trasaction tracking API.
 *   
 ************************************************/ 
-public with sharing class Core_IPS_BES_Transaction_Track {//After 0Pk1J000000KywA changes 22102024
+public with sharing class Core_IPS_BES_Transaction_Track {//After Devcase changes 22102024
     /* Start ---- Tushar----Added part of vanuability changes*/
     @TestVisible
     private static Boolean isValidSalesforceId(String idStr) {
@@ -24,8 +24,11 @@ public with sharing class Core_IPS_BES_Transaction_Track {//After 0Pk1J000000Kyw
         List<Core_IPS_BES_Outbound_Message__c> outboundRec = new List<Core_IPS_BES_Outbound_Message__c>();
         List<Core_IPS_BES_Inbound_Message__c> inboundRec = new List<Core_IPS_BES_Inbound_Message__c>();
         try {
-            
-	    String endPointURL = 'callout:Core_IPS_Transaction_Tracking_NamedCred';
+            System.debug('inside transaction track callout class-Core_IPS_BES_Transaction_Track21102024');
+            //TWC745-6469//String integrationName = 'Core_IPS_Transaction_Tracking';//TWC745-6469-IPS Named Credentials chnage- Gangadhar
+            //TWC745-6469//String endPointURL = Core_IPS_System_Credentails_Apigee__c.getInstance(integrationName).Core_IPS_EndPointURL__c;
+            //TWC745-6469//String accessToken = Core_IPS_APIGEE_Utility.generateAccessToken1(integrationName);
+            String endPointURL = 'callout:Core_IPS_Transaction_Tracking_NamedCred';
 			// Tushar ---- Added isValidSalesforceId as part of vanuability
             if (isValidSalesforceId(errorId) && Core_IPS_BES_Error_Log__c.SObjectType.getDescribe().isAccessible()) {
                 errorRec = [SELECT Core_IPS_Status__c, Core_IPS_Error_Description__c FROM Core_IPS_BES_Error_Log__c WHERE Id = :errorId];
@@ -41,29 +44,34 @@ public with sharing class Core_IPS_BES_Transaction_Track {//After 0Pk1J000000Kyw
 
             String jsonBody = formJson((errorRec.size() > 0) ? errorRec[0] : null, (outboundRec.size() > 0) ? outboundRec[0] : null, (inboundRec.size() > 0) ? inboundRec[0] : null, errorCode);
             
-            
+            //TWC745-6469//if(String.isNotBlank(accessToken)) { 
+                System.debug('inside transaction track callout class 22102024'+endPointURL);
                 Http calloutreq = new Http(); 
                 HttpRequest postRequest = new HttpRequest();
                 postRequest.setMethod('POST');
                 postRequest.setEndpoint(endPointURL);
                 postRequest.setHeader('content-type', 'application/json');               
-                
+                //TWC745-6469//postRequest.setHeader(Label.Core_Apigee_Auth, 'Bearer ' + accessToken);
                 postRequest.setBody(jsonBody);
+                System.debug('Named cred test 22102024'+jsonBody);
                 postRequest.setTimeout(12000);
                 HttpResponse response = calloutreq.send(postRequest); 
-                if(response.getStatusCode() == 200) {
-                   
-                    if (Schema.sObjectType.Core_IPS_BES_Error_Log__c.fields.Transaction_Track_Status__c.isUpdateable()) {
-                        errorRec[0].Transaction_Track_Status__c = 'Sent Successfully';
+                System.debug('Named cred response test 23102024'+response);
+                if (!errorRec.isEmpty()) {
+                    if (response.getStatusCode() == 200) {
+                        System.debug('Post succesful details NamedCred Test23102024: '+response.getBody());
+                        if (Schema.sObjectType.Core_IPS_BES_Error_Log__c.fields.Transaction_Track_Status__c.isUpdateable()) {
+                            errorRec[0].Transaction_Track_Status__c = 'Sent Successfully';
+                        }
+                    } else {
+                        System.debug('Post Failed, details: '+response.getBody());
+                        errorRec[0].Transaction_Track_Status__c = 'Failed';
                     }
-                } else {
-                   
-                    errorRec[0].Transaction_Track_Status__c = 'Failed';
+                    update errorRec;
                 }
-                update errorRec;
-            
+            //TWC745-6469//}
         } catch (Exception e ) {
-           
+          System.debug('Exception occured in transaction tracking'+ e.getStackTraceString());
         }
     }
     
@@ -119,7 +127,7 @@ public with sharing class Core_IPS_BES_Transaction_Track {//After 0Pk1J000000Kyw
                 return body;
             }
         }catch(Exception e){
-            
+            //System.debug('excp1'+e.getMessage()+'trace'+e.getStackTraceString());
         }
         return null;
         

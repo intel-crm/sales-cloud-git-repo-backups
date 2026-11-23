@@ -15,6 +15,10 @@
         <relationshipLabel><!-- Product Access: Accounts --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Submitter Comments --></label>
+        <name>Core_IPS_Submitter_Comments__c</name>
+    </fields>
+    <fields>
         <help><!-- MAP/PAR header record --></help>
         <label><!-- MAP/PAR --></label>
         <name>Core_MAP_PAR__c</name>

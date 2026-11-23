@@ -119,7 +119,7 @@ private class Core_IPS_EnvironmentDetailQuestion_Test {
             {
                 MapAssigned_EnvironmentVariables.put(Ev.Core_IPS_Question__c, ev); 
                 // define the questions dependency
-                if(Ev.Core_IPS_Question__r.Core_IPS_Parent_Question__c!=null) {
+                if(Ev.Core_IPS_Question__r.Core_IPS_Parent_Question__c!=null){ // && !mapQuesParentId2DependentId.containsKey(Ev.Core_IPS_Question__r.Core_IPS_Parent_Question__c)) {
                     if(!mapQuesParentId2DependentId.containsKey(Ev.Core_IPS_Question__r.Core_IPS_Parent_Question__c)) {
                         mapQuesParentId2DependentId.put(Ev.Core_IPS_Question__r.Core_IPS_Parent_Question__c, new Set<Id>());
                     }                    

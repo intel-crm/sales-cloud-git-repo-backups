@@ -12,17 +12,13 @@ trigger Core_Opp_FC_6QPS on Core_Opp_FC_Prod_Schedule__c (before update, after u
     Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     if(Trigger.isUpdate){
         if(Trigger.isBefore){
-            if(mapFunctionalityNameTriggerExecution.containsKey('beforeFCUpdate') && mapFunctionalityNameTriggerExecution.get('beforeFCUpdate').Core_Active__c){
+            if(mapFunctionalityNameTriggerExecution.containsKey('beforeFCUpdate') && mapFunctionalityNameTriggerExecution.get('forecastUpdateFromOppty').Core_Active__c){
                 Core_Opp_FC_6QPSHandler.beforeUpdateMethod(Trigger.New, Trigger.oldMap);
             }
         }
         if(Trigger.isAfter){
-            if(mapFunctionalityNameTriggerExecution.containsKey('afterFCUpdate') && mapFunctionalityNameTriggerExecution.get('afterFCUpdate').Core_Active__c){
+            if(mapFunctionalityNameTriggerExecution.containsKey('afterFCUpdate') && mapFunctionalityNameTriggerExecution.get('forecastUpdateFromOppty').Core_Active__c){
                 Core_Opp_FC_6QPSHandler.afterUpdateMethod(Trigger.New, Trigger.oldMap);
-            }
-            
-            if(mapFunctionalityNameTriggerExecution.containsKey('forecastCommissionCreate') && mapFunctionalityNameTriggerExecution.get('forecastCommissionCreate').Core_Active__c){
-                //Core_Opp_FC_Handler.addCommissionableTransaction(Trigger.New, Trigger.oldMap);
             }
         }
     }

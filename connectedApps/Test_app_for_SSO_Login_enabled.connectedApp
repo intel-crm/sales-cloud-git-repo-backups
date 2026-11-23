@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>tejaswinix.prafulla.harpanhalli@intel.com</contactEmail>
+    <label>Test app for SSO Login enabled</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost:8888/callback</callbackUrl>
+        <certificate>MIIEgTCCA2mgAwIBAgIOAZk0fsx4AAAAACgauXQwDQYJKoZIhvcNAQELBQAwgYIxGjAYBgNVBAMMEUNvbm5lY3RlZF9BUFBfSldUMRgwFgYDVQQLDA8wMEQzRjAwMDAwMDBObXIxFzAVBgNVBAoMDlNhbGVzZm9yY2UuY29tMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQswCQYDVQQIDAJDQTEMMAoGA1UEBhMDVVNBMB4XDTI1MDkxMDE2MzkwOVoXDTI2MDkxMDEyMDAwMFowgYIxGjAYBgNVBAMMEUNvbm5lY3RlZF9BUFBfSldUMRgwFgYDVQQLDA8wMEQzRjAwMDAwMDBObXIxFzAVBgNVBAoMDlNhbGVzZm9yY2UuY29tMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQswCQYDVQQIDAJDQTEMMAoGA1UEBhMDVVNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmI1BolGCi+MtNLrFQ4B1Y0g01T0jhcf4lo9SkznAzG4woOxHpPCovTIrUwNajhahDnd+XSGolJOE1nlpZn2Xg2h8BK7lWRW9WYNb6voBreo+zAV5C4SnlizfkkH+8t53hT3JaXLGMrRMtGvi4t60qq/Qrb/noqikWTU9RkLTXui/bph/9yCZvEB0L4gGtBKxvWFEgeNG2tofD+u9XauClB1X7JRX7qCspseuk/7ofkXQtLip2cGyV56LkZ7QKfKped1Iz7FFpyvsPFrS/khLqnye1SPQPVI47s7C5T3wGIv1RqHMhyxIldYgmcEhcfr5guwqCZnbrYLfKT8Au88T1QIDAQABo4HyMIHvMB0GA1UdDgQWBBTDcbogJNafcLBvbTWvcryIiChHRzAPBgNVHRMBAf8EBTADAQH/MIG8BgNVHSMEgbQwgbGAFMNxuiAk1p9wsG9tNa9yvIiIKEdHoYGIpIGFMIGCMRowGAYDVQQDDBFDb25uZWN0ZWRfQVBQX0pXVDEYMBYGA1UECwwPMDBEM0YwMDAwMDAwTm1yMRcwFQYDVQQKDA5TYWxlc2ZvcmNlLmNvbTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzELMAkGA1UECAwCQ0ExDDAKBgNVBAYTA1VTQYIOAZk0fsx4AAAAACgauXQwDQYJKoZIhvcNAQELBQADggEBAF0cNE1n8stNitvirBgaYrChOp6T3uoVTN3ZD+gVFOW4wNS3oQunF7x1C6Q4e9aAR0+Qs4v/bvEbwNqsfY2zo7YpOlC/uKC5UlEl5oTzeNsTmQAKpw1rS5uX/jg75LeRnj9Vklqkmuzq19z2WtWdsMS2dKFdaZWEIXy8mobdxT62uYFTtkktsSItifC86kzW2v973+FR+xzxkAZco3qtpcQEN0wbKjyrVqtkJUMqLsdYbE4PQEWmXtEImR5f9JA8UaAu8PzNxW2fEpkAE40RRUZW6F1Y6oSOywdzawo1gc2CL/Ps4zdJ1m0xeMRLWyMAZVK4fiTler+SW38C1zXSw/4=</certificate>
+        <consumerKey>3MVG9JamK_x9K2XIz6FKasGquU8mQfIFBU9JmZUgfxcVgGsT.dkSJ773kZgd_0ErFdbT4nbMNStysoqZyfbFV</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>true</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>true</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>true</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>true</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>BYPASS</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

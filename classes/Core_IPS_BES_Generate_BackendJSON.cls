@@ -6,18 +6,19 @@ public with sharing class Core_IPS_BES_Generate_BackendJSON {
     Map<Id, Case> caseMap;
     List<String> caseIdList = new List<string>();
     try{
-        String jsonData = '';
+        //String jsonData = ''; //TWC745-7219 Commented as part of outbound flow heap size issue
         if(Core_IPS_BES_Outbound_Message__c.SObjectType.getDescribe().isQueryable()){
             List<Core_IPS_BES_Outbound_Message__c> sObjList = [Select Id, Core_IPS_Case_ID__c,Name,Comment_Id__c,Core_IPS_Attachment_ID__c,Core_IPS_BES_Depromote_Id__c,Core_IPS_Old_Backend_String__c  from Core_IPS_BES_Outbound_Message__c where id IN : recordIdList];
-            for(Core_IPS_BES_Outbound_Message__c outBoundMsg: sObjList){
-                if(messageType == 'Comment' && outBoundMsg !=null && (outBoundMsg.Comment_Id__c != null ||outBoundMsg.Comment_Id__c !='')&&(outBoundMsg.Core_IPS_Attachment_ID__c == null ||outBoundMsg.Core_IPS_Attachment_ID__c =='' )){
+            for(Core_IPS_BES_Outbound_Message__c outBoundMsg: sObjList){                                               //||outBoundMsg.Comment_Id__c !=''
+                if(messageType == 'Comment' && outBoundMsg !=null && (outBoundMsg.Comment_Id__c != null && !String.isEmpty(outBoundMsg.Comment_Id__c))&&(outBoundMsg.Core_IPS_Attachment_ID__c == null ||outBoundMsg.Core_IPS_Attachment_ID__c =='' )){ //TWC745-7213 -Broken null check sol added
                  	outBoundMap.put(outBoundMsg.Core_IPS_Case_ID__c+outBoundMsg.Comment_Id__c, outBoundMsg);   
                 } else if(messageType == 'Attachment' && (outBoundMsg.Comment_Id__c == null ||outBoundMsg.Comment_Id__c =='')&&(outBoundMsg.Core_IPS_Attachment_ID__c != null ||outBoundMsg.Core_IPS_Attachment_ID__c !='' )){
                     outBoundMap.put(outBoundMsg.Core_IPS_Case_ID__c+outBoundMsg.Core_IPS_Attachment_ID__c, outBoundMsg);   
                 } else if(messageType == 'Case' && (outBoundMsg.Comment_Id__c == null ||outBoundMsg.Comment_Id__c =='')&&(outBoundMsg.Core_IPS_Attachment_ID__c == null ||outBoundMsg.Core_IPS_Attachment_ID__c =='' )) {
-                    outBoundMap.put(outBoundMsg.Core_IPS_Case_ID__c, outBoundMsg);   
-                }
-                if(outBoundMsg !=null && (outBoundMsg.Core_IPS_Case_ID__c !=null || outBoundMsg.Core_IPS_Case_ID__c !='')){
+                    outBoundMap.put(outBoundMsg.Core_IPS_Case_ID__c, outBoundMsg);  
+                    
+                }                                                       //|| outBoundMsg.Core_IPS_Case_ID__c !=''
+                if(outBoundMsg.Core_IPS_Case_ID__c !=null && !String.isEmpty(outBoundMsg.Core_IPS_Case_ID__c)){ //TWC745-7213 -Broken null check sol added 
                     caseIdList.add(outBoundMsg.Core_IPS_Case_ID__c);
                 }
                 
@@ -31,7 +32,8 @@ public with sharing class Core_IPS_BES_Generate_BackendJSON {
                     outBoundNameMap.put(outBoundMsg.Core_IPS_Case_ID__c + 'Case', outBoundMsg);
                 }
             } 
-            Set<String> casesIds = outBoundMap.keySet();
+            sObjList.clear(); //TWC745-7219 Changes made as part of outbound flow heap size issue
+            //Set<String> casesIds = outBoundMap.keySet(); //TWC745-7219 Commented as part of outbound flow heap size issue
             if(messageType == 'Case'){
             	caseMap = new Map<Id, Case>([Select Id,CaseNumber,Core_IPS_BackendID__c,Core_IPS_New_Backend_System__r.Core_IPS_Target_System__c from case where Id IN: outBoundMap.keyset()]);
             } else {
@@ -93,16 +95,20 @@ public with sharing class Core_IPS_BES_Generate_BackendJSON {
                 }
               
                 gen.writeEndObject();
-                jsonData = gen.getAsString();
+                //jsonData = gen.getAsString(); //TWC745-7219 Commented as part of outbound flow heap size issue 
                 if(messageType != 'Case'){
                     genMap.put(csId.substring(18,36) + messageType, gen);   
                 } else {
                  	genMap.put(csId + messageType, gen);   
                 }
             }
+            //START - TWC745-7219 Changes made as part of outbound flow heap size issue
+            caseMap.clear();
+            outBoundNameMap.clear();
+            outBoundMap.clear(); //END
         }
 	} catch(Exception e){
-    	//Core_IPS_BES_LogEntry_Utility.insertLog(e, null, null, null, null);//String.join((Iterable<String>)caseMap.keySet(),','
+    	Core_IPS_BES_LogEntry_Utility.insertLog(e, null, null, null, String.join(caseIdList,','));//String.join((Iterable<String>)caseMap.keySet(),','
     }
         return genMap;  
     }

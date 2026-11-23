@@ -11,19 +11,19 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>test_for_plain_update_case_rtf_to_delete</fullName>
-        <field>Test_fro_plain__c</field>
-        <formula>Core_IPS_Rich_Comment__c</formula>
-        <name>test for plain update case rtf to delete</name>
+        <fullName>update_rich_text_with_plain</fullName>
+        <field>Core_IPS_Rich_Comment__c</field>
+        <formula>Core_IPS_Comment__c</formula>
+        <name>update rich text with plain</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <outboundMessages>
         <fullName>Core_IPS_RTF_CaseComment_Backend_OutMsg</fullName>
         <apiVersion>35.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
+        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2-dev.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
         <fields>Core_IPS_Case__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
@@ -32,6 +32,19 @@
         <protected>false</protected>
         <useDeadLetterQueue>false</useDeadLetterQueue>
     </outboundMessages>
+    <rules>
+        <fullName>Core_IPS_Auto_Populate_Rich_Text</fullName>
+        <actions>
+            <name>update_rich_text_with_plain</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_IPS_Case_Comments__c.Core_IPS_Rich_Comment__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
     <rules>
         <fullName>Core_IPS_RTF_CaseComment_Backend_WF</fullName>
         <actions>

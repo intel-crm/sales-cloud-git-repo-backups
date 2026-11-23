@@ -11,114 +11,58 @@ Modification Log :
 @isTest
 public class Core_ProductOpportunity_Test {
 
-    private static List<Product2> prodList {
-        get;
-        set;
-    }
-    private static List<OpportunityLineItem> oppLineItemList{
-    get;
-    set;
-    }
-     /*
-     * Method name  : setupTestData
-     * Description  : Method to setup test data for Product name concatenation
-     * Return Type  : None
-     * Parameter    : None
-     */
-    static void setupData() {
-        List<Core_Trigger_Executions__c> triggerSettingList = new List<Core_Trigger_Executions__c>();
-        List<String> settingNameList = new List<String>();
-        settingNameList.add('isProductNameChanged');
-        settingNameList.add('updateProductEOL');
-        settingNameList.add('updateProcessorNumber');
-        Core_Trigger_Executions__c triggerSetting;
-        for(String settingName : settingNameList){
-            triggerSetting = new Core_Trigger_Executions__c();
-            triggerSetting.name = settingName;
-            triggerSetting.Core_Object__c = 'Product2';
-            triggerSetting.Core_Active__c = TRUE;
-            triggerSetting.Core_Description__c = 'This is test description';
-            triggerSetting.Core_Class_Name__c = 'Core_ProductOpportunity';
-            triggerSetting.Core_Trigger_Events__c = 'Before Update';
-            triggerSettingList.add(triggerSetting);
-        }
-        insert triggerSettingList;
-        /***
-        List<Account> accountList = Core_Test_Utility.createAccount(6);
-        accountList[0].Name = 'Dell';
-        accountList[0].Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
-        accountList[0].Industry = 'Agriculture';
-        accountList[0].Core_Sub_Industry__c = 'Forestry';
-		***/
+    private static testMethod void testOppProdConcatenatedFieldUpdate() {
         
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());        
+        // Enable the trigger execution        
+        Core_Trigger_Executions__c triggerEntry = new Core_Trigger_Executions__c(
+            Name='oppProdConcatenatedFieldUpdate', Core_Object__c='Product2', Core_Class_Name__c='Core_ProductHandler',
+            Core_Trigger_Events__c='after update', Core_Active__c=true, Core_Description__c='testing, testing');
+        insert triggerEntry;
+        
+        triggerEntry = new Core_Trigger_Executions__c(
+            Name='opportunityLineItemAfterHandler', Core_Object__c='OpportunityLineItem', Core_Class_Name__c='Core_OpportunityLineItem',
+            Core_Trigger_Events__c='after insert, after update, after delete', Core_Active__c=true, Core_Description__c='testing, testing');
+        insert triggerEntry;
+        
+        // Create a couple of products, add them to an opportunity, check the concatenated field,
+        // then change the name of one of the products and check the concatenated field to make sure
+        // it was updated
     
-        insert acct;
-        
-        prodList = new List<Product2>();
-        Product2 prod1 = new Product2(Name='Test Product 1');
-        Product2 prod2 = new Product2(Name='Test Product 2');
-        prodList.add(prod1);
-        prodList.add(prod2);
-        insert prodList;
-        prodList[0].Core_SA_Is_EOL__c =true;
-        update prodList;
-        
-        Product2 prod3 = new Product2();
-        prod3.Id=prod2.Id;
-        prod3.Core_Processor_Number_Ta_Nm__c='testprocessornumber';
-        prod3.Core_Product_Type__c ='Processors';
-        update prod3;
-        
-        Product2 prod4 = new Product2();
-        prod4.Id=prod2.Id;
-        prod4.Core_Processor_Number_Ta_Nm__c='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper portauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed';
-        prod4.Core_Product_Type__c ='Processors';
-        update prod4;
-        
-        
+    	Product2 prod1 = new Product2(Name='Test Product 1');
+    	Product2 prod2 = new Product2(Name='Test Product 2');
+        insert prod1;
+        insert prod2;
+            
         Opportunity opp = Core_Test_Utility.createOpportunity(1)[0];
-        opp.AccountId = acct.Id;
         insert opp;
         
-        List<PricebookEntry> priceBookList = new List<PricebookEntry>();
         PricebookEntry pbookEntry1 = new PricebookEntry(Product2Id=prod1.Id, UnitPrice=1, isActive=true, Pricebook2Id=Test.getStandardPricebookId(), UseStandardPrice=false);
-        PricebookEntry pbookEntry2 = new PricebookEntry(Product2Id=prod2.Id, UnitPrice=1, isActive=true, Pricebook2Id=Test.getStandardPricebookId(), UseStandardPrice=false);        
-        priceBookList.add(pbookEntry1);
-        priceBookList.add(pbookEntry2);
-        insert priceBookList; 
+        PricebookEntry pbookEntry2 = new PricebookEntry(Product2Id=prod2.Id, UnitPrice=1, isActive=true, Pricebook2Id=Test.getStandardPricebookId(), UseStandardPrice=false);
         
+        insert pbookEntry1;
+        insert pbookEntry2;
         
+        OpportunityLineItem oppProd1 = new OpportunityLineItem(OpportunityId=opp.Id, PricebookEntryId=pbookEntry1.Id, Quantity=0, TotalPrice=10);
+        OpportunityLineItem oppProd2 = new OpportunityLineItem(OpportunityId=opp.Id, PricebookEntryId=pbookEntry2.Id, Quantity=0, TotalPrice=10);
         
+        insert oppProd1;
+        insert oppProd2;
         
-        oppLineItemList = new List<OpportunityLineItem>();
-        OpportunityLineItem oppProd1 = new OpportunityLineItem(OpportunityId=opp.Id, PricebookEntryId=pbookEntry1.Id, Quantity=1, TotalPrice=10);
-        OpportunityLineItem oppProd2 = new OpportunityLineItem(OpportunityId=opp.Id, PricebookEntryId=pbookEntry2.Id, Quantity=1, TotalPrice=10);
-        oppLineItemList.add(oppProd1);
-        oppLineItemList.add(oppProd2);
-        insert oppLineItemList;
+        opp = [select Id, Core_Opportunity_Products__c from Opportunity where Id = :opp.Id];
+        String oppConcatValue = opp.Core_Opportunity_Products__c;
+        System.assert(oppConcatValue.contains('Test Product 1'));
+        System.assert(oppConcatValue.contains('Test Product 2'));
+        System.assert(!oppConcatValue.contains('Test Product ABC'));
         
-    }
-    
-    private static testMethod void testOppProdConcatenatedFieldUpdate() {
-        setupData();
-        for(Product2 prod : prodList){
-            if(prod.Name =='Test Product 1')
-                prod.Name = 'Test Product ABC';
-            if(prod.Name =='Test Product 2')
-                prod.Name = 'Test Product XYZ';
-        }
-        Set<String> lineitemSet = new Set<String>();
-        for(OpportunityLineItem o : oppLineItemList){
-            lineitemSet.add(o.id);
-        }
+        prod1.Name = 'Test Product ABC';
         Test.startTest();
-        update prodList;
-        Core_Batch_updateEOL_Retry obj = new Core_Batch_updateEOL_Retry(lineitemSet,prodList); 
-        DataBase.executeBatch(obj);
-        Product2 prod = [SELECT id, Core_Is_Name_Changed_Chk__c FROM Product2 WHERE Id=: prodList[0].Id];
-        System.assertEquals(True , prod.Core_Is_Name_Changed_Chk__c );
+        update prod1;
         Test.stopTest();
-    }    
+        
+        opp = [select Id, Core_Opportunity_Products__c from Opportunity where Id = :opp.Id];
+        oppConcatValue = opp.Core_Opportunity_Products__c;
+        System.assert(!oppConcatValue.contains('Test Product 1'));
+        System.assert(oppConcatValue.contains('Test Product 2'));
+        System.assert(oppConcatValue.contains('Test Product ABC'));
+    }
 }

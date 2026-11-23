@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Ask_Commissions_Letterhead</letterhead>
+    <name>Ask Commissions-Notification to Requestor/owner when status changes HTML</name>
+    <style>freeForm</style>
+    <subject>Case Number: {!Case.CaseNumber} - Ask Commissions case status has been changed to {!Case.Status}</subject>
+    <textOnly>The Status of Case has been changed.
+
+Case Number: {!Case.CaseNumber}
+New Status: {!Case.Status}
+
+For more details, click on the link to visit the Case:
+
+{!Case.Core_AAQC_Commission_InquiryId_Hyperlink__c}
+
+
+***NOTE: Do not reply to this mail as there is no inbox being monitored***</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

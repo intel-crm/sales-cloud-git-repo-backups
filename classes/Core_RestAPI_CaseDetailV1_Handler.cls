@@ -33,12 +33,14 @@ public with sharing class Core_RestAPI_CaseDetailV1_Handler {
     public Core_RestAPI_CaseDetailV1_Handler (DateTime currTime, String APIname){
         this.entryTime = currTime;
         this.apiName = APIname;
+        System.debug('Core_RestAPI_CaseDetailV1_Handler URI '+RestContext.request.requestURI  );
     }
     
     
     //Case Detail for the given case number
     @testVisible public  Core_RestAPI_Response getCaseDetail(){
         
+        System.debug(' Core_RestAPI_Case_DetailV1_Handler getCaseDetail Entered  \n ');
         
         try{
             //process all validations and skip processing the request if validations fails.
@@ -51,16 +53,19 @@ public with sharing class Core_RestAPI_CaseDetailV1_Handler {
             lCaseWrpr = null;
             Core_RestAPI_Util.processException(e, ERROR_CODE_500, response, apiName, entryTime);
         }finally{
+            System.debug('Core_RestAPI_Case_Handler Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
             
         } 
+        System.debug(' Core_RestAPI_Case_DetailV1_Handler getCaseDetail Exiting ');
         return response;
     }
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations(){
+        System.debug('Core_RestAPI_CaseV1_Handler doValidations Invoked ');
         Boolean isRequestValid = true;
         if(!CASE_NUMBER.isNumeric() || CASE_NUMBER.length() != 8){
             Core_RestAPI_Util.processException(null ,MALFORMED_INPUT_9011, response, apiName, entryTime);   
@@ -77,6 +82,7 @@ public with sharing class Core_RestAPI_CaseDetailV1_Handler {
     
     //Retrive the case details for the given case number.
     public void processRequest(){
+        System.debug(' Core_RestAPI_CaseDetailV1_Handler processRequest Entering SOQL  \n '+GET_CASE_DETAIL_SOQL);
         for(Case c : Database.Query(GET_CASE_DETAIL_SOQL))
         {  
             CaseDetailWrapper cw = new CaseDetailWrapper();
@@ -105,8 +111,10 @@ public with sharing class Core_RestAPI_CaseDetailV1_Handler {
             cw.caseCategory = c.Core_External_Issue_Category__c;
             cw.caseSubcategory = c.Core_External_Issue_Subcategory__c;
             
+            System.debug('\n Core_RestAPI_CaseDetailV1_Handler Environmental Questions ' +c.Core_IPS_Responses__r);
             //Set environment details
             if(c.Core_IPS_Responses__r != null ){
+                system.debug('c.Environments__r ==>> '+c.Core_IPS_Responses__r);
                 cw.environmentalDetailQuestions = new List<EnvironmentDetail>();
                 for(Core_IPS_Response__c  envDet : c.Core_IPS_Responses__r){
                     EnvironmentDetail env = new EnvironmentDetail();
@@ -141,6 +149,7 @@ public with sharing class Core_RestAPI_CaseDetailV1_Handler {
         if(response.successContent != null && response.successContent.isEmpty())
             Core_RestAPI_Util.processException(null,MALFORMED_INPUT_9011, response, apiName, entryTime); 
         
+        System.debug(' >> processRequest response.successContent '+response.successContent);
     }
     
     //IMPORTANT : Wrapper class must implement the interface Core_RestAPI_SuccessContent

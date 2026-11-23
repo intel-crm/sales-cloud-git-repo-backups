@@ -1,5 +1,5 @@
 /**************************************************************************************************************
-Apex Class Name:  Core_Batch_Delete_Old_Log_Entries
+Apex Class Name:  Core_Batch_Delete_Old_Log_Entriesd_Log_Entries
 Version     : 1.0 
 Created Date: 28 July 2016
 Function    : Batch class to delete Log Entry records older than 90 days

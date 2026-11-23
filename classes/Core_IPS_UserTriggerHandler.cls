@@ -19,6 +19,7 @@ Modification Log :
 * Amritesh                   11/08/2017              Modified - updated the InsertProjMemberatFuture with Queueable apex
 ****************************************************************************************************/ 
     public static void InsertProjMember(List<User> UserList){
+        System.debug('InsertProjMember = '+UserList);
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('insertprojmemberfromuser')) return;
         List<Id> accList = new List<Id>();
         List<Id> usersList = new List<Id>();
@@ -26,7 +27,7 @@ Modification Log :
             List<User> ipsUsers = new List<User>();
             String userType = 'PowerCustomerSuccess';
             String query = 'select id, name, Contact.Id, Contact.AccountId from user where id IN: UserList and usertype=:userType and userroleid!=null and Contact.Core_IPS_Active__c = true';
-              ipsUsers = Database.query(query);
+            	ipsUsers = Database.query(query);
             
             for(User Usr: ipsUsers){
                 accList.add(Usr.Contact.AccountId);
@@ -110,7 +111,11 @@ Modification Log :
 * Amritesh                   11/08/2017              Modified - updated the UpdateProjMemberatFuture with Queueable apex
 ****************************************************************************************************/ 
     public static void UpdateProjMember(Map<Id,User> oldMap, Map<Id,User> newMap, List<User> UserList){
+        System.debug('oldMap = '+oldMap);
+        System.debug('newMap = '+newMap);
+        System.debug('UserList = '+UserList);
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('updateprojmemberfromuser')) return;
+        System.debug('###Inside UpdateProjMember of user trigger handler');
         List<Id> AccountIds = new List<Id>();
         Set<Id> ProjectIds = new Set<Id>();
         List<Id> ContactIds = new List<Id>();
@@ -141,7 +146,7 @@ Modification Log :
     } 
     
     
-    /***************************************************************************************************
+    /********************InsertProjMember*******************************************************************************
 Version     : 1.0 
 Created Date: 27 Nov 2017
 Function    : This method takes the Region, Sub Region,Country fields to Contact that can be used in Case Routing
@@ -160,7 +165,8 @@ Modification Log :
 * Abhishek Vishwakarma        27/11/2017             Created  - Calling the future method to avoid Mixed DML issue - US87938
 ****************************************************************************************************/  
     public static void updateUserRegionFields(List<User> lstUsers,Map<Id,User> mapOldValues){
-        
+        System.debug('lstUsers = '+lstUsers);
+        System.debug('mapOldValues = '+mapOldValues);
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('updateUserRegionFields'))
             return;
         try{
@@ -300,7 +306,7 @@ Modification Log :
                         if (string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){//RK add
                             objIPSContact = new Contact(Core_IPS_Active__c = true,RecordtypeId = ConRecId,AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email, MailingCountry='USA');//Tejaswini: Added MailingCountry='USA'to consider MailingCountry validation rule
                             //AccountID: 0013F0000052PUp
-                            //Profile ID:  00eo0000000f7GOAAY
+                            //Profile ID:  00eo0000000f7GOAAY changed to 00eo00000013vj6
                         }else if(string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_Partner_AE_Profile_Id)){//RK add
                             objIPSContact = new Contact(Core_IPS_Active__c = true,RecordtypeId = ConRecId,AccountId = Label.Core_Partner_Agent_Holding_Account ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email);//RK Changes
                             //AccountID: 0014F000004C9FOQA0
@@ -434,7 +440,7 @@ Modification Log :
         
         // Add the users to the groups
         if (setNewUserIds.size() != 0 ) {
-            String query = 'SELECT Id, Name, ProfileId,Email FROM User WHERE Id IN :setNewUserIds';   //Added Email to queried field Tejaswini   
+            String query = 'SELECT Id, Name, ProfileId,Email FROM User WHERE Id IN :setNewUserIds';   //Added Email to queried field    
             List<User> lstUsers = Database.query(query);
             
             // Build the list of user ids and their group ids
@@ -444,8 +450,8 @@ Modification Log :
                 if(mapProfileIdGroupId.containsKey(user.ProfileId) ){
                     Id groupId = mapProfileIdGroupId.get(user.ProfileId);
                 
-                    if (groupId != null) {// User has a ProfileId that has a matching groupId
-                        /*added by Tejaswini for Employee as Customer profil migration to Partner */
+                    if (groupId != null) // User has a ProfileId that has a matching groupId
+                         /*added by Tejaswini for Employee as Customer profil migration to Partner */
                        if(user.Email!=null && user.Email.Contains('@intel.com') && string.valueof(user.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){
                            mapUserIdGroupId.put(user.Id, Label.Core_IPS_Employee_As_Customer_PG_Id);
                         } else {
@@ -453,7 +459,7 @@ Modification Log :
                         }
                     	/*End of code by Tejaswini */ 
 
-                    }
+                     //   mapUserIdGroupId.put(user.Id, groupId);
                 }
                 
             }
@@ -602,6 +608,18 @@ Modification Log :
     ****************************************************************************************************/ 
     
     public static void InactivateActivateInterestedParty(List<User> newList,map<Id, User> mapOld) {
+        
+        System.debug('JuneTest2026@111-exception replication test');
+		// 1. Get the number of queueable jobs enqueued in this transaction so far
+        Integer jobsUsed = System.Limits.getQueueableJobs();
+        // 2. Get the maximum allowed queueable jobs for this transaction
+        Integer jobsLimit = System.Limits.getLimitQueueableJobs();
+        System.debug('Queueable Jobs Enqueued: ' + jobsUsed + ' out of ' + jobsLimit);
+        //3.limits of future method call
+        System.debug('Future Calls Used: ' + System.Limits.getFutureCalls());
+        System.debug('Future Calls Max Limit: ' + System.Limits.getLimitFutureCalls());
+        System.debug('Remaining Future Calls: ' + (System.Limits.getLimitFutureCalls() - System.Limits.getFutureCalls()));
+        
         //check if enabled from custom setting
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('InactivateInternalInterestedParty')) return;
         
@@ -620,9 +638,60 @@ Modification Log :
                 lstInactivatedUsers.add(objUser.Id);
             }
         }
-        if((lstActivatedUsers.size()>0 || lstInactivatedUsers.size()>0) && !system.isBatch()) {
+         if(lstActivatedUsers.size()>0 || lstInactivatedUsers.size()>0) { //Draco team issue fix - Gangadhar 10/06/2026 -Begin
+            System.debug('JuneTest2026@222');
+            if(System.isFuture() || System.isBatch() || System.isQueueable()) {
+                System.debug('Gangadhar fix test on 10/06/2026- transaction is executing in Asynchronous mode-cool test');
+                System.debug('lstActivatedUsers test'+lstActivatedUsers +'lstInactivatedUsers test'+lstInactivatedUsers);
+            } else {
+                System.debug('Gangadhar fix test on 10/06/2026- transaction is executing in synchronous mode-Hot test');
+                System.debug('lstActivatedUsers test'+lstActivatedUsers +'lstInactivatedUsers test'+lstInactivatedUsers);
+            }
+             
             InactivateActivateInterestedParty_Future(JSON.serialize(lstActivatedUsers), JSON.serialize(lstInactivatedUsers));
-        }
+        } 
+    /*    //Draco team issue fix - Gangadhar 10/06/2026 -Begin
+        //dynamically inspect the transaction state,If it detects an asynchronous environment, 
+        //it routes the data to a shared internal method synchronously instead of invoking below logic wiht the @future method
+		try{
+        	if(System.isFuture() || System.isBatch() || System.isQueueable()) {
+                System.debug('Gangadhar fix test on 10/06/2026- transaction is executing in Synchronous mode-cool test');
+		    	if(lstActivatedUsers!=null && lstActivatedUsers.size()>0) {
+            	//Start --DE35667--Added type external 
+            	List<Core_IPS_Case_Interested_Party__c> lstCaseInterestedParty2Activate = new List<Core_IPS_Case_Interested_Party__c>([SELECT Id FROM Core_IPS_Case_Interested_Party__c WHERE Type__c IN ('Internal','External') AND User__c IN :lstActivatedUsers AND Active__c=false]);
+            	//End --DE35667--Added type external
+            	for(Core_IPS_Case_Interested_Party__c objIP : lstCaseInterestedParty2Activate) {
+                		objIP.Active__c = true;
+            		}
+            if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isUpdateable()){
+            		update lstCaseInterestedParty2Activate;
+            	}
+        	}
+        
+        if(lstInactivatedUsers!=null && lstInactivatedUsers.size()>0) {
+            //Start DE35667--Added type external
+            List<Core_IPS_Case_Interested_Party__c> lstCaseInterestedParty2Inactivate = new List<Core_IPS_Case_Interested_Party__c>([SELECT Id FROM Core_IPS_Case_Interested_Party__c WHERE Type__c IN ('Internal','External') AND User__c IN :lstInactivatedUsers AND Active__c=true]);
+            //End --DE35667--Added type external
+            for(Core_IPS_Case_Interested_Party__c objIP : lstCaseInterestedParty2Inactivate) {
+                objIP.Active__c = false;
+            
+            }
+            if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isUpdateable()){
+            	update lstCaseInterestedParty2Inactivate;
+            	}
+        	}
+		}
+		else if(lstActivatedUsers.size()>0 || lstInactivatedUsers.size()>0) {
+            System.debug('Gangadhar fix test on 10/06/2026- transaction is executing in Asynchronous mode-Hot test');
+            InactivateActivateInterestedParty_Future(JSON.serialize(lstActivatedUsers), JSON.serialize(lstInactivatedUsers));
+        	}
+		}
+		catch(Exception e){ 
+            System.debug('Gangadhar fix test on 10/06/2026- transaction execution test- Exception raised');
+            Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler');
+             }
+		//Draco team issue fix - Gangadhar 10/06/2026 -End ----*/
+        
     }
     
     /***************************************************************************************************
@@ -643,7 +712,7 @@ Modification Log :
     ****************************************************************************************************/ 
     @future
     public static void InactivateActivateInterestedParty_Future(String strActivatedUsers, String strInactivatedUsers) {
-            
+        System.debug('JuneTest2026@333');    
         List<Id> lstActivatedUsers = (List<Id>)JSON.deserialize(strActivatedUsers, List<Id>.class);
         List<Id> lstInactivatedUsers = (List<Id>)JSON.deserialize(strInactivatedUsers, List<Id>.class);
         
@@ -655,7 +724,7 @@ Modification Log :
                 objIP.Active__c = true;
             }
             if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isUpdateable()){
-              update lstCaseInterestedParty2Activate;
+            	update lstCaseInterestedParty2Activate;
             }
         }
         
@@ -668,7 +737,7 @@ Modification Log :
             
             }
             if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isUpdateable()){
-              update lstCaseInterestedParty2Inactivate;
+            	update lstCaseInterestedParty2Inactivate;
             }
         }
     }
@@ -720,12 +789,13 @@ Modification Log :
 * Ganapati                    22/04/2020              Created for US618169 - PRB000091747: Fix issue with Product Access and when Contacts become IPS Active
 ****************************************************************************************************/     
     public static void shareAssetsToCustomers(List<User> usrList) {
+        system.debug('usrList'+usrList);
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('shareAssetsToCustomers')) {
             return;
         }
         List<User> userList = new List<User>();
         if(User.SObjectType.getDescribe().isQueryable()){
-           userList = [SELECT Id, Contact.AccountId, ContactId, UserRoleId FROM User WHERE Id IN :usrList AND (Profile.Name = : System.Label.Core_IPS_Profile_Name OR Profile.Name =: System.Label.Core_IPS_Partner_AE_ProfileName ) AND ContactId != null and Contact.Core_IPS_Active__c = true and Contact.Account.Core_IPS_Active__c = true ];
+        	 userList = [SELECT Id, Contact.AccountId, ContactId, UserRoleId,Profile.Name FROM User WHERE Id IN :usrList  AND (Profile.Name = : System.Label.Core_IPS_Profile_Name OR Profile.Name =: System.Label.Core_IPS_Partner_AE_ProfileName ) AND ContactId != null and Contact.Core_IPS_Active__c = true and Contact.Account.Core_IPS_Active__c = true ];
         }
             if(userList!=null && !userList.isEmpty()) {
             Set<Id> accountIdSet = new Set<Id>();
@@ -804,6 +874,7 @@ Modification Log :
 * Prem                      11/12/2020              Added - updated the InsertProjMemberatFuture with Queueable apex
 ****************************************************************************************************/ 
     public static void UpdateUIOLIUserLostVisibilty(Map<Id, User> UserMap){
+        System.debug('###Inside UpdateUIOLIUserLostVisibilty');
         List<User> ipsUsers = [select id, name, ContactId, Contact.AccountId from user where Contact.Core_IPS_Active__c = true AND isActive=true and Id In :UserMap.keyset()];
         Map<Id,Id> contactUserMap = new Map<Id,Id>();
         for(User ipsUser : ipsUsers){
@@ -813,7 +884,7 @@ Modification Log :
         List<Core_IPS_Project_Member__c> ProjectMembers = new List<Core_IPS_Project_Member__c>();
         //FLS check added-Venugopal.
         if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){
-            ProjectMembers = [Select id,Core_IPS_Contact__c,Core_User__c from Core_IPS_Project_Member__c where Core_Status__c = 'active' and Core_IPS_Contact__c IN :contactUserMap.keySet() and Core_User__c NOT IN :contactUserMap.values()];
+            ProjectMembers = [Select id,Core_IPS_Contact__c,Core_User__c from Core_IPS_Project_Member__c where Core_IPS_Contact__c IN :contactUserMap.keySet() and Core_User__c NOT IN :contactUserMap.values()];
         }
         for( Core_IPS_Project_Member__c projMem: ProjectMembers){
             projMem.Core_User__c = contactUserMap.get((Id)projMem.Core_IPS_Contact__c);

@@ -7,6 +7,10 @@
         <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
+        <field>Core_Country__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Country_Code__c</field>
         <value xsi:type="xsd:string">UKR</value>
     </values>

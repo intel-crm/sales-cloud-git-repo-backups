@@ -1,11 +1,10 @@
-<apex:page showHeader="false" sidebar="false" lightningStylesheets="true" >   
-<apex:slds /> 
+<apex:page >    
     <div style="font-size:12px">
         <p>
             <b>Account and Opportunity</b> content <u>including all notes and attachments</u> in Salesforce are only approved
-            for information classified <u><b>Intel Confidential</b></u>.  Please use Microsoft Teams to store account and
-            opportunity content classified <b style="Color:Red">Intel Top Secret.</b> 
-         </p>
+            for information classified <u><b>Intel Confidential</b></u>.  Please use Inside Blue groups to store account and
+            opportunity content classified Intel Restricted Secret or higher.
+        </p>
         <p>
             Remember documents are classified at the highest classification level of content in the presentation.
         </p>
@@ -14,7 +13,21 @@
         </p>
         <p>
             <b>Intel Premier Support (IPS)</b><br/>
-            Please note IPS in Salesforce is <b>NOT</b> approved for Controlled Technology nor Intel Top Secret Information<br/>
+            (Please note IPS in Salesforce is <b>NOT</b> approved for Controlled Technology nor Intel Top Secret Information)<br/>
+            For IPS Case Management, Intel Restricted Secret content, which is NOT controlled technology, may be included only
+            in the following places, because it is encrypted by the system: 
+            <ul>
+                <li>Case Subject</li>
+                <li>Case Description</li>
+                <li>Case Comments</li>
+                <li>Case Closure Comment</li>
+                <li>Case Resolution Reason</li>
+                <li>Case File Name</li>
+                <li>Case File Description</li>
+                <li>IPS case attachments and IPS file uploads may include Intel Restricted Secret if the proper agreements are
+                    in place and the data does not include controlled technology. The uploads and attachments for IPS are stored
+                    on premise in a secure file database and shared through Secure File Transfer</li>
+            </ul>
         </p>
     </div>
 </apex:page>

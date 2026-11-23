@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <body>&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;br&gt;document.getElementById(&amp;quot;feedLinks&amp;quot;).style.display = &amp;#39;none&amp;#39;; &lt;br&gt;document.getElementById(&amp;quot;chatterfeedshell&amp;quot;).style.display = &amp;#39;none&amp;#39;;&lt;br&gt;&amp;lt;/script&amp;gt;</body>
+    <pageComponentType>htmlArea</pageComponentType>
+    <width>narrow</width>
+</HomePageComponent>

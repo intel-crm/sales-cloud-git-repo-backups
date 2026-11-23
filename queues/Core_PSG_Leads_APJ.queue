@@ -2,12 +2,13 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
-    <name>PSG Lead APJ Covered Accts</name>
+    <name>PSG Leads - APJ</name>
     <queueMembers>
         <users>
-            <user>11645521@intel.com.crm</user>
             <user>11644379@intel.com.crm</user>
-            <user>serena@inteliotsolutionsalliance.com.crm</user>
+            <user>10694274@intel.com.crm</user>
+            <user>11398101@intel.com.crm</user>
+            <user>11686894@intel.com.crm</user>
         </users>
     </queueMembers>
     <queueSobject>

@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Account_Name__c</fullName>
         <externalId>false</externalId>
@@ -219,34 +219,19 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Engineering Services</fullName>
+                    <fullName>Engineering Request</fullName>
                     <default>false</default>
-                    <label>Engineering Services</label>
+                    <label>Engineering Request</label>
                 </value>
                 <value>
-                    <fullName>Software Development Tools</fullName>
+                    <fullName>Software Tools</fullName>
                     <default>false</default>
-                    <label>Software Development Tools</label>
+                    <label>Software Tools</label>
                 </value>
                 <value>
-                    <fullName>Remote Access</fullName>
+                    <fullName>Remote Access Request</fullName>
                     <default>false</default>
-                    <label>Remote Access</label>
-                </value>
-                <value>
-                    <fullName>Acknowledge Existing/Previous Support Engagement</fullName>
-                    <default>false</default>
-                    <label>Acknowledge Existing/Previous Support Engagement</label>
-                </value>
-                <value>
-                    <fullName>Data Center &amp; Cloud SW Support</fullName>
-                    <default>false</default>
-                    <label>Data Center &amp; Cloud SW Support</label>
-                </value>
-                <value>
-                    <fullName>Networking, Comms, Media SW Support</fullName>
-                    <default>false</default>
-                    <label>Networking, Comms, Media SW Support</label>
+                    <label>Remote Access Request</label>
                 </value>
                 <value>
                     <fullName>Other</fullName>
@@ -706,21 +691,11 @@
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Analytics and Data Architecture</fullName>
-                    <default>false</default>
-                    <label>Analytics and Data Architecture</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Cloud</fullName>
                     <default>false</default>
                     <label>Cloud</label>
-                </value>
-                <value>
-                    <fullName>Cloud Journey</fullName>
-                    <default>false</default>
-                    <label>Cloud Journey</label>
                 </value>
                 <value>
                     <fullName>Data, Analytics and AI</fullName>
@@ -733,24 +708,9 @@
                     <label>Data Center</label>
                 </value>
                 <value>
-                    <fullName>Datacenter and Infrastructure</fullName>
-                    <default>false</default>
-                    <label>Datacenter and Infrastructure</label>
-                </value>
-                <value>
-                    <fullName>Engineering Pods</fullName>
-                    <default>false</default>
-                    <label>Engineering Pods</label>
-                </value>
-                <value>
                     <fullName>Enterprise Applications</fullName>
                     <default>false</default>
                     <label>Enterprise Applications</label>
-                </value>
-                <value>
-                    <fullName>Industry 4.0</fullName>
-                    <default>false</default>
-                    <label>Industry 4.0</label>
                 </value>
                 <value>
                     <fullName>Innovative Workplace</fullName>
@@ -763,11 +723,6 @@
                     <label>IT Leadership / Biz Value</label>
                 </value>
                 <value>
-                    <fullName>IT Leadership and Strategy</fullName>
-                    <default>false</default>
-                    <label>IT Leadership and Strategy</label>
-                </value>
-                <value>
                     <fullName>Manufacturing and Industrial</fullName>
                     <default>false</default>
                     <label>Manufacturing and Industrial</label>
@@ -776,26 +731,6 @@
                     <fullName>Security</fullName>
                     <default>false</default>
                     <label>Security</label>
-                </value>
-                <value>
-                    <fullName>Security &amp; Privacy</fullName>
-                    <default>false</default>
-                    <label>Security &amp; Privacy</label>
-                </value>
-                <value>
-                    <fullName>Software and Enterprise Applications</fullName>
-                    <default>false</default>
-                    <label>Software and Enterprise Applications</label>
-                </value>
-                <value>
-                    <fullName>Sustainability</fullName>
-                    <default>false</default>
-                    <label>Sustainability</label>
-                </value>
-                <value>
-                    <fullName>Workplace of the Future</fullName>
-                    <default>false</default>
-                    <label>Workplace of the Future</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -877,7 +812,7 @@
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
                     <fullName>APJ</fullName>
                     <default>false</default>
@@ -913,22 +848,7 @@
         <valueSet>
             <controllingField>Core_IT_IAI_Domain__c</controllingField>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Advanced Process Control</fullName>
-                    <default>false</default>
-                    <label>Advanced Process Control</label>
-                </value>
-                <value>
-                    <fullName>Agile/Dev-Ops​</fullName>
-                    <default>false</default>
-                    <label>Agile/Dev-Ops​</label>
-                </value>
-                <value>
-                    <fullName>AI Everywhere Strategy​</fullName>
-                    <default>false</default>
-                    <label>AI Everywhere Strategy​</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Analytics: Datasets Integration</fullName>
                     <default>false</default>
@@ -943,11 +863,6 @@
                     <fullName>Application Optimization</fullName>
                     <default>false</default>
                     <label>Application Optimization</label>
-                </value>
-                <value>
-                    <fullName>Application Strategy​</fullName>
-                    <default>false</default>
-                    <label>Application Strategy​</label>
                 </value>
                 <value>
                     <fullName>Big Data Architecture, Apache Hadoop</fullName>
@@ -980,19 +895,9 @@
                     <label>Client Configuration &amp; O/S</label>
                 </value>
                 <value>
-                    <fullName>Client Health &amp; Telemetry ​</fullName>
-                    <default>false</default>
-                    <label>Client Health &amp; Telemetry ​</label>
-                </value>
-                <value>
                     <fullName>Client Refresh Cycle, TCO and Virtualization</fullName>
                     <default>false</default>
                     <label>Client Refresh Cycle, TCO and Virtualization</label>
-                </value>
-                <value>
-                    <fullName>Cloud Architecture​</fullName>
-                    <default>false</default>
-                    <label>Cloud Architecture​</label>
                 </value>
                 <value>
                     <fullName>Cloud Aware Applications</fullName>
@@ -1003,11 +908,6 @@
                     <fullName>Cloud Overview: ODCA, x-aaS</fullName>
                     <default>false</default>
                     <label>Cloud Overview: ODCA, x-aaS</label>
-                </value>
-                <value>
-                    <fullName>Cloud Security​</fullName>
-                    <default>false</default>
-                    <label>Cloud Security​</label>
                 </value>
                 <value>
                     <fullName>Communication/Collaboration tools</fullName>
@@ -1035,34 +935,9 @@
                     <label>Cybersecurity: A Strategic Overview</label>
                 </value>
                 <value>
-                    <fullName>Data Center Cooling Technologies​</fullName>
-                    <default>false</default>
-                    <label>Data Center Cooling Technologies​</label>
-                </value>
-                <value>
-                    <fullName>Data Center Strategy and Journey​</fullName>
-                    <default>false</default>
-                    <label>Data Center Strategy and Journey​</label>
-                </value>
-                <value>
-                    <fullName>Data Management​</fullName>
-                    <default>false</default>
-                    <label>Data Management​</label>
-                </value>
-                <value>
-                    <fullName>Data Platforms &amp; Architecture​(Cloudera/ELK/​Splunk/Kafka)</fullName>
-                    <default>false</default>
-                    <label>Data Platforms &amp; Architecture​(Cloudera/ELK/​Splunk/Kafka)</label>
-                </value>
-                <value>
                     <fullName>Data Protection</fullName>
                     <default>false</default>
                     <label>Data Protection</label>
-                </value>
-                <value>
-                    <fullName>DCM</fullName>
-                    <default>false</default>
-                    <label>DCM</label>
                 </value>
                 <value>
                     <fullName>DC Strategy, Operation &amp; DCM</fullName>
@@ -1070,44 +945,14 @@
                     <label>DC Strategy, Operation &amp; DCM</label>
                 </value>
                 <value>
-                    <fullName>Digital Twin​</fullName>
-                    <default>false</default>
-                    <label>Digital Twin​</label>
-                </value>
-                <value>
-                    <fullName>Endpoint Detection and Response​</fullName>
-                    <default>false</default>
-                    <label>Endpoint Detection and Response​</label>
-                </value>
-                <value>
-                    <fullName>Energy Conservation and Generation​</fullName>
-                    <default>false</default>
-                    <label>Energy Conservation and Generation​</label>
-                </value>
-                <value>
-                    <fullName>Engineering Pods</fullName>
-                    <default>false</default>
-                    <label>Engineering Pods</label>
-                </value>
-                <value>
                     <fullName>Enterprise Architecture</fullName>
                     <default>false</default>
                     <label>Enterprise Architecture</label>
                 </value>
                 <value>
-                    <fullName>Facility &amp; Design Innovations​</fullName>
-                    <default>false</default>
-                    <label>Facility &amp; Design Innovations​</label>
-                </value>
-                <value>
                     <fullName>Factory Automation</fullName>
                     <default>false</default>
                     <label>Factory Automation</label>
-                </value>
-                <value>
-                    <fullName>FinOps</fullName>
-                    <default>false</default>
-                    <label>FinOps</label>
                 </value>
                 <value>
                     <fullName>Governance &amp; Innovation</fullName>
@@ -1143,16 +988,6 @@
                     <fullName>In-Memory Data Base and ERP</fullName>
                     <default>false</default>
                     <label>In-Memory Data Base and ERP</label>
-                </value>
-                <value>
-                    <fullName>Intel® vPro® platform​</fullName>
-                    <default>false</default>
-                    <label>Intel® vPro® platform​</label>
-                </value>
-                <value>
-                    <fullName>Investment Planning &amp; IT Business Value​</fullName>
-                    <default>false</default>
-                    <label>Investment Planning &amp; IT Business Value​</label>
                 </value>
                 <value>
                     <fullName>Investment Prioritization</fullName>
@@ -1195,11 +1030,6 @@
                     <label>Operational Excellence &amp; KPIs</label>
                 </value>
                 <value>
-                    <fullName>Other</fullName>
-                    <default>false</default>
-                    <label>Other</label>
-                </value>
-                <value>
                     <fullName>Other Workload Solutions</fullName>
                     <default>false</default>
                     <label>Other Workload Solutions</label>
@@ -1208,16 +1038,6 @@
                     <fullName>PC Client Profiling /segmentation</fullName>
                     <default>false</default>
                     <label>PC Client Profiling /segmentation</label>
-                </value>
-                <value>
-                    <fullName>PC Strategy &amp; Refresh​</fullName>
-                    <default>false</default>
-                    <label>PC Strategy &amp; Refresh​</label>
-                </value>
-                <value>
-                    <fullName>Predictive Analytics​</fullName>
-                    <default>false</default>
-                    <label>Predictive Analytics​</label>
                 </value>
                 <value>
                     <fullName>Privacy by Design</fullName>
@@ -1230,19 +1050,9 @@
                     <label>RISC Migration and ERP</label>
                 </value>
                 <value>
-                    <fullName>SAP Journey​</fullName>
-                    <default>false</default>
-                    <label>SAP Journey​</label>
-                </value>
-                <value>
                     <fullName>Securing the Cloud and the edge</fullName>
                     <default>false</default>
                     <label>Securing the Cloud and the edge</label>
-                </value>
-                <value>
-                    <fullName>Security Architecture​</fullName>
-                    <default>false</default>
-                    <label>Security Architecture​</label>
                 </value>
                 <value>
                     <fullName>Security Biz Intelligence</fullName>
@@ -1300,11 +1110,6 @@
                     <label>SSDs for Servers &amp; Storage Solutions</label>
                 </value>
                 <value>
-                    <fullName>Supply Chain​</fullName>
-                    <default>false</default>
-                    <label>Supply Chain​</label>
-                </value>
-                <value>
                     <fullName>Supply Chain Solutions</fullName>
                     <default>false</default>
                     <label>Supply Chain Solutions</label>
@@ -1339,11 +1144,6 @@
                     <default>false</default>
                     <label>Training and Awareness</label>
                 </value>
-                <value>
-                    <fullName>Workload Placement​</fullName>
-                    <default>false</default>
-                    <label>Workload Placement​</label>
-                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>IT Leadership / Biz Value</controllingFieldValue>
@@ -1351,7 +1151,6 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>IT Leadership / Biz Value</controllingFieldValue>
-                <controllingFieldValue>IT Leadership and Strategy</controllingFieldValue>
                 <valueName>Enterprise Architecture</valueName>
             </valueSettings>
             <valueSettings>
@@ -1407,158 +1206,6 @@
                 <valueName>Tools Preventive Maintenance</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>IT Leadership and Strategy</controllingFieldValue>
-                <valueName>Agile/Dev-Ops​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>IT Leadership and Strategy</controllingFieldValue>
-                <valueName>Investment Planning &amp; IT Business Value​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>IT Leadership and Strategy</controllingFieldValue>
-                <controllingFieldValue>Workplace of the Future</controllingFieldValue>
-                <controllingFieldValue>Datacenter and Infrastructure</controllingFieldValue>
-                <controllingFieldValue>Cloud Journey</controllingFieldValue>
-                <controllingFieldValue>Software and Enterprise Applications</controllingFieldValue>
-                <controllingFieldValue>Analytics and Data Architecture</controllingFieldValue>
-                <controllingFieldValue>Industry 4.0</controllingFieldValue>
-                <controllingFieldValue>Security &amp; Privacy</controllingFieldValue>
-                <controllingFieldValue>Sustainability</controllingFieldValue>
-                <valueName>Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Workplace of the Future</controllingFieldValue>
-                <valueName>Client Health &amp; Telemetry ​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Workplace of the Future</controllingFieldValue>
-                <valueName>Intel® vPro® platform​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Workplace of the Future</controllingFieldValue>
-                <valueName>PC Strategy &amp; Refresh​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Datacenter and Infrastructure</controllingFieldValue>
-                <valueName>Data Center Strategy and Journey​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Datacenter and Infrastructure</controllingFieldValue>
-                <valueName>Facility &amp; Design Innovations​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Datacenter and Infrastructure</controllingFieldValue>
-                <valueName>High Performance Computing</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud Journey</controllingFieldValue>
-                <valueName>Cloud Architecture​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud Journey</controllingFieldValue>
-                <valueName>FinOps</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud Journey</controllingFieldValue>
-                <valueName>Workload Placement​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Software and Enterprise Applications</controllingFieldValue>
-                <valueName>Application Strategy​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Software and Enterprise Applications</controllingFieldValue>
-                <valueName>SAP Journey​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Software and Enterprise Applications</controllingFieldValue>
-                <valueName>Supply Chain​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Analytics and Data Architecture</controllingFieldValue>
-                <valueName>AI Everywhere Strategy​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Analytics and Data Architecture</controllingFieldValue>
-                <valueName>Data Management​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Analytics and Data Architecture</controllingFieldValue>
-                <valueName>Data Platforms &amp; Architecture​(Cloudera/ELK/​Splunk/Kafka)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Industry 4.0</controllingFieldValue>
-                <valueName>Advanced Process Control</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Industry 4.0</controllingFieldValue>
-                <valueName>Digital Twin​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Industry 4.0</controllingFieldValue>
-                <valueName>Predictive Analytics​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security &amp; Privacy</controllingFieldValue>
-                <valueName>Cloud Security​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security &amp; Privacy</controllingFieldValue>
-                <valueName>Endpoint Detection and Response​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security &amp; Privacy</controllingFieldValue>
-                <valueName>Security Architecture​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security</controllingFieldValue>
-                <valueName>Data Protection</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security</controllingFieldValue>
-                <valueName>Identity &amp; Access Management</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security</controllingFieldValue>
-                <valueName>Privacy by Design</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security</controllingFieldValue>
-                <valueName>Securing the Cloud and the edge</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security</controllingFieldValue>
-                <valueName>Security Strategy</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security</controllingFieldValue>
-                <valueName>SOC - Security Ops Center, SBI (Security BI)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security</controllingFieldValue>
-                <valueName>Threat Management &amp; Incident Response</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Security</controllingFieldValue>
-                <valueName>Training and Awareness</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sustainability</controllingFieldValue>
-                <valueName>Data Center Cooling Technologies​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sustainability</controllingFieldValue>
-                <valueName>DCM</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sustainability</controllingFieldValue>
-                <valueName>Energy Conservation and Generation​</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Engineering Pods</controllingFieldValue>
-                <valueName>Engineering Pods</valueName>
-            </valueSettings>
-            <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <valueName>Cloud Overview: ODCA, x-aaS</valueName>
             </valueSettings>
@@ -1593,6 +1240,10 @@
             <valueSettings>
                 <controllingFieldValue>Data Center</controllingFieldValue>
                 <valueName>Highly Efficient Density DC (Energy/Cooling)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center</controllingFieldValue>
+                <valueName>High Performance Computing</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Data Center</controllingFieldValue>
@@ -1653,6 +1304,38 @@
             <valueSettings>
                 <controllingFieldValue>Data, Analytics and AI</controllingFieldValue>
                 <valueName>Self Serve BI &amp; Data Visualization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Data Protection</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Identity &amp; Access Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Privacy by Design</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Securing the Cloud and the edge</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Security Strategy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>SOC - Security Ops Center, SBI (Security BI)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Threat Management &amp; Incident Response</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Training and Awareness</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Innovative Workplace</controllingFieldValue>
@@ -1880,931 +1563,6 @@
         <active>true</active>
         <description>Request IT @ Intel Support for Opportunities</description>
         <label>IT @ Intel</label>
-        <picklistValues>
-            <picklist>Core_IT_IAI_Country__c</picklist>
-            <values>
-                <fullName>Argentina</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Australia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Austria</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Azerbaijan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Belgium</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Brazil</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Canada</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chile</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>China</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Colombia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Costa Rica</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Democratic Republic%2C Congo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Denmark</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ecuador</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Egypt</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Finland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>France</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Georgia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Germany</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hong Kong</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hungary</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>India</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Indonesia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Iraq</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ireland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Israel</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Italy</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Japan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Kazakhstan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Liechtenstein</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Malaysia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Mexico</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Netherlands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Norway</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pakistan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Panama</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Peru</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Philippines</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Poland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Portugal</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Romania</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Russia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Saudi Arabia</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Singapore</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>South Africa</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>South Korea</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Spain</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sri Lanka</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sweden</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Switzerland</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Taiwan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Thailand</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Turkey</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ukraine</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>United Arab Emirates</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>United Kingdom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>United State Minor Islands</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>United States</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Uruguay</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Venezuela</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Vietnam</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_IT_IAI_Domain__c</picklist>
-            <values>
-                <fullName>Analytics and Data Architecture</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Journey</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Datacenter and Infrastructure</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Engineering Pods</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IT Leadership and Strategy</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Industry 4%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Security %26 Privacy</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Software and Enterprise Applications</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sustainability</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Workplace of the Future</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_IT_IAI_Venue_Type__c</picklist>
-            <values>
-                <fullName>FTF at Account location</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FTF at Intel location</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FTF at other offsite location</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Off-line %28like email%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Online Sales</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Social Media</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Teleconference</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video conference</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_IT_Intel_Geo__c</picklist>
-            <values>
-                <fullName>APJ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ASMO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EMEA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRC</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_IT_Intel_Topics__c</picklist>
-            <values>
-                <fullName>AI Everywhere Strategy%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Advanced Process Control</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Agile%2FDev-Ops%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Analytics%3A Datasets Integration</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Annual Performance Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Application Optimization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Application Strategy%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BYOD%2C BYOC%2C and Mobile Applications</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Big Data Architecture%2C Apache Hadoop</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Big Data Security</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Business Continuity %26 Disaster</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CRM Solutions</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Capacity Planning</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Configuration %26 O%2FS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Health %26 Telemetry %E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Refresh Cycle%2C TCO and Virtualization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Architecture%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Aware Applications</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Overview%3A ODCA%2C x-aaS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Security%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Communication%2FCollaboration tools</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Conference Room Innovation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cope Exactly and Change Control</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cybersecurity%3A A Strategic Overview</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DC Strategy%2C Operation %26 DCM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DCM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Center Cooling Technologies%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Center Strategy and Journey%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Management%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Platforms %26 Architecture%E2%80%8B%28Cloudera%2FELK%2F%E2%80%8BSplunk%2FKafka%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Protection</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Twin%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Endpoint Detection and Response%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Energy Conservation and Generation%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Engineering Pods</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Enterprise Architecture</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Facility %26 Design Innovations%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Factory Automation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FinOps</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Governance %26 Innovation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>High Performance Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Highly Efficient Density DC %28Energy%2FCooling%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hyperconverged Infrastructure</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Identity %26 Access Management</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In-Memory Data Base and ERP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Industry Megatrends %26 Digital Enterprise</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE vPro%C2%AE platform%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Investment Planning %26 IT Business Value%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Investment Prioritization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT in the factory floor %2F other use cases</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Leadership %26 Strategic Planning%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Machine%2FDeep Learning</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Manufacturing Big Data %2F Analytics</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>On-vs-Off Premise EA Solutions</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Open Source Solutions %28Openstack%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Operational Excellence %26 KPIs</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other Workload Solutions</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PC Client Profiling %2Fsegmentation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PC Strategy %26 Refresh%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Predictive Analytics%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Privacy by Design</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RISC Migration and ERP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SAP Journey%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOC - Security Ops Center%2C SBI %28Security BI%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SSDs for Servers %26 Storage Solutions</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SW Defined Infrastructure %28SDI%2FNFV%29 or RSD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Securing the Cloud and the edge</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Security Architecture%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Security Biz Intelligence</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Security Strategy</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Self Serve BI %26 Data Visualization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Server Virtualization %26 Optimization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Support %26 Help Desk</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shop Floor Control</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Site Selection %26 Design</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Smart-Buildings and IoT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Software Development</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Supply Chain Solutions</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Supply Chain%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Talent Management and Diversity</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Threat Management %26 Incident Response</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tools Integration</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tools Preventive Maintenance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Training and Awareness</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Workload Placement%E2%80%8B</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_Rate_Enagement__c</picklist>
-            <values>
-                <fullName>1- Poor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>2 - Fair</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>3 - Good</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>4 - Very Good</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>5 - Excellent</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Status__c</picklist>
-            <values>
-                <fullName>Cancelled</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Closed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Process</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Open</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_Deal_Support_Generic</fullName>
-        <active>true</active>
-        <description>Generic Deal Support Request</description>
-        <label>Generic</label>
-        <picklistValues>
-            <picklist>Core_IT_IAI_Domain__c</picklist>
-            <values>
-                <fullName>Data Center</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_IT_Intel_Topics__c</picklist>
-            <values>
-                <fullName>Analytics%3A Datasets Integration</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Annual Performance Review</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Application Optimization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Big Data Architecture%2C Apache Hadoop</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Business Continuity %26 Disaster</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Capacity Planning</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Configuration %26 O%2FS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud Overview%3A ODCA%2C x-aaS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Communication%2FCollaboration tools</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Conference Room Innovation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cybersecurity%3A A Strategic Overview</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DC Strategy%2C Operation %26 DCM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Enterprise Architecture</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Governance %26 Innovation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>High Performance Computing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hyperconverged Infrastructure</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Identity %26 Access Management</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In-Memory Data Base and ERP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Industry Megatrends %26 Digital Enterprise</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Investment Prioritization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Leadership %26 Strategic Planning%2E</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Open Source Solutions %28Openstack%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Operational Excellence %26 KPIs</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PC Client Profiling %2Fsegmentation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Privacy by Design</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SSDs for Servers %26 Storage Solutions</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Securing the Cloud and the edge</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Security Biz Intelligence</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Self Serve BI %26 Data Visualization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Server Virtualization %26 Optimization</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Support %26 Help Desk</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Site Selection %26 Design</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Smart-Buildings and IoT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Talent Management and Diversity</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Threat Management %26 Incident Response</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_Premier_Support_Request</fullName>
-        <active>true</active>
-        <label>Premier Support Request</label>
-        <picklistValues>
-            <picklist>Core_DRD_Request_Type__c</picklist>
-            <values>
-                <fullName>Acknowledge Existing%2FPrevious Support Engagement</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Engineering Services</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Remote Access</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Software Development Tools</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
         <picklistValues>
             <picklist>Core_IT_IAI_Country__c</picklist>
             <values>
@@ -3418,27 +2176,171 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Completed%2FClosed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In Discovery</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>In Process</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Open</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Ready to Assign</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_Deal_Support_Generic</fullName>
+        <active>true</active>
+        <description>Generic Deal Support Request</description>
+        <label>Generic</label>
+        <picklistValues>
+            <picklist>Core_IT_IAI_Domain__c</picklist>
+            <values>
+                <fullName>Data Center</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IT_Intel_Topics__c</picklist>
+            <values>
+                <fullName>Analytics%3A Datasets Integration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Annual Performance Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Application Optimization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Big Data Architecture%2C Apache Hadoop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Business Continuity %26 Disaster</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capacity Planning</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Configuration %26 O%2FS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud Overview%3A ODCA%2C x-aaS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Communication%2FCollaboration tools</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conference Room Innovation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cybersecurity%3A A Strategic Overview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Strategy%2C Operation %26 DCM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Architecture</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Governance %26 Innovation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High Performance Computing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hyperconverged Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Identity %26 Access Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-Memory Data Base and ERP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Megatrends %26 Digital Enterprise</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Investment Prioritization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leadership %26 Strategic Planning%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open Source Solutions %28Openstack%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Excellence %26 KPIs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PC Client Profiling %2Fsegmentation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Privacy by Design</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSDs for Servers %26 Storage Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Securing the Cloud and the edge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Security Biz Intelligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Self Serve BI %26 Data Visualization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Server Virtualization %26 Optimization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Support %26 Help Desk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Site Selection %26 Design</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smart-Buildings and IoT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Talent Management and Diversity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Threat Management %26 Incident Response</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -3451,19 +2353,7 @@
         <picklistValues>
             <picklist>Core_DRD_Request_Type__c</picklist>
             <values>
-                <fullName>Acknowledge Existing%2FPrevious Support Engagement</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Center %26 Cloud SW Support</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Engineering Services</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Networking%2C Comms%2C Media SW Support</fullName>
+                <fullName>Engineering Request</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3471,11 +2361,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Remote Access</fullName>
+                <fullName>Remote Access Request</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Software Development Tools</fullName>
+                <fullName>Software Tools</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -4444,8 +3334,16 @@
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>
-        <fullName>Check_IT_Intel_Opportunity_Team</fullName>
+        <fullName>Can_Not_Move_Status_Back_to_Open_or_None</fullName>
         <active>false</active>
+        <description>Does not allow the status of a service request to go backward</description>
+        <errorConditionFormula>AND( Len( Core_IT_Geo_Manager__c ) &gt; 0 ,TEXT(Status__c) = &apos;Open&apos;)</errorConditionFormula>
+        <errorDisplayField>Status__c</errorDisplayField>
+        <errorMessage>You can not set the the status to &apos;Open&apos; if there is a IT manager assigned.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_IT_Intel_Opportunity_Team</fullName>
+        <active>true</active>
         <description>Makes sure if IT @ Intel support is needed that the IT geo manager is explicitly selected.   If checked it works.  If not checked and error is thrown to the user</description>
         <errorConditionFormula>AND(Core_Add_to_Opportunity_Team__c  = false, RecordType.DeveloperName = &quot;Core_DS_IT_Intel&quot;)</errorConditionFormula>
         <errorDisplayField>Core_Add_to_Opportunity_Team__c</errorDisplayField>
@@ -4502,6 +3400,17 @@
    Core_MAG_Compliance_Status__c &lt;&gt; &apos;Approved&apos;
    )</errorConditionFormula>
         <errorMessage>You can not add the support request until the MAG Questionnaire is approved.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_open_to_close</fullName>
+        <active>false</active>
+        <description>can only go from open to in process only</description>
+        <errorConditionFormula>AND(
+       TEXT(Status__c) = &quot;Closed&quot;,
+       ISPICKVAL(PRIORVALUE(Status__c), &quot;Open&quot;) 
+    )</errorConditionFormula>
+        <errorDisplayField>Status__c</errorDisplayField>
+        <errorMessage>You can not move a status from open to closed</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>MAG_Approved</fullName>

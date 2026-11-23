@@ -86,8 +86,9 @@ public class Core_IPS_MAG_Questionnaire_Con_Test {
         Case ca = [SELECT Id,Core_Sub_Status__c,Status,Core_IPS_GEC_Request_Status__c FROM Case LIMIT 1];
         
         Test.startTest();
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+        //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
         ApexPages.CurrentPage().getparameters().put('id', ca.id);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);       
@@ -103,8 +104,9 @@ public class Core_IPS_MAG_Questionnaire_Con_Test {
         Case ca = [SELECT Id,Core_Sub_Status__c,Status,Core_IPS_GEC_Request_Status__c FROM Case LIMIT 1];
         
         Test.startTest();
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+         //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
         ApexPages.CurrentPage().getparameters().put('id', ca.id);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);       
@@ -121,8 +123,10 @@ System.AssertEquals(ca.id != null, true);
         Case ca = [SELECT Id,Core_Sub_Status__c,Status,Core_IPS_GEC_Request_Status__c  FROM Case LIMIT 1];
         
         Test.startTest();
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+        //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
+      
         ApexPages.CurrentPage().getparameters().put('id', ca.id);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
@@ -143,8 +147,10 @@ System.AssertEquals(ca.id != null, true);
         Case ca = [SELECT Id,Core_Sub_Status__c,Status,Core_IPS_GEC_Request_Status__c FROM Case LIMIT 1];
         
         Test.startTest();
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+        //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
+       
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
         Core_IPS_MAG_Questionnaire_Controller con = new Core_IPS_MAG_Questionnaire_Controller(StndContr);      
         Pagereference pg = con.saveAnswer();
@@ -157,8 +163,10 @@ System.AssertEquals(ca.id != null, true);
         Case ca = [SELECT Id,Core_Sub_Status__c,Status,Core_IPS_GEC_Request_Status__c FROM Case LIMIT 1];
         
         Test.startTest();
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+        //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
+     
         ApexPages.CurrentPage().getparameters().put('id', ca.id);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
@@ -175,8 +183,10 @@ System.AssertEquals(ca.id != null, true);
         Case ca = [SELECT Id,Core_Sub_Status__c,Status,Core_IPS_GEC_Request_Status__c FROM Case LIMIT 1];
         
         Test.startTest();
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+         //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
+        
         ApexPages.CurrentPage().getparameters().put('id', ca.id);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
@@ -193,8 +203,10 @@ System.AssertEquals(ca.id != null, true);
         Case ca = [SELECT Id,Core_Sub_Status__c,Status,Core_IPS_GEC_Request_Status__c FROM Case LIMIT 1];
         
         Test.startTest();
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+           //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
+        
         ApexPages.CurrentPage().getparameters().put('id', ca.id);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
@@ -212,8 +224,10 @@ System.AssertEquals(ca.id != null, true);
         Case ca = [SELECT Id,Core_Sub_Status__c,Status,Core_IPS_GEC_Request_Status__c FROM Case LIMIT 1];
         
         Test.startTest();
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+        //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
+        
         ApexPages.CurrentPage().getparameters().put('id', ca.id);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
@@ -231,8 +245,9 @@ System.AssertEquals(ca.id != null, true);
         Case ca = [SELECT Id,Core_Sub_Status__c,Status,Core_IPS_GEC_Request_Status__c FROM Case LIMIT 1];
         
         Test.startTest();
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+        //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
         ApexPages.CurrentPage().getparameters().put('id', ca.id);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
@@ -262,8 +277,9 @@ System.AssertEquals(ca.id != null, true);
         List<Core_IPS_Response__c> lstR = [Select id from Core_IPS_Response__c];
         Test.startTest();
         
-        PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
-        Test.setCurrentPage(pageRef);
+        //commented for Classic EOL-Tejaswini
+     /*   PageReference pageRef = Page.Core_IPS_MAG_Questionnaire;
+        Test.setCurrentPage(pageRef); */
         ApexPages.CurrentPage().getparameters().put('id', ca.id);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         Delete lstR;

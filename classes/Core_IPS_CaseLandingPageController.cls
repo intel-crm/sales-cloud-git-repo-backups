@@ -4,7 +4,7 @@
  * 
  */
 
-public class Core_IPS_CaseLandingPageController {
+public with sharing class Core_IPS_CaseLandingPageController {
     
     @AuraEnabled
     public static String getStandardActionRedirectionURL(String actionStr, String objectStr, String profileStr, String recTypeName) {

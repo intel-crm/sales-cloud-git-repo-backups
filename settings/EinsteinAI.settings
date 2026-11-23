@@ -4,5 +4,5 @@
     <enableAITrustInputToxicityDetection>false</enableAITrustInputToxicityDetection>
     <enableAITrustPromptInjectionDetection>false</enableAITrustPromptInjectionDetection>
     <enableAgentHealthMonitoringGA>false</enableAgentHealthMonitoringGA>
-    <enableTrustPIIMasking>true</enableTrustPIIMasking>
+    <enableTrustPIIMasking>false</enableTrustPIIMasking>
 </EinsteinAISettings>

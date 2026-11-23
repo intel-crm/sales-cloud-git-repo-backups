@@ -5,13 +5,9 @@
     <name>PTNR - Invalid Partner Queue</name>
     <queueMembers>
         <publicGroups>
-            <publicGroup>PMP_All_Intel_Admin_Users</publicGroup>
             <publicGroup>Core_PG_Partner_Admin</publicGroup>
-            <publicGroup>Core_PG_Partner_Lead_Admin</publicGroup>
         </publicGroups>
         <users>
-            <user>10642423@intel.com.crm</user>
-            <user>serena@inteliotsolutionsalliance.com.crm</user>
             <user>10560180@intel.com.crm</user>
         </users>
     </queueMembers>

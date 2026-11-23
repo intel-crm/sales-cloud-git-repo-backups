@@ -501,6 +501,9 @@
         <field>Opportunity.Core_Lead_Notes__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
     <columns>
@@ -972,6 +975,9 @@
         <field>Account.Core_Lead_Sales_Segment__c</field>
     </columns>
     <columns>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_MAG_Value__c</field>
     </columns>
     <columns>
@@ -1259,7 +1265,7 @@
     </groupingsAcross>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>

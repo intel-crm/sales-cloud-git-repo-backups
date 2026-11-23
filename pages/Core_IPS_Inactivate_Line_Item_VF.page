@@ -1,0 +1,9 @@
+<apex:page standardController="Core_IPS_Map_Par_Line_Item__c" extensions="Core_IPS_InactivateLineItem" action="{!returnPage}" recordSetVar="lineItem">
+    <script>
+    	function helloWorld() {
+        	alert('helloWorld');
+        }
+    	helloWorld();
+    </script>
+    <apex:form ></apex:form>
+</apex:page>

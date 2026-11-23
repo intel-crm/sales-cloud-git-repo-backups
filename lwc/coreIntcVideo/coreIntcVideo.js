@@ -46,8 +46,8 @@ import videoError from '@salesforce/label/c.Core_Intc_Video_Error';
  *
  * @augments LightningElement
  * @property {string} videoType Required - Values: brightcove, youtube
- * @property {string} [width=100%] specify width value (can be number, percentage, or other css value (px/rem))
- * @property {string} [height=100%] specify height value (can be number, percentage, or other css value (px/rem))
+ * @property {string} [width=100%] specify width value (can be number, percentage, or other css value)
+ * @property {string} [height=100%] specify height value (can be number, percentage, or other css value)
  * @property {string} [account] Brightcove only - Account ID
  * @property {string} [player=default] Brightcove only - player ID
  * @property {string} [embed=default] Brightcove only - embed value

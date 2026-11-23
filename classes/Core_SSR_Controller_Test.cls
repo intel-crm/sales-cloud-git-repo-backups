@@ -27,9 +27,9 @@ public class Core_SSR_Controller_Test {
         
         
         // create Account Record
-        //Id recAccountTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' limit 1][0].Id;
-        Account testAccount =   new Account(Name='Test SMG SSR Account', Industry='Agriculture', Core_Sub_Industry__c = 'Crop Production',
-                                            BillingStreet='a', BillingCity='a', BillingState='MI', BillingCountry='USA', Core_Sales_Groups__c = 'Americas US Sales Group');
+        Id recAccountTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' limit 1][0].Id;
+        Account testAccount =   new Account(Name='Test SMG SSR Account', RecordTypeId=recAccountTypeId,
+                                            BillingStreet='a', BillingCity='a', BillingState='MI', BillingCountry='USA');
         insert testAccount;      
         List<Account> testAccounts = [select id from Account where Id =: testAccount.Id];
         system.assertEquals(1, testAccounts.size());

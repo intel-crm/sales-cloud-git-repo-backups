@@ -3,11 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>PSG-PG-EMIF!</name>
-    <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_IPS_Org_025_PG_EMIF</publicGroup>
-        </publicGroups>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

@@ -1,0 +1,9 @@
+<apex:page standardController="case" extensions="Core_IPS_Customer_Case_Controller" action="{!PageInit}" cache="false" id="page" docType="html-5.0" >
+<apex:pageblock >
+<apex:form >
+<!--<apex:inputText value="{!SelectedVariant}" list="{!projectList}" id="xyztest"/>-->
+
+</apex:form>
+
+</apex:pageblock>
+</apex:page>

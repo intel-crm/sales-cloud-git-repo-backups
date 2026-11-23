@@ -1,0 +1,5 @@
+{!Approval_Requesting_User.Name} has requested your approval for the following Opportunity: {!Opportunity.Link}
+
+Opportunity Name: {!Opportunity.Name}
+
+Please click this link to approve or reject this record.

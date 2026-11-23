@@ -1,0 +1,9 @@
+<aura:component implements="force:lightningQuickAction,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global">
+	
+    <c:core_IPS_AddProjSupportOwner_Lex aura:id="core_IPS_AddProjSupportOwner_LexId" recordId="{!v.recordId}"></c:core_IPS_AddProjSupportOwner_Lex><br/>
+<div align="center">
+<lightning:button label="Save" variant="brand" class="slds-m-left_x-small" onclick="{!c.callSaveMethod}" ></lightning:button>
+<lightning:button label="Cancel" variant="brand" class="slds-m-left_x-small" onclick="{!c.callCancelMethod}" ></lightning:button>
+ </div>
+
+</aura:component>

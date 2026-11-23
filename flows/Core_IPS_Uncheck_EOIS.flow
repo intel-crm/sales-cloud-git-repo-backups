@@ -3,17 +3,9 @@
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>Migrated from the: Core IPS Uncheck EOIS workflow rule
-Workflow rule description: If Access Flag is changed from EOIS, uncheck EOIS checkbox</description>
-    <environments>Default</environments>
-    <interviewLabel>Core IPS Uncheck EOIS {!$Flow.CurrentDateTime}</interviewLabel>
+Workflow rule description: If Access Flag is changed from EOIS, uncheck EOIS checkbox&quot;</description>
     <label>Core IPS Uncheck EOIS</label>
     <migratedFromWorkflowRuleName>Core IPS Uncheck EOIS</migratedFromWorkflowRuleName>
-    <processMetadataValues>
-        <name>BuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
@@ -24,8 +16,8 @@ Workflow rule description: If Access Flag is changed from EOIS, uncheck EOIS che
     <recordUpdates>
         <name>mainUpdate</name>
         <label>mainUpdate</label>
-        <locationX>176</locationX>
-        <locationY>287</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <inputAssignments>
             <field>Core_EOIS__c</field>
             <value>
@@ -35,7 +27,7 @@ Workflow rule description: If Access Flag is changed from EOIS, uncheck EOIS che
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>mainUpdate</targetReference>

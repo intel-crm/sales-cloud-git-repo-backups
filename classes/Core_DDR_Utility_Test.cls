@@ -2,7 +2,7 @@
 public class Core_DDR_Utility_Test
 {
     public static testmethod void DDR_UtilityTest()
-    { 
+    {
         List <Account> accountList = new List <Account> ();
         For(integer i = 0; i <3; i++) 
         {
@@ -16,23 +16,35 @@ public class Core_DDR_Utility_Test
        } 
         insert accountList;
         
-        List<Core_Location_To_Approver_Group_Mapping__c> LocToAppGroup = Core_DDR_Utility.CreateLocationToApproverGroup();
+        List<Core_Design_Registration__c> TestDDRlst = new List<Core_Design_Registration__c>();
+        TestDDRlst = Core_DDR_Utility.createDDR(3, accountList);
         
-        List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
+        insert TestDDRlst;
+        system.debug('Test'+TestDDRlst);
+        List<Product2> lstProduct = new List<Product2>();
         
-        List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
-        insert ProdLst;
+        //Product1 price book entry update scenario
+        Product2 product1 = new Product2();
+        product1.Name = 'Intel Atom® CE4275 Media Processor';
+        product1.IsActive = TRUE;
+        product1.Core_Design_Registration_Eligible_Ind__c = TRUE;
+        product1.Core_Sales_Visible_Flag__c = TRUE;
+        product1.Core_Partner_Visible_Ind__c  = TRUE;
+        lstProduct.add(product1);
         
-        List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
-        insert PriceBookLst;
+        //Product2 price book entry create scenario
+        Product2 product2 = new Product2();
+        product2.Name = 'Intel® Core™ i3-4020M Processor (3M Cache, 2.60 GHz)';
+        product2.IsActive = TRUE;
+        product2.Core_Design_Registration_Eligible_Ind__c = TRUE;
+        product2.Core_Sales_Visible_Flag__c = TRUE;
+        product2.Core_Partner_Visible_Ind__c  = TRUE;
+        lstProduct.add(product2);      
         
-        List<PriceBookEntry> PBELst = Core_DDR_Utility.CreatePriceBookEntry(5, ProdLst, PriceBookLst);
+        insert lstProduct;
+        system.debug('Test'+lstProduct);
         
-        List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(5);
-        DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        insert DDRLst;
-        
-        List<Core_Design_Registration_Product__c> DRPLst = Core_DDR_Utility.CreateDRProduct(5, DDRLst, ProdLst);
-        insert DRPLst;
+        Core_DDR_Utility.CreateDRProduct(5, TestDDRlst, lstProduct);
+        Core_DDR_Utility.CreateProduct(5);
     }
 }

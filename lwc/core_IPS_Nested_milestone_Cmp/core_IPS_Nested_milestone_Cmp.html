@@ -1,0 +1,45 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open
+    active-section-name="Service Level">
+    <lightning-accordion-section name="A" label="Service Level">
+
+    <lightning-record-edit-form
+    record-id={recordId}
+    object-api-name="Case" onsuccess={handleSuccess}>
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-2">    
+                <lightning-output-field field-name="SlaExitDate">
+                </lightning-output-field>
+                <lightning-output-field field-name="Core_Next_Response_Due_Date__c">
+                </lightning-output-field>
+                <lightning-input-field field-name="Core_Next_Response_Due_Reason__c" onchange={handlechange}>
+                </lightning-input-field>
+                <lightning-output-field field-name="Core_First_Response_Completed__c">
+                </lightning-output-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-output-field field-name="Core_Trigger_Next_Response__c">
+                </lightning-output-field>
+                <lightning-output-field field-name="MilestoneStatus">
+                </lightning-output-field>
+                <lightning-output-field field-name="StopStartDate">
+                </lightning-output-field>
+            </div>
+            
+        </div>
+        <center>
+        <div class="slds-col slds-size_1-of-2">
+            <template if:true={isUpdateAvailable} >
+            <lightning-button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" onclick={handleSuccess}></lightning-button>
+            </template>
+        </div >
+    </center>
+    </lightning-record-edit-form>
+    </lightning-accordion-section>
+    <lightning-card title="Recent Milestone">
+
+    <c-core_-i-p-s_-milestone-screen recordidnew ={recordId}></c-core_-i-p-s_-milestone-screen>
+    </lightning-card>
+</lightning-accordion>
+
+</template>

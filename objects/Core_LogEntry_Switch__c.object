@@ -10,15 +10,5 @@
         <type>Checkbox</type>
     </fields>
     <label>Core_LogEntry_Switch</label>
-    <listViews>
-        <fullName>All_Records</fullName>
-        <columns>NAME</columns>
-        <columns>Is_Selected__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Records</label>
-    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

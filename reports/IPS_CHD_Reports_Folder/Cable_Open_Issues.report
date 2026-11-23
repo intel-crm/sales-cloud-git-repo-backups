@@ -1,162 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_13417501</developerName>
-        <masterLabel>CHD Escalation</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Case.Core_IPS_Escalated_Level__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <value>Front Line</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Domain Expert</sourceValue>
-            </sourceValues>
-            <value>Domain Expert</value>
-        </values>
-        <values>
-            <value>Engineering</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>number</bucketType>
-        <developerName>BucketField_50183609</developerName>
-        <masterLabel>Days Opened</masterLabel>
-        <nullTreatment>z</nullTreatment>
-        <sourceColumnName>Case.Core_IPS_Age__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <to>30</to>
-            </sourceValues>
-            <value>0-30 Days</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>30</from>
-                <to>60</to>
-            </sourceValues>
-            <value>30-60 Days</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>60</from>
-                <to>90</to>
-            </sourceValues>
-            <value>60-90 Days</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>90</from>
-                <to>180</to>
-            </sourceValues>
-            <value>90-180 Days</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>180</from>
-                <to>365</to>
-            </sourceValues>
-            <value>180-365 Days</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>365</from>
-            </sourceValues>
-            <value>&gt; 1 Year</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>number</bucketType>
-        <developerName>BucketField_17551314</developerName>
-        <masterLabel>Weeks since Update</masterLabel>
-        <nullTreatment>z</nullTreatment>
-        <sourceColumnName>Case.Core_IPS_Last_Update__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <to>7</to>
-            </sourceValues>
-            <value>1 Week</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>7</from>
-                <to>14</to>
-            </sourceValues>
-            <value>2 Weeks</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>14</from>
-                <to>21</to>
-            </sourceValues>
-            <value>3 Weeks</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>21</from>
-                <to>28</to>
-            </sourceValues>
-            <value>4 Weeks</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>28</from>
-                <to>35</to>
-            </sourceValues>
-            <value>5 Weeks</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>35</from>
-                <to>42</to>
-            </sourceValues>
-            <value>6 Weeks</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>42</from>
-                <to>49</to>
-            </sourceValues>
-            <value>7 Weeks</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>49</from>
-                <to>56</to>
-            </sourceValues>
-            <value>8 Weeks</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>56</from>
-                <to>63</to>
-            </sourceValues>
-            <value>9 Weeks</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>63</from>
-                <to>70</to>
-            </sourceValues>
-            <value>10 Weeks</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>70</from>
-            </sourceValues>
-            <value>&gt; 10 Weeks</value>
-        </values>
-    </buckets>
-    <columns>
-        <field>ACCOUNT.NAME</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Assigned_Queue__c</field>
-    </columns>
     <columns>
         <field>CASE_ID</field>
     </columns>
@@ -165,9 +8,6 @@
     </columns>
     <columns>
         <field>Case.Core_IPS_Legacy_IPS_ID__c</field>
-    </columns>
-    <columns>
-        <field>BucketField_13417501</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Escalated_Level__c</field>
@@ -179,37 +19,22 @@
         <field>Case.Core_IPS_Backend_ID__c</field>
     </columns>
     <columns>
-        <field>COMMENT_CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Latest_Comment_Time_Stamp__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Next_Response_Due_Date__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Last_Case_Comment_Timestamp__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Last_Private_Case_Comment_Timestamp__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_Promote_Status__c</field>
     </columns>
     <columns>
-        <field>BucketField_50183609</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Age__c</field>
-    </columns>
-    <columns>
         <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
     </columns>
     <columns>
         <field>LAST_UPDATEONLY</field>
     </columns>
     <columns>
         <field>Case.Core_First_Response_Completed__c</field>
+    </columns>
+    <columns>
+        <field>OWNER</field>
     </columns>
     <columns>
         <field>ALIAS</field>
@@ -247,7 +72,6 @@
     <columns>
         <field>Case.Core_Intel_Sup_Owner__c</field>
     </columns>
-    <description>Contains issues with the last assigned queue starting with &quot;CHD - Cable&quot;</description>
     <filter>
         <criteriaItems>
             <column>FK_$Core_IPS_Supported_Product__c.Core_Support_Org_Name__c</column>
@@ -261,26 +85,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Closed</value>
+            <value>Closed,​​Closed</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
+            <column>Case.Core_IPS_Product__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>CHD - Cable</value>
+            <value>Networking Gateway</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>BucketField_17551314</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OWNER</field>
+        <field>ACCOUNT.NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Cable - Open Issues</name>

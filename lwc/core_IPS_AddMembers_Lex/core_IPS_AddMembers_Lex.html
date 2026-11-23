@@ -34,10 +34,11 @@
                 
                 <div if:true={switchView} style="height: 300px;">
                     <lightning-datatable
-                        key-field="id"
+                        key-field="ContactId"
                         columns={columns}
                         data={memberList}
                         enable-infinite-loading
+                        show-row-number-column="true"
                         onloadmore={handleLoadMore}
                         onrowselection={getSelectedMember}
                         default-sort-direction={defaultSortDirection}

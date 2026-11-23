@@ -149,10 +149,10 @@
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Core_API_Name__c</fullName>
         <externalId>false</externalId>
@@ -208,7 +208,7 @@
     <fields>
         <fullName>Core_Details__c</fullName>
         <label>Details</label>
-        <length>131072</length>
+        <length>32768</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -222,16 +222,6 @@
         <scale>0</scale>
         <trackTrending>false</trackTrending>
         <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Email__c</fullName>
-        <externalId>false</externalId>
-        <label>Email</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -357,19 +347,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Time_Duration__c</fullName>
-        <externalId>false</externalId>
-        <formula>(  Core_Entry_Time__c   - DATETIMEVALUE( &quot;1970-01-01 00:00:00&quot; ))  * 86400</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Time Duration</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_User_Agent__c</fullName>
         <externalId>false</externalId>
         <label>User Agent</label>
@@ -420,11 +397,16 @@
         <columns>Core_User__c</columns>
         <columns>Core_Success__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>NAME</field>
+            <operation>equals</operation>
+            <value>053426104</value>
+        </filters>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>All_Today</fullName>
-        <columns>Core_User_Profile__c</columns>
         <columns>NAME</columns>
         <columns>Core_API_Name__c</columns>
         <columns>Core_API__c</columns>
@@ -439,6 +421,7 @@
         <columns>Core_Contact__c</columns>
         <columns>Core_User__c</columns>
         <columns>Core_Success__c</columns>
+        <columns>Core_User_Profile__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CREATED_DATE</field>
@@ -446,6 +429,31 @@
             <value>TODAY</value>
         </filters>
         <label>All Today</label>
+    </listViews>
+    <listViews>
+        <fullName>One_Transaction_Today</fullName>
+        <columns>NAME</columns>
+        <columns>Core_API_Name__c</columns>
+        <columns>Core_API__c</columns>
+        <columns>Core_API_Version__c</columns>
+        <columns>Core_Http_Method__c</columns>
+        <columns>Core_Status_Code__c</columns>
+        <columns>Core_Message__c</columns>
+        <columns>Core_Severity__c</columns>
+        <columns>Core_Duration__c</columns>
+        <columns>Core_Error_Id__c</columns>
+        <columns>Core_Details__c</columns>
+        <columns>Core_Contact__c</columns>
+        <columns>Core_User__c</columns>
+        <columns>Core_Success__c</columns>
+        <columns>Core_User_Profile__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>One Transaction Today</label>
     </listViews>
     <nameField>
         <displayFormat>{000000000}</displayFormat>

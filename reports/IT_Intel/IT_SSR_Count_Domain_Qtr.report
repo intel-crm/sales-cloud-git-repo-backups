@@ -1,91 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_2158984</developerName>
-        <masterLabel>Domain</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>IT Leadership / Biz Value</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>IT Leadership and Strategy</sourceValue>
-            </sourceValues>
-            <value>IT Leadership &amp; Strategy</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Innovative Workplace</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Workplace of the Future</sourceValue>
-            </sourceValues>
-            <value>Workplace of the Future</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Data Center</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Datacenter and Infrastructure</sourceValue>
-            </sourceValues>
-            <value>Data Center &amp; Infrastructure</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Cloud</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Cloud Journey</sourceValue>
-            </sourceValues>
-            <value>Cloud Journey</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Enterprise Applications</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Software and Enterprise Applications</sourceValue>
-            </sourceValues>
-            <value>Software &amp; Enterprise Applications</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Data, Analytics and AI</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Analytics and Data Architecture</sourceValue>
-            </sourceValues>
-            <value>AI &amp; Data Architecture</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Manufacturing and Industrial</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Industry 4.0</sourceValue>
-            </sourceValues>
-            <value>Industry 4.0</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Security</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Security &amp; Privacy</sourceValue>
-            </sourceValues>
-            <value>Security &amp; Privacy</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Sustainability</sourceValue>
-            </sourceValues>
-            <value>Sustainability</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -94,16 +8,17 @@
             <axisBinding>y</axisBinding>
             <column>RowCount</column>
         </chartSummaries>
-        <chartType>Pie</chartType>
+        <chartType>VerticalColumnStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
-        <groupingColumn>BucketField_2158984</groupingColumn>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
-        <showPercentage>true</showPercentage>
+        <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -121,15 +36,6 @@
         <field>Core_Sales_Support_Request__c.Status__c</field>
     </columns>
     <columns>
-        <field>Core_Sales_Support_Request__c.Core_Account_Name__c</field>
-    </columns>
-    <columns>
-        <field>Core_Sales_Support_Request__c.Core_IT_Intel_Topics__c</field>
-    </columns>
-    <columns>
-        <field>FK_OPP_AMOUNT</field>
-    </columns>
-    <columns>
         <field>FK_NAME</field>
     </columns>
     <columns>
@@ -137,18 +43,11 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>CUST_RECORDTYPE</column>
+            <column>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Core_Sales_Support_Request__c.Core_DS_IT_Intel</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Sales_Support_Request__c.Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Cancelled,Rejected</value>
+            <value>THIS_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -160,7 +59,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_2158984</field>
+        <field>Core_Sales_Support_Request__c.Core_IT_IAI_Domain__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>IT SSR Count Domain Qtr</name>
@@ -175,6 +74,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

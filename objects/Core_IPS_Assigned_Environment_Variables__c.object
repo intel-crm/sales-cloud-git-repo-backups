@@ -58,9 +58,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <content>Core_IPS_Environment_Details</content>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Visualforce</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
@@ -362,7 +360,88 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
+    <fields>
+        <fullName>Project_EDQ__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Project_EDQ</label>
+        <referenceTo>Core_IPS_Project__c</referenceTo>
+        <relationshipLabel>Environment Details Operational</relationshipLabel>
+        <relationshipName>Environment_Details_Operational</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <label>Environment Details Operational</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Product_Issue_Sub_Category__c</columns>
+        <columns>Core_Environment_Variable__c</columns>
+        <columns>Core_Required__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Supported_Product__c</columns>
+        <columns>Core_IPS_Supported_Product_Name__c</columns>
+        <columns>Core_Agent_Only__c</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>Core_IPS_Question_Text__c</columns>
+        <columns>Core_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Sudhir_s</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Product_Issue_Sub_Category__c</columns>
+        <columns>Core_Environment_Variable__c</columns>
+        <columns>Core_Required__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Supported_Product__c</columns>
+        <columns>Core_IPS_Supported_Product_Name__c</columns>
+        <columns>Core_Agent_Only__c</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>Core_IPS_Question_Text__c</columns>
+        <columns>Core_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Supported_Product__c</field>
+            <operation>equals</operation>
+            <value>SP-0000003519</value>
+        </filters>
+        <label>All Sudhir&apos;s</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Today</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Product_Issue_Sub_Category__c</columns>
+        <columns>Core_Environment_Variable__c</columns>
+        <columns>Core_Required__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Supported_Product__c</columns>
+        <columns>Core_IPS_Supported_Product_Name__c</columns>
+        <columns>Core_Agent_Only__c</columns>
+        <columns>Core_IPS_Question__c</columns>
+        <columns>Core_IPS_Question_Text__c</columns>
+        <columns>Core_Type__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>All Today</label>
+    </listViews>
+    <listViews>
+        <fullName>Test_Queue_Core_IPS_Assigned_Environment_Variables</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Test Queue</label>
+        <queue>Test_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <nameField>
         <displayFormat>AEV-{00000000}</displayFormat>
         <label>Environment Detail ID</label>

@@ -239,14 +239,10 @@
         <columns>NAME</columns>
         <columns>Core_Description__c</columns>
         <columns>Core_Status__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
         <columns>OBJECT_ID</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>Category_Only</fullName>
@@ -262,13 +258,7 @@
             <operation>equals</operation>
             <value>Case Category</value>
         </filters>
-        <filters>
-            <field>NAME</field>
-            <operation>notContain</operation>
-            <value>- test</value>
-        </filters>
         <label>Category Only</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>Category_Subcategory</fullName>

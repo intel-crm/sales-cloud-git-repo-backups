@@ -35,16 +35,15 @@
     </fields>
     <label>RestAPI Name</label>
     <listViews>
-        <fullName>all_values</fullName>
+        <fullName>ALL_value</fullName>
         <columns>NAME</columns>
+        <columns>SETUP_OWNER_NAME</columns>
         <columns>API_Order__c</columns>
         <columns>Search_URI__c</columns>
         <columns>Sub_URI__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>SETUP_OWNER_NAME</columns>
         <filterScope>Everything</filterScope>
-        <label>all values</label>
+        <label>ALL value</label>
     </listViews>
     <visibility>Public</visibility>
 </CustomObject>

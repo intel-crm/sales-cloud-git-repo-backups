@@ -1,0 +1,20 @@
+<apex:page standardController="Core_Goal__c" extensions="Core_Goal_UnlockRecExtController">
+
+    <script type="text/javascript">
+        window.onload = new function() { checkCondition(); };
+        function checkCondition()
+        {
+            var x;
+            if (confirm("Are you Sure?") == true) {
+                x = "Ok";
+            } else {
+                x = "Cancel";
+            }
+            if(x == 'Cancel'){ 
+                window.location.replace('/{!Core_Goal__c.Id}')
+            } else{
+                window.location.replace('/apex/Core_Goal_UnlockRecord?id={!Core_Goal__c.Id}')
+            }
+        }
+    </script>
+</apex:page>

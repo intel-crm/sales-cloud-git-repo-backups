@@ -54,7 +54,7 @@
         <field>CREATED_DATE</field>
     </columns>
     <filter>
-        <booleanFilter>((2 AND 3 AND 4 AND 5 AND (1 OR 6))) AND 7</booleanFilter>
+        <booleanFilter>((2 AND 3 AND 4 AND 5 AND 6 AND (1 OR 7))) AND 8</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
@@ -91,6 +91,13 @@
             <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Commissionable__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -114,11 +121,6 @@
         <sortByName>AMOUNT</sortByName>
         <sortOrder>Desc</sortOrder>
         <sortType>Aggregate</sortType>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Account.Core_Account_Country__c</field>
-        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>OSG OAE DW results YTD</name>
     <params>
@@ -144,6 +146,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

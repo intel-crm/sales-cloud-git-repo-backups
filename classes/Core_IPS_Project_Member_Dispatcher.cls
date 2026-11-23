@@ -48,16 +48,12 @@ public class Core_IPS_Project_Member_Dispatcher{
          }
          if(trigger.isUpdate){
              Core_IPS_Project_Member_Handler.preventInactivatingProjectMember(oldMap,newList);
+             Core_IPS_Project_Member_Handler.RemoveorReaddProjMember(oldMap,oldList, newList);
              //Rakesh -US107411 -calling a new method(interestedParties_ProjectMembers) from here
              //modified DE32193
              if(!ProjMemUpdatedfromProject){
                  Core_IPS_Project_Member_Handler.interestedParties_ProjectMembers(newList,oldMap);}
              Core_IPS_Project_Member_Handler.RemovePSO(newList, oldMap);
-              if(Core_IPS_SkipTriggerHandler.skipQueueable){//US-0050009 Hercules_IPS_ECBFlagIssueFix
-                 return;
-             }
-             Core_IPS_Project_Member_Handler.RemoveorReaddProjMember(oldMap,oldList, newList);
-             
          }
          if(trigger.isDelete){
              Core_IPS_Project_Member_Handler.removeProjectMemberFromGroup(oldList);

@@ -18,7 +18,7 @@ $(document).ready(function() {
   var marker;
 
   var geocoder = new google.maps.Geocoder();
-  var address = "{!JSENCODE(Account.Core_Primary_Street__c)}, " + "{!JSENCODE(Account.Core_Primary_City__c)}, " + "{!JSENCODE(Account.Core_Primary_Zip_Code__c)}, ";
+  var address = "{!Account.Core_Primary_Street__c}, " + "{!Account.Core_Primary_City__c}, " + "{!Account.Core_Primary_Zip_Code__c}, ";
 
   var infowindow = new google.maps.InfoWindow({
     content: "<b>{!Account.Name}</b><br>{!Account.Core_Primary_Street__c}<br>{!Account.Core_Primary_City__c}, {!Account.Core_Primary_Zip_Code__c}<br>"

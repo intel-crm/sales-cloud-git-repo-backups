@@ -153,7 +153,19 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Core_AAQC_Admin_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>admin case to delete</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Admin Comments</relationshipLabel>
+        <relationshipName>Admin_Comments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <fields>
         <fullName>Core_AAQC_Admin_Comments__c</fullName>
         <label>Comments</label>

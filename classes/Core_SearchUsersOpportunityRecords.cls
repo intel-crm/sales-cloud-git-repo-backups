@@ -22,9 +22,7 @@ Public with sharing class Core_SearchUsersOpportunityRecords
     * Parameter    : None
     */
     public Static List<Opportunity> doQuery(string query,SET<ID> setOpportunityIds)
-    { 
-        //String.escapeSingleQuotes added for security scan.
-        //return database.Query(query  + ' Where Id in :setOpportunityIds ORDER BY ID');
-        return database.Query(String.escapeSingleQuotes(query  + ' Where Id in :setOpportunityIds ORDER BY ID'));
+    {
+        return database.Query(query  + ' Where Id in :setOpportunityIds ORDER BY ID');
     }
 }

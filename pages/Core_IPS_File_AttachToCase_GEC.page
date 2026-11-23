@@ -1,0 +1,50 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_IPS_File_AttachToCase
+Version     : 1.0 
+Created Date: 24 Sept 2015
+Function    : Visualforce Page to Attach IPS File to case
+Modification Log :
+* Developer                    Date                   Description
+* ----------------------------------------------------------------------------                 
+* Johri, Sagar                09/24/2015             Created
+* Abhishek Rajput             06/06/2017             Modified- Added Case Information section as part of US64655
+------------------------------------------------------------------------------------------------------------>
+
+<apex:page sidebar="false" standardController="Case" extensions="Core_IPS_File_AttachToCase_Controller">
+    <style>
+        .center{ 
+            margin-left:150px;
+        }   
+    .bPageBlock .pbTitle {font-size: 70%;font-style: italic}    
+    </style>
+    
+    <apex:form >
+            <apex:outputPanel id="opOne" >
+            <apex:pageBlock title="{!$Label.Core_IPS_File_CSAttachPgMsg}" mode="maindetail" >
+                <apex:pageBlockButtons location="top" >
+                    <div class="center">
+                        <apex:commandButton value="{!$Label.Core_IPS_File_CSAttachPgRetBtnTxt}" action="{!saveAndReturn}" onclick="alert('{!$Label.Core_IPS_File_CSAttachPgRetBtnMsg}')"/>
+                    </div>
+                </apex:pageBlockButtons>               
+                </apex:pageBlock>
+                
+                <!-- Added by Abhishek as part of US64655 - 06/06/2017 -->
+                <apex:pageblock rendered="{!IF(($Profile.Name ==$Label.Core_IPS_External_Customer_Profile) || ($Profile.Name ==$Label.Core_IPS_Agent_Profile)|| ($Profile.Name ==$Label.Core_IPS_Agent_Enhanced_Profile) || ($Profile.Name ==$Label.Core_IPS_Support_Org_Admin_Profile) || ($Profile.Name ==$Label.Core_IPS_Sales_Rep_BB_Dual_IPS_Profile) || ($Profile.Name ==$Label.Core_IPS_Sales_Rep_BB_Profile) || ($Profile.Name ==$Label.Core_IPS_Sales_Rep_CW_Profile) || ($Profile.Name ==$Label.Core_IPS_Sales_Manager_Profile)|| ($Profile.Name ==$Label.Core_IPS_Production_Support_IPS_Profile) || ($Profile.Name ==$Label.Core_IPS_IT_Admin_Profile) , true , false)}">
+                    <apex:pageBlockSection title="{!$Label.Core_IPS_Case_Information}">
+                        <apex:outputfield value="{!case.CaseNumber}"/>
+                        <apex:outputfield value="{!case.Status}"/>
+                        <apex:outputfield value="{!case.Subject}"/>
+                        <apex:outputfield value="{!case.Core_Sub_Status__c}"/>
+                        <apex:outputfield value="{!case.Core_Contact_Name__c}" rendered="{!$Profile.Name !=$Label.Core_IPS_External_Customer_Profile}"/>
+                        <apex:outputfield value="{!case.Core_IPS_Project_Case__r.Name}"/>
+                        <apex:outputfield value="{!case.account.Name}" rendered="{!$Profile.Name !=$Label.Core_IPS_External_Customer_Profile}"/>                
+                        <apex:outputfield value="{!case.Product.Name}"/>
+                    </apex:pageBlockSection>                   
+                </apex:pageblock>     
+                <!-- END ---------> 
+                                
+        <apex:iframe width="100%" height="600px" frameborder="true" scrolling="false" src="{!URL}"/>
+        </apex:outputPanel>
+    </apex:form>
+
+</apex:page>

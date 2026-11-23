@@ -301,6 +301,21 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <listViews>
+        <fullName>BackendMapping</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Backend_System__c</columns>
+        <columns>Core_IPS_Source_Field__c</columns>
+        <columns>Core_IPS_Target_Field__c</columns>
+        <columns>Core_IPS_Bi_Directional__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_IPS_Backend_System__c</field>
+            <operation>contains</operation>
+            <value>HSD Client</value>
+        </filters>
+        <label>BackendMapping</label>
+    </listViews>
     <nameField>
         <displayFormat>FM-{0000000}</displayFormat>
         <label>Backend Field Mapping ID</label>

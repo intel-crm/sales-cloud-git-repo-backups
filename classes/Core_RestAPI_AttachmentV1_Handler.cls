@@ -50,12 +50,12 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
         this.entryTime = currTime;
         this.apiName = APIname;
         this.objAttachmentParams = requestParams;
-        
+        //system.debug('Core_RestAPI_AttachmentV1_Handler URI '+RestContext.request.requestURI  );
     }
     
     //Create attachment for the given case number
     public Core_RestAPI_Response createAttachment(){
-        
+        system.debug(' Core_RestAPI_AttachmentV1_Handler createAttachment Entered Named cred test 22102024-test1 \n ');
         
         try{
             //process all validations and skip processing the request if validations fails.
@@ -63,8 +63,9 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
             if(isRequestValid == false) {
                 Core_RestAPI_Util.processException(null , validationErrorCode, response, apiName, entryTime, objAttachmentParams);
                 response.errorContent.errorMessage += validationErrorMessage;
+                                system.debug('Named cred test 22102024-test2-->isRequestValid Exception');
             } else {
-                
+                system.debug('Named cred test 22102024-test3-->isRequestValid Enter is processreuest');
                 processRequest();
             }
         }catch(SFT_Internal_Exception e){
@@ -74,19 +75,19 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
             response.successContent = null;
             Core_RestAPI_Util.processException(e, ERROR_CODE_500, response, apiName, entryTime , objAttachmentParams );
         }finally{
-            
+            system.debug(' Named cred test 22102024-test4 Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
             
         } 
-        
+        system.debug(' Named cred test 22102024-test5 createAttachment Exiting ');
         return response;
     }
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations() {
-        
+        system.debug('createLargeAttachment doValidations Invoked ');
         Boolean isRequestValid = true;
 
         if(isValidFilename(objAttachmentParams.Filename) == false) {
@@ -101,7 +102,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
             validationErrorMessage = ': Description was empty or exceeded the max length of ' + MAX_FILE_DESCRIPTION_LENGTH;
         }
         
-        
+        //system.debug(' CASE_NUMBER: ' + CASE_NUMBER);
         if(!CASE_NUMBER.isNumeric() ) {
             isRequestValid = false;
             validationErrorCode = MALFORMED_INPUT_9011;
@@ -138,7 +139,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
     
     //add attachment to case.
     public void processRequest(){
-        
+        system.debug(' Named cred test 22102024-test6 processRequest');
         List<Core_IPS_Case_Attachments__c> lAttach = new List<Core_IPS_Case_Attachments__c>();
 
         //isValidCase should already have been called during validations.  This is for safety.
@@ -146,7 +147,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
         
         //objCase will be not null if contact's account matches user's account.
         if(objCase != null) {
-            
+            //system.debug(' Core_RestAPI_AttachmentV1_Handler processRequest Create Attachment For: ' + objCase.Id);
             Core_IPS_Case_Attachments__c oAttach = createAttachmentRecord(true);
             
             callSFTMoveFile(oAttach);        
@@ -159,7 +160,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
                                                                        oAttach.Core_File_GUID__c,
                                                                        objCase.Id});
 
-                
+                //system.debug('Insert oAttach');
                 insert oAttach;
                                 
                 Id idAttach = oAttach.Id;
@@ -172,18 +173,18 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
         }
 
         response.successContent = lAttachWrpr;
-        
+        //system.debug(' response.successContent: ' + response.successContent);
 
         if(response.successContent != null && response.successContent.isEmpty()) {
             Core_RestAPI_Util.processException(null, ERROR_CODE_500, response, apiName, entryTime);
         }
         
-        
+        //system.debug(' >> processRequest response.successContent '+response.successContent);
     }
     
     @TestVisible private boolean callSFTMoveFile(Core_IPS_Case_Attachments__c oAttach) {
     
-        
+        system.debug('Named cred test 22102024-test7 Using MoveFile');
         boolean isSuccess = false;
         /*--START --US-US1018637-- 01-05-2021 -- Farooq -- change from old callout to APIGEE--*/
         String strSourceFilePath = objCase.Contact.Account.Core_IPS_SFT_Partner_Path__c; 
@@ -199,23 +200,29 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
         
         strBody = strBody + '"DestinationFilePath": "' + SFT_DESTINATION_FILEPATH + '"}';
         
-        
-	String ips_Myintel_EndPoint = 'callout:Core_SFT_MoveFile_NamedCred'; //TWC745-6469-IPS Named Credentials chnage
+        //TWC745-6469//String token = '';
+        //TWC745-6469//String ips_Myintel_Name = Core_IPS_APIGEE_Custom_Settings__c.getInstance('Core_IPS_SFT_Move').Name;//TWC745-6469-IPS Named Credentials chnage- Gangadhar
+        //TWC745-6469//String ips_Myintel_EndPoint = Core_IPS_APIGEE_Custom_Settings__c.getInstance('Core_IPS_SFT_Move').MyIntel_Endpoint_URL__c;
+        //TWC745-6469//token = Core_IPS_APIGEE_Utility.generateAccessToken(ips_Myintel_Name);
+		String ips_Myintel_EndPoint = 'callout:Core_SFT_MoveFile_NamedCred'; //TWC745-6469-IPS Named Credentials chnage- Gangadhar
+		System.debug('Named cred test 22102024-test8'+ips_Myintel_EndPoint);
+        //TWC745-6469//if(String.isNotBlank(token)){
             Http http = new Http();
             HttpRequest request = new HttpRequest();
             request.setEndpoint(ips_Myintel_EndPoint);
             request.setMethod('POST');
-            
+            //TWC745-6469//request.setHeader(Label.Core_Apigee_Auth, 'Bearer ' + token);
             request.setHeader('Content-Type', 'application/json');
             request.setBody(strBody);
             HttpResponse response = http.send(request);
             String resBody = response.getBody();
-            
+            System.debug('Named cred test 22102024-test9'+resBody);
             JSONParser parser = JSON.createParser(response.getBody());
             ResponseMoveFile oMoveFile = null;
             oMoveFile = (ResponseMoveFile)JSON.deserialize(resBody, ResponseMoveFile.class);
-            
+            //System.Debug(' oMoveFile: ' + oMoveFile);
             if (response.getStatusCode() == 200) {  // successful
+				System.debug('Named cred test 22102024-test10'+response.getStatusCode());
                 if(String.isEmpty(oMoveFile.message) == true) {  //if Message has a value, there was an error.
                     isSuccess = true;
                     oAttach.Core_File_GUID__c = oMoveFile.destinationFileName;
@@ -231,9 +238,9 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
                                                  'and Status: ' + response.getStatus() + ' in Core_RestAPI_AttachmentV1_Handler.callSFTMoveFile');
             }          
             
-        
+        //TWC745-6469//}
         //HttpResponse res = h.send(req);
-        
+        //system.debug('response: ' + response.toString());
         
 
         return isSuccess;
@@ -258,7 +265,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
             oAttach.Core_File_GUID__c = (CASE_NUMBER + '-' + (DateTime.now()).getTime()  + '-' + oAttach.Core_File_Name__c.replaceAll(' ', '-')).left(MAX_FILE_GUID_LENGTH);
         }
 
-        
+        //system.debug(' Core_IPS_Case_Attachments__c createAttachmentRecord oAttach: ' + oAttach);
         return oAttach;
     }
 
@@ -292,11 +299,11 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
         Case objCaseFound = null;
         
         //GET_CASE_SOQL returns record if contact's account matches user's account
-
+        //system.debug( ' GET_CASE_SOQL: '+ GET_CASE_SOQL);
         for(Case cs : Database.Query(GET_CASE_SOQL))  //there should only be one case
         {
             objCaseFound = cs;
-
+            //system.debug(' Case is valid.');
         }
         
         if(objCaseFound == null) {
@@ -329,7 +336,7 @@ public with sharing class Core_RestAPI_AttachmentV1_Handler{
                 idUserAccount = u.Contact.Account.Id;
             }
         }
-
+        //system.debug(' getAccountIdOfUser: ' + idUserAccount);
         
         return idUserAccount;
     }

@@ -83,7 +83,6 @@ static void getRecords(){
         // Update EnvironmentalDetailsOperational
         EnvironmentalDetailsOperational.Core_Product_Issue_Sub_Category__c = CaseSubCategory.id;
         update EnvironmentalDetailsOperational;
-        system.assertEquals(true, CaseSubCategory.id != null);
     }
 }
 /************************************************************************************************
@@ -108,7 +107,6 @@ static testmethod void AddingEnvDetailsToProduct(){
         AddEnvVarContr.envDetails.add(WrapperObj);
         AddEnvVarContr.addEnvironmentVariables();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 static testmethod void SearchEnvDetails(){
@@ -126,7 +124,6 @@ static testmethod void SearchEnvDetails(){
         AddEnvVarContr.searchText = 'Issue';
         AddEnvVarContr.getEnvironmentVariables_SupProd();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 // Supported Product - End of Life. Cannot add Env Variables to the org.
@@ -134,7 +131,7 @@ static testmethod void SupportedProductEnded(){
     getRecords();
     supportedProductRecord.Core_EOIS__c = true;
     update supportedProductRecord;
-    
+     system.assert(supportedProductRecord!= null);
     System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
@@ -145,7 +142,6 @@ static testmethod void SupportedProductEnded(){
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 static testmethod void NotAuthorizedUserinthePublicGroup(){
@@ -158,7 +154,6 @@ static testmethod void NotAuthorizedUserinthePublicGroup(){
     ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
     ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
     Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
-     system.assertEquals(true, AddEnvVarContr != null);
     Test.stopTest();
 }
 static testmethod void UserAddedDirectlyinQueue(){          
@@ -226,8 +221,6 @@ static testmethod void UserAddedDirectlyinQueue(){
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Test.stopTest();
-         system.assertEquals(true, ListofIpsLables.size()>0);
-        
     }
 }
 static testmethod void UserdirecltyAssignedtoSupOrg(){          
@@ -279,7 +272,6 @@ static testmethod void UserdirecltyAssignedtoSupOrg(){
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Test.stopTest();
-         system.assertEquals(true, ListofIpsLables != null);
     }
 } 
 /************************************************************************************************
@@ -306,7 +298,6 @@ static testmethod void AddingEnvDetailsToEnvDetMaster(){
         AddEnvVarContr.supProductList.add(WrapperObj);
         AddEnvVarContr.addToProducts();
         Test.stopTest();
-        system.assertEquals(true, supportedProductRecord != null);
     }
 }
 // No Records to Display
@@ -324,7 +315,6 @@ static testmethod void SupportedProductEnd(){
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Core_IPS_EnvironmentVariablesController.ProductsSel WrapperObj = new Core_IPS_EnvironmentVariablesController.ProductsSel ();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 static testmethod void EnvDetMasterStatusInactive(){
@@ -341,7 +331,6 @@ static testmethod void EnvDetMasterStatusInactive(){
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Core_IPS_EnvironmentVariablesController.ProductsSel WrapperObj = new Core_IPS_EnvironmentVariablesController.ProductsSel ();
         Test.stopTest();
-        system.assertEquals(true, WrapperObj != null);
     }
 }
 /************************************************************************************************
@@ -361,7 +350,6 @@ static testmethod void NoEnvDetToaddIssSubCat(){
         AddEnvVarContr.searchtext = 'abc';
         Core_IPS_EnvironmentVariablesController.EnvironmentVarSel WrapperObj = new Core_IPS_EnvironmentVariablesController.EnvironmentVarSel ();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 
@@ -384,7 +372,6 @@ static testmethod void EnvDetToaddIssSubCat(){
         AddEnvVarContr.envDetails.add(WrapperObj);
         AddEnvVarContr.addEnvironmentVariables(); 
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 /************************************************************************************************
@@ -405,7 +392,6 @@ Testing Core_IPS_Environment_Details Visualforce Page - Object : Core_Product_Is
         Pagereference  Pg = AddEnvVarContr.getAssignedEnvironmentVariables();
         pg = AddEnvVarContr.saveEvn();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }*/
 

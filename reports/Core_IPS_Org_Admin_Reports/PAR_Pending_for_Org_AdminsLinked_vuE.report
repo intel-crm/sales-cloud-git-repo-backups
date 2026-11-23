@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_27116073</developerName>
+        <masterLabel>Aging</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Pending_Duration__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>4</to>
+            </sourceValues>
+            <value>Less than 4 Hours</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>4</from>
+                <to>8</to>
+            </sourceValues>
+            <value>Less than 8 Hours</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>8</from>
+                <to>12</to>
+            </sourceValues>
+            <value>Less than 12 Hours</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>12</from>
+                <to>16</to>
+            </sourceValues>
+            <value>Less than 16 Hours</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>16</from>
+                <to>20</to>
+            </sourceValues>
+            <value>Less than 20 Hours</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>20</from>
+                <to>24</to>
+            </sourceValues>
+            <value>Less than 24 Hours</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>24</from>
+                <to>48</to>
+            </sourceValues>
+            <value>Less than 48 Hours</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>48</from>
+                <to>72</to>
+            </sourceValues>
+            <value>Less than 72 Hours</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>72</from>
+            </sourceValues>
+            <value>Greater than 72 Hours</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Name</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Line_Item_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Pending_Duration__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Supported_Product__c.Core_Supported_Product_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Account__c.Core_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Account__c.Core_Sub_Geo__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Account__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Submitter_Comments__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Approving_Product_Organization__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_MAP_PAR__c$Owner</field>
+    </columns>
+    <description>MAP Pending Report for Org Admins to view their Org&apos;s Pending Approvals. This report can be access via the Support Org page and the MAP Line Item Assigned Notification to filter to the desired Org.</description>
+    <filter>
+        <criteriaItems>
+            <column>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Line_Item_Approval_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Approving_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Org-000</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_27116073</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MAP - Pending for Org Admins(Linked)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>test_par_line_item_report__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Pending_Duration__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Core_IPS_MAP_PAR__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -229,6 +229,9 @@
         <field>Opportunity.Core_Lead_Notes__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_LOEM__c</field>
     </columns>
     <columns>
@@ -687,6 +690,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVCUR2FY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

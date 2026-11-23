@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>1996sumeetpol@gmail.com</contactEmail>
+    <label>App_Shubham_SupOrgAdmin</label>
+    <oauthConfig>
+        <callbackUrl>https://www.salesforce.com</callbackUrl>
+        <certificate>MIIEBTCCAu2gAwIBAgIUDTiNcpSgTYnm+MK1TCZKhLynIjcwDQYJKoZIhvcNAQELBQAwgZExCzAJBgNVBAYTAmluMRIwEAYDVQQIDAloeWRlcmFiYWQxETAPBgNVBAcMCG1hZGhhcHVyMQ4wDAYDVQQKDAVteW9yZzESMBAGA1UECwwJbXlvcmd1bml0MQ8wDQYDVQQDDAZzdW1lZXQxJjAkBgkqhkiG9w0BCQEWF3N1bWVldC5wb2xAYWNjZWxsb3IuY29tMB4XDTI1MDkxMTA5NDgyMloXDTI2MDkxMTA5NDgyMlowgZExCzAJBgNVBAYTAmluMRIwEAYDVQQIDAloeWRlcmFiYWQxETAPBgNVBAcMCG1hZGhhcHVyMQ4wDAYDVQQKDAVteW9yZzESMBAGA1UECwwJbXlvcmd1bml0MQ8wDQYDVQQDDAZzdW1lZXQxJjAkBgkqhkiG9w0BCQEWF3N1bWVldC5wb2xAYWNjZWxsb3IuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyDrAZa4wihCwyPdB89bOQC0AWhijwO1MYH4GSz3Pg8Q6h2zrqot4bp0y0VAODReS2XDn6+v2likeUTDdCppoBxufAhjUWQPr+Nveuzt6dWHNnZ9np56176weF7IN/gUOUU7KlG6j8af5F1xE2XEB0Vf4rOiA8g5nkIPJFGzv/ebkphde9C7iNKj4YNxG8pnAQ2T7w0rzVNlG3OHY0ptI81UcZbcGIB4uHF7ktXTIpeWRuA0OSGZZjNYhNZZR2/GlNfh1h76ncjXm7ZIhYizAj5iFLaaWJpiMGhy98ILVDlLrmy2sn2tzHOVjYz9MxCEHuekN6u3S93Nt/4KFBvTsAwIDAQABo1MwUTAdBgNVHQ4EFgQUSt2iLm1LW1uFhnzH+LpV3oskjnEwHwYDVR0jBBgwFoAUSt2iLm1LW1uFhnzH+LpV3oskjnEwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAlWVmfXNg4VrE+t1Xb2GhzOniCA6ERgnpGO6Qai7x5GNHzry69Cjg0VJfZC/Rl+UkGIHqIIO/kst2A9Xi6NpGDnvddpd+IEt6NjvSaauOOhzZAFVbEfhDdmrs9OoCReFzC+tiDOhDJi/vIamHFMwehn2AL4JAnNASGt61DiNN2hXGphPRkAawHqk4WGYnnSPnu95uN09GwImJTfCPyYoVDEwL0UB9M+paunicjfKKEs6kD1mdbuQ3X5wVfLwvMUa0RKS9gkM3aaW8Bb0WZcCQjabqlZb/Jn1SGU724nE49C5SEhkMslEMKy4GMxhGKB4BM/TW943clzReQ2Z4H9NJBA==</certificate>
+        <consumerKey>3MVG9JamK_x9K2XIz6FKasGquUyQWYhBfo_6E_q5hq.mBanhQ5DXB87oDjVjrSyib55Ttc_3C50wjMAZjvpBT</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>true</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>true</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>PS_Shubham_ConApp</permissionSetName>
+</ConnectedApp>

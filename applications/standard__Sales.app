@@ -33,16 +33,18 @@
     <tabs>Core_Temp_Dunn_Bradstreet__c</tabs>
     <tabs>Core_Batch_Processing__c</tabs>
     <tabs>CaseMilestoneCompare__c</tabs>
+    <tabs>Core_Account_Team_Review</tabs>
+    <tabs>Core_Account_Team_Review_Data_Ops</tabs>
     <tabs>standard-WaveHome</tabs>
     <tabs>Ask_a_Question</tabs>
     <tabs>Core_BU_Mapping_Table__c</tabs>
-    <tabs>Core_Prospect__c</tabs>
-    <tabs>SeismicUserDeletion_Config__c</tabs>
-    <tabs>SeismicUserDeletion_User__c</tabs>
-    <tabs>Account_Create_Request__c</tabs>
-    <tabs>Seismic_PIMConfig__c</tabs>
-    <tabs>Seismic_DOV__c</tabs>
-    <tabs>Seismic_PIMActiveHierarchy__c</tabs>
-    <tabs>Account_Plan__c</tabs>
-    <tabs>Executive_Meeting_Brief__c</tabs>
+    <tabs>Core_Flat_Product_Hierarchy__c</tabs>
+    <tabs>Core_RestAPI_Transaction_Entry__c</tabs>
+    <tabs>Core_IPS_Deflected_Object__c</tabs>
+    <tabs>Core_AAQC_Case_Comments__c</tabs>
+    <tabs>Core_IPS_BES_Outbound_Message__c</tabs>
+    <tabs>Core_IPS_BES_Inbound_Message__c</tabs>
+    <tabs>Core_IPS_Backend_System2__c</tabs>
+    <tabs>Core_IPS_Opportunity_PAR__c</tabs>
+    <tabs>standard-Quote</tabs>
 </CustomApplication>

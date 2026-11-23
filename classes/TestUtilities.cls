@@ -127,7 +127,7 @@ public class TestUtilities{
         newUser = new User(
         //UserRoleId = ur.Id,
         profileId = p.id,
-        username = 'newUser233@yahoo.com',
+        username = 'newUser@yahoo.com',
         email = 'pb@ff.com',
         emailencodingkey = 'UTF-8',
         localesidkey = 'en_US',
@@ -1540,7 +1540,7 @@ public class TestUtilities{
         }
         return lstIST;
     }
-    //Nuthana as part of bug fix
+    //Nuthana
     public static User getAccountOwner(){
         UserRole portalRole = [Select Id From UserRole Where Name = 'Admin' Limit 1];
          Profile profile1 = [Select Id from Profile where name = 'System Administrator'];

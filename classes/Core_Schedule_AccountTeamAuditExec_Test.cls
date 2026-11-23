@@ -15,7 +15,7 @@ private class Core_Schedule_AccountTeamAuditExec_Test {
 	// CRON expression
    	// Because this is a test, job executes
    	// immediately after Test.stopTest().
-	public static String CRON_EXP = '0 0 0 15 3 ? 2028';
+	public static String CRON_EXP = '0 0 0 15 3 ? 2022';
 	static List<Account>								lstAccount;
 	static Core_Batch_Header__c    						batchHeader;
 
@@ -27,18 +27,6 @@ private class Core_Schedule_AccountTeamAuditExec_Test {
         batchHeader.Description__c = 'Core_Batch_AccountTeamAuditInitialize';
         batchHeader.Name           = 'Core_Batch_AccountTeamAuditInitialize';        
         insert batchHeader;
-        Core_ACM_Control_Execution__c executeTrigger = new Core_ACM_Control_Execution__c();
-        executeTrigger.Name = 'AccountTeamAuditInitialize';
-        executeTrigger.IsActive__c = TRUE;
-        executeTrigger.ProcessName__c = 'AccountTeamAuditInitialize';
-        insert executeTrigger;
-        System.assert(executeTrigger.id != null, 'triggerExecution inserted'); 
-         Core_ACM_Control_Execution__c executeTrigger1 = new Core_ACM_Control_Execution__c();
-        executeTrigger1.Name = 'AccountTeamAuditExecution';
-        executeTrigger1.IsActive__c = TRUE;
-        executeTrigger1.ProcessName__c = 'AccountTeamAuditExecution';
-        insert executeTrigger1;
-        System.assert(executeTrigger1.id != null, 'triggerExecution inserted'); 
     }
 	
 	@isTest static void auditResetTest() {

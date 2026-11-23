@@ -1,35 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WaveApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <folder>Pipeline_Management</folder>
-    <masterLabel>Pipeline Management</masterLabel>
+    <masterLabel>Updated Pipeline Management</masterLabel>
     <shares>
         <accessLevel>View</accessLevel>
         <sharedTo>AllInternalUsers</sharedTo>
         <sharedToType>Organization</sharedToType>
     </shares>
     <shares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>10556587@intel.com.crm</sharedTo>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11270800@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11490009@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </shares>
     <shares>
         <accessLevel>View</accessLevel>
-        <sharedTo>12318791@intel.com.crm</sharedTo>
+        <sharedTo>11489961@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </shares>
     <shares>
         <accessLevel>View</accessLevel>
-        <sharedTo>10578860@intel.com.crm</sharedTo>
+        <sharedTo>10706711@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </shares>
     <shares>
         <accessLevel>View</accessLevel>
-        <sharedTo>10700803@intel.com.crm</sharedTo>
+        <sharedTo>11227108@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </shares>
     <shares>
         <accessLevel>View</accessLevel>
-        <sharedTo>10770732@intel.com.crm</sharedTo>
+        <sharedTo>11505326@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10663289@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>11574120@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>11627040@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10713148@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
+    <shares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11531123@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </shares>
 </WaveApplication>

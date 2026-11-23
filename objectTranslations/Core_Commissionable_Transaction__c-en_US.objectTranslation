@@ -18,32 +18,12 @@
         <name>Core_Account_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Approved BU Product Segment --></label>
-        <name>Core_Approved_BU_Product_Segment__c</name>
-    </fields>
-    <fields>
         <label><!-- Approved BU Short Name --></label>
         <name>Core_Approved_BU_Short_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Approved KPI Product Group --></label>
-        <name>Core_Approved_KPI_Prod_Grp__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approved Prime Account Name --></label>
-        <name>Core_Approved_Prime_AccountName__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approved Sales Group --></label>
-        <name>Core_Approved_Sales_Group__c</name>
-    </fields>
-    <fields>
         <label><!-- Approved_Total_Price --></label>
         <name>Core_Approved_Total_Price__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approved Transaction Id --></label>
-        <name>Core_Approved_Transaction_Id__c</name>
     </fields>
     <fields>
         <label><!-- CIM ID --></label>
@@ -67,18 +47,9 @@
         <name>Core_Employee_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Forecast Product Schedule --></label>
-        <name>Core_Forecast_Product_Schedule__c</name>
-        <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Goal --></label>
         <name>Core_Goal__c</name>
         <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- KPI Id --></label>
-        <name>Core_KPI_Id__c</name>
     </fields>
     <fields>
         <label><!-- Last Approved Date --></label>
@@ -106,14 +77,6 @@
         <name>Core_Opportunity_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Opportunity Owner --></label>
-        <name>Core_Opportunity_Owner_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Opportunity Owner WWID --></label>
-        <name>Core_Opportunity_Owner_WWID__c</name>
-    </fields>
-    <fields>
         <label><!-- Opportunity Team Member Role --></label>
         <name>Core_Opportunity_Team_Member_Role__c</name>
     </fields>
@@ -136,10 +99,6 @@
         <relationshipLabel><!-- Commissionable Transactions --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Approved Opportunity Product Segment --></label>
-        <name>Core_Product_Segment__c</name>
-    </fields>
-    <fields>
         <label><!-- Product Type --></label>
         <name>Core_Product_Type__c</name>
     </fields>
@@ -158,10 +117,6 @@
     <fields>
         <label><!-- Transaction Type --></label>
         <name>Core_Transaction_Type__c</name>
-        <picklistValues>
-            <masterLabel>Consumption Revenue</masterLabel>
-            <translation><!-- Consumption Revenue --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Deal Milestone</masterLabel>
             <translation><!-- Deal Milestone --></translation>

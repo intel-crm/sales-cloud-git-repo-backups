@@ -6,7 +6,7 @@
     <masterLabel>Access &amp; Entitlement</masterLabel>
     <openType>onClickJavaScript</openType>
     <protected>false</protected>
-    <url>SFDCpopup(&apos;https://salescrm.intel.com/access-and-entitlement/&apos;,1024,768);
+    <url>SFDCpopup(&apos;http://salescrm.intel.com/access-and-entitlement/&apos;,1024,768);
 
 function SFDCpopup (url,w,h){ 
 
@@ -18,8 +18,8 @@ var http = new XMLHttpRequest();
 
 try 
 { 
-//http.open(&apos;GET&apos;, &apos;https://cloudcrmtrng.amr.corp.intel.com&apos;, false); 
-//http.send(); 
+http.open(&apos;GET&apos;, &apos;https://cloudcrmtrng.amr.corp.intel.com&apos;, false); 
+http.send(); 
 popupCenter(url, &apos;&apos;,w, h ); 
 } 
 catch (error) 

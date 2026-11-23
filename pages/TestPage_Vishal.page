@@ -1,0 +1,133 @@
+<apex:page >
+    <!--US85308--11-23-2017--Popcornapps--Updated version from 50records to 50recode.2-->
+<!--IGHF (Performance tweaks for Mobile and Slow connections)-->
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="https://www.intel.com" pr="1.0" />
+<link rel="dns-prefetch" href="https://www.google-analytics.com" pr="1.0" />
+<link rel="preconnect" href="https://www.intel.com" crossorigin="anonymous" pr="1.0" />
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" pr="1.0" />
+
+<!--Start US313638 -- Dec 18, 2019 -- Avanish -- Align Sign In button-->
+<style>
+#recode50header header nav.navbar-fixed-top div.main-navbar .nav-right .content{
+float: right;
+}
+
+#recode50header header nav.navbar-fixed-top div.main-navbar .nav-right .content button.language-selector-toggle,
+#recode50header header nav.navbar-fixed-top div.main-navbar .nav-right .content button.login.login-toggle,
+#recode50header header nav.navbar-fixed-top div.main-navbar .nav-right .content span.search,
+#recode50header header nav.navbar-fixed-top div.main-navbar .nav-right .content span.login.login-toggle1
+{
+float: left;
+}
+#recode50header .my-intel {
+margin-left: auto !important;
+}
+
+.rwd #recode50header {
+height: 50px;
+}
+#recode50header header nav.navbar-fixed-top div.main-navbar .nav-right .content button.login.login-toggle span.icon-login.align-icons
+{
+padding-top: 5px;
+}
+.rwd .recode50 .header-simplify nav.global-menu-simplify .nav-right .login.login-toggle1 {
+padding: 19px 5px 15px !important;
+}
+@media screen and (min-width: 767px) {
+#recode50header header nav.navbar-fixed-top div.main-navbar .nav-right .content button.search-button {
+padding-top: 12px;
+}
+}
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+.rwd .recode50 .header-simplify .language-selector-toggle {
+margin-top: -2px;
+}
+}
+@media screen and (max-width: 767px) {
+.rwd .recode50 .header-simplify .language-selector-toggle, .rwd .recode50 .header-simplify .state-logged-in {
+padding-top: 14px !important;
+}
+#recode50header header nav.navbar-fixed-top div.main-navbar .nav-right .content button.login.login-toggle span.icon-login.align-icons {
+padding-top: 2px;
+}
+.rwd .recode50 .header-simplify nav.global-menu-simplify.logged-in .nav-right .language-selector-toggle {
+margin-top: 3px !important;
+}
+}
+</style>
+<!--End US313638 -- Dec 18, 2019 -- Avanish -- Align Sign In button-->
+<!--/IGHF-->
+<!--IGHF header-->
+<!--GAATversion='50recode.2' date='03/12/2017 08:00:00' Version='2.0':CharacterEncoding:utf8-->
+<div id="recode50header"></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+var toggleHeader = true;
+INTELNAV = window.INTELNAV || {};
+if (toggleHeader == 'true') {
+INTELNAV.dashboard = {
+environment: "newnav",
+languageSelector: {
+settings: {
+behavior: "", method: "parameter", regex: /lang\=\w\w-\w\w/
+},
+geos: [
+{ geo: "zh_cn", path: "lang=zh-CN" },
+{ geo: "ja_jp", path: "lang=ja-JP" },
+{ geo: "ko_kr", path: "lang=ko-KR" },
+{ geo: "zh_tw", path: "lang=zh-TW" },
+{ geo: "fr_fr", path: "lang=fr-FR" },
+{ geo: "de_de", path: "lang=de-DE" },
+{ geo: "it_it", path: "lang=it-IT" },
+{ geo: "ru_ru", path: "lang=ru-RU" },
+{ geo: "pt_br", path: "lang=pt-BR" },
+{ geo: "es_es", path: "lang=es-ES" },
+{ geo: "es_xl", path: "lang=es-ES" },
+{ geo: "en_us", path: "lang=en-US" }//, //Addeded and commented by Suma for chekcing a request by business
+// { geo: "en_ie", path: "lang=en-US" },
+// { geo: "en_uk", path: "lang=en-US" },
+// { geo: "en_eu", path: "lang=en-US" }
+
+]
+}
+};
+} else {
+INTELNAV.dashboard = {
+languageSelector: {
+settings: {
+behavior: "", method: "parameter", regex: /lang\=\w\w-\w\w/
+},
+geos: [
+{ geo: "zh_cn", path: "lang=zh-CN" },
+{ geo: "ja_jp", path: "lang=ja-JP" },
+{ geo: "ko_kr", path: "lang=ko-KR" },
+{ geo: "zh_tw", path: "lang=zh-TW" },
+{ geo: "fr_fr", path: "lang=fr-FR" },
+{ geo: "de_de", path: "lang=de-DE" },
+{ geo: "it_it", path: "lang=it-IT" },
+{ geo: "ru_ru", path: "lang=ru-RU" },
+{ geo: "pt_br", path: "lang=pt-BR" },
+{ geo: "es_es", path: "lang=es-ES" },
+{ geo: "es_xl", path: "lang=es-ES" },
+{ geo: "en_us", path: "lang=en-US" }//, //Addeded and commented by Suma for chekcing a request by business
+// { geo: "en_ie", path: "lang=en-US" },
+// { geo: "en_uk", path: "lang=en-US" },
+// { geo: "en_eu", path: "lang=en-US" }
+
+]
+}
+};
+}
+
+INTELNAV = window.INTELNAV || {};
+
+INTELNAV.renderSettings={version:"2.0 - 03/12/2017 08:00:00",textDirection:"ltr",culture:"en_US",OutputId:"gh_default"}; /*]]>*/
+</script>
+
+<!--/IGHF header-->
+<script type="text/javascript" src="https://www.intel.com/ighf/50recode.2/js/headerchooser.js">
+
+    </script>
+    <c:ICS_Footer />
+</apex:page>

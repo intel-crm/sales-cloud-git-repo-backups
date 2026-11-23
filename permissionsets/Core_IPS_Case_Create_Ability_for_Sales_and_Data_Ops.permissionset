@@ -98,27 +98,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.Core_Hot_Issue_Qts_1__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Core_Hot_Issue_Qts_3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Core_Hot_Issue_Qts_4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Core_Hot_Issue_Qts_5__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Core_Hot_Issue__c</field>
+        <field>Case.Core_Hot_Issue_Qts_6__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -194,6 +174,31 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Core_IPS_GEC_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Core_IPS_HC_Executive_Summary__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Core_IPS_HC_Help_Needed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Core_IPS_HC_Hot_Issue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Core_IPS_HC_Latest_Update__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Core_IPS_HC_Next_Actions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -339,6 +344,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.Core_jsonfield__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Date_and_time_of_hot__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

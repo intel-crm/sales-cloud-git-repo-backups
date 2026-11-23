@@ -4,7 +4,7 @@
     <enableEmailConsentManagement>false</enableEmailConsentManagement>
     <enableEmailSenderIdCompliance>false</enableEmailSenderIdCompliance>
     <enableEmailSpfCompliance>false</enableEmailSpfCompliance>
-    <enableEmailToSalesforce>true</enableEmailToSalesforce>
+    <enableEmailToSalesforce>false</enableEmailToSalesforce>
     <enableEmailTrackingIPBlocklist>false</enableEmailTrackingIPBlocklist>
     <enableEmailWorkflowApproval>false</enableEmailWorkflowApproval>
     <enableEnhancedEmailEnabled>true</enableEnhancedEmailEnabled>
@@ -18,7 +18,7 @@
     <enableSendViaGmailPref>false</enableSendViaGmailPref>
     <enableUseOrgFootersForExtTrans>false</enableUseOrgFootersForExtTrans>
     <enableVerifyEmailDomainByDkim>false</enableVerifyEmailDomainByDkim>
-    <sendEmailsEvenWhenAutomationUpdatesSameRecord>false</sendEmailsEvenWhenAutomationUpdatesSameRecord>
+    <sendEmailsEvenWhenAutomationUpdatesSameRecord>true</sendEmailsEvenWhenAutomationUpdatesSameRecord>
     <sendMassEmailNotification>false</sendMassEmailNotification>
     <sendTextOnlySystemEmails>false</sendTextOnlySystemEmails>
 </EmailAdministrationSettings>

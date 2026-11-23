@@ -111,7 +111,7 @@
         <showHeader>true</showHeader>
     </screens>
     <startElementReference>DR_Rejection_Screen</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>vaDRID</name>
         <dataType>String</dataType>

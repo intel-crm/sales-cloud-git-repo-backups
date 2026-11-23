@@ -42,6 +42,14 @@ public class Core_RestAPI_Attachment_Test {
         settings.Core_Active__c = false;
         insert settings;
 
+        //Added by Sowmya - Start - 02/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+        Core_IPS_APIGEE_Custom_Settings__c setting1 = new Core_IPS_APIGEE_Custom_Settings__c();
+        setting1.Name = 'Core_IPS_SFT_Move';
+        setting1.MyIntel_Client_Id__c = '174b7bf8-8586-40ab-af6f-65450151f540';
+        insert setting1;
+        //Sowmya - end - 02/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+        
+        
         Core_IPS_Labels__c labels = new Core_IPS_Labels__c ();
         labels.name= 'COMPLETE';
         labels.value__c='COMPLETE';
@@ -98,9 +106,11 @@ public class Core_RestAPI_Attachment_Test {
             Core_RestAPI_TestUtilities.getCustomerUsersWithAccountsAndContacts('RestApiUnitTest', 1, 1,0,1,'IPS External Customer', 0);
         }
         
+        System.debug(' Core_RestAPI_Attachment_Test \n Account '+[Select Name FROM Account]+'\n Contact '+[Select Name FROM Contact]);
         
         commUser1 = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact) ];
         
+        System.debug(' Core_RestAPI_Attachment_Test User \n Comm User obj : '+commUser1+' \n adminUser User obj : '+adminUser);
         System.runAs(adminUser){
             List<Account> lAcc = [SELECT Id, Core_IPS_SFT_Partner_Path__c FROM Account];
             for(Account oAcc : lAcc){
@@ -120,7 +130,19 @@ public class Core_RestAPI_Attachment_Test {
                 c.Core_IPS_Customer_Visible__c = true;
             }
             insert caseList;
+            
+            //Added by Sowmya - Start - 04/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+       		 Core_IPS_Case_Attachments__c caseAttachments = new Core_IPS_Case_Attachments__c();
+        	caseAttachments.Core_IPS_Attachment_Visibility__c = 'Public to Customers';
+        	caseAttachments.Core_Case__c = caseList[0].Id;
+          	insert caseAttachments;
+         	//Sowmya End - 04/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+           
         }
+        
+		
+        
+        
 //        Test.stopTest();
     }
     
@@ -131,6 +153,7 @@ public class Core_RestAPI_Attachment_Test {
         request.httpMethod = 'POST';
         if(v1_0.equals(version)){
             caseObj = [Select CaseNumber FROM Case where OwnerId =: commUser1.Id Limit 1];
+            System.debug(' Test class caseObj '+caseNbr);
         	request.requestUri ='/v1.0/cases/'+caseNbr+'/attachments'; 
             request.resourcePath ='/services/apexrest/v1.0/cases/'+caseNbr+'/attachments';
 
@@ -140,11 +163,12 @@ public class Core_RestAPI_Attachment_Test {
         return request;
     }
     
-    private static void doGet_createAttachment_Asserts(Core_RestAPI_Response apiResponse, RestResponse objResponse, String strVersion) {
+    private static void doPost_createAttachment_Asserts(Core_RestAPI_Response apiResponse, RestResponse objResponse, String strVersion) {
         //Consolidate asserts so that each test method does not have to copy/paste the logic
         
         //expand if statement when multiple versions share the same asserts
         If(strVersion == v1_0) {  
+            //System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
             System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
             System.assertNotEquals(null, apiResponse);
             System.assertNotEquals(null, apiResponse.successContent);
@@ -168,7 +192,9 @@ public class Core_RestAPI_Attachment_Test {
      //Test doPost method
 	@isTest public static void test_doPost_createAttachment_v1_0_Positive() {
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_createAttachment_v1_0 as  '+commUser1);  
         Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
+        system.debug(' caseObj.CaseNumber: ' + caseObj.CaseNumber);
         RestContext.request = doGet_createAttachment_VersionRequest(v1_0, caseObj.CaseNumber);
 
         Test.setMock(HttpCalloutMock.class, new Core_RESTAPI_MoveFileMock_Test());
@@ -176,7 +202,9 @@ public class Core_RestAPI_Attachment_Test {
        	Test.startTest();
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doPost(requestParams);
-            doGet_createAttachment_Asserts(apiResponse, null, v1_0);
+            System.debug(' test_doPost_createAttachment_v1_0 test_doPost >>>> '+apiResponse); 
+            //Sowmya updated the method name inplace of doGet kept doPost
+            doPost_createAttachment_Asserts(apiResponse, null, v1_0);
         }
         Test.stopTest();
     }
@@ -186,6 +214,7 @@ public class Core_RestAPI_Attachment_Test {
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
         //Negative test case
         commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doPost_createAttachment_v1_0 as  '+commUser1);  
         RestContext.request = doGet_createAttachment_VersionRequest(v1_0, 'invalidCasenumber');
         
         Test.setMock(HttpCalloutMock.class, new Core_RESTAPI_MoveFileMock_Test());
@@ -193,7 +222,79 @@ public class Core_RestAPI_Attachment_Test {
        	Test.startTest();
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doPost(requestParams);
+            System.debug(' test_doPost_createAttachment_v1_0 test_doGet >>>> '+apiResponse); 
         }
         Test.stopTest();
     }
+    
+     //Added by Sowmya - Start - 04/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+		@isTest public static void test_doGet_caseAttachment_v1_0_Positive() {
+        commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_caseAttachment_v1_0 as  '+commUser1);  
+        Case caseObj = [Select Id, CaseNumber FROM Case where ContactId =:commUser1.ContactId  Limit 1];
+        system.debug(' caseObj.CaseNumber: ' + caseObj.CaseNumber);
+        RestContext.request = doGet_createAttachment_VersionRequest(v1_0, caseObj.CaseNumber);
+
+        Test.setMock(HttpCalloutMock.class, new Core_RESTAPI_MoveFileMock_Test());
+        
+       	Test.startTest();
+        System.runAs(commUser1){
+            Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doGet();
+            System.debug(' test_doGet_caseAttachment_v1_0 test_doGet >>>> '+apiResponse); 
+            doGet_caseAttachment_Asserts(apiResponse, null, v1_0);
+        }
+        Test.stopTest();
+    }
+     @isTest public static void test_doGet_caseAttachment_v1_0_Negative() {
+        commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        //Negative test case
+        commUser1  = [Select Name, ContactId FROM User WHERE Name = 'CommUser0 RestApiUnitTest0'];
+        System.debug(' \n\n Running test method test_doGet_caseAttachment_v1_0 as  '+commUser1);  
+        RestContext.request = doGet_createAttachment_VersionRequest(v1_0, 'invalidCasenumber');
+        
+        Test.setMock(HttpCalloutMock.class, new Core_RESTAPI_MoveFileMock_Test());
+
+       	Test.startTest();
+        System.runAs(commUser1){
+            Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doGet();
+            System.debug(' test_doGet_caseAttachment_v1_0 test_doGet >>>> '+apiResponse); 
+        }
+        Test.stopTest();
+    }
+    
+     private static void doGet_caseAttachment_Asserts(Core_RestAPI_Response apiResponse, RestResponse objResponse, String strVersion) {
+        //Consolidate asserts so that each test method does not have to copy/paste the logic
+        
+        //expand if statement when multiple versions share the same asserts
+        If(strVersion == v1_0) {  
+            //System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
+            System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
+            System.assertNotEquals(null, apiResponse);
+            System.assertNotEquals(null, apiResponse.successContent);
+            System.assertEquals(true, apiResponse.isSuccess);
+            //Assert all sharing cases are retrieved
+            System.assertEquals(1, apiResponse.successContent.size(), 'Case Found');
+        }
+        
+        //Common Asserts for all versions
+        //Verify the transaction log is created
+        if(LABEL.Core_RestAPI_Transaction_Switch == 'ON'){
+            try{
+                Core_RestAPI_Transaction_Entry__c log = [Select Id FROM Core_RestAPI_Transaction_Entry__c Limit 1];    
+                System.assertNotEquals(null, log);
+            }catch(Exception e){
+                //Fail if log entry is not found when 
+                System.assert(false);
+            }
+        }
+    } 
+    
+    //Sowmya End - 04/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+       
+
+    
+    
+    
+    
+    
 }

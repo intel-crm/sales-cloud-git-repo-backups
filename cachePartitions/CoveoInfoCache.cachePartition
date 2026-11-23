@@ -3,7 +3,7 @@
     <isDefaultPartition>false</isDefaultPartition>
     <masterLabel>CoveoInfoCache</masterLabel>
     <platformCachePartitionTypes>
-        <allocatedCapacity>0</allocatedCapacity>
+        <allocatedCapacity>5</allocatedCapacity>
         <allocatedPartnerCapacity>0</allocatedPartnerCapacity>
         <allocatedPurchasedCapacity>0</allocatedPurchasedCapacity>
         <allocatedTrialCapacity>0</allocatedTrialCapacity>

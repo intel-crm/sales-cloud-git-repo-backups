@@ -205,7 +205,7 @@
     <columns>
         <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
-    <description>2018 CHD Consumption Revenue 03.01.17</description>
+    <description>03.01.17</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Group__c</column>
@@ -229,11 +229,11 @@
             <value>Win Approved,Production Win</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
+            <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Smart &amp; Connected Home</value>
+            <value>CCG-Connected Home</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -241,34 +241,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Deal: Sell-to,Deal: Sell-through,Deal: Sell-with</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CCG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -312,6 +284,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

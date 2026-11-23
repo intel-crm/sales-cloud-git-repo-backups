@@ -1,4 +1,4 @@
-public class Core_EnvironmentVariablesController{
+public with sharing class Core_EnvironmentVariablesController{
     private id recordId;
     private string objectApi;
     private id currentLoggedInUser;

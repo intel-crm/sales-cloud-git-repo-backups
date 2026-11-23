@@ -238,30 +238,6 @@
         <label>All</label>
         <language>en_US</language>
     </listViews>
-    <listViews>
-        <fullName>Created_Today</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Case_ID__c</columns>
-        <columns>Core_IPS_Retry_Count__c</columns>
-        <columns>Core_IPS_Outbound_Message_ID__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Core_IPS_Status__c</columns>
-        <columns>Core_IPS_Operation_Type__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>lessThan</operation>
-            <value>TODAY</value>
-        </filters>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>greaterOrEqual</operation>
-            <value>YESTERDAY</value>
-        </filters>
-        <label>Created Today</label>
-        <language>en_US</language>
-    </listViews>
     <nameField>
         <displayFormat>MYINT OB-{0000}</displayFormat>
         <label>IPS MyIntel Outbound Message Name</label>
@@ -269,7 +245,7 @@
     </nameField>
     <pluralLabel>MyIntel Outbound Messages</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Re_Promote</fullName>

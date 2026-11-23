@@ -4,6 +4,7 @@ import redirectAutomate from '@salesforce/apex/Core_IPS_ContactloginDisclaimerCt
 import FacebookIcon from '@salesforce/label/c.Core_IPS_FacebookIcon_LWC';
 import InstagramIcon from '@salesforce/label/c.Core_IPS_InstagramIcon_LWC';
 import IntelCookies from '@salesforce/label/c.Core_IPS_IntelCookies_LWC';
+import IntelDNS from '@salesforce/label/c.Core_IPS_IntelDNS_LWC';
 import IntelPrivacy from '@salesforce/label/c.Core_IPS_IntelPrivacy_LWC';
 import IntelSiteMap from '@salesforce/label/c.Core_IPS_IntelSiteMap_LWC';
 import IntelSupplyChainTransparency from '@salesforce/label/c.Core_IPS_IntelSupplyChainTransparency_LWC';
@@ -27,6 +28,7 @@ export default class Core_IPS_Footer_LWC extends LightningElement {
         FacebookIcon,
         InstagramIcon,
         IntelCookies,
+        IntelDNS,
         IntelPrivacy,
         IntelSiteMap,
         IntelSupplyChainTransparency,
@@ -52,7 +54,8 @@ export default class Core_IPS_Footer_LWC extends LightningElement {
         if (perSet.includes('DDR Permission Set')) {
             if (!perSet.includes('IPS Permission Set') && !perSet.includes('IPS Partner FAE Permission Set')) {
                 this.onlyDdrUser = true;
-                location.href = 'https://partners.intel.com/DDR';
+                // This should be change when Deploying to Prod like ( location.href = 'https://partners.intel.com/DDR' )
+                location.href = window.location.origin + '/DDR/'; 
                 return;
             }
         }

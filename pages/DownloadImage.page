@@ -1,0 +1,7 @@
+<apex:page controller="DowloadCSVDataBase64"  showHeader="false"  sidebar="false" standardStylesheets="false" cache="true" readOnly="true" contentType="text/csv#Case.csv"> <!--test -->
+    {!csvString}
+   <!-- <apex:repeat value="{!urlLinkList}" var="urldata">
+    <a href="data:image/png;base64,{!urldata}" download="w3logo" >test</a>
+      
+    </apex:repeat>-->
+</apex:page>

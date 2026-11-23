@@ -39,7 +39,7 @@ export default class Core_IPS_CustomerDisclaimer_LWC extends NavigationMixin(Lig
     }
     finalUrl;
     handleCancel() {
-        const logincurl = '/LightningIPS/s/login/?ec=302&startURL=%2FLightningIPS%2Fs%2F';
+        const logincurl = '/LightningIPS/Partnercenter/s/login/?ec=302&startURL=%2FLightningIPS%2Fs%2F';
         const orginUrl1 = window.location.origin;
         const orginUrl = encodeURI(orginUrl1);
         this.finalUrl = orginUrl.concat(logincurl);

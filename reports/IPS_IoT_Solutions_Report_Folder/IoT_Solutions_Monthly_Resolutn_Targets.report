@@ -113,7 +113,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Closed</value>
+            <value>Closed,​​Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Product_name__c</column>
@@ -162,7 +162,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Health Application Platform</value>
+            <value>Medical Gateway</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -7,9 +7,6 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Product_name__c</field>
-    </columns>
-    <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>
@@ -21,8 +18,10 @@
     <columns>
         <field>OPEN</field>
     </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND (3 or 4)) AND 5</booleanFilter>
         <criteriaItems>
             <column>Case.Core_IPS_Assigned_Queue__c</column>
             <columnToColumn>false</columnToColumn>
@@ -35,35 +34,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Closed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>amit angrest,walter chan,ch cho,ralf hegemann,huang-pao kang,tri lam,clay liao,oliver malleck,benny peleg,dirk ruberg,gal savion,oren shoshani,thierry touitou,jack yang</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Case_Co_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>amit angrest,walter chan,ch cho,ralf hegemann,huang-pao kang,tri lam,clay liao,oliver malleck,benny peleg,dirk ruberg,gal savion,oren shoshani,thierry touitou,jack yang</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Product_name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Intel® Puma™ 7 SoC CE2732 Embedded Services &amp; All-IP Video Gateway</value>
+            <value>Closed,​​Closed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT.NAME</field>
+        <field>Case.Core_IPS_Product_name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>by component</name>

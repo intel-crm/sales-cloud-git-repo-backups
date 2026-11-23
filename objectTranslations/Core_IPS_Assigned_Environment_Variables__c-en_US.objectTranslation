@@ -76,6 +76,11 @@
             <translation><!-- N/A --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- Project_EDQ --></label>
+        <name>Project_EDQ__c</name>
+        <relationshipLabel><!-- Environment Details Operational --></relationshipLabel>
+    </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- To prevent discrepancies in Case data, reverting from Inactive to Active has been disabled. If needed, please contact Production Support to have the flag reset to Active.

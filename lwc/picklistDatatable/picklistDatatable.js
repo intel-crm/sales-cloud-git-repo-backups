@@ -9,6 +9,7 @@ export default class PicklistDatatable extends LightningElement {
     @track showPicklist = false;
 
     closePicklist() {
+        console.log('@@@ onblue handler event');
         this.showPicklist = false;
     }
     connectedCallback(){
@@ -18,6 +19,7 @@ export default class PicklistDatatable extends LightningElement {
     }
     handleChange(event) {
         //show the selected value on UI
+        console.log('@@@ handle onchange triggered');
         this.value = event.detail.value;
  
         //fire event to send context and selected value to the data table

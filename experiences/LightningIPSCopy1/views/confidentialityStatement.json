@@ -1,0 +1,74 @@
+{
+  "appPageId" : "112ae48a-877d-4a55-876f-cf12046a3576",
+  "componentName" : "c:coreIntcPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "51bf2d95-286c-4351-b2a8-a2028b4a3044",
+  "label" : "Confidentiality Statement",
+  "regions" : [ {
+    "id" : "3a73e47f-f1ab-403a-a013-b5ca67e53dd3",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_Ips_Confidentiality_Statement_Lwc",
+      "id" : "9544c1c3-53b1-4b60-b389-75b8ef5b0c1e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a8d54757-3d80-48bd-9d38-15aa8bf95332",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "c70b58a7-d69f-4b0d-b9a3-a7ee3da71d4e",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "d805a5fc-103e-4074-9b8a-3de0116a326a",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "7fd98c4d-8143-4ca0-acce-732d4b0063e3",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "69a1bdfa-1aaf-4c5d-8daa-324caaac2e9d",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "83bf4209-c21c-4965-8bf5-0fe5a093b8a6",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "ff6fd356-a793-4ce4-b26c-7d13662bd606",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "ffd6447a-83dc-4a9d-8a15-87ec2f755c29",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "5dce8e90-9408-460d-8478-b90b92b1936f",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Confidentiality Statement"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "65da779b-bb91-42f2-aa76-c0b3f2506c85",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "56309a75-2aa2-4b35-b845-2d04a2dd8ecb",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "PXSNJlgMPbU2RobfwwjfVrPWB6ZAZZ",
+  "type" : "view",
+  "viewType" : "custom-confidentiality-statement"
+}

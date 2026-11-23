@@ -1,0 +1,9 @@
+<template>
+    <lightning-button-group>
+        <lightning-button label="Close Case"></lightning-button>
+        <lightning-button label="Copy"></lightning-button>
+        <template if:true={isAcceptTrue}>
+            <lightning-button label="Accept"></lightning-button>
+        </template>
+    </lightning-button-group>
+</template>

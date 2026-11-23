@@ -3,13 +3,13 @@
     <enableCMSC2CConnections>true</enableCMSC2CConnections>
     <enableCMSSfRoleHierarchyPref>false</enableCMSSfRoleHierarchyPref>
     <enableChatterFileLink>true</enableChatterFileLink>
-    <enableContent>true</enableContent>
-    <enableContentAutoAssign>true</enableContentAutoAssign>
+    <enableContent>false</enableContent>
+    <enableContentAutoAssign>false</enableContentAutoAssign>
     <enableContentDistForPortalUsers>false</enableContentDistForPortalUsers>
     <enableContentDistPwOptionsBit1>true</enableContentDistPwOptionsBit1>
     <enableContentDistPwOptionsBit2>true</enableContentDistPwOptionsBit2>
     <enableContentDistribution>true</enableContentDistribution>
-    <enableContentSupportMultiLanguage>true</enableContentSupportMultiLanguage>
+    <enableContentSupportMultiLanguage>false</enableContentSupportMultiLanguage>
     <enableContentWorkspaceAccess>true</enableContentWorkspaceAccess>
     <enableDeleteFileInContentPacks>false</enableDeleteFileInContentPacks>
     <enableFileIngestToDataCloud>true</enableFileIngestToDataCloud>
@@ -18,7 +18,7 @@
     <enableJPGPreviews>false</enableJPGPreviews>
     <enableLWCFileUpload>true</enableLWCFileUpload>
     <enableLWCFileUploadInFlows>false</enableLWCFileUploadInFlows>
-    <enableLibraryManagedFiles>true</enableLibraryManagedFiles>
+    <enableLibraryManagedFiles>false</enableLibraryManagedFiles>
     <enableMContentManagedDomainPref>false</enableMContentManagedDomainPref>
     <enableMaliciousFileNotifications>false</enableMaliciousFileNotifications>
     <enableSecureSalesforceFiles>true</enableSecureSalesforceFiles>

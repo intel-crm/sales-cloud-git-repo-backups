@@ -111,7 +111,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Samuel Ryan,Jeremy Probst,Brian Jarvis,Sean Basci</value>
+            <value>Covey,Halversen,Phillips,Kwong,Dourassi,Stewart</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -124,11 +124,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>BucketField_71676151</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Pending DWs by OSAM, current Quarter</name>
@@ -153,10 +148,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>AMOUNT</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

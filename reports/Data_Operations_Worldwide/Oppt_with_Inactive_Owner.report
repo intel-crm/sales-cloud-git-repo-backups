@@ -4,15 +4,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Group_ID__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Flag_for_Deletion__c</field>
-    </columns>
-    <columns>
         <field>TYPE</field>
     </columns>
     <columns>
@@ -46,19 +37,7 @@
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
-        <field>User.Core_User_Geo__c</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_ID__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_OWNER</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Owner_Active__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -73,7 +52,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Design Win,Production Win,Lost,Cancelled,Group Cancelled,Group Closed,Production Lost,Production Cancelled</value>
+            <value>Design Win,Production Win,Lost,Cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -74,6 +74,14 @@
         <label><!-- isPARRequest --></label>
         <name>Core_isPARRequest__c</name>
     </fields>
+    <fields>
+        <label><!-- Related Account --></label>
+        <name>Related_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Product id --></label>
+        <name>Related_Product_id__c</name>
+    </fields>
     <recordTypes>
         <description><!-- Used for MAP --></description>
         <label><!-- MAP --></label>

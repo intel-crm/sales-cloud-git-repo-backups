@@ -1,5 +1,7 @@
 import { LightningElement, api } from 'lwc';
 
+/* istanbul ignore file */
+
 import ariaClearSearchLabel from '@salesforce/label/c.Core_Intc_TypeaheadAccessibilityClear';
 import ariaSearchLabel from '@salesforce/label/c.Core_Intc_TypeaheadAccessibilitySearch';
 import ariaTypeaheadInstructions from '@salesforce/label/c.Core_Intc_TypeaheadAccessibility';
@@ -177,7 +179,8 @@ export default class CoreIntcSearch extends LightningElement {
       // wrap matching words in <strong> tags to highlight
       let newLabel = label;
       words.forEach((word) => {
-        newLabel = newLabel.replaceAll(word, `<strong>${word}</strong>`);
+        const reg = new RegExp(`\\b${word}\\b`, 'g');
+        newLabel = newLabel.replace(reg, `<strong>${word}</strong>`);
       });
       return newLabel;
     }

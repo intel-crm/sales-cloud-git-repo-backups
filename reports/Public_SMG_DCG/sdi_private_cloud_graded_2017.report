@@ -41,9 +41,6 @@
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>
@@ -65,7 +62,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -138,7 +135,7 @@
     </columns>
     <description>updated through Q1&apos;17</description>
     <filter>
-        <booleanFilter>((((((((((((1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12))))))))))))</booleanFilter>
+        <booleanFilter>(1 or 2 or 3 or 4 or 5 or 6)</booleanFilter>
         <criteriaItems>
             <column>OPPORTUNITY_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -180,48 +177,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>006o000000IFZuS,006o000000M6jR3,006o000000OOBHv,006o000000KGF3y,006o000000PI7iJ,006o000000OOdFo,006o000000OP613,006o000000IEOAx,006o000000OMsTb,006o000000B357c,006o000000IR7ND,006o000000Isrlk,006o000000MzL3d,006o000000NJZ36,006o000000Phcyz</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0061J00000Qht6lQAB,0061J00000QSjHRQA1,0061J00000QSrRUQA1,0061J00000QUlI2,006o000000IRn0aAAD,006o000000KemcXAAR,006o000000KFQph,006o000000L1mKr,006o000000M6jR3AAJ,006o000000MJQeSAAX,006o000000NIiZYAA1,006o000000NIl2XAAT,006o000000NIWHUAA5,006o000000NXT2uAAH,006o000000NXU3LAAX,006o000000NY2UzAAL,006o000000NYlN0,006o000000O1dVhAAJ,006o000000O1EnC,006o000000ONevpAAD,006o000000ONQ6F,006o000000ONtFiAAL,006o000000OOBJSAA5,006o000000OOBUBAA5,006o000000OP5rVAAT,006o000000OP613AAD,006o000000OPR6GAAX,006o000000OzcHq,006o000000P0ah5AAB,006o000000P0CHpAAN,006o000000PeEuUAAV,006o000000Pev3VAAR,006o000000PexItAAJ,006o000000PfoR3AAJ,006o000000PgPVX,006o000000PhcyzAAB,006o000000PhyXZ,006o000000PhzeDAAR,006o000000PI7Le,006o000000PI9V3AAL</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,006o000000PIgQqAAL,006o000000PIOFwAAP,006o000000PIUl7,006o000000PIWvIAAX,Opportunity ID,0061J00000Pgx5KQAR,006o000000PIWwkAAH,006o000000PKT3rAAH,0061J00000QftzjQAB,0061J00000Qg6uB,006o000000LsDW9AAN,006o000000PLERnAAP,0061J00000QtaDb,006o000000L5sFLAAZ,006o000000PfDMwAAN,006o000000PdvHZAAZ,006o000000PKvtHAAT,006o000000PdvH5AAJ,006o000000NIWHFAA5,0061J00000RIFPF,0061J00000RIFrBQAX,006o000000Nb3FdAAJ,0061J00000RJHFAQA5,0061J00000Rx8bd,006o000000OzPohAAF,006o000000PdvHyAAJ,006o000000LjK1tAAF,006o000000L2nyaAAB,006o000000L2tRXAAZ,006o000000PfRuLAAV,0061J00000RFzFtQAL,0061J00000RHJzTQAX,0061J00000QfiUvQAJ,006o000000OOYr8AAH,006o000000IQdF4AAL,0061J00000QSd0hQAD,0061J00000QSRCkQAP,006o000000PIPhyAAH</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,006o000000OOBZ1AAP,006o000000PLEeIAAX,006o000000MxN5nAAF,006o000000Hn9Md,006o000000LsKTPAA3,0061J00000Qeqia,0061J00000QsxOZQAZ,006o000000PIk6WAAT,006o000000L44BTAAZ,006o000000NYmzpAAD,006o000000M4u9UAAR,0061J00000RFpgnQAD,006o000000PMDIh,0061J00000Qrfc8QAB,not in sfdc,0061J00000QfvLkQAJ,006o000000OyPkeAAF,006o000000PLA8gAAH,006o000000PLEWOAA5,0061J00000RG1YaQAL,0061J00000QrOynQAF,0061J00000QfbWLQAZ,0061J00000QgT8pQAF,006o0000008YdxzAAC,006o000000NK7SFAA1,006o000000PfPIJAA3,006o000000NY3hEAAT,006o000000Pi1XoAAJ,006o000000Mz4ITAAZ,0061J00000RH33DQAT,0061J00000QeR14QAF,006o000000PejR2AAJ,006o000000GEjMXAA1,0061J00000Qr8vFQAR,0061J00000QFw1TQAT,006o000000IuUv0AAF,006o000000O37KJAAZ,0061J00000RIbSvQAL,006o000000PiPcjAAF</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,0061J00000QfCQcQAN,0061J00000RJnQEQA1,006o000000OLw0TAAT,0061J00000Qr8hCQAR,006o000000L5jVVAAZ,006o000000PLv46AAD,0061J00000QhuFgQAJ,006o000000GNYUm,006o000000GNYUmAAP,006o000000OOFzwAAH,0061J00000QqlOsQAJ,0061J00000RHfWfQAL,0061J00000QeR0pQAF,0061J00000QeR0kQAF,0061J00000RHg9lQAD,0061J00000QhlPO,0061J00000P4uCdQAJ,006o000000OzJwWAAV,006o000000ONSpPAAX,006o000000PiVoDAAV,0061J00000RcA7nQAF,0061J00000Rd4bDQAR,006o000000PeaqcAAB,0061J00000RcA7s,006o000000PfsBxAAJ,006o000000MxJW4,006o000000OO92OAAT</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_ID__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,0061J00000QeGPnQAN,0061J00000QexrvQAB,0061J00000QfVWqQAN</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Focus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>Private Cloud</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

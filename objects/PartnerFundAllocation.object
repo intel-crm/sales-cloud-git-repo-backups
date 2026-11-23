@@ -127,202 +127,34 @@
         <type>Default</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <enableFeeds>true</enableFeeds>
+    <enableFeeds>false</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Amount</fullName>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>BudgetId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>ChannelPartnerId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_Available_Activity_Alloc_Amt__c</fullName>
-        <formula>IF(OR(AND(OR( RecordType.DeveloperName = &apos;Core_MDF_Client_CoMarketing_Fund&apos;,
-RecordType.DeveloperName = &apos;Core_MDF_Data_Center_CoMarketing_Fund&apos;,
-RecordType.DeveloperName = &apos;Core_MDF_Retail_Marketing_Funds&apos;,
-RecordType.DeveloperName = &apos;Core_MDF_Ecosystem_Extension_Fund&apos;),
-OR(Core_MDF_Budget_Type__c = &apos;OEM CMP&apos;,Core_MDF_Budget_Type__c = &apos;MDF&apos;,Core_MDF_Budget_Type__c = &apos;MDF+&apos;,
-Core_MDF_Budget_Type__c = &apos;Service Provider CMP&apos;,Core_MDF_Budget_Type__c = &apos;Retail MDF&apos;,Core_MDF_Budget_Type__c =&apos;Cloud&apos;)),
-(Budget.RecordType.DeveloperName = &apos;Core_MDF_IPA_Account_Based&apos;)) ,
-IF((Amount - Core_MDF_Total_Activity_Allocated_Amount__c)&gt;0,(Amount - Core_MDF_Total_Activity_Allocated_Amount__c),0)
-,0)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Amount available for Activity creation</inlineHelpText>
-        <label>Activity Available Amount</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Available_Allocation_Amount__c</fullName>
-        <formula>Amount - TotalApprovedFcs</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Amount available for Claim creation</inlineHelpText>
-        <label>Claim Available Amount</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_BudgetIdNodeAccountId_txt__c</fullName>
-        <caseSensitive>false</caseSensitive>
-        <description>Unique field to prevent duplicate Allocation record creation.</description>
-        <externalId>false</externalId>
-        <label>BudgetIdNodeAccountId</label>
-        <length>255</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Budget_Type__c</fullName>
-        <description>If budget type field on budget is blank it shows not applicable, else it shows budget type value</description>
-        <externalId>false</externalId>
-        <formula>IF( ISPICKVAL(Budget.Core_MDF_Budget_Type_Txt__c,&apos;&apos;), $Label.Core_MDF_Not_Applicable_value_for_Budget_Type , TEXT(Budget.Core_MDF_Budget_Type_Txt__c))</formula>
-        <label>Budget Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Claim_Reserved_Amount_Amt__c</fullName>
-        <formula>TotalApprovedFcs</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Amount consumed by existing Claims  (Active only)</inlineHelpText>
-        <label>Claim Reserved Amount</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_CreatedBy_Nm__c</fullName>
-        <description>Shows the name for external user if created by is external otherwise Intel System User</description>
-        <externalId>false</externalId>
-        <formula>IF (
-ISPICKVAL(CreatedBy.Profile.UserType,&apos;PowerPartner&apos;),
-CreatedBy.FirstName &amp; &apos; &apos; &amp; CreatedBy.LastName,
-$Label.Core_MDF_Intel_System_User
-)</formula>
-        <label>Created By</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_End_Date_dt__c</fullName>
-        <formula>Budget.EndDate</formula>
-        <label>End Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Intel_Account_Name_Txt__c</fullName>
-        <externalId>false</externalId>
-        <formula>ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Name</formula>
-        <label>Intel Account Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Last_ModifiedBy_Nm__c</fullName>
-        <description>Shows the name for external user if last modified by is external otherwise Intel System User</description>
-        <externalId>false</externalId>
-        <formula>IF(
-ISPICKVAL(LastModifiedBy.Profile.UserType,&apos;PowerPartner&apos;),
-LastModifiedBy.FirstName &amp; &apos; &apos; &amp; LastModifiedBy.LastName,
-$Label.Core_MDF_Intel_System_User
-)</formula>
-        <label>Last Modified By</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Owner_Nm__c</fullName>
-        <description>Shows the name for external user if Owner is external otherwise Intel System User</description>
-        <externalId>false</externalId>
-        <formula>IF(
-ISPICKVAL( Owner:User.Profile.UserType ,&apos;PowerPartner&apos;),
-Owner:User.FirstName &amp; &apos; &apos; &amp; Owner:User.LastName ,
-$Label.Core_MDF_Intel_System_User
-)</formula>
-        <label>Owner</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Program_Txt__c</fullName>
-        <externalId>false</externalId>
-        <formula>ChannelPartner.Core_MDF_Channel_Program__r.Name</formula>
-        <label>Program</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Start_Date_dt__c</fullName>
-        <formula>Budget.StartDate</formula>
-        <label>Start Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Total_Activity_Allocated_Amount__c</fullName>
-        <description>Holds the value of Total Approved Fund Requests</description>
-        <formula>TotalApprovedFrs</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Amount consumed by existing Activities (Active only)</inlineHelpText>
-        <label>Activity Reserved Amount</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <type>Currency</type>
-    </fields>
-    <fields>
         <fullName>Description</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>OwnerId</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Title</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>TotalApprovedFcs</fullName>
@@ -333,99 +165,11 @@ $Label.Core_MDF_Intel_System_User
     <fields>
         <fullName>TotalReimbursedFcs</fullName>
     </fields>
-    <listViews>
-        <fullName>All_Partner_Fund_Allocations</fullName>
-        <columns>Name</columns>
-        <columns>Budget</columns>
-        <columns>Core_MDF_Budget_Type__c</columns>
-        <columns>ChannelPartner</columns>
-        <columns>Description</columns>
-        <columns>Amount</columns>
-        <columns>Core_MDF_Available_Allocation_Amount__c</columns>
-        <columns>Core_MDF_Claim_Reserved_Amount_Amt__c</columns>
-        <columns>Core_MDF_Total_Activity_Allocated_Amount__c</columns>
-        <columns>Core_MDF_Available_Activity_Alloc_Amt__c</columns>
-        <columns>Core_MDF_Intel_Account_Name_Txt__c</columns>
-        <columns>TotalApprovedFcs</columns>
-        <columns>TotalApprovedFrs</columns>
-        <columns>TotalReimbursedFcs</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Partner Fund Allocations</label>
-    </listViews>
-    <listViews>
-        <fullName>My_Partner_Fund_Allocations</fullName>
-        <columns>Name</columns>
-        <columns>Budget</columns>
-        <columns>Core_MDF_Budget_Type__c</columns>
-        <columns>ChannelPartner</columns>
-        <columns>Description</columns>
-        <columns>Amount</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Name</field>
-            <operation>contains</operation>
-            <value>2022 Q1 MDF Budget</value>
-        </filters>
-        <label>My Partner Fund Allocations</label>
-    </listViews>
-    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
-    <recordTypeTrackHistory>true</recordTypeTrackHistory>
-    <recordTypes>
-        <fullName>Core_MDF_Channel_MDF</fullName>
-        <active>true</active>
-        <description>This is the Record type for Channel MDF program</description>
-        <label>Channel MDF</label>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
-        <active>true</active>
-        <label>Client CoMarketing Fund</label>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
-        <active>true</active>
-        <label>Client CoMarketing Fund Boost</label>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Co_GTM</fullName>
-        <active>true</active>
-        <description>Record Type for Co-GTM</description>
-        <label>Co-GTM</label>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
-        <active>true</active>
-        <label>Data Center CoMarketing Fund</label>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
-        <active>true</active>
-        <description>Record Type for Ecosystem Extension Fund</description>
-        <label>Ecosystem Extension Fund</label>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
-        <active>true</active>
-        <description>Record Type for Intel Partner Alliance</description>
-        <label>Intel Partner Alliance</label>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
-        <active>true</active>
-        <description>Retail Marketing Funds Record Type</description>
-        <label>Retail Marketing Funds</label>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
-        <active>true</active>
-        <label>Service Provider CoMarketing Fund</label>
-    </recordTypes>
     <searchLayouts>
         <customTabListAdditionalFields>Budget</customTabListAdditionalFields>
         <customTabListAdditionalFields>ChannelPartner</customTabListAdditionalFields>
         <customTabListAdditionalFields>Description</customTabListAdditionalFields>
         <customTabListAdditionalFields>Amount</customTabListAdditionalFields>
-        <listViewButtons>Core_MDF_Export_List_View</listViewButtons>
         <lookupDialogsAdditionalFields>Budget</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ChannelPartner</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Description</lookupDialogsAdditionalFields>
@@ -435,30 +179,9 @@ $Label.Core_MDF_Intel_System_User
         <lookupPhoneDialogsAdditionalFields>Description</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Amount</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>Budget</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Budget_Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ChannelPartner</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Description</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Amount</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
-    <validationRules>
-        <fullName>Core_MDF_AllocAmt_Cannot_be_lesserthan_0</fullName>
-        <active>true</active>
-        <description>To Validate that Allocation Amount cannot be lesser than 0</description>
-        <errorConditionFormula>Amount  &lt; 0</errorConditionFormula>
-        <errorMessage>Allocation Amount Cannot be lesser than 0</errorMessage>
-    </validationRules>
-    <webLinks>
-        <fullName>Core_MDF_Export_List_View</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Export List View</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-        <url>/apex/Core_MDF_ExportToExcel?ObjName=PartnerFundAllocation</url>
-    </webLinks>
 </CustomObject>

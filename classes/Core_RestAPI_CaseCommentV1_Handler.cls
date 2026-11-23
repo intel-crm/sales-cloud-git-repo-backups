@@ -97,8 +97,8 @@ public with sharing class Core_RestAPI_CaseCommentV1_Handler{
         private List<CaseCommentWrapper> wrprList = new List<CaseCommentWrapper>();
         public  List<CaseCommentWrapper> getCaseComments() {
             
-            
             List<Core_IPS_Case_Comments__c > lstCaseComment = Database.query(GET_CASE_COMMENTS_SOQL);
+            
             if(!lstCaseComment.isEmpty()){
                 Map<String,List<Core_IPS_Case_Comments__c>> mIdCreatedBy = new Map<String,List<Core_IPS_Case_Comments__c>>();
                 for(Core_IPS_Case_Comments__c  objCaseComment : lstCaseComment){

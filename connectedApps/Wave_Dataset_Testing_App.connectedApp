@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
     <contactEmail>david.a.hood@intel.com</contactEmail>
-    <iconUrl>https://intel.my.salesforce.com/logos/Salesforce/Wave/logo.png</iconUrl>
+    <iconUrl>https://shnintelsf2crm.intel.myshn.net/logos/Salesforce/Wave/logo.png</iconUrl>
     <label>Wave Dataset Testing App</label>
-    <logoUrl>https://intel.my.salesforce.com/logos/Salesforce/Wave/logo.png</logoUrl>
+    <logoUrl>https://shnintelsf2crm.intel.myshn.net/logos/Salesforce/Wave/logo.png</logoUrl>
     <oauthConfig>
-        <callbackUrl>https://login.salesforce.com/services/oauth2/token</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6i5qhgyn6hTY1taB4FTJmx1cAJvD.upvnjCT9ZJ7cMSXWFincydcBJtGdJ.P</consumerKey>
+        <callbackUrl>https://shnintelsf2crm.intel.myshn.net/services/oauth2/token</callbackUrl>
+        <consumerKey>3MVG9JamK_x9K2XKK99OwezxYdwQmpn5s_3fZG6zkwOFfYK6fqbBcCrYk2lYjV4UHFhOWtRf2pcNFiJw28bPs</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>

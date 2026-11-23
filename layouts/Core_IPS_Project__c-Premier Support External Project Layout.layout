@@ -36,15 +36,35 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_IPS_Enable_ISTasInterested_Parties__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_IPS_Remove_Notification_Details__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_IPS_Partner_Support_Owner__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Intel_Support_Team_Count__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Core_IPS_Update_PSO__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Project_Partner_Support_Owner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_Project_Partner_Support_Owner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>MarkByProductObject__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -72,6 +92,7 @@
     <relatedLists>
         <customButtons>Add_Products_for_External_Customers</customButtons>
         <customButtons>Remove_Products</customButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>ASSET.NAME</fields>
         <fields>ASSET.STATUS</fields>
         <fields>core_Product_Application__c</fields>
@@ -81,11 +102,16 @@
     <relatedLists>
         <customButtons>Add_Members_For_External_Customers</customButtons>
         <customButtons>Remove_Members</customButtons>
+        <customButtons>Core_IPS_Add_Members</customButtons>
         <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
         <fields>Core_IPS_Contact__c</fields>
-        <fields>Core_IPS_Contact_Account__c</fields>
         <fields>Core_Status__c</fields>
+        <fields>Core_IPS_Contact_Account__c</fields>
+        <fields>Core_IPS_Contact_Email__c</fields>
         <fields>Add_as_Case_Interested_Party__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
         <relatedList>Core_IPS_Project_Member__c.Core_IPS_Project__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -97,8 +123,18 @@
         <fields>CASES.PRIORITY</fields>
         <fields>CASES.CREATED_DATE</fields>
         <relatedList>Case.Core_IPS_Project_Case__c</relatedList>
-        <sortField>CASES.CREATED_DATE</sortField>
-        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_IPS_Opportunity_PAR__c.Core_IPS_Premier_Support_Project__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_IPS_Assigned_Environment_Variables__c.Project_EDQ__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_IPS_Environment_Variables__c.Premier_Support_Project__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

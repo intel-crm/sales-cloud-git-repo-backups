@@ -11,15 +11,30 @@
             <sourceValues>
                 <sourceValue>Data Center Computing</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Comms Infrastructure / Networking</sourceValue>
+            </sourceValues>
             <value>DCG</value>
         </values>
         <values>
             <sourceValues>
                 <sourceValue>Client Computing</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Connected Home</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wireless &amp; Connectivity</sourceValue>
+            </sourceValues>
             <value>CCG</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Maker / Innovator</sourceValue>
+            </sourceValues>
             <value>IOTG</value>
         </values>
         <values>
@@ -126,6 +141,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

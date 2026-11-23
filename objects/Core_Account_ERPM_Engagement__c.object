@@ -156,21 +156,12 @@
     <fields>
         <fullName>Core_Account_Id__c</fullName>
         <label>Account</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>Account.RecordType.Name</field>
-                <operation>notEqual</operation>
-                <value>Direct Account</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>ERPM Engagements</relationshipLabel>
         <relationshipName>Account_ERPM_Engagements</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -187,7 +178,7 @@
         <fullName>Core_ERPM_Business_Attributes__c</fullName>
         <label>ERPM Business Attributes</label>
         <length>10000</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -208,7 +199,7 @@
         <fullName>Core_Extended_Questions__c</fullName>
         <label>Extended Questions</label>
         <length>10000</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>

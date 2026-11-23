@@ -1,0 +1,390 @@
+<template>
+    <lightning-card>
+        <div style="padding: 10px; width: 2000px">
+            <header>
+                <b><h4>Premier Support Project Details</h4></b>
+            </header><br/>
+                
+        <div class="slds-grid slds-wrap">
+        <div class="slds-grid slds-gutters">
+            
+            <div class="slds-col">
+            <span> 
+            <div class="slds-grid slds-grid_vertical">    
+                <div class="slds-col">
+                  <span>Premier Support Project Name</span>
+                </div>
+                <div class="slds-col">
+                    <template if:false={editFlag}>
+                       <span style="border-bottom: 1px dotted grey">{Name}
+                         <lightning-button-icon class="slds-float_right" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                       </span>
+                    </template>
+                    <template if:true={editFlag}>
+                       <lightning-input name="fileExpirationDate" value={Name} label="" onchange={handleNameChange}></lightning-input>
+                    </template>
+                </div>
+            </div></span></div>  
+            
+            <div class="slds-col">
+            <span>     
+            <div class="slds-grid slds-grid_vertical">    
+                <div class="slds-col">
+                  <span>Owner</span>
+                </div>
+                <div class="slds-col">
+                    <template if:false={editFlag}>
+                       <span style="border-bottom: 1px dotted grey">{OwnerId}
+                         <lightning-button-icon class="slds-float_right" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                       </span>
+                    </template>
+                    <template if:true={editFlag}>
+                       <lightning-input name="fileExpirationDate" value={OwnerId} label="" onchange={handleOwnerChange}></lightning-input>
+                    </template>
+                </div>
+            </div></span></div>   
+        </div>
+        </div><br/>
+
+        <div class="slds-grid slds-wrap">
+            <div class="slds-grid slds-gutters">    
+                <div class="slds-col">
+                <span> 
+                <div class="slds-grid slds-grid_vertical">    
+                    <div class="slds-col">
+                      <span>MPNDA</span>
+                    </div>
+                    <div class="slds-col">
+                        <template if:false={editFlag}>
+                           <span style="border-bottom: 1px dotted grey">{Mpnda}
+                             <lightning-button-icon class="slds-float_right" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                           </span>
+                        </template>
+                        <template if:true={editFlag}>
+                           <lightning-input name="fileExpirationDate" value={Mpnda} label="" onchange={handleMPNDAChange}></lightning-input>
+                        </template>
+                    </div>
+                </div></span></div>   
+
+                <div class="slds-col">
+                <span>     
+                <div class="slds-grid slds-grid_vertical">    
+                    <div class="slds-col">
+                      <span>Status</span>
+                    </div>
+                    <div class="slds-col">
+                        <template if:false={editFlag}>
+                           <span style="border-bottom: 1px dotted grey">{Status}
+                             <lightning-button-icon class="slds-float_right" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                           </span>
+                        </template>
+                        <template if:true={editFlag}>
+                           <!--<lightning-input name="fileExpirationDate" value={Status} label="" onchange={handleStatusChange}></lightning-input>-->
+                           <lightning-combobox name="progress" label="Status" value={Status} placeholder="select status" options={options} onchange={handleStatusChange}></lightning-combobox>
+                        </template>
+                    </div>
+                </div></span></div>
+            </div>
+            </div><br/>
+
+            <div class="slds-grid slds-wrap">
+                <div class="slds-grid slds-gutters">    
+                    <div class="slds-col">
+                    <span> 
+                    <div class="slds-grid slds-grid_vertical">    
+                        <div class="slds-col">
+                          <span>Private</span>
+                        </div>
+                        <div class="slds-col">
+                            <template if:false={editFlag}>
+                               <span style="border-bottom: 1px dotted grey">{Private}
+                                 <lightning-button-icon class="slds-float_right tab" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                               </span>
+                            </template>
+                            <template if:true={editFlag}>
+                               <lightning-input name="fileExpirationDate" value={Private} label="" type="checkbox" onchange={handlePrivateChange}></lightning-input>
+                            </template>
+                        </div>
+                    </div></span></div>  
+                    
+        
+                    <div class="slds-col">
+                    <span>     
+                    <div class="slds-grid slds-grid_vertical">    
+                        <div class="slds-col">
+                          <span>Number of Opportunities</span>
+                        </div>
+                        <div class="slds-col">
+                               <span style="border-bottom: 1px dotted grey">{no_of_opp}
+                                 <lightning-button-icon class="slds-float_right tab" icon-name="utility:lock" variant="bare" size="medium"></lightning-button-icon>
+                               </span>
+                        </div>
+                    </div></span></div>
+                </div>
+                </div><br/>
+
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-grid slds-gutters">    
+                        <div class="slds-col">
+                        <span> 
+                        <div class="slds-grid slds-grid_vertical">    
+                            <div class="slds-col">
+                              <span>Project Description</span>
+                            </div>
+                            <div class="slds-col">
+                                <template if:false={editFlag}>
+                                   <span style="border-bottom: 1px dotted grey">{description}
+                                     <lightning-button-icon class="slds-float_right tab" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                                   </span>
+                                </template>
+                                <template if:true={editFlag}>
+                                   <lightning-input name="fileExpirationDate" value={description} label="" onchange={handleDescriptionChange}></lightning-input>
+                                </template>
+                            </div>
+                        </div></span></div>  
+                    </div></div> <br/>
+                    <header>
+                        <b><h4>Case Defaults</h4></b>
+                    </header><br/>
+                    
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-grid slds-gutters">    
+                            <div class="slds-col">
+                            <span> 
+                            <div class="slds-grid slds-grid_vertical">    
+                                <div class="slds-col">
+                                  <span>Support Level</span>
+                                </div>
+                                <div class="slds-col">
+                                    <template if:false={editFlag}>
+                                       <span style="border-bottom: 1px dotted grey">{supportLevel}
+                                         <lightning-button-icon class="slds-float_right tab" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                                       </span>
+                                    </template>
+                                    <template if:true={editFlag}>
+                                       <lightning-input name="fileExpirationDate" value={supportLevel} label="" onchange={handleSupportLevelChange}></lightning-input>
+                                    </template>
+                                </div>
+                            </div></span></div>  
+                            
+                
+                            <div class="slds-col">
+                            <span>     
+                            <div class="slds-grid slds-grid_vertical">    
+                                <div class="slds-col">
+                                  <span>Intel Support Owner</span>
+                                </div>
+                                <div class="slds-col">
+                                       <span style="border-bottom: 1px dotted grey">{intelSupportOwner}
+                                         <lightning-button-icon class="slds-float_right tab" icon-name="utility:lock" variant="bare" size="medium"></lightning-button-icon>
+                                       </span>
+                                </div>
+                            </div></span></div>
+                        </div>
+                        </div><br/>
+
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-grid slds-gutters">    
+                                <div class="slds-col">
+                                <span> 
+                                <div class="slds-grid slds-grid_vertical">    
+                                    <div class="slds-col">
+                                      <span>Region</span>
+                                    </div>
+                                    <div class="slds-col">
+                                        <template if:false={editFlag}>
+                                           <span style="border-bottom: 1px dotted grey">{region}
+                                             <lightning-button-icon class="slds-float_right tab" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                                           </span>
+                                        </template>
+                                        <template if:true={editFlag}>
+                                           <lightning-input name="fileExpirationDate" value={region} label="" onchange={handleRegionChange}></lightning-input>
+                                        </template>
+                                    </div>
+                                </div></span></div>  
+                                
+                    
+                                <div class="slds-col">
+                                <span>     
+                                <div class="slds-grid slds-grid_vertical">    
+                                    <div class="slds-col">
+                                      <span>Partner Support Owner</span>
+                                    </div>
+                                    <div class="slds-col">
+                                           <span style="border-bottom: 1px dotted grey">{partnerSupportOwner}
+                                             <lightning-button-icon class="slds-float_right tab" icon-name="utility:lock" variant="bare" size="medium"></lightning-button-icon>
+                                           </span>
+                                    </div>
+                                </div></span></div>
+                            </div>
+                            </div><br/>
+
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-grid slds-gutters">    
+                                    <div class="slds-col">
+                                    <span> 
+                                    <div class="slds-grid slds-grid_vertical">    
+                                        <div class="slds-col">
+                                          <span>Sub Region</span>
+                                        </div>
+                                        <div class="slds-col">
+                                            <template if:false={editFlag}>
+                                               <span style="border-bottom: 1px dotted grey">{subRegion}
+                                                 <lightning-button-icon class="slds-float_right tab" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                                               </span>
+                                            </template>
+                                            <template if:true={editFlag}>
+                                               <lightning-input name="fileExpirationDate" value={subRegion} label="" onchange={handleMPNDAChange}></lightning-input>
+                                            </template>
+                                        </div>
+                                    </div></span></div>  
+                                    
+                        
+                                    <div class="slds-col">
+                                    <span>     
+                                    <div class="slds-grid slds-grid_vertical">    
+                                        <div class="slds-col">
+                                          <span>Enable Members as Interested Parties</span>
+                                        </div>
+                                        <div class="slds-col">
+                                            <template if:false={editFlag}>
+                                                <span style="border-bottom: 1px dotted grey">{membersIP}
+                                                  <lightning-button-icon class="slds-float_right tab" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                                                </span>
+                                             </template>
+                                             <template if:true={editFlag}>
+                                                <lightning-input name="fileExpirationDate" value={membersIP} label="" type="checkbox" onchange={handleMembersIPChange}></lightning-input>
+                                             </template>
+                                        </div>
+                                    </div></span></div>
+                                </div>
+                                </div><br/>
+
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-grid slds-gutters">    
+                                        <div class="slds-col">
+                                        <span> 
+                                        <div class="slds-grid slds-grid_vertical">    
+                                            <div class="slds-col">
+                                              <span>Remove Notification Details</span>
+                                            </div>
+                                            <div class="slds-col">
+                                                <template if:false={editFlag}>
+                                                   <span style="border-bottom: 1px dotted grey">{removeNotif}
+                                                     <lightning-button-icon class="slds-float_right tab" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                                                   </span>
+                                                </template>
+                                                <template if:true={editFlag}>
+                                                   <lightning-input name="fileExpirationDate" type="checkbox" value={removeNotif} label="" onchange={handleRemoveNotifChange}></lightning-input>
+                                                </template>
+                                            </div>
+                                        </div></span></div>  
+                                        
+                            
+                                        <div class="slds-col">
+                                        <span>     
+                                        <div class="slds-grid slds-grid_vertical">    
+                                            <div class="slds-col">
+                                              <span>Enable IST as Interested Parties</span>
+                                            </div>
+                                            <div class="slds-col">
+                                                <template if:false={editFlag}>
+                                                    <span style="border-bottom: 1px dotted grey">{ISTIP}
+                                                      <lightning-button-icon class="slds-float_right tab" icon-name="utility:edit" variant="bare" size="medium" onclick={handleEditFlag}></lightning-button-icon>
+                                                    </span>
+                                                 </template>
+                                                 <template if:true={editFlag}>
+                                                    <lightning-input name="fileExpirationDate" type="checkbox" value={ISTIP} label="" onchange={handleRemoveNotifChange}></lightning-input>
+                                                 </template>
+                                            </div>
+                                        </div></span></div>
+                                    </div>
+                                    </div> <br/>
+                                    <header>
+                                        <b><h4>System Information</h4></b>
+                                    </header><br/>
+                                    
+                                    <div class="slds-grid slds-wrap">
+                                        <div class="slds-grid slds-gutters">    
+                                            <div class="slds-col">
+                                            <span> 
+                                            <div class="slds-grid slds-grid_vertical">    
+                                                <div class="slds-col">
+                                                  <span>Premier Support Project ID</span>
+                                                </div>
+                                                <div class="slds-col">
+                                                       <span style="border-bottom: 1px dotted grey">{projId}
+                                                         <lightning-button-icon class="slds-float_right tab" icon-name="utility:lock" variant="bare" size="medium"></lightning-button-icon>
+                                                       </span>
+                                                </div>
+                                            </div></span></div>  
+                                            
+                                
+                                            <div class="slds-col">
+                                            <span>     
+                                            <div class="slds-grid slds-grid_vertical">    
+                                                <div class="slds-col">
+                                                  <span>Created By</span>
+                                                </div>
+                                                <div class="slds-col">
+                                                       <span style="border-bottom: 1px dotted grey">{createdBy}
+                                                         <lightning-button-icon class="slds-float_right tab" icon-name="utility:lock" variant="bare" size="medium"></lightning-button-icon>
+                                                       </span>
+                                                </div>
+                                            </div></span></div>
+                                        </div>
+                                        </div><br/>
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-grid slds-gutters">    
+                                                <div class="slds-col">
+                                                <span> 
+                                                <div class="slds-grid slds-grid_vertical">    
+                                                    <div class="slds-col">
+                                                      <span>Legacy Collab Team ID</span>
+                                                    </div>
+                                                    <div class="slds-col">
+                                                           <span style="border-bottom: 1px dotted grey">{legacyTeamId}
+                                                             <lightning-button-icon class="slds-float_right tab" icon-name="utility:lock" variant="bare" size="medium"></lightning-button-icon>
+                                                           </span>
+                                                    </div>
+                                                </div></span></div>  
+                                                
+                                    
+                                                <div class="slds-col">
+                                                <span>     
+                                                <div class="slds-grid slds-grid_vertical">    
+                                                    <div class="slds-col">
+                                                      <span>Last Modified By</span>
+                                                    </div>
+                                                    <div class="slds-col">
+                                                           <span style="border-bottom: 1px dotted grey">{lastModifyBy}
+                                                             <lightning-button-icon class="slds-float_right tab" icon-name="utility:lock" variant="bare" size="medium"></lightning-button-icon>
+                                                           </span>
+                                                    </div>
+                                                </div></span></div>
+                                            </div>
+                                            </div><div class="slds-grid slds-wrap">
+                                                <div class="slds-grid slds-gutters">    
+                                                    <div class="slds-col">
+                                                    <span> 
+                                                    <div class="slds-grid slds-grid_vertical">    
+                                                        <div class="slds-col">
+                                                          <span>GroupId</span>
+                                                        </div>
+                                                        <div class="slds-col">
+                                                               <span style="border-bottom: 1px dotted grey">{groupId}
+                                                                 <lightning-button-icon class="slds-float_right tab" icon-name="utility:lock" variant="bare" size="medium"></lightning-button-icon>
+                                                               </span>
+                                                        </div>
+                                                    </div></span></div>  
+                                                    </div>
+                                                    </div><br/>
+                                                                              
+        
+        </div>
+        <div if:true={editFlag} align="center">
+            <lightning-button label="Save" variant="brand" onclick={handleUpdateName} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button label="Cancel" onclick={cancel} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-card> 
+</template>

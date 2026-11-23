@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core_IPS_JSON_fields</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core_IPS_JSON_fields</value>
+    </caseValues>
+    <fields>
+        <label><!-- Core_IPS_JSON_Builder --></label>
+        <name>Core_IPS_JSON_Builder__c</name>
+        <relationshipLabel><!-- Core_IPS_JSON_fields --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- JSON Key --></label>
+        <name>JSON_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- JSON_Values --></label>
+        <name>JSON_Values__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

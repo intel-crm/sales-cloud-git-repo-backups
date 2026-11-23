@@ -80,7 +80,7 @@
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-            <report>EMEA_OSC/DW_in_last_7_days</report>
+            <report>EMEA_OSC_Embedded_Dashboard_Related/dashboard_close_to_decision_date</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>Opps to be closed in 7 days</title>
         </components>
@@ -118,7 +118,7 @@
         </components>
         <components>
             <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
-            <componentType>Gauge</componentType>
+            <componentType>Table</componentType>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Opportunity_Owner__c</column>
             </dashboardFilterColumns>
@@ -128,20 +128,31 @@
             <dashboardFilterColumns>
                 <column>STAGE_NAME</column>
             </dashboardFilterColumns>
+            <dashboardTableColumn>
+                <column>FULL_NAME</column>
+                <sortBy>RowLabelAscending</sortBy>
+            </dashboardTableColumn>
+            <dashboardTableColumn>
+                <calculatePercent>false</calculatePercent>
+                <column>OPPORTUNITY_NAME</column>
+                <showTotal>false</showTotal>
+            </dashboardTableColumn>
+            <dashboardTableColumn>
+                <aggregateType>Sum</aggregateType>
+                <calculatePercent>true</calculatePercent>
+                <column>AMOUNT</column>
+                <showTotal>true</showTotal>
+            </dashboardTableColumn>
             <displayUnits>Auto</displayUnits>
-            <gaugeMax>2.02E8</gaugeMax>
-            <gaugeMin>0.0</gaugeMin>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>true</drillToDetailEnabled>
             <groupingSortProperties/>
-            <indicatorBreakpoint1>1.0E8</indicatorBreakpoint1>
-            <indicatorBreakpoint2>1.8E8</indicatorBreakpoint2>
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-            <report>EMEA_OSC_Embedded/EMEA_OSG_DW_Embedded_YTD</report>
-            <showPercentage>true</showPercentage>
-            <showRange>false</showRange>
-            <showTotal>true</showTotal>
-            <showValues>false</showValues>
+            <report>EMEA_OSC_Embedded_Dashboard_Related/dashboard_past_due</report>
+            <showPicturesOnTables>false</showPicturesOnTables>
+            <title>Opps past due</title>
         </components>
     </middleSection>
     <owner>11381314@intel.com.crm</owner>
@@ -232,35 +243,6 @@
             <sortLegendValues>false</sortLegendValues>
             <title>Creation of opps over time</title>
             <useReportChart>true</useReportChart>
-        </components>
-        <components>
-            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
-            <componentType>Table</componentType>
-            <dashboardTableColumn>
-                <column>FULL_NAME</column>
-                <sortBy>RowLabelAscending</sortBy>
-            </dashboardTableColumn>
-            <dashboardTableColumn>
-                <calculatePercent>false</calculatePercent>
-                <column>OPPORTUNITY_NAME</column>
-                <showTotal>false</showTotal>
-            </dashboardTableColumn>
-            <dashboardTableColumn>
-                <aggregateType>Sum</aggregateType>
-                <calculatePercent>true</calculatePercent>
-                <column>AMOUNT</column>
-                <showTotal>true</showTotal>
-            </dashboardTableColumn>
-            <displayUnits>Auto</displayUnits>
-            <drillEnabled>false</drillEnabled>
-            <drillToDetailEnabled>true</drillToDetailEnabled>
-            <groupingSortProperties/>
-            <indicatorHighColor>#54C254</indicatorHighColor>
-            <indicatorLowColor>#C25454</indicatorLowColor>
-            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-            <report>EMEA_OSC_Embedded_Dashboard_Related/dashboard_past_due</report>
-            <showPicturesOnTables>false</showPicturesOnTables>
-            <title>Opps past due</title>
         </components>
     </rightSection>
     <runningUser>11381314@intel.com.crm</runningUser>

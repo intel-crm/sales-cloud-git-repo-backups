@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Post New Comments">
+            <lightning-button label="Post" slot="actions" onclick={postComment}  >  </lightning-button>
+        <p class="slds-p-horizontal_small">
+                <lightning-radio-group name="radioGroup"
+                label="Visibility"
+                options={options}
+                value={visibilityValue}
+                onchange={handlePicklistChange}
+                type="radio" 
+                variant= "label-stacked" 
+                >
+            </lightning-radio-group>
+                 
+           
+        <lightning-input-rich-text 
+            value ={comments}
+            formats={formats}
+            onchange={handleRichTextChange}>
+
+        </lightning-input-rich-text>
+    </p>
+    </lightning-card>
+</template>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl>Private</cacheControl>
+    <contentType>text/css</contentType>
+    <description>this CSS file is used to change the height and width of Lightning Quick Action panel of Add To Products on Env Question Detail</description>
+</StaticResource>

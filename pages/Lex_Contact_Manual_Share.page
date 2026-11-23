@@ -1,0 +1,2 @@
+<apex:page StandardController="Contact" action="{!URLFOR($Action.Contact.Share,Contact.Id)}">
+</apex:page>

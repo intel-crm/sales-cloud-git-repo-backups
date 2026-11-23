@@ -15,7 +15,9 @@ export default class CoreIpsCustomLookup extends LightningElement {
     @track selectedRecordFieldlabel;
     @track records;
     @track error;
-
+    //ANil start
+    @api getproject; //Comes from Parent cmp
+    //Anil End
     connectedCallback() {
         let splittedText = [];
         if((this.queryExecutionRequired === undefined || this.queryExecutionRequired === null)) {
@@ -48,6 +50,7 @@ export default class CoreIpsCustomLookup extends LightningElement {
             .then(result => {
                 if (result !== undefined && result !== null) {
                     this.records = result;
+                    console.log('AccountID 53------------', this.records);
                     this.error = undefined;
                     this.isRecordsPresent = true;
                 } else {
@@ -133,5 +136,12 @@ export default class CoreIpsCustomLookup extends LightningElement {
             }
         });
         this.dispatchEvent(selectedRecordEvent);
+    }
+    get sendprojectdata(){
+        //console.log('getPrject----',this.getproject);
+            return this.getproject;
+    }
+    renderedCallback() {
+        console.log('getPrject renderedCallback in butone cmp----',this.getproject);
     }
 }

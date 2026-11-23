@@ -4,6 +4,9 @@
         <field>AGE</field>
     </columns>
     <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -13,16 +16,16 @@
         <field>DESCRIPTION</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Products__c</field>
+        <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Status_Update__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
+        <field>Opportunity.Core_Risk_Reason__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Risk_Reason__c</field>
+        <field>AMOUNT</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
@@ -41,11 +44,25 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Deal: Sell-to,Deal: Sell-through,Deal: Sell-with,Deal: Scale-Estimate (per Finance),Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Tomala,huzjak</value>
+            <value>Tomala</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>milestone</value>
         </criteriaItems>
         <criteriaItems>
             <column>AGE</column>
@@ -54,20 +71,17 @@
             <operator>lessThan</operator>
             <value>7</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>NEW  OPPs (last 14 days) ET</name>
+    <name>NEW  OPPs (last 7 days)</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -89,10 +103,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CREATED_DATE</sortColumn>
-    <sortOrder>Desc</sortOrder>
+    <sortColumn>AGE</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2017-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-07-02</startDate>
     </timeFrameFilter>
 </Report>

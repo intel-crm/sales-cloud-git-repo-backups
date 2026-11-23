@@ -256,8 +256,16 @@
     <label>Sobject Share Record</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Contact_Id__c</columns>
+        <columns>Core_IPS_Sobject_Type__c</columns>
+        <columns>Core_IPS_Customer_User_Id__c</columns>
+        <columns>Partner_User_Id__c</columns>
+        <columns>Core_IPS_Status__c</columns>
+        <columns>Core_IPS_SobjectAccessLevel__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Sobject Share Records Name</label>

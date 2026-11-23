@@ -264,4 +264,9 @@ export default class Case_List_Export extends LightningElement {
 
     }
 
+
+    //Hassan added it 
+    openVfPage() {
+        window.open('/apex/Core_IPS_Case_List_View_Stub', '_blank'); // Opens in a new tab
+    }
 }

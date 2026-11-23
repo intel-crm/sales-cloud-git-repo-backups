@@ -39,6 +39,9 @@
                 <sourceValue>Serbia</sourceValue>
             </sourceValues>
             <sourceValues>
+                <sourceValue>Czech Republic</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Croatia</sourceValue>
             </sourceValues>
             <value>CEE</value>
@@ -73,6 +76,9 @@
         <values>
             <sourceValues>
                 <sourceValue>Western Sahara</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Turkey</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>South Africa</sourceValue>
@@ -273,6 +279,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

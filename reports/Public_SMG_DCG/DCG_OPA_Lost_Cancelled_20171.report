@@ -18,6 +18,12 @@
             <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Sell-with</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Scale-Estimate (per Finance)</sourceValue>
+            </sourceValues>
             <value>Sell Thru-With</value>
         </values>
     </buckets>
@@ -333,10 +339,6 @@
     </chart>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Opportunity_Count__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <columns>
@@ -444,6 +446,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Lost,Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -458,39 +467,11 @@
             <value>fabric</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_KPI_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2017</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_KPI_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>lessThan</operator>
-            <value>12/31/2017</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Industry Sales</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Lost,Cancelled,Deleted,Production Lost,Production Cancelled</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design Win,Production Win,Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -539,8 +520,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2017-12-30</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2017-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

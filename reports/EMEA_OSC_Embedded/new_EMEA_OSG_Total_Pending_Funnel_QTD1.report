@@ -18,15 +18,6 @@
             <sourceValues>
                 <sourceValue>Uros Huzjak</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Yulia Smelkova</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Krzysztof Janicki</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Krzysztof Jonak</sourceValue>
-            </sourceValues>
             <value>OSC</value>
         </values>
         <values>
@@ -49,27 +40,189 @@
         <useOther>true</useOther>
         <values>
             <sourceValues>
+                <sourceValue>Germany</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Austria</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Switzerland</sourceValue>
+            </sourceValues>
+            <value>DACH</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Norway</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sweden</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finland</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Denmark</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Luxembourg</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Netherlands</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Iceland</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Belgium</sourceValue>
+            </sourceValues>
+            <value>NET</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Russian Fed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ukraine</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kazakhstan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Belarus</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Azerbaijan</sourceValue>
+            </sourceValues>
+            <value>RCIS</value>
+        </values>
+        <values>
+            <sourceValues>
                 <sourceValue>France</sourceValue>
             </sourceValues>
             <value>FRANCE</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>Germany</sourceValue>
+                <sourceValue>Turkey</sourceValue>
             </sourceValues>
-            <value>GERMANY</value>
+            <sourceValues>
+                <sourceValue>South Africa</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Angola</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Lebanon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Utd.Arab Emir.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Egypt</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Namibia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Saudi Arabia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cyprus</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Uganda</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Morocco</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Martinique</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Oman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Algeria</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Qatar</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Mauritius</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tunisia</sourceValue>
+            </sourceValues>
+            <value>META</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>Russian Fed</sourceValue>
+                <sourceValue>Poland</sourceValue>
             </sourceValues>
-            <value>RUSSIA</value>
+            <sourceValues>
+                <sourceValue>Lithuania</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Latvia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Estonia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Bulgaria</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Serbia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Czech Republic</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Romania</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Slovakia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Slovenia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Croatia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hungary</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Bosnia-Herz.</sourceValue>
+            </sourceValues>
+            <value>CEE</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Ireland</sourceValue>
+            </sourceValues>
             <sourceValues>
                 <sourceValue>United Kingdom</sourceValue>
             </sourceValues>
-            <value>UK</value>
+            <value>UK&amp;I</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Italy</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Greece</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Israel</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Spain</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Portugal</sourceValue>
+            </sourceValues>
+            <value>SEUR</value>
         </values>
     </buckets>
     <chart>
@@ -241,6 +394,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -13,7 +13,7 @@ public  class Core_AAQC_Case_Ask_Commissions_Handler {
         return Schema.SObjectType.Case.getRecordTypeInfosByName().get('Ask Commissions Case').getRecordTypeId();
     }
     
-    /*
+    
     public static void ShareWithOBOField(List<Case> newList){
         system.debug('newList' + newList);
         system.debug('inside ShareWithOBOField');
@@ -68,7 +68,7 @@ public  class Core_AAQC_Case_Ask_Commissions_Handler {
         }
     }
     
-    /*
+    
     public static void ShareWithMyManager(List<Case> newList, Map<Id,Case> oldMap)
     {
 
@@ -210,5 +210,5 @@ public  class Core_AAQC_Case_Ask_Commissions_Handler {
         return delResult.isSuccess();
     }
     
-    */
+    
 }

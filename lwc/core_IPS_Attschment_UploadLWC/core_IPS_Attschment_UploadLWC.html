@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-m-left_small">
+           <input onclick={handlenaviagateattachment} type="button" class="slds-button" value="< Back"></input>
+    </div>
+    <div>
+        <div style="font-size:20px;">Upload Files</div>
+        <p class="slds-p-bottom_large">In case you decide to Upload Files, please do not 'Return to
+            Case' until the Upload Progress bar shows 100% completion</p>
+    </div>
+    <div>
+        <iframe src={attachmentURL} frameborder="0" height="600px" width="100%" style="overflow:hidden"></iframe>
+    </div>
+    
+</template>

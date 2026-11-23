@@ -94,7 +94,7 @@ export default class dynamicQuestion extends LightningElement {
         this.isLoaded = true;
         this.parentAnswerId = event.detail.value;
         this.parentQuestionId = this.fieldid;
-        this.dependetQuestions = [];
+        //this.dependetQuestions = []; // Added by Hassan Khan for Child EDQ Fix.
         if (this.parentAnswerId !== null) {
 
             //getDependentField
@@ -150,15 +150,12 @@ export default class dynamicQuestion extends LightningElement {
         var require = "";
         var inputCmp = this.template.querySelector(".inputdat");
         da = type;
-
-        // Started By Hassan Khan to Fix Validation
         if(da === 'Multiselect Picklist'){
             valued = inputCmp.value; 
         }else{
             valued = inputCmp.value.trim(); // Trim Function Added by Hassan Khan for Validation
         }
         require = inputCmp.required;
-        // Finished By Hassan Khan
 
         if (inputCmp.value === "" || inputCmp.value === undefined || inputCmp.value === null) {
             if (inputCmp.required === true) {

@@ -19,6 +19,12 @@
         <field>Lead.Core_Lead_Time_Unqualified_to_SAL__c</field>
     </columns>
     <columns>
+        <field>Lead.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
+        <field>Lead.LID__LinkedIn_Member_Token__c</field>
+    </columns>
+    <columns>
         <field>Lead.Core_Marketing_Priority__c</field>
     </columns>
     <columns>

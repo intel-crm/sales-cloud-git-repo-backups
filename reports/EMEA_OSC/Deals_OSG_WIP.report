@@ -96,14 +96,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Michal Nowak,Maciek Osiecki,Joe Martin,Pawel Walczysko,Olga Meshinovich,bruno Le Gallou,Oscar Zuniga Quisoboni</value>
+            <value>Michal Nowak,Maciek Osiecki,Joe Martin,Pawel Walczysko,Olga Meshinovich</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Michal Nowak,Maciek Osiecki,Joe Martin,Pawel Walczysko,Olga Meshinovich,Bruno Le Gallou,Oscar Zuniga Quisoboni</value>
+            <value>Michal Nowak,Maciek Osiecki,Joe Martin,Pawel Walczysko,Olga Meshinovich</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
@@ -161,6 +161,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CURPREV1</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

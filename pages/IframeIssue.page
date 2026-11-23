@@ -1,0 +1,17 @@
+<!-- Page: --> 
+<apex:page > 
+this url is embedeb url and allow iframe<br/>
+<iframe width="632" height="336" src="https://www.youtube.com/embed/3XRQB_W66gk"></iframe>
+this url is just video link and getting cross domain issue.<br/>
+<iframe width="632" height="336" src="https://www.youtube.com/watch?v=3XRQB_W66gk" ></iframe><br/>
+
+this url is intel link and getting cross domain issue.(We have to expose the url for iframe)<br/>
+
+<iframe width="632" height="336" src="https://www.intel.com/content/www/us/en/programmable/references/sbs.html?env=dev&sub=test&lang=en_us&prod=Intel®%20Arria®%2010%20FPGAs&srno=DO-00803&cat=&area=" ></iframe>
+
+<iframe width="632" height="336" src="https://www.intel.com/content/www/us/en/programmable/references/sbs.html?env=prod&sub=test&lang=en_us&prod=Intel®%20Arria®%2010%20FPGAs&srno=DO-00803&cat=&area=" ></iframe>
+Production url
+<iframe width="632" height="336" src="https://www.intel.com/content/www/us/en/programmable/references/sbs.html?sub=test&lang=en_us&prod=Intel®%20Arria®%2010%20FPGAs&srno=DO-00803&cat=&area=" ></iframe>
+ 
+
+</apex:page>

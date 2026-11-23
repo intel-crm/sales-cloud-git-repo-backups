@@ -94,9 +94,11 @@ Modification Log :
             List<SelectOption> availableItemsList = availableItems.clone();
             Integer count = 0;
             
+            System.debug(allOptionsMap);
+            
             // Iterating the list of selected values and adding it to chosen list
             for(string selected : available)
-            {   
+            {
                 string picklistValue = allOptionsMap.get(selected);
                 chosenItems.add(new selectOption(selected,picklistValue));  
                 

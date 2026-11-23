@@ -37,6 +37,9 @@
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_OSC_Collaboration_Type__c</field>
+    </columns>
+    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -55,10 +58,10 @@
         <field>Opportunity.Core_Solution_Focus__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
@@ -152,7 +155,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,0061J00000P5L2R,0061J00000P5L3e,006o000000LsSiL,006o0000007t0CE,0061J00000QsHhC,006o000000AyxBv,006o000000GbevQ,006o000000CLLy1,006o000000FAm05,006o000000GbjA5,006o000000FAm6X,0061J00000QfCGU,0061J00000QV0vh,006o000000O0x82,006o000000O0xAN,006o000000O0xHn,006o000000O0xk6,006o000000O0xoP,006o000000ON79T,006o000000PJm7R,006o000000B3W7I,006o000000OOJCN,006o000000FAm1D,0061J00000Pgn5v</value>
+            <value>,0061J00000P5L2R,0061J00000P5L3e,006o000000LsSiL,006o0000007t0CE,0061J00000QsHhC,006o000000AyxBv,006o000000GbevQ,006o000000CLLy1,006o000000FAm05,006o000000GbjA5,006o000000FAm6X,0061J00000QfCGU,0061J00000QV0vh,006o000000O0x82,006o000000O0xAN,006o000000O0xHn,006o000000O0xk6,006o000000O0xoP,006o000000ON79T</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

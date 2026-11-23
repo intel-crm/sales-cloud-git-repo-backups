@@ -32,7 +32,7 @@
          setup_Common_Test_Data(true, false, true, false, true); 
         sPAccSingleContactRun(true);
         System.AssertNotEquals(2008,System.Today().Year(),'Not Equal');
-    }    
+    }   
 /***************************************************************************************************
 * Method Name:  SPAccSingleUpdateContact
 * Method Type: Test Method
@@ -47,11 +47,11 @@
 ****************************************************************************************************/   
     private static testMethod void sPAccSingleUpdateContact(){
         //Commented bewlow line by rajeswari to remove nullpoint exception on 8 july 22
-      //  setup_Common_Test_Data(true, true, true, false, true); 
+       // setup_Common_Test_Data(true, true, true, false, true); 
         setup_Common_Test_Data(true, false, true, false, true); 
         sPAccSingleContactUpdateRun(true);
         System.assertNotEquals(2008,System.Today().Year(),'Not Equal');
-    }    
+           }   
     
 /***************************************************************************************************
 * Method Name:  SPAccSingleContactWithError
@@ -423,7 +423,7 @@
                 //System.assertEquals(0,numberOfSuccessfulMessages);
                 //System.assertEquals(1,numberOfErrorMessages); 
                 //check log
-                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix];
+                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix
                 System.assertEquals(1,LogCount);
             }
         }
@@ -604,7 +604,7 @@
                 System.assertEquals(0,numberOfSuccessfulMessages);
                 System.assertEquals(1,numberOfErrorMessages); 
                 //check log
-                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix];
+                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix
                 System.assertEquals(1,LogCount);
             }
         }
@@ -756,7 +756,7 @@
                 System.assertEquals(10,numberOfSuccessfulMessages);
                 System.assertEquals(1,numberOfErrorMessages);
                 //check log
-                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix];
+                Integer LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999]; //ATHR Query limit fix
                 System.assertEquals(1,LogCount);                
             }
         }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>this queue is created as part of analyzing character length issue if the queue developer name has length&gt;38</description>
+    <doesIncludeBosses>false</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>TEST QUEUE FOR CHARACTER LENGTH  EXCEED</name>
+    <queueMembers>
+        <users>
+            <user>rameshx.naidu.allu.devcase@intel.com</user>
+            <user>rakshithax.sevella.devcase@intel.com</user>
+            <user>12217293@intel.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

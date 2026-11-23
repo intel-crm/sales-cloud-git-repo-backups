@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Sara Stiles</description>
+    <description>EMP of Lucas Martinez Diaz</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11528647_Marina_Queiroz</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11491763_Sara_Stiles</parentRole>
+    <parentRole>EMP_11341480_Lucas_Martinez_Diaz</parentRole>
 </Role>

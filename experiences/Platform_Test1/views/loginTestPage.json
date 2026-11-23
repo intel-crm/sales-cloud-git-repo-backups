@@ -1,0 +1,78 @@
+{
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "c7e2df79-fb27-4390-8ea1-f3decfb2ac16",
+  "label" : "LoginTestPage",
+  "regions" : [ {
+    "id" : "ef6c340e-252e-459a-8dcd-4d3d6707f499",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "5d9a40cd-2b64-42e4-8c41-5b86177320ee",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "3a5580a5-e202-42f9-8618-1c54558fc4d6",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "f5d46409-2da4-4557-9c0f-9ba273af0df3",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "346d1ea6-9ff4-4e5d-9dc6-355dfdb55ab7",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "74a55130-ad28-44f8-92db-4101b6018db2",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "8055cf30-0905-4a41-977a-880297b847af",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "313f4f45-3afa-4fff-b1f2-182dcc54e21c",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "c52171c4-751d-4591-8513-9c477869f055",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "fb09ef87-b2c4-4e68-b009-75e25ed7f77f",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "42f9aeae-ad29-497b-97e2-436b5a0a1e13",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "250901f2-109e-45c3-8acd-bdf78ebb4791",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "910d5b4f-72af-4f6b-9c0b-f6a7f6644265",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "LoginTestPage"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "a740774e-b092-4ffe-9d09-f2212cef1e72",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0ea45cd8-82c4-41ea-bda1-adc9b6812c99",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-logintestpage"
+}

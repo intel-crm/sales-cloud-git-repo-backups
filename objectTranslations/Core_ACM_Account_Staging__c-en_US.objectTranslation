@@ -9,7 +9,7 @@
         <value>ACM Account Staging</value>
     </caseValues>
     <fields>
-        <label><!-- Account Id --></label>
+        <label><!-- AccountId --></label>
         <name>AccountId__c</name>
     </fields>
     <fields>
@@ -17,7 +17,11 @@
         <name>Account_Action_Refrence__c</name>
     </fields>
     <fields>
-        <label><!-- Action --></label>
+        <label><!-- Account Primary Coverage --></label>
+        <name>Account_Primary_Coverage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core Action --></label>
         <name>Core_Action__c</name>
         <picklistValues>
             <masterLabel>Add CPE</masterLabel>
@@ -36,10 +40,6 @@
             <translation><!-- MDMUpdate --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>REMOVE_MPSHARE</masterLabel>
-            <translation><!-- REMOVE_MPSHARE --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Reactivate</masterLabel>
             <translation><!-- Reactivate --></translation>
         </picklistValues>
@@ -49,11 +49,11 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Retry Counter --></label>
+        <label><!-- Core Retry Counter --></label>
         <name>Core_Retry_Counter__c</name>
     </fields>
     <fields>
-        <label><!-- Status --></label>
+        <label><!-- Core Status --></label>
         <name>Core_Status__c</name>
         <picklistValues>
             <masterLabel>Cancelled</masterLabel>
@@ -71,6 +71,10 @@
             <masterLabel>New</masterLabel>
             <translation><!-- New --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
     </fields>
     <fields>
         <label><!-- Status Details --></label>

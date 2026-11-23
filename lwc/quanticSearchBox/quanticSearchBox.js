@@ -1,23 +1,17 @@
-import {LightningElement, api, track} from 'lwc';
 import {
   registerComponentForInit,
   initializeWithHeadless,
-  getHeadlessBundle
+  getHeadlessBundle,
 } from 'c/quanticHeadlessLoader';
-
-import {keys} from 'c/quanticUtils';
-import search from '@salesforce/label/c.quantic_Search';
-import clear from '@salesforce/label/c.quantic_Clear';
+import {getItemFromLocalStorage, setItemInLocalStorage} from 'c/quanticUtils';
+import {LightningElement, api, track} from 'lwc';
 
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 /** @typedef {import("coveo").SearchBoxState} SearchBoxState */
 /** @typedef {import("coveo").SearchBox} SearchBox */
+/** @typedef {import("coveo").RecentQueriesList} RecentQueriesList */
 /** @typedef {import('c/quanticSearchBoxSuggestionsList').default} quanticSearchBoxSuggestionsList */
-
-const CLASS_WITH_SUBMIT =
-  'slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right slds-input-has-fixed-addon';
-const CLASS_WITHOUT_SUBMIT =
-  'slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right';
+/** @typedef {import("c/quanticSearchBoxInput").default} quanticSearchBoxInput */
 
 /**
  * The `QuanticSearchBox` component creates a search box with built-in support for query suggestions.
@@ -27,11 +21,6 @@ const CLASS_WITHOUT_SUBMIT =
  * <c-quantic-search-box engine-id={engineId} placeholder="Enter a query..." without-submit-button number-of-suggestions="8"></c-quantic-search-box>
  */
 export default class QuanticSearchBox extends LightningElement {
-  labels = {
-    search,
-    clear,
-  };
-
   /**
    * The ID of the engine instance the component registers to.
    * @api
@@ -42,9 +31,8 @@ export default class QuanticSearchBox extends LightningElement {
    * The placeholder text to display in the search box input area.
    * @api
    * @type {string}
-   * @defaultValue 'Search...'
    */
-  @api placeholder = `${this.labels.search}`;
+  @api placeholder = null;
   /**
    * Whether not to render a submit button.
    * @api
@@ -53,12 +41,34 @@ export default class QuanticSearchBox extends LightningElement {
    */
   @api withoutSubmitButton = false;
   /**
-   * The maximum number of suggestions to display.
+   * The maximum number of suggestions and recent search queries to display.
    * @api
    * @type {number}
-   * @defaultValue 5
+   * @defaultValue 7
    */
-  @api numberOfSuggestions = 5;
+  @api numberOfSuggestions = 7;
+  /**
+   * Whether to render the search box using a [textarea](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) element.
+   * The resulting component will expand to support multi-line queries.
+   * @api
+   * @type {boolean}
+   * @defaultValue false
+   */
+  @api textarea = false;
+  /**
+   * Whether to disable rendering the recent queries as suggestions.
+   * @api
+   * @type {boolean}
+   * @defaultValue false
+   */
+  @api disableRecentQueries = false;
+  /**
+   * Whether to keep all active query filters when the end user submits a new query from the search box.
+   * @api
+   * @type {boolean}
+   * @defaultValue false
+   */
+  @api keepFiltersOnSearch = false;
 
   /** @type {SearchBoxState} */
   @track state;
@@ -71,14 +81,18 @@ export default class QuanticSearchBox extends LightningElement {
   headless;
   /** @type {Array} */
   suggestions = [];
-  
-  @api subject;
+  /** @type {boolean} */
+  hasInitializationError = false;
+  /** @type {RecentQueriesList} */
+  recentQueriesList;
+  /** @type {String[]} */
+  recentQueries;
 
   /**
    * @param {SearchEngine} engine
    */
-  
-   initialize = (engine) => {
+  initialize = (engine) => {
+    this.engine = engine;
     this.headless = getHeadlessBundle(this.engineId);
     this.searchBox = this.headless.buildSearchBox(engine, {
       options: {
@@ -89,225 +103,141 @@ export default class QuanticSearchBox extends LightningElement {
             close: '</b>',
           },
         },
+        clearFilters: !this.keepFiltersOnSearch,
       },
     });
+
+    this.actions = {
+      ...this.headless.loadQuerySuggestActions(engine),
+    };
+
+    if (!this.disableRecentQueries && this.headless.buildRecentQueriesList) {
+      this.localStorageKey = `${this.engineId}_quantic-recent-queries`;
+      this.recentQueriesList = this.headless.buildRecentQueriesList(engine, {
+        initialState: {
+          queries: getItemFromLocalStorage(this.localStorageKey) ?? [],
+        },
+        options: {
+          maxLength: 20,
+          clearFilters: !this.keepFiltersOnSearch,
+        },
+      });
+      this.unsubscribeRecentQueriesList = this.recentQueriesList.subscribe(() =>
+        this.updateRecentQueriesListState()
+      );
+    }
     this.unsubscribe = this.searchBox.subscribe(() => this.updateState());
   };
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
     this.addEventListener(
-      'suggestionlistrender',
-      this.handleSuggestionListEvent
+      'quantic__inputvaluechange',
+      this.handleInputValueChange
     );
+    this.addEventListener('quantic__submitsearch', this.handleSubmit);
+    this.addEventListener('quantic__showsuggestions', this.showSuggestion);
+    this.addEventListener('quantic__selectsuggestion', this.selectSuggestion);
   }
 
-  searchBoxElement;
   renderedCallback() {
     initializeWithHeadless(this, this.engineId, this.initialize);
-    this.searchBoxElement = this.template.querySelectorAll('.slds-input.searchbox__input.searchbox__input-with-button')[0];
-    if(!this.isOnfocus){
-      this.searchBoxElement.placeholder = this.subject;
-
-      if(this.input.value){
-      sessionStorage.setItem('coveoDescription',this.input.value);
-      } else {
-        sessionStorage.setItem('coveoDescription',this.subject);
-
-      }
-    }
-     // if(this.input.value == '' || this.input.value == null || this.input.value== undefined){
-     // sessionStorage.setItem('coveoDescription',this.subject);
-     // }
   }
 
   disconnectedCallback() {
     this.unsubscribe?.();
     this.removeEventListener(
-      'suggestionlistrender',
-      this.handleSuggestionListEvent
+      'quantic__inputvaluechange',
+      this.handleInputValueChange
     );
+    this.removeEventListener('quantic__submitsearch', this.handleSubmit);
+    this.removeEventListener('quantic__showsuggestions', this.showSuggestion);
+    this.removeEventListener(
+      'quantic__selectsuggestion',
+      this.selectSuggestion
+    );
+  }
+
+  get searchBoxValue() {
+    return this.searchBox?.state.value || '';
   }
 
   updateState() {
-    if (this.state?.value !== this.searchBox.state.value) {
-      this.input.value = this.searchBox.state.value;
-      
-    }
-    this.state = this.searchBox.state;
+    this.state = this.searchBox?.state;
     this.suggestions =
-      this.state?.suggestions?.map((s, index) => ({
+      this.state?.suggestions?.map((suggestion, index) => ({
         key: index,
-        rawValue: s.rawValue,
-        value: s.highlightedValue,
+        rawValue: suggestion.rawValue,
+        value: suggestion.highlightedValue,
       })) ?? [];
   }
-    get hasSuggestions() {
-    return this.state?.suggestions?.length;
-  }
 
-  get suggestions() {
-    return this.searchBox?.state.suggestions.map((s, index) => ({
-      key: index,
-      rawValue: s.rawValue,
-      value: s.highlightedValue,
-    })) ?? [];
-  }
-
-  /**
-   * @returns {quanticSearchBoxSuggestionsList}
-   */
-  get suggestionList() {
-    // @ts-ignore
-    return this.template.querySelector('c-quantic-search-box-suggestions-list');
-  }
-
-  /**
-   * @returns {HTMLInputElement}
-   */
-  get input() {
-    return this.template.querySelector('input');
-  }
-
-  /**
-   * @returns {HTMLElement}
-   */
-  get combobox() {
-    return this.template.querySelector('.slds-combobox');
-  }
-
-  get searchBoxContainerClass() {
-    if (this.withoutSubmitButton) {
-      this.input?.setAttribute('aria-labelledby', 'fixed-text-label');
-      return CLASS_WITHOUT_SUBMIT;
-    }
-    this.input?.setAttribute(
-      'aria-labelledby',
-      'fixed-text-label fixed-text-addon-post'
-    );
-    return CLASS_WITH_SUBMIT;
-  }
-
-  get searchBoxInputClass() {
-    return this.withoutSubmitButton
-      ? 'slds-input searchbox__input'
-      : 'slds-input searchbox__input searchbox__input-with-button';
-  }
-
-  get suggestionsOpen() {
-    return this.combobox.classList.contains('slds-is-open');
-  }
-
-  get isQueryEmpty() {
-    return !this.input?.value?.length;
-  }
-
-  showSuggestions() {
-    this.searchBox?.showSuggestions();
-    this.combobox?.classList.add('slds-is-open');
-    this.combobox?.setAttribute('aria-expanded', 'true');
-  }
-
-  hideSuggestions() {
-    this.combobox?.classList.remove('slds-is-open');
-    this.combobox?.setAttribute('aria-expanded', 'false');
-    this.suggestionList?.resetSelection();
-  }
-
-  handleHighlightChange(event) {
-    const suggestion = event.detail;
-    this.input.value = suggestion.rawValue;
-    
-  }
-
-  handleEnter() {
-    sessionStorage.setItem('coveoDescription',this.input.value);
-  this.isOnfocus = false;
-    const selectedSuggestion = this.suggestionList?.getCurrentSelectedValue();
-    if (this.suggestionsOpen && selectedSuggestion) {
-      this.searchBox.selectSuggestion(selectedSuggestion.rawValue);
-      this.input.blur();
-    } else {
-      this.searchBox.submit();
-      this.input.blur();
+  updateRecentQueriesListState() {
+    if (this.recentQueriesList.state?.queries) {
+      this.recentQueries = this.recentQueriesList.state.queries;
+      setItemInLocalStorage(
+        this.localStorageKey,
+        this.recentQueriesList.state.queries
+      );
     }
   }
 
-
-  handleOnHover() {
-    this.template.querySelector(".slds-combobox.slds-dropdown-trigger.slds-dropdown-trigger_click").style = "border: 1px solid #262626;";
-  }
-
-  handleMouseOut() {
-    this.template.querySelector(".slds-combobox.slds-dropdown-trigger.slds-dropdown-trigger_click").style = "border: inherit";
-  }
-
-  onSubmit(event) {
+  /**
+   * Updates the input value.
+   */
+  handleInputValueChange = (event) => {
     event.stopPropagation();
-    if (this.searchBox.state.value !== this.input.value) {
-      this.searchBox.updateText(this.input.value);
+    const newValue = event.detail.value;
+    if (this.searchBox?.state?.value !== newValue) {
+      this.searchBox.updateText(newValue);
     }
-    this.searchBox.submit();
-    this.input.blur();
-  }
-
-  handleKeyValues() {
-    if (this.searchBox.state.value !== this.input.value) {
-      this.suggestionList?.resetSelection();
-      this.searchBox.updateText(this.input.value);
-    }
-  }
-
-  onKeyup(event) {
-    switch (event.key) {
-      case keys.ENTER:
-        this.handleEnter();
-        break;
-      case keys.ARROWUP:
-        this.suggestionList?.selectionUp();
-        break;
-      case keys.ARROWDOWN:
-        this.suggestionList?.selectionDown();
-        break;
-      default:
-        this.handleKeyValues();
-    }
-  }
-
-  isOnfocus = false;
-  onFocus() {
-  this.isOnfocus = true;
- this.template.querySelector(".slds-current-color").style = "color: #003c71;";
-   this.template.querySelector(".slds-combobox.slds-dropdown-trigger.slds-dropdown-trigger_click").style = "border: 2px solid #262626;";
-let searchBoxElement = this.template.querySelectorAll('.slds-input.searchbox__input.searchbox__input-with-button')[0];
- searchBoxElement.placeholder = '';
-    this.showSuggestions();
-  }
-
-  onBlur() {
-    this.hideSuggestions();
- this.template.querySelector(".slds-current-color").style = "color:#0068b5;";
- this.template.querySelector(".slds-combobox.slds-dropdown-trigger.slds-dropdown-trigger_click").style = "border: inherit";
-  }
-
-  clearInput() {
-    this.input.value = '';
-   
-    this.searchBox.updateText(this.input.value);
-    this.input.focus();
-  }
-
-  handleSuggestionSelection(event) {
-    const textValue = event.detail;
-    this.searchBox.selectSuggestion(textValue);
-        sessionStorage.setItem('coveoDescription',this.input.value);
-    this.input.blur();
-  }
-
-  handleSuggestionListEvent = (event) => {
-    event.stopPropagation();
-    const id = event.detail;
-    this.input.setAttribute('aria-controls', id);
   };
-  
+
+  /**
+   * Submits a search.
+   * @returns {void}
+   */
+  handleSubmit = (event) => {
+    event.stopPropagation();
+    this.searchBox?.submit();
+  };
+
+  /**
+   * Shows the suggestions.
+   * @returns {void}
+   */
+  showSuggestion = (event) => {
+    event.stopPropagation();
+    this.searchBox?.showSuggestions();
+  };
+
+  /**
+   * Handles the selection of a suggestion or a recent query.
+   */
+  selectSuggestion = (event) => {
+    event.stopPropagation();
+    const {value, isRecentQuery, isClearRecentQueryButton} =
+      event.detail.selectedSuggestion;
+    if (isClearRecentQueryButton) {
+      this.recentQueriesList.clear();
+    } else if (isRecentQuery) {
+      this.recentQueriesList.executeRecentQuery(
+        this.recentQueries.indexOf(value)
+      );
+      this.engine.dispatch(
+        this.actions.clearQuerySuggest({
+          id: this.state.searchBoxId,
+        })
+      );
+    } else {
+      this.searchBox?.selectSuggestion(value);
+    }
+  };
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
+  }
 }

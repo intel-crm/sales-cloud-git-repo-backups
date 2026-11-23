@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Core_IPS_Attachment_Update_Case_Field_WF</flowApiName>
+    <label>Test One</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Core_Category__c&quot;:&quot;Attachment&quot;,&quot;Core_FileSizeInBytes__c&quot;:&quot;85517&quot;,&quot;Core_FileUploadedBy__c&quot;:&quot;005o0000002kzX4AAI&quot;,&quot;Core_File_Description__c&quot;:&quot;oiuyt&quot;,&quot;Core_File_GUID__c&quot;:&quot;693aaa23-137c-41fd-a5a5-972501d2e82c&quot;,&quot;Core_File_Name__c&quot;:&quot;image (5).png&quot;,&quot;Core_File_Size__c&quot;:&quot;83.51 KB&quot;,&quot;Core_File_URL__c&quot;:&quot;https://eftlab.intel.com/sftservices/download/IPS_SFT?FileName=image%20%285%29.png&amp;AppFileID=693aaa23-137c-41fd-a5a5-972501d2e82c&amp;AppData=caseId-500DU00000Ck2WqYAJ&quot;,&quot;Core_IPS_Attachment_Source__c&quot;:&quot;Backend System&quot;,&quot;Core_IPS_Attachment_Visibility__c&quot;:&quot;Public to Customers&quot;,&quot;Core_IPS_BES_Promote_Status__c&quot;:&quot;Done&quot;,&quot;Core_IPS_Security_Compliance__c&quot;:false,&quot;Core_Is_Migrated__c&quot;:false,&quot;Core_Last_Status_Updated_At__c&quot;:&quot;2025-02-21T17:00:41.000Z&quot;,&quot;Core_Type__c&quot;:&quot;Attachment&quot;,&quot;Core_Upload_Status__c&quot;:&quot;Complete&quot;,&quot;Core_Upload_idsid__c&quot;:&quot;12153247&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.Core_Case__r.Core_IPS_File_Attachment_Flag__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

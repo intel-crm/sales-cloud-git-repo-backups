@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>IPS_Email_Notification_For_Interested_Party_New_EA</destinationFlowDefinition>
+    <destinationFlowVersion>IPS_Email_Notification_For_Interested_Party_New_EA-2</destinationFlowVersion>
+    <developerName>myRule_3_301DU000000kDbYYAU</developerName>
+    <masterLabel>IPS Email Notification For Interested Party New EA</masterLabel>
+    <migratedCriteriaLabel>Internal Type</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_3</migratedCriteriaName>
+    <processVersion>Core_IPS_Email_Notification_For_Interested_Party_New_EA-4</processVersion>
+</ProcessFlowMigration>

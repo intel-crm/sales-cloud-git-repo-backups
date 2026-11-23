@@ -17,13 +17,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_Business_Party_Id__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Unified ID</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_CIM_ID__c</fullName>
         <defaultValue>false</defaultValue>
         <label>CIM ID</label>
@@ -101,7 +94,7 @@
     </fields>
     <label>Contact Entitlement Validation</label>
     <listViews>
-        <fullName>All</fullName>
+        <fullName>All2</fullName>
         <columns>NAME</columns>
         <columns>Core_Entitlement_Id__c</columns>
         <columns>Core_Entitlement_Name__c</columns>
@@ -113,11 +106,12 @@
         <columns>Core_ODM_Checked__c</columns>
         <columns>Core_ODM_Unchecked__c</columns>
         <columns>Core_Personal_Email_Domain__c</columns>
-        <columns>Core_Support_Owner__c</columns>
         <columns>Core_PSG_WOM__c</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>Core_Support_Owner__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <label>All</label>
+        <label>All2</label>
     </listViews>
     <visibility>Protected</visibility>
 </CustomObject>

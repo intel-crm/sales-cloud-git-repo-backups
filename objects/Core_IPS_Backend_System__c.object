@@ -392,72 +392,20 @@
     <label>Backend System</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Backend_System_Name__c</columns>
-        <columns>Core_IPS_Backend_Connection_String__c</columns>
-        <columns>Core_IPS_Backend_System_URL__c</columns>
-        <columns>Core_IPS_Deactivated__c</columns>
         <columns>Core_IPS_Support_Org__c</columns>
         <columns>Core_IPS_Support_Org_Name__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>Core_IPS_Backend_System_Name__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Deactivated__c</columns>
+        <columns>Core_IPS_Backend_System_URL__c</columns>
         <columns>Core_IPS_Routing_Technique__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>Core_IPS_Support_Case_Field_Update__c</columns>
+        <columns>Core_IPS_Consider_Field_Mapping__c</columns>
+        <columns>Core_IPS_Backend_Connection_String__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>HSD_BESs</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Backend_System_Name__c</columns>
-        <columns>Core_IPS_Backend_Connection_String__c</columns>
-        <columns>Core_IPS_Backend_System_URL__c</columns>
-        <columns>Core_IPS_Deactivated__c</columns>
-        <columns>Core_IPS_Support_Org__c</columns>
-        <columns>Core_IPS_Support_Org_Name__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IPS_Backend_System_URL__c</field>
-            <operation>contains</operation>
-            <value>hsd</value>
-        </filters>
-        <label>HSD BESs</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>JIRA_URL_upgrade_System</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Backend_System_Name__c</columns>
-        <columns>Core_IPS_Backend_Connection_String__c</columns>
-        <columns>Core_IPS_Backend_System_URL__c</columns>
-        <columns>Core_IPS_Deactivated__c</columns>
-        <columns>Core_IPS_Support_Org__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IPS_Backend_System_URL__c</field>
-            <operation>contains</operation>
-            <value>jira</value>
-        </filters>
-        <label>JIRA BESs</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>RTC_BESs</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Backend_System_Name__c</columns>
-        <columns>Core_IPS_Backend_Connection_String__c</columns>
-        <columns>Core_IPS_Backend_System_URL__c</columns>
-        <columns>Core_IPS_Deactivated__c</columns>
-        <columns>Core_IPS_Support_Org__c</columns>
-        <columns>Core_IPS_Support_Org_Name__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IPS_Backend_System_URL__c</field>
-            <operation>contains</operation>
-            <value>rtc</value>
-        </filters>
-        <label>RTC BESs</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Backend System</label>
@@ -465,6 +413,57 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Backend Systems</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>TEST</fullName>
+        <active>true</active>
+        <label>TEST</label>
+        <picklistValues>
+            <picklist>Core_IPS_Ignore_Attachement_Type__c</picklist>
+            <values>
+                <fullName>Private to Intel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public to Customers</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Ignore_Comment__c</picklist>
+            <values>
+                <fullName>Private to Agents</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private to Intel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private to Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public to Customers</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_IPS_Routing_Technique__c</picklist>
+            <values>
+                <fullName>Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Queue</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts>
         <customTabListAdditionalFields>Core_IPS_Backend_Connection_String__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_IPS_Backend_System_Name__c</customTabListAdditionalFields>
@@ -507,8 +506,8 @@
         <masterLabel>Reprocess Failed IPSCasePromotes</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)}
-{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/54.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/54.0/apex.js&quot;)}
 var backEndId = &apos;{!Core_IPS_Backend_System__c.Id}&apos;;
 var res;
 

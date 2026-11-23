@@ -30,9 +30,11 @@ public with sharing class  Core_RestAPI_ProjectCaseV1_Handler{
         this.entryTime = currTime;
         this.apiName= APIname;
         response.successContent = new List<ProjectCaseWrapper>();
+        System.debug('Core_RestAPI_ProjectCaseV1_Handler  URI '+RestContext.request.requestURI  );
     }
     //Retrieve specific Project's Cases for the logged in User
     public Core_RestAPI_Response getProjectCases(){
+        System.debug(' Core_RestAPI_ProjectCaseV1_Handler getProjectCases Entered  \n ');
         try{
             //Validations if need to be handled in util class      
             Boolean isRequestValid = doValidations();               
@@ -44,16 +46,19 @@ public with sharing class  Core_RestAPI_ProjectCaseV1_Handler{
         }catch(Exception e){
             Core_RestAPI_Util.processException(e,ERROR_CODE_500,response,apiName,entryTime);
         }finally{        
+            System.debug('Core_RestAPI_ProjectCaseV1_Handler Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
         }        
+        System.debug(' Core_RestAPI_ProjectCaseV1_Handler getProjectCases Exiting ');
         return response;
     } 
     // Validation if any for the API goes here
     @testVisible
     private Boolean doValidations(){
         
+        System.debug('Core_RestAPI_ProjectCaseV1_Handler doValidations Invoked ');
         Boolean isRequestValid = true; 
         Pattern inputPattern = Pattern.compile('IPJ-[0-9]{6}');
         Matcher inputMatcher = inputPattern.matcher(PROJECT_ID);
@@ -62,6 +67,7 @@ public with sharing class  Core_RestAPI_ProjectCaseV1_Handler{
             isRequestValid = false;          
         }else if(Core_RestAPI_Util.isRequestURIValid(ProjectCaseV1_URI) == false){
             //TODO Move to constant after the code review
+            system.debug('inside isRequestValid ==>> '+isRequestValid );
             Core_RestAPI_Util.processException(null , INVALID_URI_404, response, apiName, entryTime);   
             isRequestValid = false;
         }
@@ -71,6 +77,8 @@ public with sharing class  Core_RestAPI_ProjectCaseV1_Handler{
     // Execute the SOQL and populate the result to wrapper list objects 
     public void processRequest(){
         
+               
+        System.debug(' Core_RestAPI_ProjectCaseV1_Handler processRequest Entering SOQL  \n '+GET_PROJECT_CASES_SOQL);
         // In this for loop retrieving fields of Case Standard Object
         List<Case> lstProjectCase = new List<Case>();
         lstProjectCase = DATABASE.Query(GET_PROJECT_CASES_SOQL );
@@ -93,6 +101,7 @@ public with sharing class  Core_RestAPI_ProjectCaseV1_Handler{
                 response.successContent.add(objCaseWrapp);               
             }
         }
+        System.debug('processRequest response.successContent '+response.successContent);
     }
     // Here below CaseWrapper Wrapper class must implements the interface Core_RestAPI_SuccessContent
     // Wrapper to build fields of case object

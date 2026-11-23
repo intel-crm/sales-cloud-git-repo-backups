@@ -12,7 +12,7 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>core_IPS_Outbound_Message_ID__c</field>
             </layoutItems>
             <layoutItems>
@@ -27,14 +27,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_IPS_BES_Message_Type__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Comment_Id__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_BES_Depromote_Id__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -43,7 +35,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_IPS_BES_Depromote_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_IPS_Old_Backend_String__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Comment_Id__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -82,8 +82,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>UPDATEDBY_USER</fields>
         <relatedList>Core_IPS_BES_Inbound_Message__c.Core_BES_Outbound__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -91,13 +89,9 @@
         <fields>Core_IPS_Error_Code__c</fields>
         <fields>Core_IPS_Status__c</fields>
         <fields>Core_IPS_Retry_Count__c</fields>
-        <fields>Core_IPS_Eligible_for_retry__c</fields>
+        <fields>CREATEDBY_USER</fields>
         <fields>CREATED_DATE</fields>
-        <fields>UPDATEDBY_USER</fields>
         <relatedList>Core_IPS_BES_Error_Log__c.Core_IPS_Outbound_Message_Id__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
@@ -105,7 +99,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000Ju1s</masterLabel>
+        <masterLabel>00h3F0000027YDW</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

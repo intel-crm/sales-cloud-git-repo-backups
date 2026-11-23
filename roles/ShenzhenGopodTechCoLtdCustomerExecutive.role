@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Shenzhen Gopod Tech Co.,Ltd Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Shenzhen Gopod Tech Co.,Ltd Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11568236_Jianmei_Tang</parentRole>
+</Role>

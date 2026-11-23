@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>1</activeVersionNumber>
+    <activeVersionNumber>13</activeVersionNumber>
+    <description>Do Not Activate it . This version is used for testing the flow.
+V6 version is correct version to Activate or Move further.</description>
+    <masterLabel>Core IPS Case Notif External PB R4.2_3</masterLabel>
 </FlowDefinition>

@@ -10,12 +10,17 @@ public with sharing  class core_IPS_caseCreate_LEX {
         
         List<Asset> assetList = new List<Asset>();
         List<Core_Flat_Product_Hierarchy__c> prodHierarchyList = new List<Core_Flat_Product_Hierarchy__c>();
-        Set<String> ids = new Set<String>();
-        List<Product2> productList = new List<Product2>();
+        Set<String> Ids = new Set<String>();
+        List<Product2> ProductList = new List<Product2>();
         try{
             if(prodId != null || prodId != ''){
                 List<sObject> listprod = new List<sObject>();
-                assetList = Database.Query('select id, Name,Core_Product_Organization__c,core_supported_product__c,core_supported_product__r.Core_IPS_Is_Show_Variant__c,Core_IPS_Project__c,Core_Product_EPM_ID__c from asset where id=:productId');
+                // Venrublity Fix - Refering query to service class
+                // assetList = Database.Query('select id, Name,Core_Product_Organization__c,core_supported_product__c,core_supported_product__r.Core_IPS_Is_Show_Variant__c,Core_IPS_Project__c,Core_Product_EPM_ID__c from asset where id=:productId');
+                assetList = (List<Asset>) Core_IPS_QueryService.queryRecords(
+                    'select id, Name,Core_Product_Organization__c,core_supported_product__c,core_supported_product__r.Core_IPS_Is_Show_Variant__c,Core_IPS_Project__c,Core_Product_EPM_ID__c from asset where id=:productId',
+                    new Map<String, Object>{ 'productId' => productId }
+                );
                 if(!assetList.isEmpty() || assetList.size() > 0){
                     if(assetList[0].core_supported_product__r.Core_IPS_Is_Show_Variant__c== true){
                         if(Core_Flat_Product_Hierarchy__c.SObjectType.getDescribe().isAccessible()){
@@ -37,34 +42,34 @@ public with sharing  class core_IPS_caseCreate_LEX {
                                 if(recorddata[i]==assetList[0].Core_Product_EPM_ID__c){
                                     if(System.label.Core_IPS_MAG_Support_Org.Contains((assetList[0].Core_Product_Organization__c+'').substring(0,15))){
                                         if(i>0 && i==1){
-                                            ids.add(recorddata.get(i-1));
+                                            Ids.add(recorddata.get(i-1));
                                         }else if(i>0 && i==2){
-                                            ids.add(recorddata.get(i-2));
+                                            Ids.add(recorddata.get(i-2));
                                         }else if(i>0 && i==3){
-                                            ids.add(recorddata.get(i-1));
+                                            Ids.add(recorddata.get(i-1));
                                         }
                                     } else {
                                         if(i>0){
-                                            ids.add(recorddata.get(i-1));
+                                            Ids.add(recorddata.get(i-1));
                                         }
                                     }
                                 }
                             }
                         }
                         
-                        ids.remove(assetList[0].Core_Product_EPM_ID__c);
+                        Ids.remove(assetList[0].Core_Product_EPM_ID__c);
                         String strIPS = 'IPS';
                         if(ids!=null && ids.size()>0){
                             // Venrublity Fix - Refering query to service class
-                            productList = [SELECT Id, Name FROM Product2 WHERE Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :ids order by Name];
+                            ProductList = [SELECT Id, Name FROM Product2 WHERE Core_Product_Org__c = :strIPS  and Core_Product_Name_EPM_ID__c IN  :Ids order by Name];
                         }
                     }
                 }
             }
         } catch(Exception e){
         }
-        if(!productlist.isEmpty()){
-            return productlist;
+        if(!Productlist.isEmpty()){
+            return Productlist;
         }
         return null;
     }
@@ -165,7 +170,12 @@ public with sharing  class core_IPS_caseCreate_LEX {
             queIds.add(env.Id);
         }
         if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
-            queList = [select id, Core_IPS_Question__c, Core_IPS_Datatype__c from Core_IPS_Question__c where id IN: queIds];
+            // Venrublity Fix - Refering query to service class
+            // queList = [select id, Core_IPS_Question__c, Core_IPS_Datatype__c from Core_IPS_Question__c where id IN: queIds];
+            queList = (List<Core_IPS_Question__c>) Core_IPS_QueryService.queryRecords(
+                'select id, Core_IPS_Question__c, Core_IPS_Datatype__c from Core_IPS_Question__c where id IN :queIds',
+                new Map<String, Object>{ 'queIds' => queIds }
+            );
         }
         for(Core_IPS_Question__c queItem : queList) {
             queMap.put(queItem.Id, queItem);

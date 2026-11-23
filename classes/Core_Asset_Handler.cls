@@ -1,4 +1,4 @@
-public  class Core_Asset_Handler{
+public with sharing class Core_Asset_Handler{
     /***************************************************************************************************
 Method Name:  shareAssetMethod
 Version     : 1.0 
@@ -18,12 +18,12 @@ Modification Log :
 ****************************************************************************************************/
     public static void changeAssetOwner(List<Asset> newList){
         // Venrublity Fix - Refering query to service class 
-        // User userRec = [Select Id, Name, isActive from User where alias IN ('iowne')];
-        //sabira syed Vulnerability Fix - Refering query to service class
-        User userRec = ((List<User>) Core_IPS_QueryService.queryRecords('Select Id, Name, isActive from User where alias IN :aliases', new Map<String,Object>{'aliases' => new List<String>{'iowne'}}))[0];
+        // User U = [Select Id, Name, isActive from User where alias IN ('iowne')];
+        //added by sabira 24-07-2026  
+        User U = ((List<User>) Core_IPS_QueryService.queryRecords('Select Id, Name, isActive from User where alias IN :aliases', new Map<String,Object>{'aliases' => new List<String>{'iowne'}}))[0];
         for(Asset ast: newList){
-            if(userRec.isActive <> false)
-                ast.ownerid = userRec.Id;
+            if(U.isActive <> false)
+                ast.ownerid = U.Id;
         }
     }  
     
@@ -131,7 +131,7 @@ Modification Log :
                 }
                 assetShareMap.put(assetObj.Id,userSetId);
             }              
-           
+            
             //[Calling the sharing method to grant the Access to all Users based on AssetIds.]
             if(assetShareMap <> null && assetShareMap.size() > 0){                        
                 Core_SharingUtility.provideAccess('Asset','assetshare','read',assetShareMap);
@@ -303,14 +303,9 @@ Modification Log :
             //[Processing Project specific Assets only.]
             if(projectIdSet.size() > 0){
                 //FLS check added-Venugopal
-//niyaz commented as part of vulnerability fix
-                //if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
-                    //projectById = new Map<Id,Core_IPS_Project__c>([Select id, Core_IPS_GroupId__c,Core_IPS_InternalGroupId__c from Core_IPS_Project__c where id IN: projectIdSet]); //modified by Aayushi to share assets with Intel Support Team US102838
-                //Sabira Syed Venrublity Fix - Refering query to service class
-                String projectQuery = 'SELECT Id, Core_IPS_GroupId__c, Core_IPS_InternalGroupId__c FROM Core_IPS_Project__c WHERE Id IN :projectIdSet';
-                List<Core_IPS_Project__c> projectList = (List<Core_IPS_Project__c>) Core_IPS_QueryService.queryRecords(projectQuery, new Map<String, Object>{ 'projectIdSet' => projectIdSet });
-                projectById = new Map<Id,Core_IPS_Project__c>(projectList);
-                   // }
+                if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
+                    projectById = new Map<Id,Core_IPS_Project__c>([Select id, Core_IPS_GroupId__c,Core_IPS_InternalGroupId__c from Core_IPS_Project__c where id IN: projectIdSet]); //modified by Aayushi to share assets with Intel Support Team US102838
+                }
                 for(Asset ast: newActiveAssetList){
                     if(ast.Core_IPS_Project__c!=null && projectById.get(ast.Core_IPS_Project__c)!=null){
                         grantAccessToProjectBasedAsset.put(ast.Id,projectById.get(ast.Core_IPS_Project__c).Core_IPS_GroupId__c);
@@ -343,7 +338,7 @@ Modification Log :
                     }
                 }
             }                                    
-           
+            
             //[Verifying if Project based Map is empty or not. If not empty then calling the provide access method.]
             if(grantAccessToProjectBasedAsset.size() > 0){
                 Core_SharingUtility.provideAccess('Asset', 'AssetShare','Read',grantAccessToProjectBasedAsset);                
@@ -359,7 +354,7 @@ Modification Log :
     }
     
     /***************************************************************************************************
-Method Name:  lItemUpdate
+Method Name:  LItemUpdate
 Version     : 1.0 
 Created Date: 29 Aug 2015
 Function    : This method is used to update the Asset lookup on Product Access Line Item.
@@ -376,29 +371,29 @@ Modification Log :
 * JRK                        08/29/2015              Created
 ****************************************************************************************************/
     @future
-    public static void lItemUpdate(String serializedList){
-        List<Core_IPS_Map_Par_Line_Item__c> lineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
+    public static void LItemUpdate(String serializedList){
+        List<Core_IPS_Map_Par_Line_Item__c> LineItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
         List<Asset> assets = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);
         if(assets!=null && assets.size()>0 ){
-            List<String> allMapList = new List<String>();            
+            List<String> AllMapList = new List<String>();            
             for(Asset ast1:assets){
                 if(ast1.Core_Map_List__c!=null){
-                    Integer mapListSize = ast1.Core_Map_List__c.split(';').size();
-                    String mapList = ast1.Core_Map_List__c.split(';').get(mapListSize-1);
-                    allMapList.add(mapList);
+                    Integer MapListSize = ast1.Core_Map_List__c.split(';').size();
+                    String MapList = ast1.Core_Map_List__c.split(';').get(MapListSize-1);
+                    AllMapList.add(MapList);
                 }
             }
-            if(allMapList.size()>0 && allMapList!=null){
+            if(AllMapList.size()>0 && AllMapList!=null){
                 //FLS check added -Venugopal
                 if(Core_IPS_Map_Par_Line_Item__c.SObjectType.getDescribe().isAccessible()){
-                    lineItemList = [Select id,Core_Account__c,Core_Supported_Product__r.Core_Supported_Product_Name__c,Core_Supported_Product__c,Core_Status__c,Core_MAP_PAR__c,Core_MAP_PAR__r.Core_Product_Organization__c from Core_IPS_Map_Par_Line_Item__c where Core_MAP_PAR__c IN:allMapList];
+                    LineItemList = [Select id,Core_Account__c,Core_Supported_Product__r.Core_Supported_Product_Name__c,Core_Supported_Product__c,Core_Status__c,Core_MAP_PAR__c,Core_MAP_PAR__r.Core_Product_Organization__c from Core_IPS_Map_Par_Line_Item__c where Core_MAP_PAR__c IN:AllMapList];
                 }
                 Map<id,Core_IPS_Map_Par_Line_Item__c> updatelItemMap = new Map<id,Core_IPS_Map_Par_Line_Item__c>();
-                for(Core_IPS_Map_Par_Line_Item__c lItem: lineItemList){                         
+                for(Core_IPS_Map_Par_Line_Item__c LItem: LineItemList){                         
                     for(Asset ast: assets){
-                        if(lItem.Core_Account__c == ast.Accountid && lItem.Core_Supported_Product__c == ast.Core_Supported_Product__c && lItem.Core_MAP_PAR__r.Core_Product_Organization__c == ast.Core_Product_Organization__c){
-                            lItem.Core_Intel_Product__c = ast.id;                                                        
-                            updatelItemMap.put(lItem.id,lItem);
+                        if(LItem.Core_Account__c == ast.Accountid && LItem.Core_Supported_Product__c == ast.Core_Supported_Product__c && LItem.Core_MAP_PAR__r.Core_Product_Organization__c == ast.Core_Product_Organization__c){
+                            LItem.Core_Intel_Product__c = ast.id;                                                        
+                            updatelItemMap.put(LItem.id,LItem);
                             Core_Asset_Dispatcher.Assetfieldupdated=true;
                         }
                     }  
@@ -409,7 +404,7 @@ Modification Log :
     }  
     
     /***************************************************************************************************
-Method Name:  updateProjProduct
+Method Name:  UpdateProjProduct
 Version     : 1.0 
 Created Date: 06 Dec 2015
 Function    : This method is used to update the Asset lookup on Product Access Line Item.
@@ -426,44 +421,43 @@ Modification Log :
 * JRK                        12/06/2015              Created
 ****************************************************************************************************/
     @future
-    public static void updateProjProduct(String serializedList){
-        List<Asset> assetList = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);
-        Map<Id,Id> projectsandAssets = new Map<Id,Id>();
-        Map<Id,Id> supProdsandAssets = new Map<Id,Id>();
-        Map<Id,Set<Id>> projectsandAssetsMap = new Map<Id,Set<Id>>();
-        List<Core_IPS_Product__c> projProducts = new List<Core_IPS_Product__c>();
-        List<Core_IPS_Product__c> projProductList = new List<Core_IPS_Product__c>();
-        if(assetList <> null && assetList.size()>0){
-            for(Asset ast: assetList){
+    public static void UpdateProjProduct(String serializedList){
+        List<Asset> AssetList = (List<Asset>)JSON.deserialize(serializedList, List<Asset>.class);
+        Map<Id,Id> ProjectsandAssets = new Map<Id,Id>();
+        Map<Id,Id> SupProdsandAssets = new Map<Id,Id>();
+        Map<Id,Set<Id>> ProjectsandAssetsMap = new Map<Id,Set<Id>>();
+        List<Core_IPS_Product__c> ProjProducts = new List<Core_IPS_Product__c>();
+        List<Core_IPS_Product__c> ProjProductList = new List<Core_IPS_Product__c>();
+        if(AssetList <> null && AssetList.size()>0){
+            for(Asset ast: AssetList){
                 //Added by Gourav: Mapping logic to take care of multiple Project Products associated to a Project
-                if(projectsandAssetsMap.containsKey(ast.Core_IPS_Project__c)){
-                    Set<Id> assetSet = projectsandAssetsMap.get(ast.Core_IPS_Project__c);
+                if(ProjectsandAssetsMap.containsKey(ast.Core_IPS_Project__c)){
+                    Set<Id> assetSet = ProjectsandAssetsMap.get(ast.Core_IPS_Project__c);
                     assetSet.add(ast.Id);
-                    projectsandAssetsMap.put(ast.Core_IPS_Project__c,assetSet);
+                    ProjectsandAssetsMap.put(ast.Core_IPS_Project__c,assetSet);
                 }else{
-                    projectsandAssetsMap.put(ast.Core_IPS_Project__c,new Set<Id> {ast.id});
+                    ProjectsandAssetsMap.put(ast.Core_IPS_Project__c,new Set<Id> {ast.id});
                 }   
-                supProdsandAssets.put(ast.Core_Supported_Product__c,ast.id);
+                SupProdsandAssets.put(ast.Core_Supported_Product__c,ast.id);
             }
-            
-            if(projectsandAssetsMap <> null && projectsandAssetsMap.size()>0 && supProdsandAssets <> null && supProdsandAssets.size()>0){
+            if(ProjectsandAssetsMap <> null && ProjectsandAssetsMap.size()>0 && SupProdsandAssets <> null && SupProdsandAssets.size()>0){
                 //FLS check added-Venugopal
                 if(Core_IPS_Product__c.SObjectType.getDescribe().isAccessible()){
                     // Venrublity Fix - Refering query to service class
                     // ProjProductList = [Select id,Core_Supported_Product__c,Core_Intel_Product__c,Core_Intel_Product_Status__c,Core_IPS_Project__c from Core_IPS_Product__c 
                     //                                          where Core_IPS_Project__c IN: ProjectsandAssetsMap.keyset() and Core_Supported_Product__c IN: SupProdsandAssets.keyset()];
-                    projProductList = (List<Core_IPS_Product__c>)Core_IPS_QueryService.queryRecords('Select id,Core_Supported_Product__c,Core_Intel_Product__c,Core_Intel_Product_Status__c,Core_IPS_Project__c from Core_IPS_Product__c where Core_IPS_Project__c IN: ProjectsandAssetsMap and Core_Supported_Product__c IN: SupProdsandAssets', new Map<String,Object>{'ProjectsandAssetsMap'=>projectsandAssetsMap.keyset(),'SupProdsandAssets'=>supProdsandAssets.keyset()});
+                    ProjProductList = (List<Core_IPS_Product__c>)Core_IPS_QueryService.queryRecords('Select id,Core_Supported_Product__c,Core_Intel_Product__c,Core_Intel_Product_Status__c,Core_IPS_Project__c from Core_IPS_Product__c where Core_IPS_Project__c IN: ProjectsandAssetsMap and Core_Supported_Product__c IN: SupProdsandAssets', new Map<String,Object>{'ProjectsandAssetsMap'=>ProjectsandAssetsMap.keyset(),'SupProdsandAssets'=>SupProdsandAssets.keyset()});
                 }
-                if(projProductList <> null && projProductList.size()>0){
-                    for(Core_IPS_Product__c projProduct: projProductList){
+                if(ProjProductList <> null && ProjProductList.size()>0){
+                    for(Core_IPS_Product__c ProjProduct: ProjProductList){
                         //Getting Asset Id based on ProjectProduct.SupportedProduct value
-                        projProduct.Core_Intel_Product__c = supProdsandAssets.get(projProduct.Core_Supported_Product__c);
-                        projProducts.add(projProduct);
+                        ProjProduct.Core_Intel_Product__c = SupProdsandAssets.get(ProjProduct.Core_Supported_Product__c);
+                        ProjProducts.add(ProjProduct);
                     }
-                   
-                    if(projProducts <> null && projProducts.size()>0)
+                    System.debug('sab'+ProjProducts);//added by sabira
+                    if(ProjProducts <> null && ProjProducts.size()>0)
                         //update ProjProducts; 
-                        Core_IPS_QueryService.updateRecords(projProducts);      
+                        Core_IPS_QueryService.updateRecords(ProjProducts);      
                 }
             }
         }
@@ -506,7 +500,7 @@ Modification Log :
                 if (!Schema.SObjectType.Core_IPS_Supported_Product__c
                     .fields.Core_Code_Name__c.isAccessible()) {
                         spList = [select Id, Core_Supported_Product_Alias__c, 
-                                  Core_Supported_Product_Tag__c ,Core_Code_Name__c
+                                  Core_Supported_Product_Tag__c 
                                   from Core_IPS_Supported_Product__c 
                                   where Id in :supportedProductIdList];
                     } else {

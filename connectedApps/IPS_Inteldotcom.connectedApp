@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>salesforce.system.user@intel.com</contactEmail>
+    <contactEmail>poojax.khanna@intel.com</contactEmail>
     <label>IPS_Inteldotcom</label>
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback
-https://www.intel.com/content/www/us/en/secure/my-intel/token.html
-https://cqauthors.intel.com/content/www/us/en/secure/my-intel/token.html
-https://cqpreview-ssl.intel.com/content/www/us/en/secure/my-intel/token.html
-https://cqpreview.intel.com/content/www/us/en/secure/my-intel/token.html
-https://wcm-pre.intel.com/content/www/us/en/secure/my-intel/token.html</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6mmKvTMlKbMIrsMKShY2oOqs1ETvPRjwmhoPivHd9_U53EzmiyYxn3nVpA9J</consumerKey>
+https://devfm1aempdts02.amr.corp.intel.com/content/www/us/en/secure/profile/my-intel.html
+https://devfm1aempdts15.amr.corp.intel.com/content/www/us/en/secure/myintel.html#/dashboard
+https://tst1aemcontent.cps.intel.com/content/www/us/en/secure/myintel.html#/dashboard
+https://devfm1aempdts15.amr.corp.intel.com/content/www/us/en/secure/myintel-altera.html#/dashboard
+https://tst1aemauthor.cps.intel.com/content/www/us/en/secure/myintel-altera.html#/dashboard
+https://tst1aemcontent.cps.intel.com/content/www/us/en/secure/myintel-altera.html#/dashboard
+https://tst1aemcontent-ssl.cps.intel.com/content/www/us/en/secure/myintel-altera.html#/dashboard
+https://tst1aemcontent-ssl.cps.intel.com/content/www/us/en/secure/myintel.html#/dashboard</callbackUrl>
+        <consumerKey>3MVG9JamK_x9K2XIz6FKasGquU4l4iXuNUMl_FK0j71c2MWs1oJTjiL0Sx.._HycUGClscnvJJ.otWbNDs1NP</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -27,17 +30,24 @@ https://wcm-pre.intel.com/content/www/us/en/secure/my-intel/token.html</callback
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <scopes>Api</scopes>
-        <scopes>RefreshToken</scopes>
+        <scopes>Full</scopes>
     </oauthConfig>
     <oauthPolicy>
         <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
-        <refreshTokenPolicy>specific_lifetime:14:DAYS</refreshTokenPolicy>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
     </oauthPolicy>
+    <profileName>Partner AE</profileName>
+    <profileName>IPS Agent-Partner</profileName>
+    <profileName>IPS Lenovo B2B</profileName>
+    <profileName>IPS Lenovo B2B  M2M</profileName>
+    <profileName>IPS HP B2B M2M</profileName>
+    <profileName>IPS BES Integration Profile</profileName>
+    <profileName>IT Admin</profileName>
     <profileName>IPS External Customer</profileName>
+    <profileName>System Administrator</profileName>
     <profileName>Partner</profileName>
     <sessionPolicy>
-        <sessionTimeout>60</sessionTimeout>
+        <sessionTimeout>30</sessionTimeout>
     </sessionPolicy>
 </ConnectedApp>

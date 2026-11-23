@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
-        <fullName>Core_Goal_DWG_Need_To_Recall_When_KPI_Not_Achieved</fullName>
-        <description>Core_Goal_DWG_Need_To_Recall_When_KPI_Not_Achieved</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <recipients>
-            <field>Core_Goal_Approver__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <recipients>
-            <field>Core_Goal_Owner__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
-        <template>Core_Opportunity_Management/DWG_No_Longer_Achieved_Need_to_be_Recalled</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_Goal_DWG_Ready_to_Submit_Notification</fullName>
-        <description>Core_Goal_DWG_Ready_to_Submit_Notification</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <recipients>
-            <field>Core_Goal_Owner__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
-        <template>Core_Opportunity_Management/DWG_Ready_to_Submit_Notification</template>
-    </alerts>
-    <alerts>
         <fullName>Core_Goal_Rejection_Notification</fullName>
         <description>Core_Goal_Rejection_Notification</description>
         <protected>false</protected>
@@ -41,7 +9,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>test/DWG_Rejection_Notification</template>
+        <template>unfiled$public/Core_Rejection_Notification_Goal</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_Goal_CleanOppAtApproval</fullName>
@@ -109,16 +77,6 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>Core_Goal_Set_Approved_KPI_Revenue</fullName>
-        <field>Core_Approved_KPI_Revenue__c</field>
-        <formula>Core_KPI_Revenue__c</formula>
-        <name>Core_Goal_Set_Approved_KPI_Revenue</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Core_Goal_Set_Status_to_Accepted</fullName>
         <field>Core_Goal_Status__c</field>
         <literalValue>Accepted</literalValue>
@@ -180,16 +138,6 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>Core_Goal_Update_GoalName</fullName>
-        <field>Core_Goal_Name__c</field>
-        <formula>Name</formula>
-        <name>Core_Goal_Update_GoalName</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Core_Goal_cloneChangeStatus</fullName>
         <field>Core_Goal_Status__c</field>
         <literalValue>Draft</literalValue>
@@ -199,77 +147,23 @@
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Set_MatchOppKPI_Prev_BackendField</fullName>
-        <field>Core_MatchOppKPI_Prev_Backend__c</field>
-        <formula>IF(IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = FALSE, &apos;No KPI Match&apos;, IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, &apos;KPI Not Achieved&apos;, IF(Core_Goal_KPI_Achieved_Flag__c = TRUE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, &apos;KPI Achieved&apos;, &apos;&apos;))) == &apos;No KPI Match&apos;, &apos;No KPI Match&apos;, &apos;&apos;)</formula>
-        <name>Set MatchOppKPI Prev BackendField</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Update_MatchOppKPI_Backend_field</fullName>
-        <field>Core_MatchOppKPI_Backend__c</field>
-        <formula>IF(Core_Opportunity__c != null, IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = FALSE, &apos;No KPI Match&apos;, IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, &apos;KPI Not Achieved&apos;, IF(Core_Goal_KPI_Achieved_Flag__c = TRUE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, &apos;KPI Achieved&apos;, &apos;&apos;))),&apos;&apos;)</formula>
-        <name>Update MatchOppKPI Backend field</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Update_MatchOppKPI_Prev_Field</fullName>
-        <field>Core_MatchOppKPI_Prev_Backend__c</field>
-        <formula>IF(PRIORVALUE(Core_MatchOppKPI_Backend__c) == null &amp;&amp; Core_MatchOppKPI_Backend__c == &apos;No KPI Match&apos;, &apos;No KPI Match&apos;, PRIORVALUE(Core_MatchOppKPI_Backend__c))</formula>
-        <name>Update MatchOppKPI Prev Field</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Update_MatchOppKPI_2nd_Prev_Field</fullName>
-        <field>Core_MatchOppKPI_2ndPrev_Backend__c</field>
-        <formula>IF(PRIORVALUE(Core_MatchOppKPI_Backend__c) &lt;&gt; null, PRIORVALUE(Core_MatchOppKPI_Prev_Backend__c), &apos;&apos;)</formula>
-        <name>Update MatchOppKPI 2nd Prev Field</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <rules>
-        <fullName>Core_Goal_DWG_KPI_No_Longer_Achieved</fullName>
-        <actions>
-            <name>Core_Goal_DWG_Need_To_Recall_When_KPI_Not_Achieved</name>
-            <type>Alert</type>
-        </actions>
-        <active>false</active>
-        <description>Send notification to KPI Owner&apos;s Manager if the KPI is no longer achieved on team member&apos;s approved DWG, so that manager knows when the DWG approval should be recalled due to no longer having an achieved KPI.</description>
-        <formula>IF( AND(!Core_Goal_KPI_Achieved_Flag__c,TEXT(Core_Goal_Status__c) == &apos;Approved&apos;,Core_Goal_Claim_Date__c &gt; date(2020,12,31) ,  !$Setup.Core_KPI_FullRefresh_Check__c.IsFullRefresh__c  ), true, false)</formula>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <rules>
-        <fullName>Core_Goal_DWG_Ready_to_be_Submitted_and_KPI_is_Achieved</fullName>
-        <actions>
-            <name>Core_Goal_DWG_Ready_to_Submit_Notification</name>
-            <type>Alert</type>
-        </actions>
-        <active>false</active>
-        <description>Send notification when the KPI associated with my Deal Win Goal has been achieved on the opportunity</description>
-        <formula>IF( AND(Core_Goal_KPI_Achieved_Flag__c, !$Setup.Core_KPI_FullRefresh_Check__c.IsFullRefresh__c ), true, false)</formula>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
     <rules>
         <fullName>Core_Goal_OnCreateEdit_UpdateAcceptedDate</fullName>
         <actions>
             <name>Core_Goal_UpdateAcceptedDate</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
+        <criteriaItems>
+            <field>Core_Goal__c.Core_Goal_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_Goal__c.Core_Goal_Status__c</field>
+            <operation>equals</operation>
+            <value>Accepted</value>
+        </criteriaItems>
         <description>update the accepted date to the date when Status was changed to Accepted</description>
-        <formula>(ISNEW() &amp;&amp; ISPICKVAL(Core_Goal_Status__c , &apos;Accepted&apos;)) || ( ISCHANGED(Core_Goal_Status__c) &amp;&amp; ISPICKVAL(Core_Goal_Status__c , &apos;Accepted&apos;))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -278,7 +172,11 @@
             <name>Core_Goal_SetAcceptedDatetoNull</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
+        <criteriaItems>
+            <field>Core_Goal__c.Core_Goal_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
         <criteriaItems>
             <field>Core_Goal__c.Core_Goal_Status__c</field>
             <operation>notEqual</operation>
@@ -286,58 +184,23 @@
         <criteriaItems>
             <field>Core_Goal__c.Core_Goal_Status__c</field>
             <operation>equals</operation>
-            <value>Cancelled,Draft</value>
+            <value>Draft,Cancelled</value>
         </criteriaItems>
         <description>when status changes to Draft clear out the Accepted date</description>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
-        <fullName>Core_Goal_Populate_GoalName_with_Name</fullName>
+        <fullName>Core_Goal_OnCreate_UpdateStatus</fullName>
         <actions>
-            <name>Core_Goal_Update_GoalName</name>
+            <name>Core_Goal_UpdateStatus_Draft</name>
             <type>FieldUpdate</type>
         </actions>
         <active>false</active>
-        <description>Populate the Core_Goal_Name__c field with the standard Name</description>
-        <formula>ISNEW() || ISCHANGED(Name) || ISCLONE()</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
-    <rules>
-        <fullName>Core_OnChange_MatchOppKPI_BackendField</fullName>
-        <actions>
-            <name>Core_Update_MatchOppKPI_Prev_Field</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
-            <name>Update_MatchOppKPI_2nd_Prev_Field</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <formula>NOT($Setup.Core_KPI_FullRefresh_Check__c.IsFullRefresh__c) &amp;&amp;  Core_Opportunity__c &lt;&gt; null &amp;&amp;  ISCHANGED(Core_MatchOppKPI_Backend__c) &amp;&amp; Core_MatchOppKPI_Backend__c != null</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
-    <rules>
-        <fullName>Core_Set_MatchOppKPI_BackendField</fullName>
-        <actions>
-            <name>Core_Set_MatchOppKPI_Prev_BackendField</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
-            <name>Core_Update_MatchOppKPI_Backend_field</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <formula>ISNEW() || ISCHANGED(Core_Opportunity__c)</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
-    <rules>
-        <fullName>Core_Update_MatchOppKPI_BackendField</fullName>
-        <actions>
-            <name>Core_Update_MatchOppKPI_Backend_field</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <formula>ISCHANGED(Core_Goal_KPI_Achieved_Flag__c) || ISCHANGED(Core_Goal_KPI_Match_Flag__c)</formula>
-        <triggerType>onAllChanges</triggerType>
+        <criteriaItems>
+            <field>Core_Goal__c.Core_Goal_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>update the status to Draft on creation of any deal win goal record</description>
+        <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>

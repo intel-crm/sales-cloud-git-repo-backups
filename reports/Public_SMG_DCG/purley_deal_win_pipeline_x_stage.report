@@ -131,7 +131,7 @@
         <expandOthers>true</expandOthers>
         <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
         <legendPosition>Right</legendPosition>
-        <location>CHART_BOTTOM</location>
+        <location>CHART_TOP</location>
         <secondaryGroupingColumn>Opportunity.Core_Opportunity_Owner_Geo__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -233,7 +233,7 @@
             <value>consulting</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -252,13 +252,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>processor</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>bronze,silver,gold,platinum</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

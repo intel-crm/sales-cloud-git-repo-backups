@@ -16,7 +16,7 @@
     </assignmentRule>
     <assignmentRule>
         <fullName>Core_IPS_Case_Assignment_Rules</fullName>
-        <active>true</active>
+        <active>false</active>
         <ruleEntry>
             <assignedTo>Core_IPS_CaseQ_GEC_Cases</assignedTo>
             <assignedToType>Queue</assignedToType>
@@ -149,99 +149,6 @@
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
                 <value>000</value>
-            </criteriaItems>
-            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Core_IPS_Org_022_CCG_SSP_Android</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND (2 OR 3 OR 4) AND 5</booleanFilter>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_Org_Number__c</field>
-                <operation>equals</operation>
-                <value>022</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Arrow Lake</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Meteor Lake</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Panther Lake</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_External_Issue_Category__c</field>
-                <operation>equals</operation>
-                <value>Software/OS &gt; Android</value>
-            </criteriaItems>
-            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Core_IPS_Org_022_CCG_SSP_Linux</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND (2 OR 3 OR 4) AND (5 OR 6)</booleanFilter>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_Org_Number__c</field>
-                <operation>equals</operation>
-                <value>022</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Arrow Lake</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Meteor Lake</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Panther Lake</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_External_Issue_Category__c</field>
-                <operation>equals</operation>
-                <value>Software/OS &gt; Yocto</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_External_Issue_Category__c</field>
-                <operation>equals</operation>
-                <value>Software/OS &gt; Linux</value>
-            </criteriaItems>
-            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Core_IPS_Org_022_CCG_SSP_Unassigned</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_Org_Number__c</field>
-                <operation>equals</operation>
-                <value>022</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Arrow Lake</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Panther Lake</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Meteor Lake</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -891,6 +798,7 @@
         <ruleEntry>
             <assignedTo>Core_IPS_Org_022_ASIA</assignedTo>
             <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -944,37 +852,7 @@
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_001_APJ_ADC_POD</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_Org_Number__c</field>
-                <operation>equals</operation>
-                <value>001</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_Account_Geo__c</field>
-                <operation>equals</operation>
-                <value>APJ</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Support_Level__c</field>
-                <operation>equals</operation>
-                <value>Tier 2</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>notContain</operation>
-                <value>Battlemage,DG2,Thunderbolt</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>notEqual</operation>
-                <value>&quot;SUPER MICRO COMPUTER, INC.&quot;</value>
-            </criteriaItems>
-            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Core_IPS_Org_001_EMEA_ADC_POD</assignedTo>
+            <assignedTo>Core_IPS_Org_001EMEA_ADC</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
@@ -994,7 +872,7 @@
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_001_EMEA_ADC_POD</assignedTo>
+            <assignedTo>Core_IPS_Org_001EMEA_ADC</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
@@ -1011,26 +889,15 @@
         <ruleEntry>
             <assignedTo>Core_IPS_Org_001_ASMO_ADC</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND (( 2 AND 3 ) OR 4)</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
                 <value>001</value>
             </criteriaItems>
             <criteriaItems>
-                <field>Case.Core_Account_Geo__c</field>
-                <operation>equals</operation>
-                <value>ASMO</value>
-            </criteriaItems>
-            <criteriaItems>
                 <field>Case.Core_IPS_Support_Level__c</field>
                 <operation>equals</operation>
                 <value>Tier 2</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>&quot;SUPER MICRO COMPUTER, INC.&quot;</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -1424,7 +1291,7 @@
         <ruleEntry>
             <assignedTo>Core_IPS_Org_003_ICS_ACCOUNTS</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15 OR 16 OR 17)</booleanFilter>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13)</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -1490,26 +1357,6 @@
                 <operation>equals</operation>
                 <value>&quot;ALGO SYSTEM CO.,LTD.&quot;,&quot;ALYN INDUSTRIES, INC.&quot;,&quot;AMERICA II ELECTRONICS, INC.&quot;,ARBOR,ARNOUSE DIGITAL DEVICES CORP.,RAZBERI TECHNOLOGIES</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>ABACO SYSTEMS UK,AIC INC.,ATRUST COMPUTER CORPORATION,CLEVO CO.,NEC CORPORATION,NEXSTGO Company Limited,Shenzhen J&amp;W Electronic Co. Ltd,J&amp;WIPC Technology Development Ltd,WEIBU - PRC,GUANGZHOU SHANGKE INFORMATION TECHNOLOGY CO LTD</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>Aselsan SST,GIGAMON LLC,SHENZHEN SEAVO TECHNOLOGY CO;LTD,&quot;NEXCOM INTERNATIONAL CO., LTD.&quot;,&quot;SENAO NETWORKS, INC&quot;,Happiest Minds Technologies Limited,&quot;Beijing Bytedance Network Technology Co., Ltd.&quot;,Zoho,TRIDENT INFOSOL PRIVATE LIMITED</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>&quot;JABIL CIRCUIT, INC.&quot;,&quot;NETAPP, INC.&quot;,&quot;ARISTA NETWORKS, INC.&quot;,&quot;Avnet, Inc.&quot;,FUZHOU X-SPEED CORPORATION,BJ-TCT,B-PLUS GMBH,congatec GmbH,Kontron Asia Technology Inc.,MOXA INC,QUANTA COMPUTER INC.,&quot;Vecow Co., Ltd.&quot;,WISTRON CORPORATION</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>BCM ADVANCED RESEARCH</value>
-            </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
@@ -1569,22 +1416,6 @@
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_006_RAND_MTP</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND 2</booleanFilter>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_Org_Number__c</field>
-                <operation>equals</operation>
-                <value>006</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Modular Timing Products</value>
-            </criteriaItems>
-            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
-        </ruleEntry>
-        <ruleEntry>
             <assignedTo>Core_IPS_Org_006_DCG_BXD_Unassigned</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7)</booleanFilter>
@@ -1628,7 +1459,7 @@
         <ruleEntry>
             <assignedTo>Core_IPS_Org_006_PHED_DPS_US</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13)</booleanFilter>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11)</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -1684,16 +1515,6 @@
                 <operation>equals</operation>
                 <value>Texas Instruments Incorporated</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>Aura Semiconductor</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>C2i Semiconductors</value>
-            </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
@@ -1715,7 +1536,7 @@
         <ruleEntry>
             <assignedTo>Core_IPS_Org_006_EPG_ICS_Accounts</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5 AND 6))</booleanFilter>
+            <booleanFilter>1 AND 2 AND ((3 AND (4 OR( 5 AND 6))))</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -1723,23 +1544,23 @@
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
-                <operation>contains</operation>
-                <value>Gigabit,Ethernet,COPPERVALE,NIANTIC,POWERVILLE,SAGEVILLE,SPRINGVILLE,TWINVILLE,CARLSVILLE,FORTVILLE,COLUMBIAVILLE,LINKVILLE</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Support_Level__c</field>
-                <operation>equals</operation>
-                <value>ROW</value>
+                <operation>notContain</operation>
+                <value>Switch</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
                 <operation>contains</operation>
-                <value>CONNORSVILLE</value>
+                <value>Gigabit,Ethernet,COPPERVALE,NIANTIC,POWERVILLE,SAGEVILLE,SPRINGVILLE,TWINVILLE,CARLSVILLE,FORTVILLE,COLUMBIAVILLE</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Support_Level__c</field>
                 <operation>equals</operation>
                 <value>ROW</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Support_Level__c</field>
+                <operation>equals</operation>
+                <value>Tier 3</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_CaseType__c</field>
@@ -1765,7 +1586,7 @@
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>AAEON TECHNOLOGY INC.,ACCTON TECHNOLOGY CORPORATION,ADLINK TECHNOLOGY INC.,Quanta Computer Inc.,&quot;UFI SPACE Technologies Co., Limited&quot;,Celestica</value>
+                <value>AAEON TECHNOLOGY INC.,ACCTON TECHNOLOGY CORPORATION,ADLINK TECHNOLOGY INC.,Quanta Computer Inc.,&quot;UFI SPACE Technologies Co., Limited&quot;</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
@@ -1795,7 +1616,7 @@
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>&quot;KTNF Co,Ltd&quot;,LANNER ELECTRONICS INC.,MiTAC COMPUTING TECHNOLOGY CORP</value>
+                <value>&quot;KTNF Co,Ltd&quot;,LANNER ELECTRONICS INC.,MITAC INTERNATIONAL CORPORATION</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
@@ -1810,7 +1631,7 @@
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>&quot;MICRO-STAR INTERNATIONAL CO., LTD.&quot;,SECUI .COM,USI,WISTRON CORPORATION,WNC Corporation,ASROCK INC.,SERCOMM CORPORATION,Hewlett Packard Enterprise Company,WIPRO LIMITED,&quot;DELTA ELECTRONICS, INC.&quot;,LITE-ON TECHNOLOGY CORPORATION</value>
+                <value>&quot;MICRO-STAR INTERNATIONAL CO., LTD.&quot;,SECUI .COM,USI,WISTRON CORPORATION,WISTRON NEWEB CORPORATION,ASROCK INC.,SERCOMM CORPORATION,Hewlett Packard Enterprise Company,WIPRO LIMITED,Delta Electronics INC.,LITE-ON TECHNOLOGY CORPORATION</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
@@ -1837,7 +1658,7 @@
         <ruleEntry>
             <assignedTo>Core_IPS_Org_006_ICS_DPG_SoC</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND (2 OR 3 OR 4 OR 6 OR 7  OR 9 OR 10) AND 5 AND 8</booleanFilter>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 6 OR 7  OR 9) AND 5 AND 8</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -1851,12 +1672,12 @@
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>&quot;AEWIN TECHNOLOGIES CO., LTD.&quot;,ALPHA NETWORKS INC.,&quot;WORLD PEACE INDUSTRIAL CO., LTD.&quot;,ZYXEL COMMUNICATIONS CORPORATION,AIC INC.,ENNOCONN CORPORATION,SERTEK INCORPORATED,Synnex Technology International Corp,Celestica</value>
+                <value>&quot;AEWIN TECHNOLOGIES CO., LTD.&quot;,ALPHA NETWORKS INC.,&quot;WORLD PEACE INDUSTRIAL CO., LTD.&quot;,ZYXEL COMMUNICATIONS CORPORATION,AIC INC.,ENNOCONN CORPORATION,SERTEK INCORPORATED,Synnex Technology International Corp</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>&quot;KTNF Co,Ltd&quot;,&quot;S.L. Technology, Inc.&quot;,&quot;QNAP Systems, Inc.&quot;,Handreamnet,IEI Integration Corp.,Secui Corp.,SERCOMM CORPORATION,&quot;ADVANTECH CO., LTD.&quot;,WISTRON CORPORATION,&quot;SENAO NETWORKS, INC.&quot;</value>
+                <value>&quot;KTNF Co,Ltd&quot;,&quot;S.L. Technology, Inc.&quot;,&quot;QNAP Systems, Inc.&quot;,Handreamnet,IEI Integration Corp.,Secui Corp.,SERCOMM CORPORATION,&quot;ADVANTECH CO., LTD.&quot;,WISTRON CORPORATION</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
@@ -1866,27 +1687,22 @@
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>ADLINK TECHNOLOGY INC.,ASROCK INC.,ASUSTEK COMPUTER INC,COMPAL ELECTRONICS,INC.,&quot;DELTA ELECTRONICS, INC.&quot;,DELTA NETWORKS INC,GIGA-BYTE TECHNOLOGY CO.,LTD.,IBASE TECHNOLOGY INC.,INVENTEC CORPORATION</value>
+                <value>ADLINK TECHNOLOGY INC.,ASROCK INC.,ASUSTEK COMPUTER INC,COMPAL ELECTRONICS,INC.,Delta Electronics INC.,DELTA NETWORKS INC,GIGA-BYTE TECHNOLOGY CO.,LTD.,IBASE TECHNOLOGY INC.,INVENTEC CORPORATION</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>&quot;MICRO-STAR INTERNATIONAL CO., LTD.&quot;,MiTAC COMPUTING TECHNOLOGY CORP,NEXCOM CHINA CO.,LTD,&quot;NEXCOM INTERNATIONAL CO., LTD.&quot;,Pegatron Corporation,Quanta Computer Inc.,Samsung Electronics Co. Ltd.,USI,WIPRO LIMITED,LITE-ON TECHNOLOGY CORPORATION</value>
+                <value>&quot;MICRO-STAR INTERNATIONAL CO., LTD.&quot;,MITAC INTERNATIONAL CORPORATION,NEXCOM CHINA CO.,LTD,NEXCOM INTERNATIONAL CO.,LTD.,Pegatron Corporation,Quanta Computer Inc.,Samsung Electronics Co. Ltd.,USI,WIPRO LIMITED,LITE-ON TECHNOLOGY CORPORATION</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Asset.Core_IPS_Project_Name__c</field>
                 <operation>notEqual</operation>
-                <value>HPE Idaville/Eddy-Lake Platform [ Luna ]</value>
+                <value>“HPE Idaville/Eddy-Lake Platform [ Luna ]&quot;</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>ACCTON TECHNOLOGY CORPORATION,&quot;CASWELL, INC.&quot;,&quot;FOXCONN TECHNOLOGY CO., LTD.&quot;,LANNER ELECTRONICS INC.,WNC Corporation</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>SYNOLOGY INC.,&quot;Qsan Technology, Inc&quot;,Infortrend Technology Inc</value>
+                <value>ACCTON TECHNOLOGY CORPORATION,&quot;CASWELL, INC.&quot;,&quot;FOXCONN TECHNOLOGY CO., LTD.&quot;,LANNER ELECTRONICS INC.,WISTRON NEWEB CORPORATION</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -2336,12 +2152,45 @@
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_006_EMEA_ADC_POD</assignedTo>
+            <assignedTo>Core_IPS_Org_006_EMEA_ADC</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND( Core_IPS_Product_Org_Number__c = &quot;006&quot;,
-Core_Account_Geo__c = &quot;EMEA&quot;,
-ISPICKVAL(Core_IPS_Support_Level__c, &quot;Tier 2&quot;),
-Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Networking&quot;)</formula>
+            <formula>AND( Core_IPS_Product_Org_Number__c = &quot;006&quot;, Core_Account_Geo__c = &quot;EMEA&quot;, ISPICKVAL(Core_IPS_Support_Level__c, &quot;Tier 2&quot;), Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Networking&quot;)</formula>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_006_VROC_ICS</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND (3 OR 4) AND 5 AND 6</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>006</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Grantley,Purley,Whitley,Eagle Stream</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Subcategory__c</field>
+                <operation>equals</operation>
+                <value>Intel® Rapid Storage Technology enterprise (Intel® RSTe)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Subcategory__c</field>
+                <operation>equals</operation>
+                <value>Intel® Virtual RAID on CPU (Intel® VROC)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_CaseType__c</field>
+                <operation>equals</operation>
+                <value>Question,Debug Request</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_Severity__c</field>
+                <operation>notEqual</operation>
+                <value>Critical</value>
+            </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
@@ -2402,7 +2251,7 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_EMBED_Device_Management</assignedTo>
+            <assignedTo>Core_IPS_Org_007_EMBED_L1_Bevo_Lake_GCS</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
@@ -2410,9 +2259,9 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
                 <value>007</value>
             </criteriaItems>
             <criteriaItems>
-                <field>Case.Core_External_Issue_Subcategory__c</field>
+                <field>Case.Core_IPS_Product_name__c</field>
                 <operation>equals</operation>
-                <value>Device Management Toolkit</value>
+                <value>Bevo Lake</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -2491,7 +2340,7 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_Metro_AI_Suite</assignedTo>
+            <assignedTo>Core_IPS_Org_007_Video_AI_Box</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND 2</booleanFilter>
             <criteriaItems>
@@ -2502,14 +2351,35 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <criteriaItems>
                 <field>Case.Core_External_Issue_Subcategory__c</field>
                 <operation>equals</operation>
-                <value>Metro AI Suite</value>
+                <value>Intel® Video AI Box</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_EMBED_Industrial</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Industrial Edge Control Software</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Subcategory__c</field>
+                <operation>equals</operation>
+                <value>Edge Controls for Industrial (ECI)</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_007_SW_L3_CASE_WW</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND ((2 OR 3 OR 4))</booleanFilter>
+            <booleanFilter>1 AND ((2 OR 3))</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -2521,11 +2391,6 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
                 <value>Edge Insights Software</value>
             </criteriaItems>
             <criteriaItems>
-                <field>Case.Core_External_Issue_Subcategory__c</field>
-                <operation>equals</operation>
-                <value>Intel® Edge System Qualification (ESQ)</value>
-            </criteriaItems>
-            <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
                 <operation>equals</operation>
                 <value>Intel® Edge Software Recipes</value>
@@ -2533,7 +2398,55 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L3_ECG_PSE_APJ_Atom</assignedTo>
+            <assignedTo>Core_IPS_Org_007_SW_L2_3DAT_PSE_WW</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® 3D Athlete Tracking (Intel® 3DAT)</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_L3_ECS_SS_WW</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Industrial Edge Control Software</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_EMBED_Ai_Creek</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Ai Creek</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_HW_L3_APJ_Core</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
@@ -2584,7 +2497,7 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L3_ECG_PSE_APJ</assignedTo>
+            <assignedTo>Core_IPS_Org_007_HW_L3_ICE_APJ</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND( (2 AND 3) )</booleanFilter>
             <criteriaItems>
@@ -2605,7 +2518,7 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L3_ECG_Taiwan</assignedTo>
+            <assignedTo>Core_IPS_Org_007_HW_Tablet_ICE_Taiwan</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1  AND (( 2) OR (3 AND (4 OR 5) ) OR ( 6 AND 7) OR (8))</booleanFilter>
             <criteriaItems>
@@ -2651,7 +2564,7 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L3_ECG_PSE_PRC</assignedTo>
+            <assignedTo>Core_IPS_Org_007_HW_L3_ICE_PRC</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND(2 OR 3 OR 4)</booleanFilter>
             <criteriaItems>
@@ -2672,12 +2585,12 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>Ningbo Chunjun Electronics</value>
+                <value>HopeTrek Innovations Company</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L3_ECG_PSE_APJ_Atom</assignedTo>
+            <assignedTo>Core_IPS_Org_007_HW_L3_APJ_Core</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND ((2 AND (3 OR 4 OR 5 OR 6 OR 7 OR 8)))</booleanFilter>
             <criteriaItems>
@@ -2723,7 +2636,7 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L3_ECG_PSE_PRC</assignedTo>
+            <assignedTo>Core_IPS_Org_007_HW_L3_ICE_PRC</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND ( 2 OR 3 OR 4) AND (5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12)</booleanFilter>
             <criteriaItems>
@@ -2734,17 +2647,17 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
                 <operation>equals</operation>
-                <value>Alchemist,Arrow Lake S,Arrow Lake UH,Bartlett Lake S,Granite Rapids-D,Granite Rapids SP CPU,Sierra Forest SP 1S,Sierra Forest SP 2S,Twin Lake</value>
+                <value>Alchemist,Arrow Lake S,Arrow Lake UH,Bartlett Lake S,Granite Rapids-D,Granite Rapids SP CPU,Meteor Lake PS,Sierra Forest SP 1S,Sierra Forest SP 2S,Twin Lake</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
                 <operation>equals</operation>
-                <value>Amston Lake,Emerald Rapids</value>
+                <value>Amston Lake,Emerald Rapids,Meteor Lake U,Meteor Lake H,Raptor Lake PS,Raptor Lake S Refresh</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
                 <operation>equals</operation>
-                <value>Battlemage,Panther Lake H,Wildcat Lake U</value>
+                <value>Alder Lake N,Alder Lake PS,Raptor Lake P,Raptor Lake S,Sapphire Rapids SP CPU</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
@@ -2769,7 +2682,7 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>Hisense,&quot;Qingdao Wintec System Co., Ltd&quot;,Shiji,&quot;Xi&apos;An NovaStar Tech Co., Ltd.&quot;,START,FUJIAN CENTERM INFORMATION CO LTD,yealink,Elo,Lancoo Group,BEIJING HONGHE TECHNOLOGY GROUP</value>
+                <value>Hisense,&quot;Qingdao Wintec System Co., Ltd&quot;,Shiji,(No matches found),START,FUJIAN CENTERM INFORMATION CO LTD,yealink,Elo,Lancoo Group,BEIJING HONGHE TECHNOLOGY GROUP</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
@@ -2789,9 +2702,9 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L2_ADC_EMEA_POD</assignedTo>
+            <assignedTo>Core_IPS_Org_007_HW_L2_ADC_EMEA</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND 2 AND (3 and (4 OR 5 OR 6))</booleanFilter>
+            <booleanFilter>1 AND 2 AND ( (3 and 4) OR (5 AND 6) OR (7 AND 8) OR (9 AND 10)  OR (11 and 12))</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -2804,30 +2717,60 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
-                <operation>notContain</operation>
-                <value>Ethernet,Peak,Edge Software,Wi-Fi</value>
+                <operation>equals</operation>
+                <value>Elkhart Lake</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>AAVA MOBILE OY,ABACO SYSTEMS UK,AMULET HOTKEY,AVIWEST,Blue Chip Technology,BOSTON LTD,BrightSign LLC,BULL,C-LAB,CASPER BILGISAYAR SISTEMLERI A S,CHECK POINT SOFTWARE TECHNOLOGIES LTD.,CONCURRENT TECHNOLOGIES PLC</value>
+                <value>MSC Technologies GmbH</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Tiger Lake U</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>Duagon Germany Gmbh,Eastronics Israel,EEPD (A Trucomp Company),EKF ELEKTRONIK GMBH,ELTA SYSTEMS LTD.,Emerson Machine Automation Solutions,ENGICAM SRL,EUROTECH LTD,Eurotech S.p.A.,&quot;Eurotech, Inc.&quot;</value>
+                <value>MSC Technologies GmbH</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Tiger Lake H</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>EXOR INTERNATIONAL S.P.A.,General Dynamics,Heptagon Systems EMEA,HEPTAGON SYSTEMS EMEA LTD,INTERFACE CONCEPT,JP SÁ COUTO S.A.,KUKA ROBOTER GMBH,Prodrive Technologies B.V.,Seco,SolidRun,TQ-Group,Wortmann AG</value>
+                <value>MSC Technologies GmbH,ICC Intelligent Platforms GmbH</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Purley</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>PRODRIVE B.V.</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Alder Lake N</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>GARRISON TECHNOLOGY LTD,Blue Chip Technology</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_007_HW_L2_ADC_ASMO_Core</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>(1 AND 2 AND (3 OR 4 OR 5 OR 6))</booleanFilter>
+            <booleanFilter>1 AND( (2 AND (3 OR 4 )) OR (5 AND (6 OR 7)) OR ( 8 AND 9 ))</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -2835,33 +2778,109 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_name__c</field>
+                <operation>contains</operation>
+                <value>Cannon Lake,Coffee Lake</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;Abaco Systems, Inc.&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>General Dynamics Canada Ltd</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
                 <operation>notContain</operation>
-                <value>Ethernet,Peak,Edge Software,Wi-Fi</value>
+                <value>Myriad,Peak</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>&quot;Abaco Systems, Inc.&quot;,American Portwell,Annapolis Micro Systems,&quot;APPLIED MATERIALS, INC.&quot;,Avidyne,BCM Advanced Research,CACI,Cisco Systems Inc.,&quot;CITRIX SYSTEMS, INC.&quot;,Collins Aerospace,Crystal Group,Curtiss Wright - Ashburn,Curtiss Wright - Ontario</value>
+                <value>OnLogic Inc.,&quot;Mercury Systems, Inc.&quot;,&quot;TRENTON SYSTEMS, INC&quot;,Fortinet,Mercury Systems - Trusted Mission Solutions Inc</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>DRS TECHNOLOGIES - Melbourne,Elo Touch Solutions,&quot;Extreme Engineering Solutions, Inc. (X-ES)&quot;,FORTINET,GE HEALTHCARE ISRAEL,GE Healthcare Technologies,GENERAL DYNAMICS - Scottsdale,GENERAL DYNAMICS CANADA LTD,GENETEC INC,GRAPHIQUES MATROX INC</value>
+                <value>Xerox Corporation,GRAPHIQUES MATROX INC,Collins Aerospace</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Tiger Lake U</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>Honeywell Aerospace,Honeywell,KONTRON CANADA INC,MATROX ELECTRONIC SYSTEMS,&quot;Mercury Systems, Inc.&quot;,NCR ATLEOS,NCS Technologies Inc,OnLogic Inc.,&quot;Rockwell Automation, Inc.&quot;,ROCKWELL COLLINS,SpaceX</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.core_Account_Name__c</field>
-                <operation>equals</operation>
-                <value>The Boeing Company,Toshiba Global Commerce Solutions,&quot;TRENTON SYSTEMS, INC&quot;,XEROX,Xerox Corporation</value>
+                <operation>contains</operation>
+                <value>Honeywell</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L3_ECGPSG_WWXeon_SoC</assignedTo>
+            <assignedTo>Core_IPS_Org_007_HW_L3_RSD_APJ</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5) OR(6 AND 7 ) OR ( 8 AND 9) OR (10 AND 11))</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Apollo Lake</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;FLYTECH TECHNOLOGY CO., LTD.&quot;,GES (SINGAPORE) PTE LTD,NEC CORPORATION</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Coffee Lake H Refresh</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;NEXCOM INTERNATIONAL CO., LTD.&quot;,&quot;AEWIN TECHNOLOGIES CO., LTD&quot;,&quot;UNIVERSAL SCIENTIFIC INDUSTRIAL CO.,LTD.&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>contains</operation>
+                <value>Whiskey Lake,Cannon Point</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;FLYTECH TECHNOLOGY CO., LTD.&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Cherry Trail-IoT</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>WISTRON CORPORATION</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Coffee Lake S Refresh</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;NEXCOM INTERNATIONAL CO., LTD.&quot;,&quot;AXIOMTEK CO., LTD.&quot;</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_HW_L3_ICE_WW_Xeon_SoC</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND ( (2 AND 3) OR (4 AND 5))</booleanFilter>
             <criteriaItems>
@@ -2910,47 +2929,37 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c &lt;&gt; &quot;Netwo
         <ruleEntry>
             <assignedTo>Core_IPS_Org_007_Movidius_WW</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND( 
-Core_IPS_Product_Org_Number__c = &quot;007&quot;, 
-Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;MVD&quot;)</formula>
+            <formula>AND(  Core_IPS_Product_Org_Number__c = &quot;007&quot;,  Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;MVD&quot;)</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L3_ECG_PSE_EMEA</assignedTo>
+            <assignedTo>Core_IPS_Org_007_HW_L3_ICE_EMEA</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(
-    Core_IPS_Product_Org_Number__c = &quot;007&quot;,
-    OR(Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Core&quot;,
-       Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Atom&quot; 
-  ),
-    OR(
-        OR(AccountId = &apos;001o000000O69QDAAZ&apos;, 
-           AccountId = &apos;001o000000OSbWCAA1&apos;
-      ),
-        AND(
-            OR(
-                CONTAINS(core_Account_Name__c, &apos;Siemens&apos;),
-                CONTAINS(core_Account_Name__c, &apos;ASEM&apos;),
-                CONTAINS(core_Account_Name__c, &apos;congatec&apos;),
-                CONTAINS(core_Account_Name__c, &apos;Kontron&apos;)
-            ),
-
-
-            AccountId &lt;&gt; &apos;001o000000OSjHHAA1&apos;,
-            AccountId &lt;&gt; &apos;001o000000OT8KLAA1&apos;,  
-            AccountId &lt;&gt; &apos;001o000000O66HzAAJ&apos;, 
-
-            OR(
-                Core_Account_Geo__c = &apos;ASMO&apos;,
-                Core_Account_Geo__c = &apos;EMEA&apos;
-            )
-        )
-    )
-)</formula>
+            <booleanFilter>1 AND (2 AND 3) AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>contains</operation>
+                <value>SIEMENS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_Account_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO,EMEA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>notContain</operation>
+                <value>Apollo Lake</value>
+            </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_HW_L3_ECG_PSE_PRC</assignedTo>
+            <assignedTo>Core_IPS_Org_007_HW_L3_ICE_PRC</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND (2 or 3 or 4 or 5 or 6 )</booleanFilter>
             <criteriaItems>
@@ -2986,16 +2995,55 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;MVD&quot;)</
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_EMBED_WWAN_ECG_PSE_WW</assignedTo>
+            <assignedTo>Core_IPS_Org_007_OSC_PRC</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND( 
-Core_IPS_Product_Org_Number__c = &quot;007&quot;, 
-Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Cellular&quot; 
-)</formula>
+            <booleanFilter>1 AND (2 OR 3 )</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;Shenzhen Devexel Tech Co.,Ltd&quot;,&quot;BEIJING UNISTRONG SCIENCE AND TECHNOLOGY CO., LTD.&quot;,&quot;CHENGDU VANTRON TECHNOLOGY, LTD.&quot;,&quot;KUPA China Goldentrek Co., Ltd.&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>BAONY DIGITAL VIDEO,&quot;CHENGDU VANTRON TECHNOLOGY, LTD.&quot;,&quot;CHENGDU VANTRON TECHNOLOGY, LTD.&quot;,&quot;Dongguan Ming Xin Electronics Co., Ltd.&quot;</value>
+            </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_Wireless_TSN_ECG_PSE_WW</assignedTo>
+            <assignedTo>Core_IPS_Org_007_EMBED_WWAN_ICE_WW</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(  Core_IPS_Product_Org_Number__c = &quot;007&quot;,  Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Cellular&quot;  )</formula>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_Pyramid_Lake_WW</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Core_Product_Organization__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Pyramid Lake</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_FPGA_Synergy</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(  Core_IPS_Product_Org_Number__c = &quot;007&quot;,  Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;FPGA&quot;  )</formula>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_Wireless_TSN_ICE_WW</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND 2 AND 3</booleanFilter>
             <criteriaItems>
@@ -3016,12 +3064,35 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Cellular&quo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_Wireless_ECG_PSE_WW</assignedTo>
+            <assignedTo>Core_IPS_Org_007_Wireless_ICE_WW</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(
-Core_IPS_Product_Org_Number__c = &quot;007&quot;,
-Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quot;
-)</formula>
+            <formula>AND( Core_IPS_Product_Org_Number__c = &quot;007&quot;, Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quot; )</formula>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_EMBED_HW_ECSI_India</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Bhel Corporate R&amp;d,Nash Industries (I) Pvt Ltd.,MATRIX COMSEC PVT. LTD.,Unbox Robotics,TVS Electronics Ltd,AVANTEL LTD,Syrma SGS Technology Limited,Netport Systems Pvt. Ltd,Krypton Systems,CHAMPION COMPUTER PRIVATE LIMITED</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>DIMENSION NEXT INFOCOM PRIVATE LIMITED,MISTRAL SOLUTIONS PRIVATE LIMITED,DEXCEL ELECTRONICS DESIGNS (P) LTD.,ADITECH ICT PRIVATE LIMITED,Panache Digilife Limited,E-CON SYSTEMS INDIA PRIVATE LIMITED,Kaynes Technology India Limited</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Xtreme Media Pvt. Ltd.,Renu Electronics,INP Technologies Private Limited,Invendis Technologies India Pvt Ltd,Lipidata Systems Ltd,BEL,NOMUS COMMUNICATION SYSTEMS,VVDN Technologies Pvt. Ltd.</value>
+            </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
@@ -3071,8 +3142,25 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_007_SW_L2_PSE_WW</assignedTo>
+            <assignedTo>Core_IPS_Org_007_L1_Contract_ASMO_EMEA</assignedTo>
             <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>007</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>ALDER LAKE PS</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_007_L1_Contract_ASMO_EMEA</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -3081,8 +3169,14 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
             <criteriaItems>
                 <field>Case.core_Account_Name__c</field>
                 <operation>equals</operation>
-                <value>&quot;ADVANTECH CO., LTD.&quot;,ADLINK TECHNOLOGY INC.</value>
+                <value>&quot;AXIOMTEK CO., LTD.&quot;,&quot;AEWIN TECHNOLOGIES CO., LTD.&quot;,ASROCK INC.,FLYTECH,&quot;Ubiquiti Networks, Inc.&quot;</value>
             </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>AXIOMTEK,Synnex Technology International Corp,WORLD PEACE INTERNATIONAL (SOUTH ASIA)PTE. LTD.,DEXCEL ELECTRONICS DESIGNS (P) LTD.,&quot;ACROSSER TECHNOLOGY CO., LTD.&quot;,&quot;WORLD PEACE INDUSTRIAL CO., LTD.&quot;,HONEYWELL TECHNOLOGY SOLUTIONS LAB PRIVATE LIMITED</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_007_L1_Contract_APJ</assignedTo>
@@ -3317,6 +3411,226 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_Eng_Enablement_Pass</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Premier_Support_Project_ID__c</field>
+                <operation>equals</operation>
+                <value>IPJ-007921</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server M50FCP Family</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_Enablement_Denali_Pass</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Premier_Support_Project_ID__c</field>
+                <operation>equals</operation>
+                <value>IPJ-007921</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server D50DNP Family</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_AURORA_GENERAL_QS</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Aurora</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Category__c</field>
+                <operation>equals</operation>
+                <value>Aurora Solution</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Subcategory__c</field>
+                <operation>equals</operation>
+                <value>Aurora - General Qs</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_AURORA_M50CYP_HWFW</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Aurora</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Category__c</field>
+                <operation>equals</operation>
+                <value>Aurora Solution</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Subcategory__c</field>
+                <operation>equals</operation>
+                <value>M50CYP HW/FW</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_AURORA_DAI_DS_SW</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Aurora</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Category__c</field>
+                <operation>equals</operation>
+                <value>Aurora Solution</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Subcategory__c</field>
+                <operation>equals</operation>
+                <value>DAI-DS SW</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_Auro_Exa_Comp</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Aurora</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Category__c</field>
+                <operation>equals</operation>
+                <value>Aurora Solution</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Subcategory__c</field>
+                <operation>equals</operation>
+                <value>Exascale Compute Blade</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_SRVPLT_AURORA_DAOS_SW</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Aurora</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Category__c</field>
+                <operation>equals</operation>
+                <value>Aurora Solution</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_External_Issue_Subcategory__c</field>
+                <operation>equals</operation>
+                <value>DAOS SW</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_AZURE_STACK</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System ASB2208WFAFP1</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System ASB1208WFAFH2</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System ASB2208WFAFD2</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System ASB2224WFAFP2</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System ASB2224WFAFP3</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System ASB2224WFAFP4,Intel® Server System ASB2224WFAFP5</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System ASB1208WFAFH3,Intel® Server System ASB2224WFAFP7</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>contains</operation>
+                <value>ASB2224WFAFP6</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>Core_IPS_Org_011_MS_CLOUD_BLOCKS</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND (2 OR 3 OR 4 OR 5)</booleanFilter>
@@ -3348,6 +3662,57 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_VSAN_READ_NODES</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND(  2 OR 3 OR 4 OR 5)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_Product_Organization__c</field>
+                <operation>contains</operation>
+                <value>Server Platforms</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System VRN2208WFAF81,Intel® Server System VRN2208WFAF82,Intel® Server System VRN2208WFAF83,&quot; Intel® Server System VRN2208WFHY6&quot;,Intel® Server System VRN2224BPAF6,&quot; Intel® Server System VRN2224BPHY6&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System VRN2224BPHY4R,Intel® Server System VRN2224BPHY6R&quot;,&quot; Intel® Server System VRN2224BPAF6R&quot;,Intel® Server System VRN2208WFHY6R</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System VRN2208WFAF61R,Intel® Server System VRN2208WFAF81R,Intel® Server System VRN2208WFAF82R,Intel® Server System VRN2208WFAF83R</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Server System VRN2208WFAF84R,Intel® Server System VRN2208WFAF85R</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_EMEA_NEC</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Core_Product_Organization__c</field>
+                <operation>contains</operation>
+                <value>Server Platforms</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>NEC Deutschland GmbH</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_Account_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>Core_IPS_Org_011_ASMO_Teradata</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
@@ -3359,6 +3724,27 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
                 <field>Case.core_Account_Name__c</field>
                 <operation>contains</operation>
                 <value>Teradata</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_Account_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_ASMO_NUTANIX</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_Product_Organization__c</field>
+                <operation>contains</operation>
+                <value>Server Platforms</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Nutanix.Inc</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_Account_Geo__c</field>
@@ -3384,6 +3770,22 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
                 <field>Case.Core_Account_Geo__c</field>
                 <operation>equals</operation>
                 <value>ASMO</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_EMEA_ICS</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;SAMSUNG ELECTRONICS CO., LTD.&quot;,SEC,DreamISystem</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -3426,7 +3828,7 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
         <ruleEntry>
             <assignedTo>Core_IPS_Org_011_APJ_Customers</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND 2</booleanFilter>
+            <booleanFilter>1 AND (2)</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -3436,6 +3838,22 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
                 <field>Case.Core_Account_Geo__c</field>
                 <operation>equals</operation>
                 <value>APJ</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_011_CANYON_VISTA</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>011</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Deep Learning Inference Accelerator (Intel® DLIA),Canyon Vista</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -4221,7 +4639,7 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
         <ruleEntry>
             <assignedTo>Core_IPS_Org_013_SDC_ASIA</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND (7 OR 8 OR 9 OR (2 AND (3 OR 4 OR 5 OR 6)))</booleanFilter>
+            <booleanFilter>1 AND (7 OR 8 OR 9 OR ((2) AND (3 OR 4 OR 5 OR 6)))</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -4430,7 +4848,6 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
         <ruleEntry>
             <assignedTo>Core_IPS_Org_013_Unassigned_ASIA</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND 2</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -4655,9 +5072,9 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
                 <value>United States</value>
             </criteriaItems>
             <criteriaItems>
-                <field>Case.Core_MDF_Country_Region__c</field>
+                <field>Case.Core_IPS_Country_Region__c</field>
                 <operation>contains</operation>
-                <value>UNITED STATES</value>
+                <value>United States</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -5171,7 +5588,6 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_eASIC_AP_ua</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -5275,79 +5691,67 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_HSIO</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Devices&apos;, Core_External_Issue_Subcategory__c = &apos;Transceiver&apos;, 
-(LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Devices&apos;, Core_External_Issue_Subcategory__c = &apos;Transceiver&apos;,  (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_SOCO</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Devices&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Devices&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_Embedded</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Design Tools&apos;, Core_External_Issue_Subcategory__c = &apos;High Level Design (OCL/HLS/DLA)&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Design Tools&apos;, Core_External_Issue_Subcategory__c = &apos;High Level Design (OCL/HLS/DLA)&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_SOCO</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Design Tools&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Design Tools&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_IP</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;IP-Interface Protocols&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;IP-Interface Protocols&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_EMIF</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;IP-Memory Interfaces&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;IP-Memory Interfaces&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_Embedded</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;IP-Basic functions,Qsys,DSP&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;IP-Basic functions,Qsys,DSP&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_SOCO</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Development Kits&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos; )
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Development Kits&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos; ) )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_Embedded</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Automotive&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Automotive&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_Embedded</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Acceleration&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, Core_External_Issue_Category__c = &apos;Acceleration&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_ASMO_unassigned</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;) 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, (LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;), (RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_NA&apos;)  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
@@ -5374,41 +5778,31 @@ Core_IPS_Supported_Product__r.Core_Supported_Product_Tag__c = &quot;Wireless&quo
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_SJ_PRISM</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, 
-LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 4) = &apos;_NAF&apos; 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;,  LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 4) = &apos;_NAF&apos;  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_AP_unassigned</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, 
-LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_AP&apos; 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;,  LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_AP&apos;  )</formula>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_025_JP_unassigned</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;,  LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_JP&apos;  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_GAE_unassigned</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, 
-LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_JP&apos; 
-)</formula>
-            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>Core_IPS_Org_025_GAE_unassigned</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, 
-LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_PG&apos; 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;,  LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_PG&apos;  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_IPS_Org_025_EMEA_unassigned</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;, 
-LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_EU&apos; 
-)</formula>
+            <formula>AND(Core_IPS_Product_Org_Number__c = &apos;025&apos;,  LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Project_Case__r.Name , 3) = &apos;_EU&apos;  )</formula>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
@@ -5509,7 +5903,7 @@ LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Pr
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_025_GAE_unassigned</assignedTo>
+            <assignedTo>Core_IPS_Org_025_JP_unassigned</assignedTo>
             <assignedToType>Queue</assignedToType>
             <booleanFilter>1 AND 2 AND (3 AND 4)</booleanFilter>
             <criteriaItems>
@@ -5526,6 +5920,31 @@ LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Pr
                 <field>Case.Core_IPS_Account_Sub_Geo__c</field>
                 <operation>equals</operation>
                 <value>IJKK</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Support_Level__c</field>
+                <operation>equals</operation>
+                <value>Tier 1,Tier 2,Tier 3,Top Opps</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_025_AP_unassigned</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>025</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_Account_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Account_Sub_Geo__c</field>
+                <operation>equals</operation>
+                <value>KOREA</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Support_Level__c</field>
@@ -5581,7 +6000,7 @@ LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Pr
             <criteriaItems>
                 <field>Case.Core_IPS_Support_Level__c</field>
                 <operation>equals</operation>
-                <value>Tier 1,Tier 2,Tier 3,Top Opps</value>
+                <value>Tier 4</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -5673,12 +6092,12 @@ LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Pr
             <criteriaItems>
                 <field>Case.Core_IPS_Support_Level__c</field>
                 <operation>equals</operation>
-                <value>Tier 1</value>
+                <value>Tier 2,Tier 3,Tier 4,ROW,Top Opps</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Core_IPS_Support_Level__c</field>
                 <operation>equals</operation>
-                <value>Tier 2,Tier 3,Tier 4,ROW,Top Opps</value>
+                <value>Tier 1</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -6370,7 +6789,7 @@ LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Pr
         <ruleEntry>
             <assignedTo>Core_IPS_Org_023_C_Compiler</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6)</booleanFilter>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5)</booleanFilter>
             <criteriaItems>
                 <field>Case.Core_IPS_Product_Org_Number__c</field>
                 <operation>equals</operation>
@@ -6395,11 +6814,6 @@ LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Pr
                 <field>Case.Core_IPS_Product_name__c</field>
                 <operation>equals</operation>
                 <value>Intel® DPC++ Compatibility Tool</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_name__c</field>
-                <operation>equals</operation>
-                <value>Intel® oneAPI DPC++/C++ Compiler</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
@@ -6646,6 +7060,803 @@ LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Pr
                 <operation>equals</operation>
                 <value>026</value>
             </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>IPS Test Account 2</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Persistent Memory</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3 OR 4) AND (5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>LENOVO (UNITED STATES) INC.</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Lenovo (Beijing) Limited</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Lenovo Computer Limited</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory H10 with Solid State Storage</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory M10 Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory M15 Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD 800P Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory H20 with Solid State Storage)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD 905P Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6) AND (7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;Asus Technology (Suzhou) Co., Ltd.&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Asus</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>ASUSTEK COMPUTER INCORPORATION</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>HP INC.</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>HPI</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory H10 with Solid State Storage</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory M10 Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory M15 Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory M15 Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD 800P Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory H20 with Solid State Storage</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD 905P Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3) AND (4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Dell</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Dell INC.</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory H10 with Solid State Storage</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory M10 Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory M15 Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD 800P Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory H20 with Solid State Storage</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD 905P Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>FACEBOOK</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Microsoft Corporation</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3) AND (4 OR 5 OR 6 OR 7)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>HPE</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Hewlett Packard Enterprise Company</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>CISCO SYSTEMS INC.</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Supermicro</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;NUTANIX, INC.&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;Vast Data , Inc.&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3 OR 4) AND (5 OR 6 OR 7 OR 8)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Dell</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>EQUALS  Dell INC.</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>EMC</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3 OR 4) AND (5 OR 6 OR 7 OR 8)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Lenovo (Beijing) Limited</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>LENOVO (UNITED STATES) INC.</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Lenovo Computer Limited</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>TENCENT TECHNOLOGY (SZ) COMPANY LIMITED</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3) AND (4 OR 5 OR 6 OR 7)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Baidu</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>BAIDU ONLINE NETWORK TECHNOLOGY(BEIJING) CO LTD</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3 OR 4) AND (5 OR 6 OR 7 OR 8)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;ALIBABA.COM LTD. (TAOBAO, YAHOO CHINA, Z)&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;Alibaba (China) Co., Ltd.&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>&quot;Alibaba (China) Technology Co., Ltd.&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.core_Account_Name__c</field>
+                <operation>equals</operation>
+                <value>Beijing Bytedance Technology</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_IPS_Org_026_Optane_Sustaining</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12) OR (13 OR 14 OR 15 OR 16 ))</booleanFilter>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_Org_Number__c</field>
+                <operation>equals</operation>
+                <value>026</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory H10 with Solid State Storage</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory M10 Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory M15 Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD 800P Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ Memory H20 with Solid State Storage</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD 905P Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4801X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC D4800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_IPS_Product_name__c</field>
+                <operation>equals</operation>
+                <value>Intel® Optane™ SSD DC P5800X Series</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_Account_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_Account_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_Account_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Core_Account_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
@@ -6659,15 +7870,6 @@ LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Pr
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>Core_IPS_Org_029_Unassigned</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Case.Core_IPS_Product_Org_Number__c</field>
-                <operation>equals</operation>
-                <value>029</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
             <assignedTo>Core_IPS_Unassigned_Cases</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
@@ -6676,6 +7878,19 @@ LEFT( Core_IPS_Project_Case__r.Name , 6) = &apos;Intel_&apos;, RIGHT(Core_IPS_Pr
                 <value>IPS No Assigned Contact Case,IPS Case Create,IPS Closed Case,IPS GEC ReadOnly</value>
             </criteriaItems>
             <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
+        </ruleEntry>
+    </assignmentRule>
+    <assignmentRule>
+        <fullName>Test  Queue Name Character Limit</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>TEST_QUEUE_FOR_CHARACTER_LENGTH_EXCEED</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.CreatedById</field>
+                <operation>contains</operation>
+                <value>Rakshitha</value>
+            </criteriaItems>
         </ruleEntry>
     </assignmentRule>
 </AssignmentRules>

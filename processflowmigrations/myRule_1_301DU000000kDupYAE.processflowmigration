@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Core_IPS_Copy_Owner_Supp_Org_to_Core_Question_1</destinationFlowDefinition>
+    <destinationFlowVersion>Core_IPS_Copy_Owner_Supp_Org_to_Core_Question_1-3</destinationFlowVersion>
+    <developerName>myRule_1_301DU000000kDupYAE</developerName>
+    <masterLabel>Core IPS Copy Owner Supp Org to Core Question_1</masterLabel>
+    <migratedCriteriaLabel>Core_IPS_Check_Supp_Org_Owner_Change</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Core_IPS_Copy_Owner_Supp_Org_to_Core_Question-3</processVersion>
+</ProcessFlowMigration>

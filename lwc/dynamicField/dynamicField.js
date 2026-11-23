@@ -20,6 +20,7 @@ export default class dynamicQuestion extends LightningElement {
     @api fielditself;
     @api mode;
     @track picklistValue;
+    testareaReq = false;
     //Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area              
     islengtherr = false;
     @track label = {
@@ -28,10 +29,9 @@ export default class dynamicQuestion extends LightningElement {
     };
     //Sowmya End
  
+       
     connectedCallback() {
-        if(this.type == 'Multiselect Picklist'){
-            console.log('DEBUG dynamicField mvalue=' + JSON.stringify(this.mvalue) + ' lovs=' + JSON.stringify(this.lovs) + ' fielditself=' + JSON.stringify(this.fielditself));
-        }
+        
         if(this.type == 'Picklist'){
             if(this.fielditself.lovs == null || this.fielditself.lovs == undefined || this.fielditself.lovs == ''){
                 this.fromDependentField = true;
@@ -89,7 +89,6 @@ export default class dynamicQuestion extends LightningElement {
     get multiselectpiclistcheck() {
         return this.type === 'Multiselect Picklist' ? true : false;
     }
-    
     get textareacheck() {
         return this.type === 'Text Area' ? true : false;
     }
@@ -105,6 +104,16 @@ export default class dynamicQuestion extends LightningElement {
         var inputCm =  this.template.querySelector(".inputda");
         da = this.type;
 
+        console.log('required>' + inputCmp.required);
+        console.log('label>' + inputCmp.label);
+        console.log('value>' + this.type);
+        console.log('inputCmp.value: ' + inputCmp.value);
+        console.log('mvalue:' + this.mvalue);
+        console.log('type is',da)
+        // is input is valid?
+        console.log('Inside handleQuestionAnswer dynamicField require:', require);
+
+
         //Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
         if(da === 'Text Area'){
             if(inputCmp.value.length>5000){
@@ -116,6 +125,9 @@ export default class dynamicQuestion extends LightningElement {
             }
         }
         //Sowmya end
+
+
+
         // Started By Hassan Khan to Fix Validation
         if(da != 'Multiselect Picklist'){
             valued = inputCmp.value;
@@ -126,6 +138,7 @@ export default class dynamicQuestion extends LightningElement {
             valued = valued.toString();
         }
         require = inputCmp.required;
+        console.log('Inside handleQuestionAnswer dynamicField require after setting value:', require);
         // Finished By Hassan Khan
 
         if (valued === undefined) {
@@ -198,6 +211,7 @@ export default class dynamicQuestion extends LightningElement {
             this.template.querySelector('lightning-input').classList.remove('showRequiredProducts');
             this.template.querySelector('lightning-input').setCustomValidity("");
             this.template.querySelector('lightning-input').reportValidity();
+            
         }
         if(this.type === 'Text Area') {
             this.template.querySelector('lightning-textarea').classList.remove('showRequiredProducts');
@@ -213,7 +227,9 @@ export default class dynamicQuestion extends LightningElement {
             this.template.querySelector('lightning-combobox').setCustomValidity("");
             this.template.querySelector('lightning-combobox').reportValidity();
         }
+       
 
     }
+  
 
 }

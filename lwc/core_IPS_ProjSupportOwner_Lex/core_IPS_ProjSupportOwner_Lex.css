@@ -1,0 +1,17 @@
+.header {
+    background: #1a315b;
+    color: white;
+    padding: 10px;
+}
+.container {
+    display:inline-block;
+    vertical-align:right;
+}
+.one{
+    width:1000px;
+    height:1000px;
+}
+.two{
+    width:1000px;
+    height:1000px;
+}

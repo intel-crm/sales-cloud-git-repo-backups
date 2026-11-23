@@ -14,9 +14,5 @@
     <name>PSG-JP-ALTIMA</name>
     <opportunityAccessLevel>Read</opportunityAccessLevel>
     <parentTerritory>XPSGJP</parentTerritory>
-    <ruleAssociations>
-        <inherited>false</inherited>
-        <ruleName>PSG_JP_ALTIMA</ruleName>
-    </ruleAssociations>
     <territory2Type>Business_Unit</territory2Type>
 </Territory2>

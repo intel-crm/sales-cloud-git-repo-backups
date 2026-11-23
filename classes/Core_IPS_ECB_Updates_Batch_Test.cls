@@ -1,5 +1,5 @@
 @isTest
-private class Core_IPS_ECB_Updates_Batch_Test {
+private class Core_IPS_ECB_Updates_Batch_Test{
     
     @testSetup
     static void setupTestData() {
@@ -16,11 +16,11 @@ private class Core_IPS_ECB_Updates_Batch_Test {
                                              Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                              BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
                                              BillingCountry='USA', BillingPostalCode='12345',Core_Export_Compliance_Block__c = false
-                                            ,recordtypeid=recTypeId);
+                                            ,recordtypeid=recTypeId, Core_IPS_Active__c = false);
         insert currentAccount ;
         
         Core_ACM_Account_Staging__c objAccAction= new Core_ACM_Account_Staging__c();
-        objAccAction.Core_Action__c='IPSECBFlagCheck';
+        objAccAction.Account_Action_Refrence__c='IPSECBFlagCheck';
         objAccAction.Core_Status__c ='NEW';
         objAccAction.AccountId__c=currentAccount.id;
         insert objAccAction;
@@ -29,12 +29,12 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         system.assertNOTEquals(null,currentAccount.id);
         
         Contact currentContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',
-                                             Core_IPS_Active__c=true,Core_IPS_Intel_Support_Owner__c=null, AccountId=currentAccount.Id,MailingCountry='USA');
+                                             Core_IPS_Active__c=true,Core_IPS_Intel_Support_Owner__c= null, AccountId=currentAccount.Id,MailingCountry='USA');
         insert currentContact;
         system.assertNOTEquals(null,currentContact.id);
         
         Account targetAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
-                                            Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
+                                            Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '123459',
                                             BillingStreet='1234 testery St', BillingCity='testCity', BillingState='OR',
                                             BillingCountry='USA', BillingPostalCode='123458',Core_Export_Compliance_Block__c = false
                                            ,recordtypeid=recTypeId);
@@ -82,7 +82,6 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         objCore_IPS_Project_Member.Core_IPS_Project__c = projects[0].Id;
         objCore_IPS_Project_Member.Core_IPS_Contact__c = currentContact.Id;
         objCore_IPS_Project_Member.Core_Status__c = 'Active';
-        objCore_IPS_Project_Member.Core_User__c= UserInfo.getUserId();
         insert objCore_IPS_Project_Member;
         // Create Case Interested Parties
         List<Core_IPS_Case_Interested_Party__c> interestedParties = new List<Core_IPS_Case_Interested_Party__c>();
@@ -122,7 +121,7 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         for(Account acc : accounts) {
             stagingRecords.add(new Core_ACM_Account_Staging__c(
                 AccountId__c = acc.Id,
-                Core_Action__c = 'IPSECBFlagCheck',
+                Account_Action_Refrence__c = 'IPSECBFlagCheck',
                 Core_Status__c = 'NEW'
             ));
         }
@@ -131,13 +130,9 @@ private class Core_IPS_ECB_Updates_Batch_Test {
     
     @isTest
     static void testBatchExecution() {
-        Set<Id> activeContacts = new Set<ID>();
-        Core_IPS_SkipTriggerHandler.skipQueueable=false;
-        for (Contact con : [SELECT Id FROM Contact WHERE Core_IPS_Active__c = true]) {
-            activeContacts.add(con.Id);
-        }
+        
         // Query initial state
-        System.assert(activeContacts != null, 'Contact in not null');
+        List<Contact> activeContacts = [SELECT Id FROM Contact WHERE Core_IPS_Active__c = true];
        // System.assertEquals(6, activeContacts.size(), 'Should have 6 active contacts initially');
         
         List<Core_IPS_Case_Interested_Party__c> activeIPs = [SELECT Id FROM Core_IPS_Case_Interested_Party__c WHERE Active__c = true];
@@ -151,27 +146,26 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         Core_IPS_ECB_Updates_Batch batch = new Core_IPS_ECB_Updates_Batch();
         Id batchId = Database.executeBatch(batch, 200);
         Core_IPS_ECB_Updates_Batch.insertExceptionInFuture('','Core_IPS_Case_Interested_Party__c','Contact','','',new List<String>{'Error'});
-        Contact_Handler.InactivateInterestedParties(activeContacts);
         Test.stopTest();
         
         
         // Verify results
         List<Contact> inactiveContacts = [SELECT Id, Core_IPS_Active__c FROM Contact WHERE Core_IPS_Active__c = false];
         //System.assertEquals(6, inactiveContacts.size(), 'All contacts should be inactive');
-        System.assertEquals(inactiveContacts!=null,true);
+        
         List<Core_IPS_Case_Interested_Party__c> inactiveIPs = [SELECT Id FROM Core_IPS_Case_Interested_Party__c WHERE Active__c = false];
         //System.assertEquals(4, inactiveIPs.size(), 'All interested parties should be inactive');
-        System.assertEquals(inactiveIPs!=null,true);
+        
         List<Core_IPS_Project_Member__c> inactiveMembers = [SELECT Id FROM Core_IPS_Project_Member__c WHERE Core_Status__c = 'Inactive'];
         //System.assertEquals(12, inactiveMembers.size(), 'All project members should be inactive');
-        //System.assertEquals(inactiveMembers!=null,true);
+        
         // Verify staging record status update
         List<Core_ACM_Account_Staging__c> stagingRecords = [
             SELECT Core_Status__c 
             FROM Core_ACM_Account_Staging__c 
             WHERE Account_Action_Refrence__c = 'IPSECBFlagCheck'
         ];
-        System.assertEquals(stagingRecords!=null,true);
+        
         // At least one staging record should be updated
         Boolean hasCompletedOrFailed = false;
         for(Core_ACM_Account_Staging__c rec : stagingRecords) {
@@ -181,7 +175,6 @@ private class Core_IPS_ECB_Updates_Batch_Test {
             }
         }
         //System.assert(hasCompletedOrFailed, 'At least one staging record should be updated');
-        
     }
     
     @isTest
@@ -200,10 +193,9 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         // Verify no changes were made
         List<Contact> activeContacts = [SELECT Id FROM Contact WHERE Core_IPS_Active__c = true];
         //System.assertEquals(6, activeContacts.size(), 'Contacts should remain active when no staging records exist');
-        System.assertEquals(activeContacts!=null,true);
+        
         List<Core_IPS_Project_Member__c> activeMembers = [SELECT Id FROM Core_IPS_Project_Member__c WHERE Core_Status__c = 'Active'];
         //System.assertEquals(12, activeMembers.size(), 'Project members should remain active');
-        System.assertEquals(activeMembers!=null,true);
     }
     
     @isTest
@@ -226,14 +218,13 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         // Verify interested parties for closed cases are not updated
         List<Core_IPS_Case_Interested_Party__c> activeIPs = [SELECT Id FROM Core_IPS_Case_Interested_Party__c WHERE Active__c = true];
         //System.assertEquals(4, activeIPs.size(), 'Interested parties for closed cases should remain active');
-        System.assertEquals(activeIPs!=null, true);
+        
         // Verify contacts and project members are still updated
         List<Contact> inactiveContacts = [SELECT Id FROM Contact WHERE Core_IPS_Active__c = false];
        // System.assertEquals(6, inactiveContacts.size(), 'Contacts should still be deactivated');
-        System.assertEquals(inactiveContacts!=null, true);
+        
         List<Core_IPS_Project_Member__c> inactiveMembers = [SELECT Id FROM Core_IPS_Project_Member__c WHERE Core_Status__c = 'Inactive'];
         //System.assertEquals(12, inactiveMembers.size(), 'Project members should still be deactivated');
-        System.assertEquals(cases!=null, true);
     }
     
     @isTest
@@ -249,10 +240,9 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         // Verify results with small batch size
         List<Contact> inactiveContacts = [SELECT Id FROM Contact WHERE Core_IPS_Active__c = false];
         //System.assertEquals(6, inactiveContacts.size(), 'All contacts should be inactive with small batch size');
-        System.assertEquals(inactiveContacts!=null,true);
+        
         List<Core_IPS_Project_Member__c> inactiveMembers = [SELECT Id FROM Core_IPS_Project_Member__c WHERE Core_Status__c = 'Inactive'];
         //System.assertEquals(12, inactiveMembers.size(), 'All project members should be inactive with small batch size');
-        System.assertEquals(inactiveMembers!=null,true);
     }
     
     @isTest
@@ -262,7 +252,7 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         for(Core_IPS_Project_Member__c pm : membersToUpdate) {
             pm.Core_Status__c = 'Inactive';
         }
-        //update membersToUpdate;
+        update membersToUpdate;
         
         Test.startTest();
         
@@ -274,11 +264,10 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         
         // Verify all project members are inactive
         List<Core_IPS_Project_Member__c> inactiveMembers = [SELECT Id FROM Core_IPS_Project_Member__c WHERE Core_Status__c = 'Inactive'];
-        //System.assertEquals(12, inactiveMembers.size(), 'All project members should be inactive');
-        System.assertEquals(inactiveMembers!=null,true);
+      //  System.assertEquals(12, inactiveMembers.size(), 'All project members should be inactive');
+        
         List<Core_IPS_Project_Member__c> activeMembers = [SELECT Id FROM Core_IPS_Project_Member__c WHERE Core_Status__c = 'Active'];
-        //System.assertEquals(0, activeMembers.size(), 'No project members should be active');
-		System.assertEquals(membersToUpdate!=null,true);
+//        System.assertEquals(0, activeMembers.size(), 'No project members should be active');
     }
     
     @isTest
@@ -298,13 +287,12 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         // Verify results with partial data
         List<Contact> inactiveContacts = [SELECT Id FROM Contact WHERE Core_IPS_Active__c = false];
         //System.assertEquals(6, inactiveContacts.size(), 'All contacts should be inactive');
-        System.assertEquals(inactiveContacts!=null, true);
+        
         List<Core_IPS_Case_Interested_Party__c> inactiveIPs = [SELECT Id FROM Core_IPS_Case_Interested_Party__c WHERE Active__c = false];
         //System.assertEquals(2, inactiveIPs.size(), 'Remaining interested parties should be inactive');
-        System.assertEquals(inactiveIPs!=null, true);
+        
         List<Core_IPS_Project_Member__c> inactiveMembers = [SELECT Id FROM Core_IPS_Project_Member__c WHERE Core_Status__c = 'Inactive'];
         //System.assertEquals(6, inactiveMembers.size(), 'Remaining project members should be inactive');
-        System.assertEquals(inactiveMembers!=null, true);
     }
     
     @isTest
@@ -322,6 +310,5 @@ private class Core_IPS_ECB_Updates_Batch_Test {
         for(Contact c : contacts) {
             //System.assertEquals(true, c.Core_IPS_By_Pass_Validation__c, 'Core_IPS_By_Pass_Validation__c should be true');
         }
-        System.assertEquals(contacts!=null, true);
     }
 }

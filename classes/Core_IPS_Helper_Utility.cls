@@ -48,9 +48,9 @@ public without sharing class Core_IPS_Helper_Utility {
             caseAccessLevel.add(getIPSLabel('AccessLevel_Edit'));
             Set<Id> userIdSet = new Set<id>();
             Set<id> accountIdSet = new Set<Id>();
-            if(accountshare.SObjectType.getDescribe().isAccessible()){ // FLS check already added - aditya
+            //if(accountshare.SObjectType.getDescribe().isAccessible()){ // FLS check already added - aditya
             	acctShare = [select accountId, caseaccesslevel, userOrGroupId, rowcause from accountshare where rowcause in :rowCauseList and caseAccessLevel IN: caseAccessLevel and  accountId in :acctIdSet];
-            }
+            //}
             for(AccountShare share: acctShare){
                 String userId = share.userOrGroupId;
                 if(userId.startsWith('005')){
@@ -180,9 +180,9 @@ public without sharing class Core_IPS_Helper_Utility {
             projIdSet.add(ast.Core_IPS_Project__c);
         }*/
         //assetsByProj = getAssetsByProject(assetList);
-        if(core_ips_account__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
+        //if(core_ips_account__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
         ipsAccountList = [select id, core_account__c,core_ips_project__c from core_ips_account__c where core_ips_project__c in :projIdset];
-        }
+        //}
         Map<Id, Set<id>> accountsByProject = new Map<Id,Set<id>>();
         Set<id> acctIdSet = new Set<Id>();
         for(core_ips_account__c ipsA:ipsAccountList){
@@ -1515,4 +1515,7 @@ public without sharing class Core_IPS_Helper_Utility {
         else
         return null;
     }        
+    
+  
+ 
 }

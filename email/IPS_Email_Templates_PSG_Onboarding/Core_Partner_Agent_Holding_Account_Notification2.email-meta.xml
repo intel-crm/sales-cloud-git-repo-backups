@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Used to notify Elly or similar people when a contact is created from AGS with the Partner Agent profile against the Partner Agent Holding Account.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Blank</letterhead>
+    <name>Partner Agent Holding Account Notification2</name>
+    <style>freeForm</style>
+    <subject>New Partner Agent Created Against the Partner Agent Holding Account</subject>
+    <textOnly>A new Partner Agent (below) has been created against the Partner Agent Holding Account.
+
+Contact Name: {!Contact.Name}
+Contact Email: {!Contact.Email}
+Account: {!Account.Name}
+
+Please move the contact from the Partner Agent Holding Account to the correct account they belong to.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Deactivated after moving the logic to batch program Core_Batch_A_E_PermSet_Mgmt.apex</description>
-    <masterLabel>x Remove Permission Sets and Groups for Entitlements</masterLabel>
+    <activeVersionNumber>8</activeVersionNumber>
+    <description>Called from PB Flow &quot;A&amp;E Set Permission Sets for Contact Entitlements&quot; 
+
+Automatically removes permission sets for those entitlements which need them. Also removes group memberships from DDR and/or Leads groups respectively.</description>
+    <masterLabel>Remove Permission Sets and Groups for Entitlements</masterLabel>
 </FlowDefinition>

@@ -4,9 +4,6 @@
         <field>Account.Core_Account_ID__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Account_Country__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Owner_Sub_Geo__c</field>
     </columns>
     <columns>
@@ -31,6 +28,9 @@
         <field>OWNER_MANAGER</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_OSC_Collaboration_Type__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Product_Application__c</field>
     </columns>
     <columns>
@@ -46,7 +46,7 @@
         <field>Product2.Core_Product_Series__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Approved_BU_Product_Segment__c</field>
@@ -124,21 +124,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>siu chone,christine khor,kelvin lum,caseen sze,jason wei loong ong,jae jiun,george neah,rathi,ming han,jamie ng,stephanie teoh,rachel chu,i&apos;ng chin,wei jing,shik chen,hong dinh,takahiro katayama,thomas kam,yoshiki usami,swee sing,Meihua Wu,Weeraporn Pienpitak</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Sub_Geo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>ANZ,IJKK,KOREA,SA,SEA,TAIWAN</value>
+            <value>siu chone,christine khor,kelvin lum,caseen sze,jason wei loong ong,jae jiun,george neah,rathi,ming han,jamie ng,stephanie teoh,rachel chu,i&apos;ng chin,wei jing,shik chen,hong dinh,takahiro katayama,thomas kam,yoshiki usami,swee sing,hsiang boon,Meihua Wu,ivan ooi,Weeraporn Pienpitak</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
@@ -175,6 +168,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -5,6 +5,9 @@ public with sharing class CommunitiesLandingController {
     
     // Code we will invoke on page load.
     public PageReference forwardToStartPage() {
+    
+    system.debug('ApexPages.currentPage(): '+ApexPages.currentPage());
+    system.debug('ApexPages.currentPage().getURL(): '+ApexPages.currentPage().getURL());
         return Network.communitiesLanding();
     }
     

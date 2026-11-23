@@ -71,7 +71,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -105,7 +105,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Pending_2017_CCG1</report>
+            <report>EMEA_RSG_Champions/UK_Pending_2017_CCG1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>CCG - Open Opportunities</title>
         </components>
@@ -119,7 +119,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -153,7 +153,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Pending_2017_DCG1</report>
+            <report>EMEA_RSG_Champions/UK_Pending_2017_DCG1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>DCG - Open Opportunities</title>
         </components>
@@ -167,7 +167,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -201,7 +201,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Pending_2017_IOTG1</report>
+            <report>EMEA_RSG_Champions/UK_Pending_2017_IOTG1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>IOTG - Open Opportunities</title>
         </components>
@@ -215,7 +215,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -249,7 +249,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Pending_2017_NSG1</report>
+            <report>EMEA_RSG_Champions/UK_Pending_2017_NSG1</report>
             <showPicturesOnTables>true</showPicturesOnTables>
             <title>NSG - Open Opportunities</title>
         </components>
@@ -263,7 +263,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -296,7 +296,7 @@
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-            <report>EMEA_SF_Champions/UK_Pending_2017_NTG1</report>
+            <report>EMEA_RSG_Champions/UK_Pending_2017_NTG1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>NTG - Open Opportunities</title>
         </components>
@@ -313,7 +313,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -344,7 +344,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Top_Pending_2017_CCG1</report>
+            <report>EMEA_RSG_Champions/UK_Top_Pending_2017_CCG1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>CCG - Top 15 Open Opportunities</title>
         </components>
@@ -358,7 +358,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -389,7 +389,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Top_Pending_2017_DCG1</report>
+            <report>EMEA_RSG_Champions/UK_Top_Pending_2017_DCG1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>DCG - Top 15 Open Opportunities</title>
         </components>
@@ -403,7 +403,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -434,7 +434,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Top_Pending_2017_IOTG1</report>
+            <report>EMEA_RSG_Champions/UK_Top_Pending_2017_IOTG1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>IOTG - Top 15 Open Opportunities</title>
         </components>
@@ -448,7 +448,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -479,7 +479,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Top_Pending_2017_NSG1</report>
+            <report>EMEA_RSG_Champions/UK_Top_Pending_2017_NSG1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>NSG - Top 15 Open Opportunities</title>
         </components>
@@ -493,7 +493,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -524,7 +524,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Top_Pending_2017_NTG1</report>
+            <report>EMEA_RSG_Champions/UK_Top_Pending_2017_NTG1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>NTG - Top 15 Open Opportunities</title>
         </components>
@@ -542,10 +542,10 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardTableColumn>
             <dashboardTableColumn>
                 <aggregateType>Sum</aggregateType>
@@ -567,7 +567,7 @@
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-            <report>EMEA_SF_Champions/UK_Top_Pending_20171</report>
+            <report>EMEA_RSG_Champions/UK_Top_Pending_20171</report>
             <showPicturesOnTables>true</showPicturesOnTables>
             <title>2017 - Summary</title>
         </components>
@@ -581,7 +581,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -613,7 +613,7 @@
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-            <report>EMEA_SF_Champions/UK_Pending_2017_Past_Due1</report>
+            <report>EMEA_RSG_Champions/UK_Pending_2017_Past_Due1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>UK Overall Past Due</title>
         </components>
@@ -656,7 +656,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/RSG_Past_Due_Jas1</report>
+            <report>EMEA_RSG_Champions/RSG_Past_Due_Jas1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>RSG - UK All Past Due (Jas Report)</title>
         </components>
@@ -670,7 +670,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>FULL_NAME</column>
@@ -694,7 +694,7 @@
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-            <report>EMEA_SF_Champions/UK_Pending_2017_At_risk_v2_01</report>
+            <report>EMEA_RSG_Champions/UK_Pending_2017_At_risk_v2_01</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>At Risk Opportunities - All - 2017</title>
         </components>
@@ -708,7 +708,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -754,7 +754,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -779,7 +779,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Lost_Cancelled_2017_All</report>
+            <report>EMEA_RSG_Champions/UK_Lost_Cancelled_2017_All</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>Lost/Cancelled - All - 2017</title>
         </components>
@@ -793,7 +793,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -818,7 +818,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>15</maxValuesDisplayed>
-            <report>EMEA_SF_Champions/UK_Lost_Cancelled_2017_by_name1</report>
+            <report>EMEA_RSG_Champions/UK_Lost_Cancelled_2017_by_name1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>Lost/Cancelled by name</title>
         </components>
@@ -833,7 +833,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -842,7 +842,7 @@
             <expandOthers>false</expandOthers>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
-            <report>EMEA_SF_Champions/UK_Past_due1</report>
+            <report>EMEA_RSG_Champions/UK_Past_due1</report>
             <showPercentage>false</showPercentage>
             <showPicturesOnCharts>false</showPicturesOnCharts>
             <showValues>false</showValues>
@@ -861,7 +861,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -891,7 +891,7 @@
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-            <report>EMEA_SF_Champions/UK_Top_Pending_2017_No_BU1</report>
+            <report>EMEA_RSG_Champions/UK_Top_Pending_2017_No_BU1</report>
             <showPicturesOnTables>false</showPicturesOnTables>
             <title>Opportunities with no Business Unit</title>
         </components>

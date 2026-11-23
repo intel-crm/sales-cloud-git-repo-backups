@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DebugLevel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apexCode>DEBUG</apexCode>
+    <apexProfiling>DEBUG</apexProfiling>
+    <callout>DEBUG</callout>
+    <database>DEBUG</database>
+    <label>ASIDELog</label>
+    <system>DEBUG</system>
+    <validation>DEBUG</validation>
+    <visualforce>DEBUG</visualforce>
+    <wave>INFO</wave>
+    <workflow>DEBUG</workflow>
+</DebugLevel>

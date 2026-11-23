@@ -1,0 +1,50 @@
+{
+  "id" : "eacf6f2e-502f-402f-912a-b5565077d8f3",
+  "mobilePublisherAppUpdateConfig" : {
+    "forceAppUpdate" : false,
+    "enableAppUpdate" : false,
+    "minVersion" : {
+      "ios" : {
+        "version" : "10.0",
+        "url" : "https://apps.apple.com/us"
+      },
+      "android" : {
+        "version" : "10.1",
+        "url" : "https://play.google.com/store"
+      }
+    }
+  },
+  "nativeMobileNavConfig" : {
+    "showBackButton" : true,
+    "showHamburgerMenuWithBackButton" : false
+  },
+  "nativeTabMenu" : {
+    "branding" : {
+      "iconTintColorUnselected" : "#C9C5C5",
+      "barTintColor" : "#FFFFFF"
+    },
+    "menuItems" : [ {
+      "name" : "Home",
+      "targetUrl" : "/",
+      "iconAsset" : "slds-icon:home"
+    }, {
+      "name" : "Settings",
+      "targetUrl" : "/settings/home",
+      "iconAsset" : "slds-icon:user"
+    }, {
+      "name" : "Home",
+      "targetUrl" : "/",
+      "iconAsset" : "slds-icon:home"
+    }, {
+      "name" : "Home",
+      "targetUrl" : "/",
+      "iconAsset" : "slds-icon:home"
+    }, {
+      "name" : "Settings",
+      "targetUrl" : "/settings/home",
+      "iconAsset" : "slds-icon:user"
+    } ]
+  },
+  "showHamburgerMenu" : true,
+  "type" : "nativeConfig"
+}

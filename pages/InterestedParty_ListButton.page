@@ -1,0 +1,12 @@
+<apex:page standardController="Core_IPS_Case_Interested_Party__c" extensions="Core_IPS_Interested_Party_Controller" recordSetVar="parties">   
+    <script>
+    var csId = '{! CaseId}';
+    window.onload = function() {
+        if (("{!$Profile.Name}" == "{!$Label.Core_IPS_Partner_AE_ProfileName}")) {
+            window.location.href = "/IPS/Core_IPS_Interested_Party_Internal?id="+csId;
+        } else {
+            window.location.href = '/apex/Core_IPS_Interested_Party_Internal?id='+csId;
+        }
+    }
+    </script>
+</apex:page>

@@ -180,14 +180,13 @@
     <label>BES Inbound Message</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
         <columns>Core_IPS_Inbound_Message_ID__c</columns>
+        <columns>NAME</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>HSD IN-{0}</displayFormat>
@@ -197,8 +196,8 @@
     </nameField>
     <pluralLabel>BES Inbound Messages</pluralLabel>
     <searchLayouts>
-        <searchResultsAdditionalFields>Core_IPS_Inbound_Message_ID__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_BES_Outbound__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Inbound_Message_ID__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>sumukh.c.m@gmail.com</email>
+    <name>IPS-TEST-PAK</name>
+    <queueMembers>
+        <users>
+            <user>11725016@intel.com.crm</user>
+            <user>10672820@intel.com.crm</user>
+            <user>11962478@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

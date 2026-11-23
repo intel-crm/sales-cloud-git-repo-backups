@@ -31,6 +31,9 @@
         <field>Case$Core_IPS_Case_Owner_Email__c</field>
     </columns>
     <columns>
+        <field>Case$Case_Co_Owner_Secondary__c</field>
+    </columns>
+    <columns>
         <field>Case$Core_Case_Co_Owner__c</field>
     </columns>
     <columns>
@@ -127,6 +130,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Case$CreatedDate</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

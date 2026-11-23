@@ -83,6 +83,7 @@
         <value>1</value>
     </params>
     <reportType>LeadActivity</reportType>
+    <roleHierarchyFilter>EMP_11309129_Tsunehisa_Aoki</roleHierarchyFilter>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>

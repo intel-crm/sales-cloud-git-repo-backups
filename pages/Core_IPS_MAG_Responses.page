@@ -11,7 +11,7 @@
     <apex:includeLightning />
     <div id="LightningComponentid"></div>
     <script>
-        var uiTheme = "{!$User.UIThemeDisplayed}";
+        var uiTheme = "{!JSENCODE($User.UIThemeDisplayed)}";
    
         if(uiTheme == 'Theme4d'|| uiTheme == 'Theme4u'){ 
            

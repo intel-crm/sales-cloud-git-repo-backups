@@ -617,6 +617,9 @@
         <field>Opportunity.Core_Lead_Notes__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_LOEM__c</field>
     </columns>
     <columns>
@@ -1163,6 +1166,9 @@
         <field>Account.Core_Lead_Sales_Segment__c</field>
     </columns>
     <columns>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_MAG_Value__c</field>
     </columns>
     <columns>
@@ -1322,10 +1328,10 @@
         <field>OpportunityLineItem.Core_Approved_Total_Price__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Claim_Date__c</field>

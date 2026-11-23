@@ -15,11 +15,15 @@ public with sharing class Core_IPS_Accept_Part_Support_Controller {
     
     public PageReference updateOwner(){
         PageReference requestPage=null;
-        //Added for testing Start
+        //Added for testing Start 
         PermissionSet  pset=[select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set']; //IPS Permission Set  //'DDR Permission Set'
-         List<PermissionSetAssignment> lpermission=[select id,PermissionSetId from PermissionSetAssignment where AssigneeId =:userinfo.getuserId()  and PermissionSetId =:pset.id];//0PSo0000000JnTP  //'0PS3F0000004ENc'
+        List<PermissionSetAssignment> lpermission=[select id,PermissionSetId from PermissionSetAssignment where AssigneeId =:userinfo.getuserId()  and PermissionSetId =:pset.id];//0PSo0000000JnTP  //'0PS3F0000004ENc'
+         
          if(lpermission.size()>0){
-             cs.Core_IPS_Partner_Sup_Owner__c =userinfo.getuserId();
+            /*US1021248 - 05/25/2021 - Vishal - FLS Create Check for security vulnerability --*/
+            if (Schema.sObjectType.Case.fields.Core_IPS_Partner_Sup_Owner__c.isUpdateable()) {
+                cs.Core_IPS_Partner_Sup_Owner__c =userinfo.getuserId();
+             }
              update cs;
              ApexPages.currentPage().getParameters().put('id',cs.id);
           }

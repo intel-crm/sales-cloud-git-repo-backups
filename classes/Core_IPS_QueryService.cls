@@ -12,21 +12,9 @@ public without sharing class Core_IPS_QueryService {
             Database.queryWithBinds(query, parameter, AccessLevel.SYSTEM_MODE)
         );
     }
-    public static SObject querySingleRecord(String query, Map<String, Object> params) {
-        List<SObject> rows = queryRecords(query, params);
-        return (rows != null && !rows.isEmpty()) ? rows[0] : null;
-    }
     // Wrapper for dynamic SOQL
     public static List<SObject> executeDynamicQuery(String queryString) {
-       if (String.isBlank(queryString)) {
-            return new List<SObject>();
-        }
-        try {
-            return Database.query(queryString, AccessLevel.SYSTEM_MODE);
-        } catch (Exception e) {
-            System.debug('ERROR: ' + e.getMessage());
-            return new List<SObject>();
-        }
+        return Database.query(queryString, AccessLevel.SYSTEM_MODE);
     }
     
     // Wrapper for SOSL (No SYSTEM_MODE API exists)

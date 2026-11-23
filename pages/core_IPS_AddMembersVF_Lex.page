@@ -1,0 +1,14 @@
+<apex:page standardController="Core_IPS_Project__c">
+    <apex:includeLightning />
+    <div id="LightningComponentid"/>
+    <script>
+    $Lightning.use("c:core_IPS_callAddMembers_Lex", function() {
+                $Lightning.createComponent("c:core_IPS_AddMembers_Lex",
+                                           { 
+                                               recordId : "{!$CurrentPage.parameters.id}",
+                                               isLightningMode : "{!CONTAINS($CurrentPage.URL, 'lightning.force.com')}"
+                                           },
+                                           
+            });
+    </script>
+</apex:page>

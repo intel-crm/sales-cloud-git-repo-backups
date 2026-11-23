@@ -259,7 +259,8 @@ webservice static String reProcessRecords(Id[] logEntries) {
                csCommIds = [SELECT id, Core_Promote_Status__c from Core_IPS_Case_Comments__c WHERE ID IN :caseCommIDs AND Core_Promote_Status__c = 'Failed'];  
            }
         //Filter out the Case comment objects which are not valid and update the status for only valid ones. Update the log entries for the attachment proomote failure       
-          for(Core_IPS_Case_Comments__c csComm:csCommIds)
+         system.debug('csCommIds'+csCommIds);
+           for(Core_IPS_Case_Comments__c csComm:csCommIds)
           {
               csComm.Core_Promote_Status__c = 'In Progress';
               updateCaseCommMapIDs.put(csComm.Id, csComm);       
@@ -290,6 +291,7 @@ webservice static String reProcessRecords(Id[] logEntries) {
                csAttIds = [SELECT id, Core_Promote_Status__c from Core_IPS_Case_Attachments__c WHERE ID IN :caseAttIDs AND Core_Promote_Status__c = 'Failed'];  
            }
            //Filter out the Att objects which are not valid and update the status for only valid ones. Update the log entries for the attachment proomote failure       
+           system.debug('csAttIds'+csAttIds);
            for(Core_IPS_Case_Attachments__c csAtt:csAttIds)
            {
                csAtt.Core_Promote_Status__c = 'In Progress';

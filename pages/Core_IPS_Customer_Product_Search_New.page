@@ -1,0 +1,1106 @@
+<apex:page standardController="case" extensions="Core_IPS_Customer_Product_Search_New" action="{!PageInit}" cache="false"   >
+    <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
+    <apex:includeScript value="{!Urlfor($Resource.Core_IPS_DataTable,'jquery-ui.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery-ui.css')}" />
+    <style>
+    .errorM4 .msgIcon, .errorSmall {
+        background-image: url(/img/samples/flag_red.gif) !important;
+    }
+    
+    .myCustomMessage .message {
+        background: none  !important;  
+        border: none !important;
+    }
+    </style>
+    <style>
+    #spinner{
+        display: none;
+        width:200px;
+        height: 50px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        text-align:center;
+        padding:10px;
+        font:normal 16px Tahoma, Geneva, sans-serif;
+        margin-left: -100px;
+        margin-top: -100px;
+        z-index:2;
+        overflow: auto;
+        border:1px solid #CCC;
+        background-color:white;
+        z-index:100;
+        padding:5px;
+        line-height:20px;
+     }
+     #opaque {
+         position: fixed;
+         top: 0px;
+         left: 0px;
+         width: 100%;
+         height: 100%;
+         z-index: 1;
+         display: none;
+         background-color: gray;
+         filter: alpha(opacity=30);
+         opacity: 0.3;
+         -moz-opacity:0.3;
+         -khtml-opacity:0.3
+     }
+     * html #opaque {
+         position: absolute;
+     }
+    </style>
+    <apex:stylesheet value="{!URLFOR($Resource.customCSS, 'customCSS.css')}"/>
+    <script>        
+    var newWin=null;
+    // enterPress function prevents the Default loading whenever user press Enter Key when lookup Text field is on-focused - Syed
+    function enterPress(event, name, id, relatedId, object,relatedId2,pathName){
+        if(event.keyCode==13){
+            // for other browsers
+            if(event.preventDefault){ 
+                event.preventDefault();
+            }
+            // for IE Browser 
+            else{
+                event.returnValue=false;
+            }
+            openLookupPopup(name, id, relatedId, object,relatedId2,pathName);
+        }      
+    }
+   
+   function callback(item1,item2)
+      {
+        passingProdInfo(item1,item2);    
+       // panelrender('Asset');
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + 'callback'+item1+item2);
+      }
+   
+   // Dont need the below onKeyPress function, if is the replica of openLookupPopup function - Syed
+   function onKeyPress(name, id, relatedId, object,relatedId2,pathName){   
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + 'pooja');    
+        if(event.keyCode == 13){
+            var url;
+            if(relatedId!=null && relatedId2!=null)
+                url=pathName+"/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId=" + document.getElementById(relatedId).value+ "&object=" +object+"&relatedId2="+document.getElementById(relatedId2).value+"&queryParam="+document.getElementById(name).value;
+            else if(relatedId!=null && relatedId!='NA')
+                url=pathName+"/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId=" + document.getElementById(relatedId).value+ "&object=" +object+"&queryParam="+document.getElementById(name).value;                    
+            else
+                url=pathName+"/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&object=" +object+"&queryParam="+document.getElementById(name).value;                    
+            newWin=window.open(url, 'Popup','height=500,width=600,left=100,top=100,resizable=no,scrollbars=yes,toolbar=no,status=no');
+            if (window.focus) 
+            {
+                window.opener.blur();
+                newWin.focus();
+                //alert(newWin.focus);
+            }   
+            return false;
+        }
+        return false;
+   }
+   
+    function openLookupPopup(name, id, relatedId, object,relatedId2,pathName)
+    {
+      console.log('relatedId===' + relatedId);
+      console.log(relatedId + '!=' + null +'&&' + relatedId + '!=' + '\'NA\'');
+       console.log('relatedId2===' + relatedId2);
+        if(relatedId=='undefined')
+        {
+          //relatedId ='NA';
+        }
+        var url;
+        if(relatedId!=null && relatedId2!=null)
+        {
+            url=pathName+"/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId=" + document.getElementById(relatedId).value+ "&object=" +object+"&relatedId2="+document.getElementById(relatedId2).value+'&queryParam='+document.getElementById(name).value;
+            console.log('aaaaaaaaaaaaaaaaaaaa');
+        }
+        else if(relatedId!=null && relatedId!='NA')
+        {
+            url=pathName+"/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId=" + document.getElementById(relatedId).value+ "&object=" +object+'&queryParam='+document.getElementById(name).value;                    
+            console.log('bbbbbbbbbbbbbbbbbbb');
+        }
+        else
+        {
+            url=pathName+"/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&object=" +object+'&queryParam='+document.getElementById(name).value;     
+            console.log('ccccccccccccccccccccccccccc');         
+        }
+console.log(url);           
+        newWin=window.open(url, 'Popup','height=500,width=600,left=100,top=100,resizable=no,scrollbars=yes,toolbar=no,status=no');
+        if (window.focus) 
+        {
+            newWin.focus();
+        }
+            
+        return false;
+    }
+                  
+    function closeLookupPopup()
+    {
+       if (null!=newWin)
+       {
+          newWin.close();
+       }  
+    }
+    
+    function updProjListBasedOnSelectedProd(id){
+        
+        if(id.substring(0,3) == '02i'){
+        projRender(id);
+        }
+        
+    }
+    
+    function callParentPage(name){
+         panelrender(name);
+    }
+    
+    // Lookup is not closing because the below method is being invoked by the Lookup VF Page function
+    function callParentPageForGECFields(id){
+    }   
+    // A $( document ).ready() block.
+    $( document ).ready(function() {
+            console.log( "ready!" );
+            
+            
+            //console.log($("label[id*='selectProduct'").val());
+    }); 
+    
+    (function($) {
+        $.fn.extend( {
+            limiter: function(limit, remaining, total) {
+                $(this).on("keydown keyup focus", function() {
+                    setCount(this, remaining, total);
+                });
+                function setCount(src, remaining, total) {
+                    var charsCurrent = src.value.length;
+                    var chars = 0;
+                    $(".countTarget").each(function(index, value){chars += $(value).val().length});
+                    if (chars > limit) {
+                        src.value = src.value.substr(0, (limit - chars + charsCurrent));
+                        chars = limit;
+                    }
+                    //remaining.html((limit - chars)+' Out of');
+                    if(chars > 249)
+                    {
+                       //remaining.attr('style','color:red;');
+                       total.attr('style','color:red;');
+                    }
+                    else
+                    {
+                     //remaining.attr('style','');
+                     total.attr('style','');
+
+                    }
+                    total.html(chars);
+                    $("#showExample").html(' Out of '+limit+' entered');    
+                }
+                //setCount($(this)[0], elem);
+            }
+        });
+    })(jQuery);
+    $(document).ready(
+        function()
+        {
+            var remaining = $("#charCountRemaining");
+            var total = $("#charCountTotal");
+            var showExamples = $("#showExample");
+            $(".countTarget").limiter(255, remaining, total);
+        }
+    );
+    function showSpinner()
+    {
+       document.getElementById('opaque').style.display='block';
+       var popUp = document.getElementById('spinner');
+      
+       popUp.style.display = 'block';    
+    }
+    function UpdateProjectSection(itm)
+    {
+     
+        if(itm.value != 'NA' && itm.value !='')
+        {
+            $("div[id*=productPanel2]").find(".pbSubsection").html('');
+            $("div[id*=productPanel2]").find(".pbSubsection").append("<span id='spanMoreData'>Click <a href='#' style='color:blue' onclick='CallRemoteAction(false);return false;'>here</a> for the list of available products in the selected project</span>");
+            
+        }
+        else if(itm.value =='')
+        {
+            $("div[id*=productPanel2]").find(".pbSubsection").html('');
+            $("div[id*=productPanel2]").find(".pbSubsection").append("<span id='spanMoreData'>Please type in the product name in the \"Select Product\" field and search for the product. <span>");
+        }
+        else
+        {
+           $("div[id*=productPanel2]").find(".pbSubsection").find("span[id='spanMoreData']").remove();
+        }
+        clearProject();
+    }
+    
+    function RefreshData(itm)
+    {
+     
+      clearProduct();
+      
+      
+    }
+    function clearDiv()
+    {
+         $("div[id*=productPanel2]").find(".pbSubsection").html('');
+    }
+    function updateProjectSectionAfterProductRefresh()
+    {
+        //alert('>>>>>>>>>>>>>>>>');
+        var itm ='';
+        $(".helpOrb").css('position','static');
+        //console.log(itm);
+        $(".targetCustProject option").each(function(){
+        var  attr = $(this).attr("selected");
+        
+        if (typeof attr !== typeof undefined && attr !== false) {
+         itm = $(this).val();
+         
+        
+}
+ 
+        
+        });
+        //console.functionlog(itm.value);
+        $("input[id*='targetProdCustomer']").focus();
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>{!selectedProject}");
+        if(itm.length > 2)
+        {
+            $("div[id*=productPanel2]").find(".pbSubsection").html('');
+            $("div[id*=productPanel2]").find(".pbSubsection").append("<span id='spanMoreData'>Click <a href='#' style='color:blue' onclick='CallRemoteAction(false);return false;'>here</a> for the list of available products in the selected project</span>");
+            
+        }
+        else if(itm=='')
+        {
+            $("div[id*=productPanel2]").find(".pbSubsection").html('');
+            $("div[id*=productPanel2]").find(".pbSubsection").append("<span id='spanMoreData'>Please type in the product name in the \"Select Product\" field and search for the product. <span>");
+        }
+        else if(itm=='NA')
+        {
+           $("div[id*=productPanel2]").find(".pbSubsection").find("span[id='spanMoreData']").remove();
+        }
+    }
+    
+    function fnConfirmBox()
+    {
+       $( "#dialog-confirm" ).dialog({
+          resizable: false,
+          height:170,
+          modal: true,
+          buttons: {
+            "Ok": function() {
+              ConfirmBox();
+              $( this ).dialog( "close" );
+            },
+            Cancel: function() {
+              $( this ).dialog( "close" );
+            }
+          }
+        });  
+    }
+    
+    </script>
+    
+    <div id="dialog-confirm" title="Confirmation:" style="display:none;">
+      <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>You will lose all your changes. Are you sure you want to Cancel?</p>
+    </div>
+    
+    <div id="opaque"/>
+   <div id="spinner">
+        <p align="center" style='{font-family:"Arial", Helvetica, sans-serif; font-size:20px;}'><apex:image value="/img/loading.gif"/>&nbsp;Please wait</p>
+   </div>
+    <apex:form id="fm" rendered="{!if(OR(AND(mode ='edit',isEditable),mode!='edit'),true,false)}"  >   
+       <apex:actionstatus id="status1" >
+            <apex:facet name="start">
+            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+            height: 100%;opacity:0.65;width:100%;">
+            <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+            <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+            <span class="waitingDescription">Please Wait...</span>
+            </div>
+            </div>
+            </apex:facet>
+           
+        </apex:actionstatus> 
+       <apex:actionFunction name="BindEvent" action="{!BindEvent}" reRender="subCategory,environment1,casesubcatId,ProductDetails" status="status1"></apex:actionFunction> 
+       <apex:actionFunction name="projRender" action="{!showProjListBasedOnSelectedProd}" reRender="cdetails" status="status1">
+        <apex:param name="paramId" value=""/>
+        <!--<apex:param name="paramReqId" value=""/>-->
+        </apex:actionFunction>
+       <apex:actionFunction name="panelrender" action="{!LookupChange}" reRender="caseInformation,ProductDetails,environment1,errors">
+            <apex:param assignTo="{!objectSelected}" name="firstparam" value=""/>
+        </apex:actionFunction>
+       <apex:actionFunction name="passingProdInfo" action="{!productChanges}" reRender="targetProdCustomer,targetCustProject,targetProdIdCustomer,ProductDetails,environment1" oncomplete="Init();clearDiv();" >
+         <apex:param name="firstparameter" value=""/>
+         <apex:param name="secparameter" value=""/>
+      </apex:actionFunction>
+       <apex:actionFunction name="clearProject" action="{!clearProject}" reRender="targetProdCustomer,targetProdIdCustomer,ProjectComp1,projectPanel,ProductDetails,environment1" />
+       <apex:actionFunction name="clearProduct" action="{!clearProduct}" reRender="targetProdCustomer,targetProdIdCustomer,ProductDetails,environment1,targetCustProjectPanel" oncomplete="Init();updateProjectSectionAfterProductRefresh();"/>
+       <apex:actionFunction name="ConfirmBox" action="{!CancelAction}"/>
+       <apex:pageblock id="pblock"  rendered="{!!(Iframe || back)}">
+        <apex:pageMessages id="errors"></apex:pageMessages>          
+          <apex:outputPanel >
+          <apex:pageBlockSection title="GEC Information" rendered="{!showGECFields}" columns="1">
+          
+       
+        <apex:pageBlockSectionItem >
+          <apex:panelGrid columns="2">
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_One}"/>
+          <apex:outputPanel styleClass="requiredInput" layout="block">
+          <apex:outputPanel styleClass="requiredBlock" layout="block" />
+          <apex:selectList id="Question1" value="{!GECAnswer1}" size="1">
+            <apex:selectOptions value="{!AnswerOptions}"/>
+          </apex:selectList>
+          </apex:outputPanel>
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_One_Addl_Info}" styleClass="warning" />
+          </apex:panelGrid>
+          
+        </apex:pageBlockSectionItem>
+           <apex:pageBlockSectionItem >
+          <apex:panelGrid columns="2">
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_Two}"/>
+          <apex:outputPanel styleClass="requiredInput" layout="block">
+          <apex:outputPanel styleClass="requiredBlock" layout="block" />
+          <apex:selectList id="Question2" value="{!GECAnswer2}" size="1">
+            <apex:selectOptions value="{!AnswerOptions}"/>
+          </apex:selectList>
+          </apex:outputPanel>
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_Two_Addl_Info}" styleClass="warning" />
+          
+          </apex:panelGrid>
+    
+            
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+           <apex:panelGrid columns="2" style="text-align:right">
+        
+          <apex:outputLabel value="Country: "/>
+          <apex:outputPanel styleClass="requiredInput" layout="block">
+          <apex:outputPanel styleClass="requiredBlock" layout="block" />
+          <apex:selectList value="{!GECAnswer3}" size="1">
+             <apex:selectOptions value="{!CountriesOptions}" />
+          </apex:selectList>
+          </apex:outputPanel>
+        
+          </apex:panelGrid>
+          </apex:pageBlockSectionItem>
+ 
+     
+           </apex:pageBlockSection>
+           
+           
+           
+           </apex:outputPanel>
+           <apex:outputPanel id="cdetails">
+           
+           <apex:pageblockSection columns="1" title="Case Information" rendered="{!caseInformationReadOnly}">
+              <apex:pageblockSectionItem >
+                  
+                  <apex:outputLabel value="Project: "/>
+                  <apex:outputText value="{!selectedProjectName}"/>
+                  
+              </apex:pageBlockSectionItem>
+              <apex:pageblockSectionItem >
+              
+                  <apex:outputLabel value="Product: " style="font-weight: bold;"/>
+                  <apex:outputText value="{!selectedProduct}"/>                      
+               
+              </apex:pageBlockSectionItem>
+             
+          </apex:pageblockSection>
+         <!-- {!If(HasProject,2,1)}-->
+          <apex:pageblockSection columns="1" title="Case Information" rendered="{!NOT(caseInformationReadOnly)}" >
+                  <apex:inputText value="{!subject}" label="Subject"/>
+             
+              <apex:pageblockSectionItem id="projectPanel" rendered="{!HasProject}">
+                  
+                  <apex:outputLabel value="Select Project:  " id="SelectProject" />
+                   <apex:outputPanel styleClass="requiredInput" id="targetCustProjectPanel" layout="block"> 
+                  <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                  <apex:actionRegion >
+                      <apex:selectList id="targetCustProject" styleclass="targetCustProject" value="{!selectedProject}" size="1" onchange="UpdateProjectSection(this);">                             
+                          <apex:selectOptions value="{!projectList}"/>
+                      </apex:selectList>
+                  </apex:actionRegion>
+                  <span class="helpButton">
+                        <img src="/s.gif" class="helpOrb" title="Projects enable different teams, often from different companies, to collaborate on resolving cases. If this case is related to one of your projects, select the project name from the dropdown list"/>                        
+                  </span>
+                  </apex:outputPanel>
+                  
+              </apex:pageblockSectionItem>
+              <apex:pageBlockSectionItem id="productPanel1">
+              
+                  <apex:outputLabel value="Search Product: "/>
+                  
+                  <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                 <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                 
+                  <apex:inputText title="{!selectedProduct}" value="{!selectedProduct}" styleclass="targetProdCustomer" html-autocomplete="off" html-placeholder="Search Product..." id="targetProdCustomer" disabled="false">
+                  </apex:inputText> 
+                  <span class="helpButton">
+                        <img src="/s.gif" class="helpOrb" title="Please type in at least 3 chars of the product name"/>                        
+                  </span>
+                </apex:outputPanel> 
+                                               
+                
+              </apex:pageBlockSectionItem>
+             <apex:inputHidden value="{!selectedProductId}" id="targetProdIdCustomer" />
+             <apex:pageBlockSectionItem id="productPanel45">
+                  <!--<apex:inputText value="{!selectedProduct}" id="ProjectData"  />-->
+                  <c:Core_IPS_ProjectComponent id="ProjectComp1" autocomplete_textbox="targetProdCustomer" object_name="Asset" fieldSet_Name="Core_IPS_Global_Search_Field_Result" related_Id="{!selectedProject}" Section_title="productPanel2" hiddenProductIdField="targetProdIdCustomer"></c:Core_IPS_ProjectComponent>
+             </apex:pageBlockSectionItem>                 
+          </apex:pageblockSection>
+          </apex:outputPanel> 
+          
+          <apex:pageBlockSection id="productPanel2" columns="1" title="List of products" rendered="{!if(mode=='edit',false,true)}">
+         </apex:pageBlockSection>
+          <!---Customer Case Details FieldSet-->
+            <apex:pageblockSection title="Case Details" columns="1" rendered="{!NOT(isAgent)}" id="caseCustomerDetail">            
+                <apex:repeat value="{!$ObjectType.Case.FieldSets.Core_Customer_Case_Fields}" var="f" >
+                    <apex:pageBlockSectionItem rendered="{!if(OR(f.label=='Subject',f.label=='Severity Reason'),false,true)}" helpText="{!if(f.label='Case Description',$ObjectType.Case.fields[f].InlineHelpText,'')}" >
+                      <apex:outputLabel value="{!f.label}"/>
+                        <apex:outputPanel > 
+                            <div Class="requiredInput">
+                            <div Class="requiredBlock"></div>
+                        <!--<apex:inputtextarea id="textareaDescription" value="{!cs[f.fieldPath]}" richText="true" style="width:500%" rendered="{!if(f.label!='Severity',true,false)}"/>-->    
+                        <apex:inputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label!='Severity',true,false)}"/>
+                        <apex:inputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label=='Severity',true,false)}" id="PriorityId">
+                            <apex:actionSupport event="onchange" rerender="showPriorityReason" action="{!DisplayPriorityReason}"/>
+                        </apex:inputField>
+                            </div>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem> 
+                   
+                <!--<apex:pageBlockSectionItem id="ReasonId" rendered="{!if(AND(f.label=='Severity Reason',DisplayPriorityReason==true),true,false)}">
+                       <apex:outputLabel value="{!f.label}"/>
+                        <apex:outputPanel > 
+                            <div Class="requiredInput">
+                            <div Class="requiredBlock"/>
+                        <apex:inputField value="{!cs[f.fieldPath]}"/>                        
+                        </div>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>-->
+                    <apex:pageBlockSectionItem rendered="{!if(f.label=='Subject',true,false)}">
+                        <apex:outputLabel value="{!f.label}"/>
+                         <apex:outputPanel styleClass="requiredInput"  layout="block"> 
+                         <apex:outputPanel styleClass="requiredBlock"  rendered="{!if(mode=='edit',false,true)}" layout="block"/>
+                       <!-- /////// Modified below line for US61133/////-->
+                        <apex:inputField value="{!cs[f.fieldPath]}" style="width:99%" styleClass="countTarget"/>
+                        <span id="charCountRemaining"/>
+                        <span id="charCountTotal"/>
+                        <span id="showExample"/>
+                        <apex:outputText value="{!cs[f.fieldPath]}" style="width:60%" rendered="{!if(mode=='edit',false,true)}"/>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:repeat>
+                </apex:pageblocksection>
+                <apex:outputpanel id="showPriorityReason">
+                <apex:pageblockSection columns="1" rendered="{!if(DisplayPriorityReason==true,true,false)}">                
+                    <apex:pageBlockSectionItem helpText="{!$ObjectType.Case.fields.Core_Severity_Reason__c.InlineHelpText}">                
+                       <apex:outputLabel value="Severity Reason "/>
+                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                             <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                             <apex:inputField value="{!cs.Core_Severity_Reason__c}"/>                 
+                        </apex:outputPanel>                                           
+                    </apex:pageBlockSectionItem>                                                               
+                </apex:pageblockSection>
+                </apex:outputpanel>
+                <apex:pageblockSection columns="1" rendered="{!NOT(isAgent)}" id="caseCustomerDetail2">
+                <apex:repeat value="{!$ObjectType.Case.FieldSets.Customer_Case_Fields_Optional}" var="f">
+                    <apex:pageBlockSectionItem helptext="{!$ObjectType.Case.fields[f].InlineHelpText}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:inputField value="{!cs[f.fieldPath]}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:repeat>
+             </apex:pageblockSection>
+      
+       <apex:outputpanel id="ProductDetails"> 
+           <apex:pageblockSection title="Product/Project Info" columns="1" rendered="{!IF(AND(AND(selectedProductId != null,selectedProductId != ''),AND(categoryOptions!=null,categoryOptions.size>1)),TRUE,FALSE)}">
+                 
+    
+                 <apex:pageBlockSectionItem rendered="{!displayCategories}">
+                    <apex:outputLabel value="Case Category:" for="category" />
+                    <apex:actionRegion >
+                    <apex:outputPanel styleClass="requiredInput" rendered="{!categoryOptions.size>1}" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:selectList value="{!categorySelected}" size="1" id="category">
+                        <apex:selectOptions value="{!categoryOptions}"/> 
+                        <apex:actionSupport event="onchange" action="{!getEnvDetails}" reRender="none" status="status1" oncomplete="BindEvent();"/> 
+                    </apex:selectList> 
+                    </apex:outputPanel>                
+                    </apex:actionRegion>
+                 </apex:pageBlockSectionItem>
+             
+                <apex:pageBlockSectionItem rendered="{!displaySubCategories}">
+                    <apex:outputPanel id="casesubcatId">
+                    <apex:outputLabel value="Case Subcategory: " rendered="{!subCategoryOptions.SIZE>1}"/>                       
+                    </apex:outputPanel>        
+                            <apex:actionRegion >                               
+                                <apex:outputPanel id="subCategory">                                                                
+                                <apex:outputPanel styleClass="requiredInput" layout="block" rendered="{!AND(categoryOptions.size>1,subCategoryOptions.SIZE>1)}">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!subCategoryOptions.size>1}"/>
+                                    <apex:selectList value="{!subCategorySelected}" size="1">
+                                        <apex:selectOptions value="{!subCategoryOptions}"/>  
+                                        <apex:actionSupport event="onchange" action="{!getEnvironmentDets}" reRender="none" status="status1" oncomplete="BindEvent();"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:actionRegion>
+                    <!--</apex:outputPanel>-->
+                 </apex:pageBlockSectionItem>
+                 <apex:inputHidden value="{!selectedProductId}" id="targetProdId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                 <apex:inputHidden value="{!selectedContactId}" id="targetId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                  <apex:inputHidden value="{!selectedProjId}"   id="targetProjId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+             </apex:pageblockSection>
+         </apex:outputpanel>
+         <apex:outputPanel id="environment1">
+         
+          <!-- Added by Manoj as part of US60820 IPS Evolve-->
+         <apex:pageblockSection title="Environment Details" rendered="{!displayEnvDetails && (selectedProductId!=null ||selectedSAProductId!=null)}">
+                 <apex:repeat value="{!subCatenvDetList}" var="env" rendered="{!displayEnvDetails && subCategorySelected!=null}" id="EnvironmentDetails1">
+                     <apex:pageblockSectionItem id="section" rendered="{!if(env.type=='Text Area (5000)',false,true)}">
+                        <apex:outputLabel value="{!env.label}" rendered="{!if(env.type=='Text Area (5000)',false,true)}" escape="true"></apex:outputLabel>
+                        <apex:outputPanel id="panel">
+                            <apex:outputPanel rendered="{!if(env.type=='Text (255)',true,false)}" id="panel1">
+                                <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputText value="{!env.sPlaceHolder}" required="">
+                                        </apex:inputText>
+                                    </apex:outputPanel>
+                                <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                    <apex:inputText value="{!env.sPlaceHolder}"/>
+                                </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='Picklist', true,false)}">
+                            <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                   <apex:selectList value="{!env.selectedValue}" size="1" style="width:150px" id="targetId" onchange="changeSelection('{!$Component.targetId}')" >
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                <apex:selectList value="{!env.selectedValue}" size="1" style="width:150px" required="false">
+                                    <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='Multiselect Picklist', true,false)}">
+                            <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <!--<apex:selectList value="{!env.selectedValue}" size="3" required="true" multiselect="true">-->
+                                    <apex:selectList value="{!env.selectedMValue}" size="3" style="width:380px" multiselect="true">
+                                    
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                <apex:selectList value="{!env.selectedMValue}" size="3" style="width:380px" multiselect="true" required="false">
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='check',true,false)}">
+                            <apex:inputcheckbox value="{!env.cPlaceHolder}"/><br/>
+                        </apex:outputPanel>
+                        
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+               </apex:repeat>  
+       </apex:pageblockSection>
+       
+       <!--To display SubCategory Env Questions of Type Rich Text Area as part of US60820 IPS Evolve-->
+       <apex:pageblockSection title="Environment Details" showHeader="false" columns="1" rendered="{!displayEnvDetails && (selectedProductId!=null ||selectedSAProductId!=null)}">
+                 <apex:repeat value="{!subCatenvDetList}" var="env" rendered="{!displayEnvDetails && subCategorySelected!=null && subCategorySelected!=''}" id="EnvironmentDetails">
+                     <apex:pageblockSectionItem id="section" rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+                        <apex:outputLabel value="{!env.label}" escape="true" rendered="{!if(env.type=='Text Area (5000)',true,false)}" ></apex:outputLabel>
+                        <apex:outputPanel id="panel">
+                        <apex:outputPanel rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+                           <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                    <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}"/><br/>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                    <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}" required="false"/><br/>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+               </apex:repeat>  
+       </apex:pageblockSection>
+         <!-- Ended By Manoj-->
+         
+             <apex:pageblockSection title="Environment Details" showHeader="false" rendered="{!displayEnvDetails && (selectedProductId!=null ||selectedSAProductId!=null)}">
+                 <apex:repeat value="{!envDetails}" var="env" rendered="{!displayEnvDetails}" id="EnvironmentDetails">
+                     <apex:pageblockSectionItem id="section" rendered="{!if(env.type=='Text Area (5000)',false,true)}">
+                        <apex:outputLabel value="{!env.label}" rendered="{!if(env.type=='Text Area (5000)',false,true)}" escape="true"></apex:outputLabel>
+                        <apex:outputPanel id="panel">
+                            <apex:outputPanel rendered="{!if(env.type=='Text (255)',true,false)}" id="panel1">
+                                <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputText value="{!env.sPlaceHolder}" required="">
+                                      <!--  <apex:inputText value="{!env.sPlaceHolder}" required="true">-->
+                                        </apex:inputText>
+                                    </apex:outputPanel>
+                                <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                    <apex:inputText value="{!env.sPlaceHolder}"/>
+                                </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='Picklist', true,false)}">
+                            <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                   <apex:selectList value="{!env.selectedValue}" size="1" style="width:150px" id="targetId" onchange="changeSelection('{!$Component.targetId}')" >
+                                   <!--<apex:selectList value="{!env.selectedValue}" size="1" required="true" id="targetId" onchange="changeSelection('{!$Component.targetId}')" >-->
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                <apex:selectList value="{!env.selectedValue}" size="1" style="width:150px" required="false">
+                                    <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='Multiselect Picklist', true,false)}">
+                            <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <!--<apex:selectList value="{!env.selectedValue}" size="3" required="true" multiselect="true">-->
+                                    <apex:selectList value="{!env.selectedMValue}" size="3" style="width:380px" multiselect="true">
+                                    
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                <apex:selectList value="{!env.selectedMValue}" size="3" style="width:380px" multiselect="true" required="false">
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='check',true,false)}">
+                            <apex:inputcheckbox value="{!env.cPlaceHolder}"/><br/>
+                        </apex:outputPanel>
+                        
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+               </apex:repeat>  
+       </apex:pageblockSection>
+       <apex:pageblockSection title="Environment Details" showHeader="false" columns="1" rendered="{!displayEnvDetails && (selectedProductId!=null ||selectedSAProductId!=null)}">
+                 <apex:repeat value="{!envDetails}" var="env" rendered="{!displayEnvDetails}" id="EnvironmentDetails">
+                     <apex:pageblockSectionItem id="section" rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+                        <apex:outputLabel value="{!env.label}" escape="true" rendered="{!if(env.type=='Text Area (5000)',true,false)}" ></apex:outputLabel>
+                        <apex:outputPanel id="panel">
+                        <apex:outputPanel rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+                           <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                 <!--<apex:inputtextarea value="{!env.tPlaceHolder}" required="true"/><br/>-->
+                                    <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}"/><br/>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                    <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}" required="false"/><br/>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+               </apex:repeat>  
+       </apex:pageblockSection>
+    </apex:outputPanel>   
+        <apex:pageBlockButtons >
+            <apex:commandButton value="{!$Label.Next}" action="{!NextPage}" />
+        </apex:pageBlockButtons>
+   
+      </apex:pageblock>
+      <apex:pageblock id="iframeProdSearch"  rendered="{!(Iframe)}">
+          <apex:pageBlockSection columns="1" >
+                <apex:iframe src="{!productUrl}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+             <apex:commandButton action="{!createCasePage}" value="{!$Label.Create_Case}" />
+             <apex:commandButton action="{!backButton}" value="{!$Label.Back_Button}"/>            
+         </apex:pageBlockButtons>
+      </apex:pageBlock>
+      <apex:pageblock id="casecreate" rendered="{!!(Iframe || isCreate)}">
+        <apex:pageMessages id="errors"></apex:pageMessages>          
+          <apex:outputPanel >
+          <apex:pageBlockSection title="GEC Information" rendered="{!showGECFields}" columns="1">
+          
+       
+        <apex:pageBlockSectionItem >
+          <apex:panelGrid columns="2">
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_One}"/>
+          <apex:outputPanel styleClass="requiredInput" layout="block">
+          <apex:outputPanel styleClass="requiredBlock" layout="block" />
+          <apex:selectList id="Question1" value="{!GECAnswer1}" size="1">
+            <apex:selectOptions value="{!AnswerOptions}"/>
+          </apex:selectList>
+          </apex:outputPanel>
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_One_Addl_Info}" styleClass="warning" />
+          </apex:panelGrid>
+          
+        </apex:pageBlockSectionItem>
+           <apex:pageBlockSectionItem >
+          <apex:panelGrid columns="2">
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_Two}"/>
+          <apex:outputPanel styleClass="requiredInput" layout="block">
+          <apex:outputPanel styleClass="requiredBlock" layout="block" />
+          <apex:selectList id="Question2" value="{!GECAnswer2}" size="1">
+            <apex:selectOptions value="{!AnswerOptions}"/>
+          </apex:selectList>
+          </apex:outputPanel>
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_Two_Addl_Info}" styleClass="warning" />
+          
+          </apex:panelGrid>
+    
+            
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+           <apex:panelGrid columns="2" style="text-align:right">
+        
+          <apex:outputLabel value="Country: "/>
+          <apex:outputPanel styleClass="requiredInput" layout="block">
+          <apex:outputPanel styleClass="requiredBlock" layout="block" />
+          <apex:selectList value="{!GECAnswer3}" size="1">
+             <apex:selectOptions value="{!CountriesOptions}" />
+          </apex:selectList>
+          </apex:outputPanel>
+        
+          </apex:panelGrid>
+          </apex:pageBlockSectionItem>
+ 
+     
+           </apex:pageBlockSection>
+           
+           
+           
+           </apex:outputPanel>
+           <apex:outputPanel id="cdetails">
+           
+           <apex:pageblockSection columns="1" title="Case Information" rendered="{!caseInformationReadOnly}">
+              <apex:pageblockSectionItem >
+                  
+                  <apex:outputLabel value="Project: "/>
+                  <apex:outputText value="{!selectedProjectName}"/>
+                  
+              </apex:pageBlockSectionItem>
+              <apex:pageblockSectionItem >
+              
+                  <apex:outputLabel value="Product: " style="font-weight: bold;"/>
+                  <apex:outputText value="{!selectedProduct}"/>                      
+               
+              </apex:pageBlockSectionItem>
+             
+          </apex:pageblockSection>
+         <!-- {!If(HasProject,2,1)}-->
+          <apex:pageblockSection columns="1" title="Case Information" rendered="{!NOT(caseInformationReadOnly)}" >
+              <apex:pageblockSectionItem id="projectPanel" rendered="{!HasProject}">
+                  
+                  <apex:outputLabel value="Select Project:  " id="SelectProject" />
+                   <apex:outputPanel styleClass="requiredInput" id="targetCustProjectPanel" layout="block"> 
+                  <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                  <apex:actionRegion >
+                      <apex:selectList id="targetCustProject" styleclass="targetCustProject" value="{!selectedProject}" size="1" onchange="UpdateProjectSection(this);">                             
+                          <apex:selectOptions value="{!projectList}"/>
+                      </apex:selectList>
+                  </apex:actionRegion>
+                  <span class="helpButton">
+                        <img src="/s.gif" class="helpOrb" title="Projects enable different teams, often from different companies, to collaborate on resolving cases. If this case is related to one of your projects, select the project name from the dropdown list"/>                        
+                  </span>
+                  </apex:outputPanel>
+                  
+              </apex:pageblockSectionItem>
+              <apex:pageBlockSectionItem id="productPanel1">
+             
+                  <apex:outputLabel value="Search Product: "/>
+                  
+                  <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                 <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                 
+                  <apex:inputText title="{!selectedProduct}" value="{!selectedProduct}" styleclass="targetProdCustomer" html-autocomplete="off" html-placeholder="Search Product..." id="targetProdCustomer" disabled="false">
+                  </apex:inputText> 
+                  <span class="helpButton">
+                        <img src="/s.gif" class="helpOrb" title="Please type in at least 3 chars of the product name"/>                        
+                  </span>
+                </apex:outputPanel> 
+                                               
+                
+              </apex:pageBlockSectionItem>
+             <apex:inputHidden value="{!selectedProductId}" id="targetProdIdCustomer" />
+             <apex:pageBlockSectionItem id="productPanel45">
+                  <!--<apex:inputText value="{!selectedProduct}" id="ProjectData"  />-->
+                  <c:Core_IPS_ProjectComponent id="ProjectComp1" autocomplete_textbox="targetProdCustomer" object_name="Asset" fieldSet_Name="Core_IPS_Global_Search_Field_Result" related_Id="{!selectedProject}" Section_title="productPanel2" hiddenProductIdField="targetProdIdCustomer"></c:Core_IPS_ProjectComponent>
+             </apex:pageBlockSectionItem>                 
+          </apex:pageblockSection>
+          </apex:outputPanel> 
+          
+          <apex:pageBlockSection id="productPanel2" columns="1" title="List of products" rendered="{!if(mode=='edit',false,true)}">
+         </apex:pageBlockSection>
+          <!---Customer Case Details FieldSet-->
+            <apex:pageblockSection title="Case Details" columns="1"  id="caseCustomerDetail">  <!--rendered="{!NOT(isAgent)}"-->          
+                <apex:repeat value="{!$ObjectType.Case.FieldSets.Core_Customer_Case_Fields}" var="f" >
+                    <apex:pageBlockSectionItem rendered="{!if(OR(f.label=='Subject',f.label=='Severity Reason'),false,true)}" helpText="{!if(f.label='Case Description',$ObjectType.Case.fields[f].InlineHelpText,'')}" >
+                      <apex:outputLabel value="{!f.label}"/>
+                        <apex:outputPanel > 
+                            <div Class="requiredInput">
+                            <div Class="requiredBlock"></div>
+                        <!--<apex:inputtextarea id="textareaDescription" value="{!cs[f.fieldPath]}" richText="true" style="width:500%" rendered="{!if(f.label!='Severity',true,false)}"/>-->    
+                        <apex:inputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label!='Severity',true,false)}"/>
+                        <apex:inputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label=='Severity',true,false)}" id="PriorityId">
+                            <apex:actionSupport event="onchange" rerender="showPriorityReason" action="{!DisplayPriorityReason}"/>
+                        </apex:inputField>
+                            </div>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem> 
+                   
+                <!--<apex:pageBlockSectionItem id="ReasonId" rendered="{!if(AND(f.label=='Severity Reason',DisplayPriorityReason==true),true,false)}">
+                       <apex:outputLabel value="{!f.label}"/>
+                        <apex:outputPanel > 
+                            <div Class="requiredInput">
+                            <div Class="requiredBlock"/>
+                        <apex:inputField value="{!cs[f.fieldPath]}"/>                        
+                        </div>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>-->
+                    <apex:pageBlockSectionItem rendered="{!if(f.label=='Subject',true,false)}">
+                        <apex:outputLabel value="{!f.label}"/>
+                         <apex:outputPanel styleClass="requiredInput"  layout="block"> 
+                         <apex:outputPanel styleClass="requiredBlock"  rendered="{!if(mode=='edit',false,true)}" layout="block"/>
+                       <!-- /////// Modified below line for US61133/////-->
+                        <apex:inputField value="{!cs[f.fieldPath]}" style="width:99%" styleClass="countTarget"/>
+                        <span id="charCountRemaining"/>
+                        <span id="charCountTotal"/>
+                        <span id="showExample"/>
+                        <apex:outputText value="{!cs[f.fieldPath]}" style="width:60%" rendered="{!if(mode=='edit',false,true)}"/>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:repeat>
+                </apex:pageblocksection>
+                <apex:outputpanel id="showPriorityReason">
+                <apex:pageblockSection columns="1" rendered="{!if(DisplayPriorityReason==true,true,false)}">                
+                    <apex:pageBlockSectionItem helpText="{!$ObjectType.Case.fields.Core_Severity_Reason__c.InlineHelpText}">                
+                       <apex:outputLabel value="Severity Reason "/>
+                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                             <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                             <apex:inputField value="{!cs.Core_Severity_Reason__c}"/>                 
+                        </apex:outputPanel>                                           
+                    </apex:pageBlockSectionItem>                                                               
+                </apex:pageblockSection>
+                </apex:outputpanel>
+                <apex:pageblockSection columns="1" rendered="{!NOT(isAgent)}" id="caseCustomerDetail2">
+                <apex:repeat value="{!$ObjectType.Case.FieldSets.Customer_Case_Fields_Optional}" var="f">
+                    <apex:pageBlockSectionItem helptext="{!$ObjectType.Case.fields[f].InlineHelpText}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:inputField value="{!cs[f.fieldPath]}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:repeat>
+             </apex:pageblockSection>
+      
+       <apex:outputpanel id="ProductDetails"> 
+           <apex:pageblockSection title="Product/Project Info" columns="1" rendered="{!IF(AND(AND(selectedProductId != null,selectedProductId != ''),AND(categoryOptions!=null,categoryOptions.size>1)),TRUE,FALSE)}">
+                 
+    
+                 <apex:pageBlockSectionItem rendered="{!displayCategories}">
+                    <apex:outputLabel value="Case Category:" for="category" />
+                    <apex:actionRegion >
+                    <apex:outputPanel styleClass="requiredInput" rendered="{!categoryOptions.size>1}" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:selectList value="{!categorySelected}" size="1" id="category">
+                        <apex:selectOptions value="{!categoryOptions}"/> 
+                        <apex:actionSupport event="onchange" action="{!getEnvDetails}" reRender="none" status="status1" oncomplete="BindEvent();"/> 
+                    </apex:selectList> 
+                    </apex:outputPanel>                
+                    </apex:actionRegion>
+                 </apex:pageBlockSectionItem>
+             
+                <apex:pageBlockSectionItem rendered="{!displaySubCategories}">
+                    <apex:outputPanel id="casesubcatId">
+                    <apex:outputLabel value="Case Subcategory: " rendered="{!subCategoryOptions.SIZE>1}"/>                       
+                    </apex:outputPanel>        
+                            <apex:actionRegion >                               
+                                <apex:outputPanel id="subCategory">                                                                
+                                <apex:outputPanel styleClass="requiredInput" layout="block" rendered="{!AND(categoryOptions.size>1,subCategoryOptions.SIZE>1)}">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!subCategoryOptions.size>1}"/>
+                                    <apex:selectList value="{!subCategorySelected}" size="1">
+                                        <apex:selectOptions value="{!subCategoryOptions}"/>  
+                                        <apex:actionSupport event="onchange" action="{!getEnvironmentDets}" reRender="none" status="status1" oncomplete="BindEvent();"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:actionRegion>
+                    <!--</apex:outputPanel>-->
+                 </apex:pageBlockSectionItem>
+                 <apex:inputHidden value="{!selectedProductId}" id="targetProdId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                 <apex:inputHidden value="{!selectedContactId}" id="targetId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                  <apex:inputHidden value="{!selectedProjId}"   id="targetProjId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+             </apex:pageblockSection>
+         </apex:outputpanel>
+         <apex:outputPanel id="environment1">
+         
+          <!-- Added by Manoj as part of US60820 IPS Evolve-->
+         <apex:pageblockSection title="Environment Details" rendered="{!displayEnvDetails && (selectedProductId!=null ||selectedSAProductId!=null)}">
+                 <apex:repeat value="{!subCatenvDetList}" var="env" rendered="{!displayEnvDetails && subCategorySelected!=null}" id="EnvironmentDetails1">
+                     <apex:pageblockSectionItem id="section" rendered="{!if(env.type=='Text Area (5000)',false,true)}">
+                        <apex:outputLabel value="{!env.label}" rendered="{!if(env.type=='Text Area (5000)',false,true)}" escape="true"></apex:outputLabel>
+                        <apex:outputPanel id="panel">
+                            <apex:outputPanel rendered="{!if(env.type=='Text (255)',true,false)}" id="panel1">
+                                <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputText value="{!env.sPlaceHolder}" required="">
+                                        </apex:inputText>
+                                    </apex:outputPanel>
+                                <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                    <apex:inputText value="{!env.sPlaceHolder}"/>
+                                </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='Picklist', true,false)}">
+                            <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                   <apex:selectList value="{!env.selectedValue}" size="1" style="width:150px" id="targetId" onchange="changeSelection('{!$Component.targetId}')" >
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                <apex:selectList value="{!env.selectedValue}" size="1" style="width:150px" required="false">
+                                    <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='Multiselect Picklist', true,false)}">
+                            <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <!--<apex:selectList value="{!env.selectedValue}" size="3" required="true" multiselect="true">-->
+                                    <apex:selectList value="{!env.selectedMValue}" size="3" style="width:380px" multiselect="true">
+                                    
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                <apex:selectList value="{!env.selectedMValue}" size="3" style="width:380px" multiselect="true" required="false">
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='check',true,false)}">
+                            <apex:inputcheckbox value="{!env.cPlaceHolder}"/><br/>
+                        </apex:outputPanel>
+                        
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+               </apex:repeat>  
+       </apex:pageblockSection>
+       
+       <!--To display SubCategory Env Questions of Type Rich Text Area as part of US60820 IPS Evolve-->
+       <apex:pageblockSection title="Environment Details" showHeader="false" columns="1" rendered="{!displayEnvDetails && (selectedProductId!=null ||selectedSAProductId!=null)}">
+                 <apex:repeat value="{!subCatenvDetList}" var="env" rendered="{!displayEnvDetails && subCategorySelected!=null && subCategorySelected!=''}" id="EnvironmentDetails">
+                     <apex:pageblockSectionItem id="section" rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+                        <apex:outputLabel value="{!env.label}" escape="true" rendered="{!if(env.type=='Text Area (5000)',true,false)}" ></apex:outputLabel>
+                        <apex:outputPanel id="panel">
+                        <apex:outputPanel rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+                           <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                    <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}"/><br/>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                    <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}" required="false"/><br/>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+               </apex:repeat>  
+       </apex:pageblockSection>
+         <!-- Ended By Manoj-->
+         
+             <apex:pageblockSection title="Environment Details" showHeader="false" rendered="{!displayEnvDetails && (selectedProductId!=null ||selectedSAProductId!=null)}">
+                 <apex:repeat value="{!envDetails}" var="env" rendered="{!displayEnvDetails}" id="EnvironmentDetails">
+                     <apex:pageblockSectionItem id="section" rendered="{!if(env.type=='Text Area (5000)',false,true)}">
+                        <apex:outputLabel value="{!env.label}" rendered="{!if(env.type=='Text Area (5000)',false,true)}" escape="true"></apex:outputLabel>
+                        <apex:outputPanel id="panel">
+                            <apex:outputPanel rendered="{!if(env.type=='Text (255)',true,false)}" id="panel1">
+                                <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputText value="{!env.sPlaceHolder}" required="">
+                                      <!--  <apex:inputText value="{!env.sPlaceHolder}" required="true">-->
+                                        </apex:inputText>
+                                    </apex:outputPanel>
+                                <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                    <apex:inputText value="{!env.sPlaceHolder}"/>
+                                </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='Picklist', true,false)}">
+                            <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                   <apex:selectList value="{!env.selectedValue}" size="1" style="width:150px" id="targetId" onchange="changeSelection('{!$Component.targetId}')" >
+                                   <!--<apex:selectList value="{!env.selectedValue}" size="1" required="true" id="targetId" onchange="changeSelection('{!$Component.targetId}')" >-->
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                <apex:selectList value="{!env.selectedValue}" size="1" style="width:150px" required="false">
+                                    <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='Multiselect Picklist', true,false)}">
+                            <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <!--<apex:selectList value="{!env.selectedValue}" size="3" required="true" multiselect="true">-->
+                                    <apex:selectList value="{!env.selectedMValue}" size="3" style="width:380px" multiselect="true">
+                                    
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                <apex:selectList value="{!env.selectedMValue}" size="3" style="width:380px" multiselect="true" required="false">
+                                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>
+                            <br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!if(env.type=='check',true,false)}">
+                            <apex:inputcheckbox value="{!env.cPlaceHolder}"/><br/>
+                        </apex:outputPanel>
+                        
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+               </apex:repeat>  
+       </apex:pageblockSection>
+       <apex:pageblockSection title="Environment Details" showHeader="false" columns="1" rendered="{!displayEnvDetails && (selectedProductId!=null ||selectedSAProductId!=null)}">
+                 <apex:repeat value="{!envDetails}" var="env" rendered="{!displayEnvDetails}" id="EnvironmentDetails">
+                     <apex:pageblockSectionItem id="section" rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+                        <apex:outputLabel value="{!env.label}" escape="true" rendered="{!if(env.type=='Text Area (5000)',true,false)}" ></apex:outputLabel>
+                        <apex:outputPanel id="panel">
+                        <apex:outputPanel rendered="{!if(env.type=='Text Area (5000)',true,false)}">
+                           <apex:outputPanel rendered="{!if(env.required==true,true,false)}" styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                 <!--<apex:inputtextarea value="{!env.tPlaceHolder}" required="true"/><br/>-->
+                                    <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}"/><br/>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!if(NOT(env.required==true),true,false)}">
+                                    <apex:inputtextarea rows="10" cols="150" style="width:100%;" value="{!env.tPlaceHolder}" required="false"/><br/>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+               </apex:repeat>  
+       </apex:pageblockSection>
+    </apex:outputPanel>   
+     <apex:pageBlockButtons >
+             <!--<apex:commandButton value="Cancel" onclick="return confirm('You will lose all your changes. Are you sure you want to Cancel?');" action="{!CancelAction}" />-->
+             <input type="button" value="Cancel" class="btn" onclick="fnConfirmBox();"/>                          
+             <apex:commandButton value="Submit" action="{!saveCaseDetails}" onclick="showSpinner()"/>                     
+         </apex:pageBlockButtons>
+      </apex:pageblock>
+   </apex:form>
+   <apex:PageBlock rendered="{!if(OR(AND(mode ='edit',isEditable),mode!='edit'),false,true)}">
+   <span style="color:red;align:center;">You have insufficient privilege to edit the Case.</span>
+   </apex:PageBlock>
+</apex:page>

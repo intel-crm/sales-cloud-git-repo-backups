@@ -1,5 +1,5 @@
 import { LightningElement, track, api, wire } from "lwc";
-import getQueryResult from '@salesforce/apex/Core_IPS_NewMapHomePageController.getQueryResult';
+//import getQueryResult from '@salesforce/apex/Core_IPS_NewMapHomePageController.getQueryResult';
 import submitRecord from '@salesforce/apex/Core_IPS_CreateOpportunityPAR_Controller.submitRecord';
 import { NavigationMixin } from 'lightning/navigation';
 import lookupSearchProjectFieldName from '@salesforce/label/c.lookupSearchProjectFieldName';
@@ -10,7 +10,6 @@ import Core_IPS_Supported_Product_HelpText from '@salesforce/label/c.Core_IPS_Su
 import { getRecord } from 'lightning/uiRecordApi';
 import NAME_FIELD from '@salesforce/schema/Opportunity.Name';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-//import getQueryResult from '@salesforce/apex/Core_IPS_NewMapHomePageController.getQueryResult';
 import getSupportedProducts from '@salesforce/apex/Core_IPS_NewMapHomePageController.getSupportedProducts';
 import getProjectsForOpportunity from '@salesforce/apex/Core_IPS_NewMapHomePageController.getProjectsForOpportunity';
 
@@ -136,7 +135,14 @@ export default class Core_IPS_Create_Opportunity_PAR extends NavigationMixin(Lig
     }
 
     setLookupQueries(){
-        this.lookupQueryStringProject = 'select Core_IPS_Project__r.name from Core_IPS_Account__c where Core_IPS_Project__r.Core_Status__c =\''+this.projstatus+'\' AND Core_IPS_Project__r.name LIKE:key AND Core_Account__c IN (SELECT AccountId FROM Opportunity WHERE Id = \''+this.recordId+'\') order by Core_IPS_Project__r.CreatedDate DESC';
+        getProjectsForOpportunity({ recordId: this.recordId, projStatus: this.projstatus })
+            .then(data => {
+                console.log('getting data here ==== ',data);
+                this.projectdata = data;
+            })
+            .catch(error => {
+                console.error('Core_IPS_Create_Opportunity_PAR ::: Error in setLookupQueries. Error : ', JSON.stringify(error));
+            });
     }
     
    
@@ -157,11 +163,16 @@ handleSearchKey(event) {
     this.showSearchRecords = undefined;
     this.showSupportedProducts = false;
     this.noRecordsFound = false;
-    let searchableString;
-    searchableString = this.searchKey;
-        let searchQueryStr = 'SELECT Id,Core_Supported_Product_Name__c,Name,Core_Product_Application__c,Core_Support_Org_Name__c FROM Core_IPS_Supported_Product__c WHERE Core_Flag_Status__c != \'EOIS\' AND Core_Flag_Status__c != \'Par Hidden\' AND Core_Supported_Product_Name__c LIKE \'%'+searchableString+'%\' LIMIT 1000';
-        getQueryResult({queryString : searchQueryStr})
+    //let searchableString;
+    //searchableString = this.searchKey;
+        //let searchQueryStr = 'SELECT Id,Core_Supported_Product_Name__c,Name,Core_Product_Application__c,Core_Support_Org_Name__c FROM Core_IPS_Supported_Product__c WHERE Core_Flag_Status__c != \'EOIS\' AND Core_Flag_Status__c != \'Par Hidden\' AND Core_Supported_Product_Name__c LIKE \'%'+searchableString+'%\' LIMIT 1000';
+       // Added by tushar for vanuability
+        getSupportedProducts({
+            searchKey: this.searchKey
+        })
         .then(data => {
+       // getQueryResult({queryString : searchQueryStr})
+       // .then(data => {
             this.spinnerOn = false;
             if(data) {
                 let dataWrapper = [];
@@ -249,7 +260,6 @@ getOrgAdmin() {
             this.spinnerOn = false;
         }
         else{
-            this.spinnerOn = false;
             this.showToast('Please select other Product', 'No IPS Support ORG Admins found for selected Product!', 'info'); 
         }
     })
@@ -269,12 +279,14 @@ getOrgAdmin() {
 handleChangeProject(event) {
     var recorddetails;
     this.projectid = event.detail.recordId;
+    console.log('this.projectid ==== ',this.projectid);
     this.recorddetails = event.detail.record;
     if(this.projectid != undefined){
         this.ipsProjectid = event.detail.record.Core_IPS_Project__c;
     } else {
         this.ipsProjectid ='';
     }
+    console.log('this.projectid after ==== ',this.projectid);
 }
 
 handleChange(event) {
@@ -287,6 +299,7 @@ handleChangeNewProj(event) {
     if (event.target.name === 'createNewProject') { 
         this.selectedRecord = '';
         this.createProjCheckbox = event.target.checked;
+        console.log('createNewProject ----- ',event.detail.record);
         if(this.createProjCheckbox == true){
             this.show = false;
             this.projectid = undefined;

@@ -1,0 +1,19 @@
+<!--  Page: -->
+<apex:page controller="ActionSupportofflineIssue">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="this Section contain Action support" columns="1">
+                 <apex:outputpanel id="counter">
+            <apex:outputText value="<br/><b> Click Me!: </b>{!count}" escape="false"/>
+            <apex:actionSupport event="onclick" 
+                                action="{!incrementCounter}" 
+                                rerender="counter" status="counterStatus"/>
+        </apex:outputpanel>
+        <apex:actionStatus id="counterStatus" 
+                           startText=" (incrementing...)" 
+                           stopText=" (done)"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

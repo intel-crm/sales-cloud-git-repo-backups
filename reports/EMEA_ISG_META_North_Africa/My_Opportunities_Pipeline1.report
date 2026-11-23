@@ -12,8 +12,8 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>FULL_NAME</groupingColumn>
-        <location>CHART_BOTTOM</location>
+        <groupingColumn>Opportunity.Core_Product_Segment__c</groupingColumn>
+        <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -26,7 +26,7 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -36,9 +36,6 @@
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
@@ -54,10 +51,19 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</field>
+    </columns>
+    <columns>
         <field>STAGE_DURATION</field>
     </columns>
     <columns>
         <field>AGE</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>LAST_ACTIVITY</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Status_Update__c</field>
@@ -74,17 +80,7 @@
     <columns>
         <field>Opportunity.Core_Support_Completed__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Area__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Type__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Detail__c</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -93,28 +89,28 @@
             <value>Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Mediha Kayacan</value>
+            <value>Regional Sales</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>OWNER_DEPARTMENT</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Karim Bibi Triki</value>
+            <value>EMEA RSG META</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
+        <field>Opportunity.Core_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>ET Billings - Opportunities Pipeline</name>
+    <name>My Opportunities Pipeline</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -132,16 +128,16 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <scope>organization</scope>
+    <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</sortColumn>
+    <sortColumn>FULL_NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,25 @@
+<apex:page showheader="true" sidebar="false" applyHtmlTag="true" applyBodyTag="true" standardController="Account" extensions="Core_WaveChannelDashboard_Controller"
+           title="Channel Sales Single Account Dashboard" action="{!init}">
+    
+    <apex:outputPanel style="height: auto;margin-top: 3px;margin-bottom: 0;font-family: 'Verdana','Geneva',sans-serif;
+                        font-size: 91.3%;margin-bottom: -15px;height: 15px;vertical-align: middle;">
+        «&nbsp;<apex:outputLink value="/{!Account.Id}">Back to account {!Account.Name}</apex:outputLink>
+    </apex:outputPanel>
+    &nbsp;<br/>
+    &nbsp;<br/>
+    
+    <apex:pageMessages />
+    
+    <!--Note: VF buttons were removed after UX review, but keeping this line here in case we ever want to add them back in.
+		apex:include pageName="Core_WaveChannelDashboardMenu" rendered="{!showDashboard}" /-->
+    
+    <!-- Page accepts either "id" or "cim_id" as a parameter. If "id" is passed, it knows what account it's on, and pulls the CIM ID
+         from that account. Otherwise it assumes "cim_id" is passed and uses that. -->
+    
+    <wave:dashboard dashboardId="{!$Label.Core_Wave_Channel_Single_Account_Dashboard_ID}" rendered="{!showDashboard}"
+                    showTitle="true"
+                    openLinksInNewWindow="false"
+                    height="1500" width="100%"
+                    filter="{'ChannelSalesAndProgramMembershipDatasetForMultipleAccounts': {'cim_id': ['{! IF($CurrentPage.parameters.id != null, Account.Core_CIM_ID__c, $CurrentPage.parameters.cim_id) }']}}" />
+    
+</apex:page>

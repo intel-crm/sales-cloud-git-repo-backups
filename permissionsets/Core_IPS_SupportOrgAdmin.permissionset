@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
+        <application>Core_IPS_Pre_Sales_Lightning</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
         <application>Core_Pre_Sales</application>
         <visible>true</visible>
     </applicationVisibilities>
@@ -41,14 +45,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_IPS_AddDependentAnswersLEX</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_IPS_Add_To_Products_LEX</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Core_IPS_Attachment_Extension</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -73,10 +69,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_IPS_Copy_CategoriesEDQ_LEX</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Core_IPS_Copy_EDQ_Controller</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -97,23 +89,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_IPS_File_LinkToCase_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_IPS_Internal_Case_Controller</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Core_IPS_MapCreationController_LWC</apexClass>
+        <apexClass>Core_IPS_LookupController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>Core_IPS_MoveContactWithCases_Controller</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_IPS_PARCreation_Controller_Lex</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Core_IPS_addEDQToProduct_LEX</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -126,6 +114,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_OpportunityTeamAccessReq_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_SM_redirectApprovalProcessExtension</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -448,10 +440,6 @@
         <apexClass>MaritzCX__UpdateSurveysNew</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>UCD_AccountRecordTypeController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
     <description>All Capabilities like Support Org Admin</description>
     <fieldPermissions>
         <editable>false</editable>
@@ -589,7 +577,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Account.Core_Alternate_Language_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -639,7 +627,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Account.Core_CNDA_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -861,6 +849,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Industry</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1400,27 +1393,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.Core_Hot_Issue_Qts_1__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Core_Hot_Issue_Qts_3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Core_Hot_Issue_Qts_4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Core_Hot_Issue_Qts_5__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Core_Hot_Issue__c</field>
+        <field>Case.Core_Hot_Issue_Qts_6__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1861,6 +1834,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Core_Trigger_Next_Response__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.Date_and_time_of_hot__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4990,6 +4968,161 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DFSS_Permissions__c.Data__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_Permissions__c.Expansion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_Permissions__c.Extra_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_Permissions__c.Over__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_Permissions__c.User_Link__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_Permissions__c.Version__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Asset__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Changed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Created__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Deleted__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Deployed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Expansion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Extra_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Flag1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Flag2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Flag3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Flag4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Package__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Problem__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Success__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Item__c.Version__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Push__c.Expansion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Push__c.Extra_Field__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Push__c.Result__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Push__c.SnapShot__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Push__c.Source__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Push__c.Success__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Push__c.Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DFSS_SnapShot_Push__c.Version__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Entitlement.AssetId</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5336,6 +5469,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.Jigsaw</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LID__LinkedIn_Company_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LID__LinkedIn_Member_Token__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6206,6 +6349,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Description</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LID__LinkedIn_Company_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7554,7 +7702,19 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Core_IPS_CaseAttachment_Visibility</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Core_IPS_CaseClone</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Core_IPS_CaseComments</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Core_IPS_Case_Creation_Notification</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -7586,7 +7746,15 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Core_IPS_Create_MAP</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Core_IPS_Create_PAR</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Core_IPS_Custom_Lookup</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -7610,6 +7778,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Core_IPS_File_LinkToCase</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Core_IPS_File_Upload_Admin</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -7618,11 +7790,27 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Core_IPS_Interested_Party_External</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Core_IPS_Interested_Party_Internal</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Core_IPS_Internal_Case_Creation</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>Core_IPS_MoveContactWithCases</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Core_IPS_Project_Detail</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Core_IPS_Show_IP_External</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -7690,6 +7878,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Core_SM_redirectApprovalProcess</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Core_WavePipelineAnalysis</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -7710,7 +7902,7 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>Core_addProjectAccounts</apexPage>
+        <apexPage>Core_addProjectMembers</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -7926,30 +8118,6 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>
-        <tab>AddCaseSubCategoryEDQ</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>AddProductEDQ</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Add_Case_Categories</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Add_Sub_Categories</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>CopyCategories_EDQ</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Core_IPS_Add_To_Products_LEX</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
         <tab>Core_IPS_Backend_Field_Mapping__c</tab>
         <visibility>Available</visibility>
     </tabSettings>
@@ -7976,18 +8144,6 @@
     <tabSettings>
         <tab>Core_Upload_Files</tab>
         <visibility>Available</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Create_Product_Access_Lex</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Manage_Dependent_Answers_LEX</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Request_Product_Access</tab>
-        <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
         <tab>standard-Entitlement</tab>

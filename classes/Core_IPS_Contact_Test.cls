@@ -11,7 +11,7 @@
 @istest
 public class Core_IPS_Contact_Test{
     
-    public static User systUserRunAs; 
+    public static User SystUserRunAs; 
     public static List<Case> caseList = new List<Case>();
     public static List<Core_IPS_Case_Interested_Party__c> interestedPartyListoptIn = new List<Core_IPS_Case_Interested_Party__c>();
     public static List<Core_IPS_Case_Interested_Party__c> interestedPartyListoptOut = new List<Core_IPS_Case_Interested_Party__c>();
@@ -25,13 +25,9 @@ public class Core_IPS_Contact_Test{
         Profile prof = [select id from profile where name = 'System Administrator' limit 1];    
         userList = TestUtilities.getListOfUser(1);
         userList[0].profileId=prof.id;
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-           insert userlist;
-        }
-        
-        systUserRunAs = new User();
-        systUserRunAs = userList[0];
+        insert userlist;
+        SystUserRunAs = new User();
+        SystUserRunAs = userList[0];
         System.runAs(systUserRunAs){
         Core_Trigger_Executions__c executeTrigger = new Core_Trigger_Executions__c();
         executeTrigger.Name = 'test';
@@ -67,9 +63,9 @@ public class Core_IPS_Contact_Test{
         
         caseList = TestUtilities.getListOfCases(2);
         integer  counter = 0 ;
-        for(Case caseRec : caseList){
-                caseRec.ContactId = contactListOptIn.get(counter).id;
-                caseRec.accountId = AccountList.get(counter).Id;
+        for(Case CaseRec : caseList){
+                CaseRec.ContactId = contactListOptIn.get(counter).id;
+                CaseRec.accountId = AccountList.get(counter).Id;
                 counter++;
             }
         insert caseList;
@@ -109,7 +105,7 @@ public class Core_IPS_Contact_Test{
         getRecords();
         Test.starttest();
         List<Contact> updatecontactList =  new List<Contact>();
-        System.runAs(systUserRunAs){        
+        System.runAs(SystUserRunAs){        
             for(Contact contactRecord: contactListOptIn){
                 contactRecord.Core_IPS_Email_Opt_Out__c = true;
                 updatecontactList.add(contactRecord);
@@ -136,7 +132,7 @@ public class Core_IPS_Contact_Test{
         getRecords();
         Test.starttest();
         List<Contact> updatecontactList =  new List<Contact>();
-        System.runAs(systUserRunAs){
+        System.runAs(SystUserRunAs){
             for(Contact contactRecord: contactListOptOut){
                 contactRecord.Core_IPS_Email_Opt_Out__c = false;
                 updatecontactList.add(contactRecord);
@@ -162,11 +158,11 @@ public class Core_IPS_Contact_Test{
     public static List<Core_IPS_Project__c> projectList =  new List<Core_IPS_Project__c>();
     public static List<Core_IPS_Project_Member__c> projMembersList = new List<Core_IPS_Project_Member__c>();
     public static List<User> contactUserList = new List<User>();
-    public static testmethod void inactivateProjectMembers(){
+    public static testmethod void InactivateProjectMembers(){
         getRecords();
         Test.starttest();
         List<Contact> updatecontactList =  new List<Contact>();
-        System.runAs(systUserRunAs){
+        System.runAs(SystUserRunAs){
             Profile prof = [select id from profile where name = 'IPS External Customer' limit 1];
             contactUserList = TestUtilities.getListOfUser(1);
             contactUserList[0].profileId=prof.id;
@@ -177,11 +173,11 @@ public class Core_IPS_Contact_Test{
             projectList = TestUtilities.getListOfIpsProjects(2);
             // Create Project Member
             projMembersList = TestUtilities.getListOfProjectMembers(2);
-            for(Core_IPS_Project_Member__c projMem : projMembersList){
-                projMem.Core_IPS_Contact__c = contactListOptIn.get(0).Id;
-                projMem.Core_IPS_Project__c = projectList.get(0).Id;
-                projMem.Core_Status__c = 'Active';
-                projMem.Core_User__c = testUserId;            
+            for(Core_IPS_Project_Member__c ProjMem : projMembersList){
+                ProjMem.Core_IPS_Contact__c = contactListOptIn.get(0).Id;
+                ProjMem.Core_IPS_Project__c = projectList.get(0).Id;
+                ProjMem.Core_Status__c = 'Active';
+                ProjMem.Core_User__c = testUserId;            
             }
             for(Contact contactRecord: contactListOptIn){
                 contactRecord.Core_IPS_Active__c  = false;

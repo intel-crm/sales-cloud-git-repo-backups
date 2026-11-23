@@ -450,6 +450,11 @@
             <field>Manager.Manager.Id</field>
             <table>User</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Federation_ID__c</field>
+            <table>User</table>
+        </columns>
         <masterLabel>Users</masterLabel>
     </sections>
     <sections>
@@ -760,27 +765,32 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue_Qts_1__c</field>
+            <field>Core_IPS_HC_Executive_Summary__c</field>
             <table>User.Case$OwnerId</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue_Qts_3__c</field>
+            <field>Core_IPS_HC_Latest_Update__c</field>
             <table>User.Case$OwnerId</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue_Qts_4__c</field>
+            <field>Core_IPS_HC_Next_Actions__c</field>
             <table>User.Case$OwnerId</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue_Qts_5__c</field>
+            <field>Core_IPS_HC_Help_Needed__c</field>
             <table>User.Case$OwnerId</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue__c</field>
+            <field>Core_Hot_Issue_Qts_6__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_HC_Hot_Issue__c</field>
             <table>User.Case$OwnerId</table>
         </columns>
         <columns>
@@ -1153,7 +1163,77 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Case_Owner__c</field>
+            <field>Core_IPS_Case_URL__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_BES_Auto_Promoted__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Problem_Statement__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Resolution__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_HC_Marked_DateTime__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HSD_Mirror_Status__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HSD_Mirror_Reason__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IPS_Mirror_SubStatus__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IPS_Mirror_Status__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Embargoed_State__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_HSD_Article_Type__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_and_time_of_hot__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Reason_for_not_providing_the_SST_Log__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Do_you_have_SST_log_to_upload__c</field>
+            <table>User.Case$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SOQL_Optimization__c</field>
             <table>User.Case$OwnerId</table>
         </columns>
         <masterLabel>Cases</masterLabel>

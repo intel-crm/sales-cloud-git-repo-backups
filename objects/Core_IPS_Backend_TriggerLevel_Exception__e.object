@@ -13,13 +13,25 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_IPS_Error_Log_Id__c</fullName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Error Log Id</label>
+        <length>30</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_IPS_Status__c</fullName>
         <externalId>false</externalId>
         <isFilteringDisabled>false</isFilteringDisabled>
         <isNameField>false</isNameField>
         <isSortingDisabled>false</isSortingDisabled>
         <label>Status</label>
-        <length>125</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

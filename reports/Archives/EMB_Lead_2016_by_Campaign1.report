@@ -77,7 +77,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>ANZ,Korea,SA,SEA,Taiwan,ROA,IJKK</value>
+            <value>ANZ,Korea,SA,SEA,TAIWAN,ROA,IJKK</value>
         </criteriaItems>
         <criteriaItems>
             <column>Lead.Core_Rejection__c</column>

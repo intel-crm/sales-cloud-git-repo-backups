@@ -1,13 +1,14 @@
 /**
  * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @author            : Prem Ranjan
  * @group             : 
- * @last modified on  : 07-26-2020
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 09-02-2020
+ * @last modified by  : Prem Ranjan
  * Modifications Log 
- * Ver   Date         Author                               Modification
- * 1.0   07-26-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+ * Ver   Date         Author        Modification
+ * 1.0   07-26-2020  Prem Ranjan   Initial Version
 **/
+
 public class Core_IPS_FeedComment_Handler {
     public static Boolean checkIPSPortal(){
         String currentRequestUrl= URL.getCurrentRequestUrl().toExternalForm();

@@ -84,14 +84,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.CEP_Case,Case.Core_AAQC_Case_recordType</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Product_Organization__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Programmable Solutions Group</value>
+            <value>012o0000000pEh8</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -106,12 +99,12 @@
         <value>1</value>
     </params>
     <reportType>CaseList</reportType>
-    <scope>organization</scope>
+    <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURPREV1</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

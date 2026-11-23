@@ -220,6 +220,11 @@
             <field>SicDesc</field>
             <table>Account</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Business_Party_Id__c</field>
+            <table>Account</table>
+        </columns>
         <masterLabel>Accounts</masterLabel>
     </sections>
     <sections>
@@ -375,7 +380,77 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Case_Owner__c</field>
+            <field>Core_IPS_Case_URL__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_BES_Auto_Promoted__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Problem_Statement__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Resolution__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_HC_Marked_DateTime__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HSD_Mirror_Status__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HSD_Mirror_Reason__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IPS_Mirror_SubStatus__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IPS_Mirror_Status__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Embargoed_State__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_HSD_Article_Type__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_and_time_of_hot__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Reason_for_not_providing_the_SST_Log__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Do_you_have_SST_log_to_upload__c</field>
+            <table>Account.Cases</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SOQL_Optimization__c</field>
             <table>Account.Cases</table>
         </columns>
         <masterLabel>Cases</masterLabel>

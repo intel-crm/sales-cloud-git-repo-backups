@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This will send mails to the Public group members if the case is failed to send to integrations for continues failure of three tiimes</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Sending mails on Case failure</name>
+    <style>none</style>
+    <subject>Case failure Alert</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

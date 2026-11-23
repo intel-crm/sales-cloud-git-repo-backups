@@ -56,6 +56,13 @@
             <value>Edwin Peters</value>
         </criteriaItems>
         <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>

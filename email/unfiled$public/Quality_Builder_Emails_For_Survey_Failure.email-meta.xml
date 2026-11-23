@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Quality Builder Emails For Survey Failure</name>
+    <style>none</style>
+    <subject>Urgent : Error while uploading file : {!Core_Log_Entry__c.Core_Origin__c}{!Core_Log_Entry__c.File_Name__c}.csv</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

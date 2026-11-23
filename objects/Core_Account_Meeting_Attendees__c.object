@@ -219,14 +219,14 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <label>Intel  Attendee</label>
+    <label>Meeting Attendee</label>
     <nameField>
         <displayFormat>MA-{000000}</displayFormat>
         <label>Meeting Attendee ID</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Intel  Attendees</pluralLabel>
+    <pluralLabel>Meeting Attendees</pluralLabel>
     <searchLayouts>
         <listViewButtons>Core_New_Meeting_Attendee</listViewButtons>
         <lookupDialogsAdditionalFields>Core_Attendee_Meeting_Customer_Name__c</lookupDialogsAdditionalFields>
@@ -242,12 +242,15 @@
         <fullName>Core_New_Meeting_Attendee</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
         <masterLabel>New Meeting Attendee</masterLabel>
-        <openType>sidebar</openType>
-        <page>Core_New_Meeting_Attendee</page>
+        <openType>replace</openType>
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
+        <url>/a1b/e?CF00No000000CobFE={!Account_Meeting_Brief__c.Name}
+&amp;CF00No000000CobFE_lkid={!Account_Meeting_Brief__c.Id}
+&amp;retURL=%2F{!Account_Meeting_Brief__c.Id}
+&amp;saveURL=%2F{!Account_Meeting_Brief__c.Id}</url>
     </webLinks>
 </CustomObject>

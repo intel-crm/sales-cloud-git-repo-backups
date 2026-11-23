@@ -16,7 +16,7 @@
     ****************************************************************************************************-->
 <apex:page id="mypage" standardController="case" extensions="Core_IPS_AddCommentController" sidebar="false" showHeader="false" tabStyle="Case" >
 <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/> 
- <apex:includeScript value="/soap/ajax/29.0/connection.js"/>              
+ <apex:includeScript value="/soap/ajax/45.0/connection.js"/>              
     <apex:form >
     
         <apex:pageBlock > <!--rendered="{!ShowAddComments}"-->
@@ -69,7 +69,7 @@
                     
                     <!-- Added by sumukh for 27/8/17 US67633 -->
                  
-                 
+                     
                         <apex:selectRadio value="{!selectedRadioButton}" id="visibility" rendered="{!AND(not(ExtUser),(partnerType!='Partner'),(partDFAEUser!=null))}" > 
                           <apex:selectOption itemValue="Public to Customers"  itemLabel="Public to Customers" rendered="{!AND(OR(not(externalUser),(partnerAgentUser),(partDFAEUser!=null)),not(isNACCase))}"></apex:selectOption> <!-- Added logic by sumukh for US193654 -->
                            <apex:selectOption itemValue="Private to Partner"  itemLabel="Private to Partner" rendered="{!AND(OR(not(externalUser),(partnerAgentUser),(partDFAEUser!=null)),not(isNACCase))}"> </apex:selectOption> <!-- Added by sumukh fro partner changes and for US193654 -->
@@ -110,6 +110,7 @@
                         <!-- Customer, Partner, Partner DFAE X Public to Customers-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_External}" rendered="{!AND(OR(comnt.Core_IPS_Comment_Author_Type__c == 'Customer',comnt.Core_IPS_Comment_Author_Type__c == 'Partner',comnt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE'),comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                         
                             <!-- Author Details -->
+                                first condition
                                 <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />  
                                 <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By__r.Account.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}"  rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
@@ -123,7 +124,7 @@
                             
                             <!-- Partner X Private to Partner -->
                              <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_External}" rendered="{!AND(AND(!ExtUser,partnerType!='Partner'), comnt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" >
-                             
+                             	second condition
                                 <apex:outputText >*</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;
                                 <!-- Author Details -->
@@ -142,6 +143,7 @@
                             <!-- FAE X Public to Customers-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser,!partnerAgentUser, comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                                                    
                                <!-- Author Details -->
+                                   third condition
                                 <b><apex:outputText value="{!Comnt.Core_IPS_Comment_Authored_By_FirstName__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />                        
                                 <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />                        
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Sales_Representative}</b> &nbsp; &nbsp; &nbsp;                                                     
@@ -153,7 +155,8 @@
                             
                             <!-- FAE X Private to Partners-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(AND(!ExtUser,partnerType!='Partner'), comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner',partnerType=='Partner - DFAE')}" >                                                    
-                                 <apex:outputText >*</apex:outputText>
+                                fourth condition 
+                                <apex:outputText >*</apex:outputText>
                                  <!-- Author Details -->
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner} </b> &nbsp; &nbsp; &nbsp;
                                 <b><apex:outputText value="{!Comnt.Core_IPS_Comment_Authored_By_FirstName__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />                       
@@ -167,7 +170,7 @@
                             
                             <!-- FAE X Private to Partners (Visible to internal only) -->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" > 
-                           
+                           		fifth condition
                                 <apex:outputText >*</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp; 
                                 <!-- Author Details -->                                                  
@@ -184,7 +187,7 @@
                             
                              <!-- FAE X Public to Customers (Visible to internal only) -->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" > 
-                            
+                            	sixth condition
                                 <!-- Author Details -->
                                 <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" /></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputText value="{!comnt.CreatedBy.Name}"  rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />  
@@ -199,7 +202,7 @@
                             
                             <!-- FAE X Private to Intel-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'FAE',comnt.Core_IPS_Case_Comment_Type__c=="Private to Intel")}" >                         
-                               
+                               seventh condition
                                 <apex:outputText >**</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
                                 <!-- Author Details -->
@@ -216,6 +219,7 @@
                             
                             <!-- AGENTS / Partner - Agents  X Public to Customers-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(externalUser,!partnerAgentUser, OR(comnt.Core_IPS_Comment_Author_Type__c == 'Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent'),comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                                                                              
+                                eight condition
                                 <!-- Author Details -->
                                 <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_FirstName__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" /></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
@@ -228,6 +232,7 @@
                             
                            <!-- AGENTS /Partner - Agents X Private to Partners-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(AND(!ExtUser,partnerType!='Partner') ,  OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent'),comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner', partnerType=='Partner - DFAE')}" >                                                                              
+                                ninth condition
                                 <apex:outputText >*</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;
                                 <!-- Author Details -->
@@ -241,7 +246,7 @@
                             
                             <!-- AGENTS X Private to Partners (Internal comments only)-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)),  OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" >     
-                               
+                                tenth condition
                                 <apex:outputText >*</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;   
                                 <!-- Author Details -->                                                                   
@@ -257,10 +262,11 @@
                             
                              <!-- AGENTS X Public to Customers(Internal comments only)-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent'), comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                                                                              
+                                eleven condition
                                 <!-- Author Details --> 
                                 <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" /></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputText value="{!comnt.CreatedBy.Name}"  rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />  
-                                <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
+                                <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;  
                                 <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" /></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;    <br/>
@@ -271,6 +277,7 @@
                             
                             <!-- AGENTS/Agent Partner X Private to Intel-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent',comnt.Core_IPS_Comment_Author_Type__c == 'System'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel' )}" >                                                          
+                                twelve condition
                                 <apex:outputText >**</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
                                 <!-- Author Details -->
@@ -287,7 +294,7 @@
                             
                             <!-- AGENTS / Agent Partner X Private to Agents-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR(comnt.Core_IPS_Comment_Author_Type__c == 'Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents',OR(userHasAccess,partnerAgentUser))}" >                         
-                                
+                                thriteenth condition
                                 <apex:outputText >***</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
                                 <!-- Author Details -->
@@ -304,7 +311,8 @@
                              <!-- BackendIntegration X Private to intel comments -->
                           <!--  Need extra parameter for this block Commented By Prem-->
                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'Backend Integration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel')}" >                          
-                                <apex:outputText >**</apex:outputText>
+                              fourteen condition 
+                              <apex:outputText >**</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;   <br/>                     
@@ -314,7 +322,8 @@
                           <!-- BackendIntegration X Agent comments -->
                           <!--  Need extra parameter for this block Commented By Prem-->
                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(!(ExtUser), comnt.Core_IPS_Comment_Author_Type__c == 'Backend Integration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents',OR((partnerAgentUser),(userHasAccess)))}" >                          
-                                 <apex:outputText >***</apex:outputText>
+                              fifteen condition   
+                              <apex:outputText >***</apex:outputText>
                                  <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;   <br/>                     
@@ -324,7 +333,8 @@
                           <!-- BackendIntegration X Partner comments -->
                           <!--  Need extra parameter for this block Commented By Prem-->
                           <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser),(partnerType=='Partner - DFAE')), comnt.Core_IPS_Comment_Author_Type__c == 'Backend Integration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" >                          
-                               <apex:outputText >*</apex:outputText>
+                              sixteen condition 
+                              <apex:outputText >*</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp; 
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;   <br/>                     
@@ -334,7 +344,7 @@
                              <!-- BackendIntegration X public comments -->
                            <!--  Need extra parameter for this block Commented By Prem-->
                              <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND( comnt.Core_IPS_Comment_Author_Type__c == 'Backend Integration', comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers' )}" >                          
-                                
+                                seventeen condition
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;   <br/>                     
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
@@ -343,10 +353,10 @@
                             
                             <!-- Data Migration X Private comments -->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel')}" >                          
-                               
+                               eigteen condition
                                 <apex:outputText >**</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <!--<b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;-->
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;     <br/>                  
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
@@ -355,10 +365,10 @@
                             
                              <!-- Data Migration X Partner comments -->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser),(partnerType=='Partner - DFAE')), comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Partner')}" >                          
-                               
+                               ninteen condition
                                <apex:outputText >*</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;     
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->                         
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp;                          
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;   <br/>                     
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column>
@@ -366,17 +376,18 @@
                             
                             <!-- Data Migration X Agent comments -->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(!ExtUser, comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Private to Agents',OR((partnerAgentUser),(userHasAccess)))}" >                          
-                               
+                               twenty condition
                                 <apex:outputText >***</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;     <br/>                    
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column> 
                             
                             <!-- Data Migration X Public comments -->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                          
-                                <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                              twenty one condition 
+                              <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <b><apex:outputField value="{!comnt.CreatedDate}" /></b> &nbsp; &nbsp; &nbsp;     <br/>                   
                                 <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column>
@@ -390,7 +401,7 @@
                         var orgInstance = "{!$Label.Core_IPS_Salesforce_Org_URL}";
                         //console.log('---orgInstance ::'+orgInstance);
                         
-                        var isCommunity = {!exLoginedUser};
+                        var isCommunity = Boolean('{!JSENCODE(IF(exLoginedUser,"true", "false"))}');
                         //console.log('---isCommunity ::'+isCommunity);
                         
                         if(isCommunity){

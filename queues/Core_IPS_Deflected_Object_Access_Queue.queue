@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Deflected Object Access Queue</name>
+    <queueMembers>
+        <users>
+            <user>11496129@intel.com.crm</user>
+            <user>11710633@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_IPS_Deflected_Object__c</sobjectType>
+    </queueSobject>
+</Queue>

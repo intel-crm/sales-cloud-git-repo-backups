@@ -18,24 +18,72 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
             <value>Energy</value>
         </values>
         <values>
             <value>Transportation</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial - Automation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - HMI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - PLC &amp; PAC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - Robotics</sourceValue>
+            </sourceValues>
             <value>Industrial</value>
         </values>
         <values>
             <value>Medical</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Home Gateway</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
             <value>Smart Home</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Retail - ATM</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Digital Signage</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Kiosk</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - PC Cash Register</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Point of Sale</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Thin Client</sourceValue>
+            </sourceValues>
             <value>Retail</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Blade SBC (Single Board Computer)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Interactive Whiteboard</sourceValue>
+            </sourceValues>
             <value>Emb Other</value>
         </values>
     </buckets>
@@ -120,7 +168,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -152,6 +200,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

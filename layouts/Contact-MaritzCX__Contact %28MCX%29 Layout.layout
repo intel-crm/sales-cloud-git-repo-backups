@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -40,6 +40,26 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LeadSource</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_IPS_Is_Contact_Check__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Demo_field__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_State__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_Embargoed_State__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>User_Status__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -177,22 +197,22 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>EmailHighlightAction</actionName>
+            <actionName>CallHighlightAction</actionName>
             <actionType>ProductivityAction</actionType>
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
+            <actionName>EmailHighlightAction</actionName>
+            <actionType>ProductivityAction</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>FeedItem.ContentNote</actionName>
-            <actionType>QuickAction</actionType>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewTask</actionName>
+            <actionName>FeedItem.ContentNote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
         </platformActionListItems>
@@ -200,6 +220,11 @@
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>EnablePartnerPortalUser</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>5</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedContent>
@@ -220,6 +245,20 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>MaritzCX__Key_Metric_1_Bar__c</fields>
+        <fields>MaritzCX__Key_Metric_2_Bar__c</fields>
+        <fields>MaritzCX__Key_Metric_3_Bar__c</fields>
+        <fields>MaritzCX__Key_Metric_4_Bar__c</fields>
+        <fields>MaritzCX__Key_Metric_5_Bar__c</fields>
+        <fields>MaritzCX__Metric_4__c</fields>
+        <fields>MaritzCX__Response_View_Link__c</fields>
+        <relatedList>MaritzCX__Survey_Response__c.MaritzCX__Contact_Id__c</relatedList>
+        <sortField>CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
         <fields>CASES.CASE_NUMBER</fields>
         <fields>CASES.SUBJECT</fields>
         <fields>CASES.PRIORITY</fields>
@@ -234,29 +273,6 @@
         <fields>OPPORTUNITY.AMOUNT</fields>
         <fields>OPPORTUNITY.CLOSE_DATE</fields>
         <relatedList>RelatedOpportunityList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>ACCOUNT.NAME</fields>
-        <fields>ACCCONRELATION.IS_DIRECT</fields>
-        <fields>ACCCONRELATION.ROLES</fields>
-        <relatedList>RelatedContactAccountRelationList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedContentNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>PRM_Account_Id__c</fields>
-        <fields>PRM_Partner_Role_UI__c</fields>
-        <fields>PRM_Relationship_Id__c</fields>
-        <fields>PRM_Start_Date_Dt__c</fields>
-        <fields>PRM_End_Date_Dt__c</fields>
-        <fields>PRM_InActive_Ind__c</fields>
-        <fields>PRM_Status_Nm__c</fields>
-        <fields>PRM_Record_Link__c</fields>
-        <relatedList>PRM_Account_Contact_Relationship__c.PRM_Contact_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -287,6 +303,20 @@
         <relatedList>RelatedCampaignList</relatedList>
     </relatedLists>
     <relatedLists>
+        <relatedList>RelatedContentNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACTIVITY.SUBJECT</fields>
+        <fields>EMAIL_STATUS.CREATED_DATE</fields>
+        <fields>EMAIL_STATUS.FIRST_OPEN_DATE</fields>
+        <fields>EMAIL_STATUS.TIMES_OPENED</fields>
+        <fields>EMAIL_STATUS.LAST_OPEN_DATE</fields>
+        <relatedList>RelatedEmailStatusList</relatedList>
+    </relatedLists>
+    <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_Message_Type__c</fields>
@@ -300,16 +330,16 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>PRM_Partner_Assist_Consent__c.PRM_Consent_Provided_By_Id__c</relatedList>
+        <fields>Core_Message__c</fields>
+        <fields>Core_Project__c</fields>
+        <fields>Core_Origin__c</fields>
+        <fields>Core_sObjectId__c</fields>
+        <fields>Core_sObjectType__c</fields>
+        <relatedList>Core_Log_Entry__c.Core_Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>ER_Customer_Master_File_Group__c</fields>
-        <fields>ER_Account__c</fields>
         <fields>NAME</fields>
-        <fields>ER_Active__c</fields>
-        <fields>ER_Active_CMF_Count_Formula__c</fields>
-        <fields>ER_End_Date__c</fields>
-        <relatedList>ER_ContactGroupAssociation__c.ER_Contact__c</relatedList>
+        <relatedList>Core_RestAPI_Transaction_Entry__c.Core_Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

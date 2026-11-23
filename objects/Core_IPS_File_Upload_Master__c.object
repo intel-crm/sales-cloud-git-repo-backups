@@ -442,7 +442,6 @@
         <columns>OWNER.ALIAS</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>{0000000000}</displayFormat>
@@ -507,4 +506,30 @@ ISPICKVAL(PRIORVALUE( Core_Upload_Status__c ),&quot;Complete&quot;), NOT(ISPICKV
         <errorMessage>Status Change not allowed once set to Complete</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Core_Assign_SP_Account</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Assign SP/Account</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/apex.js&quot;)}
+
+var ptb = new sforce.SObject(&quot;Core_IPS_File_Upload_Master__c&quot;);
+ptb.Id = &apos;{!Core_IPS_File_Upload_Master__c.Id}&apos;; 
+var IPSFileUploadID = &apos;{!Core_IPS_File_Upload_Master__c.Id}&apos;; 
+var IPSFileUploadStatus = &apos;{!Core_IPS_File_Upload_Master__c.Core_Upload_Status__c}&apos;;
+var ExpDateTime = new Date(&apos;{!Core_IPS_File_Upload_Master__c.Core_Expiration_Date__c}&apos;);
+var CurrentDateTime = new Date(&apos;{!NOW()}&apos;);
+
+if(IPSFileUploadStatus != &apos;Complete&apos;){
+alert(&apos;File Upload Status not Complete.Supported Product/Account cannot be assigned to this File&apos;); 
+}
+else if (ExpDateTime &lt; CurrentDateTime) {alert(&apos;File Expired.Supported Product/Account cannot be assigned to this File&apos;)}
+else{
+window.open(&quot;/apex/Core_IPS_File_AssignSPAccount&quot;+&quot;?id=&quot;+IPSFileUploadID, &apos;_self&apos;);
+}</url>
+    </webLinks>
 </CustomObject>

@@ -3,11 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>PSG-PG-HSIO!</name>
-    <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_IPS_Org_025_PG_HSIO</publicGroup>
-        </publicGroups>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

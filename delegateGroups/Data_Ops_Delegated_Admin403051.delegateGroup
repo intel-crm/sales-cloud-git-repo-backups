@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <groups>Account 330 - Executive Access</groups>
+    <groups>Data Ops - APJ</groups>
+    <groups>Data Ops - ASMO</groups>
+    <groups>Data Ops - EMEA</groups>
+    <groups>Data Ops - PRC</groups>
+    <groups>Data Ops - WW</groups>
+    <groups>Opportunity -  Reseller/Channel - Read</groups>
+    <groups>Opportunity - Compute - Read</groups>
+    <groups>Opportunity - Embedded - Read</groups>
+    <groups>Opportunity - Influencer - Read</groups>
+    <groups>Question - Bug/Issue</groups>
+    <groups>Question - Data Visibility - APJ</groups>
+    <groups>Question - Data Visibility - ASMO</groups>
+    <groups>Question - Data Visibility - EMEA</groups>
+    <groups>Question - Data Visibility - PRC</groups>
+    <groups>Question - Data Visibility - WW</groups>
+    <groups>Question - Others</groups>
+    <groups>Question - Permission</groups>
+    <groups>Question - Products/Price</groups>
+    <groups>Question - Reporting</groups>
+    <groups>Question - System Access</groups>
+    <groups>Question - Training</groups>
+    <groups>Question_WW</groups>
+    <groups>SMG Executive</groups>
+    <groups>Sales Ops - APJ</groups>
+    <groups>Sales Ops - APJ Compute</groups>
+    <groups>Sales Ops - APJ Embedded</groups>
+    <groups>Sales Ops - APJ Influencer</groups>
+    <groups>Sales Ops - APJ Reseller/Channel</groups>
+    <groups>Sales Ops - ASMO</groups>
+    <groups>Sales Ops - ASMO Compute</groups>
+    <groups>Sales Ops - ASMO Embedded</groups>
+    <groups>Sales Ops - ASMO Influencer</groups>
+    <groups>Sales Ops - ASMO Reseller/Channel</groups>
+    <groups>Sales Ops - EMEA</groups>
+    <groups>Sales Ops - EMEA Compute</groups>
+    <groups>Sales Ops - EMEA Embedded</groups>
+    <groups>Sales Ops - EMEA Influencer</groups>
+    <groups>Sales Ops - EMEA Reseller/Channel</groups>
+    <groups>Sales Ops - PRC</groups>
+    <groups>Sales Ops - PRC Compute</groups>
+    <groups>Sales Ops - PRC Embedded</groups>
+    <groups>Sales Ops - PRC Influencer</groups>
+    <groups>Sales Ops - PRC Reseller/Channel</groups>
+    <groups>Sales Ops - WW Compute</groups>
+    <groups>Sales Ops - WW Embedded</groups>
+    <groups>Sales Ops - WW Influencer</groups>
+    <groups>Sales Ops - WW Reseller/Channel</groups>
+    <groups>Opportunity - Compute - APJ - Read</groups>
+    <groups>Opportunity - Compute - ASMO - Read</groups>
+    <groups>Opportunity - Compute - EMEA - Read</groups>
+    <groups>Opportunity - Compute - PRC - Read</groups>
+    <groups>Opportunity - Embedded - APJ - Read</groups>
+    <groups>Opportunity - Embedded - ASMO - Read</groups>
+    <groups>Opportunity - Embedded - EMEA - Read</groups>
+    <groups>Opportunity - Embedded - PRC - Read</groups>
+    <groups>Opportunity - Influencer - APJ - Read</groups>
+    <groups>Opportunity - Influencer - ASMO - Read</groups>
+    <groups>Opportunity - Influencer - EMEA - Read</groups>
+    <groups>Opportunity - Influencer - PRC - Read</groups>
+    <groups>Opportunity - Res/Chan - APJ - Read</groups>
+    <groups>Opportunity - Res/Chan - ASMO - Read</groups>
+    <groups>Opportunity - Res/Chan - EMEA - Read</groups>
+    <groups>Opportunity - Res/Chan - PRC - Read</groups>
+    <groups>MDM Acer</groups>
+    <groups>MDM Amazon</groups>
+    <groups>MDM Asus</groups>
+    <groups>MDM Bull</groups>
+    <groups>MDM Cisco</groups>
+    <groups>MDM Dell</groups>
+    <groups>MDM Fujitsu</groups>
+    <groups>MDM Google</groups>
+    <groups>MDM HP</groups>
+    <groups>MDM Huawei</groups>
+    <groups>MDM IBM</groups>
+    <groups>MDM Lenovo</groups>
+    <groups>MDM Microsoft</groups>
+    <groups>MDM Oracle</groups>
+    <groups>MDM Samsung</groups>
+    <groups>MDM Toshiba</groups>
+    <groups>All Contingent Workers Group</groups>
+    <groups>All Employees Group</groups>
+    <groups>All Non-Badged Users Group</groups>
     <groups>VSC APJ NCS</groups>
     <groups>VSC APJ Teledirect</groups>
     <groups>VSC APJ Teleperformance</groups>
@@ -26,89 +109,6 @@
     <groups>Sales Ops - EMEA Distributor/Channel</groups>
     <groups>Sales Ops - PRC Distributor/Channel</groups>
     <groups>Sales Ops - WW Distributor/Channel</groups>
-    <groups>All Contingent Workers Group</groups>
-    <groups>AGS_All Employees Group</groups>
-    <groups>All Non-Badged Users Group</groups>
-    <groups>Data Ops - APJ</groups>
-    <groups>Data Ops - ASMO</groups>
-    <groups>Data Ops - EMEA</groups>
-    <groups>Data Ops - PRC</groups>
-    <groups>Data Ops - WW</groups>
-    <groups>Sales Ops - APJ</groups>
-    <groups>Sales Ops - APJ Compute</groups>
-    <groups>Sales Ops - APJ Embedded</groups>
-    <groups>Sales Ops - APJ Influencer</groups>
-    <groups>Sales Ops - APJ Reseller/Channel</groups>
-    <groups>Sales Ops - ASMO</groups>
-    <groups>Sales Ops - ASMO Compute</groups>
-    <groups>Sales Ops - ASMO Embedded</groups>
-    <groups>Sales Ops - ASMO Influencer</groups>
-    <groups>Sales Ops - ASMO Reseller/Channel</groups>
-    <groups>Sales Ops - EMEA</groups>
-    <groups>Sales Ops - EMEA Compute</groups>
-    <groups>Sales Ops - EMEA Embedded</groups>
-    <groups>Sales Ops - EMEA Influencer</groups>
-    <groups>Sales Ops - EMEA Reseller/Channel</groups>
-    <groups>Sales Ops - PRC</groups>
-    <groups>Sales Ops - PRC Compute</groups>
-    <groups>Sales Ops - PRC Embedded</groups>
-    <groups>Sales Ops - PRC Influencer</groups>
-    <groups>Sales Ops - PRC Reseller/Channel</groups>
-    <groups>Sales Ops - WW Compute</groups>
-    <groups>Sales Ops - WW Embedded</groups>
-    <groups>Sales Ops - WW Influencer</groups>
-    <groups>Sales Ops - WW Reseller/Channel</groups>
-    <groups>SMG Executive</groups>
-    <groups>Opportunity - Compute - Read</groups>
-    <groups>Opportunity - Embedded - Read</groups>
-    <groups>Opportunity - Influencer - Read</groups>
-    <groups>Opportunity -  Reseller/Channel - Read</groups>
-    <groups>Question - Bug/Issue</groups>
-    <groups>Question - Data Visibility - APJ</groups>
-    <groups>Question - Data Visibility - ASMO</groups>
-    <groups>Question - Data Visibility - EMEA</groups>
-    <groups>Question - Data Visibility - PRC</groups>
-    <groups>Question - Data Visibility - WW</groups>
-    <groups>Question - Others</groups>
-    <groups>Question - Permission</groups>
-    <groups>Question - Reporting</groups>
-    <groups>Question - System Access</groups>
-    <groups>Question - Training</groups>
-    <groups>Question_WW</groups>
-    <groups>Account 330 - Executive Access</groups>
-    <groups>Question - Products/Price</groups>
-    <groups>Opportunity - Compute - APJ - Read</groups>
-    <groups>Opportunity - Compute - ASMO - Read</groups>
-    <groups>Opportunity - Compute - EMEA - Read</groups>
-    <groups>Opportunity - Compute - PRC - Read</groups>
-    <groups>Opportunity - Embedded - APJ - Read</groups>
-    <groups>Opportunity - Embedded - ASMO - Read</groups>
-    <groups>Opportunity - Embedded - EMEA - Read</groups>
-    <groups>Opportunity - Embedded - PRC - Read</groups>
-    <groups>Opportunity - Influencer - APJ - Read</groups>
-    <groups>Opportunity - Influencer - ASMO - Read</groups>
-    <groups>Opportunity - Influencer - EMEA - Read</groups>
-    <groups>Opportunity - Influencer - PRC - Read</groups>
-    <groups>Opportunity - Res/Chan - ASMO - Read</groups>
-    <groups>Opportunity - Res/Chan - EMEA - Read</groups>
-    <groups>Opportunity - Res/Chan - PRC - Read</groups>
-    <groups>Opportunity - Res/Chan - APJ - Read</groups>
-    <groups>MDM Acer</groups>
-    <groups>MDM Amazon</groups>
-    <groups>MDM Asus</groups>
-    <groups>MDM Bull</groups>
-    <groups>MDM Cisco</groups>
-    <groups>MDM Dell</groups>
-    <groups>MDM Fujitsu</groups>
-    <groups>MDM Google</groups>
-    <groups>MDM HP</groups>
-    <groups>MDM Huawei</groups>
-    <groups>MDM IBM</groups>
-    <groups>MDM Lenovo</groups>
-    <groups>MDM Microsoft</groups>
-    <groups>MDM Oracle</groups>
-    <groups>MDM Samsung</groups>
-    <groups>MDM Toshiba</groups>
     <groups>APJ SMG Read Only</groups>
     <groups>ASMO SMG Read Only</groups>
     <groups>EMEA SMG Read Only</groups>
@@ -116,10 +116,10 @@
     <groups>WW SMG Read Only</groups>
     <label>Data Ops Delegated Admin</label>
     <loginAccess>false</loginAccess>
-    <permissionSets>Product and Price book Admin</permissionSets>
-    <permissionSets>Territory Manager</permissionSets>
     <permissionSets>Feature Admin</permissionSets>
     <permissionSets>Partner Alliance Program</permissionSets>
+    <permissionSets>Product and Price book Admin</permissionSets>
+    <permissionSets>Territory Manager</permissionSets>
     <permissionSets>Create Report/Dashboard Folder</permissionSets>
     <permissionSets>Edit Opportunity Partner Fields</permissionSets>
     <roles>Admin</roles>

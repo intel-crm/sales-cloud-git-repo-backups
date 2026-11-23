@@ -53,15 +53,6 @@
           "searchLabel" : "Search...",
           "searchObjects" : [ {
             "isPublic" : false,
-            "name" : "Lead"
-          }, {
-            "isPublic" : false,
-            "name" : "Opportunity"
-          }, {
-            "isPublic" : false,
-            "name" : "Campaign"
-          }, {
-            "isPublic" : false,
             "name" : "ContentDocument"
           } ]
         },

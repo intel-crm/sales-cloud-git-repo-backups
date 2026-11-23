@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 11-05-2024
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 public with sharing class showMAGquestionaire {
   public String getHtmlText() {
     String query = '';
@@ -13,6 +6,7 @@ public with sharing class showMAGquestionaire {
     }else{
         query='Select Body From Document Where Id =\'' + String.escapeSingleQuotes(System.Label.MAG_Document_Id) +'\' limit 1';
     }
+    System.debug ('HERE  is the QUERY :' + query ); 
     Document doc = Database.query(query);
     return doc.Body.toString();    
   }

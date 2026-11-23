@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Eng Kean Lee</description>
+    <description>EMP of Chen Wei Seow</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10715426_Dinesh_Devendra</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11082634_Eng_Kean_Lee</parentRole>
+    <parentRole>EMP_10658514_Chen_Wei_Seow</parentRole>
 </Role>

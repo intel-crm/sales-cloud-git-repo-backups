@@ -41,7 +41,7 @@
             </action>
         </rejectionActions>
     </approvalStep>
-    <emailTemplate>Testt/New_Change_Request_Approval</emailTemplate>
+    <emailTemplate>unfiled$public/New_Change_Request_Approval</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>

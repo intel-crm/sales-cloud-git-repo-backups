@@ -74,13 +74,6 @@
             <operator>notEqual</operator>
             <value>Submitted,Approved</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Group</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -107,7 +100,7 @@
         <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
-    <scope>organization</scope>
+    <scope>team</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

@@ -7,19 +7,10 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>Account.Core_Sales_Groups__c</field>
+        <field>Account.Core_Sales_Group__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Unified_Global_Customer_Name__c</field>
-    </columns>
-    <columns>
-        <field>Account.core_2023_Sales_Group__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_PSG_Account__c</field>
+        <field>Account.Core_Geo__c</field>
     </columns>
     <columns>
         <field>CREATED</field>
@@ -36,29 +27,14 @@
     <columns>
         <field>Account.Core_Business_ID__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_MDF_CoMarketingActive__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Reference_Source_Name__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_B2B_Entitlement__c</field>
-    </columns>
     <description>New Accounts by Users</description>
     <filter>
         <criteriaItems>
-            <column>RECORDTYPE</column>
+            <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Account.Mastered_Account</value>
+            <operator>notEqual</operator>
+            <value>Integration User,Integration_OBM User,CIM Integration,ERPM.OBM Integration</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -75,8 +51,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <endDate>2023-07-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2023-02-01</startDate>
+        <startDate>2017-07-01</startDate>
     </timeFrameFilter>
 </Report>

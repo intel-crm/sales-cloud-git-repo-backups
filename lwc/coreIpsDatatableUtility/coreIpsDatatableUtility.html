@@ -1,0 +1,51 @@
+<template>
+    <div class="slds-m-around_medium" style={dataTableHeightStyle}>
+        <template if:true={hideCheckboxColumn}>
+            <lightning-datatable 
+                key-field="Id" 
+                enable-infinite-loading={enableInfiniteLoading}
+                onloadmore={onLoadMoreHandler} 
+                data={rowsToShow} 
+                columns={columns} 
+                onrowselection={getSelectedRecords}
+                onrowaction={handleRowActions}>
+            </lightning-datatable>
+        </template> 
+        <template if:true={showRowNumberColumn}>
+            <lightning-datatable 
+                key-field="Id" 
+                hide-checkbox-column 
+                show-row-number-column 
+                enable-infinite-loading={enableInfiniteLoading}
+                onloadmore={onLoadMoreHandler} 
+                data={rowsToShow} 
+                columns={columns} 
+                onrowaction={handleRowActions}>
+            </lightning-datatable>
+        </template>
+        <template if:true={numAndCheckboxBothCols}>
+            <lightning-datatable 
+                key-field="Id" 
+                show-row-number-column 
+                enable-infinite-loading={enableInfiniteLoading}
+                onloadmore={onLoadMoreHandler} 
+                data={rowsToShow} 
+                columns={columns} 
+                selected-rows={selectedRows} 
+                onrowselection={getSelectedRecords}
+                onrowaction={handleRowActions}>
+            </lightning-datatable>
+        </template>
+        <template if:true={normalDataTable}>
+            <lightning-datatable 
+                key-field="Id"
+                hide-checkbox-column 
+                enable-infinite-loading={enableInfiniteLoading}
+                onloadmore={onLoadMoreHandler} 
+                data={rowsToShow} 
+                columns={columns}
+                onrowaction={handleRowActions}>
+            </lightning-datatable>
+        </template>
+    </div>
+</template>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Edgar van Velzen</description>
+    <description>EMP of Paul Schmisseur</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10705365_Matthias_Todd</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_12269288_Edgar_van_Velzen</parentRole>
+    <parentRole>EMP_10052099_Paul_Schmisseur</parentRole>
 </Role>

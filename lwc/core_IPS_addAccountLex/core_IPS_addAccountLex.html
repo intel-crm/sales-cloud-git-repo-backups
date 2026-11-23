@@ -31,19 +31,19 @@
                         <div if:true={loading}>
                             <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
                         </div>
-                        <c-custom-data-table 
-                            key-field="accid" 
-                            data={accountsData} 
-                            columns={columns} 
-                            enable-infinite-loading
-                            onloadmore={handleLoadMore}
-                            onrowselection={getSelected}
-                            selected-rows={clonedSelectedIds}
-                            onpicklistchanged={picklistChanged}
-                            sorted-by={sortedBy}
-                            sorted-direction={customsortDirection} 
-                            onsort={handleAccountSort}>
-                        </c-custom-data-table>
+                            <c-custom-data-table 
+                                key-field="accid" 
+                                data={accountsData} 
+                                columns={columns} 
+                                enable-infinite-loading
+                                onloadmore={handleLoadMore}
+                                onrowselection={getSelected}
+                                selected-rows={clonedSelectedIds}
+                                onpicklistchanged={picklistChanged}
+                                sorted-by={sortedBy}
+                                sorted-direction={customsortDirection} 
+                                onsort={handleAccountSort}>
+                            </c-custom-data-table>
                     </div>
                     <div if:false={showTable}><br/><p>No matching records found</p><br/></div><br/>
                     <div if:true={showButton} align="center">

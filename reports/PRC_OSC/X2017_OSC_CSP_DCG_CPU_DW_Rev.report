@@ -57,7 +57,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>qing.chen@intel.com,lixw@staff.chinabyte.com,zhengzy@staff.chinabyte.com,longxyc@staff.chinabyte.com,zhangxic@staff.chinabyte.com,wangyl@staff.chinabyte.com,zhangxl@staff.chinabyte.com,liuhw@staff.chinabyte.com,wen.he@intel.com,calvin.zhang@intel.com,wudh@staff.chinabyte.com,xudong@staff.chinabyte.com,huiwenxx.liu@intel.com,dongx.v.xu@intel.com</value>
+            <value>,qing.chen@intel.com,lian.wu@intel.com,jinwen.yang@intel.com,hongyu.ma@intel.com,yang.gao@intel.com,lixw@staff.chinabyte.com,zhengzy@staff.chinabyte.com,longxyc@staff.chinabyte.com,zhangxic@staff.chinabyte.com,wangyl@staff.chinabyte.com,zhangxl@staff.chinabyte.com,liuhw@staff.chinabyte.com,wen.he@intel.com,calvin.zhang@intel.com,wudh@staff.chinabyte.com,xudong@staff.chinabyte.com,huiwenxx.liu@intel.com,dongx.v.xu@intel.com</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>

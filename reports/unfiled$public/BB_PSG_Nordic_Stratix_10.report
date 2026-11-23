@@ -63,11 +63,18 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,jonas astrom,david clarke,marcus ward,phil milner,matti tommiska,graham copperwheat</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Agilex</value>
+            <operator>startsWith</operator>
+            <value>Intel® STRATIX® 10 FPGA</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

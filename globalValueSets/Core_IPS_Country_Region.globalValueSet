@@ -296,9 +296,9 @@
         <label>Cyprus</label>
     </customValue>
     <customValue>
-        <fullName>Czechia</fullName>
+        <fullName>Czech Republic</fullName>
         <default>false</default>
-        <label>Czechia</label>
+        <label>Czech Republic</label>
     </customValue>
     <customValue>
         <fullName>Dem. Rep. Congo</fullName>
@@ -354,11 +354,6 @@
         <fullName>Estonia</fullName>
         <default>false</default>
         <label>Estonia</label>
-    </customValue>
-    <customValue>
-        <fullName>Eswatini</fullName>
-        <default>false</default>
-        <label>Eswatini</label>
     </customValue>
     <customValue>
         <fullName>Ethiopia</fullName>
@@ -651,6 +646,11 @@
         <label>Macao SAR China</label>
     </customValue>
     <customValue>
+        <fullName>Macedonia</fullName>
+        <default>false</default>
+        <label>Macedonia</label>
+    </customValue>
+    <customValue>
         <fullName>Madagascar</fullName>
         <default>false</default>
         <label>Madagascar</label>
@@ -786,6 +786,11 @@
         <label>Netherlands</label>
     </customValue>
     <customValue>
+        <fullName>Netherlands Antilles</fullName>
+        <default>false</default>
+        <label>Netherlands Antilles</label>
+    </customValue>
+    <customValue>
         <fullName>New Caledonia</fullName>
         <default>false</default>
         <label>New Caledonia</label>
@@ -824,11 +829,6 @@
         <fullName>North Korea</fullName>
         <default>false</default>
         <label>North Korea</label>
-    </customValue>
-    <customValue>
-        <fullName>North Macedonia</fullName>
-        <default>false</default>
-        <label>North Macedonia</label>
     </customValue>
     <customValue>
         <fullName>Norway</fullName>
@@ -976,6 +976,11 @@
         <label>Serbia</label>
     </customValue>
     <customValue>
+        <fullName>Serbia and Montenegr</fullName>
+        <default>false</default>
+        <label>Serbia and Montenegr</label>
+    </customValue>
+    <customValue>
         <fullName>Seychelles</fullName>
         <default>false</default>
         <label>Seychelles</label>
@@ -1076,6 +1081,11 @@
         <label>Svalbard &amp; JM</label>
     </customValue>
     <customValue>
+        <fullName>Swaziland</fullName>
+        <default>false</default>
+        <label>Swaziland</label>
+    </customValue>
+    <customValue>
         <fullName>Sweden</fullName>
         <default>false</default>
         <label>Sweden</label>
@@ -1141,9 +1151,9 @@
         <label>Tunisia</label>
     </customValue>
     <customValue>
-        <fullName>Turkiye</fullName>
+        <fullName>Turkey</fullName>
         <default>false</default>
-        <label>Turkiye</label>
+        <label>Turkey</label>
     </customValue>
     <customValue>
         <fullName>Turkmenistan</fullName>
@@ -1244,41 +1254,6 @@
         <fullName>Zimbabwe</fullName>
         <default>false</default>
         <label>Zimbabwe</label>
-    </customValue>
-    <customValue>
-        <fullName>Czech Republic</fullName>
-        <default>false</default>
-        <label>Czech Republic</label>
-    </customValue>
-    <customValue>
-        <fullName>Swaziland</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Swaziland</label>
-    </customValue>
-    <customValue>
-        <fullName>Serbia and Montenegr</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Serbia and Montenegr</label>
-    </customValue>
-    <customValue>
-        <fullName>Netherlands Antilles</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Netherlands Antilles</label>
-    </customValue>
-    <customValue>
-        <fullName>Turkey</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Turkey</label>
-    </customValue>
-    <customValue>
-        <fullName>Macedonia</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Macedonia</label>
     </customValue>
     <description>Will be used for GEC OverHaul process</description>
     <masterLabel>Country/Region</masterLabel>

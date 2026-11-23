@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_CustomAccountTeamHandler_Test</testClassName>
+    <testClassName>Core_IPS_AccountTeamUpdate_Sched_Test</testClassName>
+    <testClassName>Core_IPS_Case_Escalation_Test</testClassName>
+    <testClassName>Core_IPS_CaseComment_EmailHandler_Test</testClassName>
+    <testClassName>Core_IPS_CaseInterestedPartyHandler_Test</testClassName>
+    <testClassName>Core_IPS_CasePromotion_Handler_Test</testClassName>
+    <testClassName>Core_IPS_Core_Question_Handler_Test</testClassName>
+    <testClassName>Core_IPS_CustomAccountTeam_Handler_Test</testClassName>
+    <testClassName>Core_IPS_Email_Reprocess_Test</testClassName>
+    <testClassName>Core_IPS_Environment_Details_Test</testClassName>
+    <testClassName>Core_IPS_File_Assignment_Handler_Test</testClassName>
+    <testClassName>Core_IPS_GetNextRespDueDateInMis_Test</testClassName>
+    <testClassName>Core_IPS_Helper_Utility_Test</testClassName>
+    <testClassName>Core_IPS_IntelSupportTeam_Handler_Test</testClassName>
+    <testClassName>Core_IPS_MyIntel_3_0_Test</testClassName>
+    <testClassName>Core_IPS_MyIntelDataExport_Test</testClassName>
+    <testClassName>Core_IPS_Project_Member_Test</testClassName>
+    <testClassName>Core_IPS_Response_Handler_Test</testClassName>
+    <testClassName>Core_Master_Issue_Category_Handler_Test</testClassName>
+    <testClassName>Core_Product_Access_Line_Item_Test</testClassName>
+    <testClassName>Core_RestAPI_SPEnvDetailV1_Handler_Test</testClassName>
+    <testClassName>Core_RestAPI_SubEnvDetailV1_Handler_Test</testClassName>
+    <testClassName>Core_RestAPI_Util_Test</testClassName>
+    <testClassName>Core_SharingUtility_Test</testClassName>
+    <testClassName>Core_Utility_Test</testClassName>
+    <testClassName>IPS_APIGEE_Backend_CaseAttachment_Test</testClassName>
+    <testClassName>IPS_APIGEE_Backend_CaseComment_Test</testClassName>
+    <testClassName>IPS_APIGEE_Case_Backend_System_Test</testClassName>
+    <testClassName>IPS_QualityBuilderUtility_Test</testClassName>
+    <testClassName>Product_Variant_Utility_Test</testClassName>
+</ApexTestSuite>

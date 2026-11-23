@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
-    <groups>IPS - Org Admin - SMG</groups>
-    <groups>SMG Projects – COE</groups>
-    <groups>SMG Projects – Unassigned</groups>
-    <label>IPS - Org Admin - SMG</label>
+    <groups>IPS - Org Admin - PSG</groups>
+    <groups>PSG - Unassigned</groups>
+    <groups>PSG-SJ-PRISM_Test</groups>
+    <label>IPS - Org Admin - PSG</label>
     <loginAccess>false</loginAccess>
+    <roles>IPS Product OrgAdmin</roles>
+    <roles>IPS Agent</roles>
 </DelegateGroup>

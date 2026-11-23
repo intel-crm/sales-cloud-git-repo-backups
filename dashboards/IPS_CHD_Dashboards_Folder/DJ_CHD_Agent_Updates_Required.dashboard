@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Cable Modem,Networking Gateway</values>
+        </dashboardFilterOptions>
+        <name>Product Name</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values></values>
+        </dashboardFilterOptions>
+        <name>Account Name</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values></values>
+        </dashboardFilterOptions>
+        <name>Case Owner</name>
+    </dashboardFilters>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Narrow</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Table</componentType>
+            <dashboardFilterColumns>
+                <column>Case.Core_IPS_Product_name__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>ACCOUNT.NAME</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>true</drillToDetailEnabled>
+            <groupingSortProperties/>
+            <header>Sort By Name</header>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>IPS_CHD_Reports_Folder/CHD_Missing_Categories</report>
+            <showPicturesOnTables>true</showPicturesOnTables>
+            <sortBy>RowLabelAscending</sortBy>
+            <title>Missing Sub-Categories</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Table</componentType>
+            <dashboardFilterColumns>
+                <column>Case.Core_IPS_Product_name__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>ACCOUNT.NAME</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>true</drillToDetailEnabled>
+            <groupingSortProperties/>
+            <header>Sort by Count</header>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>IPS_CHD_Reports_Folder/CHD_Missing_Categories</report>
+            <showPicturesOnTables>true</showPicturesOnTables>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Missing Sub-Categories</title>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Narrow</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Table</componentType>
+            <dashboardFilterColumns>
+                <column>Case.Core_IPS_Product_name__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>ACCOUNT.NAME</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <groupingSortProperties/>
+            <header>Agents and record count</header>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>IPS_CHD_Reports_Folder/Cable_Missing_case_reason</report>
+            <showPicturesOnTables>true</showPicturesOnTables>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Cable Cases-Missing case closure</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Table</componentType>
+            <dashboardFilterColumns>
+                <column>Case.Core_IPS_Product_name__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>ACCOUNT.NAME</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <groupingSortProperties/>
+            <header>Case Owner and Record Count</header>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>IPS_CHD_Reports_Folder/X30_Day_or_More_Open_Cases</report>
+            <showPicturesOnTables>true</showPicturesOnTables>
+            <sortBy>RowLabelAscending</sortBy>
+            <title>30 Days or More Open Cases</title>
+        </components>
+    </middleSection>
+    <owner>11746537@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Table</componentType>
+            <dashboardFilterColumns>
+                <column>Case.Core_IPS_Product_name__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>ACCOUNT.NAME</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER</column>
+            </dashboardFilterColumns>
+            <dashboardTableColumn>
+                <column>CASE_NUMBER</column>
+                <sortBy>RowValueDescending</sortBy>
+            </dashboardTableColumn>
+            <dashboardTableColumn>
+                <calculatePercent>false</calculatePercent>
+                <column>OWNER</column>
+                <showTotal>false</showTotal>
+            </dashboardTableColumn>
+            <dashboardTableColumn>
+                <calculatePercent>false</calculatePercent>
+                <column>RowCount</column>
+                <showTotal>false</showTotal>
+            </dashboardTableColumn>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <groupingSortProperties/>
+            <header>Case numbers</header>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>unfiled$public/Customer_Requesting_Closed</report>
+            <showPicturesOnTables>false</showPicturesOnTables>
+            <title>Customer Requesting Closed</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Table</componentType>
+            <dashboardFilterColumns>
+                <column>Case.Core_IPS_Product_name__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>ACCOUNT.NAME</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OWNER</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <groupingSortProperties/>
+            <header>Agent names and Issue count</header>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>IPS_CHD_Reports_Folder/Agents_with_expired_SLAs</report>
+            <showPicturesOnTables>false</showPicturesOnTables>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Expired SLAs</title>
+        </components>
+    </rightSection>
+    <runningUser>11746537@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>DJ - CHD Agent Updates Required</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

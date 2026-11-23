@@ -5,5 +5,5 @@ Actual endpoint: https://wssginti01.cps.intel.com:4243
 https://eip-crm-proxy-qa.cloudhub.io</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
     <isActive>true</isActive>
-    <url>https://eip-crm-proxy.cloudhub.io</url>
+    <url>https://eip-crm-proxy-qa.cloudhub.io</url>
 </RemoteSiteSetting>

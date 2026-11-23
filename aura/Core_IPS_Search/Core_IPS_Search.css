@@ -1,0 +1,28 @@
+.THIS.Mask{
+    background-color: #653171;
+    height:170px;
+}
+
+.THIS .IntelUser{
+    text-align:center;
+    color:white;
+    font-size:30px;
+    padding-top:20px;
+    
+}
+
+.THIS .SearchBox {
+  width: 506px;
+  height: 45px;
+  padding: 3px 26px 3px 4px;
+  border: solid 1px #e9e9e9;
+  background-color: #fff;
+  margin-top:10px;
+}
+
+.THIS .Notification{
+    color:blue;
+    font-size:medium;
+    font-weight:bold;
+    background:#e7e7e7;
+}

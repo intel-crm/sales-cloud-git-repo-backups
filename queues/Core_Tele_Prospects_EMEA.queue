@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Tele Prospects - EMEA</name>
+    <queueMembers>
+        <users>
+            <user>10637593@intel.com.crm</user>
+            <user>10640830@intel.com.crm</user>
+            <user>11454633@intel.com.crm</user>
+            <user>11381314@intel.com.crm</user>
+            <user>11338048@intel.com.crm</user>
+            <user>11628847@intel.com.crm</user>
+            <user>11369164@intel.com.crm</user>
+            <user>11449092@intel.com.crm</user>
+            <user>11524437@intel.com.crm</user>
+            <user>11381427@intel.com.crm</user>
+            <user>11570290@intel.com.crm</user>
+            <user>11449091@intel.com.crm</user>
+            <user>11519982@intel.com.crm</user>
+            <user>11631842@intel.com.crm</user>
+            <user>11275132@intel.com.crm</user>
+            <user>10717854@intel.com.crm</user>
+            <user>11499850@intel.com.crm</user>
+            <user>11629290@intel.com.crm</user>
+            <user>11482290@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

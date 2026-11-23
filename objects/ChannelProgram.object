@@ -135,39 +135,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_Channel_Program_Unique_Id_nm__c</fullName>
-        <caseSensitive>false</caseSensitive>
-        <description>Unique Name of Channel Program which is concatenated with Name and Technical Program Name without any white spaces</description>
-        <externalId>false</externalId>
-        <label>Channel Program Unique Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Project_Platform__c</fullName>
-        <externalId>false</externalId>
-        <label>Project/Platform</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Technical_Program_Name__c</fullName>
-        <label>Technical Program Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>Core_MDF_Technical_Program_Name</valueSetName>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Description</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -184,33 +151,14 @@
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
-    <fields>
-        <fullName>PRM_inactind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Inactive Indicator</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>PRM_programCode__c</fullName>
-        <caseSensitive>false</caseSensitive>
-        <externalId>false</externalId>
-        <label>Program Code</label>
-        <length>20</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
     <listViews>
-        <fullName>All_Channel_Programs</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All Channel Programs</label>
-    </listViews>
-    <listViews>
-        <fullName>My_Channel_Programs</fullName>
-        <filterScope>Mine</filterScope>
-        <label>My Channel Programs</label>
+        <fullName>Core_IPS_Org3_090_ChannelProgram</fullName>
+        <filterScope>Queue</filterScope>
+        <label>IPS-IOG3</label>
+        <queue>Core_IPS_Org3_090</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
     </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>Category</customTabListAdditionalFields>
@@ -227,17 +175,4 @@
         <searchResultsAdditionalFields>Description</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
-    <validationRules>
-        <fullName>Core_MDF_PrvntDistinctNameAndTchPrgmName</fullName>
-        <active>true</active>
-        <description>To prevent distinct values on Name and Technical Program Name</description>
-        <errorConditionFormula>AND(
-NOT(ISBLANK(TEXT(Core_MDF_Technical_Program_Name__c))),
-
-NOT(ISBLANK(Name)),IF(TEXT(Core_MDF_Technical_Program_Name__c) = &apos;Client CoMarketing Fund&apos;,IF(Name &lt;&gt; &apos;Client&apos;,TRUE,FALSE),
-
-IF(TEXT(Core_MDF_Technical_Program_Name__c) = &apos;Data Center CoMarketing Fund&apos;,IF(Name &lt;&gt; &apos;Datacenter&apos;,TRUE,FALSE),TEXT(Core_MDF_Technical_Program_Name__c) &lt;&gt; SUBSTITUTE(Name,&apos;-&apos;,&apos;&apos;))))</errorConditionFormula>
-        <errorDisplayField>IsActive</errorDisplayField>
-        <errorMessage>Channel Program Name and Technical Program Name should not be distinct</errorMessage>
-    </validationRules>
 </CustomObject>

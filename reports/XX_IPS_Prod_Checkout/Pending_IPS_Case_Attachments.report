@@ -16,16 +16,22 @@
         <field>Core_IPS_Case_Attachments__c.Core_File_Hyperlink__c</field>
     </columns>
     <columns>
+        <field>Core_IPS_Case_Attachments__c.Core_File_URL__c</field>
+    </columns>
+    <columns>
         <field>Core_IPS_Case_Attachments__c.Core_File_Size__c</field>
     </columns>
     <columns>
         <field>Core_IPS_Case_Attachments__c.Core_Last_Status_Updated_At__c</field>
     </columns>
     <columns>
-        <field>CUST_CREATED_DATE</field>
+        <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
+        <field>OPEN</field>
+    </columns>
+    <columns>
+        <field>CLOSED</field>
     </columns>
     <columns>
         <field>OWNER</field>
@@ -36,18 +42,18 @@
     <description>A list of cases with pending IPS Case Attachments</description>
     <filter>
         <criteriaItems>
+            <column>Core_IPS_Case_Attachments__c.Core_File_Hyperlink__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Download</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Core_IPS_Case_Attachments__c.Core_Upload_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Pending</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STATUS</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>New,Open,​Open,​​Open</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -66,8 +72,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CUST_CREATED_DATE</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

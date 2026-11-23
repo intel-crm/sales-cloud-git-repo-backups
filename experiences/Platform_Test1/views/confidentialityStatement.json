@@ -1,0 +1,86 @@
+{
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "8a83200a-754d-4ec0-9267-75fba1963ef9",
+  "label" : "Confidentiality Statement",
+  "regions" : [ {
+    "id" : "cfd99204-2057-4f4d-a8b4-dd2627184b3c",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "69f1662c-1b83-4fa4-a99d-57a66cbe1fbe",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_Ips_Confidentiality_Statement_Lwc",
+      "id" : "faa6e5e2-2262-4af7-a5b7-3205ad8c247d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "edd5154a-fd54-4d01-8473-3e3285da6d6b",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "e0acfcc7-aeca-48a3-becd-e894d43df5e5",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "279adc14-55b3-4942-8082-d37677228751",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "8e37ecae-9bd9-4932-87eb-c7b36cee1620",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "2e2cc3e9-2285-4b3f-8ef6-f26d6f0dca5d",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "8457c961-51b6-486f-a8f3-a4c15eb5a85a",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "ec3cfeab-f1ab-4a35-b5be-e121296ed0c3",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "ee3f13b6-7de8-40c2-973b-c530215a66e4",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "b91ce9e0-c475-469b-98d3-1a2d8719a528",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "9b72649e-a305-4f4b-8430-3392005c1f52",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "45249d7e-9d93-418d-830d-32ebe4983bb8",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Confidentiality Statement"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "980f3b9e-d55a-42b4-a476-8afab460fdfc",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4adee235-fd10-4ac3-90e6-07bd55f0277a",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "qbwA0O606VoVdt9qmVmy30Ap0RqvoL",
+  "type" : "view",
+  "viewType" : "custom-confidentiality-statement"
+}

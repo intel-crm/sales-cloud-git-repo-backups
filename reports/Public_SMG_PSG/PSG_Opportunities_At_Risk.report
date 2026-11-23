@@ -11,7 +11,7 @@
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>true</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>CLOSE_DATE</groupingColumn>
+        <groupingColumn>Opportunity.Core_Risk_Reason__c</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -33,6 +33,9 @@
     </columns>
     <columns>
         <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
@@ -71,18 +74,13 @@ Looking at Current Year Decision Date.</description>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>FiscalQuarter</dateGranularity>
-        <field>CLOSE_DATE</field>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Risk_Reason__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Opportunities At Risk</name>
@@ -109,8 +107,8 @@ Looking at Current Year Decision Date.</description>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

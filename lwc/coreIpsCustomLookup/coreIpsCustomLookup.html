@@ -3,7 +3,7 @@
         <div class="slds-combobox_container">
             <div class="slds-combobox slds-dropdown-trigger" aria-expanded="false" aria-haspopup="listbox" role="combobox">
                 <template if:false={selectedRecord}>
-                    <c-core-ips-search-component onchange={handleOnchange}></c-core-ips-search-component>
+                    <c-core-ips-search-component onchange={handleOnchange} projectfromparent = {sendprojectdata}></c-core-ips-search-component>
                 </template>
                 <template if:false={selectedRecord}>
                     <template if:true={isRecordsPresent}>

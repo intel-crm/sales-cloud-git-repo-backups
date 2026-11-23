@@ -9,7 +9,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Account_Team_Request_Approval</template>
+        <template>unfiled$public/Account_Team_Request_Approval</template>
     </alerts>
     <alerts>
         <fullName>Account_Team_Rejection_Notification_to_the_requester</fullName>
@@ -20,7 +20,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Account_Team_Request_Rejection</template>
+        <template>unfiled$public/Account_Team_Request_Rejection</template>
     </alerts>
     <alerts>
         <fullName>Core_Change_Request_Territory_Notification</fullName>
@@ -28,7 +28,7 @@
         <description>Core_Change_Request_Territory_Notification</description>
         <protected>false</protected>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Territory_Request_Notification</template>
+        <template>unfiled$public/Core_Territory_Request_Notification</template>
     </alerts>
     <alerts>
         <fullName>Core_Change_Request_Update</fullName>
@@ -53,7 +53,7 @@
         <description>Core_Change_Request_to_Data_Ops</description>
         <protected>false</protected>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/New_Account_Creation_Data_Ops</template>
+        <template>unfiled$public/New_Account_Creation_Data_Ops</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_Change_Request_Account_Owner_Submit</fullName>
@@ -102,7 +102,7 @@
             <name>Core_Change_Request_Account_Owner_Submit</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>User.Core_Account_Owner__c</field>
             <operation>equals</operation>
@@ -111,12 +111,26 @@
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Change_Request_Territory_Request</fullName>
+        <actions>
+            <name>Core_Change_Request_Territory_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_Change_Request__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Update Territory Request</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Change_Request_Update</fullName>
         <actions>
             <name>Core_Change_Request_Update</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>Core_Change_Request__c.Core_Status__c</field>

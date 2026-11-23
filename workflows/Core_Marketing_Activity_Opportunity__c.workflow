@@ -32,7 +32,7 @@
             <name>Core_Activity_Copy_Opportunity_Volume</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Marketing_Activity_Opportunity__c.CreatedById</field>
             <operation>notEqual</operation>

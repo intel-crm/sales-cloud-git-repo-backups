@@ -8,61 +8,7 @@
 * --------------------------------------------------------------------------------------------------                 
 * Karthick                  12/28/2017                  Created for selectind dependent core answers.
 ---------------------------------------------------------------------------------------------------->
-<apex:page standardController="Core_IPS_Answer__c" tabStyle="Core_IPS_Answer__c" extensions="Core_IPS_AddDependentAnswersExt" action="{!init}">
-    <style>
-    	
-    </style>
-    <apex:form >
-        <apex:pageMessages ></apex:pageMessages>
-        <apex:pageBlock title="Select Dependent Answers" rendered="{!!isError}">
-            <apex:pageBlockSection columns="1">
-                <apex:outputField value="{!parentAnswer.Core_IPS_Question__r.Core_IPS_Question__c}" label="Parent Question"/>
-                <apex:pageBlockSectionItem >
-                	<apex:outputLabel >Parent Answer</apex:outputLabel>
-                    <apex:outputPanel >
-                    	<apex:selectList value="{!parentAnsId}" size="1" multiselect="false" style="max-width:500px;">
-                            <apex:selectOptions value="{!lstSelAnswers}" />
-                            <apex:actionSupport event="onchange" action="{!redirectToSelectedParentAnswer}"/>
-                        </apex:selectList>
-                    </apex:outputPanel>
-                </apex:pageBlockSectionItem>            	
-            </apex:pageBlockSection>
-            <br/>
-            <apex:outputPanel id="QuestTable" rendered="{!wrapperQusAnsList.size >0}" >
-            <table border="0" cellpadding="3" cellspacing="0" class="list">
-                <tr>
-                    <th width="80">Dependent Questions</th>
-                    <apex:repeat value="{!wrapperQusAnsList}" var="wrapQues">
-                        <td>{!wrapQues.question.Core_IPS_Question__c}</td>
-                    </apex:repeat>
-                </tr>
-                <tr>
-                    <th>Answers</th>
-                    <apex:repeat value="{!wrapperQusAnsList}" var="wrapQues">
-                        <td style="min-width:220px;">
-                            <apex:repeat value="{!wrapQues.answerList}" var="wrapAns">
-                                <apex:inputCheckbox value="{!wrapAns.selected}" id="answer-input" disabled="{!wrapAns.disabled}" title="{!IF(wrapAns.disabled, 'Already assigned to another answer','')}"/>
-                                <apex:outputLabel for="answer-input" value="{!wrapAns.answer.Core_IPS_Answer__c}" />
-                                <br/>
-                            </apex:repeat>
-                        </td>
-                    </apex:repeat>
-                </tr>
-            </table>
-            </apex:outputPanel>
-            <apex:pageBlockButtons >
-                <apex:commandButton action="{!SaveDetails}" value="Save"/>
-                <apex:commandButton action="{!SaveandReturn}" value="Save & Return"/>
-                <apex:commandButton action="{!Cancel}" value="Cancel" immediate="true"/>
-            </apex:pageBlockButtons>
-        </apex:pageBlock>
-        
-        <apex:outputPanel >
-            <apex:commandButton action="{!Cancel}" value="Back" rendered="{!isError && showBackButton}"/>
-        </apex:outputPanel>
-        
-        
-    </apex:form>
-  
+<apex:page >
+    
   
 </apex:page>

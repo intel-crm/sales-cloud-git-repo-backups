@@ -18,7 +18,7 @@
           </template>
           <header class={headerClass}>
             <template if:true={closeHeaderClass}>
-              <a class={closeHeaderClass} aria-role="button" aria-label={labels.closeModal} tabindex="0" data-keydown-action="close" onclick={handleCloseModal} onblur={handleBlurFirst}>
+              <a class={closeHeaderClass} role="button" aria-label={labels.closeModal} tabindex="0" data-keydown-action="close" onclick={handleCloseModal} onblur={handleBlurFirst}>
                 <span class="fa-cancel-thin"></span>
               </a>
             </template>
@@ -26,7 +26,7 @@
           </header>
           <div class={bodyClass}>
             <template if:true={closeBodyClass}>
-              <a class={closeBodyClass} aria-role="button" aria-label={labels.closeModal} tabindex="0" data-keydown-action="close" onclick={handleCloseModal} onblur={handleBlurFirst}>
+              <a class={closeBodyClass} role="button" aria-label={labels.closeModal} tabindex="0" data-keydown-action="close" onclick={handleCloseModal} onblur={handleBlurFirst}>
                 <span class="fa-cancel-thin"></span>
               </a>
             </template>

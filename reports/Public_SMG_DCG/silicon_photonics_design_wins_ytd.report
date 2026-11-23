@@ -43,7 +43,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -126,7 +126,6 @@
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3) or (1 and 3 AND 4)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -146,14 +145,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>approved,Production Win</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>silicon photonics</value>
+            <value>approved</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

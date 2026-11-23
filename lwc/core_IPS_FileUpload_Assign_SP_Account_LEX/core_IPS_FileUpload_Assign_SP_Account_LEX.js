@@ -222,8 +222,7 @@ export default class Core_IPS_FileUpload_Assign_SP_Account_LEX extends  Navigati
                     
                 })
                 .catch(error=>{
-                    //this.showToast('Error!!', error, 'error');
-                    this.showToast('Error!!', error?.body?.message || error?.message || 'Unknown error occurred','error');
+                    this.showToast('Error!!', error.message, 'error');
                     console.log('Error=>',error);
                 })
                 

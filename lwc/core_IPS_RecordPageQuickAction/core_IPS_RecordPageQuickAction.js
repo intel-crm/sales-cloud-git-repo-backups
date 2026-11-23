@@ -3,13 +3,14 @@ import { CurrentPageReference } from "lightning/navigation";
 import { updateRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
-import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import { getRecord, getFieldValue ,getFieldDisplayValue} from 'lightning/uiRecordApi';
 
 import CURRENT_USER_ID from '@salesforce/user/Id';
 import CASEID_FIELD from '@salesforce/schema/Case.Id';
 import CASESTATUS_FIELD from '@salesforce/schema/Case.Status';
 import CASESUBSTATUS_FIELD from '@salesforce/schema/Case.Core_Sub_Status__c';
-import CASERECTYPENAME_FIELD from '@salesforce/schema/Case.RecordType.Name';
+import CASEPRODUCT_ORG from '@salesforce/schema/Case.Core_IPS_Product_Org_Number__c';
+
 import CASEOWNERID_FIELD from '@salesforce/schema/Case.OwnerId';
 
 import Core_IPS_CloseCaseMsg from '@salesforce/label/c.Core_IPS_CloseCaseMsg';
@@ -17,13 +18,7 @@ import Core_IPS_Case_Status_Closed from '@salesforce/label/c.Core_IPS_Case_Statu
 import Core_IPS_InvalidCaseMsg from '@salesforce/label/c.Core_IPS_InvalidCaseMsg';
 import Core_IPS_Case_Detail_Page from '@salesforce/label/c.Core_IPS_Case_Detail_Page';
 
-import Core_IPS_System_Admin_Profile_Name from '@salesforce/label/c.Core_IPS_System_Admin_Profile_Name';
-import Core_IPS_IT_Admin_Profile from '@salesforce/label/c.Core_IPS_IT_Admin_Profile';
-import Core_IPS_Production_Support_IPS_Profile from '@salesforce/label/c.Core_IPS_Production_Support_IPS_Profile';
-import Core_IPS_Sales_Rep_BB_Profile from '@salesforce/label/c.Core_IPS_Sales_Rep_BB_Profile';
-import Core_IPS_Sales_Rep_BB_Dual_IPS_Profile from '@salesforce/label/c.Core_IPS_Sales_Rep_BB_Dual_IPS_Profile';
-import Core_IPS_Agent_Profile from '@salesforce/label/c.Core_IPS_Agent_Profile';
-import Core_IPS_Agent_Enhanced_Profile from '@salesforce/label/c.Core_IPS_Agent_Enhanced_Profile';
+
 
 import getCurrentUserProfileName from "@salesforce/apex/Core_IPS_CaseCreateLWCController.getCurrentUserProfileName";
 import Core_IPS_AgentCaseClosureControllerLEX from '@salesforce/apex/Core_IPS_AgentCaseClosureControllerLEX.initialValidations';
@@ -34,7 +29,7 @@ import getCaseCloneAccess from '@salesforce/apex/Core_IPS_AgentCaseClosureContro
 import Survey_profile_name from '@salesforce/label/c.Survey_profile_name';
 
 
-const FIELDS = [CASESTATUS_FIELD,CASESUBSTATUS_FIELD];
+const FIELDS = [CASESTATUS_FIELD,CASESUBSTATUS_FIELD ,CASEPRODUCT_ORG];
 export default class Core_IPS_RecordPageQuickAction extends NavigationMixin(LightningElement) {
 surveyprofilename=Survey_profile_name;
     @track recordId;
@@ -74,7 +69,9 @@ surveyprofilename=Survey_profile_name;
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     fetchCase(response) {
         this.record = response;
+        console.log('test ck >> ',response);
     }
+    
 
     get status() {
         return getFieldValue(this.record.data, CASESTATUS_FIELD);
@@ -84,6 +81,14 @@ surveyprofilename=Survey_profile_name;
         return getFieldValue(this.record.data, CASESUBSTATUS_FIELD);
     }
     //////
+
+
+   
+
+
+
+
+
      @wire(getCurrentUserProfileName)
     wiredGetProfileName({ data, error }) {
         if(data) {
@@ -241,8 +246,20 @@ surveyprofilename=Survey_profile_name;
         
     }*/
 
+
+    //     @wire(getRecord, { recordId: '$recordId', fields: FIELDS})
+    // propertyOrFunction;
+
+    // renderedCallback(){
+    //    console.log('dataaa',getFieldValue(this.record.data, CASEPRODUCT_ORG2))
+
+
+    // //    console.log('dataaa1',this.propertyOrFunction.fields.Core_IPS_Product_Org_Number__c.getFieldValue);
+    // }
+
     connectedCallback() {
         this.recordId = this.currentPageReference.attributes.recordId;
+        console.log('rec id',this.recordId )
         console.log("calling  getButtonsVisibility " + this.recordId  );
         getButtonsVisibility({
             caseId: this.recordId 
@@ -287,6 +304,22 @@ surveyprofilename=Survey_profile_name;
             if(this.visibleButtons.includes('Case Comment,')  ){    
                 this.isCaseCommentVisible = true;
             }
+
+            //Mohan
+            if(getFieldValue(this.record.data, CASEPRODUCT_ORG) == '025')
+            {
+                this.isEditCaseVisible = false;
+                this.isCloseCaseVisible = false;
+                this.isAcceptCaseVisible = false;
+                this.isRequestClosureVisible = false;
+                this.isExportPDFVisible = false;
+                this.isInvalidVisible = false;
+                this.isManageInterestedPartyVisible = false;
+                this.isCaseCommentVisible = false;
+                this.isCopyVisible = false;
+            }
+
+
             console.log('visibleButtons '+this.visibleButtons);
             console.log('isInvalidVisible '+this.isInvalidVisible);
             this.isloading =false;
@@ -374,8 +407,9 @@ surveyprofilename=Survey_profile_name;
                 attributes: {
                     recordId: this.recordId,
                     mode: 'copy'
-                }
+                } 
               };
+              console.log(this.recordId);
               // Base64 encode the compDefinition JS object
               var encodedCompDef = btoa(JSON.stringify(compDefinition));
               var url = 'https://'+window.location.hostname+'/one/one.app#' + encodedCompDef;

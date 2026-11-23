@@ -9,16 +9,21 @@
         <value>Log Entries</value>
     </caseValues>
     <fields>
+        <label><!-- Contact --></label>
+        <name>Core_Contact__c</name>
+        <relationshipLabel><!-- Log Entries --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Details --></label>
         <name>Core_Details__c</name>
     </fields>
     <fields>
-        <label><!-- Message --></label>
-        <name>Core_Message__c</name>
+        <label><!-- Do we login to error log --></label>
+        <name>Core_Do_we_login_to_error_log__c</name>
     </fields>
     <fields>
-        <label><!-- Next Scheduled Run --></label>
-        <name>Core_Next_Scheduled_Run__c</name>
+        <label><!-- Message --></label>
+        <name>Core_Message__c</name>
     </fields>
     <fields>
         <label><!-- Object Link --></label>
@@ -33,8 +38,16 @@
         <name>Core_Project__c</name>
     </fields>
     <fields>
-        <label><!-- Retry_Counter --></label>
-        <name>Core_Retry_Counter__c</name>
+        <label><!-- Request --></label>
+        <name>Core_Request__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Return Time --></label>
+        <name>Core_Response_Return_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response --></label>
+        <name>Core_Response__c</name>
     </fields>
     <fields>
         <label><!-- Scope --></label>

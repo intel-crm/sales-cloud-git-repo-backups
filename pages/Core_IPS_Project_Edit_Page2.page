@@ -1,0 +1,53 @@
+<!--------------------------------------------------------------------------------------------------------------------------------------
+* Page Name  : Core_IPS_Project_Edit_Page 
+* Version     : 1.0
+* Created Date: 2 Dec 2018
+* Modification Log :
+* Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* vamsi                   2 Dec 2018               Page for Edit view of Premier Support Projects As IPS External Customer 
+----------------------------------------------------------------------------------------------------------------------------------------->
+<apex:page standardController="Core_IPS_Project__c" extensions="Core_IPS_Project_Edit_Detail_Controller1" > <!-- action="{!redirectEditPage}"-->
+    <style>
+        .requiredLegend .requiredText {
+            color: #fff;
+        }
+        .requiredLegend .requiredText:before {
+            content:'*';
+        }
+    </style>
+    <apex:form >
+        <apex:outputPanel >
+            <apex:sectionHeader title="{!$Label.Core_IPS_Premier_Support_Project_Edit}" subtitle="{!Core_IPS_Project__c.Name}" />
+        </apex:outputPanel>
+        <apex:pageBlock id="pb1" mode="Edit" title="{!$Label.Core_IPS_Premier_Support_Project_Edit}" >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!Save}" value="{!$Label.Core_IPS_Save}"/>
+                <apex:commandButton action="{!saveNew}" value="{!$Label.Core_IPS_Save_New}" rerender="msgId"/>
+                <apex:commandButton action="{!Cancel}" value="{!$Label.Core_IPS_Cancel}"/>
+            </apex:pageBlockButtons>   
+            <apex:pageMessages id="msgId" ></apex:pageMessages>   
+            <apex:outputPanel >
+                <apex:pageBlockSection columns="2" title="{!$Label.Core_IPS_Information}"  >
+                    <apex:inputField value="{!Core_IPS_Project__c.Name}" required="true"/>
+                    <apex:inputField value="{!Core_IPS_Project__c.Core_Project_Description__c}"/>
+                    <apex:outputField value="{!Core_IPS_Project__c.Core_MPNDA__c}"/>
+                    <apex:outputField value="{!Core_IPS_Project__c.Core_IPS_Project_ID__c}"/>
+                    <apex:inputField value="{!Core_IPS_Project__c.Core_Status__c}"/>
+                    <apex:pageBlockSectionItem >
+                           <apex:outputLabel >{!$Label.Core_IPS_Enable_Members_as_Interested_Parties}</apex:outputLabel>
+                        <apex:inputCheckbox value="{!Core_IPS_Project__c.Core_IPS_EnableMemberasInterestedParties__c}" disabled="{!isEmailOptCheck}"/>
+                       </apex:pageBlockSectionItem> 
+                 <apex:outputField value="{!Core_IPS_Project__c.Core_IPS_Partner_Support_Owner__c}"/>
+                    <apex:inputField value="{!Core_IPS_Project__c.Core_IPS_Remove_Notification_Details__c}"/>
+                    <apex:pageBlockSectionItem >
+                 <apex:outputlabel value="Project Partner Support Owner" />
+                   <apex:selectList size="1" value="{!vamsi}" >
+                   <apex:selectOptions value="{!userList}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection> 
+                    </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

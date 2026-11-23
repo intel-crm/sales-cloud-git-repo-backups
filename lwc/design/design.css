@@ -1,0 +1,21 @@
+.field-title{
+    font-size: 22px;
+    color: black;
+    font-family: inherit;
+}
+p{
+    font-size: 16px;
+    font-family: inherit;
+}
+.slds-border_bottom{
+    padding: 0px;
+    border-bottom-color: black;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    
+}
+.slds-text-link_reset{
+    color: #0071C5;
+    font-size: 20px;
+    font-family: inherit;
+}

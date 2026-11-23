@@ -97,12 +97,6 @@
     <columns>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Play__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Focus_Area__c</field>
-    </columns>
     <description>08.31.17</description>
     <filter>
         <criteriaItems>
@@ -124,7 +118,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Gold,Silver,Bronze,Platinum,Skylake 2S CPU,Skylake 4S CPU</value>
+            <value>Gold,Silver,Bronze,Platinum</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -184,8 +178,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

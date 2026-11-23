@@ -1,30 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Log a call updated as of 6/18 in relation to US70171 for SDR/Sales Teams</description>
-    <fieldOverrides>
-        <field>ActivityDate</field>
-        <formula>TODAY()</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>Core_Activity_Source__c</field>
-        <literalValue>Manual</literalValue>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>Core_Task_Type__c</field>
-        <literalValue>Voice Call</literalValue>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>Priority</field>
-        <literalValue>Normal</literalValue>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>Status</field>
-        <literalValue>Completed</literalValue>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>TaskSubtype</field>
-        <literalValue>Call</literalValue>
-    </fieldOverrides>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>
         <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
@@ -32,23 +7,6 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>Subject</field>
-                <uiBehavior>Required</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>Core_Call_Result__c</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>Description</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-        </quickActionLayoutColumns>
-        <quickActionLayoutColumns>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>WhatId</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -57,10 +15,20 @@
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Description</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>WhatId</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
     </quickActionLayout>
     <standardLabel>LogACall</standardLabel>
-    <successMessage>Your Call has been logged!</successMessage>
     <targetObject>Task</targetObject>
-    <targetRecordType>Task.Opportunity_Tasks</targetRecordType>
     <type>LogACall</type>
 </QuickAction>

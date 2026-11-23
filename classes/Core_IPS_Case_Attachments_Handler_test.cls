@@ -75,7 +75,7 @@ public class Core_IPS_Case_Attachments_Handler_test{
         insert labels1;
         
         // Avoid Hardcoding Id Fix  - Shipra
-        Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
+        Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1];
         Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
         labels2.name= 'Data Migration Profile Id';
         labels2.value__c=dataMigPrf.Id;
@@ -180,7 +180,7 @@ public class Core_IPS_Case_Attachments_Handler_test{
         labels1.value__c='Public to Customers';
         insert labels1;
          // Avoid Hardcoding Id Fix  - Shipra
-         Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1]; 
+         Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1]; 
         Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
         labels2.name= 'Data Migration Profile Id';
         labels2.value__c= dataMigPrf.Id;
@@ -338,7 +338,7 @@ public class Core_IPS_Case_Attachments_Handler_test{
         labels1.value__c='Public to Customers';
         insert labels1;
          // Avoid Hardcoding Id Fix  - Shipra
-         Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
+         Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1];
         Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
         labels2.name= 'Data Migration Profile Id';
         labels2.value__c=dataMigPrf.Id;
@@ -506,7 +506,7 @@ public class Core_IPS_Case_Attachments_Handler_test{
         labels1.value__c='Public to Customers';
         insert labels1;
          // Avoid Hardcoding Id Fix  - Shipra
-         Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];  
+         Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1];  
         Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
         labels2.name= 'Data Migration Profile Id';
         labels2.value__c=dataMigPrf.Id;
@@ -901,7 +901,7 @@ Modification Log :
         insert listcstSettings;
         
         user adminUser=TestUtilities.getUser();
-        profile p=[select id,name from profile where name='CCP - Core Access' limit 1];
+        profile p=[select id,name from profile where name='IPS Data Migration' limit 1];
         adminUser.username='adminTest'+Crypto.getRandomLong()+'@intel.com';
         adminUser.profileid =p.id;
         insert adminUser;

@@ -1,0 +1,86 @@
+{
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "86d5fb47-be60-4118-8f32-7ac1d328a128",
+  "label" : "Product Detail",
+  "regions" : [ {
+    "id" : "71a7a70f-ef2f-4d8a-80c0-0f8090bc3b3f",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_ProductDetail_LWC",
+      "id" : "077cee1d-34c3-4419-8dec-abd22209d62c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "cd144951-42b1-40ca-b49e-7800333dc7ce",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "0bcf1360-7512-4943-acdf-e494fb8fcaf0",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "6bac97a9-07e5-4507-a7e3-91bd9e42ba3d",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "8033564f-bebd-47fb-a6cc-f8c3250dead5",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "fc3b2f94-b57b-4cfc-923b-fa16d907ec4d",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "d988d490-7ed3-4589-b861-f094b666bc57",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "36d267eb-78d7-4c4c-aaf4-9feffeb18fd4",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "6f3470a0-3018-4b85-a4c1-698e0e4e6e66",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "7bf78ce8-d6b0-4c4f-acd4-7a7dd376e02b",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "b4e7b47b-fe78-4004-a0a3-36a7000c03b3",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "d488c90e-9d72-4e5b-9346-4b1c494e6c54",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "e390acfa-fb68-41d0-95be-b6d0277e7c57",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Product Detail"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "e1022549-4497-47fa-bdcf-151f30e2388d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "57ac5ab6-7408-42da-bed9-1e9f96bca980",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "qbwA0O606VoVdt9qmVmy30Ap0RqvoL",
+  "type" : "view",
+  "viewType" : "custom-product-detail"
+}

@@ -2,9 +2,15 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>Marketing Engaged Lead</fullName>
+        <fullName>Tele Accepted Prospect</fullName>
+        <default>false</default>
+        <label>Tele Accepted Prospect</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Unqualified</fullName>
         <default>true</default>
-        <label>Marketing Engaged Lead</label>
+        <label>Unqualified</label>
         <converted>false</converted>
     </standardValue>
     <standardValue>
@@ -14,22 +20,10 @@
         <converted>false</converted>
     </standardValue>
     <standardValue>
-        <fullName>Sales Generated Lead</fullName>
-        <default>false</default>
-        <label>Sales Generated Lead</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>Tele Accepted Lead</fullName>
-        <default>false</default>
-        <label>Tele Accepted Lead</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
         <fullName>Tele Qualified Lead</fullName>
         <default>false</default>
         <label>Tele Qualified Lead</label>
-        <converted>false</converted>
+        <converted>true</converted>
     </standardValue>
     <standardValue>
         <fullName>Sales Accepted Lead</fullName>
@@ -46,51 +40,9 @@
         <converted>true</converted>
     </standardValue>
     <standardValue>
-        <fullName>Contact - No Opportunity</fullName>
-        <default>false</default>
-        <label>Contact - No Opportunity</label>
-        <converted>true</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>Tele Accepted Prospect</fullName>
-        <default>false</default>
-        <label>Tele Accepted Prospect</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>Tele Qualified Prospect</fullName>
-        <default>false</default>
-        <label>Tele Qualified Prospect</label>
-        <converted>true</converted>
-    </standardValue>
-    <standardValue>
         <fullName>Partner Qualified Lead</fullName>
         <default>false</default>
         <label>Partner Qualified Lead</label>
         <converted>true</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>PRL</fullName>
-        <default>false</default>
-        <label>PRL</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>PAL</fullName>
-        <default>false</default>
-        <label>PAL</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>PQL</fullName>
-        <default>false</default>
-        <label>PQL</label>
-        <converted>true</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>Rejected</fullName>
-        <default>false</default>
-        <label>Rejected</label>
-        <converted>false</converted>
     </standardValue>
 </StandardValueSet>

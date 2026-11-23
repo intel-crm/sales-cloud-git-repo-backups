@@ -1,0 +1,9 @@
+<aura:component implements="lightning:actionOverride" access="global">
+	<aura:handler name="init" value="{!this}" action="{!c.initComponent}"/>
+     <aura:attribute name="recordId" type="String"/>
+    
+    <!-- <lightning:button label="Edit Record" onclick="{!c.editRecord}"/>  -->
+    
+    <!--  <force:editRecord recordId="{!v.recordId}" onSuccess="{!c.handleEditSuccess}" />  -->
+    
+</aura:component>

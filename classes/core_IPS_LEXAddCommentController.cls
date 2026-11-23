@@ -156,7 +156,7 @@ public with sharing class core_IPS_LEXAddCommentController {
         }
         caseWrapperObj.selectedRadioButton = (getPartnerType()!=null && getPartnerType()!='') ? getPartnerType() : caseWrapperObj.selectedRadioButton;
         Case cs = new Case();
-        if(newCase != null && newcase.Core_Sub_Status__c != Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Close_Pending_SubStatus') && newCase.Core_IPS_Date_Time_Close_Pending__c != null
+       if(newCase != null && newcase.Core_Sub_Status__c != Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Close_Pending_SubStatus') && newCase.Core_IPS_Date_Time_Close_Pending__c != null
             && caseWrapperObj.selectedRadioButton == Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c && (System.Label.Core_IPS_Agent_Profile_Ids.Contains(String.valueOf(userInfo.getprofileId()).substring(0, 15)) 
             || System.Label.Core_IPS_DataOps.contains(String.valueOf(userInfo.getprofileId()).substring(0, 15)))) {
                 if(Schema.sObjectType.Case.fields.Core_IPS_Date_Time_Close_Pending__c.isUpdateable()){

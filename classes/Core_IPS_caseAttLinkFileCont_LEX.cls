@@ -7,60 +7,60 @@ Author      : Sai Krishna
 ****************************************************************************************************/
 
 public with sharing class Core_IPS_caseAttLinkFileCont_LEX {
-     public static List<uFile> fileList = new List<uFile>();
+    public static List<uFile> fileList = new List<uFile>();
     public static List <Core_IPS_File_Assignment__c> CoreIPSFILEAssignLst = new List<Core_IPS_File_Assignment__c>();
     public static case caseObj;
-
+    
     @AuraEnabled(cacheable = true)
     public static List<Core_IPS_File_Upload_Master__c> getFiles(String caseId){
         fileList = new List<uFile>();
         if(case.SObjectType.getDescribe().isAccessible()){
-        caseObj = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
+            caseObj = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
         }
         if(caseObj.Core_IPS_Supported_Product__c != null && Core_IPS_File_Assignment__c.SObjectType.getDescribe().isAccessible()){
-                CoreIPSFILEAssignLst = [SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c 
-                                        WHERE Core_Supported_Product__c =: CaseObj.Core_IPS_Supported_Product__c];
-            }
-            else{
-                
-                
-                return null;
-            }
-             Set <ID> cIPSFAID = new Set<ID>();
-            if(CoreIPSFILEAssignLst != null && CoreIPSFILEAssignLst.size() > 0){
-                for(Core_IPS_File_Assignment__c cIPSFA : CoreIPSFILEAssignLst){
-                    if(cIPSFA.Core_IPS_File_Upload_Master__c != null){
-                        cIPSFAID.add(cIPSFA.Core_IPS_File_Upload_Master__c);
-                    }
-                }
-            } else {
-                //No Files found to link
-               
-                return null;
-            }
-            Set <String> coreFileGUID_Existing = new Set<String>();
-        List<Core_IPS_Case_Attachments__c> existingCIPSCaseAttLst;
-        if(Core_IPS_Case_Attachments__c.SObjectType.getDescribe().isAccessible()){
-             existingCIPSCaseAttLst = [SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId];
+            CoreIPSFILEAssignLst = [SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c 
+                                    WHERE Core_Supported_Product__c =: CaseObj.Core_IPS_Supported_Product__c];
         }
-            for(Core_IPS_Case_Attachments__c cipsFileAssignGUID : existingCIPSCaseAttLst){
-                coreFileGUID_Existing.add(cipsFileAssignGUID.Core_File_GUID__c);
+        else{
+            
+            
+            return null;
+        }
+        Set <ID> CIPSFAID = new Set<ID>();
+        if(CoreIPSFILEAssignLst != null && CoreIPSFILEAssignLst.size() > 0){
+            for(Core_IPS_File_Assignment__c CIPSFA : CoreIPSFILEAssignLst){
+                if(CIPSFA.Core_IPS_File_Upload_Master__c != null){
+                    CIPSFAID.add(CIPSFA.Core_IPS_File_Upload_Master__c);
+                }
             }
-            //Check File Upload Master for related records
-            List<Core_IPS_File_Upload_Master__c> cipsUpMasLst = new List<Core_IPS_File_Upload_Master__c>();   
+        } else {
+            //No Files found to link
+            
+            return null;
+        }
+        Set <String> CoreFileGUID_Existing = new Set<String>();
+        List<Core_IPS_Case_Attachments__c> ExistingCIPSCaseAttLst;
+        if(Core_IPS_Case_Attachments__c.SObjectType.getDescribe().isAccessible()){
+            ExistingCIPSCaseAttLst = [SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId];
+        }
+        for(Core_IPS_Case_Attachments__c CIPSFileAssignGUID : ExistingCIPSCaseAttLst){
+            CoreFileGUID_Existing.add(CIPSFileAssignGUID.Core_File_GUID__c);
+        }
+        //Check File Upload Master for related records
+        List<Core_IPS_File_Upload_Master__c> CIPSUpMasLst = new List<Core_IPS_File_Upload_Master__c>();   
         if(Core_IPS_File_Upload_Master__c.SObjectType.getDescribe().isAccessible()){
-            cipsUpMasLst = [SELECT id,Name, CreatedDate,Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, 
+            CIPSUpMasLst = [SELECT id,Name, CreatedDate,Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, 
                             Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c,Core_FileUploadedBy__r.Name, 
                             Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c
-                            WHERE id IN :cIPSFAID and Core_Upload_Status__c = 'Complete' and 
+                            WHERE id IN :CIPSFAID and Core_Upload_Status__c = 'Complete' and 
                             Core_Expiration_Date__c >: datetime.now() and 
-                            Core_File_GUID__c not IN :coreFileGUID_Existing order by lastmodifieddate];  
+                            Core_File_GUID__c not IN :CoreFileGUID_Existing order by lastmodifieddate];  
         }
-            //Check to see if entries found   
-            if(cipsUpMasLst.size() > 0){
-                        
-                             
-            for(Core_IPS_File_Upload_Master__c  f: cipsUpMasLst) {
+        //Check to see if entries found   
+        if(CIPSUpMasLst.size() > 0){
+            
+            
+            for(Core_IPS_File_Upload_Master__c  f: CIPSUpMasLst) {
                 String url = f.Core_File_Hyperlink__c;
                 url = url.replace('<a href="', '').replace('amp;','').replace('" target="Self">Download</a>', ' ');
                 
@@ -68,31 +68,30 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LEX {
                 fileList.add(new ufile(f));
             }
         }
-           
-           return cipsUpMasLst;
+        
+        return CIPSUpMasLst;
     }
-
+    
     @AuraEnabled
     public static void saveFile(list<Id> selectedRecordIds, String caseId){
-
+        
         try{
-        List<Core_IPS_Case_Attachments__c> selectedCaseAttachments = new  List<Core_IPS_Case_Attachments__c>();
-        List<Core_IPS_File_Upload_Master__c> selectedRecords = new List<Core_IPS_File_Upload_Master__c>(); 
-        Core_IPS_Case_Attachments__c tempCase = new Core_IPS_Case_Attachments__c();
+            List<Core_IPS_Case_Attachments__c> selectedCaseAttachments = new  List<Core_IPS_Case_Attachments__c>();
+            List<Core_IPS_File_Upload_Master__c> selectedRecords = new List<Core_IPS_File_Upload_Master__c>(); 
+            Core_IPS_Case_Attachments__c tempCase = new Core_IPS_Case_Attachments__c();
             if(Core_IPS_File_Upload_Master__c.SObjectType.getDescribe().isAccessible()){
                 selectedRecords = [SELECT id, Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, 
-                            Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c, 
-                            Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c WHERE Id IN : selectedRecordIds];
-            
-            if(caseId != null){
-            for(Core_IPS_File_Upload_Master__c f : selectedRecords){
-                tempCase = new Core_IPS_Case_Attachments__c(); 
-                //FLS Check added by- T Nishitha
-                //FLS Commented by Nuthana as part of Vulnerability fixes
-                //if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_Case__c.isCreateable()) {
-                    tempCase.Core_Case__c = caseId;
-                //}
-                        /*if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_IPS_File_Upload__c.isCreateable()) {
+                                   Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c, 
+                                   Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c WHERE Id IN : selectedRecordIds];
+                
+                if(caseId != null){
+                    for(Core_IPS_File_Upload_Master__c f : selectedRecords){
+                        tempCase = new Core_IPS_Case_Attachments__c(); 
+                        //FLS Check added by- T Nishitha
+                        if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_Case__c.isCreateable()) {
+                            tempCase.Core_Case__c = caseId;
+                        }
+                        if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_IPS_File_Upload__c.isCreateable()) {
                             tempCase.Core_IPS_File_Upload__c = f.id;
                         }
                         if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_Type__c.isCreateable()) {
@@ -130,9 +129,9 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LEX {
                         }
                         if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_FileUploadedBy__c.isCreateable()) {
                             tempCase.Core_FileUploadedBy__c = f.Core_FileUploadedBy__c;
-                        }*/
+                        }
                         
-                         tempCase.Core_IPS_File_Upload__c = f.id;
+                        /*  tempCase.Core_IPS_File_Upload__c = f.id;
 tempCase.Core_Type__c = 'Link';
 tempCase.Core_Category__c = f.Core_Category__c;
 tempCase.Core_File_Description__c = f.Core_File_Description__c;
@@ -144,20 +143,20 @@ tempCase.Core_Last_Status_Updated_At__c = f.Core_Last_Status_Updated_At__c;
 tempCase.Core_Upload_UserId__c = f.Core_Upload_UserId__c; 
 tempCase.Core_Upload_idsid__c = f.Core_Upload_idsid__c;
 tempCase.Core_File_Size__c = f.Core_File_Size__c;
-tempCase.Core_FileUploadedBy__c = f.Core_FileUploadedBy__c;
+tempCase.Core_FileUploadedBy__c = f.Core_FileUploadedBy__c;*/
                         selectedCaseAttachments.add(tempCase);
                     }
                 }
             }
-        database.insert(selectedCaseAttachments, false);        
-         FileList=null; 
+            database.insert(selectedCaseAttachments, false);        
+            FileList=null; 
         }catch(Exception ex) {
             throw new AuraHandledException(ex.getMessage());
         }
-
+        
         
     }
-
+    
     public static string errorMessage(string errorCode){
         string defaultMessage ='Invalid Entry';
         if(Core_IPS_Error_Code__c.getinstance(errorCode)!=null){
@@ -178,9 +177,9 @@ tempCase.Core_FileUploadedBy__c = f.Core_FileUploadedBy__c;
     @AuraEnabled
     public static String showButtons(String CaseID){
         String recordtype;
-         Case c;
+        Case c;
         if(Case.SObjectType.getDescribe().isAccessible()){
-         c = [Select Id, RecordType.Name From Case Where Id =: CaseID ];
+            c = [Select Id, RecordType.Name From Case Where Id =: CaseID ];
         }
         recordtype = c.RecordType.Name;
         return recordtype;
@@ -193,10 +192,10 @@ tempCase.Core_FileUploadedBy__c = f.Core_FileUploadedBy__c;
         String strqry;
         if(fetchType == 'Load Data' && offset != null)
         {
-            strqry = 'SELECT Core_Case__c,Name,Core_Upload_idsid__c,Core_Case__r.Status,Core_FileUploadedBy__r.Name,Core_File_URL__c,Core_File_Hyperlink__c,CreatedDate, Core_File_Description__c, Core_File_Name__c, Core_File_Size__c, Core_Upload_Status__c,Core_IPS_Attachment_Visibility__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c =:caseID AND Core_IPS_Attachment_Visibility__c IN :allowedTiers  ORDER BY CreatedDate DESC LIMIT :limitSize OFFSET :offset ';  
+            strqry = 'SELECT Core_Case__c,Name,Core_Upload_idsid__c,Core_Case__r.Status,Core_FileUploadedBy__r.Name,Core_File_URL__c,Core_File_Hyperlink__c,CreatedDate, Core_File_Description__c, Core_File_Name__c, Core_File_Size__c, Core_Upload_Status__c,Core_IPS_Attachment_Visibility__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c =:caseID AND Core_IPS_Attachment_Visibility__c IN :allowedTiers WITH USER_MODE ORDER BY CreatedDate DESC LIMIT :limitSize OFFSET :offset ';  
         }
         else if(fetchType == 'All Data'){
-            strqry = 'SELECT Core_Case__c,Name,Core_Upload_idsid__c,Core_Case__r.Status,Core_FileUploadedBy__r.Name,Core_File_URL__c,Core_File_Hyperlink__c,CreatedDate, Core_File_Description__c, Core_File_Name__c, Core_File_Size__c, Core_Upload_Status__c,Core_IPS_Attachment_Visibility__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c =:caseID AND Core_IPS_Attachment_Visibility__c IN :allowedTiers  ORDER BY CreatedDate DESC ';  
+            strqry = 'SELECT Core_Case__c,Name,Core_Upload_idsid__c,Core_Case__r.Status,Core_FileUploadedBy__r.Name,Core_File_URL__c,Core_File_Hyperlink__c,CreatedDate, Core_File_Description__c, Core_File_Name__c, Core_File_Size__c, Core_Upload_Status__c,Core_IPS_Attachment_Visibility__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c =:caseID AND Core_IPS_Attachment_Visibility__c IN :allowedTiers WITH USER_MODE ORDER BY CreatedDate DESC ';  
         }
         cdoc = Database.Query(strqry);
         for(Core_IPS_Case_Attachments__c att:cdoc ){

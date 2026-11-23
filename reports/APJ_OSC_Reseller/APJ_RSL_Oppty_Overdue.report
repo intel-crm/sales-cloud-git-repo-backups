@@ -37,6 +37,12 @@
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_OSC_Collaboration_Type__c</field>
+    </columns>
+    <columns>
+        <field>User.Core_Is_OSC__c</field>
+    </columns>
+    <columns>
         <field>OWNER_DEPARTMENT</field>
     </columns>
     <columns>
@@ -127,10 +133,10 @@
         <field>PRODUCT_DESCRIPTION</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Approved_BU_Short_Name__c</field>
@@ -216,7 +222,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Ryan Golez,Amit Surve,Muhammad Safuan,Mahendran Moorthy,Anugrah Ramadhan,Hadrian Tung,Bomin Kim,Juhak Chang,Hui Min Pee Yong,Choong Fai Chao,Yoshino Hayes,Masahiko Sawada,Ridzuan Shukor Shaaibon,Sujith Radhakrishnan,Afrina Khan,Jamshed Iqbal,Kunal Sharma,Shah Jahan,Madhumati Chungani,Pooja Kanani,Steven Phuah,Frederick Siew,Wanhou Sam,Elzaki Hidayatullah,Yockie Witarto,Nurul Hayati,Citra Laila Utami,Citra Utami,Francis Tillain,Habibah Mat Rozali,Fatihah Abdulromae,Sadawut Kaenphet,Huong Nguyen,Dinh Thu,Lan Luong,Vivian Tee,Nella Litison,Syed Ahad,Zoe Yeoh,Erica Tor,Rocielle Manaloto Barandino,Joe Han Loh,Roy Yoo,EunYoung Jang,Clifford Tan,Chooi Li Tan,Mioko Hayashi,Chee Chee Thee,Yoichiro Tanaka,Arun Raghavan,Rahul Yadav,Pankaj Garg,Hussain Fakrudeen,Faisal Qamar,Jason Kay Siah Ang,Herney Herman,Susanto Wijaya,Josh Pendejito,Yong Pin Goh,Songphol Tamcharoen,BINH VO PHAM NGHIA,Hong Hai Le,Ashley Yang</value>
+            <value>Ryan Golez,Muhammad Safuan,Mahendran Moorthy,Bomin Kim,Juhak Chang,Hui Min Pee Yong,Choongfai Chao,Yoshino Hayes,Sujith Radhakrishnan,Afrina Khan,Jamshed Iqbal,Kunal Sharma,Shah Jahan,Pooja Kanani,Steven Phuah,Frederick Siew,Wanhou Sam,Elzaki Hidayatullah,Nurul Hayati,Citra Laila Utami,Francis Tillain,Habibah Mat Rozali,Fatihah Abdulromae,Sadawut Kaenphet,Huong Nguyen,Lan Luong,Vivian Tee,NellaX A Litison,Syed Ahad,Zoe Yeoh,Erica Tor,Rocielle Manaloto Barandino,Joe Han Loh,Roy Yoo,Clifford Tan,Chooi Li Tan,Mioko Hayashi,Yoichiro Tanaka,Arun Raghavan,Rahul Yadav,Pankaj Garg,Hussain Fakrudeen,Fq Qamar,Jason Kay Siah Ang,Herney Herman,Susanto Wijaya,Josh Pendejito,Yong Pin Goh,Songphol Tamcharoen,BINH VO PHAM NGHIA,Hong Hai Le,Ashley Yang</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

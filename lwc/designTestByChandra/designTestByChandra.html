@@ -1,0 +1,189 @@
+<template>
+    <div class="rectangle">
+        <lightning-button variant="base" label="< Back" title="Back to dashboard" class="noBorder"></lightning-button>
+    </div>
+    <div class="mask"></br>
+        <p class="slds-text-align_center">Create New Case</p>
+    </div>
+    <div>
+        <div class="slds-grid slds-wrap">
+            <div class="headline slds-col">
+                <span>
+                    Case information
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Select Project</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <p>
+                        <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select" options={options}
+                            onchange={handleChange}></lightning-combobox>
+                    </p>
+                    </br>
+                    <p style="font-weight: bolder;">
+                        *Note: If Project is blank or set to 'Not Applicable', all the Contacts in your account will
+                        have access to the case.
+                    </p>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Product Variant</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select" options={options}
+                        onchange={handleChange}></lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="headline slds-col">
+            <span>
+                Products
+            </span>
+        </div>
+        <div>
+            <lightning-dual-listbox class="inputs" name="languages"
+                            source-label="Available Intel Products"
+                            selected-label="Included In Project"
+                            options={options}
+                            disable-reordering
+                            onchange={handleChange}></lightning-dual-listbox>
+        </div>
+        <div class="line"></div>
+        <div class="headline slds-col">
+            <span>
+                Search Details
+            </span>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Project</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3"></br>
+                Test Project
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Product</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3"></br>
+                <span>
+                <p>
+                    Test Product
+                </p></br>
+                <p style="font-weight: bolder;">
+                    *Note: If Project is blank or set to 'Not Applicable', all the Contacts in your account will
+                    have access to the case.
+                </p>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Product Variant</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3"></br>
+                Test Product Variant
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Subject</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <lightning-input class="inputs"></lightning-input>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Case Category</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select" options={options}
+                        onchange={handleChange}></lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Case Sub-Category</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select" options={options}
+                        onchange={handleChange}></lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Language</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <lightning-input class="inputs"></lightning-input>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="headline slds-col">
+            <span>
+                Environmental Details
+            </span>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Case Subcategory Deatails</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select" options={options}
+                        onchange={handleChange}></lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">IP Product</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select" options={options}
+                        onchange={handleChange}></lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">FPGA Development Tools</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <span>
+                    <lightning-combobox class="inputs" name="progress" value={value} placeholder="Please Select" options={options}
+                        onchange={handleChange}></lightning-combobox>
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-grid slds-size_1-of-3">
+                <p class="subHeadline">Version</p>
+            </div>
+            <div class="slds-col slds-grid slds-size_1-of-3"></br>
+                Test Version
+            </div>
+        </div>
+        <div class="slds-p-bottom_small" align="right">
+            <input type="button" class="btn" value="Search For Answers"></input>
+        </div>
+    </div>
+    <div class="slds-p-bottom_small">
+            <input type="button" class="btn" value="Give Feedback"></input>
+    </div>
+</template>

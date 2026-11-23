@@ -54,14 +54,17 @@
             commUser1Case.OwnerId = commUser1.Id;
             commUser1Case.ContactId = commUser1.ContactId;
             commUser1Case.AccountId = commUser1.Contact.AccountId;
-            commUser1Case.Core_IPS_Customer_Visible__c = true;
-            Case commUser2Case = caseList[2];
+            //Added by Sowmya -Start - 10/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+    		commUser1Case.Core_IPS_Customer_Visible__c = true;
+ 			//Sowmya -End - 10/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+ 			
+    		Case commUser2Case = caseList[2];
             commUser2Case.OwnerId = commUser2.Id;
             commUser2Case.ContactId = commUser2.ContactId;
             commUser2Case.AccountId = commUser2.Contact.AccountId;
-            
+         
+          
             insert caseList;
-            
             //Insert interested parties to the case
             List<Core_IPS_Case_Interested_Party__c> intPartyList = Core_RestAPI_TestUtilities.getInternalInterestedParties(4, 'External');
             List<Core_IPS_Case_Interested_Party__c> extPartyList = Core_RestAPI_TestUtilities.getInternalInterestedParties(2, 'Internal');
@@ -78,7 +81,13 @@
             }
             insert intPartyList;
             insert extPartyList;
-            Test.stopTest();
+            
+            
+            //TODO remove the below for loop
+            for(Case c: [Select Id, CaseNumber,  Account.Name, Contact.Name, Owner.Name, Core_IPSPortal_Check__c from Case]){
+            }
+            
+             Test.stopTest();
         }
        
         
@@ -109,7 +118,7 @@
             System.assertEquals(null, apiResponse.errorContent);
             
             RestRequest request = RestContext.request;
-            System.assertEquals(apiResponse.successContent.size() != null, true);
+            System.assertEquals(4, apiResponse.successContent.size(), 'All External active intersted parties retrieved');
             
         }
         //Common Asserts for all versions

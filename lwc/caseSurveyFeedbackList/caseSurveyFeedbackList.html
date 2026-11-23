@@ -1,0 +1,25 @@
+<template>
+
+	<lightning-card>
+	
+		<div style="height: 300px;">
+		
+			<template if:true={isDataAvailable}>
+				<c-core_-i-p-s_-datatable-utility
+					hide-checkbox-column={hideCheckboxColumn} 
+					show-row-number-column={showRowNumberColumn} 
+					enable-infinite-loading={enableInfiniteLoading}
+					num-and-checkbox-both-cols={numAndCheckboxBothCols}
+					normal-data-table={normalDataTable}
+					records={surveyResults}
+					columns={column}
+					number-of-rows-to-show={numberOfRowsToShow}
+					height-in-rem={heightInRem}>
+				</c-core_-i-p-s_-datatable-utility>
+			</template>
+			
+		</div>
+		
+	</lightning-card>
+	
+</template>

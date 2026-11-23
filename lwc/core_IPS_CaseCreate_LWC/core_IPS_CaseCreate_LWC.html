@@ -1,0 +1,80 @@
+<template>
+    <!--Core_IPS_caseCreation_form1_LWC  start-->
+   <template if:true={showcasedetails_form1}>
+       <div data-id="redDiv">
+       </div>
+       <div>
+       </div>
+       <div class="rectangle">
+           <lightning-button onclick={handleNavigateBackfrom1toHome} variant="base" label="< Back" title="Back to dashboard"
+               class="noBorder"></lightning-button>
+       </div>
+        <!--
+           showProdEdqs  = based on productId
+           prodEdqRecs   = based on productId
+           subCatRecEdqs = based on subcateId
+           showSubCatEdqs = based on subcateId
+       -->
+       <c-core_-i-p-s_-case-create-form1_-l-w-c 
+               oncaseinfodata = {handlecaseEventData}
+               ongetcatrecedqs = {handlecateedq}
+               ongetmode = {handlemode}
+               casedata={caseInfo}
+               projectdata = {project}> </c-core_-i-p-s_-case-create-form1_-l-w-c>
+<!-- Search For Answers -->
+<template if:false={sslcmode}>
+                   <div class="slds-p-bottom_small" align="right">
+                       <input onclick={handleNavigateform1toform2} type="button" class="btn" value="Search For Answers"></input>
+                  </div>
+                  <!-- Give Feedback -->
+                  <div class="slds-p-bottom_small">
+                      <lightning-button variant="brand" label="Give Feedback" icon-name="utility:rotate" class="slds-p-around_large"></lightning-button>
+                  </div>
+               </template>
+
+</template>
+<!--Core_IPS_caseCreation_form1_LWC  End-->
+
+<!--core_IPS_caseCreation_Form_Full  start-->
+<template if:true={showcheckAnswers_form2}>
+       <div data-id="yellowDiv">
+       </div>
+       <div>
+       </div>
+       <div class="rectangle">
+           <lightning-button onclick={handleNavigateBackfrom2tofrom1} variant="base" label="< Back" title="Back to dashboard"
+               class="noBorder"></lightning-button>
+       </div>
+       <c-core_-i-p-s_-case-create-form2_-l-w-c caseinfodata={caseInfoStringfy}></c-core_-i-p-s_-case-create-form2_-l-w-c>
+           <div class="slds-p-bottom_small" align="right">
+               <input onclick={handleNavigatefrom2tofrom3} type="button" class="btn" value="Continue to Case Creation"></input>
+           </div>
+   </template>
+<!--core_IPS_caseCreation_Form_Full  End-->
+
+<!--Core_IPS_caseCreation_form3_LWC  start-->
+<template if:true={showcaseCreation_form3}>
+       <div data-id="greenDiv">
+       </div>
+       <div>
+       </div>
+       <div class="rectangle">
+           <lightning-button onclick={handleNavigateBackfrom3tofrom2} variant="base" label="< Back" title="Back to dashboard"
+               class="noBorder"></lightning-button>
+       </div>
+       <!--
+           showProdEdqs  = based on productId
+           prodEdqRecs   = based on productId
+           subCatRecEdqs = based on subcateId
+           showSubCatEdqs = based on subcateId
+       -->
+       <c-core_-i-p-s_-case-create-form3_-l-w-c 
+           casedatainfo = {caseInfo}
+           subcatrecedqs = {subCatRecEdqs}
+           showcubcatedqs = {showSubCatEdqs}
+           oncasedataform = {handlecasedataform3}
+           defectedobjectid = {deflectedid}
+           ></c-core_-i-p-s_-case-create-form3_-l-w-c>
+   </template>
+<!--Core_IPS_caseCreation_form3_LWC  End-->
+</template>

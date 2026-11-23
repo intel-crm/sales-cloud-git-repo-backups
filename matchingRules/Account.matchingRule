@@ -2,7 +2,6 @@
 <MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <matchingRules>
         <fullName>Account_Dup_Check_matching_rule</fullName>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
         <label>Account Dup Check matching rule</label>
         <matchingRuleItems>
             <blankValueBehavior>MatchBlanks</blankValueBehavior>
@@ -27,11 +26,6 @@
         <matchingRuleItems>
             <blankValueBehavior>MatchBlanks</blankValueBehavior>
             <fieldName>Name</fieldName>
-            <matchingMethod>Exact</matchingMethod>
-        </matchingRuleItems>
-        <matchingRuleItems>
-            <blankValueBehavior>MatchBlanks</blankValueBehavior>
-            <fieldName>Core_Account_Record_Type_Dup_Check__c</fieldName>
             <matchingMethod>Exact</matchingMethod>
         </matchingRuleItems>
         <ruleStatus>Active</ruleStatus>

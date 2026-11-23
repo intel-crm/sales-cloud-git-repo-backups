@@ -1,0 +1,96 @@
+<apex:page Standardcontroller="Case" recordSetVar="placeholderRecordSetVar" extensions="Core_IPS_Case_List_View_Export" 
+           showHeader="false" readOnly="true" action="{!setdata}" cache="true" contentType="{!contentType}" renderAs="{!renderType}" 
+           applyHtmlTag="false"> 
+           
+    <apex:slds />
+    <div class="slds-scope">
+    <apex:form >
+        <center>
+        <!-- The actual CSV export need to come from a commandlink.    -->
+        <!-- The command button is simply for a disabled-state visual. -->
+            <br/>
+            <br/>
+        <apex:commandLink value="Export to CSV"   action="{!exportToCSV}" rendered="{!isCSVExportActive}" styleClass="btn" target="_self"  charset="charset=UTF-8"/>
+        <apex:commandButton value="Export to CSV"   disabled="true"       rendered="{!isCSVExportActive == false}"/>         
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <!-- The actual PDF export need to come from a commandlink.    -->
+        <!-- The command button is simply for a disabled-state visual. -->
+        <!--
+        <apex:commandButton value="Export to PDF" action="{!exportToExcel}" styleClass="btn" style="text-decoration:none" disabled="{!isPDFExportActive == false}"/>
+        <apex:commandButton value="Export to PDF" disabled="true"           rendered="{!isExcelExportActive == false}"/>         
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        --> 
+          <apex:commandLink value="Return to Case"   onClick="goBack()"  styleClass="btn" target="_self"  charset="charset=UTF-8"/>
+               
+        <script>
+        function goBack() {
+          window.history.back();
+        }
+        </script>
+
+    </center>
+    <!-- Need for landscape PDF.  Also applyHtmlTag="false" -->       
+    <html>
+
+
+    <!-- SOLVES bad characters landing in Excel Spreadsheet.  Also, above, ShowHeader="false"  -->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <style>
+            @page 
+            { 
+                size:landscape;
+            }
+            .listTitle
+            {
+                font-weight:bold;
+                font-size:26px;
+            }
+            .gridText
+            {
+                font-size: 8pt;
+            }
+        </style>
+    </head>
+
+    <br/>
+    <apex:outputPanel >
+        <apex:panelGrid columns="1">
+            <apex:outputPanel style="float:left">
+                <apex:outputText styleClass="listTitle" value="Intel Premier Support"/>
+                <br/>
+                <apex:outputText style="font-weight:bold" value="Intel Confidential"/>
+                <br/>
+                <apex:outputText style="font-weight:bold" value=" {!reportDate}"/>
+                <br/>
+                <br/>
+                <apex:outputText styleClass="listTitle" value="Case List Export:"/>
+                <br/>
+                <apex:outputText styleClass="listTitle" value="{!filterName}"/>                
+            </apex:outputPanel>
+        </apex:panelGrid>
+    </apex:outputPanel>   
+    <apex:pageBlock mode="detail">
+        <apex:pageBlockSection Columns="1" showHeader="false">
+            <apex:repeat value="{!lstlstObj}" var="block">
+                <apex:pageBlockTable styleClass="gridText" value="{!block}" var="dataRecord" border="1" width="200%">                
+                    <apex:repeat value="{!lstColumn}" var="varfield" >
+                        <apex:column headerValue="{!varfield.label}">
+                            <apex:outputText value="{!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == False}"/>
+                            <apex:outputText value=" {!dataRecord[varField.fieldNameOrPath]}" rendered="{!varField.isDateType == True}" />
+                        </apex:column>
+                    </apex:repeat>                                                                                    
+                 </apex:pageBlockTable>
+            </apex:repeat>
+         </apex:pageBlockSection>
+    </apex:pageBlock> 
+    <br/>                           
+    <br/>
+    <br/>                            
+   
+    <!-- Need for landscape PDF.  Also applyHtmlTag="false" -->       
+    </html>
+     </apex:form>
+    </div>
+</apex:page>

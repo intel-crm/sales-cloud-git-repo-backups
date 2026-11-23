@@ -1,0 +1,172 @@
+<template>
+    <div  class="slds-grid slds-wrap custom-container slds-theme_shade">
+        <div class="slds-size_1-of-5 slds-max-small-size_1-of-1"></div>
+        <div class="slds-size_1-of-5 slds-max-small-size_1-of-1"></div>
+        <div class="slds-size_2-of-5 slds-max-small-size_1-of-1">
+            <lightning-card>
+                <div class="" style="margin-left:35%;">
+                    <lightning-button variant="brand" label="Cancel" title="Cancel" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+                    <lightning-button variant="brand" label="Submit" title="Submit" onclick={handleSave} class="slds-m-left_x-small"></lightning-button>                       
+                </div>
+                
+                <lightning-accordion  allow-multiple-sections-open active-section-name={activeSection}>
+                    <lightning-accordion-section name="A" label="Case Information" class="slds-m-left_x-large">
+                        <div  class="slds-grid slds-wrap custom-container slds-m-left_x-large">
+                            <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <lightning-input type="checkbox" label="Customer Visible" name="input2"></lightning-input> ← Check this box to make Case customer accessible
+                            </div>
+
+                            <!-- <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <lightning-input type="text" label="Contact Name" placeholder="" required></lightning-input>
+                            </div> -->
+
+                            <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <template if:true={isContactLookupQueryPresent}>
+                                    Contact Name : 
+                                    <c-core_-i-p-s_-custom-lookup
+                                        onselectedrec={handleSelectedContact} 
+                                        iconname={contactLookupIconName}
+                                        searchfield-name={contactlookupSearchFieldName}
+                                        query-string={contactlookupQueryString}
+                                        query-execution-required=true
+                                        count-query-string={contactlookupCountQueryString}
+                                        >
+                                    </c-core_-i-p-s_-custom-lookup>
+                                </template>
+                            </div>
+
+                            <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <template if:true={isProjectLookupQueryPresent}>
+                                    Project : 
+                                    <c-core_-i-p-s_-custom-lookup
+                                        onselectedrec={handleSelectedProject} 
+                                        iconname={projectLookupIconName}
+                                        searchfield-name={projectlookupSearchFieldName}
+                                        query-string={projectlookupQueryString}
+                                        query-execution-required=true
+                                        count-query-string={projectlookupCountQueryString}
+                                        >
+                                    </c-core_-i-p-s_-custom-lookup>
+                                </template>
+                            </div>
+
+                            <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <template if:true={isProductLookupQueryPresent}>
+                                    Product : 
+                                    <c-core_-i-p-s_-custom-lookup
+                                        onselectedrec={handleSelectedProduct} 
+                                        iconname={productLookupIconName}
+                                        searchfield-name={productlookupSearchFieldName}
+                                        query-string={productlookupQueryString}
+                                        query-execution-required=true
+                                        count-query-string={productlookupCountQueryString}
+                                        >
+                                    </c-core_-i-p-s_-custom-lookup>
+                                </template>
+                            </div>
+
+                            <template if:true={isProductVariantAvailable}>
+                                <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                    <lightning-combobox 
+                                        name="productvariantpicklist" 
+                                        label="Product Variant" 
+                                        value={value} 
+                                        placeholder="-Select Product Variant-" 
+                                        options={productVariantOptions} 
+                                        onchange={handleChangeproductvariant}
+                                        required>
+                                    </lightning-combobox>
+                                </div>
+                            </template>
+
+                            <!-- <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <lightning-input type="text" label="Project" placeholder="" ></lightning-input>
+                            </div> 
+                            <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <lightning-input type="text" label="Product" placeholder="" required></lightning-input>
+                            </div> -->
+                            <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <!-- <lightning-input type="text" label="Case Source" placeholder="" ></lightning-input> -->
+                                <lightning-combobox 
+                                    name="casesourcepicklist" 
+                                    label="Case Source" 
+                                    value={value} 
+                                    placeholder="-Select Case Source-" 
+                                    options={sourceValues} 
+                                    onchange={handleChangecaseSource}
+                                    required>
+                                </lightning-combobox>
+                            </div>
+                            <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <!-- <lightning-input type="text" label="Case Type" placeholder="" ></lightning-input> -->
+                                <lightning-combobox 
+                                    name="casetypeppicklist" 
+                                    label="Case Type" 
+                                    fieldlevelhelp= "Please indicate the type of support you are requesting."  
+                                    title= "Please indicate the type of support you are requesting." 
+                                    value={value} 
+                                    placeholder="-Select Case Type-"
+                                    options={typeValues} 
+                                    onchange={handleChangecaseType} 
+                                    required>
+                                </lightning-combobox> 
+                            </div>
+                        </div>
+                    </lightning-accordion-section>
+
+                    <lightning-accordion-section name="B" label="Case Details" class="slds-m-left_x-large">
+                        <div class="slds-grid slds-wrap custom-container slds-m-left_x-large">
+                            <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <lightning-input type="text" label="Subject" placeholder="" required></lightning-input>
+                            </div>
+
+                            <div class="slds-size_4-of-5 slds-max-small-size_1-of-1">
+                                <!-- <lightning-input type="text" label="Case Description" placeholder="" required></lightning-input> -->
+                                <lightning-input-rich-text 
+                                    label="Case Description" 
+                                    label-visible="true"
+                                    title= "Note : If you are pasting images into this field, the size limit is 100KB."  
+                                    onchange={handleChangeDescription}
+                                    required>
+                                </lightning-input-rich-text>
+
+                            </div>
+                        </div>
+
+                        <div class="slds-m-left_xxx-small slds-grid slds-wrap slds-size_1-of-1 slds-gutters">
+                            <div class="slds-grid slds-wrap slds-size_6-of-12 slds-grid--vertical-align-center ">
+              
+                              <div class="slds-size_4-of-12">
+                                <label class="slds-form-element__label slds-m-top_small">By Org Name:</label>
+                              </div>
+                              <div class="slds-size_8-of-12">
+                                <c-core_-i-p-s_-lightning-input-utility onchange={handleSearchOrgName} value={searchOrgName} onenter={handleSearch}>
+                                </c-core_-i-p-s_-lightning-input-utility>
+                              </div>
+              
+                            </div>
+                            <div class="slds-grid slds-wrap slds-size_6-of-12 slds-grid--vertical-align-center ">
+              
+                              <div class="slds-size_4-of-12">
+                                <label class="slds-form-element__label slds-m-left_medium slds-m-top_small">By MAP Name:</label>
+                              </div>
+                              <div class="slds-size_8-of-12">
+                                <c-core_-i-p-s_-lightning-input-utility onchange={handleSearchMapName} value={searchMapName} onenter={handleSearch}>
+                                </c-core_-i-p-s_-lightning-input-utility>
+                              </div>
+              
+                            </div>
+                            
+                          </div>
+                    </lightning-accordion-section>
+
+                </lightning-accordion>
+                <div class="" style="margin-left:35%;">
+                    <lightning-button variant="brand" label="Cancel" title="Cancel" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+                    <lightning-button variant="brand" label="Submit" title="Submit" onclick={handleSave} class="slds-m-left_x-small"></lightning-button>           
+                </div>
+            </lightning-card>
+        </div>
+        <div class="slds-size_1-of-5 slds-max-small-size_1-of-1"></div>
+    </div>
+</template>

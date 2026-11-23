@@ -26,9 +26,9 @@ public class Core_RestAPI_AttachmentV1_Hnd_Test {
          sObjRecSystemCred.MyIntel_Integration_Class_Name__c = 'Core_IPS_SFT_Move';
         sObjRecSystemCred.MyIntel_Client_Id__c = '07e04e4c-dd0b-4b24-9c46-6056a8225308';
         sObjRecSystemCred.MyIntel_Client_Secret__c = 'XnK1KXtLthP4.778QgL-2fTS~OahSiL_qc';
-        sObjRecSystemCred.MyIntel_Endpoint_URL__c = 'https://apis-sandbox.intel.com/filetransfer/sft-enterprise/file-management/v1/files?action=movefile    ';    
+        sObjRecSystemCred.MyIntel_Endpoint_URL__c = 'https://apis-stage.intel.com/filetransfer/sft-enterprise/file-management/v1/files?action=movefile    ';    
         sObjRecSystemCred.MyIntel_GrantType__c = 'client_credentials';  
-        sObjRecSystemCred.MyIntel_Token_Endpoint_URL__c = 'https://apis-sandbox.intel.com/v1/auth/token';
+        sObjRecSystemCred.MyIntel_Token_Endpoint_URL__c = 'https://apis-stage.intel.com/v1/auth/token';
   insert sObjRecSystemCred;
         //*--Start --US-US1018637-- 01-05-2021 -- Farooq -- change from old callout to APIGEE--*/
         Core_Trigger_Executions__c settings = new Core_Trigger_Executions__c();

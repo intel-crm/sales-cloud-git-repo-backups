@@ -5,11 +5,11 @@
     <doesFormulaEnforceDataAccess>true</doesFormulaEnforceDataAccess>
     <doesFormulaGenerateHtmlOutput>false</doesFormulaGenerateHtmlOutput>
     <enableAgentforceFlowAutomation>false</enableAgentforceFlowAutomation>
-    <enableEmailSimpleRespectProfiles>false</enableEmailSimpleRespectProfiles>
+    <enableEmailSimpleRespectProfiles>true</enableEmailSimpleRespectProfiles>
     <enableEmailsimpleSecureProfiles>false</enableEmailsimpleSecureProfiles>
     <enableFlowBREncodedFixEnabled>true</enableFlowBREncodedFixEnabled>
     <enableFlowCustomPropertyEditor>false</enableFlowCustomPropertyEditor>
-    <enableFlowDeployAsActiveEnabled>true</enableFlowDeployAsActiveEnabled>
+    <enableFlowDeployAsActiveEnabled>false</enableFlowDeployAsActiveEnabled>
     <enableFlowFieldFilterEnabled>true</enableFlowFieldFilterEnabled>
     <enableFlowFormulasFixEnabled>true</enableFlowFormulasFixEnabled>
     <enableFlowInterviewSharingEnabled>true</enableFlowInterviewSharingEnabled>
@@ -18,10 +18,10 @@
     <enableFlowPauseEnabled>false</enableFlowPauseEnabled>
     <enableFlowReactiveChoiceOptions>false</enableFlowReactiveChoiceOptions>
     <enableFlowReactiveScreens>false</enableFlowReactiveScreens>
-    <enableFlowUseApexExceptionEmail>true</enableFlowUseApexExceptionEmail>
+    <enableFlowUseApexExceptionEmail>false</enableFlowUseApexExceptionEmail>
     <enableFlowViaRestUsesUserCtxt>true</enableFlowViaRestUsesUserCtxt>
     <enableFlowsLightningApp>true</enableFlowsLightningApp>
-    <enableLightningRuntimeEnabled>true</enableLightningRuntimeEnabled>
+    <enableLightningRuntimeEnabled>false</enableLightningRuntimeEnabled>
     <flowOccurrenceLogging>false</flowOccurrenceLogging>
     <isApexPluginAccessModifierRespected>true</isApexPluginAccessModifierRespected>
     <isEnhancedFlowListViewVisible>true</isEnhancedFlowListViewVisible>

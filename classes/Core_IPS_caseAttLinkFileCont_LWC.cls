@@ -15,21 +15,22 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LWC {
     public static List<Core_IPS_File_Upload_Master__c> getFiles(String caseId){
         List<Core_IPS_File_Upload_Master__c> CIPSUpMasLst = new List<Core_IPS_File_Upload_Master__c>();   
         /// Mohan code fix for null getting in caseId Line no 18 - 76
-        if(caseId != '' && caseId != null){          
+        if(caseId != '' && caseId != null){           
             fileList = new List<uFile>();
-            if (Schema.sObjectType.case.fields.Core_IPS_Supported_Product__c.isAccessible()) {
+           // if (Schema.sObjectType.case.fields.Core_IPS_Supported_Product__c.isAccessible()) { // Fixed as part of Exceptional Handling for best practices 
                 // Hassan Khan creating a "List<Case> caseList" to fix (List has no rows for assignment to Sobject) Exception Handling issue.
                 //caseObj = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
-                List<Case> caseList = [Select Id, Core_IPS_Supported_Product__c from case where id =: caseId];
+                List<Case> caseList=[Select Id, Core_IPS_Supported_Product__c from case where id =: caseId 
+                                  WITH USER_MODE];
                 if(!caseList.isEmpty()){
                     caseObj = caseList[0];
                 }
-            }
-            if(caseObj!= null && caseObj.Core_IPS_Supported_Product__c != null){ // TWC745-9175 - Exceptional Handling - Phani Added Null check
-                if (Schema.sObjectType.Core_IPS_File_Assignment__c.isAccessible()) {
+           // }
+            if(caseObj?.Core_IPS_Supported_Product__c != null){ // Exceptional Handling fix
+                //if (Schema.sObjectType.Core_IPS_File_Assignment__c.isAccessible()) { // Fixed as part of Exceptional Handling for best practices 
                     CoreIPSFILEAssignLst = [SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c 
-                                            WHERE Core_Supported_Product__c =: CaseObj.Core_IPS_Supported_Product__c];
-                }
+                                            WHERE Core_Supported_Product__c =: CaseObj.Core_IPS_Supported_Product__c with USER_MODE];
+                //}
             }
             else{
                 return null;
@@ -45,9 +46,9 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LWC {
                 return null;
             }
             Set <String> CoreFileGUID_Existing = new Set<String>();
-            if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_File_GUID__c.isAccessible()) {
-                ExistingCIPSCaseAttLst = [SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId];
-            }
+            //if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_File_GUID__c.isAccessible()) { // Fixed as part of Exceptional Handling for best practices 
+                ExistingCIPSCaseAttLst = [SELECT Core_File_GUID__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c=:caseId  with USER_MODE];
+            //}
             for(Core_IPS_Case_Attachments__c CIPSFileAssignGUID : ExistingCIPSCaseAttLst){
                 CoreFileGUID_Existing.add(CIPSFileAssignGUID.Core_File_GUID__c);
             }
@@ -81,11 +82,11 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LWC {
             List<Core_IPS_Case_Attachments__c> selectedCaseAttachments = new  List<Core_IPS_Case_Attachments__c>();
             List<Core_IPS_File_Upload_Master__c> selectedRecords = new List<Core_IPS_File_Upload_Master__c>(); 
             Core_IPS_Case_Attachments__c tempCase = new Core_IPS_Case_Attachments__c();
-            if (Schema.sObjectType.Core_IPS_File_Upload_Master__c.isAccessible()) {
+            //if (Schema.sObjectType.Core_IPS_File_Upload_Master__c.isAccessible()) { // Fixed as part of Exceptional Handling for best practices 
                 selectedRecords = [SELECT id, Core_Category__c, Core_Effective_Date__c, Core_Expiration_Date__c, Core_File_Description__c, Core_File_GUID__c, Core_File_Name__c, 
                                    Core_Upload_Status__c, Core_File_URL__c, Core_Last_Status_Updated_At__c, Core_Upload_UserId__c, Core_Upload_idsid__c, Core_File_Size__c, Core_FileUploadedBy__c, 
-                                   Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c WHERE Id IN : selectedRecordIds];
-            }
+                                   Core_File_Hyperlink__c FROM Core_IPS_File_Upload_Master__c WHERE Id IN : selectedRecordIds  with USER_MODE];
+            //}
             if(caseId != null){
                 for(Core_IPS_File_Upload_Master__c f : selectedRecords){
                     tempCase = new Core_IPS_Case_Attachments__c();               

@@ -44,7 +44,7 @@ public class Core_AccountMeetingBriefAccountTeam {
                         memberIds.add(member.UserId);
                         accountIdToUserMap.put(member.AccountId, memberIds);
                     }
-
+                    System.debug('##### accountIdToUserMap: ' + accountIdToUserMap);
                     
                     for (Account_Meeting_Brief__c brief : newList) {
                         for (Id userId : accountIdToUserMap.get(brief.Account__c)) {
@@ -56,7 +56,7 @@ public class Core_AccountMeetingBriefAccountTeam {
                                                                                                       UserOrGroupId = userId,
                                                                                                       AccessLevel = 'Edit',
                                                                                                       RowCause = Schema.Account_Meeting_Brief__Share.RowCause.Account_Team_Member__c);
-
+                                System.debug('##### share: ' + share);
                                 Core_AccountMeetingBriefHandler.objectsToInsert.add(share);
                             }
                         }

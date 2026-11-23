@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>CommunityCaseClosureController_Test</testClassName>
+    <testClassName>Core_EnvironmentVariablesController_Test</testClassName>
+    <testClassName>Core_IPS_CasePromotion_Handler_Test</testClassName>
+    <testClassName>Core_IPS_File_LinkToCase_Controller_Test</testClassName>
+    <testClassName>Core_IPS_Migrate_CustToPart_test</testClassName>
+    <testClassName>Core_IPS_MoveContactWithLargeCases_Test</testClassName>
+    <testClassName>Core_IPS_Survey_Controller_Test</testClassName>
+    <testClassName>Core_IssueCategoryController_Test</testClassName>
+</ApexTestSuite>

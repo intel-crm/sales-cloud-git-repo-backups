@@ -21,18 +21,23 @@ Public class Core_RestAPI_SPEnvDetailV1_Handler_Test{
         
         System.runAs(adminUser){
             
+            system.debug('enter test class');
             Product2 productRecord = TestUtilities.getProduct();
             insert productRecord;
+            system.debug('insert product:'+productRecord);
             
             Core_IPS_Product_Organization__c objSupportedproduct =new Core_IPS_Product_Organization__c();
             objSupportedproduct.Core_IPS_Support_Org_Name__c='Test Org';
             objSupportedproduct.Core_Organization_Description__c='Test Description';
             insert objSupportedproduct;
+            system.debug('objSupportedproduct '+objSupportedproduct);
             
             Core_IPS_Supported_Product__c objSuppProduct = Core_RestAPI_TestUtilities.getSupportedProduct();
             objSuppProduct.Core_Product_Organization__c = objSupportedproduct.id;
             objSuppProduct.Core_Product__c=productRecord.id;
+            system.debug('Product name'+ objSuppProduct.Core_Product__c);
             insert objSuppProduct;
+            System.debug('objSuppProduct'+objSuppProduct);
             
             Asset objAsset = new Asset();
             objAsset.Name = 'HP Test Intel Asset';
@@ -59,6 +64,7 @@ Public class Core_RestAPI_SPEnvDetailV1_Handler_Test{
             objEnvVar.Core_Supported_Product__c=objSuppProduct.id;
             objEnvVar.Core_IPS_Question__c=objQues.id;
             insert objEnvVar;
+            System.debug('objEnvVar'+objEnvVar);
             
         }
         Test.stopTest();
@@ -80,7 +86,9 @@ Public class Core_RestAPI_SPEnvDetailV1_Handler_Test{
           
             List<Core_IPS_Assigned_Environment_Variables__c > lstEnvVariables=[select Core_Supported_Product__r.Name from Core_IPS_Assigned_Environment_Variables__c where Core_IPS_Question__r.Core_IPS_Question__c= 'Test Question New EDQ model'];//list of environment detail operational       
             requestObj.resourcePath ='/services/apexrest/v1.0/products/'+lstEnvVariables[0].Core_Supported_Product__r.Name+'/environmentdetails';  
+            system.debug('requestObj.resourcePath'+requestObj.resourcePath);      
             requestObj.requestUri ='/v1.0/products/'+lstEnvVariables[0].Core_Supported_Product__r.Name+'/environmentdetails'; 
+            system.debug('requestObj requestUri'+ requestObj.requestUri);     
             requestObj.httpMethod = 'GET';
             RestContext.request = requestObj;     
             Core_RestAPI_SPEnvDetailV1_Handler handler = new Core_RestAPI_SPEnvDetailV1_Handler(System.now(), 'Core_RestAPI_SPEnvDetailsV1 '); 
@@ -103,15 +111,18 @@ Public class Core_RestAPI_SPEnvDetailV1_Handler_Test{
         
             Product2 productRecord = TestUtilities.getProduct();
             insert productRecord;
+            system.debug('insert product:'+productRecord);
             
             Core_IPS_Product_Organization__c objSupportedproduct =new Core_IPS_Product_Organization__c();
             objSupportedproduct.Core_IPS_Support_Org_Name__c='Test Org';
             objSupportedproduct.Core_Organization_Description__c='Test Description';
             insert objSupportedproduct; 
+            system.debug('objSupportedproduct'+objSupportedproduct);
             
             Core_IPS_Supported_Product__c objSuppProduct = TestUtilities.getSupportedProduct();
             objSuppProduct.Core_Product_Organization__c = objSupportedproduct.id;
             objSuppProduct.Core_Product__c=productRecord.id;
+            system.debug('Product name'+ objSuppProduct.Core_Product__c);
             insert objSuppProduct;
             
             Asset objAsset = new Asset();
@@ -133,6 +144,7 @@ Public class Core_RestAPI_SPEnvDetailV1_Handler_Test{
             objEnvVar.Core_Supported_Product__c=objSuppProduct.id;
             objEnvVar.Core_Environment_Variable__c=objEnvDetMaster.id;
             insert objEnvVar;
+            System.debug('objEnvVar'+objEnvVar);
             
             
             RestRequest requestObj = new RestRequest();
@@ -141,7 +153,9 @@ Public class Core_RestAPI_SPEnvDetailV1_Handler_Test{
            // List<Core_IPS_Assigned_Environment_Variables__c > lstEnvVariables=[select Core_Supported_Product__r.Name from Core_IPS_Assigned_Environment_Variables__c  where Core_Environment_Variable__r.name= 'Test Issue Resolution List1'];//list of environment details operational   
             List<Asset> objAssetId = [Select Id,Core_Supported_Product__c FROM Asset Where Name = 'HP Intel Product Asset'];
             requestObj.resourcePath ='/services/apexrest/v1.0/products/'+objAssetId[0].id+'/environmentdetails';  
+            system.debug('requestObj.resourcePath'+requestObj.resourcePath);      
             requestObj.requestUri ='/v1.0/products/'+objAssetId[0].id+'/environmentdetails'; 
+            system.debug('requestObj requestUri'+ requestObj.requestUri);     
             requestObj.httpMethod = 'GET';
             RestContext.request = requestObj;     
             Core_RestAPI_SPEnvDetailV1_Handler handler = new Core_RestAPI_SPEnvDetailV1_Handler( System.now(), 'Core_RestAPI_SPEnvDetailsV1 '); 

@@ -48,12 +48,15 @@ public class Core_IPS_OpportunityPAR_Controller_Test {
         oppParr.Core_IPS_AddNewProject__c = true;
 
         insert oppParr;
-        
+        System.assert(oppParr.Id != null, 'Record not created');
+
         Core_IPS_Opportunity_PAR__c oppParr2 = new Core_IPS_Opportunity_PAR__c(Core_IPS_Approval_Status__c ='In Progress');
         oppParr2.Core_IPS_Premier_Support_Project__c =null;
         oppParr2.Core_IPS_AddNewProject__c = true;
 
         insert oppParr2;
+        System.assert(oppParr2.Id != null, 'Record not created');
+
         // END
         List<Core_IPS_Product_Organization_Admin__c> orgAdmin = new List<Core_IPS_Product_Organization_Admin__c>();
         Core_IPS_Product_Organization_Admin__c suppadmin = TestUtilities.getSupportOrgAdmin();
@@ -62,11 +65,14 @@ public class Core_IPS_OpportunityPAR_Controller_Test {
         suppadmin.Core_Primary_Admin__c = true;
         suppadmin.Core_IPS_Supported_Org_Admin__c = oppParr.id;
         insert suppadmin;
+		System.assert(suppadmin.Id != null, 'Record not created');
         
         suppadmin.Core_IPS_Supported_Org_Admin__c = oppParr2.id;
         Update suppadmin; 
         
         insert suppProdList;
+        System.assert(suppProdList[0].Id != null, 'Record not created');
+
         orgAdmin.add(suppadmin);
         Core_IPS_CreateOpportunityPAR_Controller.WrapOpportunityPAR oppParWrapper = new Core_IPS_CreateOpportunityPAR_Controller.WrapOpportunityPAR();
         oppParWrapper.createProjCheckbox= true;
@@ -94,13 +100,14 @@ public class Core_IPS_OpportunityPAR_Controller_Test {
         System.runAs(new User(Id=UserInfo.getUserId())){
             oppPar = new Core_IPS_Opportunity_PAR__c(Core_IPS_Approval_Status__c ='In Progress');
             oppPar.Core_IPS_Premier_Support_Project__c =null;
-            oppPar.Core_IPS_AddNewProject__c = true;
+          	oppPar.Core_IPS_AddNewProject__c = true;
 
             insert oppPar;
+           
         } 
         system.assert(oppPar.Id!=null,'Opportunity PAR is not created');
         Test.startTest();
-        List<user> user = [SELECT Id from User where IsActive = true and Profile.Name = 'System administrator' Limit 1]; //ATHR fix Gangadhar
+        List<user> user = [SELECT Id from User where IsActive =true Limit 1];//ATHR fix Gangadhar
         
         Approval.ProcessSubmitRequest req1 = new Approval.ProcessSubmitRequest();
         req1.setObjectId(oppPar.Id);
@@ -118,7 +125,7 @@ public class Core_IPS_OpportunityPAR_Controller_Test {
     }
     
      public static TestMethod void testMethod3(){
-         Map<String, Schema.RecordTypeInfo> recordTypes = Schema.SObjectType.Account.getRecordTypeInfosByName();
+        Map<String, Schema.RecordTypeInfo> recordTypes = Schema.SObjectType.Account.getRecordTypeInfosByName();
         Id customRecTypeId = recordTypes.get('Intel Account').getRecordTypeId();
         accountList = Core_Test_Utility.createAccount(6);
         accountList[0].Name = 'Dell';
@@ -165,8 +172,11 @@ public class Core_IPS_OpportunityPAR_Controller_Test {
         suppadmin.Core_Product_Organization__c =suppOrg.id;
         suppadmin.Core_Primary_Admin__c = true;
         insert suppadmin;
-        
+        System.assert(suppadmin.Id != null, 'Record not created');
+
         insert suppProdList;
+        System.assert(suppProdList[0].Id != null, 'Record not created');
+
         orgAdmin.add(suppadmin);
         Core_IPS_CreateOpportunityPAR_Controller.WrapOpportunityPAR oppParWrapper = new Core_IPS_CreateOpportunityPAR_Controller.WrapOpportunityPAR();
         oppParWrapper.createProjCheckbox= false;
@@ -185,7 +195,8 @@ public class Core_IPS_OpportunityPAR_Controller_Test {
         Core_IPS_Project__c projHeader = TestUtilities.getIpsProjectRecord();
         projHeader.Core_Status__c = 'Draft';
         insert projHeader;
-        
+        System.assert(projHeader.Id != null, 'Record not created');
+
         // Inserting IPS accounts
         Core_IPS_Account__c ipsAcc = new Core_IPS_Account__c();
         ipsAcc.Core_Status__c = 'Active';
@@ -193,7 +204,8 @@ public class Core_IPS_OpportunityPAR_Controller_Test {
         ipsAcc.Core_Account__c = accountList[0].Id;
         ipsAcc.Core_IPS_Project__c = projHeader.Id;
         insert ipsAcc;
-        
+        System.assert(ipsAcc.Id != null, 'Record not created');
+
         //inserting Opportunity Junc object
         Core_IPS_Opportunity__c opptJunc = new Core_IPS_Opportunity__c();
         opptJunc.Core_IPS_Project__c = projHeader.id;

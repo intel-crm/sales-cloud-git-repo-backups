@@ -10,8 +10,8 @@ Modification Log :
 *****************************************************************************************************/
 @isTest
 public class Core_FieldSetWrapper_Test {
-    Static Final String  SOL_FOCUS_SELECT_1 = '5G UE/CPE';
-    Static Final String  SOL_FOCUS_SELECT_2 = 'Client Transformation';
+    Static Final String  SOL_FOCUS_SELECT_1 = 'Big Data/Analytics';
+    Static Final String  SOL_FOCUS_SELECT_2 = 'Client: Sell Up/Refresh';
 
     Static Final String INTEL_PLATFORM = 'Broadwell';
 
@@ -27,23 +27,17 @@ public class Core_FieldSetWrapper_Test {
     static void setupTestData() {
 
         // Create and insert a list of Account records
-        Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' and sobjecttype = 'Account' limit 1][0].Id;
+
         lstAccountInsertion = new List<Account>();
-        lstAccountInsertion = Core_Test_Utility.createAccount(5);
-        for (Integer i = 0; i < 5; i++) {
-            lstAccountInsertion.get(i).Core_Sales_Groups__c = 'PRC Sales Group';
-            lstAccountInsertion.get(i).RecordTypeId = newAccountRecTypeId;
-        }
-        //System.runAs(Core_Test_Utility.systemAdminUser) {
-            insert lstAccountInsertion;
-        //}
+        lstAccountInsertion = Core_Test_Utility.createAccount(1010);
+        insert lstAccountInsertion;
 
         // Create and insert a list of Opportunity records
         lstOpportunityInsertion = new List<Opportunity>();
-        lstOpportunityInsertion = Core_Test_Utility.createOpportunity(5);
+        lstOpportunityInsertion = Core_Test_Utility.createOpportunity(1010);
 
         // Updated the opportunity record to relate it to Account records
-        for (Integer i = 0; i < 5; i++) {
+        for (Integer i = 0; i < 1010; i++) {
             lstOpportunityInsertion.get(i).AccountId = lstAccountInsertion.get(i).Id;
         }
 

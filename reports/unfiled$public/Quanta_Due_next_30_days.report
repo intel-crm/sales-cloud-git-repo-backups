@@ -7,9 +7,6 @@
         <field>OWNER_MANAGER</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>

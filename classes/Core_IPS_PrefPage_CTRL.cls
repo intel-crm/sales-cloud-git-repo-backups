@@ -48,19 +48,19 @@ public with sharing  class Core_IPS_PrefPage_CTRL {// Changed by tushar because 
         );
         if(contactInContext.size()>0)
         {
-            selectedCountry = contactInContext[0].Core_Country_Region__c ;
-            radioCheckbox = contactInContext[0].Core_MINDS__c;
-            
-            if(contactInContext[0].Core_IPS_Email_Opt_Out__c == true )
-                EmailOptOut = true;
-            else
-                EmailOptIn = true;
-            options = new List<SelectOption>();
-            if(EmailOptOut == true)
-                options.add(new SelectOption('OptIn', System.Label.Core_IPS_OptIn));
-            if(EmailOptIn == true)
-                options.add(new SelectOption('OptOut', System.Label.Core_IPS_OptOut));
-        } // TWC745-9175 - Exceptional Handling - Phani End If Condition
+        selectedCountry = contactInContext[0].Core_Country_Region__c ;
+        radioCheckbox = contactInContext[0].Core_MINDS__c;
+        
+        if(contactInContext[0].Core_IPS_Email_Opt_Out__c == true )
+            EmailOptOut = true;
+        else
+            EmailOptIn = true;
+        options = new List<SelectOption>();
+        if(EmailOptOut == true)
+            options.add(new SelectOption('OptIn', System.Label.Core_IPS_OptIn));
+        if(EmailOptIn == true)
+            options.add(new SelectOption('OptOut', System.Label.Core_IPS_OptOut));
+        }
         return  contactInContext;    
     }
     
@@ -68,7 +68,7 @@ public with sharing  class Core_IPS_PrefPage_CTRL {// Changed by tushar because 
     public static void SubmitChoice(String countryValue,Boolean radioCheckbox,Boolean EmailOpt,String timeZoneValue){
         
         List<Contact>  userContact = new List<Contact>();   
-        List<User>  users = new List<User>();    
+        List<User>  Users = new List<User>();    
         // Venrublity Fix - Refering query to service class
         List<user> usrRecord = [SELECT Id,TimeZoneSidKey, ContactId FROM User where id =:UserInfo.getUserId()   ];     
         // Venrublity Fix - Refering query to service class
@@ -93,16 +93,16 @@ public with sharing  class Core_IPS_PrefPage_CTRL {// Changed by tushar because 
         con.Core_IPS_Email_Opt_Out__c=EmailOpt;   
         
         // Venrublity Fix - Refering query to service class
-        users=[SELECT Id,TimeZoneSidKey,Username,LastName,Email,Alias,LocaleSidKey,EmailEncodingKey,ProfileId,LanguageLocaleKey FROM User where id =:UserInfo.getUserId()];
+        Users=[SELECT Id,TimeZoneSidKey,Username,LastName,Email,Alias,LocaleSidKey,EmailEncodingKey,ProfileId,LanguageLocaleKey FROM User where id =:UserInfo.getUserId()];
         User us = new User(
-            Id=users[0].Id,
-            Username=users[0].Username,
-            LastName=users[0].LastName,
-            Email=users[0].Email,
-            Alias=users[0].Alias,
-            EmailEncodingKey=users[0].EmailEncodingKey,
-            ProfileId=users[0].ProfileId,
-            LanguageLocaleKey=users[0].LanguageLocaleKey,
+            Id=Users[0].Id,
+            Username=Users[0].Username,
+            LastName=Users[0].LastName,
+            Email=Users[0].Email,
+            Alias=Users[0].Alias,
+            EmailEncodingKey=Users[0].EmailEncodingKey,
+            ProfileId=Users[0].ProfileId,
+            LanguageLocaleKey=Users[0].LanguageLocaleKey,
             TimeZoneSidKey=timeZoneValue
         );
         // Venrublity Fix - Refering query to service class

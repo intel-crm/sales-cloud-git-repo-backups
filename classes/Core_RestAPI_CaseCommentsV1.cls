@@ -23,6 +23,7 @@ global with sharing  class Core_RestAPI_CaseCommentsV1 {
     @HttpPost
     global static Core_RestAPI_Response doPost(Core_RestAPI_CC_CreateV1_Wrapper caseComments){
         Core_RestAPI_CC_CreateV1_Handler handler = new Core_RestAPI_CC_CreateV1_Handler(ENTRY_TIME, RESTAPI_NAME,caseComments);
+        //Core_RestAPI_CC_CreateV2_Handler handler = new Core_RestAPI_CC_CreateV2_Handler(ENTRY_TIME, RESTAPI_NAME,caseComments);
         Core_RestAPI_Response response = handler.createCaseComments();
         return response;
         

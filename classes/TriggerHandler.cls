@@ -20,7 +20,7 @@ Modification Log :
 *                                                   formatting so it works better with Developer Console auto-formatting.
 *********************************************************************************************************************/
 
-public virtual without sharing class TriggerHandler {
+public virtual class TriggerHandler {
 
     /************* INTEL CODE **************/
     // Collections for optional consolidated DML at the end of trigger execution
@@ -63,7 +63,7 @@ public virtual without sharing class TriggerHandler {
         if(!validateRun()) return;
         
         addToLoopCount();
-        system.debug('TriggerHandler -inside run()');
+        
         // dispatch to the correct handler method
         if(this.context == TriggerContext.BEFORE_INSERT) {
             this.beforeInsert();
@@ -74,7 +74,6 @@ public virtual without sharing class TriggerHandler {
         } else if(this.context == TriggerContext.AFTER_INSERT) {
             this.afterInsert();
         } else if(this.context == TriggerContext.AFTER_UPDATE) {
-            system.debug('TriggerHandler - After update');
             this.afterUpdate();
         } else if(this.context == TriggerContext.AFTER_DELETE) {
             this.afterDelete();

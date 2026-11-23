@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Email_Alert_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Email Alert Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email_Template__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Email Template</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recipient_Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Recipient Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account Owner</fullName>
+                    <default>true</default>
+                    <label>Account Owner</label>
+                </value>
+                <value>
+                    <fullName>Account Team</fullName>
+                    <default>false</default>
+                    <label>Account Team</label>
+                </value>
+                <value>
+                    <fullName>Case Team</fullName>
+                    <default>false</default>
+                    <label>Case Team</label>
+                </value>
+                <value>
+                    <fullName>Creator</fullName>
+                    <default>false</default>
+                    <label>Creator</label>
+                </value>
+                <value>
+                    <fullName>Customer Portal User</fullName>
+                    <default>false</default>
+                    <label>Customer Portal User</label>
+                </value>
+                <value>
+                    <fullName>Email Field</fullName>
+                    <default>false</default>
+                    <label>Email Field</label>
+                </value>
+                <value>
+                    <fullName>Opportunity Team</fullName>
+                    <default>false</default>
+                    <label>Opportunity Team</label>
+                </value>
+                <value>
+                    <fullName>Owner</fullName>
+                    <default>false</default>
+                    <label>Owner</label>
+                </value>
+                <value>
+                    <fullName>Partner User</fullName>
+                    <default>false</default>
+                    <label>Partner User</label>
+                </value>
+                <value>
+                    <fullName>Portal Role</fullName>
+                    <default>false</default>
+                    <label>Portal Role</label>
+                </value>
+                <value>
+                    <fullName>Portal Role and Subordinates</fullName>
+                    <default>false</default>
+                    <label>Portal Role and Subordinates</label>
+                </value>
+                <value>
+                    <fullName>Public Groups</fullName>
+                    <default>false</default>
+                    <label>Public Groups</label>
+                </value>
+                <value>
+                    <fullName>Related Contact</fullName>
+                    <default>false</default>
+                    <label>Related Contact</label>
+                </value>
+                <value>
+                    <fullName>Related Lead or Contact Owner</fullName>
+                    <default>false</default>
+                    <label>Related Lead or Contact Owner</label>
+                </value>
+                <value>
+                    <fullName>Related User</fullName>
+                    <default>false</default>
+                    <label>Related User</label>
+                </value>
+                <value>
+                    <fullName>Role</fullName>
+                    <default>false</default>
+                    <label>Role</label>
+                </value>
+                <value>
+                    <fullName>Role and Internal Subordinates</fullName>
+                    <default>false</default>
+                    <label>Role and Internal Subordinates</label>
+                </value>
+                <value>
+                    <fullName>Role and Subordinates</fullName>
+                    <default>false</default>
+                    <label>Role and Subordinates</label>
+                </value>
+                <value>
+                    <fullName>User</fullName>
+                    <default>false</default>
+                    <label>User</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Selected_Recipients__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Selected Recipients</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Email_Config__mdt</label>
+    <pluralLabel>Email_Config__mdts</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

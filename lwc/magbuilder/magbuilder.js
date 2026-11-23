@@ -135,7 +135,7 @@ export default class Magbuilder extends LightningElement {
                 answerType: da,
                 dependentQues: this.dependentQues,
                 val: checkval,
-                child: 'No'
+                child: 'no'
             }
         });
         this.dispatchEvent(selectedquestionanswerin);

@@ -1,0 +1,7 @@
+<apex:page standardController="case">  <script type="text/javascript">
+      onload = function(){
+    document.getElementById("feedLinks").style.display = 'none'; 
+    document.getElementById("chatterfeedshell").style.display = 'none';
+    }
+</script>
+</apex:page>

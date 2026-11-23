@@ -17,6 +17,10 @@
         <name>Core_EPM_Hierarchy_Name__c</name>
     </fields>
     <fields>
+        <label><!-- External Id --></label>
+        <name>Core_External_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- L1 EPM ID --></label>
         <name>Core_L1_EPM_ID__c</name>
     </fields>

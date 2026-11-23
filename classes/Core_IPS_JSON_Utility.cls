@@ -25,11 +25,13 @@ public without sharing class Core_IPS_JSON_Utility {
         Transient String s3= '';
         Transient String s2 = '';
         List<String> allimgString = richTextAreaString.split('<img ');
+        System.debug(allimgString );
         List <String> allImageUrls = new List<String>(); 
         
         For(String str: allimgString ){
             String finalString = '';
             s2 = str.substringBetween('src="','"');
+            system.debug('s2'+s2);
             if(String.IsBlank(s2)){
                 finalString += str;
             }else{

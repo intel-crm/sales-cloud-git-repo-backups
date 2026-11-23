@@ -37,6 +37,11 @@
               </template>            
              
             <div class="slds-col slds-order_1 slds-large-order_2 slds-size_1-of-1 slds-large-size_9-of-12">
+                 <!--CRGA changes TWC745-9525-Gangadhar-Begin -->
+                  <template if:true={showQuanticGeneratedAnswer}>
+                    <c-quantic-generated-answer engine-id={engineId}></c-quantic-generated-answer>
+                  </template>
+                  <!--CRGA changes TWC745-9525-Gangadhar-Begin -->
                   <template if:false={noresults}>
                     <!-- <div class="slds-grid slds-var-m-top_small"> -->
                       <div> 

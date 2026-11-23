@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Core_IPS_CaseAttachment_Backend_OutMsg_1</destinationFlowDefinition>
+    <destinationFlowVersion>Core_IPS_CaseAttachment_Backend_OutMsg_1-1</destinationFlowVersion>
+    <developerName>myRule_1_301DU000000kCWrYAM</developerName>
+    <masterLabel>Core IPS CaseAttachment Backend OutMsg_1</masterLabel>
+    <migratedCriteriaLabel>outbound message for a case attachment</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Core_IPS_CaseAttachment_Backend_OutMsg-14</processVersion>
+</ProcessFlowMigration>

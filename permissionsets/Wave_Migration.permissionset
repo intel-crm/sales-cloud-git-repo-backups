@@ -10,10 +10,6 @@ Deploy inbound change set requests</description>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>ModifyMetadata</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>OutboundMigrationToolsUser</name>
     </userPermissions>
     <userPermissions>

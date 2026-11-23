@@ -177,7 +177,7 @@
         <fullName>Core_IPS_Routing_Technique__c</fullName>
         <label>Routing Technique</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -203,7 +203,7 @@
         <label>SCFT Backend Type</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -248,7 +248,7 @@
         <label>Target System</label>
         <length>250</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -285,37 +285,61 @@
         <defaultValue>false</defaultValue>
         <description>update filed whenver change in child objects</description>
         <label>isDataSync</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <label>Backend_System</label>
     <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Backend_System_URL__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_IPS_Deactivated__c</columns>
+        <columns>isDataSync__c</columns>
+        <columns>Last_Sync__c</columns>
+        <columns>Core_IPS_SCFT_Backend_Type__c</columns>
+        <columns>Core_IPS_Status__c</columns>
+        <columns>Core_Support_Email__c</columns>
+        <columns>Core_IPS_Target_System__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
         <fullName>All1</fullName>
         <columns>NAME</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Core_IPS_Status__c</columns>
         <columns>Core_IPS_Target_System__c</columns>
         <columns>Core_IPS_Backend_System_URL__c</columns>
+        <columns>isDataSync__c</columns>
         <columns>Core_IPS_Deactivated__c</columns>
-        <columns>Core_IPS_Support_Org__c</columns>
-        <columns>Core_IPS_Support_Org_Name__c</columns>
+        <columns>Core_IPS_SCFT_Backend_Type__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>HSD_BESs</fullName>
+        <fullName>All_Active_Backend_System</fullName>
         <columns>NAME</columns>
         <columns>Core_IPS_Target_System__c</columns>
+        <columns>Last_Sync__c</columns>
+        <columns>isDataSync__c</columns>
+        <columns>Core_IPS_SCFT_Backend_Type__c</columns>
+        <columns>Support_Environment_Detail_Criteria__c</columns>
         <columns>Core_IPS_Backend_System_URL__c</columns>
-        <columns>Core_IPS_Deactivated__c</columns>
-        <columns>Core_IPS_Support_Org__c</columns>
-        <columns>Core_IPS_Support_Org_Name__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_IPS_Backend_System_URL__c</field>
-            <operation>contains</operation>
-            <value>hsd</value>
+            <field>Core_IPS_Deactivated__c</field>
+            <operation>equals</operation>
+            <value>0</value>
         </filters>
-        <label>HSD BESs</label>
+        <label>All Active Backend System</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Backend_System</label>
@@ -331,13 +355,16 @@
         <searchFilterFields>NAME</searchFilterFields>
         <searchFilterFields>Core_IPS_Deactivated__c</searchFilterFields>
         <searchFilterFields>Core_IPS_Support_Org__c</searchFilterFields>
-        <searchResultsAdditionalFields>Core_IPS_Target_System__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Backend_System_URL__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Deactivated__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Support_Org__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Support_Org_Name__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>Core_IPS_BackendSystem_Def_Dup_Check</fullName>
+        <active>true</active>
+        <description>This validation rule checks whether the backend System definition is duplicate or not by comparing the name field</description>
+        <errorConditionFormula>(Name =  VLOOKUP( $ObjectType.Core_IPS_Backend_System__c.Fields.Name , $ObjectType.Core_IPS_Backend_System__c.Fields.Name, Name) ) &amp;&amp;  ISNEW()</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>Duplicate Backend System Definition. Please choose another name.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Core_IPS_BES_Dynamic_Sync</fullName>
@@ -363,6 +390,58 @@ alert(&apos;No changes made on Backend System or Backend System is Deactivated. 
 }
 else{
 sforce.apex.execute(&quot;Core_IPS_BES_IPassDataSync&quot;,&quot;syncRecords&quot;,{recordId:&quot;{!Core_IPS_Backend_System2__c.Id}&quot;});
+}
+
+location.reload();</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Reprocess_Failed_IPSCasePromotes</fullName>
+        <availability>online</availability>
+        <description>This button upon click will reprocess the failed promotes/updates case/Comments/attachment related to corresponding Backend System</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Reprocess Failed IPSCasePromotes</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}
+var backEndId = &apos;{!Core_IPS_Backend_System__c.Id}&apos;;
+var res;
+
+if(backEndId !=null)
+{
+res=confirm(&quot;Are you sure to continue?&quot;);
+}
+if(res==true){
+var ressrting=sforce.apex.execute(&quot;Core_IPS_Reprocess_Backend_FailedRecords&quot;, &quot;reProcessRecordsFromBackSystem&quot;,{backEndSystemId:backEndId}); alert(&apos;Processing Completed&apos;);
+}
+sforce.debug.trace=true;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>test</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>test</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/apex.js&quot;)}
+
+let recid = &quot;{!Core_IPS_Backend_System2__c.Id}&quot;;
+
+let query = &quot;SELECT Id, isDataSync__c, Core_IPS_Deactivated__c FROM Core_IPS_Backend_System2__c WHERE ID = &apos;&quot;+recid+&quot;&apos; &quot;;
+let queryres = sforce.connection.query(query);
+let rec = queryres.getArray(&quot;records&quot;);
+
+
+
+if(rec[0].isDataSync__c === &quot;false&quot; || rec[0].Core_IPS_Deactivated__c === &quot;true&quot;){
+alert(&apos;No changes made on Backend System or Backend System is Deactivated. Sync not possible&apos;);
+}
+else{
+sforce.apex.execute(&quot;Core_IPS_BES_IPassDataSync&quot;,&quot;syncRecords&quot;,{recordId:&quot;{!Core_IPS_Backend_System2__c.Id}&quot;});
+alert(&apos;Processing...&apos;);
 }
 
 location.reload();</url>

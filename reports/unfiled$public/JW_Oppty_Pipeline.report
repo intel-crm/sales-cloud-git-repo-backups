@@ -16,9 +16,6 @@
         <field>Opportunity.Core_Milestone_Count__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_KPI_CPU_Units__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
@@ -34,16 +31,13 @@
     <columns>
         <field>Opportunity.Core_Approval_Status__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Approved_Date__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Rejected</value>
+            <value>Approved,Rejected</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -67,7 +61,7 @@
     </params>
     <params>
         <name>include</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>co</name>
@@ -78,10 +72,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Opportunity.Core_Approval_Status__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

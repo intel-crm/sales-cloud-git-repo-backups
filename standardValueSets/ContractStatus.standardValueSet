@@ -3,10 +3,10 @@
     <groupingStringEnum>ContractStatusCode</groupingStringEnum>
     <sorted>false</sorted>
     <standardValue>
-        <fullName>Draft</fullName>
+        <fullName>In Approval Process</fullName>
         <default>false</default>
-        <label>Draft</label>
-        <groupingString>Draft</groupingString>
+        <label>In Approval Process</label>
+        <groupingString>InApproval</groupingString>
     </standardValue>
     <standardValue>
         <fullName>Activated</fullName>
@@ -15,27 +15,9 @@
         <groupingString>Activated</groupingString>
     </standardValue>
     <standardValue>
-        <fullName>Amendment Inprogress</fullName>
+        <fullName>Draft</fullName>
         <default>false</default>
-        <label>Amendment Inprogress</label>
-        <groupingString>Activated</groupingString>
-    </standardValue>
-    <standardValue>
-        <fullName>Amendment Completed</fullName>
-        <default>false</default>
-        <label>Amendment Completed</label>
-        <groupingString>Activated</groupingString>
-    </standardValue>
-    <standardValue>
-        <fullName>In Approval Process</fullName>
-        <default>false</default>
-        <label>In Approval Process</label>
-        <groupingString>InApproval</groupingString>
-    </standardValue>
-    <standardValue>
-        <fullName>Cancelled</fullName>
-        <default>false</default>
-        <label>Cancelled</label>
+        <label>Draft</label>
         <groupingString>Draft</groupingString>
     </standardValue>
 </StandardValueSet>

@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:actionOverride,lightning:isUrlAddressable" access="global" >
+<aura:attribute name="MINDSQuestionnaire" type="boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:if isTrue="{!v.MINDSQuestionnaire}">
+        <div>
+            <c:core_IPS_MAG_Questionnaire_LEX recordId="{!v.recordId}" />
+        </div>
+	</aura:if>
+</aura:component>

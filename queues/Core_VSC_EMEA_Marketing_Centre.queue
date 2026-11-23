@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>VSC - EMEA Marketing Centre</name>
+    <queueMembers>
+        <users>
+            <user>11513758@intel.com.crm</user>
+            <user>11552340@intel.com.crm</user>
+            <user>10640830@intel.com.crm</user>
+            <user>11553632@intel.com.crm</user>
+            <user>11570289@intel.com.crm</user>
+            <user>11557379@intel.com.crm</user>
+            <user>11512347@intel.com.crm</user>
+            <user>11513754@intel.com.crm</user>
+            <user>11591988@intel.com.crm</user>
+            <user>11454633@intel.com.crm</user>
+            <user>11628847@intel.com.crm</user>
+            <user>11513760@intel.com.crm</user>
+            <user>11513756@intel.com.crm</user>
+            <user>mariax.demacheva@intel.com.crm</user>
+            <user>11570290@intel.com.crm</user>
+            <user>11519982@intel.com.crm</user>
+            <user>11585417@intel.com.crm</user>
+            <user>11631842@intel.com.crm</user>
+            <user>11512350@intel.com.crm</user>
+            <user>11619875@intel.com.crm</user>
+            <user>11499850@intel.com.crm</user>
+            <user>11629290@intel.com.crm</user>
+            <user>11519783@intel.com.crm</user>
+            <user>11446710@intel.com.crm</user>
+            <user>11583414@intel.com.crm</user>
+            <user>11539587@intel.com.crm</user>
+            <user>11557785@intel.com.crm</user>
+            <user>11588577@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

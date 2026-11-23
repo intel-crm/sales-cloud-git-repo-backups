@@ -118,6 +118,10 @@
         <label><!-- Support Email --></label>
         <name>Core_Support_Email__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- TEST --></label>
+        <name>TEST</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Duplicate Backend System Definition. Please choose another name. --></errorMessage>

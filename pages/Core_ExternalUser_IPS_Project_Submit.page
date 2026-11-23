@@ -1,0 +1,151 @@
+<apex:page standardController="Core_IPS_Project__c" extensions="Core_ExternalUser_IPS_Project_Contlr_Dup" 
+           sidebar="false" docType="html-5.0">
+    <!--<apex:slds />  -->
+    
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+        <link rel="stylesheet" href="/resources/demos/style.css"/>
+        
+        <style>
+            .squeeze {
+            overflow: scroll;
+            max-height: 160px;
+            }
+            
+        </style>
+        <!--
+<script>
+$('[id$=TablePanel]').stickyTableHeaders({scrollableArea: $('.squeeze')});
+</script>         -->
+        
+    </head>
+    <apex:form id="mainForm">
+        
+        <apex:outputPanel id="secHdr">
+            <apex:sectionHeader title="Premier Support Project" subtitle="{! IF(ipsProject.Id == null, 'New Premier Support Project', ipsProject.Name ) }" />
+        </apex:outputPanel>
+        <apex:pageMessages id="errors"/>
+        <apex:pageBlock id="pb1" mode="edit" rendered="{!loggerInUser.Contact.AccountId != null}" >
+            <apex:outputPanel id="allpanels">
+                <apex:outPutPanel id="buttonPanel" html-align="center"   layout="block" style=" padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;"> 
+                    <apex:commandButton action="{!previousStep}" value="Previous" style="width:70px;font-size: 12px;"  rendered="{!stepIndex > 0}" rerender="secHdr, allpanels"/>
+                    <apex:commandButton action="{!nextStep}" value="Next" style="width:70px;font-size: 12px;"  rendered="{!(stepIndex+1) < steps.size}" rerender="secHdr, allpanels, errors"/>
+                    <apex:commandButton action="{!saveAll}" value="Save" style="width:70px;font-size: 12px;"   rendered="{!steps.size == (stepIndex+1)}" rerender="secHdr, allpanels, errors"/>
+                    <apex:commandButton action="{!cancel}" value="Cancel" style="width:70px;font-size: 12px;"   />
+                </apex:outPutPanel>
+                <!-- Step 1 -->
+                <apex:outputPanel id="pspPanel" rendered="{!steps[stepIndex] == 'Premier Support Project'}">
+                    <apex:pageBlockSection columns="1" id="ipsPgSec">
+                        <apex:inputField value="{!ipsProject.name}" required="true"/>
+                        <apex:inputField value="{!ipsProject.Core_Project_Description__c}" html-rows="4" html-cols="80"  />
+                        <!-- <apex:inputField value="{!ipsProject.Core_MPNDA__c}" required="false" html-placeholder="N/A" /><apex:inputField value="{!ipsProject.Core_Status__c}"/> -->
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+                <!---------------------------------------------------------------------------------->
+                <!-- Step 2 and 3 -->
+                <!---------------------------------------------------------------------------------->
+                
+                <apex:outputPanel id="memberAndProd" rendered="{!steps[stepIndex] != 'Premier Support Project'}">
+                    <apex:pageBlockSection title="Existing {!steps[stepIndex]}" columns="1" collapsible="true" id="pbsec1">
+                        <apex:outPutPanel id="existingTablePanel"  rendered="{!mExistingSelection[steps[stepIndex]].sobjectRecords.size>0}">
+                            <apex:outputLabel style="float:left; font-size: 12px;padding-bottom:8px" value="Search  " rendered="{!mExistingSelection[steps[stepIndex]].enableSearch == true}">
+                                <apex:inputText value="{!mExistingSelection[steps[stepIndex]].searchString}"  > 
+                                    <apex:actionSupport event="onchange" action="{!resetExisting}" reRender="existingTablePanel" status="loadingStatus"/>
+                                </apex:inputText>
+                                <apex:actionStatus id="loadingStatus" startText="Loading..."  stopText=" "/>    
+                            </apex:outputLabel>
+                            
+                            <apex:pageBlockTable value="{!mExistingSelection[steps[stepIndex]].sobjectRecords}" var="w" columnsWidth="5%, 15%, 15%,20%, 30%"  >
+                                <!--<apex:column value="{!w}"/> -->
+                                <apex:column headerValue="Select "><apex:inputCheckbox value="{!w.selected}"/> </apex:column>  
+                                <apex:repeat value="{!mExistingSelection[steps[stepIndex]].columnNames}" var="col">
+                                    <apex:column value="{!w.sobj[col]}"></apex:column> 
+                                </apex:repeat>  
+                            </apex:pageBlockTable>
+                            <apex:outputPanel layout="block" html-align="center" style="padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;" >
+                                <apex:selectList id="pageSize" value="{!mExistingSelection[steps[stepIndex]].pagesize}" size="1" label="Page size" style="float:left;">
+                                    <apex:selectOption itemValue="10" itemLabel="10"/>
+                                    <apex:selectOption itemValue="30" itemLabel="30"/>
+                                    <apex:selectOption itemValue="100" itemLabel="100"/>
+                                    <apex:actionSupport event="onchange" action="{!reset}" reRender="existingTablePanel" status="loadingStatus"/>
+                                </apex:selectList> 
+                                <apex:commandButton value="  << First   " action="{!firstPage}" reRender="existingTablePanel" disabled="{!NOT(mExistingSelection[steps[stepIndex]].setCntrlr.hasPrevious)}" />
+                                
+                                <apex:commandButton value="  < Previous   "  action="{!previousPage}" reRender="existingTablePanel" disabled="{!NOT(mExistingSelection[steps[stepIndex]].setCntrlr.hasPrevious)}" /> &nbsp;&nbsp;
+                                <apex:outputText Value="Page {! mExistingSelection[steps[stepIndex]].setCntrlr.pageNumber }  
+                                                        of {! CEILING((mExistingSelection[steps[stepIndex]].setCntrlr.resultSize/mExistingSelection[steps[stepIndex]].setCntrlr.pageSize))}"/>&nbsp;&nbsp;
+                                <apex:commandButton value="  Next >  "   action="{!nextPage}" reRender="existingTablePanel" disabled="{!NOT(mExistingSelection[steps[stepIndex]].setCntrlr.hasNext)}" styleclass="prevNext"/>
+                                <apex:commandButton value="  Last >>  "  action="{!lastPage}" reRender="existingTablePanel" disabled="{!NOT(mExistingSelection[steps[stepIndex]].setCntrlr.hasNext)}"  />
+                            </apex:outputPanel>
+                        </apex:outPutPanel>
+                    </apex:pageBlockSection>  
+                    <!---------------------------------------------------------------------------------->
+                    <!-- Current Selection Table -->
+                    <!---------------------------------------------------------------------------------->
+                    
+                    <apex:pageBlockSection title="Selected {!steps[stepIndex]}" columns="1">
+                        <apex:outPutPanel id="selectedTabelPanel"   layout="block" styleClass="squeeze" >
+                            <apex:actionStatus id="existingSelection" startText="Refreshing..."  stopText=" "/>
+                            <apex:pageBlockTable value="{!mStepSetcntrlr[steps[stepIndex]].AllSelectedRecords}" var="w" columnsWidth="5%, 15%, 15%,20%, 30%"  
+                                                 rendered="{!mStepSetcntrlr[steps[stepIndex]].AllSelectedRecords.size>0}">
+                                <!--<apex:column value="{!w}"/> -->
+                                <apex:column headerValue="Select "><apex:inputCheckbox value="{!w.selected}"  disabled="true"/> </apex:column>  
+                                <apex:repeat value="{!mStepSetcntrlr[steps[stepIndex]].columnNames}" var="col">
+                                    <apex:column value="{!w.sobj[col]}"></apex:column> 
+                                </apex:repeat>  
+                            </apex:pageBlockTable>
+                        </apex:outPutPanel>
+                    </apex:pageBlockSection>
+                    <!---------------------------------------------------------------------------------->
+                    <!-- List of available items for selection/unselection -->
+                    <!---------------------------------------------------------------------------------->
+                    
+                    <apex:pageBlockSection columns="1" title="Available {!steps[stepIndex]}" id="table"> 
+                        <apex:outPutPanel rendered="{!mStepSetcntrlr[steps[stepIndex]].sobjectRecords.size > 0}" > 
+                            
+                            <apex:outputLabel style="float:left; font-size: 12px;padding-bottom:8px" value="Search  " rendered="{!mStepSetcntrlr[steps[stepIndex]].enableSearch == true}">
+                                <apex:inputText value="{!mStepSetcntrlr[steps[stepIndex]].searchString}"  > 
+                                    <apex:actionSupport event="onchange" action="{!reset}" reRender="table" status="loadingStatus"/>
+                                </apex:inputText>
+                                <apex:actionStatus id="loadingStatus" startText="Loading..."  stopText=" "/>   
+                            </apex:outputLabel>
+                            
+                            
+                            <apex:pageBlockTable value="{!mStepSetcntrlr[steps[stepIndex]].sobjectRecords}" var="w" columnsWidth="5%, 15%, 15%,20%, 30%"  >
+                                <apex:column headerValue="Select ">
+                                    <apex:inputCheckbox value="{!w.selected}">
+                                        <apex:actionSupport event="onclick" action="{!updateExisting}"  rerender="selectedTabelPanel"  status="existingSelection"/>
+                                    </apex:inputCheckbox> 
+                                </apex:column>
+                                <apex:repeat value="{!mStepSetcntrlr[steps[stepIndex]].columnNames}" var="col">
+                                    <apex:column value="{!w.sobj[col]}"></apex:column>
+                                </apex:repeat> 
+                            </apex:pageBlockTable>
+                            <apex:outputPanel layout="block" html-align="center" style="padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;" >
+                                <apex:variable var="csc" value="{!mStepSetcntrlr[steps[stepIndex]]}"/>
+                                <apex:selectList id="pageSize" value="{!mStepSetcntrlr[steps[stepIndex]].pagesize}" size="1" label="Page size" style="float:left;">
+                                    <apex:selectOption itemValue="10" itemLabel="10"/>
+                                    <apex:selectOption itemValue="30" itemLabel="30"/>
+                                    <apex:selectOption itemValue="100" itemLabel="100"/>
+                                    <apex:actionSupport event="onchange" action="{!reset}" reRender="table" status="loadingStatus"/>
+                                </apex:selectList> 
+                                
+                                <!--<apex:inputText value="{!mStepSetcntrlr[steps[stepIndex]].setCntrlr.pagesize}"  list="{!mStepSetcntrlr[steps[stepIndex]].setCntrlr.pagesizeList}"/> -->
+                                <apex:commandButton value="  << First   " action="{!firstPage}" reRender="table" disabled="{!NOT(mStepSetcntrlr[steps[stepIndex]].setCntrlr.hasPrevious)}" />
+                                
+                                <apex:commandButton value="  < Previous   "  action="{!previousPage}" reRender="table" disabled="{!NOT(mStepSetcntrlr[steps[stepIndex]].setCntrlr.hasPrevious)}" /> &nbsp;&nbsp;
+                                <apex:outputText Value="Page {! mStepSetcntrlr[steps[stepIndex]].setCntrlr.pageNumber }  
+                                                        of {! CEILING((mStepSetcntrlr[steps[stepIndex]].setCntrlr.resultSize/mStepSetcntrlr[steps[stepIndex]].setCntrlr.pageSize))}"/>&nbsp;&nbsp;
+                                <apex:commandButton value="  Next >  "   action="{!nextPage}" reRender="table" disabled="{!NOT(mStepSetcntrlr[steps[stepIndex]].setCntrlr.hasNext)}" />
+                                <apex:commandButton value="  Last >>  "  action="{!lastPage}" reRender="table" disabled="{!NOT(mStepSetcntrlr[steps[stepIndex]].setCntrlr.hasNext)}"  />
+                            </apex:outputPanel>
+                            <!-- <div align="center" style ="padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;" draggable="false" ></div> -->
+                        </apex:outPutPanel>
+                    </apex:pageBlockSection>    
+                </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

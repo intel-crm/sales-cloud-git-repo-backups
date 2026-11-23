@@ -1,0 +1,138 @@
+.THIS .By-Product {
+  width: 120px;
+  height: 20px;
+  margin: 2px 0 0 0px;
+  font-family: IntelClear;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #fff;
+}
+.THIS .logo-energyblue-white-3000px {
+  width: 46.8px;
+  height: 19px;
+  margin: 0 73.2px 2px 0;
+}
+.THIS.Fill-1 {
+  width: 152px;
+  height: 70px;
+  margin: 32px 0 0;
+  padding: 15px 16px 14px 16px;
+  background-color: #0068b5;
+    float:left; 
+}
+.THIS.Fill-2{
+  width: 1384px;
+  height: 70px;
+  margin: 32px 0 0;
+  padding: 25px 36px 24.9px 24px;
+  background-color: #fff;
+    float:right; 
+}
+.THIS .By-Product1 {
+  width: 46px;
+  height: 20px;
+  margin: 0 24px 0.1px 0;
+  font-family: IntelClear;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #0068b5;
+}
+.THIS.Rectangle{
+  width: 1650px;
+  
+  margin: 1px 0 0;
+  padding: 7px 35px 6px 36px;
+  background-color: #fff;
+}
+.THIS .By-Product2{
+  width: 82px;
+  height: 20px;
+  margin: 2px 984px 3px 0;
+  font-family: IntelClear;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #262626;
+}
+.THIS.Mask{
+  width: 1650px;
+  height: 184px;
+  margin: 0 0 31px;
+  padding: 0 0 0 11px;
+  background-color: #653171;
+}
+.THIS .Hi-John-Welcome-to {
+  width: 1578px;
+  height: 48px;
+  margin: 2px 0 0 25px;
+  padding: 0 70px 3px 170px;
+  font-family: IntelOneDisplay;
+  font-size: 36px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+}
+.THIS .SearchBox {
+  width: 506px;
+  height: 56px;
+  margin: 1px 0 0 8px;
+  padding: 3px 26px 3px 4px;
+  border: solid 1px #e9e9e9;
+  background-color: #fff;
+}
+.THIS .searchIcon{
+  width: 19px;
+  height: 19px;
+  margin: 15px 8px 8px 4px;
+  background-color: #0068b5;
+}
+.THIS .Search-Cases-Projec {
+  width: 260px;
+  height: 20px;
+  margin: 15px 78px 7px 8px;
+  padding: 9px 50px 5px 108px;
+  /*font-family: IntelClear;*/
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #525252;
+}
+.THIS .Fill-1-Copy-15 {
+  width: 46px;
+  height: 46px;
+  margin: 4px 0 0 12px;
+  opacity: 0.25;
+  background-color: #8f5da2;
+}
+.THIS .searchButton {
+  width: 40px;
+  height: 50px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+.THIS .search{
+     padding: 3px 26px 3px 170px;
+}

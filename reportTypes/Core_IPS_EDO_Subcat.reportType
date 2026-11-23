@@ -73,6 +73,16 @@
             <field>Core_IPS_Public_Product__c</field>
             <table>Core_IPS_Supported_Product__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IPS_Enabled_For_Subscriptions__c</field>
+            <table>Core_IPS_Supported_Product__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Support_Org_and_Product_Name__c</field>
+            <table>Core_IPS_Supported_Product__c</table>
+        </columns>
         <masterLabel>Supported Products</masterLabel>
     </sections>
     <sections>
@@ -295,6 +305,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Question__c</field>
+            <table>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Project_EDQ__c</field>
             <table>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r.Environment_Detail_Operationals__r</table>
         </columns>
         <masterLabel>Environment Details Operational</masterLabel>

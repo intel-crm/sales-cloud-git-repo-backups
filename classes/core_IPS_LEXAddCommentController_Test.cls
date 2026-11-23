@@ -1,12 +1,5 @@
 @isTest
 public with sharing class core_IPS_LEXAddCommentController_Test {
-    private static void insertUserWithValidationBypass(User testUser) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert testUser;
-        }
-    }
-
     @TestSetup
     static void makeData(){
         list<Core_IPS_Labels__c> lstCs = new list<Core_IPS_Labels__c>();
@@ -100,7 +93,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
+        insert uu;
         System.assert(uu.Id != null, 'Record not created');
 
         System.runAs(uu){
@@ -155,7 +148,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
+        insert uu;
         System.assert(uu.Id != null, 'Record not created');
 
         System.runAs(uu){
@@ -209,7 +202,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
+        insert uu;
         System.assert(uu.Id != null, 'Record not created');
 
      /*   PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
@@ -242,7 +235,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         System.assert(testuser.Id != null, 'Record not created');
 
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
@@ -275,7 +268,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         System.assert(testuser.Id != null, 'Record not created');
 
          PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
@@ -307,7 +300,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         System.assert(testuser.Id != null, 'Record not created');
 
          PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
@@ -340,7 +333,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         System.assert(testuser.Id != null, 'Record not created');
 
          PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
@@ -361,7 +354,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
         }
     }
     public static TestMethod void saveCommentsTest5(){
-		String profileId = [SELECT Id from Profile limit 1].Id;
+		String profileId = [SELECT Id from Profile where Name='IPS Data Migration'].Id;
         user testuser=new user();
         testuser.email='testuser1998@example.com';
         testuser.Username='testuser1998@example.com';
@@ -373,7 +366,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
 		System.assert(testuser.Id != null, 'Record not created');
 
         PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
@@ -405,7 +398,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
        	testuser.LanguageLocaleKey = 'en_US';
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         System.assert(testuser.Id != null, 'Record not created');
 
 		PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
@@ -480,7 +473,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
 		testuser.Alias = 'alias';
         testuser.LocaleSidKey = 'en_US';
         testuser.ContactId=con.Id;
-        insertUserWithValidationBypass(testuser);
+        insert testuser;
         System.assert(testuser.Id != null, 'Record not created');
 
          System.runAs(testuser){ 
@@ -551,7 +544,7 @@ public with sharing class core_IPS_LEXAddCommentController_Test {
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
+        insert uu;
         System.assert(uu.Id != null, 'Record not created');
 
 		//PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];

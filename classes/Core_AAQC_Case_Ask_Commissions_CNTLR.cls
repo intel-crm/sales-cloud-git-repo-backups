@@ -12,7 +12,6 @@
 * 27-Nov-18     Nikhil Godhani          Creating New case OBO       Updated - US:76746 and US:84935
 * 02-Aug-18     Rob Robertson         Training Resolution Type      updated - US110979
 * 11-Aug-18     Rob Robertson         Allow Manager to See	        updated - US84930
-* 10-Feb-25     Swati Paraste         Access for Permission set     updated - TWC4767-3917
 ********************/
 public with sharing class Core_AAQC_Case_Ask_Commissions_CNTLR
 {
@@ -35,8 +34,7 @@ public with sharing class Core_AAQC_Case_Ask_Commissions_CNTLR
     public String profileName;                                          //variable to store logged in users profile name
     public Profile objProfile;
     public Boolean blnCheckOBOFieldAccess{get;set;}
-    public List<PermissionSetAssignment> lstcurrentUserPerSet;
-    public Boolean permissionSetCheck = false;    
+    
     
     /*
      * Description : Constructor used for initializing and indentifying access info.   
@@ -57,6 +55,7 @@ public with sharing class Core_AAQC_Case_Ask_Commissions_CNTLR
         objCase.origin = System.Label.Core_AAQC_Origin;
         objCase.ownerId = UserInfo.getUserId();
         objCase.recordTypeId = CASE_RECORD_TYPE_ID;
+        System.debug('## retUrl in Constructor---'+retURL);
         
         setProfileName();
         String pageMode = strTypeOfMode; //Setting pageMode to adhear apexXSSFromURLParam vulnerability check, This variable is not used in Query
@@ -64,6 +63,7 @@ public with sharing class Core_AAQC_Case_Ask_Commissions_CNTLR
         {
            populateCaseFieldsOnEdit(pageMode);
         }
+        System.debug('AAQ_Debug strTypeOfMode ===>'+strTypeOfMode); 
     }
     
     /*
@@ -91,8 +91,10 @@ public with sharing class Core_AAQC_Case_Ask_Commissions_CNTLR
                 // Clicked on 'Submit Case' Button in both case we need to change status to 'New'
                 // added as a part of US77763 and US77764
                 if((blnEditmode && objCase.Status == 'Draft') || (objCase.Status == 'Draft')){
+                    system.debug('inside this if 4833');
                     objCase.Status = 'New'; 
                 }
+                 system.debug('objCase '+objCase);    
                 upsert objCase; 
             }
             
@@ -100,6 +102,7 @@ public with sharing class Core_AAQC_Case_Ask_Commissions_CNTLR
                                   && Schema.sObjectType.Core_AAQC_Commissions_Case__c.isCreateable())
             {
                 objCommissiionsCase.Core_AAQC_Case__c = objCase.id;
+                system.debug('objCommissiionsCase '+objCommissiionsCase);    
                 upsert objCommissiionsCase;
             }
             saveRedirect = new PageReference('/'+objCommissiionsCase.id);
@@ -190,62 +193,55 @@ public with sharing class Core_AAQC_Case_Ask_Commissions_CNTLR
          */
         
         objProfile = [Select Name from Profile where Id =: UserInfo.getProfileId() LIMIT 1];
-        lstcurrentUserPerSet = [SELECT Id, PermissionSet.Name,AssigneeId FROM PermissionSetAssignment
-                                                                WHERE AssigneeId = :Userinfo.getUserId() ];
         
-        if (lstcurrentUserPerSet.size()>0)
+        if(objProfile!=null)
         {
-            for (PermissionSetAssignment psa: lstcurrentUserPerSet)
+            profileName = objProfile.name;  
+            System.debug('profileName==>'+profileName); 
+            System.debug('CASE_RECORD_TYPE_ID ==>'+CASE_RECORD_TYPE_ID );
+            System.debug('label'+System.Label.Core_AAQC_FAE_PROFILE);
+            System.debug('label'+System.Label.Core_AAQC_Triage_Group_Profile);  // added as a part of US84920
+            if(System.Label.Core_AAQC_FAE_PROFILE.Contains(profileName))
             {
-                if(System.Label.Core_AAQC_Non_Admin_Permission_set.Contains(psa.PermissionSet.Name))
-                {
-                  permissionSetCheck = true;
-                }                                
-            }
-        }               
-        if(objProfile!=null || permissionSetCheck!=null)
-        {
-             
-            profileName = objProfile.name; 
-            if(System.Label.Core_AAQC_FAE_PROFILE.Contains(profileName) && permissionSetCheck == false)
-            {
+                System.debug('inside if true');
                 blnCheckAccess = true;
-            } 
-            
-            else if(permissionSetCheck == true)
+            }    
+            else
             {
-                blnCheckAccess = false;
-            }
-            else 
-            {
-                blnCheckAccess = false; 
+                System.debug('inside if false');
+                blnCheckAccess = false;      
             }
             
             // code added as a part of US84920
             
-            if(System.Label.Core_AAQC_Triage_Group_Profile.Contains(profileName) || permissionSetCheck == true)
+            if(System.Label.Core_AAQC_Triage_Group_Profile.Contains(profileName))
             {
+                System.debug('inside if true for Admin Check Access');
                 blnCheckAdminAccess = true;
             }    
             else
             {
-                blnCheckAdminAccess = false;
+                System.debug('inside if false for Admin Check Access');
+                blnCheckAdminAccess = false;      
             }
             // code end as a part of US84920
             
             
             // code added as a part of US76746 and US84935
             
-            if(System.Label.Core_AAQC_Inquiries_Admin_Profile.Contains(profileName) || permissionSetCheck == true)
+            if(System.Label.Core_AAQC_Inquiries_Admin_Profile.Contains(profileName))
             {
+                System.debug('inside if true for OBO Access');
                 blnCheckOBOFieldAccess = true;
             }    
             else
             {
-                blnCheckOBOFieldAccess = false; 
+                System.debug('inside if false for OBO Access');
+                blnCheckOBOFieldAccess = false;      
             }
             // code end as a part of US76746 and US84935
         }
+        
     }
     
     /*
@@ -264,10 +260,12 @@ public with sharing class Core_AAQC_Case_Ask_Commissions_CNTLR
         {
             blnEditmode = true;   
            // added Core_AAQC_On_Behalf_Of__c of field as a part of US76746
+           // replaced On_Behalf with Requestor
             objCase = [SELECT id,Casenumber,Subject,RecordtypeId,Core_AAQC_Category__c,Core_AAQC_Case_Details__c,Status,Core_AAQC_On_Behalf_Of__c,Core_AAQC_On_Behalf_Of__r.Name,
                        Core_AAQC_Cancellation_Reason__c, Core_AAQC_Related_Case_Number__c,Core_AAQC_Related_Case_Notes__c,
                        Core_AAQC_External_Reference_No__c,Core_AAQC_Resolution_Type__c, Core_AAQC_Commissions_Severity__c,
                        OwnerId,Origin,Priority,Core_AAQC_Allow_My_Manager_to_See__c, Core_AAQC_Resolution_Training_Sub_type__c,Core_AAQC_Root_Cause_Category__c,Core_AAQC_Resolution_CE_Sub_type__c,
+                       Core_AAQC_Requested_for__c, Core_AAQC_Requested_for__r.Name,
                        (SELECT id,Core_AAQC_Case__c, Core_AAQC_Case_Detail__c, Core_AAQC_Resolution_Comments__c, Core_AAQC_Subject__c 
                         FROM Commissions_Cases__r LIMIT 1) 
                         FROM Case WHERE id =:strRecordId];

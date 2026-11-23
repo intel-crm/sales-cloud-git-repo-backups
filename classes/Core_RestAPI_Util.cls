@@ -37,7 +37,6 @@ public class Core_RestAPI_Util {
                 response.errorContent.traceId = Core_RestAPI_LoggingUtil.logError(entryTime, sObjectName, exp, response);
             //}
         }catch(Exception e){
-            System.debug(LoggingLevel.Error, e.getMessage());
         }
     }
     
@@ -71,7 +70,6 @@ public class Core_RestAPI_Util {
                 response.errorContent.traceId = Core_RestAPI_LoggingUtil.logError(entryTime, sObjectName, expCode, response);
             //}
         }catch(Exception e){
-            System.debug(LoggingLevel.Error, e.getMessage());
         }
     }*/
     
@@ -79,17 +77,14 @@ public class Core_RestAPI_Util {
     public static void processException(Exception exp, String expCode, Core_RestAPI_Response response, String sObjectName, DateTime entryTime, Core_RestAPI_Request request){
        
         String requestBody = Json.serialize(request);
-        System.debug('  >>>>>> '+requestBody);
         try{
             Map<String , Core_RestAPI_Response_Codes__c> mType_ExceptionInfo = Core_RestAPI_Response_Codes__c.getAll();
-            System.debug(' >>>> mType_ExceptionInfo'+mType_ExceptionInfo);
             
             Map<String , Core_RestAPI_Response_Codes__c> mCode_ExceptionInfo = new Map<String , Core_RestAPI_Response_Codes__c>();
             
             for(Core_RestAPI_Response_Codes__c objResCode : mType_ExceptionInfo.values()){
                 mCode_ExceptionInfo.put(objResCode.Core_Code__c , objResCode);
             } 
-           // System.debug(' >>>> mCode_ExceptionInfo '+mCode_ExceptionInfo +' >>>> expCode'+expCode+' >>>> exp'+exp);
             Core_RestAPI_Response_Codes__c objExpName = null;
             if(String.isNotBlank(expCode)  && mCode_ExceptionInfo.containsKey(expCode) ){
                 objExpName = mCode_ExceptionInfo.get(expCode);        
@@ -111,7 +106,6 @@ public class Core_RestAPI_Util {
             
             
         }catch(Exception e){
-            System.debug(LoggingLevel.Error, e.getMessage());
         }
     }
     
@@ -121,14 +115,12 @@ public class Core_RestAPI_Util {
         try{
 
             Map<String , Core_RestAPI_Response_Codes__c> mType_ExceptionInfo = Core_RestAPI_Response_Codes__c.getAll();
-            System.debug(' >>>> mType_ExceptionInfo'+mType_ExceptionInfo);
             
             Map<String , Core_RestAPI_Response_Codes__c> mCode_ExceptionInfo = new Map<String , Core_RestAPI_Response_Codes__c>();
             
             for(Core_RestAPI_Response_Codes__c objResCode : mType_ExceptionInfo.values()){
                 mCode_ExceptionInfo.put(objResCode.Core_Code__c , objResCode);
             } 
-             System.debug(' >>>> mCode_ExceptionInfo '+mCode_ExceptionInfo +' >>>> expCode'+expCode+' >>>> exp'+exp);
             Core_RestAPI_Response_Codes__c objExpName = null;
             if(String.isNotBlank(expCode)  && mCode_ExceptionInfo.containsKey(expCode) ){
                 objExpName = mCode_ExceptionInfo.get(expCode);        
@@ -151,7 +143,6 @@ public class Core_RestAPI_Util {
             RestContext.response.statusCode = Integer.valueOf(objExpName.Core_Http_Status_Code__c);
            
         }catch(Exception e){
-            System.debug(LoggingLevel.Error, e.getMessage());
         }
     }
     
@@ -171,7 +162,6 @@ public class Core_RestAPI_Util {
             
             condition = sObjectFieldName+' = \''+params[requestURIIndex]+'\'';    
         }catch(Exception e){
-            System.debug(LoggingLevel.Error, e.getMessage());
         }
         return condition;
     }
@@ -184,7 +174,6 @@ public class Core_RestAPI_Util {
             List<String> params = uri.split('/');
             input = params[requestURIIndex];    
         }catch(Exception e){
-            System.debug(LoggingLevel.Error, e.getMessage());
         }
         return input;
     }
@@ -196,12 +185,9 @@ public class Core_RestAPI_Util {
         String paramValue = '';
         try{
             Map<String, String> params = RestContext.request.params;
-            System.debug(' getRequestParam params '+params+' Key '+key);
             paramValue = params.get(key);
         }catch(Exception e){
-            System.debug(LoggingLevel.Error, e.getMessage());
         }
-        System.debug(' getRequestParam returning param value '+paramValue);
         return paramValue;
     }
     
@@ -209,17 +195,14 @@ public class Core_RestAPI_Util {
     public static Boolean isRequestParamValid(Map<String, String> allowedURIParams){
         Boolean isValid = true;
         Map<String, String> params = RestContext.request.params;
-        System.debug('  isRequestParamValid  params '+params + ' \n allowedURIParams '+allowedURIParams);
         for(String paramKey :  params.keySet()){
             String passedParamValue = allowedURIParams.get(paramKey);
             String allowedParamValue = params.get(paramKey);
-            System.debug('  isRequestParamValid  passedParamValue :'+passedParamValue+'  allowedParamValue:'+allowedParamValue);
             if(!allowedParamValue.equalsIgnoreCase(passedParamValue)){
                 isValid = false;
                 break;
             }
         }
-        System.debug('  isRequestParamValid  isValid '+isValid);
         return isValid;
     }
     
@@ -229,7 +212,6 @@ public class Core_RestAPI_Util {
         Boolean isValidUri = true;
         String[] expected = expectedUri.split('/');
         String[] actual = RestContext.request.requestUri.split('/');
-        System.debug(' Expected : '+expected+' Actual '+actual);
         if(expected.size() != actual.size() )
             isValidUri = false;
         return isValidUri;
@@ -241,7 +223,6 @@ public class Core_RestAPI_Util {
         if(String.isBlank(caseNumber) ||  !caseNumber.isNumeric()){
             isCaseValid = false;
         }
-        System.debug(' Is Case valid ? '+isCaseValid);
         return isCaseValid;
     }
 
@@ -250,7 +231,6 @@ public class Core_RestAPI_Util {
         if(String.isNotBlank(value) && value.length() > maxLength){
             isMaxLengthExceeded = true;
         }
-        System.debug(' Value '+value+' isMaxLengthExceeded: '+isMaxLengthExceeded);
         return isMaxLengthExceeded;
     }    
     
@@ -259,7 +239,6 @@ public class Core_RestAPI_Util {
           if(productId.length() != 18 || (!productId.isAlphanumeric())){
             isProductValid = true;
         }
-        System.debug(' productId'+productId+' isProductValid : '+isProductValid );
         return isProductValid;
     }
     

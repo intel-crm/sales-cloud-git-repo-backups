@@ -9,6 +9,13 @@
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
+    <fields>
+        <fullName>Bypass_flow__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Bypass_flow</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Core_Contact_Bypass_Validation_Rule</label>
     <visibility>Public</visibility>
 </CustomObject>

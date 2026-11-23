@@ -24,6 +24,12 @@
             <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Sell-with</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Scale-Estimate (per Finance)</sourceValue>
+            </sourceValues>
             <value>Deal</value>
         </values>
     </buckets>
@@ -49,10 +55,10 @@
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
@@ -113,7 +119,7 @@
             <value>Opportunity.Core_Solution_Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>amreenx.farha@intel.com</contactEmail>
+    <label>IPS M2M Lenovo</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <certificate>MIIDrDCCApQCCQDTMPfTLH3fqzANBgkqhkiG9w0BAQsFADCBlzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExDzANBgNVBAcTBkZvbHNvbTEOMAwGA1UEChMFSW50ZWwxDDAKBgNVBAsTA0VCUzEZMBcGA1UEAxMQSGF5YXRhIFRha2VzaGl0YTEpMCcGCSqGSIb3DQEJARYaaGF5YXRhLnRha2VzaGl0YUBpbnRlbC5jb20wHhcNMTcxMjIyMTcyODMzWhcNMTgxMjIyMTcyODMzWjCBlzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExDzANBgNVBAcTBkZvbHNvbTEOMAwGA1UEChMFSW50ZWwxDDAKBgNVBAsTA0VCUzEZMBcGA1UEAxMQSGF5YXRhIFRha2VzaGl0YTEpMCcGCSqGSIb3DQEJARYaaGF5YXRhLnRha2VzaGl0YUBpbnRlbC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCuAYjkX9BSNLyClaAVbm+ZhFFSDmnUuRSYS+cPkIQW39wrjNfmBspI0SkjjQ8+bLy1o6WaY+D7Mpp0kHL8WEmbIypN2NeIK5NaWDAc2LsAEC27ujOeQmdz6N34dHaUx/xh9+l1LyURtG1O/41uX/IrgTIJCQuDsC1qL15nyT5MotpI88qxm6lOI9eqgYCcGzZjRQuICEPm6Y3lWCJ2484aqcMdUYlLwnk0tioMF61H9yuVbliIIOUEUwfE4xSvEjRKf0wYhmtLGet+OKtCUnpWZ+zzJ+mmZcZl8LalUdu7tHrqCRZNv8ogjSWsn7jrQNK+htsYy3aoDHOejVlyM04ZAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAAAPhQGPhBfeQ9s2+n6Ngy40o8sAwFst89bImk3dKsxwGi+rjOrumD5aXG0D1Yl4uZXKvRYXhzjiHcZVgUMAlY3D2KWVZC08PQYwGdNO3gx6mWSdo+ntW8FI0bPLTZYrAJnYz2FBDpxi5cmisBLCa3ndG9+hmYb99BkPzQeDLG2ZfcSM7HzvbvfuSi8mBFtUYGacttuwAtifIxrrDcwuu4gj7jR9BBmP2hKTZW4xxdG8g+yP2eKi+xLzrgDgRSHfsCVZO232JpT5OpsXy3eQJ7vX+8Nf/Bgg/NCf1lfjaYNjueSwAS/cosR+xgPttPJ1wRuUj01nBa5uAgFuSdzpKYk=</certificate>
+        <consumerKey>3MVG9JamK_x9K2XIz6FKasGquU7liwkvoTOijJF0Ncz3lAo_0a6d.Z7EUD0g5PB3lIl_JDyM6rwLlmQ9aCUCN</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <profileName>IPS Lenovo B2B</profileName>
+    <profileName>IPS Lenovo B2B  M2M</profileName>
+    <profileName>IPS HP B2B M2M</profileName>
+    <profileName>IPS BES Integration Profile</profileName>
+    <sessionPolicy>
+        <sessionTimeout>480</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

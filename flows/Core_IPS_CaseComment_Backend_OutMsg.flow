@@ -88,7 +88,7 @@
             <label>Outbound criteria</label>
         </rules>
     </decisions>
-    <description>ve1</description>
+    <description>ve10</description>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
@@ -106,9 +106,7 @@ OR(
       [Core_IPS_Case_Comments__c].Core_IPS_Comment_Attachment_Id__c == null, 
       [Core_IPS_Case_Comments__c].Core_IPS_Comment_Attachment_Id__c  == &apos;&apos;
       )
-)
-
-</stringValue>
+)</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
@@ -128,7 +126,7 @@ OR(
       )
 )</expression>
     </formulas>
-    <interviewLabel>Core_IPS_CaseComment_Backend_OutMsg-18_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_IPS_CaseComment_Backend_OutMsg-26_InterviewLabel</interviewLabel>
     <label>Core IPS CaseComment Backend OutMsg</label>
     <processMetadataValues>
         <name>ObjectType</name>

@@ -32,18 +32,13 @@ function addLoadEvent(currentTab) {
     }
 }*/
 
-function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAccountId, sOrderSeedsURL, sRequestSamplesURL,UserRegion,UIthemedisplayed, sRegURL, sWarningError, sPremierSupportURL) {
+function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAccountId, sOrderSeedsURL, sRequestSamplesURL, sRegURL, sWarningError) {
     
     requestType = document.getElementById(requestTypeElementId).value;
    
     var popupUrl = '';
     if (requestType == 'Order Seed') {
         popupUrl = sOrderSeedsURL;
-    }
-	else if (requestType == 'Premier Support (IPS)') {
-        var redirectUrl = sPremierSupportURL+sOpportunityId;
-		window.location = redirectUrl;
-		
     }
     else if (requestType == 'Request Sample') {
         popupUrl = sRequestSamplesURL;
@@ -53,47 +48,18 @@ function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAcc
     	processSSGRequest();
     }
     // Rangesh - SMG-DRD Integration Changes - End
-       else if (requestType == 'IT@Intel') {
-        console.log('Region'+UserRegion);
+    else if (requestType == 'IT@Intel') {
+        
         var objectPrefix = 'a0s';
         var recordTypeId = '012o0000000pEji';
         var opportunityNameFieldId = '00No000000CnaeH';
-
-       //US116483-to auto populate User Region 
-        console.log('UIthemedisplayed'+UIthemedisplayed);
-        if(UIthemedisplayed=='Theme3' && sOpportunityName != '' ){
         
-             var redirectUrl1 = '/' + objectPrefix + '/e?retURL=%2F' + objectPrefix + '%2Fo&RecordType=' + recordTypeId;
+        var redirectUrl = '/' + objectPrefix + '/e?retURL=%2F' + objectPrefix + '%2Fo&RecordType=' + recordTypeId;
         
-        
-            redirectUrl = redirectUrl1 + '&CF' + opportunityNameFieldId + '=' + encodeURIComponent(sOpportunityName) + '&CF' + opportunityNameFieldId + '_lkid=' + sOpportunityId +'&' + '00No000000CnaeD=' + UserRegion;
+        if (sOpportunityName != '')
+            redirectUrl += '&CF' + opportunityNameFieldId + '=' + encodeURIComponent(sOpportunityName) + '&CF' + opportunityNameFieldId + '_lkid=' + sOpportunityId;
         
         window.location = redirectUrl;
-       }
-	   if(UIthemedisplayed=='Theme3' && sOpportunityName == '' ){
-        
-             var redirectUrl1 = '/' + objectPrefix + '/e?retURL=%2F' + objectPrefix + '%2Fo&RecordType=' + recordTypeId + '&' + '00No000000CnaeD=' + UserRegion;
-        
-        
-        window.location = redirectUrl1;
-       }
-	   
-     if(UIthemedisplayed !='Theme3' && sOpportunityName == '' ){        
-		  sforce.one.createRecord('Core_Sales_Support_Request__c',recordTypeId,{ 
-             Core_IT_Intel_Geo__c : UserRegion
-             });
-
-	}
-	 if(UIthemedisplayed !='Theme3' && sOpportunityName != '' ){
-        
-		  sforce.one.createRecord('Core_Sales_Support_Request__c',recordTypeId,{ 
-             Core_IT_Intel_Geo__c : UserRegion,
-			 Core_Opportunity__c : sOpportunityId
-             });
-
-	}
-
-        
     }
 	 //Intel Altera Phase1:
 	 //Code added on 12-5-2016.On click of Create PSG Quote as request type and click on Continue button will call the action function

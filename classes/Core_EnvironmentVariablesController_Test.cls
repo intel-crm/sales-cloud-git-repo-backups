@@ -370,7 +370,7 @@ public class Core_EnvironmentVariablesController_Test{
     Testing Core_IPS_Environment_Details Visualforce Page - Object : Core_Product_Issue_Category__c  
     *************************************************************************************************/
     // Commented by chetan as part of classic EOL 
-  /*static testmethod void getAssignedEnvironmentVariablestest(){
+  static testmethod void getAssignedEnvironmentVariablestest(){
         getRecords();
         System.runAs(userRecord){
         // Testing Visualforce Page
@@ -385,5 +385,5 @@ public class Core_EnvironmentVariablesController_Test{
         pg = AddEnvVarContr.saveEvn();
         Test.stopTest();
         }
-    }*/
+    }
 }

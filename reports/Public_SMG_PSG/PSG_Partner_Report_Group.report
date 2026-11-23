@@ -67,7 +67,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>BucketField_29065032</groupingColumn>
+        <groupingColumn>FK_OPP_OWNER_NAME</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -80,9 +80,6 @@
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
-    <columns>
-        <field>FK_OPP_OWNER_NAME</field>
-    </columns>
     <columns>
         <field>FK_ACC_NAME</field>
     </columns>
@@ -116,31 +113,21 @@
     <columns>
         <field>FK_$Opportunity.Core_First_Customer_Ship_Date__c</field>
     </columns>
-    <columns>
-        <field>FK_$Opportunity.Core_Design_Registration_Id__c</field>
-    </columns>
     <description>PSG Sales Partner Report - Group by Oppty Owner.</description>
     <filter>
         <criteriaItems>
-            <column>FK_$Opportunity.Core_Channel_Opportunity_Ind__c</column>
+            <column>Core_Opportunity_Partner__c.Core_Partner_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>1</value>
+            <value>Distributor</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FK_$Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_$Account.Core_Geo__c</column>
+            <column>FK_$Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>ASMO</value>
+            <value>PSG Sales</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -148,6 +135,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>BucketField_29065032</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_OPP_OWNER_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>PSG Partner Report</name>
@@ -162,6 +154,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

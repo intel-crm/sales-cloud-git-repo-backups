@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>CREATED_BY</field>
+        <field>ACCOUNT_OWNER_NAME</field>
     </columns>
     <columns>
         <field>ACCOUNT.NAME</field>
@@ -25,22 +25,22 @@
         <field>DESCRIPTION</field>
     </columns>
     <columns>
-        <field>ACCOUNT_OWNER_NAME</field>
+        <field>FULL_DESCRIPTION</field>
     </columns>
     <filter>
+        <criteriaItems>
+            <column>ACCOUNT_OWNER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>barusova,panov,matchin,kotelnikova,fedorov,dzul,dunska</value>
+        </criteriaItems>
         <criteriaItems>
             <column>SUBJECT</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>sentimen</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CREATED_BY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>lipari,adamo,ozdikici,elsaid,verink,Ghatwary,dilip</value>
+            <value>sentim</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -63,10 +63,11 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CREATED_BY</sortColumn>
-    <sortOrder>Asc</sortOrder>
+    <sortColumn>CREATED_DATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_LAST7</interval>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-08-01</startDate>
     </timeFrameFilter>
 </Report>

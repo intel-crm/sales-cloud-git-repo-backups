@@ -6,6 +6,8 @@ import { CurrentPageReference } from "lightning/navigation";
 import SystemModstamp from '@salesforce/schema/Account.SystemModstamp';
 import fetchBugAssistRecord from '@salesforce/apex/Core_IPS_BugAssistController.fetchBugAssistRecord'; // Created by Deepaksai as part of BugAssist
 import Waiting_For_BugAssist_Response from '@salesforce/label/c.Core_IPS_Bug_Assist_Waiting_For_Response' // Created by Deepaksai as part of BugAssist
+import bugAssistRecordDeletion from "@salesforce/apex/Core_IPS_BugAssistController.bugAssistRecordDeletion"; // Added By Hassan As a Part of Bug Assist
+
 import updateDeflectedRecord from '@salesforce/apex/Core_IPS_DeflectedObject_LWC_Ctrl.updateDeflectedRecord';
 import {
     destroyEngine
@@ -65,7 +67,6 @@ export default class Core_IPS_caseCreation_Form extends NavigationMixin(Lightnin
         }
     }
 
-    renderedCallback() {}
     @api recordId;
     @api caseInfo = {
         "project": undefined,
@@ -383,6 +384,17 @@ export default class Core_IPS_caseCreation_Form extends NavigationMixin(Lightnin
         });      
     }
     disconnectedCallback() {
+        // Added By Hassan Khan to delete Bug Assist Record if user doesn't complete the Case Creation flow.
+        //START
+        let bugAssistId = sessionStorage.getItem('bugAssistRecId');
+        if(bugAssistId != '' && bugAssistId != null) {
+            bugAssistRecordDeletion({
+            bugAssistrecordId: bugAssistId
+            }).catch((error) => {
+                this.error = error;
+            });
+        }
+        //END
         sessionStorage.removeItem("NotApplicableCount");
         sessionStorage.removeItem("deflectionId");
         sessionStorage.removeItem('coveoDescription');

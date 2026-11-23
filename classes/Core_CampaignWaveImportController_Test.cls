@@ -11,9 +11,7 @@ private class Core_CampaignWaveImportController_Test {
         Test.setCurrentPage(exportPage);
         Core_CampaignWaveImportController c = new Core_CampaignWaveImportController();
         
-        // Need to test with mock GET requests to URLs like these:
-        // [Endpoint=https://intel--crmdev1--c.cs26.visual.force.com/services/data/v36.0/wave/lenses, Method=GET]
-        // [Endpoint=https://intel--crmdev1--c.cs26.visual.force.com/services/data/v36.0/wave/datasets, Method=GET]
+       
         
         Test.setMock(HttpCalloutMock.class, new Core_TestMockHttpResponseGenerator());
         
@@ -42,19 +40,7 @@ private class Core_CampaignWaveImportController_Test {
         Test.setCurrentPage(exportPage);
         Core_CampaignWaveImportController c = new Core_CampaignWaveImportController();
         
-        // Need to test with these requests/responses:
-        // 
-        // [Endpoint=https://intel--crmdev1--c.cs26.visual.force.com/services/data/v36.0/wave/lenses/0FK210000008OP1GAM, Method=GET]
-        // [Status=OK, StatusCode=200]
-        // 
-        // [Endpoint=https://intel--crmdev1--c.cs26.visual.force.com/services/data/v36.0/wave/datasets/0Fb210000008OPVCA2, Method=GET]
-        // [Status=OK, StatusCode=200]
-        // 
-        // [Endpoint=https://intel--crmdev1--c.cs26.visual.force.com/services/data/v36.0/wave/query, Method=POST]
-        // [Body={query=q = load "0Fb210000008OPVCA2/0Fc21000000Cdd6CAC";q = group q by 'Core_Account_Name__c';
-        // q = foreach q generate 'Core_Account_Name__c' as 'Core_Account_Name__c', count() as 'count';
-        // q = limit q 100;}]
-        // [Status=OK, StatusCode=200]
+        
         
         Test.setMock(HttpCalloutMock.class, new Core_TestMockHttpResponseGenerator());
         

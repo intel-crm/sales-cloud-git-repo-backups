@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Andrew Robertson</description>
+    <description>EMP of Natalia Galyan</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10682501_eugene_bakunov</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10681432_Andrew_Robertson</parentRole>
+    <parentRole>EMP_10680662_natalia_galyan</parentRole>
 </Role>

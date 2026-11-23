@@ -313,6 +313,18 @@
                 <identifier>force_detailPanel1</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>core_IPS_Message_Utility_LEX</componentName>
+                <identifier>c_core_IPS_Message_Utility_LEX</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>core_IPS_ProjectDetails_Lex</componentName>
+                <identifier>c_core_IPS_ProjectDetails_Lex1</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-e7b934e6-40ef-4ff9-a2ed-f119da8e9b55</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -335,6 +347,12 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>core_IPS_Message_Utility_LEX</componentName>
+                <identifier>c_core_IPS_Message_Utility_LEX2</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

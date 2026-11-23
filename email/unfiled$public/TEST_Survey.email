@@ -1,0 +1,22 @@
+<messaging:emailTemplate subject="Failure Alert" recipientType="User" relatedToType="Core_Log_Entry__c">
+ <messaging:htmlEmailBody >        
+        <style>   
+            table, tr, td {
+               border: 1px solid black;
+               font-family: arial, sans-serif;
+               text-align: left;
+               font-size: 15px;
+            }
+        </style>      
+
+        <p><b>Case Info</b></p>
+        <table border="1px" >
+            <tr>
+                <td><b>Name</b></td><td>{!relatedTo.Name}</td><td><b>Origin</b></td><td>{!relatedTo.Core_Origin__c}</td>
+            </tr>
+            <tr>
+               <td><b>Message</b></td><td colspan='3'>{!relatedTo.Core_Message__c }</td>
+            </tr>
+        </table>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

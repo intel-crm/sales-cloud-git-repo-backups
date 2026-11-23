@@ -2514,6 +2514,10 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
+                <valueName>Flowserve Pump Predictive Maintenance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Industrial: Connect the Unconnected</controllingFieldValue>
                 <valueName>PrismTech Vortex Edge PMQ (Pred Maintenance)</valueName>
             </valueSettings>
             <valueSettings>
@@ -3823,7 +3827,7 @@ status. Please recall the approval request to change the owner.</errorMessage>
         <openType>replace</openType>
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
-        <url>{!URLFOR(&apos;/apex/Core_Milestone_Credit?Id=&apos;&amp;Opportunity.Id, null)}</url>
+        <url>/00Oo0000004d1eD?pv0={!Opportunity.Id}</url>
     </webLinks>
     <webLinks>
         <fullName>Core_Recall_Approval</fullName>
@@ -3848,5 +3852,16 @@ status. Please recall the approval request to change the owner.</errorMessage>
 else { 
 window.location.replace(&apos;/apex/Core_Milestone_Unlock_Record?id={!Core_Solution_Milestone__c.Id}&apos;)
 }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_SM_Submit_for_Approval</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Submit for Approval</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_SM_redirectApprovalProcess</page>
+        <protected>false</protected>
     </webLinks>
 </CustomObject>

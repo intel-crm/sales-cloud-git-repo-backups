@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>false</active>
+    <active>true</active>
     <allowRecall>true</allowRecall>
     <allowedSubmitters>
         <type>allInternalUsers</type>
@@ -29,7 +29,7 @@
         <label>Approve Solution Milestone</label>
         <name>Approve_Solution_Milestone</name>
     </approvalStep>
-    <emailTemplate>Testt/Solution_Milestone_Approval_Email</emailTemplate>
+    <emailTemplate>unfiled$public/Solution_Milestone_Approval_Email</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>

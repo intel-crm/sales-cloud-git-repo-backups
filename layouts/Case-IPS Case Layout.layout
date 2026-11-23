@@ -6,13 +6,13 @@
     <customButtons>Core_IPS_Copy</customButtons>
     <customButtons>Core_IPS_Invalid</customButtons>
     <customButtons>ExportPDF</customButtons>
+    <customButtons>Add_Remove_Case_Co_Owner</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>CloseCase</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Edit</excludeButtons>
-    <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -63,7 +63,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
+                <field>Core_IPS_Case_URL__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_Product_Org1__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_Embargoed_State__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Do_you_have_SST_log_to_upload__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -84,11 +96,15 @@
                 <field>Core_IPS_Assigned_Queue__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Intel_Sup_Owner__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
+                <field>Case_Co_Owner_Secondary__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_IPS_Partner_Sup_Owner__c</field>
             </layoutItems>
             <layoutItems>
@@ -98,10 +114,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Restricted_Secret_Content__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Product_Org1__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -353,21 +365,21 @@
                 <field>Core_IPS_BES_Promote_Status__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Backed_ID_URL__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Backend_Rev__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPS_BackendID__c</field>
             </layoutItems>
         </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_Backend_Rev__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_IPS_Backed_ID_URL__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -390,38 +402,6 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
-        <label>Case Comments</label>
-        <layoutColumns/>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Coveo Search</label>
-        <layoutColumns>
-            <layoutItems>
-                <height>700</height>
-                <page>Core_IPS_CustomCoveoPanel</page>
-                <showLabel>false</showLabel>
-                <showScrollbars>true</showScrollbars>
-                <width>100%</width>
-            </layoutItems>
-        </layoutColumns>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>false</editHeading>
-        <label>Case Attachments</label>
-        <layoutColumns/>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>false</editHeading>
         <label>Environment Details</label>
         <layoutColumns>
             <layoutItems>
@@ -429,6 +409,22 @@
                 <field>Core_Environment_Details__c</field>
             </layoutItems>
         </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>false</editHeading>
+        <label>Comments</label>
+        <layoutColumns/>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>false</editHeading>
+        <label>Attachments</label>
+        <layoutColumns/>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -559,7 +555,7 @@
                 <field>Core_IPS_Backend_ID__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>ParentId</field>
             </layoutItems>
             <layoutItems>
@@ -571,7 +567,7 @@
                 <field>Core_IPS_Owner_2nd_Manager__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_IPS_Case_Owner_Groups__c</field>
             </layoutItems>
             <layoutItems>
@@ -648,6 +644,11 @@
             <actionType>StandardButton</actionType>
             <sortOrder>2</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Share</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>3</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <quickActionList/>
     <relatedContent>
@@ -665,36 +666,34 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Core_IPS_Case_Comments__c.Core_IPS_Case__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <customButtons>Add_External_Interested_Party</customButtons>
+        <customButtons>Add_Internal_Interested_Party</customButtons>
         <customButtons>Manage_Interested_Parties_LWC</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>First_Name__c</fields>
         <fields>Last_Name__c</fields>
         <fields>Email__c</fields>
-        <fields>Active__c</fields>
         <relatedList>Core_IPS_Case_Interested_Party__c.Case__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
+        <relatedList>RelatedTeamMemberList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Status__c</fields>
-        <fields>Sub_Status__c</fields>
-        <fields>Owner__c</fields>
-        <fields>Last_Assigned_Queue__c</fields>
-        <fields>Escalated_Level__c</fields>
-        <fields>From__c</fields>
-        <fields>Until__c</fields>
-        <fields>Total_Hours__c</fields>
-        <fields>Total_Days__c</fields>
-        <relatedList>Status_Ownership_Duration__c.Parent__c</relatedList>
-        <sortField>From__c</sortField>
-        <sortOrder>Desc</sortOrder>
+        <fields>Core_IPS_Comment_Authored_By_Name__c</fields>
+        <fields>CreatedBy_Name__c</fields>
+        <fields>Core_IPS_Comment__c</fields>
+        <relatedList>Core_IPS_Case_Comments__c.Core_IPS_Case__c</relatedList>
+        <sortField>NAME</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Core_IPS_Answer__c</fields>
+        <relatedList>Core_IPS_Response__c.Core_IPS_Case__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
     <relatedObjects>AccountId</relatedObjects>

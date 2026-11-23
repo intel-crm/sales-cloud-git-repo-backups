@@ -187,7 +187,8 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
         } else if (error) {
             this.error = error;
             this.record = undefined;
-           
+            console.log(this.FIELDS);
+            console.log('CASEError'+JSON.stringify(this.error));
         }
        
     }
@@ -196,13 +197,17 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
         this.template.querySelector('slds-radio');
     }
     connectedCallback() {
+        console.log('hi im in cmp');
+        console.log(this.recordId);
         this.getUploadAttachmentUrl();
+        console.log('url1==sdsds',this.url);
         this.getInterestedPartyList();
         this.getAttachmentList();
         this.getRecentComments();
     }
     handleClick(event) {
         
+        console.log('caseid'+this.caseid);
         let obj = {
             'casesubststus': this.casesubststus,
             'caseComment':this.richtext,
@@ -216,12 +221,12 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
             this.spinnerOn = false;
         }else{
             this.hideButton = true;
-           
+            console.log('caseObject'+JSON.stringify(this.CaseObject));
         
         saveComment({newcaseJSON: JSON.stringify(this.CaseObject) })
         .then(result => {
             if(result) {
-               
+                console.log(JSON.stringify(this.result));
                 this.showToast('Success', 'Case Comments Inserted.', 'success');
                 this.navigateToViewCase();
                 this.spinnerOn = false;
@@ -231,6 +236,7 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
         .catch(error => {
             this.error = error;
             this.showToast('Error', 'Interested Parties insertion failed due to some error.', JSON.stringify(error));
+            console.log('Error message ',error.body.message);
             this.spinnerOn = false;
         });
     }
@@ -330,6 +336,9 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
     }
    //End - US943880
     getInterestedPartyList() { 
+       // this.caseProjId = this.recordId;
+       // let searchQueryStr = ' select id , Name,First_Name__c,Last_Name__c, User__r.FirstName,User__r.LastName, Active__c from Core_IPS_Case_Interested_Party__c WHERE Case__c = \'' + this.caseProjId + '\' LIMIT 999';
+       // console.log(searchQueryStr);
         let firstName;
         let lastName;
         /*Start -- Tushar -- 12/05/2026 --- added as part of vulnerability fix. */
@@ -361,7 +370,11 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
                     }
                     this.dataTableData = dataWrapper;
                     this.dataselected = true;
+                    //console.log('wrapper' + JSON.stringify(dataWrapper));
+                    console.log('dataTableData'+this.dataTableData);
                     this.spinnerOn = false;
+                    // this.showSearchRecords = this.mapRecords;
+                    //this.showSupportedProducts = true;
                 }
 
         /*End -- Tushar -- 12/05/2026 --- added as part of vulnerability fix. */
@@ -373,7 +386,8 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
     }
     getAttachmentList() {
         this.caseId = this.recordId;
-      
+        //let searchQueryStr = 'select id,Name,Core_File_Name__c,Core_File_URL__c,Core_File_Hyperlink__c,Core_Upload_Status__c,Core_File_Size__c,Core_Category__c,Core_File_Description__c from Core_IPS_Case_Attachments__c WHERE Core_Case__c = \'' + this.caseId + '\' LIMIT 999';
+        //console.log(searchQueryStr);
         getattachments({
                 caseID: this.recordId
             })
@@ -381,7 +395,7 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
                 if (data) {
                     let dataWrapper = [];
                     for (let i = 0; i < data.length; i++) {
-                       
+                        console.log('URLLlll--->'+data[i].Core_File_URL__c);
                         let obj = {
                             'AttachmentNumber': data[i].Name,
                             'FileName': data[i].Core_File_Name__c,
@@ -405,6 +419,7 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
                     }
                     this.attDataTableData = dataWrapper;
                     this.atDataselected = true;
+                    console.log(this.attDataTableData);
                     this.spinnerOn = false;
                 }
 
@@ -425,9 +440,11 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
             })
             .then(data => {
                 if (data) {
+                    //console.log('data debug cs for ips agent '+ JSON.stringify(data));
                     this.records = data;     
                     this.hasRendered = false;  
                     for (let i = 0; i < data.length; i++) {
+                        //console.log('record check cs ', data[i]);
                         this.sectionNames = [...this.sectionNames, i];
                         commentAuthoredBy = (data[i].Core_IPS_Comment_Authored_By_Name__c!=null) ?data[i].Core_IPS_Comment_Authored_By_Name__c : '';
                         authoredByEmail = (data[i].Core_IPS_Comment_Authored_By_Email__c!=null) ?data[i].Core_IPS_Comment_Authored_By_Email__c+' '+'-'+' ' : '';
@@ -436,6 +453,7 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
                             authoredByEmail = data[i].CreatedBy.Email;
                         }
                         createdOnDate= new Date(new Date(data[i].CreatedDate)).toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+                        console.log(commentAuthoredBy+'  '+authoredByEmail+' '+createdOnDate);
                         let obj = {
                             'Id': i,
                             'Comment': data[i].Core_IPS_Rich_Comment__c,
@@ -602,7 +620,7 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
 
     handleRichTextChange(event) {
         const changedRichText = event.detail.value;
-       
+       // console.log('Entered Value --> ',changedRichText);
         this.richtext = changedRichText;
         if(changedRichText == ''){
             this.errorMessage = 'Complete This Field';
@@ -611,7 +629,22 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
             this.validity = true;
         }
     }
+/*    handleTestRichTextChange(event){
+        //console.log('Entered Value --> ',event.detail.value);
+        const changedRichText = event.detail.value;
+        this.richtext = changedRichText;
+        if(changedRichText == ''){
+            this.errorMessage = 'Complete This Field';
+            this.validity = false;
+        }else{
+            this.validity = true;
+        }
+    }
+    handleTestRichTextChange1(event){
+        console.log('Entered Value --> ',event.detail.value);
+    }*/
     handleCancel() {
+		console.log('handleCancel called');
 	this.navigateToViewCase();
 	}
 
@@ -651,6 +684,7 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
         let rec = JSON.stringify(handleRowActionsEvent);
         let record = JSON.parse(rec);
         let action = record.detail.row.Fieldlabelname;
+        console.log('shobhiturl--->'+record.detail.row.FileDownloadLink);
         if(action == 'Resume'){
                 localStorage.setItem('iframeurl',record.detail.row.FileDownloadLink);
                 localStorage.setItem('recordId',this.recordId);
@@ -660,6 +694,7 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
             if(action == 'Download'){
                 window.open(record.detail.row.FileDownloadLink); 
             }
+         console.log('eventname--->'+record.detail.row.Fieldlabelname);
     }
 
     getUploadAttachmentUrl(){
@@ -670,10 +705,15 @@ export default class Core_IPS_DynamicTab extends NavigationMixin(LightningElemen
         temUrl = temUrl.substring(0,8);
         this.url = curURL;
         this.url = curURL.substring(0, this.url.indexOf("/"));
+         console.log('Shobturl--->'+this.url);
+       // this.url = window.location.href;
         if(this.url.includes('lightning')){
+            console.log('url1==',this.url);
             let cururl = '/r/Case/'+this.recordId+'/view';
             let gourl = '/n/Core_IPS_Case_Attachments_LEX';
             this.url = this.url.replace(cururl,gourl);
+            //this.url = this.url.replace();
+            console.log('url==',this.url);
         }
          if(this.url.includes('crmdevcase')){
             this.url =   '/lightning/n/Core_IPS_Case_Attachments_LEX';

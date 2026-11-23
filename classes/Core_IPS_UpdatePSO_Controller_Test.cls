@@ -122,6 +122,7 @@ public class Core_IPS_UpdatePSO_Controller_Test {
         }  
         System.assert(ListOfProjectMembers[0].Id != null, 'Record not created');
         Test.startTest();
+        system.debug('ListOfIpsProjects[0]-119'+ListOfIpsProjects[0]);
         Core_IPS_UpdatePSO_Controller inst_Cont = new Core_IPS_UpdatePSO_Controller(new ApexPages.StandardController(ListOfIpsProjects[0]));
         inst_Cont.renderMessage = null;
         List<SelectOption>  x=inst_Cont.UserList;

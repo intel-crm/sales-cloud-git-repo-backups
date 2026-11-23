@@ -1,0 +1,18 @@
+<!--**************************************************************************************
+Apex Page Name:  Core_CreatePSGQuote
+Version     : 1.0 
+Created Date: 25 OCT 2017
+Function    : 
+
+***************************************************************************************** -->
+<apex:page controller="Core_SalesSupportHomeController" sidebar="true" showHeader="true">
+<apex:form >
+<!--<apex:pageMessage severity="INFO" title="Access Denied" summary="User doesn't have access to view the page." strength="2"></apex:pageMessage>-->
+<apex:outputText ><p/> <p/> <br/> The Quoting functionality is only applicable to Opportunities with at least one FPGA Product, and with the First Customer Ship Date and Volume values populated. 
+The Account must be marked as PSG - reach out to your Intel contact with issues related to Account validation. <p/> <p/> <br/> <br/> </apex:outputText>
+
+<apex:commandButton id="btn" action="{!createPSGQuoteonSiebel}" value="Create FPGA Quote"/>
+
+<apex:pageMessages rendered="{!NOT(bOpportunityValidForQuoteCreation)}"/>
+</apex:form>
+</apex:page>

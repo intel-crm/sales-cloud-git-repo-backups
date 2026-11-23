@@ -1,0 +1,19 @@
+<apex:page standardController="case">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+<apex:pageBlock >
+<apex:pageBlockTable value="{!case.IPS_Case_Attachments__r}" var="att">
+                     <apex:column value="{!att.Name}"/>
+                     <apex:column value="{!att.Core_File_Name__c}"/>
+                     <apex:column value="{!att.Core_File_Description__c}"/>
+                     <apex:column value="{!att.Core_File_Size__c}"/>
+                     <apex:column value="{!att.Core_Category__c}"/>
+                     <apex:column value="{!att.Core_Upload_Status__c}"/>
+                     <apex:column value="{!att.Core_File_Hyperlink__c}"/>
+                     <apex:column value="{!att.Createddate}"/>
+                      <apex:column value="{!att.Core_FileUploadedBy__r.Name}" headervalue="{!$Label.core_ips_File_Uploaded_By}" />
+                     <apex:column value="{!att.CreatedBy.Name}" headerValue="Created By"/>
+                    
+                 </apex:pageBlockTable> </apex:pageBlock> This is your new Page
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

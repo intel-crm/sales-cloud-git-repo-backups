@@ -9,10 +9,6 @@
         <value>Descriptive Features</value>
     </caseValues>
     <fields>
-        <label><!-- Consumer Sales System --></label>
-        <name>Core_Consumer_Sales_system__c</name>
-    </fields>
-    <fields>
         <label><!-- Feature Name --></label>
         <name>Core_Feature_Name__c</name>
     </fields>
@@ -33,10 +29,6 @@
         <label><!-- Opportunity --></label>
         <name>Core_Opportunity__c</name>
         <relationshipLabel><!-- Descriptive Features --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Platform BU --></label>
-        <name>Core_Platform_BU__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <webLinks>

@@ -154,45 +154,13 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>Core_AI_Content_in_System__c</fullName>
-        <externalId>false</externalId>
-        <label>AI Content in System</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Ambient_Temp_Req__c</fullName>
         <description>Compute descriptive feature</description>
         <externalId>false</externalId>
         <label>Ambient Temp Req</label>
         <length>80</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Athena_Candidate__c</fullName>
-        <description>US210682 for reporting.</description>
-        <externalId>false</externalId>
-        <label>Athena Candidate?</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Battery_Life_Target__c</fullName>
-        <description>US210682 for reporting.</description>
-        <externalId>false</externalId>
-        <label>Battery Life Target</label>
-        <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -283,26 +251,6 @@
         <fullName>Core_Consumer_Factor_Login__c</fullName>
         <externalId>false</externalId>
         <label>Consumer Factor Login</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Consumer_Sales_Category__c</fullName>
-        <externalId>false</externalId>
-        <label>Consumer Sales Category</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Consumer_Sales_System__c</fullName>
-        <externalId>false</externalId>
-        <label>Consumer Sales System</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -430,16 +378,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Dynamic_Tuning_Technology__c</fullName>
-        <externalId>false</externalId>
-        <label>Dynamic Tuning Technology</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_EMS__c</fullName>
         <externalId>false</externalId>
         <label>EMS</label>
@@ -453,16 +391,6 @@
         <fullName>Core_ESF_Firm__c</fullName>
         <externalId>false</externalId>
         <label>ESF Firm</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Early_Access_Status__c</fullName>
-        <externalId>false</externalId>
-        <label>Early Access Status</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -513,16 +441,6 @@
         <fullName>Core_Far_Field_Audio__c</fullName>
         <externalId>false</externalId>
         <label>Far Field Audio</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Firmware__c</fullName>
-        <externalId>false</externalId>
-        <label>Firmware</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -650,16 +568,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Intended_Usage__c</fullName>
-        <externalId>false</externalId>
-        <label>Intended Usage</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Interface_Protocol_IP__c</fullName>
         <externalId>false</externalId>
         <label>Interface Protocol IP</label>
@@ -740,50 +648,9 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Memory_Config_Dual_Channel_128b__c</fullName>
-        <externalId>false</externalId>
-        <label>Memory Config(Dual-Channel 128b)</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Memory_DSP_and_Embedded_IP__c</fullName>
         <externalId>false</externalId>
         <label>Memory DSP and Embedded IP</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Modern_Standby__c</fullName>
-        <description>US210682 for reporting</description>
-        <externalId>false</externalId>
-        <label>Modern Standby</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Multi_boarded__c</fullName>
-        <externalId>false</externalId>
-        <label>Multi boarded</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_New_ID__c</fullName>
-        <externalId>false</externalId>
-        <label>New ID?</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -895,26 +762,6 @@
         <fullName>Core_PAN_Radio__c</fullName>
         <externalId>false</externalId>
         <label>PAN Radio</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Performance_Features_Enabled__c</fullName>
-        <externalId>false</externalId>
-        <label>Performance Features Enabled</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Product_Capability_Technology__c</fullName>
-        <externalId>false</externalId>
-        <label>Product Capability/Technology</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -1053,16 +900,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Security_Data_Protection__c</fullName>
-        <externalId>false</externalId>
-        <label>Security/Data Protection</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Security_Software__c</fullName>
         <externalId>false</externalId>
         <label>Security Software</label>
@@ -1073,39 +910,9 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Segment__c</fullName>
-        <externalId>false</externalId>
-        <label>Segment</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Service_Providers_Telco__c</fullName>
         <externalId>false</externalId>
         <label>Service Providers/Telco</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Single_Rail_Power_Supply__c</fullName>
-        <externalId>false</externalId>
-        <label>Single Rail Power Supply</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Socket_Count__c</fullName>
-        <externalId>false</externalId>
-        <label>Socket Count</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -1163,16 +970,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Sustainability_Compliance__c</fullName>
-        <externalId>false</externalId>
-        <label>Sustainability Compliance</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_System_Integrator__c</fullName>
         <externalId>false</externalId>
         <label>System Integrator</label>
@@ -1217,26 +1014,6 @@
         <fullName>Core_Ultrabook__c</fullName>
         <externalId>false</externalId>
         <label>Ultrabook</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Unit_Height__c</fullName>
-        <externalId>false</externalId>
-        <label>Unit Height</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Use_Condition__c</fullName>
-        <externalId>false</externalId>
-        <label>Use Condition</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>

@@ -9,7 +9,7 @@
     <enableNewProfileUI>true</enableNewProfileUI>
     <enableProfileFiltering>true</enableProfileFiltering>
     <enableRestrictEmailDomains>false</enableRestrictEmailDomains>
-    <enableScrambleUserData>false</enableScrambleUserData>
+    <enableScrambleUserData>true</enableScrambleUserData>
     <enableUserSelfDeactivate>false</enableUserSelfDeactivate>
     <enhancedPermSetList>false</enhancedPermSetList>
     <enhancedUserListView>false</enhancedUserListView>

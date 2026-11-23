@@ -204,6 +204,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_IPS_Active_Flag__c</fullName>
+        <description>This is a formula field to display interested party&apos;s Contact IPS Active field</description>
+        <formula>Contact__r.Core_IPS_Active__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>IPS Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_IPS_Case_Remove_Notifi_Detail__c</fullName>
         <description>This is use for Restricted Content on Email Notification.</description>
         <formula>Case__r.Core_IPS_Restricted_Secret_Content__c</formula>
@@ -295,6 +304,30 @@
         <type>Lookup</type>
     </fields>
     <label>Interested Party</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Account_Name__c</columns>
+        <columns>Active__c</columns>
+        <columns>Agent_Name__c</columns>
+        <columns>Case__c</columns>
+        <columns>Contact__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Type__c</columns>
+        <columns>User__c</columns>
+        <columns>Email__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Test__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Email__c</field>
+            <operation>equals</operation>
+            <value>ae@gmail.com</value>
+        </filters>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <displayFormat>A-{0000000000}</displayFormat>
         <label>Interested Party Name</label>
@@ -425,6 +458,171 @@ window.open(&quot;/apex/Core_IPS_Interested_Party_External&quot; + &quot;?id=&qu
 }</url>
     </webLinks>
     <webLinks>
+        <fullName>Add_External_Interested_Party_LWC</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add External Interested Party</masterLabel>
+        <openType>sidebar</openType>
+        <page>listButtonForExternalInterestedParty</page>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Internal_Interested_Party</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Internal Interested Party</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/apex.js&quot;)} 
+
+var IPSCaseAtt = new sforce.SObject(&quot;Case&quot;); 
+IPSCaseAtt.Id = &apos;{!Case.Id}&apos;; 
+var IPSCaseAttID = &apos;{!Case.Id}&apos;; 
+
+if ((&quot;{!$Profile.Name}&quot; == &quot;{!$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+{ 
+window.open(&quot;/IPS/Core_IPS_Interested_Party_Internal&quot;+&quot;?id=&quot;+IPSCaseAttID, &apos;_self&apos;); 
+} 
+//Added by Aparna for DE36697-R4.2
+else if(typeof(srcUp) == &apos;function&apos; &amp;&amp; (&quot;{$Profile.Name}&quot; != &quot;{$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+{  
+sforce.console.getEnclosingTabId(function(enclosingResult) { 
+sforce.console.getEnclosingPrimaryTabId(function(primaryResult) { 
+sforce.console.openPrimaryTab(primaryResult.id, &quot;/apex/Core_IPS_Interested_Party_Internal&quot; + &quot;?id=&quot; + IPSCaseAttID, true, &apos;Case: {!Case.CaseNumber}&apos;, null); 
+}); 
+}); 
+} 
+else { 
+window.open(&quot;/apex/Core_IPS_Interested_Party_Internal&quot; + &quot;?id=&quot; + IPSCaseAttID, &apos;_self&apos;); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Internal_Interested_Party_LEX</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Add Internal Interested Party</masterLabel>
+        <openType>replace</openType>
+        <page>Core_IPS_InterestedParty_LEX</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Internal_Interested_Party_Test</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Add Internal Interested Party Tst</masterLabel>
+        <openType>sidebar</openType>
+        <page>InterestedParty_ListButton</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Test</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Add Internal Interested Party_POC</masterLabel>
+        <openType>replace</openType>
+        <page>listButtonForInterestedparty</page>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Del_Ext_Part_Add</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Del Ext Part-Add</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/apex.js&quot;)} 
+
+var IPSCaseAtt = new sforce.SObject(&quot;Case&quot;); 
+IPSCaseAtt.Id = &apos;{!Case.Id}&apos;; 
+var IPSCaseAttID = &apos;{!Case.Id}&apos;; 
+console.log(&apos;-------&apos;, IPSCaseAttACCOUNT); 
+var IPSCaseAttIPSPROJECT = &quot;{!Case.Core_IPS_Project_Case__c}&quot;; 
+var IPSCaseAttACCOUNT = &apos;{!Case.AccountId}&apos;; 
+var iserror = false; 
+		
+		if ((IPSCaseAttIPSPROJECT == &apos;&apos;) &amp;&amp; (IPSCaseAttACCOUNT == &apos;&apos;)) { 
+			alert(&apos;This is an IPS No Assigned Contact Case. Cannot assign External Interested Parties.&apos;); 
+			iserror = true; 
+		} 
+		else if (&apos;{!Case.Core_IPS_Customer_Visible__c}&apos; == &apos;0&apos;) { 
+			alert(&apos;Case is not visible to customers. Cannot assign External Interested Parties.&apos;); 
+			iserror = true; 
+		} 
+		if (iserror == false) { 
+			if ((&quot;{!$Profile.Name}&quot; == &quot;{!$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+			{ 
+			    window.open(&quot;/IPS/Core_IPS_Interested_Party_External&quot; + &quot;?id=&quot; + IPSCaseAttID, &apos;_self&apos;); 
+			}
+		 
+		}
+//Added by Aparna for DE36697-R4.3
+
+		if(typeof(srcUp) == &apos;function&apos; &amp;&amp; (iserror == false) &amp;&amp; (&quot;{$Profile.Name}&quot; != &quot;{$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+		{
+               alert(&apos;CONSOLE&apos;);
+               sforce.console.getEnclosingTabId(function(enclosingResult) {
+               sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+               sforce.console.openPrimaryTab(primaryResult.id, &quot;/apex/Core_IPS_Interested_Party_External&quot; + &quot;?id=&quot; + IPSCaseAttID, true, &apos;Case: {!Case.CaseNumber}&apos;, null);
+                  });
+              });
+            }
+          else {
+              alert(&apos;NOT IN CONSOLE&apos;);
+              window.open(&quot;/apex/Core_IPS_Interested_Party_External&quot; + &quot;?id=&quot; + IPSCaseAttID, &apos;_self&apos;); 
+          }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Del_Int_Party_Add</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Del-Int Party-Add</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/34.0/apex.js&quot;)} 
+
+var IPSCaseAtt = new sforce.SObject(&quot;Case&quot;); 
+IPSCaseAtt.Id = &apos;{!Case.Id}&apos;; 
+var IPSCaseAttID = &apos;{!Case.Id}&apos;; 
+
+if ((&quot;{!$Profile.Name}&quot; == &quot;{!$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+{ 
+window.open(&quot;/IPS/Core_IPS_Interested_Party_Internal&quot;+&quot;?id=&quot;+IPSCaseAttID, &apos;_self&apos;); 
+}
+//Added by Aparna for DE36697-R4.3
+if(typeof(srcUp) == &apos;function&apos; &amp;&amp; (&quot;{$Profile.Name}&quot; != &quot;{$Label.Core_IPS_Partner_AE_ProfileName}&quot;)) 
+{ 
+alert(&apos;CONSOLE&apos;); 
+sforce.console.getEnclosingTabId(function(enclosingResult) { 
+sforce.console.getEnclosingPrimaryTabId(function(primaryResult) { 
+sforce.console.openPrimaryTab(primaryResult.id, &quot;/apex/Core_IPS_Interested_Party_Internal&quot; + &quot;?id=&quot; + IPSCaseAttID, true, &apos;Case: {!Case.CaseNumber}&apos;, null); 
+}); 
+}); 
+} 
+else { 
+alert(&apos;NOT IN CONSOLE&apos;); 
+window.open(&quot;/apex/Core_IPS_Interested_Party_Internal&quot; + &quot;?id=&quot; + IPSCaseAttID, &apos;_self&apos;); 
+}</url>
+    </webLinks>
+    <webLinks>
         <fullName>Manage_Interested_Parties_LWC</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
@@ -436,5 +634,17 @@ window.open(&quot;/apex/Core_IPS_Interested_Party_External&quot; + &quot;?id=&qu
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
         <url>/lightning/n/Interested_Parties?c__recordId={!Case.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>adding_attachment</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>adding attachment</masterLabel>
+        <openType>sidebar</openType>
+        <page>InterestedParty_ListButton</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
     </webLinks>
 </CustomObject>

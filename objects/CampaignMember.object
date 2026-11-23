@@ -129,10 +129,6 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>AccountId</fullName>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>CampaignId</fullName>
         <type>Lookup</type>
     </fields>

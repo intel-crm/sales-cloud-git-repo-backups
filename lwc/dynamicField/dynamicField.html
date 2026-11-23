@@ -33,9 +33,7 @@
                         </lightning-combobox>   
                     </div>
                     </template>
-              
-               
-                <template if:true={multiselectpiclistcheck}>
+               <template if:true={multiselectpiclistcheck}>
                     <!--MultiSelect-->
                     <span style="padding-left: 0.5%;font-weight: 600;">{fieldlabel}</span>
                         <template if:false={isrequiredfield}>
@@ -52,14 +50,14 @@
                              <span style="font-size:12px; font-weight:500;">&nbsp;(Optional)</span>
                         </template>
                     <lightning-textarea  variant="label-hidden" name={fieldid} onchange={handleTextChange} value={value} class="inputdat"
-                        placeholder={placeholdertext} required={isrequiredfield}>
+                        placeholder={placeholdertext} required={isrequiredfield} >
                     </lightning-textarea>
                 </template>
-		<!--Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
-                   <template if:true={islengtherr}>
+                <!--Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
+                     <template if:true={islengtherr}>
                         <span class="lengtherr"> {label.Core_IPS_Exceeding_the_char_length}</span>
                      </template>
-		<!-- Sowmya end-->
+                <!-- Sowmya end-->
                 
             </div> 
         </div>
@@ -97,7 +95,7 @@
                         </template>
                     </div>
                     <lightning-dual-listbox name={fieldid} class="inputdat" variant="label-hidden"
-                        source-label="Available" selected-label="Selected" onchange={handleChange} value={mvalue} required={isrequiredfield}
+                        source-label="Available" selected-label="Selected" onchange={handleChange} value={value} required={isrequiredfield}
                         field-level-help="" options={lovs} disable-reordering>
                     </lightning-dual-listbox>
                 </template>
@@ -111,12 +109,15 @@
                     <lightning-textarea variant="label-hidden" onchange={handleTextChange} required={isrequiredfield} name={fieldid} value={value} class="inputdat"
                         placeholder={placeholdertext} >
                     </lightning-textarea>
+                    
                 </template>
-		 <!--Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
-                   <template if:true={islengtherr}>
+                 <!--Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area-->
+                     <template if:true={islengtherr}>
                         <span class="lengtherr"> {label.Core_IPS_Exceeding_the_char_length}</span>
                      </template>
-		<!--Sowmya end-->
+                <!-- Sowmya end-->
+                
+               
             </div> 
         </div>
        

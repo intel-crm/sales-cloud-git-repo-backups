@@ -102,13 +102,13 @@
         <field>Opportunity.Core_Solution_Play__c</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3 and 4) OR (1 and 2 and 4 and 5)) AND 6</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3 and 4 and 5) OR (1 and 2 and 4 and 5 and 6)</booleanFilter>
         <criteriaItems>
             <column>Core_Solution_Milestone__c.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Pending,Submitted for Approval,Approved</value>
+            <value>,Pending,Submitted for Approval,Approved</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Solution_Milestone__c.Core_Milestone__c</column>
@@ -125,6 +125,13 @@
             <value>consulting</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Core_Solution_Milestone__c.Core_Milestone_Focus__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>big data</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -137,13 +144,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>ae-,nonae-,nonae,non ae,non-ae,ae cov</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Solution_Milestone__c.Core_Use_Case__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Enterprise IT Off-Premise</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

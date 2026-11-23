@@ -446,6 +446,11 @@
         <unique>false</unique>
     </fields>
     <label>IPS BugAssist Attachment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>{0000000000}</displayFormat>
         <label>IPS BugAssist Attachment Name</label>

@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Field_Name__c</field>
-        <value xsi:type="xsd:string">Core_Intel_Sup_Owner__c,Core_IPS_HC_Hot_Issue__c,Date_and_time_of_hot__c,Core_IPS_HC_Customer_Disposition__c,Core_IPS_HC_Executive_Summary__c,Core_IPS_HC_Help_Needed__c,Core_IPS_HC_Debug_Progress__c,Core_IPS_HC_Intel_Disposition__c,Core_IPS_HC_Latest_Update__c,Core_IPS_HC_Next_Actions__c,Status</value>
+        <value xsi:type="xsd:string">Core_Intel_Sup_Owner__c,Core_IPS_HC_Hot_Issue__c,Core_IPS_HC_Customer_Disposition__c,Core_IPS_HC_Executive_Summary__c,Core_IPS_HC_Help_Needed__c,Core_IPS_HC_Debug_Progress__c,Core_IPS_HC_Intel_Disposition__c,Core_IPS_HC_Latest_Update__c,Core_IPS_HC_Next_Actions__c,Date_and_time_of_hot__c,Status</value>
     </values>
     <values>
         <field>Profile_Name__c</field>

@@ -4,9 +4,9 @@
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>IPS - Unassigned Cases</name>
     <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_IPS_Unassigned_Cases</publicGroup>
-        </publicGroups>
+        <users>
+            <user>admintest@intel.com</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>

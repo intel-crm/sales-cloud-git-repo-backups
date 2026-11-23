@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <aggregates>
-        <calculatedFormula>(MaritzCX__Survey_Response__c.MaritzCX__Key_Metric_1__c:SUM + MaritzCX__Survey_Response__c.MaritzCX__Key_Metric_2__c:SUM)/2/RowCount/10</calculatedFormula>
-        <datatype>percent</datatype>
-        <developerName>FORMULA1</developerName>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Average Delight &amp; Velocity</masterLabel>
-        <scale>1</scale>
-    </aggregates>
     <columns>
         <field>FK_ACC_OWNER_NAME</field>
     </columns>

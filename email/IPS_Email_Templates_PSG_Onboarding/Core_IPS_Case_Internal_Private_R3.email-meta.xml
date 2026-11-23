@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>IPS_Letterhead</letterhead>
+    <name>Core IPS Case Internal Private R3</name>
+    <style>freeForm</style>
+    <subject>{!Case.Core_IPS_email_text__c } {!Case.CaseNumber} - {! LEFT(Account.Name, 50)} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot; - &quot;)} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,LEFT(Case.Subject, 120))} [{!Case.Id}x1]</subject>
+    <textOnly>Intel® Premier Support 
+
+{!Case.Core_IPS_email_text__c } {!Case.CaseNumber} Click Here {!$Label.Core_IPS_Notification_Internal_URL}/{!Case.Id} to View
+
+To update this Case with a comment by email use &apos;Reply&apos; only, not &apos;Reply All&apos;, and do not change the email subject line; replies to Closed Cases will be ignored as well as any email file attachments.
+
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot;Latest Case Comment Submitted By: &quot;)}{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Last_Private_Case_Comment_Submitter__c)}
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Latest_Case_Comment__c)}
+_______________________________________________________________
+Case Detail
+
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot;Subject: &quot;)}
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Subject)}
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot;Description: &quot;)}
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Issue_Description__c)}
+
+Case: {!Case.CaseNumber}
+Status: {!Case.Status}{!if(ispickval(Case.Core_Sub_Status__c,&quot;&quot;),&quot;&quot;,&quot;.&quot;)}{!Case.Core_Sub_Status__c}
+Account: {!Case.Account}  
+Contact: {!Case.Contact}
+Severity: {!Case.Core_Severity__c}
+Project: {!Case.Core_IPS_Project_Case__c}
+Product: {!Case.Core_IPS_Product_name__c}
+Category: {!Case.Core_External_Issue_Category__c} {!IF(ISBLANK(Case.Core_External_Issue_Subcategory__c),&quot;&quot;,&quot;&gt;&quot;)} {!Case.Core_External_Issue_Subcategory__c}
+
+Owner: {!Case.OwnerFullName}
+Co-Owner: {!Case.Core_Case_Co_Owner__c}
+Priority: {!Case.Priority}  
+Last Assigned Queue: {!Case.Core_IPS_Assigned_Queue__c}
+Organization: {!Case.Core_Product_Organization__c} 
+ 
+_______________________________________________________________
+* Inline images have been removed from this email.  Please open in Intel® Premier Support to view all images.
+
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -54,19 +54,7 @@
             <sourceValues>
                 <sourceValue>CHD - Retail-WW</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>CHD – WiFi-Cable</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>CHD – WiFi-Retail</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>CHD – WiFi-Telco</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>CHD – Wifi</sourceValue>
-            </sourceValues>
-            <value>BL-Wi-Fi</value>
+            <value>BL-Retail</value>
         </values>
         <values>
             <sourceValues>
@@ -98,7 +86,7 @@
         <groupingColumn>CREATED_DATEONLY</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>BucketField_73220933</secondaryGroupingColumn>
+        <secondaryGroupingColumn>Case.Core_Severity__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -120,7 +108,7 @@
         <field>STATUS</field>
     </columns>
     <columns>
-        <field>Case.Core_Severity__c</field>
+        <field>PRIORITY</field>
     </columns>
     <columns>
         <field>CASE_NUMBER</field>
@@ -149,9 +137,10 @@
     <columns>
         <field>CLOSED</field>
     </columns>
-    <description>for monthly PECS reporting (T. Mohren, R. Hegemann)shows the no. of (re-) opened cases per last 12 month w/o feature requests</description>
+    <description>for monthly PECS reporting (T. Mohren, R. Hegemann)
+shows the no. of (re-) opened cases per last 12 month</description>
     <filter>
-        <booleanFilter>((1 AND (2 OR (3 AND 4))) AND 5) AND 6</booleanFilter>
+        <booleanFilter>1 AND (2 OR (3 AND 4))</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -180,20 +169,6 @@
             <operator>greaterOrEqual</operator>
             <value>N_MONTHS_AGO:12</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_CaseType__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Feature Request</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>CHD - Cable,CHD - Comp,CHD - Telco,CHD - Retail,CHD – Wifi</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -209,8 +184,8 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>PRIORITY</field>
-        <sortOrder>Asc</sortOrder>
+        <field>Case.Core_Severity__c</field>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <name>IPS PECS 01 - opened per month</name>
     <params>

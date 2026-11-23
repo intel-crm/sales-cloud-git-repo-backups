@@ -1,0 +1,4 @@
+<apex:page standardController="Case" extensions="Core_IPS_CoveoPageController" docType="html-5.0">
+    {!$Cache.Session.local.CoveoInfoCache.customGroup}
+       <CoveoV2:Box name="IPSAgentConsole" recordId="{!case.id}" userGroups="{!$Cache.Session.local.CoveoInfoCache.customGroup}" filter=""/>     
+</apex:page>

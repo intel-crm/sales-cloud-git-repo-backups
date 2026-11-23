@@ -166,7 +166,7 @@
     </columns>
     <description>Sliding window last 12 month</description>
     <filter>
-        <booleanFilter>(((1 AND 2 AND (3 OR 4))) AND 5) AND 6</booleanFilter>
+        <booleanFilter>(1 AND 2 AND (3 OR 4))</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -193,21 +193,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Closed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_CaseType__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Feature Request</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>startsWith</operator>
-            <value>CHD</value>
+            <value>Closed,​​Closed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

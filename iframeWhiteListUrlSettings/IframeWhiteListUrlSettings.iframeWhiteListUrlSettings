@@ -2,39 +2,15 @@
 <IframeWhiteListUrlSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
-        <url>https://intel.lightning.force.com</url>
+        <url>https://www.intel.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>Surveys</context>
+        <url>https://www.intel.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
-        <url>https://intel.my.salesforce.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--c.na74.visual.force.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--c.na104.visual.force.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--gblite.na104.visual.force.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--gblite.vf.force.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--c.vf.force.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--gblite.visualforce.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--c.visualforce.com</url>
+        <url>https://signindev.intel.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>LightningOut</context>

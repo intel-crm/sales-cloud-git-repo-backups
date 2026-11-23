@@ -8,6 +8,10 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_Mask_Email_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_WWID__c</field>
             </layoutItems>
             <layoutItems>
@@ -35,12 +39,12 @@
                 <field>Core_Login_Id__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Partner_License_Reclaimed__c</field>
+                <behavior>Readonly</behavior>
+                <field>Core_IPS_AccountId__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_User_Fields_Merged__c</field>
+                <field>Core_Federation_ID__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

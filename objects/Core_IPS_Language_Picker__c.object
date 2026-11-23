@@ -14,5 +14,14 @@
         <unique>false</unique>
     </fields>
     <label>Language Picker</label>
+    <listViews>
+        <fullName>All_Fields</fullName>
+        <columns>NAME</columns>
+        <columns>Core_IPS_Language_Code__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Fields</label>
+    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

@@ -124,6 +124,9 @@ connectedCallback() {
 
 }
 
+//sowmya start TWC745-6403 - implemented a cutom helptext dialog box and its icon to show the formated text
+
+
 isModalOpen = false;
     tooltipContent = this.KnowledgeBaseLnkHelpText;
 
@@ -136,6 +139,9 @@ isModalOpen = false;
         this.isModalOpen =false;
     }
     
+            
+//sowmya end TWC745-6403 - implemented a cutom helptext dialog box and its icon to show the formated text
+
     // this object have record information
     @track ccRecord = {
         Status : Status_FIELD,

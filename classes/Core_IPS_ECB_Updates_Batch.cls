@@ -22,15 +22,18 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
             accidsForUpdate.add(stgaccs.AccountId__c);
         }
         if(accids.isEmpty()){ 
-            return Database.getQueryLocator('SELECT Id FROM Contact WHERE Id = null and Core_IPS_Active__c = true ');
+            return Database.getQueryLocator('SELECT Id FROM Contact WHERE Id = null');
+            
         }
-        return Database.getQueryLocator('select Id from Contact where Core_IPS_Active__c = true and AccountId IN : accids');
+        return Database.getQueryLocator('select Id from Contact where AccountId IN : accids');
     } 
-    public void execute(Database.BatchableContext BC, List<Contact> conchunk){
+    public void execute(Database.BatchableContext BC, List<Contact> conchunk){ //execute method begin
+        system.debug('conchunk'+conchunk);
         Set<Id> conids = new Set<Id>();
         Boolean isprojMemUpdateFailed = false;
         Boolean isConUpdateFailed = false;
         List<Core_Exceptions__c> ipsex =  new List<Core_Exceptions__c>();
+        Map<Id,Integer> activeProjMemMap=new Map<Id,Integer> ();
         for(Contact conlst : conchunk){
             conids.add(conlst.Id);
         }
@@ -41,12 +44,13 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
                                                     from Core_IPS_Case_Interested_Party__c 
                                                     where Case__r.Status !='Closed' 
                                                     and Contact__c IN : conids 
-                                                    limit 49999]){
+                                                    limit 49999 FOR UPDATE]){
             ipl.Active__c = false;
             iplist.add(ipl);
         }
         if(!iplist.isEmpty()){ 
             Core_IPS_SkipTriggerHandler.skipQueueable=true;
+            //update iplist;
             Database.update(iplist, false); //commented on 16092025 gangadhar
             List<Database.SaveResult> iplistList = Database.update(iplist, false);
 			for (Database.SaveResult result : iplistList) {
@@ -57,11 +61,18 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
                 }
             }
         }
-        for(Core_IPS_Project_Member__c pmlst : [Select id,Core_User__c,Core_Status__c,Core_IPS_Project__c,Core_IPS_Project__r.Owner.Id 
+        for(AggregateResult activeProjMem:[select Count(Id) Cnt,Core_IPS_Project__c projId 
+                            from Core_IPS_Project_Member__c 
+                            where Core_Status__c = 'Active' 
+                            and Core_IPS_Contact__c IN: conids Group By Core_IPS_Project__c]){
+            activeProjMemMap.put((Id)activeProjMem?.get('projId'),(Integer)activeProjMem.get('Cnt'));
+        }
+        
+        for(Core_IPS_Project_Member__c pmlst : [Select id,Core_User__c,Core_Status__c,Core_IPS_Project__c 
                                                 from Core_IPS_Project_Member__c 
                                                 where Core_Status__c = 'Active' 
                                                 and Core_IPS_Contact__c IN: conids ]){ 
-            if(pmlst!=null && pmlst.Core_User__c != pmlst.Core_IPS_Project__r.Owner.Id){
+            if(activeProjMemMap.get(pmlst.Core_IPS_Project__c)!=null && activeProjMemMap.get(pmlst.Core_IPS_Project__c)>1 && activeProjMemMap.get(pmlst.Core_User__c) != activeProjMemMap.get(pmlst.Core_IPS_Project__r.Owner.Id)){
                 Core_IPS_Project_Member__c oldSnapshot = pmlst.clone(true, true, false, false);
                 projMembersOld.add(oldSnapshot);                                         
                 pmlst.Core_Status__c = 'Inactive';
@@ -71,6 +82,8 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
         }
         if(!projmemnew.isEmpty()){ 
             Core_IPS_SkipTriggerHandler.skipQueueable=true;
+            //update projmemnew;
+            //new code 19092025 -Dont delete -begin
             List<Database.SaveResult> projmemresul = Database.update(projmemnew, false);
 			for (Database.SaveResult result : projmemresul) {
                 if (!result.isSuccess()) {
@@ -80,15 +93,20 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
                 }
             }
             
+			//new code 19092025 -Dont delete -end
         } 
         List<Contact> consupdate = new List<Contact>();
-        for(Contact conlst : conchunk){
+        for(Contact conlst : [Select id, Core_IPS_Active__c,Core_IPS_By_Pass_Validation__c 
+                              from Contact 
+                              where Core_IPS_Active__c = true and Id IN: conids ]){
             conlst.Core_IPS_Active__c = false;
             conlst.Core_IPS_By_Pass_Validation__c = true;
             consupdate.add(conlst);
         }
         if(!consupdate.isEmpty()){ 
             Core_IPS_SkipTriggerHandler.skipQueueable=true;
+            //update consupdate;
+             //new code 19092025 -Dont delete -begin
             List<Database.SaveResult> consupdateList = Database.update(consupdate, false);
 			for (Database.SaveResult result : consupdateList) {
                 if (!result.isSuccess()) {
@@ -97,6 +115,7 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
                     }  
                 }
             }
+			//new code 19092025 -Dont delete -end
         } 
     }//execute method end
     
@@ -108,19 +127,20 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
             System.debug('Skipped ProjectMemberQueueable because queueable job limit reached or no records found');
         }
         AsyncApexJob job;
-        if(!Test.isrunningTest() && jobId!=null){ //CoreIPSECBUpdateBatch Error Fix        
+        if(!Test.isrunningTest()&& jobId!=null){        
         job = [
             SELECT Id, Status, NumberOfErrors, ExtendedStatus
             FROM AsyncApexJob
             WHERE Id = :jobId
         ];
-		 } 
+		 }        
+        //System.debug('Queueable Status: ' + job.Status);
         List<Core_ACM_Account_Staging__c> stgaccsList = new List<Core_ACM_Account_Staging__c>();
         for(Core_ACM_Account_Staging__c stgaccs: [select AccountId__c,Core_Status__c 
                                                   from Core_ACM_Account_Staging__c 
-                                                  where Core_Action__c = 'IPSECBFlagCheck' 
+                                                  where Account_Action_Refrence__c = 'IPSECBFlagCheck' 
                                                   and AccountId__c=:accidsForUpdate order by CreatedDate desc limit 1]){
-            if(job!=null && job.Status == 'Queued'){
+            if(job!=null && job.Status=='Queued'){
                 stgaccs.Core_Status__c='Completed';
             }else{
                 stgaccs.Core_Status__c='Failed';

@@ -176,7 +176,11 @@ public class Core_IPS_AgentCaseClosureController_Test{
     } 
     static testmethod void core_IPS_AgentCaseClosureControllerLEX(){
              profile p = [select id,name from profile where name='IT Admin' limit 1];
-             Profile p1 = [select id, name from Profile where name='Sales Rep-BB' limit 1];
+        //Sowmya updated below - to increase the test coverage - 04/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+        //Profile p1 = [select id, name from Profile where name='Sales Rep-BB' limit 1];
+      	 Profile p1 = [select id, name from Profile where name='Sales Manager' limit 1];
+         //Sowmya - end - 04/11/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+       
         User userRecord = new User(
             Alias = 'StdTesto', 
             Email = 'newuserOnlyhere@intel.com', 
@@ -272,10 +276,11 @@ public class Core_IPS_AgentCaseClosureController_Test{
             Core_IPS_AgentCaseClosureControllerLEX.getCaseCloneAccess();
             
         }
-       
         
-    }
-    
+    }   
+         
+   
+   
     static testmethod void core_IPS_AgentCaseClosureControllerTest7(){
         User agentUser = TestUtilities.getUser();
         profile p=[select id,name from profile where name='IPS Agent' limit 1];

@@ -1,22 +1,6 @@
 @isTest
 public class Core_Schedule_Batch_AccountCoverage_Test{
-      @isTest
-    static void testSchedulableJob() {
-        // Start test context
-        Test.startTest();
 
-        // Schedule the batch job to run immediately
-        String cronExpression = '0 0 0 15 3 ? 2025'; // A cron expression to schedule for a future time (can be adjusted)
-        String jobName = 'Core_Schedule_Batch_AccountCoverage_Test_Job';
-        Core_Schedule_Batch_AccountCoverage job = new Core_Schedule_Batch_AccountCoverage();
-        
-        // Schedule the job
-        String jobId = System.schedule(jobName, cronExpression, job);
-        
-        // Stop test context
-        Test.stopTest();
-      }
-/*
     public static testMethod void testScheduleFailedCase(){
         
         Profile sysAdminProfile = [select id, name from Profile where name = 'System Administrator' Limit 1];
@@ -74,6 +58,6 @@ public class Core_Schedule_Batch_AccountCoverage_Test{
         String jobId = System.schedule('ScheduleApexClassTest',sch, scheduleaccount);
         Test.stopTest();
         }
-    }*/
+    }
     
 }

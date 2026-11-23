@@ -7,6 +7,13 @@
         <publicGroups>
             <publicGroup>Core_IPS_Org_006</publicGroup>
         </publicGroups>
+        <users>
+            <user>11581596@intel.com.crm</user>
+            <user>11962478@intel.com.crm</user>
+            <user>11710633@intel.com.crm</user>
+            <user>premx.ranjan1@intel.com</user>
+            <user>12021718@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_IPS_MAP_PAR__c</sobjectType>

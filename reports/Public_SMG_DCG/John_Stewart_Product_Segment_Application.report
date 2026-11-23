@@ -72,14 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Swastik Chakraborty,Konstantin Babanakov,Xiaobo Chen,Andy Green,Myles Hu,Jason Lamb,York Ma,Tony Mantione,H Reddy,Xiaolei Ren,David Rhoades,Illyse Sheaffer,Volga Simsek,Merritte Stidston,Karl Vietmeier,Yuan Xu,Hai Feng Zhu,john chen,otto chow,mohamed elsaid</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Data Center Computing</value>
+            <value>Swastik Chakraborty,Konstantin Babanakov,Xiaobo Chen,Andy Green,Myles Hu,Jason Lamb,York Ma,Tony Mantione,Chris Martin,H Reddy,Xiaolei Ren,David Rhoades,Illyse Sheaffer,Volga Simsek,Merritte Stidston,Karl Vietmeier,Yuan Xu,Hai Feng Zhu,john chen,otto chow,mohamed elsaid</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -119,6 +112,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2017-12-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -4,9 +4,6 @@
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
     <columns>
-        <field>ADDRESS1_COUNTRY_CODE</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -38,6 +35,9 @@
     </columns>
     <columns>
         <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>OPP_QUANTITY</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Count__c</field>
@@ -103,6 +103,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

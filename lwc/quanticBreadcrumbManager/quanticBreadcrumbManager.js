@@ -1,4 +1,7 @@
-import {LightningElement, track, api} from 'lwc';
+import clearAllFilters from '@salesforce/label/c.quantic_ClearAllFilters';
+import clearFilter from '@salesforce/label/c.quantic_ClearFilter';
+import colon from '@salesforce/label/c.quantic_Colon';
+import nMore from '@salesforce/label/c.quantic_NMore';
 import {
   registerComponentForInit,
   initializeWithHeadless,
@@ -6,11 +9,7 @@ import {
   getHeadlessBundle,
 } from 'c/quanticHeadlessLoader';
 import {I18nUtils, RelativeDateFormatter, Store} from 'c/quanticUtils';
-
-import nMore from '@salesforce/label/c.quantic_NMore';
-import clearAllFilters from '@salesforce/label/c.quantic_ClearAllFilters';
-import clearFilter from '@salesforce/label/c.quantic_ClearFilter';
-import colon from '@salesforce/label/c.quantic_Colon';
+import {LightningElement, track, api} from 'lwc';
 
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 /** @typedef {import("coveo").BreadcrumbManager} BreadcrumbManager */
@@ -67,6 +66,8 @@ export default class QuanticBreadcrumbManager extends LightningElement {
   unsubscribe;
   /** @type {string[]} */
   expandedBreadcrumbFieldsState = [];
+  /** @type {boolean} */
+  hasInitializationError = false;
 
   labels = {
     nMore,
@@ -117,26 +118,30 @@ export default class QuanticBreadcrumbManager extends LightningElement {
 
   formatRangeBreadcrumbValue(breadcrumb) {
     const data = getFromStore(this.engineId, Store.facetTypes.NUMERICFACETS);
+    const facetId = breadcrumb.facetId.replace('_input', '');
     return {
       ...breadcrumb,
-      label: data ? data[breadcrumb.field]?.label : breadcrumb.field,
+      label: data ? data[facetId]?.label : breadcrumb.field,
       values: breadcrumb.values.map((range) => ({
         ...range,
         value: `${range.value.start} - ${range.value.end}`,
-        formattedValue: data[breadcrumb.field]?.format(range.value),
+        formattedValue: data[facetId]?.format(range.value),
       })),
     };
   }
 
   formatCategoryBreadcrumbValue(breadcrumb) {
+    const data = getFromStore(this.engineId, Store.facetTypes.CATEGORYFACETS);
+    const format = data[breadcrumb.facetId]?.format ?? ((item) => item.value);
+
     if (breadcrumb.path.length <= 3) {
-      return breadcrumb.path.map((breadcrumbValue) => breadcrumbValue.value);
+      return breadcrumb.path.map((breadcrumbValue) => format(breadcrumbValue));
     }
     const collapsed = '...';
-    const firstBreadcrumbValue = breadcrumb.path[0].value;
+    const firstBreadcrumbValue = format(breadcrumb.path[0]);
     const lastTwoBreadcrumbsValues = breadcrumb.path
       .slice(-2)
-      .map((breadcrumbValue) => breadcrumbValue.value);
+      .map((breadcrumbValue) => format(breadcrumbValue));
     return [firstBreadcrumbValue, collapsed, ...lastTwoBreadcrumbsValues];
   }
 
@@ -169,12 +174,13 @@ export default class QuanticBreadcrumbManager extends LightningElement {
 
   formatDateRangeBreadcrumbValue(breadcrumb) {
     const data = getFromStore(this.engineId, Store.facetTypes.DATEFACETS);
+    const facetId = breadcrumb.facetId.replace('_input', '');
     return {
       ...breadcrumb,
-      label: data ? data[breadcrumb.field]?.label : breadcrumb.field,
+      label: data ? data[facetId]?.label : breadcrumb.field,
       values: breadcrumb.values.map((range) => ({
         ...range,
-        value: data[breadcrumb.field]?.format(range.value),
+        value: data[facetId]?.format(range.value),
       })),
     };
   }
@@ -183,7 +189,11 @@ export default class QuanticBreadcrumbManager extends LightningElement {
     const data = getFromStore(this.engineId, Store.facetTypes.FACETS);
     return {
       ...breadcrumb,
-      label: data ? data[breadcrumb.field]?.label : breadcrumb.field,
+      label: data ? data[breadcrumb.facetId]?.label : breadcrumb.field,
+      values: breadcrumb.values.map((item) => ({
+        ...item,
+        formattedValue: data[breadcrumb.facetId]?.format(item.value),
+      })),
     };
   }
 
@@ -258,7 +268,7 @@ export default class QuanticBreadcrumbManager extends LightningElement {
         return {
           facetId: breadcrumb.facetId,
           field: breadcrumb.field,
-          label: data ? data[breadcrumb.field]?.label : breadcrumb.field,
+          label: data ? data[breadcrumb.facetId]?.label : breadcrumb.field,
           deselect: breadcrumb.deselect,
           value: breadcrumbValues.join(` ${this.categoryDivider} `),
         };
@@ -274,5 +284,12 @@ export default class QuanticBreadcrumbManager extends LightningElement {
     return dateFacetBreadcrumbsToDisplay.map((breadcrumb) =>
       this.getBreadcrumbValues(breadcrumb)
     );
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
   }
 }

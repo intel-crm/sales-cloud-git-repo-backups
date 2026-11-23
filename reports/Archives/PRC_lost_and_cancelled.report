@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_73819271</developerName>
+        <masterLabel>PRC Biz Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>OWNER_MANAGER</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Yuxin He</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Gary Gao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yidong Wang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Deng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Trish Blomfield</sourceValue>
+            </sourceValues>
+            <value>Ecosystem</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Ji Pang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dennis Iun</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Arthur Fang</sourceValue>
+            </sourceValues>
+            <value>Huawei</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Douglas Cougle</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Howard Chang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Otto Chow</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Qingchun Huang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Diana Luo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Karl Meng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Henry Ye</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Weichen Ye</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Jacky Ma</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Leo Chan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wenkang Li</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Evyns Chan</sourceValue>
+            </sourceValues>
+            <value>ISG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Haritha Yalavarthi</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Han</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Steven W Swartz</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>MS Kwon</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ken Takeuchi</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Stacie Guan</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Erik Reid</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Peter P Chen</sourceValue>
+            </sourceValues>
+            <value>Lenovo</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Wilson Guo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sheng Jin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yong SZ Li</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Eric Tang</sourceValue>
+            </sourceValues>
+            <value>DCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Wei Guo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>rong liu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hao H Zhang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>yimin huang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Dan Lin Chen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Michael Tan</sourceValue>
+            </sourceValues>
+            <value>Client &amp; IoT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Sonny Jin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wen A Li</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Kit Ho Chee</sourceValue>
+            </sourceValues>
+            <value>Internet</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Zhichen Yang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yibin Chen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Yiping Liu</sourceValue>
+            </sourceValues>
+            <value>OSC</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_73819271</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Opportunity.Core_Loss_Cancel_Reason__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Large</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Sample PRC Biz Group Past Due Status</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Approval_Status__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 AND  (2 or 3 or 4 or 5 or 6 or 7)) AND 8</booleanFilter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Lost,Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>PRC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>lenovo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>MEDION AG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IOMEGA CORPORATION</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_OWNER_ALIAS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>mkotzan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>NEC PERSONAL</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Loss_Cancel_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled - Duplicate,Cancelled - Entered in Error</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_73819271</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>PRC lost and cancelled</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

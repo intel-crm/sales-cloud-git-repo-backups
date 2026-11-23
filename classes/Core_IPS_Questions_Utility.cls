@@ -8,7 +8,7 @@ Modification Log :
 * Amritesh               12/18/2017             Created - US8534
 **********************************************************************************/    
 
-public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR critical fixed by Tushar
+public without sharing class Core_IPS_Questions_Utility { // 'without sharing' added by Tushar as part of ATHR critical
     
     /********************************************************************************
     Method Name:  getAllFieldsSObjectQuery
@@ -112,6 +112,7 @@ public without sharing class Core_IPS_Questions_Utility { // TWC745-9117 ATHR cr
         // SOQL Injection Fix - End -  Shipra
 
        // return Database.query(strQuery);
+       System.debug('Shipra 115---> '+listCoreAttrbutr);
         return listCoreAttrbutr;
     }
     

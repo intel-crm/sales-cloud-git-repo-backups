@@ -22,9 +22,6 @@
         <field>Core_Solution_Milestone__c.Core_Milestone_Focus_Area__c</field>
     </columns>
     <columns>
-        <field>Core_Solution_Milestone__c.Core_Milestone_Focus__c</field>
-    </columns>
-    <columns>
         <field>Core_Solution_Milestone__c.Core_Milestone__c</field>
     </columns>
     <columns>
@@ -117,6 +114,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

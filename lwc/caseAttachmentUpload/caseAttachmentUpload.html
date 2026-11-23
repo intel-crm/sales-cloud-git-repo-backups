@@ -1,0 +1,19 @@
+<template>
+    <div style="height:600px;"  >    
+        <lightning-card title="Case Attachment" >
+        <lightning-radio-group name="radioGroup"
+        label="Visibility"
+        options={options}
+        value={visibilityValue}
+        onchange={handleChange}
+        type="radio" 
+        allow="geolocation *; microphone *; camera *" 
+        frameborder="1"
+        variant= "label-stacked"  ></lightning-radio-group>
+        {scfturl}
+        
+        <iframe src={scfturl} width="100%" height="600" > </iframe>
+    </lightning-card>
+</div>
+
+</template>

@@ -1,0 +1,36 @@
+<apex:page standardController="Case" extensions="Core_IPS_Interested_Party_Ext_Controller" sidebar="false" showHeader="false">
+<!-- <apex:PageBlock id="selectedresult"> -->
+            <!--Ashutosh _ US103988 - To show the wrapper list data instead of query list
+			<apex:outputPanel rendered="{!LinkedExternalParties.size<1}"><apex:outputText > No records to display </apex:outputText></apex:outputPanel>        
+            <apex:outputPanel rendered="{!LinkedExternalParties.size>0}">
+                <apex:pageBlockTable value="{!LinkedExternalParties}" var="ext">         
+                     <!--<apex:column value="{!ext.Active__c}" headerValue="Add"/>-->
+                     <!--<apex:column headerValue="Add">-->                            
+                        <!--<apex:inputCheckBox value="{!ext.Active__c}">-->
+                            <!--<apex:actionSupport event="onclick" action="{!removeSelectedContacts}" reRender="selectedresult,searchresult" status="status1"/>-->
+                        <!--</apex:inputCheckBox>-->
+                    <!--</apex:column>
+                     <apex:column value="{!ext.First_Name__c}"/>
+                     <apex:column value="{!ext.Last_Name__c}"/>                     
+                     <apex:column value="{!ext.User__c}"/>
+                     <apex:column value="{!ext.Core_IPS_Account_Name__c}"/>
+                     <apex:column value="{!ext.Email__c}"/>      
+               </apex:pageBlockTable>
+           </apex:outputPanel>-->
+    		
+    <!-- 
+    		<apex:outputPanel rendered="{!LinkedExternalPartiesList.size<1}"><apex:outputText > No records to display </apex:outputText></apex:outputPanel>        
+            <apex:outputPanel rendered="{!LinkedExternalPartiesList.size>0}">
+                
+                <apex:pageBlockTable value="{!LinkedExternalPartiesList}" var="ext">         
+                     
+                     <apex:column value="{!ext.ipRecord.First_Name__c}"/>
+                     <apex:column value="{!ext.ipRecord.Last_Name__c}"/>                     
+              		<apex:column value="{!ext.ipRecord.Email__c}"/> 
+                     <apex:column value="{!ext.ipRecord.Core_IPS_Account_Name__c}"/>
+                          
+               </apex:pageBlockTable>
+           </apex:outputPanel>
+           </apex:PageBlock>
+    -->
+</apex:page>

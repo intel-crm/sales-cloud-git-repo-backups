@@ -17,7 +17,7 @@
             <name>Core_Activity_Prepend_Account_To_Name</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Marketing_Activity__c.CreatedById</field>
             <operation>notEqual</operation>

@@ -2,7 +2,7 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
-    <name>CCG-SPG - Unassigned</name>
+    <name>CCG-CISD - Unassigned</name>
     <queueMembers>
         <publicGroups>
             <publicGroup>Core_IPS_Org_002_Unassigned</publicGroup>

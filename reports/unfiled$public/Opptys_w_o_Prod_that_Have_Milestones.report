@@ -15,6 +15,9 @@
             <value>Comms</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Technology</sourceValue>
+            </sourceValues>
             <value>Cloud</value>
         </values>
     </buckets>
@@ -146,6 +149,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

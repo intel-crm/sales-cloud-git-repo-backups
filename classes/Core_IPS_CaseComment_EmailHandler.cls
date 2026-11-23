@@ -230,8 +230,9 @@ global without sharing class Core_IPS_CaseComment_EmailHandler implements Messag
             String partnerAuthrType = '';
             String partnerType1; 
             partnerAuthrType  = Core_Utility.getPartnerUserType(userId);
-             if(partnerAuthrType!=null){
-                if(partnerAuthrType.split(';').size()>0)
+            //Avoid Deeply Nested IF Statements - Rakshitha
+             if(partnerAuthrType!=null && partnerAuthrType.split(';').size()>0){
+                //if(partnerAuthrType.split(';').size()>0)
                 partnerType1 = partnerAuthrType.split(';')[0];
              }
             if(partnerType1 !=null && String.isNotBlank(partnerType1 )){

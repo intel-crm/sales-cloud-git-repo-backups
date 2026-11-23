@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntitlementProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <SObjectType>Case</SObjectType>
+    <active>true</active>
+    <description>Created as part of Taurus POC. Assign only to those cases with products which has subscription add on</description>
+    <entryStartDateField>Case.CreatedDate</entryStartDateField>
+    <exitCriteriaBooleanFilter>1 OR 2</exitCriteriaBooleanFilter>
+    <exitCriteriaFilterItems>
+        <field>Case.IsClosed</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </exitCriteriaFilterItems>
+    <exitCriteriaFilterItems>
+        <field>Case.Core_Sub_Status__c</field>
+        <operation>equals</operation>
+        <value>Close-Pending</value>
+    </exitCriteriaFilterItems>
+    <isVersionDefault>true</isVersionDefault>
+    <milestones>
+        <isDisplayedOnLinkedEntity>false</isDisplayedOnLinkedEntity>
+        <milestoneCriteriaFilterItems>
+            <field>Case.Core_First_Response_Completed__c</field>
+            <operation>equals</operation>
+            <value>false</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneCriteriaFilterItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case, IPS Case Create</value>
+        </milestoneCriteriaFilterItems>
+        <milestoneName>IPS Case First Response</milestoneName>
+        <minutesCustomClass>Core_IPS_FirstResponseSLATimeCalculator</minutesCustomClass>
+        <successActions>
+            <name>IPS_Update_Trigger_Next_Response_to_True</name>
+            <type>FieldUpdate</type>
+        </successActions>
+        <timeTriggers>
+            <actions>
+                <name>Core_IPS_Case_Notif_SLA_Reminder_New_EA</name>
+                <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Core_IPS_Update_Email_Text_SLA_Reminder</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>-4</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <timeTriggers>
+            <actions>
+                <name>Core_IPS_Case_Notif_SLA_Overdue_New_EA</name>
+                <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Core_IPS_Update_Email_Text_SLA_Overdue</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Minutes</workflowTimeTriggerUnit>
+        </timeTriggers>
+        <useCriteriaStartTime>false</useCriteriaStartTime>
+    </milestones>
+    <milestones>
+        <isDisplayedOnLinkedEntity>false</isDisplayedOnLinkedEntity>
+        <milestoneCriteriaFormula>AND (
+(Core_First_Response_Completed__c = true),
+
+OR(RecordTypeId = $Label.Core_IPS_Case_Create_RecordType_Id ,RecordTypeId = $Label.Core_IPS_No_Assigned_Contact_Case_RT_Id ),
+
+NOT( CONTAINS( $Label.Core_IPS_Case_Stop_SLA, &apos;,&apos; &amp; TEXT( Core_Sub_Status__c ) &amp; &apos;,&apos; )),
+Core_Trigger_Next_Response__c = true
+
+)</milestoneCriteriaFormula>
+        <milestoneName>IPS Case Next Response</milestoneName>
+        <minutesToComplete>120</minutesToComplete>
+        <useCriteriaStartTime>true</useCriteriaStartTime>
+    </milestones>
+    <name>ICS Subscriptions Entitlement Process</name>
+    <versionMaster>5523F000000OBUd</versionMaster>
+    <versionNumber>1</versionNumber>
+</EntitlementProcess>

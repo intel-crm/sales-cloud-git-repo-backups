@@ -34,18 +34,18 @@
     <description>PSG Channel Opportunities with Products info - provided Partner Program=&quot;PSG Demand Creation - Distribution&quot;</description>
     <filter>
         <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PSG Sales</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_Partner_Alliance_Program__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>PSG Demand Creation - Distribution</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_PSG_Account__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -84,6 +84,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

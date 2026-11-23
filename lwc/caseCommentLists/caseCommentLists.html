@@ -1,0 +1,66 @@
+<template>
+    <template if:true={isDataAvailable}>
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <lightning-card>
+                <lightning-input type="text" label="Enter text to be searched:" id="searchId" value={searchText}
+                    onchange={onChangeHandler}></lightning-input></br>
+                <div class="slds-align_absolute-center">
+                    <lightning-button variant="brand-outline" label="Search" onclick={onSearch}
+                        class="slds-m-left_x-small">
+                    </lightning-button>
+                    <lightning-button variant="brand-outline" label="Reset" onclick={onReset}
+                        class="slds-m-left_x-small">
+                    </lightning-button>
+                </div>
+            </lightning-card>
+            <div class="slds-p-around_medium">
+                <lightning-card title="Recent Comments">
+                    <div class="slds-scrollable" style="width: auto;">
+                        <ul class="slds-has-dividers_bottom-space slds-m-around_medium">
+
+                            <template for:each={dataList} for:item="caseCom">
+                                <li class="slds-item" key={caseCom.Id}>
+                                    <lightning-tile>
+                                        <dl class="slds-dl_horizontal">
+                                            <dt class="slds-dl_horizontal__label">
+                                                <p class="slds-truncate">{caseCom.Core_IPS_Case_Comment_Type__c}</p> </br>
+                                                <p class="slds-truncate">{caseCom.Core_IPS_Comment_Authored_By_Name__c}
+                                                </p>
+                                            </dt> 
+                                            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                                <p class="slds-truncate">{caseCom.Core_IPS_Comment_Authored_By_Email__c}
+                                                </p>
+                                            </dd>
+                                            <dt class="slds-dl_horizontal__label">
+                                                <p>
+                                                    <lightning-formatted-date-time
+                                                                   value={caseCom.CreatedDate}
+                                                                   year="2-digit"
+                                                                   month="short"
+                                                                   day="2-digit"
+                                                                   hour="2-digit" 
+                                                                   time-zone={userLocale}>
+                                                   </lightning-formatted-date-time>
+                                               
+                                               </p>
+                                                <p class="slds-truncate">{caseCom.CreatedDate}</p>
+                                            </dt>
+                                        </dl>
+                                        <lightning-formatted-rich-text value={caseCom.Core_IPS_Rich_Comment__c}>
+                                        </lightning-formatted-rich-text>
+                                    </lightning-tile>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                    <template if:false={isDataAvailable}>
+                        <p>No records to display</p>
+                    </template>
+                </lightning-card>
+            </div>
+        </div>
+    </template>
+    <template if:false={isDataAvailable}>
+        <p>No records to display</p>
+    </template>
+</template>

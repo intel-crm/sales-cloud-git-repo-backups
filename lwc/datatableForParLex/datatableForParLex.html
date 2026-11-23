@@ -1,0 +1,19 @@
+<template>
+    <div style="height: 15rem">
+        <c-custom-picklist-data-table
+                        key-field="name"
+                        columns={columns}
+                        data={slicedSpList}
+                        onrowselection ={handleRowAction}
+                        onsave={saveHandleAction} 
+                        draft-values={draftValues}
+                        onpicklistchanged={picklistChanged}
+                        oncancel={cancelHandleAction}>
+        </c-custom-picklist-data-table>
+    </div>
+    <div style="padding-top: 15px;">
+        <c-core_-i-p-s_-paginator_-l-w-c records={accountsData} total-records={accountsData.length}
+            show-search-box="true" onpaginatorchange={handlePaginatorChange}>
+        </c-core_-i-p-s_-paginator_-l-w-c>
+    </div> 
+</template>

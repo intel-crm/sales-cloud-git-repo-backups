@@ -1,12 +1,12 @@
 {
-  "activeViewId" : "351ee91f-f9a1-4b82-ad2a-30ae09ff265c",
+  "activeViewId" : "e07c96cf-bea6-4d68-ae98-789b11369727",
   "appPageId" : "5a305cf4-135f-47a4-84a6-71d8c5d04ae1",
   "configurationTags" : [ ],
-  "devName" : "SSTloggeneration__c",
-  "id" : "a84938f5-456a-47c6-8d8a-ae3660a31f2b",
+  "devName" : "BugAssist__c",
+  "id" : "c1e8efd6-9853-43bc-b7c9-9c85aaf6c461",
   "label" : "SSTloggeneration",
   "pageAccess" : "UseParent",
-  "routeType" : "custom-sstloggeneration",
+  "routeType" : "custom-bugassist",
   "type" : "route",
   "urlPrefix" : "SSTloggeneration"
 }

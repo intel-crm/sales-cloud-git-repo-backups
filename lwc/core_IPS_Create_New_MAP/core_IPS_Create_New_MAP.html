@@ -1,0 +1,25 @@
+<template>
+	<lightning-card title="Product Access Details">
+		<div class="slds-grid slds-wrap slds-size_6-of-12 slds-grid--vertical-align-center">
+			<div class="slds-size_3-of-12">
+				<label class="slds-form-element__label slds-m-left_medium slds-m-top_small">MAP Name:</label>
+			</div>
+			<div class="slds-size_9-of-12">
+				<c-core_-i-p-s_-lightning-input-utility placeholder="Map Name"
+				value={mapName}>
+				</c-core_-i-p-s_-lightning-input-utility>
+			</div>
+		</div>
+		<div class="slds-grid slds-wrap slds-size_6-of-12 slds-grid--vertical-align-center">
+			<div class="slds-size_3-of-12">
+				<label class="slds-form-element__label slds-m-left_medium slds-m-top_small">Support Org:</label>
+			</div>
+			<div class="slds-size_9-of-12">
+                <c-custom-lookup onselectedrec={handleOwnerChange} selected-record={supportOrgId} iconname="standard:user" object-name="Core_IPS_Product_Organization__c" searchfield="Name">
+
+                </c-custom-lookup>
+
+			</div>
+		</div>		
+	</lightning-card>
+</template>

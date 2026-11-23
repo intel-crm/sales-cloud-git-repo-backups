@@ -403,7 +403,7 @@ setCurrentPageReference(currentPageReference) {
 		let fieldsStr = ' Id, Name, FirstName, LastName, Email '
 		let fromObjectStr = ' FROM User ';
 		let whereClause = '';
-		let whereClause1 = ' (IsActive = true)  AND (FirstName LIKE ' + searchableString + ' OR LastName LIKE ' + searchableString + ' OR Email LIKE ' + searchableString + ') AND (NOT(ID IN ' + this.relatedContactIdsStr + ' )) ';
+		let whereClause1 = '(FirstName LIKE ' + searchableString + ' OR LastName LIKE ' + searchableString + ' OR Email LIKE ' + searchableString + ') AND (NOT(ID IN ' + this.relatedContactIdsStr + ' )) ';
 		if(this.caseProjId !== undefined && this.caseProjId !== null && this.caseProjId !== ''
 			&& this.casePrivateProj !== undefined && this.casePrivateProj !== null && this.casePrivateProj !== '' && this.casePrivateProj == true
 		) {

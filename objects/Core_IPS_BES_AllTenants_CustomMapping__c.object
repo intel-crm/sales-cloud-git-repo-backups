@@ -64,16 +64,17 @@
     </fields>
     <label>Core_IPS_BES_AllTenants_CustomMapping</label>
     <listViews>
-        <fullName>My_view17</fullName>
+        <fullName>all_view_field</fullName>
         <columns>NAME</columns>
-        <columns>Direction__c</columns>
         <columns>Backend_System_Name__c</columns>
+        <columns>Direction__c</columns>
         <columns>Field_API_Name__c</columns>
         <columns>Json_Key__c</columns>
         <columns>Source_Value__c</columns>
         <columns>Target_Value__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
-        <label>My view17</label>
+        <label>all view field</label>
         <language>en_US</language>
     </listViews>
     <visibility>Public</visibility>

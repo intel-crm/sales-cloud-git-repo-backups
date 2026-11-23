@@ -23,6 +23,12 @@
             <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Sell-with</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Scale-Estimate (per Finance)</sourceValue>
+            </sourceValues>
             <value>Consumption</value>
         </values>
     </buckets>
@@ -120,6 +126,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

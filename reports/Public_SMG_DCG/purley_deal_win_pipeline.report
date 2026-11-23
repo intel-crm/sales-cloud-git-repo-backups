@@ -19,7 +19,7 @@
         <expandOthers>true</expandOthers>
         <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
         <legendPosition>Right</legendPosition>
-        <location>CHART_BOTTOM</location>
+        <location>CHART_TOP</location>
         <secondaryGroupingColumn>OpportunityLineItem.Core_Status__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -45,19 +45,10 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>INDUSTRY</field>
-    </columns>
-    <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
+        <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>FULL_NAME</field>
@@ -69,6 +60,9 @@
         <field>Opportunity.Core_Solution_Focus__c</field>
     </columns>
     <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
         <field>TYPE</field>
     </columns>
     <columns>
@@ -76,9 +70,6 @@
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Software_Stack__c</field>
     </columns>
     <columns>
         <field>AMOUNT</field>
@@ -133,7 +124,7 @@
             <value>consulting</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -152,13 +143,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>processor</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>bronze,silver,gold,platinum</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

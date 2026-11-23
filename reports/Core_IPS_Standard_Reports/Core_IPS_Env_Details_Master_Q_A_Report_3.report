@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CHILD_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Environment_Variables__c.Core_Answers__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Environment_Variables__c.Core_Datatype__c</field>
+    </columns>
+    <columns>
+        <field>Core_IPS_Environment_Variables__c.Core_Status__c</field>
+    </columns>
+    <columns>
+        <field>CHILD_LAST_UPDATE_NAME</field>
+    </columns>
+    <columns>
+        <field>CHILD_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>CHILD_LAST_UPDATE_ALIAS</field>
+    </columns>
+    <description>All Environment Details questions for an Org - no Product or Subcat relation.</description>
+    <format>Tabular</format>
+    <name>All Env Details Master Q&amp;A</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Core_IPS_Product_Organization__c$Core_IPS_Environment_Variables__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

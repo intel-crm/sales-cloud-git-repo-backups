@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>6</activeVersionNumber>
     <description>Called from PB Flow A&amp;E Set Permission Sets for Contact Entitlements
 
-Automatically sets permission sets for those entitlements which need them.  Also adds the user to DDR and Lead public groups respectively
-
-Deactivated after moving the logic to batch program Core_Batch_A_E_PermSet_Mgmt.apex</description>
-    <masterLabel>x Set Permission Sets and Groups for Entitlements</masterLabel>
+Automatically sets permission sets for those entitlements which need them. Also adds the user to DDR and/or Lead public groups respectively</description>
+    <masterLabel>Set Permission Sets and Groups for Entitlements</masterLabel>
 </FlowDefinition>

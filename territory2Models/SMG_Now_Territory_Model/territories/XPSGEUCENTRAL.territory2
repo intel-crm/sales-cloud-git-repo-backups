@@ -14,9 +14,5 @@
     <name>PSG-EU-CENTRAL</name>
     <opportunityAccessLevel>Read</opportunityAccessLevel>
     <parentTerritory>XPSGEU</parentTerritory>
-    <ruleAssociations>
-        <inherited>false</inherited>
-        <ruleName>PSG_EU_CENTRAL</ruleName>
-    </ruleAssociations>
     <territory2Type>Business_Unit</territory2Type>
 </Territory2>

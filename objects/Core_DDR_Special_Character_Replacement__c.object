@@ -24,15 +24,5 @@
         <unique>false</unique>
     </fields>
     <label>DDR Special Character Replacement</label>
-    <listViews>
-        <fullName>All_Records</fullName>
-        <columns>NAME</columns>
-        <columns>Junk_Character__c</columns>
-        <columns>Actual_Character__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Records</label>
-    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

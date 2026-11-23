@@ -1,4 +1,4 @@
 <aura:component>
-  <lightning:messageChannel type="coreIntcErrorMessages__c" aura:id="coreErrorChannel"/>
+  <!-- <lightning:messageChannel type="coreIntcErrorMessages__c" aura:id="coreErrorChannel"/> -->
   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 </aura:component>

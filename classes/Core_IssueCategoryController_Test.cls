@@ -276,8 +276,8 @@ public class Core_IssueCategoryController_Test{
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-        PageReference pageRef = Page.Core_addSubCategories;
-        Test.setCurrentPage(pageRef);
+      /*  PageReference pageRef = Page.Core_addSubCategories;
+        Test.setCurrentPage(pageRef); */
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseCategory.Id);
         Core_IssueCategoryController AddCaseSubCatContr = new Core_IssueCategoryController(StndContr);
@@ -290,8 +290,8 @@ public class Core_IssueCategoryController_Test{
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-        PageReference pageRef = Page.Core_addSubCategories;
-        Test.setCurrentPage(pageRef);
+     /*/   PageReference pageRef = Page.Core_addSubCategories;
+        Test.setCurrentPage(pageRef); */
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseCategory.Id);
         Core_IssueCategoryController AddCaseSubCatContr = new Core_IssueCategoryController(StndContr);
@@ -309,8 +309,8 @@ public class Core_IssueCategoryController_Test{
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-        PageReference pageRef = Page.Core_addSubCategories;
-        Test.setCurrentPage(pageRef);
+      /*  PageReference pageRef = Page.Core_addSubCategories;
+        Test.setCurrentPage(pageRef); */
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseCategory.Id);
         Core_IssueCategoryController AddCaseSubCatContr = new Core_IssueCategoryController(StndContr);
@@ -330,8 +330,8 @@ public class Core_IssueCategoryController_Test{
         getRecords();
         // Testing Visualforce Page
         Test.startTest();
-        PageReference pageRef = Page.Core_addSubCategories;
-        Test.setCurrentPage(pageRef);
+       /* PageReference pageRef = Page.Core_addSubCategories;
+        Test.setCurrentPage(pageRef); */
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseCategory.Id);
         Core_IssueCategoryController AddCaseSubCatContr = new Core_IssueCategoryController(StndContr);
@@ -389,8 +389,8 @@ public class Core_IssueCategoryController_Test{
         insert CaseCategory;
         // Testing Visualforce Page
         Test.startTest();
-        PageReference pageRef = Page.Core_addSubCategories;
-        Test.setCurrentPage(pageRef);
+      /*  PageReference pageRef = Page.Core_addSubCategories;
+        Test.setCurrentPage(pageRef); */
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseCategory.Id);
         Core_IssueCategoryController AddCaseSubCatContr = new Core_IssueCategoryController(StndContr);
@@ -432,8 +432,8 @@ public class Core_IssueCategoryController_Test{
         insert CaseCategory;
         // Testing Visualforce Page
         Test.startTest();
-        PageReference pageRef = Page.Core_addSubCategories;
-        Test.setCurrentPage(pageRef);
+      /*  PageReference pageRef = Page.Core_addSubCategories;
+        Test.setCurrentPage(pageRef); */
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseCategory.Id);
         Core_IssueCategoryController AddCaseSubCatContr = new Core_IssueCategoryController(StndContr);

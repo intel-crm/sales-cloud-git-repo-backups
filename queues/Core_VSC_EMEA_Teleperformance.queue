@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>VSC - EMEA Teleperformance</name>
+    <queueMembers>
+        <users>
+            <user>benjamin.kitenge@inteltechnologyprovider.com.crm</user>
+            <user>caroline.mwangi@inteltechnologyprovider.com.crm</user>
+            <user>mariam.toema@inteltechnologyprovider.com.crm</user>
+            <user>marianne.awad@inteltechnologyprovider.com.crm</user>
+            <user>11607844@intel.com.crm</user>
+            <user>11519982@intel.com.crm</user>
+            <user>mohamed.abdel.aziz@inteltechnologyprovider.com.crm</user>
+            <user>monica.atef@inteltechnologyprovider.com.crm</user>
+            <user>mouna.agourram@inteltechnologyprovider.com.crm</user>
+            <user>moustafa.hussein@inteltechnologyprovider.com.crm</user>
+            <user>nardine.rizk@inteltechnologyprovider.com.crm</user>
+            <user>sarah.hussein.hassan@inteltechnologyprovider.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

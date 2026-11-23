@@ -62,6 +62,32 @@
             <translation><!-- NA --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>Language__c</name>
+        <picklistValues>
+            <masterLabel>Chinese(Simplified)</masterLabel>
+            <translation><!-- Chinese(Simplified) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Premier Support Project --></label>
+        <name>Premier_Support_Project__c</name>
+        <relationshipLabel><!-- Environmental Details Master --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- parent language --></label>
+        <name>parent_language__c</name>
+        <relationshipLabel><!-- Environmental Details Master --></relationshipLabel>
+    </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Once set to Inactive, the Status cannot be reset to Active. This is to prevent inconsistencies in Case usage of the Environment Detail Question. --></errorMessage>
@@ -75,6 +101,14 @@
         <errorMessage><!-- Enter at least 1 row of text when Datatype is &apos;Picklist&apos; or &apos;Multiselect Picklist&apos;. --></errorMessage>
         <name>Core_IPS_Env_Dtls_Master_Ans_No_Blanks</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Datatype must be specified. --></errorMessage>
+        <name>Core_IPS_Env_Dtls_Master_Choose_DataType</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_To_Products_EnvDetailMaster_Lex --></label>
+        <name>Add_To_Products_EnvDetailMaster_Lex</name>
+    </webLinks>
     <webLinks>
         <label><!-- Core_IPS_Add_To_Products --></label>
         <name>Core_IPS_Add_To_Products</name>

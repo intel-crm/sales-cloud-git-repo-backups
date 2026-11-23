@@ -21,6 +21,7 @@
             <field>User.CreatedById</field>
             <operation>notEqual</operation>
         </criteriaItems>
+        <failedMigrationToolVersion>254.9.4</failedMigrationToolVersion>
         <triggerType>onAllChanges</triggerType>
     </rules>
 </Workflow>

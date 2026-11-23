@@ -1,51 +1,36 @@
-<apex:page showHeader="True" sidebar="false" title="Opportunity Review" lightningStylesheets="true">
-    <GBLite:TabbedPageComponent pageAPIName="Core_Grid_Opportunity_Review" customJsIds="" customCssIds="">
-    <GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
-        <script>
-            var pageDefinition = {
-    "name": "Opportunity Review",
-    "tabs": [
-        {
-            "name": "All Opportunities",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities&sh=0&sfname=default",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities&sh=0&sfname=default",
-            "id": 1527699440823
-        },
-        {
-            "name": "This Month",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities This Month&sh=0&sfname=default",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities This Month&sh=0&sfname=default",
-            "id": 1527699481167
-        },
-        {
-            "name": "Next Month",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities Next Month&sh=0&sfname=default",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities Next Month&sh=0&sfname=default",
-            "id": 1527699492083
-        },
-        {
-            "name": "This Quarter",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities This Quarter&sh=0&sfname=default",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities This Quarter&sh=0&sfname=default",
-            "id": 1527699499976
-        },
-        {
-            "name": "Next Quarter",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=Opportunities Next Quarter&sh=0&sfname=default",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=Opportunities Next Quarter&sh=0&sfname=default",
-            "id": 1527699527687
-        }
-    ],
-    "id": 1527699440823,
-    "selectedCustomCSSIds": [],
-    "selectedCustomJSIds": [],
-    "description": "",
-    "globalButtons": false,
-    "object": "Opportunity",
-    "height": "800",
-    "showHeader": true,
-    "showSidebar": false
-};
-        </script>
-    </GBLite:TabbedPageComponent>
+<apex:page sidebar="false" showHeader="true">
+
+ <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/versioning.css" />
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />
+    
+    <apex:tabPanel switchType="client" selectedTab="tabdetails"
+                      id="AccountTabPanel" tabClass="activeTab"
+                      inactiveTabClass="inactiveTab">
+        <apex:tab label="All Opportunities"  >
+            <iframe id="gridFrame0" scrolling="auto" height="800" width="100%" frameborder="0"
+               src="/apex/gblite__Grid?gname=Opportunities&sh=0&ssb=0&sbb=1">
+            </iframe>
+        </apex:tab>
+                            
+        <apex:tab label="This Month">
+             <iframe id="gridFrame1" scrolling="auto" height="800" width="100%" frameborder="0"
+              src="/apex/gblite__grid?gname=Opportunities This Month&sh=0&ssb=0&sbb=1">
+            </iframe>
+        </apex:tab>
+        <apex:tab label="Next Month">
+             <iframe id="gridFrame2" scrolling="auto" height="800" width="100%" frameborder="0"
+              src="/apex/gblite__grid?gname=Opportunities Next Month&sh=0&ssb=0&sbb=1">
+            </iframe>
+        </apex:tab>
+        <apex:tab label="This Quarter">
+            <iframe id="gridFrame3" scrolling="auto" height="800" width="100%" frameborder="0"
+              src="/apex/gblite__grid?gname=Opportunities This Quarter&sh=0&ssb=0&sbb=1">
+            </iframe>
+        </apex:tab>
+        <apex:tab label="Next Quarter">
+            <iframe id="gridFrame4" scrolling="auto" height="800" width="100%" frameborder="0"
+              src="/apex/gblite__grid?gname=Opportunities Next Quarter&sh=0&ssb=0&sbb=1">
+            </iframe>
+        </apex:tab>
+    </apex:tabPanel>
 </apex:page>

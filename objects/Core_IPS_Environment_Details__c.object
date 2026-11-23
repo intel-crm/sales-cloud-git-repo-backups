@@ -154,7 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Read</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Agent_Only__c</fullName>
         <defaultValue>false</defaultValue>
@@ -177,7 +177,6 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Case</label>
         <referenceTo>Case</referenceTo>
-        <relationshipLabel>Environment Details Responses</relationshipLabel>
         <relationshipName>Environments</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -195,13 +194,25 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <label>Environment Details Responses</label>
+    <label>Environment Details Response - Depreciat</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Core_Case__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_Question__c</columns>
+        <columns>Core_Answer__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>OBJECT_ID</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Environmental Details</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Environment Details Responses</pluralLabel>
+    <pluralLabel>Environment Details Responses - Depreci</pluralLabel>
     <searchLayouts>
         <searchResultsAdditionalFields>Core_Case__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Question__c</searchResultsAdditionalFields>

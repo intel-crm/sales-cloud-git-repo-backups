@@ -49,17 +49,6 @@
     <miniLayout>
         <fields>Core_Design_Registration_Id__c</fields>
     </miniLayout>
-    <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
-        <fields>PCC_Ordering_Cd__c</fields>
-        <fields>PCC_L5_Product_Name__c</fields>
-        <fields>PCC_Design_Registration__c</fields>
-        <fields>PCC_Opportunity__c</fields>
-        <relatedList>PCC_DDR_L5_Product_Mapping__c.PCC_Design_Registration_Product__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

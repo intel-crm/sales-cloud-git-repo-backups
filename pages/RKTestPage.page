@@ -1,0 +1,32 @@
+<apex:page >
+    <apex:form >
+        <apex:pageBlock id="xxxpb1">
+            
+            <apex:pageBlockSection >
+                
+                <apex:actionRegion >               
+                    
+                    <apex:inputField id="xxxif1"  required="true" >
+                        
+                        <apex:actionSupport event="onchange" rerender="xxxpb1" />
+                    </apex:inputField>
+                    
+                </apex:actionRegion>
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection id="xxxpbs1" rendered="true">
+                
+                <apex:inputField id="xxxif2" />
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection id="xxxpbs2" rendered="true">
+                
+                <apex:inputField id="xxxif3" />  
+                
+            </apex:pageBlockSection>
+            
+        </apex:PageBlock>
+    </apex:form>
+</apex:page>

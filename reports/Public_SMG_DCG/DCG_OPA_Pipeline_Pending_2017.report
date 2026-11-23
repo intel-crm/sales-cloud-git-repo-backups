@@ -27,6 +27,12 @@
             <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Sell-with</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Scale-Estimate (per Finance)</sourceValue>
+            </sourceValues>
             <value>Sell Thru-With</value>
         </values>
     </buckets>
@@ -510,11 +516,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OPPORTUNITY_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_Account_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>DCG OPA Pipeline Pending 2017</name>

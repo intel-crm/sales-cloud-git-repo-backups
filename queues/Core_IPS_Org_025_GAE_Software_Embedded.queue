@@ -4,9 +4,9 @@
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>PSG-GAE-Software/Embedded</name>
     <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_IPS_Org_025_GAE_Software_Embedded</publicGroup>
-        </publicGroups>
+        <users>
+            <user>sugandhax.kumari@intel.com</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>

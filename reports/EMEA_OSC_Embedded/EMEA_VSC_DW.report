@@ -91,6 +91,9 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Turkey</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>South Africa</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -146,6 +149,9 @@
             </sourceValues>
             <sourceValues>
                 <sourceValue>Serbia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Czech Republic</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>Croatia</sourceValue>
@@ -238,7 +244,7 @@
         <field>OpportunityLineItem.Core_Claim_Date__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -331,8 +337,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,282 @@
+<template>
+    <lightning-layout multiple-rows="true" vertical-align="end">
+        <lightning-layout-item size="12" small-device-size="10" medium-device-size="8" large-device-size="6" padding="around-small">
+                <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                                <lightning-input type="text"
+             value={searchValue}
+             label="Enter text"
+             onchange={searchKeyword}
+             ></lightning-input>
+                        </div>
+                    </div> 
+        </lightning-layout-item>
+        <lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2" padding="around-small">
+                <lightning-button label="Search"
+          onclick={handleSearchKeyword}
+          variant="brand"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout><br/>
+        <!-- <template if:true={isLoading}>
+    <lightning-spinner  size="medium" variant="brand"></lightning-spinner>
+        </template> -->
+       
+           <template if:true={searchdata}>
+         <lightning-card  title="Cases">
+            <div class="caseviewmore">
+               <c-handle-paginator onnext={handleNext}></c-handle-paginator>
+
+         </div>
+         <div style="height:15rem">
+            
+             <lightning-datatable
+         key-field="id"
+         data={caserecordsToDisplay}
+         columns={casecolumns}
+         enable-infinite-loading="true"
+        onloadmore={loadMoreData} 
+         hide-checkbox-column="true"
+         show-row-number-column="true"
+         is-loading={tableLoadingState}>
+         
+ </lightning-datatable>
+</div>
+
+
+
+         <!-- <div class="scrollContainer" onscroll={loadMoreData}>
+         <div class="scrollArea" >
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+                        <thead>
+                           <tr class="slds-line-height_reset">
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="id">id</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="case number">case number</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="status">status</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="severity">severity</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="subject">subject</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="product name">product Name</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Project">Project</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="contact">Contact Name</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Open Date">Open Date</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Last Modified">Last Modified</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Legacy id">Legacy Id</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Category">Category</div>
+                              </th>
+                              
+                           </tr>
+                        </thead>
+                        
+                        <tbody>   
+                           <template for:each={caserecordsToDisplay} for:item="con">
+                              <tr class="slds-hint-parent" key={con.Id}>
+                                 <td>
+                                    <div class="slds-truncate">{con.Id}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.CaseNumber}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Status}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_Sub_Status__c}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_Severity__c}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_IPS_Product_name__c}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_IPS_Project_Case__c}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_Contact_Name__c}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.CreatedDate}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.LastModifiedDate}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_IPS_Legacy_IPS_ID__c}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_External_Issue_Category__c}</div>
+                                 </td>
+                              </tr>
+                           </template>
+                        </tbody>
+                     </table>
+                     </div>
+                     </div> -->
+                     </lightning-card>
+                     <lightning-card  title="Projects">
+                        <div class="caseviewmore">
+                           <!-- <lightning-button label="view more"
+                         onclick={projectsloadMoreData}
+                         variant="brand"></lightning-button> -->
+                        </div>
+                     <!-- <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+                        <thead>
+                           <tr class="slds-line-height_reset">
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Id">Id</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Name">Name</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="created Date">created Date</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Description">Description</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="status">Status</div>
+                              </th>
+                           </tr>
+                        </thead>
+                        
+                        <tbody>   
+                           <template for:each={prjRecToDisplay} for:item="con">
+                              <tr class="slds-hint-parent" key={con.Id}>
+                                 <td>
+                                    <div class="slds-truncate">{con.Id}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Name}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.CreatedDate}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_Project_Description__c}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_Status__c}</div>
+                                 </td>
+                              </tr>
+                           </template>
+                        </tbody>
+                     </table> -->
+                     <div style="height:15rem">
+                     <lightning-datatable
+                     key-field="id"
+                     data={prjRecToDisplay}
+                     columns={projectcolumns}
+                     enable-infinite-loading="true"
+                    onloadmore={loadMoreData} 
+                     hide-checkbox-column="true"
+                     show-row-number-column="true">
+                     
+             </lightning-datatable>
+            </div>
+                  </lightning-card>
+                     <lightning-card  title="Products">
+                        <div class="caseviewmore">
+                           <!-- <lightning-button label="view more"
+                         onclick={loadMoreData}
+                         variant="brand"></lightning-button> -->
+                        </div>
+                     <!-- <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+                        <thead>
+                           <tr class="slds-line-height_reset">
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Id">Id</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Name">Name</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="created Date">Product Focus Area</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Support License">Support License</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Project Id">Project Id</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Project Name">Project Name</div>
+                              </th>
+                              <th class="" scope="col">
+                                 <div class="slds-truncate" title="Account Name">Account Name</div>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>   
+                           <template for:each={pdtRecToDisplay} for:item="con">
+                              <tr class="slds-hint-parent" key={con.Id}>
+                                 <td>
+                                    <div class="slds-truncate">{con.Id}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Name}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.core_Product_Application__c}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_IPS_Support_License__c}</div>
+                                 </td>
+                                 <td>
+                                    <div class="slds-truncate">{con.Core_IPS_Project_Id__c}</div>
+                                 </td>
+                                 <td>
+                                    <template if:true={con.Core_IPS_Project__r}>
+                                    <div class="slds-truncate">{con.Core_IPS_Project__r.Name}</div>
+                                 </template>
+                                 </td>
+                                 <td>
+                                    <template if:true={con.Account}>
+                                    <div class="slds-truncate">{con.Account.Name}</div>
+                                    </template>
+                                 </td>
+                              </tr>
+                           </template>
+                        </tbody>
+                        </table>    -->
+                        <div style="height:15rem">
+                        <lightning-datatable
+                        key-field="id"
+                        data={pdtRecToDisplay}
+                        columns={productColumns}
+                        enable-infinite-loading="true"
+                       onloadmore={loadMoreData} 
+                        hide-checkbox-column="true"
+                        show-row-number-column="true">
+                        
+                </lightning-datatable>
+               </div>
+                     </lightning-card>
+                     
+                    
+
+        </template>
+    
+</template>

@@ -4,6 +4,12 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
         <field>OWNER</field>
     </columns>
     <columns>
@@ -25,7 +31,19 @@
         <field>PRIORITY</field>
     </columns>
     <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>RECORDTYPE</field>
+    </columns>
+    <columns>
         <field>Case.Core_Severity__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Severity_Reason__c</field>
     </columns>
     <columns>
         <field>AGE</field>
@@ -35,6 +53,9 @@
     </columns>
     <columns>
         <field>Case.Core_External_Issue_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_CaseType__c</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Product_name__c</field>
@@ -72,24 +93,6 @@
     <columns>
         <field>Case.Core_IPS_Legacy_IPS_ID__c</field>
     </columns>
-    <columns>
-        <field>TITLE</field>
-    </columns>
-    <columns>
-        <field>TYPE</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Product_Type__c</field>
-    </columns>
-    <columns>
-        <field>RECORDTYPE</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Severity_Reason__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_CaseType__c</field>
-    </columns>
     <format>Tabular</format>
     <name>IPS All Cases</name>
     <params>
@@ -107,8 +110,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2017-04-30</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2017-03-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

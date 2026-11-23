@@ -176,54 +176,10 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Approved_BU_Product_Segment__c</fullName>
-        <description>Opportunity Product approved BU Segment</description>
-        <externalId>false</externalId>
-        <label>Approved BU Product Segment</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Approved_BU_Short_Name__c</fullName>
         <description>Approved BU Short Name based on  opportunity product approval.</description>
         <externalId>false</externalId>
         <label>Approved BU Short Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Approved_KPI_Prod_Grp__c</fullName>
-        <description>This Field will store the Approved KPI Product Group when the Opportunity Product Line Item is approved.</description>
-        <externalId>false</externalId>
-        <label>Approved KPI Product Group</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Approved_Prime_AccountName__c</fullName>
-        <description>This Field will store the Approved Prime Account Name when the opportunity request is approved,</description>
-        <externalId>false</externalId>
-        <label>Approved Prime Account Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Approved_Sales_Group__c</fullName>
-        <description>Opportunity Product approved Sales Group</description>
-        <externalId>false</externalId>
-        <label>Approved Sales Group</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -238,16 +194,6 @@
         <scale>0</scale>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_Approved_Transaction_Id__c</fullName>
-        <externalId>false</externalId>
-        <label>Approved Transaction Id</label>
-        <length>50</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_CIM_ID__c</fullName>
@@ -298,17 +244,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Forecast_Product_Schedule__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Forecast Product Schedule</label>
-        <referenceTo>Core_Opp_FC_Prod_Schedule__c</referenceTo>
-        <relationshipLabel>Commissionable Transactions</relationshipLabel>
-        <relationshipName>Commissionable_Transactions</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Core_Goal__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Goal</label>
@@ -320,20 +255,9 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Core_KPI_Id__c</fullName>
-        <externalId>false</externalId>
-        <label>KPI Id</label>
-        <precision>4</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Last_Approved_Date__c</fullName>
         <label>Last Approved Date</label>
-        <required>false</required>
+        <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -383,58 +307,6 @@
         <externalId>false</externalId>
         <label>Opportunity Name</label>
         <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Opportunity_Owner_Nm__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(
-    NOT(ISBLANK(Core_Opportunity__r.OwnerId)),
-    IF(
-        Core_Opportunity__r.Owner.Profile.Name &lt;&gt; &apos;Partner&apos;,
-		Core_Opportunity__r.Owner.FirstName  &amp; &quot; &quot; &amp; Core_Opportunity__r.Owner.LastName,
-        IF(
-            NOT(ISBLANK(Core_Opportunity__r.Core_Technical_Owner__c)),
-            IF(
-                Core_Opportunity__r.Core_Technical_Owner__r.Profile.Name &lt;&gt; &apos;Partner&apos;,
-				Core_Opportunity__r.Core_Technical_Owner__r.FirstName  &amp; &quot; &quot; &amp; Core_Opportunity__r.Core_Technical_Owner__r.LastName,
-                &apos;&apos;
-            ),
-            &apos;&apos;
-        )
-    ),
-    &apos;&apos;
-)</formula>
-        <label>Opportunity Owner</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Opportunity_Owner_WWID__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(
-    NOT(ISBLANK(Core_Opportunity__r.OwnerId)),
-    IF(
-        Core_Opportunity__r.Owner.Profile.Name &lt;&gt; &apos;Partner&apos;,
-        Core_Opportunity__r.Owner.Core_WWID__c,
-        IF(
-            NOT(ISBLANK(Core_Opportunity__r.Core_Technical_Owner__c)),
-            IF(
-                Core_Opportunity__r.Core_Technical_Owner__r.Profile.Name &lt;&gt; &apos;Partner&apos;,
-                Core_Opportunity__r.Core_Technical_Owner__r.Core_WWID__c,
-                &apos;&apos;
-            ),
-            &apos;&apos;
-        )
-    ),
-    &apos;&apos;
-)</formula>
-        <label>Opportunity Owner WWID</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -495,16 +367,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Core_Product_Segment__c</fullName>
-        <externalId>false</externalId>
-        <label>Approved Opportunity Product Segment</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Product_Type__c</fullName>
         <externalId>false</externalId>
         <label>Product Type</label>
@@ -519,7 +381,7 @@
         <description>ID from source table (OpportunityProduct ID or Solution Milestone ID)</description>
         <externalId>false</externalId>
         <label>Source ID</label>
-        <length>24</length>
+        <length>18</length>
         <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -571,11 +433,6 @@
                     <fullName>Opportunity Milestones</fullName>
                     <default>false</default>
                     <label>Opportunity Milestones</label>
-                </value>
-                <value>
-                    <fullName>Consumption Revenue</fullName>
-                    <default>false</default>
-                    <label>Consumption Revenue</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

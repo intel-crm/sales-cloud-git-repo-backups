@@ -25,10 +25,6 @@
         <name>GBLite__Object_Dot_Field_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Original Record Id --></label>
-        <name>GBLite__Original_Record_Id__c</name>
-    </fields>
-    <fields>
         <label><!-- Picklist Meta --></label>
         <name>GBLite__Picklist_Meta__c</name>
     </fields>
@@ -55,18 +51,6 @@
     <fields>
         <label><!-- Response Message --></label>
         <name>GBLite__Response_Message__c</name>
-    </fields>
-    <fields>
-        <label><!-- Scope --></label>
-        <name>GBLite__Scope__c</name>
-        <picklistValues>
-            <masterLabel>Grid</masterLabel>
-            <translation><!-- Grid --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tabbed Page</masterLabel>
-            <translation><!-- Tabbed Page --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Summary --></label>
@@ -117,8 +101,4 @@
         </picklistValues>
     </fields>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- You cannot edit the Original Record Id field. --></errorMessage>
-        <name>GBLite__Prevent_Update_of_Original_Record_Id</name>
-    </validationRules>
 </CustomObjectTranslation>

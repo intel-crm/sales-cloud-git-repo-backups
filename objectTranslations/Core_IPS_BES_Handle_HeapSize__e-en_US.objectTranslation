@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BES Handle HeapSize</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BES Handle HeapSizes</value>
+    </caseValues>
+    <fields>
+        <label><!-- Outbound Id --></label>
+        <name>Outbound_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outbound Status --></label>
+        <name>Outbound_Status__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

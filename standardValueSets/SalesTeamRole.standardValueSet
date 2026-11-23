@@ -4,12 +4,12 @@
     <standardValue>
         <fullName>Team Member (100%)</fullName>
         <default>false</default>
-        <label>Team member (100% commitment over the lifetime of the opportunity)</label>
+        <label>Team Member (100%)</label>
     </standardValue>
     <standardValue>
         <fullName>Technical Owner (100%)</fullName>
         <default>false</default>
-        <label>Technical Owner (100% commitment over the lifetime of the opportunity)</label>
+        <label>Technical Owner (100%)</label>
     </standardValue>
     <standardValue>
         <fullName>Contributor (50%)</fullName>
@@ -17,23 +17,13 @@
         <label>Contributor (50%)</label>
     </standardValue>
     <standardValue>
-        <fullName>Contributor (33.3%)</fullName>
-        <default>false</default>
-        <label>Contributor (33.3%)</label>
-    </standardValue>
-    <standardValue>
         <fullName>Viewer (0%)</fullName>
         <default>false</default>
         <label>Viewer (0%)</label>
     </standardValue>
     <standardValue>
-        <fullName>Customer A&amp;E (0%)</fullName>
+        <fullName>Customer Access and Entitlement</fullName>
         <default>false</default>
-        <label>Customer A&amp;E (0%)</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Sales Account Manager</fullName>
-        <default>false</default>
-        <label>Sales Account Manager</label>
+        <label>Customer Access and Entitlement</label>
     </standardValue>
 </StandardValueSet>

@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>Fields_Name__c</field>
-        <value xsi:type="xsd:string">Core_IPS_HC_Hot_Issue__c,Date_and_time_of_hot__c,Core_IPS_HC_Customer_Disposition__c,Core_IPS_HC_Executive_Summary__c,Core_IPS_HC_Help_Needed__c,Core_IPS_HC_Debug_Progress__c,Core_IPS_HC_Intel_Disposition__c,Core_IPS_HC_Latest_Update__c,Core_IPS_HC_Next_Actions__c</value>
+        <value xsi:type="xsd:string">Core_IPS_HC_Hot_Issue__c,Date_and_time_of_hot__c,Core_IPS_HC_Customer_Disposition__c,Core_IPS_HC_Executive_Summary__c,Core_IPS_HC_Help_Needed__c,Core_IPS_HC_Debug_Progress__c,Core_IPS_HC_Intel_Disposition__c,Core_IPS_HC_Latest_Update__c,Core_IPS_HC_Next_Actions__c,Core_IPS_HC_Marked_DateTime__c</value>
     </values>
 </CustomMetadata>

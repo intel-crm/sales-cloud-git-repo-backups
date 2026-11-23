@@ -86,8 +86,8 @@
     <reportType>CustomEntity$Core_RestAPI_Transaction_Entry__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>false</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
     <sortColumn>Core_RestAPI_Transaction_Entry__c.Core_Origin__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>

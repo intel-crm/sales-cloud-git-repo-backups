@@ -1,0 +1,74 @@
+{
+  "appPageId" : "112ae48a-877d-4a55-876f-cf12046a3576",
+  "componentName" : "c:coreIntcPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "44a851f6-f60a-4509-9719-b9884e97fd77",
+  "label" : "Advance Search",
+  "regions" : [ {
+    "id" : "8e0e878d-4ed5-4ff9-9091-c333f792fdb0",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_CaseAdvanceSearch_LWC",
+      "id" : "111a3cfc-de78-428b-986f-082047edc84a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5a541672-1652-4b72-8a8f-f1f97a277da7",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "35e834e0-5f77-4daa-a7b8-0ab7a5190b30",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "464a7c6a-399f-474f-a1be-c59027eb5570",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "d49f283f-e08e-453e-b061-9711fb6b6b9c",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "92225ef4-4797-4a1e-b3f8-ae3ee4b55b3c",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "b11129af-5373-464c-b754-4176bfc76f7d",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "727c0204-9da6-458c-a668-db3e80e68baa",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "c0a05f05-b0c8-499d-b859-31b104c78076",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "8938fb49-08e1-4759-8a00-d880831ffed2",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Advance Search"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "6c663b9c-4b2e-45da-9ad4-47361d91f654",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6c6bfc6a-efd0-46e5-a424-c71fb1afcb79",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "PXSNJlgMPbU2RobfwwjfVrPWB6ZAZZ",
+  "type" : "view",
+  "viewType" : "custom-advance-search"
+}

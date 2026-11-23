@@ -63,7 +63,7 @@
     </columns>
     <description>RT: Optys w/ Prod.  Used for OSG Indicator input</description>
     <filter>
-        <booleanFilter>(1 AND (2 or 3)) AND 4</booleanFilter>
+        <booleanFilter>1 AND (2 or 3)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -85,13 +85,6 @@
             <operator>equals</operator>
             <value>Penny Villamil</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -102,7 +95,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -134,7 +127,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2017-09-30</endDate>
+        <endDate>2017-07-01</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2017-01-01</startDate>
     </timeFrameFilter>

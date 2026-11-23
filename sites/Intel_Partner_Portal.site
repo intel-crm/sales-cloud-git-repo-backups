@@ -20,12 +20,12 @@
     <inMaintenancePage>InMaintenance</inMaintenancePage>
     <indexPage>CommunitiesLanding</indexPage>
     <masterLabel>Intel® Partner Portal</masterLabel>
-    <redirectToCustomDomain>false</redirectToCustomDomain>
+    <redirectToCustomDomain>true</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_dh34H_sf_default_cdn_Intel_Partner_Portal1</serverIsDown>
-    <siteAdmin>11540272@intel.com.crm</siteAdmin>
-    <siteGuestRecordDefaultOwner>11710633@intel.com.crm</siteGuestRecordDefaultOwner>
+    <serverIsDown>SNA_LightningIPS1_sf_default_cdn_hDT8f</serverIsDown>
+    <siteAdmin>11962478@intel.com.crm</siteAdmin>
+    <siteGuestRecordDefaultOwner>sandeep.punj@intel.com.devcase</siteGuestRecordDefaultOwner>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>true</isActive>
@@ -67,6 +67,13 @@
         <isDynamic>false</isDynamic>
         <source>/Core_IPS_Project_Edit_Page</source>
         <target>/IPS/s/</target>
+    </siteRedirectMappings>
+    <siteRedirectMappings>
+        <action>Permanent</action>
+        <isActive>true</isActive>
+        <isDynamic>false</isDynamic>
+        <source>/IPS</source>
+        <target>/IPS/s</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>

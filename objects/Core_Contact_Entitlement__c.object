@@ -189,17 +189,6 @@ AND(
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Category__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_Entitlement_Id__r.Core_Category__c)</formula>
-        <label>Category</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Contact_Id__c</fullName>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
@@ -222,18 +211,6 @@ AND(
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_Display_Nm__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Entitlement_Id__r.Core_Display_Name__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Display Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_DontNotify__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Don&apos;t Notify</label>
@@ -250,15 +227,6 @@ AND(
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Email_Pending_To_Requester_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Indicates if Email to the Entitlement requester is pending. This is set to TRUE when the entitlement is first assigned, and later set to FALSE once the email notification is sent to the requester.</description>
-        <label>Email Pending To Requester</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_Engagement_Tier__c</fullName>
@@ -287,33 +255,6 @@ AND(
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Entitlement_B2B_B2C_Indicator__c</fullName>
-        <description>Contact Entitlement B2B-B2C Indicator Value</description>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_Entitlement_Id__r.Entitlement_B2B_B2C_Indicator__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Entitlement B2B / B2C Indicator</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Entitlement_Help_Txt__c</fullName>
-        <description>Formula field to get the help text from the Entitlement Detail record.</description>
-        <externalId>false</externalId>
-        <formula>Core_Entitlement_Id__r.Core_Help_Text__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Help text from the Entitlement Detail record.</inlineHelpText>
-        <label>Entitlement Description</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Entitlement_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Entitlement</label>
@@ -324,41 +265,6 @@ AND(
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_Entitlement_Nm__c</fullName>
-        <description>The name of the Entitlement</description>
-        <externalId>false</externalId>
-        <formula>Core_Entitlement_Id__r.Name</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Entitlement Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Entitlement_Requester_Id__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Entitlement RequesterId</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Contact_Entitlements</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_Entitlement_Type__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(Core_From_Source__c, &apos;Engagement&apos;, IF(ISPICKVAL(Core_Entitlement_Id__r.Core_Entitlement_Type__c, &apos;AGS&apos;), &apos;Entitlement-AGS&apos; , &apos;Entitlement-SFDC&apos;))</formula>
-        <label>Entitlement Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_From_Source__c</fullName>
@@ -381,37 +287,12 @@ AND(
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Retrigger_Attempt__c</fullName>
-        <defaultValue>0</defaultValue>
-        <externalId>false</externalId>
-        <inlineHelpText>The number of retrigger attempts made to make the assignment successful</inlineHelpText>
-        <label>Retrigger Attempt</label>
-        <precision>1</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Selected__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Selected</label>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_Source__c</fullName>
-        <externalId>false</externalId>
-        <label>Source</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Status_Change_Date_Time__c</fullName>
@@ -452,18 +333,6 @@ AND(
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_Status_of_Assignment_Failure__c</fullName>
-        <defaultValue>&apos;Pending&apos;</defaultValue>
-        <externalId>false</externalId>
-        <label>Status of Assignment/Removal</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Type__c</fullName>
         <externalId>false</externalId>
         <formula>IF(Core_From_Source__c, &apos;Engagement&apos;, &apos;Entitlement&apos;)</formula>
@@ -498,28 +367,6 @@ AND(
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>ER_Account_Id__c</fullName>
-        <externalId>false</externalId>
-        <formula>CASESAFEID(Core_Contact_Id__r.AccountId)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Account Id</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Removal_as_part_of_License_Reclaim__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Checked if entitlement is removed as part of partner license reclaim</description>
-        <inlineHelpText>Checked if entitlement is removed as part of partner license reclaim</inlineHelpText>
-        <label>Removal as part of License Reclaim?</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <label>Contact Entitlement</label>
     <listViews>

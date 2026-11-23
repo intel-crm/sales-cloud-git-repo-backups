@@ -45,7 +45,13 @@
     <columns>
         <field>User.Core_Is_HQ_User__c</field>
     </columns>
-    <description>This report uses to pull the active APJ Salesforce Users for sending communications.  This report contains the following profile users EXCEPT HQ users.(1) Sales Manger, (2) Sales Rep-BB, (3) Sales Ops, (4) Data Ops EXCLUDE CWs.</description>
+    <description>This report uses to pull the active APJ Salesforce Users for sending communications.  
+
+This report contains the following profile users EXCEPT HQ users.
+(1) Sales Manger, 
+(2) Sales Rep-BB, 
+(3) Sales Ops, 
+(4) Data Ops EXCLUDE CWs.</description>
     <filter>
         <criteriaItems>
             <column>User.Core_User_Geo__c</column>
@@ -59,7 +65,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Data Ops,Sales Manager,Sales Rep-BB,Sales Ops,marketing development manager,Sales Rep-BB-Dual IPS</value>
+            <value>Data Ops,Sales Manager,Sales Rep-BB,Sales Ops,marketing development manager</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Core_WWID__c</column>

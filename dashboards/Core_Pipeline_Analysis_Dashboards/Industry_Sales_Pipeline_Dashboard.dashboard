@@ -124,7 +124,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -150,7 +150,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -173,7 +173,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -202,7 +202,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -230,7 +230,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -273,7 +273,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -306,7 +306,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -336,7 +336,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -369,7 +369,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -380,7 +380,7 @@
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
             <footer>Weighted Pipeline for Fiscal Year by BU, Stacked by Oppty Stage</footer>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingColumn>STAGE_NAME</groupingColumn>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
@@ -405,7 +405,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -417,7 +417,7 @@
             <expandOthers>false</expandOthers>
             <footer>Unweighted Pipeline for the Current FY by Product Type</footer>
             <groupingColumn>Opportunity.Core_Product_Application__c</groupingColumn>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <header>PIPELINE PROFILE</header>
             <legendPosition>Bottom</legendPosition>
@@ -443,7 +443,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -455,7 +455,7 @@
             <expandOthers>false</expandOthers>
             <footer>Unweighted Pipeline for the Current FY by Product Application</footer>
             <groupingColumn>OpportunityLineItem.Core_Product_Type__c</groupingColumn>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <maxValuesDisplayed>10</maxValuesDisplayed>
@@ -478,7 +478,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -525,7 +525,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -571,7 +571,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>
@@ -609,7 +609,7 @@
                 <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
                 <column>Opportunity.Core_Consumption_Market__c</column>

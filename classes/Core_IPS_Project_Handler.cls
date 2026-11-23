@@ -294,13 +294,13 @@ Modification Log :
             String privateProjectActivateError = Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_PrivateProj_ActivateError');           //added for US258266
             List<Core_IPS_Product__c> updateIPSProductList = new List<Core_IPS_Product__c>();
             if(core_ips_project__c.SObjectType.getDescribe().isAccessible()){ //FLS check added - Aditya
-             // projectList = [select id, Name, core_status__c, Core_Number_of_Accounts__c, Core_Number_of_Products__c,Core_Number_of_Users__c,core_ips_Private__c, (Select id,Status__c,Core_IPS_IsAutoApprove__c, Core_Supported_Product__c, Core_Supported_Product__r.Core_Flag_Status__c, Core_IPS_Project__c,Core_IsSubmitted_Header__c from IPS_Products__r) from core_ips_project__c where id IN :newList]; 
-               // APEX GURU - SOQL FIX
+              //  projectList = [select id, Name, core_status__c, Core_Number_of_Accounts__c, Core_Number_of_Products__c,Core_Number_of_Users__c,core_ips_Private__c, (Select id,Status__c,Core_IPS_IsAutoApprove__c, Core_Supported_Product__c, Core_Supported_Product__r.Core_Flag_Status__c, Core_IPS_Project__c,Core_IsSubmitted_Header__c from IPS_Products__r) from core_ips_project__c where id IN :newList]; 
+               //  Added by Chiru - 20-08-24 - APEX GURU - SOQL FIX
                 Map<Id, Core_IPS_Project__c> newListMap = new Map<Id, Core_IPS_Project__c>();
                 if(newList != null && newList.size()>0){
                     newListMap = new Map<Id, Core_IPS_Project__c>(newList);
                 }
-                projectList = [select id, Name, core_status__c, Core_Number_of_Accounts__c, Core_Number_of_Products__c,Core_Number_of_Users__c,core_ips_Private__c, (Select id,Status__c,Core_IPS_IsAutoApprove__c, Core_Supported_Product__c, Core_Supported_Product__r.Core_Flag_Status__c, Core_IPS_Project__c,Core_IsSubmitted_Header__c from IPS_Products__r) from core_ips_project__c where id IN :newListMap.keyset()]; 
+                  projectList = [select id, Name, core_status__c, Core_Number_of_Accounts__c, Core_Number_of_Products__c,Core_Number_of_Users__c,core_ips_Private__c, (Select id,Status__c,Core_IPS_IsAutoApprove__c, Core_Supported_Product__c, Core_Supported_Product__r.Core_Flag_Status__c, Core_IPS_Project__c,Core_IsSubmitted_Header__c from IPS_Products__r) from core_ips_project__c where id IN :newListMap.keyset()]; 
             }
             //start added for US258266
             List<PermissionSetAssignment> permissionSetId=new List<PermissionSetAssignment>();
@@ -331,8 +331,8 @@ Modification Log :
                     }
                     if(Trigger.isAfter){
                         if((oldProject.Core_Status__c==draftStatus||oldProject.Core_Status__c==inactiveStatus) && newProject.Core_Status__c==submitPStatus){
-                            if(NewProject.Core_Number_of_Accounts__c == 0 || NewProject.Core_Number_of_Products__c ==0 || NewProject.Core_Number_of_Users__c == 0){
-                                NewProject.addError( projProdMemError);
+                           if(NewProject.Core_Number_of_Accounts__c == 0 || NewProject.Core_Number_of_Products__c ==0 || NewProject.Core_Number_of_Users__c == 0){
+                               NewProject.addError( projProdMemError);
                             } 
                             
                             for(Core_IPS_Product__c iPSProductRecord: project.IPS_Products__r){
@@ -469,15 +469,18 @@ Modification Log :
             for(Core_IPS_Project__c proj: newList){
                 projId.add(proj.Id);
             }
-            if(projId!=null && projId.size()>0){
-                if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){ //FLS Check already added - Aditya
-                    accList=[Select Id,Core_IPS_Project__c,Core_Account__r.Core_CNDA_Number__c from Core_IPS_Account__c where Core_IPS_Project__c In :projId];
-                }
+            //Avoid Deeply Nested IF Statements Kamala
+            if((projId!=null && projId.size()>0)&&(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible())){
+                    accList=[Select Id,Core_IPS_Project__c,Core_Account__r.Core_CNDA_Number__c,Core_Status__c from Core_IPS_Account__c where Core_IPS_Project__c In :projId];
             }
             if(accList!=null && accList.size()>0){
                 for(Core_IPS_Project__c proj: newList){
                 for(Core_IPS_Account__c acc: accList) {
-                    if(proj.Core_MPNDA__c!=null && (acc.Core_Account__r.Core_CNDA_Number__c==null || acc.Core_Account__r.Core_CNDA_Number__c=='') &&  Core_IPS_DataMigrationUser_Validation.isIPSDatamigrationUser(UserInfo.getUserId())==FALSE){ //TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access
+                    // if(proj.Core_MPNDA__c!=null && (acc.Core_Account__r.Core_CNDA_Number__c==null || acc.Core_Account__r.Core_CNDA_Number__c=='') &&  Core_IPS_DataMigrationUser_Validation.isIPSDatamigrationUser(UserInfo.getUserId())==FALSE){ //TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access
+                    //  proj.addError(mpndaError);   
+                    // }
+                    //If Account is active then only check for CNDA 09-06-2026- Nuthana
+                    if(proj.Core_MPNDA__c!=null && acc.Core_Status__c == 'Active' && (acc.Core_Account__r.Core_CNDA_Number__c==null || acc.Core_Account__r.Core_CNDA_Number__c=='') &&  Core_IPS_DataMigrationUser_Validation.isIPSDatamigrationUser(UserInfo.getUserId())==FALSE){ //TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access
                      proj.addError(mpndaError);   
                     }
                 } 
@@ -633,6 +636,8 @@ Modification Log :
     public static void updatePrivateProjectSharing(List<Core_IPS_Project__c> newList,Map<Id,Core_IPS_Project__c> oldMap){
         List<Core_IPS_Account__c> projAccountList = new List<Core_IPS_Account__c>();
         List<Core_IPS_Project__Share> projShare = new List<Core_IPS_Project__Share>();
+        system.debug('kamala1_newList = '+newList);
+        system.debug('kamala1_oldMap = '+oldMap);
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('updatePrivateProjectSharing')) {return;} 
         try{
         if(newList!=null && newList.size()>0 && oldMap!=null && oldMap.size()>0){
@@ -655,23 +660,19 @@ Modification Log :
                     projList.add(proj);
                 }
             }
-            
-            if(projList!=null && projList.size()>0){
-                if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-                    projAccountList = [Select id,Core_Account__c,Core_Status__c,Core_IPS_Project__c from Core_IPS_Account__c where Core_IPS_Project__c IN: projList];  
+            //Avoid Deeply Nested IF Statements Kamala
+            if((projList!=null && projList.size()>0)&&(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible())){
+                  projAccountList = [Select id,Core_Account__c,Core_Status__c,Core_IPS_Project__c from Core_IPS_Account__c where Core_IPS_Project__c IN: projList];  
                 }
-                if(projAccountList <> null && projAccountList.size()>0){
-                    Core_IPS_Account_Handler.addAccountFAEtoProject(projAccountList);
-                }    
+            if(projAccountList <> null && projAccountList.size()>0){
+                  Core_IPS_Account_Handler.addAccountFAEtoProject(projAccountList);    
             }
-            
-            if(removeProjSharing!=null && removeProjSharing.size()>0){
-                if(Core_IPS_Project__Share.SObjectType.getDescribe().isAccessible()){ //FLS check added - Aditya
+            //Avoid Deeply Nested IF Statements Kamala
+            if((removeProjSharing!=null && removeProjSharing.size()>0)&&(Core_IPS_Project__Share.SObjectType.getDescribe().isAccessible())){
                     projShare=[Select Id from Core_IPS_Project__Share where RowCause='Manual' and ParentId IN: removeProjSharing.keySet() and USerOrGroupId NOT IN: projGroup];    
                 }
-                if(projShare!=null && projShare.size()>0){
+            if(projShare!=null && projShare.size()>0){
                     Database.delete(projShare);
-                }
             }
         }
         }catch(Exception e){} 
@@ -722,9 +723,10 @@ Modification Log :
             if (String.isNotBlank(Label.UserType_Standard)) {
                     userTypeList.add(Label.UserType_Standard);
             }
-            mUser =new Map<Id,User>([SELECT Id FROM user WHERE usertype in: userTypeList and Id in: ownerIDs ]);
+            //mUser =new Map<Id,User>([SELECT Id FROM user WHERE usertype in: userTypeList and Id in: ownerIDs ]); //code opt US-0048819
             
-            if (projScopeList != null && projScopeList.size() > 0 && mUser != null && mUser.size()>0) {
+            //if (projScopeList != null && projScopeList.size() > 0 && mUser != null && mUser.size()>0) {
+            if (projScopeList != null && projScopeList.size()>0) {
                 //Getting existing ProjOwner IDs to avoid duplicate addition of IST
                 for (Core_IPS_Intel_Support_Team__c istMem: [Select Id, Core_IPS_Project__c, status__c, Core_IPS_User__c from Core_IPS_Intel_Support_Team__c where Core_IPS_User__c in: ownerIDs and Core_IPS_Project__c in: projScopeList]) {
                     if (istMem.Status__c == 'Active') {

@@ -256,11 +256,9 @@ public without sharing class Core_IPS_Core_Question_Handler
         }
         
         for(Core_IPS_Question__c objQues : newList){
-            
-            if(mapParentChild.containsKey(objQues.Id)){
-                if(objQues.Core_IPS_Datatype__c != Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Picklist')){
+            //Avoid Deeply Nested IF Statements Kamala
+            if((mapParentChild.containsKey(objQues.Id)) && (objQues.Core_IPS_Datatype__c != Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Picklist'))){
                     objQues.addError(System.Label.Core_IPS_Parent_EDQ_Err);
-                }
             }
         }
         

@@ -18,6 +18,7 @@
             <type>FieldUpdate</type>
         </actions>
         <active>false</active>
+        <failedMigrationToolVersion>254.9.4</failedMigrationToolVersion>
         <formula>AND( ISPICKVAL(PRIORVALUE(Core_Status__c),&apos;Inactive&apos;), ISPICKVAL(Core_Status__c,&apos;Active&apos;) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>

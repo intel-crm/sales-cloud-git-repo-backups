@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "86d5fb47-be60-4118-8f32-7ac1d328a128",
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "configurationTags" : [ ],
+  "devName" : "Core_IPS_ProductDetail__c",
+  "id" : "03046fb7-250d-4161-bf88-98bb285cdfbb",
+  "label" : "Product Detail",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-product-detail",
+  "type" : "route",
+  "urlPrefix" : "product-detail"
+}

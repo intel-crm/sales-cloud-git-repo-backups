@@ -1,0 +1,360 @@
+<!--****************************************************************************************************************
+VF Page Name   :  Core_IPS_CaseAttachment_Visibility
+US no          :  Iteration 3,4-US67638,US67639,US79605
+Version        :  1.0 
+Created Date   :  11/11/2017
+Function       :  VF page to restrict Attachments visibility on a 
+case based on logged in user's profile
+Modification Log :
+*Developer                 Date                    Description
+* ----------------------------------------------------------------------------                 
+* Aparna                 11/11/2017                 Created.
+* Aparna                 6/1/2018                   Modified for DE34603(under US89136) for Release 2.
+Added styleclasses and style tag in page
+* Aparna                 11/1/2018                  Modified to accomodate changes for US92083 for Release 2.   
+* Aparna                 28/2/2018                  Modified for DE36696,DE36701-Release 3 
+* Aparna                 1/3/2018                   Added logic for US95439-Release 4  
+* Aparna                 19/4/2018                  Added logic for US104151 and US104153 -Release 4.3                                              
+**********************************************************************************************************************-->
+<apex:page StandardController="Case" extensions="Core_IPS_Attachment_Extension" showHeader="false" applyHtmlTag="false" lightningStylesheets="true">
+  <apex:slds />  
+    <apex:includeScript value="/support/console/41.0/integration.js" />
+    
+    <script>
+    var url = location.href;
+    var match = url.match(/&inline=1/);
+    if (match != null) { 
+        var newUrl = url.replace(/&inline=1/, '');
+        window.top.location=newUrl;
+    }
+    /* Added By Prem For GEC Check */
+    function CheckGEC(){
+        if('{!Case.Core_IPS_GEC_Flag__c}'=='true'){ 
+            // GEC flag checked true. 
+            if('{!JSENCODE($Label.Core_IPS_MAG_Support_Org)}'==('{!JSENCODE( Case.Core_IPS_Product_Org1__c )}'.substr(0, 15))){ 
+                // Equal Support org Id with custom label "Core_IPS_MAG_Support_Org" 
+                alert("{!JSENCODE($Label.Core_IPS_GEC_FileAttach_Message)}"); 
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    //Added by Aparna on 3/5/2018 for DE36696,DE36701-Release 3
+    function openAttachment(recId) {
+        var redirectUrl = recId;
+        if (sforce.console.isInConsole()) {
+            sforce.console.getEnclosingTabId(function(enclosingResult) {
+                sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+                    sforce.console.openSubtab(primaryResult.id, redirectUrl, true, '', null);
+                });
+            });
+        } else {
+            window.top.location = '/' + redirectUrl;
+        }
+    }
+    
+    function openUploadedBy(recId) {
+        var redirectUrl = recId;
+        if (sforce.console.isInConsole()) {
+            sforce.console.getEnclosingTabId(function(enclosingResult) {
+                sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+                    sforce.console.openSubtab(primaryResult.id, redirectUrl, true, '', null);
+                });
+            });
+        } else {
+            window.top.location = '/' + redirectUrl;
+        }
+    }
+    
+    
+    function listInConsole(){
+        
+        if (sforce.console.isInConsole()) {
+            sforce.console.getEnclosingTabId(function(enclosingResult) {
+                sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+                    sforce.console.openSubtab(primaryResult.id, '{!$Label.Core_IPS_AttachmentPage}?id={!caseid}&list=full', true, 'Case: {!case.CaseNumber}', null);
+                });
+            });
+        } else {
+            window.open('{!$Label.Core_IPS_AttachmentPage}?id={!caseid}&list=full','_blank');
+        }
+        
+    }
+    
+    function privatefileInConsole(){
+        if (sforce.console.isInConsole()) {
+            sforce.console.getEnclosingTabId(function(enclosingResult) {
+                sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+                    sforce.console.openPrimaryTab(primaryResult.id, '{!privateFileURL}', true, 'Case: {!case.CaseNumber}', null);
+                });
+            });
+        } else {
+            window.top.location ='{!privateFileURL}';
+        }
+    }
+    
+    function publicfileInConsole(){
+        if (sforce.console.isInConsole()) {
+            sforce.console.getEnclosingTabId(function(enclosingResult) {
+                sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+                    sforce.console.openPrimaryTab(primaryResult.id, '{!publicFileURL}', true, 'Case: {!case.CaseNumber}', null);
+                });
+            });
+        } else {
+            window.top.location = '{!publicFileURL}';
+        }
+    }
+    
+    //Added by Aparna on 26/4/2018 for US104151 for R4.2
+    function partnerfileInConsole(){
+        if (sforce.console.isInConsole()) {
+            sforce.console.getEnclosingTabId(function(enclosingResult) {
+                sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+                    sforce.console.openPrimaryTab(primaryResult.id, '{!partnerFileURL }', true, 'Case: {!case.CaseNumber}', null);
+                });
+            });
+        } else {
+            window.top.location ='{!partnerFileURL}';
+        }
+    }
+    //end by Aparna on 26/4/2018 for US104151
+    //Added By Prem 
+     function publicURL(){  
+     var gecCheck=CheckGEC();
+     if(gecCheck)
+         window.top.location ='{!publicURL}'; 
+        
+    }
+    
+    function privateToPartnerURL(){
+    //Added by Geetha as per US106618
+     if('{!$Profile.Name}' != '{!$Label.Core_IPS_Partner_AE_ProfileName}'){
+         var gecCheck=CheckGEC();
+         if(gecCheck)
+             window.top.location ='{!privateToPartnerURL}'; 
+     }else{
+              window.top.location ='{!privateToPartnerURL}'; 
+         }
+    }
+    //End 
+    
+    function Refreshpage() {
+        if(sforce.console.isInConsole())
+        {window.parent.location.reload(true);} 
+        else {
+            window.parent.location.reload(true);}
+        
+    };
+    
+    function editinConsole(recId){
+        var redirectUrl = recId;
+        if (sforce.console.isInConsole()) {
+            sforce.console.getEnclosingTabId(function(enclosingResult) {
+                sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+                    sforce.console.openSubtab(primaryResult.id, '/' +redirectUrl+'/e?retURL={!$Label.Core_IPS_ViewCasePage}?id={!caseid}', true, '', null);
+                });
+            });
+        } else {
+            window.top.location ='/' +redirectUrl+'/e?retURL={!$Label.Core_IPS_ViewCasePage}?id={!caseid}';
+        }
+    }   
+    // End by Aparna on 3/5/2018 for DE36696,DE36701-Release 3
+    
+    /* Added By Prem To fix with Partner Agent button  */
+    function partnerAgentPrivateFileURL() {
+        window.top.location = '{!partnerAgentPrivateFileURL}';
+    }
+    
+    function partnerAgentPublicFileURL(){
+    //Added by Geetha as per US106618
+     if('{!$Profile.Name}' != '{!$Label.Core_IPS_Partner_AE_ProfileName}'){
+         var gecCheck=CheckGEC();
+         if(gecCheck)
+            window.top.location = '{!partnerAgentPublicFileURL}';
+     }else{
+            window.top.location = '{!partnerAgentPublicFileURL}';
+     } 
+    }
+    /* End  */
+    
+    //Added by Aparna on 1/3/2018 for US95439-Release 4 
+    function openLinkFile() {
+        if (sforce.console.isInConsole()) {
+            sforce.console.getEnclosingTabId(function(enclosingResult) {
+                sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+                    sforce.console.openPrimaryTab(primaryResult.id, '{!$Label.Core_IPS_LinktoCase_Page}?id={!caseid}', true, 'Case: {!case.CaseNumber}', null);
+                });
+            });
+        } else {
+            //Below If condition is added  for US99044 by Raj Kommera
+            if('{!$Profile.Name}' == '{!$Label.Core_IPS_Partner_AE_ProfileName}'){
+                window.top.location = '{!$Label.Core_IPS_AE_LinktoCase_Page}?id={!caseid}';
+            }
+            else{
+                window.top.location = '{!$Label.Core_IPS_LinktoCase_Page}?id={!caseid}';
+            }
+        }
+    }
+    //End by Aparna on 1/3/2018 for US95439-Release 4
+    
+    
+    </script>
+    
+    <!--Added by Aparna for DE34603 on 6th Jan,2018-->
+    <style>
+        <apex:outputPanel layout="none" rendered="{!ISBLANK(showLink) && myListFilter.size>0}">
+            .scrollableTable{
+            max-height:430px;
+            overflow-x: scroll;
+            }
+        </apex:outputPanel>
+        .filename_width {
+        max-width: 280px;
+        word-wrap: break-word;
+        min-width: 150px
+        }
+        .nowrap{
+        white-space: nowrap;
+        }
+        .pbHeader>table{padding:0 !important;}
+    </style>
+    <!--end by Aparna for DE3406 on 6th jan,2018-->
+   
+    <apex:form target="_blank">
+        
+        <apex:pageBlock rendered="{!$Profile.Name!='Global Export Compliance'}">
+            <!--US67638;Developer Name:Aparna;Created Date:11/11/2017-->
+            <!--This section displays the buttons to users-->
+            
+            <apex:outputPanel layout="block" html-align="center" rendered="{!showLink != 'full'}" >
+                
+                <apex:commandButton value="Attach File" rendered="{!IF(AND(OR($Profile.Name == $Label.Core_IPS_External_Customer_Profile,($Profile.Name==partnerVal && partnerType=='Partner')),(Case.RecordType.developername !=$Label.Core_IPS_GECRecordTypeName),(Case.RecordType.developername !=$Label.Core_IPS_ClosedCase_RecordType_Name)),true,false)}"  onclick="publicURL(); return false;">
+                    <!-- Gec Check and Popup message -->
+                    <apex:param name="publicParameter" value="{!case.id}" />
+                </apex:commandbutton>
+                
+                <apex:commandButton value="Attach File-Public To Customers" onclick="publicfileInConsole(); return false;" rendered="{!OR( AND(($Profile.Name !=$Label.Core_IPS_External_Customer_Profile),($Profile.Name!=partnerVal),($Profile.Name !=$Label.Core_IPS_Partner_AE_ProfileName),(Case.RecordType.developerName !=$Label.Core_IPS_ClosedCase_RecordType_Name),(Case.RecordType.developername!=$Label.Core_IPS_GECRecordTypeName)),AND(($Profile.Name == $Label.Core_IPS_Production_Support_IPS_Profile),(Case.RecordType.developerName ==$Label.Core_IPS_ClosedCase_RecordType_Name)))}" >  <!-- Added Partner/Partner Agent Profile Too By Prem  -->
+                    <apex:param name="publicParameter" value="{!case.id}" />
+                </apex:commandbutton>
+                
+        <!-- #Prem Partner Agent Button URL Change-->
+                <apex:commandButton value="Attach File-Public To Customers" onclick="partnerAgentPublicFileURL(); return false;" rendered="{!OR( AND(($Profile.Name !=$Label.Core_IPS_External_Customer_Profile),OR(($Profile.Name==partnerVal && partnerType!='Partner'),($Profile.Name ==$Label.Core_IPS_Partner_AE_ProfileName)),(Case.RecordType.developerName !=$Label.Core_IPS_ClosedCase_RecordType_Name),(Case.RecordType.developername!=$Label.Core_IPS_GECRecordTypeName)),AND(($Profile.Name == $Label.Core_IPS_Production_Support_IPS_Profile),(Case.RecordType.developerName ==$Label.Core_IPS_ClosedCase_RecordType_Name)))}" >  <!-- Added Partner Profile Too By Prem  -->
+                    <apex:param name="publicParameter" value="{!case.id}" />
+                </apex:commandbutton>
+                
+                <!--Added by Aparna on 19/4/2018 for US104151 changes R4.3-->
+                <apex:commandButton value="Attach File-Private to Partners" onclick="partnerfileInConsole();return false" rendered="{!OR( AND(($Profile.Name !=$Label.Core_IPS_External_Customer_Profile),($Profile.Name!=partnerVal),($Profile.Name !=$Label.Core_IPS_Partner_AE_ProfileName),(Case.RecordType.developerName !=$Label.Core_IPS_ClosedCase_RecordType_Name),(Case.RecordType.developername!=$Label.Core_IPS_GECRecordTypeName)),AND(($Profile.Name == $Label.Core_IPS_Production_Support_IPS_Profile),(Case.RecordType.developerName ==$Label.Core_IPS_ClosedCase_RecordType_Name)))}" >  
+                    <apex:param name="partnerParameter" value="{!case.id}" />
+                </apex:commandbutton>
+                <apex:commandButton value="Attach File-Private to Partners" onclick="privateToPartnerURL(); return false;" rendered="{!OR( AND(($Profile.Name !=$Label.Core_IPS_External_Customer_Profile),OR(($Profile.Name==partnerVal && partnerType!=partnerVal ),($Profile.Name ==$Label.Core_IPS_Partner_AE_ProfileName)),(Case.RecordType.developerName !=$Label.Core_IPS_ClosedCase_RecordType_Name),(Case.RecordType.developername!=$Label.Core_IPS_GECRecordTypeName)),AND(($Profile.Name == $Label.Core_IPS_Production_Support_IPS_Profile),(Case.RecordType.developerName ==$Label.Core_IPS_ClosedCase_RecordType_Name)))}" >  
+                    <apex:param name="partnerParameter" value="{!case.id}" />
+                </apex:commandbutton> 
+                <!--end for US104151 -->
+                
+                <apex:commandButton value="Attach File-Private To Intel" onclick="privatefileInConsole(); return false;"  rendered="{!OR( AND(($Profile.Name !=$Label.Core_IPS_External_Customer_Profile),($Profile.Name!=partnerVal),($Profile.Name !=$Label.Core_IPS_Partner_AE_ProfileName),(Case.RecordType.developerName !=$Label.Core_IPS_ClosedCase_RecordType_Name),(Case.RecordType.developername!=$Label.Core_IPS_GECRecordTypeName)),AND(($Profile.Name == $Label.Core_IPS_Production_Support_IPS_Profile),(Case.RecordType.developerName ==$Label.Core_IPS_ClosedCase_RecordType_Name))) }">    <!-- Added Partner/Partner Agent Profile Too By Prem  -->
+                    <!-- Added Partner Profile Too By Prem  -->
+                    <apex:param name="privateParameter" value="{!case.id}"/>
+                </apex:commandbutton>
+                
+                
+                <apex:commandButton value="Attach File-Private To Intel" onclick="partnerAgentPrivateFileURL(); return false;"  rendered="{!OR( AND(($Profile.Name !=$Label.Core_IPS_External_Customer_Profile),($Profile.Name!=partnerVal),($Profile.Name ==$Label.Core_IPS_Partner_AE_ProfileName),(Case.RecordType.developerName !=$Label.Core_IPS_ClosedCase_RecordType_Name),(Case.RecordType.developername!=$Label.Core_IPS_GECRecordTypeName)),AND(($Profile.Name == $Label.Core_IPS_Production_Support_IPS_Profile),(Case.RecordType.developerName ==$Label.Core_IPS_ClosedCase_RecordType_Name))) }">
+                    <!-- Added Partner Profile Too By Prem  -->
+                    <apex:param name="privateParameter" value="{!case.id}"/>
+                </apex:commandbutton>
+                
+                <!-- End  Partner Agent -->
+                
+                <!-- Modified by Prem 30/01/2018 US86002 for Partner AE Profile  start-->
+                <apex:commandButton value="Refresh to see New Attachments" oncomplete="Refreshpage(); return false" rendered="{!OR( AND(($Profile.Name !=$Label.Core_IPS_External_Customer_Profile),($Profile.Name!=partnerVal),($Profile.Name !=$Label.Core_IPS_Partner_AE_ProfileName),(Case.RecordType.developerName !=$Label.Core_IPS_ClosedCase_RecordType_Name),(Case.RecordType.developername!=$Label.Core_IPS_GECRecordTypeName)),AND(($Profile.Name == $Label.Core_IPS_Production_Support_IPS_Profile),(Case.RecordType.developerName ==$Label.Core_IPS_ClosedCase_RecordType_Name)))}"/>
+                <apex:commandButton value="Refresh to see New Attachments" onclick="window.top.location='/IPS/{!case.id}'; return false" rendered="{!IF(AND(OR($Profile.Name == $Label.Core_IPS_External_Customer_Profile,$Profile.Name==partnerVal,$Profile.Name ==$Label.Core_IPS_Partner_AE_ProfileName),(Case.RecordType.developername !=$Label.Core_IPS_GECRecordTypeName),(Case.RecordType.developername !=$Label.Core_IPS_ClosedCase_RecordType_Name)),true,false)}"/><!-- Added Partner Profile and record type Too By Prem  -->
+                <!-- Modified by Prem 30/01/2018 US86002 for Partner AE Profile  End-->
+                
+                
+                <!--Added by Aparna on 2/28/2018 for US95439-Release 4-->
+                <!--RK removed IPS Agent Partner from restricted profiles to provide Button availability to IPS Agent-Partner for US99044 -->
+                <apex:commandButton value="Link File" onclick="openLinkFile(); return false;" rendered="{!OR( AND(($Profile.Name !=$Label.Core_IPS_External_Customer_Profile),($Profile.Name!=partnerVal),(Case.RecordType.developerName !=$Label.Core_IPS_ClosedCase_RecordType_Name),(Case.RecordType.developername!=$Label.Core_IPS_GECRecordTypeName)),AND(($Profile.Name == $Label.Core_IPS_Production_Support_IPS_Profile),(Case.RecordType.developerName ==$Label.Core_IPS_ClosedCase_RecordType_Name)))}"/>
+                
+                <!--End by Aparna for US95439-Release 4-->
+                
+            </apex:outputPanel>
+            
+            <br/>
+            <!--US67639,US79605;Developer Name:Aparna;Created Date:11/11/2017-->
+            <!--This section handles the attachments functionality-->
+            <!--enclosing in a apex panel for scrollbars by Aparna on 1/6/2018 for DE34603-->
+            
+            <apex:outputPanel layout="block" styleClass="scrollableTable">
+                <apex:pageBlockTable value="{!myListFilter}" var="item" cellspacing="2" rendered="{!IF((myListFilter.size != 0),true,false)}">
+                    <apex:column rendered="{!$Profile.Name !=$Label.Core_IPS_External_Customer_Profile && $Profile.Name!=partnerVal && !showAction && $Profile.Name !=$Label.Core_IPS_Partner_AE_ProfileName }" style="min-width: 80px;">
+                        <!-- Added Partner Profile Too By Prem  -->
+                        <apex:facet name="header">Action
+                        </apex:facet>
+                        <apex:commandLink value="Edit" target="_parent" onclick="editinConsole('{!item.id}');return false;" >
+                            <apex:param name="attachmentId" value="{!item.id}"/>
+                        </apex:commandLink>
+                        <apex:outputText > &nbsp; | &nbsp; </apex:outputText>    
+                        <apex:commandLink action="{!deleteAttachments}" value="Delete" oncomplete="window.parent.location.reload(true);" onclick="if(!confirm('Are you sure?')){return false;}" >
+                            <apex:param name="attachmentId" value="{!item.id}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    <!--RK added this block IPS Agent-Partner -->
+                    <apex:column rendered="{!$Profile.Name ==$Label.Core_IPS_Partner_AE_ProfileName }" style="min-width: 80px;">
+                        <apex:facet name="header">Action
+                        </apex:facet>
+                        <apex:commandLink value="Edit" onclick="window.open('/IPS/{!item.id}')" >
+                            <apex:param name="attachmentId" value="{!item.id}"/>
+                        </apex:commandLink>
+                        <apex:outputText > &nbsp; | &nbsp; </apex:outputText>    
+                        <apex:commandLink action="{!deleteAttachments}" value="Delete" oncomplete="window.parent.location.reload(true);" onclick="if(!confirm('Are you sure?')){return false;}" >
+                            <apex:param name="attachmentId" value="{!item.id}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                    <!--RK changes end-->
+                    
+                    
+                    <!--Modified the headerValue to 'Attachment Number' from 'IPS Case Attachment Number' by Aparna on 11/1/2017 for US92083-->
+                    <apex:column headerValue="Attachment Number"  rendered="{!$Profile.Name != $Label.Core_IPS_External_Customer_Profile && $Profile.Name!=partnerVal}"><!-- Should not be visible to External users-->
+                        <apex:commandLink value="{!item.name}"  onclick="openAttachment('{!item.id}'); return false;" rendered="{!$Profile.Name !=$Label.Core_IPS_External_Customer_Profile && $Profile.Name!=partnerVal && $Profile.Name !=$Label.Core_IPS_Partner_AE_ProfileName}"></apex:commandLink>
+                        <apex:commandLink value="{!item.name}" onclick="window.open('/IPS/{!item.id}')" rendered="{!$Profile.Name == $Label.Core_IPS_External_Customer_Profile || $Profile.Name==partnerVal || $Profile.Name ==$Label.Core_IPS_Partner_AE_ProfileName}"></apex:commandLink>
+                    </apex:column>
+                    
+                    <!--Reordered the columns on 11/1/208 by Aparna on 11/1/2017 for US92083-->
+                    <!--Modified rendered condition for Attachment Visibility field for US104153-R4.3 by Aparna on 26/4/2018-->
+                    <apex:column value="{!item.Core_IPS_Attachment_Visibility__c}" styleClass="nowrap" rendered="{!OR(AND($Profile.Name !=$Label.Core_IPS_External_Customer_Profile , $Profile.Name!=partnerVal) ,partnerType == 'Partner - DFAE')}"/><!-- Added Partner Profile Too By Prem  -->                
+                    <apex:column value="{!item.Core_File_Name__c}"  styleClass="filename_width"/>
+                    <apex:column value="{!item.Core_File_Description__c}" styleClass="filename_width"/>
+                    <apex:column value="{!item.Core_File_Size__c}"  styleClass="nowrap"/>
+                    <apex:column value="{!item.Core_File_Hyperlink__c}" />
+                    <apex:column value="{!item.Core_Upload_Status__c}" styleClass="nowrap"/>
+                    <apex:column value="{!item.CreatedDate}" styleClass="nowrap"/>
+                    <!--End by Aparna on 11/1/2017 for US92083-->
+                    
+                    <!-- Updated the Fields Sequence and rendering the fields only to the internal Users ,Changes made by Raj Kommera for defect fix DE34454-->
+                    <apex:column headerValue="File Uploaded By" styleClass="nowrap" rendered="{!$Profile.Name != $Label.Core_IPS_External_Customer_Profile && $Profile.Name!=partnerVal}" ><!-- Should not be visible to External users-->
+                        <apex:commandLink value="{!item.Core_FileUploadedBy__r.name}" onclick="openUploadedBy('{!item.Core_FileUploadedBy__c}'); return false;"  rendered="{!$Profile.Name != $Label.Core_IPS_External_Customer_Profile && $Profile.Name!=partnerVal && $Profile.Name !=$Label.Core_IPS_Partner_AE_ProfileName}"></apex:commandLink>
+                        <apex:commandLink value="{!item.Core_FileUploadedBy__r.name}" onclick="window.open('/IPS/{!item.Core_FileUploadedBy__c}')" rendered="{!$Profile.Name == $Label.Core_IPS_External_Customer_Profile || $Profile.Name==partnerVal || $Profile.Name ==$Label.Core_IPS_Partner_AE_ProfileName}"></apex:commandLink>
+                    </apex:column>
+                    
+                    <!--Start: Developer:Aparna, User Story:US92083, Date:12/1/2018,Description:This column is not needed for both internal and external UI-->
+                    <!--<apex:column headerValue="Created By" styleClass="nowrap" rendered="{!$Profile.Name != $Label.Core_IPS_External_Customer_Profile && $Profile.Name!=partnerVal}"> <!-- Should not be visible to External users-->
+                    <!--<apex:commandLink value="{!item.CreatedBy.name}" onclick="window.open('/{!item.CreatedByID}')" rendered="{!$Profile.Name != $Label.Core_IPS_External_Customer_Profile && $Profile.Name!=partnerVal}"></apex:commandLink>
+                    <!--<apex:commandLink value="{!item.CreatedBy.name}" onclick="window.open('/IPS/{!item.CreatedByID}')" rendered="{!$Profile.Name == $Label.Core_IPS_External_Customer_Profile || $Profile.Name==partnerVal}"></apex:commandLink>
+                    </apex:column>-->
+                    <!--End: Developer:Aparna, User Story:US92083, Date:12/1/2018-->
+                    
+                </apex:pageBlockTable>
+            </apex:outputPanel><!--Added by Aparna for DE34603 on 6th Jan,2018-->
+            
+            <apex:outputText rendered="{!(myListFilter.size = 0)}" value="No records to display" />
+            <!-- RK Added IPS Agent-Partner profile for DE38346 -->
+            <apex:outputLink id="linkGotoList" target="_blank" onclick="listInConsole(); return false;" value="/apex/Core_IPS_CaseAttachment_Visibility?id={!caseid}&list=full" rendered="{!IF(total>5 && (isblank(showLink)),true,false) &&($Profile.Name != $Label.Core_IPS_External_Customer_Profile && $Profile.Name!=partnerVal && $Profile.Name!= $Label.Core_IPS_Partner_AE_ProfileName) }">Go to list ({!total}) » </apex:outputLink>
+            <!--Added for DE37680 on 28 March,2017-->
+            <!-- RK Added IPS Agent-Partner profile for DE38346 -->
+            <apex:outputLink id="linkGotoList2" target="_blank" value="/IPS/Core_IPS_CaseAttachment_Visibility?id={!caseid}&list=full" rendered="{!IF(total>5 && (isblank(showLink)),true,false) && ($Profile.Name == $Label.Core_IPS_External_Customer_Profile || $Profile.Name==partnerVal || $Profile.Name== $Label.Core_IPS_Partner_AE_ProfileName)}">Go to list ({!total}) » </apex:outputLink>
+            <!--End for DE37680 on 28 March,2017-->
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+<!--End by Aparna on 14/12/2017-->

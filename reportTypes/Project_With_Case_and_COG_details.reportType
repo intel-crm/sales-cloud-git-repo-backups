@@ -12,6 +12,11 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Project_Partner_Support_Owner__c</field>
+            <table>Core_IPS_Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CreatedBy</field>
             <table>Core_IPS_Project__c</table>
         </columns>
@@ -28,6 +33,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_EnableMemberasInterestedParties__c</field>
+            <table>Core_IPS_Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_ProjectGroupID__c</field>
             <table>Core_IPS_Project__c</table>
         </columns>
         <columns>
@@ -137,6 +147,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Project_Partner_Support_Owner__c</field>
+            <table>Core_IPS_Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>RecordType</field>
             <table>Core_IPS_Project__c</table>
         </columns>
@@ -175,14 +190,14 @@
             <field>Core_IPS_Update_PSO__c</field>
             <table>Core_IPS_Project__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>MarkByProductObject__c</field>
+            <table>Core_IPS_Project__c</table>
+        </columns>
         <masterLabel>Premier Support Projects</masterLabel>
     </sections>
     <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_AccountCompany_txt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>core_Account_Name__c</field>
@@ -195,77 +210,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Case_Reviewer__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Activity_Category__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Activity_End_Date__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Activity_ID__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_ActivityName__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Product_Type__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Activity_Start_Date__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Activity_Start_and_End_Date__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Activity_Sub_Type_nm__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Activity_Type__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Adjustment_Amount_Local__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Adjustment_Amount_USD_Amt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Adjustment_Amount_USD__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Ad_Run_End_Date_dt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Ad_Run_Start_Date_dt__c</field>
+            <field>Core_Act_Id__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -300,7 +245,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Audit_Reversal_Count_Nbr__c</field>
+            <field>Core_IPS_Backed_ID_URL__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -316,6 +261,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Backend_ID_URL__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_BackendID__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -350,6 +300,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Backend_Rev__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_New_Backend_System__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Backend_System__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -365,42 +325,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Brand__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Type_Txt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Bug_Doc_Fix_ID__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>BusinessHours</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Campaign_End_Date__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Campaign_ID__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_CampaignName__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Campaign_Start_Date__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -451,6 +381,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_AAQC_Case_Comment_Id__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Case_Co_Owner_Id_New__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Case_Co_Owner_Secondary__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -555,61 +495,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Channel_Partner_Led_ind__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Checklist_Completion__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Amount_USD__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Case_Reviewer_Lookup__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Date__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_ID__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Number__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Review_Closure_Note__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Submitter_Language__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Submitter_Message_txt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Classification__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -631,11 +516,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Closure_Comment__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Closure_Note_txt__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -710,6 +590,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_GEC_Validation_Check__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_CreatedBy_User__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -720,7 +605,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_OtherCostsnotReimbursableLocal__c</field>
+            <field>Core_IPS_Submitter_FirstName__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -736,11 +621,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Country_Region__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Country_Region__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -780,26 +660,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Data_Entry_Correction__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Data_Correction_Note_Txt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Data_Entry_CorrectionReason_Txt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Data_Entry_Correction_Cd__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>ClosedDate</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -830,11 +690,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Days_SLA_Remaining__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_HC_Debug_Progress__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -845,22 +700,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_DocumentSubmissionDeadlineDate__c</field>
+            <field>Core_IPS_EDQ_Field_Formula__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Document_Requested_Date_dtm__c</field>
+            <field>Core_IPS_EDQ_Filtering__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Document_Submission_DueDate_dtm__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Dollar_Amount__c</field>
+            <field>Core_IPS_EDQ_Filtering_Long__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -935,16 +785,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Conversion_Exchange_Rate__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue_Qts_1__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_HC_Executive_Summary__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -985,7 +825,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue__c</field>
+            <field>Core_Hot_Issue_Qts_6__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -995,12 +835,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_AAQC_F_Inquiry_Details__c</field>
+            <field>Core_AAQC_Inquiry_Number__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_AAQC_Inquiry_Detail__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_AAQC_F_Inquiry_Details__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1015,37 +860,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Internal_Case_Closure_Notes__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Internal_Note__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Local_Currency__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Invoice_Date__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Invoice_Number_txt__c</field>
+            <field>Core_AAQC_Is_case_created_by_admin__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_AAQC_case_created_by_loggedin_user__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_isClaimCaseReviewer_ind__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1190,12 +1015,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>MaritzCX__Survey_Response_Id__c</field>
+            <field>Core_IPS_MAG_Questionnaire_Completed__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Media_Vehicle_txt__c</field>
+            <field>MaritzCX__Survey_Response_Id__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1211,11 +1036,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_GEC_Case__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_More_Documentation_Required__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1241,11 +1061,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Self_Assigned__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Non_Compliance_Reason_txt__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1300,12 +1115,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Pending_Document_Flag__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_PGM_Internal_Group_Id_txt__c</field>
+            <field>Partner_Support_Owner_Test__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1321,11 +1131,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Priority</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Priority__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1365,11 +1170,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Channel_Program_txt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Premier_Support_Project_ID__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -1390,7 +1190,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_QuantityofImpressionsinstances__c</field>
+            <field>Core_IPS_BES_Promote_Status__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1400,37 +1200,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_ReasonForMoreDocumentation__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Account_Geo__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Region_SubRegion_txt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_ReimbursableTransactionAmount__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Reimbursable_Amount_USD__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Final_Reimbursement_Amount_USD__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Reimbursement_Rate__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1446,11 +1216,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_AAQC_Related_Case_Number__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Reminder_Notification_Nbr__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1476,11 +1241,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Request_Case_Close__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Requested_Amount_USD_Amt__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1515,6 +1275,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_AAQC_Resolution_Comments__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_AAQC_Resolution_Training_Sub_Type__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -1526,16 +1291,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>MaritzCX__Response_Deleted_From_MaritzCX__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Review_Case_Status__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Status__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1556,16 +1311,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Severity_Reason__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_SLA_Days_Nbr__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_SLA_Start_Date__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1670,42 +1415,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Target_Audience__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Taxes_Local__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Requested_Reimbursement_Amount__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Technology__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_TotalTransactionAmountLocal__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Total_Offset_Amount_amt__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Trigger_Next_Response__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Type</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CoveoV2__VisitId__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CoveoV2__VisitorId__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1740,21 +1465,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue_Qts_5__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue_Qts_4__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Hot_Issue_Qts_3__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Case_Owner_Groups__c.Core_IPS_Owner_Group_1__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -1785,7 +1495,82 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Case_Owner__c</field>
+            <field>Product.Name</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Case_URL__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_BES_Auto_Promoted__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Problem_Statement__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Resolution__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_HC_Marked_DateTime__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HSD_Mirror_Status__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HSD_Mirror_Reason__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IPS_Mirror_SubStatus__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IPS_Mirror_Status__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Embargoed_State__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_HSD_Article_Type__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_and_time_of_hot__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Reason_for_not_providing_the_SST_Log__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Do_you_have_SST_log_to_upload__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SOQL_Optimization__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <masterLabel>Cases</masterLabel>

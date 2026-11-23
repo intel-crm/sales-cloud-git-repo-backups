@@ -20,9 +20,8 @@
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>Migrated from the: Core_PAR_Create_Notify_Submitter workflow rule
-Workflow rule description: Send 1 email per PAR header to the PAR submitter</description>
+Workflow rule description: Send 1 email per PAR header to the PAR submitter&quot;</description>
     <environments>Default</environments>
-    <interviewLabel>Core_PAR_Create_Notify_Submitter {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_PAR_Create_Notify_Submitter</label>
     <migratedFromWorkflowRuleName>Core_PAR_Create_Notify_Submitter</migratedFromWorkflowRuleName>
     <processMetadataValues>

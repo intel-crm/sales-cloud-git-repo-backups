@@ -1,9 +1,9 @@
 <apex:page >
 
-
+<!--
   <div style = "padding-left: 30px">
 
-     <apex:image url="{!$Label.IPS_Community_500_Error}"></apex:image> 
+     <apex:image url="https://intel--c.na17.content.force.com/servlet/servlet.ImageServer?id=015o0000001vfPt&oid=00D3F0000000Nmr"></apex:image> 
 
      
      <br></br>
@@ -23,5 +23,5 @@
      <p> We apologize for any inconvenience this may cause and appreciate your patience.</p>
      
   </div>
-
+-->
 </apex:page>

@@ -13,16 +13,10 @@
         <field>Contact$Core_ERPM_Integration_Status__c</field>
     </columns>
     <columns>
-        <field>Contact$LastModifiedBy</field>
-    </columns>
-    <columns>
         <field>Contact$Core_ERPM_Integration_Message__c</field>
     </columns>
     <columns>
         <field>Contact$Id</field>
-    </columns>
-    <columns>
-        <field>Contact$Account</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -45,27 +39,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact$CreatedBy</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>,Sales.CRM.WW. Data.Operations</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact$Account</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Account for Deactivated Contacts</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact$LastModifiedBy</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>User1 Eloqua</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -102,7 +102,7 @@
     <columns>
         <field>Core_IPS_MAP_PAR__c$Owner</field>
     </columns>
-    <description>PAR Pending Report for Org Admins to view their Org&apos;s Pending Approvals. This report can be accessed via the &apos;Support Org&apos; tab and the PAR Line Item Assigned Notification to filter to the desired Org.</description>
+    <description>PAR Pending Report for Org Admins to view their Org&apos;s Pending Approvals. This report can be access via the Support Org page and the PAR Line Item Assigned Notification to filter to the desired Org.</description>
     <filter>
         <criteriaItems>
             <column>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r$Core_Line_Item_Approval_Status__c</column>
@@ -116,7 +116,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Org-007</value>
+            <value>Org-000</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

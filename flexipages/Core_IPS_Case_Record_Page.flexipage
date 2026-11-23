@@ -7,6 +7,38 @@
                 <identifier>c_core_IPS_Page_Header</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>numberOfTopicsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>searchHint</name>
+                    <value>Type a topic name and press Enter.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Topics</value>
+                </componentInstanceProperties>
+                <componentName>forceChatter:topicsOnRecordWrapper</componentName>
+                <identifier>forceChatter_topicsOnRecordWrapper</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>numberOfTopics</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Trending Topics</value>
+                </componentInstanceProperties>
+                <componentName>forceChatter:trendingTopics</componentName>
+                <identifier>forceChatter_trendingTopics</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>header</name>
         <type>Region</type>
     </flexiPageRegions>
@@ -135,6 +167,16 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>core_IPS_InlineSurveyFeedbackPage</componentName>
+                <identifier>c_core_IPS_InlineSurveyFeedbackPage2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-0d8eba05-ab2d-48a5-912b-65355dd82ff1</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
                     <value>Facet-9f28eb2c-417e-4f33-b30e-392fe83277be</value>
@@ -237,6 +279,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-0d8eba05-ab2d-48a5-912b-65355dd82ff1</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Survey Feedback</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab3</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-9e274c5b-64ee-4446-a25e-3c77ee87abd9</name>

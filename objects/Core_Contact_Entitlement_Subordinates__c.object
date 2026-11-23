@@ -50,37 +50,24 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_Is_ODM_False__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Upon checked, the subordinate will be assigned to a contact with Non-ODM Account.</description>
-        <inlineHelpText>Upon checked, the subordinate will be assigned to a contact with Non-ODM Account.</inlineHelpText>
-        <label>Is Non ODM</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_Is_ODM_True__c</fullName>
         <defaultValue>false</defaultValue>
-        <description>Upon checked, the subordinate will be assigned to a contact with ODM Account.</description>
-        <inlineHelpText>Upon checked, the subordinate will be assigned to a contact with ODM Account.</inlineHelpText>
-        <label>Is ODM</label>
+        <label>Is ODM True</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <label>Contact Entitlement Subordinates</label>
     <listViews>
-        <fullName>All</fullName>
+        <fullName>All2</fullName>
         <columns>NAME</columns>
         <columns>Core_Entitlement_Id__c</columns>
         <columns>Core_Entitlement_Name__c</columns>
         <columns>Core_Entitlement_Subordinate_Id__c</columns>
         <columns>Core_Entitlement_Subordinate_Name__c</columns>
         <columns>Core_Is_ODM_True__c</columns>
-        <columns>Core_Is_ODM_False__c</columns>
         <columns>Core_Is_CNDA_True__c</columns>
         <filterScope>Everything</filterScope>
-        <label>All</label>
-        <language>en_US</language>
+        <label>All2</label>
     </listViews>
     <visibility>Protected</visibility>
 </CustomObject>

@@ -1,0 +1,58 @@
+<template>
+
+    <div class="toast toast_hide" style="height:4rem" data-id="toast">
+        <div class="slds-notify_container slds-is-relative">
+            <div class={notifyClasses} role="status">
+                <span class="slds-assistive-text">{title}</span>
+                <lightning-icon icon-name={iconName} alternative-text={type}></lightning-icon>
+                <div class="slds-notify__content">
+                    <h2>{title}</h2>
+                    <p>{message}</p>
+                </div>
+                <div class="slds-notify__close">
+                    <lightning-button-icon icon-name="utility:close" alternative-text="Close">
+                    </lightning-button-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div if:true={isLoaded}>
+        <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+        <div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+    <lightning-card>
+        <div>
+            <lightning-accordion active-section-name="A">
+                <lightning-accordion-section name="A" label="External Interested Party">
+
+                    <h3>Enter Search Text</h3>
+                    <template if:true={isLookupQueryPresentProject}>
+                        <c-core_-i-p-s_-custom-lookup onselectedrec={handleChangeCon} iconname={lookupIconNameProject}
+                            searchfield-name={lookupSearchFieldNameProject} query-string={lookupQueryStringProject}
+                            count-query-string={lookupCountQueryString}>
+                        </c-core_-i-p-s_-custom-lookup>
+                    </template>
+                    </br>
+                    <div class="slds-align_absolute-center">
+
+
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+            </br>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="brand-outline" label="Cancel" onclick={cancelHandler}
+                    class="slds-m-left_x-small">
+                </lightning-button>
+
+                <lightning-button variant="brand-outline" label="Add External Party" onclick={saveHandler}
+                    class="slds-m-left_x-small">
+                </lightning-button>
+            </div>
+
+
+        </div>
+    </lightning-card>
+</template>

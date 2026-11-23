@@ -37,12 +37,6 @@
         <field>EXP_PRODUCT_AMOUNT</field>
     </columns>
     <columns>
-        <field>Product2.Core_Code_Name__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
-    </columns>
-    <columns>
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
@@ -87,7 +81,6 @@
         <field>OpportunityLineItem.Core_KPI_CPU_Units__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 or 4) AND 3</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -108,13 +101,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>lost,cancelled,deleted</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>xeon</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -163,6 +149,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2017-12-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

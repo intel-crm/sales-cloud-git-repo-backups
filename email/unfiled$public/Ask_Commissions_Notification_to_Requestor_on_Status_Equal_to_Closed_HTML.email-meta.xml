@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Ask_Commissions_Letterhead</letterhead>
+    <name>Ask Commissions-Notification to Requestor on Status Equal to Closed HTML</name>
+    <style>freeForm</style>
+    <subject>Case Number: {!Case.CaseNumber} - Your Ask Commissions case has been closed</subject>
+    <textOnly>The Commissions Office has closed your case.
+
+Case Number: {!Case.CaseNumber}
+Status: {!Case.Status}
+
+To reopen this case click on the link below and enter a Case Comment:
+
+{!Case.Core_AAQC_Commission_InquiryId_Hyperlink__c}
+
+
+If you need further assistance, please open a new Ask Commissions Case.
+
+***NOTE: Do not reply to this mail as there is no inbox being monitored***</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

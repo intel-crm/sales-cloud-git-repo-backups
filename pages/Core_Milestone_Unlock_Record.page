@@ -1,0 +1,10 @@
+<apex:page standardController="Core_Solution_Milestone__c" extensions="Core_Milestone_Unlock_Record" tabstyle="Core_Solution_Milestone__c" action="{!UnlockMilestone}">
+<apex:pageMessages />
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockButtons location="TOP">
+   <apex:commandButton Value="Back To Milestone" id="Back_To_MileStone"  action="{!BackToMilestone}" />
+</apex:pageBlockButtons>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

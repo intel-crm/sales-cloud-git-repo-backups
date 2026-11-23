@@ -1,0 +1,28 @@
+<template>
+  <div class="slds-grid slds-gutters">
+
+    <div class="slds-col slds">
+      <lightning-layout>
+        <lightning-layout-item size="6">
+          <lightning-input type="search" onchange={input}></lightning-input>
+        </lightning-layout-item>
+      </lightning-layout>
+      <br/>
+        Available Intel Products
+      <span>
+        <lightning-dual-listbox 
+          id="selectOptions" 
+          name="Select Options" 
+          
+          options={listOptions} 
+          value={defaultOptions} 
+          required-options={requiredOptions} 
+          onchange={handleChange} size=3
+          disable-reordering>
+        </lightning-dual-listbox>
+      </span>
+    </div>
+
+
+  </div>
+</template>

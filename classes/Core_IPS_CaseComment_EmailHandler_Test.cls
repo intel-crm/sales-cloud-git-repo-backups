@@ -280,7 +280,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.fromAddress = usr.Email;
         email.htmlBody = body;
         email.plainTextBody= body;
-        email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
+        email.toAddresses = new List<String>{'intel.premier.support.qa@intel.com'};
         List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
         email.headers = newHeader;
 
@@ -353,7 +353,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.fromAddress = usr.Email;
         email.htmlBody = body;
         email.plainTextBody= body;
-        email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
+        email.toAddresses = new List<String>{'intel.premier.support.qa@intel.com'};
        List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
         email.headers = newHeader;
         // add an attachment
@@ -420,7 +420,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.fromAddress = usr.Email;
         email.htmlBody = body;
         email.plainTextBody= body;
-        email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
+        email.toAddresses = new List<String>{'intel.premier.support.qa@intel.com'};
        List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
         email.headers = newHeader;
         // add an attachment
@@ -493,7 +493,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.ccAddresses = new List<String>{usr.Email};
         //email.htmlBody = body;
         email.plainTextBody= body;
-        email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
+        email.toAddresses = new List<String>{'intel.premier.support.qa@intel.com'};
        List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
         email.headers = newHeader;
 
@@ -562,7 +562,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.fromAddress = usr.Email;
         email.htmlBody = body;
         email.plainTextBody= body;
-        email.toAddresses = new List<String>{'intel.premier.support@intel.com','test@intel.com'};
+        email.toAddresses = new List<String>{'intel.premier.support.qa@intel.com','test@intel.com'};
         List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
         email.headers = newHeader;
         // add an attachment
@@ -634,7 +634,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
         email.fromAddress = usr.Email;
         email.htmlBody = body;
         email.plainTextBody= body;
-        email.toAddresses = new List<String>{'intel.premier.support@intel.com'};
+        email.toAddresses = new List<String>{'intel.premier.support.qa@intel.com'};
         List<Messaging.InboundEmail.Header> newHeader = new List<Messaging.InboundEmail.Header>();
         email.headers = newHeader;
         
@@ -644,7 +644,7 @@ public class Core_IPS_CaseComment_EmailHandler_Test {
             emailHandler.handleInboundEmail(email, env);
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('Partner'),usr.id);
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('Data Ops'),usr.id);         
-           // Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('IPS Data Migration'),usr.id); 
+            Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('IPS Data Migration'),usr.id); 
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('Integration'),usr.id);
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('Partner'),usr.id);
             Core_IPS_CaseComment_EmailHandler.getAuthr(profileMap.get('IPS Agent-Partner'),usr.id);

@@ -1,45 +1,38 @@
-<apex:page showHeader="true" sidebar="false" title="My Tasks">
-    <GBLite:TabbedPageComponent pageAPIName="Core_Grid_My_Tasks" customJsIds="" customCssIds="">
-    <GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
-        <script>
-            var pageDefinition = {
-    "name": "My Tasks",
-    "tabs": [
-        {
-            "name": "All Tasks",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=My Tasks&sh=0&ro=0",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=My Tasks&sh=0&ro=0",
-            "id": 1528116363424
-        },
-        {
-            "name": "Past Due",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=My Tasks Past Due&sh=0&ro=0",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=My Tasks Past Due&sh=0&ro=0",
-            "id": 1528116396209
-        },
-        {
-            "name": "This Month",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=THIS_MONTH",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=THIS_MONTH",
-            "id": 1528116404168
-        },
-        {
-            "name": "Next Month",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=NEXT_MONTH",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=NEXT_MONTH",
-            "id": 1528116413024
-        }
-    ],
-    "id": 1528116363423,
-    "selectedCustomCSSIds": [],
-    "selectedCustomJSIds": [],
-    "description": "",
-    "globalButtons": false,
-    "object": "0",
-    "height": "800",
-    "showHeader": true,
-    "showSidebar": false
-};
-        </script>
-    </GBLite:TabbedPageComponent>
+<apex:page sidebar="false" showHeader="true">
+
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/versioning.css" />
+    <apex:stylesheet value="/sCSS/25.0/sprites/1342034628000/Theme3/default/gc/extended.css" />
+
+
+    <apex:tabPanel switchType="client" selectedTab="tabdetails" 
+                      id="AccountTabPanel" tabClass="activeTab" 
+                      inactiveTabClass="inactiveTab">
+      
+      <apex:tab label="All Tasks"  >
+          <iframe id="gridFrame0" scrolling="auto" height="800" width="100%" frameborder="0"
+            src="/apex/gblite__Grid?gname=My Tasks&sh=0&ro=0">
+          </iframe>
+      </apex:tab>
+ 
+       <apex:tab label="Past Due"  >
+          <iframe id="gridFrame0" scrolling="auto" height="800" width="100%" frameborder="0"
+            src="/apex/gblite__Grid?gname=My Tasks Past Due&sh=0&ro=0">
+          </iframe>
+      </apex:tab>
+           
+      <apex:tab label="This Month"  >
+          <iframe id="gridFrame0" scrolling="auto" height="800" width="100%" frameborder="0"
+            src="/apex/gblite__Grid?gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=THIS_MONTH">
+          </iframe>
+      </apex:tab>
+      
+       <apex:tab label="Next Month"  >
+          <iframe id="gridFrame0" scrolling="auto" height="800" width="100%" frameborder="0"
+            src="/apex/gblite__Grid?gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=NEXT_MONTH">
+          </iframe>
+      </apex:tab>
+    
+      
+    </apex:tabPanel>
+
 </apex:page>

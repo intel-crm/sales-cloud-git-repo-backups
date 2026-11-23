@@ -1,6 +1,5 @@
-public with sharing class Core_IPS_BES_UpdateCommentID { 
+public with sharing class Core_IPS_BES_UpdateCommentID {
     public static void setCommentId(List<String> inboudJSONList){
-        
         Map<String,String> commentMap = new Map<String,String>();
         Map<String,String> outboundMap = new Map<String,String>();
         Map<string,Object> backendJsonObj;
@@ -20,16 +19,16 @@ public with sharing class Core_IPS_BES_UpdateCommentID {
                 //sourceDetailsMap.put((String)backendJsonObj.get('target_id'), (String)backendJsonObj.get('source_id'));
                 //START - Added as part of Code Refactor TWC745-6459
                 String caseNumber = (String)backendJsonObj.get('target_id');
-               
-	       
                 //if((!Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber)) || (Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber) && (Integer.ValueOf(backendJsonObj.get('backend_rev')) > Integer.ValueOf(Core_IPS_BES_InboundMessage.revisionMap.get(caseNumber))))){
-                        
+                
                 //Added by Pavani for Null check Fix
                 if(backendJsonObj.containskey('backend_rev') && String.isNotBlank((String)backendJsonObj.get('backend_rev')) && ((!Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber)) || (Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber) && (Integer.ValueOf(backendJsonObj.get('backend_rev')) > Integer.ValueOf(Core_IPS_BES_InboundMessage.revisionMap.get(caseNumber)))))){
-                    Core_IPS_BES_InboundMessage.revisionMap.put(caseNumber, (String)backendJsonObj.get('backend_rev'));  }
+                    Core_IPS_BES_InboundMessage.revisionMap.put(caseNumber, (String)backendJsonObj.get('backend_rev'));  
+                }
                 //if(!Core_IPS_BES_InboundMessage.sourceDetailsMap.containskey(caseNumber)){ 
                 if(backendJsonObj.containskey('source_id') && String.isNotBlank((String)backendJsonObj.get('source_id')) && (!Core_IPS_BES_InboundMessage.sourceDetailsMap.containskey(caseNumber))){ 
-                    Core_IPS_BES_InboundMessage.sourceDetailsMap.put(caseNumber, (String)backendJsonObj.get('source_id'));  }
+                    Core_IPS_BES_InboundMessage.sourceDetailsMap.put(caseNumber, (String)backendJsonObj.get('source_id'));  
+                }
                 
             }
             if(Core_IPS_BES_Outbound_Message__c.SObjectType.getDescribe().isQueryable()){

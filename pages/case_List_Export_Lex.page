@@ -1,0 +1,7 @@
+<apex:page standardController="Case" recordSetVar="placeHolderRecordSetVar"     applyHtmlTag="false" showHeader="false"  tabStyle="Case">
+
+    <script>
+  		var vfRetURLInSFX = '{!JSENCODE($CurrentPage.parameters.filterName)}';
+    	alert('minhaj', vfRetURLInSFX);
+    </script>
+</apex:page>

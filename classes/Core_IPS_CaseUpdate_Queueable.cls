@@ -9,7 +9,7 @@
 * ------------------------------------------------------------------------------------------------------------                
 * Shipra Bardhan             08/01/2025         		PRB10061809
 *************************************************************************************************************/ 
-public without sharing class Core_IPS_CaseUpdate_Queueable implements Queueable {
+public class Core_IPS_CaseUpdate_Queueable implements Queueable {
     
     private String strCaseList;
     private String strCaseMap;

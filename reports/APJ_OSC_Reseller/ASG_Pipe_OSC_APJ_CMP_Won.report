@@ -49,7 +49,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Ryan Golez,Amit Surve,Muhammad Safuan,Mahendran Moorthy,Anugrah Ramadhan,Hadrian Tung,Bomin Kim,Juhak Chang,Hui Min Pee Yong,Choong Fai Chao,Yoshino Hayes,Masahiko Sawada,Ridzuan Shukor Shaaibon,Sujith Radhakrishnan,Afrina Khan,Jamshed Iqbal,Kunal Sharma,Shah Jahan,Madhumati Chungani,Pooja Kanani,Steven Phuah,Frederick Siew,Wanhou Sam,Elzaki Hidayatullah,Yockie Witarto,Nurul Hayati,Citra Laila Utami,Citra Utami,Francis Tillain,Habibah Mat Rozali,Fatihah Abdulromae,Sadawut Kaenphet,Huong Nguyen,Dinh Thu,Lan Luong,Vivian Tee,Nella Litison,Syed Ahad,Zoe Yeoh,Erica Tor,Rocielle Manaloto Barandino,Joe Han Loh,Roy Yoo,EunYoung Jang,Clifford Tan,Chooi Li Tan,Mioko Hayashi,Chee Chee Thee,Yoichiro Tanaka,Arun Raghavan,Rahul Yadav,Pankaj Garg,Hussain Fakrudeen,Faisal Qamar,Jason Kay Siah Ang,Herney Herman,Susanto Wijaya,Josh Pendejito,Yong Pin Goh,Songphol Tamcharoen,BINH VO PHAM NGHIA,Hong Hai Le</value>
+            <value>Ryan Golez,Amit Surve,Muhammad Safuan,Mahendran Moorthy,Anugrah Ramadhan,Hadrian Tung,Bomin Kim,Juhak Chang,Hui Min Pee Yong,Choong Fai Chao,Yoshino Hayes,Masahiko Sawada,Ridzuan Shukor Shaaibon,Sujith Radhakrishnan,Afrina Khan,Jamshed Iqbal,Kunal Sharma,Shah Jahan,Madhumati Chungani,Pooja Kanani,Steven Phuah,Frederick Siew,Wanhou Sam,Elzaki Hidayatullah,Yockie Witarto,Nurul Hayati,Citra Laila Utami,Citra Utami,Francis Tillain,Habibah Mat Rozali,Fatihah Abdulromae,Sadawut Kaenphet,Huong Nguyen,Dinh Thu,Lan Luong,Vivian Tee,Nella Litison,Syed Ahad,Zoe Yeoh,Erica Tor,Rocielle Manaloto Barandino,Joe Han Loh,Roy Yoo,EunYoung Jang,Clifford Tan,Chooi Li Tan,Mioko Hayashi,Chee Chee Thee,Yoichiro Tanaka,Arun Raghavan,Rahul Yadav,Pankaj Garg,Hussain Fakrudeen,Fq Qamar,Jason Kay Siah Ang,Herney Herman,Susanto Wijaya,Josh Pendejito,Yong Pin Goh,Songphol Tamcharoen,BINH VO PHAM NGHIA,Hong Hai Le</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -95,8 +95,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

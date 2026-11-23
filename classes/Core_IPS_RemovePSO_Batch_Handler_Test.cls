@@ -4,7 +4,6 @@ public class Core_IPS_RemovePSO_Batch_Handler_Test {
     
     //commented for Classic EOL -Tejaswini
   /*  static testMethod void testBatchKickoff(){
-        insert new Core_Contact_Bypass_Validation_Rule__c(SetupOwnerId=UserInfo.getOrganizationId(), Bypass__c=true);
         Account upateAccount = new Account();
         upateAccount.name='XYZ';
         upateAccount.Phone = '+49-12345';
@@ -77,7 +76,7 @@ public class Core_IPS_RemovePSO_Batch_Handler_Test {
         //Contact is the Visualforce page created
         PageReference testPage = Page.RemovePSO; 
         Test.setCurrentPage(testPage);
-        testPage.getParameters().put('Id',String.valueOf(cc.Id));
+        testPage.getParameters().put('Id',String.valueOf(cc.Id)); 
         
     //    ApexPages.StandardController sc = new  ApexPages.StandardController(cc);     
         Core_IPS_RemovePSO_Batch_Handler ext = new Core_IPS_RemovePSO_Batch_Handler();  
@@ -85,4 +84,44 @@ public class Core_IPS_RemovePSO_Batch_Handler_Test {
         ext.runBatch();
     } */
     
+    
+    //Added below method by Sowmya - 08/10/2014 - TWC745-6800 - Fix test coverage for all failed classes
+     static testMethod void testBatchKickoffNegative(){
+        
+		Account Acc = TestUtilities.getAccountRecord();
+        insert Acc;          
+        Contact con = TestUtilities.getContact();
+        con.AccountId=Acc.id;
+        insert con;
+        Profile profileId = [SELECT Id FROM Profile WHERE Name = 'IPS External Customer' LIMIT 1];
+         
+          User usr = new User(LastName = 'LIVESTON1',
+                            FirstName='JASON1',
+                            Alias = 'jliv1',
+                            Email = 'jason1.livesto@example.com',
+                            Username = 'jason1.liveston@asdf.com',
+                            ProfileId = profileId.id,
+                            TimeZoneSidKey = 'GMT',
+                            LanguageLocaleKey = 'en_US',
+                            EmailEncodingKey = 'UTF-8',
+                            LocaleSidKey = 'en_US',
+                            ContactId = con.id
+                            
+                           );
+        insert usr;
+
+        Asset asset= new Asset();
+        asset.Name='intel Products test';
+        insert asset; 
+        System.AssertEquals(asset.Id != null, true);
+        String RT = [Select Id,Name From RecordType Where SobjectType = 'Case' and DeveloperName ='IPS_Case_Create'].Id;
+        PageReference testPage = Page.RemovePSO; 
+        Test.setCurrentPage(testPage);
+        testPage.getParameters().put('Id',String.valueOf(con.Id));
+        Core_IPS_RemovePSO_Batch_Handler ext = new Core_IPS_RemovePSO_Batch_Handler();  
+        
+        ext.runBatch();
+    }
+    // Sowmya end - 08/10/2014 - TWC745-6800 - Fix test coverage for all failed classes
+            
 }

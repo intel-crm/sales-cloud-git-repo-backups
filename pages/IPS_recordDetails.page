@@ -1,0 +1,27 @@
+<apex:page standardController="Core_IPS_Project__c" extensions="recordDetails" action="{!redirPage}" >
+    <apex:form >
+        <apex:outputPanel id="secHdr">
+            <apex:sectionHeader title="Premier Support Project Edit" subtitle="{!Core_IPS_Project__c.Name}" />
+            <apex:outputPanel ></apex:outputPanel>
+        </apex:outputPanel>
+        
+        <apex:pageBlock id="pb1" mode="maindetail" title="Premier Support Project Edit" >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!Save}" value="Save"/>
+                <apex:commandButton action="{!saveNew}" value="Save & New" rerender="msgId"/>
+                <apex:commandButton action="{!Cancel}" value="Cancel"/>
+            </apex:pageBlockButtons>   
+            <apex:pageMessages id="msgId" ></apex:pageMessages>
+            <apex:pageBlockSection columns="2" >
+                    <apex:inputField value="{!Core_IPS_Project__c.Name}"/>
+                    <apex:inputField value="{!Core_IPS_Project__c.Core_Project_Description__c}"/>
+                    <apex:outputField value="{!Core_IPS_Project__c.Core_MPNDA__c}"/>
+                    <apex:outputField value="{!Core_IPS_Project__c.Core_IPS_Project_ID__c}"/>
+                    <apex:inputField value="{!Core_IPS_Project__c.Core_Status__c}"/>
+                    <apex:inputField value="{!Core_IPS_Project__c.Core_IPS_EnableMemberasInterestedParties__c}"/>
+                    <apex:inputField value="{!Core_IPS_Project__c.Core_IPS_Remove_Notification_Details__c}"/>
+                    <apex:outputField value="{!Core_IPS_Project__c.Core_IPS_Partner_Support_Owner__c}"/>
+            </apex:pageBlockSection>            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -19,6 +19,7 @@ private class Core_IPS_EmailOptController_Test {
     public static testmethod void EmailOptOut_test(){
         User u;
         getRecords();
+        
         Core_IPS_EmailOptController controller;
         System.runAs(systUserRunAs){
         u=TestUtilities.getCustomerUser('IPS External Customer');
@@ -27,8 +28,9 @@ private class Core_IPS_EmailOptController_Test {
         update cont;
         }
         System.runAs(u){
-            PageReference pageRef = Page.Core_IPS_EmailOpt;
-            Test.setCurrentPage(pageRef);
+            //commented for Classic EOL :Tejaswini
+        /*    PageReference pageRef = Page.Core_IPS_EmailOpt;
+            Test.setCurrentPage(pageRef); */
             controller = new Core_IPS_EmailOptController();
             List<String> choices = new List<String>();
             choices.add('OptOut');
@@ -55,8 +57,9 @@ private class Core_IPS_EmailOptController_Test {
         update cont;
         }
         System.runAs(u){
-            PageReference pageRef = Page.Core_IPS_EmailOpt;
-            Test.setCurrentPage(pageRef);
+             //commented for Classic EOL :Tejaswini
+        /*    PageReference pageRef = Page.Core_IPS_EmailOpt;
+            Test.setCurrentPage(pageRef); */
             controller = new Core_IPS_EmailOptController();
             List<String> choices = new List<String>();
             choices.add('OptIn');

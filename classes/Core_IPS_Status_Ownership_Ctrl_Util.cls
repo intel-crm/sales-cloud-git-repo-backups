@@ -7,7 +7,7 @@
 * @Author: Accellor
 ***************************************************************************************************/
 
-public without sharing class Core_IPS_Status_Ownership_Ctrl_Util {
+public class Core_IPS_Status_Ownership_Ctrl_Util {
     
     /*Start - TWC777-2514 - 08/08/2024 - Vishal - STOWD - Custom Implementation - Method invoked to create the Status & Ownership Records on Case update*/
     public static Boolean hasHandlerExecuted = false;
@@ -57,24 +57,12 @@ public without sharing class Core_IPS_Status_Ownership_Ctrl_Util {
     /*Start - TWC777-2303 - 07/05/2024 - Vishal - Below method is added to create the Status & Ownership record on Case Update scenarios*/
     public static void  createStatusOwnershipRecord(List<Id> caseIds){
         try{
-            /*Start - TWC777-3027 - 15/01/2025 - Vishal - Code added to fix the From date issue in Status & Ownership records. This will also fix the issue in Rollup summary fields data*/
-            Map<String,STOWD_Tracking_Field__mdt> obj = STOWD_Tracking_Field__mdt.getAll();
-            Set<String> caseHistSet = new Set<String>();
-            for(String key: obj.keyset() ){
-                caseHistSet.add(obj.get(key).FieldType__c);
-            }
-            caseHistSet.add('Owner'); // Owner field is explicitly added in the list because it is not present in the metadata and in the CaseHistory we need Owner field instead of OwnerID.
-            /*End - TWC777-3027 - 15/01/2025 - Vishal - Code added to fix the From date issue in Status & Ownership records. This will also fix the issue in Rollup summary fields data*/
-            
-            
             DateTime nowDateTime = DateTime.now();
             List<Case> caseObjList = new List<Case>();
             //FLS Added as Part of code refactor
             if(Case.SObjectType.getDescribe().isAccessible() && !caseIds.isEmpty()){
                 //Below query is added to assign Owner.Name value to newly created Status & Ownership record as we get only OwnerId in CaseList from Trigger
-                /*Start - TWC777-3027 - 15/01/2025 - Vishal - Added where condition for the CaseHistories*/
-                caseObjList = [SELECT id, caseNumber, Owner.Name, Status, Core_Sub_Status__c, Core_IPS_Assigned_Queue__c, Core_IPS_Escalated_Level__c, LastModifiedDate, (SELECT CreatedDate,Id FROM Histories WHERE Field IN: caseHistSet order by Createddate DESC limit 1) FROM Case WHERE Id IN : caseIds WITH SECURITY_ENFORCED];  /***/  
-                /*End - TWC777-3027 - 15/01/2025 - Vishal - Added where condition for the CaseHistories*/
+                caseObjList = [SELECT id, caseNumber, Owner.Name, Status, Core_Sub_Status__c, Core_IPS_Assigned_Queue__c, Core_IPS_Escalated_Level__c, LastModifiedDate, (SELECT CreatedDate,Id FROM Histories order by Createddate DESC limit 1) FROM Case WHERE Id IN : caseIds WITH SECURITY_ENFORCED];  /***/  
             }
             List<Status_Ownership_Duration__c> statusOwnershipList = new List<Status_Ownership_Duration__c>();
             if(!caseObjList.isEmpty()){

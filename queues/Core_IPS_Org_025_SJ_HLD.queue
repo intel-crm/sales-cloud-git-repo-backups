@@ -3,11 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>PSG-SJ-HLD!</name>
-    <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_IPS_Org_025_SJ_HLD</publicGroup>
-        </publicGroups>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

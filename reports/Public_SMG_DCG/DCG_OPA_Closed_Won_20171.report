@@ -18,6 +18,12 @@
             <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Sell-with</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deal: Scale-Estimate (per Finance)</sourceValue>
+            </sourceValues>
             <value>Sell Thru-With</value>
         </values>
     </buckets>
@@ -362,10 +368,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Oppty_Count__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Approved_Date__c</field>

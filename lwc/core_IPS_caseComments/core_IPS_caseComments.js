@@ -63,7 +63,7 @@ export default class Core_IPS_caseComments extends NavigationMixin(LightningElem
                 this.getRecentComments();
             }
         })
-        .catch(error =>{ 
+        .catch(error =>{
             console.log('  Error : ', error.message);
         })
     }

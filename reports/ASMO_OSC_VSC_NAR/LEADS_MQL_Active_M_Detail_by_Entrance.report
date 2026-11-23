@@ -33,7 +33,8 @@
     <columns>
         <field>COMPANY</field>
     </columns>
-    <description>Report Type: Leads - Filter on Lead Qual agent.Dashboard: LEAD Processing MGLs VSC NAR by LDRs</description>
+    <description>Report Type: Leads - Filter on Lead Qual agent.
+Dashboard: LEAD Processing MGLs VSC NAR by LDRs</description>
     <filter>
         <booleanFilter>1 and 2 AND 3 AND (4 OR 5)</booleanFilter>
         <criteriaItems>
@@ -62,14 +63,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Shayne Polson,Chelsie Williams,Richard Bunch,JohnX S Chambers,Bryan Bond,Camille Shupe,Diana Irizarry</value>
+            <value>Shayne Polson,Chelsie Williams,Richard Bunch,JohnX S Chambers,Bryan Bond,Camille Shupe</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Lead Qual</value>
+            <value>NAR QUAL</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

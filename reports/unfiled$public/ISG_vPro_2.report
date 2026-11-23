@@ -10,12 +10,6 @@
         <field>Opportunity.Core_Opportunity_Owner_Sub_Geo__c</field>
     </columns>
     <columns>
-        <field>ADDRESS1_COUNTRY_CODE</field>
-    </columns>
-    <columns>
-        <field>INDUSTRY</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -32,16 +26,13 @@
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
@@ -72,6 +63,13 @@
             <value>INTEL® VPRO™ TECHNOLOGY</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Deal: Sell-to</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -79,7 +77,7 @@
             <value>Industry Sales</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -98,13 +96,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Deal: Sell-to,Deal: Sell-through,Deal: Sell-with,Deal: Scale-Estimate (per Finance)</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Product_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Processors</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -132,9 +123,11 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <sortColumn>OPPORTUNITY_NAME</sortColumn>
-    <sortOrder>Desc</sortOrder>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

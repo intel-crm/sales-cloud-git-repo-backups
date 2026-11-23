@@ -7,52 +7,6 @@
                 <identifier>Core_BannerDisplay</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>dashboardId</name>
-                    <value>X2018_Pipeline_Analysis_Dashboard</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>enableNotifications</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>enableSubscriptions</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>height</name>
-                    <value>300</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideOnError</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>openLinksInNewWindow</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showHeader</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showPostToSlack</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showSharing</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showTitle</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>wave:waveDashboard</componentName>
-                <identifier>wave_waveDashboard</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>top</name>
         <type>Region</type>
     </flexiPageRegions>
@@ -65,7 +19,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;h2&gt;Trainings&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/customer-access-entitlements/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Access &amp;amp; Entitlement&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/account-contact-management/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Account &amp;amp; Contact Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/commissions-2/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Commissions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://soco.intel.com/docs/DOC-2541083&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Co-Marketing&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/salescrm-functionality/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;General Salesforce Functionality&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/intel-premier-support-ips/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;IPS Training&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://saleskpi.intel.com/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;KPI Definitions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/lead-management/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Lead Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/opportunity-management/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Opportunity Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/pipeline-management/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Pipeline Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/sales-crm/reporting/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Reporting&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/lightning-update-2/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(0, 95, 178);&quot;&gt;Introduction to Lightning Experience&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</value>
+                    <value>&lt;h2&gt;Trainings&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/&quot; target=&quot;_blank&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/account-and-contact-management/access-and-entitlement-2/&quot; target=&quot;_blank&quot;&gt;Access &amp;amp; Entitlement&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://salescrm.intel.com/training-and-help/account-and-contact-management/&quot; target=&quot;_blank&quot;&gt;Account &amp;amp; Contact Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/commissions-2/&quot; target=&quot;_blank&quot;&gt;Commissions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://soco.intel.com/docs/DOC-2541083&quot; target=&quot;_blank&quot;&gt;Co-Marketing&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/salescrm-functionality/&quot; target=&quot;_blank&quot;&gt;General Salesforce Functionality&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/intel-premier-support-ips/&quot; target=&quot;_blank&quot;&gt;IPS Training&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/kpi-definitions/&quot; target=&quot;_blank&quot;&gt;KPI Definitions&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/lead-management/&quot; target=&quot;_blank&quot;&gt;Lead Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/opportunity-management/&quot; target=&quot;_blank&quot;&gt;Opportunity Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/pipeline-management/&quot; target=&quot;_blank&quot;&gt;Pipeline Management&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/training-and-help/reporting/&quot; target=&quot;_blank&quot;&gt;Reporting&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://salescrm.intel.com/lightning-update-2/&quot; target=&quot;_blank&quot; style=&quot;color: rgb(0, 95, 178);&quot;&gt;Introduction to Lightning Experience&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>
@@ -79,7 +33,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 18px;&quot;&gt;Intel Salesforce Privacy &amp;amp; Personal Information Notice&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://intel.lightning.force.com/apex/Core_IPS_Intel_Terms_Of_Use&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Privacy Notice&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</value>
+                    <value>&lt;p&gt;&lt;b style=&quot;font-size: 18px;&quot;&gt;Intel Salesforce Privacy &amp;amp; Personal Information Notice&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://intel--crmqa2.lightning.force.com/apex/Core_IPS_Intel_Terms_Of_Use&quot; target=&quot;_blank&quot;&gt;Privacy Notice&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText2</identifier>

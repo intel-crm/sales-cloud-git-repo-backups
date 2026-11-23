@@ -20,10 +20,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Partner_Salesperson__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_UCD_Partner_Account_Name__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -37,10 +33,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Partner_Country__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>CRM_Unified_Global_Opportunity_Partner__c</field>
             </layoutItems>
             <layoutItems>
                 <emptySpace>true</emptySpace>

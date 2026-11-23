@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://www.test.salesforce.com</callbackUrl>
+    <certificate>MIIEBTCCAu2gAwIBAgIUDTiNcpSgTYnm+MK1TCZKhLynIjcwDQYJKoZIhvcNAQEL
+BQAwgZExCzAJBgNVBAYTAmluMRIwEAYDVQQIDAloeWRlcmFiYWQxETAPBgNVBAcM
+CG1hZGhhcHVyMQ4wDAYDVQQKDAVteW9yZzESMBAGA1UECwwJbXlvcmd1bml0MQ8w
+DQYDVQQDDAZzdW1lZXQxJjAkBgkqhkiG9w0BCQEWF3N1bWVldC5wb2xAYWNjZWxs
+b3IuY29tMB4XDTI1MDkxMTA5NDgyMloXDTI2MDkxMTA5NDgyMlowgZExCzAJBgNV
+BAYTAmluMRIwEAYDVQQIDAloeWRlcmFiYWQxETAPBgNVBAcMCG1hZGhhcHVyMQ4w
+DAYDVQQKDAVteW9yZzESMBAGA1UECwwJbXlvcmd1bml0MQ8wDQYDVQQDDAZzdW1l
+ZXQxJjAkBgkqhkiG9w0BCQEWF3N1bWVldC5wb2xAYWNjZWxsb3IuY29tMIIBIjAN
+BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyDrAZa4wihCwyPdB89bOQC0AWhij
+wO1MYH4GSz3Pg8Q6h2zrqot4bp0y0VAODReS2XDn6+v2likeUTDdCppoBxufAhjU
+WQPr+Nveuzt6dWHNnZ9np56176weF7IN/gUOUU7KlG6j8af5F1xE2XEB0Vf4rOiA
+8g5nkIPJFGzv/ebkphde9C7iNKj4YNxG8pnAQ2T7w0rzVNlG3OHY0ptI81UcZbcG
+IB4uHF7ktXTIpeWRuA0OSGZZjNYhNZZR2/GlNfh1h76ncjXm7ZIhYizAj5iFLaaW
+JpiMGhy98ILVDlLrmy2sn2tzHOVjYz9MxCEHuekN6u3S93Nt/4KFBvTsAwIDAQAB
+o1MwUTAdBgNVHQ4EFgQUSt2iLm1LW1uFhnzH+LpV3oskjnEwHwYDVR0jBBgwFoAU
+St2iLm1LW1uFhnzH+LpV3oskjnEwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0B
+AQsFAAOCAQEAlWVmfXNg4VrE+t1Xb2GhzOniCA6ERgnpGO6Qai7x5GNHzry69Cjg
+0VJfZC/Rl+UkGIHqIIO/kst2A9Xi6NpGDnvddpd+IEt6NjvSaauOOhzZAFVbEfhD
+dmrs9OoCReFzC+tiDOhDJi/vIamHFMwehn2AL4JAnNASGt61DiNN2hXGphPRkAaw
+Hqk4WGYnnSPnu95uN09GwImJTfCPyYoVDEwL0UB9M+paunicjfKKEs6kD1mdbuQ3
+X5wVfLwvMUa0RKS9gkM3aaW8Bb0WZcCQjabqlZb/Jn1SGU724nE49C5SEhkMslEM
+Ky4GMxhGKB4BM/TW943clzReQ2Z4H9NJBA==</certificate>
+    <consumerKey>3MVG9JamK_x9K2XIz6FKasGquU_Sfqd_Q6gQjSxk7JzaG1fWtY_Fr.4FlwH1t6ivQNkbyjsRYp860jNthnR5Z</consumerKey>
+    <externalClientApplication>Mytest</externalClientApplication>
+    <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>true</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>true</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>Mytest_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

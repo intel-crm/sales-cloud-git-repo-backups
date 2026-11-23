@@ -58,6 +58,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Opportunity__c.Name</field>
+            <table>Core_IPS_Opportunity__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Opportunity__c.Core_Opportunity_Owner__c</field>
             <table>Core_IPS_Opportunity__c</table>
         </columns>
@@ -68,27 +73,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity__c.TotalOpportunityQuantity</field>
-            <table>Core_IPS_Opportunity__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Opportunity__c.StageName</field>
-            <table>Core_IPS_Opportunity__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity__c.IsWon</field>
-            <table>Core_IPS_Opportunity__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity__c.Type</field>
-            <table>Core_IPS_Opportunity__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity__c.Core_Opportunity_Type__c</field>
             <table>Core_IPS_Opportunity__c</table>
         </columns>
         <columns>
@@ -98,17 +83,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Project__c.Core_IPS_Private__c</field>
-            <table>Core_IPS_Opportunity__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Project__c.Core_Status__c</field>
             <table>Core_IPS_Opportunity__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Opportunity__c.Id</field>
+            <table>Core_IPS_Opportunity__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Opportunity__c.Core_Opportunity_Products__c</field>
+            <table>Core_IPS_Opportunity__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity_ID__c</field>
             <table>Core_IPS_Opportunity__c</table>
         </columns>
         <masterLabel>Premier Support Opportunities</masterLabel>

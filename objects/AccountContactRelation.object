@@ -32,15 +32,6 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>AccountId</fullName>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>Account.RecordType.Name</field>
-                <operation>notEqual</operation>
-                <value>Direct Account</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <type>Lookup</type>
     </fields>
     <fields>

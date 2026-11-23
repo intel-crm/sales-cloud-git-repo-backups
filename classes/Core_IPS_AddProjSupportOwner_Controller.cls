@@ -120,6 +120,7 @@ public with sharing class Core_IPS_AddProjSupportOwner_Controller {
         List<Core_IPS_Intel_Support_Team__c> supportTeamLst = Database.queryWithBinds(strQuery, bindMap, AccessLevel.USER_MODE);
 
         for(Core_IPS_Intel_Support_Team__c objIST : supportTeamLst) {
+            System.debug('objIST =='+objIST);
            // SOQL Injection Fix - End -  Shipra
             wrapUser objWU = new wrapUser();
             objWU.userId = objIST.Core_IPS_User__c;

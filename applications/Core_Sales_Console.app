@@ -193,13 +193,37 @@
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>Ask_a_Question</tabs>
-    <tabs>Account_Create_Request__c</tabs>
+    <tabs>Core_Flat_Product_Hierarchy__c</tabs>
+    <tabs>Core_RestAPI_Transaction_Entry__c</tabs>
+    <tabs>Core_AAQC_Case_Comments__c</tabs>
+    <tabs>Core_IPS_BES_Outbound_Message__c</tabs>
+    <tabs>Core_IPS_BES_Inbound_Message__c</tabs>
+    <tabs>Core_IPS_Backend_System2__c</tabs>
+    <tabs>Core_IPS_Opportunity_PAR__c</tabs>
     <workspaceConfig>
         <mappings>
-            <tab>Account_Create_Request__c</tab>
+            <tab>Ask_a_Question</tab>
         </mappings>
         <mappings>
-            <tab>Ask_a_Question</tab>
+            <tab>Core_AAQC_Case_Comments__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_Flat_Product_Hierarchy__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_IPS_BES_Inbound_Message__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_IPS_BES_Outbound_Message__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_IPS_Backend_System2__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_IPS_Opportunity_PAR__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_RestAPI_Transaction_Entry__c</tab>
         </mappings>
         <mappings>
             <tab>standard-Account</tab>

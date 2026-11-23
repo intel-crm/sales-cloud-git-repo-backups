@@ -1,0 +1,81 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="menuItems" type="Object[]" />
+    <aura:attribute name="My_Cases" type="Boolean" default="false"/>
+    <aura:attribute name="My_Projects" type="Boolean" default="false"/>
+    <aura:attribute name="My_Products" type="Boolean" default="false"/>
+    <aura:attribute name="Contacts" type="Boolean" default="false"/>
+    
+    <div style="background:#f7f7f7">
+        <div class="slds-p-bottom_small">
+            <input type="button" class="btn" value="Create a New Case"></input>
+        </div>
+        <div class="slds-p-top_small">
+            <input type="button" class="btn" value="Create a New Project"></input>
+        </div>
+        <div class="slds-m-left--xx-large ">
+            
+            <lightning:layout>
+                
+                <lightning:layoutItem>
+                    
+                    <lightning:verticalNavigation onbeforeselect="{!c.handleBeforeSelect}"
+                                                  selectedItem=""
+                                                  onselect="{!c.handleChange}">
+                        <lightning:verticalNavigationSection label="" >
+                            <lightning:verticalNavigationItem label="My Cases" name="My_Cases" class="sideNavigate"/>
+                            <lightning:verticalNavigationItem label="My Projects" name="My_Projects" class="sideNavigate"/>
+                            <lightning:verticalNavigationItem label="My Intel Products" name="My_Products" class="sideNavigate"/>
+                            <lightning:verticalNavigationItem label="Contacts" name="Contacts" class="sideNavigate"/>
+                        </lightning:verticalNavigationSection>
+                    </lightning:verticalNavigation>
+                    
+                </lightning:layoutItem>
+                
+                <aura:if isTrue="{!v.My_Cases}">
+                    <lightning:layoutItem padding="around-medium">
+                        <p>My Cases</p>
+                    </lightning:layoutItem>
+                </aura:if>
+                <aura:if isTrue="{!v.My_Projects}">
+                    <lightning:layoutItem padding="around-medium">
+                        <p>My Projects </p>
+                    </lightning:layoutItem>
+                </aura:if>
+                <aura:if isTrue="{!v.My_Products}">
+                    <lightning:layoutItem padding="around-medium">
+                        <p>My Products </p>
+                    </lightning:layoutItem>
+                </aura:if>
+                <aura:if isTrue="{!v.Contacts}">
+                    <lightning:layoutItem padding="around-medium">
+                        <p>My Contacts</p>
+                    </lightning:layoutItem>
+                </aura:if>
+            </lightning:layout>
+        </div>   
+        
+        
+        
+        
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_2-of-12  ">
+                <span></span>
+            </div>
+            <div class="slds-col slds-size_2-of-12 Rectangle">
+                <span>My Intel Business</span><br/>Applications and Tools
+            </div>
+            <div class="slds-col slds-size_2-of-12 Rectangle">
+                <span>Confidentiality Statement</span>
+            </div>
+            <div class="slds-col slds-size_2-of-12 Rectangle">
+                <span>Preferences</span>
+            </div>
+            <div class="slds-col slds-size_2-of-12 Rectangle">
+                <span>Resource Design Center</span>
+            </div>
+            <div class="slds-col slds-size_2-of-12 Rectangle ">
+                <span>Validation Internet Portal</span><br/>(VIP)
+            </div>
+        </div>
+    </div>
+</aura:component>

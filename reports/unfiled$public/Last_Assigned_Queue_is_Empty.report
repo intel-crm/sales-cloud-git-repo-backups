@@ -28,7 +28,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.IPS_GEC_ReadOnly,Case.CEP_Case</value>
+            <value>Case.IPS_GEC_ReadOnly,012o0000000pEh8</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

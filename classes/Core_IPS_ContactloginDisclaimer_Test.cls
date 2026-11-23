@@ -10,7 +10,8 @@ covering following methods
     static testMethod void Core_IPS_ContactloginDisclaimerTestMethod1() 
     {
         
-        Document Doc = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential');    
+        Document Doc = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential');  
+        System.assert(Doc.Id != null);
         User u = getCustomerUser('IPS External Customer','Today'); 
         try{
             system.runAs(u)
@@ -18,11 +19,12 @@ covering following methods
                 Core_IPS_ContactloginDisclaimer Disclaimer =  new Core_IPS_ContactloginDisclaimer();
                 Disclaimer.cancel();
                 PageReference Pg = Disclaimer.redirect();
+                
             }
         }catch(Exception e){
             
         }
-          System.AssertEquals(u != null, true);
+        
         
     }
     /*
@@ -34,7 +36,9 @@ covering following methods
     static testMethod void Core_IPS_ContactloginDisclaimerTestMethod2() 
     {
         
-        Document Doc = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential');    
+        Document Doc = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential');
+        System.assert(Doc.Id != null);
+        
         //User u = TestUtilities.getCustomerUser('IPS External Customer'); 
         //system.runAs(u)
         //{
@@ -43,9 +47,8 @@ covering following methods
         PageReference Pg =   Disclaimer.redirect();
         Pg = Disclaimer.redirectAutomate();
         //}
-         System.AssertEquals(Doc != null, true);
+        
     }
-
     /*
 for the class Core_IPS_ContactloginDisclaimer
 covering following methods   
@@ -56,6 +59,7 @@ covering following methods
     {
         
         Document Doc = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential'); 
+        System.assert(Doc.Id != null);
         
         User CommunityUser = getCustomerUser('IPS External Customer','Today');
         User CommunityUserwithNoDate = getCustomerUser('IPS External Customer','NoDate');
@@ -73,13 +77,13 @@ covering following methods
         System.runAs(CommunityUserwithNoDate){
             
             Core_IPS_ContactloginDisclaimer Disclaimer =  new Core_IPS_ContactloginDisclaimer();
-            System.AssertEquals(Doc != null, true);
             
             Pagereference Pg = Disclaimer.redirectAutomate();
-             System.AssertEquals(CommunityUser != null, true);
+            
         } 
         Test.stopTest();
-        System.AssertEquals(Doc != null, true);
+        
+        
     }
     
     private static User getCustomerUser(String profileName,String type){
@@ -134,7 +138,6 @@ covering following methods
                 contactId = con.id
             );
             insert newUser;            
-             System.AssertEquals(newUser != null, true);           
         }
         return newUser;
     }

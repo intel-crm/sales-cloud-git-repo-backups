@@ -104,7 +104,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>1SX</value>
+            <value>10SX</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Business_Unit_Territory__c</column>

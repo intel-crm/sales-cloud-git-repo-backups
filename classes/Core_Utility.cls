@@ -47,8 +47,8 @@ public class Core_Utility{
         boolean bIsLeadOp = Schema.Lead.getSObjectType() == listNewSObject[0].getSobjectType() ? true: false;
         
         // Capture the set of status for which the validation rule must be applicable
-        Set<String> setLeadStatuses = new Set<String>{ System.Label.Core_LeadStatusSalesAcceptedLead
-                                                    };
+        Set<String> setLeadStatuses = new Set<String>{ System.Label.Core_LeadStatusSalesAcceptedLead,
+                                                    System.Label.Core_LeadStatusSalesQualifiedLead};
         
         //call the function to store the User record    
         Set<String> sProfileName = new Set<String>{}; 
@@ -179,19 +179,29 @@ public class Core_Utility{
     * Parameter    : 
     */
     public static String replaceSpecialCharacWithUnderscore(String sStringToBeReplaced){
-        //Run the loop for the special characters
-        for(String sSpecialCharc : System.Label.Core_SpecialCharacter.Split(';')){
-            //if(String.isNotBlank(sStringToBeReplaced))
-                sStringToBeReplaced = sStringToBeReplaced.replace(sSpecialCharc,'_');  
-        }
-        sStringToBeReplaced = sStringToBeReplaced.replace('__','_');
-        sStringToBeReplaced = sStringToBeReplaced.removeEnd('_');
-        
-        return sStringToBeReplaced;
+        // Exception Handling fix: Regex too complicated
+        try
+        {
+                //Run the loop for the special characters
+                for(String sSpecialCharc : System.Label.Core_SpecialCharacter.Split(';')){
+                    //if(String.isNotBlank(sStringToBeReplaced))
+                        sStringToBeReplaced = sStringToBeReplaced.replace(sSpecialCharc,'_');  
+                }
+                sStringToBeReplaced = sStringToBeReplaced.replace('__','_');
+                sStringToBeReplaced = sStringToBeReplaced.removeEnd('_');
+                
+                return sStringToBeReplaced;
+      	}
+        catch(exception ex)
+        {
+            system.debug('Unsucessful send email :::: ' + ex.getMessage());
+            
+        }        
+        return null;         
     }
     
     //Variable to store the User record
-    private static User currentUser{get;set;}
+    public static User currentUser{get;set;}
     
     /*
     * Method name  : getcurrentUser
@@ -204,10 +214,7 @@ public class Core_Utility{
             return currentUser;
         } 
         else{
-            List<User> userList = [SELECT Id, Profile.Name FROM User WHERE Id = :UserInfo.getUserId()];
-            if(userList.size() > 0) {
-                currentUser = userList[0];
-            }
+            currentUser = [SELECT Id, Profile.Name FROM User WHERE Id = :UserInfo.getUserId()];
             return null;
         }
     }
@@ -625,7 +632,7 @@ public class Core_Utility{
     public static String getPartnerUserType(String Userid){
         String authrType;
         String partUser;
-        String prtCust = '0PS1J000000LIlp';//System.Label.Core_IPS_Partner_Customer_Permission_Set;
+        String prtCust = '0PS3F0000004ENc';//System.Label.Core_IPS_Partner_Customer_Permission_Set;
         String prtDFAE =  System.Label.Core_IPS_Partner_DFAE_Permission_Set;
         List<PermissionSetAssignment> partnersInPermsnSet = new List<PermissionSetAssignment>();
         partnersInPermsnSet = [Select id,PermissionSetId,AssigneeId from PermissionSetAssignment where AssigneeId = :userId and (PermissionSetId =:prtDFAE OR PermissionSetId =:prtCust) LIMIT 1];

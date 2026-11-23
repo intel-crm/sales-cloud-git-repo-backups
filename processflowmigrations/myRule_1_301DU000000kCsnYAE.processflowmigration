@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Core_IPS_CaseComment_Backend_OutMsg_1</destinationFlowDefinition>
+    <destinationFlowVersion>Core_IPS_CaseComment_Backend_OutMsg_1-1</destinationFlowVersion>
+    <developerName>myRule_1_301DU000000kCsnYAE</developerName>
+    <masterLabel>Core IPS CaseComment Backend OutMsg_1</masterLabel>
+    <migratedCriteriaLabel>Outbound criteria</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Core_IPS_CaseComment_Backend_OutMsg-26</processVersion>
+</ProcessFlowMigration>

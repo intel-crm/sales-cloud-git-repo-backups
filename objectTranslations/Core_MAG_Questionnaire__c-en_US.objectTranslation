@@ -2,11 +2,11 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>MINDS Questionnaire</value>
+        <value>MAG Questionnaire</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>MINDS Questionnaires</value>
+        <value>MAG Questionnaires</value>
     </caseValues>
     <fields>
         <label><!-- Answer #10 --></label>
@@ -75,7 +75,7 @@
     <fields>
         <label><!-- Opportunity --></label>
         <name>Core_Opportunity__c</name>
-        <relationshipLabel><!-- MINDS Questionnaires --></relationshipLabel>
+        <relationshipLabel><!-- MAG Questionnaires --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Outtro --></label>

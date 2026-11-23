@@ -16,6 +16,7 @@
     <tabs>standard-GenAIMetadataStudio</tabs>
     <tabs>standard-GenAiDataPrismPlayground</tabs>
     <tabs>standard-SemanticModel</tabs>
+    <tabs>standard-SemanticContext</tabs>
     <tabs>standard-IdentityResolution</tabs>
     <tabs>standard-ProfileExplorer</tabs>
     <tabs>standard-MktCalculatedInsight</tabs>
@@ -24,25 +25,21 @@
     <tabs>standard-MarketSegment</tabs>
     <tabs>standard-ActivationTarget</tabs>
     <tabs>standard-MarketSegmentActivation</tabs>
-    <tabs>standard-DataSpace</tabs>
     <tabs>standard-MlWorkspace</tabs>
     <tabs>standard-DataSemanticSearch</tabs>
+    <tabs>standard-DataObjSecondaryIndex</tabs>
+    <tabs>standard-UnstructuredData</tabs>
     <tabs>standard-MktAiPredictiveInsight</tabs>
     <tabs>standard-DataGraph</tabs>
     <tabs>standard-ExtDataShare</tabs>
     <tabs>standard-ExtDataShareTarget</tabs>
     <tabs>standard-DataQueryWorkspace</tabs>
+    <tabs>standard-DataQuickAttribute</tabs>
+    <tabs>standard-KnowledgeSpace</tabs>
+    <tabs>standard-Agents</tabs>
     <tabs>standard-MktDataTransform</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
-    <tabs>standard-DataCommunicationCap</tabs>
-    <tabs>standard-DataObjSecondaryIndex</tabs>
-    <tabs>standard-UnstructuredData</tabs>
-    <tabs>standard-DataGovernance</tabs>
     <tabs>standard-DataCleanRoom</tabs>
-    <tabs>standard-DataQuickAttribute</tabs>
-    <tabs>standard-Agents</tabs>
-    <tabs>standard-SemanticContext</tabs>
-    <tabs>standard-KnowledgeSpace</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

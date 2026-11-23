@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_ExternalUser_IPS_Project_Ctrl_Test</testClassName>
+    <testClassName>Core_IPS_AddDependentAnswersExtTest</testClassName>
+    <testClassName>Core_IPS_Customer_Case_Controller_v1Test</testClassName>
+    <testClassName>Core_IPS_Customer_Case_ControllerAG_Test</testClassName>
+    <testClassName>Core_IPS_Interested_Party_Ext_Con_Test</testClassName>
+    <testClassName>Core_IPS_LookupController_Test</testClassName>
+    <testClassName>showMAGquestionaire_Test</testClassName>
+</ApexTestSuite>

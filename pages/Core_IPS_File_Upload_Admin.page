@@ -21,7 +21,7 @@ Modification Log :
             // Connect to the CometD endpoint
             $.cometd.init({
                 url: window.location.protocol+'//'+window.location.hostname+'/cometd/34.0/',
-                requestHeaders: { Authorization: 'OAuth {!$Api.Session_ID}'}
+                requestHeaders: { Authorization: 'OAuth {!JSENCODE($Api.Session_ID)}'}
             });
             
             // Subscribe to a topic. JSON-encoded update will be returned
@@ -41,9 +41,9 @@ Modification Log :
         <apex:pageBlock title="{!$Label.Core_IPS_File_AdmnFlUpldPgTitle}" mode="maindetail"> 
             <apex:pageBlockButtons location="top" >
                 <div class="center"> 
-                    <apex:commandButton onclick="window.open('{!URL}','_blank');return false;" value="{!$Label.Core_IPS_File_AdmnFlUpldPgSCFTLnk}"/>
-                    <apex:commandButton onclick="window.open('{!fUpldmMasterPrefix}','_blank');return false;" value="{!$Label.Core_IPS_File_AdmnFlUpldPgListView}"/>
-                    <apex:commandButton onclick="window.open('{!fAssignPrefix}','_blank');return false;" value="{!$Label.Core_IPS_File_AdmnFlUpldPgRptAAF}"/>
+                    <apex:commandButton onclick="window.open('{!JSENCODE(URL)}','_blank');return false;" value="{!$Label.Core_IPS_File_AdmnFlUpldPgSCFTLnk}"/>
+                    <apex:commandButton onclick="window.open('{!JSENCODE(fUpldmMasterPrefix)}','_blank');return false;" value="{!$Label.Core_IPS_File_AdmnFlUpldPgListView}"/>
+                    <apex:commandButton onclick="window.open('{!JSENCODE(fAssignPrefix)}','_blank');return false;" value="{!$Label.Core_IPS_File_AdmnFlUpldPgRptAAF}"/>
                 </div>
             </apex:pageBlockButtons>
         </apex:pageBlock>

@@ -29,11 +29,23 @@
         <useOther>false</useOther>
         <values>
             <sourceValues>
+                <sourceValue>Networking</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Storage</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Server</sourceValue>
             </sourceValues>
             <value>Server</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Desktop</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Point of Sale</sourceValue>
+            </sourceValues>
             <value>Client</value>
         </values>
     </buckets>

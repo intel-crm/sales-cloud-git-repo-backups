@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <description>B2B</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>B2B</label>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Asset</tabs>
+    <tabs>standard-Case</tabs>
+    <tabs>Core_Log_Entry__c</tabs>
+    <tabs>Core_RestAPI_Transaction_Entry__c</tabs>
+    <tabs>Core_IPS_Assigned_Environment_Variables__c</tabs>
+    <tabs>Core_IPS_Environment_Details__c</tabs>
+    <tabs>Core_IPS_Environment_Variables__c</tabs>
+    <tabs>standard-Product2</tabs>
+    <tabs>Core_IPS_Product_Organization__c</tabs>
+    <tabs>Core_IPS_Project__c</tabs>
+    <tabs>Core_IPS_Supported_Product__c</tabs>
+    <tabs>Core_IPS_Case_Interested_Party__c</tabs>
+    <tabs>Core_IPS_Product_Issue_Category__c</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>Core_IPS_Response__c</tabs>
+    <tabs>Core_IPS_Question__c</tabs>
+    <tabs>Core_IPS_Answer__c</tabs>
+    <tabs>Core_AAQC_Case_Comments__c</tabs>
+    <tabs>Core_IPS_BES_Outbound_Message__c</tabs>
+    <tabs>Core_IPS_BES_Inbound_Message__c</tabs>
+    <tabs>Core_IPS_Backend_System2__c</tabs>
+    <tabs>Core_IPS_Opportunity_PAR__c</tabs>
+</CustomApplication>

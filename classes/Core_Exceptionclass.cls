@@ -39,7 +39,11 @@ public without sharing class Core_Exceptionclass
        }
        catch(exception ex1)
        {
+         
        }
+       
+       
+       
        return '';
    }
 }

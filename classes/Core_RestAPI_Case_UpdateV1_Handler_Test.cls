@@ -11,35 +11,42 @@
             proj.Core_Status__c = 'Draft';
             proj.Name = 'testProj';
             insert proj;
-            
+            System.assert(proj.Id != null, 'Record not created');
+
             Account accObj = Core_RestAPI_TestUtilities.getAccountRecord();
             accObj.Ownerid = adminUser.id;
             accObj.Core_IPS_Active__c = true;
             insert accObj;
-            
+            System.assert(accObj.Id != null, 'Record not created');
+
             Contact conObj = Core_RestAPI_TestUtilities.getContact();
             conObj.AccountId= accObj.id;
             conObj.MailingCountry = 'India';
             insert conObj;
+			System.assert(conObj.Id != null, 'Record not created');
             
             Contact conObj1 = Core_RestAPI_TestUtilities.getContact();
             conObj1.AccountId= accObj.id;
             conObj1.Email = 'Contact123Dell@gmail.com';
             conObj1.MailingCountry = 'India';
             insert conObj1;
+            System.assert(conObj1.Id != null, 'Record not created');
+
             
             Core_IPS_Product_Organization__c  org =new Core_IPS_Product_Organization__c ( 
                 Core_IPS_Support_Org_Name__c = 'TestName',
                 Core_Organization_Description__c = 'TestDescription'        
             );
             insert org;
-            
+            System.assert(org.Id != null, 'Record not created');
+
             Core_IPS_Product_Organization__c  org1 =new Core_IPS_Product_Organization__c ( 
                 Core_IPS_Support_Org_Name__c = 'TestName',
                 Core_Organization_Description__c = 'TestDescription'        
             );
             insert org1;
-            
+            System.assert(org1.Id != null, 'Record not created');
+
             Product2 prod = new Product2(
                 Name = 'Haswell EP',
                 Core_Sales_Visible_Flag__c = false,
@@ -49,7 +56,8 @@
                 Core_Product_Org__c = 'IPS'
             ); 
             insert prod;
-            
+            System.assert(prod.Id != null, 'Record not created');
+
             Product2 prod1 = new Product2(
                 Name = 'Haswell EP',
                 Core_Sales_Visible_Flag__c = false,
@@ -59,7 +67,8 @@
                 Core_Product_Org__c = 'IPS'//@@New Validation Rule!!!
             ); 
             insert prod1;
-            
+            System.assert(prod1.Id != null, 'Record not created');
+
             Core_IPS_Supported_Product__c sp= new Core_IPS_Supported_Product__c(
                 Core_Product_Organization__c = org.Id,
                 //commented by nagendra for Aspn fixes
@@ -68,7 +77,8 @@
                 Core_Product__c=prod.id
             );
             insert sp;
-            
+            System.assert(sp.Id != null, 'Record not created');
+
             Core_IPS_Supported_Product__c sp1= new Core_IPS_Supported_Product__c(
                 Core_Product_Organization__c = org1.Id,
                 Core_EOIS__c = false,
@@ -77,6 +87,7 @@
             );
             
             insert sp1;
+			System.assert(sp1.Id != null, 'Record not created');
             
             List<Asset> AssetList = Core_RestAPI_TestUtilities.getAssetList(5); 
             for(Integer i=0;i<=(AssetList.size()-1);i++){
@@ -86,19 +97,24 @@
                 objAsset.Core_Supported_Product__c=sp.Id;
             }
             insert AssetList;
-            
+            System.assert(AssetList[0].Id != null, 'Record not created');
+
             Core_RestAPI_Response_Codes__c lstResponceCode = new Core_RestAPI_Response_Codes__c(name ='InvalidInputField', Core_Message__c= 'Invalid Input' , Core_Code__c ='9011');
             insert lstResponceCode;
+            System.assert(lstResponceCode.Id != null, 'Record not created');
+
             Core_RestAPI_Response_Codes__c lstResponceCode1 = new Core_RestAPI_Response_Codes__c(name ='InActiveProduct', Core_Message__c= 'Intel Product is inactive' , Core_Code__c ='9015');
             insert lstResponceCode1;
-            
+            System.assert(lstResponceCode1.Id != null, 'Record not created');
+
             Case csObj = Core_RestAPI_TestUtilities.getCase();
             conObj.AccountId= accObj.id;
             csObj.ContactId = conObj.Id;
             csObj.assetId = AssetList[0].id;
             csObj.Core_IPS_Customer_Visible__c = true;
             insert csObj;
-            
+            System.assert(csObj.Id != null, 'Record not created');
+
             Case csObj1 = Core_RestAPI_TestUtilities.getCase();
             csObj1.AccountId= accObj.id;
             csObj1.ContactId = conObj.Id;
@@ -106,7 +122,8 @@
             csObj1.Core_IPS_Customer_Visible__c = false;
             csObj1.status = 'Closed';
             insert csObj1;
-            
+            System.assert(csObj1.Id != null, 'Record not created');
+
             Case csObj2 = Core_RestAPI_TestUtilities.getCase();
             csObj2.AccountId= accObj.id;
             csObj2.ContactId = conObj.Id;
@@ -114,7 +131,8 @@
             csObj2.Core_IPS_Customer_Visible__c = false;
             csObj2.status = 'Closed';
             insert csObj2;
-            
+            System.assert(csObj2.Id != null, 'Record not created');
+
             Case csObj3 = Core_RestAPI_TestUtilities.getCase();
             csObj3.AccountId= accObj.id;
             csObj3.ContactId = conObj.Id;
@@ -122,7 +140,8 @@
             csObj3.Core_IPS_Customer_Visible__c = false;
             csObj3.status = 'Closed';
             insert csObj3;
-            
+            System.assert(csObj3.Id != null, 'Record not created');
+ 
             Case csObj4 = Core_RestAPI_TestUtilities.getCase();
             csObj4.AccountId= accObj.id;
             csObj4.ContactId = conObj.Id;
@@ -130,7 +149,8 @@
             csObj4.Core_IPS_Customer_Visible__c = false;
             csObj4.status = 'Open';
             insert csObj4;
-            
+            System.assert(csObj4.Id != null, 'Record not created');
+
             List<Core_IPS_Product_Issue_Category__c> CategoriesList = Core_RestAPI_TestUtilities.getListOfCoreProdIssCategory(10);
             for(Integer i=0;i<CategoriesList.size()/2;i++){
                 Core_IPS_Product_Issue_Category__c objAPI = CategoriesList[i]; 
@@ -139,6 +159,7 @@
                 objAPI.OwnerId=adminuser.id; 
             }
             Insert CategoriesList;
+			System.assert(CategoriesList[0].Id != null, 'Record not created');
             
             List<Core_IPS_Product_Issue_Category__c> CategoriesandSubCategoriesList = Core_RestAPI_TestUtilities.getListOfCoreProdIssCategory(10);
             for(Integer i=0;i<CategoriesandSubCategoriesList.size()/2;i++){
@@ -150,7 +171,8 @@
                 
             }
             insert CategoriesandSubCategoriesList;//inserting records for Admin user and community user
-           
+            System.assert(CategoriesandSubCategoriesList[0].Id != null, 'Record not created');
+
             List<Core_IPS_Product_Issue_Category__c> CategoriesList1 = Core_RestAPI_TestUtilities.getListOfCoreProdIssCategory(10);
             for(Integer i=0;i<CategoriesList.size()/2;i++){
                 Core_IPS_Product_Issue_Category__c objAPI = CategoriesList1[i]; 
@@ -159,7 +181,8 @@
             }
             
             Insert CategoriesList1;
-            
+            System.assert(CategoriesList1[0].Id != null, 'Record not created');
+
             List<Core_IPS_Product_Issue_Category__c> CategoriesandSubCategoriesList1 = Core_RestAPI_TestUtilities.getListOfCoreProdIssCategory(10);
             for(Integer i=0;i<CategoriesandSubCategoriesList.size()/2;i++){
                 Core_IPS_Product_Issue_Category__c objAPI = CategoriesandSubCategoriesList1[i]; 
@@ -169,57 +192,69 @@
                 
             }
             insert CategoriesandSubCategoriesList1;
+            System.assert(CategoriesandSubCategoriesList1[0].Id != null, 'Record not created');
+
 // =======================================================================================================================
             // text question
             Core_IPS_Question__c quest1 = Core_RestAPI_TestUtilities.getCoreQuestion();
             quest1.Core_IPS_Product_Organization__c=org.id;
             insert quest1;
-            
+            System.assert(quest1.Id != null, 'Record not created');
+
             // text Area question
             Core_IPS_Question__c quest2 = Core_RestAPI_TestUtilities.getCoreQuestion();
             quest2.Core_IPS_Datatype__c = 'Text Area';
             quest2.Core_IPS_Product_Organization__c=org.id;
             insert quest2;
-            
+            System.assert(quest2.Id != null, 'Record not created');
+
             // picklist question
             Core_IPS_Question__c quest3 = Core_RestAPI_TestUtilities.getCoreQuestion();
             quest3.Core_IPS_Datatype__c = 'Picklist';
             quest3.Core_IPS_Product_Organization__c=org.id;
             insert quest3;
-            
+            System.assert(quest3.Id != null, 'Record not created');
+
             // multi- picklist question
             Core_IPS_Question__c quest4 = Core_RestAPI_TestUtilities.getCoreQuestion();
             quest4.Core_IPS_Datatype__c = 'Multiselect Picklist';
             quest4.Core_IPS_Product_Organization__c=org.id;
             insert quest4;
-            
+            System.assert(quest4.Id != null, 'Record not created');
+
             // answers for picklist question           
             Core_IPS_Answer__c picklist1Ans1= Core_RestAPI_TestUtilities.getCoreAnswer();
             picklist1Ans1.Core_IPS_Question__c = quest3.id ;
             insert picklist1Ans1;
-            
+            System.assert(picklist1Ans1.Id != null, 'Record not created');
+
             Core_IPS_Answer__c picklist1Ans2= Core_RestAPI_TestUtilities.getCoreAnswer();
             picklist1Ans2.Core_IPS_Question__c = quest3.id ;
             insert picklist1Ans2;
-            
+            System.assert(picklist1Ans2.Id != null, 'Record not created');
+
             Core_IPS_Answer__c picklist1Ans3= Core_RestAPI_TestUtilities.getCoreAnswer();
             picklist1Ans3.Core_IPS_Question__c = quest3.id ;
             insert picklist1Ans3;
-            
+            System.assert(picklist1Ans3.Id != null, 'Record not created');
+
             // answers for multiselect  picklist question  
             
-             Core_IPS_Answer__c multPicklist1Ans1= Core_RestAPI_TestUtilities.getCoreAnswer();
+            Core_IPS_Answer__c multPicklist1Ans1= Core_RestAPI_TestUtilities.getCoreAnswer();
             multPicklist1Ans1.Core_IPS_Question__c = quest4.id ;
             insert multPicklist1Ans1;
-            
+            System.assert(multPicklist1Ans1.Id != null, 'Record not created');
+
             Core_IPS_Answer__c multPicklist1Ans2= Core_RestAPI_TestUtilities.getCoreAnswer();
             multPicklist1Ans2.Core_IPS_Question__c = quest4.id ;
             insert multPicklist1Ans2;
-            
+            System.assert(multPicklist1Ans2.Id != null, 'Record not created');
+
             Core_IPS_Answer__c multPicklist1Ans3= Core_RestAPI_TestUtilities.getCoreAnswer();
             multPicklist1Ans3.Core_IPS_Question__c = quest4.id ;
             insert multPicklist1Ans3;
-            
+            System.assert(multPicklist1Ans3.Id != null, 'Record not created');
+
       
             // creating env operational for each type of question 
 
@@ -228,38 +263,38 @@
             ObjEnvVar1.Core_IPS_Question__c =quest1.id;
             ObjEnvVar1.Core_Supported_Product__c=sp.id;
             insert ObjEnvVar1;//inserting record for admin user
-            
+            System.assert(ObjEnvVar1.Id != null, 'Record not created');
+
             Core_IPS_Assigned_Environment_Variables__c ObjEnvVar2= Core_RestAPI_TestUtilities.getEnvironmentalDetailsOperational();
             ObjEnvVar2.Core_Product_Issue_Sub_Category__c= CategoriesandSubCategoriesList[0].id;
             ObjEnvVar2.Core_IPS_Question__c =quest2.id;
             ObjEnvVar2.Core_Supported_Product__c=sp.id;
             insert ObjEnvVar2;
-            
+            System.assert(ObjEnvVar2.Id != null, 'Record not created');
+
             Core_IPS_Assigned_Environment_Variables__c ObjEnvVar3= Core_RestAPI_TestUtilities.getEnvironmentalDetailsOperational();
             ObjEnvVar3.Core_Product_Issue_Sub_Category__c= CategoriesandSubCategoriesList[0].id;
             ObjEnvVar3.Core_IPS_Question__c =quest3.id;
             ObjEnvVar3.Core_Supported_Product__c=sp.id;
             insert ObjEnvVar3;
-            
+            System.assert(ObjEnvVar3.Id != null, 'Record not created');
+
             Core_IPS_Assigned_Environment_Variables__c ObjEnvVar4= Core_RestAPI_TestUtilities.getEnvironmentalDetailsOperational();
             ObjEnvVar4.Core_Product_Issue_Sub_Category__c= CategoriesandSubCategoriesList[0].id;
             ObjEnvVar4.Core_IPS_Question__c =quest4.id;
             ObjEnvVar4.Core_Supported_Product__c=sp.id;
             insert ObjEnvVar4;
-    
+    		System.assert(ObjEnvVar4.Id != null, 'Record not created');
+
             List<Core_IPS_Assigned_Environment_Variables__c> lstAssEnvVar=[SELECT Core_IPS_Question__r.name, Core_IPS_Question__r.id, Core_IPS_Question__r.Core_IPS_Parent_Question__r.name,Core_IPS_Question__r.Core_IPS_Datatype__c, Core_IPS_Question__r.Core_IPS_Question__c,  Core_Required__c
                          FROM Core_IPS_Assigned_Environment_Variables__c 
                          WHERE Core_Agent_Only__c = false AND Core_Status__c='Active' ];
-    
-            
-            
-            
-            
+         
             List<Core_IPS_Answer__c> lstAns = [select id from Core_IPS_Answer__c]; 
             List<Core_RestAPI_Case_UpdateV1_Wrapper.AnsWrapper> lstansWrpr = new List<Core_RestAPI_Case_UpdateV1_Wrapper.AnsWrapper>();
             Core_RestAPI_Case_UpdateV1_Wrapper.AnsWrapper ansWrpr1 = new Core_RestAPI_Case_UpdateV1_Wrapper.AnsWrapper();
             ansWrpr1.answer= 'answer 1';
-           ansWrpr1.answerId=lstAns[0].id ;
+            ansWrpr1.answerId=lstAns[0].id ;
             lstansWrpr.add(ansWrpr1);
             
             List<Core_RestAPI_Case_UpdateV1_Wrapper.EnvQuestionWrapper> lstquestWrpr = new List<Core_RestAPI_Case_UpdateV1_Wrapper.EnvQuestionWrapper>();

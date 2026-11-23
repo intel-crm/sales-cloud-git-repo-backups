@@ -1,5 +1,9 @@
 trigger Core_IPS_Case_Comments on Core_IPS_Case_Comments__c (before insert, before update, before delete, after insert, after update, after delete) {
     if(trigger.isBefore){
+        //trigger.new[0].Core_IPS_Comment__c=trigger.new[0].Core_IPS_Rich_Comment__c;
+         //System.debug('newList=plain'+trigger.new[0].Core_IPS_Comment__c);
+        //System.debug('newList='+trigger.new[0].Core_IPS_Rich_Comment__c);
+       
         Core_IPS_Case_Comments_Dispatcher.beforeMethod(trigger.old, trigger.new, trigger.oldMap, trigger.newMap);
     }
     if(trigger.isAfter){

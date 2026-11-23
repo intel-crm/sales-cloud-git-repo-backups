@@ -779,7 +779,7 @@ Modification Log :
             testAccount1.OwnerId = portalAccountOwner1.Id ;      
             insert testAccount1;                 
             Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup', ownerId = intelSupportOwner,
-                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful', MailingCountry = 'India');
+                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
             insert testContact1;      
 
             UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -841,7 +841,7 @@ Modification Log :
            
             //commented for Classic EOL : Tejaswini        
      /*   PageReference pageRef1=Page.Core_IPS_CaseAttachment_Visibility;
-        Test.setCurrentPage(pageRef); */
+        Test.setCurrentPage(pageRef1); */
             ApexPages.CurrentPage().getparameters().put('id',CS.id);
             ApexPages.StandardController StndContr1 = new ApexPages.standardController(CS);
             

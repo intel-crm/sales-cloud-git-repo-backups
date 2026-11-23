@@ -8,11 +8,11 @@ public class Core_IPS_AuthProviderHandler_Plugin_Test {
     public static testMethod void testInitiate() {
         Core_IPS_AuthProviderHandler_Plugin instance = new Core_IPS_AuthProviderHandler_Plugin();
         Map<String, String> config = new Map<String, String>();
-        //config.put('Callback_URL__c', 'https://intel--crmqa7.sandbox.my.salesforce.com//services/authcallback/Core_IPS_MyIntel_Integration');
+        //config.put('Callback_URL__c', 'https://intel--crmdevcase.sandbox.my.salesforce.com/services/authcallback/Core_IPS_MyIntel_Integration');
         final String state = 'randomState';
 
         PageReference ref = instance.initiate(config, state);
-        //System.assertEquals(URL.getSalesforceBaseUrl().toExternalForm() + 'https://intel--crmqa7.sandbox.my.salesforce.com//services/authcallback/Core_IPS_MyIntel_Integration?state=randomState', ref.getUrl());
+        //System.assertEquals(URL.getSalesforceBaseUrl().toExternalForm() + 'https://intel--crmdevcase.sandbox.my.salesforce.com/services/authcallback/Core_IPS_MyIntel_Integration?state=randomState', ref.getUrl());
       System.AssertEquals(state!= null, true);
     }
 
@@ -20,7 +20,7 @@ public class Core_IPS_AuthProviderHandler_Plugin_Test {
         Map<String, String> config = new Map<String, String>();
         config.put('Consumer_Key__c', '174b7bf8-8586-40ab-af6f-65450151f540');
         config.put('Consumer_Secret__c', 'JeI8Q~WRoWsalXMrI7OHqHFBEvJeKXub7fCPPbNp');
-        config.put('Access_Token_URL__c', 'https://apis-sandbox.intel.com/v1/auth/token');
+        config.put('Access_Token_URL__c', 'https://apis-stage.intel.com/v1/auth/token');
 
         final String mockResponse = '{"access_token": "dummy_access_token", "token_type" : "test", "expires_in" : "test", "ext_expires_in" : "test"}';
 
@@ -35,7 +35,7 @@ public class Core_IPS_AuthProviderHandler_Plugin_Test {
         Auth.AuthProviderTokenResponse response = instance.handleCallback(config, callbackState);
         Auth.UserData r = instance.getUserInfo(config, response);
 
-        httpMock.assertUrl('https://apis-sandbox.intel.com/v1/auth/token');
+        httpMock.assertUrl('https://apis-stage.intel.com/v1/auth/token');
         httpMock.assertMethod('POST');
         System.AssertEquals(response != null, true);
     }
@@ -44,7 +44,7 @@ public class Core_IPS_AuthProviderHandler_Plugin_Test {
         Map<String, String> config = new Map<String, String>();
         config.put('Consumer_Key__c', '174b7bf8-8586-40ab-af6f-65450151f540');
         config.put('Consumer_Secret__c', 'JeI8Q~WRoWsalXMrI7OHqHFBEvJeKXub7fCPPbNp');
-        config.put('Access_Token_URL__c', 'https://apis-sandbox.intel.com/v1/auth/token');
+        config.put('Access_Token_URL__c', 'https://apis-stage.intel.com/v1/auth/token');
 
         final String mockResponse = '{"error": "SomeErrorCode", "error_description": "Some description", "trace_id": "some_trace_id", "correlation_id": "some_correlation_id"}';
         final TokenEndpointHttpCalloutMockImpl httpMock = new TokenEndpointHttpCalloutMockImpl(mockResponse);
@@ -57,7 +57,7 @@ public class Core_IPS_AuthProviderHandler_Plugin_Test {
             Core_IPS_AuthProviderHandler_Plugin instance = new Core_IPS_AuthProviderHandler_Plugin();
             Auth.AuthProviderTokenResponse response = instance.handleCallback(config, callbackState);
         } catch (Exception e) {
-            httpMock.assertUrl('https://apis-sandbox.intel.com/v1/auth/token');
+            httpMock.assertUrl('https://apis-stage.intel.com/v1/auth/token');
             httpMock.assertContentType('application/x-www-form-urlencoded;charset=UTF-8');
             httpMock.assertMethod('POST');
             System.assertEquals('Some description', e.getMessage());
@@ -68,7 +68,7 @@ public class Core_IPS_AuthProviderHandler_Plugin_Test {
         Map<String, String> config = new Map<String, String>();
         config.put('Consumer_Key__c', '174b7bf8-8586-40ab-af6f-65450151f540');
         config.put('Consumer_Secret__c', 'JeI8Q~WRoWsalXMrI7OHqHFBEvJeKXub7fCPPbNp');
-        config.put('Access_Token_URL__c', 'https://apis-sandbox.intel.com/v1/auth/token');
+        config.put('Access_Token_URL__c', 'https://apis-stage.intel.com/v1/auth/token');
 
         final String mockResponse = '{"access_token": "dummy_access_token"}';
 
@@ -78,7 +78,7 @@ public class Core_IPS_AuthProviderHandler_Plugin_Test {
         Core_IPS_AuthProviderHandler_Plugin instance = new Core_IPS_AuthProviderHandler_Plugin();
         Auth.OAuthRefreshResult response = instance.refresh(config, null);
 
-        httpMock.assertUrl('https://apis-sandbox.intel.com/v1/auth/token');
+        httpMock.assertUrl('https://apis-stage.intel.com/v1/auth/token');
           httpMock.assertMethod('POST');
           System.assertEquals('dummy_access_token', response.accessToken);
      //   System.assertEquals('dummy_refresh_token', response.refreshToken);

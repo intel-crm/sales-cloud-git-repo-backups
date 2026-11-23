@@ -41,13 +41,13 @@ public with sharing class Core_IPS_BES_LogEntry_Utility {
                 outboundRec.Status__c = 'IPS Failed';
             }
                 Update outboundRec;   
-           // System.debug('log rec===>'+errorLog);
-            //System.debug('outbound rec===>'+outboundRec);
-            //System.debug('errorcode===>'+errorCode);
+            System.debug('log rec===>'+errorLog);
+            System.debug('outbound rec===>'+outboundRec);
+            System.debug('errorcode===>'+errorCode);
             Core_IPS_BES_Transaction_Track.sendTransactionDetails((errorLog != null) ? errorLog.Id : null , (outboundRec != null) ? outboundRec.Id : null, (inboundRec != null) ? inboundRec.Id : null, errorCode);   
               
         } catch(Exception ecp) {
-            //System.debug('exception occured'+ ecp.getLineNumber()+''+ecp.getStackTraceString());
+            System.debug('exception occured'+ ecp.getLineNumber()+''+ecp.getStackTraceString());
         }
     }
     public static void insertLog(Decimal errorcode, String errordesc, String errstatus){

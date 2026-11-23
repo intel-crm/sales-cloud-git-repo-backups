@@ -66,8 +66,20 @@
         <name>isDataSync__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Duplicate Backend System Definition. Please choose another name. --></errorMessage>
+        <name>Core_IPS_BackendSystem_Def_Dup_Check</name>
+    </validationRules>
     <webLinks>
         <label><!-- Core_IPS_BES_Dynamic_Sync --></label>
         <name>Core_IPS_BES_Dynamic_Sync</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Reprocess_Failed_IPSCasePromotes --></label>
+        <name>Reprocess_Failed_IPSCasePromotes</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- test --></label>
+        <name>test</name>
     </webLinks>
 </CustomObjectTranslation>

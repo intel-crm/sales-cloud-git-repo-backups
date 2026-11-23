@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,force:hasRecordId,force:hasSObjectName,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes" access="global">
+  <CoveoV2:AgentPanel aura:id="coveoAgentPanel" sObjectName="Case" recordId="{!v.recordId}"></CoveoV2:AgentPanel>
+  <lightning:button variant="base" label="Execute" title="Execute" onclick="{! c.handleClick }"/>
+</aura:component>

@@ -37,7 +37,7 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
@@ -77,14 +77,13 @@
     <columns>
         <field>PRODUCT_ACTIVE</field>
     </columns>
-    <description>Germany</description>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Lost,Cancelled,Group,Production Lost,Production Cancelled,Group Open,Group Cancelled,Group Closed</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Application__c</column>
@@ -92,13 +91,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Interactive Whiteboard,Retail - Digital Signage,Retail - Intelligent Vending &amp; Dispensing,Retail - Kiosk,Retail - Public Kiosk for Smart Cities,Retail - Visual Data Device,Retail - Intelligent Vending</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ADDRESS1_COUNTRY_CODE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>DEU</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -118,7 +110,7 @@
         <field>OpportunityLineItem.Core_Product_Type__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>EMEA VR Germany</name>
+    <name>IW - Pipeline Top 10</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -141,9 +133,9 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CREATED_DATE</dateColumn>
-        <endDate>2018-12-29</endDate>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2017-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

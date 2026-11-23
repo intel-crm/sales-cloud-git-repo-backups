@@ -19,10 +19,10 @@
         <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
@@ -68,6 +68,13 @@
     <description>Feeds AE Performance Dashboard - Shows lost and canceled revenue YTD</description>
     <filter>
         <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
@@ -75,18 +82,18 @@
             <value>Lost,Cancelled</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Sales_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Industry Sales</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLLUP_DESCRIPTION</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Courtney Harrison,Foote,O&apos;Donnell,Swanger,Rodman,Weston,Herrmann,Descheemaeker</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -103,7 +110,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
+        <field>Product2.Core_Inf_KPI_ProdFamily__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>AE Revenue Lost and Canceled Report</name>
@@ -131,6 +138,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

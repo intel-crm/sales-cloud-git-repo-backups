@@ -1,0 +1,10 @@
+<apex:page >
+    <apex:form >
+        <apex:commandButton value="Enviar" action="{!doSubmit}" oncomplete="abc();"/>
+    </apex:form>
+    <script>
+    function abc() {
+        window.location = 'https://www.google.com';
+    }
+    </script>
+</apex:page>

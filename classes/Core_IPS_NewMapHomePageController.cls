@@ -9,13 +9,19 @@
 * Ganapati                 16/01/2019             Modified for US534513
 ****************************************************************************************************/
 
-public with sharing class Core_IPS_NewMapHomePageController {  
+public without sharing class Core_IPS_NewMapHomePageController {  
     private static String currentUserId = UserInfo.getUserId();
     private static Id currentProfileID = Userinfo.getProfileId();
     @AuraEnabled(cacheable=true)
     public static Boolean isNewMapButtonVisible(){
         Boolean validUser = TRUE;
-        Profile currentProfile = [SELECT Name from Profile where ID =:currentProfileID LIMIT 1];
+        // Venrublity Fix - Refering query to service class
+        List<Profile> currentProfileList = [SELECT Name from Profile where ID =:currentProfileID LIMIT 1];
+        /*List<Profile> currentProfileList = (List<Profile>) Core_IPS_QueryService.queryRecords(
+            'SELECT Name from Profile where ID = :currentProfileID LIMIT 1',
+            new Map<String, Object>{ 'currentProfileID' => currentProfileID }
+        );*/
+        Profile currentProfile = currentProfileList.isEmpty() ? null : currentProfileList[0];
         if(currentProfile != NULL){
             String profileLabel = System.Label.core_IPS_NewMapProfiles;
             if(profileLabel.contains(currentProfile.Name)) {
@@ -56,7 +62,7 @@ public with sharing class Core_IPS_NewMapHomePageController {
                 response.add(obj);
             }
         } catch(Exception e) {
-           
+            
         }
         return response;
     }
@@ -184,7 +190,7 @@ Description : This method takes list MAP line items and inserts.
     @AuraEnabled
     public static Object createLineItems(List<Core_IPS_Map_Par_Line_Item__c> mapLineItemList){  
         String response = '{"Status" : "success"}';
-       
+        
         Boolean createNewLineItemsFlag = true;   
         String uniqueKey = '';
         Map<String, Core_IPS_Map_Par_Line_Item__c> draftLineItemsMap = new Map<String, Core_IPS_Map_Par_Line_Item__c>();
@@ -267,14 +273,23 @@ Description : This method takes list MAP line items and inserts.
         }
         
         
-        for(Asset assetRec : [
-            SELECT 
-            Id, Status, AccountId, Core_Supported_Product__c, Core_Product_Organization__c   
-            FROM Asset 
-            WHERE AccountId IN :accountIdSet
-            AND Core_Supported_Product__c IN :supportedProdIdSet
-            AND Core_Product_Organization__c IN :prodAccesssupportOrgMap.values()]
-           ) {
+        // Venrublity Fix - Refering query to service class
+        // for(Asset assetRec : [
+        //     SELECT 
+        //     Id, Status, AccountId, Core_Supported_Product__c, Core_Product_Organization__c   
+        //     FROM Asset 
+        //     WHERE AccountId IN :accountIdSet
+        //     AND Core_Supported_Product__c IN :supportedProdIdSet
+        //     AND Core_Product_Organization__c IN :prodAccesssupportOrgMap.values()]
+        //    ) {
+        for(Asset assetRec : (List<Asset>) Core_IPS_QueryService.queryRecords(
+            'SELECT Id, Status, AccountId, Core_Supported_Product__c, Core_Product_Organization__c FROM Asset WHERE AccountId IN :accountIdSet AND Core_Supported_Product__c IN :supportedProdIdSet AND Core_Product_Organization__c IN :supportOrgValues',
+            new Map<String, Object>{
+                'accountIdSet' => accountIdSet,
+                'supportedProdIdSet' => supportedProdIdSet,
+                'supportOrgValues' => prodAccesssupportOrgMap.values()
+            }
+        )) {
                for(Core_IPS_Map_Par_Line_Item__c lineItem : mapLineItemList) {
                    if(assetRec.Status == 'Active' &&  assetRec.AccountId == lineItem.Core_Account__c && assetRec.Core_Supported_Product__c == lineItem.Core_Supported_Product__c && assetRec.Core_Product_Organization__c == prodAccesssupportOrgMap.get(lineItem.Core_MAP_PAR__c)  ) {
                        lineItem.Core_Approval_Type__c = '';
@@ -379,7 +394,7 @@ Description : This method takes list MAP line items and inserts.
             try {
                 //insert newLineItemsToInsert;    
                 Core_IPS_AdminUtility.insertLineItems(newLineItemsToInsert);
-              
+                
             } catch(Exception e) {
                 response = '{"Status" : "error", "message" : "' + e.getMessage() +'"}';
             }
@@ -618,19 +633,27 @@ Description : This method maps API name and value with a map
     }
     
     
-     @AuraEnabled
-     public static string getCase(Id recordId){
-         Case caseRecord=new Case();
-         //fix done--suresh on 14/07/2022
-         if (Schema.sObjectType.Case.fields.Status.isAccessible()) {
-                caseRecord = [Select Id,Status FROM Case WHERE Id = :recordId];
-                }
-         
-          return caseRecord.Status;
-     }
-      
-      @AuraEnabled(cacheable=true)
-      public static List<Core_IPS_Case_Attachments__c> getattachments(String caseID){
+    @AuraEnabled
+    public static string getCase(Id recordId){
+        Case caseRecord=new Case();
+        //fix done--suresh on 14/07/2022
+        if (Schema.sObjectType.Case.fields.Status.isAccessible()) {
+            // Venrublity Fix - Refering query to service class
+            List<Case> caseRecordList = [Select Id,Status FROM Case WHERE Id = :recordId];
+            /*List<Case> caseRecordList = (List<Case>) Core_IPS_QueryService.queryRecords(
+                'Select Id,Status FROM Case WHERE Id = :recordId',
+                new Map<String, Object>{ 'recordId' => recordId }
+            );*/
+            if (!caseRecordList.isEmpty()) {
+                caseRecord = caseRecordList[0];
+            }
+        }
+        
+        return caseRecord.Status;
+    }
+    
+    @AuraEnabled(cacheable=true)
+    public static List<Core_IPS_Case_Attachments__c> getattachments(String caseID){
         List<Core_IPS_Case_Attachments__c> cdoc = new List<Core_IPS_Case_Attachments__c>();
         String strqry = 'SELECT Core_Case__c,Name,Core_Upload_idsid__c,Core_Category__c,Core_Case__r.Status,Core_FileUploadedBy__r.Name,CreatedBy.Name,Core_File_URL__c,Core_File_Hyperlink__c,CreatedDate, Core_File_Description__c, Core_File_Name__c, Core_File_Size__c, Core_Upload_Status__c,Core_IPS_Attachment_Visibility__c FROM Core_IPS_Case_Attachments__c where Core_Case__c =:caseID ORDER BY CreatedDate DESC ';
         // Venrublity Fix - Refering query to service class
@@ -650,7 +673,7 @@ Description : This method maps API name and value with a map
                 url = url.replace('<a href="', '').replace('" target="Self">Download</a>', ' ').replace('amp;', '');
                 att.Core_File_URL__c = url;
             }
-
+            
         }
         return cdoc;
     }
@@ -667,7 +690,7 @@ Description : This method maps API name and value with a map
         //     LIMIT 49999
         // ];
         return (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.queryRecords(
-            'SELECT Id, Name, First_Name__c, Last_Name__c, User__r.FirstName, User__r.LastName, Active__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c = :caseId WITH USER_MODE LIMIT 49999',
+            'SELECT Id, Name, First_Name__c, Last_Name__c, User__r.FirstName, User__r.LastName, Active__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c = :caseId WITH LIMIT 49999',
             new Map<String, Object>{ 'caseId' => caseId }
         );
     }

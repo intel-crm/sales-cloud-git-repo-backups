@@ -188,6 +188,21 @@
             <field>Core_Support_Org_Name__c</field>
             <table>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Map_Item_internal_Subject__c</field>
+            <table>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Support_Tier__c</field>
+            <table>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Subscription_Expiration_Date__c</field>
+            <table>Core_IPS_MAP_PAR__c.Map_Par_Line_Items__r</table>
+        </columns>
         <masterLabel>Product Access Line Items</masterLabel>
     </sections>
     <sections>

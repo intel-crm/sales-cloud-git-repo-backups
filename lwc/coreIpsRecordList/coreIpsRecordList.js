@@ -19,14 +19,21 @@ export default class CoreIpsRecordList extends LightningElement {
   connectedCallback() {
     let splittedText = [];
     let splitResult = this.record;
+    console.log('Account ID 22',this.record)
     splittedText = this.fieldname.split('.');
     if(splittedText.length>0) {
       for(let i=0;i<splittedText.length;i++){
         splitResult = splitResult[splittedText[i]];
       }
       this.recordtest = splitResult;
+      console.log('Account records', this.recordtest)
     } else {
       this.recordtest = this.record[this.fieldname];
+      console.log('Account ID 22',this.recordtest)
     }
   }
+
+  // renderedCallback(){
+  // console.log('Account ID 37',recordtest)
+  // }
 }

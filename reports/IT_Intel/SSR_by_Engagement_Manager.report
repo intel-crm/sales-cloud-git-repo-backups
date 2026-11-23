@@ -57,11 +57,18 @@
             <value>THIS_YEAR</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CUST_RECORDTYPE</column>
+            <column>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Core_Sales_Support_Request__c.Core_DS_IT_Intel</value>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Sales_Support_Request__c.Core_IT_Geo_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Elaine Rainbolt</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -93,6 +100,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

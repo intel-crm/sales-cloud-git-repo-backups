@@ -644,6 +644,29 @@
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
+    <fields>
+        <fullName>formula_test__c</fullName>
+        <externalId>false</externalId>
+        <formula>test__c</formula>
+        <label>formula test</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>test__c</fullName>
+        <defaultValue>&quot;NA&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>test</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Case Comment</label>
     <nameField>
         <displayFormat>RTF-{000000000}</displayFormat>

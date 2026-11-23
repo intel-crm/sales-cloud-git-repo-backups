@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
-    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>PSG-ASMO-SOCO</name>
     <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_IPS_Org_025_ASMO_SOCO</publicGroup>
-        </publicGroups>
         <users>
-            <user>12028064@intel.com.crm</user>
+            <user>pramod.kulkarni@intel.com</user>
         </users>
     </queueMembers>
     <queueSobject>

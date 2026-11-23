@@ -5,18 +5,18 @@
   "id" : "b23ed6b1-a6de-45ce-8c00-173a7815921d",
   "label" : "Preference",
   "regions" : [ {
-    "id" : "24d5d744-0d57-402c-8e0a-6fa1f78ac3a6",
-    "regionName" : "blade1",
-    "type" : "region"
-  }, {
     "components" : [ {
       "componentAttributes" : { },
-      "componentName" : "c:core_IPS_UserRedirection_LWC",
-      "id" : "5b59fec5-bb0c-43b9-9f78-cc21cdacc1db",
+      "componentName" : "c:core_IPS_PrefPage_LWC",
+      "id" : "ebb5d204-26ca-4be6-8734-5b55b96c7a63",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
+    "id" : "24d5d744-0d57-402c-8e0a-6fa1f78ac3a6",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
     "id" : "1dffad1a-bdd1-4295-a475-97d1b6b27d00",
     "regionName" : "blade2",
     "type" : "region"

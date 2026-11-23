@@ -157,26 +157,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fieldSets>
-        <fullName>Commision_Info_FieldSet</fullName>
-        <description>Used in Core_AAQC_Case_Ask_Commissions_Layout page</description>
-        <displayedFields>
-            <field>Core_AAQC_Case_Detail__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Core_AAQC_Subject__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>Core_AAQC_Resolution_Comments__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <label>Commision_Info_FieldSet</label>
-    </fieldSets>
-    <fieldSets>
         <fullName>Core_AAQC_Commision_Info_FieldSet</fullName>
         <description>Used in Core_AAQC_Case_Ask_Commissions_Layout page</description>
         <displayedFields>
@@ -273,6 +253,7 @@ such as:
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Case</label>
         <referenceTo>Case</referenceTo>
+        <relationshipLabel>Commissions Inquiries  Detail</relationshipLabel>
         <relationshipName>Commissions_Cases</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -498,15 +479,15 @@ such as:
         <url>/apex/Core_AAQC_Case_Ask_Commissions_Layout?id={!Core_AAQC_Commissions_Case__c.Core_AAQC_CaseId__c}&amp;TypeOfPAge=Edit&amp;retURL={!Core_AAQC_Commissions_Case__c.Core_AAQC_CaseId__c}</url>
     </webLinks>
     <webLinks>
-        <fullName>Edit</fullName>
+        <fullName>New_Commission_Case</fullName>
         <availability>online</availability>
-        <description>Clicking on this to redirect user to visualforce of Case in Edit form</description>
         <displayType>button</displayType>
         <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
         <linkType>url</linkType>
-        <masterLabel>Edit</masterLabel>
-        <openType>replace</openType>
+        <masterLabel>New Commission Case</masterLabel>
+        <openType>sidebar</openType>
         <protected>false</protected>
-        <url>/apex/Core_AAQC_Case_Ask_Commissions_Layout?id={!Core_AAQC_Commissions_Case__c.Core_AAQC_CaseId__c}&amp;TypeOfPAge=Edit</url>
+        <url>/apex/Core_AAQC_Case_Comment_Edit?j_id0:j_id2:j_id3:j_id6:j_id8={!Core_AAQC_Commissions_Case__c.Id}</url>
     </webLinks>
 </CustomObject>

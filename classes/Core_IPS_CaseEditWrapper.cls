@@ -75,7 +75,7 @@ public Core_IPS_CaseEditWrapper(String caseId){
 		
 	}	
 	cs = Core_IPS_CaseUtility.getCase_DynamiCSOQL(caseId,isAgent);
-	
+    if (cs != null){
 	if(cs.core_ips_project_case__c != null){
 		project = new core_ips_project__c (name = cs.core_ips_project_case__r.Name, id = cs.core_ips_project_case__c);
 		
@@ -167,8 +167,10 @@ public Core_IPS_CaseEditWrapper(String caseId){
        // variants_NAC = Product_Variant_Utility.displayProductVariant_NAC(cs.Core_IPS_Supported_Product__c);
 	} // End By Sumukh for US107484 
 		
-    envDetails=helper.getEnvironmentDetailsOperationList(cs.Core_IPS_Supported_Product__c,null,isAgent); 
-	subCatEnvDetails = helper.getEnvironmentDetailsOperationList(null,cs.Core_Case_Issue_Sub_Category__c,isAgent); 
+    envDetails=helper.getEnvironmentDetailsOperationList(cs.Core_IPS_Supported_Product__c,null,isAgent);
+	System.debug('hk 171----> '+envDetails);
+	subCatEnvDetails = helper.getEnvironmentDetailsOperationList(null,cs.Core_Case_Issue_Sub_Category__c,isAgent);
+	System.debug('hk 173----> '+subCatEnvDetails); 
     helper.setCurrentEnvironmentDetails(envDetails,''+cs.Id);
 	helper.setCurrentEnvironmentDetails(subCatEnvDetails,''+cs.Id);
 	fields = helper.getDynmicFields(envDetails);
@@ -180,7 +182,7 @@ public Core_IPS_CaseEditWrapper(String caseId){
 			PSOCountQuery = queries[1];
         }    
 	}	
-	
+    }	
 }                     
 /***************************************************************************************************
 Method Name:  DisplayPSAPSO

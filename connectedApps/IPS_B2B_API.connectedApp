@@ -4,8 +4,8 @@
     <label>IPS B2B API</label>
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6mmKvTMlKbMIHNOBBbKRoGj9f8rFEAW4QiNm72zSPa9iObDWVFpgG50QDgNQ</consumerKey>
-        <isAdminApproved>false</isAdminApproved>
+        <consumerKey>3MVG9JamK_x9K2XIz6FKasGquU4v09DsuA8c9eTN3kWylv634XfXGssxCH3ZN088MY8mVXwejbGDO3dJ253v5</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
@@ -27,6 +27,14 @@
     <oauthPolicy>
         <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
-        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
     </oauthPolicy>
+    <profileName>IPS Lenovo B2B</profileName>
+    <profileName>IPS HP B2B M2M</profileName>
+    <profileName>IPS BES Integration Profile</profileName>
+    <profileName>IPS External Customer</profileName>
+    <profileName>Partner</profileName>
+    <sessionPolicy>
+        <sessionTimeout>480</sessionTimeout>
+    </sessionPolicy>
 </ConnectedApp>

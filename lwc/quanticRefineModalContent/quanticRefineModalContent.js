@@ -1,21 +1,26 @@
-import {LightningElement, api} from 'lwc';
+import clearAllFilters from '@salesforce/label/c.quantic_ClearAllFilters';
+import filters from '@salesforce/label/c.quantic_Filters';
+import QuanticCategoryFacet from 'c/quanticCategoryFacet';
+import QuanticDateFacet from 'c/quanticDateFacet';
+import QuanticFacet from 'c/quanticFacet';
 import {
   getAllFacetsFromStore,
+  getAllSortOptionsFromStore,
   getHeadlessBundle,
 } from 'c/quanticHeadlessLoader';
 import {
   initializeWithHeadless,
   registerComponentForInit,
 } from 'c/quanticHeadlessLoader';
-import filters from '@salesforce/label/c.quantic_Filters';
-import clearAllFilters from '@salesforce/label/c.quantic_ClearAllFilters';
-
 import QuanticNumericFacet from 'c/quanticNumericFacet';
-import QuanticFacet from 'c/quanticFacet';
-import QuanticCategoryFacet from 'c/quanticCategoryFacet';
-import QuanticDateFacet from 'c/quanticDateFacet';
 import QuanticTimeframeFacet from 'c/quanticTimeframeFacet';
+import {LightningElement, api} from 'lwc';
+// @ts-ignore
+import disabledDynamicNavigationTemplate from './templates/disabledDynamicNavigation.html';
+// @ts-ignore
+import enabledDynamicNavigationTemplate from './templates/dynamicNavigation.html';
 
+/** @typedef {import("coveo").SortCriterion} SortCriterion */
 /** @typedef {import("coveo").SearchStatus} SearchStatus */
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 /** @typedef {import("coveo").BreadcrumbManager} BreadcrumbManager */
@@ -28,12 +33,19 @@ import QuanticTimeframeFacet from 'c/quanticTimeframeFacet';
  */
 
 /**
+ * @typedef {Object} SortOption
+ * @property {string} label
+ * @property {string} value
+ * @property {SortCriterion} criterion
+ */
+
+/**
  * The `QuanticRefineModalContent` component displays a copy of the search interface facets and sort components. This component is intended to be displayed inside the Quantic Modal to assure the responsiveness when the search interface is displayed on smaller screens.
  *
  * @category Search
  * @category Insight Panel
  * @example
- * <c-quantic-refine-modal-content engine-id={engineId} hide-sort></c-quantic-refine-modal-content>
+ * <c-quantic-refine-modal-content engine-id={engineId} hide-sort disable-dynamic-navigation></c-quantic-refine-modal-content>
  */
 export default class QuanticRefineModalContent extends LightningElement {
   labels = {
@@ -53,9 +65,20 @@ export default class QuanticRefineModalContent extends LightningElement {
    * @type {boolean}
    */
   @api hideSort;
+  /**
+   * Indicates whether to disable the dynamic navigation feature according to [the Dynamic Navigation Experience](https://docs.coveo.com/en/3383/leverage-machine-learning/about-dynamic-navigation-experience-dne).
+   * @api
+   * @type {boolean}
+   * @defaultValue `false`
+   */
+  @api disableDynamicNavigation = false;
 
   /** @type {object} */
-  data;
+  facetData;
+  /** @type {boolean} */
+  isSortComponentReady = false;
+  /** @type {object} */
+  sortData;
   /** @type {boolean} */
   hasActiveFilters = false;
   /** @type {AnyHeadless} */
@@ -64,10 +87,12 @@ export default class QuanticRefineModalContent extends LightningElement {
   renderedFacets = {};
   /** @type {boolean} */
   someFacetsRendered = false;
+  /** @type {boolean} */
+  hasInitializationError = false;
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
-    this.addEventListener('renderfacet', this.handleRenderFacetEvent);
+    this.addEventListener('quantic__renderfacet', this.handleRenderFacetEvent);
   }
 
   renderedCallback() {
@@ -77,7 +102,10 @@ export default class QuanticRefineModalContent extends LightningElement {
   disconnectedCallback() {
     this.unsubscribeSearchStatus?.();
     this.unsubscribeBreadcrumbManager?.();
-    this.removeEventListener('renderfacet', this.handleRenderFacetEvent);
+    this.removeEventListener(
+      'quantic__renderfacet',
+      this.handleRenderFacetEvent
+    );
   }
 
   /**
@@ -87,8 +115,10 @@ export default class QuanticRefineModalContent extends LightningElement {
     this.headless = getHeadlessBundle(this.engineId);
     this.searchStatus = this.headless.buildSearchStatus(engine);
     this.breadcrumbManager = this.headless.buildBreadcrumbManager(engine);
+    this.getSortOptionsFromStore();
+
     this.unsubscribeSearchStatus = this.searchStatus.subscribe(() =>
-      this.gatherFacets()
+      this.getFacetDataFromStore()
     );
     this.unsubscribeBreadcrumbManager = this.breadcrumbManager.subscribe(() =>
       this.updateHasActiveFilters()
@@ -96,13 +126,22 @@ export default class QuanticRefineModalContent extends LightningElement {
   };
 
   /**
-   * Gather all facets registered in the Quantic store.
+   * Initializes all facets registered in the Quantic store.
    * @returns {void}
    */
-  gatherFacets() {
+  getFacetDataFromStore() {
     if (!this.hasFacets) {
-      this.data = getAllFacetsFromStore(this.engineId);
+      this.facetData = getAllFacetsFromStore(this.engineId);
     }
+  }
+
+  /**
+   * Initializes all sort options registered in the Quantic store.
+   * @returns {void}
+   */
+  getSortOptionsFromStore() {
+    this.sortData = getAllSortOptionsFromStore(this.engineId);
+    this.isSortComponentReady = true;
   }
 
   /**
@@ -145,6 +184,12 @@ export default class QuanticRefineModalContent extends LightningElement {
   toDefaultFacet = (facetObject) => {
     return {
       isDefault: true,
+      customCaptions: facetObject.metadata?.customCaptions?.map?.(
+        (caption, index) => ({
+          ...caption,
+          index,
+        })
+      ),
       ...this.extractFacetDataFromElement(
         facetObject.element,
         QuanticFacet.attributes
@@ -160,6 +205,12 @@ export default class QuanticRefineModalContent extends LightningElement {
   toCategoryFacet = (facetObject) => {
     return {
       isCategory: true,
+      customCaptions: facetObject.metadata?.customCaptions?.map?.(
+        (caption, index) => ({
+          ...caption,
+          index,
+        })
+      ),
       ...this.extractFacetDataFromElement(
         facetObject.element,
         QuanticCategoryFacet.attributes
@@ -215,17 +266,29 @@ export default class QuanticRefineModalContent extends LightningElement {
    * @returns {Array<object>}
    */
   get facets() {
-    if (!this.data) {
+    if (!this.facetData) {
       return [];
     }
-    const facetData = Object.keys(this.data).map((facetId) => {
+    const facetData = Object.keys(this.facetData).map((facetId) => {
       /** @type {FacetObject} */
-      const facetObject = this.data[facetId];
+      const facetObject = this.facetData[facetId];
       const selector = this.selectors[facetObject.element.localName];
       return selector ? selector(facetObject) : null;
     });
 
     return facetData;
+  }
+
+  /**
+   * Returns sort option data.
+   * @returns {Array<SortOption>}
+   */
+  get sortOptions() {
+    return this.sortData?.length > 0 ? this.sortData : [];
+  }
+
+  get shouldDisplayFiltersTitle() {
+    return this.someFacetsRendered && !this.hideSort;
   }
 
   /**
@@ -246,7 +309,7 @@ export default class QuanticRefineModalContent extends LightningElement {
    * @returns {boolean}
    */
   get hasFacets() {
-    return this.data && !!Object.keys(this.data).length;
+    return this.facetData && !!Object.keys(this.facetData).length;
   }
 
   /**
@@ -259,4 +322,18 @@ export default class QuanticRefineModalContent extends LightningElement {
       false
     );
   };
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
+  }
+
+  render() {
+    if (this.disableDynamicNavigation) {
+      return disabledDynamicNavigationTemplate;
+    }
+    return enabledDynamicNavigationTemplate;
+  }
 }

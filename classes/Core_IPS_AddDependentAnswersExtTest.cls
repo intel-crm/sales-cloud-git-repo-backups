@@ -13,9 +13,11 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Karthick                   05/01/2018             Test class for Managing Dependent answers
 * System.assert()--> statement Added By Hassan Khan 01-02-2024 
-****************************************************************************************************/   
+****************************************************************************************************/ 
+
 @isTest
 public class Core_IPS_AddDependentAnswersExtTest{
+    
     
     static testMethod void addDependentAnswerTest1(){
         
@@ -125,7 +127,7 @@ public class Core_IPS_AddDependentAnswersExtTest{
         pageRef = ansExt.SaveandReturn();
         
         System.assert(supportOrg.id != null, true);
-    }
+    } 
     
     
     static testMethod void addDependentAnswerTest2(){
@@ -235,9 +237,9 @@ public class Core_IPS_AddDependentAnswersExtTest{
         pageRef4 = ansExt4.SaveandReturn();
         System.assert(childQuesList.size() > 0, true);
           
-    }
+    } 
     
-    static testMethod void addDependentAnswerTest3(){
+   static testMethod void addDependentAnswerTest3(){
         
         //Invalid url
         PageReference pageRef = Page.Core_IPS_AddDependentAnswers;
@@ -253,5 +255,6 @@ public class Core_IPS_AddDependentAnswersExtTest{
         }catch(Exception e){
         }
         System.assert(ansExt != null, true);
-    }
+    } 
+
 }

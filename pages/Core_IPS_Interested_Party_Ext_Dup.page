@@ -1,0 +1,174 @@
+<apex:page standardController="Case" extensions="Dup_Ext" sidebar="false" showHeader="false">
+
+<apex:includeScript value="/support/console/41.0/integration.js" />
+
+    <script>
+        
+        function doSearchOnEnter(ev)
+        {
+            if (window.event)
+            {
+                ev=window.event;
+            }
+           
+            var keyCode;
+            if (ev.keyCode)
+            {
+                keyCode=ev.keyCode;
+            }
+            else
+            {
+                keyCode=ev.charCode;
+            }
+           
+            if (keyCode == 13)
+            {
+                var ele=document.getElementById('{!$Component.j_id0.form.crit_block.crit_section.Searchbtn}');
+                ele.click();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        
+        function openinConsole()
+        {
+           if(sforce.console.isInConsole()) {
+               alert('CONSOLE');
+               sforce.console.getEnclosingTabId(function(enclosingResult) {
+               sforce.console.getEnclosingPrimaryTabId(function(primaryResult) {
+               sforce.console.openSubtab(primaryResult.id, '{!$Label.Core_IPS_ViewCasePage}?id={!caseid}', true, 'Case: {!case.CaseNumber}', null);
+                  });
+              });
+          } 
+          else {
+              alert('qwerty');
+               window.open('{!$Label.Core_IPS_ViewCasePage}?id={!caseid}','_blank');
+          }
+      
+      }
+
+    </script>
+        
+    <apex:form id="form">
+    
+        <apex:pageBlock id="crit_block" >
+            <apex:pagemessages > </apex:pagemessages>
+            <apex:actionstatus id="status1">
+                <apex:facet name="start">
+                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height: 100%;opacity:0.65;width:100%;">
+                        <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                            <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                            <span class="waitingDescription">Please Wait...</span>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionstatus>
+                         
+            <!--<apex:pageblocksection title="External Interested Parties Result:" columns="2" id="resultsection">
+                <apex:outputPanel rendered="{!LinkedExternalParties.size<1}"><apex:outputText > No records to display </apex:outputText></apex:outputPanel>
+                <apex:repeat value="{!LinkedExternalParties}" var="ext">
+                    <apex:pageBlockSectionItem>
+                        <apex:outputLabel value="First Name: "/>
+                        <apex:outputPanel>                             
+                            <apex:outputField value="{!ext.First_Name__c}"/>                 
+                        </apex:outputPanel>                                                                                                        
+                    </apex:pageBlockSectionItem>                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="User Name: "/>
+                        <apex:outputPanel >                        
+                            <apex:outputField value="{!ext.User__c}"/>                 
+                        </apex:outputPanel>                                                                                                    
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Contact Name: "/>
+                        <apex:outputPanel >                       
+                            <apex:outputField value="{!ext.Contact__c}"/>                 
+                        </apex:outputPanel>                                                                                                      
+                    </apex:pageBlockSectionItem>                                  
+                </apex:repeat>            
+             
+            </apex:pageBlockSection>-->           
+            
+            <apex:pageBlockSection title="Search Interested Parties" columns="1" id="crit_section">                
+                <apex:outputPanel id="pnl">
+                    <apex:outputLabel value="Enter Search Text: " style="font-weight:700;font-size:11px"/>
+                    <apex:inputText value="{!searchText}" label="Enter Search Text" style="width:40%" id="inputSearchText" onkeypress="return doSearchOnEnter(event);" html-placeholder="Type * or type in the name and click Search"/>
+                    <apex:commandButton value="Search" action="{!doSearch}" id="Searchbtn" rerender="crit_block" status="status1"/>
+                    <span class="helpButton">
+                        <img src="/s.gif" class="helpOrb" title="Contacts belonging to your account can be added or removed as Interested Parties to this case. If you do not find a user, it is possible they do not have access to this case or do not belong to your account."/>                        
+                    </span>                   
+                </apex:outputPanel>
+                <!--<span style="margin-left:125px;">Note for Project based cases : To add contacts from another account to this case, contact your Intel Support Owner</span>-->
+                <!--<apex:commandButton value="Add Selected" action="{!AddSelectedContacts}" reRender="selectedresult,searchresult" status="status1"/>--> 
+            </apex:pageBlockSection>            
+            
+            <apex:pageBlockSection columns="1" id="crit_section_btn">                
+                <apex:outputPanel id="pn2">
+                    <div style="position:relative;left:450px;">
+                    <apex:commandButton value="Cancel" action="{!Finished}"/>
+                    <apex:commandButton value="Done"  action="{!Finished}"/>
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            
+            <apex:PageBlock title="Selected:" id="selectedresult">
+                <apex:outputPanel rendered="{!LinkedExternalParties.size<1}"><apex:outputText > No records to display </apex:outputText></apex:outputPanel>        
+                <apex:outputPanel rendered="{!LinkedExternalParties.size>0}">
+                    <apex:pageBlockTable value="{!LinkedExternalParties}" var="ext" >         
+                         <apex:column headerValue="Add">                            
+                            <apex:inputCheckBox value="{!ext.Active__c}">
+                                <apex:actionSupport event="onclick" action="{!removeSelectedContacts}" reRender="selectedresult,searchresult" status="status2"/>
+                            </apex:inputCheckBox>
+                        </apex:column>
+                         <apex:column value="{!ext.First_Name__c}"/>
+                         <apex:column value="{!ext.Last_Name__c}"/>
+                         <apex:column value="{!ext.Email__c}"/>
+                   </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:PageBlock>
+                        
+            <apex:PageBlock title="Search Results:" id="searchresult">
+                <apex:pageBlockTable value="{!IPRecordSet}" var="IPRec" id="IPTable" rendered="{!searchMade}" >
+                    <apex:column headerValue="Add">                            
+                        <apex:inputCheckBox value="{!IPRec.isSelected}">
+                            <apex:actionSupport event="onclick" action="{!AddSelectedContacts}" reRender="searchresult,selectedresult" status="status1"/>
+                        </apex:inputCheckBox>
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!simpleSort}" value="First Name {!IF(sortHeader.sortExpression== 'FirstName', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="FirstName" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!IPRec.Con.FirstName}"/>
+                    </apex:column>                    
+                    
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!simpleSort}" value="Last Name {!IF(sortHeader.sortExpression== 'LastName', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="LastName" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!IPRec.Con.LastName}"/>
+                    </apex:column>
+                    
+                    <!-- Added by Abhishek by 27/04/2017  US:US61140 -->
+                     <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!simpleSort}" value="Email {!IF(sortHeader.sortExpression== 'Email', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="Email" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!IPRec.Con.Email}"/> 
+                    </apex:column>  
+                    
+                </apex:pageBlockTable>
+                   
+            </apex:PageBlock>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -57,10 +57,11 @@ public class Core_IPS_Survey_Controller_Test {
     
     static testMethod void Core_IPS_Survey_Controller_test() {
         Id caseId = [SELECT Id FROM Case LIMIT 1].Id;
+        //Commented for Classic EOL : Tejaswini
         Pagereference pgref = Page.Core_IPS_Survey;
         pgref.getParameters().put('caid', caseId);
         pgref.getParameters().put('retURL', '/' + caseId);
-        Test.setCurrentPage(pgref);
+        Test.setCurrentPage(pgref); 
         
         Test.startTest();
         Core_IPS_Survey_Controller surveyController = new Core_IPS_Survey_Controller();

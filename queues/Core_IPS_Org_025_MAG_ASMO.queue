@@ -4,9 +4,10 @@
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>PSG-ASMO-MAG</name>
     <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_IPS_Org_025_MAG_ASMO</publicGroup>
-        </publicGroups>
+        <users>
+            <user>gec1.test@intel.com.crm</user>
+            <user>11632695@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>

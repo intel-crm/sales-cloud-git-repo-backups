@@ -478,6 +478,7 @@
                                                 <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
                                                     <span>
                                                         <template if:true={caseCategoryReadOnly}>
+                                                            <div class="editCatInput">
                                                             <lightning-combobox class="inputs "
                                                                 variant="label-hidden" name="caseCategory"
                                                                 value={currentCaseData.Core_Case_Issue_Category__c}
@@ -485,6 +486,7 @@
                                                                 options={CaseCategoryoptions}
                                                                 onchange={handleChangeCategory}>
                                                             </lightning-combobox>
+                                                            </div>
                                                         </template>
 
 <template if:false={caseCategoryReadOnly}>
@@ -1325,7 +1327,6 @@
                                                 <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
                                                     <template if:true={CopyPartnerAccountRequired}>
                                                         <span class="subHeadline">Partner Supported Account</span>
-                                                        
                                                     </template>
                                                     <template if:false={CopyPartnerAccountRequired}>
                                                         <span class="subHeadline">Partner Supported Account
@@ -1408,13 +1409,13 @@
                                                 <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
                                                     <!-- {CategoryName} -->
                                                     <span>
-
+                                                        <div class="copyCatInput">
                                                         <lightning-combobox class="inputs" name="caseCategory"
                                                             value={caseIssueCategoryId} options={CaseCategoryoptions}
                                                             onchange={handleChangeCategory} 
                                                             variant='label-hidden'>
                                                         </lightning-combobox>
-
+                                                        </div>
                                                     </span>
                                                 </div>
                                             </div>

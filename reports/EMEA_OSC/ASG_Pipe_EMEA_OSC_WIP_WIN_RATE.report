@@ -117,14 +117,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Smelkova,Janicki,Tomala,Huzjak,Eran Gal,jadwiszczok,dzul</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
+            <value>Smelkova,Janicki,Tomala,Huzjak,Eran Gal,Osiecki</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -144,7 +137,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Pipe DW EMEA Inside Sales (WIP) WIN RATE</name>
+    <name>ASG Pipe EMEA OSC (WIP) WIN RATE</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -170,8 +163,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

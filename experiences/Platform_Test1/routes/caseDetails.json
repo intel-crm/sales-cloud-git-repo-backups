@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "7ce9c106-0c1c-4f3a-9db1-a4bb378abced",
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "configurationTags" : [ ],
+  "devName" : "Core_IPS_CaseDetail__c",
+  "id" : "5cc0801d-128e-47a7-b31f-f983f8cbc821",
+  "label" : "Case Details",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-case-detail",
+  "type" : "route",
+  "urlPrefix" : "case-detail"
+}

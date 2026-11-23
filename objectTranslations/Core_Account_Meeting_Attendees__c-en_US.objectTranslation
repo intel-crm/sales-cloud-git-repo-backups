@@ -2,11 +2,11 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Intel  Attendee</value>
+        <value>Meeting Attendee</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Intel  Attendees</value>
+        <value>Meeting Attendees</value>
     </caseValues>
     <fields>
         <label><!-- Attendee Type --></label>
@@ -27,7 +27,7 @@
     <fields>
         <label><!-- Account Meeting Brief --></label>
         <name>Core_Account_Meeting__c</name>
-        <relationshipLabel><!-- Intel  Attendees --></relationshipLabel>
+        <relationshipLabel><!-- Meeting Attendees --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Attendee name --></help>

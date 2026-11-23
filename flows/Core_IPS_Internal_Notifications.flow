@@ -16,6 +16,7 @@
         <connector>
             <targetReference>myDecision12</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -40,6 +41,7 @@
         <connector>
             <targetReference>myDecision14</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -64,6 +66,7 @@
         <connector>
             <targetReference>myDecision16</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -88,6 +91,7 @@
         <connector>
             <targetReference>myDecision18</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -112,6 +116,7 @@
         <connector>
             <targetReference>myDecision20</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -136,6 +141,7 @@
         <connector>
             <targetReference>myDecision2</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -160,6 +166,7 @@
         <connector>
             <targetReference>myDecision22</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -184,6 +191,7 @@
         <connector>
             <targetReference>myDecision24</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -208,6 +216,7 @@
         <connector>
             <targetReference>myDecision26</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -229,6 +238,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Int_Update_New_EA</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -250,6 +260,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_Case_Notif_GEC_Hold_Review_ISO</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -274,6 +285,7 @@
         <connector>
             <targetReference>myDecision32</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -298,6 +310,7 @@
         <connector>
             <targetReference>myDecision36</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -322,6 +335,7 @@
         <connector>
             <targetReference>myDecision40</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -346,6 +360,7 @@
         <connector>
             <targetReference>myDecision4</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -367,6 +382,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_Case_Close_Notif_For_No_Assigned_Conact_Case</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -388,6 +404,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_MAG_Questionnaire_Completed_Notif</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -409,6 +426,7 @@
         <locationY>300</locationY>
         <actionName>Case.Core_IPS_Case_Notif_GEC_Hold_Review_ISO</actionName>
         <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -433,6 +451,7 @@
         <connector>
             <targetReference>myDecision6</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -457,6 +476,7 @@
         <connector>
             <targetReference>myDecision8</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -481,6 +501,7 @@
         <connector>
             <targetReference>myDecision10</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -505,6 +526,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_33_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>
@@ -529,6 +551,7 @@
         <connector>
             <targetReference>myWaitEvent_myWait_myRule_37_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>SObjectRowId</name>
             <value>

@@ -54,7 +54,7 @@ public class QuickActionsController_Test {
         List<Case> ListOfCases = TestUtilities.getListOfCases(10);
         for(Case CaseRec : ListOfCases){
             for(RecordType rt: rtList){
-                if(rt.Name=='IPS_Case_Create'){
+                if(rt.Name=='CEP Case'){
                     CaseRec.ContactId = ListOfContacts[0].id;
                     CaseRec.accountId = ListOfAccounts[0].Id;
                     CaseRec.RecordTypeId = rt.Id;
@@ -127,7 +127,7 @@ public class QuickActionsController_Test {
         List<Case> ListOfCases = TestUtilities.getListOfCases(10);
         for(Case CaseRec : ListOfCases){
             for(RecordType rt: rtList){
-                if(rt.Name=='IPS_Case_Create'){
+                if(rt.Name=='CEP Case'){
                     CaseRec.ContactId = ListOfContacts[0].id;
                     CaseRec.accountId = ListOfAccounts[0].Id;
                     CaseRec.RecordTypeId = rt.Id;

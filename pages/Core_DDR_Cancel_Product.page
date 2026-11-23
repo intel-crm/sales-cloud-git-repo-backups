@@ -1,0 +1,31 @@
+<apex:page StandardController="Core_Design_Registration_Product__c" extensions="Core_DDR_Cancel_Product_Controller" action="{!cancelDDRProduct}">
+    <apex:form >
+        
+        <script>
+            function alreadyCancelled()
+            {
+                alert("Design Registration Product is already Cancelled.");
+                if('{!$Profile.Name}' == 'Partner'){
+                    window.location.href='/partner/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+                else{
+                    window.location.href='/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+            }
+            
+            function succuessCancelled()
+            {
+                alert("Design Registration Product is Cancelled Successfully");
+                if('{!$Profile.Name}' == 'Partner'){
+                    window.location.href='/partner/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+                else{
+                    window.location.href='/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+            }
+        </script>
+        
+        <apex:outputText value="{!callAlertFunc}" escape="false"></apex:outputText>
+        
+    </apex:form>
+</apex:page>

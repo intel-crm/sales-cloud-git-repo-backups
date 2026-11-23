@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Caitlin Anderson</description>
+    <description>EMP of Karina Sasso</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11266333_Daniel_A_Denmark</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10667434_Caitlin_Anderson_TA</parentRole>
+    <parentRole>Role_Users_With_No_Manager</parentRole>
 </Role>

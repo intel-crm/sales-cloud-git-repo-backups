@@ -360,6 +360,7 @@ public class Utilities_Portal_LEX_Test {
             List<Core_Flat_Product_Hierarchy__c> ListOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(1);
             ListOfFlatProductHierarchy[0].Core_Unique_ID__c  =';75025;128758;123707;123704;94489';
             insert ListOfFlatProductHierarchy;
+            system.debug('ListOfFlatProductHierarchy '+ListOfFlatProductHierarchy); 
             
             // Create Asset
             list<Asset> AssetList = TestUtilities.getAssets(ListOfAccounts, 1);

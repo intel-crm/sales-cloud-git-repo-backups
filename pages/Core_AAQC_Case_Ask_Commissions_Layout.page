@@ -1,7 +1,5 @@
 <apex:page standardController="Case" extensions="Core_AAQC_Case_Ask_Commissions_CNTLR">
-<!-- Added integrity and cross origin attributes as suggested by semgrep tool as part of TWC4767-3971: KIIT: Semgrep Scan Results>-->     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" integrity="sha384-XxcvoeNF5V0ZfksTnV+bejnCsJjOOIzN6UVwF85WBsAnU3zeYh5bloN+L4WLgeNE" crossorigin="anonymous"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <apex:sectionHeader subtitle="New Case" title="Case Edit"/>
 <!-- Code start Added as a part of US76746 --> 
 <script>
@@ -50,8 +48,8 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
            $(".Core_AAQC_Resolution_Training_Subtype__c").closest("tr").css('display','none');
          }
          else {
-          $(".Core_AAQC_Commissions_Severity__c").wrap("<div class='requiredInput'></div>");
-          $(".Core_AAQC_Commissions_Severity__c").before("<div class='requiredBlock'><div>");
+             $(".Core_AAQC_Commissions_Severity__c").wrap("<div class='requiredInput'></div>");
+             $(".Core_AAQC_Commissions_Severity__c").before("<div class='requiredBlock'><div>");
          }
      });
 
@@ -125,6 +123,211 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
   
      <apex:pageBlockSection id="caseInfoId" title="Case Information" columns="1">
          <apex:inputField value="{!objCase.Casenumber}" rendered="{!blnEditmode}"/> 
+
+         <!-- Code start Added as a part of US76746 --> 
+                <apex:pageBlockSectionItem rendered="{!if((blnCheckAdminAccess),TRUE,FALSE)}">
+                    <apex:outputLabel >Requested For</apex:outputLabel>
+                    <apex:outputPanel >
+                        <apex:inputField value="{!objCase.Core_AAQC_Requested_for__c}" id="requestedForIn" required="false" styleClass="InputContact"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>         
+
+         <apex:inputField value="{!objCommissiionsCase.Core_AAQC_Subject__c}"  id="subjectId" required="true"/> 
+                         
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Core_AAQC_Commissions_Case__c.Fields.Core_AAQC_Case_Detail__c.inlineHelpText}">
+                    <apex:outputLabel >Case Details</apex:outputLabel>
+                    <apex:inputField value="{!objCommissiionsCase.Core_AAQC_Case_Detail__c}" styleClass="Core_AAQC_Case_Detail__c" required="true" /> 
+                </apex:pageBlockSectionItem>
+         
+                <!-- Code start Added as a part of US84920 --> 
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Status</apex:outputLabel>
+                    <apex:outputPanel >
+                        <apex:inputField value="{!objCase.Status}" rendered="{!if((blnCheckAdminAccess),TRUE,FALSE)}" required="true" />
+                        <apex:outputField value="{!objCase.Status}" rendered="{!if((blnCheckAdminAccess),FALSE,TRUE)}" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <!-- Code End as a part of US84920 -->
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Severity</apex:outputLabel>
+                    <apex:outputPanel >
+                        <apex:inputField value="{!objCase.Core_AAQC_Commissions_Severity__c}" rendered="{!if((blnCheckAdminAccess),TRUE,FALSE)}" required="true" />
+                        <apex:outputField value="{!objCase.Core_AAQC_Commissions_Severity__c}" rendered="{!if((blnCheckAdminAccess),FALSE,TRUE)}" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+         
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Resolution Type</apex:outputLabel>
+                    <apex:outputPanel >
+                        <apex:inputField value="{!objCase.Core_AAQC_Resolution_Type__c}" rendered="{!if((blnCheckOBOFieldAccess),TRUE,FALSE)}"  />
+                        <apex:outputField value="{!objCase.Core_AAQC_Resolution_Type__c}" rendered="{!if((blnCheckOBOFieldAccess),FALSE,TRUE)}" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Resolution Training Sub Type</apex:outputLabel>
+                    <apex:outputPanel >
+                        <apex:inputField value="{!objCase.Core_AAQC_Resolution_Training_Sub_Type__c}" rendered="{!if((blnCheckOBOFieldAccess),TRUE,FALSE)}" />
+                        <apex:outputField value="{!objCase.Core_AAQC_Resolution_Training_Sub_Type__c}" rendered="{!if((blnCheckOBOFieldAccess),FALSE,TRUE)}" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Resolution CE Set-up Sub-type</apex:outputLabel>
+                    <apex:outputPanel >
+                        <apex:inputField value="{!objCase.Core_AAQC_Resolution_CE_Sub_type__c}" rendered="{!if((blnCheckOBOFieldAccess),TRUE,FALSE)}"  />
+                        <apex:outputField value="{!objCase.Core_AAQC_Resolution_CE_Sub_type__c}" rendered="{!if((blnCheckOBOFieldAccess),FALSE,TRUE)}" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+
+           	<apex:pageBlockSectionItem >
+                    <apex:outputLabel >Resolution Comments</apex:outputLabel>
+                    <apex:inputField value="{!objCommissiionsCase.Core_AAQC_Resolution_Comments__c}" styleClass="Core_AAQC_Resolution_Comments__c"/>
+                </apex:pageBlockSectionItem>
+
+         </apex:pageBlockSection>
+     
+     <apex:pageBlockSection id="MiscellaneousInfoId" title="Miscellaneous Information" columns="1">
+         <apex:repeat value="{!$ObjectType.Case.FieldSets.Miscellaneous_Info_Ask_Commissions_Field}"  var="caseFieldSet">
+            <apex:outputField value="{!objCase[caseFieldSet.fieldPath]}" />
+        </apex:repeat>
+      </apex:pageBlockSection>
+    
+     
+  </apex:pageBlock>
+   
+  </apex:form>
+</apex:page>
+
+
+<!-- Orignal Code before 2019 Cleanup 
+
+<apex:page standardController="Case" extensions="Core_AAQC_Case_Ask_Commissions_CNTLR">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<apex:sectionHeader subtitle="New Case" title="Case Edit"/>
+<!-- Code start Added as a part of US76746  
+<script>
+ var newWin=null;
+    function openLookupPopup(name, id)
+    {
+        var url="/apex/Core_AAQC_Custom_Lookup?namefield=" + name + "&idfield=" + id +"&queryParam=" + document.getElementById(name).value;
+        newWin=window.open(url, 'Popup','height=500,width=600,left=100,top=100,resizable=no,scrollbars=yes,toolbar=no,status=no');
+        if (window.focus){
+            newWin.focus();
+        }
+        return false;
+    }
+       
+ function closeLookupPopup()
+ {
+    if (null!=newWin)
+    {
+       newWin.close();
+    }  
+ }
+</script>
+<!-- Code End Added as a part of US76746 
+<script>
+    $(document).ready(function(){
+        console.log('in ready function');
+console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Training_Subtype__c")));
+           
+        if('{!blnCheckAccess}' == 'true'){
+          console.log('Inside If');
+          //Read only Fields
+          //$('.Core_AAQC_Resolution_Type__c').css('pointer-events','none');
+          //$('.Core_AAQC_Resolution_Type__c').css('background-color','#e6e6e6');  
+          //$('.Core_AAQC_Resolution_Type__c').attr('disabled','disabled'); 
+          //$('.Core_AAQC_Resolution_Comments__c').css('pointer-events','none');
+          //$('.Core_AAQC_Resolution_Comments__c').css('background-color','#e6e6e6'); 
+          //$('.Core_AAQC_Resolution_Comments__c').attr('disabled','disabled');  
+          
+          //Hide the fields
+           $(".Core_AAQC_Related_Case_Number__c").closest("tr").css('display','none');
+           $(".Core_AAQC_Related_Case_Notes__c").closest("tr").css('display','none');
+           $(".Core_AAQC_External_Reference_No__c").closest("tr").css('display','none');
+           $(".Core_AAQC_Commissions_Severity__c").closest("tr").css('display','none');
+           $(".Core_AAQC_Resolution_Type__c").closest("tr").css('display','none');
+           $(".Core_AAQC_Resolution_Comments__c").closest("tr").css('display','none');
+           $(".Core_AAQC_Resolution_Training_Subtype__c").closest("tr").css('display','none');
+         }
+         else {
+          $(".Core_AAQC_Commissions_Severity__c").wrap("<div class='requiredInput'></div>");
+          $(".Core_AAQC_Commissions_Severity__c").before("<div class='requiredBlock'><div>");
+         }
+     });
+
+     function setFocusOnLoad() {}
+     
+     
+ </script>
+ <style>
+ .pbSubsection input{
+   width: 240px;
+ }
+ .pbSubsection textarea {
+     width: 240px;
+ }
+ 
+ </style>
+ <style>
+    .spinnerBg{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #000;
+        opacity: 0.2;
+        z-index: 999999;
+    }
+    .spinner{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-image: url("/img/loading32.gif");
+        background-size: 16px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        z-index: 9999999;
+        opacity: 1;
+    }
+</style>
+ 
+ <apex:outputPanel rendered="{!!hasAccess && blnEditmode }">
+ <div > 
+   <p style="font-size:15px;">You do not have access to this case. 
+   Please click <a href="javascript:window.history.back()" style="font-size:18px;font-color:green">Here</a> to go back to previous page</p>
+  </div>
+ </apex:outputPanel>
+<apex:form id="theFormId" rendered="{!hasAccess }" >
+  <!-- Code start Added as a part of US76746 
+  <apex:inputHidden value="{!objCase.Core_AAQC_On_Behalf_Of__c}" id="targetId" />
+  <apex:pageMessages id="theMsg"></apex:pageMessages>
+  <apex:pageBlock >
+  
+    <apex:pageBlockButtons id="buttonSessionId">
+            <apex:actionStatus id="spinnerStatus">
+                <apex:facet name="start">
+                    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                        &nbsp;
+                    </div>
+                    <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                        <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px;">
+                            <img src="/img/loading.gif" style="float: left; margin: 8px;" />
+                            <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+        <!-- added 'Save Draft' button and modify 'Save' button to 'Submit Case' button as a part of US:77763 
+        <apex:commandButton value="Save as Draft" id="saveButtonId"  reRender="theMsg" action="{!customSaveDraft}" status="spinnerStatus"  rendered="{!blnCheckSaveDraftBtn}"/>    
+        <apex:commandButton value="Submit" id="submitButtonId"  reRender="theMsg" action="{!customSubmitCase}" status="spinnerStatus"/>
+        <apex:commandButton value="Cancel" id="cancelButtonId" immediate="true" action="{!customCancel}"/>
+    </apex:pageBlockButtons>
+  
+     <apex:pageBlockSection id="caseInfoId" title="Case Information" columns="1">
+         <apex:inputField value="{!objCase.Casenumber}" rendered="{!blnEditmode}"/> 
          <apex:inputField value="{!objCommissiionsCase.Core_AAQC_Subject__c}"  id="subjectId" required="true"/> 
          
           <apex:repeat value="{!$ObjectType.Case.FieldSets.Case_Info_Case_Ask_Commissions_FieldSet}"  var="caseFieldSet">
@@ -136,7 +339,7 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
                     <apex:inputField value="{!objCommissiionsCase.Core_AAQC_Case_Detail__c}" styleClass="Core_AAQC_Case_Detail__c" required="true" /> 
                 </apex:pageBlockSectionItem>
                 
-                <!-- Code start Added as a part of US84920 --> 
+                <!-- Code start Added as a part of US84920
                 <apex:pageBlockSectionItem rendered="{!if(caseFieldSet.label=='Category',true,false)}">
                     <apex:outputLabel >Status</apex:outputLabel>
                     <apex:outputPanel >
@@ -144,7 +347,7 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
                         <apex:outputField value="{!objCase.Status}" rendered="{!if((blnCheckAdminAccess),FALSE,TRUE)}" />
                     </apex:outputPanel>
                 </apex:pageBlockSectionItem>
-                <!-- Code End as a part of US84920 -->
+                <!-- Code End as a part of US84920
                 
                 
                 <apex:pageBlockSectionItem rendered="{!if(caseFieldSet.label=='Root Cause Category',true,false)}">
@@ -172,7 +375,7 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
                 </apex:pageBlockSectionItem>
                 
                 
-                <!-- Code start Added as a part of US76746 --> 
+                <!-- Code start Added as a part of US76746  
                 <!--
                 User story – US76746 - this feature hasn’t been approved by Security council. So this part of the code is commented out. 
                 <apex:pageBlockSectionItem rendered="{!if(caseFieldSet.label=='Cancellation Reason',true,false)}">
@@ -184,11 +387,11 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
                                 <apex:image value="/s.gif" StyleClass="lookupIcon" style="cursor:pointer;"  rendered="{!if((blnCheckOBOFieldAccess),FALSE,FALSE)}"/>
                         </apex:commandLink>
                     </apex:outputPanel>
-                </apex:pageBlockSectionItem>-->
-                <!-- Code End as a part of US76746 -->
+                </apex:pageBlockSectionItem>
+                <!-- Code End as a part of US76746 
                 
-                <apex:pageBlockSectionItem rendered="{!if(caseFieldSet.label=='Resolution CE Set-up Sub-type',true,false)}" >
-                   <apex:outputLabel >Resolution Comments</apex:outputLabel>
+                <apex:pageBlockSectionItem rendered="{!if(caseFieldSet.label=='Root Cause Category',true,false)}" >
+                    <apex:outputLabel >Resolution Comments</apex:outputLabel>
                     <apex:inputField value="{!objCommissiionsCase.Core_AAQC_Resolution_Comments__c}" styleClass="Core_AAQC_Resolution_Comments__c"/>
                 </apex:pageBlockSectionItem>
                 
@@ -207,3 +410,5 @@ console.log("Training Subtype " + JSON.stringify($(".Core_AAQC_Resolution_Traini
    
   </apex:form>
 </apex:page>
+
+-->

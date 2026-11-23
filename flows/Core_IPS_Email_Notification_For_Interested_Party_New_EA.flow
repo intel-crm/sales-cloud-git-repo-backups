@@ -145,7 +145,9 @@
 		)
 	),
 	
-	[Core_IPS_Case_Interested_Party__c].Core_IPS_Project_Interested_Party__c = FALSE
+	[Core_IPS_Case_Interested_Party__c].Core_IPS_Project_Interested_Party__c = FALSE,
+    
+       [Core_IPS_Case_Interested_Party__c].Active__c = TRUE
 )</stringValue>
             </value>
         </processMetadataValues>
@@ -172,7 +174,9 @@
 		)
 	),
 	
-	{!myVariable_current.Core_IPS_Project_Interested_Party__c} = FALSE
+	{!myVariable_current.Core_IPS_Project_Interested_Party__c} = FALSE,
+    
+       {!myVariable_current.Active__c} = TRUE
 )</expression>
     </formulas>
     <formulas>
@@ -196,7 +200,9 @@
 		ISPICKVAL([Core_IPS_Case_Interested_Party__c].Case__c.Status, &apos;On Hold&apos;) 
 	),
 
-	[Core_IPS_Case_Interested_Party__c].Core_IPS_Project_Interested_Party__c = FALSE
+	[Core_IPS_Case_Interested_Party__c].Core_IPS_Project_Interested_Party__c = FALSE,
+
+      [Core_IPS_Case_Interested_Party__c].Active__c = TRUE
 )</stringValue>
             </value>
         </processMetadataValues>
@@ -219,10 +225,12 @@
 		ISPICKVAL({!myVariable_current.Case__r.Status}, &apos;On Hold&apos;) 
 	),
 
-	{!myVariable_current.Core_IPS_Project_Interested_Party__c} = FALSE
+	{!myVariable_current.Core_IPS_Project_Interested_Party__c} = FALSE,
+
+      {!myVariable_current.Active__c} = TRUE
 )</expression>
     </formulas>
-    <interviewLabel>Core_IPS_Email_Notification_For_Interested_Party_New_EA-4_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_IPS_Email_Notification_For_Interested_Party_New_EA-5_InterviewLabel</interviewLabel>
     <label>IPS Email Notification For Interested Party New EA</label>
     <processMetadataValues>
         <name>ObjectType</name>

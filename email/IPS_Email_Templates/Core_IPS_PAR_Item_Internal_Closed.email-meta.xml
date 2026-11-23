@@ -6,7 +6,7 @@
     <letterhead>IPS_Letterhead</letterhead>
     <name>Core IPS PAR Item Internal Closed</name>
     <style>freeForm</style>
-    <subject>PAR Line {!Core_IPS_Map_Par_Line_Item__c.Core_Line_Item_Approval_Status__c} ({!Core_IPS_Map_Par_Line_Item__c.Core_Account__c} / {!Core_IPS_Map_Par_Line_Item__c.Core_Supported_Product_Name__c} / {!Core_IPS_Map_Par_Line_Item__c.Core_Support_Org_Name__c})</subject>
+    <subject>PAR Line {!Core_IPS_Map_Par_Line_Item__c.Core_Line_Item_Approval_Status__c} ({!Core_IPS_Map_Par_Line_Item__c.Core_Account__c} / {!Core_IPS_Map_Par_Line_Item__c.Core_Supported_Product_Name__c} / {!Core_IPS_Map_Par_Line_Item__c.Core</subject>
     <textOnly>Dear {!Core_IPS_Map_Par_Line_Item__c.CreatedBy},
 
 Your Product Access Request (PAR) Line Item has been updated.

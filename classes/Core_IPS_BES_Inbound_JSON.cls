@@ -19,12 +19,16 @@ global with sharing class Core_IPS_BES_Inbound_JSON {
             List<Core_IPS_Backend_Inbound_Integration__e> backendIntegrationEventsList = new List<Core_IPS_Backend_Inbound_Integration__e>();
             RestRequest req = RestContext.request;
             Blob body = req.requestBody;
-            
+            System.debug('RestContext>>>>>'+req);
             String response = body.toString();
+			System.debug('response Data>>>>>'+response);
+            System.debug('i am out');
             if(response != ''){
+				System.debug('i am in');
                 Map<String, Object> responseMap = (Map<String, Object>)JSON.deserializeUntyped(response);
                 Map<String, Object> responseStringMap = new Map<String,Object>();
-                
+                System.debug('responseMap>>>>>'+responseMap);
+				System.debug('responseStringMap>>>>>'+responseStringMap);
                 if(responseMap.containsKey('system_details')){
                     responseStringMap = (Map<String, Object>)JSON.deserializeUntyped(JSON.serialize(responseMap.get('system_details')));    
                 }  
@@ -40,7 +44,7 @@ global with sharing class Core_IPS_BES_Inbound_JSON {
                     }
                     
                     if(Core_IPS_BES_Outbound_Message__c.SObjectType.getDescribe().isQueryable ()){
-                        outboundList = [SELECT ID FROM Core_IPS_BES_Outbound_Message__c WHERE Name=:outboundNum];
+                        outboundList = [SELECT ID FROM Core_IPS_BES_Outbound_Message__c WHERE Name=:outboundNum]; 
                         if(outboundList.size() > 0){
                             /*US1038991 - 07/09/2021 - Vishal - FLS Check for security vulnerability --*/
                             if (Schema.sObjectType.Core_IPS_BES_Outbound_Message__c.fields.Status__c.isUpdateable()) {
@@ -78,7 +82,6 @@ global with sharing class Core_IPS_BES_Inbound_JSON {
                 List<Database.SaveResult> results = EventBus.publish(backendIntegrationEventsList);
                 for (Database.SaveResult sr : results) {
                     if (sr.isSuccess()) {
-                        system.debug('-->results'+results);
                     } else {
                         for(Database.Error err : sr.getErrors()) {
                             System.debug('Error returned: ' +

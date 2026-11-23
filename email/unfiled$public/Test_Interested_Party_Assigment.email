@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Testing Interested Party Assignment" recipientType="User" relatedToType="Core_IPS_Case_Interested_Party__c">
+<messaging:plainTextEmailBody >
+Congratulations!
+This is your new Visualforce Email Template.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

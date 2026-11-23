@@ -13,6 +13,10 @@
         <name>Active__c</name>
     </fields>
     <fields>
+        <label><!-- Core Country --></label>
+        <name>Core_Country__c</name>
+    </fields>
+    <fields>
         <label><!-- Country Code --></label>
         <name>Country_Code__c</name>
     </fields>

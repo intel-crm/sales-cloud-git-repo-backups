@@ -19,10 +19,10 @@ public class IPS_APIGEE_Case_Queueable {
         }
         
         try{
-            if(caseIds!=null){
+            
             if(Limits.getQueueableJobs() < Limits.getLimitQueueableJobs())           
                 System.enqueueJob(new IPS_APIGEE_Case_Backend_System(caseIds)); 
-            }
+     
             //Creating custom exception to cover catch block
             if(Test.isRunningTest()) {
                 CalloutException e = new CalloutException();

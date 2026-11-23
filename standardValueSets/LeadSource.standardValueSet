@@ -17,14 +17,14 @@
         <label>Partner Program</label>
     </standardValue>
     <standardValue>
-        <fullName>Prospecting - Existing Account</fullName>
+        <fullName>Prospecting Existing Account</fullName>
         <default>false</default>
-        <label>Prospecting - Existing Account</label>
+        <label>Prospecting Existing Account</label>
     </standardValue>
     <standardValue>
-        <fullName>Prospecting - New Account</fullName>
+        <fullName>Prospecting New Account</fullName>
         <default>false</default>
-        <label>Prospecting - New Account</label>
+        <label>Prospecting New Account</label>
     </standardValue>
     <standardValue>
         <fullName>Referral - Employee</fullName>
@@ -85,25 +85,5 @@
         <fullName>Media</fullName>
         <default>false</default>
         <label>Media</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Sales AI</fullName>
-        <default>false</default>
-        <label>Sales AI</label>
-    </standardValue>
-    <standardValue>
-        <fullName>IDC Credit Request</fullName>
-        <default>false</default>
-        <label>IDC Credit Request</label>
-    </standardValue>
-    <standardValue>
-        <fullName>LinkedIn Sales Navigator</fullName>
-        <default>false</default>
-        <label>LinkedIn Sales Navigator</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Salesforce</fullName>
-        <default>false</default>
-        <label>Salesforce</label>
     </standardValue>
 </StandardValueSet>

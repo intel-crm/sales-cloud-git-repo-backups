@@ -4,9 +4,221 @@
     <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
     <backgroundStartColor>#FFFFFF</backgroundStartColor>
     <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Katarzyna Makowska</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Joanna Momont</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Benedetta Cazzamali</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Murat Simsek</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Marek Lesiewski</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Dorian Witkowski</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Marcin Sochacki</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Dilip James</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Marta Muszynska</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Corentin Bernard</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Agnieszka Kania</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Mariusz Jadwiszczok</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Tomasz Czajko</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Krzysztof Szachna</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Roberto Lipari</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Michela Adamo</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Hesham Ahmed</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Ozkan Ozdkici</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Karim Ghatwary</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Luuk Verink</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Mitry Matchin</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Vladimir Fedorov</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Nikolay Panov</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Ekaterina Kotelnikova</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Malgorzata Dzul</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Barbara Barusova</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Magdalena Dunska</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Arkadiusz Drazkowski</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Dawid Studzinski</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Lukasz Chrzanowski</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Katarzyna Bielak</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Aleksey Kostadinov</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Ariel Hako</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Kamil Guzik</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Aaron Voelker</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Emmanuel Le Roux</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Michal Nowak</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Tymoteusz Olszewski</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Jason Holtom</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Bruno Le Gallou</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Oscar Zuniga Quisoboni</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Olga Meshinovich</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Pawel Walczysko</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Joaquim Martin</values>
+        </dashboardFilterOptions>
         <name>Opportunity Owner</name>
     </dashboardFilters>
     <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_FISCAL_YEAR</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>NEXT_FISCAL_YEAR</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_FISCAL_QUARTER</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>NEXT_FISCAL_QUARTER</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_FISCAL_QUARTER</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_MONTH</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>NEXT_MONTH</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_MONTH</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>NEXT_N_FISCAL_QUARTERS:4</values>
+        </dashboardFilterOptions>
         <name>KPI - Date</name>
     </dashboardFilters>
     <dashboardType>SpecifiedUser</dashboardType>
@@ -144,7 +356,7 @@
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>WON Opportunities</title>
+            <title>WON Deals</title>
             <useReportChart>false</useReportChart>
         </components>
         <components>
@@ -176,7 +388,7 @@
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>WON Opportunities by Owner</title>
+            <title>WON Deals by Owner</title>
             <useReportChart>false</useReportChart>
         </components>
     </leftSection>
@@ -299,7 +511,7 @@
             <showValues>false</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>Pending  Opportunities</title>
+            <title>Pending Deals</title>
             <useReportChart>false</useReportChart>
         </components>
         <components>
@@ -322,8 +534,8 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
-            <groupingColumn>FULL_NAME</groupingColumn>
             <groupingColumn>STAGE_NAME</groupingColumn>
+            <groupingColumn>CLOSE_DATE</groupingColumn>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>EMEA_OSC/ASG_Pipe_EMEA_OSC_WIP_PENDING</report>
@@ -331,7 +543,7 @@
             <showValues>false</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>Pending  Opportunities by Owner</title>
+            <title>Pending Deals by Owner</title>
             <useReportChart>false</useReportChart>
         </components>
         <components>
@@ -502,7 +714,7 @@
             <showValues>false</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>Total  Opportunity Wins</title>
+            <title>Total Deal Wins</title>
             <useReportChart>false</useReportChart>
         </components>
         <components>
@@ -528,13 +740,13 @@
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
             <sortLegendValues>false</sortLegendValues>
-            <title>Total  Opportunities by Owner</title>
+            <title>Total Deals by Owner</title>
             <useReportChart>false</useReportChart>
         </components>
     </rightSection>
-    <runningUser>11275393@intel.com.crm</runningUser>
+    <runningUser>11598340@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>OSG Pipeline EMEA OSC</title>
+    <title>OSG Pipeline EMEA OSC (WIP)</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

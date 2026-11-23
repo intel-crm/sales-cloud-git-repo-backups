@@ -1,0 +1,27 @@
+<template>
+
+    <lightning-card title="Case Comments">
+        <lightning-input type="text" label="Enter text to be searched:" id="searchId" value={searchText} placeholder="type here..." onchange={onChangeHandler}></lightning-input>
+        <lightning-button variant="brand-outline" label="Search"
+            onclick={onSearch} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button variant="brand-outline" label="Reset"
+            onclick={onReset} class="slds-m-left_x-small"></lightning-button>
+            <lightning-card title="Recent Comments">
+                    <template if:true={isDataAvailable}>
+                            <c-datatable-utility 
+                                hide-checkbox-column={hideCheckboxColumn} 
+                                show-row-number-column={showRowNumberColumn}
+                                enable-infinite-loading={enableInfiniteLoading}
+                                num-and-checkbox-both-cols={numAndCheckboxBothCols}
+                                normal-data-table={normalDataTable}
+                                records={dataToShow}
+                                columns={columns}
+                                number-of-rows-to-show={numberOfRowsToShow}
+                                height-in-rem={heightInRem} class="slds-table_header-hidden">
+                            </c-datatable-utility>
+                        </template>
+            </lightning-card>
+    </lightning-card>
+    
+
+</template>

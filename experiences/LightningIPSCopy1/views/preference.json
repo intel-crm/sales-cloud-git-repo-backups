@@ -1,0 +1,74 @@
+{
+  "appPageId" : "112ae48a-877d-4a55-876f-cf12046a3576",
+  "componentName" : "c:coreIntcPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "11ecdeda-c4c2-4b8f-b64f-8ca2cd5505a1",
+  "label" : "Preference",
+  "regions" : [ {
+    "id" : "841b92cb-65ee-4f5a-b71a-3db784703ae8",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_PrefPage_LWC",
+      "id" : "77b812f2-ecb8-463d-8552-b68dd09a7ecd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a261311c-5ad7-4492-9742-7765e0763b34",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "8fa14d09-29bb-44e8-a265-56b9347bb71f",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "79de2a7d-50e1-49b7-a98e-62adc79ca16d",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "88af16f9-8f76-4663-9311-84e4a033692c",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "822ec6d5-1cb2-44d6-83d0-d83dc780b925",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "a6f24c15-a559-4407-a132-ca516f6a17cf",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "584f4d67-70bb-4a3b-ad80-471bae947c7a",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "fb7e0083-14c4-4cd7-936a-d7699e38ed1f",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "67bdaf0d-ba2c-4a3a-89e7-17290e2bc2fd",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Preference"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "c0cecad3-f8bd-4d87-b887-66232cba0d78",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e5e8baca-b364-447a-99d8-9200557cd2ae",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "PXSNJlgMPbU2RobfwwjfVrPWB6ZAZZ",
+  "type" : "view",
+  "viewType" : "custom-preference"
+}

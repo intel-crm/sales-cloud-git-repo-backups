@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Created as part of POC, please ignore</description>
+    <fields>
+        <fullName>EPMID__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>EPMID</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Support_Tier_SLA_Info__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Support Tier SLA Info</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>IPS Support Tier SLA Configuration</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>MasterLabel</columns>
+        <columns>EPMID__c</columns>
+        <columns>Support_Tier_SLA_Info__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>IPS Support Tier SLA Configurations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

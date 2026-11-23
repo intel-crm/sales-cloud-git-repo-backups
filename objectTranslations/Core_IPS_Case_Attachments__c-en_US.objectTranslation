@@ -321,7 +321,15 @@
         <name>Core_IPS_External_Attach_File</name>
     </webLinks>
     <webLinks>
+        <label><!-- Core_Link_File --></label>
+        <name>Core_Link_File</name>
+    </webLinks>
+    <webLinks>
         <label><!-- Core_Refresh_to_See_New_Attachments --></label>
         <name>Core_Refresh_to_See_New_Attachments</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Download --></label>
+        <name>Download</name>
     </webLinks>
 </CustomObjectTranslation>

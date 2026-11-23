@@ -132,6 +132,10 @@
         <name>Core_IPS_Reporting_Field_mandatory</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- You don&apos;t have acess to create MAG question. --></errorMessage>
+        <name>Core_IPS_Restrict_MAGQuestion_Creation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Environment Detail Questions that are Text can only have 1 Answer defined. --></errorMessage>
         <name>Core_IPS_Validate_Data_Type_Change</name>
     </validationRules>

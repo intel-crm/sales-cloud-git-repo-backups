@@ -66,7 +66,7 @@ export default class Core_IPS_Create_PAR_Lex extends NavigationMixin(LightningEl
         {label:'Approval Type', fieldName:'Approval Type',type:'text'},
     ];
     // chetan - modified eitable : false to make the fields readonly 
-    columns=[{label: 'Supported Product Name', fieldName: 'name',type: "text"},
+    columns=[{label: 'Supported Product Name', fieldName: 'name',type: "text" },
         {label: 'Code Name', fieldName: 'CodeName',type: "text"},
         {label: 'Product Name EPM ID', fieldName: 'EPMID',type: "text"},
         { label: 'Product Focus Area', fieldName: 'ProdArea',type: "picklistEditTemplate",editable:false, typeAttributes:{

@@ -10,11 +10,19 @@ public class Core_IPS_TriggerLevelException_Test {
                 List<Database.SaveResult> results = EventBus.publish(backendIntegrationEventsList);
                 for (Database.SaveResult sr : results) {
                     if (!sr.isSuccess()) {// if Operation failed, so get all errors 
+                        //System.debug('Successfully published event.');
+                     //else {
                         for(Database.Error err : sr.getErrors()) {
-                            throw new StringException('Event Publishing exception '+ err.getMessage());// ATHR Fix Gangadhar
+                            /*System.debug('Error returned: ' +
+                                         err.getStatusCode() +
+                                         ' - ' +
+                                         err.getMessage());*/
+                            throw new StringException('Event Publishing exception '+ err.getMessage());//ATHR fix Gangadhar
                         }
-                    }
+                		}
+                    //}  
                 }
         Test.stopTest();
+        System.AssertEquals(results != null, true); //TWC745-7213- Assert added
     }
 }

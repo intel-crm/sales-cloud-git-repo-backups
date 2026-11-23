@@ -1,0 +1,33 @@
+<apex:page rendered="true">
+  
+  <head>
+   <script type="text/javascript" src="https://www.intel.com/content/dam/www/global/wap/performance-config.js" ></script> 
+   </head>
+   <body>
+    <script type="text/javascript">
+    //configure tms
+    var wapLocalCode = 'us-en'; //dynamically set per localized site, see mapping table for values
+    console.log('wapLocalCode=='+wapLocalCode);
+    var wapSection = "ips-portal";
+    console.log('wapSection=='+wapSection);
+    var wa_env = "dev"; //set to “prod” when implementing on production site.
+    var wapSinglePage = true; // Include this variable if your application comes under single page ,otherwise don’t include
+    //load tms
+    (function() {
+        var url = "https://www.intel.com/content/dam/www/global/wap/tms-loader.js"; //wap file url
+        var po = document.createElement('script'); 
+            po.type = 'text/javascript'; 
+            po.async = true;  
+            po.src = url;
+        console.log('po src=='+po.src);
+        var s = document.getElementsByTagName('script')[0]; 
+            s.parentNode.insertBefore(po, s);
+    })();
+    </script>
+
+   <h1> this is Categorize cookies page </h1>
+     <script type="text/javascript">
+     window.stop();
+     </script>
+  </body>
+</apex:page>

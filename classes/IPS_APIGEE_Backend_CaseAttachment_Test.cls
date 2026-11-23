@@ -13,7 +13,8 @@ global class IPS_APIGEE_Backend_CaseAttachment_Test {
         Account caseContactAccount = TestUtilities.getAccountRecord();
         caseContactAccount.Name = 'Test Sony Products';
         insert caseContactAccount;
-        
+        System.assert(caseContactAccount.Id != null, 'Record not created');
+
         Contact caseContact = new Contact();
         caseContact.FirstName = 'Test';
         caseContact.LastName = 'Contact1';
@@ -22,6 +23,7 @@ global class IPS_APIGEE_Backend_CaseAttachment_Test {
         caseContact.AccountId = caseContactAccount.Id;
         caseContact.MailingCountry='India';
         insert caseContact;
+		System.assert(caseContact.Id != null, 'Record not created');
         
         
         Product2 prod = new Product2();
@@ -32,14 +34,15 @@ global class IPS_APIGEE_Backend_CaseAttachment_Test {
         prod.IsActive = true;
         prod.Core_Product_Org__c = 'IPS';//@@New Validation Rule!!!
         insert prod;
-        
+        System.assert(prod.Id != null, 'Record not created');
+
         Core_IPS_Backend_System__c backendSystem = new Core_IPS_Backend_System__c();
         backendSystem.Name = 'Test Backend System';
         backendSystem.Core_IPS_Backend_Connection_String__c = 'Test Backend Connection';
         backendSystem.Core_IPS_Cloud_Internal_URL__c ='Test.org.com';
         backendSystem.Core_IPS_Deactivated__c = false;
         insert backendSystem;
-        
+        System.assert(backendSystem.Id != null, 'Record not created');
         Case caseRecord = new Case();
         caseRecord.Subject = 'Test Subject';
         caseRecord.ProductId = prod.Id;
@@ -53,16 +56,18 @@ global class IPS_APIGEE_Backend_CaseAttachment_Test {
         caseRecord.Core_IPS_Backend_ID__c = '-1';
         caseRecord.Core_IPS_Backend_System__c = backendSystem.Id;
         insert caseRecord; 
+        System.assert(caseRecord.Id != null, 'Record not created');
         
         Core_IPS_APIGEE_Custom_Settings__c customSetting = new Core_IPS_APIGEE_Custom_Settings__c();
         customSetting.Name = 'Core_IPS_MyIntel_Integration';
         customSetting.MyIntel_Client_Id__c = '07e04e4c-dd0b-4b24-9c46-6056a822530833';
         customSetting.MyIntel_Client_Secret__c = 'XnK1KXtLthP4.778QgL-2fTS~OahSiL_qc';
-        customSetting.MyIntel_Endpoint_URL__c = 'https://apis.intel.com/m2r/intel-customers/v1/profiles';
+        customSetting.MyIntel_Endpoint_URL__c = 'https://apis-stage.intel.com/m2r/intel-customers/v1/profiles';
         customSetting.MyIntel_GrantType__c = 'client_credentials';
         customSetting.MyIntel_Integration_Class_Name__c = 'IPS_APIGEE_Backend_System_CaseAttachment';
         customSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis-sandbox.intel.com/v1/auth/token';
         insert customSetting;
+        System.assert(customSetting.Id != null, 'Record not created');
         
         Core_Trigger_Executions__c label1= new Core_Trigger_Executions__c();
         label1.name= 'InsertCaseCommentForAttach';
@@ -72,6 +77,7 @@ global class IPS_APIGEE_Backend_CaseAttachment_Test {
         label1.Core_Object__c = 'Case Comment';
         label1.Core_Trigger_Events__c = 'After Insert, After update';
         insert label1;
+        System.assert(label1.Id != null, 'Record not created');
         
         Core_Trigger_Executions__c label0 = new Core_Trigger_Executions__c();
         label0.name= 'UpdateCaseComntDscptnForAttach';
@@ -81,6 +87,7 @@ global class IPS_APIGEE_Backend_CaseAttachment_Test {
         label0.Core_Object__c = 'Case Comment';
         label0.Core_Trigger_Events__c = 'After Insert, After update';
         insert label0;
+        System.assert(label0.Id != null, 'Record not created');
         
         Core_Trigger_Executions__c label10 = new Core_Trigger_Executions__c();
         label10.name= 'IsDMUser_En_forCommTrigExec';
@@ -90,88 +97,105 @@ global class IPS_APIGEE_Backend_CaseAttachment_Test {
         label10.Core_Object__c = 'Case Comment';
         label10.Core_Trigger_Events__c = 'After Insert, After update';
         insert label10;
+        System.assert(label10.Id != null, 'Record not created');
+        
          // Avoid Hardcoding Id Fix  - Shipra
-        Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
+        Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1];
         Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
         labels2.name= 'Data Migration Profile Id';
         labels2.value__c=dataMigPrf.Id;
       //   labels2.value__c='00eo0000000f7Gd';
         insert labels2; 
-        
+        System.assert(labels2.Id != null, 'Record not created');
         Core_IPS_Labels__c labels = new Core_IPS_Labels__c ();
         labels.name= 'COMPLETE';
         labels.value__c='COMPLETE';
         insert labels;
+        System.assert(labels.Id != null, 'Record not created');
         
         Core_IPS_Labels__c labels1 = new Core_IPS_Labels__c ();
         labels1.name= 'PUBLIC_TO_CUSTOMERS';
         labels1.value__c='Public to Customers';
         insert labels1;
+        System.assert(labels1.Id != null, 'Record not created');
         
         Core_IPS_Labels__c labels3 = new Core_IPS_Labels__c ();
         labels3.name= 'PRIVATE_TO_INTEL';
         labels3.value__c='Private to Intel';
         insert labels3;
+        System.assert(labels3.Id != null, 'Record not created');
         
         Core_IPS_Labels__c labels4 = new Core_IPS_Labels__c ();
         labels4.name= 'PRIVATE_TO_AGENTS';
         labels4.value__c='Private to Agents';
         insert labels4;
+        System.assert(labels4.Id != null, 'Record not created');
         
         Core_IPS_Labels__c labels5 = new Core_IPS_Labels__c ();
         labels5.name= 'FAE';
         labels5.value__c='FAE';
         insert labels5;
+        System.assert(labels5.Id != null, 'Record not created');
         
         Core_IPS_Labels__c labels6 = new Core_IPS_Labels__c ();
         labels6.name= 'Agent';
         labels6.value__c='Agent';
         insert labels6;
+        System.assert(labels6.Id != null, 'Record not created');
         
         Core_IPS_Labels__c labels7 = new Core_IPS_Labels__c ();
         labels7.name= 'Customer';
         labels7.value__c='Customer';
         insert labels7;
+        System.assert(labels7.Id != null, 'Record not created');
         
         Core_IPS_Labels__c labels8 = new Core_IPS_Labels__c ();
         labels8.name= 'Backend Integration';
         labels8.value__c='Backend Integration';
         insert labels8;
+        System.assert(labels8.Id != null, 'Record not created');
         
         Core_IPS_Labels__c labels9 = new Core_IPS_Labels__c ();
         labels9.name= 'Data Migration';
         labels9.value__c='Data Migration';
         insert labels9;
+        System.assert(labels9.Id != null, 'Record not created');
         
         Core_IPS_Labels__c Label101 = new Core_IPS_Labels__c ();
         Label101.name= 'PRIVATE_TO_PARTNERS';
         label101.value__c= 'Private to Partner';
         insert label101;
+        System.assert(label101.Id != null, 'Record not created');
         
         Core_IPS_Labels__c label11 = new Core_IPS_Labels__c();
         label11.name='Partner - DFAE';
         label11.value__c='Partner - DFAE';
         insert label11;
+        System.assert(label11.Id != null, 'Record not created');
         
         Core_IPS_Labels__c label12 = new Core_IPS_Labels__c();
         label12.name='Partner - Agent';
         label12.value__c='Partner - Agent';
         insert label12; 
+        System.assert(label12.Id != null, 'Record not created');
         
         Core_IPS_Labels__c label13 = new Core_IPS_Labels__c();
         label13.name='Partner';
         label13.value__c='Partner';
-        insert label13; 
+        insert label13;
+        System.assert(label13.Id != null, 'Record not created');
         
         Core_IPS_Labels__c label14 = new Core_IPS_Labels__c();
         label14.name='Comment Source - Customer';
         label14.value__c='Customer Portal';
         insert label14;
+        System.assert(label14.Id != null, 'Record not created');
         
         Core_IPS_System_Credentails_Apigee__c label17 = new Core_IPS_System_Credentails_Apigee__c();
         label17.Name = 'Core_IPS_CaseComment_Update';
         label17.Core_IPS_EndPointURL__c = 'Test.org.com';
         insert label17;
+        System.assert(label17.Id != null, 'Record not created');
         
         
         
@@ -195,6 +219,8 @@ global class IPS_APIGEE_Backend_CaseAttachment_Test {
         Test.setMock(HttpCalloutMock.class, new IPS_APIGEE_BackendHttpCalloutMock());
         Test.startTest();
         insert attachments;
+        System.assert(attachments.Id != null, 'Record not created');
+        
         Test.stopTest();
     }
     

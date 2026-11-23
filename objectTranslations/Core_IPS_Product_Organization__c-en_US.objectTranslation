@@ -13,6 +13,10 @@
         <name>SupportOrgFieldSet</name>
     </fieldSets>
     <fields>
+        <label><!-- External Id --></label>
+        <name>Core_External_Id__c</name>
+    </fields>
+    <fields>
         <help><!-- Brief name or acronym of the IPS Support Org. May or may not align with the Intel Business Unit aka Division name. --></help>
         <label><!-- Support Org Name --></label>
         <name>Core_IPS_Support_Org_Name__c</name>
@@ -22,6 +26,10 @@
         <label><!-- Product Focus Area --></label>
         <name>Core_Organization_Description__c</name>
     </fields>
+    <fields>
+        <label><!-- no:of edqs --></label>
+        <name>no_of_edqs_del__c</name>
+    </fields>
     <recordTypes>
         <label><!-- IPS Support Org --></label>
         <name>IPS_Support_Org</name>
@@ -30,6 +38,10 @@
     <webLinks>
         <label><!-- Core_IPS_All_Operational_Env_Details_Report --></label>
         <name>Core_IPS_All_Operational_Env_Details_Report</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Create_Map --></label>
+        <name>Core_IPS_Create_Map</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_IPS_Env_Details_Master_Q_A_Report --></label>

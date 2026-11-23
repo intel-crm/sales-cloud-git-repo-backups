@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>EMBED - L3 (QSD) WW</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_IPS_Org_007_L3_QSD_WW</publicGroup>
+        </publicGroups>
+    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

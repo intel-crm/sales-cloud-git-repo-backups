@@ -1,0 +1,7 @@
+A new change request record has been created and approved by the account owner and requires your review: 
+
+Type: {!Core_Change_Request__c.RecordType} 
+Name: {!Core_Change_Request__c.Name} 
+Account Owner: {!Account.OwnerFullName}
+Submitted by: {!Core_Change_Request__c.CreatedBy} 
+Record Link: {!Core_Change_Request__c.Link}

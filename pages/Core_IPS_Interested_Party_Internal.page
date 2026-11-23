@@ -1,0 +1,197 @@
+<apex:page controller="Core_IPS_Interested_Party_Int_Controller" sidebar="false"  showHeader="false">
+    
+    <apex:includeScript value="/soap/ajax/29.0/connection.js"/>
+    <apex:includeScript value="/support/console/35.0/integration.js"/>
+
+    <script type="text/javascript">
+    
+        function doSearchOnEnter(ev)
+        {
+        if (window.event)
+      {
+          ev=window.event;
+      }
+       
+      var keyCode;
+      if (ev.keyCode)
+      {
+         keyCode=ev.keyCode;
+      }
+      else
+      {
+         keyCode=ev.charCode;
+      }
+       
+      if (keyCode == 13)
+      {
+         var ele=document.getElementById('{!$Component.j_id0.form.crit_block.crit_section.Searchbtn}');
+         ele.click();
+         return false;
+      }
+      else
+      {
+         return true;
+      }
+        }
+        
+        function  verifyAndRedirect()
+        {         
+         if(confirm('The changes to the interested party list have been made on this case.')){
+         console.log(JSON.stringify(sforce.console));        
+             //alert("{! JSENCODE($CurrentPage.parameters.IsConsole)}");
+         if("{! JSENCODE($CurrentPage.parameters.IsConsole)}"==true)
+         {
+            FinishRedirect();
+         }
+                         
+         //window.location.href='/{!$CurrentPage.parameters.id}';
+         return false;
+             
+         }else{
+             return false;}
+        }
+        function testIsInConsole() {
+            if (sforce.console.isInConsole()) {
+                  alert('in console');
+               } else {
+                  alert('not in console');
+            }
+        }
+
+    </script>
+        
+    <apex:form id="form">
+        
+        <apex:pageBlock id="crit_block">
+            <apex:pagemessages rendered="{!showErrorMsg}" ></apex:pagemessages>
+            <apex:actionstatus id="status1">
+                <apex:facet name="start">
+                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height: 5000%;opacity:0.65;width:100%;">
+                        <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription">Please Wait...</span>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionstatus>
+            <apex:actionFunction id="FinishRedirect" Name="FinishRedirect" action="{!Finished}"/>
+
+            <!--<apex:pageBlockSection title="Internal Interested Parties" columns="1"  id="crit_section">
+            <apex:commandButton value="Back" action="{!back}" />
+            <apex:outputPanel >
+                <apex:outputLabel value="Enter Search Text: " />
+                <apex:inputText value="{!searchText}" label="Enter Search Text" style="width:40%" id="inputSearchText" onkeypress="return doSearchOnEnter(event);" />
+                <apex:commandButton value="Search" action="{!doSearch}"  id="Searchbtn" />
+            </apex:outputPanel>
+ 
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:commandButton value="Add Selected" action="{!AddSelectedContacts}" />
+            <apex:pageBlockTable value="{!IPRecordSet}" var="IPRec" id="IPTable"  rendered="{!searchMadeInt}">
+            
+                <apex:column >
+                    <apex:inputCheckBox value="{!IPRec.isSelected}" />
+                </apex:column>
+                <apex:column value="{!IPRec.Usr.Name}" />
+                <apex:column value="{!IPRec.Usr.Email}" />
+            </apex:pageBlockTable>
+            </apex:pageBlockSection>-->
+            
+            <apex:pageBlockSection title="Search Interested Parties" columns="1" id="crit_section" rendered="{!isEditable}">    <!-- Added by sumukh for US176533 -->                
+                <apex:outputPanel id="pnl">
+                    <apex:outputLabel value="Enter Search Text: " style="font-weight:700;font-size:11px"/>
+                    <apex:inputText value="{!searchText}" label="Enter Search Text" style="width:40%" id="inputSearchText" onkeypress="return doSearchOnEnter(event);" html-placeholder="Type in the name and click Search.."/>
+                    <apex:commandButton value="Search" action="{!doSearch}" id="Searchbtn" rerender="crit_block" status="status1"/>
+                    <span class="helpButton">
+                        <img src="/s.gif" class="helpOrb" title="FAEs belonging to your account/Internal Users can be added or removed as Interested Parties to this case. If you do not find a user, it is possible they do not have access to this case or do not belong to your account."/>                        
+                    </span>                   
+                </apex:outputPanel>
+                <!--<span style="margin-left:125px;">Note for Project based cases : To add contacts from another account to this case, contact your Intel Support Owner</span>-->                
+                <!--<apex:commandButton value="Add Selected" action="{!AddSelectedContacts}" reRender="selectedresult,searchresult" status="status1"/>--> 
+            </apex:pageBlockSection>            
+                
+            <apex:pageBlockSection columns="1" id="crit_section_btn">   
+                <apex:outputPanel id="pn2">
+                    <div style="position:relative;left:450px;">
+                        <apex:commandButton value="Cancel" action="{!Finished}"/>
+                        <!--Ashutosh - US103988 - commented as to indroduce new method on save
+                            <apex:commandButton value="Done" action="{!Finished}" onclick="if(confirm('The changes to the interested party list have been made on this case.')){window.location.href='/CaseId'}else{return false;}"/>-->
+                           <!--Included 'status' attribute for US309888 to prevent duplicate IP records from being added-->
+                         <!-- Done button -->
+                        <apex:commandButton value="Done" action="{!saveAndRedirect}" rendered="{!isEditable}" status="status1" reRender="None"/>  <!-- Added by sumukh for US176533 -->            
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+               
+            <apex:PageBlock title="Selected:" id="selectedresult" rendered="{!isEditable}">  <!-- Added by sumukh for US176533 --> 
+			
+                <!--Ashutosh - US103988 - Will wrap using wrapper created 
+                <apex:outputPanel rendered="{!LinkedInternalParties.size<1}"><apex:outputText > No records to display </apex:outputText></apex:outputPanel>        
+                <apex:outputPanel rendered="{!LinkedInternalParties.size>0}">
+                    <apex:pageBlockTable value="{!LinkedInternalParties}" var="internal">         
+                        <apex:column headerValue="Add">                            
+                            <apex:inputCheckBox value="{!internal.Active__c}">
+                                <apex:actionSupport event="onclick" action="{!removeSelectedContacts}" reRender="crit_block,selectedresult,searchresult" status="status1"/>
+                            </apex:inputCheckBox>
+                        </apex:column>
+                        <apex:column value="{!internal.First_Name__c}"/>
+                        <apex:column value="{!internal.Last_Name__c}"/>
+                        <apex:column value="{!internal.Email__c}"/>
+                    </apex:pageBlockTable>
+                </apex:outputPanel> -->
+                <apex:outputPanel rendered="{!linkedPartiesList.size<1}"><apex:outputText > No records to display </apex:outputText></apex:outputPanel>        
+                <apex:outputPanel rendered="{!linkedPartiesList.size>0}">
+                    <apex:pageBlockTable value="{!linkedPartiesList}" var="internal">         
+                        <apex:column headerValue="Add">                            
+                            <apex:inputCheckBox value="{!internal.isSelected}">
+                                <apex:actionSupport event="onclick" action="{!removeSelectedContacts}" reRender="crit_block,selectedresult,searchresult" status="status1"/>
+                            </apex:inputCheckBox>
+                        </apex:column>
+                        <apex:column value="{!internal.firstName}" headerValue="First Name"/>
+                        <apex:column value="{!internal.lastName}" headerValue="Last Name"/>
+                        <apex:column value="{!internal.email}" headerValue="Email"/>
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:PageBlock>
+                        
+            <apex:PageBlock title="Search Results:" id="searchresult" rendered="{!isEditable}" >  <!-- Added by sumukh for US176533 --> 
+			
+                <apex:pageBlockTable value="{!IPRecordSet}" var="IPRec" id="IPTable" rendered="{!searchMadeInt}">
+                    <apex:column headerValue="Add">                            
+                        <apex:inputCheckBox value="{!IPRec.isSelected}">
+                            <apex:actionSupport event="onclick" action="{!AddSelectedContacts}" reRender="crit_block,searchresult,selectedresult" status="status1"/>
+                        </apex:inputCheckBox>
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!simpleSort}" value="First Name {!IF(sortHeader.sortExpression== 'FirstName', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="FirstName" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!IPRec.Usr.FirstName}"/>
+                    </apex:column>                    
+                    
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!simpleSort}" value="Last Name {!IF(sortHeader.sortExpression== 'LastName', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="LastName" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!IPRec.Usr.LastName}"/>
+                    </apex:column>  
+                    
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:commandLink action="{!simpleSort}" value="Email {!IF(sortHeader.sortExpression== 'Email', sortHeader.sortIndicator, '')}" reRender="searchresult">
+                                <apex:param value="Email" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                            </apex:commandLink>                                                                                         
+                        </apex:facet>                                     
+                        <apex:outputText value="{!IPRec.Usr.Email}"/>
+                    </apex:column>
+                                                             
+                </apex:pageBlockTable>
+            </apex:PageBlock>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

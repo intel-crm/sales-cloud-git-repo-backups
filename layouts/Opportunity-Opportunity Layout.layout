@@ -123,49 +123,19 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Opportunity.Log_a_Call</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Submit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>6</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_Sales_Support</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>7</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_Lex_Opp_Sharing</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>8</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_Opportunity_Clone_Button</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>9</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>SendEmail</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>10</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewEvent</actionName>
+            <actionName>FeedItem.TextPost</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>11</sortOrder>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>FeedItem.ContentNote</actionName>
@@ -181,6 +151,31 @@
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Opportunity.Log_a_Call</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SendEmail</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Submit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Sales_Support</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>8</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_Opportunity_Clone_Button</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>9</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -270,8 +265,9 @@
         <fields>UnitPrice</fields>
         <fields>TotalPrice</fields>
         <fields>Core_Write_In_Product_Name__c</fields>
-        <fields>Core_BU_Short_Name_Old__c</fields>
+        <fields>Core_Advanced_Technology__c</fields>
         <fields>Core_Vendor__c</fields>
+        <fields>Core_BU_Short_Name__c</fields>
         <relatedList>RelatedLineItemList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -285,16 +281,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Core_Opp_Hist_Approved_By__c</fields>
-        <fields>Core_Opp_Hist_Manager_Approved_Date__c</fields>
-        <fields>Core_Opp_Hist_Claim_Date__c</fields>
-        <fields>Core_Opp_Hist_Approved_Quantity__c</fields>
-        <fields>Core_Opp_Hist_Approved_Sales_Group__c</fields>
-        <fields>Core_Opp_Hist_Approved_Sales_Price__c</fields>
-        <fields>Core_Opp_Hist_Approved_Total_Price__c</fields>
-        <fields>Core_Opp_Hist_Product__c</fields>
-        <fields>Core_Opp_Hist_Approved_BU_Short_Name__c</fields>
-        <relatedList>Core_Opportunity_Approval_History__c.Core_Opp_Hist_Core_Opportunity__c</relatedList>
+        <relatedList>Core_IPS_Opportunity_PAR__c.Opportunity__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

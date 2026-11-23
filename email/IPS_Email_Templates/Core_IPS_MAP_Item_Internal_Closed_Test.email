@@ -1,0 +1,31 @@
+<messaging:emailTemplate subject="Approval Status" recipientType="User" relatedToType="Core_IPS_Map_Par_Line_Item__c">
+    <messaging:htmlEmailBody >
+            <apex:image url="{!$Resource.Core_IPS_Logo}" /><br />
+            <b>Dear {!relatedTo.CreatedBy.Name},</b><br />
+            <p>Your Managed Access Policy (MAP) Line Item has been updated.</p><br />
+            <b>MAP Submitter:</b>{!relatedTo.CreatedBy.Name}<br />
+            <b>MAP Number:</b> {!relatedTo.Core_MAP_PAR__r.Name}<br />
+            <b>MAP Line Item #:</b> {!relatedTo.Name}<br />
+            <b>Line Item Approval Status:</b> {!relatedTo.Core_Line_Item_Approval_Status__c}<br />
+            <b>Account:</b> {!relatedTo.Core_Account__r.Name}<br />
+            <b>Product:</b> {!relatedTo.Core_Supported_Product_Name__c}<br />
+            <b>Approval Support Org:</b> {!relatedTo.Core_Support_Org_Name__c}<br />
+            <b>Approver:</b> {!relatedTo.Core_LI_Approver__c}<br /><br />
+            created by Name : {!relatedTo.CreatedBy.Name}<br /><br />
+            created by Profile : {!relatedTo.CreatedBy.Profile.Name}<br /><br />
+            
+            
+            <p>To review this Managed Access Policy Line Item please: <a href="https://'+ System.URL.getSalesforceBaseUrl().getHost() + '/lightning/r/Core_IPS_Map_Par_Line_Item__c/{!relatedTo.Id}/view">Click Here</a></p>
+            
+            <p>NOTE: If you submitted a Managed Access Policy with multiple Line Items you will receive one email for each Line Item when the Line Item is approved or rejected.</p>
+            <hr />
+            <div style="font-size:12;">
+            <p>This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.</p>
+            <p>Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</p>
+            </div>
+    </messaging:htmlEmailBody>
+
+
+    <messaging:plainTextEmailBody >
+    </messaging:plainTextEmailBody>
+</messaging:emailTemplate>

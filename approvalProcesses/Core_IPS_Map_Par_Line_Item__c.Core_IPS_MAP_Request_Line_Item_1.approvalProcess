@@ -124,7 +124,7 @@
         </action>
     </initialSubmissionActions>
     <label>Core_IPS_MAP Request-Line Item</label>
-    <processOrder>2</processOrder>
+    <processOrder>3</processOrder>
     <recordEditability>AdminOrCurrentApprover</recordEditability>
     <showApprovalHistory>true</showApprovalHistory>
 </ApprovalProcess>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
     <customMetadataTypeRecord>Core_IPS_APIAuthSettingPlugin__mdt.Core_SFT_MoveFile_AuthProvider</customMetadataTypeRecord>
-    <executionUser>ips.pam.integration.user@intel.com.crm</executionUser>
+    <executionUser>gangadharx.raju.udayabhanu.devcase@intel.com</executionUser>
     <friendlyName>Core_SFT_MoveFile_AuthProvider</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <isPkceEnabled>false</isPkceEnabled>
@@ -10,5 +10,5 @@
     <requireMfa>false</requireMfa>
     <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
-    <sendSecretInApis>false</sendSecretInApis>
+    <sendSecretInApis>true</sendSecretInApis>
 </AuthProvider>

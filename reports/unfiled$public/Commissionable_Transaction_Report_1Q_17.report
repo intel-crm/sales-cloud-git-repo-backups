@@ -91,11 +91,11 @@
             <value>Approved</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
+            <column>Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>DCG Sales BU</value>
+            <value>Industry Sales</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -110,7 +110,7 @@
         <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Commissionable Transaction Report 2018</name>
+    <name>Commissionable Transaction Report 2017</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -136,6 +136,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_Commissionable_Transaction__c.Core_Claim_Date__c</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -35,7 +35,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Website,Intel Website</value>
+            <value>Website</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -69,6 +69,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_LAST30</interval>
+        <endDate>2017-08-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-08-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -47,7 +47,10 @@ export default class Core_IPS_attachmentUploadLex extends NavigationMixin(Lightn
         this.cnt = 1;
         this.temprecid = this.recordId;
        console.log('recordId',this.recordId);
-        this.arr = this.recordId.split(" ");
+       if(this.recordId != undefined && this.recordId!= null && this.recordId != ''){
+            console.log('inside if')
+             this.arr = this.recordId.split(" ");
+       }
         console.log('id=',this.arr[0]);
         console.log('type=',this.arr[1]);
         if(localStorage.getItem('resume')=='resume'){

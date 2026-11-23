@@ -58,11 +58,11 @@
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>(ISPICKVAL({!myVariable_current.Core_AAQC_Commissions_Case__c.Core_AAQC_Case__c.Status}  , &apos;Awaiting Requestor’s Info&apos;) || ISPICKVAL({!myVariable_current.Core_AAQC_Commissions_Case__c.Core_AAQC_Case__c.Status} , &apos;Awaiting Resolution Confirmation&apos;))
+        <expression>(ISPICKVAL({!myVariable_current.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Status}  , &apos;Awaiting Requestor’s Info&apos;) || ISPICKVAL({!myVariable_current.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Status} , &apos;Awaiting Resolution Confirmation&apos;))
 
-&amp;&amp;({!myVariable_current.CreatedById} =={!myVariable_current.Core_AAQC_Commissions_Case__c.Core_AAQC_Case__c.Core_AAQC_Requested_for__c.Id} &amp;&amp;{!myVariable_current.Core_AAQC_Commissions_Case__c.Core_AAQC_Case__c.RecordType.DeveloperName} ==&apos;Core_AAQC_Case_recordType&apos;)</expression>
+&amp;&amp;({!myVariable_current.CreatedById} =={!myVariable_current.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.Core_AAQC_Requested_for__r.Id} &amp;&amp;{!myVariable_current.Core_AAQC_Commissions_Case__r.Core_AAQC_Case__r.RecordType.DeveloperName} ==&apos;Core_AAQC_Case_recordType&apos;)</expression>
     </formulas>
-    <interviewLabel>Ask_Commissions_Changing_Status_to_assigned_when_comment_created_by_End_user-2_InterviewLabel</interviewLabel>
+    <interviewLabel>Ask_Commissions_Changing_Status_to_assigned_when_comment_created_by_End_user-3_InterviewLabel</interviewLabel>
     <label>Ask Commissions-Changing Status to assigned when comment created by End user</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -97,6 +97,9 @@
             </value>
         </processMetadataValues>
         <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
                 <booleanValue>false</booleanValue>
@@ -107,6 +110,9 @@
             <value>
                 <stringValue>[Core_AAQC_Case_Comments__c].Commissions Case.Case</stringValue>
             </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_1_A1</name>
         <label>Ask Commissions-Changing Status to assigned when comment created by End user</label>
@@ -165,7 +171,7 @@
         <object>Case</object>
     </recordUpdates>
     <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

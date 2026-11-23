@@ -4,22 +4,7 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Production_End_Date__c</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Volume__c</field>
@@ -39,18 +24,30 @@
     <columns>
         <field>Core_Opportunity_Features__c.Core_Feature_Name__c</field>
     </columns>
-    <description>Display PSG Opportunities with FPGA Products and has Descriptive Features (Platform BU=PSG)</description>
+    <description>Display PSG Opportunities with FPGA Products and has Descriptive Features(Limit by Design Entry Method)</description>
     <filter>
         <criteriaItems>
-            <column>Core_Opportunity_Features__c.Core_Platform_BU__c</column>
+            <column>OWNER_DEPARTMENT</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>startsWith</operator>
             <value>PSG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Opportunity_Features__c.Core_Feature_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design Entry Method</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Tabular</format>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OPPORTUNITY_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>Oppty Descriptive Features</name>
     <params>
         <name>terr</name>

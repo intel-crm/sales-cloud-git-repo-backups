@@ -1,0 +1,58 @@
+<template>
+    <div class="slds-p-around_medium">
+        <lightning-button onclick={handleNavigateBack} variant="base" label="< Back" title="Back to dashboard"
+            class="noBorder"></lightning-button>
+    </div>
+    <lightning-output-field field-name="Name">
+    </lightning-output-field>
+<lightning-card style="background-color:rgb(213, 213, 219);">
+    <lightning-record-edit-form
+    object-api-name=Core_IPS_Project__c
+    record-id={recordId}
+    >
+   <lightning-layout>
+    <lightning-layout-item size="4" padding="around-small">
+    <h4>Premier Support Project Edit</h4>
+    </lightning-layout-item>
+    <lightning-layout-item size="8" padding="around-small">
+    <lightning-button-group>
+        <lightning-button label="Cancel" variant="neutral" onclick={handleDialogClose}></lightning-button>
+        <lightning-button label="Save" variant="brand" type="submit" onclick={handleSave}></lightning-button>
+    </lightning-button-group>
+    </lightning-layout-item>
+    </lightning-layout>
+    <div style="background-color:rgb(179, 179, 182);">
+        <h3>Information</h3>
+    </div>
+<lightning-layout>
+    <lightning-layout-item size="6" padding="around-small">
+    <lightning-input-field field-name={nameField}> </lightning-input-field>
+    </lightning-layout-item>
+    <lightning-layout-item size="6" padding="around-small">
+    <lightning-output-field field-name={projectIdField}>
+    </lightning-output-field>
+    </lightning-layout-item>
+</lightning-layout>
+    <lightning-layout>
+        <lightning-layout-item size="6" padding="around-small">
+    <lightning-input-field field-name={projectdescField}>
+    </lightning-input-field>
+    </lightning-layout-item>
+    <lightning-layout-item size="6" padding="around-small">
+    <lightning-output-field field-name={mpnda}>
+    </lightning-output-field>
+    </lightning-layout-item>
+</lightning-layout>
+    <lightning-layout>
+        <lightning-layout-item size="6" padding="around-small">
+    <lightning-input-field type=checkbox field-name={interestedparties}>
+    </lightning-input-field>
+    </lightning-layout-item>
+    <lightning-layout-item size="6" padding="around-small">
+    <lightning-input-field type=checkbox field-name={Details}>
+    </lightning-input-field>
+    </lightning-layout-item>
+</lightning-layout>
+</lightning-record-edit-form>
+</lightning-card>
+</template>

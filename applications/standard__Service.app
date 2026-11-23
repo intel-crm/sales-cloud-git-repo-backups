@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <defaultLandingTab>standard-home</defaultLandingTab>
+    <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
@@ -28,5 +29,12 @@
     <tabs>Core_CCV__c</tabs>
     <tabs>Core_Role_Upload_Temp_Table_3__c</tabs>
     <tabs>standard-WaveHome</tabs>
-    <tabs>Knowledge__kav</tabs>
+    <tabs>Core_Flat_Product_Hierarchy__c</tabs>
+    <tabs>Core_RestAPI_Transaction_Entry__c</tabs>
+    <tabs>Core_IPS_Deflected_Object__c</tabs>
+    <tabs>Core_AAQC_Case_Comments__c</tabs>
+    <tabs>Core_IPS_BES_Outbound_Message__c</tabs>
+    <tabs>Core_IPS_BES_Inbound_Message__c</tabs>
+    <tabs>Core_IPS_Backend_System2__c</tabs>
+    <tabs>Core_IPS_Opportunity_PAR__c</tabs>
 </CustomApplication>

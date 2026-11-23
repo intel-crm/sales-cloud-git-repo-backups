@@ -5,36 +5,9 @@ Created Date: 10 Nov 2016
 Description    : This class is Test class for Core_Batch_AccountCoverage_Delete
 *************************************************************************************/
 @isTest Public Class Core_Batch_AccountCoverage_Delete_Test{
-    
-
-    @isTest
-    static void testBatchExecution() {
-        String result= Core_Batch_AccountCoverage_Delete.dummyMethod1();
-        String result2= Core_Batch_AccountCoverage_Delete.dummyMethod2(); 
-        String result3= Core_Batch_AccountCoverage_Delete.dummyMethod3(); 
-        String result4= Core_Batch_AccountCoverage_Delete.dummyMethod4(); 
-        String result5= Core_Batch_AccountCoverage_Delete.dummyMethod5(); 
-        String result6= Core_Batch_AccountCoverage_Delete.dummyMethod6(); 
-        String result7= Core_Batch_AccountCoverage_Delete.dummyMethod7(); 
-        String result8= Core_Batch_AccountCoverage_Delete.dummyMethod8(); 
-        String result9= Core_Batch_AccountCoverage_Delete.dummyMethod9();
-    }
-       @isTest
-     static void testBatchExecution2() {
-        String result= Core_Batch_AccountCoverage_Mule.dummyMethod1();
-        String result2= Core_Batch_AccountCoverage_Mule.dummyMethod2(); 
-        String result3= Core_Batch_AccountCoverage_Mule.dummyMethod3(); 
-        String result4= Core_Batch_AccountCoverage_Mule.dummyMethod4(); 
-        String result5= Core_Batch_AccountCoverage_Mule.dummyMethod5(); 
-        String result6= Core_Batch_AccountCoverage_Mule.dummyMethod6(); 
-        String result7= Core_Batch_AccountCoverage_Mule.dummyMethod7(); 
-        String result8= Core_Batch_AccountCoverage_Mule.dummyMethod8(); 
-        String result9= Core_Batch_AccountCoverage_Mule.dummyMethod9();
-    }
-
-
-}
-          /*  Core_AccountCoverage_Export__c ace = new Core_AccountCoverage_Export__c();
+        static testMethod void exportDeleteMethod(){
+           
+            Core_AccountCoverage_Export__c ace = new Core_AccountCoverage_Export__c();
             ace.Core_Account_CIMID__c = '123';
             ace.Core_Account_Geo__c = 'lar';
             ace.Core_Account_Id__c = '765';
@@ -145,4 +118,6 @@ Description    : This class is Test class for Core_Batch_AccountCoverage_Delete
             Database.executeBatch(exportdelete,1);
             
             Test.stoptest();
-            }*/
+            }
+            }
+}

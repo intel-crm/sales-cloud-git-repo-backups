@@ -88,7 +88,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Approved,Pending</value>
+            <value>Approved</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Group__c</column>
@@ -103,13 +103,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>ASMO</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>INDUSTRY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Manufacturing,Transportation</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -146,6 +139,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

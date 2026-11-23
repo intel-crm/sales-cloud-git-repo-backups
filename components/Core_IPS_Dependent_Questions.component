@@ -1,0 +1,34 @@
+<apex:component selfClosing="true">
+    <apex:attribute name="env" type="Core_IPS_EnvironmentDetailQuestion" description="Environment Detais Object"/>
+    
+        <apex:outputPanel id="dependentpanel">
+            <apex:outputPanel rendered="{!if(env.type=='Text',true,false)}" >
+                <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
+                    <apex:inputText value="{!env.sPlaceHolder}" required="">
+                    </apex:inputText>
+                </apex:outputPanel>
+                <br/>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!if(env.type=='Picklist', true,false)}">
+                <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>
+                    <apex:selectList value="{!env.selectedValue}" size="1" style="width:150px">
+                        <apex:selectOptions value="{!env.pPlaceHolder}" />
+                        <!--apex:actionSupport event="onchange" action="{!renderDependentQuestions}" reRender="panel1"/-->
+                    </apex:selectList>
+                </apex:outputPanel>
+                <br/>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!if(env.type=='Multiselect Picklist', true,false)}">
+                <apex:outputPanel styleClass="{!IF(env.required,'requiredInput','')}" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!env.required}"/>                                       
+                    <apex:selectList value="{!env.selectedMValue}" size="3" styleClass="envClass" multiselect="true">
+                        <apex:selectOptions value="{!env.pPlaceHolder}"/>
+                    </apex:selectList>
+                </apex:outputPanel>                
+                <br/>
+            </apex:outputPanel>
+            
+        </apex:outputPanel>
+</apex:component>

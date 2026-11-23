@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "8a83200a-754d-4ec0-9267-75fba1963ef9",
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "configurationTags" : [ ],
+  "devName" : "Core_IPS_Confidentiality_Statement__c",
+  "id" : "be95c08c-c5e9-4e32-a943-d87d9f3f4357",
+  "label" : "Confidentiality Statement",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-confidentiality-statement",
+  "type" : "route",
+  "urlPrefix" : "confidentiality-statement"
+}

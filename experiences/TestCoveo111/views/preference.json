@@ -1,0 +1,86 @@
+{
+  "appPageId" : "e17f942b-3b3d-4c09-adf8-76e00bdef0c4",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "d51cfcc2-f208-4c73-be14-512bcaef69c8",
+  "label" : "Preference",
+  "regions" : [ {
+    "id" : "585e04ae-2f18-4c47-900c-57b8c9f32f87",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "ec6f8b30-0d76-415b-90c2-e36e1747147c",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_PrefPage_LWC",
+      "id" : "7af71b1d-2d50-4e70-9ff8-24d0c6afe415",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3434595e-4f4c-4a2e-b7c8-3e961bd9ac75",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "dc9d44fa-dda4-48d0-8609-4690a1c60b09",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "8d36c721-5e56-490a-bc62-4f3c7e0ec9a5",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "05cbbc4c-7cfd-41a2-a586-2a338cb5cdb4",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "ef74e2a8-9b16-45f6-a39e-a6ee4bd50586",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "28afe737-5f2c-4075-9ac6-81be73ca038e",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "5d1eef27-34b6-41a2-bd4d-3618fd637716",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "2efd0599-75d3-4d72-a2ff-a127dd607aed",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "20de7827-7733-42fa-8640-2ba8485ac75d",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "de15e615-0de9-4cc3-aa6f-0622fcc91e2b",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "808fdca0-bc28-49bd-8c59-0d1b34a261af",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Preference"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "6b9e03bd-a95a-4ac9-af8a-4e6ddfdd57bd",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1c164141-37b5-4733-bbdf-32da067b91d1",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-preference"
+}

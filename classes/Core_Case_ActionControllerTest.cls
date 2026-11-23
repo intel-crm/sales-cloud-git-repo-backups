@@ -69,6 +69,7 @@ Modification Log :
                     rtId = rt.Id;
                     CaseRec.OwnerId = intelSupportOwner;                         
                 }
+                rtId = rt.Id;
             }
         }
         System.runAs(ListOfUser.get(0)){

@@ -19,7 +19,6 @@ Global with sharing class Core_IPS_CaseAdvanceSearch_CTRL    {
     @AuraEnabled(cacheable=true)
     global static List <case> getCaseList(String caseSearch, string filterStr,string subStatus) {
         String prodId = caseSearch;
-        
         //FLS fix added by Nagendra on 14-10-2022
         filterStr = String.escapeSingleQuotes(filterStr);
         subStatus = String.escapeSingleQuotes(subStatus);
@@ -110,9 +109,14 @@ Global with sharing class Core_IPS_CaseAdvanceSearch_CTRL    {
         FilterSOQL = FilterSOQL + ((FilterSOQL != '') ? ' AND ' : '') + ' Core_IPS_Customer_Visible__c = '+true; 
         CaseSOSL += (FilterSOQL != '' ? (' Where ' + FilterSOQL) : '') + ' order by LastModifiedDate desc LIMIT 1000 ),Core_IPS_Case_Comments__c(id,Core_IPS_Case__c ' + (FilterSOQLRTF != '' ? (' Where ' + FilterSOQLRTF) : '') + ' order by LastModifiedDate desc Limit 1000)';
         List < List < SObject >> LstCase = new List < List < SObject >> ();
+        system.debug('NoSoslFilter'+NoSoslFilter);
+        system.debug('strfinalFilter'+strfinalFilter);
+        system.debug('CaseSOSL'+CaseSOSL);
+        //system.debug('test'+search.Query(CaseSOSL));
         if (strfinalFilter != '' && NoSoslFilter) {
             LstCase = search.query(CaseSOSL);
         }
+        system.debug('LstCase'+LstCase);
         if (LstCase.size() > 0) {
             integer counter = 0;
             for (List < sobject > lst: LstCase) {

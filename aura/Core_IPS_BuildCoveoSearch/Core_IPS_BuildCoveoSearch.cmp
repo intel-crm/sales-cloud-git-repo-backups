@@ -1,0 +1,4 @@
+<aura:component controller="Core_IPS_CoveoPageCtrl_LWC"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+   <CoveoV2:SearchUI name="CoveoSearchUI" aura:id="CoveoAgentPanel"></CoveoV2:SearchUI>
+</aura:component>

@@ -46,39 +46,4 @@
         <default>false</default>
         <label>Other</label>
     </standardValue>
-    <standardValue>
-        <fullName>Webinar</fullName>
-        <default>false</default>
-        <label>Webinar</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Newsletter</fullName>
-        <default>false</default>
-        <label>Newsletter</label>
-    </standardValue>
-    <standardValue>
-        <fullName>WeChat</fullName>
-        <default>false</default>
-        <label>WeChat</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Single Email</fullName>
-        <default>false</default>
-        <label>Single Email</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Nurture Emails</fullName>
-        <default>false</default>
-        <label>Nurture Emails</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Web Request</fullName>
-        <default>false</default>
-        <label>Web Request</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Onsite Event</fullName>
-        <default>false</default>
-        <label>Onsite Event</label>
-    </standardValue>
 </StandardValueSet>

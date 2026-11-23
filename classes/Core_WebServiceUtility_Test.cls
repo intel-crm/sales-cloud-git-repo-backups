@@ -53,8 +53,6 @@ private class Core_WebServiceUtility_Test
         seedWeb.AccountID = String.valueof('6013683884');
         seedWeb.OpportunityID = String.valueof('0000069741');
         
-        lstAssertSeedWebserviceWrapper.add(seedWeb);
-        
         Core_DealSupportHomeController.seedWebserviceWrapper seedWeb1 = new Core_DealSupportHomeController.seedWebserviceWrapper();
         seedWeb1.AccountID = String.valueof('6013683886');
         seedWeb1.OpportunityID = String.valueof('0000069747');       

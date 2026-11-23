@@ -31,12 +31,13 @@ global class Core_IPS_Entitlement_For_Migrated_Cases implements Database.Batchab
              }
              
             update scope;
-            
+            system.debug('scope'+scope);
             Map<Id,List<CaseMilestone>> CaseMilestoneByCaseId = milestoneUtils.getActiveMileStone(scope);
             List<CaseMilestone> LstCaseMilestoneToUpdate = new List<CaseMilestone>();
             for(sobject s : scope){
             Case cs = (case)s;
                 List<CaseMileStone> milestoneList = CaseMilestoneByCaseId.get(cs.id);
+               system.debug('milestoneList'+milestoneList);
                 if(milestoneList !=null)
                 {
                 if(milestoneList.size()>1){             

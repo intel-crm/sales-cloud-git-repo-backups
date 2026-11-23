@@ -48,27 +48,29 @@ public without sharing class Core_IPS_Outbound_Message_Handler {
                            //Minhaj
                            cs.Core_IPS_Backend_Rev__c = '';
                        }else if(outbound.Status__c == 'IPass Failed'){
-                           cs.Core_IPS_BES_Promote_Status__c = 'Failed';
+                           cs.Core_IPS_BES_Promote_Status__c = 'Failed'; 
                            //minhaj
                            cs.Core_IPS_Backend_Rev__c = '';
                        }
                        else if(outbound.Status__c == 'IPS Failed'){
-                           cs.Core_IPS_BES_Promote_Status__c = 'Failed';
+                           cs.Core_IPS_BES_Promote_Status__c = 'Failed'; 
                            //minhaj
                            cs.Core_IPS_Backend_Rev__c = '';
                        }
-                       Database.DMLOptions dmo = new Database.DMLOptions();
+		        Database.DMLOptions dmo = new Database.DMLOptions();
                       // dmo.assignmentRuleHeader.useDefaultRule= false;
                       dmo.assignmentRuleHeader.assignmentRuleId= System.Label.Core_IPS_BES_AssignmentRuleId ; //'01Qo0000000AgYx'; 
-                       cs.setOptions(dmo); 
+                       cs.setOptions(dmo);
                        caseSet.add(cs);
                    }
                 else if(!String.isBlank(outbound.Core_IPS_Case_ID__c) && !String.isBlank(outbound.Comment_Id__c) && String.isBlank(outbound.Core_IPS_Attachment_ID__c) && 
                    cs.Core_IPS_New_Backend_System__c != null && !String.isBlank(cs.Core_IPS_BackendID__c) && String.isBlank(outbound.Core_IPS_BES_Depromote_Id__c)){
+                       
+                    //   if(outbound.Status__c == 'Apigee Success') {
                     /* Tejaswini : Added comment.Core_IPS_BES_Promote_Status__c != 'Done' condition as part of fix for TWC745-6976 */
                        if(outbound.Status__c == 'Apigee Success' && comment.Core_IPS_BES_Promote_Status__c != 'Done') { 
                            if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_BES_Promote_Status__c.isCreateable() || Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_BES_Promote_Status__c.isUpdateable()) {
-                            comment.Core_IPS_BES_Promote_Status__c = 'Sent Successfully';
+                           	comment.Core_IPS_BES_Promote_Status__c = 'Sent Successfully';
                            }
                        }else if(outbound.Status__c == 'Apigee Failed'){
                            comment.Core_IPS_BES_Promote_Status__c = 'Failed'; 
@@ -85,7 +87,8 @@ public without sharing class Core_IPS_Outbound_Message_Handler {
                    }
                    /* Fix by Tejaswini for comment status issue*/
                    else if(!String.isBlank(outbound.Core_IPS_Case_ID__c) && !String.isBlank(outbound.Comment_Id__c) && String.isBlank(outbound.Core_IPS_Attachment_ID__c) && 
-                   cs.Core_IPS_New_Backend_System__c == null && String.isBlank(cs.Core_IPS_BackendID__c) && !String.isBlank(outbound.Core_IPS_BES_Depromote_Id__c)){
+                   String.isBlank(cs.Core_IPS_BackendID__c) && !String.isBlank(outbound.Core_IPS_BES_Depromote_Id__c)){
+                      // if(outbound.Status__c == 'Apigee Success') {
                     /* Tejaswini : Added comment.Core_IPS_BES_Promote_Status__c != 'Done' condition as part of fix for TWC745-6976 */
                        if(outbound.Status__c == 'Apigee Success' && comment.Core_IPS_BES_Promote_Status__c != 'Done') {     
                            if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_BES_Promote_Status__c.isCreateable() || Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_BES_Promote_Status__c.isUpdateable()) {
@@ -109,7 +112,7 @@ public without sharing class Core_IPS_Outbound_Message_Handler {
                        //All attachment conditions====
                        if(outbound.Status__c == 'Apigee Success') {
                           if (Schema.sObjectType.Core_IPS_Case_Attachments__c.fields.Core_IPS_BES_Promote_Status__c.isUpdateable()){
-                                attachmentRec.Core_IPS_BES_Promote_Status__c = 'Sent Successfully';
+                           		attachmentRec.Core_IPS_BES_Promote_Status__c = 'Sent Successfully';
                           }
                        }else if(outbound.Status__c == 'Apigee Failed'){
                            attachmentRec.Core_IPS_BES_Promote_Status__c = 'Failed'; 
@@ -127,7 +130,7 @@ public without sharing class Core_IPS_Outbound_Message_Handler {
             update new List<Case>(caseSet);
             update commentList;
             if(!attachmentList.isEmpty()){ //6-9-23
-                update attachmentList;
+            	update attachmentList;
             }
             } catch(Exception e) {
                 String IDs = (csList.size()>0) ? String.Join(csList,',') : ''+ 'Comment'+((commentList.size()>0) ? String.Join(commentList,',') : '')+((attachmentList.size()>0) ? String.Join(attachmentList   ,',') : '');

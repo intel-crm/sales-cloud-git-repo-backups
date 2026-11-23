@@ -4,11 +4,11 @@
     <deferSharingRules>false</deferSharingRules>
     <enableAccountRoleOptimization>false</enableAccountRoleOptimization>
     <enableAssetSharing>true</enableAssetSharing>
-    <enableCommunityUserVisibility>false</enableCommunityUserVisibility>
+    <enableCommunityUserVisibility>true</enableCommunityUserVisibility>
     <enableExternalSharingModel>true</enableExternalSharingModel>
     <enableKeepManualSharesOnTransfer>false</enableKeepManualSharesOnTransfer>
-    <enableManagerGroups>false</enableManagerGroups>
-    <enableManualUserRecordSharing>false</enableManualUserRecordSharing>
+    <enableManagerGroups>true</enableManagerGroups>
+    <enableManualUserRecordSharing>true</enableManualUserRecordSharing>
     <enablePartnerSuperUserAccess>false</enablePartnerSuperUserAccess>
     <enablePortalUserCaseSharing>true</enablePortalUserCaseSharing>
     <enablePortalUserVisibility>true</enablePortalUserVisibility>

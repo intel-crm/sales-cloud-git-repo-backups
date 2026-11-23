@@ -1,0 +1,22 @@
+<template>   
+        <lightning-card title="Account Manager">
+               <lightning-layout>
+                       <lightning-layout-item size="6" padding="around-small">
+       <lightning-card title="Create Account">
+       <lightning-input label="Id" disabled value={accountId}></lightning-input>
+       <lightning-input name="Map Name"    label="Account Name"   type="text" onchange={accountNameHandler}></lightning-input>
+       <lightning-input name="Owner "   label="Owner"     type="phone" onchange={accountPhoneHandler}></lightning-input>
+       <lightning-input name="Support Org Name "   label="Support Org Name"     type="text" onchange={accountPhoneHandler}></lightning-input>
+       <lightning-input name="Product Focus Area "   label="Product Focus Area"     type="text" onchange={accountPhoneHandler}></lightning-input>
+       <lightning-input name="Support Org "   label="Support Org"     type="text" onchange={accountPhoneHandler}></lightning-input>
+       <lightning-input name="CreatedBy "   label="CreatedBy"     type="text" onchange={accountPhoneHandler}></lightning-input>
+       <lightning-input name="ModifiedBy "   label="ModifiedBy"     type="text" onchange={accountPhoneHandler}></lightning-input>
+       <lightning-input name="Description "   label="Description"     type="text" onchange={accountPhoneHandler}></lightning-input>
+       <lightning-button label="Save" variant="brand" type="text" onclick={createAccount}></lightning-button>
+                              </lightning-card>
+                        </lightning-layout-item>
+                 <lightning-layout-item size="6" padding="around-small">
+            </lightning-layout-item>
+          </lightning-layout>
+       </lightning-card>
+       </template>

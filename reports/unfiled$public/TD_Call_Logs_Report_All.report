@@ -52,6 +52,7 @@
         <value>1</value>
     </params>
     <reportType>ContactActivity</reportType>
+    <roleHierarchyFilter>VSC_APJ_TeleDirect_Manager</roleHierarchyFilter>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>

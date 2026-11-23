@@ -1,0 +1,115 @@
+<template>
+
+    <lightning-card>
+        <div class="slds-p-around_medium">
+            <lightning-button onclick={handleNavigateBack} variant="base" label="< Back" title="Back to dashboard"
+                class="noBorder"></lightning-button>
+        </div>
+        <div class="slds-p-around_large" style="display: flex;">
+            <lightning-input type="search" variant="standard" name="allfieldSearch" 
+                placeholder="Search cases" min-length="3" message-when-range-underflow="Type min 3 chars"
+                style="width: 20rem;" value={searchAllValue} onchange={advhandleSearchAll}
+                class="slds-m-bottom_small projectSearch" maxlength="50">
+            </lightning-input>
+            <lightning-button label="Advanced Search" title="Advanced Search" onclick={handleAdvSearchBtn} style=" padding-top: 23px; padding-left: 190px">
+            </lightning-button>
+        </div>
+
+        <template if:true={showSection}>
+                <!-- <lightning-input type="text" variant="standard" name="caseNumber" value={caseNumber}
+                    label="Search Case Number" placeholder="type case number..." onchange={advCaseNumOnchange}
+                    maxlength="50"></lightning-input> -->
+                    <div class="slds-align_absolute-center">
+                        <div>
+                            <p style="padding-top: 15px;padding-right: 10px; font-weight:bold">Case Number</p>
+                        </div>
+                        <div class="">
+                            <span>
+                                <lightning-input class="inputs" name="caseNumber" value={caseNumber}
+                                    onchange={advCaseNumOnchange}></lightning-input>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="slds-align_absolute-center">
+                        <div>
+                            <p style="padding-top: 15px;padding-right: 10px; font-weight:bold">Status</p>
+                        </div>
+                        <div class="">
+                            <span style="display: flex;">
+                                <lightning-input type="checkbox" label="New" unchecked> </lightning-input>
+                                <lightning-input type="checkbox" label="Open" unchecked> </lightning-input>
+                                <lightning-input type="checkbox" label="Closed" unchecked> </lightning-input>
+                            </span>
+                        </div>
+                    </div>
+            <!-- <div class="slds-p-around_large">
+                <span>Status</span>
+                <lightning-input type="checkbox" label="New" unchecked> </lightning-input>
+                <lightning-input type="checkbox" label="Open" unchecked> </lightning-input>
+                <lightning-input type="checkbox" label="Closed" unchecked> </lightning-input>
+            </div> -->
+            <div class="slds-align_absolute-center">
+                <p style="padding-top: 15px;padding-right: 10px; font-weight:bold">
+                    Customer Reference Id
+                </p>
+                <div class="">
+                    <span>
+                        <lightning-input class="inputs" name=" Customer Reference Id" value={advCustomerRefrenceid}
+                            onchange={advCustomerRefrenceid}></lightning-input>
+                    </span>
+                </div>
+            </div>
+            <div class="slds-align_absolute-center">
+                <p style="padding-top: 15px;padding-right: 10px; font-weight:bold; ">
+                    Product Name
+                </p>
+                <div class="">
+                    <span>
+                        <lightning-input class="inputs" name=" Product Name" value={Productname}
+                            onchange={advProductOnChange}></lightning-input>
+                    </span>
+                </div>
+            </div>
+            <div class="slds-align_absolute-center">
+                <p style="padding-top: 15px;padding-right: 10px;  font-weight:bold">
+                    Case Created Date
+                </p>
+                <div class="" >
+                    <span style="display: flex;">
+                        <lightning-input type="Date" name="From" value={FromDate} label="From"
+                        onchange={fromDateOnChange} style="display: flex;"></lightning-input>
+                    <lightning-input type="Date" name="To" value={ToDate} label="To" onchange={toDateOnChange}>
+                    </lightning-input>
+                    </span>
+                </div>
+            </div>
+            <!-- <div class="slds-p-around_large">
+                <div class="slds-grid">
+                    <div class="slds-col slds-grid slds-size_1-of-3">
+                        <p class="subHeadline">Case Created Date</p>
+                    </div>
+                    <div class="slds-col slds-grid slds-size_1-of-3">
+                        <span>
+                            <lightning-input type="Date" name="From" value={FromDate} label="From"
+                                onchange={fromDateOnChange}></lightning-input>
+                            <lightning-input type="Date" name="To" value={ToDate} label="To" onchange={toDateOnChange}>
+                            </lightning-input>
+                        </span>
+                    </div>
+                </div>
+            </div> -->
+        </template>
+            <div class="slds-p-around_large">
+                <lightning-button label="Search" title="Non-primary action" onclick={advhandleSearchKeyword}
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-datatable key-field="Id" data={advDataTable} columns={advCaseColumns}
+                    hide-checkbox-column="true" show-row-number-column="false" column-widths-mode="auto"
+                    min-column-width="60" onrowaction={AdvanceSearchCase}>
+                </lightning-datatable>
+            </div>
+        
+
+
+    </lightning-card>
+
+</template>

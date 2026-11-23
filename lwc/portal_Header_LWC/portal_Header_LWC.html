@@ -1,0 +1,43 @@
+<template>
+	<ul class="slds-list_horizontal slds-has-inline-block-links">
+		<li class="slds-col slds-size--1-of-1 slds-large-size_2-of-12">
+			<img src={IntelLogo} style="height: 60px; width:150px;"/>
+    </li>
+		<li class="slds-col slds-size--1-of-1 slds-large-size_1-of-12 slds-p-top_medium">
+			<lightning-button variant="base" label="Home" title="Looks like a link" onclick={handleClick}
+				class="slds-m-left_x-small slds-text-title_bold"></lightning-button>
+		</li>
+		<li class="slds-col slds-size--1-of-1 slds-large-size_1-of-12 slds-p-top_medium">
+			<lightning-button variant="base" label="Preferences" title="Looks like a link" onclick={handleClick}
+				class="slds-m-left_x-small slds-text-title_bold">
+			</lightning-button>
+		</li>
+		<li class="slds-col slds-size--1-of-1 slds-large-size_5-of-12"></li>&nbsp;&nbsp;
+		<li class="slds-col slds-size--1-of-1 slds-large-size_1-of-12 slds-p-left_xx-large slds-p-top_medium">
+			<lightning-icon icon-name="standard:user" alternative-text="User" title="User"></lightning-icon>
+		</li>
+		<li class="slds-col slds-size--1-of-1 slds-large-size_2-of-12 slds-p-top_medium">{name} &nbsp; | Logout </li>
+	</ul>
+	<ul class="slds-list_horizontal slds-has-inline-block-links">
+		<li class="slds-col slds-size--1-of-1 slds-large-size_8-of-12 slds-p-top_medium slds-p-left_x-large">
+			<b>Dashboard</b>
+		</li>
+		<li class="slds-col slds-size--1-of-1 slds-large-size_4-of-12 slds-p-left_medium">
+			<div id="u4647" class="ax_default image">
+				<img id="u4647_img" class="img "
+ src="https://d1icd6shlvmxi6.cloudfront.net/gsc/JT3HEH/41/1d/17/411d173ec2e042e59991af4dd74fc5ba/images/dashboard/u4647.gif?token=49fb78be3d1ff9b4f7e19afdd65728370af04eb15555a1bf73e57eacf738a0e6">
+				<div id="u4647_text" class="text " style="display:none; visibility: hidden">
+					<p></p>
+				</div>
+			</div>
+
+
+			&nbsp;
+		</li>
+	</ul>
+	<div class="slds-p-horizontal_small">(custom component)</div>
+	<div slot="footer">
+		<img src={FooterLogo} />
+            </div>
+
+</template>

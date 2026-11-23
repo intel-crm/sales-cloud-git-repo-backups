@@ -1,0 +1,171 @@
+<template>
+    <!--   <div class="rectangle">
+        <lightning-button onclick={handleNavigateBack} variant="base" label="< Back" title="Back to dashboard" class="noBorder"></lightning-button>
+      </div> -->
+       <div class="divclass"></br> 
+        <p class="slds-text-align_center forsize">Check for Answers</p>
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_3-of-12"></div>
+          <div class="slds-col slds-size_6-of-12">
+            <ul class="slider">
+              <li class="slider-item">
+                <label class="text" for="f-option">&emsp;Case Details</label>
+                <span class="dot1"></span>
+              </li>
+              <li class="slider-item">
+                <label class="text" for="g-option">Check for Answers</label>
+                <span class="dot2"></span>
+              </li>
+              <li class="slider-item">
+                <label class="text" for="k-option">&emsp;Case Creation</label>
+                <span class="dot1"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="slds-col slds-size_3-of-12"></div>
+        </div>
+      </div>
+    
+      <br />
+      <br />
+    
+      <div>
+        <!-- <c-example-search caseinfo={caseinfodata}></c-example-search> -->
+        </div>
+        
+       <div class="slds-m-left_xx-large">
+    
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_3-of-12">
+            <div class="header-column">
+              <a href="https://www.intel.com/content/www/us/en/support/programmable/kdb-filter.html#sort=%40articlepublisheddate%20descending" class="field-title" title="Knowledge Base " target="_blank"><u>Knowledge Base</u></a>
+              <p>Find known issues or how to articles to assist your design and troubleshooting</p>
+            </div>
+          </div>
+    
+          <div class="slds-col slds-size_1-of-12">
+            <div class="header-column">
+            </div>
+          </div>
+    
+          <div class="slds-col slds-size_3-of-12">
+            <div class="header-column">
+              <a href="https://www.intel.com/content/www/us/en/programmable/support/support-resources.html" class="field-title" title="Design Guidance " target="_blank"><u>Design Guidance</u></a>
+              <p>Get step-by-step guidance and dive deep into FPGA technologies</p>
+            </div>
+          </div>
+    
+          <div class="slds-col slds-size_1-of-12">
+            <div class="header-column">
+            </div>
+          </div>
+    
+          <div class="slds-col slds-size_3-of-12">
+            <div class="header-column">
+              <a href="https://www.intel.com/content/www/us/en/programmable/documentation/lit-index.html" class="field-title" title="Documentation" target="_blank"><u>Documentation</u></a>
+              <p>Find documentation by device, tools, or technologies</p>
+            </div>
+          </div>
+        </div>
+    
+        <br />
+        <br />
+        
+       
+        <!--
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_3-of-12">
+            <br />
+            <p>1858 results for "ssd errors"</p>
+          </div>
+    
+          <div class="slds-col slds-size_5-of-12">
+    
+          </div>
+    
+          <div class="slds-col slds-size_1-of-12">
+            <br />
+            <p><b>Filter By</b></p>
+          </div>
+    
+          <div class="slds-col slds-size_2-of-12">
+            <lightning-combobox name="filter" label="" value={value} placeholder="Select" options={options}
+              onchange={handleChange}></lightning-combobox>
+          </div>
+        </div>
+    
+        <div class="slds-col slds-size_1-of-12">
+    
+        </div>
+        <br />
+        <br />
+        <a href="#" class="slds-text-link_reset"> Intel® Solid State Drives with PCIe* NVMe* Boot Installation Guide</a>
+    
+        <div class="slds-border_bottom">
+          <p>Explains how to install the Windows* OS into Intel® SSDs, that utilize the PCIe* NVMe* interface, as a bootable
+            medium in the computing platform. </p><br />
+        </div>
+        <br />
+        <a href="#" class="slds-text-link_reset"> Frequently Asked Questions for Intel® Optane™ SSD 800P Series</a>
+    
+        <div class="slds-border_bottom">
+          <p>Information about hardware, software, installation, and operating systems for the Intel® Optane™ SSD 800P
+            Series. </p><br />
+        </div>
+        <br />
+        <a href="#" class="slds-text-link_reset"> Find the Firmware Version for Your Intel® Solid State Drive </a>
+    
+        <div class="slds-border_bottom">
+          <p>Steps to check for Intel® Solid State Drive Firmware. </p><br />
+        </div>
+        <br />
+        <a href="#" class="slds-text-link_reset"> Evaluation Guide for Client Intel® Optane™ SSD's </a>
+    
+        <div class="slds-border_bottom">
+          <p>Details on SSD benchmarks and factors to take into consideration when evaluating the performance of the Client
+            Intel® Optane™ SSDs. </p><br />
+        </div>
+        <br />
+        <a href="#" class="slds-text-link_reset"> Firmware Versions for Intel® Solid State Drives and Intel® Optane™ Memory
+        </a>
+    
+        <div class="slds-border_bottom">
+          <p>See the latest firmware versions and tools available for Intel® Solid State Drives and Intel® Optane™ memory.
+          </p><br />
+        </div>
+        <br />
+        <a href="#" class="slds-text-link_reset"> Proper Handling Techniques and Precautions for Your M.2 Device </a>
+    
+        <div class="slds-border_bottom">
+          <p>Review proper techniques to store, unpack, and install the M.2 device. </p><br />
+        </div>
+        <br />
+        <a href="#" class="slds-text-link_reset"> How to Fix Read Scan Errors during an SSD Diagnostic Scan </a>
+    
+        <div class="slds-border_bottom">
+          <p>Read scan errors detected while doing a quick or full diagnostic scan with the Intel® Memory and Storage Tool.
+          </p><br />
+        </div>
+        <br />
+        <a href="#" class="slds-text-link_reset"> Windows® 10 Failed to Boot with Error Code 0xc00000e9 on Intel® Solid
+          State Drive </a>
+    
+        <div class="slds-border_bottom">
+          <p>Windows® 10 failed to boot with error code 0xc00000e9. </p><br />
+        </div>
+        <br />
+        <a href="#" class="slds-text-link_reset"> Unable to Boot to the Operating System Due to Blue Screen </a>
+    
+        <div class="slds-border_bottom">
+          <p>System unable to boot to the OS after Blue Screen Error Code </p><br />
+        </div>
+        <br />
+        <a href="#" class="slds-text-link_reset"> Intel® SSDs: Extracting System Logs for Debug </a>
+    
+        <div class="slds-border_bottom">
+          <p>In case of system crashing/screen of death/SSD IO timeouts and many other situations, obtaining system logs is
+            imperative for further debug </p><br />
+        </div> -->
+      </div> 
+    
+    </template>

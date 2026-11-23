@@ -14,9 +14,5 @@
     <name>PSG-AP-CHINA</name>
     <opportunityAccessLevel>Read</opportunityAccessLevel>
     <parentTerritory>XPSGAP</parentTerritory>
-    <ruleAssociations>
-        <inherited>false</inherited>
-        <ruleName>PSG_AP_CHINA</ruleName>
-    </ruleAssociations>
     <territory2Type>Business_Unit</territory2Type>
 </Territory2>

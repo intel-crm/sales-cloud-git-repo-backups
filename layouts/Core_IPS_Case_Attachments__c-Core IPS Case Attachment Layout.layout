@@ -25,6 +25,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_Upload_Status__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_BES_Promote_Status__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -32,7 +36,7 @@
                 <field>Core_Case__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_File_Description__c</field>
             </layoutItems>
             <layoutItems>

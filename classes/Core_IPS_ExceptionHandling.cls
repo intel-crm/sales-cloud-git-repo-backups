@@ -46,7 +46,7 @@ Public without sharing Class Core_IPS_ExceptionHandling{
                 objCLEList.add(objCLE );
               }
            } 
-           
+           System.debug('kamala objCLEList = '+objCLEList);
            insert objCLEList; 
           }catch(Exception e) { }            
                     
@@ -70,7 +70,7 @@ Public without sharing Class Core_IPS_ExceptionHandling{
         try{
             List<Core_Log_Entry__C>objCLEList= new List<Core_Log_Entry__c>();
             string strDetailsAndEx;
-           if( ex != null ) {
+           if( ex != null && ComponentName != null && objectName != null) {
                     strDetailsAndEx += 'UserId:'+UserInfo.getUserId() +'Message: ' + ex.getMessage() + '\n';
                     strDetailsAndEx += 'Cause: ' + ex.getCause() + '\n';
                     strDetailsAndEx += 'Line Number: ' + ex.getLineNumber() + '\n';
@@ -99,8 +99,6 @@ Public without sharing Class Core_IPS_ExceptionHandling{
                    
                     
             
-           
-    } 
-    
-     
+} 
+
 }

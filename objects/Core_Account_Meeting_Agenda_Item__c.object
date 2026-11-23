@@ -242,11 +242,15 @@ REGEX( Core_Account_Meeting_Items_Date_and_Time__c, &quot;[\\d]{1,2}:[0-5]{1}[0-
         <availability>online</availability>
         <description>Adds new agenda items</description>
         <displayType>massActionButton</displayType>
-        <linkType>page</linkType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
         <masterLabel>New Agenda Item</masterLabel>
         <openType>replace</openType>
-        <page>Core_New_Meeting_Agenda_Item</page>
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
+        <url>/a1a/e?CF00No000000CobFD={!Account_Meeting_Brief__c.Name}
+&amp;CF00No000000CobFD_lkid={!Account_Meeting_Brief__c.Id}
+&amp;retURL=%2F{!Account_Meeting_Brief__c.Id}
+&amp;saveURL=%2F{!Account_Meeting_Brief__c.Id}</url>
     </webLinks>
 </CustomObject>

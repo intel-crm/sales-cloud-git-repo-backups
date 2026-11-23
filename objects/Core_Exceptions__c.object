@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Class_Name__c</fullName>
         <externalId>false</externalId>
@@ -203,13 +203,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Next_Scheduled_Run__c</fullName>
-        <label>Next Scheduled Run</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
         <fullName>Core_Record_Id__c</fullName>
         <externalId>false</externalId>
         <label>Record Id</label>
@@ -219,54 +212,18 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>Core_Retry_Counter__c</fullName>
-        <externalId>false</externalId>
-        <label>Retry Counter</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Status__c</fullName>
-        <externalId>false</externalId>
-        <label>Status</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Core Exception</label>
     <listViews>
-        <fullName>All_This_Week</fullName>
+        <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>OWNER.FIRST_NAME</columns>
         <columns>OWNER.LAST_NAME</columns>
-        <columns>Core_Class_Name__c</columns>
-        <columns>Core_Method_Name__c</columns>
-        <columns>Core_IPS_Object_Name__c</columns>
-        <columns>Core_Record_Id__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>THIS_WEEK</value>
-        </filters>
-        <filters>
-            <field>Core_IPS_Object_Name__c</field>
-            <operation>equals</operation>
-            <value>Lead</value>
-        </filters>
-        <label>All- This Week</label>
-        <language>en_US</language>
+        <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>Exc{0000000}</displayFormat>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExpressionSetDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decimalScale>2</decimalScale>
+    <expressionSetDefinition>more_ten_10</expressionSetDefinition>
+    <label>more ten 10 V1</label>
+    <processType>Bre</processType>
+    <shouldShowExplExternally>false</shouldShowExplExternally>
+    <startDate>2024-11-18T08:47:13.000Z</startDate>
+    <status>Draft</status>
+    <versionNumber>1</versionNumber>
+</ExpressionSetDefinitionVersion>

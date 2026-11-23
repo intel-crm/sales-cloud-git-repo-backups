@@ -1,0 +1,9 @@
+<apex:page standardController="Case" extensions="core_IPS_case_Banner">
+
+     <!-- <apex:form rendered="{!permission}">
+        <center>
+            <apex:outputText value="{!$Label.Core_IPS_Feed_Message}" style="font-weight:bold;"/>
+        </center>
+    </apex:form>  
+-->
+</apex:page>

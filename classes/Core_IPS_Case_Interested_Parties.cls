@@ -5,7 +5,7 @@
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Ganapati                   21/04/2020             Created for US639296 - LEX: Create: Create External Interested Party
-****************************************************************************************************/ 
+****************************************************************************************************/
 
 public with sharing class Core_IPS_Case_Interested_Parties {
     public static Boolean isEditable;
@@ -156,8 +156,7 @@ public with sharing class Core_IPS_Case_Interested_Parties {
             ContactDataRetrieve conData = new ContactDataRetrieve();
             sObjLst = conData.getQueryResult(queryString);
         } else {
-            //sObjLst = Database.query(queryString); commented as part of vulnerability fix - Nuthana
-            sObjLst=Core_IPS_QueryService.queryRecords(queryString);
+            sObjLst = Database.query(queryString);
         }
         if(!sObjLst.isEmpty())
           return sObjLst;
@@ -188,8 +187,7 @@ public with sharing class Core_IPS_Case_Interested_Parties {
             ContactDataRetrieve conData = new ContactDataRetrieve();
             conData.saveRecords(interestedParties);
         } else {
-            //insert interestedParties; Commented as part of vulnerability fix
-            Core_IPS_QueryService.insertRecords(interestedParties);
+            insert interestedParties;
         }
         return interestedParties;
     }

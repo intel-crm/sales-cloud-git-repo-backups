@@ -27,7 +27,7 @@
         <label>Account Ownership</label>
         <name>Account_Ownership</name>
     </approvalStep>
-    <emailTemplate>Testt/Account_Ownership</emailTemplate>
+    <emailTemplate>unfiled$public/Account_Ownership</emailTemplate>
     <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
     <finalApprovalRecordLock>true</finalApprovalRecordLock>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>

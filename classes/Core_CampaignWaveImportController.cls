@@ -261,7 +261,6 @@ global class Core_CampaignWaveImportController {
         return res.getBody();
     }
     
-    // Get Base URL (ex. 'https://gs0.salesforce.com' or 'https://na34.salesforce.com')
     @RemoteAction
     global static string getBaseURL(){
         return System.URL.getSalesforceBaseURL().toExternalForm();

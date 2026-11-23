@@ -145,6 +145,16 @@
             <field>Core_Unique_Supported_Product__c</field>
             <table>Core_IPS_Supported_Product__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IPS_Enabled_For_Subscriptions__c</field>
+            <table>Core_IPS_Supported_Product__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Support_Org_and_Product_Name__c</field>
+            <table>Core_IPS_Supported_Product__c</table>
+        </columns>
         <masterLabel>Supported Products</masterLabel>
     </sections>
     <sections>

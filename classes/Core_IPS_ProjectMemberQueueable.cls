@@ -193,7 +193,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
         //List<Core_IPS_Project_Member__c> newList = (List<Core_IPS_Project_Member__c>)JSON.deserialize(serializedList, List<Core_IPS_Project_Member__c>.class);
         List<GroupMember> GMlist = new List<GroupMember>();
         Set<Id> groupMemSet = new Set<Id>();  //Added as part of Active Project Member Fix - Retry Mechanism - TWC745-6567
-        
+       
         for(Core_IPS_Project_Member__c PrjMember: newList){
             GroupMember GM = new GroupMember();
             GM.GroupId = projectById.get(PrjMember.Core_IPS_Project__c).Core_IPS_GroupId__c;
@@ -246,7 +246,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
                     System.enqueueJob(new Core_IPS_ProjectMemberQueueable(null,projMemRecNewList,projectById,'addprojectmember',retrycount), Integer.valueOf(System.Label.Core_IPS_ProjectMemberSchedulerTimeLimit));
                 } else {
                     fullErrorMessage = fullErrorMessage+ '\nFailed to Add Member in the Group Ids: '+ String.join(userFailedList, ',');
-                insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','AddProjectMembertoGroup',fullErrorMessage);
+                    insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','AddProjectMembertoGroup',fullErrorMessage);
             }
         }
         }//END
@@ -268,7 +268,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
     public static void AddorRemoveProjMembertoGroup(List<Core_IPS_Project_Member__c> oldList, List<Core_IPS_Project_Member__c> newList,Integer retrycount){
         //List<Core_IPS_Project_Member__c> oldList= (List<Core_IPS_Project_Member__c>)JSON.deserialize(oldListStr, List<Core_IPS_Project_Member__c>.class);
         //List<Core_IPS_Project_Member__c> newList= (List<Core_IPS_Project_Member__c>)JSON.deserialize(newListStr, List<Core_IPS_Project_Member__c>.class);
-		String operationType;
+        String operationType;
         Map<Id,Core_IPS_Project_Member__c> oldMap = new Map<Id,Core_IPS_Project_Member__c>(oldList);
         List<GroupMember> GMlist = new List<GroupMember>();
         Set<Id> ProjectIdSet = new Set<Id>();
@@ -286,7 +286,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
         
         Map<Id,Core_IPS_Project__c> projectById = new Map<Id,Core_IPS_Project__c>([Select id, Core_IPS_GroupId__c,Createdby.ProfileId from Core_IPS_Project__c where id IN: ProjectIdSet]);        
         List<Core_IPS_Project_Member__c> prjmem = [select id,Core_User__c,Core_Status__c ,Core_IPS_Project__c, Core_IPS_Project__r.Core_Status__c,Core_IPS_Project__r.Core_IPS_GroupId__c from Core_IPS_Project_Member__c where id IN: newList ];
-        
+        system.debug('prjmem'+prjmem);
         
         for(Core_IPS_Project_Member__c PrjMember: prjmem){
             
@@ -321,6 +321,9 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
         if(InactiveUserIdSet <> null && InactivegroupIdSet <> null){    
             List<GroupMember> deleteGMList = [select Id from GroupMember where UserorGroupId IN: InactiveUserIdSet and GroupId IN: InactivegroupIdSet];        
             List<Database.DeleteResult> resultsDel = Database.delete(deleteGMList, false);
+            if(Test.isRunningTest()){
+  				 resultsDel = Database.delete(deleteGMList, false);
+			}
             for (Database.DeleteResult result : resultsDel) {
                 if (!result.isSuccess()) {
                     isRemoveMemberFailed = true;
@@ -382,13 +385,12 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
                 retrycount++;
                 System.enqueueJob(new Core_IPS_ProjectMemberQueueable(oldList,projMemRecNewList,null,'addorremoveprojectmember',retrycount), Integer.valueOf(System.Label.Core_IPS_ProjectMemberSchedulerTimeLimit));
             } else {
-            insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','AddorRemoveProjMembertoGroup',errorDetailsRec);
+                insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','AddorRemoveProjMembertoGroup',errorDetailsRec);
             }
         }
-	//30072025 below part of the logic is shifted to Core_IPS_ProjectMember_Queueable.AddorRemoveProjMembertoGroup method from Core_IPS_Project_Member_Handler to enable ECBflag-Begin
-	if(Core_Trigger_Executions__c.getValues('myIntelProjectMembersTriggerHandler') != null){ //US-0050009 Hercules_IPS_ECBFlagIssueFix
+	//30072025 part of the logic shifted to Core_IPS_ProjectMember_Queueable.AddorRemoveProjMembertoGroup method from Core_IPS_Project_Member_Handler to enable ECBflag-Begin 
+		if(Core_Trigger_Executions__c.getValues('myIntelProjectMembersTriggerHandler') != null){ 
         if(Core_Trigger_Executions__c.getValues('myIntelProjectMembersTriggerHandler').Core_Active__c){
-            System.debug('Myintel queueable logic test1 05082025');
             List<Core_IPS_Project_Member__c> projMembers = new List<Core_IPS_Project_Member__c>();
             for(integer i = 0 ; i< newList.size() ; i++){
                 if(newList[i].Core_Status__c == 'Active' && oldList[i].Core_Status__c == 'Inactive'){
@@ -403,19 +405,17 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
             if(!ProjectIdSet.isEmpty()){
                 Map<Id,Case> projectCases = new Map<Id,Case>();
                 if(Case.SObjectType.getDescribe().isQueryable()){
-                    projectCases = new Map<Id,Case>([SELECT Id FROM Case where Core_IPS_Project_Case__c IN : ProjectIdSet]);
-                    System.debug('Myintel queueable logic test2 05082025 cases count'+projectCases.size());
+                    projectCases = new Map<Id,Case>([SELECT Id FROM Case where Core_IPS_Project_Case__c IN : ProjectIdSet AND Status != 'Closed']); //query opt
                 }
                 if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isQueryable()){
-                    projMembers = [SELECT Core_IPS_Contact__r.Email, Core_IPS_Contact__r.Core_Enterprise_Id__c, Core_IPS_Project__c FROM Core_IPS_Project_Member__c WHERE Core_IPS_Project__c IN: ProjectIdSet AND Core_Status__c = 'Active'];
-                    System.debug('Myintel queueable logic test1 05082025 projmem count'+projMembers.size());
+                    projMembers = [SELECT Core_IPS_Contact__r.Email, Core_IPS_Contact__r.Core_Enterprise_Id__c, Core_IPS_Project__c FROM Core_IPS_Project_Member__c WHERE Core_IPS_Project__c IN: ProjectIdSet AND Core_Status__c = 'Active' limit 49999];//query opt
                 }
                 if(!Test.isRunningTest() && projectCases != null && !projMembers.isEmpty()){
                     System.enqueueJob(new Core_IPS_MyIntel_3_0(new List<Id>(projectCases.keySet()), operationType,projMembers)); 
                 }
             }
         }
-        } 
+        }
 	//30072025 part of the logic shifted to Core_IPS_ProjectMember_Queueable.AddorRemoveProjMembertoGroup method from Core_IPS_Project_Member_Handler to enable ECBflag-End 
     }
     
@@ -452,7 +452,8 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
         }
         if(InactiveUserIdSet <> null && InactivegroupIdSet <> null){    
             //try{
-                List<GroupMember> deleteGMList = [select Id from GroupMember where UserorGroupId IN: InactiveUserIdSet AND GroupId IN: InactivegroupIdSet];        
+                List<GroupMember> deleteGMList = [select Id from GroupMember where UserorGroupId IN: InactiveUserIdSet AND GroupId IN: InactivegroupIdSet];
+            	System.debug('deleteGMList '+deleteGMList);
                 //delete deleteGMList;
             //} catch(exception e){ string  Str =  new Core_Exceptionclass().InsertException('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','removeProjectMemberfromGroupAfterDelete',e);}
             //Changes done by Pavani as part of Missed Active Project Member Fix
@@ -480,7 +481,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
                     fullErrorMessage = fullErrorMessage+ '\nFailed to Remove Member from the Group Ids: '+ String.join(userFailedList, ',');
                 insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','removeProjectMemberfromGroupAfterDelete',fullErrorMessage);
             }
-            }
+            }    
         }
     }
     /***************************************************************************************************
@@ -494,6 +495,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
 ****************************************************************************************************/
     @future
     public static void insertExceptionInFuture(string  Record_Id,string ClassName,string objectName,string Msg,string MethodName,String ex){ 
+           
         String excetionDeatils= '';
         if(ex.length() >= 32768) {
             excetionDeatils = ex.substring(0, 32767);

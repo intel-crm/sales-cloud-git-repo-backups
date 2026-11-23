@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
-    </columns>
-    <columns>
-        <field>FULL_NAME</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Status__c</field>
@@ -50,8 +47,7 @@
         <field>Product2.Core_Product_Type__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
+        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <description>Feeds AE Performance Dashboard - shows Approved Revenue YTD</description>
     <filter>
@@ -70,20 +66,22 @@
             <value>Yes</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ROLLUP_DESCRIPTION</column>
+            <column>Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Courtney Harrison,Foote,O&apos;Donnell,Swanger,Rodman,Weston,Herrmann,Descheemaeker</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Industry Sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ROLLUP_DESCRIPTION</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ACCOUNT_NAME</field>
@@ -114,6 +112,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Email_Alert</name>
         <label>Email Alert</label>
-        <locationX>1777</locationX>
-        <locationY>46</locationY>
+        <locationX>2269</locationX>
+        <locationY>540</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Close_New_EA</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -20,8 +20,8 @@
     <actionCalls>
         <name>Email_Alert2</name>
         <label>Email Alert</label>
-        <locationX>1795</locationX>
-        <locationY>229</locationY>
+        <locationX>2797</locationX>
+        <locationY>540</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -37,8 +37,8 @@
     <actionCalls>
         <name>myRule_11_A2</name>
         <label>Email Alert</label>
-        <locationX>1609</locationX>
-        <locationY>1427</locationY>
+        <locationX>1312</locationX>
+        <locationY>1380</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Close_Pending_New_EA</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -57,8 +57,8 @@
     <actionCalls>
         <name>myRule_15_A2</name>
         <label>Email Alert</label>
-        <locationX>1774</locationX>
-        <locationY>1943</locationY>
+        <locationX>1477</locationX>
+        <locationY>1896</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Support_Assigned_New_EA</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -74,8 +74,8 @@
     <actionCalls>
         <name>myRule_17_A2</name>
         <label>Email Alert</label>
-        <locationX>2038</locationX>
-        <locationY>2051</locationY>
+        <locationX>1741</locationX>
+        <locationY>2004</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Partner_Comment_New_EA</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -91,8 +91,8 @@
     <actionCalls>
         <name>myRule_1_A2</name>
         <label>Email Alert</label>
-        <locationX>454</locationX>
-        <locationY>587</locationY>
+        <locationX>58</locationX>
+        <locationY>919</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Create_New_EA</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -108,8 +108,8 @@
     <actionCalls>
         <name>myRule_3_A2</name>
         <label>Email Alert</label>
-        <locationX>718</locationX>
-        <locationY>695</locationY>
+        <locationX>436</locationX>
+        <locationY>961</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Contact_Update_New_EA</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -125,8 +125,8 @@
     <actionCalls>
         <name>myRule_7_A2</name>
         <label>Email Alert</label>
-        <locationX>1176</locationX>
-        <locationY>898</locationY>
+        <locationX>1064</locationX>
+        <locationY>864</locationY>
         <actionName>Case.Core_IPS_Case_Notif_Ext_Comment_Update_New_EA</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -143,20 +143,26 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
-        <name>myRule_9_A2</name>
-        <label>Email Alert</label>
-        <locationX>1246</locationX>
-        <locationY>1319</locationY>
-        <actionName>Case.Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</actionName>
-        <actionType>emailAlert</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <name>Send_Emails_Using_Email_Config_MDT</name>
+        <label>Send Emails Using Email Config MDT</label>
+        <locationX>949</locationX>
+        <locationY>1272</locationY>
+        <actionName>Core_IPS_DynamicEmailAlertSender</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
-            <name>SObjectRowId</name>
+            <name>emailAlertName</name>
+            <value>
+                <stringValue>Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
             <value>
                 <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>Case.Core_IPS_Case_Notif_Ext_Comment_Update_Non_Contact_New_EA</nameSegment>
+        <nameSegment>Core_IPS_DynamicEmailAlertSender</nameSegment>
         <offset>0</offset>
     </actionCalls>
     <apiVersion>63.0</apiVersion>
@@ -164,8 +170,8 @@
     <assignments>
         <name>True_External_Close</name>
         <label>True External Close</label>
-        <locationX>997</locationX>
-        <locationY>625</locationY>
+        <locationX>685</locationX>
+        <locationY>648</locationY>
         <assignmentItems>
             <assignToReference>varExternalCloseScheduler</assignToReference>
             <operator>Assign</operator>
@@ -177,8 +183,8 @@
     <assignments>
         <name>True_Schedule_Path2</name>
         <label>True Schedule Path2</label>
-        <locationX>1354</locationX>
-        <locationY>1626</locationY>
+        <locationX>1213</locationX>
+        <locationY>1680</locationY>
         <assignmentItems>
             <assignToReference>varSchedulerExternalClosePending10days</assignToReference>
             <operator>Assign</operator>
@@ -190,8 +196,8 @@
     <decisions>
         <name>Check_External_Close_Pending_10days_True</name>
         <label>Check External - Close Pending @10days True</label>
-        <locationX>1273</locationX>
-        <locationY>235</locationY>
+        <locationX>2929</locationX>
+        <locationY>324</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Check_Schedule_var_true_External_Close_Pending_10days</name>
@@ -212,8 +218,8 @@
     <decisions>
         <name>check_External_Close_True</name>
         <label>check External Close True</label>
-        <locationX>1265</locationX>
-        <locationY>58</locationY>
+        <locationX>2401</locationX>
+        <locationY>324</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>check_VAR_External_Close_True</name>
@@ -232,10 +238,56 @@
         </rules>
     </decisions>
     <decisions>
+        <description>Is Case Owner Queue is safe to send email, if active users found in the case owner queue send the email alert or stop sending the email alert</description>
+        <name>Is_case_owner_queue_is_safe_to_send_email_or_not</name>
+        <label>Is case owner queue is safe to send email or not</label>
+        <locationX>50</locationX>
+        <locationY>694</locationY>
+        <defaultConnectorLabel>No - Skip Email Alert</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Send_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Case_Queue_Users_Active_or_Not.out_IsSafeToEmail</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A2</targetReference>
+            </connector>
+            <label>Yes - Send Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is Case Owner Queue is safe to send email, if active users found in the case owner queue send the email alert or stop sending the email alert</description>
+        <name>Is_case_owner_queue_is_safe_to_send_email_or_not_0</name>
+        <label>Is case owner queue is safe to send email or not</label>
+        <locationX>425</locationX>
+        <locationY>824</locationY>
+        <defaultConnectorLabel>No - Skip Email Alert</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Send_Email_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Case_Queue_Users_Active_or_Not.out_IsSafeToEmail</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A2</targetReference>
+            </connector>
+            <label>Yes - Send Email</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>myRule_1</name>
         <label>External Create</label>
-        <locationX>716</locationX>
-        <locationY>371</locationY>
+        <locationX>418</locationX>
+        <locationY>324</locationY>
         <defaultConnector>
             <targetReference>myRule_3</targetReference>
         </defaultConnector>
@@ -260,8 +312,8 @@
     <decisions>
         <name>myRule_11</name>
         <label>External - Close Pending</label>
-        <locationX>1741</locationX>
-        <locationY>1211</locationY>
+        <locationX>1444</locationX>
+        <locationY>1164</locationY>
         <defaultConnector>
             <targetReference>myRule_13</targetReference>
         </defaultConnector>
@@ -286,8 +338,8 @@
     <decisions>
         <name>myRule_13</name>
         <label>External - Close Pending @10days</label>
-        <locationX>1706</locationX>
-        <locationY>1614</locationY>
+        <locationX>1444</locationX>
+        <locationY>1572</locationY>
         <defaultConnector>
             <targetReference>myRule_15</targetReference>
         </defaultConnector>
@@ -312,8 +364,8 @@
     <decisions>
         <name>myRule_15</name>
         <label>External Support Assigned</label>
-        <locationX>2196</locationX>
-        <locationY>1677</locationY>
+        <locationX>1675</locationX>
+        <locationY>1680</locationY>
         <defaultConnector>
             <targetReference>myRule_17</targetReference>
         </defaultConnector>
@@ -338,8 +390,8 @@
     <decisions>
         <name>myRule_17</name>
         <label>External Partner Comment Update</label>
-        <locationX>2361</locationX>
-        <locationY>1867</locationY>
+        <locationX>1873</locationX>
+        <locationY>1788</locationY>
         <defaultConnectorLabel>FALSE_External Partner Comment Update</defaultConnectorLabel>
         <rules>
             <name>TRUE_myRule_17</name>
@@ -361,8 +413,8 @@
     <decisions>
         <name>myRule_3</name>
         <label>External Update Contact</label>
-        <locationX>977</locationX>
-        <locationY>479</locationY>
+        <locationX>680</locationX>
+        <locationY>432</locationY>
         <defaultConnector>
             <targetReference>myRule_5</targetReference>
         </defaultConnector>
@@ -387,8 +439,8 @@
     <decisions>
         <name>myRule_5</name>
         <label>External Close</label>
-        <locationX>1260</locationX>
-        <locationY>512</locationY>
+        <locationX>941</locationX>
+        <locationY>540</locationY>
         <defaultConnector>
             <targetReference>myRule_7</targetReference>
         </defaultConnector>
@@ -413,8 +465,8 @@
     <decisions>
         <name>myRule_7</name>
         <label>External Comment Update -Contact</label>
-        <locationX>1509</locationX>
-        <locationY>682</locationY>
+        <locationX>1196</locationX>
+        <locationY>648</locationY>
         <defaultConnector>
             <targetReference>myRule_9</targetReference>
         </defaultConnector>
@@ -439,8 +491,8 @@
     <decisions>
         <name>myRule_9</name>
         <label>Ext Cmt Update Non-Contact</label>
-        <locationX>1505</locationX>
-        <locationY>1040</locationY>
+        <locationX>1196</locationX>
+        <locationY>1056</locationY>
         <defaultConnector>
             <targetReference>myRule_11</targetReference>
         </defaultConnector>
@@ -647,7 +699,6 @@ NOT(IF(($User.ProfileId=$Label.Core_IPS_Data_Migration_ProfileId),true,false)),
 			          ISPICKVAL({!$Record.Status}, &apos;Open&apos;)  ) ,
              NOT(  ISPICKVAL({!$Record.Core_Sub_Status__c} , &apos;Close-Pending&apos;)) ,
               AND(   
-                                ISCHANGED({!$Record.Core_Latest_Comment_Time_Stamp__c}),
                                 NOT(ISBLANK({!$Record.Core_Latest_Comment_Time_Stamp__c}))                
 	                    ),
                                        
@@ -687,7 +738,8 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
 
 )</expression>
     </formulas>
-    <label>Core IPS Case Notif External PB R4.2_3</label>
+    <interviewLabel>Core IPS Case Notif External PB R4.2_3_test {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core IPS Case Notif External PB R4.2_3_test</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -704,8 +756,8 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
     <recordUpdates>
         <name>myRule_11_A1</name>
         <label>Update Email Text</label>
-        <locationX>1609</locationX>
-        <locationY>1319</locationY>
+        <locationX>1312</locationX>
+        <locationY>1272</locationY>
         <connector>
             <targetReference>myRule_11_A2</targetReference>
         </connector>
@@ -720,8 +772,8 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
     <recordUpdates>
         <name>myRule_15_A1</name>
         <label>Update Email Text</label>
-        <locationX>1774</locationX>
-        <locationY>1835</locationY>
+        <locationX>1477</locationX>
+        <locationY>1788</locationY>
         <connector>
             <targetReference>myRule_15_A2</targetReference>
         </connector>
@@ -736,8 +788,8 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
     <recordUpdates>
         <name>myRule_17_A1</name>
         <label>Update Email Text</label>
-        <locationX>2038</locationX>
-        <locationY>1943</locationY>
+        <locationX>1741</locationX>
+        <locationY>1896</locationY>
         <connector>
             <targetReference>myRule_17_A2</targetReference>
         </connector>
@@ -752,10 +804,10 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
     <recordUpdates>
         <name>myRule_1_A1</name>
         <label>Update Email Text</label>
-        <locationX>454</locationX>
-        <locationY>479</locationY>
+        <locationX>162</locationX>
+        <locationY>416</locationY>
         <connector>
-            <targetReference>myRule_1_A2</targetReference>
+            <targetReference>Case_Queue_Users_Active_or_Not</targetReference>
         </connector>
         <inputAssignments>
             <field>Core_IPS_email_text__c</field>
@@ -768,10 +820,10 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
     <recordUpdates>
         <name>myRule_3_A1</name>
         <label>Update Email Text</label>
-        <locationX>718</locationX>
-        <locationY>587</locationY>
+        <locationX>421</locationX>
+        <locationY>540</locationY>
         <connector>
-            <targetReference>myRule_3_A2</targetReference>
+            <targetReference>Case_Queue_Users_Active_or_Not_0</targetReference>
         </connector>
         <inputAssignments>
             <field>Core_IPS_email_text__c</field>
@@ -784,8 +836,8 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
     <recordUpdates>
         <name>myRule_7_A1</name>
         <label>Update Email Text</label>
-        <locationX>1170</locationX>
-        <locationY>753</locationY>
+        <locationX>1064</locationX>
+        <locationY>756</locationY>
         <connector>
             <targetReference>myRule_7_A2</targetReference>
         </connector>
@@ -800,10 +852,10 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
     <recordUpdates>
         <name>myRule_9_A1</name>
         <label>Update Email Text</label>
-        <locationX>1246</locationX>
-        <locationY>1211</locationY>
+        <locationX>949</locationX>
+        <locationY>1164</locationY>
         <connector>
-            <targetReference>myRule_9_A2</targetReference>
+            <targetReference>Send_Emails_Using_Email_Config_MDT</targetReference>
         </connector>
         <inputAssignments>
             <field>Core_IPS_email_text__c</field>
@@ -816,8 +868,8 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
     <recordUpdates>
         <name>Update_Email_Text</name>
         <label>Update Email Text</label>
-        <locationX>1561</locationX>
-        <locationY>226</locationY>
+        <locationX>2797</locationX>
+        <locationY>432</locationY>
         <connector>
             <targetReference>Email_Alert2</targetReference>
         </connector>
@@ -832,8 +884,8 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
     <recordUpdates>
         <name>Update_Email_TextSchedulerPath</name>
         <label>Update Email Text</label>
-        <locationX>1503</locationX>
-        <locationY>47</locationY>
+        <locationX>2269</locationX>
+        <locationY>432</locationY>
         <connector>
             <targetReference>Email_Alert</targetReference>
         </connector>
@@ -846,7 +898,7 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>590</locationX>
+        <locationX>1548</locationX>
         <locationY>48</locationY>
         <connector>
             <targetReference>myRule_1</targetReference>
@@ -877,7 +929,43 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
+    <subflows>
+        <description>validation with sub flow Case Queue Users Active or Not</description>
+        <name>Case_Queue_Users_Active_or_Not</name>
+        <label>Case Queue Users Active or Not</label>
+        <locationX>59</locationX>
+        <locationY>549</locationY>
+        <connector>
+            <targetReference>Is_case_owner_queue_is_safe_to_send_email_or_not</targetReference>
+        </connector>
+        <flowName>Core_Ips_CaseQueueUserActiveOrNot</flowName>
+        <inputAssignments>
+            <name>in_CaseId</name>
+        </inputAssignments>
+        <inputAssignments>
+            <name>in_OwnerId</name>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+    <subflows>
+        <description>validation with sub flow Case Queue Users Active or Not</description>
+        <name>Case_Queue_Users_Active_or_Not_0</name>
+        <label>Case Queue Users Active or Not</label>
+        <locationX>430</locationX>
+        <locationY>668</locationY>
+        <connector>
+            <targetReference>Is_case_owner_queue_is_safe_to_send_email_or_not_0</targetReference>
+        </connector>
+        <flowName>Core_Ips_CaseQueueUserActiveOrNot</flowName>
+        <inputAssignments>
+            <name>in_CaseId</name>
+        </inputAssignments>
+        <inputAssignments>
+            <name>in_OwnerId</name>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
     <variables>
         <name>varExternalCloseScheduler</name>
         <dataType>Boolean</dataType>

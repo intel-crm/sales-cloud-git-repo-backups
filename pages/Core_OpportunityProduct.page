@@ -7,7 +7,6 @@ Modification Log :
 * Developer                  Date                   Description
 * ----------------------------------------------------------------------------                 
 * Harshith M L             10/10/2014              Original Version
-* Ashwin Dash              01/11/2018              US90519 - Remove the "Advanced Technology" field on Opportunity Products
 ------------------------------------------------------------------------------------------------------------>
 <apex:page standardController="OpportunityLineItem" extensions="Core_OpportunityProductController" tabStyle="Opportunity">
     <apex:form id="theForm">
@@ -60,10 +59,9 @@ Modification Log :
                       <apex:selectOptions value="{!OpportunityProductsWrapperInstance.lstDivisionShortNames}"/>
                   </apex:selectList>
               </apex:column>
-              <!--US90519 - Remove the "Advanced Technology" field on Opportunity Products -- Ashwin -->
-              <!--<apex:column headerValue="{!$ObjectType.OpportunityLineItem.fields.Core_Advanced_Technology__c.Label}" width="10%">
+              <apex:column headerValue="{!$ObjectType.OpportunityLineItem.fields.Core_Advanced_Technology__c.Label}" width="10%">
                   <apex:inputField value="{!OpportunityProductsWrapperInstance.opportunityLineItemInstance.Core_Advanced_Technology__c}"/>
-              </apex:column>-->
+              </apex:column>
           </apex:pageBlockTable>
           
           

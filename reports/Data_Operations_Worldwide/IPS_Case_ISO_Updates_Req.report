@@ -45,7 +45,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Case.CEP_Case</value>
+            <value>012o0000000pEh8</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Intel_Sup_Owner__c</column>

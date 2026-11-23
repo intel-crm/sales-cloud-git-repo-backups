@@ -1,0 +1,37 @@
+<template>
+    <!-- Available Options List-->
+<div class="slds-dueling-list__column slds-dueling-list__column_responsive">
+  <spam>Available Options</spam>
+  <div class="slds-dueling-list__options">
+      <ul class="slds-listbox slds-listbox_vertical">
+          <template for:each={options} for:item="lang">
+              <li  class="slds-listbox__item" data-value={lang.value} key={lang.value} onclick={handleSelection}>
+                  <div data-val={lang.value} class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline">
+                    <span class="slds-media__body">
+                        <span title="English" class="slds-truncate">{lang.label}</span>
+                      </span>
+                  </div>
+                </li> 
+          </template>
+      </ul>
+  </div>
+</div>
+
+<!-- SELECTED OPTIONS LIST-->
+<div class="box-margin slds-dueling-list__column slds-dueling-list__column_responsive">
+  <spam>Selected Options</spam>
+  <div class="slds-dueling-list__options slds-is-disabled">
+      <ul class="slds-listbox slds-listbox_vertical">
+          <template for:each={selected} for:item="sel">
+              <li  class="slds-listbox__item" data-value={sel.value} key={sel.value} onclick={handleSelection}>
+                  <div data-val={sel.value} class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline">
+                    <span class="slds-media__body">
+                        <span title="English" class="slds-truncate">{sel.label}</span>
+                      </span>
+                  </div>
+                </li> 
+          </template>
+      </ul>
+  </div>
+</div>
+</template>

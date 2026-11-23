@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "8cdd4e43-216b-4821-a34d-70ce52d5456d",
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "configurationTags" : [ ],
+  "devName" : "core_IPS_Editprojects__c",
+  "id" : "8354c453-66d6-4882-b2dd-cbe95faf1d03",
+  "label" : "Edit-projects",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-edit-projects",
+  "type" : "route",
+  "urlPrefix" : "edit-projects"
+}

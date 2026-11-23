@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Temp SFDC ID</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Temp SFDC IDs</value>
+    </caseValues>
+    <fields>
+        <label><!-- CIM ID --></label>
+        <name>Core_CIM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Covered Account --></label>
+        <name>Core_Covered_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- MergingAccount_ID --></label>
+        <name>Core_MergingAccount_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Non-Surviving Account Id --></label>
+        <name>Core_Non_Surviving_Account_Id__c</name>
+        <relationshipLabel><!-- Temp SFDC IDs (Non-Surviving Account Id) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Processed --></label>
+        <name>Core_Processed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Result --></label>
+        <name>Core_Result__c</name>
+    </fields>
+    <fields>
+        <label><!-- SFDC ID --></label>
+        <name>Core_SFDC_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Surviving Account Id --></label>
+        <name>Core_Surviving_Account_Id__c</name>
+        <relationshipLabel><!-- Temp SFDC IDs --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

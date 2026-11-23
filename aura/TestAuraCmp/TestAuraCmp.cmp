@@ -1,0 +1,4 @@
+<aura:component implements="force:lightningQuickAction,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global">
+
+    Do not use :test component
+</aura:component>

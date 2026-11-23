@@ -32,7 +32,7 @@ public without sharing class Core_IPS_MyIntelDataExport implements Database.Batc
         caseList = (List<case>)scope;
         
         contactList = [SELECT Id,AccountId,Email,Core_Enterprise_Id__c FROM Contact where AccountId IN (select AccountId from case where Id IN:caseList and Core_IPS_Project_Case__c = null) and Core_IPS_Active__c = true]; 
-        
+        system.debug('contactList'+contactList);
         for(Contact con: contactList){
             if(contactAccountMap.get(con.AccountId) == null){
                 String enterpriseId = (con.Core_Enterprise_Id__c != null) ? con.Core_Enterprise_Id__c : '';
@@ -57,7 +57,7 @@ public without sharing class Core_IPS_MyIntelDataExport implements Database.Batc
         
         intrestedPartiesList = [Select id,Name,Case__c,Case__r.AccountId,User__c,User__r.ProfileId,Contact__c,Contact__r.Email,Contact__r.Core_Enterprise_Id__c,Agent_Name__c,Active__c,Type__c from 
                                 Core_IPS_Case_Interested_Party__c where Case__c IN: caseList];
-        
+       
         for(Core_IPS_Case_Interested_Party__c intrestedParties : intrestedPartiesList){
             if(intrestedParties.Contact__r.Email != null){
                 if(intrestedPartiesMap.get(intrestedParties.Case__c) == null){

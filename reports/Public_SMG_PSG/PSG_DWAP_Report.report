@@ -4,28 +4,10 @@
         <field>Account.Core_Geo__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <columns>
         <field>Account.Core_Account_Tier__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opp_Strategic_Opportunity__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Channel_Opportunity_Ind__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Prime_Account_Name__c</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -70,12 +52,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_Approved_Total_Price__c</field>
-    </columns>
-    <columns>
-        <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Status__c</field>

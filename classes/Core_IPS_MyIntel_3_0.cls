@@ -49,23 +49,55 @@ public class Core_IPS_MyIntel_3_0 implements Queueable, Database.AllowsCallouts 
         this.projectMemberList = projMembers;
     }
     //End----US1005799
+    //Added By Tushar 02-April-2026
+    Boolean reduceBatchSize = false;
+    public Core_IPS_MyIntel_3_0(List<Id> caseIds, String operationMsg,List<Core_IPS_Project_Member__c> projMembers, List<Core_IPS_Case_Interested_Party__c> intrestedParties, Boolean reduceBatchSize) {
+        //casesIds = caseIds;
+        listCasesIds = caseIds;// Start ------ Tushar Garg
+        operationType = operationMsg; 
+        this.intrestedPartiesList = intrestedParties;
+        this.projectMemberList = projMembers;
+        this.reduceBatchSize = reduceBatchSize;
+    }
     //Queueable Execute Method
     public void execute(QueueableContext context) {
          // Start ------ Tushar Garg
         casesIds = new List<Id>();
-            List<Id> remainingCaseIds = listCasesIds;
-            if (listCasesIds.size() > batchSize) {
-                // casesIds = listCasesIds.subList(0, batchSize);
-                for (Integer i = 0; i < batchSize; i++) {
-                    casesIds.add(listCasesIds[i]);
-                    remainingCaseIds.remove(i);
-                }
-            } else {
-                casesIds = listCasesIds;
-                remainingCaseIds = new List<Id>();
+        List<Id> remainingCaseIds = new List<Id>();
+        system.debug('reduceBatchSize '+reduceBatchSize);
+        system.debug('batchSize '+batchSize);
+        //checking if batch is called to reduce the batch size
+        if(reduceBatchSize && batchSize > 2){
+            batchSize = 3;
+        }
+        system.debug('Final batchSize '+batchSize);
+        if (listCasesIds.size() > batchSize) {
+            // Safely collect the first batch
+            for (Integer i = 0; i < batchSize; i++) {
+                casesIds.add(listCasesIds[i]);
             }
+            
+            // Add the remaining items after batchSize
+            for (Integer j = batchSize; j < listCasesIds.size(); j++) {
+                remainingCaseIds.add(listCasesIds[j]);
+            }
+        } else {
+            casesIds = new List<Id>(listCasesIds);
+            remainingCaseIds = new List<Id>();
+        }
+        system.debug('Final case ids  '+casesIds.size());
          // End ------ Tushar Garg
         jsonString =  generateJsonBody(casesIds,operationType);
+        system.debug('jsonString '+jsonString.length());
+        //Checking if length is exeeded then calling same batch but with reducing the size of 2
+        if (jsonString != null && jsonString.length() > 800000) {
+            system.debug('reduceBatchSize called true ');
+            //call batch again to calculate the size 
+            if(batchSize != 1){
+                System.enqueueJob(new Core_IPS_MyIntel_3_0(listCasesIds, operationType, projectMemberList, intrestedPartiesList, true));
+                return ;
+            }
+        }
         if(!String.isBlank(jsonString)) {
             // start----US1005775----23-06-2021----Niyazuddin----IPS Exception Handling : Ability to store JSON in outbound msg
             MessageWrapper messageWrapperObj = sendCaseData(jsonString); 

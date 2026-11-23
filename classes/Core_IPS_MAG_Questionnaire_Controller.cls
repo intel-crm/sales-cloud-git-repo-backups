@@ -28,7 +28,7 @@ public without sharing class Core_IPS_MAG_Questionnaire_Controller {
         }
             // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
         caseId = ApexPages.currentPage().getParameters().get('Id')?.escapeHtml4();
-        
+
         newCase = (Case)controller.getRecord();     
         isEditable = False;
         //To display Error message when caseid is null

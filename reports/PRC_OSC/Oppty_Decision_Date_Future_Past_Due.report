@@ -49,11 +49,11 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner__c</column>
+            <column>ACCOUNT_OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yan Chang</value>
+            <operator>contains</operator>
+            <value>alice zhang,bowen yang,david cui,hongjun yuan,jin huang,vivian cui,yix liu,yunzhu mao,shijun shu</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -9,9 +9,9 @@
 *****************************************************************************************************************************************/
 public with sharing class  Core_RestAPI_CaseV1_Handler {
     
-   private String invalidQueryPrams9010 = '9010';
-    private String errorCode500 = '500';
-    private String successCode200 = '200';
+   private String INVALID_QUERY_PRAMS_9010 = '9010';
+    private String ERROR_CODE_500 = '500';
+    private String SUCCESS_CODE_200 = '200';
     private DateTime entryTime = null;
     private String apiName; 
 
@@ -37,10 +37,12 @@ public with sharing class  Core_RestAPI_CaseV1_Handler {
     
     
     public Core_RestAPI_CaseV1_Handler(DateTime currTime, String APIname){
+        System.debug('GET_CASES_SOQL --->'+GET_CASES_SOQL );
         this.entryTime = currTime;
         this.apiName = APIname;
         //Initialize and add all valid allowed query string parameters
         allowedRequestURIParams.put('v','mycases'); 
+        System.debug('Core_RestAPI_CaseV1_Handler  URI '+RestContext.request.requestURI +' \n SOQL '+GET_CASES_SOQL  );
     }
     
     //Retrieve cases for the logged in User
@@ -55,11 +57,12 @@ public with sharing class  Core_RestAPI_CaseV1_Handler {
                 processRequest();
             
         }catch(Exception e){
-            Core_RestAPI_Util.processException( e, errorCode500, response, apiName, entryTime);
+            Core_RestAPI_Util.processException( e, ERROR_CODE_500, response, apiName, entryTime);
             response.successContent = null;
         }finally{
+            System.debug('Core_RestAPI_CaseV1_Handler Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
-                response.code = successCode200 ;
+                response.code = SUCCESS_CODE_200 ;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
             
         }        
@@ -68,17 +71,20 @@ public with sharing class  Core_RestAPI_CaseV1_Handler {
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations(){
+        System.debug('Core_RestAPI_CaseV1_Handler doValidations Invoked ');
         Boolean isRequestValid = true;
         if(Core_RestAPI_Util.isRequestParamValid(allowedRequestURIParams) == false){
             isRequestValid = false;
-            Core_RestAPI_Util.processException( null, invalidQueryPrams9010, response, apiName, entryTime);
+            Core_RestAPI_Util.processException( null, INVALID_QUERY_PRAMS_9010, response, apiName, entryTime);
         }
+        System.debug('Core_RestAPI_CaseV1_Handler doValidations Existing : isRequestValid '+isRequestValid);
         return isRequestValid;
     }
     
     
     //Execute the SOQL and populate the result to wrapper list objects 
     public void processRequest(){
+        System.debug('Core_RestAPI_CaseV1_Handler  processRequest ');
         response.successContent = new List<CaseWrapper>();
         for(Case c : Database.Query(GET_CASES_SOQL))
         {  
@@ -103,9 +109,11 @@ public with sharing class  Core_RestAPI_CaseV1_Handler {
        List<aggregateResult> newCasesCountList = new List<aggregateResult>();
        List<aggregateResult> openCaseCountList = new List<aggregateResult>();
        if(!String.isBlank(getCondition())){
+           System.debug('Inside myCase');
            newCasesCountList = [SELECT count(id) TotalCount, status FROM case WHERE Core_IPSPortal_Check__c = true AND Status = 'New' group by status];
            openCaseCountList  = [SELECT count(id) TotalCount, status FROM case WHERE Core_IPSPortal_Check__c = true AND Status = 'Open' group by status];
        }else{
+           System.debug('Inside List of Cases');
            /*START Niyaz -- 12/06/2025 --- added as part of vulnerability fix Core_IPS_Customer_Visible__c = true */
            newCasesCountList = [SELECT count(id) TotalCount, status FROM case WHERE Status = 'New' AND Core_IPS_Customer_Visible__c = true group by status ];  
            openCaseCountList  = [SELECT count(id) TotalCount, status FROM case WHERE Status = 'Open' AND Core_IPS_Customer_Visible__c = true group by status ];

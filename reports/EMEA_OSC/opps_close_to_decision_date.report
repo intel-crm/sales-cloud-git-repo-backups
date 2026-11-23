@@ -41,7 +41,6 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -62,13 +61,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
             <value>Yulia Smelkova,Eran Gal,Uros Huzjak,Maciek Osiecki,Carey Williams,Krzysztof Janicki,Jaroslaw Tomala</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Gosia Dzul</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

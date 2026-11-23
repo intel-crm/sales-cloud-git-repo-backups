@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Core_IPS_JSON_Builder__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Core_IPS_JSON_Builder</label>
+        <referenceTo>Core_IPS_JSON_Builder__mdt</referenceTo>
+        <relationshipLabel>Core_IPS_JSON_fields</relationshipLabel>
+        <relationshipName>Core_IPS_JSON_fields</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JSON_Key__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>JSON Key</label>
+        <length>250</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JSON_Values__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>JSON_Values</label>
+        <length>250</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Core_IPS_JSON_fields</label>
+    <pluralLabel>Core_IPS_JSON_fields</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -50,6 +50,11 @@
         <field>OWNER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>COMPANY</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>DCM Website Lead Status by BDM</name>
     <params>
         <name>co</name>

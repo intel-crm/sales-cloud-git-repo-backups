@@ -7,7 +7,7 @@
     <openType>onClickJavaScript</openType>
     <protected>false</protected>
     <url>//SFDCpopup(&apos;https://cloudcrmtrng.amr.corp.intel.com/&apos;,1024,768);
-SFDCpopup(&apos;https://salescrm.intel.com/training-and-help/&apos;,1024,768);
+SFDCpopup(&apos;https://salescrm.intel.com/&apos;,1024,768);
 function SFDCpopup (url,w,h){
 
   if (isIE()) { // bypass checks because ie can&apos;t make cross domain requests without relaxing security

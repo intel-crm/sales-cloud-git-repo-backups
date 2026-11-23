@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WaveDataset xmlns="http://soap.sforce.com/2006/04/metadata">
-    <application>Pipeline_Management</application>
+    <application>Opportunity_Pipeline_Analysis</application>
     <masterLabel>OpportunityProducts</masterLabel>
 </WaveDataset>

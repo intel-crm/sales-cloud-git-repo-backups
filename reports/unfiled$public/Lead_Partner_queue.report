@@ -4,7 +4,7 @@
         <field>Core_Partner_Queue_Mapping__c.Core_Partner_Name__c</field>
     </columns>
     <columns>
-        <field>Core_Partner_Queue_Mapping__c.PMP_MDA_BizOrg_Id__c</field>
+        <field>Core_Partner_Queue_Mapping__c.Core_Queue_Name__c</field>
     </columns>
     <columns>
         <field>CUST_OWNER_NAME</field>
@@ -24,10 +24,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Core_Partner_Queue_Mapping__c.Core_Partner_Name__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <endDate>2017-05-12</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-08-01</startDate>
     </timeFrameFilter>
 </Report>

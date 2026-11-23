@@ -286,7 +286,9 @@ global with sharing class  Core_IPS_Project_Controller{
         checkVal=addAccounts();
         
         if(checkVal==0){
-        PageReference pg = new PageReference('/apex/Core_addProjectAccounts?projectId='+projectId);
+            //Commented for classic EOL : Tejaswini
+     //   PageReference pg = new PageReference('/apex/Core_addProjectAccounts?projectId='+projectId);
+        PageReference pg=null;
         Pg.setRedirect(true);
         return Pg;
         }

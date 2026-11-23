@@ -1,0 +1,18 @@
+<apex:page standardController="case" showheader="true" sidebar="true">
+  <apex:includeScript value="/support/console/20.0/integration.js"/>
+  <script type="text/javascript">
+      function testSetTabTitle() {
+          //Set the current tab's title
+          sforce.console.setTabTitle('Case: {!case.CaseNumber}');
+      }
+      var pageLoad = window.onload;
+        window.onload = function() {
+              if (pageLoad) {
+                      pageLoad();
+              }
+                testSetTabTitle();
+        }
+  </script>    
+ 
+<apex:detail inlineEdit="true" showChatter="true" />   
+</apex:page>

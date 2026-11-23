@@ -1,0 +1,80 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" >
+    <aura:attribute name="sourceBtn" type="String" required="true" default="Invalid Case" />
+    <aura:attribute name="showPopup" type="Boolean" required="true" default="false" />
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="case" type="Object"/>
+    
+    <!--URL Navigation -->
+    <lightning:navigation aura:id="navService"/>
+    
+    <aura:registerEvent name="closeActionModalEvent" type="c:closeactionmodal"/>
+    <aura:handler name="closeActionModalEvent" event="c:closeactionmodal" action="{!c.handleAccept}"/>
+    
+    <aura:attribute name="spinnerOn" type="Boolean" default="false" />
+    <aura:attribute name="caseRecord" type="Object" default="{'sobjectType':'Case', 'Status' : '', 'Core_Sub_Status__c' : '', 'OwnerId' : ''}"/>
+    <aura:attribute name="recordSaveError" type="String" description="An error message bound to force:recordData"/>
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+    
+    <force:recordData aura:id="caseRec" 
+                      fields="Status,Core_Sub_Status__c,OwnerId"
+                      recordId="{!v.recordId}"  
+                      targetError="{!v.recordSaveError}"
+                      targetRecord="{!v.case}"
+                      targetFields="{!v.caseRecord}"
+                      mode="EDIT" />
+    
+    <aura:if isTrue="{!v.sourceBtn == 'Invalid Case' }">
+        <div class="" style="width:100%;">
+            <header class="slds-modal__header">
+                <h2 id="modal-heading-01" class="slds-text-heading--large slds-align--absolute-center">Invalid Case</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <div class="slds-align_absolute-center">
+                    <!-- <p>Are you sure you want to set the Case to Closed.Invalid?</p> -->
+                    <p>{!$Label.c.Core_IPS_InvalidCaseMsg}</p>
+                </div>
+            </div>
+            <footer class="slds-modal__footer">
+                <div class="slds-align_absolute-center">
+                    <lightning:button variant="brand" label="Confirm Invalid Case" title="Confirm Invalid Case" onclick="{! c.saveCase }" />
+                    <lightning:button label="Cancel" title="Cancel" onclick="{! c.handleCancel }" />
+                </div>
+            </footer>
+        </div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.sourceBtn == 'Close Case'}">
+        <div class="" style="width:100%;">
+            <header class="slds-modal__header">
+                <h2 id="modal-heading-01" class="slds-text-heading--large slds-align--absolute-center">Close Case</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <div class="slds-align_absolute-center">
+                    <!-- <p>You have selected to close this case. <br/> Are you sure you want to close the case?</p> -->
+                    <p>{!$Label.c.Core_IPS_CloseCaseMsg}</p>
+                </div>
+            </div>
+            <footer class="slds-modal__footer">
+                <div class="slds-align_absolute-center">
+                    <lightning:button variant="brand" label="Confirm Close Case" title="Confirm Close Case" onclick="{! c.saveCase }" />
+                    <lightning:button label="Cancel" title="Cancel" onclick="{! c.handleCancel }" />
+                </div>
+            </footer>
+        </div>
+    </aura:if>
+    
+    
+    
+    <aura:if isTrue="{!not(empty(v.recordSaveError))}">
+        <br />
+        <div class="error slds-box">
+            {!v.recordSaveError}
+        </div> 
+    </aura:if>
+    
+    <aura:if isTrue="{!v.spinnerOn}">
+        <c:core_IPS_SpinnerUtility></c:core_IPS_SpinnerUtility>
+    </aura:if>
+    
+    
+</aura:component>

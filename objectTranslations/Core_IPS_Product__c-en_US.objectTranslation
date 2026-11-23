@@ -64,6 +64,7 @@
         <name>Core_Supported_Product_Name__c</name>
     </fields>
     <fields>
+        <help><!-- Do not select EOIS or PAR Hidden products --></help>
         <label><!-- Supported Product --></label>
         <name>Core_Supported_Product__c</name>
         <relationshipLabel><!-- Premier Support Project Products --></relationshipLabel>
@@ -71,6 +72,11 @@
     <fields>
         <label><!-- Is Approved --></label>
         <name>Is_Approved__c</name>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>New_Lookup__c</name>
+        <relationshipLabel><!-- Premier Support Project Products --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Product Focus Area --></label>
@@ -91,6 +97,14 @@
             <masterLabel>Submitted</masterLabel>
             <translation><!-- Submitted --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- 3sec --></label>
+        <name>X3sec__c</name>
+    </fields>
+    <fields>
+        <label><!-- test --></label>
+        <name>test__c</name>
     </fields>
     <recordTypes>
         <description><!-- This is to display the page layout that do not have the approval history related list --></description>
@@ -119,6 +133,10 @@
         <errorMessage><!-- Not allowed to create or update record related to Org 025 --></errorMessage>
         <name>IPS_Altera_Go_Live_Project_Restriction</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Add_Products_for_External_Customers --></label>
+        <name>Add_Products_for_External_Customers</name>
+    </webLinks>
     <webLinks>
         <label><!-- Add_default_case_owner --></label>
         <name>Add_default_case_owner</name>

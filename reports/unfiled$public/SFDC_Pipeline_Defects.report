@@ -62,26 +62,6 @@
             <value>Over one year</value>
         </values>
     </buckets>
-    <buckets>
-        <bucketType>number</bucketType>
-        <developerName>BucketField_16815126</developerName>
-        <masterLabel>Stage Days &gt; 180</masterLabel>
-        <nullTreatment>z</nullTreatment>
-        <sourceColumnName>STAGE_DURATION</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <to>180</to>
-            </sourceValues>
-            <value>ok</value>
-        </values>
-        <values>
-            <sourceValues>
-                <from>180</from>
-            </sourceValues>
-            <value>defect</value>
-        </values>
-    </buckets>
     <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
     </columns>
@@ -89,36 +69,42 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Sales_Group__c</field>
+    </columns>
+    <columns>
         <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>BucketField_81180123</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Past_Due__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Product_Count__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>HASOPPLINEITEM</field>
+    </columns>
+    <columns>
         <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Last_Activity_Date__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Low_Quality__c</field>
+        <field>LAST_STAGE_CHANGE_DATE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Inactive__c</field>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>STAGE_DURATION</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Past_Due__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Low_Velocity__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Pushes__c</field>
+        <field>Opportunity.Core_Milestone_Count__c</field>
     </columns>
     <columns>
         <aggregateTypes>Average</aggregateTypes>
@@ -126,15 +112,70 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Oppty_Count__c</field>
+        <field>AMOUNT</field>
     </columns>
     <description>list oppty that exceed Push, last activty date, time in stage, past due or in qualify stage with near d date</description>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>FiscalQuarter</dateGranularity>
-        <field>CLOSE_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <filter>
+        <booleanFilter>1 AND (2 or 3 or 4 or 5 or (6 AND 7 AND 8))</booleanFilter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Past_Due__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Past Due</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Last_Activity_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>2/2/2017</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_DURATION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>180</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Push_Counter__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>4</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Qualify</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>7/1/2017</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessThan</operator>
+            <value>9/1/2017</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
     <name>SFDC Pipeline Defects</name>
     <params>
         <name>terr</name>
@@ -158,9 +199,9 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2018-12-29</endDate>
+        <dateColumn>Opportunity.Core_Last_Activity_Date__c</dateColumn>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2017-10-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

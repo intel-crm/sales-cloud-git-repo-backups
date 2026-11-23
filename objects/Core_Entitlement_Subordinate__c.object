@@ -155,6 +155,16 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>Core_External_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Parent_Entitlement_Id__c</fullName>
         <label>Parent Entitlement</label>
         <referenceTo>Core_Entitlement__c</referenceTo>

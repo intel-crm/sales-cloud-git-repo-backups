@@ -53,10 +53,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_BES_Inbound_Message__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Schedule_Time__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>

@@ -8,9 +8,6 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
@@ -24,9 +21,6 @@
     </columns>
     <columns>
         <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Approved_Date__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -70,7 +64,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>EMEA OSC DWR - EDU</name>
+    <name>ISG EDU DWR</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -94,6 +88,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

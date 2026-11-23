@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
-        <calculatedFormula>OpportunityLineItem.Core_Lost_Total_Price__c:SUM</calculatedFormula>
+        <calculatedFormula>(PRODUCT_PRICE:SUM * Opportunity.Core_Volume__c:SUM)/RowCount</calculatedFormula>
         <datatype>currency</datatype>
-        <developerName>FORMULA2</developerName>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>FULL_NAME</downGroupingContext>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>Total amount</masterLabel>
-        <scale>0</scale>
+        <scale>2</scale>
     </aggregates>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -51,11 +52,18 @@
             <value>Lost</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>huzjak,tomala</value>
+            <operator>equals</operator>
+            <value>roberto lipari,michela adamo,ozkan ozdikici,luuk verink,hesham elsaid,karim Ghatwary,uros huzjak</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_OWNER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>roberto lipari,michela adamo,ozkan ozdikici,luuk verink,hesham elsaid,karim Ghatwary,uros huzjak</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -89,6 +97,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>LAST_STAGE_CHANGE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

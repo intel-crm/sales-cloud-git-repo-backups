@@ -39,10 +39,6 @@
         <name>Core_Duration__c</name>
     </fields>
     <fields>
-        <label><!-- Email --></label>
-        <name>Core_Email__c</name>
-    </fields>
-    <fields>
         <label><!-- Entry Time --></label>
         <name>Core_Entry_Time__c</name>
     </fields>
@@ -93,10 +89,6 @@
     <fields>
         <label><!-- Status --></label>
         <name>Core_Success__c</name>
-    </fields>
-    <fields>
-        <label><!-- Time Duration --></label>
-        <name>Core_Time_Duration__c</name>
     </fields>
     <fields>
         <label><!-- User Agent --></label>

@@ -1,0 +1,24 @@
+<template>
+    <lightning-accordion class="example-accordion" 
+                            active-section-name="MindsResponses" allow-multiple-sections-open>
+    <lightning-accordion-section name="MindsResponses" label="MINDS Responses">
+
+        <div>
+        <lightning-datatable
+                key-field="id"
+                data={milestoneTable}
+                columns={columns}
+                enable-infinite-loading
+                onloadmore={loadMoreData}
+                hide-checkbox-column>
+        </lightning-datatable>
+    </div>  
+    <template if:true={show}>
+        <div style='color:red; font-size:large; text-align:center'>
+            <h1>No records to display</h1>
+        </div>
+    </template>
+</lightning-accordion-section>
+</lightning-accordion>
+
+</template>

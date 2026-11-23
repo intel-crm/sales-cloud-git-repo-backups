@@ -196,11 +196,15 @@
         <availability>online</availability>
         <description>New objectives for account briefings</description>
         <displayType>massActionButton</displayType>
-        <linkType>page</linkType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
         <masterLabel>New Objective</masterLabel>
         <openType>replace</openType>
-        <page>Core_New_Meeting_Objectives</page>
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
+        <url>/a1c/e?CF00No000000CobFF={!Account_Meeting_Brief__c.Name}
+&amp;CF00No000000CobFF_lkid={!Account_Meeting_Brief__c.Id}
+&amp;retURL=%2F{!Account_Meeting_Brief__c.Id}
+&amp;saveURL=%2F{!Account_Meeting_Brief__c.Id}</url>
     </webLinks>
 </CustomObject>

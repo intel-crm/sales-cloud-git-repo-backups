@@ -1,0 +1,78 @@
+{
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "b0c6717f-0a5e-4ecd-ab12-e3e66433815e",
+  "label" : "Attachment Upload",
+  "regions" : [ {
+    "id" : "23d0095d-59df-4167-8c75-39b28cc541fd",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "62529fe0-478d-479f-8d53-ea8ef0b9a846",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "f4f9f71c-a8a6-4855-8611-d92c91533d32",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "cf1b61f6-595d-4677-8f02-347f88f043d6",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "f3144f5b-4940-424b-9770-1810391e7200",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "3d007c95-bf60-47fb-a618-e87f8ee5929d",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "7cc1026a-7eab-46e9-bf62-3d97b8c76185",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "f6768ff8-4e78-4e93-9cb6-abc85a341ed0",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "e5c7a428-24c2-418f-bcc1-92ed76bd4d1e",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "0cb21f18-cfd5-49de-a0d9-3be0df7191eb",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "2aa86b38-0dfe-457b-bb0f-520d4571fe16",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "d17be47c-7acd-485a-9ab6-df48d786aba5",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "8234fb8d-676f-4a5b-aff2-9acc74a7ae32",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Attachment Upload"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "da20b603-29ce-41fa-ae54-efdbb16ee260",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a44cebd1-8625-4121-a8cb-9f937d63c6ad",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-attachment-upload"
+}

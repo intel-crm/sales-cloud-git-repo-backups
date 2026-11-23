@@ -43,7 +43,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -126,7 +126,6 @@
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3 AND 4) or (1 and 3 and 5))</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -139,14 +138,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>ethernet discrete,ethernet high speed</value>
+            <value>ethernet discrete</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>approved,Production Win</value>
+            <value>approved</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
@@ -154,13 +153,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>jacksonville</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>IntelÂ® Ethernet Controller XL710-BM2,IntelÂ® Ethernet Controller XL710-AM2,IntelÂ® Ethernet Multi-host Controller FM10420,IntelÂ® Ethernet Controller XL710-AM1,IntelÂ® Ethernet Multi-host Controller FM10840,IntelÂ® Ethernet Network Adapter,XXV710-DA2,IntelÂ® Ethernet Converged Network Adapter XL710-QDA2,IntelÂ® Ethernet Controller XL710-BM1,IntelÂ® Ethernet Converged Network Adapter XL710-QDA1,IntelÂ® Ethernet Network Adapter XXV710-DA2 for OCP,IntelÂ® Ethernet Switch FM10840,IntelÂ® Ethernet Network Adapter XXV710-DA1,IntelÂ® Ethernet Switch FM10420,Ethernet I/O Module XL710-QDA1 AXX1P40FRTIOM,IntelÂ® Ethernet Server Adapter XL710-QDA2 for Open Compute Project,IntelÂ® Ethernet Controller XXV710-AM1,Ethernet I/O Module XL710-QDA2 AXX2P40FRTIOM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

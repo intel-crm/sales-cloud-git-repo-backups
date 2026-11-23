@@ -42,17 +42,7 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
         batchProcessing.Core_Batch_Query__c = query;            
         batchProcessing.Core_Object_Name__c = 'Account';            
         batchProcessing.Core_Start_Date_Time__c = jobRunTime; 
-        if( (Schema.sObjectType.Core_Batch_Processing__c.fields.Batch_Header__C.isCreateable() && 
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Email_Distribution_List__c.isCreateable() &&
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Salesforce_Job_Id__c.isCreateable() &&
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Batch_Query__c.isCreateable() &&
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Object_Name__c.isCreateable() &&
-        Schema.sObjectType.Core_Batch_Processing__c.fields.Core_Start_Date_Time__c.isCreateable() )||
-        Test.isRunningTest() )
-        {
-
-            insert batchProcessing;
-        }
+        insert batchProcessing;
         Database.QueryLocator uncoveredAccounts = Database.getQueryLocator(query);
         return uncoveredAccounts;
         
@@ -75,8 +65,7 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
         if(uncoveredAccounts.size() > batchSize){            
             batchSize = uncoveredAccounts.size();
         }
-        try {           
-            // subquery to get all Account related child records.
+        try {            
             List<Account> accList = [Select Id,Core_Business_ID__c, Core_Uncover_Marked_for_Clean_Up__c,Core_Batch_Run_Date__c, (Select Id from Opportunities), (select Id from cases ),(Select Id from AccountTeamMembers),
             (select id from contacts),(select id from Notes), (select id from Attachments),(select id from Account_ERPM_Engagements__r),(select id from Account_Meeting_Briefs__r ),
             (select id from Account_Teams__r  ), (select id from CCV__r ),(Select Id From Tasks),(select id from events),(select id from Account_Engagements__r),(select id from Account_Profiles__r) from Account where Id IN:uncoveredAccounts ];                
@@ -84,7 +73,8 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
             if(accList != null && !accList.isEmpty()){
                 for(Account acc : accList){
                     if(acc.Opportunities.size() >0 || acc.cases.size()>0 || acc.contacts.size()>0 || acc.Attachments.size()>0 || acc.Notes.size()>0 ||acc.AccountTeamMembers.size()>0 ||
-                    acc.Account_ERPM_Engagements__r.size()>0 || acc.Account_Meeting_Briefs__r.size()>0 || acc.Account_Teams__r.size()>0 || acc.CCV__r.size()>0 || acc.Account_Engagements__r.size()>0 || acc.Account_Profiles__r.size()>0 || acc.Tasks.size()>0 || acc.events.size()>0 || String.isNotBlank(acc.Core_Business_ID__c)){                        
+                    acc.Account_ERPM_Engagements__r.size()>0 || acc.Account_Meeting_Briefs__r.size()>0 || acc.Account_Teams__r.size()>0 || acc.CCV__r.size()>0||
+                    acc.Account_Engagements__r.size()>0 || acc.Account_Profiles__r.size()>0 || acc.Tasks.size()>0 || acc.events.size()>0 || String.isNotBlank(acc.Core_Business_ID__c)){                        
                         if( acc.Core_Uncover_Marked_for_Clean_Up__c){                       
                           acc.Core_Uncover_Marked_for_Clean_Up__c =false; 
                           acc.Core_Batch_Run_Date__c= jobRunTime;
@@ -134,15 +124,8 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
             batchline.Object_Type__c = 'Account';            
             batchline.Core_Number_of_Updates__c = batchRecCount; 
             batchline.Exception_Log__c='Total failed records: '+failedRecordCount;
-            batchline.Core_Change_Log__c=errorString;    
-            if(Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Batch_Processing__c.isCreateable() &&
-            Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Object_Type__c.isCreateable() &&
-            Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Number_of_Updates__c.isCreateable() &&
-            Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Exception_Log__c.isCreateable() &&
-            Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Change_Log__c.isCreateable()){
-                  
-                insert batchline;
-            }
+            batchline.Core_Change_Log__c=errorString;                      
+            insert batchline;
         
         } catch(Exception e){      
           batchProcessing.Core_Exception_Log__c= e.getMessage();
@@ -162,7 +145,7 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
         batchProcessing.Core_Batch_Size__c = batchSize;        
         batchProcessing.Core_Send_Email__c = true;                
         update batchProcessing;     
-        Messaging.SingleEmailMessage email =new Messaging.SingleEmailMessage(); 
+        Messaging.SingleEmailMessage email =new Messaging.SingleEmailMessage();        
         list<string> emailRecipientlist=new list<string>();
         for (Core_Uncover_Account_Batch_Recipient__c usEmail : Core_Uncover_Account_Batch_Recipient__c.getAll().values()){
              if(string.isnotblank(usEmail.Core_Recipient_Email1__c)){
@@ -175,10 +158,6 @@ global class Core_Batch_UnCovered_Accounts_Cleanup implements Database.Batchable
         email.setSubject(subject);
         email.setToAddresses(emailRecipientlist);
         email.setPlainTextBody('The batch Apex job processed '+ a.TotalJobItems +' batches with '+ a.NumberOfErrors +' failures and extended tatus : '+a.ExtendedStatus );
-        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    email.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
         Messaging.SendEmailResult [] r = Messaging.sendEmail(new Messaging.SingleEmailMessage[] {email});      
     }
     /***********************************************************************************************/

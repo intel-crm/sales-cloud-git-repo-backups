@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Kashmir Hyder</description>
+    <description>EMP of Ken Petersen</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11485993_Daniela_Andrade_Figueira_Pinto_Coelho</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11624987_Kashmir_Hyder</parentRole>
+    <parentRole>EMP_10556535_Ken_Petersen</parentRole>
 </Role>

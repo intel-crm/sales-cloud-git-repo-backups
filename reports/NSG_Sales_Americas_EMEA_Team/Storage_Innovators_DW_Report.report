@@ -26,7 +26,7 @@
         <field>FAMILY</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
@@ -48,7 +48,7 @@
             <value>Regional Sales</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -59,7 +59,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Nutanix,DATADIRECT NETWORKS,Kaminario,Infinidat,Pure Storage,Zadara Storage,Qumulo,Cloudian,Tintri,E8 Storage,Ctera,Iguazio,Lightbits,Aperion,DataOn,Cohesity,Excelero,Vexata,Starwind,Maxta,VastData,Gigaspaces,Atlantis Computing,Nexenta,Elastifile,Reduxio,Pivot3,Stratoscale,Diamanti,Teradata,Scality,Kazan</value>
+            <value>Nutanix,DDN,Kaminario,Infinidat,Pure Storage,Zadara Storage,Qumulo,Cloudian,Tintri,E8 Storage,Ctera,Iguazio,Lightbits,Aperion,DataOn,Cohesity,Excelero,Vexata,Starwind,Maxta,VastData,Gigaspaces,Atlantis Computing,Nexenta,Elastifile,Reduxio,Pivot3,Stratoscale,Diamanti,Teradata,Scality,Kazan</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -79,7 +79,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>probability</name>
@@ -98,8 +98,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2018-12-31</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2017-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

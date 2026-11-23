@@ -115,10 +115,50 @@ public class Core_IPS_CaseAdvanceSearch_CTRL_Test {
             caseobj.AccountId = ListOfAccounts.get(0).id;
             caseobj.ContactId = ListOfContacts.get(0).Id;
             caseobj.Core_IPS_Project_Case__c = ListOfIpsProjects.get(0).Id;
-            caseobj.Subject ='SubjectTest'+count;
+            caseobj.Subject ='Subject Test '+count;
+          //  caseobj.Core_IPS_Customer_Visible__c = True;
             count++;
         }
         insert ListOfCases;
+        //added by Rajashekar Starts
+        Core_IPS_Product_Issue_Category__c issueCategory = new Core_IPS_Product_Issue_Category__c();
+        insert issueCategory;
+        Core_IPS_Project__c project = new Core_IPS_Project__c(
+            Name = 'Test Project'
+        );
+        insert project;
+
+        Case testCase = new Case(
+            Status = 'New',
+            Subject = 'Test Case',
+            Priority = 'High',
+            Origin = 'Email'
+        );
+        insert testCase;
+
+        Attachment attach = new Attachment(
+            ParentId = testCase.Id,
+            Name = 'Test Attachment',
+            Body = Blob.valueOf('This is a test attachment')
+        );
+        insert attach;
+
+        ApexPages.StandardController sc = new ApexPages.StandardController(testCase);
+        Core_IPS_CaseAdvanceSearch_CTRL controller = new Core_IPS_CaseAdvanceSearch_CTRL(sc);
+        controller.Issue_Category = issueCategory;
+        controller.attach = attach;
+        controller.project = project;
+        controller.caseForSearch = testCase;
+        controller.SelectStatus = 'Open';
+        controller.CreatingDateFrom = DateTime.now().addDays(-1);
+        controller.CreatingDateTo = DateTime.now().addDays(1);
+        //added by Rajashekar ends
+      /*  //sowmya add
+        List<Core_IPS_Case_Comments__c> csecomments = TestUtilities.getCaseComments(1);
+        csecomments[0].Core_IPS_Case__c = ListOfCases[0].Id;
+        Insert csecomments;
+        //sowmya end*/
+        //
         casesForSearch = [Select subject,CaseNumber from case where id IN : ListOfCases];
         System.assert(ListOfCases.get(0).Id != null, 'Case Record not created');
 

@@ -51,10 +51,6 @@
                 <behavior>Readonly</behavior>
                 <field>Core_Support_Org_Name__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_MAP_Description__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>

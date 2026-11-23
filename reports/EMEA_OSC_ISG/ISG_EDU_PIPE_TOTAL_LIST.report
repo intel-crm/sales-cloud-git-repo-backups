@@ -73,7 +73,7 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <name>EMEA OSC PIPELINE 2017 LIST - EDU</name>
+    <name>ISG EDU PIPE TOTAL - LIST</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -99,6 +99,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

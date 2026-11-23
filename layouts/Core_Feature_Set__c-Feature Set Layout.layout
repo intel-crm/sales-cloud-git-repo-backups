@@ -46,10 +46,6 @@
                 <behavior>Readonly</behavior>
                 <field>Core_Feature_Value__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Feature_BU__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>

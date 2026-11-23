@@ -1643,7 +1643,7 @@ Modification Log :
             labelList.add(labels1);
             //insert labels1;
             // Avoid Hardcoding Id Fix - Start - Shipra
-            Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
+            Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1];
             Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
             labels2.name= 'Data Migration Profile Id';
             labels2.value__c=dataMigPrf.Id;
@@ -2098,7 +2098,7 @@ Modification Log :
             insert labels1;
             
             // Avoid Hardcoding Id Fix - Start - Shipra
-            Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
+            Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1];
             Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
             labels2.name= 'Data Migration Profile Id';
             //labels2.value__c='00eo0000000f7Gd';
@@ -2249,12 +2249,18 @@ Modification Log :
             
             
             
-            
+            system.debug('cs1'+cs1);
             //String testresult1 =Core_IPS_Reprocess_Backend_FailedRecords.reProcessRecordsFromBackSystem(backend.id);
             //start--5th Feb 2016--calling casecomment reprocessing from test class itself
             Core_IPS_Case_Comments__c casecommentobj = new Core_IPS_Case_Comments__c();
             caseCommentobj.id=log1.Core_sObjectId__c;
+            
+            //sowmya add
             caseCommentobj.Core_Promote_Status__c = 'Failed';
+            caseCommentobj.Core_IPS_Case__c = cs1.id;
+            // Insert caseCommentobj;
+            //sowmya end
+            
             Map<id,Core_IPS_Case_Comments__c > mapCaseCommIds=new Map<id,Core_IPS_Case_Comments__c >();
             mapCaseCommIds.put(casecommentobj.id, casecommentobj);
             List<Core_Log_Entry__c > caseCommentLogIds=new List<Core_Log_Entry__c >();

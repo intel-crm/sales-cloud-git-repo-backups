@@ -10,9 +10,6 @@
         <field>Contact$Email</field>
     </columns>
     <columns>
-        <field>Contact$CreatedBy</field>
-    </columns>
-    <columns>
         <field>Contact$Core_AGS_Integration_Message__c</field>
     </columns>
     <columns>
@@ -39,13 +36,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact$CreatedBy</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Sales.CRM.WW. Data.Operations</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

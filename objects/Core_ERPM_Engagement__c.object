@@ -157,7 +157,7 @@
         <fullName>Core_Description__c</fullName>
         <label>Description</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
@@ -191,6 +191,17 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_External_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>12</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_IsActive__c</fullName>
         <defaultValue>true</defaultValue>
         <label>Active</label>
@@ -205,7 +216,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Technical_Change_Agent</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -225,7 +236,7 @@
         <externalId>false</externalId>
         <label>Technical Email</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
         <unique>false</unique>
@@ -247,7 +258,7 @@
         <label>Technical Member Type</label>
         <length>80</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -258,7 +269,7 @@
         <label>Technical Name</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -269,7 +280,7 @@
         <label>Technical Publish</label>
         <length>80</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -280,7 +291,7 @@
         <label>Technical Tier Code</label>
         <length>40</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -295,7 +306,6 @@
         <columns>Core_IsActive__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>ERPM Engagement Name</label>

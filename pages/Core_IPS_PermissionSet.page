@@ -1,0 +1,4 @@
+<apex:page standardcontroller="case" extensions="IPSPermissionSet"  action="{!assignment}">
+     <apex:outputPanel rendered="{!!isHavingAccess}"> not visible</apex:outputPanel>
+     <apex:outputPanel rendered="{!isHavingAccess}"> visible</apex:outputPanel>
+</apex:page>

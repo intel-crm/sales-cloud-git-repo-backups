@@ -274,10 +274,11 @@
     <fields>
         <fullName>Core_File_Hyperlink__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(ISPICKVAL(Core_Upload_Status__c, &apos;Complete&apos;),HYPERLINK(Core_File_URL__c ,&apos;Download&apos;,&apos;Self&apos;),HYPERLINK($Label.Core_IPS_File_SCFT_URL + &apos;&amp;caseid=&apos;+  CASESAFEID(Core_Case__c) +&apos;&amp;visibility=&apos;+TEXT(Core_IPS_Attachment_Visibility__c)+&apos;&amp;appfileId=&apos;+Core_File_GUID__c  ,&apos;Resume&apos;,&apos;Self&apos;  ))</formula>
+        <formula>IF(ISPICKVAL(Core_Upload_Status__c, &apos;Complete&apos;),HYPERLINK(Core_File_URL__c,&apos;Download&apos;,&apos;Self&apos;),HYPERLINK($Label.Core_IPS_File_SCFT_URL + &apos;&amp;caseid=&apos;+  CASESAFEID(Core_Case__c) +&apos;&amp;visibility=&apos;+TEXT(Core_IPS_Attachment_Visibility__c)+&apos;&amp;appfileId=&apos;+Core_File_GUID__c  ,&apos;Resume&apos;,&apos;_blank&apos;  ))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>File Download Link</label>
         <required>false</required>
+        <securityClassification>Public</securityClassification>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -791,6 +792,24 @@ window.open(&quot;{!URLFOR($Site.Prefix+&apos;/Core_IPS_File_AttachToCase?id=&ap
 //{!URLFOR($Site.Prefix+&apos;/Core_IPS_File_AttachToCase?id=&apos;+Case.Id)}</url>
     </webLinks>
     <webLinks>
+        <fullName>Core_Link_File</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Link File</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/35.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/support/console/35.0/integration.js&quot;)}
+
+if (sforce.console.isInConsole()) {
+srcSelf(&apos;/apex/Core_IPS_File_LinkToCase?id={!Case.Id}&amp;isdtp=vw&apos;);
+} else {
+window.open(&quot;/apex/Core_IPS_File_LinkToCase?id={!Case.Id}&quot;, &apos;_self&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
         <fullName>Core_Refresh_to_See_New_Attachments</fullName>
         <availability>online</availability>
         <description>Refresh the Page to see Attachment status change. 
@@ -809,5 +828,24 @@ window.top.location=&apos;/console&apos;;
 } else {
 window.parent.location.reload(true);
 }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Download</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Download</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>IF(ISPICKVAL(Core_Upload_Status__c, &apos;Complete&apos;),HYPERLINK(Core_File_URL__c,&apos;Download&apos;,&apos;Self&apos;),HYPERLINK($Label.Core_IPS_File_SCFT_URL + &apos;&amp;caseid=&apos;+ CASESAFEID(Core_Case__c) +&apos;&amp;visibility=&apos;+TEXT(Core_IPS_Attachment_Visibility__c)+&apos;&amp;appfileId=&apos;+Core_File_GUID__c ,&apos;Resume&apos;,&apos;_blank&apos; ))</url>
     </webLinks>
 </CustomObject>

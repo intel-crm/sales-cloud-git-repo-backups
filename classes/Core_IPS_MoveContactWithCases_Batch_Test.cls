@@ -13,7 +13,7 @@ Created Date    : 03 Oct 2019
 @isTest(seeAllData=false)
 public class Core_IPS_MoveContactWithCases_Batch_Test {
     static testMethod void testMoveContactCasesBatch1(){
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
+        Profile itAdminPrf = [select id, name from Profile where name = 'IT Admin' Limit 1];
         User itAdminUser = new User(Alias = 'itAdmx2', 
                                     Email='itAdminTestx2@intel.com', 
                                     EmailEncodingKey='UTF-8',
@@ -82,14 +82,14 @@ public class Core_IPS_MoveContactWithCases_Batch_Test {
             objProd.IsActive = true;
             insert objProd;            
             
-            List<Asset> listOfAssets= TestUtilities.getAssetList(3);
+            List<Asset> listOfAssets= TestUtilities.getAssetList(10);
             for(Asset AssetRec : listOfAssets){
                 AssetRec.accountid= testAccount.id;
                 AssetRec.Product2Id=objProd.id;
             }
             insert listOfAssets;
             
-            List<Case> ListOfCases = TestUtilities.getListOfCases(3);
+            List<Case> ListOfCases = TestUtilities.getListOfCases(10);
             integer count=0;
             for(Case CaseRec : ListOfCases){
                 if(count<5){

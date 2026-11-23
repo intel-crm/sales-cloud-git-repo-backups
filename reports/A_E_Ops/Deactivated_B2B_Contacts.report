@@ -24,12 +24,6 @@
     <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
-    <columns>
-        <field>LAST_UPDATE</field>
-    </columns>
-    <columns>
-        <field>Account.Core_B2B_Entitlement__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Contact.Core_Contact_B2B_Indicator__c</column>

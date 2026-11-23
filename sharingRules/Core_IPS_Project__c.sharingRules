@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>All_Global_Export_Compliance_Test</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>All Global Export Compliance Test</label>
+        <sharedTo>
+            <group>Core_All_Global_Export_Compliance</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IPS_Private__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Core_IPS_ProjectAccess_RW_to_AllIPSUsers</fullName>
         <accessLevel>Edit</accessLevel>
         <description>This would give all IPS folks (Agent + Admin )read access to all Projects</description>
@@ -26,7 +40,7 @@
         <description>This rule has been specially added to provide Read/write Access to IPS Agent to Project as IPS Agent Role is no longer a subordinate to IPS Product Org Admin Role</description>
         <label>Core IPS ProjectAccess RW to IPS Agent</label>
         <sharedTo>
-            <role>EMP_11298293_Kenta_Ueda</role>
+            <role>IPS_Agent</role>
         </sharedTo>
         <criteriaItems>
             <field>RecordTypeId</field>
@@ -66,6 +80,90 @@
         <label>IPS Public Read Project</label>
         <sharedTo>
             <group>Core_IPS_Public_Read</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IPS_Private__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>IPS_Case_Read_Write_Test</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>IPS Case Read Write Test</label>
+        <sharedTo>
+            <group>Core_IPS_Case_Read_Write</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IPS_Private__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>IPS_Public_Read_Only_Test</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>IPS Public Read Only Test</label>
+        <sharedTo>
+            <group>Core_IPS_Public_Read</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IPS_Private__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>IPS_Read_Only_Test</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>IPS Read Only Test</label>
+        <sharedTo>
+            <group>Core_IPS_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IPS_Private__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PG_Data_Ops_Test</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PG: Data Ops Test</label>
+        <sharedTo>
+            <group>Core_PG_Data_Ops</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IPS_Private__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Sales_Rep_Dual_IPS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Sales Rep Dual IPS</label>
+        <sharedTo>
+            <group>Core_PG_Sales_Rep_BB_Dual_IPS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_IPS_Private__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Test_IPS_Agent</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Test IPS Agent</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>IPS_Agent</roleAndSubordinatesInternal>
         </sharedTo>
         <criteriaItems>
             <field>Core_IPS_Private__c</field>

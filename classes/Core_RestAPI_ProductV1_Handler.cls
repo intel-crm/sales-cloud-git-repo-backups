@@ -31,10 +31,12 @@ public with sharing class  Core_RestAPI_ProductV1_Handler{
         this.apiName = APIname;
         this.condition = '';
         response.successContent = new List<ProductWrapper>();
+        System.debug('Core_RestAPI_ProductV1_Handler URI '+RestContext.request.requestURI);
     }
     
     //Retrieve cases for the logged in User
     public Core_RestAPI_Response getProducts(){
+        System.debug(' Core_RestAPI_ProductV1_Handler getProducts Entered  \n ');
         try{
             //Validations if need to be handled in util class      
             boolean isRequestValid = doValidations();
@@ -46,16 +48,19 @@ public with sharing class  Core_RestAPI_ProductV1_Handler{
         }catch(Exception e){
             Core_RestAPI_Util.processException(e, ERROR_CODE_500, response, apiName, entryTime);    
         }finally{
+            System.debug('Core_RestAPI_ProductV1_Handler Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
         }        
+        System.debug(' Core_RestAPI_ProductV1_Handler getProducts Exiting ');
         return response;
     } 
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations(){
         
+        System.debug('Core_RestAPI_ProductV1_Handler doValidations Invoked ');
         Boolean isRequestValid = true;
         return isRequestValid;
     }
@@ -63,6 +68,7 @@ public with sharing class  Core_RestAPI_ProductV1_Handler{
     //Executing SOQL to get all the products for the logged in user and which is not a public product
     public void processRequest(){
         
+        System.debug(' Core_RestAPI_ProductV1_Handler processRequest Entering SOQL  \n '+GET_PRODUCTS_SOQL);
         for(Asset objAsset : Database.Query(GET_PRODUCTS_SOQL)){                  
             ProductWrapper objProductWrapper = new ProductWrapper();
             objProductWrapper.intelProductId= objAsset.id;
@@ -72,6 +78,7 @@ public with sharing class  Core_RestAPI_ProductV1_Handler{
             objProductWrapper.intelProductName = objAsset.Core_Supported_Product__r.Core_Supported_Product_Name__c;
             response.successContent.add(objProductWrapper);
         } 
+        System.debug('processRequest response.successContent '+response.successContent);
         
     }
     //IMPORTANT : Wrapper class must implement the interface Core_RestAPI_SuccessContent

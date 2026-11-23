@@ -1,4 +1,4 @@
-global class Core_IPS_BES_Delete_All_Old_Logs_Batch implements Database.Batchable<sObject>{  
+global class Core_IPS_BES_Delete_All_Old_Logs_Batch implements Database.Batchable<sObject>{ 
 	global String objectName;
     global Boolean isSingleObject;
     global List<sObject> scope = new List<sObject>();
@@ -13,7 +13,7 @@ global class Core_IPS_BES_Delete_All_Old_Logs_Batch implements Database.Batchabl
     global List<sObject> start(Database.BatchableContext bc) {
         if(isSingleObject== false){
             getObjectRecords('BES Error Log');
-            getObjectRecords('Log Entry');
+            getObjectRecords('Log Entry'); 
             getObjectRecords('BES Inbound');
             getObjectRecords('BES Outbound');
         }
@@ -26,6 +26,7 @@ global class Core_IPS_BES_Delete_All_Old_Logs_Batch implements Database.Batchabl
     }
     
     public void execute(Database.BatchableContext BC, List<sObject> scope){
+        
         try{
             if(!scope.isEmpty()){
             	delete scope;
@@ -42,30 +43,39 @@ global class Core_IPS_BES_Delete_All_Old_Logs_Batch implements Database.Batchabl
         String query = '';
         List<sObject> recList = new List<sObject>();
         try{
+            System.debug('Try block');
             	List<String> whereParts = new List<String>();
             	Core_IPS_BES_Batch_Delete__c deleteBatch = Core_IPS_BES_Batch_Delete__c.getValues(objectName);
             
                 query = 'Select Id from '+deleteBatch.Core_IPS_BES_ObjectName__c+' ';
+            	System.debug('query 1 = '+query);
                 if(deleteBatch.Core_IPS_BES_No_of_Days__c != null){
                     whereParts.add('CreatedDate < LAST_N_DAYS:'+Integer.valueOf(deleteBatch.Core_IPS_BES_No_of_Days__c));
+                    system.debug('whereParts 1 ='+whereParts);
                 }   
                 if(!String.isBlank(deleteBatch.Core_IPS_BES_Where_Condition__c)){
                     whereParts.add(deleteBatch.Core_IPS_BES_Where_Condition__c);
+                    system.debug('whereParts 2 ='+whereParts);
                 }
                 if(whereParts.size() > 0){
                     query += 'where '+ String.join(whereParts, ' and ');
+                    system.debug('query 2 ='+whereParts);
                 }
            /* if(Test.isRunningTest()){
                 query = 'Select Id from '+deleteBatch.Core_IPS_BES_ObjectName__c;
             }*/
-           // System.debug('query'+query);
+           System.debug('query'+query);
+            query+=' LIMIT 49999';
             recList = Database.query(query);
+            System.debug('recList = '+recList);
 			if(!recList.isEmpty()){
             	scope.addAll(recList);
+                system.debug('scope = '+ scope);
         	}
             
         }catch(Exception e){
             Core_IPS_BES_LogEntry_Utility.insertLog(e, null, null, null , null);
+           
         }
         
     }

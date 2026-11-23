@@ -980,7 +980,7 @@ catch(Exception e){}
         
         // Query Profiles
         Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> ProfileList = [select id, name from Profile where name = 'CCP - Core Access'];
+        List<Profile> ProfileList = [select id, name from Profile where name = 'IPS Data Migration'];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
@@ -993,14 +993,14 @@ catch(Exception e){}
         ListOfUserAccount = TestUtilities.getListOfUser(2);
         Integer Count=1;
         for(User Usr : ListOfUserAccount){
-            Usr.ProfileID =  profiles.get('CCP - Core Access');
+            Usr.ProfileID =  profiles.get('IPS Data Migration');
             Usr.UserRoleID = role.id;
             Usr.UserName = Count+'AccountTestnewuser@intel.com';
             Count++;
         }
         Count=0;
         insert ListOfUserAccount;
-        System.assertEquals(ListOfUserAccount.get(0).profileid, profiles.get('CCP - Core Access'));
+        System.assertEquals(ListOfUserAccount.get(0).profileid, profiles.get('IPS Data Migration'));
         
         // Create Account
         List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
@@ -1029,6 +1029,7 @@ catch(Exception e){}
         System.runAs(ListOfUser.get(0)){
             Test.startTest();
             boolean ValueReturned = Core_IPS_Helper_Utility.getFAEsofAccount(ListOfAccounts.get(0),ListOfUserId);
+            System.debug('ValueReturned***********'+ValueReturned);
             System.assert(ValueReturned== null,'Value Returned is true');
             Test.stopTest();
         }
@@ -1479,6 +1480,7 @@ catch(Exception e){}
         System.runAs(ListOfUser.get(0)){
             insert ListOfCases;
         }
+        System.debug('List of Cases ===== '+ListOfCases);
         System.assert(ListOfCases[0].Id != null, 'Record not created');
         Test.startTest();
         System.runAs(ListOfUser[0]){
@@ -1496,6 +1498,8 @@ catch(Exception e){}
             insert csList;
             Set<Id> userIdSet = new Set<Id>();
             userIdSet.add(ListOfUserCase[0].id);
+            system.debug('**************************'+userIdSet);
+            System.debug('Case Share Query======    '+[Select Id,CaseId,UserOrGroupId,Rowcause from CaseShare where CaseId IN: ListOfCases]);
             Map<Id,Set<Id>> caseShareMap = Core_IPS_Helper_Utility.getShareCaseMapByUser(userIdSet);
             System.assert(!caseShareMap.isEmpty(),'caseShareMap not returning values');
         }

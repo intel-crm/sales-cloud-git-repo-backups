@@ -38,9 +38,10 @@ public without sharing class Core_IPS_Response_Handler {
     * Yogesh Sharma              18/12/2017              Created
     ****************************************************************************************************/       
     public static void updateEnvironmentDetailsOnCase(List<Core_IPS_Response__c> newList){
-        List<Case> lstCase2Update = new List<Case>(); // Added as part of code refactor
+        List<Case> lstCase2Update = new List<Case>();
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('updateEnvDetailsOnCaseFromCoreResponse')){
-            updateSurveySubmitFieldOnCase(newList); // Added as part of code refactor
+           //added by AJ
+            updateSurveySubmitFieldOnCase(newList);
             return;
         }
         if(newList==null) return;	
@@ -54,14 +55,15 @@ public without sharing class Core_IPS_Response_Handler {
             lstCase = [SELECT Id,(SELECT Id,Core_IPS_Agent_Only__c,Core_IPS_Question__c,Core_IPS_Answer__c,Core_IPS_Question_Master__c,Core_IPS_Question_Master__r.Core_IPS_Datatype__c,Core_IPS_Question_Master__r.RecordType.DeveloperName FROM Core_IPS_Responses__r WHERE Core_IPS_Question_Master__r.RecordType.DeveloperName='EDQ' OR Core_IPS_Question_Master__r.RecordType.DeveloperName = :Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT') ),Core_Environment_Details__c , Core_IPS_External_Environment_Details__c,Asset.Product2.name,Core_IPS_Survey_Captured__c FROM Case WHERE Id IN :setCaseId];
         }
         Map<Id,Map<Id,wrapResponse>> mapCaseId2QuestionResponse = new Map<Id,Map<Id,wrapResponse>>(); // holds the Case Id Key => Map of Question and Related responses
-        map<id,string>caseToResponsesMap=new map<id,string>();// Added as part of code refactor
+        //Added as part of code refactor
+        map<id,string>caseToResponsesMap=new map<id,string>();
         if(lstCase!=null) {
             for(Case objCase : lstCase) {
                 if(!mapCaseId2QuestionResponse.containsKey(objCase.Id)) {
                     mapCaseId2QuestionResponse.put(objCase.Id, new Map<Id,wrapResponse>());
                 }
                 for(Core_IPS_Response__c objResponse : objCase.Core_IPS_Responses__r) {     
-			// Added as part of code refactor
+                    //added by AJ
                     if (objResponse.Core_IPS_Question_Master__r.RecordType.DeveloperName == Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT')) {
                        caseToResponsesMap.put(objCase.Id, 'true');
                     }
@@ -173,12 +175,14 @@ public without sharing class Core_IPS_Response_Handler {
     public static void assignCoreResponseFields(List<Core_IPS_Response__c> newList) {
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('assignCoreResponseFieldsFromEDQ'))
             return;
-            
         if(newList!=null) {
             Set<Id> setMasterAnswerId = new Set<Id>();
-            for(Core_IPS_Response__c objResp : newList) { 
+            for(Core_IPS_Response__c objResp : newList) {
+                system.debug('objResp.Core_IPS_Answer__c' + objResp.Core_IPS_Answer__c);
+                system.debug('objResp.Core_IPS_Answer_Master__c' + objResp.Core_IPS_Answer_Master__c);
                 if(String.isBlank(objResp.Core_IPS_Answer__c) && objResp.Core_IPS_Answer_Master__c!=null) {
-                    setMasterAnswerId.add(objResp.Core_IPS_Answer_Master__c);
+                	setMasterAnswerId.add(objResp.Core_IPS_Answer_Master__c);
+                   
                 } 
             }
             if(setMasterAnswerId.size()>0) {
@@ -281,13 +285,11 @@ public without sharing class Core_IPS_Response_Handler {
             List<Case> lstCase2Update = new List<Case>();
             //FLS check added-Venugopal
             if(Core_IPS_Response__c.SObjectType.getDescribe().isAccessible()){
-               // APEX GURU - SOQL FIX
-               Map<Id, Core_IPS_Response__c> newListMap = new Map<Id, Core_IPS_Response__c>(newList);
-               for(Core_IPS_Response__c resp : [SELECT Id,Core_IPS_Case__c FROM Core_IPS_Response__c WHERE Id IN :newListMap.keySet() AND Core_IPS_Question_Master__r.RecordType.DeveloperName=:Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT')]){                              
-            // for(Core_IPS_Response__c resp : [SELECT Id,Core_IPS_Case__c FROM Core_IPS_Response__c WHERE Id IN :newList AND Core_IPS_Question_Master__r.RecordType.DeveloperName=:Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT')]){                
+                Map<Id, Core_IPS_Response__c> newListMap = new Map<Id, Core_IPS_Response__c>(newList);
+            for(Core_IPS_Response__c resp : [SELECT Id,Core_IPS_Case__c FROM Core_IPS_Response__c WHERE Id IN :newListMap.keySet() AND Core_IPS_Question_Master__r.RecordType.DeveloperName=:Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT')]){                
                 if(!setCaseId.contains(resp.Core_IPS_Case__c)) {
                     setCaseId.add(resp.Core_IPS_Case__c);
-                    lstCase2Update.add(new Case(Id=resp.Core_IPS_Case__c, Core_IPS_Survey_Captured__c=true));
+                    lstCase2Update.add(new Case(Id=resp.Core_IPS_Case__c, Core_IPS_Survey_Captured__c=true)); 
                 }
             }
             }

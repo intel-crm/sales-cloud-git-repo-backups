@@ -38,12 +38,21 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Networking</sourceValue>
+            </sourceValues>
             <value>DC NFV</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Server</sourceValue>
+            </sourceValues>
             <value>DC IT/Cloud</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Desktop</sourceValue>
+            </sourceValues>
             <value>Client</value>
         </values>
     </buckets>
@@ -238,6 +247,12 @@
         <sourceColumnName>Opportunity.Core_Consumption_Market__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Automation/Building Management</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial</sourceValue>
+            </sourceValues>
             <sourceValues>
                 <sourceValue>Retail</sourceValue>
             </sourceValues>

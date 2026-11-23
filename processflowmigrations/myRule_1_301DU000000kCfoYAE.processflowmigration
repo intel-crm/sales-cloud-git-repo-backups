@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Assign_Default_PSG_Tier_1</destinationFlowDefinition>
+    <destinationFlowVersion>Assign_Default_PSG_Tier_1-1</destinationFlowVersion>
+    <developerName>myRule_1_301DU000000kCfoYAE</developerName>
+    <masterLabel>Assign Default PSG Tier_1</masterLabel>
+    <migratedCriteriaLabel>IsChange Account Tier</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Assign_Default_PSG_Tier-4</processVersion>
+</ProcessFlowMigration>

@@ -16,6 +16,15 @@
         <field>CHILD_RECORDTYPE</field>
     </columns>
     <columns>
+        <field>CUST_CREATED_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_ALIAS</field>
+    </columns>
+    <columns>
         <field>Core_IPS_Map_Par_Line_Item__c.Core_Account__c</field>
     </columns>
     <columns>
@@ -37,30 +46,6 @@
         <field>Core_IPS_MAP_PAR__c.Core_Support_Org_Name__c</field>
     </columns>
     <description>PAR &amp; MAP Line items that are active</description>
-    <filter>
-        <criteriaItems>
-            <column>Core_IPS_Map_Par_Line_Item__c.Core_Line_Item_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Rejected,Pending</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_IPS_Map_Par_Line_Item__c.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value>PENDING,INACTIVE</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_IPS_Map_Par_Line_Item__c.Core_Approving_Product_Organization__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Org-000,Org-014</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Product Access Line Items - Active</name>
     <params>
@@ -72,7 +57,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Core_IPS_Map_Par_Line_Item__c.Core_Line_Item_Approval_Status__c</sortColumn>
+    <sortColumn>CUST_NAME</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>

@@ -1,0 +1,230 @@
+{
+  "appPageId" : "ca4c00f7-df2e-479e-a53f-64111ae06650",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "abdd1976-09a6-4059-ba75-49453136874a",
+  "label" : "Home",
+  "regions" : [ {
+    "id" : "cd41b0d4-dd5c-4cd9-8845-56985bde8a3e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "e43dda41-8027-4a7d-bf6f-c200be8c4a5f",
+    "regionName" : "featured",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "7cbaadff-8e58-4910-900e-2e8dbf809978",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "f17692a9-b24f-4688-95c5-e9bef888af22",
+            "allowGuestUser" : true,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "My Cases"
+          }, {
+            "UUID" : "72f5e214-d3f2-4df2-a284-c50266c381ba",
+            "allowGuestUser" : true,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "My Projects"
+          }, {
+            "UUID" : "2a4af32d-e3a4-4cb9-b4e8-cd1cd6edd443",
+            "allowGuestUser" : true,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "3",
+            "tabName" : "My Intel Products"
+          }, {
+            "UUID" : "d481b3e9-9740-493d-9312-61c9d486c102",
+            "allowGuestUser" : true,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "268fc",
+            "tabName" : "Contacts"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "7cbaadff-8e58-4910-900e-2e8dbf809978",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "enableInlineEdit" : true,
+            "filterName" : "00Bo0000004Ij0YEAS",
+            "layout" : "FULL",
+            "pageSize" : 10,
+            "scope" : "Case",
+            "showActionBar" : true,
+            "showChartsPanel" : true,
+            "showDisplay" : "showall",
+            "showFilterPanel" : true,
+            "showImageIcon" : true,
+            "showManualRefreshButton" : true,
+            "showObjectName" : true,
+            "showPinnedList" : true,
+            "showSearchBar" : true
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "37c4fe69-0b98-4f28-aec6-6dae59ec1641",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "f17692a9-b24f-4688-95c5-e9bef888af22",
+        "regionLabel" : "My Cases",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "enableInlineEdit" : true,
+            "filterName" : "All",
+            "layout" : "FULL",
+            "pageSize" : 25,
+            "scope" : "Core_IPS_Project__c",
+            "showActionBar" : true,
+            "showChartsPanel" : true,
+            "showDisplay" : "showall",
+            "showFilterPanel" : true,
+            "showImageIcon" : true,
+            "showManualRefreshButton" : true,
+            "showObjectName" : true,
+            "showPinnedList" : true,
+            "showSearchBar" : true
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "6dad02fb-f36f-4a8d-bc97-f0534e644dfd",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "72f5e214-d3f2-4df2-a284-c50266c381ba",
+        "regionLabel" : "My Projects",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "enableInlineEdit" : true,
+            "filterName" : "AllAssets",
+            "layout" : "FULL",
+            "pageSize" : 25,
+            "scope" : "Asset",
+            "showActionBar" : true,
+            "showChartsPanel" : true,
+            "showDisplay" : "showall",
+            "showFilterPanel" : true,
+            "showImageIcon" : true,
+            "showManualRefreshButton" : true,
+            "showObjectName" : true,
+            "showPinnedList" : true,
+            "showSearchBar" : true
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "e2faa693-2258-4259-a60e-6378af5ed29d",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "2a4af32d-e3a4-4cb9-b4e8-cd1cd6edd443",
+        "regionLabel" : "My Intel Products",
+        "regionName" : "3",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "enableInlineEdit" : true,
+            "filterName" : "All_IPS_Customer_contact2",
+            "layout" : "FULL",
+            "pageSize" : 25,
+            "scope" : "Contact",
+            "showActionBar" : true,
+            "showChartsPanel" : true,
+            "showDisplay" : "showall",
+            "showFilterPanel" : true,
+            "showImageIcon" : true,
+            "showManualRefreshButton" : true,
+            "showObjectName" : true,
+            "showPinnedList" : true,
+            "showSearchBar" : true
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "588d2228-f63c-42f0-9dc4-f54f1e06e29e",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "d481b3e9-9740-493d-9312-61c9d486c102",
+        "regionLabel" : "Contacts",
+        "regionName" : "268fc",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "04c3ee41-6a9b-4ceb-ac0c-0ceea32697cd",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "channel" : "DefaultChannel",
+        "title" : ""
+      },
+      "componentName" : "forceCommunity:recommendations",
+      "id" : "90b2d1c0-ccde-4812-8f44-f0722accd330",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "display" : "LEVELS_POINTS",
+        "excludeInternalUsers" : false,
+        "knowledgeLabel" : "Knows about",
+        "numberOfUsers" : 5,
+        "showContextUser" : false,
+        "showTooltip" : false,
+        "showUserRank" : false,
+        "title" : "Leaderboard",
+        "tooltipText" : "Earn points and climb to new levels when you contribute in the experience!"
+      },
+      "componentName" : "forceCommunity:reputationLeaderboard42",
+      "id" : "6ea62527-1fc0-4eaf-8e8d-295123846803",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "94efae08-2c63-49dd-a2ad-dcc333749589",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "3a07f4df-aa90-475c-94fa-26f9588d9b26",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "15e90592-ffac-48b3-9bab-80299382145d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a2e77db3-e8f7-4a22-a9a8-679e516e3524",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Home",
+  "type" : "view",
+  "viewType" : "home"
+}

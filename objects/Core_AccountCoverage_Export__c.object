@@ -431,7 +431,6 @@
         <columns>Core_User_First_Name__c</columns>
         <columns>Core_User_Last_Name__c</columns>
         <columns>Core_Login_Id__c</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

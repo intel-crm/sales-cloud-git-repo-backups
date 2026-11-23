@@ -1,0 +1,7 @@
+<apex:page controller="testcontrollerISVC" >
+ <apex:form >
+        <!-- Define the JavaScript function sayHello-->
+        <apex:actionFunction name="signInRedirect" action="{!signInRedirect}" />
+    </apex:form>
+  <script>window.setTimeout(signInRedirect,2000)</script>
+</apex:page>

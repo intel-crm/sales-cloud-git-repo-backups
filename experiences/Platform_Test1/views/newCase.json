@@ -1,0 +1,86 @@
+{
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "componentName" : "c:IPSlayoutfull",
+  "dataProviders" : [ ],
+  "id" : "4b0d32ba-fabe-47c8-8428-2bec28fe8ebe",
+  "label" : "New Case",
+  "regions" : [ {
+    "id" : "aa9524c1-699e-4e41-afb5-c32fe2735dc8",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:core_IPS_caseCreation_Form",
+      "id" : "229a9077-b466-4807-b77e-6e2b22892d2b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0e81abe5-6824-4da3-a26a-97cb7bffe92c",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "5f4a6d48-a3d2-404c-a729-28dad97aee47",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "b55abbd3-ee63-4dc4-8b57-367377d64c65",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "5e04f8e8-8193-4924-9305-9e210dc37776",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "ee626434-b47c-4cb1-a6ad-94c9a11cb02b",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "6aff0932-1912-4493-aea0-cb892d92acd4",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "7bf56c82-849b-4449-b8a3-e55cb420df47",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "575a3a12-cf1b-4968-86ba-aceb3e0c251c",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "1e701d93-995e-410f-be36-9f050d1661bf",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "8c37dfcf-2645-4706-8932-b45604fd56c2",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "47d32199-421b-44f4-a42b-9dbff752988d",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "7c749e53-c948-4730-9c37-a36a8c86d8cc",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "New Case"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "874f4b02-9e5d-4ce4-9ee1-96532759f938",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b7857c4f-7614-4c0b-982f-8c416e99bb92",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "qbwA0O606VoVdt9qmVmy30Ap0RqvoL",
+  "type" : "view",
+  "viewType" : "custom-new-case"
+}

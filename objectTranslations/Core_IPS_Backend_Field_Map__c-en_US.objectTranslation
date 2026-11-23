@@ -73,4 +73,8 @@ to the Default Value --></help>
         <name>Support_Update__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Dafault Value Cannot be blank if Unmapped is true --></errorMessage>
+        <name>Default_Value_is_mandatory</name>
+    </validationRules>
 </CustomObjectTranslation>

@@ -1,4 +1,5 @@
 <template>
-  <!-- <a href={result.clickUri} target={target}>{displayedTitle}</a> -->
-  <a href={newURL} target={target}>{displayedTitle}</a>
+  <a href={hrefValue} aria-label={ariaLabelValue} target={target} onclick={handleClick} tabindex="0" role="link">
+    <c-quantic-result-highlighted-text-field engine-id={engineId} result={result} field={fieldToDisplay}></c-quantic-result-highlighted-text-field>
+  </a>
 </template>

@@ -10,190 +10,191 @@ Modification Log :
 * Kunal Mehta              10/10/2014              Original Version
 -------------------------------------------------------------------------------------------->
 
-<apex:page id="thePage" title="Global Opportunity Search"  sidebar="false" standardStylesheets="{!$User.UITheme == 'Theme3'}" lightningStylesheets="{!$User.UITheme != 'Theme3'}" controller="Core_OpportunitySearchController" >
+<apex:page id="thePage" title="Global Opportunity Search" docType="html-5.0" sidebar="false" standardStylesheets="true" controller="Core_OpportunitySearchController">
+
+<!--
+    <apex:stylesheet value="{!$Resource.Core_OpportunitySearch}"/>
+-->
+
+    <apex:includeScript value="{!$Resource.Core_Jquery}"/>  
+    <apex:includeScript value="{!$Resource.Core_JqueryUIBlock}"/> 
     
-    <!--
-<apex:stylesheet value="{!$Resource.Core_OpportunitySearch}"/>
--->
-    <!--
-<apex:includeScript value="{!$Resource.Core_Jquery}"/>  
-<apex:includeScript value="{!$Resource.Core_JqueryUIBlock}"/> 
--->
-    <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
-        <apex:slds />
-    </apex:outputPanel> 
+    
     <style>
         .searchAndClear
         {
-        float: left; 
-        margin-left: 15%;
+            float: left; 
+            margin-left: 15%;
         }
         
         .customLabel
         {
-        margin-left:3%;
+            margin-left:3%;
         }
         
         .availableItemsSpan
         {
-        position:relative;
-        top:     -25px;
+            position:relative;
+            top:     -25px;
         }
         
         .availableItemsPanel
         {
-        margin-left: 160px; 
-        float: left;
+            margin-left: 160px; 
+            float: left;
         }        
         
         .availableItemsSelectList
         {
-        width:275px;
-        height:200px;
+            width:275px;
+            height:200px;
         }
         
         .chosenItemsSpan
         {
-        position: relative;
-        top:      -25px;
+           position: relative;
+           top:      -25px;
         }
-        
+                        
         .chosenItemsSelectList
         {
-        width:275px;
-        height:200px;
+            width:275px;
+            height:200px;
         }
         
         .addCommandButton
         {
-        float:    left;
-        left:     31px;
-        position: relative;
-        top:      50px;
-        width:    30px;
+            float:    left;
+            left:     31px;
+            position: relative;
+            top:      50px;
+            width:    30px;
         }
         
         .removeCommandButton
         {
-        float:    left;
-        position: relative;
-        top:      90px;
-        width:    30px;
+            float:    left;
+            position: relative;
+            top:      90px;
+            width:    30px;
         }
         
         .lightWeightDivider
         {
-        border-width: 1px; 
-        border-style: solid; 
-        border-color: #EEEEEE;            
+            border-width: 1px; 
+            border-style: solid; 
+            border-color: #EEEEEE;            
         }
-        
+    
         .heavyWeightDivider
         {
-        border-width: 2px; 
-        border-style: solid;
+            border-width: 2px; 
+            border-style: solid;
         }
         
         .moreRecords
         {
-        width: 700px;
+            width: 700px;
         }
         
         .errorMessage
         {
-        width: 400px;
+            width: 400px;
         }
         
         .multipicklistOutputColumn
         {
-        text-align:right;
-        position:relative;
+            text-align:right;
+            position:relative;
         }        
         .searchBlockTable
         {
-        position:relative;
-        top:-100px;
+            position:relative;
+            top:-100px;
         }
         
         .spin
         {
-        position:relative;
-        left:52%;
-        top:3px;
-        height:20px;
-        width:20px;
+            position:relative;
+            left:52%;
+            top:3px;
+            height:20px;
+            width:20px;
         }        
     </style>
     
     <script type="text/javascript">
     
-    function setFocusOnLoad() {}
-    
-    function processSendRequest(emailCount)
-    {
-        if(emailCount < 11) 
-        {
-            alert('{!$Label.Core_Access_Request_Submitted}');
-        }
-        else
-        {
-            
-            alert('{!$Label.Core_Email_Limit_Reached}');
-        }
+        function setFocusOnLoad() {}
         
-    }
+        function processSendRequest(emailCount)
+        {
+            if(emailCount < 11) 
+            {
+                alert('{!$Label.Core_Access_Request_Submitted}');
+            }
+            else
+            {
+    
+                alert('{!$Label.Core_Email_Limit_Reached}');
+            }
+                
+        }
     </script>
     
-    <apex:form id="theForm" >
-        
-        <!--  OPPORTUNITY SEARCH PAGE HEADER  -->      
+
+    <apex:form id="theForm">
+
+        <!--  OPPORTUNITY SEARCH PAGE HEADER  -->        
         <br/>
-        <apex:panelGrid columns="1">        
+        <apex:panelGrid columns="2">
             <apex:outputPanel style="float:left">
-                <apex:image value="{!$Resource.Core_SearchIcon}" width="50px;" />                   
+                <apex:image value="{!$Resource.Core_SearchIcon}" width="50px;" />
+            </apex:outputPanel>
+            <apex:outputPanel style="float:left">
                 <apex:outputText style="font-size:22px;" value="{!$Label.Core_Opportunity_Search}"/>
                 <br/>
-                <apex:outputText style="font-weight:bold;margin:51px;" value="{!$Label.Core_Search_Criteria}"/><!--Modfied the margin:51px for icon alignment issue in lightning Pageby rajesh kumar-->  
-            </apex:outputPanel>  
+                <apex:outputText style="font-weight:bold;" value="{!$Label.Core_Search_Criteria}"/>
+            </apex:outputPanel>
         </apex:panelGrid>
         <br/>       
-        
+                
         <apex:pageBlock id="thePageBlock" tabStyle="Opportunity">
+        
+             <apex:pageMessages />
             
-            <apex:pageMessages />
+             <!-- Section to show the message if there are more than 1000 records returned after searching -->
+             <apex:outputPanel rendered="{!bmoreRecords && bEmployeeAccessCode} ">
+                 <apex:outputPanel styleClass="moreRecords" layout="block">
+                     <br/>
+                         <apex:pageMessage escape="true" rendered="{!bmoreRecords && bEmployeeAccessCode}" severity="info" strength="1" title="{!$Label.Core_More_Records_Search_Error}"></apex:pageMessage>
+                     <br/>
+                 </apex:outputPanel>
+             </apex:outputPanel>
             
-            <!-- Section to show the message if there are more than 1000 records returned after searching -->
-            <apex:outputPanel rendered="{!bmoreRecords && bEmployeeAccessCode} ">
-                <apex:outputPanel styleClass="moreRecords" layout="block">
-                    <br/>
-                    <apex:pageMessage escape="true" rendered="{!bmoreRecords && bEmployeeAccessCode}" severity="info" strength="1" title="{!$Label.Core_More_Records_Search_Error}"></apex:pageMessage>
-                    <br/>
-                </apex:outputPanel>
-            </apex:outputPanel>
+             <!-- Section to show the error message if doesnot enter search criteria -->
+             <apex:outputPanel rendered="{!bErrorMessage && bEmployeeAccessCode}">
+                 <apex:outputPanel styleClass="errorMessage" layout="block">
+                     <br/>
+                         <apex:pageMessage escape="true" title="{!$Label.Core_No_Filter_Selected}" rendered="{!bErrorMessage && bEmployeeAccessCode}" severity="error" strength="1" ></apex:pageMessage>
+                     <br/>
+                 </apex:outputPanel>
+             </apex:outputPanel>
             
-            <!-- Section to show the error message if doesnot enter search criteria -->
-            <apex:outputPanel rendered="{!bErrorMessage && bEmployeeAccessCode}">
-                <apex:outputPanel styleClass="errorMessage" layout="block">
-                    <br/>
-                    <apex:pageMessage escape="true" title="{!$Label.Core_No_Filter_Selected}" rendered="{!bErrorMessage && bEmployeeAccessCode}" severity="error" strength="1" ></apex:pageMessage>
-                    <br/>
-                </apex:outputPanel>
-            </apex:outputPanel>
+             <!-- Section to show a message if there are no opportunities for the specified criteria -->
+             <apex:outputPanel rendered="{!NOT(bOpportunitiesPresent) && NOT(bErrorMessage) && bEmployeeAccessCode}">
+                 <apex:outputPanel styleClass="errorMessage" layout="block">
+                     <br/>
+                         <apex:pageMessage escape="true" title="{!$Label.Core_No_Result}" rendered="{!NOT(bOpportunitiesPresent) && bEmployeeAccessCode}" severity="info" strength="1" ></apex:pageMessage>
+                     <br/>
+                 </apex:outputPanel>
+             </apex:outputPanel>
             
-            <!-- Section to show a message if there are no opportunities for the specified criteria -->
-            <apex:outputPanel rendered="{!NOT(bOpportunitiesPresent) && NOT(bErrorMessage) && bEmployeeAccessCode}">
-                <apex:outputPanel styleClass="errorMessage" layout="block">
-                    <br/>
-                    <apex:pageMessage escape="true" title="{!$Label.Core_No_Result}" rendered="{!NOT(bOpportunitiesPresent) && bEmployeeAccessCode}" severity="info" strength="1" ></apex:pageMessage>
-                    <br/>
-                </apex:outputPanel>
-            </apex:outputPanel>
-            
-            <!-- Section to show a message if there are no opportunities for the specified criteria -->
+              <!-- Section to show a message if there are no opportunities for the specified criteria -->
             <apex:outputPanel rendered="{!NOT(bEmployeeAccessCode)}">
                 <apex:outputPanel styleClass="moreRecords" layout="block">
                     <br/>
-                    <apex:pageMessage escape="true" title="{!$Label.Core_No_Access}" rendered="{!NOT(bEmployeeAccessCode)}" severity="info" strength="1" ></apex:pageMessage>
+                        <apex:pageMessage escape="true" title="{!$Label.Core_No_Access}" rendered="{!NOT(bEmployeeAccessCode)}" severity="info" strength="1" ></apex:pageMessage>
                     <br/>
                 </apex:outputPanel>
             </apex:outputPanel>
@@ -202,104 +203,89 @@ Modification Log :
             <apex:outputPanel rendered="{!iEmailSentCount > 10}">
                 <apex:outputPanel styleClass="moreRecords" layout="block">
                     <br/>
-                    <apex:pageMessage escape="true" title="{!$Label.Core_Email_Limit_Reached}" rendered="{!iEmailSentCount > 10}" severity="info" strength="1" ></apex:pageMessage>
+                        <apex:pageMessage escape="true" title="{!$Label.Core_Email_Limit_Reached}" rendered="{!iEmailSentCount > 10}" severity="info" strength="1" ></apex:pageMessage>
                     <br/>
                 </apex:outputPanel>
             </apex:outputPanel>
-            
+
             
             <!--  OPPORTUNITY SEARCH DYNAMIC SEARCH FIELDS (driven by Opportunity Field Set) -->        
-            <apex:pageblockSection columns="3" rendered="{!bEmployeeAccessCode}" html-style="max-width:1440px;">
+            <apex:pageblockSection columns="3" rendered="{!bEmployeeAccessCode}" html-style="max-width:1200px">
                 <apex:repeat value="{!lstOpportunityFieldSetWrapper}" var="fieldSet">
                     <apex:inputText value="{!fieldSet.textValue}" rendered="{!fieldSet.dataType == 'STRING' && fieldSet.fieldName != 'Core_Opportunity_Geo__c'}" label="{!fieldSet.fieldLabel}"/>
                     <apex:inputField value="{!inputOpp.CloseDate}" rendered="{!fieldSet.dataType == 'DATE'}" label="{!fieldSet.fieldLabel}" required="false"/>                        
                     <apex:selectList value="{!fieldSet.selectedPicklistValue}" rendered="{!fieldSet.isPicklist}" label="{!fieldSet.fieldLabel}" size="1">
                         <apex:selectOptions value="{!fieldSet.picklistValues}"/>
                     </apex:selectList>                                               
-                </apex:repeat>                 
+                 </apex:repeat>                 
             </apex:pageblockSection>
             <br/>
             <hr class="lightWeightDivider"/>
-            
-            
+
+
             <!--  OPPORTUNITY SEARCH GEO HEADER  -->        
             <apex:outputPanel >
                 <apex:outputLabel styleClass="customLabel labelCol" value="Opportunity Regions"/>
             </apex:outputPanel>
             <br/>       
-            
-            
+
+    
             <!--  OPPORTUNITY SEARCH GEO FIELDS  -->        
-            <apex:pageblockSection columns="3" rendered="{!bEmployeeAccessCode}" html-style="margin-left:100px; margin-right: 400px; max-width:1440px">
-                <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_APJ__c}"  label="APJ"  required="false"/>
-                <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_ASMO__c}" label="ASMO" required="false"/>
-                <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_EMEA__c}" label="EMEA" required="false"/>
-                <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_PRC__c}"  label="PRC"  required="false"/>
-                <!--<apex:inputField value="{!inputOpp.CRM_Opportunity_Geo_INDIA__c}"  label="INDIA"  required="false"/>  -->
+            <apex:pageblockSection columns="2" rendered="{!bEmployeeAccessCode}" html-style="margin-left:100px; margin-right: 400px; max-width:1200px">
+                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_APJ__c}"  label="APJ"  required="false"/>
+                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_ASMO__c}" label="ASMO" required="false"/>
+                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_EMEA__c}" label="EMEA" required="false"/>
+                 <apex:inputField value="{!inputOpp.Core_Opportunity_Geo_PRC__c}"  label="PRC"  required="false"/>                              
             </apex:pageblockSection>
             <br/>
             <hr class="lightWeightDivider"/>
-            
-            
+
+             
             <!-- OPPORTUNITY  : SOLUTION FOCUS MULTI-SELECT PICKLIST -->   
             <apex:pageblocksection html-style="height:260px" columns="1" rendered="{!bEmployeeAccessCode}" id="thePageBlockSection1">
                 <apex:pageblockSectionItem >
                     <apex:repeat value="{!lstOpportunityFieldSetWrapper}" var="fieldSet">
                         <apex:outputPanel rendered="{!fieldSet.isMultiSelectPicklist && fieldSet.fieldName != 'Core_Risk_Reason__c'}" >
                             <br/>                   
-                            <div style="float: left;width: 50%;">          
-                                <apex:outputpanel styleClass="multipicklistOutputColumn" >
-                                    <apex:outputLabel value="{!fieldSet.fieldLabel}" rendered="{!fieldSet.isMultiSelectPicklist}" styleClass="customLabel labelCol"/>
-                                </apex:outputpanel>
-                            </div>
+                                         
+                            <apex:outputpanel styleClass="multipicklistOutputColumn" >
+                                <apex:outputLabel value="{!fieldSet.fieldLabel}" rendered="{!fieldSet.isMultiSelectPicklist}" styleClass="customLabel labelCol"/>
+                            </apex:outputpanel>
                             
-                            <div style="float: right;width: 98%;">
-                                <div>                                                                                                
-                                    <apex:outputPanel styleClass="availableItemsPanel"> 
-                                        <apex:outputPanel id="availableItems" styleClass="availableItemsSpan" layout="block">           
-                                            <apex:selectList value="{!fieldSet.available}" id="availableItemsSelectList" multiselect="true" size="5" styleClass="availableItemsSelectList">
-                                                <apex:selectOptions value="{!fieldSet.availableItems}"/><br/>
-                                            </apex:selectList>
-                                        </apex:outputPanel>
+
+                            <div>                                                                                                
+                                <apex:outputPanel styleClass="availableItemsPanel"> 
+                                    <apex:outputPanel id="availableItems" styleClass="availableItemsSpan" layout="block">           
+                                        <apex:selectList value="{!fieldSet.available}" id="availableItemsSelectList" multiselect="true" size="10" styleClass="availableItemsSelectList">
+                                            <apex:selectOptions value="{!fieldSet.availableItems}"/><br/>
+                                        </apex:selectList>
                                     </apex:outputPanel>
-                                    
-                                    <div style="float:left; width:90px;text-align: center;">
-                                        <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
-                                            <apex:commandButton styleClass="addCommandButton slds-button slds-button_neutral"    value=">" action="{!fieldSet.add}"    rerender="availableItemsSelectList,chosen" status="counterStatus"/>
-                                            <apex:commandButton styleClass="removeCommandButton slds-button slds-button_neutral" value="<" action="{!fieldSet.remove}" rerender="availableItemsSelectList,chosen" status="counterStatus"/>
-                                        </apex:outputPanel>
-                                        <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
-                                            <br/><br/>
-                                            <div>
-                                                <apex:commandButton styleClass="slds-button slds-button_neutral"    value=">" action="{!fieldSet.add}"    rerender="availableItemsSelectList,chosen" status="counterStatus"/>
-                                            </div>
-                                            <br/>
-                                            <div>
-                                                <apex:commandButton styleClass="slds-button slds-button_neutral" value="<" action="{!fieldSet.remove}" rerender="availableItemsSelectList,chosen" status="counterStatus"/>
-                                            </div>
-                                        </apex:outputPanel>
-                                    </div>
-                                    
-                                    <apex:outputPanel style="float:left">
-                                        <apex:outputPanel id="chosenItems" styleClass="chosenItemsSpan" layout="block" style="height: 166px;"> 
-                                            <apex:selectList value="{!fieldSet.chosen}" id="chosen" multiselect="true" size="5" styleClass="chosenItemsSelectList">
-                                                <apex:selectOptions value="{!fieldSet.chosenItems}"/><br/>
-                                            </apex:selectList>
-                                        </apex:outputPanel>
-                                    </apex:outputPanel>                                
+                                </apex:outputPanel>
+
+                                <div style="float:left; width:90px">
+                                    <apex:commandButton styleClass="addCommandButton"    value=">" action="{!fieldSet.add}"    rerender="availableItemsSelectList,chosen" status="counterStatus"/>
+                                    <apex:commandButton styleClass="removeCommandButton" value="<" action="{!fieldSet.remove}" rerender="availableItemsSelectList,chosen" status="counterStatus"/>
                                 </div>
+                                                              
+                                <apex:outputPanel style="float:left">
+                                    <apex:outputPanel id="chosenItems" styleClass="chosenItemsSpan" layout="inline"> 
+                                        <apex:selectList value="{!fieldSet.chosen}" id="chosen" multiselect="true" size="10" styleClass="chosenItemsSelectList">
+                                            <apex:selectOptions value="{!fieldSet.chosenItems}"/><br/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>                                
+                            </div>
+                                                            
+                            <!--  SEARCH AND CLEAR BUTTONS  -->          
+                            <div class="searchAndClear">
+                                <apex:commandButton id="SearchButton"       value="Search" action="{!search}"  reRender="searchBlockTable,thePageBlock,topNagivationPanel" status="counterStatus"/> 
+                                <apex:commandButton id="clearFiltersButton" value="Clear Filters" action="{!clearFilters}"/> 
                                 
-                                <!--  SEARCH AND CLEAR BUTTONS  -->          
-                                <div class="searchAndClear">
-                                    <apex:commandButton id="SearchButton" styleClass="slds-button slds-button_neutral" value="Search" action="{!search}"  reRender="searchBlockTable,thePageBlock,topNagivationPanel" status="counterStatus"/> 
-                                    <apex:commandButton id="clearFiltersButton" styleClass="slds-button slds-button_neutral" value="Clear Filters" action="{!clearFilters}"/> 
-                                    
-                                    <apex:actionstatus id="counterStatus">
-                                        <apex:facet name="start">
-                                            <apex:image style="top:5px; left:10px" url="/img/loading32.gif" styleClass="spin"/>
-                                        </apex:facet>
-                                    </apex:actionstatus>
-                                </div>
+                                <apex:actionstatus id="counterStatus">
+                                    <apex:facet name="start">
+                                        <apex:image style="top:5px; left:10px" url="/img/loading32.gif" styleClass="spin"/>
+                                    </apex:facet>
+                                </apex:actionstatus>
                             </div>
                         </apex:outputPanel>
                     </apex:repeat>
@@ -309,27 +295,26 @@ Modification Log :
             
             
             <!-- OPPORTUNITY PARTNER HEADER -->
-            <apex:panelGrid columns="1">
-                <apex:outputPanel style="float:left"> <!-- Removed outputpanel tag for allignment issues on lightning page-->  
-                    
+            <apex:panelGrid columns="2">
+                <apex:outputPanel style="float:left">
                     <apex:image value="{!$Resource.Core_SearchIcon}" width="50px" />
-                    
-                    
+                </apex:outputPanel>
+                <apex:outputPanel style="float:left">
                     <apex:outputText style="font-size:22px;" value="{!$Label.Core_Opportunity_Partner_Search}"/>
-                    <br/> 
+                    <br/>
                 </apex:outputPanel>
             </apex:panelGrid>
             
-            
+                                            
             <!-- OPPORTUNITY PARTNER SEARCH FIELDS -->
             <apex:pageblocksection columns="1" rendered="{!bEmployeeAccessCode}" id="thePageBlockSectionPartner">
                 <apex:outputPanel >
-                    <apex:outputpanel styleClass="multipicklistOutputColumn" style="float: left;width: 54%;text-align: left;">
+                    <apex:outputpanel styleClass="multipicklistOutputColumn" style="top: 20px">
                         <apex:outputLabel value="Partner Name" styleClass="customLabel labelCol"/>
-                        <apex:inputText value="{!partnerName}"/>
                     </apex:outputpanel>
-                    
-                    <div style="float: right;text-align: left;width: 46%;">
+                                   
+                    <div>
+                        <apex:inputText value="{!partnerName}" style="margin-left: 160px; float: left;"/>
                         <apex:outputLabel value="Partner Type" style="float: left;" styleClass="labelCol"/>
                         <apex:repeat value="{!lstPartnerFieldSetWrapper}" var="fieldSet">
                             <apex:selectList value="{!partnerType}" rendered="{!fieldSet.isPicklist && CONTAINS(partnerFields, fieldSet.fieldName)}" label="{!fieldSet.fieldLabel}" size="1">
@@ -339,7 +324,7 @@ Modification Log :
                     </div>        
                 </apex:outputPanel>
             </apex:pageblocksection>
-            
+                      
             <!-- OPPORTUNITY PARTNER : RISK REASON MULTI-SELECT PICKLIST -->   
             <br/>
             <apex:pageblocksection id="thePageBlockSection7" html-style="height:300px" columns="1" rendered="{!bEmployeeAccessCode}">
@@ -347,346 +332,193 @@ Modification Log :
                     <apex:repeat value="{!lstOpportunityFieldSetWrapper}" var="fieldSet">
                         <apex:outputPanel rendered="{!fieldSet.fieldName == 'Core_Risk_Reason__c'}">
                             <br/>                                
-                            <div style="float: left;width: 50%;">
-                                <apex:outputpanel styleClass="multipicklistOutputColumn" >
-                                    <apex:outputLabel value="{!fieldSet.fieldLabel}" rendered="{!fieldSet.isMultiSelectPicklist}" styleClass="customLabel labelCol"/>
-                                </apex:outputpanel>
-                            </div>
-                            <div style="float: right;width: 98%;">
-                                <div>                                                                
-                                    <apex:outputPanel styleClass="availableItemsPanel"> 
-                                        <apex:outputPanel id="availableItems7" styleClass="availableItemsSpan" layout="block">           
-                                            <apex:selectList value="{!fieldSet.available}" id="availableItemsSelectList7" multiselect="true" size="5" styleClass="availableItemsSelectList">
-                                                <apex:selectOptions value="{!fieldSet.availableItems}"/><br/>
-                                            </apex:selectList>
-                                        </apex:outputPanel>
+                            
+                            <apex:outputpanel styleClass="multipicklistOutputColumn" >
+                                <apex:outputLabel value="{!fieldSet.fieldLabel}" rendered="{!fieldSet.isMultiSelectPicklist}" styleClass="customLabel labelCol"/>
+                            </apex:outputpanel>
+                                       
+                            <div>                                                                
+                                <apex:outputPanel styleClass="availableItemsPanel"> 
+                                    <apex:outputPanel id="availableItems7" styleClass="availableItemsSpan" layout="block">           
+                                        <apex:selectList value="{!fieldSet.available}" id="availableItemsSelectList7" multiselect="true" size="10" styleClass="availableItemsSelectList">
+                                            <apex:selectOptions value="{!fieldSet.availableItems}"/><br/>
+                                        </apex:selectList>
                                     </apex:outputPanel>
-                                    
-                                    <div style="float: left; width: 90px;text-align: center;">
-                                        <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
-                                            <apex:commandButton styleClass="addCommandButton"    value=">" action="{!fieldSet.add}"    rerender="availableItemsSelectList7,chosen7" status="counterStatus7"/>                                            
-                                            <apex:commandButton styleClass="removeCommandButton" value="<" action="{!fieldSet.remove}" rerender="availableItemsSelectList7,chosen7" status="counterStatus7"/>
-                                        </apex:outputPanel>
-                                        <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
-                                            <br/><br/>
-                                            <div>
-                                                <apex:commandButton styleClass="slds-button slds-button_neutral" value=">" action="{!fieldSet.add}"    rerender="availableItemsSelectList7,chosen7" status="counterStatus7"/>
-                                            </div>
-                                            <br/>
-                                            <div>
-                                                <apex:commandButton styleClass="slds-button slds-button_neutral" value="<" action="{!fieldSet.remove}" rerender="availableItemsSelectList7,chosen7" status="counterStatus7"/>
-                                            </div>
-                                        </apex:outputPanel>
-                                    </div>
-                                    
-                                    <apex:outputPanel style="float: left">
-                                        <apex:outputPanel id="chosenItemsPartner7" styleClass="chosenItemsSpan" layout="block" style="height: 166px;"> 
-                                            <apex:selectList value="{!fieldSet.chosen}" id="chosen7" multiselect="true" size="5" styleClass="chosenItemsSelectList">
-                                                <apex:selectOptions value="{!fieldSet.chosenItems}"/><br/>
-                                            </apex:selectList>
-                                        </apex:outputPanel>                                
-                                    </apex:outputPanel>
-                                </div>    
-                                
-                                <!--  SEARCH AND CLEAR BUTTONS  -->                            
-                                <div class="searchAndClear">
-                                    <apex:commandButton id="SearchButton7" value="Search" action="{!autoPartnerSearch}" styleClass="slds-button slds-button_neutral" reRender="searchBlockTable,thePageBlock,topNagivationPanel" status="counterStatus7"/> 
-                                    <apex:commandButton id="clearFiltersButton7" value="Clear Filters" action="{!clearFilters}" styleClass="slds-button slds-button_neutral" /> 
-                                    
-                                    <apex:actionstatus id="counterStatus7">
-                                        <apex:facet name="start">
-                                            <apex:image style="top:5px; left:10px" url="/img/loading32.gif" styleClass="spin"/>
-                                        </apex:facet>
-                                    </apex:actionstatus>
+                                </apex:outputPanel>
+                                  
+                                <div style="float: left; width: 90px">
+                                    <apex:commandButton styleClass="addCommandButton"    value=">" action="{!fieldSet.add}"    rerender="availableItemsSelectList7,chosen7" status="counterStatus7"/>                                            
+                                    <apex:commandButton styleClass="removeCommandButton" value="<" action="{!fieldSet.remove}" rerender="availableItemsSelectList7,chosen7" status="counterStatus7"/>
                                 </div>
+                                                                                            
+                                <apex:outputPanel style="float: left">
+                                    <apex:outputPanel id="chosenItemsPartner7" styleClass="chosenItemsSpan" layout="inline"> 
+                                        <apex:selectList value="{!fieldSet.chosen}" id="chosen7" multiselect="true" size="10" styleClass="chosenItemsSelectList">
+                                            <apex:selectOptions value="{!fieldSet.chosenItems}"/><br/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>                                
+                                </apex:outputPanel>
+                            </div>    
+
+                            <!--  SEARCH AND CLEAR BUTTONS  -->                            
+                            <div class="searchAndClear">
+                                <apex:commandButton id="SearchButton7"       value="Search" action="{!autoPartnerSearch}"  reRender="searchBlockTable,thePageBlock,topNagivationPanel" status="counterStatus7"/> 
+                                <apex:commandButton id="clearFiltersButton7" value="Clear Filters" action="{!clearFilters}"/> 
+                                                                
+                                <apex:actionstatus id="counterStatus7">
+                                    <apex:facet name="start">
+                                        <apex:image style="top:5px; left:10px" url="/img/loading32.gif" styleClass="spin"/>
+                                    </apex:facet>
+                                </apex:actionstatus>
                             </div>
+
                         </apex:outputPanel>
                     </apex:repeat>
                 </apex:pageblockSectionItem>
             </apex:pageblocksection>
-            
-            
+
+                                     
             <!--  R E S U L T S  -->
-            
+
             <!--<div style="overflow:scroll; width:100%; margin: auto;">-->
-            
+
             <br/><br/><br/><br/>
-            <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
-                <apex:pageblockSection >
-                    <apex:pageBlockSectionItem dataStyle="width:1525px;">
-                        <apex:outputPanel id="searchBlockTable" styleClass="{!IF(bMultiselectPresent,'searchBlockTable','')}" rendered="{!bEmployeeAccessCode && (NOT(ISNULL(lstSearchOpportunities)))}">
-                            <apex:pageBlock id="outputRecordPageBlock">
-                                
-                                <div align="right" style="width:3100px;">
-                                    <br/> 
-                                    <apex:outputText value="Page {!iPageNumber} of {!iNoOfPages}" rendered="{!iPageNumber != 0}"/>
-                                    <apex:outputText value="Page 1 of {!iNoOfPages}" rendered="{!iPageNumber == 0}"/>&nbsp;&nbsp;
-                                    <apex:actionstatus id="counterStatusForMidwayNavigation">
-                                        <apex:facet name="start">
-                                            <apex:image url="/img/loading32.gif" width="20" />
-                                        </apex:facet>
-                                    </apex:actionstatus>  
-                                    &nbsp;&nbsp;                
-                                    <apex:commandButton value="First" styleClass="slds-button slds-button_neutral" action="{!first}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
-                                    &nbsp;&nbsp;
-                                    <apex:commandButton value="Previous" styleClass="slds-button slds-button_neutral" action="{!previous}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
-                                    &nbsp;&nbsp;
-                                    <apex:commandButton value="Next" styleClass="slds-button slds-button_neutral" action="{!next}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
-                                    &nbsp;&nbsp;
-                                    <apex:commandButton value="Last" styleClass="slds-button slds-button_neutral" action="{!last}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
-                                </div>
-                                <br/>
-                                
-                                <apex:pageblockSection columns="1" collapsible="false" id="outputRecordPageBlockSection" >
-                                    <apex:facet name="header">Search Results</apex:facet>
-                                    <apex:pageblocksectionItem id="outputRecordPageBlockSectionItem" datastyle="width:3100px;" labelstyle="width:3100px;">
-                                        <apex:outputPanel >
-                                            <apex:pageBlockTable var="dataRecord" value="{!lstSearchOpportunities}" id="outputRecordPageBlockTable">   
-                                                <apex:repeat value="{!lstOpportunityFieldSetWrapper}" var="fieldSet" id="outputRecordPageBlockTableRepeat">
-                                                    
-                                                    <apex:column rendered="{!(fieldSet.fieldName != 'Core_Opportunity_Geo__c') && (fieldSet.dataType != 'REFERENCE') && (fieldSet.dataType != 'MULTIPICKLIST') && (fieldSet.dataType != 'DOUBLE')}" width="{!sColumnSize}%;">
-                                                        <apex:facet name="header">   
-                                                            <apex:commandLink action="{!first}" value="{!fieldSet.fieldLabel} {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
-                                                                <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                            </apex:commandLink>                                                                                         
-                                                        </apex:facet>                                        
-                                                        <apex:outputText value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
-                                                    </apex:column>
-                                                    
-                                                    <apex:column headerValue="{!fieldSet.fieldLabel}" rendered="{!(fieldSet.fieldName == 'Core_Opportunity_Geo__c')}" width="{!sColumnSize}%;">
-                                                        <apex:outputText value="{!dataRecord.strOpportunityGEO}"/>
-                                                    </apex:column>
-                                                    
-                                                    <apex:column rendered="{!fieldSet.dataType == 'DOUBLE' && isPartnerSearch}" width="{!sColumnSize}%;"  style="text-align: right;">
-                                                        <apex:facet name="header">   
-                                                            <apex:commandLink action="{!first}" value="{!fieldSet.fieldLabel} {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
-                                                                <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                            </apex:commandLink>                                                                                         
-                                                        </apex:facet>                                        
-                                                        <apex:outputText value="{0, number, currency}">
-                                                            <apex:param value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
-                                                        </apex:outputText>            
-                                                    </apex:column>                              
-                                                    
-                                                    <apex:column headerValue="{!fieldSet.fieldLabel}" 
-                                                                 rendered="{!fieldSet.dataType == 'MULTIPICKLIST' && (fieldSet.fieldName != 'Core_Risk_Reason__c' || isPartnerSearch)}" width="{!sColumnSize}%;">
-                                                        <apex:outputText value="{!SUBSTITUTE((dataRecord.opportunityInstance[fieldSet.fieldName]),';','<br/>')}" rendered="{!(CONTAINS(fieldSet.datatype,'MULTIPICKLIST'))}" escape="false"/>
-                                                    </apex:column>
-                                                    
-                                                    <apex:column rendered="{!fieldSet.fieldLabel == 'Owner ID'}" width="{!sColumnSize}%;">
-                                                        <apex:facet name="header">   
-                                                            <apex:commandLink action="{!first}" value="Owner {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
-                                                                <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                            </apex:commandLink>                                                                                         
-                                                        </apex:facet>                                        
-                                                        <apex:outputField value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
-                                                    </apex:column>  
-                                                    
-                                                    <apex:column rendered="{!fieldSet.fieldLabel == 'Account ID' && isPartnerSearch}" width="{!sColumnSize}%;">
-                                                        <apex:facet name="header">   
-                                                            <apex:commandLink action="{!first}" value="Account Name {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatus7">
-                                                                <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                            </apex:commandLink>                                                                                         
-                                                        </apex:facet>                                        
-                                                        <apex:outputField value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
-                                                    </apex:column>                                                                  
-                                                </apex:repeat>
-                                                
-                                                
-                                                <apex:repeat value="{!lstPartnerFieldSetWrapper}" var="fieldSet" id="outputRecordPageBlockTableRepeat2">
-                                                    <apex:column headerValue="{!fieldSet.fieldLabel}" rendered="{!(fieldSet.dataType != 'REFERENCE') && (fieldSet.dataType != 'MULTIPICKLIST') && isPartnerSearch}" width="{!sColumnSize}%;">
-                                                        <apex:facet name="header">   
-                                                            <apex:commandLink action="{!first}" value="{!fieldSet.fieldLabel} {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
-                                                                <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                            </apex:commandLink>                                                                                         
-                                                        </apex:facet>                                        
-                                                        <apex:outputText value="{!dataRecord.partnerInstance[fieldSet.fieldName]}"/>
-                                                    </apex:column>                                                                                                           
-                                                </apex:repeat>
-                                                
-                                                
-                                                <apex:column headerValue=""  width="{!sColumnSize}%;">
-                                                    <apex:outputLink value="/{!dataRecord.opportunityInstance.id}" rendered="{!dataRecord.bUserAccessPresent}" target="_blank">Open</apex:outputLink>
-                                                    <apex:commandButton id="requestAccessButton" value="{!IF(dataRecord.bRecordAccessRequestSent,'Access Requested','Request Access')}" 
-                                                                        action="{!SendEmail}" 
-                                                                        reRender="outputRecordPageBlock"                                                                  
-                                                                        rendered="{!NOT(dataRecord.bUserAccessPresent)}"
-                                                                        status="counterStatusForMidwayNavigation" 
-                                                                        disabled="{!dataRecord.bRecordAccessRequestSent}"
-                                                                        oncomplete="processSendRequest('{!iEmailSentCount}')"
-                                                                        styleClass="slds-button slds-button_neutral">
-                                                        
-                                                        <apex:param value="{!dataRecord.opportunityInstance.Id}" assignTo="{!selectedOpportunityId}" name="selectedOpportunityId"/>
-                                                    </apex:commandButton>
-                                                    
-                                                </apex:column>
-                                                
-                                            </apex:pageBlockTable>                                         
-                                            
-                                            <div align="center">
-                                                <br/> 
-                                                <apex:outputText value="Page {!iPageNumber} of {!iNoOfPages}" rendered="{!iPageNumber != 0}"/>
-                                                <apex:outputText value="Page 1 of {!iNoOfPages}" rendered="{!iPageNumber == 0}"/>&nbsp;&nbsp;
-                                                <apex:actionstatus id="counterStatusForBottomNavigation">
-                                                    <apex:facet name="start">
-                                                        <apex:image url="/img/loading32.gif" width="20" />
-                                                    </apex:facet>
-                                                </apex:actionstatus>  
-                                                &nbsp;&nbsp;                
-                                                <apex:commandButton value="First" action="{!first}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" 
-                                                                    status="counterStatusForBottomNavigation" styleClass="slds-button slds-button_neutral" />&nbsp;&nbsp;
-                                                <apex:commandButton value="Previous" action="{!previous}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" 
-                                                                    status="counterStatusForBottomNavigation" styleClass="slds-button slds-button_neutral" />&nbsp;&nbsp;
-                                                <apex:commandButton value="Next" action="{!next}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" 
-                                                                    status="counterStatusForBottomNavigation" styleClass="slds-button slds-button_neutral" />&nbsp;&nbsp;
-                                                <apex:commandButton value="Last" action="{!last}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" 
-                                                                    status="counterStatusForBottomNavigation" styleClass="slds-button slds-button_neutral" />
-                                            </div>
-                                        </apex:outputPanel>
-                                    </apex:pageblocksectionItem>
-                                </apex:pageblockSection>
-                            </apex:pageBlock>
-                        </apex:outputPanel>
-                    </apex:pageBlockSectionItem>
-                </apex:pageblockSection>
-            </apex:outputPanel>
-            <apex:outputPanel rendered="{!$User.UITheme == 'Theme3'}">
-                <apex:pageblockSection >            
-                    <apex:outputPanel id="searchBlockTable" styleClass="{!IF(bMultiselectPresent,'searchBlockTable','')}" rendered="{!bEmployeeAccessCode && (NOT(ISNULL(lstSearchOpportunities)))}">
-                        <apex:pageBlock id="outputRecordPageBlock">
-                            
-                            <div align="right">
-                                <br/> 
-                                <apex:outputText value="Page {!iPageNumber} of {!iNoOfPages}" rendered="{!iPageNumber != 0}"/>
-                                <apex:outputText value="Page 1 of {!iNoOfPages}" rendered="{!iPageNumber == 0}"/>&nbsp;&nbsp;
-                                <apex:actionstatus id="counterStatusForMidwayNavigation">
-                                    <apex:facet name="start">
-                                        <apex:image url="/img/loading32.gif" width="20" />
-                                    </apex:facet>
-                                </apex:actionstatus>  
-                                &nbsp;&nbsp;                
-                                <apex:commandButton value="First" styleClass="slds-button slds-button_neutral" action="{!first}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
-                                &nbsp;&nbsp;
-                                <apex:commandButton value="Previous" styleClass="slds-button slds-button_neutral" action="{!previous}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
-                                &nbsp;&nbsp;
-                                <apex:commandButton value="Next" styleClass="slds-button slds-button_neutral" action="{!next}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
-                                &nbsp;&nbsp;
-                                <apex:commandButton value="Last" styleClass="slds-button slds-button_neutral" action="{!last}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
-                            </div>
-                            <br/>
-                            
-                            <apex:pageblockSection title="Search Results" columns="1" collapsible="false" id="outputRecordPageBlockSection" >
-                                <apex:pageblocksectionItem id="outputRecordPageBlockSectionItem" >
-                                    <apex:outputPanel >
-                                        <apex:pageBlockTable var="dataRecord" value="{!lstSearchOpportunities}" id="outputRecordPageBlockTable">   
-                                            <apex:repeat value="{!lstOpportunityFieldSetWrapper}" var="fieldSet" id="outputRecordPageBlockTableRepeat">
-                                                
-                                                <apex:column rendered="{!(fieldSet.fieldName != 'Core_Opportunity_Geo__c') && (fieldSet.dataType != 'REFERENCE') && (fieldSet.dataType != 'MULTIPICKLIST') && (fieldSet.dataType != 'DOUBLE')}" width="{!sColumnSize}%;">
-                                                    <apex:facet name="header">   
-                                                        <apex:commandLink action="{!first}" value="{!fieldSet.fieldLabel} {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
-                                                            <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                        </apex:commandLink>                                                                                         
-                                                    </apex:facet>                                        
-                                                    <apex:outputText value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
-                                                </apex:column>
-                                                
-                                                <apex:column headerValue="{!fieldSet.fieldLabel}" rendered="{!(fieldSet.fieldName == 'Core_Opportunity_Geo__c')}" width="{!sColumnSize}%;">
-                                                    <apex:outputText value="{!dataRecord.strOpportunityGEO}"/>
-                                                </apex:column>
-                                                
-                                                <apex:column rendered="{!fieldSet.dataType == 'DOUBLE' && isPartnerSearch}" width="{!sColumnSize}%;"  style="text-align: right">
-                                                    <apex:facet name="header">   
-                                                        <apex:commandLink action="{!first}" value="{!fieldSet.fieldLabel} {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
-                                                            <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                        </apex:commandLink>                                                                                         
-                                                    </apex:facet>                                        
-                                                    <apex:outputText value="{0, number, currency}">
-                                                        <apex:param value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
-                                                    </apex:outputText>            
-                                                </apex:column>                              
-                                                
-                                                <apex:column headerValue="{!fieldSet.fieldLabel}" 
-                                                             rendered="{!fieldSet.dataType == 'MULTIPICKLIST' && (fieldSet.fieldName != 'Core_Risk_Reason__c' || isPartnerSearch)}" width="{!sColumnSize}%;">
-                                                    <apex:outputText value="{!SUBSTITUTE((dataRecord.opportunityInstance[fieldSet.fieldName]),';','<br/>')}" rendered="{!(CONTAINS(fieldSet.datatype,'MULTIPICKLIST'))}" escape="false"/>
-                                                </apex:column>
-                                                
-                                                <apex:column rendered="{!fieldSet.fieldLabel == 'Owner ID'}" width="{!sColumnSize}%;">
-                                                    <apex:facet name="header">   
-                                                        <apex:commandLink action="{!first}" value="Owner {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
-                                                            <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                        </apex:commandLink>                                                                                         
-                                                    </apex:facet>                                        
-                                                    <apex:outputField value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
-                                                </apex:column>  
-                                                
-                                                <apex:column rendered="{!fieldSet.fieldLabel == 'Account ID' && isPartnerSearch}" width="{!sColumnSize}%;">
-                                                    <apex:facet name="header">   
-                                                        <apex:commandLink action="{!first}" value="Account Name {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatus7">
-                                                            <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                        </apex:commandLink>                                                                                         
-                                                    </apex:facet>                                        
-                                                    <apex:outputField value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
-                                                </apex:column>                                                                  
-                                            </apex:repeat>
-                                            
-                                            
-                                            <apex:repeat value="{!lstPartnerFieldSetWrapper}" var="fieldSet" id="outputRecordPageBlockTableRepeat2">
-                                                <apex:column headerValue="{!fieldSet.fieldLabel}" rendered="{!(fieldSet.dataType != 'REFERENCE') && (fieldSet.dataType != 'MULTIPICKLIST') && isPartnerSearch}" width="{!sColumnSize}%;">
-                                                    <apex:facet name="header">   
-                                                        <apex:commandLink action="{!first}" value="{!fieldSet.fieldLabel} {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
-                                                            <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
-                                                        </apex:commandLink>                                                                                         
-                                                    </apex:facet>                                        
-                                                    <apex:outputText value="{!dataRecord.partnerInstance[fieldSet.fieldName]}"/>
-                                                </apex:column>                                                                                                           
-                                            </apex:repeat>
-                                            
-                                            
-                                            <apex:column headerValue=""  width="{!sColumnSize}%;">
-                                                <apex:outputLink value="/{!dataRecord.opportunityInstance.id}" rendered="{!dataRecord.bUserAccessPresent}" target="_blank">Open</apex:outputLink>
-                                                <apex:commandButton id="requestAccessButton" value="{!IF(dataRecord.bRecordAccessRequestSent,'Access Requested','Request Access')}" 
-                                                                    action="{!SendEmail}" 
-                                                                    reRender="outputRecordPageBlock"                                                                  
-                                                                    rendered="{!NOT(dataRecord.bUserAccessPresent)}"
-                                                                    status="counterStatusForMidwayNavigation" 
-                                                                    disabled="{!dataRecord.bRecordAccessRequestSent}"
-                                                                    oncomplete="processSendRequest('{!iEmailSentCount}')"
-                                                                    styleClass="slds-button slds-button_neutral">
-                                                    
-                                                    <apex:param value="{!dataRecord.opportunityInstance.Id}" assignTo="{!selectedOpportunityId}" name="selectedOpportunityId"/>
-                                                </apex:commandButton>
-                                                
-                                            </apex:column>
-                                            
-                                        </apex:pageBlockTable>                                         
-                                        
-                                        <div align="center">
-                                            <br/> 
-                                            <apex:outputText value="Page {!iPageNumber} of {!iNoOfPages}" rendered="{!iPageNumber != 0}"/>
-                                            <apex:outputText value="Page 1 of {!iNoOfPages}" rendered="{!iPageNumber == 0}"/>&nbsp;&nbsp;
-                                            <apex:actionstatus id="counterStatusForBottomNavigation">
-                                                <apex:facet name="start">
-                                                    <apex:image url="/img/loading32.gif" width="20" />
-                                                </apex:facet>
-                                            </apex:actionstatus>  
-                                            &nbsp;&nbsp;                
-                                            <apex:commandButton value="First" action="{!first}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" 
-                                                                status="counterStatusForBottomNavigation" styleClass="slds-button slds-button_neutral" />&nbsp;&nbsp;
-                                            <apex:commandButton value="Previous" action="{!previous}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" 
-                                                                status="counterStatusForBottomNavigation" styleClass="slds-button slds-button_neutral" />&nbsp;&nbsp;
-                                            <apex:commandButton value="Next" action="{!next}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" 
-                                                                status="counterStatusForBottomNavigation" styleClass="slds-button slds-button_neutral" />&nbsp;&nbsp;
-                                            <apex:commandButton value="Last" action="{!last}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" 
-                                                                status="counterStatusForBottomNavigation" styleClass="slds-button slds-button_neutral" />
-                                        </div>
-                                    </apex:outputPanel>
-                                </apex:pageblocksectionItem>
-                            </apex:pageblockSection>
-                        </apex:pageBlock>
-                    </apex:outputPanel>
-                </apex:pageblockSection>
-            </apex:outputPanel>
-            <!--</div>-->
+
+            <apex:pageblockSection >            
+                <apex:outputPanel id="searchBlockTable" styleClass="{!IF(bMultiselectPresent,'searchBlockTable','')}" rendered="{!bEmployeeAccessCode && (NOT(ISNULL(lstSearchOpportunities)))}">
+                    <apex:pageBlock id="outputRecordPageBlock">
+                    
+                        <div align="right">
+                             <br/> 
+                             <apex:outputText value="Page {!iPageNumber} of {!iNoOfPages}" rendered="{!iPageNumber != 0}"/>
+                             <apex:outputText value="Page 1 of {!iNoOfPages}" rendered="{!iPageNumber == 0}"/>&nbsp;&nbsp;
+                             <apex:actionstatus id="counterStatusForMidwayNavigation">
+                                 <apex:facet name="start">
+                                     <apex:image url="/img/loading32.gif" width="20" />
+                                 </apex:facet>
+                             </apex:actionstatus>  
+                             &nbsp;&nbsp;                
+                             <apex:commandButton value="First" action="{!first}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
+                             &nbsp;&nbsp;
+                             <apex:commandButton value="Previous" action="{!previous}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
+                             &nbsp;&nbsp;
+                             <apex:commandButton value="Next" action="{!next}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
+                             &nbsp;&nbsp;
+                             <apex:commandButton value="Last" action="{!last}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation"/>
+                        </div>
+                        <br/>
+                    
+                        <apex:pageblockSection title="Search Results" columns="1" collapsible="false" id="outputRecordPageBlockSection">
+                            <apex:pageblocksectionItem id="outputRecordPageBlockSectionItem">
+                                <apex:outputPanel >
+                                    <apex:pageBlockTable var="dataRecord" value="{!lstSearchOpportunities}" id="outputRecordPageBlockTable">   
+                                         <apex:repeat value="{!lstOpportunityFieldSetWrapper}" var="fieldSet" id="outputRecordPageBlockTableRepeat">
+                             
+                                             <apex:column rendered="{!(fieldSet.fieldName != 'Core_Opportunity_Geo__c') && (fieldSet.dataType != 'REFERENCE') && (fieldSet.dataType != 'MULTIPICKLIST') && (fieldSet.dataType != 'DOUBLE')}" width="{!sColumnSize}%;">
+                                                 <apex:facet name="header">   
+                                                     <apex:commandLink action="{!first}" value="{!fieldSet.fieldLabel} {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                                         <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                                     </apex:commandLink>                                                                                         
+                                                 </apex:facet>                                        
+                                                 <apex:outputText value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
+                                             </apex:column>
+                                                           
+                                             <apex:column headerValue="{!fieldSet.fieldLabel}" rendered="{!(fieldSet.fieldName == 'Core_Opportunity_Geo__c')}" width="{!sColumnSize}%;">
+                                                 <apex:outputText value="{!dataRecord.strOpportunityGEO}"/>
+                                             </apex:column>
+                                                           
+                                            <apex:column rendered="{!fieldSet.dataType == 'DOUBLE' && isPartnerSearch}" width="{!sColumnSize}%;"  style="text-align: right">
+                                                 <apex:facet name="header">   
+                                                     <apex:commandLink action="{!first}" value="{!fieldSet.fieldLabel} {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                                         <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                                     </apex:commandLink>                                                                                         
+                                                 </apex:facet>                                        
+                                                <apex:outputText value="{0, number, currency}">
+                                                    <apex:param value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
+                                                </apex:outputText>            
+                                            </apex:column>                              
+                                                                                           
+                                             <apex:column headerValue="{!fieldSet.fieldLabel}" 
+                                                   rendered="{!fieldSet.dataType == 'MULTIPICKLIST' && (fieldSet.fieldName != 'Core_Risk_Reason__c' || isPartnerSearch)}" width="{!sColumnSize}%;">
+                                                 <apex:outputText value="{!SUBSTITUTE((dataRecord.opportunityInstance[fieldSet.fieldName]),';','<br/>')}" rendered="{!(CONTAINS(fieldSet.datatype,'MULTIPICKLIST'))}" escape="false"/>
+                                             </apex:column>
+                                                                                                           
+                                             <apex:column rendered="{!fieldSet.fieldLabel == 'Owner ID'}" width="{!sColumnSize}%;">
+                                                 <apex:facet name="header">   
+                                                     <apex:commandLink action="{!first}" value="Owner {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                                         <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                                     </apex:commandLink>                                                                                         
+                                                 </apex:facet>                                        
+                                                 <apex:outputField value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
+                                             </apex:column>  
+                                                                                                             
+                                             <apex:column rendered="{!fieldSet.fieldLabel == 'Account ID' && isPartnerSearch}" width="{!sColumnSize}%;">
+                                                 <apex:facet name="header">   
+                                                     <apex:commandLink action="{!first}" value="Account Name {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatus7">
+                                                         <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                                     </apex:commandLink>                                                                                         
+                                                 </apex:facet>                                        
+                                                 <apex:outputField value="{!dataRecord.opportunityInstance[fieldSet.fieldName]}"/>
+                                             </apex:column>                                                                  
+                                         </apex:repeat>
+
+
+                                         <apex:repeat value="{!lstPartnerFieldSetWrapper}" var="fieldSet" id="outputRecordPageBlockTableRepeat2">
+                                             <apex:column headerValue="{!fieldSet.fieldLabel}" rendered="{!(fieldSet.dataType != 'REFERENCE') && (fieldSet.dataType != 'MULTIPICKLIST') && isPartnerSearch}" width="{!sColumnSize}%;">
+                                                 <apex:facet name="header">   
+                                                     <apex:commandLink action="{!first}" value="{!fieldSet.fieldLabel} {!IF(sortHeader.sortExpression==fieldSet.fieldName, sortHeader.sortIndicator, '')}" reRender="outputRecordPageBlock" status="counterStatusForMidwayNavigation">
+                                                         <apex:param value="{!fieldSet.fieldName}" name="column" assignTo="{!sortHeader.sortExpression}"/>
+                                                     </apex:commandLink>                                                                                         
+                                                 </apex:facet>                                        
+                                                 <apex:outputText value="{!dataRecord.partnerInstance[fieldSet.fieldName]}"/>
+                                             </apex:column>                                                                                                           
+                                         </apex:repeat>
+
+                                 
+                                         <apex:column headerValue=""  width="{!sColumnSize}%;">
+                                             <apex:outputLink value="/{!dataRecord.opportunityInstance.id}" rendered="{!dataRecord.bUserAccessPresent}" target="_blank">Open</apex:outputLink>
+                                             <apex:commandButton id="requestAccessButton" value="{!IF(dataRecord.bRecordAccessRequestSent,'Access Requested','Request Access')}" 
+                                                                 action="{!SendEmail}" 
+                                                                 reRender="outputRecordPageBlock"                                                                  
+                                                                 rendered="{!NOT(dataRecord.bUserAccessPresent)}"
+                                                                 status="counterStatusForMidwayNavigation" 
+                                                                 disabled="{!dataRecord.bRecordAccessRequestSent}"
+                                                                 oncomplete="processSendRequest('{!iEmailSentCount}')">
+                               
+                                                 <apex:param value="{!dataRecord.opportunityInstance.Id}" assignTo="{!selectedOpportunityId}" name="selectedOpportunityId"/>
+                                             </apex:commandButton>
+                           
+                                         </apex:column>
+                           
+                                     </apex:pageBlockTable>                                         
+                         
+                                     <div align="center">
+                                         <br/> 
+                                         <apex:outputText value="Page {!iPageNumber} of {!iNoOfPages}" rendered="{!iPageNumber != 0}"/>
+                                         <apex:outputText value="Page 1 of {!iNoOfPages}" rendered="{!iPageNumber == 0}"/>&nbsp;&nbsp;
+                                         <apex:actionstatus id="counterStatusForBottomNavigation">
+                                            <apex:facet name="start">
+                                                <apex:image url="/img/loading32.gif" width="20" />
+                                            </apex:facet>
+                                         </apex:actionstatus>  
+                                         &nbsp;&nbsp;                
+                                         <apex:commandButton value="First" action="{!first}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" 
+                                                             status="counterStatusForBottomNavigation"/>&nbsp;&nbsp;
+                                         <apex:commandButton value="Previous" action="{!previous}" rendered="{!(NOT(iPageNumber == 0 || iPageNumber == 1))}" reRender="outputRecordPageBlock" 
+                                                             status="counterStatusForBottomNavigation"/>&nbsp;&nbsp;
+                                         <apex:commandButton value="Next" action="{!next}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" 
+                                                             status="counterStatusForBottomNavigation"/>&nbsp;&nbsp;
+                                         <apex:commandButton value="Last" action="{!last}" rendered="{!(NOT(iPageNumber > (iNoOfPages -1)))}" reRender="outputRecordPageBlock" 
+                                                             status="counterStatusForBottomNavigation"/>
+                                     </div>
+                                </apex:outputPanel>
+                            </apex:pageblocksectionItem>
+                        </apex:pageblockSection>
+                    </apex:pageBlock>
+                </apex:outputPanel>
+            </apex:pageblockSection>
+            
+        <!--</div>-->
             
         </apex:pageBlock>
     </apex:form>

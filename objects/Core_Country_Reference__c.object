@@ -53,10 +53,8 @@
         <columns>Core_Geo__c</columns>
         <columns>Core_Sub_Geo__c</columns>
         <columns>Core_Has_States__c</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <visibility>Public</visibility>
 </CustomObject>

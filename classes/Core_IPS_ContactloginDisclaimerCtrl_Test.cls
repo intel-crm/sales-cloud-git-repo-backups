@@ -25,7 +25,7 @@ private class Core_IPS_ContactloginDisclaimerCtrl_Test {
         
         User thisUser = [ select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
         Set<String> customerUserTypes = new Set<String> {'CSPLiteUser', 'PowerPartner', 'PowerCustomerSuccess',   'CustomerSuccess'};
-            Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();//test class fix
+            
             Account acc = new Account (
                 Name = 'newAcc1'+type,
                 BillingCity = 'folsom'+type,
@@ -36,8 +36,7 @@ private class Core_IPS_ContactloginDisclaimerCtrl_Test {
                 Core_CIM_ID__c = '11429344',
                 Core_B2B_Entitlement__c = true,
                 Core_Account_Legal_Name__c = 'TestLegalName',
-                Ownerid =thisUser.id,
-		RecordTypeId = recordTypeIdAccount
+                Ownerid =thisUser.id
             );  
         insert acc;
         
@@ -73,18 +72,14 @@ private class Core_IPS_ContactloginDisclaimerCtrl_Test {
                 lastname='lastname',
                 contactId = con.id
             );
-			User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-			System.runAs(validationBypassUser){
-			insert newUser; 
-			}
-            //insert newUser;            
+            insert newUser;            
         }
         return newUser;
     }
              static testMethod void Core_IPS_ContactloginDisclaimerCtrlTestMethod1() 
     {
         
-        Document documentRecord = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential');    
+        Document Doc = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential');    
         User u = getCustomerUser('IPS External Customer','Today'); 
         try{
             system.runAs(u)
@@ -95,44 +90,44 @@ private class Core_IPS_ContactloginDisclaimerCtrl_Test {
         }catch(Exception e){
             
         }
-        System.assert(documentRecord.id != null,true);
+        System.assert(Doc.id != null,true);
         
     }
  
     static testMethod void Core_IPS_ContactloginDisclaimerTestMethod2() 
     {
         
-        Document documentRecord = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential');    
+        Document Doc = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential');    
                  Core_IPS_ContactloginDisclaimerCtrl_LWC.getRedirected();
                  Core_IPS_ContactloginDisclaimerCtrl_LWC.redirectAutomate();
-        System.assert(documentRecord.id != null,true);
+        System.assert(Doc.id != null,true);
         
     }
     
     static testMethod void Core_IPS_ContactloginDisclaimerTestMethod3() 
     {
         
-        Document documentRecord = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential'); 
+        Document Doc = TestUtilities.getDocunmentRecord('Shared Documents','NDAConfidential'); 
         
-        User communityUser = getCustomerUser('IPS External Customer','Today');
-        User communityUserWithNoDate = getCustomerUser('IPS External Customer','NoDate');
+        User CommunityUser = getCustomerUser('IPS External Customer','Today');
+        User CommunityUserwithNoDate = getCustomerUser('IPS External Customer','NoDate');
       
        Test.startTest();
-        System.runAs(communityUser){
+        System.runAs(CommunityUser){
             
           
                  Core_IPS_ContactloginDisclaimerCtrl_LWC.redirectAutomate();
             
         } 
         
-        System.runAs(communityUserWithNoDate){
+        System.runAs(CommunityUserwithNoDate){
             
            
                  Core_IPS_ContactloginDisclaimerCtrl_LWC.redirectAutomate();
             
         } 
         Test.stopTest();
-        System.assert(documentRecord.id != null,true);
+        System.assert(Doc.id != null,true);
         
     }
 

@@ -1,0 +1,176 @@
+.rectangle {
+    width: 1650px;
+    height: 38px;
+    margin: 1px 0 0;
+    padding: 9px 1565px 9px 33.9px;
+    background-color: #fff;
+}
+.headline {
+    width: 1042px;
+    height: 28px;
+    margin: 32px 268px 16px 36px;
+    
+    font-size: 22px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.27;
+    letter-spacing: normal;
+    color: #262626;
+}
+.subHeadline {
+    width: 506px;
+    height: 20px;
+    margin: 16px 15px 36px 36px;
+    
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #262626;
+}
+.line {
+    height: 1px;
+    margin: 32px 0;
+    background-color: #e9e9e9;
+}
+.inputbox {
+    width: 372px;
+    height: 48px;
+    margin: 24px 53px 24px 30px;
+    padding: 14px 16px;
+    border: solid 1px #e9e9e9;
+    
+    margin-bottom: 10px;
+}
+.selectpjt{
+    width: 506px;
+    height: 20px;
+    margin: 16px 15px 36px 36px;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #262626; 
+    margin-top: 5px;
+}
+.productVar{
+    width: 506px;
+    height: 20px;
+    margin: 16px 15px 36px 36px;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #262626; 
+    margin-top: 20px;
+}
+.inputs{
+    width: 372px;
+    
+    margin-bottom: 20px;
+}
+.notetext{
+    margin-bottom: 10px;
+}
+.btn{
+    color:white;
+    border: 1px solid #ddd;
+    background-color: #0068b5;
+    padding: 4px 12px;
+    height:40px;
+    width:190px;
+    margin-left:30px;
+}
+.slider {
+    display: flex;
+    margin: 80 auto; 
+       
+}
+.slider-item{
+    margin: 57px;
+}
+.text{
+    color: white;
+    font-size: small;
+}
+.dot1 {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #653171;
+    margin: 9.5px;
+    border: 1px solid white;
+    background-clip:border-box;
+    padding: 0.5px;
+  }
+.dot2 {
+    display:inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 8px;
+    border: 1px solid white;
+    background-clip: content-box;
+    padding: 1px;
+}
+li {
+    flex: 0 1 33%;
+    list-style: none;
+    position: relative;
+}
+
+li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  height: 0.5px;
+  width: 179%;
+  background: white;
+  top: 47px;
+  margin-top: -48%;
+  margin-left: -8.5px;
+}
+label {
+    width: 120px;
+    display: block;
+    margin-bottom: -40%;
+    margin-left: -30%;    
+}
+.divclass {
+    background-color: #653171;
+    color: white;
+    font-size: x-large;
+    font-weight: 300;
+}
+.text{
+    color: white;
+    font-size: small;
+    font-weight: 300;
+}
+.picklist {
+    padding-left: 36px;
+    padding-right: 36px;
+}
+.inputtxt {
+    align-items: flex-start;
+    width: 570px;
+}
+
+.contactHeader{
+    background-color: #653171;
+    color: white;
+}
+.pageBkGD{
+    background-color: #f7f7f7;
+}
+.showRequired{
+      border: 2px solid #c81326;
+}

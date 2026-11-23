@@ -93,7 +93,7 @@
         </values>
     </buckets>
     <columns>
-        <field>FULL_NAME</field>
+        <field>CUST_NAME</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -102,19 +102,16 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>AMOUNT</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>CUST_NAME</field>
-    </columns>
-    <columns>
-        <field>Core_Solution_Milestone__c.Core_Milestone_Focus_Area__c</field>
-    </columns>
-    <columns>
-        <field>Core_Solution_Milestone__c.Core_Milestone_Focus__c</field>
+        <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
         <field>Core_Solution_Milestone__c.Core_Milestone_Date__c</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
     </columns>
     <filter>
         <criteriaItems>

@@ -1,62 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DelegateGroup xmlns="http://soap.sforce.com/2006/04/metadata">
-    <groups>SRVPLT -  AZURE STACK</groups>
-    <groups>NSG/FB/QT</groups>
-    <groups>NSG/FB/WW</groups>
-    <groups>NSG/FB</groups>
-    <groups>NSGTSS - Teradata</groups>
-    <groups>SRVPLT - EMEA Customers_ISVC</groups>
-    <groups>SRVPLT - ASMO Customers_ISVC</groups>
-    <groups>NSG - EMEA_ISVC</groups>
-    <groups>NSG-IBM Storage</groups>
-    <groups>NSG EMEA ADC</groups>
-    <groups>SRVPLT - VSAN READY NODES</groups>
-    <groups>SRVPLT - ASMO GEELERS</groups>
-    <groups>SRVPLT - ASMO NUTANIX</groups>
-    <groups>NSG_Lenovo_Client</groups>
-    <groups>NSG-Channel Sustaining_ISVC</groups>
-    <groups>NSG-HP-Client</groups>
-    <groups>NSG-Dell-Client</groups>
-    <groups>SRVPLT - MICROSOFT CLOUD BLOCKS</groups>
-    <groups>SRVPLT - EMEA NEC</groups>
-    <groups>NSG-NetApp</groups>
-    <groups>NSG-Google</groups>
-    <groups>SRVPLT – PRC Customers_ISVC</groups>
-    <groups>SRVPLT - AURORA M50CYP HW/FW</groups>
-    <groups>SRVPLT – AURORA DAI-DS SW</groups>
-    <groups>SRVPLT - AURORA Exascale Compute Blade</groups>
-    <groups>SRVPLT - AURORA DAOS SW</groups>
-    <groups>SRVPLT - Eng Enablement Fox Creek Pass</groups>
-    <groups>SRVPLT - Eng Enablement Denali Pass</groups>
-    <groups>SRVPLT - AMERICAN PASS</groups>
-    <groups>SRVPLT - AURORA OVERALL</groups>
-    <groups>SRVPLT - AURORA GENERAL QS</groups>
-    <groups>SRVPLT - EMEA DSG</groups>
-    <groups>SRVPLT - EMEA ICS</groups>
     <groups>IPS - Org Admin - SP</groups>
-    <groups>NSG - ASMO</groups>
-    <groups>NSG - EMEA</groups>
     <groups>SRVPLT - Unassigned</groups>
     <groups>SRVPLT - ASMO Teradata</groups>
     <groups>SRVPLT - PRC Customers</groups>
     <groups>SRVPLT - SAWTOOTH PASS</groups>
     <groups>SRVPLT - WOLF PASS</groups>
     <groups>SRVPLT - APJ Customers</groups>
-    <groups>NSG - Lenovo Enterprise</groups>
-    <groups>NSG - Quanta</groups>
-    <groups>NSG - Oracle</groups>
-    <groups>NSG - Microsoft</groups>
-    <groups>NSG - Facebook</groups>
     <groups>SRVPLT - EMEA Customers</groups>
     <groups>SRVPLT - ASMO DELL</groups>
-    <groups>SRVPLT - ASMO VERITAS</groups>
-    <groups>SRVPLT - ASMO MCAFEE</groups>
-    <groups>SRVPLT - ASMO UNICOM</groups>
-    <groups>SRVPLT – CANYON VISTA</groups>
     <groups>SRVPLT - ASMO EMC</groups>
+    <groups>SRVPLT - ASMO COHESITY</groups>
     <groups>SRVPLT - BUCHANAN PASS</groups>
     <label>IPS - Org Admin - SP</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
+    <roles>IPS Agent</roles>
 </DelegateGroup>

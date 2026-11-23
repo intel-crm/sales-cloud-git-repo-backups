@@ -1,0 +1,39 @@
+<apex:page showHeader="false" standardController="Case">
+    <apex:slds />  
+    <body>
+        <div class="slds-scope">
+            <div class="slds-grid slds-wrap"> 
+                <div class="slds-grid slds-wrap slds-size_1-of-1 slds-p-around_small">
+                    <div class="slds-size_1-of-4">
+                        {!$ObjectType.Core_IPS_GEC_Details__c.fields.Core_IPS_GEC_Question1__c.Label}
+                    </div>
+                    <div class="slds-size_1-of-4">
+                        {!$ObjectType.Core_IPS_GEC_Details__c.fields.Core_IPS_GEC_Question2__c.Label}
+                    </div>
+                    <div class="slds-size_1-of-4">
+                        Submitted By
+                    </div>
+                    <div class="slds-size_1-of-4">
+                        {!$ObjectType.Core_IPS_Response__c.fields.CreatedDate.Label}
+                    </div>
+                </div>
+                <apex:repeat value="{!Case.GEC_Details__r}" var="gecAns">
+                    <div class=" slds-grid slds-wrap slds-size_1-of-1 slds-p-around_small">
+                        <div class="slds-size_1-of-4">
+                            <apex:outputField value="{!gecAns.Core_IPS_GEC_Question1__c}" /> 
+                        </div>
+                        <div class="slds-size_1-of-4">
+                            <apex:outputField value="{!gecAns.Core_IPS_GEC_Question2__c}" /> 
+                        </div>
+                        <div class="slds-size_1-of-4">
+                            <apex:outputField value="{!gecAns.LastModifiedById}" /> 
+                        </div>
+                        <div class="slds-size_1-of-4">
+                            <apex:outputField value="{!gecAns.CreatedDate}" />
+                        </div>
+                    </div>
+                </apex:repeat>
+            </div>
+        </div>
+    </body>
+</apex:page>

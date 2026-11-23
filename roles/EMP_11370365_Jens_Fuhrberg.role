@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Inactive Manager</description>
+    <description>EMP of Christin Eisenschmid</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11370365_Jens_Fuhrberg</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>EMP_11370286_Christin_Eisenschmid</parentRole>
 </Role>

@@ -59,8 +59,16 @@
         <name>Core_IPS_Private__c</name>
     </fields>
     <fields>
+        <label><!-- External Customer Group ID --></label>
+        <name>Core_IPS_ProjectGroupID__c</name>
+    </fields>
+    <fields>
         <label><!-- Premier Support Project ID --></label>
         <name>Core_IPS_Project_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core IPS Project Partner Support Owner --></label>
+        <name>Core_IPS_Project_Partner_Support_Owner__c</name>
     </fields>
     <fields>
         <help><!-- This will strip text within emails for the Case Subject, Description and Comments --></help>
@@ -153,6 +161,14 @@
         <name>Intel_Support_Team_Count__c</name>
     </fields>
     <fields>
+        <label><!-- MarkByProductObject --></label>
+        <name>MarkByProductObject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Partner Support Owner --></label>
+        <name>Project_Partner_Support_Owner__c</name>
+    </fields>
+    <fields>
         <label><!-- Region --></label>
         <name>Region__c</name>
         <picklistValues>
@@ -190,6 +206,10 @@
         <picklistValues>
             <masterLabel>IJKK</masterLabel>
             <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>KOREA</masterLabel>
@@ -258,6 +278,14 @@
         <name>CORE_IPS_PROJECTMEMBER_COUNT</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Project cannot be made Active without atleast one Account and one Product and one Project Member --></errorMessage>
+        <name>Cannot_Make_Active</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- At least one contact should be associated to the Project --></errorMessage>
+        <name>Core_IPS_OneContactRequired</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Only an Intel Project Owner may edit the Private setting --></errorMessage>
         <name>Core_IPS_PreventCheckingPrivate</name>
     </validationRules>
@@ -278,6 +306,10 @@
         <name>Core_IPS_Project_Status_field_edit</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Project cannot be submitted without atleast one Account and one Product --></errorMessage>
+        <name>Core_IPS_Project_cannot_be_activated</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Premier Support Projects must be in the Draft state when being set to Private --></errorMessage>
         <name>Core_IPS_Restrict_Changing_Private</name>
     </validationRules>
@@ -288,6 +320,22 @@
     <webLinks>
         <label><!-- Core_IPS_Update_Support_Owners --></label>
         <name>Core_IPS_Update_Support_Owners</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EditCustom --></label>
+        <name>EditCustom</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewCustomButton --></label>
+        <name>NewCustomButton</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Custom --></label>
+        <name>New_Custom</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Status_Update --></label>
+        <name>Status_Update</name>
     </webLinks>
     <webLinks>
         <label><!-- core_Submit --></label>

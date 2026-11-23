@@ -7,7 +7,7 @@
         <protected>false</protected>
         <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Entitlement_RDC_Added_E_Moss_Role</template>
+        <template>unfiled$public/Core_Entitlement_RDC_Added_E_Moss_Role</template>
     </alerts>
     <alerts>
         <fullName>Core_Entitlement_RDC_Removed_E_Moss_EA</fullName>
@@ -16,7 +16,7 @@
         <protected>false</protected>
         <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Entitlement_RDC_Removed_E_Moss_Role</template>
+        <template>unfiled$public/Core_Entitlement_RDC_Removed_E_Moss_Role</template>
     </alerts>
     <alerts>
         <fullName>Core_Entitlement_RDC_Updated_E_Moss_EA</fullName>
@@ -25,7 +25,7 @@
         <protected>false</protected>
         <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Entitlement_RDC_Updated_E_Moss_Role</template>
+        <template>unfiled$public/Core_Entitlement_RDC_Updated_E_Moss_Role</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_Capture_Status_Change_DateTime</fullName>
@@ -75,7 +75,7 @@
             <name>Core_Capture_Status_Change_DateTime</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This workflow rule will capture the date/time whenever there is an update for the status field.</description>
         <formula>ISCHANGED(Core_Status__c )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -86,7 +86,7 @@
             <name>Core_Contact_Entitlement_Unique_ID</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>1=1</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
@@ -96,7 +96,7 @@
             <name>Core_Reset_DontNotify</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1</booleanFilter>
         <criteriaItems>
             <field>Core_Contact_Entitlement__c.Core_DontNotify__c</field>
@@ -112,7 +112,7 @@
             <name>Core_Reset_Is_Data_Loaded</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Contact_Entitlement__c.Core_Data_Loaded__c</field>
             <operation>equals</operation>
@@ -122,35 +122,35 @@
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
-        <fullName>x Entitlement RDC Added E Moss Notification WF</fullName>
+        <fullName>Entitlement RDC Added E Moss Notification WF</fullName>
         <actions>
             <name>Core_Entitlement_RDC_Added_E_Moss_EA</name>
             <type>Alert</type>
         </actions>
         <active>false</active>
-        <description>When Contact gets the RDC Collaboration Workspaces need to send an email to the Emoss group. No longer required by RDC team as of 02/26/2020.</description>
+        <description>When Contact gets the RDC Collaboration Workspaces need to send an email to the Emoss group.</description>
         <formula>IF(     AND(Core_Selected__c == TRUE,         ISPICKVAL(Core_Status__c , &apos;Complete&apos;),         Core_Entitlement_Id__c == $Label.Core_Entitlement_RDC_Collab_Workspaces_Id),     TRUE,     FALSE)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
-        <fullName>x Entitlement RDC Removed E Moss Notification WF</fullName>
+        <fullName>Entitlement RDC Removed E Moss Notification WF</fullName>
         <actions>
             <name>Core_Entitlement_RDC_Removed_E_Moss_EA</name>
             <type>Alert</type>
         </actions>
         <active>false</active>
-        <description>When Contact gets the RDC Collaboration Workspaces need to send an email to the Emoss group. No longer required by RDC team as of 02/26/2020.</description>
+        <description>When Contact gets the RDC Collaboration Workspaces need to send an email to the Emoss group.</description>
         <formula>IF(     AND(Core_Selected__c == FALSE, ISPICKVAL(Core_Status__c , &apos;Complete&apos;),          Core_Entitlement_Id__c == $Label.Core_Entitlement_RDC_Collab_Workspaces_Id ),     TRUE,     FALSE)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
-        <fullName>x Entitlement RDC Updated E Moss Notification WF</fullName>
+        <fullName>Entitlement RDC Updated E Moss Notification WF</fullName>
         <actions>
             <name>Core_Entitlement_RDC_Updated_E_Moss_EA</name>
             <type>Alert</type>
         </actions>
         <active>false</active>
-        <description>When Contact gets the RDC Collaboration Workspaces need to send an email to the Emoss group. This was already Inactive as of 02/26/2020 and also no longer required by RDC team.</description>
+        <description>When Contact gets the RDC Collaboration Workspaces need to send an email to the Emoss group.</description>
         <formula>IF(     AND(Core_Selected__c == TRUE,         ISPICKVAL(Core_Status__c , &apos;Complete&apos;),         Core_Entitlement_Id__c == $Label.Core_Entitlement_RDC_Collab_Workspaces_Id),     TRUE,     FALSE)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>

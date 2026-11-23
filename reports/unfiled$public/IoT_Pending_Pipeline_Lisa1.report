@@ -12,9 +12,27 @@
             <value>Auto</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
             <value>Energy</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial - Automation</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - HMI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - PLC &amp; PAC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Industrial - Robotics</sourceValue>
+            </sourceValues>
             <value>Industrial</value>
         </values>
         <values>
@@ -27,12 +45,36 @@
             <value>MAG</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Retail - ATM</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Digital Signage</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Kiosk</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - PC Cash Register</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Point of Sale</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retail - Thin Client</sourceValue>
+            </sourceValues>
             <value>Retail</value>
         </values>
         <values>
             <value>Transportation</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Home Gateway</sourceValue>
+            </sourceValues>
             <value>Smart Home/Bldg</value>
         </values>
     </buckets>
@@ -136,8 +178,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

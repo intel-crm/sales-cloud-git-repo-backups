@@ -309,9 +309,41 @@ This object will have related Line Items that capture the unique Account/Support
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
+    <fields>
+        <fullName>Related_Account__c</fullName>
+        <description>Created as Part of POC by ranjini</description>
+        <externalId>false</externalId>
+        <label>Related Account</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Product_id__c</fullName>
+        <externalId>false</externalId>
+        <label>Related Product id</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Product Access</label>
     <listViews>
         <fullName>Core_IPS_Org_000_Core_IPS_MAP_PAR</fullName>
+        <columns>NAME</columns>
+        <columns>Core_isPARRequest__c</columns>
+        <columns>Core_Name__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Product_Organization__c</columns>
+        <columns>Core_Support_Org_Name__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Queue</filterScope>
         <label>IPS - Org - Test Org 0</label>
         <queue>Core_IPS_Org_000</queue>
@@ -331,7 +363,7 @@ This object will have related Line Items that capture the unique Account/Support
     <listViews>
         <fullName>Core_IPS_Org_002_Core_IPS_MAP_PAR</fullName>
         <filterScope>Queue</filterScope>
-        <label>IPS - CCG-SPG</label>
+        <label>IPS - CCG-CISD</label>
         <queue>Core_IPS_Org_002</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -511,7 +543,7 @@ This object will have related Line Items that capture the unique Account/Support
     <listViews>
         <fullName>Core_IPS_Org_023_Core_IPS_MAP_PAR</fullName>
         <filterScope>Queue</filterScope>
-        <label>IPS - IAGS</label>
+        <label>IPS - SSG</label>
         <queue>Core_IPS_Org_023</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -536,37 +568,41 @@ This object will have related Line Items that capture the unique Account/Support
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_026_Core_IPS_MAP_PAR</fullName>
+        <fullName>Core_IPS_Org_090_Core_IPS_MAP_PAR</fullName>
         <filterScope>Queue</filterScope>
-        <label>IPS - IOG</label>
-        <queue>Core_IPS_Org_026</queue>
+        <label>IPS-IOG</label>
+        <queue>Core_IPS_Org_090</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_027_Core_IPS_MAP_PAR</fullName>
+        <fullName>Sample_Queue_AM_Core_IPS_MAP_PAR</fullName>
         <filterScope>Queue</filterScope>
-        <label>IPS - AXG-XCC</label>
-        <queue>Core_IPS_Org_027</queue>
+        <label>Sample Queue AM</label>
+        <queue>Sample_Queue_AM</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_028_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS-SMG</label>
-        <queue>Core_IPS_Org_028</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_029_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IGT</label>
-        <queue>Core_IPS_Org_029</queue>
+        <fullName>Temp01</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Name__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>Core_Product_Organization__c</columns>
+        <columns>Core_Support_Org_Name__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>Core_isPARRequest__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_isPARRequest__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>_Temp01</label>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>

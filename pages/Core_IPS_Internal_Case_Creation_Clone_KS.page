@@ -1,0 +1,961 @@
+<!------------------------------------------------------------------------------------------------
+*VF Page Name:  Core_IPS_Internal_Case_Creation
+*Description:  Case Creation Page
+*Modification Log :
+* Developer                   Date                        Description
+* ------------------------------------------------------------------------------------------------                 
+* Sugandha                    24/01/2018                  Modified(UserStory US83594 Iteration 6)
+* Karthick                    21/02/2018                  Modified(UserStory US80350 Iteration 7)
+* Sumukh                      19/02/2018                  Modified (US69871)
+* Amritesh                    12/18/2017                  Modified - US8534 
+* Sugandha                    16/03/2018                  Modified(UserStory US85567 Iteration 8) 
+* Karthick                    28/03/2018                  Modified - DE37368
+* Sugandha                    02/04/2018                  Modified - DE37699
+* Karthick                    04/04/2018                  Modified - DE37840
+----------------------------------------------------------------------------------------------------->
+<apex:page standardController="case" extensions="Core_IPS_Internal_Case_Controller_KS" action="{!PageInit}" showHeader="true" id="page">
+    <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
+    <apex:includeScript value="{!Urlfor($Resource.Core_IPS_DataTable,'jquery-ui.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery-ui.css')}" />
+    
+    <!-- Added by Sumukh for US-69781 for product variant -->
+    <apex:includeScript value="{!URLFOR($Resource.SearchJqueryPlugin, 'chosen.jquery.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.SearchJqueryPlugin, 'chosen.jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.SearchJqueryPlugin, 'docsupport/prism.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.SearchJqueryPlugin, 'docsupport/prism.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.SearchJqueryPlugin, 'chosen.css')}"/>
+    <!-- End by Sumukh for US-69781 for product variant -->
+    
+    <!-- Added JqueryDropdown by Karthick for User Story US80350 Iteration 7 Start-->
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Jquery_Dropdown, 'jquery.dropdown.min.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Jquery_Dropdown, 'jquery.dropdown.js')}"/>
+    
+        <style>
+            .custom-combobox {
+                position: relative;
+                display: inline-block;
+              }
+              .custom-combobox-toggle {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin-left: -1px;
+                padding: 0;
+              }
+              .custom-combobox-input {
+                margin: 0;
+                padding: 5px 10px;
+                background-color:white;
+              }
+        </style>
+        <script>
+        
+        $( function() {
+            
+            $.widget( "custom.combobox", {
+                _create: function() {
+                    
+                    this.wrapper = $( "<span>" )
+                    .addClass( "custom-combobox" )
+                    .insertAfter( this.element );
+                    
+                    this.element.hide();
+                    this._createAutocomplete();
+                    this._createShowAllButton();
+                },
+                
+                _createAutocomplete: function() {
+                    
+                    var selected = this.element.children( ":selected" ),
+                        value = selected.val() ? selected.text() : "";
+                    
+                    this.input = $( "<input>" )
+                    .appendTo( this.wrapper )
+                    .val( value )
+                    .attr( "title", "" )
+                    .attr( "placeholder", "--Select--" )
+                    .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
+                    .autocomplete({
+                        delay: 0,
+                        minLength: 0,
+                        source: $.proxy( this, "_source" ),
+                    })
+                    .tooltip({
+                        classes: {
+                            "ui-tooltip": "ui-state-highlight"
+                        }
+                    });
+                    /*.click(function() { 
+                        $(this).autocomplete("search", ""); 
+                    });*/
+                    
+                    this._on( this.input, {
+                        autocompleteselect: function( event, ui ) {
+                            
+                            ui.item.option.selected = true;
+                            //-- Fire the Event --
+                            $(this.element).trigger( "change" );
+                            
+                            this._trigger( "select", event, {
+                                item: ui.item.option
+                            });
+                           
+                        },
+                        
+                        autocompletechange: "_removeIfInvalid"
+                    });
+                    
+                    //Adjust select option width automatically - DE37840- Karthick
+                    $(this.input).width($(this.element).width() > 50 ? $(this.element).width()-10 : $(this.element).width());  
+                    
+                    /*if($(this.element).width()>350){
+                        $(this.input).width(350); 
+                    }else{
+                        $(this.input).width($(this.element).width() > 50 ? $(this.element).width()-10 : $(this.element).width()); 
+                    }*/
+                    
+                    $(this.input).data("uiAutocomplete").menu._isDivider = function( item ) {
+                        return false;
+                    }
+                },
+                
+                _createShowAllButton: function() {
+                    var input = this.input,
+                        wasOpen = false;
+                    
+                    $( "<a>" )
+                    .attr( "tabIndex", -1 )
+                    .attr( "title", "Type to autocomplete or click to show All options" )
+                    .tooltip()
+                    .appendTo( this.wrapper )
+                    .button({
+                        icons: {
+                            primary: "ui-icon-triangle-1-s"
+                        },
+                        text: false
+                    })
+                    .removeClass( "ui-corner-all" )
+                    .addClass( "custom-combobox-toggle ui-corner-right" )
+                    .on( "mousedown", function() {
+                        wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+                    })
+                    .on( "click", function() {
+                        input.trigger( "focus" );
+                        
+                        // Close if already visible
+                        if ( wasOpen ) {
+                            return;
+                        }
+                        
+                        // Pass empty string as value to search for, displaying all results
+                        input.autocomplete( "search", "" );
+                    });
+                },
+                
+                _source: function( request, response ) {
+                    var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+
+                    response( this.element.children( "option" ).map(function() {
+                        var text = $( this ).text();
+                        if ( this.value && ( !request.term || matcher.test(text) ) )
+                            return {
+                                label: text,
+                                value: text,
+                                option: this
+                            };
+                    }) );
+                },
+                
+                _removeIfInvalid: function( event, ui ) {
+                    
+                    // Selected an item, nothing to do
+                    if ( ui.item ) {
+                        return;
+                    }
+                    
+                    // Search for a match (case-insensitive)
+                    var value = this.input.val(),
+                        valueLowerCase = value.toLowerCase(),
+                        valid = false;
+                    this.element.children( "option" ).each(function() {
+                        if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+                            this.selected = valid = true;
+                            return false;
+                        }
+                    });
+                    
+                    // Found a match, nothing to do
+                    if ( valid ) {
+                        return;
+                    }
+                    if(value!='' && value!=null){
+                    
+                        // Remove invalid value
+                        this.input
+                        .val( "" )
+                        .attr( "title", value + " didn't match any item" )
+                        .tooltip( "open" );
+                        //this.element.val( "" );
+                        this._delay(function() {                            
+                            this.input.tooltip( "close" ).attr( "title", "" );
+                        }, 1500 );
+                    }
+                    this.element.val( "" );
+                    this.input.autocomplete( "instance" ).term = "";
+                    
+                    //-- Fire the Event --
+                    $(this.element).trigger( "change" );
+                },
+                
+                _destroy: function() {
+                    this.wrapper.remove();
+                    this.element.show();
+                }                
+            });
+            renderCombobox();             
+            
+        });
+        
+        
+        function renderCombobox() {
+            //update the select list which has to be made autocomplete with styleClass/class="cust-combobox"
+            $('.cust-combobox').combobox();
+            
+            //multiselect dropdown
+            register_MultiSelect();
+        }
+                     
+        function register_MultiSelect() {
+            //multiselect dropdown
+            console.log('---Inside register_MultiSelect--');            
+            $(".custom-multiselect select option[value='']").remove();
+            //$('.multiselect-dropdown').css({'display':'none'});
+            $('.custom-multiselect').dropdown({                
+              multipleMode: 'label',
+                
+              // search field
+              input: '<input type="text" maxLength="20" placeholder="Search and Select Multiple...">'
+                    
+            });
+            
+            console.log('---End register_MultiSelect--');           
+            
+        }
+        </script>
+    <!-- Added JqueryDropdown by Karthick for User Story US80350 Iteration 7 End--> 
+    <style>
+    .errorM4 .msgIcon, .errorSmall {
+        background-image: url(/img/samples/flag_red.gif) !important;
+    }
+    
+    .myCustomMessage .message {
+        background: none  !important;
+        border: none !important;
+    }
+    </style>
+    
+    <style type="text/css">
+        
+        .envClass { width: 380px; }
+        .productclass{ width: 200px;}
+        .projectclass{ width: 200px;}
+    </style>
+    
+    <!--<apex:stylesheet value="{!URLFOR($Resource.customCSS, 'customCSS.css')}"/>-->
+    <!-- Modified StaticResouce path by Karthick for User Story US80350 Iteration 7 -->
+    <apex:stylesheet value="{!URLFOR($Resource.customCSS, 'customCSS/customCSS.css')}"/>
+    
+    <style>
+    #spinner{
+        display: none;
+        width:200px;
+        height: 50px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        text-align:center;
+        padding:10px;
+        font:normal 16px Tahoma, Geneva, sans-serif;
+        margin-left: -100px;
+        margin-top: -100px;
+        z-index:2;
+        overflow: auto;
+        border:1px solid #CCC;
+        background-color:white;
+        z-index:100;
+        padding:5px;
+        line-height:20px;
+     }
+     #opaque {
+         position: fixed;
+         top: 0px;
+         left: 0px;
+         width: 100%;
+         height: 100%;
+         z-index: 1;
+         display: none;
+         background-color: gray;
+         filter: alpha(opacity=30);
+         opacity: 0.3;
+         -moz-opacity:0.3;
+         -khtml-opacity:0.3
+     }
+     * html #opaque {
+         position: absolute;
+     }
+  </style>
+    
+    <script>
+    var newWin=null;
+   var strProductId = "{!selectedProductId}"; 
+    var strContactId = "{!selectedContactId}"; 
+    var strSAProductId = "{!selectedSAProductId}";
+   // enterPress function prevents the Default loading whenever user press Enter Key when lookup Text field is on-focused
+    function enterPress(event, name, id, relatedId, object,relatedId2){
+        if(event.keyCode==13){
+            // for other browsers
+            if(event.preventDefault){ 
+                event.preventDefault();
+            }
+            // for IE Browser 
+            else{
+                event.returnValue=false;
+            }
+            openLookupPopup(name, id, relatedId, object,relatedId2);
+        }      
+    }
+   
+   function onKeyPress(name, id, relatedId, object,relatedId2){
+       
+        if(event.keyCode == 13){
+            alert(event.keyCode);
+            var url;
+            if(relatedId!=null && relatedId2!=null)
+                url="/apex/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId=" + document.getElementById(relatedId).value+ "&object=" +object+"&relatedId2="+document.getElementById(relatedId2).value+"&queryParam="+document.getElementById(name).value;
+            else if(relatedId!=null && relatedId!='NA')
+                url="/apex/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId=" + document.getElementById(relatedId).value+ "&object=" +object+"&queryParam="+document.getElementById(name).value;                    
+            else
+                url="/apex/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id+"&queryParam="+document.getElementById(name).value;                    
+            newWin=window.open(url, 'Popup','height=500,width=600,left=100,top=100,resizable=no,scrollbars=yes,toolbar=no,status=no');
+            if (window.focus) 
+            {
+                //window.opener.blur();
+                newWin.focus();
+                //alert(newWin.focus);
+            }
+                
+            return false;
+            //return false;
+        }
+        return false;
+   }
+   
+    function openLookupPopup(name, id, relatedId, object,relatedId2)
+    {
+     
+        var url;
+        if(relatedId!=null && relatedId2!=null)
+            url="/apex/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId=" + document.getElementById(relatedId).value+ "&object=" +object+"&relatedId2="+document.getElementById(relatedId2).value+'&queryParam='+document.getElementById(name).value;
+        else if(relatedId!=null && relatedId!='NA')
+            url="/apex/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id + "&relatedId=" + document.getElementById(relatedId).value+ "&object=" +object+'&queryParam='+document.getElementById(name).value;                    
+        else
+            url="/apex/Core_IPS_Custom_Lookup?namefield=" + name + "&idfield=" + id +'&queryParam=' + document.getElementById(name).value;                    
+        newWin=window.open(url, 'Popup','height=500,width=600,left=100,top=100,resizable=no,scrollbars=yes,toolbar=no,status=no');
+        if (window.focus) 
+        {
+            newWin.focus();
+            //alert(newWin.focus);
+        }    
+        return false;
+    }
+                  
+    function closeLookupPopup()
+    {
+       if (null!=newWin)
+       {
+          newWin.close();
+       }  
+    }
+    
+    function callParentPageForGECFields(id){
+        if(id.substring(0,3) == '003'){
+        //gecrender(id);
+        }
+    }
+    function updProjListBasedOnSelectedProd(id){  
+    console.log('>>>>>>>>>>>>>>>>' + id);
+    
+     if(id.substring(0,3)=='02i')
+     {
+       
+        strProductId = id;
+     }
+     if(id.substring(0,3)=='003')
+     {
+       
+        strContactId = id;
+     }
+     if(id.substring(0,3)=='a21')
+     {
+     
+       strSAProductId = id;
+     }
+    }
+        
+    function callParentPage(name){
+        
+        console.log('name' + name);
+                   
+         if(name=='Product')
+         {         
+          console.log('strProductId' + strProductId);
+            panelrender(name,strProductId);                  
+         }
+         else if(name=='Contact')
+         {
+          console.log(strContactId);
+           panelrender(name,strContactId); 
+         }
+         else 
+         {
+          console.log(strSAProductId);
+           panelrender(name,strSAProductId); 
+         }
+    }
+    function reset(){
+       ResetProduct(); 
+       return false;
+    }
+    
+    function showSpinner()
+    {
+       document.getElementById('opaque').style.display='block';
+       var popUp = document.getElementById('spinner');
+      
+       popUp.style.display = 'block';
+    } 
+    
+    function clearHiddenfields(obj)
+    {
+     
+     if(obj=='Contact')
+     {
+       if($(".InputContact").val().length==0)
+       {      
+        $("input[object='contact']").val('');
+        //strContactId = '';
+       }
+     }
+     if(obj=='Project')
+     {
+       if($(".InputProject").val().length==0)
+       {      
+           $("input[object='project']").val(''); // Added by amritesh US79768
+           panelrender('Project');
+       }
+     }
+     if(obj=='Product')
+     {
+       if($(".InputProduct").val().length==0)
+       {
+      
+        $("input[object='product']").val('');
+       }
+     }
+     if(obj=='SAProduct')
+     {
+       if($(".InputSAProduct").val().length==0)
+       {
+      
+        $("input[object='SAProduct']").val('');
+       }
+     }
+     //added by sugandha for US85567 
+     if(obj=='User')
+     {
+       if($(".InputPSO").val().length==0)
+       {
+      
+        $("input[object='User']").val('');
+       }
+     }
+     //end
+     
+     //clearObjectName(obj);
+    
+    }
+    
+    
+    function fnConfirmBox()
+    {
+       $( "#dialog-confirm" ).dialog({
+          resizable: false,
+          height:170,
+          modal: true,
+          buttons: {
+            "Ok": function() {
+              ConfirmBox();
+              $( this ).dialog( "close" );
+            },
+            Cancel: function() {
+              $( this ).dialog( "close" );
+            }
+          }
+        });  
+    }
+    //Added by Sumukh for US-69871 -->
+   function searchOnSelectOption(){
+      $("select[id*='Variant']").chosen();
+   }
+    //End by sumukh for US-69871  -->
+       
+    
+    // Added by amritesh R4 - start
+    function fnConfirmProductChange()
+    {
+        $( "#dialog-confirm-productchange" ).dialog({
+            resizable: false,
+            width:350,
+            height:220,
+            modal: true,
+            classes: {
+                "ui-dialog-titlebar": "hide-dialog"
+            },
+            buttons: {
+                "Yes": function() {
+                    $("[id$='isResetProductRelInfo']").val(true);
+                    $("[id$='showProductRelInfoDialog']").val(false);                    
+                    panelrender('Project');
+                    $( this ).dialog( "close" );
+                },
+                "No": function() {
+                    $("input[object='project']").val(selectedProjId_Old);
+                    cancelProductRelInfo();
+                    $( this ).dialog( "close" );
+                }
+            }
+        }).parent().find(".ui-dialog-titlebar").hide();  
+    }
+    </script>
+    <style>
+        #dialog-confirm-productchange .ui-dialog-title{ display:none }
+        .hide-dialog{ display:none; }
+    </style>
+    <!-- Added by amritesh R4 - end -->
+    
+    <div id="opaque"/>
+   <div id="spinner">
+        <p align="center" style='{font-family:"Arial", Helvetica, sans-serif; font-size:20px;}'><apex:image value="/img/loading.gif"/>&nbsp;Please wait</p>
+   </div>
+   
+    <div id="dialog-confirm" title="Confirmation:" style="display:none;">
+      <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>You will lose all your changes. Are you sure you want to Cancel?</p>
+    </div>
+    
+    <!-- Added by amritesh US79768 - start -->
+    <div id="dialog-confirm-productchange" style="display:none;">
+      <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+          The Project you selected is not associated to the Product on your Case.  If you continue to update to this Project, you will need to update the Product, Category, Sub-Category, and any Environment Detail Question values
+          <br/><br/>Do you want to continue?</p>
+    </div>
+    <!-- Added by amritesh US79768 - end -->
+    
+    <apex:form id="fm" rendered="{!if(OR(AND(mode ='edit',isEditable),mode!='edit'),true,false)}">   
+                      
+                       <apex:inputHidden value="{!selectedContactId}" id="targetId" html-object="contact"/>
+                      <apex:inputHidden value="{!selectedProjId}" id="targetProjId" html-object="project"/>
+                      <apex:inputHidden value="{!selectedProductId}" id="targetProdId" html-object="product"/>
+                      <!-- addded by sugandha for US85567 -->
+                      <apex:inputHidden value="{!selectedPSOId}" id="targetPSOId" html-object="User"/>
+        <apex:actionstatus id="status1">
+            <apex:facet name="start">
+            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+            height: 100%;opacity:0.65;width:100%;">
+            <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+            <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+            <span class="waitingDescription">Please Wait...</span>
+            </div>
+            </div>
+            </apex:facet>
+        </apex:actionstatus>      
+        <!-- Added renderCombobox to register customDropdown by Karthick for User Story US80350 Iteration 7--> 
+        <apex:actionFunction name="BindEvent" action="{!BindEvent}" reRender="subCategory,environment1,casesubcatId" status="status1" oncomplete="renderCombobox()"></apex:actionFunction>
+        <!--<apex:actionFunction name="gecrender" action="{!showGECFieldsToIntUsrsForMAGAcc}" reRender="none" status="status1">
+        <apex:param name="myParam" value=""/>
+        </apex:actionFunction>-->
+        <!-- Added renderCombobox to register customDropdown by Karthick for User Story US80350 Iteration 7 -->
+        <apex:actionFunction name="panelrender" action="{!LookupChange}" reRender="caseInformation,ProductDetails,environment1,errors,platform,targetId,targetProjId,targetProdId,gecid,varIsShowVariant,PSAPSOid,psaid,targetPSO" status="status1" oncomplete="renderCombobox()"> <!-- Added by Sumukh for US-69871 -->
+            <apex:param assignTo="{!objectSelected}" name="firstparam" value=""/>
+             <apex:param name="paramId" value=""/>
+        </apex:actionFunction>
+        <apex:actionFunction name="ResetProduct" action="{!resetProduct}" reRender="productPanel1" status="status1"/> 
+        <apex:actionFunction name="ConfirmBox" action="{!CancelAction}"/> 
+        
+        <!-- Added by amritesh US79768 - start -->
+        <apex:inputHidden value="{!isResetProductRelInfo}" id="isResetProductRelInfo"/>
+        <apex:inputHidden value="{!showProductRelInfoDialog}" id="showProductRelInfoDialog"/>        
+        <apex:actionFunction name="cancelProductRelInfo" action="{!cancelProductRelInfo}" reRender="caseInformation" status="status1"/> 
+        <!-- Added by amritesh US79768 - end -->
+        
+        <!--<apex:actionFunction name="clearProdName" action="{!clrProductItem}" reRender="productPanel" status="status1"/>-->          
+       <apex:pageblock id="pblock">
+        <apex:pageMessages id="errors"></apex:pageMessages>
+          <apex:outputPanel id="gecid">
+          <apex:pageBlockSection title="GEC Information" rendered="{!showGECFields}" columns="1">
+          
+       
+        <apex:pageBlockSectionItem >
+          <apex:panelGrid columns="2">
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_One}"/>
+          <apex:outputPanel styleClass="requiredInput" layout="block">
+          <apex:outputPanel styleClass="requiredBlock" layout="block" />
+          <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+          <apex:selectList id="Question1" value="{!GECAnswer1}" size="1" disabled="{!isClosed}">
+            <apex:selectOptions value="{!AnswerOptions}"/>
+          </apex:selectList>
+          </apex:outputPanel>
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_One_Addl_Info}" styleClass="warning" />
+          </apex:panelGrid>
+          
+        </apex:pageBlockSectionItem>
+           <apex:pageBlockSectionItem >
+          <apex:panelGrid columns="2">
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_Two}"/>
+          <apex:outputPanel styleClass="requiredInput" layout="block">
+          <apex:outputPanel styleClass="requiredBlock" layout="block" />
+          <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+          <apex:selectList id="Question2" value="{!GECAnswer2}" size="1" disabled="{!isClosed}">
+            <apex:selectOptions value="{!AnswerOptions}"/>
+          </apex:selectList>
+          </apex:outputPanel>
+          <apex:outputLabel value="{!$Label.CORE_IPS_GEC_Query_Two_Addl_Info}" styleClass="warning"/>
+          
+          </apex:panelGrid>
+    
+            
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+           <apex:panelGrid columns="2" style="text-align:right">
+        
+          <apex:outputLabel value="Country: "/>
+          <apex:outputPanel styleClass="requiredInput" layout="block">
+          <apex:outputPanel styleClass="requiredBlock" layout="block" />
+          <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+          <apex:selectList value="{!GECAnswer3}" size="1" disabled="{!isClosed}">
+             <apex:selectOptions value="{!CountriesOptions}" />
+          </apex:selectList>
+          </apex:outputPanel>
+        
+          </apex:panelGrid>
+          </apex:pageBlockSectionItem>
+ 
+     
+           </apex:pageBlockSection>
+          </apex:outputPanel> 
+
+           <apex:outputPanel id="caseInformation">
+                   <apex:pageBlockSection title="Case Information" id="varIsShowVariant" rendered="{!AND(displayProject,isAgent)}"> <!-- Added by Sumukh for US-69871 -->
+                   
+                       <apex:pageBlockSectionItem >
+                          <apex:outputLabel value="Contact Name:"/>
+                       
+                          <apex:panelGrid columns="1">
+                           <apex:outputPanel styleClass="requiredInput" layout="block">
+                               <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                               <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                               <apex:inputText value="{!selectedContact}" id="targetName" required="" styleClass="InputContact" onchange="clearHiddenfields('Contact');" disabled="{!isClosed}" onKeyPress="enterPress(event, '{!$Component.targetName}', '{!$Component.targetId}','{!$Component.targetProjId}','Contact','{!$Component.targetProdId}');">
+                               <!--<apex:actionSupport event="onchange" action="{!showGECFieldsToIntUsrsForMAGAcc}" reRender="gecid"/>-->
+                               </apex:inputText>
+                                <!-- Added rendered="{!!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                               <apex:commandLink onclick="openLookupPopup('{!$Component.targetName}', '{!$Component.targetId}','{!$Component.targetProjId}','Contact','{!$Component.targetProdId}'); return false" rendered="{!!isClosed}"><apex:image url="{!$Label.IPS_Search_Image_URI}" width="15" height="15"/>
+                               </apex:commandLink>
+                           </apex:outputPanel>
+                          </apex:panelGrid>
+                       
+                       <!--<apex:inputField value="{!cs.ContactId}" label="Contact Name:">
+                       <apex:actionSupport event="onchange" action="{!showGECFieldsToIntUsrsForMAGAcc}" reRender="gecid"/>
+                       </apex:inputField>-->
+                      
+                       </apex:pageBlockSectionItem>                     
+                       
+                       <apex:pageBlockSectionItem >
+                           <apex:outputLabel value="Project Name:"/>
+                           <apex:panelGrid columns="4">
+                           <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                           <apex:inputText value="{!projSelected}" title="{!projSelected}" id="targetProj"  styleClass="InputProject projectclass" onchange="clearHiddenfields('Project');" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed}" onKeyPress="enterPress(event, '{!$Component.targetProj}', '{!$Component.targetProjId}','{!$Component.targetId}','Project','{!$Component.targetProdId}');">                        
+                           </apex:inputText>
+                           <!-- Added rendered="{!!isClosed}" by Sugandha for User Story US83594 Iteration 6 -->
+                           <apex:commandLink onclick="openLookupPopup('{!$Component.targetProj}', '{!$Component.targetProjId}','{!$Component.targetId}','Project','{!$Component.targetProdId}'); return false" rendered="{!!isClosed}"><apex:image url="{!$Label.IPS_Search_Image_URI}" width="15" height="15" rendered="{!IF(mode=='edit',true,NOT(caseInformationReadOnly))}"/></apex:commandLink>
+                           </apex:panelGrid>
+                       </apex:pageBlockSectionItem>
+                       
+                       <apex:pageBlockSectionItem >
+                               <apex:outputLabel value="Product:"/>
+                               <apex:panelGrid columns="1" id="productPanel">
+                               <apex:outputPanel styleClass="requiredInput" layout="block">
+                                   <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                    <!-- Start of user story- changes made for user story-US80347--Adding Product Variant-->
+                      <apex:actionFunction name="isShowVar" action="{!DisplayProductVariant}" rerender="varIsShowVariant">
+                         <apex:param name="p" value="{!selectedProductId}"/>
+                      </apex:actionFunction>
+                      <!-- End of user story- changes made for user story-US80347--Adding Product Variant-->
+                                   
+                                   <!-- Start of user story- changes made for user story-US61129- width has been increased and hover functionality has been impnlemented---->
+
+                                   <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                                    <apex:inputText value="{!selectedProduct}" title="{!selectedProduct}" id="targetProd"  styleClass="InputProduct myMultiClass productclass" onchange="clearHiddenfields('Product');" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed }" onKeyPress="enterPress(event, '{!$Component.targetProd}', '{!$Component.targetProdId}','{!$Component.targetId}','Product','{!$Component.targetProjId}');">
+                                   
+                                   <!-- End of user story- changes made for user story-US61129 width has been increased and hover functionality has been impnlemented---->
+
+                                   <!-- Added rendered="{!!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                                   </apex:inputText>
+                                   <apex:commandLink onclick="openLookupPopup('{!$Component.targetProd}', '{!$Component.targetProdId}','{!$Component.targetId}','Product','{!$Component.targetProjId}'); return false" rendered="{!!isClosed}"><apex:image url="{!$Label.IPS_Search_Image_URI}" width="15" height="15" rendered="{!IF(mode=='edit',true,NOT(caseInformationReadOnly))}"/></apex:commandLink>
+                                </apex:outputPanel>   
+                               </apex:panelGrid>
+                       </apex:pageBlockSectionItem>
+                       
+                       <!-- Added by Sumukh for US-69781 for product variant -->
+                       <apex:pageBlockSectionItem rendered="{!blnShowVariant}" >
+                                 <apex:outputLabel value="Product Variant :" />
+                                 <apex:selectList id="Variant" value="{!SelectedVariant}" size="1" label="Product Variant" >       
+                                    <apex:selectOptions value="{!Variants}"/>      
+                                </apex:selectList>
+                         </apex:pageBlockSectionItem>
+                       <!-- End by Sumukh for US-69781 for product variant -->
+                       
+               </apex:pageBlockSection>
+                
+               <apex:pageBlockSection title="Case Information" columns="2" rendered="{!displaySelfAssigned}">
+                   <apex:pageBlockSectionItem >
+                   <apex:outputLabel value="Product:"/>
+                   <apex:panelGrid columns="2">
+                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                   <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                       <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->            
+                       <apex:inputText value="{!selectedSAProduct}" title="{!selectedSAProduct}" id="targetSAProd" disabled="{!isClosed}" styleClass="InputSAProduct productclass" onchange="clearHiddenfields('SAProduct');" onKeyPress="enterPress(event, '{!$Component.targetSAProd}', '{!$Component.targetSAProdId}',null,'',null);"/>
+                       <!-- Added rendered="{!!isClosed} by Sugandha for User Story US83594 Iteration 6 -->     
+                       <apex:commandLink onclick="openLookupPopup('{!$Component.targetSAProd}', '{!$Component.targetSAProdId}',null,'',null); return false" rendered="{!!isClosed}"><apex:image url="{!$Label.IPS_Search_Image_URI}" width="15" height="15"/></apex:commandLink>
+                   </apex:outputPanel>
+                   </apex:panelGrid>     
+                   </apex:pageBlockSectionItem>
+                  <!-- <apex:pageblockSectionItem > -->
+                   <apex:inputHidden value="{!selectedSAProductId}" id="targetSAProdId" html-object="SAProduct"/>
+                 <!--  </apex:pageblockSectionItem>-->
+               </apex:pageBlockSection> 
+           
+               <!-- Added by Amritesh - US79768 -->
+               <apex:outputPanel rendered="{!showProductRelInfoDialog}">
+                   <script>
+                   selectedProjId_Old = '{!IF(ISBLANK(selectedProjId_Old),'',selectedProjId_Old)}';
+                   fnConfirmProductChange();
+                   </script>
+               </apex:outputPanel>
+           </apex:outputPanel>
+           
+       <apex:pageblockSection title="Case Details" columns="1" rendered="{!(isAgent)}" id="cdetail">
+            <apex:repeat value="{!$ObjectType.Case.FieldSets.Core_Internal_Case_Fields}" var="f" id="rep">
+                    <apex:pageBlockSectionItem rendered="{!if(OR(f.label=='Subject',f.label=='End Customer',f.label=='Case Type',f.label=='Severity Reason'),false,true)}" helpText="{!if(f.label='Case Description',$ObjectType.Case.fields[f].InlineHelpText,'')}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:outputPanel > 
+                            <div Class="requiredInput">
+                            <div Class="requiredBlock"/>
+                        <!--<apex:inputtextarea id="textareaDescription" value="{!cs[f.fieldPath]}" richText="true" style="width:500%" rendered="{!if(f.label!='Severity',true,false)}"/>-->
+                        <!-- Added rendered="{&& !isClosed} by Sugandha for User Story US83594 Iteration 6 -->  
+                        <apex:inputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label!='Severity',true,false) && !isClosed}" />
+                        <!-- Added rendered="{&& isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                        <apex:outputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label!='Severity',true,false) && isClosed}" />
+                        <apex:inputField value="{!cs[f.fieldPath]}" rendered="{!if(AND(f.label=='Severity',OR(AND(mode != 'edit',NOT(isSalesAgent)),isSalesAgent)),true,false) && !isClosed}" id="PriorityId">
+                            <apex:actionSupport event="onchange" rerender="showSeverityReason" action="{!DisplayPriorityReason}" status="status1"/>
+                        </apex:inputField>
+                        <apex:outputText value="{!cs[f.fieldPath]}" style="width:60%" rendered="{!if(AND(f.label=='Severity',mode == 'edit',NOT(isSalesAgent)),true,false) || isClosed}"/>
+                        
+                            </div>
+                        </apex:outputPanel>     
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem rendered="{!if(f.label=='Case Type',true,false)}" helpText="{!$ObjectType.Case.fields[f].InlineHelpText}" id="pbitem">
+                       <apex:outputLabel value="{!f.label}"/>
+                       <apex:outputPanel > 
+                            <div Class="requiredInput">
+                            <div Class="requiredBlock"/>
+                                <!-- Added rendered="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                                <apex:inputField value="{!cs[f.fieldPath]}" required="{!f.required}"  id="ifield" rendered="{!!isClosed}"/> 
+                                <!-- Added outfield for closed cases by Sugandha for User Story US83594 Iteration 6 -->
+                                <apex:outputField value="{!cs[f.fieldPath]}"  id="ifield1" rendered="{!isClosed}"/>                       
+                            </div>
+                        </apex:outputPanel>                        
+                    </apex:pageBlockSectionItem> 
+                    <apex:pageBlockSectionItem rendered="{!if(f.label=='Subject',true,false)}">
+                        <apex:outputLabel value="{!f.label}"/>
+                      <!--  <apex:outputPanel >-->
+                       <apex:outputPanel styleClass="requiredInput" layout="block">
+                       <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <!--<apex:inputField value="{!cs[f.fieldPath]}" style="width:60%" rendered="{!if(mode=='edit',false,true)}"/>-->                  
+                        <!-- Added rendered="{!!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                        <apex:inputField value="{!cs[f.fieldPath]}" style="width:99%" rendered="{!!isClosed}"/> 
+                        <!-- Added outputfield for closed cases rendered="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->  
+                        <apex:outputField value="{!cs[f.fieldPath]}" style="width:99%" rendered="{!isClosed}"/>                    
+                        <!--<apex:outputText value="{!cs[f.fieldPath]}" style="width:60%" rendered="{!if(mode=='edit',true,false)}"/>-->
+                        </apex:outputPanel>
+                       <!-- </apex:outputPanel>-->
+                    </apex:pageBlockSectionItem>  
+            </apex:repeat>
+            </apex:pageblockSection>
+            <apex:outputpanel id="showSeverityReason">
+                <apex:pageblocksection rendered="{!if(DisplayPriorityReason==true,true,false)}">
+                 
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Case.fields.Core_Severity_Reason__c.InlineHelpText}">                
+                               <apex:outputLabel value="Severity Reason "/>
+                                <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                                     <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                     <!-- Added rendered="{!!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                                     <apex:inputField value="{!cs.Core_Severity_Reason__c}" rendered="{!!isClosed}"/> 
+                                     <!-- Added outputfield for closed case by Sugandha for User Story US83594 Iteration 6 -->
+                                     <apex:outputField value="{!cs.Core_Severity_Reason__c}" rendered="{!isClosed}"/> 
+                                </apex:outputPanel>                                           
+                </apex:pageBlockSectionItem>   
+                </apex:pageblocksection>
+            </apex:outputpanel>
+  
+                    
+       <apex:pageblockSection columns="1" rendered="{!(isAgent)}" id="cdetail2">
+            <apex:repeat value="{!$ObjectType.Case.FieldSets.Customer_Case_Fields_Optional}" var="f">
+                    <!-- Added rendered="{&& !isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                    <apex:pageBlockSectionItem rendered="{!if(f.label=='Case Type',false,true) && !isClosed}" helptext="{!$ObjectType.Case.fields[f].InlineHelpText}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:inputField value="{!cs[f.fieldPath]}" />
+                    </apex:pageBlockSectionItem>
+                    <!-- Added section item for closed case by Sugandha for User Story US83594 Iteration 6 -->
+                    <apex:pageBlockSectionItem rendered="{!if(f.label=='Case Type',false,true) && isClosed}" helptext="{!$ObjectType.Case.fields[f].InlineHelpText}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:outputField value="{!cs[f.fieldPath]}" />
+                    </apex:pageBlockSectionItem>
+            </apex:repeat>
+           <!-- Added rendered="{!!isClosed'} by Sugandha for User Story US83594 Iteration 6 -->
+           <apex:pageBlockSectionItem rendered="{!!isClosed}">
+               <apex:outputLabel value="{!$ObjectType.case.fields.Core_IPS_Issue_source__c.Label}"/>
+               <apex:inputField value="{!cs.Core_IPS_Issue_source__c}" />
+           </apex:pageBlockSectionItem>
+            <!-- Added section item for closed case by Sugandha for User Story US83594 Iteration 6 -->
+           <apex:pageBlockSectionItem rendered="{!isClosed}">
+                        <apex:outputLabel value="{!$ObjectType.case.fields.Core_IPS_Issue_source__c.Label}"/>
+                        <apex:outputField value="{!cs.Core_IPS_Issue_source__c}" />
+           </apex:pageBlockSectionItem>
+        <!--Added by Eswar on 08-11-2017 US72553 Iteration-2 22-12-2017 -->
+           <!-- Added rendered="{&& !isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+           <apex:pageBlockSectionItem rendered="{!!displaySelfAssigned && !isClosed}">
+                 <apex:outputLabel value="{!$ObjectType.case.fields.Core_IPS_Customer_Visible__c.Label}"/>
+                 <apex:inputField value="{!cs.Core_IPS_Customer_Visible__c}" />
+           </apex:pageBlockSectionItem>
+            <!-- Added section item for closed case by Sugandha for User Story US83594 Iteration 6 -->
+           <apex:pageBlockSectionItem rendered="{!!displaySelfAssigned && isClosed}">
+                 <apex:outputLabel value="{!$ObjectType.case.fields.Core_IPS_Customer_Visible__c.Label}"/>
+                 <apex:outputField value="{!cs.Core_IPS_Customer_Visible__c}" />
+           </apex:pageBlockSectionItem>
+           <!-- Added by Sugandha for PSA and PSO -->
+           <apex:pageBlockSection columns="1"  id="PSAPSOid" >
+           <apex:pageblockSectionItem rendered="{!displayPSO && mode='edit' && !displaySelfAssigned}">
+               <apex:outputLabel value="Partner Support Owner" style="cellspacing:0;cellpadding:0;border:0;" />
+               <apex:panelGrid columns="1" id="psoPanel">
+                   <apex:outputPanel layout="block">
+                       <apex:actionFunction name="isShowPSA" action="{!displayPSAPSO}" rerender="psaid">
+                         <apex:param name="psoId" value="{!selectedPSOId}"/>
+                       </apex:actionFunction>
+               <apex:inputtext value="{!selectedPSO}" id="targetPSO" styleClass="InputPSO" disabled="{!IF(mode=='edit',false,caseInformationReadOnly) || isClosed}" onchange="clearHiddenfields('User');" onKeyPress="enterPress(event, '{!$Component.targetPSO}', '{!$Component.targetPSOId}','{!$Component.targetId}','User','{!$Component.targetProjId}');">
+                   <apex:actionSupport event="onchange" rerender="psaid" action="{!displayPSAPSO}" status="status1"/>
+               </apex:inputtext>
+                   <apex:commandLink onclick="openLookupPopup('{!$Component.targetPSO}', '{!$Component.targetPSOId}','{!$Component.targetId}','User','{!$Component.targetProjId}'); return false" rendered="{!!isClosed}">
+                       <apex:image url="{!$Label.IPS_Search_Image_URI}" width="15" height="15" rendered="{!IF(mode=='edit',true,NOT(caseInformationReadOnly))}"/>
+                       </apex:commandLink>
+               </apex:outputPanel>   
+               </apex:panelGrid>
+           </apex:pageblockSectionItem>
+           <apex:pageblockSectionItem rendered="{!displayPSO && mode='edit' && !displaySelfAssigned}">
+               <apex:outputLabel value="Partner Support Account" />
+               <apex:selectList size="1" label="Paretner Support Account" value="{!selectedPSA}" id="psaid" disabled="{!isClosed}">       
+                     <apex:selectOptions value="{!lstPSA}"/> 
+               </apex:selectList>
+           </apex:pageblockSectionItem>
+           </apex:pageBlockSection>
+           <!-- Ends Here -->
+
+       </apex:pageblockSection>
+           
+       <apex:outputpanel id="ProductDetails"> 
+       <apex:pageblockSection title="Product/Project Info" columns="1" rendered="{!IF(selectedProductId==null,false,true) || (displaySelfAssigned && IF(selectedSAProductId==null,false,true))}">
+         
+           <apex:pageBlockSectionItem rendered="{!displayCategories}">
+                <apex:outputLabel value="Case Category:" for="category" rendered="{!categoryOptions.size>1}" />
+                <apex:actionRegion >
+                <apex:outputPanel styleClass="requiredInput" layout="block" rendered="{!categoryOptions.size>1}">
+                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+        
+                 <!-- Added disabled="{!isClosed'} by Sugandha for User Story US83594 Iteration 6 -->
+                <!-- Added JqueryDropdown class names by Karthick for User Story US80350 Iteration 7 -->                
+                <apex:selectList value="{!categorySelected}" size="1" id="category" disabled="{!isClosed}"  styleClass="{!IF(!isClosed,'cust-combobox custom-combobox', '')}">
+                    <apex:selectOptions value="{!categoryOptions}"/> 
+                    <apex:actionSupport event="onchange" action="{!getEnvDetails}" reRender="none"  status="status1" oncomplete="BindEvent();"/> 
+                </apex:selectList>
+                </apex:outputPanel>             
+                </apex:actionRegion>
+             </apex:pageBlockSectionItem>         
+        <apex:pageBlockSectionItem rendered="{!displaySubCategories}">
+         
+       
+         <apex:outputPanel id="casesubcatId">
+        <apex:outputLabel value="Case Subcategory:" rendered="{!subCategoryOptions.size>1}"/>
+        </apex:outputPanel>
+           <apex:actionRegion >
+            <apex:outputPanel id="subCategory">
+            <apex:outputPanel styleClass="requiredInput" id="SubCategorySelect" layout="block" rendered="{!subCategoryOptions.size>1}">
+                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!subCategoryOptions.size>1}"/> 
+           
+                     <!-- Added disabled="{!isClosed} by Sugandha for User Story US83594 Iteration 6 -->  
+                    <!-- Added JqueryDropdown class names by Karthick for User Story US80350 Iteration 7 --> 
+                    <apex:selectList value="{!subCategorySelected}" size="1" disabled="{!isClosed}"  styleClass="{!IF(!isClosed,'cust-combobox custom-combobox', '')}">
+                        <apex:selectOptions value="{!subCategoryOptions}"/>  
+                    <apex:actionSupport event="onchange" action="{!getEnvironmentDets}" reRender="none" status="status1" oncomplete="BindEvent();"/>
+                    </apex:selectList>
+                </apex:outputPanel>
+           </apex:outputPanel>
+            
+             </apex:actionRegion>
+         </apex:pageBlockSectionItem>
+         
+         <apex:pageBlockSectionItem rendered="{!displayPlatform}">
+        <!--<apex:outputPanel id="platform">-->
+        <apex:outputLabel value="Select Platform:" for="platform"/>
+            <!-- removed required bloack for platform by Sugandha DE37699 -->
+            <!--<apex:actionRegion >
+            
+            <!--<apex:outputPanel styleClass="requiredInput" layout="block" rendered="{!platformOptions.size>1 && !isClosed}">
+                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!platformOptions.size>1}"/>
+                <apex:outputPanel layout="block" rendered="{!platformOptions.size>1}"/>-->
+                    <apex:selectList value="{!platformSelected}" size="1" id="platform" disabled="{!isClosed}">
+                    <apex:selectOptions value="{!platformOptions}"/>  
+                    </apex:selectList>
+                <!--</apex:outputPanel>-->
+            <!--</apex:actionRegion>
+            </apex:outputPanel>-->
+         </apex:pageBlockSectionItem>
+                  
+         </apex:pageblockSection>
+         </apex:outputpanel>
+         
+           <!-- Visualforce component for Environment Detail Questions - Amritesh - US8534 - 12/18/2017  -->
+           <c:Core_IPS_Case_Creation_EDQ_Section displayEnvDetails="{!displayEnvDetails}" selectedProductId="{!selectedProductId}"
+                                                 selectedSAProductId="{!selectedSAProductId}" subCategorySelected="{!subCategorySelected}"
+                                                 envDetails="{!envDetails}" subCatenvDetList="{!subCatenvDetList}"/>
+           
+     <apex:pageBlockButtons >
+
+             <input type="button" value="Cancel" class="btn" onclick="fnConfirmBox();"/> 
+             <apex:commandButton id="saveButton" value="Submit" action="{!saveCaseDetails}" onclick="showSpinner()"/>             
+         </apex:pageBlockButtons>
+      </apex:pageblock>
+   </apex:form>
+   
+   <apex:PageBlock rendered="{!if(OR(AND(mode ='edit',isEditable),mode!='edit'),false,true)}">
+   <span style="color:red;align:center;">You have insufficient privilege to edit the Case.</span>
+   </apex:PageBlock>
+
+</apex:page>

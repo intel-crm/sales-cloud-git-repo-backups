@@ -27,8 +27,6 @@ import Core_IPS_Required from '@salesforce/label/c.Core_IPS_Required';
 import validateProduct from "@salesforce/apex/Core_IPS_BugAssistController.validateProductOrg"; // Added by Siddardha Soma as part of BugAssist
 import bugAssistSupportedProducts from '@salesforce/label/c.Core_IPS_Bug_Assist_Supported_Products'; // Added by Deepaksai as part of BugAssist
 import validateBugAssistProd from '@salesforce/apex/Core_IPS_BugAssistController.validateBugAssistProd';  // Added by Deepaksai as part of BugAssist
-import getProductOrgName from '@salesforce/apex/Core_IPS_BugAssistController.getProductOrgName';
-
 
 const contactColumns = [
 { label: 'First Name', fieldName: 'FirstName', type: 'text', sortable: 'true' },
@@ -123,6 +121,7 @@ isRequiredCategory=false;
 isRequiredSubcategory=false;
 isRequiredSubject=false;
 isRequiredState=false;
+@track isSpinner;
 notApp = { Name: 'Not Applicable' };
 @api sstLogValueTF;
 connectedCallback() {
@@ -770,6 +769,7 @@ handlesubject(event) {
         this.isSubjectEntered = false;
     }
     this.checkBugAssistEligibility();
+    // this.sstLogValueTF = undefined;
     //END - BugAssist
     this.sendDataToParent(event);
     
@@ -889,7 +889,6 @@ get sendcaseproducts() {
         this.lookupQueryStringProject = soqlQuery + queryWhereClause1Str + queryOrderByClauseStr;
         this.lookupTempQueryStringProject = soqlQuery + queryWhereClause1Str ;
         this.isLookupQueryPresentProject = true;
-        console.log('OUTPUT :  this.lookupQueryStringProject', this.lookupQueryStringProject);
         
     }
     formCaseProductLookupQuery() {
@@ -916,7 +915,9 @@ get sendcaseproducts() {
         }
         else{
             queryWhereClauseStr = '  WHERE Status!=\'Inactive\' AND core_ips_project__c = \'\'';
-        }           
+        }    
+
+        queryWhereClauseStr = queryWhereClauseStr + ' And Status!=\'Inactive\'';
         this.lookupQueryStringProduct = soqlQuery + queryWhereClauseStr + queryOrderByClauseStr;
         this.lookupTempQueryStringProduct = soqlQuery + queryWhereClauseStr ;
         this.isLookupQueryPresentProduct = true;
@@ -1040,24 +1041,9 @@ async handleChangeProduct(event) {
         this.product='';
         this.refreshSelectedProd();
     } else {
-
         //START - Added by Deepaksai as part of BugAssist
-        // Get Product Org Name from Apex using Core_Product_Organization__c ID
-        let productOrgName = null;
-        try {
-            if (this.productid?.Core_Product_Organization__c) {
-                productOrgName = await getProductOrgName({ 
-                    recordId: this.productid.Core_Product_Organization__c 
-                });
-                console.log('OUTPUT : productOrgName',productOrgName);
-            }
-        } catch (error) {
-            this.error = error;
-            productOrgName = null;
-        }
         this.bugAssistSupportedProductArr = bugAssistSupportedProducts.split(',');
-        if (productOrgName && this.bugAssistSupportedProductArr.includes(String(productOrgName)) === true) {
-       // if (this.bugAssistSupportedProductArr.includes(String(this.productid?.Core_Product_Organization__r?.Name)) === true) { // Changed by tushar---- vanuability fixes
+        if (this.bugAssistSupportedProductArr.includes(String(this.productid.Core_Product_Organization__r.Name)) === true) {
             await validateBugAssistProd({
                 recordId:this.productid.Core_Supported_Product__c
             }).then((result) => {
@@ -1138,6 +1124,7 @@ handleChangeSubCategory(event) {
 
 }
 showCaseSubCategory(caseCategory) {
+    this.isSpinner= true;
     showsubCategory({
         categorySelected: caseCategory,
     }).then(result => {
@@ -1146,10 +1133,12 @@ showCaseSubCategory(caseCategory) {
             this.error = undefined;
             if (this.subcategoryoptions.length > 0) {
                 this.renderProductSubCategory = true;
+                this.isSpinner=false;
                 this.showSubCategories = true;
             }
             else{
                 this.renderProductSubCategory = false;
+                this.isSpinner=false;
                 this.showSubCategories = false;
                 this.CaseSubCategoryId = undefined;
                 this.CaseSubCategoryName = undefined;
@@ -1158,6 +1147,7 @@ showCaseSubCategory(caseCategory) {
         }
     })
         .catch(error => {
+            this.isSpinner=false;
             this.error = error;
 
         });

@@ -186,15 +186,18 @@ handleNavigationToHome(){
     initialRecords = [];
     AvailibleSearchProducts = [];
     AvailIPSProducts() {
+        console.log('OUTPUT : this.recordId',this.recordId);
         this.isSpinner = true;
         AvailableIPSProducts({ projIdfromJS: this.recordId })
             .then(result => {
                 if (result) {
+                    console.log('OUTPUT : ',result);
                     this.isSpinner = false;
                     let options = [];
                     result.forEach(eachRecord => {
                         options.push({ label: eachRecord.Name, value: eachRecord.Id });
                     });
+                    console.log('options : ',options);
                     this.availableProductOptions = options;
                     this.AvailibleSearchProducts = options;
                     this.initialRecords = options;

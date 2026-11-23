@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "b0c6717f-0a5e-4ecd-ab12-e3e66433815e",
+  "appPageId" : "7f98be8e-1884-4e83-b6cb-bc72c094a49c",
+  "configurationTags" : [ ],
+  "devName" : "Core_IPS_AttachmentUpload_LWC__c",
+  "id" : "63054906-b039-423a-970e-82630ad047b8",
+  "label" : "Attachment Upload",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-attachment-upload",
+  "type" : "route",
+  "urlPrefix" : "attachment-upload"
+}

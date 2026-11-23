@@ -1,0 +1,14 @@
+.caseviewmore{
+    position:absolute;
+    right:5px;
+    top:5px;
+}
+.scrollContainer {
+    max-height: 300px;
+    overflow: auto;
+    position: relative;
+    border: 1px solid black;
+}
+.scrollArea {
+    position: relative;
+}

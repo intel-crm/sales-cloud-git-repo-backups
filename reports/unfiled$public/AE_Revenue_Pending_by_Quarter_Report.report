@@ -10,10 +10,10 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
+        <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>ACCOUNT_NAME</field>
+        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
@@ -26,21 +26,12 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Oppty_Count__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Average</aggregateTypes>
-        <field>UNIT_PRICE</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>EXP_PRODUCT_AMOUNT</field>
     </columns>
     <columns>
@@ -55,6 +46,13 @@
     <description>Feeds AE Performance dashboard - Shows pending revenue by quarter by account</description>
     <filter>
         <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled,Deleted,On Hold,Production Win,Production Lost,Production Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -62,18 +60,18 @@
             <value>Yes</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ROLLUP_DESCRIPTION</column>
+            <column>Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Courtney Harrison,Foote,O&apos;Donnell,Swanger,Rodman,Weston,Herrmann,Descheemaeker</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Industry Sales</value>
         </criteriaItems>
         <criteriaItems>
-            <column>STAGE_NAME</column>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win</value>
+            <value>ASMO</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -85,12 +83,12 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>AE Revenue Pending by Quarter Report</name>
@@ -118,6 +116,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

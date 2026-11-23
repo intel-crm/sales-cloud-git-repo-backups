@@ -17,10 +17,6 @@
         <name>Core_Display_Order__c</name>
     </fields>
     <fields>
-        <label><!-- Feature BU --></label>
-        <name>Core_Feature_BU__c</name>
-    </fields>
-    <fields>
         <label><!-- Feature Header --></label>
         <name>Core_Feature_Header__c</name>
         <relationshipLabel><!-- Feature Sets --></relationshipLabel>

@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title={lightningCardTitle}>
+        <template if:true={isDataAvailable}>
+                <c-datatable-utility 
+                    hide-checkbox-column={hideCheckboxColumn} 
+                    show-row-number-column={showRowNumberColumn}
+                    enable-infinite-loading={enableInfiniteLoading}
+                    num-and-checkbox-both-cols={numAndCheckboxBothCols}
+                    normal-data-table={normalDataTable}
+                    records={dataToShow}
+                    columns={columns}
+                    number-of-rows-to-show={numberOfRowsToShow}
+                    height-in-rem={heightInRem}>
+                </c-datatable-utility>
+            </template>
+    </lightning-card>
+</template>

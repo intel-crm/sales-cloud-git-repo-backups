@@ -146,7 +146,7 @@ class CoreIntcErrorHandler extends LightningElement {
           if (typeof this.config === 'string') {
             parsedConfig = JSON.parse(this.config);
           }
-          this.coreConfig = {...this.coreConfig, ...parsedConfig};
+          this.coreConfig = Object.assign(this.coreConfig, parsedConfig);
         } catch (parseEx) {
           console.error('Unable to parse coreIntcErrorHandler config', parseEx, this.config);
         }

@@ -14,9 +14,5 @@
     <name>PSG-NA-SE</name>
     <opportunityAccessLevel>Read</opportunityAccessLevel>
     <parentTerritory>XPSGNA</parentTerritory>
-    <ruleAssociations>
-        <inherited>false</inherited>
-        <ruleName>PSG_NA_SE</ruleName>
-    </ruleAssociations>
     <territory2Type>Business_Unit</territory2Type>
 </Territory2>

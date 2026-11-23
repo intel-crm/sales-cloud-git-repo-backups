@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Nick Danner</description>
+    <description>EMP of Hugues Morin</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10638803_David_Long</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10679719_Nick_Danner</parentRole>
+    <parentRole>EMP_10647712_Hugues_Morin</parentRole>
 </Role>

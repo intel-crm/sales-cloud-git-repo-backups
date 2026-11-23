@@ -22,7 +22,10 @@ public String redirectUrl;
      // Return a URL where we will redirect the user
     global PageReference initiate(Map<string,string> authProviderConfiguration, String stateToPropagate) {
         final String baseUrl = URL.getSalesforceBaseUrl().toExternalForm();
+        System.debug('base url data>>>>>>'+baseUrl);
         final String url = baseUrl+authProviderConfiguration.get('Callback_URL__c') + '?state=' + stateToPropagate; 
+        System.debug(' url  data only ****************>>>>>>'+url);
+        System.debug('initiate called - url <' + url + '>');
         return new PageReference(url);
     }
         // Return a new object called AuthProviderTokenResponse.  This will contain an optional accessToken and refreshToken.
@@ -34,6 +37,7 @@ public String redirectUrl;
                                                         
         String newRefreshToken = generateRefreshToken();                                                     
         String accesstoken = retrieveToken(authProviderConfiguration);                                   
+        System.debug('state params: ' + queryParams);
         return new Auth.AuthProviderTokenResponse('Apigee',accesstoken, newRefreshToken, sfdcState);
     }
     
@@ -68,7 +72,9 @@ public String redirectUrl;
          Http http = new Http();
          HTTPResponse res = http.send(req);
          String responseBody = res.getBody();
+         System.debug('Token response: ' + responseBody);
          TokenResponse tr = (TokenResponse) (JSON.deserialize(responseBody, TokenResponse.Class));
+         System.debug('token response: ' + tr);
          return tr.access_token;
      }
     

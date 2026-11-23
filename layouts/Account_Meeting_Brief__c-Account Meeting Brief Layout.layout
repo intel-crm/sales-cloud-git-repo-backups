@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>Core_Account_Brief_Word</customButtons>
+    <customButtons>Core_Conga_Account_Brief_PPT</customButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -33,6 +35,14 @@
                 <behavior>Edit</behavior>
                 <field>Core_Executive_Brief_Title__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Core_Executive_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Executive_Other__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -56,10 +66,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Account_Meeting_End_Time__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Core_Time_Zone__c</field>
             </layoutItems>
             <layoutItems>
@@ -68,6 +74,10 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Brief_Geo__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Account_Meeting_Language__c</field>
@@ -137,12 +147,42 @@
                 <field>Core_Brief_Existing_Opportunity_1__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_1_Risk_Reason__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_1_Support_Completed__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Brief_Existing_Opportunity_2__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_2_Risk_Reason__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_2_Support_Completed__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Brief_Existing_Opportunity_3__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_3_Risk_Reason__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_3_Support_Completed__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -151,12 +191,42 @@
                 <field>Core_Brief_Existing_Opportunity_Note_1__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_1_Support_Requested__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity1_Risk_Created_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Brief_Existing_Opportunity_Note_2__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_2_Support_Requested__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_2_Risk_Created_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Brief_Existing_Opportunity_Note_3__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_3_Support_Requested__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Existing_Opportunity_3_Risk_Created_Date__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -215,98 +285,27 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <platformActionList>
-        <actionListContext>Record</actionListContext>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>NewTask</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Delete</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Clone</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>ChangeOwnerOne</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>ChangeRecordType</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>6</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_Lex_AccMeetingBrief_Share</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>7</sortOrder>
-        </platformActionListItems>
-    </platformActionList>
-    <quickActionList>
-        <quickActionListItems>
-            <quickActionName>FeedItem.TextPost</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>FeedItem.ContentPost</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>FeedItem.MobileSmartActions</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>FeedItem.LinkPost</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>FeedItem.PollPost</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>FeedItem.QuestionPost</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>FeedItem.ContentNote</quickActionName>
-        </quickActionListItems>
-    </quickActionList>
-    <relatedLists>
-        <customButtons>New_Customer_Other_Attendees</customButtons>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>Core_Customer_Contact__c</fields>
-        <fields>Core_Title__c</fields>
-        <relatedList>Core_Customer_Attendees__c.Core_Account_Meeting_Brief__c</relatedList>
-    </relatedLists>
     <relatedLists>
         <customButtons>Core_New_Meeting_Attendee</customButtons>
-        <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
         <fields>Core_Attendee_Meeting_Customer_Name__c</fields>
+        <fields>Core_Account_Meeting_Brief_Attendee_Type__c</fields>
         <fields>Core_Attendee_Meeting_Customer_Title__c</fields>
         <fields>UPDATEDBY_USER</fields>
         <fields>LAST_UPDATE</fields>
         <relatedList>Core_Account_Meeting_Attendees__c.Core_Account_Meeting__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>Core_New_Objective</customButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>Core_Account_Meeting_Brief_Objectives__c</fields>
         <fields>UPDATEDBY_USER</fields>
         <fields>LAST_UPDATE</fields>
         <relatedList>Core_Account_Meeting_Objective__c.Account_Meeting_Brief__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>Core_New_Agenda_Item</customButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>Core_Account_Management_Agenda_Presenter__c</fields>
         <fields>Core_Account_Meeting_Items_Date_and_Time__c</fields>
         <fields>UPDATEDBY_USER</fields>

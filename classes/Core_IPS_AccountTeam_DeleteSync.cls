@@ -55,7 +55,9 @@ global class Core_IPS_AccountTeam_DeleteSync implements Database.Batchable<sObje
     }
     
     global void execute(Database.BatchableContext BC, List<Core_Account_Team__c> scope) {
-        
+        System.debug('kamala scope = '+ scope);
+        System.debug('kamala BC = ' +BC);
+        //scope = (Core_Account_Team__c:{Id=a05DU000006uMSOYA2, Core_Account__c='001DU00001GmHpQYAV', Core_Team_Member__c='005DU00000GPoSAYA1'});
         SET<id> setAcctIds = new SET<id>();
         SET<id> setUserIds = new SET<id>();
         Map <String, Core_Account_Team__c> mapCustAccountTeam = new Map <String, Core_Account_Team__c>();
@@ -69,7 +71,7 @@ global class Core_IPS_AccountTeam_DeleteSync implements Database.Batchable<sObje
         
         
         try {
-            
+            System.debug('kamala scope1 '+scope);
             for (Core_Account_Team__c custTeamMember : scope) {
                 count++;                
                 if (!setAcctIds.contains(custTeamMember.Core_Account__c)) 
@@ -94,9 +96,15 @@ global class Core_IPS_AccountTeam_DeleteSync implements Database.Batchable<sObje
                 searchKey = createSearchKey(stdAcctTeam.AccountId, stdAcctTeam.UserId);
                 custMatch = mapCustAccountTeam.remove(searchKey);                
             }
-            
+            System.debug('kamala7 mapCustAccountTeam.size() = '+ mapCustAccountTeam.size());
+            System.debug('kamala 8 mapCustAccountTeam.size() > 0 = '+ (mapCustAccountTeam.size() > 0));
             if (mapCustAccountTeam.size() > 0) {
+                System.debug('kamala3 mapCustAccountTeam.size() = '+mapCustAccountTeam.size());
+                System.debug('kamala1 mapCustAccountTeam.values() ='+mapCustAccountTeam.values());
+                System.debug('kamala2 mapCustAccountTeam ='+mapCustAccountTeam);
+                
                 delete mapCustAccountTeam.values();    
+                System.debug('kamala6 mapCustAccountTeam 1 ='+mapCustAccountTeam);
                 
                 lineItem.Core_Change_Log__c+='<tr><th>Deleted AccountTeam Members</th><th>'+mapCustAccountTeam.size()+'</th></tr>';
                 lineItem.Core_Number_of_Deletes__c = mapCustAccountTeam.size();
@@ -105,6 +113,7 @@ global class Core_IPS_AccountTeam_DeleteSync implements Database.Batchable<sObje
             }    
             
         } catch (Exception e) {
+            System.debug('Catch statement');
             Insert_logexception(scope, e.getMessage());
         }
     }
@@ -140,6 +149,7 @@ global class Core_IPS_AccountTeam_DeleteSync implements Database.Batchable<sObje
         if(batchProcessing.Core_Batch_Size__c==null)
         batchProcessing.Core_Batch_Size__c=batchSize;
         batchProcessing.Core_Send_Email__c=true;
+        System.debug('kamala batchProcessing = '+ batchProcessing);
         update batchProcessing;
     }
 }

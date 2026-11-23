@@ -8,9 +8,6 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Volume__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <columns>

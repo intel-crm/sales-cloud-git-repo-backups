@@ -26,7 +26,7 @@ public with sharing class Core_IPS_EoisErrorController {
       }
       else if(ApexPages.currentPage().getParameters().get('retURL') !=null){
             // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-        retURL  =  ApexPages.currentPage().getParameters().get('retURL');  
+        retURL  =  ApexPages.currentPage().getParameters().get('retURL');
       }
       else
       {
@@ -72,7 +72,7 @@ public with sharing class Core_IPS_EoisErrorController {
         }
         return defaultmessage;
     }
-    private string returnURLUpdate()
+   /* private string returnURLUpdate()
     {
      string  retURL;
      if(userinfo.getusertype() =='Standard')
@@ -86,6 +86,19 @@ public with sharing class Core_IPS_EoisErrorController {
         else if(userinfo.getusertype() =='PowerPartner' || userinfo.getusertype() =='CustomerSuccess' || userinfo.getusertype() == 'PowerCustomerSuccess')
         {
              retURL = '/home/home.jsp';
+        }
+        else
+        {
+           retURL = '/home/home.jsp';
+        }
+      return retURL;
+    }*/
+    private string returnURLUpdate()
+    {
+     string  retURL;
+     if(userinfo.getusertype() == 'PowerCustomerSuccess'|| userinfo.getusertype() =='PowerPartner')
+        {
+            retURL = '/500/o';
         }
         else
         {

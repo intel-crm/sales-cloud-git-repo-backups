@@ -12,7 +12,7 @@
         <field>Core_Solution_Milestone__c.Core_Milestone_Focus__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
+        <field>Opportunity.Core_Opportunity_Owner_Sub_Geo__c</field>
     </columns>
     <columns>
         <field>CUST_CREATED_DATE</field>
@@ -137,11 +137,13 @@
     </params>
     <reportType>OpportunityCustomEntity$Core_Solution_Milestone__c</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

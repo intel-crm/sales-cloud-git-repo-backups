@@ -86,7 +86,7 @@ public class Core_RestAPI_Case_CreateV1_Handler{
     /******************************************** insert  Cases*****************************************************/
     //Insert the case, this will be called only if all validations passes
     public void insertCase(){
-        
+       
         Case newCase = new Case();
          if (Schema.sObjectType.Case.fields.status.isCreateable()) { //Fls create fix --Gangadhar
         	newCase.status = 'New';

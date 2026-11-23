@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>User.Core_User_Geo__c</field>
-    </columns>
-    <columns>
-        <field>User.Core_User_Sub_Geo__c</field>
-    </columns>
-    <columns>
-        <field>USER_ID</field>
-    </columns>
-    <columns>
-        <field>EMAIL</field>
-    </columns>
-    <columns>
         <field>FIRST_NAME</field>
     </columns>
     <columns>
         <field>LAST_NAME</field>
     </columns>
     <columns>
+        <field>User.Core_Login_Id__c</field>
+    </columns>
+    <columns>
         <field>PROFILE</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>USERNAME</field>
+    </columns>
+    <columns>
+        <field>ALIAS</field>
     </columns>
     <columns>
         <field>ACTIVE</field>
@@ -27,22 +27,13 @@
     <columns>
         <field>LAST_LOGIN</field>
     </columns>
-    <columns>
-        <field>User.Core_Manager__c</field>
-    </columns>
-    <columns>
-        <field>DEPARTMENT</field>
-    </columns>
-    <columns>
-        <field>ROLE</field>
-    </columns>
     <filter>
         <criteriaItems>
-            <column>User.Core_User_Profile_Name__c</column>
+            <column>EMAIL</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Data Ops</value>
+            <value>grace_my_huang@dell.com</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

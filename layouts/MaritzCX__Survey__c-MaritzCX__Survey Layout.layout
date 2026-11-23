@@ -90,6 +90,21 @@
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>MaritzCX__Contact_Id__c</fields>
+        <fields>MaritzCX__Key_Metric_1_Bar__c</fields>
+        <fields>MaritzCX__Key_Metric_2_Bar__c</fields>
+        <fields>MaritzCX__Key_Metric_3_Bar__c</fields>
+        <fields>MaritzCX__Key_Metric_4_Bar__c</fields>
+        <fields>MaritzCX__Key_Metric_5_Bar__c</fields>
+        <fields>MaritzCX__Metric_4__c</fields>
+        <fields>MaritzCX__Response_View_Link__c</fields>
+        <relatedList>MaritzCX__Survey_Response__c.MaritzCX__Survey_Id__c</relatedList>
+        <sortField>CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
         <fields>CASES.CASE_NUMBER</fields>
         <fields>CASES.CREATED_DATE_DATE_ONLY</fields>
         <fields>NAME</fields>

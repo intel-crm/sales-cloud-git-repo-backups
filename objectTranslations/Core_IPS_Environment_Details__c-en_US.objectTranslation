@@ -2,11 +2,11 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Environment Details Responses</value>
+        <value>Environment Details Response - Depreciat</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Environment Details Responses</value>
+        <value>Environment Details Responses - Depreci</value>
     </caseValues>
     <fields>
         <label><!-- Agent Only --></label>
@@ -19,7 +19,7 @@
     <fields>
         <label><!-- Case --></label>
         <name>Core_Case__c</name>
-        <relationshipLabel><!-- Environment Details Responses --></relationshipLabel>
+        <relationshipLabel><!-- Environment Details Responses - Depreci --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Question --></label>

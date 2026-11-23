@@ -1,0 +1,263 @@
+<template>
+    <template if:true={showmaincmp}>
+        <div class="slds-p-around_medium">
+            <lightning-button onclick={handleNavigateBack} variant="base" label="< Back" title="Back to dashboard"
+                class="noBorder"></lightning-button>
+        </div>
+        <div class="Mask">
+            <div class="slds-p-around_large" style="color:white">
+                <!-- <div style="font-size:28px">How to Fix Read Scan Errors during SSD Diagnostic Scan</div> -->
+                <template if:true={currentCaseData}>
+                    <div style="font-size:28px">{currentCaseData.Subject}</div>
+                    <div style="font-size:16px">{currentCaseData.Description}</div>
+                </template>
+            </div>
+            <div class="slds-grid slds-wrap slds-p-left_large" style="color:white">
+                <div class="slds-col slds-size_1-of-12" style="font-size:16px">
+                    <div style="font-weight:bold">Case No</div>
+                    <template if:true={currentCaseData}>
+                        <div>{currentCaseData.CaseNumber}</div>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_1-of-12" style="font-size:16px">
+                    <div style="font-weight:bold">Status</div>
+                    <template if:true={currentCaseData}>
+                        <div>{currentCaseData.Status}</div>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_1-of-12" style="font-size:16px">
+                    <div style="font-weight:bold">Severity</div>
+                    <template if:true={currentCaseData}>
+                        <div>{currentCaseData.Core_Severity__c}</div>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_2-of-12" style="font-size:16px">
+                    <div style="font-weight:bold">Project</div>
+                    <template if:true={currentCaseData}>
+                        <p>{currentCaseData.Core_IPS_Project_Case__c}</p>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_2-of-12" style="font-size:16px">
+                    <div style="font-weight:bold">Intel Product</div>
+                    <template if:true={currentCaseData}>
+                        <div>{currentCaseData.Core_IPS_Product_name__c}</div>
+                    </template>
+                </div>
+                <div class="slds-float_right slds-p-top_xxx-small">
+                    <input onclick={openEditModal} type="button" class="caseEditBtn" value="Edit Case"></input>
+                    <template if:false={isCaseClosed}>
+                        <input onclick={openCsModal} type="button" class="caseCloseBtn" value="Close Case"></input>
+                    </template>
+                </div>
+                <!--Anil-->
+                <!-- <lightning-button variant="success" label="Approve" title="Approve" onclick={handleApprove} icon-name="utility:copy"
+            class="slds-p-around_xxx-small"></lightning-button> -->
+                <!-- <button>
+                <lightning-icon icon-name="utility:copy" alternative-text="close" variant="inverse" size="small" ></lightning-icon>
+            </button> -->
+                <br></br>
+                <div style="margin-top: 5px; padding-left:15px;">
+                    <lightning-button-icon icon-name="utility:copy" alternative-text="Copy" title="Copy"
+                        class="slds-m-left_xx-small" variant="border-filled" onclick={showCopy}></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:print" alternative-text="Print" title="Print"
+                        class="slds-m-left_xx-small" variant="border-filled" onclick={showPrint}>
+                    </lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:download" alternative-text="Export" title="Export PDF"
+                        class="slds-m-left_xx-small" variant="border-filled" onclick={showExportPDF}>
+                    </lightning-button-icon>
+                </div>
+            </div>
+            <!-- Display Modal - Close Case -->
+            <template if:true={isModalOpen}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <span class="slds-p-bottom_xx-large slds-p-top_large slds-align_absolute-center"
+                                style="font-size:large;">
+                                Are you sure you want to close this case?
+                            </span>
+                            <div class="slds-align_absolute-center">
+                                <input onclick={closeCsModal} type="button" class="caseEditBtn" value="Cancel"></input>
+                                <input onclick={closeTheCase} type="button" class="caseCloseBtn"
+                                    value="Close the Case"></input>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+            <template if:true={isEditCase}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close" onclick={closeEditModal}>
+                                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                    size="small"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <div class="slds-clearfix">
+                                <div class="slds-float_left slds-p-left_medium">
+                                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Case
+                                        &nbsp;{currentCaseData.CaseNumber}</h2>
+                                </div>
+                                <div class="slds-float_right slds-p-right_large">
+                                    <button class="slds-button slds-button_brand" onclick={submitDetails}
+                                        title="Save">Save Changes</button>
+                                </div>
+                            </div>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">Subject</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3">
+                                    <lightning-input class="inputs" onchange={doSomething}></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">Case Description</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3"></br>
+                                    <lightning-input-rich-text class="inputs"></lightning-input-rich-text>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">Case Type</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3">
+                                    <span>
+                                        <lightning-combobox class="inputs" name="CaseType" value={value}
+                                            placeholder="Please Select" options={CaseTypeOptions}
+                                            onchange={handleChange}></lightning-combobox>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">Severity</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <span>
+                                        <lightning-combobox class="inputs" name="Severity" value={severityValue}
+                                            placeholder="Please Select" options={caseSeverityoptions}
+                                            onchange={handleChange}></lightning-combobox>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">Customer Reference ID</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3"></br>
+                                    <lightning-input class="inputs"></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">End Customer</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3"></br>
+                                    <lightning-input class="inputs"></lightning-input>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="slds-grid slds-wrap">
+                                <div class="headline slds-col">
+                                    <span>
+                                        Product/Project Info
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">Case Category</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3">
+                                    <span>
+                                        <lightning-input class="inputs"></lightning-input>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">Case Subcategory</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3">
+                                    <span>
+                                        <lightning-input class="inputs"></lightning-input>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="slds-grid slds-wrap">
+                                <div class="headline slds-col">
+                                    <span>
+                                        Environmental Details
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">BKC or SW Version</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3">
+                                    <span>
+                                        <lightning-input class="inputs"></lightning-input>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">Does this ticket contain OEM proprietary information</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3">
+                                    <span>
+                                        <lightning-combobox class="inputs" options={OEMOptions} value={OEMValue}>
+                                        </lightning-combobox>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-grid slds-size_1-of-3">
+                                    <p class="subHeadline">Proprietary Justification (If Yes)</p>
+                                </div>
+                                <div class="slds-col slds-grid slds-size_2-of-3">
+                                    <span>
+                                        <lightning-input class="inputs"></lightning-input>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+        </div>
+        <!-- Tab Navigation -->
+        
+        <!-- Case Comment Section -->
+        
+            </template>
+        <!-- Case Information Section -->
+        
+
+        
+        
+            
+
+       
+
+    </template>
+    
+    
+    
+   
+</template>

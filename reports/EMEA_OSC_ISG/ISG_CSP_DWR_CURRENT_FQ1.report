@@ -64,7 +64,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>EMEA OSC DWR FQ - CSP</name>
+    <name>ISG CSP DWR CURRENT FQ</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -87,7 +87,9 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

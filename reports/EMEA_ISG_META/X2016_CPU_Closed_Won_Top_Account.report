@@ -17,6 +17,9 @@
         <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Deal: Sell-with</sourceValue>
+            </sourceValues>
             <value>Sell With</value>
         </values>
         <values>

@@ -1,0 +1,3 @@
+<apex:page standardController="Case" extensions="Core_IPS_CaseNotification_Controller" showHeader="false" applyHtmlTag="false">
+ <!-- <apex:outputText style="color:green;font-size:1.7vw;" value="{!message}"></apex:outputText> -->
+</apex:page>

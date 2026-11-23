@@ -154,6 +154,19 @@
         <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Contact_Name__c</fields>
+        <fields>CASES.SUBJECT</fields>
+        <fields>CASES.STATUS</fields>
+        <fields>Core_Sub_Status__c</fields>
+        <fields>OWNER_NAME</fields>
+        <fields>Core_IPS_Assigned_Queue__c</fields>
+        <fields>PRODUCT.NAME</fields>
+        <fields>Core_IPS_Product_Org1__c</fields>
+        <fields>Core_IPS_Project_Case__c</fields>
+        <relatedList>Case.Core_IPS_Backend_System__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>

@@ -9,7 +9,7 @@
 * Rangesh Kona	  -  Aug 31st, 2017  bug: capture Inbound Message to Integration Inbound Object
 *************************************************************************************/
 
-public without sharing class Core_SSR_Controller {
+public class Core_SSR_Controller {
     public String opportunity_id{get;set;}
     public String opportunity_name{get;set;}
     public String Support_Request_Type{get;set;}	  // SSG Support Request Type
@@ -73,44 +73,51 @@ public without sharing class Core_SSR_Controller {
     public boolean performValidations() {    
         runAction = true;
         if (Support_Request_Type == null || Support_Request_Type == '' || Support_Request_Type == 'None') {
+            // system.debug('Support Request is null');
             runAction = false;
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.Label.Core_SSR_Support_Request_Error));
             
         }
         if (Subject == null || Subject == '') {
+            // system.debug('Subject is null');
             runAction = false;
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.Label.Core_SSR_Subject_Error));
             
         }
         if (Description == null || Description == '') {
+            // system.debug('Description is null');
             runAction = false;
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.Label.Core_SSR_Description_Error));
             
         }
         if (deadlineForResults == null)  {
+            // system.debug('Deadline for date is null');
             runAction = false;
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.Label.Core_SSR_Deadline_Error));
             
         }
         if (User_Agreed_to_Share_Opty == null || User_Agreed_to_Share_Opty == false) {
+            // system.debug('User_Agreed_to_Share_Opty is null');
             runAction = false;
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.Label.Core_SSR_Opportunity_Checkflag_Error));
         }     
+        // System.debug('Validation successful' + runAction);           
         return runAction;
     }
     
     
     /* Create Sales Support request record */
     public void InsertSSRRecord() {  
+        // System.debug('Insert SSR Record' + subject + 'end');
         Date deadLineForResults = dummy_obj_for_date.Core_DRD_Deadline_for_Results__C;
         Id recordTypeId = Schema.SObjectType.Core_Sales_Support_Request__c.getRecordTypeInfosByName().get(System.Label.Core_SSR_Record_Type).getRecordTypeId();
         
         // truncate in case if user enter more than 1000 characters
         if( description.length() > 1000 ) { description = description.substring(0,1000);}
-        // String.escapeSingleQuotes added to opportunity_id for security
+        
         Core_Sales_Support_Request__C SMGSupportRequest = 
             new Core_Sales_Support_Request__C(Core_DRD_Description__c = description, 
-                                              Core_Opportunity__C = String.escapeSingleQuotes(opportunity_id),
+                                              Core_Opportunity__C = opportunity_id,
                                               Core_DRD_Request_Type__c=Support_Request_Type,
                                               Core_DRD_Subject__c=subject,
                                               Core_DRD_Deadline_for_Results__C=deadLineForResults,
@@ -168,10 +175,10 @@ public without sharing class Core_SSR_Controller {
         String SSR_Requestor_Name = UserInfo.getName();
         String SSR_Requestor_Email = UserInfo.getUserEmail();
         Date deadLineForResults = dummy_obj_for_date.Core_DRD_Deadline_for_Results__C;
-        // String.escapeSingleQuotes added to opportunity_id for security
+        
         SSR_JSON =            
             '{"SupportRequest":[ {' +
-            '"Opportunity_Id"   : "' + String.escapeSingleQuotes(opportunity_id) + '",' +
+            '"Opportunity_Id"   : "' + opportunity_id + '",' +
             '"Support_Request_Id"   : "' + smgSSRName + '",' +
             '"Support_Request_Type"    : "' + Support_Request_Type  + '",' +
             '"Requestor"    : "' + userId  + '",' +

@@ -1,0 +1,5 @@
+<apex:page controller="Core_IPS_chdController">
+    <apex:form >
+        <apex:commandButton value="export" action="{!export}"/>   
+    </apex:form>
+</apex:page>

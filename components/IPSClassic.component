@@ -1,0 +1,76 @@
+<apex:component ><div id="search" class="CoveoBox" data-design="new">
+    <div class="CoveoFolding"></div>
+    <div class='CoveoAnalytics'></div>
+    <div class='coveo-box-query-section'>
+        <div class="CoveoBoxQuerySome" data-include="Subject"></div>
+    </div>
+    <div class='CoveoBoxHeader' data-open-sub-section-by-default="false">
+        <div class="CoveoShareQuery">
+        </div>
+        <div class="CoveoPreferencesPanel">
+            <div class="CoveoResultsPreferences">
+            </div>
+            <div class="CoveoResultsFiltersPreferences">
+            </div>
+        </div>
+        <div class='coveo-box-popups-section'>
+            <div class='coveo-tab-section coveo-inline-tab-section'>
+                <a class="CoveoTab" data-id="All" data-caption="All Content"></a>
+                <a class="CoveoAttachedResultsTab" data-id="AttachedResults" data-caption="Attached results"></a>
+                <div class='CoveoBoxPopup' data-hidden="true" data-full-height="true" data-full-width="true" data-title='Facets'>
+                    <div class="coveo-box-facet-column">
+                        
+                        <div class="CoveoDynamicFacetManager">
+                          <div class="CoveoDynamicFacet" data-title="Type" data-field="@objecttype" data-tab="All"></div>
+<div class="CoveoDynamicFacet" data-title="FileType" data-field="@filetype" data-tab="All"></div>
+<div class="CoveoDynamicFacet" data-title="Author" data-field="@author" data-tab="All"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='CoveoBoxPopup' data-hidden="true" data-title='Relevance'>
+                    <div class='CoveoBoxCurrentSort'></div>
+                    <div class="coveo-sort-section">
+                        <span class="CoveoSort" data-sort-criteria="relevancy" data-caption="Relevance"></span>
+<span class="CoveoSort" data-sort-criteria="date descending,date ascending" data-caption="Date"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="coveo-box-settings">
+                <a class='CoveoBoxExpandLink' target="_blank"></a>
+                <a class='CoveoBoxEditLink' target="_top"></a>
+                <a class='CoveoBoxCreateArticle' target="_blank"></a>
+            </div>
+            <div class="CoveoBoxQuerySummary"></div>
+        </div>
+    </div>
+    <div class="CoveoTriggers"></div>
+    <div class="CoveoBreadcrumb"></div>
+    <div class="CoveoDidYouMean"></div>
+    <div class="CoveoErrorReport"></div>
+    <div class='CoveoBoxBody'>
+        <script id="Default" class="result-template" type="text/html"   ><div class="coveo-result-frame">
+  <div class="coveo-result-row">
+    <div class="coveo-result-cell coveo-no-wrap" style="vertical-align: middle;">
+      <span class="CoveoIcon" data-small="true"></span>
+      <a class="CoveoSalesforceResultLink"></a>
+    </div>
+    <div class="coveo-result-cell" style="text-align: right; padding-right: 5px; width: 124px; vertical-align: middle; font-size: 12px;">
+      <span class="CoveoAttachToCase" data-display-text="false"></span>
+      <span class="CoveoFieldValue" data-field="@date" data-helper="dateTime"></span>
+    </div>
+    <div class="coveo-result-cell" style="width: 20px; vertical-align: middle; text-align: right;">
+      <div class="CoveoBoxResultAction">
+        <div class="CoveoBoxQuickview"></div>
+        <div class="CoveoBoxAttachToCase"></div>
+      </div>
+    </div>
+  </div>
+  <div class="coveo-result-row">
+    <div class="coveo-result-cell coveo-no-wrap">
+      <span class="CoveoExcerpt"></span>
+    </div>
+  </div>
+</div>
+</script>
+    </div>
+</div></apex:component>

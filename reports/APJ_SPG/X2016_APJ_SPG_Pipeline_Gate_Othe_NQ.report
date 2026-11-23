@@ -501,6 +501,9 @@
         <field>Opportunity.Core_Lead_Notes__c</field>
     </columns>
     <columns>
+        <field>Opportunity.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
     <columns>
@@ -972,6 +975,9 @@
         <field>Account.Core_Lead_Sales_Segment__c</field>
     </columns>
     <columns>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_MAG_Value__c</field>
     </columns>
     <columns>
@@ -1305,8 +1311,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

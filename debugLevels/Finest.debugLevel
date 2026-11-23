@@ -5,10 +5,10 @@
     <callout>FINEST</callout>
     <database>FINEST</database>
     <label>Finest</label>
-    <nba>FINE</nba>
+    <nba>INFO</nba>
     <system>FINE</system>
     <validation>INFO</validation>
     <visualforce>FINER</visualforce>
-    <wave>FINEST</wave>
+    <wave>INFO</wave>
     <workflow>FINER</workflow>
 </DebugLevel>

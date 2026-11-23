@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Vikram Chauhan</description>
+    <description>EMP of Tim Lauer</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11525379_Ajay_Nijhawan</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11491695_Vikram_Chauhan</parentRole>
+    <parentRole>EMP_10061708_Tim_Lauer</parentRole>
 </Role>

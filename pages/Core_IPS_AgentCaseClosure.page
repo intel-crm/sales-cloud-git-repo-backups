@@ -11,8 +11,9 @@
 * Sumukh                      03/12/2020                  Added logic for US848571 
 ******************************************************/-->
 <apex:page standardController="Case" sidebar="false" extensions="Core_IPS_AgentCaseClosureController" >
-  <style type="text/css">
-      .inputStyle{
+  <!-- 
+    <style type="text/css">
+        .inputStyle{
             width: 250px;
       }
       .Core_IPS_Knowledge_Base_Link__c {
@@ -60,18 +61,22 @@
                         <apex:outputLabel styleClass="blue" value="{!$ObjectType.Case.Fields.Core_Sub_Status__c.Label}" />
                 		<apex:outputField value="{!Case.Core_Sub_Status__c}"/>
                     </apex:pageBlockSectionItem>
-                    <apex:pageBlockSectionItem id="pbitem" helpText="{!$ObjectType.Case.Fields.Core_Closure_Comment__c.InlineHelpText}">
+                    <apex:pageBlockSectionItem id="pbitem" helpText="{!$ObjectType.Case.Fields.Core_Closure_Comment__c.InlineHelpText}" rendered="{!$ObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Rich_Comment__c.Accessible}">
                         <apex:outputLabel styleClass="blue" value="Comment To Customer" />
                         
                         <apex:outputPanel id="Panel">
                                 <div class="requiredInput">
                                 <div class="requiredBlock"></div>
-                                    <apex:inputTextArea richText="true" Label="Comment To Customer" value="{!ClosureComments}" rows="10" styleclass="inputStyle"/>
-                                </div>
+                                    <apex:inputTextArea richText="true" Label="Comment To Customer" value="{!ClosureComments}" rows="10" styleclass="inputStyle" rendered="{!$ObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Rich_Comment__c.Accessible}" /> 
+      -->             
+      <!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
+     <!--               
+                          </div>
                         </apex:outputPanel>
                     </apex:pageBlockSectionItem>
-                   
+          -->         
                     <!-- added by sumukh for US848571 -->
+    <!-- 
                     <apex:pageBlockSectionItem id="pgblkitem" >
                        <apex:pageBlock >
                          <apex:pageBlockSection id="pb2" > 
@@ -91,8 +96,12 @@
                              <apex:outputLabel value="{!$ObjectType.case.fields.Core_IPS_CaseSource_of_Resolution__c.Label}" id="label1" >
                                <span class="helpButton" id="label1-_help">                                      
                                       <img src="/s.gif" alt="" class="helpOrb" title=""/>
-                                      <script type="text/javascript">sfdcPage.setHelp('label1', ' <b>  Level 1-- </b> Front Line Support <br/> <b> Level 2-- </b> Product Support Engineer / Application Design-In Center <br/> <b> Level 3-- </b> Product Application Engineer/Customer Product Engineer </br> <b> Engineering-- </b> Development Engineering </br> <b> FAE-- </b> Field Application Engineer  </br> <b> KDB Portal-- </b> Knowledge Database Portal </br> <b>Universal search/Coveo-- </b>Universal search/Coveo </br> <b> RDC-- </b> Resource Design Center </br> <b> VIP-- </b> Validation Internet Portal </br> <b> IPS-- </b> Intel Premier Support Tool </br> <b> TNT-- </b> Tools & Technology Design Team </br> <b> ARK-- </b> Automated Relational Knowledgebase </br> <b> MARK-- </b> Marketing  Automated Relational Knowledgebase </br> <b> QMDS-- </b> Intel® Quality Document Management System </br> <b> Others-- </b> Github, Design in Tools, Download Center, online search, etc </br> ');</script>
-                               </span> 
+                       -->
+                 <script type="text/javascript">
+    /* sfdcPage.setHelp('label1', ' <b>  Level 1-- </b> Front Line Support <br/> <b> Level 2-- </b> Product Support Engineer / Application Design-In Center <br/> <b> Level 3-- </b> Product Application Engineer/Customer Product Engineer </br> <b> Engineering-- </b> Development Engineering </br> <b> FAE-- </b> Field Application Engineer  </br> <b> KDB Portal-- </b> Knowledge Database Portal </br> <b>Universal search/Coveo-- </b>Universal search/Coveo </br> <b> RDC-- </b> Resource Design Center </br> <b> VIP-- </b> Validation Internet Portal </br> <b> IPS-- </b> Intel Premier Support Tool </br> <b> TNT-- </b> Tools & Technology Design Team </br> <b> ARK-- </b> Automated Relational Knowledgebase </br> <b> MARK-- </b> Marketing  Automated Relational Knowledgebase </br> <b> QMDS-- </b> Intel® Quality Document Management System </br> <b> Others-- </b> Github, Design in Tools, Download Center, online search, etc </br> ')*/
+                      </script>
+                          <!--   
+                             </span> 
                              </apex:outputLabel>                              
                              <apex:outputPanel >                                                                                                                                  
                                  <apex:inputField value="{!Case.Core_IPS_CaseSource_of_Resolution__c}" /> 
@@ -101,8 +110,9 @@
                          </apex:pageBlockSection>
                        </apex:pageBlock>
                      </apex:pageBlockSectionItem>
+-->
                     <!-- end by sumukh for US848571 -->
-                    
+        <!--             
                     <apex:outputpanel id="showClosureDetails">
                     <apex:pageblocksection rendered="{!if(dispClosureDetails==true,true,false)}">
                       <apex:pageBlockSectionItem >                
@@ -125,9 +135,10 @@
                       </apex:pageBlockSectionItem>   
                      </apex:pageblocksection>
                     </apex:outputpanel>
+-->
                   <!-- End by sumukh for US772726- 15/09/20 -->
                                        
-                 
+<!--                  
                     
                     <apex:repeat value="{!$ObjectType.Case.FieldSets.Core_IPS_Request_Case_Closure_FieldSet}" var="c" >
                         <apex:pageBlockSectionItem helpText="{!$ObjectType.Case.Fields[c].InlineHelpText}">
@@ -146,4 +157,5 @@
             </apex:pageBlockButtons>          
         </apex:pageBlock>
     </apex:form>  
+-->
 </apex:page>

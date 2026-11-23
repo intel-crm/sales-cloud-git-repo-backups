@@ -74,11 +74,6 @@
     <enableFeeds>false</enableFeeds>
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
-        <fullName>DataSpaceId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Description</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -186,7 +181,6 @@
         <trackHistory>false</trackHistory>
     </fields>
     <searchLayouts>
-        <customTabListAdditionalFields>DataSpace</customTabListAdditionalFields>
         <customTabListAdditionalFields>PublishType</customTabListAdditionalFields>
         <customTabListAdditionalFields>SegmentStatus</customTabListAdditionalFields>
         <customTabListAdditionalFields>LastSegmentMemberCount</customTabListAdditionalFields>
@@ -196,7 +190,6 @@
         <customTabListAdditionalFields>LastModifiedDate</customTabListAdditionalFields>
         <customTabListAdditionalFields>LastPublishedEndDateTime</customTabListAdditionalFields>
         <customTabListAdditionalFields>MarketSegmentType</customTabListAdditionalFields>
-        <lookupDialogsAdditionalFields>DataSpace</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>PublishType</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>SegmentStatus</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>LastSegmentMemberCount</lookupDialogsAdditionalFields>
@@ -206,7 +199,6 @@
         <lookupDialogsAdditionalFields>LastModifiedDate</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>LastPublishedEndDateTime</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>MarketSegmentType</lookupDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>DataSpace</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>PublishType</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>SegmentStatus</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>LastSegmentMemberCount</lookupPhoneDialogsAdditionalFields>
@@ -216,7 +208,6 @@
         <lookupPhoneDialogsAdditionalFields>LastModifiedDate</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>LastPublishedEndDateTime</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>MarketSegmentType</lookupPhoneDialogsAdditionalFields>
-        <searchResultsAdditionalFields>DataSpace</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>PublishType</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SegmentStatus</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>LastSegmentMemberCount</searchResultsAdditionalFields>

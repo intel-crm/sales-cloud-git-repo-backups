@@ -117,6 +117,7 @@ export default class Core_IPS_CustomLookup extends LightningElement {
                     splitResult = splitResult[splittedText[i]];
                 }
                 this.selectedRecordFieldlabel = splitResult;
+                console.log('120 Chetan Test',this.selectedRecordFieldlabel)
             } else {
                 this.selectedRecordFieldlabel = this.selectedRecord[this.searchfield];
             }
@@ -167,14 +168,20 @@ export default class Core_IPS_CustomLookup extends LightningElement {
                 isSosl: this.isSosl
             })
                 .then(async (result) => {
-
+                    console.log('Chetan checking results-----------> ',result);
                     if (result !== undefined && result !== null) {
+                    
                         let qString = this.queryString;
+                       
+                      
+            
                         if (qString.includes('RETURNING core_ips_project__c')) {
-
+                        
                             if (location.href.includes(PortalSiteURL)) {
+                               
 
                                 if (this.assetId != null && this.assetId != undefined && this.assetId != '') {
+                                  
                                     let NotApplicable = { "Name": "Not Applicable", "Core_IPS_Project_ID__c": null, "Id": null };
                                     let result1 = await this.getProjects(this.searchKey);
 
@@ -202,9 +209,13 @@ export default class Core_IPS_CustomLookup extends LightningElement {
                         else {
                             
                             if(this.isProj){
+                               
                                 let NotApplicable = { "Name": "Not Applicable", "Core_IPS_Project_ID__c": null, "Id": null };
+                              
                                 this.response = [NotApplicable, ...result];
-                                this.records = this.response;              
+                              
+                                this.records = this.response;  
+                                          
                             }
                             else{
                                 this.records = result;
@@ -243,9 +254,10 @@ export default class Core_IPS_CustomLookup extends LightningElement {
             }
         }
         if (this.searchKey === undefined || this.searchKey === null || this.searchKey === '' || this.searchKey === ' ') {
+
             this.records = undefined;
         }
-
+        
     }
 
 
@@ -312,9 +324,7 @@ export default class Core_IPS_CustomLookup extends LightningElement {
 
     handleOnchange(event) {
         this.searchKey = event.detail.value;
-        console.log('querystring--'+this.queryString+'\n'+this.selectedProject);
         if(this.isProd) { 
-            
             //'this.searchKey !== undefined' added by Kamala on 28-04-2026 - TWC745-9174 as part of Lightening Component exception 
             if(this.searchKey !== undefined && this.searchKey.length>0 && this.isProd){
                 this.minKeyLenMsg = false;
@@ -329,6 +339,7 @@ export default class Core_IPS_CustomLookup extends LightningElement {
                 let queryOrderByClauseStr = ' ORDER BY Name ASC';
                 
                 let queryWhereClauseStr = ' AND ( Name LIKE \'%' + this.searchKey + '%\'' + ' OR Core_IPS_Project_ID__c LIKE \'%' + this.searchKey + '%\')';
+            
                 if(this.searchKey.length>0 )
                     this.queryString = this.tempQueryString + queryWhereClauseStr + queryOrderByClauseStr ;
                 else
@@ -383,7 +394,6 @@ export default class Core_IPS_CustomLookup extends LightningElement {
                 } else {
                     
 		            if (this.searchKey.length < 3 ) {
-                        console.log('OnChangeProd - else error1');
                         this.margintopforspinner = "margin-top:-0.5rem;";
                     } else {
                         if (this.label !== undefined && this.label !== null && this.label !== '') {
@@ -399,7 +409,6 @@ export default class Core_IPS_CustomLookup extends LightningElement {
                     
                 }
                 if ( this.searchKey.length > 2) {
-                    console.log('call search');
                     clearTimeout(this.timeoutId);
                     this.timeoutId = setTimeout(this.handlelookup.bind(this), 500);
                 }

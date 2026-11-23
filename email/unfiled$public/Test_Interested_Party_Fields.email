@@ -1,0 +1,11 @@
+Active : {!Core_IPS_Case_Interested_Party__c.Active__c}, 
+
+{!IF(Core_IPS_Case_Interested_Party__c.Active__c,'True','False')} 
+
+Type :  {!Core_IPS_Case_Interested_Party__c.Type__c}
+
+IS Email Null : {!IF(ISNULL(Core_IPS_Case_Interested_Party__c.Email__c),'Yes','No')}
+
+Case Subject : {!Case.Subject}
+
+Restricted Secret Content : {!IF(Case.Core_IPS_Restricted_Secret_Content__c,'True','False')}

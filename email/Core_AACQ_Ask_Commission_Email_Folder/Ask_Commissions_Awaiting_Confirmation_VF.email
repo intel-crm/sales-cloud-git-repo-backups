@@ -1,0 +1,34 @@
+<messaging:emailTemplate subject="Case ID: {!relatedTo.CaseNumber} - Resolution provided for your Ask Commissions case" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+<apex:image id="Logo" value="https://intel--crmdevcase--c.cs92.content.force.com/servlet/servlet.ImageServer?id=0153F000000F2QC&oid=00D3F0000000Nmr&lastMod=1543355524000" />
+<apex:slds />
+<br/>
+A Commissions Office Admin has provided a resolution to your case. 
+<br/> <br/>  <br/>   
+    Case Id       : {!relatedTo.CaseNumber} <br/>
+    Status        : {!relatedTo.Status} 
+    <br/><br/><br/>
+
+<b>Click the link below to view the resolution in the “Commissions Case Comments” section.  Add a new Case Comment to acknowledge resolution, or to ask clarifying questions.</b>
+
+<br/><br/> 
+
+<apex:outputlink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Id}">{!relatedTo.CaseNumber}</apex:outputlink>
+
+<br/><br/><br/>
+
+<b>Please click below link to close this case :</b> <br/>
+
+<br/>
+
+<apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+'apex/Core_AAQC_Case_Close_Onemail?Caseid='+relatedTo.Id}"> 
+Close this case
+</apex:outputlink>
+
+<br/><br/><br/>
+If no response/Case Comment is received from you within 3-5 business days of this email we will send you one, follow up email.  If no response/Case Comment is received within 5 business days of the follow up email the case will be closed automatically. 
+<br/> <br/> <br/>
+***NOTE: Do not reply to this mail as there is no inbox being monitored***
+<br/><br/><br/><br/>    
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -8,7 +8,7 @@
     <enableCspContactVisibilityPref>false</enableCspContactVisibilityPref>
     <enableCspNotesOnAccConPref>false</enableCspNotesOnAccConPref>
     <enableExternalAccHierPref>false</enableExternalAccHierPref>
-    <enableGuestPermDisOptOutCruc>false</enableGuestPermDisOptOutCruc>
+    <enableGuestPermDisOptOutCruc>true</enableGuestPermDisOptOutCruc>
     <enableGuestSecurityOptOutCruc>false</enableGuestSecurityOptOutCruc>
     <enableGuvSecurityOptOutPref>false</enableGuvSecurityOptOutPref>
     <enableInviteChatterGuestEnabled>false</enableInviteChatterGuestEnabled>

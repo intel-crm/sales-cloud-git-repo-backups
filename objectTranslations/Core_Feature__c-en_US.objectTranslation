@@ -13,30 +13,6 @@
         <name>Core_Check_Duplicate__c</name>
     </fields>
     <fields>
-        <label><!-- Feature BU --></label>
-        <name>Core_Feature_BU__c</name>
-        <picklistValues>
-            <masterLabel>CCG</masterLabel>
-            <translation><!-- CCG --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CCG ECG</masterLabel>
-            <translation><!-- CCG ECG --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DCAI</masterLabel>
-            <translation><!-- DCAI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>NTG</masterLabel>
-            <translation><!-- NTG --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PSG</masterLabel>
-            <translation><!-- PSG --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Long ID --></label>
         <name>Core_Feature_Long_ID__c</name>
     </fields>

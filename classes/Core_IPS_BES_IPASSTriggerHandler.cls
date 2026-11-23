@@ -7,7 +7,7 @@
 ************************************************/
 
 
-public without sharing class Core_IPS_BES_IPASSTriggerHandler {
+public class Core_IPS_BES_IPASSTriggerHandler {
   private static boolean run = true;
   public static Core_IPS_Backend_Field_Map__c fmap;  
   public static Boolean show{get;set;}

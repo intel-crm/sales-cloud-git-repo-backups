@@ -185,6 +185,7 @@
                 <operation>equals</operation>
                 <value>True</value>
             </filterItems>
+            <infoMessage>select owner</infoMessage>
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>User</referenceTo>

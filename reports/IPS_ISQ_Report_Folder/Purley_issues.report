@@ -4,7 +4,7 @@
         <field>OWNER</field>
     </columns>
     <columns>
-        <field>Case.Core_Hot_Issue_Qts_5__c</field>
+        <field>Case.Core_IPS_HC_Help_Needed__c</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Legacy_IPS_ID__c</field>
@@ -136,7 +136,7 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>Case.Core_Hot_Issue_Qts_3__c</field>
+        <field>Case.Core_IPS_HC_Latest_Update__c</field>
     </columns>
     <columns>
         <field>Case.core_Account_Name__c</field>

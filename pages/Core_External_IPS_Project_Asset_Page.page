@@ -1,0 +1,15 @@
+<!--------------------------------------------------------------------------------------------------------------------------------------
+* Page Name  : Core_External_IPS_Project_Asset_Page
+* Version     : 1.0
+* Created Date: 8 Feb 2018
+* Modification Log :
+* Developer                 Date                    Description
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* Team: PopcornApps         2/8/2018               Page to validate Project status and redirct to  add products to Project page 
+----------------------------------------------------------------------------------------------------------------------------------------->
+<apex:page standardController="Asset"  recordSetVar="placeHolderRecordSetVar" extensions="Core_External_IPS_Project_Asset" action="{!redirectPage}" >
+    <apex:pageMessages />  
+    <apex:form >
+        <apex:commandButton action="{!returnToProject}" value=" Return to Project " id="theButton"/>
+    </apex:form>
+</apex:page>

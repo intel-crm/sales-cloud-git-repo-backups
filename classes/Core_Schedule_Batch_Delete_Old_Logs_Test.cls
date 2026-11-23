@@ -18,7 +18,7 @@ public class Core_Schedule_Batch_Delete_Old_Logs_Test {
         Test.setCreatedDate(outboundObject[0].Id, yesterday);
         outboundObject[0].core_IPS_Outbound_Message_ID__c = '123';
         outboundObject[0].Core_IPS_Case_ID__c = ''; 
-        outboundObject[0].Status__c = 'Apigee Success';
+       	outboundObject[0].Status__c = 'Apigee Success';
         update outboundObject;
         
         Test.startTest();

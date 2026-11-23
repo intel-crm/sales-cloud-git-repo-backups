@@ -7,9 +7,6 @@
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
     <columns>
-        <field>ADDRESS1_COUNTRY_CODE</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -43,6 +40,9 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
+        <field>OPP_QUANTITY</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Product_Count__c</field>
     </columns>
     <columns>
@@ -61,10 +61,19 @@
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>
+        <field>Core_Solution_Milestone__c.Core_Use_Case__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Segments__c</field>
+    </columns>
+    <columns>
         <field>Core_Solution_Milestone__c.Core_Milestone_Focus_Area__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Sales_Group__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
     </columns>
     <description>ISG Pipeline for AMT Activations</description>
     <filter>
@@ -128,10 +137,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>OPPORTUNITY_ID</sortColumn>
-    <sortOrder>Asc</sortOrder>
+    <sortColumn>Core_Solution_Milestone__c.Core_Use_Case__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_Solution_Milestone__c.Core_KPI_Milestone_Date__c</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

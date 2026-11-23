@@ -65,7 +65,7 @@
     </columns>
     <description>Weekly Issue Volume (8 Weeks) with breakdown by Product</description>
     <filter>
-        <booleanFilter>((1 or 2 or 3 or 4 or 5 or 6 or 7))</booleanFilter>
+        <booleanFilter>(1 or 2 or 3 or 4 or 5 or 6)</booleanFilter>
         <criteriaItems>
             <column>Case.Core_IPS_Product_name__c</column>
             <columnToColumn>false</columnToColumn>
@@ -107,13 +107,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Smart Lighting*</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Product_name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Health Application Platform</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

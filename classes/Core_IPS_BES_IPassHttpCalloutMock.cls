@@ -8,12 +8,12 @@
 @isTest
 global class Core_IPS_BES_IPassHttpCalloutMock implements HttpCalloutMock{
      global HTTPResponse respond(HTTPRequest request){
-       HttpResponse response = new HttpResponse();
-       if(request.getEndpoint() == System.Label.Core_IPS_BES_Post_URL){
+        HttpResponse response = new HttpResponse();
+		if(request.getEndpoint() == System.Label.Core_IPS_BES_Post_URL){
             response.setHeader('Content-Type', 'application/json');
             response.setBody('Data sent to Ipass');
             response.setStatusCode(200);
-        }
+        }/*Apex SFDX deployment test 15&17122025*/
         else if(request.getEndpoint() == System.Label.Core_IPS_BES_Post1_URL){
             response.setHeader('Content-Type', 'application/json');
             response.setBody('Data not sent to Ipass');

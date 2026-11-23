@@ -69,9 +69,12 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
     {
          Map<Id, Case> csMapUpdate = new Map<Id, Case>();
         List<case> listCase = new List<case>();
+        /*Set<string> articleTypeSupportOrg = new Set<String>();        
+        articleTypeSupportOrg.addAll(Label.Core_IPS_ArticleType_SupportOrg.split(','));*/
         try
         {
-            for(Case cs : caseList){         
+            for(Case cs : caseList){    
+                System.debug('cs.Core_IPS_Assigned_Queue__c inside main routing:' + cs.Core_IPS_Assigned_Queue__c);
                 if(cs.status == null || !(cs.status.equalsignorecase('Closed'))){
                     if(cs.Core_IPS_gec_flag__c == null || cs.Core_IPS_gec_flag__c == false || ( cs.Core_IPS_gec_flag__c ==  true && (cs.Core_IPS_gec_status__c != null  && cs.Core_IPS_gec_status__C.contains('Approved')))){
                         if((oldMap.get(cs.Id).Core_IPS_New_Backend_System__c == Null && (cs.core_IPS_BES_promote_status__c ==  Null || !(cs.core_IPS_BES_promote_status__c.equalsignorecase('Done') || cs.core_IPS_BES_promote_status__c.equalsignorecase('Sent Successfully'))))){
@@ -85,6 +88,12 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
                         csMapUpdate.put(cs.id, cs);   
                     } 
                 }
+                //Added by Pavani to populated the Core_IPS_HSD_Article_Type__c field value with Case Type value for org 006 cases in the update scenario - 20/05/2024
+                /*if(cs.Core_CaseType__c!=null && oldMap.get(cs.Id).Core_IPS_Product_Org_Number__c != cs.Core_IPS_Product_Org_Number__c && articleTypeSupportOrg.contains(cs.Core_IPS_Product_Org_Number__c)){
+                    cs.Core_IPS_HSD_Article_Type__c	 = cs.Core_CaseType__c;
+                }*/
+                System.debug('cs.OwnerId after setting to inProgrss and before update: '+ cs.OwnerId);
+                //End - 20/05/2024
             }
              if(csMapUpdate!= null && csMapUpdate.size()>0){
                 update csMapUpdate.values(); 
@@ -119,6 +128,7 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
         Map<Id,ID> caseIDSpIDMap = new MAP<Id, ID>();   
         try{      
             for(Case cs: ListCase){
+                System.debug('cs.Core_IPS_Assigned_Queue__c inside getBackendId:' + cs.Core_IPS_Assigned_Queue__c);
                 if(cs.id==null){
                     continue; 
                 } 
@@ -141,7 +151,7 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
                 Map<Id, List<Core_IPS_Response__c>> caseIdToResponsesMap = new Map<Id, List<Core_IPS_Response__c>>();
                 
                 if(case.SObjectType.getDescribe().isAccessible()){
-		   //APEX GURU - SOQL FIX
+		      //  Added by Chiru - 20-08-24 - APEX GURU - SOQL FIX
                     Map<Id, Case> csListMap = new Map<Id, Case>(csList);
                     caseListWithReponseRecs =  [SELECT Id,  
                                                        (SELECT Id,  Name,  Core_IPS_Case__c, Core_IPS_Answer_Master__c, Core_IPS_Answer__c,  Core_IPS_Question_Master__c, Core_IPS_Question_Master__r.Name,  Core_IPS_Question__c 
@@ -160,11 +170,9 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
                                 caseIdToResponsesMap.put(caseRecord?.Id, caseRecord?.Core_IPS_Responses__r);
                 }
                 if(Core_IPS_Backend_Routing__c.SObjectType.getDescribe().isQueryable()){
-                    //Moved the query to without sharing class - Nuthana -- vanuability
-                    /*mapsupptBackend = [Select Id, Core_IPS_Backend_Routing_Order__c, Core_IPS_Auto_Promote__c, Core_IPS_Deactivated__c, Core_IPS_New_Backend_System__c,Core_IPS_New_Backend_System__r.Name,Core_IPS_New_Backend_System__r.Support_Environment_Detail_Criteria__c, 
+                    mapsupptBackend = [Select Id, Core_IPS_Backend_Routing_Order__c, Core_IPS_Auto_Promote__c, Core_IPS_Deactivated__c, Core_IPS_New_Backend_System__c,Core_IPS_New_Backend_System__r.Name,Core_IPS_New_Backend_System__r.Support_Environment_Detail_Criteria__c, 
                                        Core_IPS_Support_Organization__c,Core_IPS_Supported_Product__r.Name, Core_IPS_Routing_Casetype__c, Core_IPS_Product__c,Environment_Detail_Question__c, Environment_Detail_Question__r.Name, Environment_Detail_Question__r.Core_IPS_Question__c, Environment_Question_Answer__c, Core_IPS_Queue__c, Core_IPS_Supported_Product__c 
-                                       From Core_IPS_Backend_Routing__c Where Core_IPS_Deactivated__c=false AND Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c = false ORDER BY Core_IPS_Backend_Routing_Order__c Asc Limit 1000];*/
-                     mapsupptBackend = (List<Core_IPS_Backend_Routing__c>)Core_IPS_QueryService.queryRecords('SELECT Id, Core_IPS_Backend_Routing_Order__c, Core_IPS_Auto_Promote__c, Core_IPS_Deactivated__c, ' +     'Core_IPS_New_Backend_System__c, Core_IPS_New_Backend_System__r.Name, Core_IPS_New_Backend_System__r.Support_Environment_Detail_Criteria__c, ' +     'Core_IPS_Support_Organization__c, Core_IPS_Supported_Product__r.Name, Core_IPS_Routing_Casetype__c, Core_IPS_Product__c, ' +     'Environment_Detail_Question__c, Environment_Detail_Question__r.Name, Environment_Detail_Question__r.Core_IPS_Question__c, ' +     'Environment_Question_Answer__c, Core_IPS_Queue__c, Core_IPS_Supported_Product__c ' +     'FROM Core_IPS_Backend_Routing__c ' +     'WHERE Core_IPS_Deactivated__c = false AND Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c = false ' +     'ORDER BY Core_IPS_Backend_Routing_Order__c ASC LIMIT 1000',     new Map<String, Object>()); // Empty bind map since there are no variable fi;
+                                       From Core_IPS_Backend_Routing__c Where Core_IPS_Deactivated__c=false AND Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c = false ORDER BY Core_IPS_Backend_Routing_Order__c Asc Limit 1000];
                     
                     Map<Id, List<Core_IPS_Backend_Routing__c>> suppProdToRoutMap = new Map<Id,List<Core_IPS_Backend_Routing__c>>();
                     for(Core_IPS_Backend_Routing__c route: mapsupptBackend){
@@ -198,9 +206,9 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
                     for(Case cs : csList){
                      
              //          if(cs.Core_IPS_Assigned_Queue__c != null ){
-                        // Modified key1 by chetan to fix CCG routing for queue based routing critria
-                           // key1 = String.isNotBlank(cs.Core_IPS_Assigned_Queue__c) ? cs.Core_IPS_Assigned_Queue__c: '';
-                          	key1 = String.isNotBlank(cs.Core_IPS_Assigned_Queue__c) ? cs.Core_IPS_Assigned_Queue__c : (String.valueOf(cs.OwnerId).startsWith('OOG') ? cs.OwnerId : '');
+             //          Modified key1 by chetan for CCG related issue.
+             	            key1 = String.isNotBlank(cs.Core_IPS_Assigned_Queue__c) ? cs.Core_IPS_Assigned_Queue__c : (String.valueOf(cs.OwnerId).startsWith('OOG') ? cs.OwnerId : '');
+                            //key1 = String.isNotBlank(cs.Core_IPS_Assigned_Queue__c) ? cs.Core_IPS_Assigned_Queue__c: '';
                             key2 = ((cs.Core_IPS_Ext_Supported_Product__c != null) ? cs.Core_IPS_Ext_Supported_Product__c : '');
                             key3 = ((cs.Core_Product_Organization__c != null) ? cs.Core_Product_Organization__c :'');
                             key4 = ((cs.Core_CaseType__c != null) ? cs.Core_CaseType__c : '');
@@ -218,11 +226,16 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
                                       
                                       
                                       
-                                       Boolean isEDQFilterMatchfound = checkEDQFilterCriteria(route,  caseIdToResponsesMap.get(cs.Id), suppProdToRoutMap);
+                                    Boolean isEDQFilterMatchfound = checkEDQFilterCriteria(route,  caseIdToResponsesMap.get(cs.Id), suppProdToRoutMap);
                                     if(!isEDQFilterMatchfound)
                                         break;
                                 } 
                                 //EDQ Ceriteria logic Ends
+                                /*System.debug('Chiru RePromote before Stamp calling current bk :'+ cs.Core_IPS_New_Backend_System__c);
+                                System.debug('Chiru RePromote before Stamp calling old Map :'+ oldMap.get(cs.id).Core_IPS_New_Backend_System__c);
+                                System.debug('Chiru RePromote before Stamp calling route ' +route.Core_IPS_New_Backend_System__c);
+                                if(oldMap == null || ( oldMap != null && route.Core_IPS_New_Backend_System__c != oldMap.get(cs.Id).Core_IPS_New_Backend_System__c) )// added by chiru
+                                    system.debug('Chiru Inside Block');*/
                                 stampBackendID(route, cs);
                                 break;
                             } 
@@ -256,6 +269,7 @@ public with Sharing class Core_IPS_BES_CasePromotion_Handler {
     }
     public static Map<Id, Case> stampBackendID(Core_IPS_Backend_Routing__c route, Case cs)
     {    
+        System.debug('cs.Core_IPS_Assigned_Queue__c inside stampBackendId:' + cs.Core_IPS_Assigned_Queue__c);
         Map<ID, Case> csMap = new Map<ID, Case>();
         
         try {

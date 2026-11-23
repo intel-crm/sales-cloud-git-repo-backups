@@ -128,17 +128,17 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
         <content>Premier_Support_Project_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
         <content>Premier_Support_Project_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -151,6 +151,7 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
     <enableBulkApi>false</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
@@ -298,13 +299,20 @@
         <fullName>Core_Supported_Product__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Preventing PAR Hidden Or EOIS Products from being selected on Project</description>
+        <inlineHelpText>Do not select EOIS or PAR Hidden products</inlineHelpText>
         <label>Supported Product</label>
         <lookupFilter>
             <active>true</active>
+            <booleanFilter>(1 OR 2)</booleanFilter>
             <filterItems>
-                <field>Core_IPS_Supported_Product__c.Core_Product__c</field>
-                <operation>notEqual</operation>
-                <value></value>
+                <field>Core_IPS_Supported_Product__c.Core_Flag_Status__c</field>
+                <operation>notContain</operation>
+                <value>EOIS</value>
+            </filterItems>
+            <filterItems>
+                <field>Core_IPS_Supported_Product__c.Core_Flag_Status__c</field>
+                <operation>notContain</operation>
+                <value>Par Hidden</value>
             </filterItems>
             <infoMessage>1. Please select All fields radio button for proper search
 2. Do not select EOIS or PAR Hidden products.</infoMessage>
@@ -325,6 +333,17 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>New_Lookup__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Premier_Support_Project_Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Product_Application__c</fullName>
@@ -366,7 +385,45 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
+    <fields>
+        <fullName>X3sec__c</fullName>
+        <formula>LastModifiedDate + (63 / 86400)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>3sec</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>test__c</fullName>
+        <formula>AND( Core_IPS_Project__r.Core_Number_of_Accounts__c &gt;0, Core_IPS_Project__r.Core_Number_of_Products__c&gt;0 , Core_IPS_Project__r.Core_Number_of_Users__c&gt;0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>test</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Premier Support Project Product</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Intel_Product__c</columns>
+        <columns>Core_Intel_Product_Status__c</columns>
+        <columns>Is_Approved__c</columns>
+        <columns>Core_Supported_Product__c</columns>
+        <columns>Core_Supported_Product_Name__c</columns>
+        <columns>Core_IPS_Prodcut_Org__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Core_IPS_Product_Name__c</columns>
+        <columns>Core_IPS_Product_Status__c</columns>
+        <columns>Status__c</columns>
+        <columns>Product_Application__c</columns>
+        <columns>Core_IPS_Project__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <displayFormat>PN-{0000000}</displayFormat>
         <label>Project Product Name</label>
@@ -439,7 +496,16 @@
             </values>
         </picklistValues>
     </recordTypes>
-    <searchLayouts/>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Core_IPS_Product_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Prodcut_Org__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Product_Application__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Core_IPS_Prodcut_Org__c</searchFilterFields>
+        <searchResultsAdditionalFields>Product_Application__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Prodcut_Org__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Product_Name__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
         <fullName>Core_IPS_PreventParHidden</fullName>
@@ -489,6 +555,18 @@
         <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Add_Products_for_External_Customers</fullName>
+        <availability>online</availability>
+        <description>For IPS external users</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Products</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>window.location =&quot;/IPS/Core_ExternalUser_IPS_Project?id={!Core_IPS_Project__c.Id}&amp;projOwnerId={!Core_IPS_Project__c.CreatedById}&amp;stepIndex=2&quot;</url>
+    </webLinks>
     <webLinks>
         <fullName>Add_default_case_owner</fullName>
         <availability>online</availability>

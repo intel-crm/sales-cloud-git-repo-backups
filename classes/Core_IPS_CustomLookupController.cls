@@ -32,20 +32,20 @@ Example for queryString - 'SELECT Id, Name FROM Account WHERE Name LIKE :key LIM
             /*security fix cannot be done as the functionality is breaking, 
 after creating a case throwing error while adding project & product to the case*/ 
             List<List<sObject>> searchRes = Search.query(queryString);
+        	//List<List<SObject>> searchRes = Core_SharingClass.executeSOSL(queryString);//added by sabira
             sObjectList = searchRes[0];    
             }
        
         } else {
-            if(queryString!= null){ 
-             
-            sObjectList = Database.query(queryString, AccessLevel.SYSTEM_MODE);
-            //sObjectList = Core_IPS_QueryService.executeDynamicQuery(queryString);//added by sabira as part of vulnerability fix 06-08-2026
-            
+            if(queryString!= null){
+                // sObjectList = Database.query(queryString);
+        		sObjectList = Core_SharingClass.executeDynamicQuery(queryString);//added by sabira 05-08-2026
             }
         }
         
+       
+ 
         return sObjectList;
-          
     }
     
     /***************************************************************************************************

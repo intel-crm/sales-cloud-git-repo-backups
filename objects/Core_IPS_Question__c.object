@@ -128,30 +128,25 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Environment_Detail_Question_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Environment_Detail_Question_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Contains Question of Survey and Environmental Details</description>
+    <description>Contains Question of Survey and Environmental Details. Environment Details are defined here and linked to Supported Product or Sub Category on Environment Details Operational</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>false</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
@@ -279,7 +274,6 @@
         <description>Support Org to which this question belongs</description>
         <label>Product Organization</label>
         <referenceTo>Core_IPS_Product_Organization__c</referenceTo>
-        <relationshipLabel>Environment Detail Questions</relationshipLabel>
         <relationshipName>Core_IPS_Questions</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -296,6 +290,7 @@
     </fields>
     <fields>
         <fullName>Core_IPS_Reporting_Name__c</fullName>
+        <caseSensitive>false</caseSensitive>
         <description>This field is using for external reporting IAH/MSBI as the field name to create/use for the designated EDQ.</description>
         <externalId>false</externalId>
         <label>Reporting Name</label>
@@ -303,7 +298,7 @@
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>false</unique>
+        <unique>true</unique>
     </fields>
     <fields>
         <fullName>Core_IPS_Required__c</fullName>
@@ -363,29 +358,11 @@
     </fields>
     <label>Environment Detail Question</label>
     <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Question__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>RECORDTYPE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
         <fullName>Core_IPS_Org_000_Core_IPS_Question</fullName>
-        <columns>Core_IPS_Order_No__c</columns>
         <columns>NAME</columns>
-        <columns>Core_IPS_Reporting_Name__c</columns>
         <columns>Core_IPS_Question__c</columns>
-        <columns>Core_IPS_Datatype__c</columns>
-        <columns>Core_IPS_Add_to_Reporting__c</columns>
-        <columns>Core_IPS_Status__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
         <filterScope>Queue</filterScope>
         <label>IPS - Org - Test Org 0</label>
-        <language>en_US</language>
         <queue>Core_IPS_Org_000</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -403,7 +380,7 @@
     <listViews>
         <fullName>Core_IPS_Org_002_Core_IPS_Question</fullName>
         <filterScope>Queue</filterScope>
-        <label>IPS - CCG-SPG</label>
+        <label>IPS - CCG-CISD</label>
         <queue>Core_IPS_Org_002</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -438,11 +415,8 @@
     </listViews>
     <listViews>
         <fullName>Core_IPS_Org_006_Core_IPS_Question</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Question__c</columns>
         <filterScope>Queue</filterScope>
         <label>IPS - DCG</label>
-        <language>en_US</language>
         <queue>Core_IPS_Org_006</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -586,7 +560,7 @@
     <listViews>
         <fullName>Core_IPS_Org_023_Core_IPS_Question</fullName>
         <filterScope>Queue</filterScope>
-        <label>IPS - IAGS</label>
+        <label>IPS - SSG</label>
         <queue>Core_IPS_Org_023</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -611,37 +585,10 @@
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_026_Core_IPS_Question</fullName>
+        <fullName>Core_IPS_Org_090_Core_IPS_Question</fullName>
         <filterScope>Queue</filterScope>
-        <label>IPS - IOG</label>
-        <queue>Core_IPS_Org_026</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_027_Core_IPS_Question</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - AXG-XCC</label>
-        <queue>Core_IPS_Org_027</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_028_Core_IPS_Question</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS-SMG</label>
-        <queue>Core_IPS_Org_028</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_029_Core_IPS_Question</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IGT</label>
-        <queue>Core_IPS_Org_029</queue>
+        <label>IPS-IOG</label>
+        <queue>Core_IPS_Org_090</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -653,31 +600,36 @@
         <columns>Core_IPS_Datatype__c</columns>
         <columns>Core_IPS_Status__c</columns>
         <columns>Core_IPS_Order_No__c</columns>
+        <columns>Core_IPS_Required__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_IPS_Survey_Type__c</field>
             <operation>equals</operation>
             <value>Customer</value>
         </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Core_IPS_Question__c.Survey</value>
+        </filters>
         <label>Customer Survey</label>
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>MAG_Questions</fullName>
+        <fullName>MAG_Questionnaire</fullName>
         <columns>NAME</columns>
         <columns>Core_IPS_Question__c</columns>
         <columns>Core_IPS_Datatype__c</columns>
         <columns>Core_IPS_Order_No__c</columns>
-        <columns>Core_IPS_Environment_Detail_Answer__c</columns>
-        <columns>Core_IPS_Required__c</columns>
         <columns>Core_IPS_Status__c</columns>
+        <columns>Core_IPS_Required__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
             <operation>equals</operation>
             <value>Core_IPS_Question__c.Core_IPS_MAG_Question</value>
         </filters>
-        <label>MAG Questions</label>
+        <label>MAG Questionnaire</label>
     </listViews>
     <listViews>
         <fullName>Sales_Rep_Survey</fullName>
@@ -686,6 +638,7 @@
         <columns>Core_IPS_Datatype__c</columns>
         <columns>Core_IPS_Status__c</columns>
         <columns>Core_IPS_Order_No__c</columns>
+        <columns>Core_IPS_Required__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_IPS_Survey_Type__c</field>
@@ -693,10 +646,9 @@
             <value>Sales Rep</value>
         </filters>
         <label>Sales Rep Survey</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
-        <displayFormat>Ques-{000000}</displayFormat>
+        <displayFormat>Ques-{00000000}</displayFormat>
         <label>Question No</label>
         <type>AutoNumber</type>
     </nameField>
@@ -849,19 +801,23 @@
     <searchLayouts>
         <customTabListAdditionalFields>Core_IPS_Question__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_IPS_Datatype__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Core_IPS_Survey_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>RECORDTYPE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Core_IPS_Status__c</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>Core_IPS_Question__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Core_IPS_Datatype__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Core_IPS_Survey_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Product_Organization__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>Core_IPS_Question__c</lookupFilterFields>
         <lookupPhoneDialogsAdditionalFields>Core_IPS_Question__c</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>Core_IPS_Question__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_IPS_Datatype__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Survey_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Product_Organization__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
     <validationRules>
         <fullName>Core_IPS_Core_Ques_Cant_Revert_to_Active</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Once Environmental Details Question status has been set to Inactive, it cannot be reset to Active.</description>
         <errorConditionFormula>AND(RecordType.DeveloperName = &quot;EDQ&quot;,  TEXT(  Core_IPS_Status__c ) = &quot;ACTIVE&quot;,
 TEXT (PRIORVALUE ( Core_IPS_Status__c )) = &quot;INACTIVE&quot;)</errorConditionFormula>
@@ -882,6 +838,15 @@ TEXT (PRIORVALUE ( Core_IPS_Status__c )) = &quot;INACTIVE&quot;)</errorCondition
         <description>If Add to Reporting checkbox is checked and Reporting Name field is blank then validation rule will fire and display the error message.</description>
         <errorConditionFormula>AND(Core_IPS_Add_to_Reporting__c == true,ISBLANK(Core_IPS_Reporting_Name__c))</errorConditionFormula>
         <errorMessage>Please Enter the Reporting Name Field value.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Restrict_MAGQuestion_Creation</fullName>
+        <active>false</active>
+        <description>Restrict all Agents &amp; FAE to restrict MAG question creation.</description>
+        <errorConditionFormula>AND(NOT(CONTAINS($Label.Core_IPS_Sys_Admin_Profile_Ids,LEFT($Profile.Id,15))),
+RecordTypeId = $Label.Core_IPS_MAG_Question_RecordType_Id
+)</errorConditionFormula>
+        <errorMessage>You don&apos;t have acess to create MAG question.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_IPS_Validate_Data_Type_Change</fullName>

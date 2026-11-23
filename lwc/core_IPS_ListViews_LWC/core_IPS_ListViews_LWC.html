@@ -1,0 +1,98 @@
+<template>
+   <div style="min-width: 225px; border-right: 1px; background:#f7f7f7;">
+      <lightning-layout class="sideNavContainer">
+         <lightning-layout-item class="sideNav">
+            <lightning-vertical-navigation selected-item={selectedItem} onselect={handleSelect} class="navigation">
+               <div>
+                  <!-- <div class="slds-p-bottom_small">
+                     <input onclick={handleNewCaseNavigate} type="button" class="btn" value="Create a New Case"></input>
+                  </div>
+                  <div class="slds-p-top_small">
+                     <input onclick={handleNewProjectNavigate} type="button" class="btn"
+                        value="Create a New Project"></input>
+                  </div> -->
+               </div>
+
+               <lightning-vertical-navigation-section>
+                  <lightning-vertical-navigation-item label="My Cases" name="allCases">
+                  </lightning-vertical-navigation-item>
+                  <lightning-vertical-navigation-item label="My Projects" name="allProjects">
+                  </lightning-vertical-navigation-item>
+                  <lightning-vertical-navigation-item label="My Intel Products" name="intelProducts">
+                  </lightning-vertical-navigation-item>
+                  <lightning-vertical-navigation-item label="Contacts" name="allContacts" onclick={getContacts}>
+                  </lightning-vertical-navigation-item>
+               </lightning-vertical-navigation-section>
+            </lightning-vertical-navigation>
+         </lightning-layout-item>
+         <lightning-layout-item padding="around-medium" style="margin-top: -32px; overflow-x:auto">
+
+            <template if:true={cases}>
+               This is cases
+            </template>
+            <!--Case Section End-->
+
+            <template if:true={projects}>
+               This is Projects
+            </template>
+            <!--Project Section Ends-->
+
+            <!--Product Section Start-->
+            <template if:true={products}>
+               This is Products
+            </template>
+            <!--Product Section Ends-->
+
+            <!--Contact Section Start-->
+            <template if:true={contacts}>
+               <div class="slds-m-vertical_medium">
+                  <lightning-card>
+                     <div class="slds-clearfix">
+                        <div class="slds-float_left slds-p-left_medium">
+                           <lightning-combobox style="width:230px;" name="contactvalue" value={contactvalue}
+                              options={contactoptions} onchange={handleContactNavigation}></lightning-combobox>
+                        </div>
+                        <div class="slds-float_right slds-p-right_medium">
+                           <lightning-input type="search" onchange={handleKeyChange}
+                              class="slds-m-bottom_small contactSearch" placeholder="Search Contact" maxlength="70">
+                           </lightning-input>
+                        </div>
+                     </div>
+                     <template if:true={isLoading}>
+                        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+                        </template>
+                     <div class="" style="height: 16rem;">
+                        <template if:true={contactRecords}>
+                           <template if:true={switchContactView}>
+
+                              <!-- <lightning-datatable key-field="Id" data={contactRecords} columns={contactColumns} hide-checkbox-column="true"
+                                 enable-infinite-loading="'true" onloadmore={handleLoadMoreContacts}>
+                              </lightning-datatable> -->
+
+                              <lightning-datatable key-field="Id" data={contactRecords} columns={contactColumns}
+                                 enable-infinite-loading="true" onloadmore={handleLoadMoreContacts} hide-checkbox-column="true">
+                              </lightning-datatable>
+                           </template>
+                           <template if:false={switchContactView}>
+                              <lightning-datatable key-field="Id" data={contactSearchRec} columns={contactColumns}
+                                 hide-checkbox-column="true">
+                              </lightning-datatable>
+                           </template>
+                        </template>
+                        <template if:true={error}>
+                           Contact Error
+                        </template>
+                     </div>
+
+                  </lightning-card>
+               </div>
+            </template>
+            <!--Contact Section Ends-->
+
+
+         </lightning-layout-item>
+      </lightning-layout>
+
+
+   </div>
+</template>

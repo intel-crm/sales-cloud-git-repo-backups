@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_Contact_AccountChange_Handler_test</testClassName>
+    <testClassName>Core_IPS_Account_Test</testClassName>
+    <testClassName>Core_IPS_Case_Attachments_Handler_test</testClassName>
+    <testClassName>Core_IPS_CasePromotion_Handler_Test</testClassName>
+    <testClassName>Core_IPS_Email_Reprocess_Test</testClassName>
+    <testClassName>Core_IPS_Helper_Utility_Test</testClassName>
+    <testClassName>Core_IPS_Questions_Utility_Test</testClassName>
+    <testClassName>Core_Master_Issue_Category_Handler_Test</testClassName>
+    <testClassName>Core_Product_Access_Line_Item_Test</testClassName>
+    <testClassName>Core_RestAPI_Case_UpdateV1_Handler_Test</testClassName>
+    <testClassName>Core_RestAPI_SPEnvDetailV1_Handler_Test</testClassName>
+    <testClassName>Core_RestAPI_SubEnvDetailV1_Handler_Test</testClassName>
+    <testClassName>Core_RestAPI_Util_Test</testClassName>
+    <testClassName>Core_Utility_Test</testClassName>
+    <testClassName>IPS_QualityBuilderUtility_Test</testClassName>
+    <testClassName>Product_Variant_Utility_Test</testClassName>
+</ApexTestSuite>

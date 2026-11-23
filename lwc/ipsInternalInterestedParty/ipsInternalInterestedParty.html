@@ -1,0 +1,90 @@
+<template>
+
+    <div class="toast toast_hide" style="height:4rem" data-id="toast">
+        <div class="slds-notify_container slds-is-relative">
+            <div class={notifyClasses} role="status">
+                <span class="slds-assistive-text">{title}</span>
+                <lightning-icon icon-name={iconName} alternative-text={type}></lightning-icon>
+                <div class="slds-notify__content">
+                    <h2>{title}</h2>
+                    <p>{message}</p>
+                </div>
+                <div class="slds-notify__close">
+                    <lightning-button-icon icon-name="utility:close" alternative-text="Close"></lightning-button-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div if:true={isLoaded}>
+
+        <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+        <div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+    <lightning-card>
+        <div>
+            <lightning-accordion active-section-name="A">
+                <lightning-accordion-section name="A" label="Internal Interested Party">
+
+                    <!--  <lightning-input type="text" label="Enter Search Text" name="Search">
+                            </lightning-input>-->
+                    <h3>Enter Search Text</h3>
+                    <template if:true={isLookupQueryPresentProject}>
+                        <c-core_-i-p-s_-custom-lookup onselectedrec={handleChangeUser} iconname={lookupIconNameProject}
+                            searchfield-name={lookupSearchFieldNameProject} query-string={lookupQueryStringProject}
+                            count-query-string={lookupCountQueryString}>
+                        </c-core_-i-p-s_-custom-lookup>
+                    </template>
+
+
+
+
+
+                    <!--    <lightning-button variant="brand-outline" label="Search" onclick={searchHandler}
+                                class="slds-m-left_x-small">
+                            </lightning-button> -->
+
+
+
+
+                    </br>
+                    <div class="slds-align_absolute-center">
+
+
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+            </br>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="brand-outline" label="Cancel" onclick={cancelHandler}
+                    class="slds-m-left_x-small">
+                </lightning-button>
+
+                <lightning-button variant="brand-outline" label="Add Internal Party" onclick={saveHandler}
+                    class="slds-m-left_x-small">
+                </lightning-button>
+            </div>
+
+            <!--   <lightning-accordion active-section-name="C">
+                <lightning-accordion-section name="C" label="Search Results:">
+                    <template if:true={showsearchresult}>
+
+
+                        <c-core_-i-p-s_-datatable-utility hide-checkbox-column={hideCheckboxColumn}
+                            show-row-number-column={showRowNumberColumn} enable-infinite-loading={enableInfiniteLoading}
+                            num-and-checkbox-both-cols={numAndCheckboxBothCols} normal-data-table={normalDataTable}
+                            records={searchResult} columns={columns} number-of-rows-to-show={numberOfRowsToShow}
+                            height-in-rem={heightInRem} onrowactions={handleRowActions}
+                            onrecordselection={getSelectedRecords}>
+
+
+                        </c-core_-i-p-s_-datatable-utility>
+
+
+                    </template>
+                </lightning-accordion-section>
+            </lightning-accordion>-->
+        </div>
+    </lightning-card>
+</template>

@@ -9,10 +9,6 @@
         <value>Design Registration Batches</value>
     </caseValues>
     <fields>
-        <label><!-- Design Batch Report --></label>
-        <name>Core_Design_Batch_Report_URL_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Design Count (Fail) --></label>
         <name>Core_Fail_Design_Cnt__c</name>
     </fields>
@@ -52,8 +48,4 @@
         <name>Core_Total_Row_Cnt__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label><!-- Core_View_Detail_Report --></label>
-        <name>Core_View_Detail_Report</name>
-    </webLinks>
 </CustomObjectTranslation>

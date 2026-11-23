@@ -8,7 +8,7 @@ export default class Core_IPS_HandleDeepLinks extends LightningElement {
 
         let recordId
         var pathArray = window.location.pathname.split('/');
-        if(window.location.pathname.includes('/IPS/s/case/')){
+        if(window.location.pathname.includes('/IPS/Partnercenter/s/case/')){
              recordId = pathArray[pathArray.length-2];
         }else{
              recordId = pathArray[pathArray.length-1];
@@ -25,18 +25,18 @@ export default class Core_IPS_HandleDeepLinks extends LightningElement {
             console.log('response success');
             console.log(res);
             if(res == 'Case'){
-                location.href = window.location.origin + "/IPS/s/case-detail?recordId=" + recordId;
+                location.href = window.location.origin + "/IPS/Partnercenter/s/case-detail?recordId=" + recordId;
             }else if(res == 'Asset'){
-                location.href = window.location.origin + "/IPS/s/product-detail?recordId="  + recordId;
+                location.href = window.location.origin + "/IPS/Partnercenter/s/product-detail?recordId="  + recordId;
             }else if(res == 'Core_IPS_Project__c'){
-                location.href = window.location.origin + "/IPS/s/project-detail?recordId=" + recordId;
+                location.href = window.location.origin + "/IPS/Partnercenter/s/project-detail?recordId=" + recordId;
             }else{
-                location.href = window.location.origin + "/IPS/s/";
+                location.href = window.location.origin + "/IPS/Partnercenter/s/";
             }
         })
         .catch(err=>{
             console.log('inside error', err);
-            location.href = window.location.origin + "/IPS/s/";
+            location.href = window.location.origin + "/IPS/Partnercenter/s/";
         });
     }
 }

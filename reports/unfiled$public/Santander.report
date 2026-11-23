@@ -4,16 +4,37 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Solution_Focus__c</field>
+    </columns>
+    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
         <field>PROBABILITY</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Product_Application__c</field>
+    </columns>
+    <columns>
         <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Advanced_Technology__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -28,24 +49,6 @@
     </columns>
     <columns>
         <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Product_Type__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Product_Application__c</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Advanced_Technology__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Vendor__c</field>
@@ -75,13 +78,20 @@
             <operator>notEqual</operator>
             <value>Cancelled</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Commissionable__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Solution_Area__c</field>
-        <sortOrder>Asc</sortOrder>
+        <field>OpportunityLineItem.Core_Product_Segment__c</field>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <name>Santander</name>
     <params>
@@ -106,9 +116,11 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <sortColumn>CLOSE_DATE</sortColumn>
-    <sortOrder>Asc</sortOrder>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

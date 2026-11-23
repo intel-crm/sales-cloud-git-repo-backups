@@ -211,18 +211,25 @@
     <description>opps created this Qtr 04.28.16</description>
     <filter>
         <criteriaItems>
-            <column>STAGE_NAME</column>
+            <column>Opportunity.Core_Sales_Group__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
+            <value>Industry Sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled,Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled,Deleted,Production Lost,Production Cancelled</value>
+            <value>Deleted</value>
         </criteriaItems>
         <criteriaItems>
             <column>CREATED_DATE</column>
@@ -237,13 +244,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Telecommunications</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Telco/Service Provider,Service Provider</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -287,8 +287,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

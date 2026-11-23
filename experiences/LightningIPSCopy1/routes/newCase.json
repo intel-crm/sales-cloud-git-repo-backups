@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "afd55f3e-f8e4-4a93-a687-863ed6e20971",
+  "appPageId" : "112ae48a-877d-4a55-876f-cf12046a3576",
+  "configurationTags" : [ ],
+  "devName" : "Core_IPS_NewCase__c",
+  "id" : "10c860fa-2a20-40ef-be09-7c7268a8f049",
+  "label" : "New Case",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-new-case",
+  "type" : "route",
+  "urlPrefix" : "new-case"
+}

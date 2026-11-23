@@ -48,10 +48,6 @@
     <columns>
         <field>EMAIL</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>Ability to report on Lead/Opportunity throughput times (MQL -&gt; SQL -&gt; Opportunity -&gt; DW</description>
     <filter>
         <criteriaItems>

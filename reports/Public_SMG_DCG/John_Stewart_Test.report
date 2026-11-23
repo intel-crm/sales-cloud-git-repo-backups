@@ -58,15 +58,6 @@
         <field>Opportunity.Core_Solution_Focus__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Solution_Area__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Detail__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Type__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <columns>
@@ -93,7 +84,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Swastik Chakraborty,Konstantin Babanakov,Xiaobo Chen,Andy Green,Myles Hu,Jason Lamb,H Reddy,Xiaolei Ren,David Rhoades,Illyse Sheaffer,Volga Simsek,Merritte Stidston,Yuan Xu,Hai Feng Zhu,john chen,mohamed elsaid,meg mu,tom melzer,thomas melzer</value>
+            <value>Swastik Chakraborty,Konstantin Babanakov,Xiaobo Chen,Andy Green,Myles Hu,Jason Lamb,York Ma,Tony Mantione,Chris Martin,H Reddy,Xiaolei Ren,David Rhoades,Illyse Sheaffer,Volga Simsek,Merritte Stidston,Karl Vietmeier,Yuan Xu,Hai Feng Zhu,john chen,otto chow,mohamed elsaid</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -125,7 +116,7 @@
     </params>
     <params>
         <name>include</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>co</name>
@@ -138,6 +129,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2017-12-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

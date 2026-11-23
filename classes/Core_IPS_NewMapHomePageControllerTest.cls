@@ -6,13 +6,6 @@ Modification Log :
 ****************************************************************************************/
 @isTest(seeAllData=false)
 private class Core_IPS_NewMapHomePageControllerTest {
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
     
     @testSetup 
     static void testSetupData() {
@@ -47,7 +40,6 @@ private class Core_IPS_NewMapHomePageControllerTest {
             Accnt.BillingCity = 'Alabama';
             Accnt.BillingStreet = 'street';
             Accnt.Core_IPS_Active__c = true;
-            Accnt.recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
             Database.insert(Accnt);
         
         Case cs = TestUtilities.getCase();
@@ -133,7 +125,9 @@ private class Core_IPS_NewMapHomePageControllerTest {
         profile prof = [select id, name from Profile where name = 'Sales Rep-BB' limit 1];
         userlist[0].profileid=prof.id;
         userlist[0].username='salesrep0202.abc@user.com';
-        insertUsersWithValidationBypass(userlist);
+        //System.runAs(ListOfUser.get(0)){
+            insert userlist;
+        //}
         String teamMemberRole = 'Team Member (100%)';
         String accountAccessLevel = 'Edit';
         String opportunityAccessLevel = 'Read';
@@ -359,7 +353,7 @@ private class Core_IPS_NewMapHomePageControllerTest {
             Usr.ProfileID =  profiles.get('IPS Support Org Admin');
         }
         //ListOfUser[1].ProfileID = profiles.get('Sales Rep-BB');
-        insertUsersWithValidationBypass(ListOfUser);
+        insert ListOfUser;
         prodOrg.ownerId = ListOfUser[0].Id;
         update prodOrg;
         List<Core_IPS_Product_Organization_Admin__c> orgAdminMemList = new List<Core_IPS_Product_Organization_Admin__c>();

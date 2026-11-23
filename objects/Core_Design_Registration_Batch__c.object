@@ -155,18 +155,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_Design_Batch_Report_URL_Txt__c</fullName>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(Left($Api.Enterprise_Server_URL_190,(find(&apos;/services&apos;,$Api.Enterprise_Server_URL_190))) +  &apos;00O1J000005K1n7?pv0=&apos;+Name, &apos;Click here to view the detailed report&apos;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Design Batch Report</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Fail_Design_Cnt__c</fullName>
         <label>Design Count (Fail)</label>
         <summaryFilterItems>
@@ -316,24 +304,6 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
-    <listViews>
-        <fullName>All_Records</fullName>
-        <columns>NAME</columns>
-        <columns>Core_File_Nm__c</columns>
-        <columns>Core_Partner_Account_Id__c</columns>
-        <columns>Core_Total_Row_Cnt__c</columns>
-        <columns>Core_Total_Design_Cnt__c</columns>
-        <columns>Core_Fail_Design_Cnt__c</columns>
-        <columns>Core_Total_Product_Cnt__c</columns>
-        <columns>Core_Fail_Product_Cnt__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Records</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
     <nameField>
         <displayFormat>DR-BATCH-{0000000}</displayFormat>
         <label>Batch ID</label>
@@ -348,23 +318,4 @@
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
-    <webLinks>
-        <fullName>Core_View_Detail_Report</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>url</linkType>
-        <masterLabel>View Detail Report</masterLabel>
-        <openType>newWindow</openType>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-        <url>/s/report/00O1J000005K1n7UAC?reportFilters=%5B%7B%22operator%22%3A%22equals%22%2C%22value%22%3A%22{!Core_Design_Registration_Batch__c.Name}%22%2C%22column%22%3A%22CUST_NAME%22%7D%5D</url>
-    </webLinks>
 </CustomObject>

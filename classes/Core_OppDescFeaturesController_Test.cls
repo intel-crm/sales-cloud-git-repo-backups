@@ -7,23 +7,20 @@ Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Srikant Joshi             10/24/2014              Original Version
-* Laxmana Lenka             05/10/2018              US103701: Updated as the test class was failing for Sales group and platform restricted field value.
 *************************************************************************************/
-@isTest
+@
+isTest
 public class Core_OppDescFeaturesController_Test {
 
     //Declare/Initialize the Variables
     public static List < Core_Trigger_Executions__c > lstTriggerExecution = new List < Core_Trigger_Executions__c > ();
     public static List < Opportunity > lstOpportunity = new List < Opportunity > ();
-    public static List < Account > lstAccount = new List < Account > ();
     public static List < Core_Feature__c > lstFeature = new List < Core_Feature__c > {};
     public static List < Core_Feature_Header__c > lstFeatureHeader = new List < Core_Feature_Header__c > {};
     public static List < Core_Feature_Set__c > lstFeatureSet = new List < Core_Feature_Set__c > {};
     public static List < Core_Opportunity_Features__c > lstOpportunityFeature = new List < Core_Opportunity_Features__c > {};
     public static List < Core_Opportunity_Facts__c > lstOpportunityFacts = new List < Core_Opportunity_Facts__c > {};
-	public static List < Product2 > lstProducts = new List < Product2 > {}; 
-    public static List < PricebookEntry > lstPricebook = new List < PricebookEntry > {}; 
-    public static List < OpportunityLineItem > lstOppLineItem = new List < OpportunityLineItem > {};
+
     /*
      * Method name  : testOpportunityDescriptiveFeature
      * Description  : test method to cover Core_OpportunityDescriptiveFeature class
@@ -61,149 +58,80 @@ public class Core_OppDescFeaturesController_Test {
         lstTriggerExecution.add(OpportunityFactsUpdate2);
 
         insert lstTriggerExecution;
-	
+
         // Construct the Opportunity instances
-        //START - US103701, Added Sales group added to account, as opportuntiy can not be created for accounts
-        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
-        lstAccount = Core_Test_Utility.Core_Account(6);
-        for (Account acc: lstAccount) {
-            acc.RecordTypeId=masterRecordTypeId;
-            acc.Core_Sub_Industry__c='Accommodation';
-            acc.Industry='Accommodation and Food Services';
-            acc.BillingCity='Seoul';
-            acc.BillingCountry='KOR';
-            acc.BillingStreet='KOR';
-            acc.Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI();
-        }
-        //END - US103701, Added Sales group added to account, as opportuntiy can not be created for accounts
-        
-        Database.SaveResult[] lstSaveResultAcc = Database.insert(lstAccount, false);        
-        
-        Integer iRowNo = 0;         
         lstOpportunity = Core_Test_Utility.Core_Opportunity(6);
-        
-        
-        //START - US103701, Added platform value as it is a restricted picklist 
-        for (Opportunity opp: lstOpportunity) {
-            opp.AccountId = lstAccount[iRowNo].Id;
-            opp.Core_Intel_Platform__c = 'ALDER LAKE';          
-            iRowNo++;
-        }
-        //END - US103701, Added platform value as it is a restricted picklist 
-        lstOpportunity[0].AccountId = lstAccount[0].Id;
+
+        // Insert the intialized Opportunity 
         Database.SaveResult[] lstSaveResultCS = Database.insert(lstOpportunity, false);
-        
 
         //Iterate through the loop
-        iRowNo = 0;
+        Integer iRowNo = 0;
+
         // Construct the Feature instances
         lstFeature = Core_Test_Utility.CreateFeature(5);
 
-        //START - US103701, added multiple featuere type with same features and multi select/single select, to test the required scenario
         for (Core_Feature__c coreFeature: lstFeature) {
-                       
-            coreFeature.Core_Feature_BU__c='CCG';
-            if (iRowNo == 0) {
-                coreFeature.Core_Feature_Type__c = 'Google-Android';
-                coreFeature.Core_Multi_Select__c = TRUE;
-                coreFeature.Core_Feature_Value__c ='Google-Android';                
-            }
+            coreFeature.Core_Feature_Value__c = 'value' + iRowNo;
             if (iRowNo == 1) {
-                coreFeature.Core_Feature_Type__c = 'Google-Android2';
-                coreFeature.Core_Multi_Select__c = False;
-                coreFeature.Core_Feature_Value__c ='Google-Android2';
-
-            }
-            if (iRowNo == 2) {
-                coreFeature.Core_Feature_Type__c = 'Google-Android';
+                coreFeature.Core_Feature_Type__c = 'Graphics';
                 coreFeature.Core_Multi_Select__c = TRUE;
-                coreFeature.Core_Feature_Value__c = 'Google';
             }
-            if (iRowNo == 3) {
-                coreFeature.Core_Feature_Type__c = 'Consumer Sales system';
-                coreFeature.Core_Multi_Select__c = False;
-                coreFeature.Core_Feature_Value__c = 'Sales';
-            }
-            if (iRowNo > 3) {
-                coreFeature.Core_Feature_Type__c = 'Google Chrome';
-                coreFeature.Core_Multi_Select__c = False;
-                coreFeature.Core_Feature_Value__c = 'Value'+iRowNo; 
+            if (iRowNo > 1) {
+                coreFeature.Core_Feature_Type__c = 'Innovation Engine';
+                coreFeature.Core_Multi_Select__c = TRUE;
             }
             iRowNo++;
         }
-        //END - US103701, added multiple featuere type with same features and multi select/single select, to test the required scenario.
-        
+
         // Insert the intialized Feature
         Database.SaveResult[] lstFeatureResults = Database.insert(lstFeature, false);
+
         //Print the value
-      
+        System.Debug('---------**' + lstFeature[0] + lstFeature[1] + lstFeatureResults);
+
         // Construct the Feature Header instances
         lstFeatureHeader = Core_Test_Utility.CreateFeatureHeader(5);
+
         //Iterate through the loop
         iRowNo = 0;
-        
-        //START - US103701, added multiple platform header with multiple Header type
+
         for (Core_Feature_Header__c coreFeature: lstFeatureHeader) {
-            if (iRowNo == 0){
+            if (iRowNo == 1) {
                 coreFeature.Core_Header_Type__c = System.Label.Core_IntelPlatform;
-                coreFeature.Core_Header_Name__c='Apollo Lake D';
             }
-            if (iRowNo == 1){
-                coreFeature.Core_Header_Type__c = 'Intel2';
-                coreFeature.Core_Header_Name__c='Apollo Lake D';
-            }
-            if (iRowNo == 2){
-                coreFeature.Core_Header_Type__c = System.Label.Core_IntelPlatform;
-                coreFeature.Core_Header_Name__c='Apollo Lake I';
-            }
-            if (iRowNo > 2){
-                coreFeature.Core_Header_Name__c='Intel2'+iRowNo;
-                coreFeature.Core_Header_Type__c = 'Type'+iRowNo;
+            if (iRowNo == 3) {
+                coreFeature.Core_Header_Type__c = 'Type2';
             }
             iRowNo++;
         }
-        //END - US103701, added multiple platform header with multiple Header type
+
         // Insert the intialized Feature Header 
         Database.SaveResult[] lstFeatureHeaderResults = Database.insert(lstFeatureHeader, false);
 
         //Print the value
-        
+        System.Debug('---------**' + lstFeatureHeader[0] + lstFeatureHeader[1]);
 
         // Construct the Feature Set instances
         lstFeatureSet = Core_Test_Utility.CreateFeatureSet(5);
 
         //Iterate through the loop
         iRowNo = 0;
-        //START - US103701, updated required header and feature while creating feature set
+
         for (Core_Feature_Set__c sobjFeatureSet: lstFeatureSet) {
-            
-            if (iRowNo >= 3) {
-                sobjFeatureSet.Core_Feature_Header__c = lstFeatureHeader[3].Id;
-                sobjFeatureSet.Core_Feature__c = lstFeature[iRowNo].Id;
-            }else if(iRowNo == 0){
-            sobjFeatureSet.Core_Feature_Header__c = lstFeatureHeader[0].Id;
-            sobjFeatureSet.Core_Feature__c = lstFeature[0].Id;
-            }else if(iRowNo == 1){
-                sobjFeatureSet.Core_Feature_Header__c = lstFeatureHeader[0].Id;
-                sobjFeatureSet.Core_Feature__c = lstFeature[1].Id;
-            }else if(iRowNo == 2){
-                sobjFeatureSet.Core_Feature_Header__c = lstFeatureHeader[1].Id;
-                sobjFeatureSet.Core_Feature__c = lstFeature[2].Id;
-            }
-            
+            sobjFeatureSet.Core_Feature__c = lstFeature[iRowNo].Id;
+            sobjFeatureSet.Core_Feature_Header__c = lstFeatureHeader[iRowNo].Id;
             iRowNo++;
         }
-        //END - US103701, added multiple platform header with multiple Header type
+
         // Insert the intialized Feature Set
         Database.SaveResult[] lstFeatureSetResults = Database.insert(lstFeatureSet, false);
 
         //Print the value
-        
+        System.Debug('---------**' + lstFeatureSet[0] + lstFeatureSet[1]);
 
         // Construct the Feature Set instances
-        lstOpportunityFeature = Core_Test_Utility.CreateOpportunityFeature(3);
-        
+        lstOpportunityFeature = Core_Test_Utility.CreateOpportunityFeature(4);
 
         //Iterate through the loop
         iRowNo = 0;
@@ -217,55 +145,25 @@ public class Core_OppDescFeaturesController_Test {
         Database.SaveResult[] lstOppFeatureResults = Database.insert(lstOpportunityFeature, false);
 
         //Print the value
-        
+        System.Debug('---------**' + lstOpportunityFeature[0] + lstOpportunityFeature[1]);
 
         PageReference pageRef = Page.Core_OppDescriptiveFeatures;
         Test.setCurrentPage(pageRef);
 
-        
-         lstProducts = Core_Test_Utility.createProduct(1);
-        Database.insert(lstProducts);
-        lstPricebook = Core_Test_Utility.createPriceBookEntry(1,lstProducts, Test.getStandardPricebookId()); 
-            Database.insert(lstPricebook);
-        lstOppLineItem = Core_Test_Utility.createOpportunityLineItems(1,lstPricebook, lstOpportunity[0]);
-        lstOppLineItem[0].OpportunityId = lstOpportunity[0].Id;
-            Database.insert(lstOppLineItem);
-        
         ApexPages.Standardcontroller sc = new ApexPages.Standardcontroller(lstOpportunityFeature[0]);
-        
         ApexPages.currentPage().getParameters().put('Id', lstOpportunityFeature[0].id);
-		//ApexPages.currentPage().getParameters().put('sOppProdid', lstOppLineItem[0].id);
+
         Core_OppDescriptiveFeaturesController controllerCoreOppDescFeature = new Core_OppDescriptiveFeaturesController(sc);
-        controllerCoreOppDescFeature.sObjOpp = lstOpportunity[0];
-        controllerCoreOppDescFeature.consumerSales= 'SKU';
         controllerCoreOppDescFeature.saveUpdatedRecord();
         controllerCoreOppDescFeature.ReturntoOpp();
-        
-        
-        
-        //START - US103701, calling the apex controller , page input and save, when page opened from Edit descriptive feature button.
-        ApexPages.Standardcontroller sc2 = new ApexPages.Standardcontroller(lstOpportunityFeature[0]);//TWC3123-4019 changed lstOpportunity[0]
-        
-        //ApexPages.currentPage().getParameters().put('sOppid', lstOpportunity[0].id);
-        ApexPages.currentPage().getParameters().put(System.label.Core_Opportunity_ID, lstOpportunity[0].id);
-        ApexPages.currentPage().getParameters().put('sOppProdid', lstOppLineItem[0].id);//TWC3123-4019 changed lstOpportunity[0]
-        Core_OppDescriptiveFeaturesController controllerCoreOppDescFeature2 = new Core_OppDescriptiveFeaturesController(sc2);
-        controllerCoreOppDescFeature2.sObjOpp = lstOpportunity[0];
-        controllerCoreOppDescFeature2.selectedPlatformBU='CCG';
-        controllerCoreOppDescFeature2.sPlatform='Apollo Lake D';   
-        controllerCoreOppDescFeature2.Core_GetFeature();
-        controllerCoreOppDescFeature2.saveUpdatedRecord();
-            //controllerCoreOppDescFeature2.ReturntoOpp();
-        //END - US103701, calling the apex controller , page input and save, when page opened from Edit descriptive feature button.
-		Core_OppDescriptiveFeaturesController controllerCoreOppDescFeature3 = new Core_OppDescriptiveFeaturesController(sc2);
-        controllerCoreOppDescFeature3.sObjOpp = lstOpportunity[0];
-        controllerCoreOppDescFeature3.selectedPlatformBU='CCG';
-        controllerCoreOppDescFeature3.sPlatform='Apollo Lake D';
-        controllerCoreOppDescFeature3.getPlatformBU();
-        List<SelectOption> expectedOptions = new List<SelectOption> {
-            new SelectOption('--None--', '--None--'),
-            new SelectOption('CCG', 'CCG')
-        };
-        System.assertEquals(expectedOptions, controllerCoreOppDescFeature3.platformBULst);
+
+        Core_OppDescriptiveFeaturesController controllerCoreOppDescFeature1 = new Core_OppDescriptiveFeaturesController(sc);
+        controllerCoreOppDescFeature1.saveUpdatedRecord();
+
+        List < Core_Opportunity_Features__c > lstOppportunityFeature = [Select Core_Feature_Name__c, Core_Feature_Type__c from Core_Opportunity_Features__c];
+
+        System.AssertEquals(lstOppportunityFeature[0].Core_Feature_Type__c, 'Entry SPP (US$)');
+        System.AssertEquals(lstOppportunityFeature[0].Core_Feature_Name__c, 'value0');
+
     }
 }

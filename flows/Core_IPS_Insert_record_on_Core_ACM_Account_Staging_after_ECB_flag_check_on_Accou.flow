@@ -5,8 +5,8 @@
     <decisions>
         <name>Check_Record_Type</name>
         <label>Check Record Type</label>
-        <locationX>824</locationX>
-        <locationY>370</locationY>
+        <locationX>456</locationX>
+        <locationY>371</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>If_condition_satisfied</name>
@@ -57,8 +57,8 @@
     <recordCreates>
         <name>insert_a_record_to_Core_ACM_Account_Staging_c</name>
         <label>insert a record to Core_ACM_Account_Staging__c</label>
-        <locationX>783</locationX>
-        <locationY>505</locationY>
+        <locationX>324</locationX>
+        <locationY>479</locationY>
         <inputAssignments>
             <field>AccountId__c</field>
             <value>
@@ -74,14 +74,14 @@
         <inputAssignments>
             <field>Core_Status__c</field>
             <value>
-                <stringValue>NEW</stringValue>
+                <stringValue>New</stringValue>
             </value>
         </inputAssignments>
         <object>Core_ACM_Account_Staging__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <start>
-        <locationX>651</locationX>
+        <locationX>330</locationX>
         <locationY>48</locationY>
         <connector>
             <targetReference>Check_Record_Type</targetReference>

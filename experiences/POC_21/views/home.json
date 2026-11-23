@@ -1,0 +1,129 @@
+{
+  "appPageId" : "ed67c0d9-ce36-4d35-a400-63c3262360f1",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "b24a15c3-1d43-44ab-a000-546af56b3c01",
+  "label" : "Home",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<h1 style=\"text-align: center;\"><b style=\"font-size: 28px; color: rgb(30, 36, 67);\">Hi User!</b></h1><p style=\"text-align: center;\"><span style=\"font-size: 20px;\">Welcome to Intel Premier Support.</span></p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "cdd9f0c0-bd38-437c-9c12-09863298f2f2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "99f624e1-3907-4f59-b00b-f3cd1465eba8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "2d697d01-da4d-40ca-a97b-124d13a4191f",
+          "activeTab" : "tab1",
+          "tabs" : [ {
+            "UUID" : "5f44dd15-c84c-4e38-aacd-7731bc82fd7f",
+            "allowGuestUser" : true,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : { },
+              "fqn" : "forceCommunity:dashboard"
+            } ],
+            "tabKey" : "tab1",
+            "tabName" : "Business Summary"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "2d697d01-da4d-40ca-a97b-124d13a4191f",
+      "regions" : [ {
+        "id" : "5f44dd15-c84c-4e38-aacd-7731bc82fd7f",
+        "regionLabel" : "Business Summary",
+        "regionName" : "tab1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "44d2392f-f26e-41db-b096-e059ffa9e821",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "AllAccounts",
+        "layout" : "COMPACT",
+        "pageSize" : 5,
+        "scope" : "Account",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "55a6a854-2a29-4309-9030-67cd1246a583",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "AllProducts",
+        "layout" : "COMPACT",
+        "pageSize" : 5,
+        "scope" : "Product2",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "b68a8875-3313-46b4-8d3e-4ab405d43d01",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ed834326-822a-4bdf-abdd-cc162500e191",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "01198a4b-7342-4012-826d-f8cf896bec34",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "daf78a79-b263-4fde-8d1f-4c81b8c02376",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a2d2a48e-0215-4401-859f-a27d23f296e8",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

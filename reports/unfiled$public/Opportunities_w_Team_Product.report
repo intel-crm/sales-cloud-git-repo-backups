@@ -40,7 +40,7 @@
         <field>Opportunity.Core_Opportunity_Owner_Sub_Geo__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
@@ -55,7 +55,16 @@
         <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Opportunity_Team_Geos__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Product_Type__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Product_Series__c</field>
@@ -131,6 +140,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2018-09-01</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-04-01</startDate>
     </timeFrameFilter>
 </Report>

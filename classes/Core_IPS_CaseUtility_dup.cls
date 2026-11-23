@@ -1,0 +1,890 @@
+public with sharing class Core_IPS_CaseUtility_dup {
+    
+    /* 
+    *    Utility class to pull supported products
+    */
+    public static List<Supported_product> GetSupportedProduct(String assetId, String productOrganizationId){
+        List<Supported_product> ab = new List<Supported_product>();
+        for(Core_IPS_supported_product__c a:[SELECT id, name FROM Core_IPS_supported_product__c where
+                Core_Product_Organization__r.name=: productOrganizationId and Core_Product__c =: assetId  ]){
+                ab.add(new supported_product (a.id, a.name));        
+        }
+        return ab;
+        
+     //   return [select Core_supported_product__c, supported_product__r.Product__r.name  FROM IPS_Product__c where IPS_Project__c =: projectSelected ];
+    }
+    
+   /***************************************************************************************************
+    Apex Method Name: getSubCategories 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This method returns SubCategories associated to a category
+    Input Parameters: categoryid
+    Output Parameters: List of issue sub categories
+    Description: Returns sub categories associatd to a category
+    Used in     : 
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/     
+    public static List<Core_IPS_Product_Issue_Category__c> getSubCategories(String issueCategoryId){
+        if(issueCategoryId!=null && issueCategoryid!='')
+            return [SELECT id,name,core_issue_category_Name__c,Core_Issue_Sub_Category_Name__r.Name,Core_Issue_Category_Name__r.Name FROM Core_IPS_Product_Issue_Category__c where Core_Product_Issue_Category__c= :issuecategoryId and core_status__c!='Inactive'];
+        else
+            return null;
+    }
+    
+   /***************************************************************************************************
+    Apex Method Name: getCategories 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This method returns SubCategories associated to a category
+    Input Parameters: supported product id
+    Output Parameters: List of issue categories
+    Description: Returns list of categories associatd to a supported product
+    Used in     : 
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/    
+    public static List<Core_IPS_Product_Issue_Category__c> getCategories(String productId){
+        if(productId!=null && productId!='')
+            return [SELECT id, Name,Core_Issue_Category_Name__c, Core_Issue_Category_Name__r.name FROM Core_IPS_Product_Issue_Category__c  where Core_supported_product__c = :productId and core_status__c!='Inactive'];
+        else 
+            return null;
+    }
+
+   /***************************************************************************************************
+    Apex Method Name: getSubCategories 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This method returns SubCategories associated to a category
+    Input Parameters: categoryid, supported product id
+    Output Parameters: List of issue sub categories
+    Description: Returns sub categories associatd to a category
+    Used in     : 
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/       
+    public static List<IssueSubCategories> getSubCategories(String issuecategoryId, String SupportedProductId){
+        List<IssueSubCategories> ab = new List<IssueSubCategories>();
+        for(Core_IPS_Product_Issue_Category__c a: [SELECT id,name,Core_Issue_Category_Name__r.Name,Core_Issue_Sub_Category_Name__r.Name FROM Core_IPS_Product_Issue_Category__c where 
+                 Core_Product_Issue_Category__c=: issuecategoryId and Core_Supported_Product__c=:SupportedProductId and core_status__c!='Inactive']){
+            ab.add(new IssueSubCategories(a.id, a.name));         
+        }
+        return ab;
+    }
+   
+    
+   /***************************************************************************************************
+    Apex Method Name: getEnvVariables 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This method returns EnvironmentDetails
+    Input Parameters: Supported Product Id, Sub Category Id, usertype
+    Output Parameters: List of Environment Variables
+    Description: If sub category contains environment variables they are returned, 
+                 else product based environment variables are returned
+    Used in     : 
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/    
+    public static List<Core_IPS_Assigned_Environment_Variables__c> getEnvVariables(String productId, String SubCatId,boolean isAgent){
+     system.debug('>>>>>>>>>>>>>>>>>>>' + productId);
+        if(SubCatId!=null){
+            if(isAgent!=null && isAgent){
+            system.debug('>>>>>>>>>>>>>>>>>>' + isAgent);
+                return [select id, name, Core_Environment_Variable__c,Core_Environment_Variable__r.Name,Core_Environment_Variable__r.Core_Answers__c, 
+                 Core_Environment_Variable__r.Core_Datatype__c, Core_Product_Issue_Sub_Category__c,Core_Required__c,Core_Agent_Only__c 
+                 from Core_IPS_Assigned_Environment_Variables__c where Core_Product_Issue_Sub_Category__c=:SubCatId and Core_Product_Issue_Sub_Category__c!='' and Core_Status__c=:'Active' and Core_Environment_Variable__r.Language__c =:Label.Core_IPS_Languages order by Core_Environment_Variable__r.Core_Datatype__c asc];
+             }else{
+             system.debug('>>>>>>>>>>>>>>>>>>223232' + isAgent);
+                 return [select id, name, Core_Environment_Variable__c,Core_Environment_Variable__r.Name,Core_Environment_Variable__r.Core_Answers__c, 
+                 Core_Environment_Variable__r.Core_Datatype__c, Core_Product_Issue_Sub_Category__c,Core_Required__c,Core_Agent_Only__c 
+                 from Core_IPS_Assigned_Environment_Variables__c where Core_Product_Issue_Sub_Category__c=:SubCatId and Core_Product_Issue_Sub_Category__c!='' and Core_Status__c=:'Active' and Core_Agent_Only__c!=true and Core_Environment_Variable__r.Language__c =:Label.Core_IPS_Languages order by Core_Environment_Variable__r.Core_Datatype__c asc];
+             }
+        }else{
+            if(isAgent!=null && isAgent){
+            system.debug('>>>>>>>>>>>>>>>>>>22323254543' + isAgent);
+                return [select id, name, Core_Environment_Variable__c,Core_Environment_Variable__r.Name,Core_Environment_Variable__r.Core_Answers__c, 
+                 Core_Environment_Variable__r.Core_Datatype__c, Core_Product_Issue_Sub_Category__c,Core_Required__c,Core_Agent_Only__c 
+                 from Core_IPS_Assigned_Environment_Variables__c where Core_supported_product__c =:productId and Core_supported_product__c!='' and Core_Status__c=:'Active' and Core_Environment_Variable__r.Language__c =:Label.Core_IPS_Languages order by Core_Environment_Variable__r.Core_Datatype__c asc];
+            }else{
+                return [select id, name, Core_Environment_Variable__c,Core_Environment_Variable__r.Name,Core_Environment_Variable__r.Core_Answers__c, 
+                 Core_Environment_Variable__r.Core_Datatype__c,Core_Product_Issue_Sub_Category__c ,Core_Required__c,Core_Agent_Only__c 
+                 from Core_IPS_Assigned_Environment_Variables__c where Core_supported_product__c =:productId and Core_supported_product__c!='' and Core_Status__c=:'Active' and Core_Agent_Only__c!=true and Core_Environment_Variable__r.Language__c =:Label.Core_IPS_Languages order by Core_Environment_Variable__r.Core_Datatype__c asc];
+            }
+        }
+    }
+    /***************************************************************************************************
+    Apex Method Name: getEnvironmentVariables 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This method returns EnvironmentDetails
+    Input Parameters: Supported Product Id, Sub Category Id 
+    Output Parameters: List of Environment Variables
+    Description: If sub category contains environment variables they are returned, 
+                 else product based environment variables are returned
+    Used in     : 
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/ 
+    public static List<EnvironmentTemplates> getEnvironmentVariables(String SupportedProductId, String subCategoryID){
+         List<EnvironmentTemplates> ab = new List<EnvironmentTemplates>();
+         if(SupportedProductId  == 'null')
+         system.debug('bharathi----SupportedProductId---in--genevn--->'+SupportedProductId);
+         if(SupportedProductId != 'null' && subCategoryID != 'null' && SupportedProductId  != ' '){
+                  system.debug('bharathi----subCategoryID---in--genevn--->'+subCategoryID);
+         List <Core_IPS_Assigned_Environment_Variables__c > envVariablesList = [select id, name, Core_Environment_Variable__c,Core_Environment_Variable__r.Name,Core_Environment_Variable__r.Core_Answers__c, 
+                 Core_Environment_Variable__r.Core_Datatype__c, Core_Product_Issue_Sub_Category__c,Core_Required__c,Core_Agent_Only__c 
+                 from Core_IPS_Assigned_Environment_Variables__c where Core_Product_Issue_Sub_Category__c=:SupportedProductId];
+         if( envVariablesList.size() > 0){                
+             for (Core_IPS_Assigned_Environment_Variables__c  a:envVariablesList ){
+                 ab.add(new EnvironmentTemplates(a.Core_Environment_Variable__c, a.Core_Environment_Variable__r.name, a.Core_Agent_Only__c, a.Core_Required__c));
+             }
+
+         }else{
+             for(Core_IPS_Assigned_Environment_Variables__c  a:[SELECT id, name, Core_Required__c, Core_Agent_Only__c, Core_Environment_Variable__c, Core_Environment_Variable__r.name FROM Core_IPS_Assigned_Environment_Variables__c where Core_supported_product__c  =: SupportedProductId]){
+                 ab.add(new EnvironmentTemplates(a.Core_Environment_Variable__c, a.Core_Environment_Variable__r.name, a.Core_Agent_Only__c, a.Core_Required__c));
+             }
+
+          }
+          }
+          return ab;
+     }
+     
+   /***************************************************************************************************
+    Apex Wrapper Class Name: EnvironmentTemplates 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This Wrapper class is used for collecting EnvironmentDetails information 
+    Used in     :
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/    
+    public class EnvironmentTemplates {
+        public string envId{get;set;}
+        public string envName{get;set;}
+        public boolean selected{get;set;}
+//        public Environment_Variables__c env{get;set;}
+        public boolean agentOnly{get;set;}
+        public boolean required{get;set;}
+        public EnvironmentTemplates (string id, string name, boolean ag, boolean req){
+            envId = id;
+            envName = name;
+            selected = false;
+            agentOnly = ag;
+            required = req;
+            
+        }
+    }
+    
+   /***************************************************************************************************
+    Apex Wrapper Class Name: AssetList 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This Wrapper class is used for collecting Asset information details
+    Used in     :
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/
+    public class AssetList {
+        public string AssetName;
+        public string assetid;
+        public string prodorgId;
+        
+        public AssetList(string a, string b, string c){
+            AssetName = a;
+            assetid = b;
+            prodorgId = c;
+            
+        }
+    
+    }
+   
+   
+    /***************************************************************************************************
+    Apex Wrapper Class Name: Supported_Product 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This Wrapper class is used for collecting Supported product information details
+    Used in     :
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/
+    public class Supported_product {
+        public string productName;
+        public string productId;
+        
+        public Supported_product (String id, String name){
+            productName = name;
+            productId = id;        
+        }
+    
+    }
+    
+    /***************************************************************************************************
+    Apex Wrapper Class Name: IssueCategories 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This Wrapper class is used for collecting issue categories details
+    Used In     :
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/
+    public class IssueCategories{
+        public string issueCatId;
+        public string issueCatName;
+        public IssueCategories(String id, string name){
+            issueCatId = id;
+            issueCatName = name;
+        }
+    
+    }
+    
+    /***************************************************************************************************
+    Apex Wrapper Class Name: IssueSubCategories 
+    Version     : 1.0 
+    Created Date: 09 Oct 2015
+    Function    : This Wrapper class is used for collecting issue sub categories details
+    Used In     :
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/09/2015              Created
+    ****************************************************************************************************/
+    public class IssueSubCategories{
+        public string issueSubCatId;
+        public string issueSubCatName;
+        public IssueSubCategories(String id, string name){
+            issueSubCatId = id;
+            issueSubCatName = name;
+        }
+    }
+    
+
+
+
+   /***************************************************************************************************
+    Apex Method Name: getIPSProjectList 
+    Parameters : None
+    Return Type: Returns List of selectOptions with assigned projects for the logged in user. 
+    Version     : 1.0 
+    Created Date: 10 Oct 2015
+    Function    : This function is used get the projects assigned to logged in user
+    Used In     : Customer case creation page
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/10/2015              Created
+    ****************************************************************************************************/       
+    public static List<SelectOption> getIPSProjectList(){
+       List<Core_IPS_Project__c> assignedProjectList = new List<Core_IPS_Project__c>();
+       assignedProjectList = [select id, name from core_ips_project__c where core_status__c='Active'];
+       List<SelectOption> projectList = new List<SelectOption>();
+       
+       if(AssignedProjectList <> null && AssignedProjectList.size()>0){
+       projectList.add(new SelectOption('NA','Select One'));
+       for(Core_IPS_Project__c proj:assignedProjectList){
+           projectList.add(new SelectOption(proj.Id,proj.Name));
+       }
+       //displayCustProj=true;
+       }
+       projectList.add(new SelectOption('','Not Applicable'));
+       //displayCustProj=false;
+       return projectList;
+    }
+    
+    public static List<SelectOption> getGECAnswerOptions(){
+        List<SelectOption> answerOptions = new list<SelectOption>();
+        AnswerOptions.add(new SelectOption('', '--Select--'));
+        AnswerOptions.add(new SelectOption('Yes', 'Yes'));
+        AnswerOptions.add(new SelectOption('No', 'No'));
+        return answerOptions;
+    }    
+
+   
+    /***************************************************************************************************
+    Method Name:  getCase_DynamiCSOQL 
+    Method Type: Helper Method 
+    Version     : 1.0 
+    Created Date: 14 Oct 2015
+    Function    : Returns the current case information.
+    Input Parameters: caseId, isAgent
+    Output Parameters: Returns the case information from current case
+    Description:   Returns the current case information.
+    Used in     : Case edit
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/14/2015              Created
+    ****************************************************************************************************/   
+    public static Case getCase_DynamiCSOQL(String csId, boolean isAgent) {
+        try
+        {
+            Case caseRecord;
+            String query = 'SELECT ';
+            for(Schema.FieldSetMember f : getFields(isAgent)) {
+                query += f.getFieldPath() + ', ';
+            }
+            if(isAgent)
+            query += 'Id,Core_Partner_Supported_Account__r.Name,Core_Sub_Status__c,Contact.Name,Core_IPS_Issue_source__c,AssetId,status,Core_Customer_Reference_ID__c,Core_Platform_Name__c,asset.name,productId,product.name,Core_Case_issue_category__c,Core_IPS_Supported_Product__c,Core_IPS_Supported_Product__r.name,Core_case_issue_sub_category__c,Core_IPS_Product_Org1__c,ContactId,core_ips_project_case__c, core_ips_project_case__r.name,recordtypeId,recordtype.DeveloperName,Core_Partner_Supported_Account__c FROM case WHERE Id = \'' + csId+ '\' limit 1';
+            else
+            query += 'Id,Core_Partner_Supported_Account__r.Name,Core_Sub_Status__c,Core_End_Customer__c,status,Core_Customer_Reference_ID__c,Core_Platform_Name__c,Contact.Name,AssetId,asset.name,productId,product.name,Core_Case_issue_category__c,Core_IPS_Supported_Product__c,Core_IPS_Supported_Product__r.name,Core_case_issue_sub_category__c,Core_IPS_Product_Org1__c,ContactId,core_ips_project_case__c, core_ips_project_case__r.name,recordtypeId,recordtype.DeveloperName,Core_Partner_Supported_Account__c FROM case WHERE Id = \'' + csId+ '\' limit 1';
+              caseRecord = Database.query(query);
+            System.debug('Query:'+query+'===========>'+'caseRecord=========='+caseRecord);
+            return caseRecord;
+        }
+        catch(Exception e)
+        {
+            return null;
+        }
+        return null;
+    }
+    
+    /***************************************************************************************************
+    Method Name:  getFields
+    Method Type: Helper Method 
+    Version     : 1.0 
+    Created Date: 14 Oct 2015
+    Function    : Returns field set values based on user type
+    Input Parameters: None
+    Output Parameters: Returns the fields list based on user type from the fieldsets configured
+    Description:   Returns field set values based on user type
+    Used in     : Case Creation
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Jayaprakash T              10/14/2015              Created
+    ****************************************************************************************************/      
+    //Name needs to be changed by JP
+    public static List<Schema.FieldSetMember> getFields(boolean isAgent){
+        if(!isAgent)
+            return SObjectType.Case.FieldSets.Core_Customer_Case_Fields.getFields();
+        else 
+            return SObjectType.Case.FieldSets.Core_Internal_Case_Fields.getFields();
+    }
+    
+    
+    public static List<Core_IPS_Assigned_Environment_Variables__c> getEnvironmentDetailsOperationalRecords(String prod){
+        return null;
+    }
+    
+    /***************************************************************************************************
+    Method Name:  getPlatform
+    Method Type: Helper Method 
+    Version     : 1.0 
+    Created Date: 17 Oct 2015
+    Function    : Returns Map of Supp Prod Id and related Platform Names.
+    Input Parameters: List of SupportedProduct Id.
+    Output Parameters: Returns Map of Supp Prod Id and related Platform Names based on SupportedProduct passed.
+    Description:   This method will return Map of Supp Prod Id and related Platform Names based on Supported Product passed inside.
+    Used in     : Case Creation
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              10/17/2015              Created
+    ****************************************************************************************************/      
+    public static Map<String,Set<String>> getPlatform(List<Id> suppProductIdList){
+        String platformNames = '';                                
+        List<String> epmIdList;
+        Set<String> platfomSet;
+        List<Core_IPS_Supported_Product__c> suppPrdList;
+        List<Core_Flat_Product_Hierarchy__c> fphList = new List<Core_Flat_Product_Hierarchy__c>(); 
+        If(suppProductIdList <> null && suppProductIdList.size() > 0){
+            suppPrdList = new List<Core_IPS_Supported_Product__c>();
+            suppPrdList = [select Id,Core_Flag_Status__c,Core_Code_Name__c,Core_EOIS__c,Core_Prod_EPM_Id__c,Core_Product__r.Core_Sales_Visible_Flag__c,Core_Product__r.Core_Hierarchy_ID__c from Core_IPS_Supported_Product__c where Id in:suppProductIdList AND Core_Product__r.Core_Sales_Visible_Flag__c =:FALSE AND Core_Product__r.Core_Hierarchy_ID__c=:'59'];
+        }        
+        If(suppPrdList <> null && suppPrdList.size() > 0){
+            epmIdList = new List<String>();
+            for(Core_IPS_Supported_Product__c suppProdObj:suppPrdList){
+                if(suppProdObj <> null && suppProdObj.Core_Prod_EPM_Id__c <> null && suppProdObj.Core_Prod_EPM_Id__c <> ''){
+                    epmIdList.add(suppProdObj.Core_Prod_EPM_Id__c);
+                }
+            }
+        }                                      
+        if(epmIdList <> null && epmIdList.size() > 0){
+            fphList = [select Core_L1_EPM_ID__c,Core_L1_EPM_Name__c,Core_L2_EPM_ID__c,Core_L2_EPM_Name__c,Core_L3_EPM_ID__c,Core_L3_EPM_Name__c,Core_L4_EPM_ID__c,Core_L4_EPM_Name__c,Core_L5_EPM_ID__c,Core_L5_EPM_Name__c from Core_Flat_Product_Hierarchy__c where Core_L5_EPM_ID__c in:epmIdList OR Core_L4_EPM_ID__c in:epmIdList OR Core_L2_EPM_ID__c in:epmIdList];        
+        }
+        Map<String, Set<String>> prodHierarchyBySupProd;
+        Set<String> platformNameList;
+        If(suppPrdList <> null && suppPrdList.size() > 0 && fphList <> null && fphList.size() > 0){
+            prodHierarchyBySupProd = new Map<String, Set<String>>();
+            for(Core_IPS_Supported_Product__c sp:suppPrdList){
+                platformNameList = new Set<String>();
+                for(Core_Flat_Product_Hierarchy__c fphObj:fphList){
+                    if(sp.Core_Prod_EPM_Id__c <> null && sp.Core_Prod_EPM_Id__c <> '' && fphObj.Core_L5_EPM_ID__c <> null && fphObj.Core_L5_EPM_ID__c <> '' && sp.Core_Prod_EPM_Id__c==fphObj.Core_L5_EPM_ID__c && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                        platformNameList.add(fphObj.Core_L1_EPM_Name__c);
+                    }else if(sp.Core_Prod_EPM_Id__c <> null && sp.Core_Prod_EPM_Id__c <> '' && fphObj.Core_L4_EPM_ID__c <> null && fphObj.Core_L4_EPM_ID__c <> '' && sp.Core_Prod_EPM_Id__c==fphObj.Core_L4_EPM_ID__c && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                        platformNameList.add(fphObj.Core_L1_EPM_Name__c);
+                    }else if(sp.Core_Prod_EPM_Id__c <> null && sp.Core_Prod_EPM_Id__c <> '' && fphObj.Core_L2_EPM_ID__c <> null && fphObj.Core_L2_EPM_ID__c <> '' && sp.Core_Prod_EPM_Id__c==fphObj.Core_L2_EPM_ID__c && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                        platformNameList.add(fphObj.Core_L1_EPM_Name__c);
+                    }               
+                }                
+                prodHierarchyBySupProd.put(sp.id,platformNameList);
+            }
+        }        
+        /*If(fphList <> null && fphList.size() > 0){
+            platfomSet = new Set<String>();
+            for(Flat_Product_Hierarchy__c fphObj:fphList){
+                if(fphObj.Core_L5_EPM_ID__c <> null && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                    platfomSet.add(fphObj.Core_L1_EPM_Name__c);
+                }else if(fphObj.Core_L5_EPM_ID__c == null && fphObj.Core_L4_EPM_ID__c <> null && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                    platfomSet.add(fphObj.Core_L1_EPM_Name__c);
+                }else if(fphObj.Core_L5_EPM_ID__c == null && fphObj.Core_L4_EPM_ID__c == null && fphObj.Core_L2_EPM_ID__c <> null && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                    platfomSet.add(fphObj.Core_L1_EPM_Name__c);
+                }
+            }
+        }        
+        for(String platformString : platfomSet){
+            if(platformNames == '')
+            platformNames = platformString;           
+            else
+            platformNames = platformNames + ',' + platformString;    
+        }
+        return platformNames;        
+        */
+        return prodHierarchyBySupProd;
+    }
+    
+    /***************************************************************************************************
+    Method Name: getCodeName
+    Method Type: Helper Method 
+    Version     : 1.0 
+    Created Date: 17 Oct 2015
+    Function    : Returns Map of Supported Product Id and related Code Name.
+    Input Parameters: List of SupportedProductIds.
+    Output Parameters: Returns Map of Supported Product Id and related Code Name based on Supp Prod Id passed.
+    Description:   This method will return Map of Supported Product Id and related Code Name based on Supported Product passed inside.
+    Used in     : Case Creation
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              10/17/2015              Created
+    ****************************************************************************************************/      
+    public static Map<String,String> getCodeName(List<Id> suppProductIdList){
+        String codeNames = '';
+        //Set<String> codeSet;
+        Map<String,String> suppProdIdCodeNameMap;
+        List<Core_IPS_Supported_Product__c> suppPrdList;
+        If(suppProductIdList <> null && suppProductIdList.size() > 0){
+            suppPrdList = new List<Core_IPS_Supported_Product__c>();
+            suppPrdList = [select Id,Core_Flag_Status__c,Core_Code_Name__c,Core_EOIS__c,Core_Prod_EPM_Id__c,Core_Product__r.Core_Sales_Visible_Flag__c,Core_Product__r.Core_Hierarchy_ID__c,Core_Product__r.Core_Code_Name__c from Core_IPS_Supported_Product__c where Id in:suppProductIdList AND Core_Product__r.Core_Sales_Visible_Flag__c =:FALSE];
+        }        
+        If(suppPrdList <> null && suppPrdList.size() > 0){
+            //codeSet = new Set<String>();
+            suppProdIdCodeNameMap = new Map<String,String>();
+            for(Core_IPS_Supported_Product__c suppProdObj:suppPrdList){
+                //if(suppProdObj <> null && suppProdObj.Core_Product__r <> null && suppProdObj.Core_Product__r.Core_Code_Name__c <> null && suppProdObj.Core_Product__r.Core_Code_Name__c <> '')
+                //codeSet.add(suppProdObj.Core_Product__r.Core_Code_Name__c);
+                //suppProdIdCodeNameMap.put(suppProdObj.Id,suppProdObj.Core_Product__r.Core_Code_Name__c);
+                if(suppProdObj <> null && suppProdObj.Core_Code_Name__c <> null && suppProdObj.Core_Code_Name__c <> '')
+                    suppProdIdCodeNameMap.put(suppProdObj.Id,suppProdObj.Core_Code_Name__c);
+            }
+        }                                                      
+        If(suppProdIdCodeNameMap <> null && suppProdIdCodeNameMap.size() > 0){
+            return suppProdIdCodeNameMap;
+        }
+        return null;
+        /*for(String codeString : codeSet){
+            if(codeNames == '')
+            codeNames = codeString;           
+            else
+            codeNames = codeNames+','+codeString;    
+        }
+        return codeNames;*/        
+    }
+    
+    /***************************************************************************************************
+    Method Name: getVPHProductType
+    Method Type: Helper Method 
+    Version     : 1.0 
+    Created Date: 17 Oct 2015
+    Function    : Returns comma separated Product Types.
+    Input Parameters: List of SupportedProduct.
+    Output Parameters: Returns Map of Supported Product Id v/s set of VPH Product Type based on SupportedProduct passed.
+    Description:   This method will Returns Map of Supported Product Id v/s set of VPH Product Type based on Supported Product passed inside.
+    Used in     : Case Creation
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              10/17/2015              Created
+    ****************************************************************************************************/      
+    public static Map<String,Set<String>> getVPHProductType(List<Id> suppProductIdList){
+        String prodTypes = '';
+        List<String> epmIdList;
+        Set<String> prodSet;
+        List<Core_IPS_Supported_Product__c> suppPrdList;
+        List<Product2> prodList;
+        List<String> hierarchyIdList;
+        List<String> hierarchyNameList;
+        List<Core_Flat_Product_Hierarchy__c> fphList = new List<Core_Flat_Product_Hierarchy__c>(); 
+        Map<String,Set<String>> suppProdIdProdTypeMap;
+        If(suppProductIdList <> null && suppProductIdList.size() > 0){
+            suppPrdList = new List<Core_IPS_Supported_Product__c>();
+            suppPrdList = [select Id,Core_Flag_Status__c,Core_Code_Name__c,Core_EOIS__c,Core_Prod_EPM_Id__c,Core_Product__r.Core_Unique_ID__c,Core_Product__r.Core_Sales_Visible_Flag__c,Core_Product__r.Core_Hierarchy_ID__c from Core_IPS_Supported_Product__c where Id in:suppProductIdList AND Core_Product__r.Core_Sales_Visible_Flag__c =:FALSE AND Core_Product__r.Core_Hierarchy_ID__c=:'43'];
+        }        
+        If(suppPrdList <> null && suppPrdList.size() > 0){
+            epmIdList = new List<String>();
+            for(Core_IPS_Supported_Product__c suppProdObj:suppPrdList){
+                if(suppProdObj <> null && suppProdObj.Core_Product__r <> null && suppProdObj.Core_Product__r.Core_Unique_ID__c <> null && suppProdObj.Core_Product__r.Core_Unique_ID__c <> ''){
+                    epmIdList.add(suppProdObj.Core_Prod_EPM_Id__c);
+                }
+            }
+        }                                              
+        if(epmIdList <> null && epmIdList.size() > 0){
+            prodList = new List<Product2>();
+            prodList = [select Id,Core_Unique_ID__c,Core_Hierarchy_ID__c,Core_Hierarchy_Name__c from Product2 where Core_Unique_ID__c in:epmIdList];
+        }
+        If(prodList <> null && prodList.size() > 0){
+            hierarchyIdList = new List<String>();
+            hierarchyNameList = new List<String>();
+            for(Product2 prodObj:prodList){
+                if(prodObj <> null && prodObj.Core_Hierarchy_ID__c <> null && prodObj.Core_Hierarchy_ID__c <> '')
+                    hierarchyIdList.add(prodObj.Core_Hierarchy_ID__c);
+                if(prodObj <> null && prodObj.Core_Hierarchy_Name__c <> null && prodObj.Core_Hierarchy_Name__c <> '')
+                    hierarchyNameList.add(prodObj.Core_Hierarchy_Name__c);
+            }
+        }                
+        if(((hierarchyIdList <> null && hierarchyIdList.size() > 0) || (hierarchyNameList <> null && hierarchyNameList.size() > 0)) && (epmIdList <> null && epmIdList.size() > 0)){
+            fphList = [select Core_L1_EPM_ID__c,Core_L1_EPM_Name__c,Core_L2_EPM_ID__c,Core_L2_EPM_Name__c,Core_L3_EPM_ID__c,Core_L3_EPM_Name__c,Core_L4_EPM_ID__c,Core_L4_EPM_Name__c,Core_L5_EPM_ID__c,Core_L5_EPM_Name__c,Core_EPM_Hierarchy_Name__c from Core_Flat_Product_Hierarchy__c where ((Core_EPM_Hierarchy_Name__c IN:hierarchyNameList OR Core_EPM_Hierarchy_ID__c IN:hierarchyIdList) AND (Core_L5_EPM_ID__c in:epmIdList OR Core_L4_EPM_ID__c in:epmIdList OR Core_L3_EPM_ID__c in:epmIdList OR Core_L2_EPM_ID__c in:epmIdList))];        
+        }
+        
+        If(suppPrdList <> null && suppPrdList.size() > 0 && prodList <> null && prodList.size() > 0 && fphList <> null && fphList.size() > 0){
+            suppProdIdProdTypeMap = new Map<String,Set<String>> ();
+            for(Core_IPS_Supported_Product__c suppProdObj:suppPrdList){
+                prodSet = new Set<string> ();
+                for(Product2 prodObj:prodList){
+                    for(Core_Flat_Product_Hierarchy__c fphObj:fphList){
+                        If(suppProdObj.Core_Prod_EPM_Id__c <> null && suppProdObj.Core_Prod_EPM_Id__c <> '' && prodObj.Core_Unique_ID__c <> null && prodObj.Core_Unique_ID__c <> '' && suppProdObj.Core_Prod_EPM_Id__c == prodObj.Core_Unique_ID__c && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> '' && (fphObj.Core_L5_EPM_ID__c == suppProdObj.Core_Prod_EPM_Id__c && (prodObj.Core_Hierarchy_Name__c == fphObj.Core_EPM_Hierarchy_Name__c || prodObj.Core_Hierarchy_ID__c == fphObj.Core_EPM_Hierarchy_ID__c))){
+                            prodSet.add(fphObj.Core_L1_EPM_Name__c);
+                        }else If(suppProdObj.Core_Prod_EPM_Id__c <> null && suppProdObj.Core_Prod_EPM_Id__c <> '' && prodObj.Core_Unique_ID__c <> null && prodObj.Core_Unique_ID__c <> '' && suppProdObj.Core_Prod_EPM_Id__c == prodObj.Core_Unique_ID__c && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> '' && (fphObj.Core_L4_EPM_ID__c == suppProdObj.Core_Prod_EPM_Id__c && (prodObj.Core_Hierarchy_Name__c == fphObj.Core_EPM_Hierarchy_Name__c || prodObj.Core_Hierarchy_ID__c == fphObj.Core_EPM_Hierarchy_ID__c))){
+                            prodSet.add(fphObj.Core_L1_EPM_Name__c);
+                        }else If(suppProdObj.Core_Prod_EPM_Id__c <> null && suppProdObj.Core_Prod_EPM_Id__c <> '' && prodObj.Core_Unique_ID__c <> null && prodObj.Core_Unique_ID__c <> '' && suppProdObj.Core_Prod_EPM_Id__c == prodObj.Core_Unique_ID__c && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> '' && (fphObj.Core_L3_EPM_ID__c == suppProdObj.Core_Prod_EPM_Id__c && (prodObj.Core_Hierarchy_Name__c == fphObj.Core_EPM_Hierarchy_Name__c || prodObj.Core_Hierarchy_ID__c == fphObj.Core_EPM_Hierarchy_ID__c))){
+                            prodSet.add(fphObj.Core_L1_EPM_Name__c);
+                        }else If(suppProdObj.Core_Prod_EPM_Id__c <> null && suppProdObj.Core_Prod_EPM_Id__c <> '' && prodObj.Core_Unique_ID__c <> null && prodObj.Core_Unique_ID__c <> '' && suppProdObj.Core_Prod_EPM_Id__c == prodObj.Core_Unique_ID__c && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> '' && (fphObj.Core_L2_EPM_ID__c == suppProdObj.Core_Prod_EPM_Id__c && (prodObj.Core_Hierarchy_Name__c == fphObj.Core_EPM_Hierarchy_Name__c || prodObj.Core_Hierarchy_ID__c == fphObj.Core_EPM_Hierarchy_ID__c))){
+                            prodSet.add(fphObj.Core_L1_EPM_Name__c);
+                        }
+                    }
+                }
+                suppProdIdProdTypeMap.put(suppProdObj.Id,prodSet);
+            }
+        }
+        return suppProdIdProdTypeMap;
+                        
+        /*If(fphList <> null && fphList.size() > 0){
+            prodSet = new Set<String>();
+            for(Flat_Product_Hierarchy__c fphObj:fphList){
+                if(fphObj.Core_L5_EPM_ID__c <> null && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                    prodSet.add(fphObj.Core_L1_EPM_Name__c);
+                }else if(fphObj.Core_L5_EPM_ID__c == null && fphObj.Core_L4_EPM_ID__c <> null && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                    prodSet.add(fphObj.Core_L1_EPM_Name__c);
+                }else if(fphObj.Core_L5_EPM_ID__c == null && fphObj.Core_L4_EPM_ID__c == null && fphObj.Core_L3_EPM_ID__c <> null && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                    prodSet.add(fphObj.Core_L1_EPM_Name__c);
+                }else if(fphObj.Core_L5_EPM_ID__c == null && fphObj.Core_L4_EPM_ID__c == null && fphObj.Core_L3_EPM_ID__c == null && fphObj.Core_L2_EPM_ID__c <> null && fphObj.Core_L1_EPM_Name__c <> null && fphObj.Core_L1_EPM_Name__c <> ''){
+                    prodSet.add(fphObj.Core_L1_EPM_Name__c);
+                }                
+            }
+        }        
+        for(String prodString : prodSet){
+            if(prodTypes == '')
+            prodTypes = prodString;           
+            else
+            prodTypes = prodTypes + ',' + prodString;    
+        }                        
+        return prodTypes;*/
+    }
+    
+    /***************************************************************************************************
+    Method Name: getVPLHProductType
+    Method Type: Helper Method 
+    Version     : 1.0 
+    Created Date: 17 Oct 2015
+    Function    : Returns comma separated Product Types.
+    Input Parameters: List of SupportedProduct.
+    Output Parameters: Returns Map of Supported Product Id v/s set of VPLH Product Type based on SupportedProduct passed.
+    Description:   This method will Returns Map of Supported Product Id v/s set of VPLH Product Type based on Supported Product passed inside.
+    Used in     : Case Creation
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              10/17/2015              Created
+    ****************************************************************************************************/      
+    public static Map<String,Set<String>> getVPLHProductType(List<Id> suppProductIdList){
+        String prodTypes = '';
+        List<String> epmIdList;
+        Set<String> prodSet;
+        List<Core_IPS_Supported_Product__c> suppPrdList;
+        List<Core_Flat_Product_Hierarchy__c> fphList = new List<Core_Flat_Product_Hierarchy__c>(); 
+        Map<String,Set<String>> suppProdIdProdTypeMap;
+        If(suppProductIdList <> null && suppProductIdList.size() > 0){
+            suppPrdList = new List<Core_IPS_Supported_Product__c>();
+            suppPrdList = [select Id,Core_Flag_Status__c,Core_Code_Name__c,Core_EOIS__c,Core_Prod_EPM_Id__c,Core_Product__r.Core_Unique_ID__c,Core_Product__r.Core_Sales_Visible_Flag__c,Core_Product__r.Core_Hierarchy_ID__c from Core_IPS_Supported_Product__c where Id in:suppProductIdList AND Core_Product__r.Core_Sales_Visible_Flag__c =:FALSE AND Core_Product__r.Core_Hierarchy_ID__c=:'59'];
+        }        
+        If(suppPrdList <> null && suppPrdList.size() > 0){
+            epmIdList = new List<String>();
+            for(Core_IPS_Supported_Product__c suppProdObj:suppPrdList){
+                if(suppProdObj <> null && suppProdObj.Core_Prod_EPM_Id__c <> null && suppProdObj.Core_Prod_EPM_Id__c <> ''){
+                    epmIdList.add(suppProdObj.Core_Prod_EPM_Id__c);
+                }
+            }
+        }                                      
+        if(epmIdList <> null && epmIdList.size() > 0){
+            fphList = [select Core_L1_EPM_ID__c,Core_L1_EPM_Name__c,Core_L2_EPM_ID__c,Core_L2_EPM_Name__c,Core_L3_EPM_ID__c,Core_L3_EPM_Name__c,Core_L4_EPM_ID__c,Core_L4_EPM_Name__c,Core_L5_EPM_ID__c,Core_L5_EPM_Name__c from Core_Flat_Product_Hierarchy__c where Core_L5_EPM_ID__c in:epmIdList OR Core_L4_EPM_ID__c in:epmIdList];        
+        }
+        
+        If(suppPrdList <> null && suppPrdList.size() > 0 && fphList <> null && fphList.size() > 0){
+            suppProdIdProdTypeMap = new Map<String,Set<String>>();
+            for(Core_IPS_Supported_Product__c suppProdObj:suppPrdList){
+                prodSet = new Set<String>();
+                for(Core_Flat_Product_Hierarchy__c fphObj: fphList){
+                    if(fphObj.Core_L5_EPM_ID__c <> null && fphObj.Core_L5_EPM_ID__c <> '' && fphObj.Core_L3_EPM_Name__c <> null && fphObj.Core_L3_EPM_Name__c <> '' && suppProdObj.Core_Prod_EPM_Id__c <> null && suppProdObj.Core_Prod_EPM_Id__c <> '' && fphObj.Core_L5_EPM_ID__c == suppProdObj.Core_Prod_EPM_Id__c){
+                        prodSet.add(fphObj.Core_L3_EPM_Name__c);
+                    }else if(fphObj.Core_L4_EPM_ID__c <> null && fphObj.Core_L4_EPM_ID__c <> '' && fphObj.Core_L3_EPM_Name__c <> null && fphObj.Core_L3_EPM_Name__c <> '' && suppProdObj.Core_Prod_EPM_Id__c <> null && suppProdObj.Core_Prod_EPM_Id__c <> '' && fphObj.Core_L4_EPM_ID__c == suppProdObj.Core_Prod_EPM_Id__c){
+                        prodSet.add(fphObj.Core_L3_EPM_Name__c);
+                    }
+                }
+                suppProdIdProdTypeMap.put(suppProdObj.Id,prodSet);
+            }                
+        }
+        return suppProdIdProdTypeMap;        
+        
+        /*If(fphList <> null && fphList.size() > 0){
+            prodSet = new Set<String>();
+            for(Flat_Product_Hierarchy__c fphObj:fphList){
+                if(fphObj.Core_L5_EPM_ID__c <> null && fphObj.Core_L3_EPM_Name__c <> null && fphObj.Core_L3_EPM_Name__c <> ''){
+                    prodSet.add(fphObj.Core_L3_EPM_Name__c);
+                }else if(fphObj.Core_L5_EPM_ID__c == null && fphObj.Core_L4_EPM_ID__c <> null && fphObj.Core_L3_EPM_Name__c <> null && fphObj.Core_L3_EPM_Name__c <> ''){
+                    prodSet.add(fphObj.Core_L3_EPM_Name__c);
+                }                
+            }
+        }        
+        for(String prodString : prodSet){
+            if(prodTypes == '')
+            prodTypes = prodString;           
+            else
+            prodTypes = prodTypes + ',' + prodString;    
+        }
+        return prodTypes;*/
+    }
+    
+    
+    /***************************************************************************************************
+    Method Name:  getplatform_Options
+    Method Type: Action Helper Method 
+    Version     : 1.0 
+    Created Date: 27 Oct 2015
+    Function    : Constructs the Platform options based on supported Product selected
+    Input Parameters: List of Supported Product/Asset Ids 
+    Output Parameters: List of select options
+    Description:   Constructs the Platform options based on supp prod/Asset
+    Used in     : Case Creation
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              10/27/2015              Created
+    ****************************************************************************************************/     
+    public static List<SelectOption> getplatform_Options(List<Id> idList){ 
+      List<SelectOption> platformOptions = new List<SelectOption>();  
+      platformOptions.add(new SelectOption('', 'Select Platform'));
+      List<Asset> astList = new List<Asset>();
+      List<Core_IPS_Supported_Product__c> suppProdList = new List<Core_IPS_Supported_Product__c>();
+      astList = [select Id,core_supported_product__c from Asset where Id in:idList];  
+      suppProdList = [select Id from Core_IPS_Supported_Product__c where Id in:idList];      
+      List<Id> supportedProductIdList = new List<Id>();
+      if(astList <> null && astList.size() > 0){
+          for(Asset asset:astList){
+            supportedProductIdList.add(asset.core_supported_product__c);
+          }
+      }    
+      if(suppProdList <> null && suppProdList.size() > 0){
+          for(Core_IPS_Supported_Product__c suppProdObj:suppProdList){
+            supportedProductIdList.add(suppProdObj.Id);
+          }
+      }      
+      if(supportedProductIdList <> null && supportedProductIdList.size()>0){
+            Map<String,Set<String>> platformByProduct=Core_IPS_CaseUtility_dup.getPlatform(supportedProductIdList);
+            if(platformByProduct!=null && platformByProduct.size()>0){
+                  if(astList <> null && astList.size() > 0){
+                      for(Asset asset:astList){
+                          if(asset <> null && asset.core_supported_product__c <> null && platformByProduct.get(asset.core_supported_product__c) <> null){
+                              for(String pltfrmString:platformByProduct.get(asset.core_supported_product__c)){
+                                  system.debug('inside for '+pltfrmString);
+                                  if(pltfrmString != null && pltfrmString != ''){
+                                      platformOptions.add(new SelectOption(pltfrmString, pltfrmString));
+                                      system.debug('inside for and if'+platformOptions);
+                                  }
+                               }
+                            }
+                        }        
+                   }
+                   if(suppProdList <> null && suppProdList.size() > 0){
+                      for(Core_IPS_Supported_Product__c suppProdObj:suppProdList){
+                          if(platformByProduct.get(suppProdObj.Id) <> null){
+                              for(String pltfrmString:platformByProduct.get(suppProdObj.Id)){
+                                  system.debug('inside for '+pltfrmString);
+                                  if(pltfrmString != null && pltfrmString != ''){
+                                      platformOptions.add(new SelectOption(pltfrmString, pltfrmString));
+                                      system.debug('inside for and if'+platformOptions);
+                                  }
+                               }
+                            }
+                      }        
+                   }
+                   system.debug('#####platformOptions before sorting#####'+platformOptions);
+                   if(platformOptions <> null && platformOptions.size() > 0){
+                       platformOptions.sort();
+                   }
+                   system.debug('#####platformOptions after sorting#####'+platformOptions); 
+            }          
+        }    
+        return platformOptions;
+    }  
+    
+    /***************************************************************************************************
+    Apex Method Name: getIPSProjListBasedOnSelectedProd
+    Parameters : None
+    Return Type: Returns List of selectOptions with assigned projects based on Selected Product. 
+    Version     : 1.0 
+    Created Date: 10 Nov 2015
+    Function    : This function is used get the projects based on Selected Product
+    Used In     : Customer case creation page
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              Nov/10/2015              Created
+    ****************************************************************************************************/       
+    public static List<SelectOption> getIPSProjListBasedOnSelectedProd(String selectedProductId){
+       System.debug('#########start############'+selectedProductId); 
+       List<Asset> assignedProjectList = new List<Asset>();
+       assignedProjectList = [select id, name,Core_IPS_Project__c,Core_IPS_Project__r.Name from Asset where Status !='Inactive' and Id =:selectedProductId];
+       List<SelectOption> projectList = new List<SelectOption>();
+       
+       if(AssignedProjectList <> null && AssignedProjectList.size() > 0){
+           projectList.add(new SelectOption('NA','Select One'));
+           for(Asset astObj:assignedProjectList){
+               if(astObj.Core_IPS_Project__c <> null && astObj.Core_IPS_Project__r <> null && astObj.Core_IPS_Project__r.Name <> null)
+               projectList.add(new SelectOption(astObj.Core_IPS_Project__c,astObj.Core_IPS_Project__r.Name));
+           }
+           /*if(projectList.size() == 0){
+               projectList.add(new SelectOption('','Select One'));
+           }*/       
+       }
+       projectList.add(new SelectOption('','Not Applicable'));
+       //displayCustProj=false;
+       System.debug('#####################'+projectList);
+       return projectList;
+    }
+    
+    /***************************************************************************************************
+    Apex Method Name: isSelectedProdRelatedToProject
+    Parameters : None
+    Return Type: Returns List of selectOptions with assigned projects based on Selected Product. 
+    Version     : 1.0 
+    Created Date: 10 Nov 2015
+    Function    : This function is used get the projects based on Selected Product
+    Used In     : Customer case creation page
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Abhishek Arya              Nov/10/2015              Created
+    ****************************************************************************************************/       
+    public static Boolean isSelectedProdRelatedToProject(String selectedProjectId,String selectedProductId){
+       System.debug('#########start############'+selectedProductId+selectedProjectId); 
+       List<Asset> assignedProjectList = new List<Asset>();
+       assignedProjectList = [select id, name,Core_IPS_Project__c,Core_IPS_Project__r.Name from Asset where Status !='Inactive' and Id =:selectedProductId and Core_IPS_Project__c =:selectedProjectId];
+       System.debug('#########'+assignedProjectList);
+       if(assignedProjectList <> null && assignedProjectList.size() > 0)
+       return true;
+       return false;
+    }
+    public class CaseInformationByAsset{
+        
+    }
+   /***************************************************************************************************
+    Apex Method Name: ConvertJsonToString
+    Parameters : None
+    Return Type: return  String  after deserialize the Json 
+    Version     : 1.0 
+    Created Date: Jan-4-2016 
+    Function    : Convert String  after deserialize the Json
+    Used In     : custom Search
+    Modification Log :
+    * Developer                   Date                   Description
+    * ----------------------------------------------------------------------------                 
+    * Sunil Chandani             Jan-4-2016              Created
+    ****************************************************************************************************/    
+     public static string ConvertJsonToString(String json){
+         return (string) System.JSON.deserialize(json, string.class);
+     }
+     
+     //Added for getting list of Parent Account
+     public static List<SelectOption> getIPSParentAccountList(String selectedProject){
+     //List<Core_IPS_Account__c> projMemAccounts=[select id,name, Core_Account__r.id,Core_Account__c,Core_Account__r.Name,Core_IPS_Project__r.Name,Core_IPS_Project__c from Core_IPS_Account__c ];   
+   
+     User contIdVal = [select id,ContactId from user where id=:userinfo.getUserId() limit 1];
+            String contId =contIdVal.ContactId;
+            String projId= apexpages.currentpage().getparameters().get('relatedId2');
+            system.debug('projId:::::'+projId);
+            if(projId==''){
+                projId=null;
+            }
+            system.debug('==contId===='+contId);
+           
+            Contact c=[select id,name,accountid from contact where id=:contId];
+            List<Core_IPS_Project_Member__c> projMembersList=[select id,name,Core_IPS_Project__c,Core_IPS_Contact_Account__c from Core_IPS_Project_Member__c where Core_IPS_Contact__c=:contId];  
+            system.debug('projMembersList:::::'+projMembersList.size());
+            //prepare set for Core_IPS_Project__c
+            
+            Set<Id> projIds=new Set<Id>();
+            for(integer i=0;i<projMembersList.size();i++){
+                projIds.add(projMembersList[i].Core_IPS_Project__c);
+            }
+             system.debug('*********************** Project IDs : '+projIds.size());
+            system.debug('selectedProject==>'+selectedProject);
+            if(selectedProject!=null && selectedProject!='' && selectedProject!='NA'){
+                
+                projIds.clear();
+                projIds.add(selectedProject);
+            }
+            system.debug('************************* Account : '+[SELECT Count() FROM Account]);
+            system.debug('*********************** Project IDs Version2 : '+projIds.size());
+            List<Core_IPS_Account__c> projMemAccounts=[select id,name, Core_Account__r.id,Core_Account__c,Core_Account__r.Name,Core_IPS_Project__r.Name,Core_IPS_Project__c from Core_IPS_Account__c where Core_IPS_Project__c  IN :projIds
+                                                        AND Core_Account__c != null 
+                                                        AND Core_Account__r.Name != null];
+            System.debug('projMemAccounts'+projMemAccounts);
+           
+           List<SelectOption> accountList = new List<SelectOption>();
+           if(projMemAccounts <> null && projMemAccounts.size()>0) 
+               accountList.add(new SelectOption('NA','Select One'));
+                 system.debug('********************************* Size of the Options tobe added : '+projMemAccounts.size());
+               for(Core_IPS_Account__c ipsacc:projMemAccounts){
+                    system.debug('********************************* Core IPS ID   : '+ipsacc.Core_Account__c);
+               accountList.add(new SelectOption(ipsacc.Core_Account__c,ipsacc.Core_Account__r.Name));
+               system.debug('**************************** Adding to Options Size : '+accountList.size());
+           }
+           Set<SelectOption> accountoptSet = new Set<SelectOption>(accountList);
+           accountList =new List<SelectOption>(accountoptSet );
+           system.debug('selectedProject====>'+selectedProject);
+           system.debug('accountoptSet====>'+accountoptSet);
+           system.debug('accountList======>'+accountList);
+           
+        return accountList;
+}
+}

@@ -1,0 +1,30 @@
+{
+  "forgotPasswordRouteId" : "f1382098-c918-47e4-b271-d28de30d70f2",
+  "isAvailableToGuests" : false,
+  "isFilteredComponentsView" : false,
+  "isProgressiveRenderingEnabled" : false,
+  "loginAppPageId" : "7187bb5a-0980-4531-82a1-01dbbba96547",
+  "mainAppPageId" : "e17f942b-3b3d-4c09-adf8-76e00bdef0c4",
+  "preferredDomain" : "none",
+  "selfRegistrationRouteId" : "cd43e3c2-dbe9-4f9e-9aa7-8845a14ba88f",
+  "trustedSitesForScript" : [ {
+    "id" : "2c9e7a4a-7b8c-4736-aa30-54a394fd51e7",
+    "isActive" : true,
+    "trustedSiteName" : "CoveoDevCase_URL",
+    "trustedSiteUrl" : "https://intel--crmdevcase.my.salesforce.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "28efaf2e-f1dc-4ff3-8177-f1feb9bd4e24",
+    "isActive" : true,
+    "trustedSiteName" : "CoveoDevCase_URL2",
+    "trustedSiteUrl" : "https://crmdevcase-intelcloudcrm.cs92.force.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "ef8f8e1d-5c39-4f56-ad3c-7a275c6946bc",
+    "isActive" : true,
+    "trustedSiteName" : "CoveoDevCase_VF_URL",
+    "trustedSiteUrl" : "https://intel--crmdevcase--coveov2.cs92.visual.force.com",
+    "type" : "trustedSitesForScripts"
+  } ],
+  "type" : "site"
+}

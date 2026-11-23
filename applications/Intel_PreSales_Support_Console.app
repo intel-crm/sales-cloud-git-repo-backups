@@ -195,16 +195,36 @@
     <tabs>standard-Entitlement</tabs>
     <tabs>Core_Ask_A_Question__c</tabs>
     <tabs>Ask_a_Question</tabs>
+    <tabs>Core_AAQC_Case_Comments__c</tabs>
     <tabs>Core_IPS_Case_Owner_Group__c</tabs>
+    <tabs>Core_IPS_BES_Outbound_Message__c</tabs>
+    <tabs>Core_IPS_BES_Inbound_Message__c</tabs>
+    <tabs>Core_IPS_Backend_System2__c</tabs>
+    <tabs>Core_IPS_Opportunity_PAR__c</tabs>
     <workspaceConfig>
         <mappings>
             <tab>Ask_a_Question</tab>
         </mappings>
         <mappings>
+            <tab>Core_AAQC_Case_Comments__c</tab>
+        </mappings>
+        <mappings>
             <tab>Core_Ask_A_Question__c</tab>
         </mappings>
         <mappings>
+            <tab>Core_IPS_BES_Inbound_Message__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_IPS_BES_Outbound_Message__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_IPS_Backend_System2__c</tab>
+        </mappings>
+        <mappings>
             <tab>Core_IPS_Case_Owner_Group__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Core_IPS_Opportunity_PAR__c</tab>
         </mappings>
         <mappings>
             <tab>Core_IPS_Product_Organization__c</tab>

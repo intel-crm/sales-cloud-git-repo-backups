@@ -5,21 +5,7 @@ Created Date: 11 Nov 2016
 Description    : This class is Test class for Core_Batch_AccountCoverage_Summary
 *************************************************************************************/
 @isTest Public Class Core_Batch_AccountCoverage_Summary_Test{
-    @isTest
-    static void testBatchExecution() {
-
-         String result= Core_Batch_AccountCoverage_Summary.dummyMethod1();
-        String result2= Core_Batch_AccountCoverage_Summary.dummyMethod2(); 
-        String result3= Core_Batch_AccountCoverage_Summary.dummyMethod3(); 
-        String result4= Core_Batch_AccountCoverage_Summary.dummyMethod4(); 
-        String result5= Core_Batch_AccountCoverage_Summary.dummyMethod5(); 
-        String result6= Core_Batch_AccountCoverage_Summary.dummyMethod6(); 
-        String result7= Core_Batch_AccountCoverage_Summary.dummyMethod7(); 
-        String result8= Core_Batch_AccountCoverage_Summary.dummyMethod8(); 
-        String result9= Core_Batch_AccountCoverage_Summary.dummyMethod9();
-            
-       }
-   /* @isTest public static void exportDeleteMethod(){
+    @isTest public static void exportDeleteMethod(){
         Test.setMock(HttpCalloutMock.class, new Core_AccountCoverageMockHttpResponse());
         //Create a Custom Setting
         Core_AccountCoverage_LoadType__c loadtype = new Core_AccountCoverage_LoadType__c(Name = 'LoadType',Core_LoadType__c = 'FULL');
@@ -96,5 +82,5 @@ Description    : This class is Test class for Core_Batch_AccountCoverage_Summary
         Core_Batch_AccountCoverage_Summary summary = new Core_Batch_AccountCoverage_Summary();
         Database.executeBatch(summary);
         test.stoptest();
-    }*/ 
+    } 
 }

@@ -227,7 +227,7 @@ public class Core_IPS_Case_Comments_Test{
                 //Test.startTest();
                 Core_IPS_Case_Comments__c newCaseComment = [SELECT Id, Core_IPS_Rich_Comment__c FROM Core_IPS_Case_Comments__c WHERE core_ips_Case__c = :caseList[0].Id ORDER BY CreatedDate DESC LIMIT 1];
                 System.assertEquals('Test Comment0', newCaseComment.Core_IPS_Rich_Comment__c, 'Comment should match');
-           	//Test.stopTest();
+           //Test.stopTest();
             }
             catch(exception e)
             {}
@@ -296,16 +296,10 @@ public class Core_IPS_Case_Comments_Test{
             caseCommentList = TestUtilities.getCaseComments(10);
             Integer count=0;
             for(Core_IPS_Case_Comments__c comment:caseCommentList){
-                if(count == 0){
-                comment.core_ips_Case__c=ListOfCase[0].id;                
+                comment.core_ips_Case__c=ListOfCase[0].id;
+                
                 comment.Core_IPS_Rich_Comment__c = comment.Core_IPS_Comment__c;
                 comment.Core_IPS_Comment_Author_Type__c='Customer';
-                }
-                else {
-                comment.core_ips_Case__c=ListOfCase[1].id;
-                comment.Core_IPS_Rich_Comment__c = comment.Core_IPS_Comment__c;
-                comment.Core_IPS_Comment_Author_Type__c='Customer';
-                }
                 //if(count==8)
                     //comment.Core_IPS_Case_Comment_Type__c=Core_IPS_Labels__c.getValues('PRIVATE_TO_PARTNERS').value__c;  
                 if(count>8){
@@ -316,11 +310,8 @@ public class Core_IPS_Case_Comments_Test{
             }
             try {
             insert caseCommentList;
-           
-            Core_IPS_Case_Comments_Handler.UpdateCaseField(caseCommentList);
-               
+            Core_IPS_Case_Comments_Handler.UpdateCaseField(caseCommentList); 
                 Core_IPS_Case_Comments__c newCaseComment = [SELECT Id, Core_IPS_Rich_Comment__c FROM Core_IPS_Case_Comments__c WHERE core_ips_Case__c = :ListOfCase[0].Id ORDER BY CreatedDate DESC LIMIT 1];
-               
                 System.assertEquals('Test Comment0', newCaseComment.Core_IPS_Rich_Comment__c, 'Comment should match');
             }
             catch (exception e){
@@ -447,27 +438,17 @@ public class Core_IPS_Case_Comments_Test{
                 Subject = 'TestSubject',
                 Description = 'TestDescription',
                 //Core_Sub_Status__c='INVESTIGATING_TEXT',
-                Core_IPS_Customer_Visible__c = false);
-            
-            Case CaseRecord23 = new Case(
-                Status = 'New',
-                Origin = 'Web',
-                Priority = 'High',
-                Subject = 'TestSubject',
-                Description = 'TestDescription',
-                //Core_Sub_Status__c='INVESTIGATING_TEXT',
-                Core_IPS_Customer_Visible__c = false);
+                Core_IPS_Customer_Visible__c = false
+                           );
             ListOfCase.add(CaseRecord22);
-            ListOfCase.add(CaseRecord23);
                       
             insert ListOfCase;
             String cs = JSON.serialize(ListOfCase);
             Core_IPS_Case_Comments_Handler.updateCaseinFuture(cs);
            List<Core_IPS_Case_Comments__c> caseCommentList = new List<Core_IPS_Case_Comments__c>();
                 caseCommentList = TestUtilities.getCaseComments(10);
-                Integer count=0;
+                //Integer count=0;
                 for(Core_IPS_Case_Comments__c comment:caseCommentList){
-                    if(count == 0){
                     comment.core_ips_Case__c=ListOfCase[0].id;
                     comment.Core_IPS_Comment_Authored_By__c = userInfo.getUserID();
                     comment.Core_IPS_Comment_Authored_By_Email__c = userInfo.getUseremail();
@@ -477,26 +458,13 @@ public class Core_IPS_Case_Comments_Test{
                     comment.Core_IPS_Comment_Attachment_Id__c = null;
                    // comment.Core_IPS_Case_Comment_Source__c = 'Customer Portal';
                     comment.Core_IPS_Comment_Author_Type__c='Agent';
-                    }
-                    else if (count != 0) {
-                    comment.core_ips_Case__c=ListOfCase[1].id;
-                    comment.Core_IPS_Comment_Authored_By__c = userInfo.getUserID();
-                    comment.Core_IPS_Comment_Authored_By_Email__c = userInfo.getUseremail();
-                    comment.Core_IPS_Comment_Authored_By_FirstName__c = userInfo.getFirstName();
-                    comment.Core_IPS_Comment_Authored_By_Name__c = userInfo.getUsername();
-                    comment.Core_IPS_Rich_Comment__c = comment.Core_IPS_Comment__c;
-                    comment.Core_IPS_Comment_Attachment_Id__c = null;
-                   // comment.Core_IPS_Case_Comment_Source__c = 'Customer Portal';
-                    comment.Core_IPS_Comment_Author_Type__c='Agent';
-                    }
-                    count++; 
-                }               
-            insert caseCommentList;
-           
+                    
+                }
+                
+                
+                insert caseCommentList;
             Core_IPS_Case_Comments_Handler.completeActiveMileStone(caseCommentList = new List<Core_IPS_Case_Comments__c>());
-           
              Core_IPS_Case_Comments__c newCaseComment = [SELECT Id, Core_IPS_Rich_Comment__c FROM Core_IPS_Case_Comments__c WHERE core_ips_Case__c = :ListOfCase[0].Id ORDER BY CreatedDate DESC LIMIT 1];
-            	
                 System.assertEquals('Test Comment0', newCaseComment.Core_IPS_Rich_Comment__c, 'Comment should match');
         }
     }

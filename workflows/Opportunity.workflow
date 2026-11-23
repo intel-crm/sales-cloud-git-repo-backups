@@ -1,57 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
-        <fullName>Core_Email_Notification_of_Amend_Renewal_Opportunities</fullName>
-        <description>Email Notification of Amend/Renewal Opportunities</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>coe-integration-user@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>test/Core_Amend_Renewal_Opportunities_Not_Deleted</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_Notify_IOTG_Other_Second_Level_Approvers_Alert_10M_1</fullName>
-        <description>Core_Notify_IOTG Other Second Level_Approvers_Alert_10M_1</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>10770732@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
-        <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_Notify_IOTG_Other_Second_Level_Approvers_Alert_10M_2</fullName>
-        <description>Core_Notify_IOTG Other Second Level_Approvers_Alert_10M_2</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>10052221@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>10642036@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>10770732@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
-        <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
-    </alerts>
-    <alerts>
         <fullName>Core_Notify_IOTG_Second_Level_Approvers_Alert_10M</fullName>
         <description>Core_Notify IOTG Second Level Approvers Alert 10M</description>
         <protected>false</protected>
         <recipients>
-            <recipient>10692802@intel.com.crm</recipient>
+            <recipient>10679699@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>11526272@intel.com.crm</recipient>
+            <recipient>10692802@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -70,11 +28,11 @@
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>10692802@intel.com.crm</recipient>
+            <recipient>10679699@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>11526272@intel.com.crm</recipient>
+            <recipient>10692802@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -127,7 +85,7 @@
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>11525404@intel.com.crm</recipient>
+            <recipient>11570350@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -150,7 +108,7 @@
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>11525404@intel.com.crm</recipient>
+            <recipient>11570350@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -162,10 +120,6 @@
         <protected>false</protected>
         <recipients>
             <recipient>10662131@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>11265583@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -187,23 +141,19 @@
             <recipient>10662131@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <recipients>
-            <recipient>11265583@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
         <senderType>DefaultWorkflowUser</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Approved</fullName>
-        <description>Core_Opp_MINDS_Approved</description>
+        <description>Core_Opp_MAG_Approved</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MINDS_Opportunity_Approved</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Approved</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Fill_Out_Form</fullName>
@@ -214,18 +164,18 @@
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MAG_Opportunity_Fill_Out_Form</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Fill_Out_Form</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_GEC_Needs_Info</fullName>
-        <description>Core_Opp_MINDS_GEC_Needs_Info</description>
+        <description>Core_Opp_MAG_GEC_Needs_Info</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MAG_Opportunity_GEC_Needs_Info</template>
+        <template>unfiled$public/Core_MAG_Opportunity_GEC_Needs_Info</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Governance</fullName>
@@ -237,7 +187,7 @@
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>test/Core_MAG_Opportunity_Email_to_Owner</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Email_to_Owner</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Not_Approved</fullName>
@@ -248,7 +198,7 @@
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MAG_Opportunity_Not_Approved</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Not_Approved</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_Notify_Manager_On_Risk</fullName>
@@ -269,8 +219,7 @@
             <field>Core_System_Submitter__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>Core_Opportunity_Management/Core_Opportunity_Rejection_Email_Template</template>
     </alerts>
     <alerts>
@@ -281,7 +230,7 @@
             <type>owner</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Rejection_Notification_Opportunity</template>
+        <template>unfiled$public/Core_Rejection_Notification_Opportunity</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_Send_Production_Win_EmailAlert</fullName>
@@ -294,8 +243,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>Core_Opportunity_Management/Core_Opportunity_Production_Win_Notification</template>
     </alerts>
     <alerts>
@@ -309,8 +257,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>Core_Opportunity_Management/Core_Opportunity_Production_Win_Overdue_Notification</template>
     </alerts>
     <alerts>
@@ -320,21 +267,8 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Uncovered_Account</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_PCC_OpportunityRejection</fullName>
-        <description>Core_PCC_Rejection Email after Opportunity is Rejected</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_Technical_Owner__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Core_Opportunity_Management/Core_PCC_OpportunityRejectNotification</template>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Core_Uncovered_Account</template>
     </alerts>
     <fieldUpdates>
         <fullName>At_Risk_Created_Date_Update</fullName>
@@ -372,17 +306,6 @@
         <field>Core_Last_Activity_Date__c</field>
         <formula>Today()</formula>
         <name>Last Activity Date Update</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Opp_Add_Prime_Account_Name</fullName>
-        <description>Update the Prime Account Name of the Account associated to the Opportunity.</description>
-        <field>Core_Opp_Prime_Account_Name__c</field>
-        <formula>Account.Core_Prime_Account_Name__c</formula>
-        <name>Core_Opp_Add_Prime_Account_Name</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
@@ -541,17 +464,6 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>Core_Opp_Decision_Date_Update_To_Today</fullName>
-        <description>Update Decision Date when opportunity is lost or cancelled</description>
-        <field>CloseDate</field>
-        <formula>TODAY()</formula>
-        <name>Core_Opp_Decision_Date_Update_To_Today</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Core_Opp_Geo_APJ_update</fullName>
         <description>Update the Opportyunity APJ Geo Checkbox field to be TRUE</description>
         <field>Core_Opportunity_Geo_APJ__c</field>
@@ -669,46 +581,6 @@ Core_Push_Counter__c + 1
         <field>Core_Compliance_Sub_Status__c</field>
         <literalValue>Completed</literalValue>
         <name>Core_Opp_MAG_Auto_Complete_Std_Cust_Refr</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Opp_PW_Approval_Status_Approved</fullName>
-        <field>Core_PW_Approval_Status__c</field>
-        <literalValue>Approved</literalValue>
-        <name>Core_Opp_PW_Approval_Status_Approved</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Opp_PW_Approval_Status_Recalled</fullName>
-        <field>Core_PW_Approval_Status__c</field>
-        <literalValue>Recalled</literalValue>
-        <name>Core_Opp_PW_Approval_Status_Recalled</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Opp_PW_Approval_Status_Rejected</fullName>
-        <field>Core_PW_Approval_Status__c</field>
-        <literalValue>Rejected</literalValue>
-        <name>Core_Opp_PW_Approval_Status_Rejected</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Opp_PW_Approval_Status_Submitted</fullName>
-        <field>Core_PW_Approval_Status__c</field>
-        <literalValue>Submitted</literalValue>
-        <name>Core_Opp_PW_Approval_Status_Submitted</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
@@ -849,7 +721,7 @@ Core_Push_Counter__c + 1
         <fullName>Core_Opp_Set_Approved_Sales_Group</fullName>
         <description>Copies the value from &apos;Sales Group&apos; field to &apos;First Approved Sales Group&apos; field if there is no value in &apos;First Approved Sales Group&apos;.</description>
         <field>Core_System_First_Approved_Sales_Group__c</field>
-        <formula>TEXT(Account.Core_Sales_Groups__c)</formula>
+        <formula>IF(ISBLANK(Core_System_First_Approved_Sales_Group__c), TEXT(Core_Sales_Group__c), Core_System_First_Approved_Sales_Group__c)</formula>
         <name>Core_Opp_Set_Approved_Sales_Group</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -912,17 +784,6 @@ Core_Push_Counter__c + 1
         <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Opp_Stage_PW</fullName>
-        <description>Update stage to Production Win</description>
-        <field>StageName</field>
-        <literalValue>Production Win</literalValue>
-        <name>Core_Opp_Stage_PW</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_Opp_Stage_Qualify</fullName>
@@ -1000,43 +861,13 @@ Core_Push_Counter__c + 1
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Update_Default_DecisionDate</fullName>
-        <field>CloseDate</field>
-        <formula>Today() + 120</formula>
-        <name>Core_Update_Default_DecisionDate</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Update_Opportunity_Created_Coverage</fullName>
-        <field>Core_Opportunity_Created_Coverage_New__c</field>
-        <formula>TEXT( CreatedBy.Core_User_Coverage__c )</formula>
-        <name>Core Update Opportunity Created Coverage</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Override_CloseDate_On_Approval</fullName>
-        <field>CloseDate</field>
-        <formula>IF(ISBLANK(Core_Date_Submitted_for_Approval__c), CloseDate, Core_Date_Submitted_for_Approval__c)</formula>
-        <name>Override CloseDate On Approval</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
     <rules>
         <fullName>Core Opty Default Value</fullName>
         <actions>
             <name>Core_Opty_Default_Value_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.CreatedDate</field>
             <operation>notEqual</operation>
@@ -1047,22 +878,6 @@ Core_Push_Counter__c + 1
             <value>New Solution Group,Solution Group</value>
         </criteriaItems>
         <description>Sets the default stage value to &apos;Group Open&apos; picklist.</description>
-        <failedMigrationToolVersion>236.8.6</failedMigrationToolVersion>
-        <triggerType>onCreateOnly</triggerType>
-    </rules>
-    <rules>
-        <fullName>Core Stamp User Coverage</fullName>
-        <actions>
-            <name>Core_Update_Opportunity_Created_Coverage</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <criteriaItems>
-            <field>Opportunity.RecordTypeId</field>
-            <operation>equals</operation>
-            <value>New Opportunity,Opportunity</value>
-        </criteriaItems>
-        <description>Stamp the User Coverage entry of the person who is creating the opportunity</description>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
@@ -1071,7 +886,7 @@ Core_Push_Counter__c + 1
             <name>Core_Field_Update_Description_count</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>(1 AND 2 )OR (3 AND 4)</booleanFilter>
         <criteriaItems>
             <field>Opportunity.Description</field>
@@ -1099,7 +914,7 @@ Core_Push_Counter__c + 1
             <name>Core_Field_Update_Status_Update_Count</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
         <criteriaItems>
             <field>Opportunity.Core_Status_Update__c</field>
@@ -1122,36 +937,14 @@ Core_Push_Counter__c + 1
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
-        <fullName>Core_Decision_Date_on_Conversion</fullName>
-        <actions>
-            <name>Core_Update_Default_DecisionDate</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <description> Update the default decision date from lead conversion to 120 days </description>
-        <formula>AND( ISNEW(), Core_Lead_Conversion_Flag__c )</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
-    <rules>
         <fullName>Core_Last_Activity_Date</fullName>
         <actions>
             <name>Core_Last_Activity_Date_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Updating the Core_Last_Activity_Date__c field with today&apos;s date when any of the Stage, Decision Date, Volume, Description, Amount fields or Status Update are updated</description>
-        <formula>OR(  ISCHANGED( StageName ),  ISCHANGED( CloseDate ),  ISCHANGED( Core_Volume__c ),  ISCHANGED( Description ),  ISCHANGED( Amount ),  ISCHANGED( Core_Status_Update__c ),  ISCHANGED( Core_Product_Segment__c ),  ISCHANGED( Core_Product_Application__c ),  ISCHANGED( Core_Consumption_Market__c ),  ISCHANGED( Core_Solution_Area__c ),  ISCHANGED( Core_Solution_Type__c ),  ISCHANGED( Core_Combined_Solution_Detail__c ),  ISCHANGED( Core_First_Customer_Ship_Date__c ),  ISCHANGED( Core_Manufacturing_Geo__c )  )</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
-    <rules>
-        <fullName>Core_Opp_Add_Prime_Account_Name</fullName>
-        <actions>
-            <name>Core_Opp_Add_Prime_Account_Name</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <description>Populate the Prime Account Name of the Account that is being associated with Opportunity on Create/Update.</description>
-        <formula>ISNEW() || ISCHANGED(AccountId)</formula>
+        <formula>OR( ISCHANGED( StageName ), ISCHANGED( CloseDate ), ISCHANGED( Core_Volume__c ),   ISCHANGED( Description ),   ISCHANGED( Amount ), ISCHANGED(  Core_Status_Update__c ))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -1160,7 +953,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Set_Stage_Design</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>When all won products are set back to pending and the stage is not &quot;Design&quot;, set the stage back to &quot;Design&quot;.</description>
         <formula>AND(   NOT(OR(ISPICKVAL(StageName, &apos;Design&apos;), ISPICKVAL(StageName, &apos;Qualify&apos;))),   Core_Won_Product_Count__c = 0,   PRIORVALUE(Core_Won_Product_Count__c) &gt; 0,   Core_Pending_Product_Count__c &gt;= PRIORVALUE(Core_Won_Product_Count__c) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1171,7 +964,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Bypass_Field_Validation_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.Core_Bypass_Field_Validation__c</field>
             <operation>equals</operation>
@@ -1186,13 +979,13 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Record_Prior_Opportunity_Stage</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.StageName</field>
             <operation>equals</operation>
             <value>Lost,Cancelled,Production Lost,Production Cancelled</value>
         </criteriaItems>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_Opp_Clear_Amount</fullName>
@@ -1200,7 +993,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Clear_Amount</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.Core_Product_Count__c</field>
             <operation>equals</operation>
@@ -1210,12 +1003,27 @@ Core_Push_Counter__c + 1
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Opp_Clear_Compliance_Status</fullName>
+        <actions>
+            <name>Core_Opp_Clear_Compliance_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Opp_Clear_Compliance_Sub_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Clears the Compliance Status when you clone an Opportunity with an existing value</description>
+        <formula>AND(ISBLANK(TEXT(Core_Compliance_Status__c))= False, Text(Core_Military_Aerospace_Govmt_End_Use__c) = &quot;No&quot;, Core_MAG_Account__c = FALSE  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Opp_Clear_Loss_Cancel_Details</fullName>
         <actions>
             <name>Core_Opp_Clear_Loss_Cancel_Details</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Clears the Loss/Cancel Details text field if the Opportunity is changed from Lost or Cancelled to a stage other than Lost or Cancelled</description>
         <formula>AND(   OR(     ISPICKVAL(PRIORVALUE(StageName), &apos;Lost&apos;),     ISPICKVAL(PRIORVALUE(StageName), &apos;Cancelled&apos;),     ISPICKVAL(PRIORVALUE(StageName), &apos;Production Lost&apos;),     ISPICKVAL(PRIORVALUE(StageName), &apos;Production Cancelled&apos;)   ),   NOT(OR(     ISPICKVAL(StageName, &apos;Lost&apos;),     ISPICKVAL(StageName, &apos;Cancelled&apos;),     ISPICKVAL(StageName, &apos;Production Lost&apos;),     ISPICKVAL(StageName, &apos;Production Cancelled&apos;)   )) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1230,7 +1038,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Stage_Qualify</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1</booleanFilter>
         <criteriaItems>
             <field>Opportunity.StageName</field>
@@ -1241,12 +1049,27 @@ Core_Push_Counter__c + 1
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Opp_Compliance_Status</fullName>
+        <actions>
+            <name>Core_Opp_Compliance_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Opp_Compliance_Sub_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Sets the Compliance Approval Status field to &apos;AR - Owner to fill out MAG Questionnaire&apos; if any of the compliance fields are set to yes/checked and it&apos;s not a standard refresh</description>
+        <formula>OR( AND(  OR(ISBLANK(TEXT(Core_Compliance_Status__c)) = True,  ISCHANGED(Core_Standard_Customer_Refresh__c)),  OR(Text(Core_Military_Aerospace_Govmt_End_Use__c) = &quot;Yes&quot;, Core_MAG_Account__c = True),  Core_Standard_Customer_Refresh__c = False, ISBLANK(TEXT(Core_Compliance_Sub_Status__c))),   AND($Profile.Name=&quot;Global Export Compliance&quot;,  Core_Standard_Customer_Refresh__c=false, ISCHANGED(Core_Standard_Customer_Refresh__c)   )  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Opp_Decision_Date</fullName>
         <actions>
             <name>Core_Opp_Decision_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.IsWon</field>
             <operation>equals</operation>
@@ -1265,7 +1088,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Update_Converted_Created_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.StageName</field>
             <operation>notEqual</operation>
@@ -1279,24 +1102,18 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_MAG_Approved</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.Core_Compliance_Status__c</field>
             <operation>equals</operation>
             <value>Approved</value>
         </criteriaItems>
         <criteriaItems>
-            <field>Opportunity.Core_Compliance_Status__c</field>
+            <field>Opportunity.Core_Standard_Customer_Refresh__c</field>
             <operation>equals</operation>
-            <value>Approved with Guardrails</value>
+            <value>False</value>
         </criteriaItems>
-        <criteriaItems>
-            <field>Opportunity.Core_Compliance_Sub_Status__c</field>
-            <operation>equals</operation>
-            <value>Completed by GEC</value>
-        </criteriaItems>
-        <description>Sends an email to the opportunity owner upon MINDS approval</description>
+        <description>Sends an email to the opportunity owner upon MAG approval</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -1309,7 +1126,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_MAG_Auto_Complete_Std_Cust_Refr</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>(1 OR 2) AND 3</booleanFilter>
         <criteriaItems>
             <field>Opportunity.Core_Military_Aerospace_Govmt_End_Use__c</field>
@@ -1330,12 +1147,51 @@ Core_Push_Counter__c + 1
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Opp_MAG_Fill_Out_Form</fullName>
+        <active>true</active>
+        <booleanFilter>(1 OR 2) AND (3 OR 4) AND 5</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.Core_Military_Aerospace_Govmt_End_Use__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_MAG_Account__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_Compliance_Sub_Status__c</field>
+            <operation>equals</operation>
+            <value>AR - Owner to fill out MAG Questionnaire</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_Compliance_Sub_Status__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_Standard_Customer_Refresh__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Sends an email to the opportunity owner if it&apos;s a MAG opportunity and the form still needs to be filled out, 1 hour after opportunity creation</description>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_Opp_MAG_Fill_Out_Form</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
         <fullName>Core_Opp_MAG_GEC_Needs_Info</fullName>
         <actions>
             <name>Core_Opp_MAG_GEC_Needs_Info</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.Core_Compliance_Sub_Status__c</field>
             <operation>equals</operation>
@@ -1345,12 +1201,42 @@ Core_Push_Counter__c + 1
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>Core_Opp_MAG_Not_Approved</fullName>
+        <actions>
+            <name>Core_Opp_MAG_Not_Approved</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Core_Compliance_Status__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <description>Sends an email to the opportunity owner upon MAG non-approval</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Opp_Notify_Manager_On_Risk</fullName>
+        <actions>
+            <name>Core_Opp_Notify_Manager_On_Risk</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Core_Opp_Set_Owners_Manager_Email</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Sends an email to opportunity owner&apos;s manager when opportunity is flagged at risk. Using the fact that Filed Update occurs first before the Email Alert.</description>
+        <formula>OR ( AND(ISNEW(), ISBLANK(Core_Risk_Reason__c) = false),  AND(ISCHANGED(Core_Risk_Reason__c), PRIORVALUE(Core_Risk_Reason__c) = &apos;&apos;)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Opp_Production_Win_Notification</fullName>
         <actions>
             <name>Core_Opp_Set_Owners_Manager_Email</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <field>Opportunity.StageName</field>
@@ -1364,8 +1250,8 @@ Core_Push_Counter__c + 1
         </criteriaItems>
         <criteriaItems>
             <field>Opportunity.Core_Product_Segment__c</field>
-            <operation>contains</operation>
-            <value>Embedded</value>
+            <operation>equals</operation>
+            <value>Embedded,Connected Home,Wireless &amp; Connectivity</value>
         </criteriaItems>
         <description>US54796: OPPTY Production Tracking: Production Win Notification -  Send notification (Production Win Notification) to Opportunity Owner and copy the Opportunity Owner&apos;s Manager when it is 14 days until the First Customer Ship Date</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -1385,7 +1271,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Set_Owners_Manager_Email</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <field>Opportunity.StageName</field>
@@ -1399,8 +1285,8 @@ Core_Push_Counter__c + 1
         </criteriaItems>
         <criteriaItems>
             <field>Opportunity.Core_Product_Segment__c</field>
-            <operation>contains</operation>
-            <value>Embedded</value>
+            <operation>equals</operation>
+            <value>Connected Home,Embedded,Wireless &amp; Connectivity</value>
         </criteriaItems>
         <description>US54796:OPPTY Production Tracking: Production Win Notification - Send notification (Production Win Overdue Notification) to Opportunity Owner and copy the Opportunity Owner&apos;s Manager when it is 7 days after the First Customer Ship Date.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -1420,7 +1306,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Set_Record_Type_to_Group</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.RecordTypeId</field>
             <operation>equals</operation>
@@ -1435,7 +1321,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Set_Record_Type_to_Opportunity</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.RecordTypeId</field>
             <operation>equals</operation>
@@ -1450,7 +1336,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Set_Approved_Opportunity_Region</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Sets the &apos;Approved Opportunity Region&apos; to the Region of the Opportunity Owner when the Opportunity goes into any of these Stages for the first time - Design Win, Production Win, Lost, Cancelled. The field will not be updated once set.</description>
         <formula>AND  (  Core_Approved_Opportunity_Region__c = null,  OR ( ISPICKVAL(StageName, &apos;Design Win&apos;), ISPICKVAL(StageName, &apos;Production Win&apos;), ISPICKVAL(StageName, &apos;Lost&apos;), ISPICKVAL(StageName, &apos;Cancelled&apos;) ) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1461,7 +1347,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Stage_DW</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Set the stage to design win when approved if the prior stage was not Production Win.</description>
         <formula>AND(ISCHANGED(Core_Approval_Status__c),   ISPICKVAL(Core_Approval_Status__c, &apos;Approved&apos;),   NOT(ISPICKVAL(StageName, &apos;Production Win&apos;)) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1472,7 +1358,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Uncovered_Account_Notification</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>Account.OwnerId</field>
@@ -1485,7 +1371,6 @@ Core_Push_Counter__c + 1
             <value>Uncovered Account</value>
         </criteriaItems>
         <description>Notifies an Opportunity owner that they created an Opportunity against an uncovered Account</description>
-        <failedMigrationToolVersion>240.12.7</failedMigrationToolVersion>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
@@ -1494,7 +1379,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_IncrementPushCounter</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update Opportunity Push Counter</description>
         <formula>IF( CloseDate&gt; PRIORVALUE( CloseDate), IF (MONTH(CloseDate) &lt;&gt;  MONTH(PRIORVALUE( CloseDate)) , TRUE, FALSE), FALSE)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1505,9 +1390,9 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Geo_APJ_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for determining is the Opportunity belongs to APJ Geo on account for any of the following Opportunity Geo, Opportunity Team Geos, Opportunity Owner’s Geo,Account Geo and Account Owner&apos;s Geo</description>
-        <formula>IF(   (RecordType.DeveloperName = &quot;Core_Deal_Opportunity&quot;  ||   RecordType.DeveloperName = &quot;Core_Design_Opportunity&quot; )  &amp;&amp;  (Core_Opportunity_Geo__c = &quot;APJ&quot;  || Owner.Core_User_Geo__c = &quot;APJ&quot;  || TEXT(Account.Core_Geo__c) = &quot;APJ&quot;  || Account.Owner.Core_User_Geo__c = &quot;APJ&quot; || Core_Opportunity_Team_Geo_APJ__c = true), TRUE, FALSE )</formula>
+        <formula>IF(   (RecordType.DeveloperName = &quot;Core_Opportunity&quot;  ||   RecordType.DeveloperName = &quot;Core_Solution_Group&quot; )  &amp;&amp;  (Core_Opportunity_Geo__c = &quot;APJ&quot;  || Owner.Core_User_Geo__c = &quot;APJ&quot;  || TEXT(Account.Core_Geo__c) = &quot;APJ&quot;  || Account.Owner.Core_User_Geo__c = &quot;APJ&quot; || Core_Opportunity_Team_Geo_APJ__c = true), TRUE, FALSE )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -1516,7 +1401,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Geo_APJ_update_off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for determining is the Opportunity belongs to APJ Geo on account for any of the following Opportunity Geo, Opportunity Team Geos, Opportunity Owner’s Geo,Account Geo and Account Owner&apos;s Geo and TURN OFF the checkbox</description>
         <formula>NOT ( IF( Core_Opportunity_Geo__c = &quot;APJ&quot;  || Owner.Core_User_Geo__c = &quot;APJ&quot;  || TEXT(Account.Core_Geo__c) = &quot;APJ&quot;  || Account.Owner.Core_User_Geo__c = &quot;APJ&quot; || Core_Opportunity_Team_Geo_APJ__c = true,  TRUE, FALSE) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1527,7 +1412,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Geo_ASMO_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for determining is the Opportunity belongs to ASMO Geo on account for any of the following Opportunity Geo, Opportunity Team Geos, Opportunity Owner’s Geo,Account Geo and Account Owner&apos;s Geo</description>
         <formula>IF( Core_Opportunity_Geo__c = &quot;ASMO&quot;  || Owner.Core_User_Geo__c = &quot;ASMO&quot;  || TEXT(Account.Core_Geo__c) = &quot;ASMO&quot;  || Account.Owner.Core_User_Geo__c = &quot;ASMO&quot; || Core_Opportunity_Team_Geo_ASMO__c = true,  TRUE, FALSE)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1538,21 +1423,10 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Geo_ASMO_update_off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for determining is the Opportunity belongs to ASMO Geo on account for any of the following Opportunity Geo, Opportunity Team Geos, Opportunity Owner’s Geo,Account Geo and Account Owner&apos;s Geo</description>
         <formula>NOT (IF( Core_Opportunity_Geo__c = &quot;ASMO&quot;  || Owner.Core_User_Geo__c = &quot;ASMO&quot;  || TEXT(Account.Core_Geo__c) = &quot;ASMO&quot;  || Account.Owner.Core_User_Geo__c = &quot;ASMO&quot; || Core_Opportunity_Team_Geo_ASMO__c = true,  TRUE, FALSE) )</formula>
         <triggerType>onAllChanges</triggerType>
-    </rules>
-    <rules>
-        <fullName>Core_Opp_Update_Decision_Date_Today_on_Lost</fullName>
-        <actions>
-            <name>Core_Opp_Decision_Date_Update_To_Today</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <description>US575476 - Oppty : Autoupdate Decision Date when opportunity is lost or cancelled</description>
-        <formula>OR(  ISPICKVAL(StageName, &apos;Lost&apos;), ISPICKVAL(StageName, &apos;Cancelled&apos;))</formula>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Core_Opp_Update_Description</fullName>
@@ -1560,7 +1434,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Update_Description</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Opportunity.Core_Lead_Notes__c</field>
             <operation>notEqual</operation>
@@ -1574,7 +1448,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Geo_EMEA_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for determining is the Opportunity belongs to EMEA Geo on account for any of the following  Opportunity Geo, Opportunity Team Geos, Opportunity Owner’s Geo,Account Geo and Account Owner&apos;s Geo</description>
         <formula>IF( Core_Opportunity_Geo__c = &quot;EMEA&quot;  || Owner.Core_User_Geo__c = &quot;EMEA&quot;  || TEXT(Account.Core_Geo__c) = &quot;EMEA&quot;  || Account.Owner.Core_User_Geo__c = &quot;EMEA&quot; || Core_Opportunity_Team_Geo_EMEA__c = true,  TRUE, FALSE)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1585,7 +1459,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Geo_EMEA_update_off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for determining is the Opportunity belongs to EMEA Geo on account for any of the following  Opportunity Geo, Opportunity Team Geos, Opportunity Owner’s Geo,Account Geo and Account Owner&apos;s Geo</description>
         <formula>NOT (IF( Core_Opportunity_Geo__c = &quot;EMEA&quot;  || Owner.Core_User_Geo__c = &quot;EMEA&quot;  || TEXT(Account.Core_Geo__c) = &quot;EMEA&quot;  || Account.Owner.Core_User_Geo__c = &quot;EMEA&quot; || Core_Opportunity_Team_Geo_EMEA__c = true,  TRUE, FALSE) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1596,7 +1470,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Geo_PRC_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for determining is the Opportunity belongs to PRC Geo on account for any of the following Opportunity Geo, Opportunity Team Geos, Opportunity Owner’s Geo,Account Geo and Account Owner&apos;s Geo</description>
         <formula>IF( Core_Opportunity_Geo__c = &quot;PRC&quot;  || Owner.Core_User_Geo__c = &quot;PRC&quot;  || TEXT(Account.Core_Geo__c) = &quot;PRC&quot;  || Account.Owner.Core_User_Geo__c = &quot;PRC&quot; || Core_Opportunity_Team_Geo_PRC__c = true,  TRUE, FALSE)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1607,7 +1481,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_Geo_PRC_update_off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for determining is the Opportunity belongs to PRC Geo on account for any of the following Opportunity Geo, Opportunity Team Geos, Opportunity Owner’s Geo,Account Geo and Account Owner&apos;s Geo and TURNING OFF the checkbox for PRC</description>
         <formula>NOT (IF( Core_Opportunity_Geo__c = &quot;PRC&quot;  || Owner.Core_User_Geo__c = &quot;PRC&quot;  || TEXT(Account.Core_Geo__c) = &quot;PRC&quot;  || Account.Owner.Core_User_Geo__c = &quot;PRC&quot; || Core_Opportunity_Team_Geo_PRC__c = true,  TRUE, FALSE) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1618,7 +1492,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Compute_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for Populating the  SalesSegment &quot;Compute&quot; checkbox- used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>INCLUDES( Core_Sales_Segments__c , &quot;Compute&quot;)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1629,7 +1503,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Compute_update_off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for turning OFF  the  SalesSegment &quot;Compute&quot; checkbox-  To Off used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>NOT (INCLUDES( Core_Sales_Segments__c , &quot;Compute&quot;))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1640,7 +1514,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Dist_Channel_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for Populating the  SalesSegment &quot;Distributor/Channel&quot; checkbox- used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>INCLUDES( Core_Sales_Segments__c , &quot;Distributor/Channel&quot;)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1651,7 +1525,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Dist_Channe_update_off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for turning OFF  the  SalesSegment &quot;Distributor/Channel&quot; checkbox-  To Off used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>NOT (INCLUDES( Core_Sales_Segments__c , &quot;Distributor/Channel&quot;))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1662,7 +1536,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Embedded_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for Populating the  SalesSegment &quot;Embedded&quot; checkbox- used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>INCLUDES( Core_Sales_Segments__c , &quot;Embedded&quot;)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1673,7 +1547,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Embedded_update_off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for TURNING OFF  the  SalesSegment &quot;Embedded&quot; checkbox- used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>NOT(INCLUDES( Core_Sales_Segments__c , &quot;Embedded&quot;))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1684,7 +1558,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Influencer_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for Populating the  SalesSegment &quot;Influencer&quot; checkbox- used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>INCLUDES( Core_Sales_Segments__c , &quot;Influencer&quot;)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1695,7 +1569,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Influencer_update_off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for TURNING OFF the  SalesSegment &quot;Influencer&quot; checkbox- OFF used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>not(INCLUDES( Core_Sales_Segments__c , &quot;Influencer&quot;))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1706,7 +1580,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Reseller_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for Populating the  SalesSegment &quot;Reseller/Channel&quot; checkbox- used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>INCLUDES( Core_Sales_Segments__c , &quot;Reseller/Channel&quot;)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1717,7 +1591,7 @@ Core_Push_Counter__c + 1
             <name>Core_Opp_SalesSeg_Reseller_update_off</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This rule is for TURNING OFF the  SalesSegment &quot;Reseller/Channel&quot; checkbox- used in sharing rule- only edited by Sales Ops WW.</description>
         <formula>NOT(INCLUDES( Core_Sales_Segments__c , &quot;Reseller/Channel&quot;))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1728,9 +1602,35 @@ Core_Push_Counter__c + 1
             <name>At_Risk_Created_Date_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update At Risk Created Date if there is any change in Risk Reason</description>
         <formula>ISCHANGED( Core_Risk_Reason__c )</formula>
         <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>x Core_Opp_MAG_Governance</fullName>
+        <actions>
+            <name>Core_Opp_MAG_Governance</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.Core_Military_Aerospace_Govmt_End_Use__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_MAG_Account__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Core_Standard_Customer_Refresh__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Sends an email notification to the compliance team and owner if a new MAG Opportunity is created</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

@@ -1,0 +1,67 @@
+<apex:page controller="Core_IPS_Survey_Page_Controller" title="Intel Premier Support Survey - Case {!CaseNumber}" showHeader="true" action="{!caseOwnerRedirectPage}" >
+  
+    <script>function setFocusOnLoad() {}
+    </script>
+    <div class="mainContent {!SUBSTITUTE(surveyType,' ','_')}"> 
+        <apex:form >
+         
+            <!-- Survey Logo --> 
+            
+            <div class="logocontainer">                
+                <apex:image value="{!$Resource[logoImageResource]}" rendered="{!NOT(ISBLANK(logoImageResource))}"/>
+            </div>
+            
+            
+          
+        </apex:form>
+    </div>
+    
+    <script>
+   
+    function skiptocase() {
+        var conf = confirm('{!$Label.Core_IPS_Skip_Survey_Confirmation_Message}');
+        if(!conf) {
+            isSubmit = false;
+        }
+        return conf;
+    }
+    </script>
+     <br/>
+     <br/>
+    <br/>
+       <h1 style="line-height: 80px;
+    padding: 30px;
+    font-size: 20px;
+    font-style: initial;
+    font-weight: 100;
+   line-height: 26pt;
+">
+               Your input is extremely important to Intel and our efforts to create a great Intel Premier Support experience. We may send you an email invitation to a survey in a few days if you have not already received one. If you prefer, you can click below and give feedback now. This will take you to a 3rd party survey we work closely with to analyze customer feedback. Thank you!
+            </h1>
+     <br/>
+     <br/>
+     <br/>
+    <div>
+       
+        <apex:outputLink value="{!mcs}" style=" padding: 20px;font-size: 22px;font-style: oblique;font-weight: 100">www.intelLightningPortal.com/{!CaseNumber}</apex:outputLink>
+       
+         </div>
+     <br/>
+     <br/>
+     <br/>
+<div>
+    
+   
+    <h1 Style="line-height: 80px;
+    padding: 30px;
+               
+    font-size: 20px;
+    font-style: initial;
+    font-weight: 100;
+    line-height: 26pt;               
+">
+               If you have already responded to a survey on this case using the email invitation, thank you – there is no need for further action. If you are unsure, the survey system will let you know if you click the link.
+
+            </h1>
+     </div>
+</apex:page>

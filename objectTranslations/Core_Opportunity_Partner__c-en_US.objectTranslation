@@ -13,14 +13,6 @@
         <name>Core_OpportunityPartnerSearch</name>
     </fieldSets>
     <fields>
-        <label><!-- Partner Prime Account Name --></label>
-        <name>CORE_PRIME_ACC_NAME__c</name>
-    </fields>
-    <fields>
-        <label><!-- Unified Global Opportunity Partner --></label>
-        <name>CRM_Unified_Global_Opportunity_Partner__c</name>
-    </fields>
-    <fields>
         <label><!-- 3rd Party --></label>
         <name>Core_3rd_Party__c</name>
     </fields>
@@ -68,22 +60,13 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Opportunity Partner Prime --></label>
-        <name>Core_Opportunity_Partner_Prime__c</name>
-    </fields>
-    <fields>
         <label><!-- Opportunity --></label>
         <name>Core_Opportunity__c</name>
         <relationshipLabel><!-- Opportunity Partners --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Partner Country/Region --></label>
+        <label><!-- Partner Country --></label>
         <name>Core_Partner_Country__c</name>
-    </fields>
-    <fields>
-        <help><!-- IOTG Solution Scale Only. Partner fully owns the End Customer demand creation and engagement. Checking this flag automatically assigns the “Channel Opportunity” flag. --></help>
-        <label><!-- Partner Led External Opportunity --></label>
-        <name>Core_Partner_Led_External_Opportunity__c</name>
     </fields>
     <fields>
         <help><!-- Free text field for recording remarks concerning the particular partner --></help>
@@ -176,124 +159,56 @@
         <label><!-- Partner Type --></label>
         <name>Core_Partner_Type__c</name>
         <picklistValues>
-            <masterLabel>Academia &amp; research institutions</masterLabel>
-            <translation><!-- Academia &amp; research institutions --></translation>
+            <masterLabel>Cloud Service Provider</masterLabel>
+            <translation><!-- Cloud Service Provider --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Branded Value Added Reseller (bVAR)</masterLabel>
-            <translation><!-- Branded Value Added Reseller (bVAR) --></translation>
+            <masterLabel>DMR</masterLabel>
+            <translation><!-- DMR --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Cloud Service Provider (CSP)</masterLabel>
-            <translation><!-- Cloud Service Provider (CSP) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Comm Service Provider (CoSP)</masterLabel>
-            <translation><!-- Comm Service Provider (CoSP) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Contract Manufacturer (CM)</masterLabel>
-            <translation><!-- Contract Manufacturer (CM) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Digital Services (Social Media, Streaming, eWallet)</masterLabel>
-            <translation><!-- Digital Services (Social Media, Streaming, eWallet) --></translation>
+            <masterLabel>Design House</masterLabel>
+            <translation><!-- Design House --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Distributor</masterLabel>
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Domain Expert Integrator</masterLabel>
-            <translation><!-- Domain Expert Integrator --></translation>
+            <masterLabel>EMS</masterLabel>
+            <translation><!-- EMS --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Electronic Manufacturing Services (EMS)</masterLabel>
-            <translation><!-- Electronic Manufacturing Services (EMS) --></translation>
+            <masterLabel>ESF Firm</masterLabel>
+            <translation><!-- ESF Firm --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Embedded Board Manufacturer (EBM)</masterLabel>
-            <translation><!-- Embedded Board Manufacturer (EBM) --></translation>
+            <masterLabel>Embedded Board Manufacturer</masterLabel>
+            <translation><!-- Embedded Board Manufacturer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>End Customer</masterLabel>
             <translation><!-- End Customer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Enterprise Influencer</masterLabel>
-            <translation><!-- Enterprise Influencer --></translation>
+            <masterLabel>ISV/OSV</masterLabel>
+            <translation><!-- ISV/OSV --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>FPGA Design Services</masterLabel>
-            <translation><!-- FPGA Design Services --></translation>
+            <masterLabel>LOEM</masterLabel>
+            <translation><!-- LOEM --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Global System Integrator (GSI)</masterLabel>
-            <translation><!-- Global System Integrator (GSI) --></translation>
+            <masterLabel>ODM</masterLabel>
+            <translation><!-- ODM --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Hardware System Integrator (HSI)</masterLabel>
-            <translation><!-- Hardware System Integrator (HSI) --></translation>
+            <masterLabel>OEM</masterLabel>
+            <translation><!-- OEM --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Independent Design House</masterLabel>
-            <translation><!-- Independent Design House --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Independent Software Vendor (ISV)</masterLabel>
-            <translation><!-- Independent Software Vendor (ISV) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Approved Component Supplier (IACS)</masterLabel>
-            <translation><!-- Intel Approved Component Supplier (IACS) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Approved Device Supplier (IADS)</masterLabel>
-            <translation><!-- Intel Approved Device Supplier (IADS) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Authorized Distributor (IAD)</masterLabel>
-            <translation><!-- Intel Authorized Distributor (IAD) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Local Original Design Manufacturer (LODM)</masterLabel>
-            <translation><!-- Local Original Design Manufacturer (LODM) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Local Original Equipment Manufacturer (LOEM)</masterLabel>
-            <translation><!-- Local Original Equipment Manufacturer (LOEM) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Managed Service Provider (MSP)</masterLabel>
-            <translation><!-- Managed Service Provider (MSP) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Solution Integrator (NSI)</masterLabel>
-            <translation><!-- National Solution Integrator (NSI) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>National Solution Provider (NSP)</masterLabel>
-            <translation><!-- National Solution Provider (NSP) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Operational Technology System Integrator (OTSI)</masterLabel>
-            <translation><!-- Operational Technology System Integrator (OTSI) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Original Design Manufacturer (ODM)</masterLabel>
-            <translation><!-- Original Design Manufacturer (ODM) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
-            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PSG Team</masterLabel>
-            <translation><!-- PSG Team --></translation>
+            <masterLabel>Publisher</masterLabel>
+            <translation><!-- Publisher --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Reseller</masterLabel>
@@ -304,19 +219,23 @@
             <translation><!-- Retailer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Telco Equipment Manufacturer (TEM)</masterLabel>
-            <translation><!-- Telco Equipment Manufacturer (TEM) --></translation>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Value Added Reseller (VAR)</masterLabel>
-            <translation><!-- Value Added Reseller (VAR) --></translation>
+            <masterLabel>Solution Integration (SI/ITO/bVAR)</masterLabel>
+            <translation><!-- Solution Integration (SI/ITO/bVAR) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TEM</masterLabel>
+            <translation><!-- TEM --></translation>
         </picklistValues>
     </fields>
     <fields>
         <help><!-- 3rd party involved in the opportunity, for example co-selling, co-design, fulfillment, or end customer --></help>
         <label><!-- Partner --></label>
         <name>Core_Partner__c</name>
-        <relationshipLabel><!-- Partner Opportunities --></relationshipLabel>
+        <relationshipLabel><!-- Opportunity Partners --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Role of the Partner on the Opportunity --></help>
@@ -403,37 +322,5 @@
             <translation><!-- TEM --></translation>
         </picklistValues>
     </fields>
-    <fields>
-        <label><!-- Unified Partner Account Name --></label>
-        <name>Core_UCD_Partner_Account_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Decision Date --></label>
-        <name>Decision_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Stage --></label>
-        <name>OpportunityStage__c</name>
-    </fields>
-    <fields>
-        <label><!-- Owner Full Name --></label>
-        <name>Opportunity_Owner_Full_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Opportunity Record Type --></label>
-        <name>Opportunity_Record_Type__c</name>
-    </fields>
-    <fields>
-        <label><!-- Technical Owner --></label>
-        <name>Opportunity_Technical_Owner__c</name>
-    </fields>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- The account you are attempting to relate this Opportunity Partner to is not an Intel or Partner Account. Please choose an Intel or Partner Account --></errorMessage>
-        <name>Core_OppPartner_Prevent_Account</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Partner Led External Opportunity cannot be deselected.  Please submit an AAQ to request removal of this flag --></errorMessage>
-        <name>Core_Partner_Led_External_Opp_Check</name>
-    </validationRules>
 </CustomObjectTranslation>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://apis-stage.intel.com/v1/auth/token</authorizeUrl>
+    <consumerKey>00031f14-0735-4939-a925-f255b1c517b3</consumerKey>
+    <consumerSecret>Placeholder_Value</consumerSecret>
+    <friendlyName>IPS Apigee Auth Provider</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <isPkceEnabled>false</isPkceEnabled>
+    <providerType>MicrosoftACS</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://apis-stage.intel.com/v1/auth/authorize</tokenUrl>
+</AuthProvider>

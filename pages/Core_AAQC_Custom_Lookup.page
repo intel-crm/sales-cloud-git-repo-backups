@@ -7,8 +7,11 @@
 * Nikhil Godhani                27-11-2018                 Created   
 
 --> 
-<apex:page controller="Core_AAQC_LookupController" sidebar="false" showheader="false"  action="{!pageLoad}" cache="FALSE">
+<apex:page controller="Core_AAQC_LookupController" sidebar="false" showheader="false"   cache="FALSE">
 <script language="javascript">
+    window.onload = function(){
+        pageLoad();
+    }
    function fillIn(name, id)
    {
       var winMain=window.opener;
@@ -17,10 +20,10 @@
       {
          winMain=window.parent.opener;
       }
-      var ele=winMain.document.getElementById('{!$CurrentPage.parameters.namefield}');
+      var ele=winMain.document.getElementById('{!JSENCODE(HTMLENCODE($CurrentPage.parameters.namefield))}');
       ele.value=name;
       
-      ele=winMain.document.getElementById('{!$CurrentPage.parameters.idfield}');
+      ele=winMain.document.getElementById('{!JSENCODE(HTMLENCODE($CurrentPage.parameters.idfield))}');
       ele.value=id;
       
       CloseWindow();
@@ -37,7 +40,7 @@
    }
 </script>
     <apex:slds />
-    <apex:form id="form" > 
+    <apex:form id="form"> 
         <div style="width 100%">
             <apex:pageBlock title="Lookup" id="block">
                 <apex:pageBlockSection id="section">
@@ -54,7 +57,7 @@
         <apex:pageBlockSection columns="1">
             <apex:pageBlockTable value="{!lstOfProfileUsesr}" var="userAndProfile">
                 <apex:column headerValue="User Name">
-                    <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(userAndProfile.Name)}', '{!JSENCODE(userAndProfile.id)}')">{!JSENCODE(userAndProfile.Name)}</apex:outputLink>       
+                    <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(HTMLENCODE(userAndProfile.Name))}', '{!JSENCODE(HTMLENCODE(userAndProfile.id))}')">{!userAndProfile.Name}</apex:outputLink> 
                 </apex:column>
                 <apex:column headerValue="Profile Name">
                     <apex:outputText value="{!userAndProfile.Profile.Name}"></apex:outputText>
@@ -66,7 +69,7 @@
         <apex:pageBlockSection columns="1">
             <apex:pageBlockTable value="{!lstOfMngerAndUser}" var="userAndManager">
                 <apex:column headerValue="User Name">
-                    <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(userAndManager.Name)}', '{!JSENCODE(userAndManager.id)}')">{!JSENCODE(userAndManager.Name)}</apex:outputLink>       
+                    <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(HTMLENCODE(userAndManager.Name))}', '{!JSENCODE(HTMLENCODE(userAndManager.id))}')">{!userAndManager.Name}</apex:outputLink>       
                 </apex:column>
                 <apex:column headerValue="Manager Name">
                     <apex:outputText value="{!userAndManager.Manager.Name}"></apex:outputText>

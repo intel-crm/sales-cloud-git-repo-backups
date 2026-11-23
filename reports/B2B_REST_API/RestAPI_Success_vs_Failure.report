@@ -22,7 +22,7 @@
         <textColor>#000000</textColor>
         <textSize>12</textSize>
         <title>API calls success vs failure overview</title>
-        <titleColor>#000000</titleColor>
+        <titleColor>#3333FF</titleColor>
         <titleSize>18</titleSize>
     </chart>
     <columns>
@@ -91,8 +91,8 @@
     <reportType>CustomEntity$Core_RestAPI_Transaction_Entry__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>false</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_RestAPI_Transaction_Entry__c.Core_Entry_Time__c</dateColumn>
         <interval>INTERVAL_LAST7</interval>

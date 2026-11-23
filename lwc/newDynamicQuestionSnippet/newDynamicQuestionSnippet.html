@@ -1,0 +1,52 @@
+<template>
+
+    <div if:true={isLoaded}>
+        <lightning-spinner style="position: fixed;" alternative-text="Loading..."></lightning-spinner>
+        <div style="position: fixed;" class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+    <template if:true={showEDQ}>
+
+        <template for:each={recordsedq} for:item="env" for:index="questionId">
+            <div key={env.questionId} title={env.type}>
+                <template if:true={env.hasChildQuestions}>
+                    <div aria-labelledby={env.label} aria-placeholder={env.lwcplaceholder} data-id={env.questionId}>
+                        <c-dynamic-question onselecteddependentidchild={handleonanswerselected} type={env.type}
+                            questionlist={env.label} requiredfields={env.required} answerlist={env.lwcplaceholder}
+                            placeholdertext={env.splaceholder} is-child-question={env.hasChildQuestions}
+                            dependent-child-data={env.childQuestions} questionid={env.questionId}
+                            parentquestion={env.hasParentQuestion}>
+                        </c-dynamic-question>
+                        <c-core_-i-p-s_-dynamic-question type={env.type}
+                            questionlist={env.label} requiredfields={env.required} answerlist={env.lwcplaceholder}
+                            placeholdertext={env.splaceholder} has-child-question={env.hasChildQuestions}
+                            dependent-child-data={env.childQuestions} questionid={env.questionId}
+                            parentquestion={env.hasParentQuestion}>
+                        </c-core_-i-p-s_-dynamic-question>    
+                    </div> 
+                </template>
+            </div>
+        </template>
+    </template>
+
+ <!--   <div class="slds-theme_default">
+       
+        <template if:true={renderChildQuestions}>    
+            <template for:each={dependetQuestions} for:item="chi">
+                <template if:true={chi.isVisible}>
+                    <div key={chi.Id} title={chi.type}>
+                        <div aria-labelledby={chi.label} aria-placeholder={chi.lwcplaceholder}
+                            data-id={chi.questionId}>
+                          
+                            <c-core_-i-p-s_-dynamic-question childiterate="true" type={chi.type}
+                                questionlist={chi.label} requiredfields={chi.required}
+                                answerlist={chi.lwcplaceholder} placeholdertext={chi.splaceholder}
+                                ischildvisible={chi.isVisible} questionid={chi.questionId}
+                                parentid={chi.parentQuestionID}>
+                            </c-core_-i-p-s_-dynamic-question>
+                        </div>
+                    </div>
+                </template>
+            </template>         
+        </template>
+    </div> -->
+</template>

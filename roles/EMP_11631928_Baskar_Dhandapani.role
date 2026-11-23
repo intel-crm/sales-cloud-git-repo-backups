@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Inactive Manager</description>
+    <description>EMP of Debjani Ghosh</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11631928_Baskar_Dhandapani</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>EMP_10644269_Prakash_Mallya</parentRole>
 </Role>

@@ -1,0 +1,47 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="Core_IPS_UserInfoCtrl">
+     <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:attribute name="userInfo" type="user"/>  
+
+    <lightning:navigation aura:id="navService"/>
+    
+    <div class="slds-clearfix slds-border_bottom">
+        <div class="slds-float_left">
+            <div class="Fill-1">
+                <div class="logo-energyblue-white-3000px"></div>
+                <span>
+                    <span style="font-size:18px;"><b>Intel</b></span>&#174;<br/>
+                    Premier Support
+                </span>
+            </div>
+            <button class="customCSS" onclick="{!c.navigateToHome}">HOME</button>
+            <button class="customCSS" onclick="{!c.navigateToPreference}">PREFERENCES</button>
+            
+        </div>
+        
+        
+        
+        <div class="slds-float_right" style="margin-top:35px;">
+            <div style="width:260px;" class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                <lightning:buttonIcon 
+                                      class="slds-button slds-input__icon slds-text-color--default" 
+                                      iconName="utility:user" variant="bare" onclick="{!c.search}" 
+                                      alternativeText="Search"></lightning:buttonIcon> 
+                <span style="padding-left:30px;">&nbsp;&nbsp;{!v.userInfo.Name}&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="{!c.handleLogout}"> Logout</a></span>
+                
+            </div> 
+        </div>
+    </div>
+    
+    <div class="slds-clearfix slds-border_bottom">
+        <div class="slds-float_left">
+            <div class="By-Product ">
+                DASHBOARD
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    
+    
+</aura:component>

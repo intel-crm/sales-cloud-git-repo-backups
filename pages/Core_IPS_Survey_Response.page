@@ -10,8 +10,10 @@
 <apex:page standardController="Case" showHeader="false" applyHtmlTag="false">
     <apex:includeLightning />
     <div id="surveyFeedbackId"></div>
+    <apex:outputText style="font-style:italic" value="Survey Feedback"/>
+       
     <script>
-    var uiTheme = "{!$User.UIThemeDisplayed}";
+    var uiTheme = "{!JSENCODE($User.UIThemeDisplayed)}";
     console.log('response theme' + uiTheme);
      if(uiTheme == 'Theme4d'){       
         $Lightning.use("c:core_IPS", function() {

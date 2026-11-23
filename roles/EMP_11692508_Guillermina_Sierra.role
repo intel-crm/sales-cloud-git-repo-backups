@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Anne Matson</description>
+    <description>EMP of Celina Durrieu</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11692508_Guillermina_Sierra</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10468358_Anne_Matson</parentRole>
+    <parentRole>EMP_11413201_Celina_Durrieu</parentRole>
 </Role>

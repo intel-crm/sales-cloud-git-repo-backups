@@ -8,14 +8,20 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Networking</sourceValue>
+            </sourceValues>
             <value>DC NFV</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Server</sourceValue>
+            </sourceValues>
             <value>DC IT/Cloud</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>Workstation</sourceValue>
+                <sourceValue>Desktop</sourceValue>
             </sourceValues>
             <value>Client</value>
         </values>
@@ -135,8 +141,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

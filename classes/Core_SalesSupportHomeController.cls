@@ -5,13 +5,12 @@ Created Date: 11 JUL 2014
 Function    : 
 Modification Log :
 * Developer           Date               Description
-* ----------------------------------------------------------------------------
+* ----------------------------------------------------------------------------    
 * Srikant Joshi       Jul 11, 2014       Original Version
 * Dave Hood           Jun 08, 2015       Copied from original code, refactored, updated for R2
 * Accenture           Dec 06, 2016       Copied from original code, added functionality for Intel Altera Phase1
 * Ashwin Dash         May 09, 2017       Providing user access on the related opportunity for updating the status on creation of Quote and removing it after updation - US63649
 * Rangesh Kona        Aug 22nd, 2017     SMG-DRD - Sales Support Request Integration
-* KavyaShree          july22,2020        Security scan fix
 *************************************************************************************/
 public with sharing class Core_SalesSupportHomeController {
 
@@ -19,25 +18,13 @@ public with sharing class Core_SalesSupportHomeController {
     public Boolean bUserHasAccess { get; set; }      // Does the user have access to the Sales Support tab for this oppty/acct?
     public Boolean bAccountWithNoCIMID { get; set; } // Are we on an account with no CIM ID?
     public Boolean bSeedsRenderFlag { get; set; }    // Conditionally render the subsection
-    public  Boolean bSeedsErrorFlag { get; set; }     // Display error messages
+    public Boolean bSeedsErrorFlag { get; set; }     // Display error messages
     public Boolean bSamplesRenderFlag { get; set; }  // Conditionally render the subsection
     public Boolean bSamplesErrorFlag { get; set; }   // Display error messages
-    public Boolean bQuotesRenderFlag { get; set; }  // Conditionally render the subsection
-    public Boolean bQuotesErrorFlag { get; set; }   // Display error messages
-    public Boolean ucdSwitch { get; set; }          //TWC4767-3431 - implementation of UCD and CIM logic switch
-    public String unifiedOrCimLabelSample {get;set;}      //TWC4767-3431 - implementation of UCD and CIM logic switch
-    @AuraEnabled public static  List<String>  errorMessage {get;set;}//Shivini 
+  
 
-    public List<WebQuote> quotes {get; set;}
     
-  @AuraEnabled public static Boolean isPartner {get;set;}//Shivini  //Is user a partner
-    public String selectedISR {get;set;} //Selected ISR by partner
-     public string LinkQuoteName{get;set;}
-     @AuraEnabled public string err{get;set;}
-    public string confirmPwd{get;set;}
-     public string first{get;set;}
-    public string last{get;set;}
-       public String sCurrentTab { get; set; }      // "tabSeeds" or "tabSamples"   
+    public String sCurrentTab { get; set; }      // "tabSeeds" or "tabSamples"   
     // Seed search text
     public String[] sSeedSearch {
         get {
@@ -68,12 +55,6 @@ public with sharing class Core_SalesSupportHomeController {
     public String requestSamplesURL { get; set; }
     public String viewSampleURL { get; set; }
     
-    //US116483-to auto populate User Region starts
-    
-    public String UserRegion { get; set; }
-    public String UIthemedisplayed { get; set; }
-     //US116483-to auto populate User Region end
-    
     // List to deserialize seeds JSON response, and the (potentially) filtered results for the user
     public list <SeedWebserviceWrapper> lstSeeds { get; set; }
     public list <SeedWebserviceWrapper> lstFilteredSeeds { get; set; }
@@ -89,7 +70,7 @@ public with sharing class Core_SalesSupportHomeController {
     public Account sobjAcct { get; set; }
     
     // Values passed through URL parameters
-    @AuraEnabled public String sOppId { get; set; }  //Shivini    // Opportunity ID
+    public String sOppId { get; set; }        // Opportunity ID
     public String sOppRecName { get; set; }   // Opportunity Name
     public Id sAcctId { get; set; }           // Account ID
     public String sAcctRecName { get; set; }  // Account Name
@@ -105,12 +86,12 @@ public with sharing class Core_SalesSupportHomeController {
     // Intel Altera Phase1:
     //Below getter setter fields are added for Phas1 implementation
     
-    //public Boolean bPSGQuoteHistoryExist {get;set;} // This field is used for indicating the PSGQuoteHistory exist or not 
-    //public Boolean bSalesSupportHomePageAccessible {get;set;} // Field used for indicating Sales Support Home is accessible 
-    @AuraEnabled public static Boolean bOpportunityValidForQuoteCreation {get;set;}// To indicate opportunity valid for Quote Creation //Shivini
-    //public Boolean bPSGQuoteTabVisible {get;set;}
-    //public List<Core_PSG_Quote_Generation_History__c> lstPSGQuoteGenarationHistory {get;set;} // Displays the PSG Quote History related to a opportunity
-    //public boolean bPSGQuoteProcessingInfoDisp {get;set;} //This bit decides which error message to be displayed on the PSG Quote History Tab. 
+    public Boolean bPSGQuoteHistoryExist {get;set;} // This field is used for indicating the PSGQuoteHistory exist or not 
+    public Boolean bSalesSupportHomePageAccessible {get;set;} // Field used for indicating Sales Support Home is accessible 
+    public Boolean bOpportunityValidForQuoteCreation {get;set;} // To indicate opportunity valid for Quote Creation 
+    public Boolean bPSGQuoteTabVisible {get;set;}
+    public List<Core_PSG_Quote_Generation_History__c> lstPSGQuoteGenarationHistory {get;set;} // Displays the PSG Quote History related to a opportunity
+    public boolean bPSGQuoteProcessingInfoDisp {get;set;} //This bit decides which error message to be displayed on the PSG Quote History Tab. 
     
     
     // SMG-DRD Support Request Integration *** Start
@@ -118,19 +99,14 @@ public with sharing class Core_SalesSupportHomeController {
     public Boolean showNoAccessMessage {get;set;}
     public Id userId {get;set;}  
     public Boolean showNavigationErrorMessage{get;set;}
-
     // SMG-DRD Support Request Integration *** End
     
-    public String URLPMT {get;set;}  //TWC3123-4227
-    
     // Constructor - instantiates & initializes all of our variables based on how the user came to the page
-    public Core_SalesSupportHomeController() {  
-        
-        URLPMT = System.currentPagereference().getParameters().get('producttype');  //TWC3123-4227
+    public Core_SalesSupportHomeController() {
             
-        //bPSGQuoteTabVisible = false; // Bit to indicate whether the PSG Quote tab has to be show or not .
+        bPSGQuoteTabVisible = false; // Bit to indicate whether the PSG Quote tab has to be show or not .
         mapStringToCS = new map<String,Core_System_Credentials__c>{};
-        //lstPSGQuoteGenarationHistory = new List<Core_PSG_Quote_Generation_History__c>();
+        lstPSGQuoteGenarationHistory = new List<Core_PSG_Quote_Generation_History__c>();
         userId = UserInfo.getUserId();
         // Set the boolean values to default values 
         bUserHasAccess = true;
@@ -139,11 +115,6 @@ public with sharing class Core_SalesSupportHomeController {
         bSeedsErrorFlag = false;
         bSamplesRenderFlag = false;
         bSamplesErrorFlag = false;
-        bQuotesRenderFlag = false;
-        bQuotesErrorFlag = false;
-        ucdSwitch=Core_CRM_Utility.isUCDSwitchOn(); //TWC4767-3431 - implementation of UCD and CIM logic switch
-        unifiedOrCimLabelSample = (ucdSwitch == true) ? 'Account Unified ID' : 'Account CIM ID';
-        
         
          // SMG-DRD Support Request Integration *** Start
         showNoAccessMessage = false;            // To check Read/Write Access
@@ -154,51 +125,38 @@ public with sharing class Core_SalesSupportHomeController {
         //Intel Altera Phase1:
         //Below field will be initialized to default value.
         bOpportunityValidForQuoteCreation  = true;
-        //bPSGQuoteProcessingInfoDisp = false;
-        //bPSGQuoteHistoryExist = false;
+        bPSGQuoteProcessingInfoDisp = false;
+        bPSGQuoteHistoryExist = false;
         
         // These are used to identify Custom Settings for Samples system credentials and will likely be replaced with Custom Labels
         final String mySamplesRequestPlacement = 'My Samples Request Placement';
         final String mySamplesRequestManagement = 'My Samples Request Management';
         final String mySamplesHome = 'My Samples Home';
-        
-         //US116483-to auto populate User Region starts
-        User userObj = [select Id, Core_WWID__c, Core_User_Geo__c, Profile.Name from User where Id = :UserInfo.getUserID()];
-        
-        UserRegion=userObj.Core_User_Geo__c; 
-        UIthemedisplayed=UserInfo.getUiThemeDisplayed();
-        //US116483-to auto populate User Region end
        
-        if(userObj.Profile.Name == System.Label.Core_Partner_Profile_Name){
-            isPartner = true;
-        }else{
-            isPartner = false;
-        }
         try {
+                                                  
             // Set the reference to the system url name to system credentials 
             for(Core_System_Credentials__c sobjCS : Core_System_Credentials__c.getAll().Values())
                 mapStringToCS.put(sobjCS.Name, sobjCS);
                
             //Intel Altera Phase1: 
             //Calling isSalesSupportHomePageAccessible function to check for accessibility of page for the logged in user.
-            //bSalesSupportHomePageAccessible = Core_SalesSupportPSGQuoteSFDCToSiebel.isSalesSupportHomePageAccessible();
+            bSalesSupportHomePageAccessible = Core_SalesSupportPSGQuoteSFDCToSiebel.isSalesSupportHomePageAccessible();
             
             // If the user came in through an Opportunity, get the OpportunityID using the URL parameter,
             // and set up all of our variables & URLs based on that
             if (String.isNotBlank(ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID))) {
-               // bPSGQuoteTabVisible = true; // PSG Quote Tab is visible 
-               // CIM ID replaced with Account ID
-                sAcctId = ApexPages.currentPage().getParameters().get(System.Label.Core_AccountID);
-                //sCimId = ApexPages.currentPage().getParameters().get(System.Label.Core_CIMID);
+                bPSGQuoteTabVisible = true; // PSG Quote Tab is visible 
+                sCimId = ApexPages.currentPage().getParameters().get(System.Label.Core_CIMID);
                 sOppId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
                 sOppRecName = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityName);     
                 //Called pullPSGQuoteHistory method for getting the PSG Quote history associated with Opportunity.
-                //pullPSGQuoteHistory();
+                pullPSGQuoteHistory();
+                
                 if(!String.isEmpty(sOppRecName))
                     sOppRecName = sOppRecName.replace('+',' ');
-                //As part of TWC3123-6731 CIM ID replaced with Account ID
                 orderSeedsURL = mapStringToCS.get(System.Label.Core_DemoDepotOrder).Core_End_Point_URL__c + System.Label.Core_aceOppID +
-                    '=' + sOppId + '&' + System.Label.Core_CIMID + '=' + sAcctId;
+                    '=' + sOppId + '&' + System.Label.Core_CIMID + '=' + sCimId;
                 requestSamplesURL = mapStringToCS.get(mySamplesRequestPlacement).Core_End_Point_URL__c + 'CIMId=' + sCimId +
                     '&OpportunityId=' + sOppId;
                 
@@ -208,7 +166,7 @@ public with sharing class Core_SalesSupportHomeController {
                 
                 //Intel Altera Phase1:
                 //Below block of code used  for checking the PSG Quote Processing and existence of PSG Quote History of an Opportunity.
-                /*sobjOppt = [Select id,name,Core_PSG_Quote_Last_Processed_Status__c from Opportunity where Id=:sOppId];
+                sobjOppt = [Select id,name,Core_PSG_Quote_Last_Processed_Status__c from Opportunity where Id=:sOppId];
                 
                 if(sobjOppt.Core_PSG_Quote_Last_Processed_Status__c =='Processing') {
                       if(lstPSGQuoteGenarationHistory.isEmpty()) {
@@ -223,7 +181,7 @@ public with sharing class Core_SalesSupportHomeController {
                 if(lstPSGQuoteGenarationHistory.isEmpty() && (!(sobjOppt.Core_PSG_Quote_Last_Processed_Status__c =='Processing'))) {
                     bPSGQuoteHistoryExist = true;
                     bPSGQuoteProcessingInfoDisp = false;
-                }*/
+                }
                 
                 
                 // If the user doesn't have read access to the Opportunity
@@ -245,24 +203,21 @@ public with sharing class Core_SalesSupportHomeController {
             // If the user came in through an Account, get the CIM ID using the URL parameter,
             // and set up all of our variables & URLs based on that
             else if (String.isNotBlank(ApexPages.currentPage().getParameters().get(System.Label.Core_AccountName))) {
-               //Commented sCimId As part of TWC3123-6731 CIM ID replaced with Account ID
-               //Uncommented as part of Samples Bug and IF Unified Id is blank then passing CIM ID else Unified ID - TWC4767-3983 
-                string ucdId = ApexPages.currentPage().getParameters().get('UCDID');
-                sCimId = (string.isBlank(ucdId)) ? ApexPages.currentPage().getParameters().get(System.Label.Core_CIMID) : ucdId ;                
+               
+                sCimId = ApexPages.currentPage().getParameters().get(System.Label.Core_CIMID);
                 sAcctRecName = ApexPages.currentPage().getParameters().get(System.Label.Core_AccountName);
                 sAcctRecName = sAcctRecName.replace('+',' ');   
                 sAcctId = ApexPages.currentPage().getParameters().get(System.Label.Core_AccountID);
-                 //As part of TWC3123-6731 CIM ID replaced with Account ID              
-                if (String.isBlank(sAcctId)) {
-                    //bAccountWithNoCIMID = true;
+                               
+                if (String.isBlank(sCimId)) {
+                    bAccountWithNoCIMID = true;
                     bSeedsRenderFlag = false;
                     bSeedsErrorFlag = false;
                     bSamplesRenderFlag = false;
                     bSamplesErrorFlag = false;
                 }
                 else {                    
-                    ////As part of TWC3123-6731 CIM ID replaced with Account ID
-                    orderSeedsURL = mapStringToCS.get(System.Label.Core_DemoDepotOrder).Core_End_Point_URL__c + System.Label.Core_CIMID + '=' + sAcctId;
+                    orderSeedsURL = mapStringToCS.get(System.Label.Core_DemoDepotOrder).Core_End_Point_URL__c + System.Label.Core_CIMID + '=' + sCimId;
                     requestSamplesURL = mapStringToCS.get(mySamplesRequestPlacement).Core_End_Point_URL__c + 'CIMId=' + sCimId;
                     
                     List<UserRecordAccess> lstUserRecordAccess = new List<UserRecordAccess>();
@@ -288,24 +243,13 @@ public with sharing class Core_SalesSupportHomeController {
                 }
             }
             
-             // TWC3123-4227 - If the user came in through AtRisk tab('Fill Out Demo Depot' button)
-            else if (String.isNotBlank(ApexPages.currentPage().getParameters().get('OppsID'))) {
-                sOppId = ApexPages.currentPage().getParameters().get('OppsID');
-                orderSeedsURL = mapStringToCS.get(System.Label.Core_DemoDepotOrder).Core_End_Point_URL__c + System.Label.Core_aceOppID + '=' + sOppId;
-                requestSamplesURL = mapStringToCS.get(mySamplesRequestPlacement).Core_End_Point_URL__c +'&OpportunityId=' + sOppId;
-            }
-            
             // If the user came straight to the tab, get their WWID using the URL parameter,
             // and set up all of our variables & URLs based on that
             else {
-                List<User> lstUser = [select Id, Core_WWID__c,Core_User_Geo__c from User where Id = :UserInfo.getUserID()];
+                List<User> lstUser = [select Id, Core_WWID__c from User where Id = :UserInfo.getUserID()];
                 sWWID = lstUser[0].Core_WWID__c;
-                //UserRegion=lstUser[0].Core_User_Geo__c;
-               // UIthemedisplayed=UserInfo.getUiThemeDisplayed();
-  
-                //Uncommented as part of Samples Bug and IF Unified Id is blank then passing CIM ID else Unified ID - TWC4767-3983 
-                string ucdId = ApexPages.currentPage().getParameters().get('UCDID');
-                sCimId = (string.isBlank(ucdId)) ? ApexPages.currentPage().getParameters().get(System.Label.Core_CIMID) : ucdId ;                
+                
+                sCimId = ApexPages.currentPage().getParameters().get(System.Label.Core_CIMID);
                 
                 orderSeedsURL = mapStringToCS.get(System.Label.Core_DemoDepotOrder).Core_End_Point_URL__c;
                 requestSamplesURL = mapStringToCS.get(mySamplesHome).Core_End_Point_URL__c;
@@ -337,14 +281,13 @@ public with sharing class Core_SalesSupportHomeController {
                      
                 //Intel Altera Phase1: 
                 //Default the Tab to Seed if the page is loaded  from Account or from click of SalesSupport Tab  
-                if( /*sCurrentTab == 'tabPSGQuote' &&*/  (!String.isEmpty(sAcctId) || (String.isEmpty(sAcctId) && String.isEmpty(sOppId))))  {
+                if( sCurrentTab == 'tabPSGQuote' &&  (!String.isEmpty(sAcctId) || (String.isEmpty(sAcctId) && String.isEmpty(sOppId))))  {
                     sCurrentTab = 'tabSeeds';
                 }
                 
             }
             
-            //checkmarx scan issue fix - issecure is set to true
-            lastSalesSupportTab = new Cookie('lastSalesSupportTab', sCurrentTab, '/apex', 365*24*60*60, true);
+            lastSalesSupportTab = new Cookie('lastSalesSupportTab', sCurrentTab, '/apex', 365*24*60*60, false);
             ApexPages.currentPage().setCookies(new Cookie[]{lastSalesSupportTab});
         }
         catch (Exception e) {
@@ -354,15 +297,7 @@ public with sharing class Core_SalesSupportHomeController {
             bSeedsErrorFlag = true;
             bSamplesRenderFlag = false;
             bSamplesErrorFlag = true;
-            bQuotesRenderFlag = false;
-            bQuotesErrorFlag = true;
         }
-    }
-    
-    //Fetch the ISR List for partner
-    public List<SelectOption> getISRList(){
-        Core_SalesSupportHomeControllerHelper helper = new Core_SalesSupportHomeControllerHelper();
-        return helper.fetchISRList();
     }
     
     public void init() {
@@ -385,18 +320,13 @@ public with sharing class Core_SalesSupportHomeController {
             showNoAccessMessage = true;
             return null;
         }
-        //Start- Added and edited by Kavyashree HR(Infosys Pegasus Team) on 30/04/2020 to fix security scan issues(US667274)
-       if(sOppId!= null && sOppId.startsWith('006')){
-            PageReference pageRef = new PageReference(System.Label.Core_SSR_Support_Request_URL +'?Id='+ string.valueof(sOppId));
-            return pageRef;
-        }
-        else
-           return null;
-        //End- Added and edited by Kavyashree HR(Infosys Pegasus Team) on 30/04/2020 to fix security scan issues(US667274)
-     }
+        PageReference pageRef = new PageReference(System.Label.Core_SSR_Support_Request_URL +'?Id='+ sOppId );
+        return pageRef;
+        
+    }
     
    
-    /********************************** 
+    /**********************************
     * Method Name : pullPSGQuoteHistory 
     * Created On  : Dec-08-2016
     * Created By  : Accenture 
@@ -404,31 +334,11 @@ public with sharing class Core_SalesSupportHomeController {
     *               Below method is used for getting the PSG Quote History associated with Opportunity.
     *        
     ***********************************/
-    /*public void pullPSGQuoteHistory() {
+    public void pullPSGQuoteHistory() {
           lstPSGQuoteGenarationHistory = new List<Core_PSG_Quote_Generation_History__c>();
           lstPSGQuoteGenarationHistory = [SELECT Id, Name, Core_RFQ_ID__c, Core_Opportunity__c, Core_Quote_URL__c, Core_Message_Status__c,CreatedDate, LastModifiedDate FROM Core_PSG_Quote_Generation_History__c where Core_Opportunity__c=:sOppId   order by LastModifiedDate desc  limit 10];
 
-    }*/
-    
-    /**********************************
-    * Method Name : createQuotes 
-    * Created On  : Dec-23-2020
-    * Created By  : Accenture 
-    * Description : PSG Quoting Release1: 
-    *               Below method is used for creating Quote from Opportunity.
-    ***********************************/
-    
-    /*public void createQuotes(){
-            String opptyId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
-            String quoteName = PSG_CreateQuoteController.createQuote(opptyId);
-            ApexPages.Message myMsg;
-            if(quoteName!=null){ quoteName = 'Quote Created Successfully - ' + quoteName;
-                myMsg = new ApexPages.Message(ApexPages.Severity.Confirm,quoteName);
-            }else{myMsg = new ApexPages.Message(ApexPages.Severity.Error,'Issue in creating Quote');
-            }
-            ApexPages.addMessage(myMsg );
-            
-        }*/
+    }
     
     /**********************************
     * Method Name : createPSGQuoteonSiebel 
@@ -438,125 +348,85 @@ public with sharing class Core_SalesSupportHomeController {
     *               Below method is used for validating the opportunity and 
     *               for creating the Payload before sending the data to Siebel.
     ***********************************/
-   /* public void createPSGQuoteonSiebel() {
+
+  
+    
+    public void createPSGQuoteonSiebel() {
+        //Added for getting the record ID of the opportunity object
         String opptyId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
-     
-        try{ 
+        try
+        {           
+            //US63649: Add record level access through Apex Sharing - Ashwin 9th-May-2017
             UserRecordAccess recordAccessObj = [SELECT RecordId, HasEditAccess FROM UserRecordAccess WHERE UserId = :UserInfo.getUserId() AND RecordId = :soppId];
-            // if (Test.isRunningTest() &&(recordAccessObj == null  || recordAccessObj.HasEditAccess != true)){                          
-            //     SharingInnerClass innerClass = new SharingInnerClass();
-            //     if(!String.isBlank(opptyId))innerClass.insertSharing(String.valueof(opptyId));
-            // }
-            if (recordAccessObj == null || recordAccessObj.HasEditAccess != true){SharingInnerClass innerClass = new SharingInnerClass();
-                innerClass.insertSharing(String.valueof(opptyId));
+            if (recordAccessObj == null || recordAccessObj.HasEditAccess != true){                          
+                SharingInnerClass innerClass = new SharingInnerClass();
+                innerClass.insertSharing(opptyId);
             }
+            
+            //Below code validates the opportunity before quote creation and creates the payload for Quote creation 
             if(Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportuntyBeforeQuoteCreation()) {
-                PSG_CreateQuotes quoteCreation = new PSG_CreateQuotes(); String quoteName = quoteCreation.createQuotes();
-                ApexPages.Message myMsg;
-                if(quoteName!=null){
-                    String quoteNumber = quoteName.substringBefore(':'); // 'this'
-                    String quoteId =    quoteName.substringAfter(':');
-                    err  = 'Quote Created Successfully - ' +' <a target="_blank" href="/'+ quoteId + '">'+quoteNumber+'</a>';
-                    myMsg = new ApexPages.Message(ApexPages.Severity.Confirm,err);
-                }else{myMsg = new ApexPages.Message(ApexPages.Severity.Error,'Issue in creating Quote');
+
+                //Below method is used for creating the payload for valid Opportunity 
+                String payload = Core_SalesSupportPSGQuoteSFDCToSiebel.createPayloadForOpportuntiyQuote();
+
+                if(!String.isEmpty(payload)) {
+                    
+                    //Inserts the new record to Outbound message.
+                    Core_Integration_Outbound_Message__c objOutboundMessage = new Core_Integration_Outbound_Message__c();
+                    objOutboundMessage.Core_MessageType__c = 'PSG_Quote';
+                    objOutboundMessage.Core_Payload__c =  payload;
+                    insert objOutboundMessage;
+                    
+                    //Updates the Last Process Status of Opportunity to Processing.
+                    Opportunity oppObjUpdate =[select Id,Core_PSG_Quote_Last_Processed_Status__c from Opportunity where Id=:ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID)];
+                    oppObjUpdate.Core_PSG_Quote_Last_Processed_Status__c='Processing';
+                    update oppObjUpdate;
+                    
+                    //below code used for displaying the status message based on the existence of 
+                    //PSGQuoteHistory and opportunity status.
+                    if(lstPSGQuoteGenarationHistory.isEmpty()) {
+                         bPSGQuoteHistoryExist = true;
+                         bPSGQuoteProcessingInfoDisp = false;
+                    }
+                    else {
+                         bPSGQuoteProcessingInfoDisp = false;
+                         bPSGQuoteHistoryExist = false;
+                    }
+                    bOpportunityValidForQuoteCreation = false;
+                    
+                    ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.Confirm,System.Label.Core_PSG_Quote_Sent_Message);
+                    ApexPages.addMessage(myMsg);
                 }
-                    ApexPages.addMessage(myMsg); bOpportunityValidForQuoteCreation = false;
             }
             else {
-               bSeedsErrorFlag = false; bOpportunityValidForQuoteCreation = false;
+               //setting this boolean variable able display the error message.
+               //Bit decides apex:Pagemessage has to be rendered or not
+               bOpportunityValidForQuoteCreation = false;
+               bSeedsErrorFlag = false;
             }
-         }catch(Exception e) {
+        }
+        catch(Exception e) {
             ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.Error, e.getMessage());
+            ApexPages.addMessage(myMsg);
             bOpportunityValidForQuoteCreation = false;
         }
+        //US63649: Adding finally block where we are removing R/W access from the user - Ashwin 9th-May-2017
         finally{
             SharingInnerClass innClass = new SharingInnerClass();
-            innClass.deleteSharing(string.valueof(opptyId), UserInfo.getUserID());
+            innClass.deleteSharing(opptyId, UserInfo.getUserID());
         }
-    }*/
-//Shivini
-/*
-@AuraEnabled
-public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
-    Boolean bOpportunityValidForQuoteCreation = false;
-    Boolean isPartner = false;
-    User userObj = [SELECT Id, Core_WWID__c, Core_User_Geo__c, Profile.Name FROM User WHERE Id = :UserInfo.getUserId()];
-    List<String> errorMessage;
-    if (userObj.Profile.Name == System.Label.Core_Partner_Profile_Name) { isPartner = true;
-    } else { isPartner = false;
     }
     
-    try {
-        UserRecordAccess recordAccessObj = [SELECT RecordId, HasEditAccess FROM UserRecordAccess WHERE UserId = :UserInfo.getUserId() AND RecordId = :soppId];
-        
-        if (recordAccessObj == null || !recordAccessObj.HasEditAccess) {
-            SharingInnerClass innerClass = new SharingInnerClass(); innerClass.insertSharing(String.valueOf(soppId));
-        }
-        Map<String, Object> value = Core_SalesSupportPSGQuoteSFDCToSiebel.validateOpportunityBeforeQuoteCreationNew(soppId);
-        Boolean isValid = (Boolean) value.get('isValid');
-        errorMessage = (List<String>) value.get('errorMessages');
-        //Check if the opportunity is valid or not
-        if ((Boolean)value.get('isValid')) {
-            String quoteName = PSG_CreateQuotesNew.createQuotesNew(soppId);
-            if (quoteName != null) {
-                String quoteNumber = quoteName.substringBefore(':'); String quoteId = quoteName.substringAfter(':');
-                String err = '<span style="color:green"> Quote Created Successfully -'+ quoteNumber + '</span> ';
-                errorMessage.add(err); bOpportunityValidForQuoteCreation = false;
-                isPartner = true; }
-                 else {
-                errorMessage.add('Issue in creating Quote'); bOpportunityValidForQuoteCreation = false;
-            }
-        } else { bOpportunityValidForQuoteCreation = false;
-        }
-    } catch (Exception ex) {
-        system.debug('inside catch');
-       
-
-        
-        // throw new AuraHandledException(e.getMessage());
-        
-        if (ex.getMessage() != null) { 
-            String errormsg;
-            if(ex.getMessage().contains('FIELD_CUSTOM_VALIDATION_EXCEPTION')){errormsg =ex.getDmlMessage(0);}
-               else if(ex.getMessage().contains('CANNOT_EXECUTE_FLOW_TRIGGER') || ex.getMessage().contains('EXCEPTION,')){
-                String errMsg =JSON.serialize(ex.getMessage());
-                List<String> errMsgList=new List<String>();
-                if(ex.getMessage().contains('CANNOT_EXECUTE_FLOW_TRIGGER')){
-                    errMsgList=errMsg.split('Error occurred during flow execution');}
-                    else{
-                        if(ex.getMessage().contains('EXCEPTION,')){
-                        errMsgList=errMsg.split('EXCEPTION,');}
-                        if(errMsg.contains('&quot;')){
-                            errMsgList=errMsg.split('&quot;');}
-                        }
-                        if(errMsgList.size()>0){
-                            errormsg =JSON.serialize(errMsgList[1]);}
-                            else{errormsg =JSON.serialize(errMsgList[0]);}
-                        } 
-            else{
-                errormsg =JSON.serialize(ex.getMessage());} errorMessage.add(errormsg);
-        }
-        bOpportunityValidForQuoteCreation = false;
-        
-        
-    } finally {
-        SharingInnerClass innClass = new SharingInnerClass();
-        innClass.deleteSharing(String.valueOf(soppId), UserInfo.getUserId());
-    }
-    return new PSGQuoteCreationResult(bOpportunityValidForQuoteCreation, isPartner, errorMessage);
-}
-*/
     public void loadFirstTab() {
-
+    
+        System.debug('##### loadFirstTab');
+    
         // Pull data if the parameters are set, either seeds or samples depending on which tab they're on
-        if ((String.isNotBlank(string.valueof(sOppId)) || String.isNotBlank(sWWID) || (String.isNotBlank(sAcctId) && String.isNotEmpty(sCimId))) && bUserHasAccess) {
+        if ((String.isNotBlank(sOppId) || String.isNotBlank(sWWID) || (String.isNotBlank(sAcctId) && String.isNotEmpty(sCimId))) && bUserHasAccess) {
             if (sCurrentTab == 'tabSeeds')
                 pullSeeds();
             else if (sCurrentTab == 'tabSamples')
                 pullSamples();
-            
-        }
-        if (sCurrentTab == 'tabWebquotes'){ pullWebQuotes();
         }
         else if (bUserHasAccess) {
             if(String.isNotBlank(sOppId) || String.isNotBlank(sAcctRecName)) {
@@ -581,10 +451,12 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
     */  
     public void pullSeeds() {
         
-        sCurrentTab = 'tabSeeds'; 
+        sCurrentTab = 'tabSeeds';
+        System.debug('##### entered pullSeeds');
         
         // Only pull seeds if we haven't yet pulled them (a full page refresh is needed to call the web service again)
         if ((lstFilteredSeeds == null) && (bSeedsErrorFlag == false)) {
+            System.debug('##### trying to pull seeds');
     
             // Intialize the declared variables
             lstSeeds = new List<seedWebserviceWrapper> {};
@@ -595,46 +467,30 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
             Map<String,String> mapAcctNametoID = new Map<String,String>{};
             Map<String,seedWebserviceWrapper> mapOrderNoToSeed = new Map<String,seedWebserviceWrapper>{};
             List<String> lstOrderNo =new List<String>{};
-        	
+        
             try {
                 // Make the callout to the service
                 HTTPResponse httpResp = new HTTPResponse();
                 
                 // If the user came via the tab
                 if (String.isNotEmpty(sWWID)) {
-             
-                    httpResp = Core_WebServiceUtility.restServiceCallout('', 
-                                                                       'callout:SalesCRM_Apigee' + System.Label.Core_SeedsURL+sWWID+'/ALL', 'Get', System.Label.Core_TimeOut,
+                    httpResp = Core_WebServiceUtility.restServiceCallout('', mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c +
+                                                                         System.Label.Core_SeedsURL+sWWID+'/ALL', 'Get', System.Label.Core_TimeOut,
                                                                          System.Label.Core_SeedsWebservice);
                 }
                 // If the user came via the account
-                //Edited by Kavyashree HR(Infosys Pegasus Team) on 30/04/2020 to fix security scan issues(US667274)
-                else if (String.isNotEmpty(string.valueof(sAcctRecName))) {
-              	//As part of TWC3123-6731 CIM ID replaced with Account ID 
-                    httpResp = Core_WebServiceUtility.restServiceCallout('', 
-                                                                       'callout:SalesCRM_Apigee' + System.Label.Core_SeedsURLAccount+sAcctId+'/ALL', 'Get', System.Label.Core_TimeOut,
+                else if (String.isNotEmpty(sAcctRecName)) {
+                    httpResp = Core_WebServiceUtility.restServiceCallout('', mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c +
+                                                                         System.Label.Core_SeedsURLAccount+sCimId+'/ALL', 'Get', System.Label.Core_TimeOut,
                                                                          System.Label.Core_SeedsWebservice);
                 }
-                
-                // Start - TWC3123-4227 - If the user came via the Opportunity AtRisk tab
-               /* else if (String.isNotEmpty(sOppId)) {
-                    httpResp = Core_WebServiceUtility.restServiceCallout('', mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c +
-                                                                         System.Label.Core_SeedsURLOpp + sOppId +'/ALL', 'Get', System.Label.Core_TimeOut,
-                                                                         System.Label.Core_SeedsWebservice);   
-                }  */
-                //End - TWC3123-4227
-                
                 // If the user came via the opportunity
                 else {
-              
-                    httpResp = Core_WebServiceUtility.restServiceCallout('', 
-                                                                      'callout:SalesCRM_Apigee' +  System.Label.Core_SeedsURLOpp + sOppId+'/ALL', 'Get', System.Label.Core_TimeOut,
-                                                                         System.Label.Core_SeedsWebservice); 
-                           
-                   
-                   
+                    httpResp = Core_WebServiceUtility.restServiceCallout('', mapStringToCS.get(System.Label.Core_SeedsWebservice).Core_End_Point_URL__c +
+                                                                         System.Label.Core_SeedsURLOpp + sOppId+'/ALL', 'Get', System.Label.Core_TimeOut,
+                                                                         System.Label.Core_SeedsWebservice);                   
                 }
-                system.debug('httpResp final '+httpResp);
+                
                 // Display an error message if we're not getting an OK response
                 if (httpResp.getStatusCode() != 200) {
                     ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, System.Label.Core_Exception);
@@ -643,13 +499,9 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
                     bSeedsErrorFlag = true;
                     return;
                 }
-                                
+                
                 // Use the parser to get the response as JSONParser type
-                system.JSONParser parser = JSON.createParser(httpResp.getbody());
-                
-        
-                
-                
+                JSONParser parser = JSON.createParser(httpResp.getbody());
                 
                 while (parser.nextToken() != NULL) {
                     // Start at the array of Records.
@@ -678,17 +530,9 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
                             mapOppNametoID.put(sObjOpp.ID, sObjOpp.Name);
                         }
                     }
-                  //As part of TWC3123-6731 checking Account id & cim id both
-                  if (!lstAcctID.isEmpty()) {
-                        for(Account sObjAcct : [select Id,Core_CIM_ID__c, Name from Account where Id in :lstAcctID or(Core_CIM_ID__c in :lstAcctID and Core_CIM_ID__c != null)]){
-                            if(sObjAcct.Id != null ){
-                            mapAcctNametoID.put(sObjAcct.Id, sObjAcct.Name);
-                            }if(sObjAcct.Core_CIM_ID__c != null){
-   							mapAcctNametoID.put(sObjAcct.Core_CIM_ID__c, sObjAcct.Name);
-                            }else if (sObjAcct.Core_CIM_ID__c != null) {
-            				mapAcctNametoID.put(sObjAcct.Core_CIM_ID__c, sObjAcct.Name);
-       						}
-                        }
+                    if (!lstAcctID.isEmpty()) {
+                        for(Account sObjAcct : [select Core_CIM_ID__c, Name from Account where Core_CIM_ID__c in :lstAcctID])
+                            mapAcctNametoID.put(sObjAcct.Core_CIM_ID__c, sObjAcct.Name);
                     }   
                 }
                 
@@ -738,7 +582,8 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
                     bSeedsRenderFlag = true;
             }
             catch(Exception e){
-                ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, System.Label.Core_Exception + e.getmessage()); 
+                ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, System.Label.Core_Exception + e.getmessage());
+                System.debug(e.getmessage());
                 ApexPages.addMessage(myMsg);
                 //bRenderFlag = false;
                 //bErrorFlag = true;
@@ -748,7 +593,6 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
         }
     }
     
-    @TestVisible
     private Boolean seedMatchesFilters(seedWebserviceWrapper seed) {
         if ((String.isEmpty(sSeedSearch[0])  || (String.isNotEmpty(sSeedSearch[0])  && seed.OrderNumber != NULL && String.ValueOf(seed.OrderNumber).containsIgnoreCase(sSeedSearch[0]))) &&
             (String.isEmpty(sSeedSearch[1]) || (String.isNotEmpty(sSeedSearch[1]) && seed.ProductName != NULL &&  String.ValueOf(seed.ProductName).containsIgnoreCase(sSeedSearch[1]))) &&
@@ -766,23 +610,21 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
     }
     
     public void filterSeeds() {
-        if(lstFilteredSeeds!=null){
         lstFilteredSeeds.clear();
-        }        
+        
         // If no search text has been entered, return the full original result set
         if (String.isEmpty(sSeedSearch[0]) && String.isEmpty(sSeedSearch[1]) && String.isEmpty(sSeedSearch[2]) && String.isEmpty(sSeedSearch[3]) 
             && String.isEmpty(sSeedSearch[4]) && String.isEmpty(sSeedSearch[5]) && String.isEmpty(sSeedSearch[6]) && String.isEmpty(sSeedSearch[7]) 
             && String.isEmpty(sSeedSearch[8]) && String.isEmpty(sSeedSearch[9])) {
-                if(lstSeeds!=null){lstFilteredSeeds.addAll(lstSeeds);
-                }
+                
+                lstFilteredSeeds.addAll(lstSeeds);
             }
         else {
             // Otherwise iterate through the list and return only the samples containing the search text
-            if(lstSeeds!=null){
             for (seedWebserviceWrapper seed : lstSeeds) {
-                if(seedMatchesFilters(seed)) {lstFilteredSeeds.add(seed);
+                if(seedMatchesFilters(seed)) {
+                    lstFilteredSeeds.add(seed);
                 }
-            }
             }
         }
     }
@@ -840,7 +682,6 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
         public Boolean bRenderCSection { get; set; }
 
         public SeedWebserviceWrapper parse(String json) {
-            
             //Deserialize the specified JSON string into an Apex object of the specified type.
             return (SeedWebserviceWrapper) System.JSON.deserialize(json, SeedWebserviceWrapper.class);
         }
@@ -855,10 +696,12 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
     public void pullSamples() {
         
         sCurrentTab = 'tabSamples';
+        System.debug('##### entered pullSamples');
         
         // Only pull samples if we haven't yet pulled them (a full page refresh is needed to call the web service again)
         if ((lstFilteredSamples == null) && (bSamplesErrorFlag == false)) {
-
+            
+            System.debug('##### trying to pull samples');
             lstSamples = new List<sampleWebserviceWrapper> {};
             lstFilteredSamples = new List<sampleWebserviceWrapper> {};
             Set<String> setOppID = new Set<String>{};
@@ -875,98 +718,18 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
                 
                 // If the user came via the tab
                 if (String.isNotEmpty(sWWID)) {
-                if(Boolean.valueOf(Label.Core_CRM_MySamples_Call_Basic))
-                {
-                     httpResp = Core_WebServiceUtility.ServiceCallout('', mapStringToCS.get('My Samples Service').Core_End_Point_URL__c +
+                    httpResp = Core_WebServiceUtility.restServiceCallout('', mapStringToCS.get('My Samples Service').Core_End_Point_URL__c +
                                                                          '/wwid/' + sWWID, 'Get', System.Label.Core_TimeOut, 'My Samples Service');
-                }
-                else  
-                {
-               
-                    httpResp = Core_WebServiceUtility.restServiceCallout('', 'callout:SalesCRM_Apigee' +
-                                                                         '/wwid/' + sWWID, 'Get', System.Label.Core_TimeOut, 'My Samples Service');
-                }
-                 if ( Test.isRunningTest())
-                {
-                    HTTPResponse httpResp1 = new HTTPResponse();
-                    HTTPResponse httpResp2 = new HTTPResponse();
-                    httpResp1 = Core_WebServiceUtility.restServiceCallout('', 'callout:SalesCRM_Apigee' +
-                                            '/wwid/' + sWWID, 'Get', System.Label.Core_TimeOut, 'My Samples Service');
-                    
-                    httpResp2 = Core_WebServiceUtility.ServiceCallout('', mapStringToCS.get('My Samples Service').Core_End_Point_URL__c +
-                                                                         '/wwid/' + sWWID, 'Get', System.Label.Core_TimeOut, 'My Samples Service');
-                    // String RESPONSE_BODY ='{"AccountID": "0012D00000aYiFUQA0", "OpportunityID": "006Df00000JboAYIAZ", "OrderNumber": 149988, "OrderStatus": "Pending", "RequestedDeliveryDate": "2023-07-30T18:30:00", "ReturnPickupDate": "2023-07-30T18:30:00", "Requestor": "HMOHDYUX", "Submitter": "HMOHDYUX", "ProductCode": "100000000000009356", "LineItemStatus": null, "ProductName": "Intel® Core™ i3-7350K Processor Kaby Lake SR35B [MM#954810]", "EstimatedShipDate": null, "ActualShipDate": null, "RequestedQty": 3, "ShippedQty": 0, "ProductDesc": "<br>", "ProductListDesc": "<p>Intel&#174; Core&#8482; i3-7350K Processor Kaby Lake (4M Cache, 4.20 GHz) SR35B [MM#954810]</p><p><span>ECCN:5A992C&nbsp;&nbsp;&nbsp;&nbsp; <span>CCATS:G077159&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>US HTS:8542310001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><br></p>", "CompanyName": "Connoiseur Electronics Pvt. Ltd", "StreetAddress1": "12, 13th Main Road, Dupanahalli, ", "StreetAddress2": "Domlur Layout", "MailStop": "test@gmail.com", "City": "Bangalore", "State": "Karnataka", "ZipCode": "560008", "Country": "India", "AttentionName": "test Att", "AttentionNumber": "927187723", "Notes": "" }, { "AccountID": "0012D00000aYiFUQA0", "OpportunityID": "006Df00000JboAYIAZ", "OrderNumber": 149987, "OrderStatus": "Pending", "RequestedDeliveryDate": "2023-07-31T18:30:00", "ReturnPickupDate": "2023-07-31T18:30:00", "Requestor": "HMOHDYUX", "Submitter": "HMOHDYUX", "ProductCode": "100000000000013224", "LineItemStatus": null, "ProductName": "Ethernet I/O Module XL710-QDA2 AXX2P40FRTIOM[MM#933743]", "EstimatedShipDate": null, "ActualShipDate": null, "RequestedQty": 2, "ShippedQty": 0, "ProductDesc": "", "ProductListDesc": "", "CompanyName": "McAfee Software (India) Pvt Ltd ", "StreetAddress1": "Embassy Golf Links Business Park, Pine Valley - 2nd Floor", "StreetAddress2": "Off Indiranagar - Koramangala Intermediate Ring Road", "MailStop": "test@email.com", "City": "Bangalore", "State": "Karnataka", "ZipCode": "560071", "Country": "India", "AttentionName": "Test Att Name", "AttentionNumber": "1876872618", "Notes": "" }, { "AccountID": "0012D00000aYiFUQA0", "OpportunityID": "006Df00000JboAYIAZ", "OrderNumber": 149985, "OrderStatus": "Pending", "RequestedDeliveryDate": "2023-07-12T18:30:00", "ReturnPickupDate": "2023-07-25T18:30:00", "Requestor": "HMOHDYUX", "Submitter": "HMOHDYUX", "ProductCode": "100000000000013230", "LineItemStatus": null, "ProductName": "Cable Kit OCuLink* 2U 8 Port Switch #1[MM# 958268]", "EstimatedShipDate": null, "ActualShipDate": null, "RequestedQty": 1, "ShippedQty": 0, "ProductDesc": "<br>", "ProductListDesc": "<span>Tri-mode PCIe/SAS/SATA Storage Controller Adapter, 16 internal ports, Includes&nbsp;<span><span>(1) Intel&#174; RAID Adapter, (1) low-profile mounting bracket, Supports <span>Microsoft Windows, VMWare, Linux (SLES, RHEL), Solaris, FreeBSD.</span></span></span></span><br>", "CompanyName": "INTEL TECHNOLOGY INDIA PVT LTD ", "StreetAddress1": "136 OLD AIRPORT ROAD ", "StreetAddress2": "OPP TO LEELA PALACE", "MailStop": "test@inte.com", "City": "BANGALORE", "State": "KARNATAKA", "ZipCode": "560017", "Country": "India", "AttentionName": "test", "AttentionNumber": "1234", "Notes": "" }';                                              
-                    //httpResp.setBody(RESPONSE_BODY);
-                    //httpResp.setStatusCode(200);
-                                                                         
-                }
                 }
                 // If the user came via the account
-                //Edited by Kavyashree HR(Infosys Pegasus Team) on 30/04/2020 to fix security scan issues(US667274)
-                else if (String.isNotEmpty(string.valueof(sAcctRecName))) {
-                    if(Boolean.valueOf(Label.Core_CRM_MySamples_Call_Basic))
-                    {
-                        httpResp = Core_WebServiceUtility.ServiceCallout('', mapStringToCS.get('My Samples Service').Core_End_Point_URL__c +
-                                                                         '/account/' + sCimId, 'Get', System.Label.Core_TimeOut, 'My Samples Service');
-                    }
-                    else 
-                    {
-                        httpResp = Core_WebServiceUtility.restServiceCallout('', 'callout:SalesCRM_Apigee' +
-                                                                             '/account/' + sCimId, 'Get', System.Label.Core_TimeOut, 'My Samples Service');
-                    }
-                    
-                    if ( Test.isRunningTest())
-                    {
-                        HTTPResponse httpResp1 = new HTTPResponse();
-                        HTTPResponse httpResp2 = new HTTPResponse();
-                        httpResp1 = Core_WebServiceUtility.ServiceCallout('', mapStringToCS.get('My Samples Service').Core_End_Point_URL__c +
-                                                                          '/account/' + sCimId, 'Get', System.Label.Core_TimeOut, 'My Samples Service');
-                        
-                        httpResp2 = Core_WebServiceUtility.restServiceCallout('', 'callout:SalesCRM_Apigee' +
-                                                                              '/account/' + sCimId, 'Get', System.Label.Core_TimeOut, 'My Samples Service');
-                        
-                        //  String RESPONSE_BODY ='{"AccountID": "0012D00000aYiFUQA0", "OpportunityID": "006Df00000JboAYIAZ", "OrderNumber": 149988, "OrderStatus": "Pending", "RequestedDeliveryDate": "2023-07-30T18:30:00", "ReturnPickupDate": "2023-07-30T18:30:00", "Requestor": "HMOHDYUX", "Submitter": "HMOHDYUX", "ProductCode": "100000000000009356", "LineItemStatus": null, "ProductName": "Intel® Core™ i3-7350K Processor Kaby Lake SR35B [MM#954810]", "EstimatedShipDate": null, "ActualShipDate": null, "RequestedQty": 3, "ShippedQty": 0, "ProductDesc": "<br>", "ProductListDesc": "<p>Intel&#174; Core&#8482; i3-7350K Processor Kaby Lake (4M Cache, 4.20 GHz) SR35B [MM#954810]</p><p><span>ECCN:5A992C&nbsp;&nbsp;&nbsp;&nbsp; <span>CCATS:G077159&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>US HTS:8542310001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><br></p>", "CompanyName": "Connoiseur Electronics Pvt. Ltd", "StreetAddress1": "12, 13th Main Road, Dupanahalli, ", "StreetAddress2": "Domlur Layout", "MailStop": "test@gmail.com", "City": "Bangalore", "State": "Karnataka", "ZipCode": "560008", "Country": "India", "AttentionName": "test Att", "AttentionNumber": "927187723", "Notes": "" }, { "AccountID": "0012D00000aYiFUQA0", "OpportunityID": "006Df00000JboAYIAZ", "OrderNumber": 149987, "OrderStatus": "Pending", "RequestedDeliveryDate": "2023-07-31T18:30:00", "ReturnPickupDate": "2023-07-31T18:30:00", "Requestor": "HMOHDYUX", "Submitter": "HMOHDYUX", "ProductCode": "100000000000013224", "LineItemStatus": null, "ProductName": "Ethernet I/O Module XL710-QDA2 AXX2P40FRTIOM[MM#933743]", "EstimatedShipDate": null, "ActualShipDate": null, "RequestedQty": 2, "ShippedQty": 0, "ProductDesc": "", "ProductListDesc": "", "CompanyName": "McAfee Software (India) Pvt Ltd ", "StreetAddress1": "Embassy Golf Links Business Park, Pine Valley - 2nd Floor", "StreetAddress2": "Off Indiranagar - Koramangala Intermediate Ring Road", "MailStop": "test@email.com", "City": "Bangalore", "State": "Karnataka", "ZipCode": "560071", "Country": "India", "AttentionName": "Test Att Name", "AttentionNumber": "1876872618", "Notes": "" }, { "AccountID": "0012D00000aYiFUQA0", "OpportunityID": "006Df00000JboAYIAZ", "OrderNumber": 149985, "OrderStatus": "Pending", "RequestedDeliveryDate": "2023-07-12T18:30:00", "ReturnPickupDate": "2023-07-25T18:30:00", "Requestor": "HMOHDYUX", "Submitter": "HMOHDYUX", "ProductCode": "100000000000013230", "LineItemStatus": null, "ProductName": "Cable Kit OCuLink* 2U 8 Port Switch #1[MM# 958268]", "EstimatedShipDate": null, "ActualShipDate": null, "RequestedQty": 1, "ShippedQty": 0, "ProductDesc": "<br>", "ProductListDesc": "<span>Tri-mode PCIe/SAS/SATA Storage Controller Adapter, 16 internal ports, Includes&nbsp;<span><span>(1) Intel&#174; RAID Adapter, (1) low-profile mounting bracket, Supports <span>Microsoft Windows, VMWare, Linux (SLES, RHEL), Solaris, FreeBSD.</span></span></span></span><br>", "CompanyName": "INTEL TECHNOLOGY INDIA PVT LTD ", "StreetAddress1": "136 OLD AIRPORT ROAD ", "StreetAddress2": "OPP TO LEELA PALACE", "MailStop": "test@inte.com", "City": "BANGALORE", "State": "KARNATAKA", "ZipCode": "560017", "Country": "India", "AttentionName": "test", "AttentionNumber": "1234", "Notes": "" }';                                              
-                        // httpResp.setBody(RESPONSE_BODY);
-                        // httpResp.setStatusCode(200);
-                    }
-                }
-                
-                 // Start - TWC3123-4227 - If the user came from the Opportunity AtRisk tab
-                /*else if (String.isNotEmpty(string.valueof(sOppId))) {
+                else if (String.isNotEmpty(sAcctRecName)) {
                     httpResp = Core_WebServiceUtility.restServiceCallout('', mapStringToCS.get('My Samples Service').Core_End_Point_URL__c +
-                                                                         '/opportunity/' + sOppId, 'Get', System.Label.Core_TimeOut, 'My Samples Service');                   
-                }*/
-                // End - TWC3123-4227
-                
+                                                                         '/account/' + sCimId, 'Get', System.Label.Core_TimeOut, 'My Samples Service');
+                }
                 // If the user came via the opportunity
                 else {
-                
-               if(Boolean.valueOf(Label.Core_CRM_MySamples_Call_Basic))
-                {
-                    httpResp = Core_WebServiceUtility.ServiceCallout('', mapStringToCS.get('My Samples Service').Core_End_Point_URL__c +
-                                                                         '/opportunity/' + sOppId, 'Get', System.Label.Core_TimeOut, 'My Samples Service');  
-                }                 
-                else if (!Boolean.valueOf(Label.Core_CRM_MySamples_Call_Basic) || Test.isRunningTest())
-                {
-                      httpResp = Core_WebServiceUtility.restServiceCallout('', 'callout:SalesCRM_Apigee' +
-                                                                         '/opportunity/' + sOppId, 'Get', System.Label.Core_TimeOut, 'My Samples Service'); 
-                }
-                    
-                if ( Test.isRunningTest())
-                {
-                    HTTPResponse httpResp1 = new HTTPResponse();
-                    HTTPResponse httpResp2 = new HTTPResponse();
-                    httpResp1 = Core_WebServiceUtility.ServiceCallout('', mapStringToCS.get('My Samples Service').Core_End_Point_URL__c +
-                                                                         '/opportunity/' + sOppId, 'Get', System.Label.Core_TimeOut, 'My Samples Service');  
-                    httpResp2 = Core_WebServiceUtility.restServiceCallout('', 'callout:SalesCRM_Apigee' +
-                                                                         '/opportunity/' + sOppId, 'Get', System.Label.Core_TimeOut, 'My Samples Service'); 
-                                                                         
-                  //  String RESPONSE_BODY ='{"AccountID": "0012D00000aYiFUQA0", "OpportunityID": "006Df00000JboAYIAZ", "OrderNumber": 149988, "OrderStatus": "Pending", "RequestedDeliveryDate": "2023-07-30T18:30:00", "ReturnPickupDate": "2023-07-30T18:30:00", "Requestor": "HMOHDYUX", "Submitter": "HMOHDYUX", "ProductCode": "100000000000009356", "LineItemStatus": null, "ProductName": "Intel® Core™ i3-7350K Processor Kaby Lake SR35B [MM#954810]", "EstimatedShipDate": null, "ActualShipDate": null, "RequestedQty": 3, "ShippedQty": 0, "ProductDesc": "<br>", "ProductListDesc": "<p>Intel&#174; Core&#8482; i3-7350K Processor Kaby Lake (4M Cache, 4.20 GHz) SR35B [MM#954810]</p><p><span>ECCN:5A992C&nbsp;&nbsp;&nbsp;&nbsp; <span>CCATS:G077159&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>US HTS:8542310001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><br></p>", "CompanyName": "Connoiseur Electronics Pvt. Ltd", "StreetAddress1": "12, 13th Main Road, Dupanahalli, ", "StreetAddress2": "Domlur Layout", "MailStop": "test@gmail.com", "City": "Bangalore", "State": "Karnataka", "ZipCode": "560008", "Country": "India", "AttentionName": "test Att", "AttentionNumber": "927187723", "Notes": "" }, { "AccountID": "0012D00000aYiFUQA0", "OpportunityID": "006Df00000JboAYIAZ", "OrderNumber": 149987, "OrderStatus": "Pending", "RequestedDeliveryDate": "2023-07-31T18:30:00", "ReturnPickupDate": "2023-07-31T18:30:00", "Requestor": "HMOHDYUX", "Submitter": "HMOHDYUX", "ProductCode": "100000000000013224", "LineItemStatus": null, "ProductName": "Ethernet I/O Module XL710-QDA2 AXX2P40FRTIOM[MM#933743]", "EstimatedShipDate": null, "ActualShipDate": null, "RequestedQty": 2, "ShippedQty": 0, "ProductDesc": "", "ProductListDesc": "", "CompanyName": "McAfee Software (India) Pvt Ltd ", "StreetAddress1": "Embassy Golf Links Business Park, Pine Valley - 2nd Floor", "StreetAddress2": "Off Indiranagar - Koramangala Intermediate Ring Road", "MailStop": "test@email.com", "City": "Bangalore", "State": "Karnataka", "ZipCode": "560071", "Country": "India", "AttentionName": "Test Att Name", "AttentionNumber": "1876872618", "Notes": "" }, { "AccountID": "0012D00000aYiFUQA0", "OpportunityID": "006Df00000JboAYIAZ", "OrderNumber": 149985, "OrderStatus": "Pending", "RequestedDeliveryDate": "2023-07-12T18:30:00", "ReturnPickupDate": "2023-07-25T18:30:00", "Requestor": "HMOHDYUX", "Submitter": "HMOHDYUX", "ProductCode": "100000000000013230", "LineItemStatus": null, "ProductName": "Cable Kit OCuLink* 2U 8 Port Switch #1[MM# 958268]", "EstimatedShipDate": null, "ActualShipDate": null, "RequestedQty": 1, "ShippedQty": 0, "ProductDesc": "<br>", "ProductListDesc": "<span>Tri-mode PCIe/SAS/SATA Storage Controller Adapter, 16 internal ports, Includes&nbsp;<span><span>(1) Intel&#174; RAID Adapter, (1) low-profile mounting bracket, Supports <span>Microsoft Windows, VMWare, Linux (SLES, RHEL), Solaris, FreeBSD.</span></span></span></span><br>", "CompanyName": "INTEL TECHNOLOGY INDIA PVT LTD ", "StreetAddress1": "136 OLD AIRPORT ROAD ", "StreetAddress2": "OPP TO LEELA PALACE", "MailStop": "test@inte.com", "City": "BANGALORE", "State": "KARNATAKA", "ZipCode": "560017", "Country": "India", "AttentionName": "test", "AttentionNumber": "1234", "Notes": "" }';                                              
-                  //  httpResp.setBody(RESPONSE_BODY);
-                  //  httpResp.setStatusCode(200);
-                    
-                }
-                    
+                    httpResp = Core_WebServiceUtility.restServiceCallout('', mapStringToCS.get('My Samples Service').Core_End_Point_URL__c +
+                                                                         '/opportunity/' + sOppId, 'Get', System.Label.Core_TimeOut, 'My Samples Service');                   
                 }
                 
                 // Display an error message if we're not getting an OK response
@@ -977,10 +740,12 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
                     bSamplesErrorFlag = true;
                     return;
                 }
-
+                
+                System.debug('##### httpResp = ' + httpResp);
+                System.debug('##### httpResp.getBody = ' + httpResp.getbody());
                 
                 // Use the parser to get the response as JSONParser type
-                system.JSONParser parser = JSON.createParser(httpResp.getbody());
+                JSONParser parser = JSON.createParser(httpResp.getbody());
                 
                 while (parser.nextToken() != NULL) {
                     // Start at the array of Records.
@@ -1039,39 +804,13 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
                         // Get account info, regardless of covered/non-covered, but order it by: non-covered then covered, so we can just
                         // iterate through it and be assured that if there's multiple accounts with the same CIM ID, we overwrite non-covered
                         // account info with the covered account
-                        /*if(ucdSwitch == true) {  //TWC4767-3431 - implementation of UCD and CIM logic switch
-                            List<Account> accounts = [select Id,Core_Business_Party_Id__c, Name, Core_Covered_Account__c from Account
-                                                      where Core_Business_Party_Id__c in :setAcctCIMID order by Core_Covered_Account__c,Core_Business_Party_Id__c];
-                            
-                            for (Account a : accounts) {
-                                mapAcctCIMIDtoID.put(a.Core_Business_Party_Id__c, a.Id);
-                                mapAcctCIMIDtoName.put(a.Core_Business_Party_Id__c, a.Name);
-                            }
-                        }
-                        else { //TWC4767-3431 - implementation of UCD and CIM logic switch
-                            List<Account> accounts = [select Id, Core_CIM_ID__c, Name, Core_Covered_Account__c from Account
-                                                      where Core_CIM_ID__c in :setAcctCIMID order by Core_Covered_Account__c, Core_CIM_ID__c];
-                            
-                            for (Account a : accounts) {
-                                mapAcctCIMIDtoID.put(a.Core_CIM_ID__c, a.Id);
-                                mapAcctCIMIDtoName.put(a.Core_CIM_ID__c, a.Name);
-                            }
-                        }*///TWC4767-3983
-                        List<Account> accounts = [select Id, Core_CIM_ID__c,Core_Business_Party_Id__c, Name, Core_Covered_Account__c,KCR_Global_Account_Name_Temp__c from Account
-                                                  where Core_CIM_ID__c in :setAcctCIMID or Core_Business_Party_Id__c in :setAcctCIMID 
-                                                  order by Core_Covered_Account__c, Core_CIM_ID__c];
+                        List<Account> accounts = [select Id, Core_CIM_ID__c, Name, Core_Covered_Account__c from Account
+                                                  where Core_CIM_ID__c in :setAcctCIMID order by Core_Covered_Account__c, Core_CIM_ID__c];
                         
                         for (Account a : accounts) {
-                            if(setAcctCIMID.contains(a.Core_CIM_ID__c)) {
-                                mapAcctCIMIDtoID.put(a.Core_CIM_ID__c, a.Id);
-                                mapAcctCIMIDtoName.put(a.Core_CIM_ID__c, a.Name);
-                            }
-                            else if(setAcctCIMID.contains(a.Core_Business_Party_Id__c)) {
-                                mapAcctCIMIDtoID.put(a.Core_Business_Party_Id__c, a.Id);
-                                mapAcctCIMIDtoName.put(a.Core_Business_Party_Id__c, a.Name);
-                            }
+                            mapAcctCIMIDtoID.put(a.Core_CIM_ID__c, a.Id);
+                            mapAcctCIMIDtoName.put(a.Core_CIM_ID__c, a.Name);
                         }
-                    
                     }
                     
                     // Loop back through all of the samples to set everything the way we want it displayed
@@ -1162,16 +901,17 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
             }
             catch (Exception e) {
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, System.Label.Core_Exception + e.getmessage());
+                System.debug(e.getmessage());
                 ApexPages.addMessage(myMsg);
                 //bRenderFlag = false;
                 //bErrorFlag = true;
             }
+            System.debug('*******lstSamples******'+lstSamples);
             // Set the List of records to be shown on the VF page
             lstFilteredSamples.addAll(lstSamples);
         }
     }
     
-    @TestVisible
     private Boolean sampleMatchesFilters(sampleWebserviceWrapper sample) {
         if ((String.isEmpty(sSampleSearch[0])  || (String.isNotEmpty(sSampleSearch[0])  && sample.RequestID != NULL                && String.ValueOf(sample.RequestID).containsIgnoreCase(sSampleSearch[0]))) &&
             (String.isEmpty(sSampleSearch[1])  || (String.isNotEmpty(sSampleSearch[1])  && sample.Line != NULL                     && String.ValueOf(sample.Line).containsIgnoreCase(sSampleSearch[1]))) &&
@@ -1217,8 +957,6 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
     public PageReference toggleRendering() {
         return null;
     }
-    
-    
     
     private class SampleOpportunityAssociation {
         private String AccountId;
@@ -1335,125 +1073,4 @@ public static PSGQuoteCreationResult createPSGQuoteonSiebelNew(Id soppId) {
             }
         }
     }
-    
-    //US-0002513 : Inner class added to fetch the list ISR assigned to public group
-    public without sharing class Core_SalesSupportHomeControllerHelper {
-        
-        //Fetch the ISR List for partner
-        public List<SelectOption> fetchISRList(){
-            List<SelectOption> options = new List<SelectOption>();
-            options.add(new SelectOption('','--None--'));
-            Group ISRGroup = [select id, DeveloperName from group where type='Regular' and DeveloperName =: 'Core_ISR_for_Partner'];
-            List<GroupMember> memberList = [select UserOrGroupId FROM GroupMember WHERE GroupId =: ISRGroup.Id];
-            if(memberList.size() > 0){
-                List<String> idList = new List<String>();
-                for(GroupMember u : memberList){
-                    idList.add(u.UserOrGroupId);
-                }
-                List<User> userList = [select Id, Name, Core_Login_Id__c, Email, Profile.Name from User where Id IN: idList];
-                for(User us : userList){
-                    if(us.Core_Login_Id__c <> null){
-                        options.add(new SelectOption(us.Core_Login_Id__c, us.Name));
-                    }
-                }
-            }
-            return options;
-        }
-    }
-    /*public without sharing class PSG_CreateQuotes {
-        public String createQuotes(){
-            String opptyId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
-            String quoteName = PSG_CreateQuoteController.createQuote(opptyId);
-            return quoteName;
-        }    
-    }*/
-    
-    public void pullWebQuotes()
-    {
-        sCurrentTab = 'tabWebQuotes';
-        String jsonStr;
-        String opptyId = ApexPages.currentPage().getParameters().get(System.Label.Core_OpportunityID);
-        // Only pull quotes if we haven't yet pulled them (a full page refresh is needed to call the web service again)
-        if ((quotes == null) && (bQuotesErrorFlag == false)) {
-        
-            quotes = new List<WebQuote> {};
-        
-        try{
-        HttpRequest req = new HttpRequest();
-            req.setEndpoint('callout:SalesCRM_Apigee' + '/p2d/webquote/v1/quotes?sf_id='+ opptyId);
-            req.setMethod('GET');
-            req.setHeader('Content-Type' , 'application/json');  
-            HttpResponse resp = new Http().send(req);
-            if(resp.getStatus() == 'SUCCESS' || resp.getStatus() == 'OK'){
-                system.debug('Response==>'+resp.getBody());
-                jsonStr = resp.getBody();
-            }
-            
-             // Display an error message if we're not getting an OK response
-                if (resp.getStatusCode() != 200) {
-                    ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, System.Label.Core_Exception);
-                    ApexPages.addMessage(myMsg);
-                    bQuotesRenderFlag = false;  
-                    bQuotesErrorFlag = true;
-                    return;
-                }
-       
-        List<WebQuote> webQuotes = new List<WebQuote>();
-        System.JSONParser parser = JSON.createParser(jsonStr);
-        while (parser.nextToken() != null) {
-        // Start at the array of webquotes.
-        if (parser.getCurrentToken() == JSONToken.START_ARRAY) {
-            while (parser.nextToken() != null) {
-                // Advance to the start object marker to
-                //  find next webquote object.
-                if (parser.getCurrentToken() == JSONToken.START_OBJECT) {
-                    // Read entire webquote object
-                    webQuotes.add((WebQuote)parser.readValueAs(WebQuote.class));
-                    
-                    //Skip the child start array and start object markers.
-                    parser.skipChildren();
-                }
-            }
-        }
-    }
-            for(WebQuote wb:webQuotes){
-                wb.quote_link = Label.Web_Quote_Link + wb.quote_name.substringBefore('.');
-            }
-    if(!webQuotes.isEmpty()){ 
-        quotes = webQuotes;  
-    }
-     // If the list of the quotes to be rendered is empty, display an error
-                if (webQuotes.isEmpty()) {
-                    bQuotesRenderFlag = false;
-                    ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.INFO, System.Label.Core_NoRecordsError);
-                    ApexPages.addMessage(myMsg);
-                    bQuotesErrorFlag = true;
-                }
-                else
-                    bQuotesRenderFlag = true;
-            }
-            catch (Exception e) {
-                ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, System.Label.Core_Exception + e.getmessage());
-                ApexPages.addMessage(myMsg);
-            }
-        }
-    }
-    public class WebQuote {
-        public string quote_name { get; set; }
-        public string creator{ get; set; }
-        public date cre_dt{ get; set; }
-        public string quote_type{ get; set; }
-        public string quote_status { get; set; }
-        public string prd_dsc{ get; set; } 
-        public double disti_cost{ get; set; }
-        public double intel_prc{ get; set; }
-        public double aprv_prc{ get; set; }
-        public Integer approved_quantity{ get; set; }
-        public date dpa_vld_fr_dt{ get; set; }
-        public date dpa_expr_dt{ get; set; }
-        public Integer dpa_number{ get; set; } 
-        public string quote_link { get; set; }
-        public double intel_prc_sdc{ get; set; }
-        public string creation_type{ get; set; }
-    }  
 }

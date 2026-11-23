@@ -1,0 +1,6 @@
+Dear User, 
+
+Case Outbound message with ID {!Core_IPS_BES_Error_Log__c.Core_IPS_Outbound_Message_IdId__c} and Status with {!Core_IPS_BES_Error_Log__c.Core_IPS_Status__c}  is not successfully sent to the destination. Here is the number of re-trail counts - {!Core_IPS_BES_Error_Log__c.Core_IPS_Retry_Count__c}, please review the Case.
+
+Sincerely,
+IPS Hercules Team.

@@ -7,15 +7,6 @@
         <field>Core_IT_Intel_SME_Assignment__c.Core_IT_IAI_SME_Group__c</field>
     </columns>
     <columns>
-        <field>Core_Sales_Support_Request__c.Core_IT_Intel_Geo__c</field>
-    </columns>
-    <columns>
-        <field>Core_Sales_Support_Request__c.Core_IT_IAI_Country__c</field>
-    </columns>
-    <columns>
-        <field>CUST_ID</field>
-    </columns>
-    <columns>
         <field>CUST_NAME</field>
     </columns>
     <columns>
@@ -47,6 +38,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

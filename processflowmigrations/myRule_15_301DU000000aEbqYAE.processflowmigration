@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Core_IPS_Case_Notif_External_PB_1</destinationFlowDefinition>
+    <destinationFlowVersion>Core_IPS_Case_Notif_External_PB_1-1</destinationFlowVersion>
+    <developerName>myRule_15_301DU000000aEbqYAE</developerName>
+    <masterLabel>Core IPS Case Notif External PB_1</masterLabel>
+    <migratedCriteriaLabel>External Support Assigned</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_15</migratedCriteriaName>
+    <processVersion>Core_IPS_Case_Notif_External_PB-37</processVersion>
+</ProcessFlowMigration>

@@ -121,14 +121,8 @@
 Core_IPS_Backend_Promotion_Success_Capture
 Core_IPS_Backend_Promotion_Time_Capture_WF
 Core IPS Case Escalated Date Stamp
-Core IPS GEC Flow Change</description>
+Core IPS GEC Flow Changes</description>
     <environments>Default</environments>
-    <formulas>
-        <name>Calculate_Core_IPS_Case_Promote_Count</name>
-        <dataType>Number</dataType>
-        <expression>IF(ISBLANK({!$Record.Core_IPS_Promote_Count_Outbound__c}),1,{!$Record.Core_IPS_Promote_Count_Outbound__c}) + 1</expression>
-        <scale>0</scale>
-    </formulas>
     <formulas>
         <name>Core_IPS_Case_Promote_Inbound_CountFormula</name>
         <dataType>Number</dataType>
@@ -164,11 +158,6 @@ $Record.Core_IPS_Promote_Count_Inbound__c + 1
         <name>Formula_4</name>
         <dataType>Boolean</dataType>
         <expression>AND(ISCHANGED( {!$Record.Core_IPS_Escalated_Level__c} ),OR(ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Level 2&quot;), ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Level 3&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Domain Expert&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Engineering&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Level 1 / Front Line&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Level 2&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Level 3&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Domain Expert&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Engineering&quot;)))</expression>
-    </formulas>
-    <formulas>
-        <name>Formula_5</name>
-        <dataType>Boolean</dataType>
-        <expression>AND({!$Record.Core_IPS_Backend_System__c} &lt;&gt; null, {!$Record.Core_IPS_Backend_ID__c} &lt;&gt; null, {!$Record.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null, {!$Record.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c} = false ,{!$Record.Core_IPS_BK_Flds_UpdatedAt__c} &lt;&gt; {!$Record.Core_IPS_BK_Flds_UpdatedAt_PreVal__c} , NOT(ISPICKVAL( {!$Record.Status} , &apos;Closed&apos;)), ({!$Profile.Name} &lt;&gt; &apos;Integration&apos; &amp;&amp; {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;) ) || AND({!$Record.Core_IPS_Backend_System__c} &lt;&gt; null,{!$Record.Core_IPS_Backend_ID__c} &lt;&gt; null, {!$Record.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null, {!$Record.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c} = false,  {!$Record.Core_IPS_Backend_Previous_Status__c} &lt;&gt; null, {!$Record.Core_IPS_Backend_Previous_Status__c} &lt;&gt;&apos;&apos;, OR(ISCHANGED({!$Record.Core_IPS_Backend_Previous_Status__c}), ISCHANGED({!$Record.Core_Sub_Status__c})) , ({!$Profile.Name} &lt;&gt; &apos;Integration&apos; &amp;&amp; {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;) )</expression>
     </formulas>
     <formulas>
         <description>If Case Record Typeequals IPS No Assigned Contact Case,IPS Case Create,IPS Closed Case,IPS GEC ReadOnly

@@ -1,0 +1,19 @@
+<apex:page StandardController="Core_Design_Registration__c" extensions="Core_DDR_Approve_Design_Controller" action="{!ApproveReSubmitedDR}">
+    <apex:form >
+
+        <script>
+            function approvedSuccessfully()
+            {
+                alert("Design Registration Approved successfully.");                
+                window.location.href='/{!Core_Design_Registration__c.Id}';                
+            }
+            function exceptionMsg()
+            {
+                alert('{!callException}');
+                window.location.href='/{!Core_Design_Registration__c.Id}';                
+            }
+        </script>
+        
+        <apex:outputText value="{!callAlertFunc}" escape="false"></apex:outputText>
+    </apex:form>
+</apex:page>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of  Steve Shakespeare</description>
+    <description>EMP Jean Michel Vuillamy</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11645468_Marc_Gaucheron</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10101706_Steve_Shakespeare_plusCOSandTA</parentRole>
+    <parentRole>EMP_11645310_Jean_Michel_Vuillamy</parentRole>
 </Role>

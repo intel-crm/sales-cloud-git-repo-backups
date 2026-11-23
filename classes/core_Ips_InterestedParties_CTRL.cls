@@ -37,7 +37,8 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
     public static List<LinkedExtPartyWrapper> LinkedExternalPartiesList{ get; set; }
 
     private static Map<Id, LinkedExtPartyWrapper> existingIpByContactId;
-    private static Set<Id> toBeDeletedIps;
+    /*kalyani - Commented below set, it is not in use; this is part of code optimization.*/
+    // private static Set<Id> toBeDeletedIps;
 
     public static List<Core_IPS_Project_Member__c> ProjMem{ get; set; }
 
@@ -47,7 +48,8 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
         CaseId = caseid;
         LinkedExternalPartiesList = new List<LinkedExtPartyWrapper>();
         existingIpByContactId = new Map<Id, LinkedExtPartyWrapper>();
-        toBeDeletedIps = new Set<Id>();
+        /*kalyani - Commented below set, it is not in use; this is part of code optimization.*/
+        // toBeDeletedIps = new Set<Id>();
         ProjMem = new List<Core_IPS_Project_Member__c>();
         searchMade = false;
         IPRecordSet = new list<IPWrapper>();
@@ -82,7 +84,7 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
         if (CaseObj != null){
             if (CaseObj.Core_IPS_Project_Case__c == null && CaseObj.AccountId != null){
                 Id acctId = CaseObj.AccountId;
-                allActiveContactIds = getContacts(NULL, acctId);
+                allActiveContactIds = getActiveContacts(NULL, acctId);
                 // SOQL Injection Fix - Start -  Shipra
                 Map<String, Object> bindMap = new Map<String, Object>{ 'accountId' => acctId, 'ActiveConIds' => allActiveContactIds, 'relatedConIds' => relatedConatactIDs };
                 sQuery = 'SELECT Id, FirstName, LastName, Name, Email, AccountId, Account.Name ' + 
@@ -108,15 +110,15 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
                         new Map<String, Object>{ 'projectCaseId' => CaseObj.Core_IPS_Project_Case__c }
                     );
                 }
-                for (Core_IPS_Project_Member__c cPM : ProjMem){
-                    if (cPM.Core_IPS_Contact__c != null){
-                        ContactID.add(cPM.Core_IPS_Contact__c);
+                for (Core_IPS_Project_Member__c CPM : ProjMem){
+                    if (CPM.Core_IPS_Contact__c != null){
+                        ContactID.add(CPM.Core_IPS_Contact__c);
                     }
                 }
 
                 if (ContactID.size() > 0){
 
-                    allActiveContactIds = getContacts(ContactID, NULL);
+                    allActiveContactIds = getActiveContacts(ContactID, NULL);
                     // SOQL Injection Fix - Start -  Shipra
                     Map<String, Object> bindMap = new Map<String, Object>{ 'contactId' => ContactID, 'ActiveConIds' => allActiveContactIds, 'relatedConIds' => relatedConatactIDs };
 
@@ -138,14 +140,18 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
             if (ConList != null){
                 List<User> myUserList = new List<User>();
                 // Venrublity Fix - Refering query to service class
-                myUserList = [Select id, contactid
+                 myUserList = [Select id, contactid
                               from User
                               where contactid in:ConList];
+                /*myUserList = (List<User>) Core_IPS_QueryService.queryRecords(
+                    'Select id, contactid from User where contactid in :ConList',
+                    new Map<String, Object>{ 'ConList' => ConList }
+                );*/
                 for (User uc : myUserList){
                     myUserMap.put(uc.contactid, uc);
                 }
-                for (Contact conRec : ConList){
-                    IPRecordSet.add(new IPWrapper(conRec, myUserMap.get(conRec.id)));
+                for (Contact ConRec : ConList){
+                    IPRecordSet.add(new IPWrapper(ConRec, myUserMap.get(ConRec.id)));
                 }
             }
 
@@ -175,9 +181,9 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
         Id acctId;
         String sQuery;
         if (LinkedExternalPartiesList <> null && LinkedExternalPartiesList.size() > 0){
-            for (LinkedExtPartyWrapper cIPSCIPEXT : LinkedExternalPartiesList){
-                if (cIPSCIPEXT.contactId != null){
-                    relatedConatactIDs.add(cIPSCIPEXT.contactId);
+            for (LinkedExtPartyWrapper CIPSCIPEXT : LinkedExternalPartiesList){
+                if (CIPSCIPEXT.contactId != null){
+                    relatedConatactIDs.add(CIPSCIPEXT.contactId);
                 }
             }
         }
@@ -225,9 +231,9 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
                 ProjMem = conData.fetchProjectMembers(CaseObj);
                 Set<ID> ContactID = new Set<ID>();
                     
-                for (Core_IPS_Project_Member__c cPM : ProjMem){
-                    if (cPM.Core_IPS_Contact__c != null){
-                        ContactID.add(cPM.Core_IPS_Contact__c);
+                for (Core_IPS_Project_Member__c CPM : ProjMem){
+                    if (CPM.Core_IPS_Contact__c != null){
+                        ContactID.add(CPM.Core_IPS_Contact__c);
                     }
                 }
 
@@ -265,15 +271,20 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
                 }
                 List<User> myUserList = new List<User>();
                 // if(User.SObjectType.getDescribe().isAccessible()){
-                myUserList = [Select id, contactid
-                              from User
-                              where contactid in:ConList];
+                // Venrublity Fix - Refering query to service class
+                 myUserList = [Select id, contactid
+                               from User
+                               where contactid in:ConList];
+                /*myUserList = (List<User>) Core_IPS_QueryService.queryRecords(
+                    'Select id, contactid from User where contactid in :ConList',
+                    new Map<String, Object>{ 'ConList' => ConList }
+                );*/
                 //}
                 for (User uc : myUserList){
                     myUserMap.put(uc.contactid, uc);
                 }
-                for (Contact conRec : ConList){
-                    IPRecordSet.add(new IPWrapper(conRec, myUserMap.get(conRec.id)));
+                for (Contact ConRec : ConList){
+                    IPRecordSet.add(new IPWrapper(ConRec, myUserMap.get(ConRec.id)));
                     searchMade = true;
                 }
             } else{
@@ -289,36 +300,27 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
         Set<Id> activeContactIds = new Set<Id>();
         List<User> allActiveUsers = new List<User>();
         if (accountId != NULL && projContactIds == NULL){
-            allActiveUsers = [SELECT Id, Accountid, contactid
-                              FROM User
-                              WHERE isActive = TRUE and contactid != null AND Accountid = :accountId];
+            // Venrublity Fix - Refering query to service class
+             allActiveUsers = [SELECT Id, Accountid, contactid
+                               FROM User
+                               WHERE isActive = TRUE and contactid != null AND Accountid = :accountId];
+            /*allActiveUsers = (List<User>) Core_IPS_QueryService.queryRecords(
+                'SELECT Id, Accountid, contactid FROM User WHERE isActive = TRUE and contactid != null AND Accountid = :accountId',
+                new Map<String, Object>{ 'accountId' => accountId }
+            );*/
         } else if (projContactIds != Null && accountId == Null){
-            allActiveUsers = [SELECT Id, contactid
+            // Venrublity Fix - Refering query to service class
+             allActiveUsers = [SELECT Id, contactid
                               FROM User
                               WHERE isActive = TRUE and contactid IN:projContactIds];
+           /* allActiveUsers = (List<User>) Core_IPS_QueryService.queryRecords(
+                'SELECT Id, contactid FROM User WHERE isActive = TRUE and contactid IN :projContactIds',
+                new Map<String, Object>{ 'projContactIds' => projContactIds }
+            );*/
         }
         for (User active : allActiveUsers){
             activeContactIds.add(active.contactid);
         }
-
-        return activeContactIds;
-    }
- //tushar --as part of vunerability change
-     public static Set<Id> getContacts(Set<Id> projContactIds, Id accountId){
-        Set<Id> activeContactIds = new Set<Id>();
-        List<User> allActiveUsers = new List<User>();
-        if (accountId != NULL && projContactIds == NULL){
-            allActiveUsers = [SELECT Id, Accountid, contactid
-                              FROM User
-                              WHERE contactid != null AND Accountid = :accountId];
-        } else if (projContactIds != Null && accountId == Null){
-            allActiveUsers = [SELECT Id, contactid
-                              FROM User
-                              WHERE isActive = TRUE and contactid IN:projContactIds];
-        }
-        for (User active : allActiveUsers){
-            activeContactIds.add(active.contactid);
-        }  //tushar --as part of vunerability change
 
         return activeContactIds;
     }
@@ -343,25 +345,25 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
 
     public static void externalPartiesData(Case CaseObj, String mode, Id CaseId){
 
-        List<Core_IPS_Case_Interested_Party__c> linkedExternalParties;
+        List<Core_IPS_Case_Interested_Party__c> LinkedExternalParties;
         if (CaseObj <> null && ((CaseObj.AccountId <> null && CaseObj.Core_IPS_Project_Case__c == null) || (CaseObj.Core_IPS_Project_Case__r <> null /*&& CaseObj.Core_IPS_Project_Case__r.Name <> null*/))){
 
             if (Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isAccessible()){
                 // Venrublity Fix - Refering query to service class
-                // linkedExternalParties = [Select ID, Contact__c, Core_IPS_Account_Name__c, First_Name__c, Email__c, Agent_Name__c, Last_Name__c, User__c, Active__c, Contact__r.Name
+                // LinkedExternalParties = [Select ID, Contact__c, Core_IPS_Account_Name__c, First_Name__c, Email__c, Agent_Name__c, Last_Name__c, User__c, Active__c, Contact__r.Name
                 //                          from Core_IPS_Case_Interested_Party__c
                 //                          WHERE Case__c = :CaseId AND Contact__c != null AND Type__c = 'External' AND Active__c = true];//US113986
-                linkedExternalParties = (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.queryRecords(
+                LinkedExternalParties = (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.queryRecords(
                     'Select ID, Contact__c, Core_IPS_Account_Name__c, First_Name__c, Email__c, Agent_Name__c, Last_Name__c, User__c, Active__c, Contact__r.Name from Core_IPS_Case_Interested_Party__c WHERE Case__c = :CaseId AND Contact__c != null AND Type__c = \'External\' AND Active__c = true',
                     new Map<String, Object>{ 'CaseId' => CaseId }
                 );
             }
         }
 
-        if (linkedExternalParties != null && !linkedExternalParties.isEmpty()){
-            for (Core_IPS_Case_Interested_Party__c exIps : linkedExternalParties){
+        if (LinkedExternalParties != null && !LinkedExternalParties.isEmpty()){
+            for (Core_IPS_Case_Interested_Party__c exIps : LinkedExternalParties){
                 LinkedExtPartyWrapper partyRecord = new LinkedExtPartyWrapper(exIps.Contact__c, exIps.User__c, exIps.First_Name__c, exIps.Last_Name__c, exIps.Email__c, exIps.Id, true, null, exIps);
-                linkedExternalPartiesList.add(partyRecord);
+                LinkedExternalPartiesList.add(partyRecord);
                 if (existingIpByContactId.get(exIps.Contact__c) == null){
                     existingIpByContactId.put(exIps.Contact__c, partyRecord);
                 }
@@ -409,8 +411,8 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
         // ConList = Database.queryWithBinds(sQuery, bindMap, AccessLevel.USER_MODE);
         ConList = (List<Contact>) Core_IPS_QueryService.queryRecords(sQuery, bindMap);
         // SOQL Injection Fix - End -  Shipra
-        for (Contact conRec : ConList){
-            IPRecordSet.add(new IPWrapper(conRec, myUserMap.get(conRec.id)));
+        for (Contact ConRec : ConList){
+            IPRecordSet.add(new IPWrapper(ConRec, myUserMap.get(ConRec.id)));
             searchMade = true;
         }
         return null;
@@ -506,13 +508,23 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
             List<User> allActiveUsers = new List<User>();
 
             if (accountId != NULL && projContactIds == NULL){
-                allActiveUsers = [SELECT Id, Accountid, contactid
-                                  FROM User
-                                  WHERE isActive = TRUE and contactid != null AND Accountid = :accountId];
+                // Venrublity Fix - Refering query to service class
+                 allActiveUsers = [SELECT Id, Accountid, contactid
+                                   FROM User
+                                   WHERE isActive = TRUE and contactid != null AND Accountid = :accountId];
+               /* allActiveUsers = (List<User>) Core_IPS_QueryService.queryRecords(
+                    'SELECT Id, Accountid, contactid FROM User WHERE isActive = TRUE and contactid != null AND Accountid = :accountId',
+                    new Map<String, Object>{ 'accountId' => accountId }
+                );*/
             } else if (projContactIds != Null && accountId == Null){
-                allActiveUsers = [SELECT Id, contactid
+                // Venrublity Fix - Refering query to service class
+                 allActiveUsers = [SELECT Id, contactid
                                   FROM User
                                   WHERE isActive = TRUE and contactid IN:projContactIds];
+                /*allActiveUsers = (List<User>) Core_IPS_QueryService.queryRecords(
+                    'SELECT Id, contactid FROM User WHERE isActive = TRUE and contactid IN :projContactIds',
+                    new Map<String, Object>{ 'projContactIds' => projContactIds }
+                );*/
             }
             for (User active : allActiveUsers){
                 activeContactIds.add(active.contactid);
@@ -565,18 +577,23 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
         return message;
     }
 
-    public static List<Core_IPS_Case_Interested_Party__c> partyMembers;
+    public static List<Core_IPS_Case_Interested_Party__c> PartyMembers;
     public static List<Core_IPS_Case_Interested_Party__c> addPartyMem(List<Id> addList, String caseID){
         List<Core_IPS_Case_Interested_Party__c> lPartyMembers = new List<Core_IPS_Case_Interested_Party__c>();
         if (Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isAccessible()){
-            partyMembers = [select Id, IsDeleted, Name, RecordTypeId, Case__c, Active__c, Contact__c, Core_IPS_Account_Name__c, First_Name__c, Last_Name__c, Type__c, User__c, Core_IPS_Project_Interested_Party__c
-                            from Core_IPS_Case_Interested_Party__c
-                            WHERE Contact__c IN:addList AND Case__c = :caseID];
+            // Venrublity Fix - Refering query to service class
+            // PartyMembers = [select Id, IsDeleted, Name, RecordTypeId, Case__c, Active__c, Contact__c, Core_IPS_Account_Name__c, First_Name__c, Last_Name__c, Type__c, User__c, Core_IPS_Project_Interested_Party__c
+            //                 from Core_IPS_Case_Interested_Party__c
+            //                 WHERE Contact__c IN:addList AND Case__c = :caseID];
+            PartyMembers = (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.queryRecords(
+                'select Id, IsDeleted, Name, RecordTypeId, Case__c, Active__c, Contact__c, Core_IPS_Account_Name__c, First_Name__c, Last_Name__c, Type__c, User__c, Core_IPS_Project_Interested_Party__c from Core_IPS_Case_Interested_Party__c WHERE Contact__c IN :addList AND Case__c = :caseID',
+                new Map<String, Object>{ 'addList' => addList, 'caseID' => caseID }
+            );
         }
         List<Id> contactIdList = new List<Id>();
-        if (partyMembers.size() > 0){
-            for (Core_IPS_Case_Interested_Party__c partyMem : partyMembers){
-                contactIdList.add(partyMem.Contact__c);
+        if (PartyMembers.size() > 0){
+            for (Core_IPS_Case_Interested_Party__c PartyMem : PartyMembers){
+                contactIdList.add(PartyMem.Contact__c);
             }
         }
         List<Id> partyMemNeedToCreateList = new List<Id>();
@@ -592,9 +609,14 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
         for (Id memId : partyMemNeedToCreateList){
             memberId.add(memId);
         }
-        List<User> loggedInUser = [SELECT Id, Name, Email, ContactId
-                                   FROM User
-                                   WHERE ContactId IN:memberId];
+        // Venrublity Fix - Refering query to service class
+         List<User> loggedInUser = [SELECT Id, Name, Email, ContactId
+                                    FROM User
+                                    WHERE ContactId IN:memberId];
+        /*List<User> loggedInUser = (List<User>) Core_IPS_QueryService.queryRecords(
+            'SELECT Id, Name, Email, ContactId FROM User WHERE ContactId IN :memberId',
+            new Map<String, Object>{ 'memberId' => memberId }
+        );*/
 
         for (User usm : loggedInUser){
             Core_IPS_Case_Interested_Party__c pm = new Core_IPS_Case_Interested_Party__c();
@@ -611,20 +633,25 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
         }
 
 
-        if (partyMembers.size() > 0){
+        if (PartyMembers.size() > 0){
             List<Id> partyId = new List<Id>();
-            for (Core_IPS_Case_Interested_Party__c parId : partyMembers){
+            for (Core_IPS_Case_Interested_Party__c parId : PartyMembers){
                 partyId.add(parId.Contact__c);
             }
 
-            List<User> loggedInUser1 = [SELECT Id, Name, Email
-                                        FROM User
-                                        WHERE ContactId IN:partyId];
+            // Venrublity Fix - Refering query to service class
+             List<User> loggedInUser1 = [SELECT Id, Name, Email
+                                         FROM User
+                                         WHERE ContactId IN:partyId];
+            /*List<User> loggedInUser1 = (List<User>) Core_IPS_QueryService.queryRecords(
+                'SELECT Id, Name, Email FROM User WHERE ContactId IN :partyId',
+                new Map<String, Object>{ 'partyId' => partyId }
+            );*/
             integer i = 0;
-            for (Core_IPS_Case_Interested_Party__c partyMem : partyMembers){
+            for (Core_IPS_Case_Interested_Party__c PartyMem : PartyMembers){
 
                 Core_IPS_Case_Interested_Party__c pm = new Core_IPS_Case_Interested_Party__c();
-                pm.ID = partyMem.ID;
+                pm.ID = PartyMem.ID;
                 if (Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Active__c.isCreateable() || Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Active__c.isupdateable()){
                     pm.Active__c = true;
                 }
@@ -645,23 +672,28 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
 
     public static List<Core_IPS_Case_Interested_Party__c> removePartyMem(List<Id> removeList, String caseID){
 
-        List<Core_IPS_Case_Interested_Party__c> partyMembers = new List<Core_IPS_Case_Interested_Party__c>();
-        partyMembers = [select Id, IsDeleted, Name, RecordTypeId, Case__c, Active__c, Contact__c, First_Name__c, Last_Name__c, Type__c, User__c
-                        FROM Core_IPS_Case_Interested_Party__c
-                        WHERE Contact__c IN:removeList AND Case__c = :caseID];
+        List<Core_IPS_Case_Interested_Party__c> PartyMembers = new List<Core_IPS_Case_Interested_Party__c>();
+        // Venrublity Fix - Refering query to service class
+         PartyMembers = [select Id, IsDeleted, Name, RecordTypeId, Case__c, Active__c, Contact__c, First_Name__c, Last_Name__c, Type__c, User__c
+                         FROM Core_IPS_Case_Interested_Party__c
+                         WHERE Contact__c IN:removeList AND Case__c = :caseID];
+        /*PartyMembers = (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.queryRecords(
+            'select Id, IsDeleted, Name, RecordTypeId, Case__c, Active__c, Contact__c, First_Name__c, Last_Name__c, Type__c, User__c FROM Core_IPS_Case_Interested_Party__c WHERE Contact__c IN :removeList AND Case__c = :caseID',
+            new Map<String, Object>{ 'removeList' => removeList, 'caseID' => caseID }
+        );*/
 
-        if (partyMembers.size() > 0){
-            for (Core_IPS_Case_Interested_Party__c partyMem : partyMembers){
+        if (PartyMembers.size() > 0){
+            for (Core_IPS_Case_Interested_Party__c PartyMem : PartyMembers){
                 if (Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Active__c.isCreateable() || Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Active__c.isupdateable()){
-                    partyMem.Active__c = false;
+                    PartyMem.Active__c = false;
                 }
 
             }
             // Venrublity Fix - Refering query to service class
-            // upsert partyMembers;
-            partyMembers = (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.upsertRecords((List<SObject>) partyMembers);
+            // upsert PartyMembers;
+            PartyMembers = (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.upsertRecords((List<SObject>) PartyMembers);
         }
-        return partyMembers;
+        return PartyMembers;
     }
 
 }

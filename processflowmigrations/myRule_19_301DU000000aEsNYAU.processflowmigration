@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>IPS_Internal_Notifications</destinationFlowDefinition>
+    <destinationFlowVersion>IPS_Internal_Notifications-5</destinationFlowVersion>
+    <developerName>myRule_19_301DU000000aEsNYAU</developerName>
+    <masterLabel>IPS Internal Notifications</masterLabel>
+    <migratedCriteriaLabel>US80109-Int ProjectUpdate</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_19</migratedCriteriaName>
+    <processVersion>Core_IPS_Internal_Notifications-93</processVersion>
+</ProcessFlowMigration>

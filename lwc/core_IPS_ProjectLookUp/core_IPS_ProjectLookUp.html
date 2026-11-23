@@ -1,0 +1,148 @@
+<template>
+    <div class="slds-form-element__control">
+        <div class="slds-combobox_container">
+            <div class="slds-combobox slds-dropdown-trigger" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                <template if:false={selectedRecord}>
+                    <c-core_-i-p-s_-search-component onchange={handleOnchange} onfocusout={handleFocusOut} is-required-field={isRequiredField} label={label} placeholder={placeholder}></c-core_-i-p-s_-search-component>
+                    <template if:true={isRecordLoading}>
+                        <div class="slds-input__icon-group slds-input__icon-group_right " >
+                            <div role="status" class="slds-spinner slds-spinner_brand slds-spinner_x-small slds-input__spinner slds-is-relative" style={margintopforspinner}>
+                            <span class="slds-assistive-text">Loading</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+                <template if:false={selectedRecord}>
+                    <template if:true={isRecordsPresent}>
+                        <template if:true={records}>
+                            <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox" onscroll={onScrollHandle}>
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={records} for:item="record">
+                                        <c-core_-i-p-s_-record-list
+                                            key={record.Id}
+                                            record={record}
+                                            onselect={handleSelect}
+                                            iconname={iconname}
+                                            fieldname={searchfieldName}
+                                            extra-field1-label={extraField1Label}
+                                            extra-field1={extraField1}
+                                            extra-field2-label={extraField2Label}
+                                            extra-field2={extraField2}
+                                            >
+                                        </c-core_-i-p-s_-record-list>
+                                    </template>
+                                    <template if:true={isMoreRecordLoading}>
+                                        <li role="presentation" class="slds-listbox__item">
+                                            <div class="slds-align_absolute-center slds-p-top_medium">
+                                            <div role="status" class="slds-spinner slds-spinner_x-small slds-spinner_inline">
+                                                <span class="slds-assistive-text">Loading</span>
+                                                <div class="slds-spinner__dot-a"></div>
+                                                <div class="slds-spinner__dot-b"></div>
+                                            </div>
+                                            </div>
+                                        </li>
+                                    </template>
+                                    <template if:true={isRecordLoading}>
+                                        <div class="slds-spinner_container" style="margin-top: 5px;">
+                                            <div role="status" class="slds-spinner slds-spinner_small">
+                                                <span class="slds-assistive-text">Loading</span>
+                                                <div class="slds-spinner__dot-a"></div>
+                                                <div class="slds-spinner__dot-b"></div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </ul>
+                            </div>
+                        </template>
+                    </template>
+                    <template if:false={isRecordsPresent}>
+                        <div id="listbox-id-2" class="slds-dropdown slds-dropdown_length-with-icon-5 slds-dropdown_fluid" role="listbox" onscroll={onScrollHandle}>
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                <li role="presentation" class="slds-listbox__item">
+                                    <div id="option1" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option" style="text-align: center;">
+                                    <span class="slds-media__body" style="padding-top: 9px;">
+                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity" style="font-weight: 600;" title="No Records Found">
+                                        {noRecordsErr}
+                                        </span>
+                                    </span>
+                                    </div>
+                                </li>
+                                <template if:true={isRecordLoading}>
+                                    <div class="slds-spinner_container" style="margin-top: 5px;">
+                                        <div role="status" class="slds-spinner slds-spinner_small">
+                                            <span class="slds-assistive-text">Loading</span>
+                                            <div class="slds-spinner__dot-a"></div>
+                                            <div class="slds-spinner__dot-b"></div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+                </template>
+                <template if:false={selectedRecord}>
+                </template>
+                <template if:true={selectedRecord}>
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                        <template if:false={isRequiredField}>
+                            <template  if:true={label}>
+                                <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" style="margin-top: 12px;">
+                                    <lightning-icon icon-name={iconname}></lightning-icon>
+                                </span>
+                                <lightning-input 
+                                    autocomplete="off"
+                                    role="textbox"
+                                    type="text"
+                                    label={label} 
+                                    value={selectedRecordFieldlabel} 
+                                    disabled>
+                                </lightning-input>
+                                <template if:false={isReadOnly}>
+                                    <button class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleRemove}>
+                                        <lightning-icon icon-name="utility:close" size="small" style="margin-top: 5px;"></lightning-icon>
+                                        <span class="slds-assistive-text">Remove selected option</span>
+                                    </button>
+                                </template>
+                            </template>
+
+                            <template  if:false={label}>
+                                <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" title="Account">
+                                    <lightning-icon icon-name={iconname}></lightning-icon>
+                                </span>
+                                <input class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-5" aria-controls="listbox-id-5" autocomplete="off" role="textbox" type="text" placeholder="Select an Option" readonly="" value={selectedRecordFieldlabel} disabled />
+                                <template if:false={isReadOnly}>
+                                    <button class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleRemove}>
+                                        <lightning-icon icon-name="utility:close" size="small" style="margin-top: -5px;"></lightning-icon>
+                                        <span class="slds-assistive-text">Remove selected option</span>
+                                    </button>
+                                </template>
+                            </template>
+                        </template>
+                        <template if:true={isRequiredField}>
+                            <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" style="margin-top: 12px;">
+                                <lightning-icon icon-name={iconname}></lightning-icon>
+                            </span>
+                            <lightning-input 
+                                autocomplete="off"
+                                role="textbox"
+                                type="text"
+                                label={label} 
+                                value={selectedRecordFieldlabel} 
+                                required
+                                disabled>
+                            </lightning-input>
+                            <template if:false={isReadOnly}>
+                                <button class="sicon_container slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleRemove}>
+                                    <lightning-icon icon-name="utility:close" size="small" style="margin-top: 5px;"></lightning-icon>
+                                    <span class="slds-assistive-text">Remove selected option</span>
+                                </button>
+                            </template>    
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

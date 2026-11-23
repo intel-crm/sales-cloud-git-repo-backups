@@ -22,7 +22,10 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
     sections = ['A', 'B'];
     columns = columns.filter(col =>(col.label !== 'Id' && col.label !== 'ContactId'));
     existingMemList=[];
-    memberList=[];
+    memberList=[];   //HK
+    selectedRowIds = []; //Hk
+    clonedSelectedIds = [];
+    selectedRows = [];
     addMemList = [];
     searchList = [];
     selectedMembers = [];
@@ -99,7 +102,6 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
             console.log('error:'+error);
         })
     }
-    //Tushar bug fix
     getExistingMembers(){
         return getExistingMembers({
             projectId1 : this.recordId,
@@ -107,6 +109,10 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
             offset1 : this.rowOffSet1,
         })
         .then(data=>{
+            console.log('testing ===== ',data);
+            /*if (this.targetDatatable1 && data==null) {
+                this.targetDatatable1.enableInfiniteLoading = false;
+            }*/
             if (!data || data.length === 0) {
                 if (this.targetDatatable1) {
                     this.targetDatatable1.enableInfiniteLoading = false;
@@ -116,10 +122,10 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
             }
             for (let i = 0; i < data.length; i++) {
                 let obj = {
-                    'FirstName' : data[i].Core_IPS_Contact__r?.FirstName,
-                    'LastName' : data[i].Core_IPS_Contact__r?.LastName,
-                    'Email' : data[i].Core_IPS_Contact__r?.Email,
-                    'Name' : data[i].Core_IPS_Contact__r?.Account?.Name,
+                    'FirstName' : data[i].Core_IPS_Contact__r.FirstName,
+                    'LastName' : data[i].Core_IPS_Contact__r.LastName,
+                    'Email' : data[i].Core_IPS_Contact__r.Email,
+                    'Name' : data[i].Core_IPS_Contact__r.Account.Name,
                 };
                 this.existingMemList = [...this.existingMemList, obj];
             }
@@ -130,10 +136,12 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
             console.log('existingMemCount:'+this.existingMemList.length);
         })
         .catch(error=>{
-            console.log('error in fetching existing members '+(error?.body?.message || error?.message || JSON.stringify(error)));
+            console.log('error error.stack in fetching existing members '+error.stack);
         })
     }
     loadMoreData(event){
+        console.log('hk 134 --> ',this.selectedRowIds.length);
+        this.template.querySelector('lightning-datatable').selectedRows = this.selectedRowIds; //hk
         const currentRecord = this.existingMemList;
         const { target } = event;
         target.isLoading = true;
@@ -147,6 +155,7 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
     }
     
     getMembers(msg){
+        console.log('Hassan get members Call ----> ',msg);
         let type = msg;
         return getAddMembers({           
             projectId : this.recordId,
@@ -155,6 +164,7 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
             fetchType : type
         })
         .then(data=>{
+            console.log('data -------a ',data);
             if (this.targetDatatable && this.addMemList.length==this.memberList.length) {
                 this.targetDatatable.enableInfiniteLoading = false;
             }
@@ -166,21 +176,26 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
                 let temp1 = JSON.parse(data);
                 this.addMemList = [...this.addMemList, ...temp1];
                 }
+                console.log('this.memberList.length ---- ',this.memberList.length);
             if(this.memberList.length != 0){
                 this.sortData(this.sortedBy,this.addSortDirection,this.memberList,'AddMembers');
             }        
-                this.switchView = true;  
-                this.showMemTable = true;
-                this.recordsToDisplay = this.memberList;
-                console.log('ADDMemCount:'+this.memberList.length); 
+            this.switchView = true;  
+            this.showMemTable = true;
+            this.recordsToDisplay = this.memberList;
+            this.clonedSelectedIds = JSON.parse(JSON.stringify(this.recordsToDisplay));
+            
         })
         .catch(error=>{
             this.showMemTable = false;
             this.switchView = false;
+            
+            console.log('error ---- ',JSON.stringify(error, Object.getOwnPropertyNames(error), 2));
             console.log(' error in fetching add members: '+JSON.stringify(error));
         })
     }
     handleLoadMore(event) {
+        //this.template.querySelector('lightning-datatable').selectedRows = this.selectedRowIds; //Hk
         if(this.searchList != undefined && this.searchList.length == 0){
             const currentRecord = this.memberList;
             const { target } = event;
@@ -195,7 +210,9 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
     }
     handleKeyChange(event){
         try{
+            console.log('201---> ',JSON.stringify(this.selectedRowIds));
             let tempMembers = [];
+            this.rowOffSet = 0;
             this.searchKey = event.target.value;
             if(this.searchKey.length>=3){
                 this.addMemList.forEach(contact =>{
@@ -209,27 +226,71 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
                         tempMembers.push(contact);
                     }
                 });
-                //this.getMembers('All Data');
                 this.searchList = tempMembers;
                 this.memberList = this.searchList;
                 this.switchView = true;
-                if(this.searchList.length==0){ this.switchView = false; }
+
+
+                if(this.searchList.length==0){ 
+                    this.switchView = false;
+                    //this.template.querySelector('lightning-datatable').selectedRows = this.selectedRowIds; //Hk
+                }
             }       
             else if(this.searchKey =='' || this.searchKey == null || this.searchKey.length <= 2) {
+               // this.template.querySelector('lightning-datatable').selectedRows = this.selectedRowIds; //Hk
                 this.searchList=[];
                 this.memberList = this.recordsToDisplay;
                 this.switchView = true;
             } 
             if(this.searchKey.length >= 1 && this.searchKey.length <= 2){ this.searchMsg = true; }
             else { this.searchMsg = false; }
+        console.log('233 selectedMembers:', JSON.stringify(this.selectedMembers));
+
 
         } catch(error){
             console.log('error in search handler ');
         }
     }
-    getSelectedMember(event) {  
-        this.selectedMembers = event.detail.selectedRows; 
-        console.log('selectedMembers--'+this.selectedMembers);  
+    getSelectedMember(event) {
+        /*this.selectedRows = event.detail.selectedRows.map(row => row.id);
+        console.log('HK 245---> ',this.selectedRows);
+        
+        console.log('Hassan Before mem --'+ JSON.stringify(this.selectedMembers));
+        const newselectedMembers = event.detail.selectedRows;
+        this.selectedMembers = [...new Set([...this.selectedMembers, ...newselectedMembers])];
+
+        //this.selectedMembers = event.detail.selectedRows;
+        console.log('Hassan After mem --'+ JSON.stringify(this.selectedMembers));
+
+
+        
+        const newSelectedRowIds = this.selectedMembers.map(row => row.ContactId);
+        //console.log('Hassan before --> ',JSON.stringify(this.selectedRowIds));
+        this.selectedRowIds = [...new Set([...this.selectedRowIds, ...newSelectedRowIds])];*/
+
+
+        const currentSelectedRows = event.detail.selectedRows.map(row => row.ContactId); // Current selected rows
+        const previousSelectedRows = this.selectedRowIds; // Previously selected rows
+
+        console.log('Current Selected Rows:', JSON.stringify(currentSelectedRows));
+        console.log('Previous Selected Rows:', JSON.stringify(previousSelectedRows));
+
+        // Find deselected rows
+        const deselectedRows = previousSelectedRows.filter(ContactId => !currentSelectedRows.includes(ContactId));
+        console.log('Deselected Rows:', JSON.stringify(deselectedRows));
+
+        // Update selectedMembers by removing the deselected rows
+        const newselectedMembers = event.detail.selectedRows;
+        console.log('269 ---> ',JSON.stringify(this.selectedMembers));
+        this.selectedMembers = [...new Set([...this.selectedMembers, ...newselectedMembers])];
+        this.selectedMembers = this.selectedMembers.filter(member => !deselectedRows.includes(member.ContactId));
+        console.log('Updated selectedMembers:', JSON.stringify(this.selectedMembers));
+
+        // Update selectedRowIds to the currently selected rows
+        //this.selectedRowIds = currentSelectedRows;
+        const newSelectedRowIds = this.selectedMembers.map(row => row.ContactId);
+        this.selectedRowIds = [...new Set([...this.selectedRowIds, ...newSelectedRowIds])];
+        console.log('Updated selectedRowIds:', JSON.stringify(this.selectedRowIds)); 
     }
     addMember(){
         this.addMemberList('Add');
@@ -325,12 +386,12 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
                 return isReverse * ((x > y) - (y > x));
             });
             if(type == 'ExistingMembers'){
+                console.log('ExistingMembers');
                 this.existingMemList = parseData; 
             } 
             else if(type == 'AddMembers'){
+                console.log('AddMembers');
                 this.memberList = parseData;
             }  
-    }
-
-    
+    } 
 }

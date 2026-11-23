@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Franco Lombardi</description>
+    <description>EMP of Stephane Negre</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10651711_Xavier_Petot</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10549753_Franco_Lombardi</parentRole>
+    <parentRole>EMP_10100353_Stephane_Negre</parentRole>
 </Role>

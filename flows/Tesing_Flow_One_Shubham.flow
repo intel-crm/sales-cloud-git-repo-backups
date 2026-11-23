@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Functionality of Workflow i.e(Core_IPS_Backend_Promotion_Time_Capture_WF).  This WF capture the case promotion details and it updates Backend Promote Success DT to null and Backend Promote DT to current date.</description>
+        <name>Decision_2</name>
+        <label>Decision 2</label>
+        <locationX>182</locationX>
+        <locationY>587</locationY>
+        <defaultConnector>
+            <targetReference>Decision_4</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Condtion_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula2</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Two</targetReference>
+            </connector>
+            <label>Condtion 2</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_4</name>
+        <label>Decision 4</label>
+        <locationX>182</locationX>
+        <locationY>887</locationY>
+        <defaultConnector>
+            <targetReference>Decision_6</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Label_4</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_4</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_4</targetReference>
+            </connector>
+            <label>Label 4</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_6</name>
+        <label>Decision 6</label>
+        <locationX>182</locationX>
+        <locationY>1187</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Label_6</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_IPS_GEC_Case__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Formula_6</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Profile.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>IPS Data Migration</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_GroupId_For_IPS_GEC_Cases</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Label 6</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>When Ever : ISCHANGED( Core_Promote_Status__c ) &amp;&amp; ISPICKVAL(Core_Promote_Status__c , &apos;DONE&apos;) then  Update 2 Fields  i.e
+: Backend Promote Success DT (Core_IPS_Backend_Promote_Success_DT__c changes Data/time)  &amp;&amp;  Promote Count Inbound (Core_IPS_Promote_Count_Inbound__c increase number)</description>
+        <name>Decision_One</name>
+        <label>Decision One</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Decision_2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Condition_One</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Formula_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>mainUpdate</targetReference>
+            </connector>
+            <label>Condition One</label>
+        </rules>
+    </decisions>
+    <description>This is for tesing some Aspects not for normal Use.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_IPS_Case_Promote_Inbound_CountFormula</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+ISBLANK( $Record.Core_IPS_Promote_Count_Inbound__c ), 
+1, 
+$Record.Core_IPS_Promote_Count_Inbound__c + 1
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <description>Formula field To make Date/Time Value to Null</description>
+        <name>DateTimeToNull</name>
+        <dataType>DateTime</dataType>
+        <expression>Null</expression>
+    </formulas>
+    <formulas>
+        <name>Formula2</name>
+        <dataType>Boolean</dataType>
+        <expression>AND( (({!$Profile.Name} &lt;&gt; &apos;Integration&apos; &amp;&amp; {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;)|| CONTAINS({!$User.Username}, &apos;ips.file.integrationuser&apos;)),{!$Record.Core_IPS_Backend_ID__c} == null,  {!$Record.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null, {!$Record.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c}  = false,  ISPICKVAL( {!$Record.Core_Promote_Status__c} , &apos;In Progress&apos;) , NOT(ISPICKVAL( {!$Record.Status} , &apos;Closed&apos;)), ( ISBLANK(TEXT({!$Record.Core_IPS_GEC_Status__c)}) || ISPICKVAL( {!$Record.Core_IPS_GEC_Status__c}, &apos;Approved&apos;) || ISPICKVAL( {!$Record.Core_IPS_GEC_Status__c}, &apos;Approved with Guardrails&apos;))  )</expression>
+    </formulas>
+    <formulas>
+        <name>Formula_1</name>
+        <dataType>Boolean</dataType>
+        <expression>ISCHANGED( {!$Record.Core_Promote_Status__c} ) &amp;&amp; ISPICKVAL({!$Record.Core_Promote_Status__c} , &apos;DONE&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>Formula_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(BEGINS({!$Record.OwnerId},&apos;00G&apos;),CONTAINS({!$Record.RecordType.DeveloperName},&apos;IPS_&apos;),OR(ISCHANGED({!$Record.OwnerId}),ISNEW()))</expression>
+    </formulas>
+    <formulas>
+        <name>Formula_4</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISCHANGED( {!$Record.Core_IPS_Escalated_Level__c} ),OR(ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Level 2&quot;), ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Level 3&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Domain Expert&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Engineering&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Level 1 / Front Line&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Level 2&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Level 3&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Domain Expert&quot;),ISPICKVAL({!$Record.Core_IPS_Escalated_Level__c},&quot;Consult Engineering&quot;)))</expression>
+    </formulas>
+    <formulas>
+        <description>If Case Record Typeequals IPS No Assigned Contact Case,IPS Case Create,IPS Closed Case,IPS GEC ReadOnly
+then it return true</description>
+        <name>Formula_6</name>
+        <dataType>Boolean</dataType>
+        <expression>OR({!$Record.RecordType.Name}=&apos;IPS No Assigned Contact Case&apos;,{!$Record.RecordType.Name}=&apos;IPS Case Create&apos;,{!$Record.RecordType.Name}=&apos;IPS Closed Case&apos;,{!$Record.RecordType.Name}=&apos;IPS GEC ReadOnly&apos;)</expression>
+    </formulas>
+    <interviewLabel>Tesing Flow One Shubham {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Tesing Flow One Shubham</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Fetch Record type Id from from Object RecordType Where Name Equal IPS GEC ReadOnly</description>
+        <name>Get_Case_Record_Type_Id_IPS_GEC_Readonly</name>
+        <label>Get Case Record Type Id IPS GEC Readonly</label>
+        <locationX>50</locationX>
+        <locationY>1403</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_6</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>IPS_GEC_ReadOnly</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Fetching GroupId from Group which is Assign to  Case Owner when 6 condition satisfy</description>
+        <name>Get_GroupId_For_IPS_GEC_Cases</name>
+        <label>Get GroupId For IPS GEC Cases</label>
+        <locationX>50</locationX>
+        <locationY>1295</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Case_Record_Type_Id_IPS_GEC_Readonly</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core_IPS_CaseQ_GEC_Cases</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <connector>
+            <targetReference>Decision_2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_Backend_Promote_Success_DT__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_IPS_Promote_Count_Inbound__c</field>
+            <value>
+                <elementReference>Core_IPS_Case_Promote_Inbound_CountFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_4</name>
+        <label>Update 4</label>
+        <locationX>50</locationX>
+        <locationY>995</locationY>
+        <connector>
+            <targetReference>Decision_6</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_Case_Escalated_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_6</name>
+        <label>Update 6</label>
+        <locationX>50</locationX>
+        <locationY>1511</locationY>
+        <inputAssignments>
+            <field>Core_IPS_GEC_Flag__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Sub_Status__c</field>
+            <value>
+                <stringValue>GEC Hold</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_GroupId_For_IPS_GEC_Cases.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Case_Record_Type_Id_IPS_GEC_Readonly.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>On Hold</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>update Backend Promote DT to NOW() and Backend Promote Success DT to null</description>
+        <name>Update_Two</name>
+        <label>Update Two</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <connector>
+            <targetReference>Decision_4</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_IPS_Backend_Promote_DT__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_IPS_Backend_Promote_Success_DT__c</field>
+            <value>
+                <elementReference>DateTimeToNull</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Decision_One</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

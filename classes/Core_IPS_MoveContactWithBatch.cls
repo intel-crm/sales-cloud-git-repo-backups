@@ -81,8 +81,8 @@ global class Core_IPS_MoveContactWithBatch implements
             if(Core_IPS_MoveContactWithLargeCases.allCaseList.size()>0){
                 try{
                     totalNum +=1;
-                    /* if(totalNum>0)
-                        throw new BatchException();*/
+                      if(totalNum>0)
+                        throw new BatchException();
                     allProcessedcaseId.addAll(mapprocessedCase.keySet());
                     update Core_IPS_MoveContactWithLargeCases.allCaseList; 
                 }catch(Exception e){
@@ -97,12 +97,15 @@ global class Core_IPS_MoveContactWithBatch implements
         if('PageContact'.equals(batchProcessedFrom)){
             List<Case> updateCases = new List<Case>();
             for(Case c : CaseList){
-                c.contactId = targetContId;
+                /*US1038991 - 07/08/2021 - Vishal - FLS Check for security vulnerability --*/
+                if (Schema.sObjectType.Case.fields.contactId.isUpdateable()) {
+                    c.contactId = targetContId;
+                }
                 updateCases.add(c);
             }
             try{
                 totalNum +=1;
-                /*if(totalNum>0)
+               /* if(totalNum>0)
                     throw new BatchException();*/
                 allProcessedcaseId.addAll(mapprocessedCase.keySet());
                 update updateCases;
@@ -131,22 +134,23 @@ global class Core_IPS_MoveContactWithBatch implements
             }
         }*/
     }    
+    public  AsyncApexJob asyncjob;
     global void finish(Database.BatchableContext bc){
             List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             List<String> sendTo = new List<String>();
-            if(Account.SObjectType.getDescribe().isAccessible()){  //Fls-Read-Applied-Suresh-30/09/2022
+        if(Account.SObjectType.getDescribe().isAccessible()){  //Fls-Read-Applied-Suresh-30/09/2022
             targetAccountName=[select name from Account where id=:stAccId].name;
-            }
+        }
             sendTo.addAll(getMailAddresses());
             User activeUser = [Select Email From User where Username = : UserInfo.getUserName() limit 1];
             sendTo.add(activeUser.Email);
             mail.setToAddresses(sendTo);
             //code added as per US120420
             if(targetContId!=null){
-            if(Contact.SObjectType.getDescribe().isAccessible()){  //Fls-Read-Applied-Suresh-30/09/2022
+                if(Contact.SObjectType.getDescribe().isAccessible()){  //Fls-Read-Applied-Suresh-30/09/2022
                 targetContactName = [select name from contact where id =: targetContId].name;
-            }
+                }
             }
             //Add the total # of cases moved from old to new contact
             //Add the case number/case subject for each of the contacts moved
@@ -154,8 +158,10 @@ global class Core_IPS_MoveContactWithBatch implements
             String htmlBody = 'The Case update batch for contact Name: "' + currContactName + '" to Account Name: "' +targetAccountName + '" ran into some issues.<br/><br/> Error Occured :'+errorOccured+' <br/><br/>Total: '+allProcessedcaseId.size()+' cases moved from old to new contact and total failed: '+allFailedcaseId.size()+'.<br/> <b>Below are the list for failed cases</b><br/>'+getCaseDetails(allFailedcaseId)+'<br/><hr/><br/><b>Here is the list of success cases</b><br/>'+getCaseDetails(allProcessedcaseId) ; /*'+ failedRun +' batches failed out of '+ totalNum + '*/
             String emailSubject='Move Case Batch Update';
             mail.setSubject(emailSubject);
-            AsyncApexJob asyncjob = [Select Id, Status, NumberOfErrors, JobItemsProcessed,TotalJobItems, CreatedBy.Email, ExtendedStatus from AsyncApexJob where Id = :bc.getJobId()];        
-            if(asyncjob.Status == 'Completed') {
+        if(Contact.SObjectType.getDescribe().isAccessible()){
+           asyncjob = [Select Id, Status, NumberOfErrors, JobItemsProcessed,TotalJobItems, CreatedBy.Email, ExtendedStatus from AsyncApexJob where Id = :bc.getJobId()];            
+        }
+        if(asyncjob.Status == 'Completed') {
                 if(allFailedcaseId.size()>0){
                     if(targetContactName!=null){
                         htmlBody = 'The Case update batch for contact Name: "' + currContactName + '"to new Contact "' +targetContactName + '" , and contact "'+ currContactName+'" is moved to Account "'+targetAccountName + '". ran into some issues.<br/><br/> Error Occured :'+errorOccured+' <br/><br/>Total: '+allProcessedcaseId.size()+' cases moved from old to new contact and total failed: '+allFailedcaseId.size()+'.<br/> <b>Below are the list for failed cases</b><br/>'+getCaseDetails(allFailedcaseId)+'<br/><hr/><br/><b>Here is the list of success cases</b><br/>'+getCaseDetails(allProcessedcaseId) ; /*'+ failedRun +' batches failed out of '+ totalNum + '*/
@@ -169,7 +175,6 @@ global class Core_IPS_MoveContactWithBatch implements
                      }
                  }
                 mail.setHtmlBody(htmlBody );
-                mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
                 mails.add(mail);
                 Messaging.sendEmail(mails);
             }
@@ -179,7 +184,6 @@ global class Core_IPS_MoveContactWithBatch implements
     {
         List<String> mailList = new List<String>();
         List<String> mailAddresses = new List<String>(); 
-        
         Group g = [SELECT (select userOrGroupId from groupMembers) FROM group WHERE DeveloperName= 'Core_IPS_Move_Contact_Batch'];
         for (GroupMember gm : g.groupMembers) 
         {

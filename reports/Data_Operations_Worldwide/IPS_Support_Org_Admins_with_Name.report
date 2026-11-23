@@ -12,9 +12,6 @@
     <columns>
         <field>CUST_RECORDTYPE</field>
     </columns>
-    <columns>
-        <field>CUST_NAME</field>
-    </columns>
     <description>Admins with Name</description>
     <format>Summary</format>
     <groupingsDown>
