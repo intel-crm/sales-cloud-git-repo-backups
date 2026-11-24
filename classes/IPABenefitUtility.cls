@@ -698,7 +698,7 @@ public without sharing class IPABenefitUtility {
         Datetime lastLoginTime;
         Map<String,List<String>> alertBladeInfo=new Map<String,List<String>>();
         Id messageRT = getRecordTypeId('PRM_Message__c','PRM_Event'); //IPA2.0-TWC727-2896
-        List<LoginHistory> loginRec = [SELECT Id,LoginTime,LoginType,LoginUrl,Status,UserId FROM LoginHistory where UserId = :userInfo.userId and (LoginType = 'Chatter Communities External User' or LoginType = 'SAML Chatter Communities External User SSO') order by id desc limit 3 ]; //userInfo.userId 0058A000004ttVtQAI
+        List<LoginHistory> loginRec = [SELECT Id,LoginTime /*,LoginType,LoginUrl,Status,UserId*/ FROM LoginHistory where UserId = :userInfo.userId and (LoginType = 'Chatter Communities External User' or LoginType = 'SAML Chatter Communities External User SSO') order by id desc limit 3 ]; //userInfo.userId 0058A000004ttVtQAI  ATHR Fix - TWC729-9556
         if(loginRec.size()>1)
         {
             lastLoginTime =loginRec[1].LoginTime;

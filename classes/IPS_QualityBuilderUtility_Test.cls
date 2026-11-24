@@ -25,6 +25,7 @@ private class IPS_QualityBuilderUtility_Test {
         Test.stopTest(); 
         
     }
+     
     private class QBMock implements HttpCalloutMock {
         private Integer code;
         private Boolean throwEx;
@@ -86,8 +87,6 @@ private class IPS_QualityBuilderUtility_Test {
         String fileName = IPS_QualityBuilderUtility.generateFileName('Test Job', 'MMddyyy');
         String boundryString = IPS_QualityBuilderUtility.generateBoundryString();
         Blob blobBody = IPS_QualityBuilderUtility.generateBlobBody(reportContent, boundryString, fileName);
-        //IPS_QualityBuilderUtility.sendReport(jobSetting, Blob.valueOf('col1,col2\n1,2'), 1);
-        //String res = IPS_QualityBuilderUtility.doReportSendCallout(Blob.valueOf('x'), '--Boundry1', 0);
         
         Test.stopTest();
     }
@@ -150,24 +149,7 @@ private class IPS_QualityBuilderUtility_Test {
         IPS_QualityBuilderReportscheduler.schedule();
         Test.stopTest();
     }
-    @isTest static void testTokenGenerationFailure() {
-        MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
-        multimock.setHeader('Content-Type', 'application/json');
-        multimock.setStatusCode(500); 
-        
-        Test.setMock(HttpCalloutMock.class, multimock);
-        Test.startTest();
-        
-        try {
-            //IPS_QualityBuilderUtility.generateTokenWithRetry('https://apis.intel.com/v1/auth/token', 'client_id', 'client_secret');
-        } catch (Exception e) {
-            System.assert(e.getMessage().contains('Failed to generate token'), 'Expected failure message');
-        }
-        
-        Test.stopTest();
-    }
+   
     
     
     @isTest static void testReportUploadFailure() {

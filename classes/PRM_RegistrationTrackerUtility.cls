@@ -595,7 +595,7 @@ Return: static set<string>
             SELECT
             Id,
             PRM_Contact_Id__r.Email,
-            PRM_Contact_Id__c,
+            /*PRM_Contact_Id__c,*/ //ATHR Fix - TWC729-9556 - JB
             CreatedDate,
             PRM_Activated_Date__c
             FROM PRM_Account_Contact_Relationship__c

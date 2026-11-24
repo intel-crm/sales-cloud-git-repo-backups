@@ -123,8 +123,8 @@ public class IPS_QualityBuilderReportQueries {
             HttpResponse res = http.send(req);
     
             if (res.getStatusCode() != 200) {
-               // Core_Log_Entry.logEntryWithDetails(jobName, 'QualityBuilder', 'ISVC', 'Critical', jobName + 'Describe API', 'Failed to retrieve data for job: '+ jobName + ' [Status Code: ' + res.getStatusCode() + ']');
-               Core_Log_Entry.logEntryWithDetails('IPS', 'IPS Survey', 'IPS Quality Builder Utility', 'Info', 'Describe API', 'Failed to retrieve data for job', 'Survey report', 'null', 'Success');
+               
+               Core_Log_Entry.logEntryWithDetails('IPS', 'IPS Survey', 'IPS Quality Builder Utility', 'Critical', 'Describe API', 'Failed to retrieve data for job', 'Survey report', 'null', 'Success');
                 //System.debug(LoggingLevel.ERROR, 'Report describe callout failed [' + res.getStatusCode() + ']: ' + res.getBody());
                 return null;
             }
@@ -132,8 +132,8 @@ public class IPS_QualityBuilderReportQueries {
             return (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
 
         } catch(Exception exp) {
-            //Core_Log_Entry.logEntryWithException(jobName, 'QualityBuilder', 'ISVC', 'Critical', jobName + 'Failed','Failed to request report API for job: '+ jobName, exp);
-            Core_Log_Entry.logEntryWithException('IPS', 'IPS Survey', 'IPS Quality Builder Utility', 'Info', 'Describe API', 'Failed to request report API for job', 'Survey report', 'null', 'Success', null);
+           
+            Core_Log_Entry.logEntryWithException('IPS', 'IPS Survey', 'IPS Quality Builder Utility', 'Critical', 'Describe API', 'Failed to request report API for job', 'Survey report', 'null', 'Success', null);
             return null;
         }
     }
@@ -156,7 +156,7 @@ public class IPS_QualityBuilderReportQueries {
         List<String> fields = new List<String>();
         List<String> labels = new List<String>();
         List<String> selectExprs = new List<String>();
-        Set<String> seenFields = new Set<String>();
+        List<String> seenFields = new List<String>();
         List<ChildNode> childRoots = new List<ChildNode>();
 
         List<Object> detailColumns = (List<Object>) reportMetadata.get('detailColumns');

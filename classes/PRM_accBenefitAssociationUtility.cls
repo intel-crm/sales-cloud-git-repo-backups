@@ -473,7 +473,7 @@ Description : Check Wether correct benefit is associated with the account.
         
         //Fetching all the Contacts associated with Intel Account Ids(Account Level)
         if(accId != null && !accId.IsEmpty()){
-            for(PRM_Account_Contact_Relationship__c acrList : [Select id, name, PRM_Account_Id__c, PRM_Contact_Id__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c IN :intelAccountIds]){
+            for(PRM_Account_Contact_Relationship__c acrList : [Select id, /*name, PRM_Account_Id__c,*/ PRM_Contact_Id__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c IN :intelAccountIds]){//ATHR Fix - TWC729-9556
                 contactList.add(acrList.PRM_Contact_Id__c);
             }
         }

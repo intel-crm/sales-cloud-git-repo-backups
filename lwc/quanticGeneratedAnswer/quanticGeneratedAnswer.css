@@ -1,3 +1,4 @@
 .generated-answer__header-title {
-  color: var(--slds-g-color-accent-1, var(--lwc-brandPrimary, #1b96ff));
+  //color: var(--slds-g-color-accent-1, var(--lwc-brandPrimary, #1b96ff)); 
+  color: black; 
 }

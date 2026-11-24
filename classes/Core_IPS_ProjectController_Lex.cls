@@ -78,13 +78,13 @@ return isAccntMemTypeAll;
         } 
         if(projAccList!=null && projAccList.size()>0){
             for(Core_IPS_Account__c projAcc: projAccList){
-                // if(String.isBlank(projAcc.Core_Account__r.Core_CNDA_Number__c)){
-                //     return true;
-                // }
+                if(String.isBlank(projAcc.Core_Account__r.Core_CNDA_Number__c)){
+                     return true;
+                 }
                 //If the account is active then only check for CNDA. 08-06-2026-Nuthana
-                if(projAcc.Core_Status__c == 'Active' && String.isBlank(projAcc.Core_Account__r.Core_CNDA_Number__c)){
-                    return true;
-                }
+                //if(projAcc.Core_Status__c == 'Active' && String.isBlank(projAcc.Core_Account__r.Core_CNDA_Number__c)){
+                   // return true;
+                //}
             }
         }
         return false;

@@ -212,6 +212,16 @@
         <columns>CREATED_DATE</columns>
         <columns>LAST_ACTIVITY</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Pricing_Consumption_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Consumption Platform</value>
+        </filters>
+        <filters>
+            <field>Pricing_Account_Nm__c</field>
+            <operation>equals</operation>
+            <value>Hewlett Packard Enterprise Company</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

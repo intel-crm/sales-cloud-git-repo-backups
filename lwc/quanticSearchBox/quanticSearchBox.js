@@ -10,82 +10,43 @@ import {LightningElement, api, track} from 'lwc';
 /** @typedef {import("coveo").SearchBoxState} SearchBoxState */
 /** @typedef {import("coveo").SearchBox} SearchBox */
 /** @typedef {import("coveo").RecentQueriesList} RecentQueriesList */
-/** @typedef {import('c/quanticSearchBoxSuggestionsList').default} quanticSearchBoxSuggestionsList */
-/** @typedef {import("c/quanticSearchBoxInput").default} quanticSearchBoxInput */
 
-/**
- * The `QuanticSearchBox` component creates a search box with built-in support for query suggestions.
- * @category Search
- * @category Insight Panel
- * @example
- * <c-quantic-search-box engine-id={engineId} placeholder="Enter a query..." without-submit-button number-of-suggestions="8"></c-quantic-search-box>
- */
-export default class QuanticSearchBox extends LightningElement {
-  /**
-   * The ID of the engine instance the component registers to.
-   * @api
-   * @type {string}
-   */
+export default class quanticSearchBox extends LightningElement {
   @api engineId;
-  /**
-   * The placeholder text to display in the search box input area.
-   * @api
-   * @type {string}
-   */
   @api placeholder = null;
-  /**
-   * Whether not to render a submit button.
-   * @api
-   * @type {boolean}
-   * @defaultValue 'false'
-   */
   @api withoutSubmitButton = false;
-  /**
-   * The maximum number of suggestions and recent search queries to display.
-   * @api
-   * @type {number}
-   * @defaultValue 7
-   */
   @api numberOfSuggestions = 7;
-  /**
-   * Whether to render the search box using a [textarea](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) element.
-   * The resulting component will expand to support multi-line queries.
-   * @api
-   * @type {boolean}
-   * @defaultValue false
-   */
   @api textarea = false;
-  /**
-   * Whether to disable rendering the recent queries as suggestions.
-   * @api
-   * @type {boolean}
-   * @defaultValue false
-   */
   @api disableRecentQueries = false;
-  /**
-   * Whether to keep all active query filters when the end user submits a new query from the search box.
-   * @api
-   * @type {boolean}
-   * @defaultValue false
-   */
   @api keepFiltersOnSearch = false;
 
-  /** @type {SearchBoxState} */
+  _subject;
+  /**
+   * Pre-populated query text passed from the parent component (e.g., Case Subject).
+   * @api
+   * @type {string}
+   */
+  @api
+  get subject() {
+    return this._subject;
+  }
+  set subject(value) {
+    const previousValue = this._subject;
+    this._subject = value;
+    if (this.searchBox && value && value !== previousValue) {
+      this.searchBox.updateText(value);
+      this.searchBox.submit();
+    }
+  }
+
   @track state;
 
-  /** @type {SearchBox} */
   searchBox;
-  /** @type {Function} */
   unsubscribe;
-  /** @type {AnyHeadless} */
   headless;
-  /** @type {Array} */
   suggestions = [];
-  /** @type {boolean} */
   hasInitializationError = false;
-  /** @type {RecentQueriesList} */
   recentQueriesList;
-  /** @type {String[]} */
   recentQueries;
 
   /**
@@ -126,7 +87,12 @@ export default class QuanticSearchBox extends LightningElement {
         this.updateRecentQueriesListState()
       );
     }
+
     this.unsubscribe = this.searchBox.subscribe(() => this.updateState());
+
+    if (this._subject) {
+      this.searchBox.updateText(this._subject);
+    }
   };
 
   connectedCallback() {
@@ -146,6 +112,7 @@ export default class QuanticSearchBox extends LightningElement {
 
   disconnectedCallback() {
     this.unsubscribe?.();
+    this.unsubscribeRecentQueriesList?.();
     this.removeEventListener(
       'quantic__inputvaluechange',
       this.handleInputValueChange
@@ -182,9 +149,6 @@ export default class QuanticSearchBox extends LightningElement {
     }
   }
 
-  /**
-   * Updates the input value.
-   */
   handleInputValueChange = (event) => {
     event.stopPropagation();
     const newValue = event.detail.value;
@@ -193,27 +157,16 @@ export default class QuanticSearchBox extends LightningElement {
     }
   };
 
-  /**
-   * Submits a search.
-   * @returns {void}
-   */
   handleSubmit = (event) => {
     event.stopPropagation();
     this.searchBox?.submit();
   };
 
-  /**
-   * Shows the suggestions.
-   * @returns {void}
-   */
   showSuggestion = (event) => {
     event.stopPropagation();
     this.searchBox?.showSuggestions();
   };
 
-  /**
-   * Handles the selection of a suggestion or a recent query.
-   */
   selectSuggestion = (event) => {
     event.stopPropagation();
     const {value, isRecentQuery, isClearRecentQueryButton} =
@@ -234,9 +187,6 @@ export default class QuanticSearchBox extends LightningElement {
     }
   };
 
-  /**
-   * Sets the component in the initialization error state.
-   */
   setInitializationError() {
     this.hasInitializationError = true;
   }

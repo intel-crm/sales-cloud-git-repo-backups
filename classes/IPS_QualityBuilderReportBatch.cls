@@ -22,7 +22,6 @@ public class IPS_QualityBuilderReportBatch implements Database.Batchable<SObject
         IPS_QualityBuilderReportQueries.QueryBuildResult qr = IPS_QualityBuilderReportQueries.buildQueryDetailsFromReportId(jobSettings.Name, jobSettings.Report_Id__c, 'Case');
         System.debug('qr-->'+qr);
         if(qr == null || qr.fieldLabels == null || qr.query == null || qr.fields == null){
-            //Core_Log_Entry.logEntryWithDetails(jobSettings.Name, 'QualityBuilder', 'ISVC', 'Critical', jobSettings.Name + ' Query build failed', 'Could not build query from report ' + jobSettings.Report_Id__c);
             Core_Log_Entry.logEntryWithDetails('IPS', 'IPS Survey', 'IPS Quality Builder Utility', 'Info', 'Describe API', 'Failed to retrieve data for job', 'Survey report', 'null', 'Success');
             return Database.getQueryLocator('SELECT Id FROM Case LIMIT 0');
         }
@@ -56,7 +55,7 @@ public class IPS_QualityBuilderReportBatch implements Database.Batchable<SObject
         try {
             Blob reportContent = Blob.valueOf(String.join(csvRows, '\n'));
             IPS_QualityBuilderUtility.sendReport(jobSettings, reportContent, grandTotal);
-            //generateFile(reportContent);
+            
             
         } catch(Exception exp) {
             
@@ -93,14 +92,4 @@ public class IPS_QualityBuilderReportBatch implements Database.Batchable<SObject
         String out = value.replace('"', '""');
         return needsQuoting ? '"' + out + '"' : out;
     }
-    /*private static void generateFile(Blob reportContent) {
-        ContentVersion cv = new ContentVersion();
-        cv.Title = 'QB_Test_Export_' + Datetime.now().format('yyyyMMdd_HHmmss');
-        cv.PathOnClient = cv.Title + '.csv';
-        cv.VersionData = reportContent;
-        cv.IsMajorVersion = true;
-        insert cv;
- 
-        System.debug('BULK API: ContentVersion Id: ' + cv.Id);
-    }*/
 }

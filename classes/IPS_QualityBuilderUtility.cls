@@ -66,24 +66,6 @@ public with sharing class IPS_QualityBuilderUtility {
         String bndryStr = '--Boundry' + hexString.substring(0, 20);
         return bndryStr;
     }
-    
-    // Method to generate Blob body for callout by encoding header, body content and footer with proper boundry
-    
-   /* public static Blob generateBlobBody(Blob reportContent, String boundryStr, String fileName) {
-        Blob bodyBlob = null;
-        String header = '--' + boundryStr + '\nContent-Disposition: form-data; name="File"; filename="' + fileName + '";\nContent-Type: text/csv; charset=UTF-8';
-        String footer = '--' + boundryStr + '--';
-        String headerEncoded = EncodingUtil.base64Encode(Blob.valueOf(header + '\r\n\r\n'));
-        while (headerEncoded.endsWith('=')) {
-            header += ' ';
-            headerEncoded = EncodingUtil.base64Encode(Blob.valueOf(header + '\r\n\r\n'));
-        }
-        String bodyEncoded = EncodingUtil.base64Encode(reportContent);
-        footer = '\r\n' + footer;
-        String footerEncoded = EncodingUtil.base64Encode(Blob.valueOf(footer));
-        bodyBlob = EncodingUtil.base64Decode(headerEncoded + bodyEncoded + footerEncoded);
-        return bodyBlob;
-    }*/
      //Added changes related to last4Bytes to get rid of padding without corrupting the file data - Nuthana
      public static Blob generateBlobBody(Blob reportContent,String boundryStr,String fileName) {
         Blob bodyBlob = null;

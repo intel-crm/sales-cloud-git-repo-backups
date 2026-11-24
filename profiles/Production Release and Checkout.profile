@@ -75011,6 +75011,31 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Summary__c.PRM_One_Partner_Id__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Summary__c.PRM_Sales_Amount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Summary__c.PRM_Sales_Calculation_Group_Txt__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Summary__c.PRM_TimePeriod_Nm__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Summary__c.PRM_Training_Credit_Points_Count_Nbr__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>PRM_Value_Exchange_UCD_Stage__c.PRM_Account_Id__c</field>
         <readable>true</readable>
@@ -103625,6 +103650,9 @@
         <layout>PRM_Value_Exchange_Stage__c-Value Exchange Stage Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>PRM_Value_Exchange_Summary__c-Value Exchange Summary Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>PRM_Value_Exchange_UCD_Stage__c-Value Exchange UCD Stage Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -111127,6 +111155,16 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>PRM_Value_Exchange_Stage__c</object>
+        <viewAllFields>false</viewAllFields>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>PRM_Value_Exchange_Summary__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>

@@ -659,48 +659,48 @@ Modification Log :
     
     
     // Removing Interested parties using status in Project Memebers
-    public static void removeRelatedIpsOnStatusChangeForPM(List<Core_IPS_Project_Member__c> projectMembersList,Map<Id,Core_IPS_Project_Member__c> oldMap){
-        List<case> cistList = new List<case>();
-        if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('removeRelatedIpsOnStatusChangeForPM'))
-        {return;}
-        
-        set<Id> project_map=new set<Id>();     
-        Map<id,id> caseMap=new Map<id,id>();
-        List<Core_IPS_Case_Interested_Party__c> cipListToBeInserted = new List<Core_IPS_Case_Interested_Party__c>();    
-        if(projectMembersList.size()>0){          
-            for(Core_IPS_Project_Member__c projectMember_list:projectMembersList){  
-                if(oldMap.get(projectMember_list.id).Core_Status__c!=projectMember_list.Core_Status__c && projectMember_list.Core_Status__c=='Inactive'){          
-                    project_map.add(projectMember_list.Core_IPS_Project__c);
-                    projectMember_list.Add_as_Case_Interested_Party__c=false;
-                }else if(oldMap.get(projectMember_list.id).Add_as_Case_Interested_Party__c  !=projectMember_list.Add_as_Case_Interested_Party__c && projectMember_list.Add_as_Case_Interested_Party__c==true && oldMap.get(projectMember_list.id).Core_Status__c==projectMember_list.Core_Status__c && projectMember_list.Core_Status__c=='Inactive' ){
-                    projectMember_list.addError('Cannot Enable as Interested Parties when status is Inactive');
-                }       
+        public static void removeRelatedIpsOnStatusChangeForPM(List<Core_IPS_Project_Member__c> projectMembersList,Map<Id,Core_IPS_Project_Member__c> oldMap){
+            List<case> cistList = new List<case>();
+            if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('removeRelatedIpsOnStatusChangeForPM'))
+            {return;}
+            
+            set<Id> project_map=new set<Id>();     
+            Map<id,id> caseMap=new Map<id,id>();
+            List<Core_IPS_Case_Interested_Party__c> cipListToBeInserted = new List<Core_IPS_Case_Interested_Party__c>();    
+            if(projectMembersList.size()>0){          
+                for(Core_IPS_Project_Member__c projectMember_list:projectMembersList){  
+                    if(oldMap.get(projectMember_list.id).Core_Status__c!=projectMember_list.Core_Status__c && projectMember_list.Core_Status__c=='Inactive'){          
+                        project_map.add(projectMember_list.Core_IPS_Project__c);
+                        projectMember_list.Add_as_Case_Interested_Party__c=false;
+                    }else if(oldMap.get(projectMember_list.id).Add_as_Case_Interested_Party__c  !=projectMember_list.Add_as_Case_Interested_Party__c && projectMember_list.Add_as_Case_Interested_Party__c==true && oldMap.get(projectMember_list.id).Core_Status__c==projectMember_list.Core_Status__c && projectMember_list.Core_Status__c=='Inactive' ){
+                        projectMember_list.addError('Cannot Enable as Interested Parties when status is Inactive');
+                    }       
+                }
+                
+            }
+            if(project_map.size()>0){
+                //FLS check added-Venugopal
+                if(case.SObjectType.getDescribe().isAccessible()){
+                    cistList=[select id,CaseNumber,Core_IPS_Project_Case__c from case where Core_IPS_Project_Case__c In:project_map and status!='closed'];      
+                }
+                if(cistList.size()>0){ 
+                    for(Core_IPS_Project_Member__c projectMember_list:projectMembersList){     
+                        for(case caseList:cistList){   
+                            if(caseList.Core_IPS_Project_Case__c==projectMember_list.Core_IPS_Project__c){        
+                                caseMap.put(caseList.id,projectMember_list.Core_IPS_Contact__c);
+                            } 
+                        }  
+                    } 
+                } 
+            }
+            //Avoid Deeply Nested IF Statements Kamala
+            if((caseMap.size()>0 && caseMap!=null) && (Core_IPS_Case_Interested_Party__c.sObjectType.getDescribe().isDeletable())){
+                /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
+                    delete [select id from Core_IPS_Case_Interested_Party__c where Case__c in : caseMap.keySet() and Contact__c in:caseMap.values()];
             }
             
         }
-        if(project_map.size()>0){
-            //FLS check added-Venugopal
-            if(case.SObjectType.getDescribe().isAccessible()){
-                cistList=[select id,CaseNumber,Core_IPS_Project_Case__c from case where Core_IPS_Project_Case__c In:project_map and status!='closed'];      
-            }
-            if(cistList.size()>0){ 
-                for(Core_IPS_Project_Member__c projectMember_list:projectMembersList){     
-                    for(case caseList:cistList){   
-                        if(caseList.Core_IPS_Project_Case__c==projectMember_list.Core_IPS_Project__c){        
-                            caseMap.put(caseList.id,projectMember_list.Core_IPS_Contact__c);
-                        } 
-                    }  
-                } 
-            } 
-        }
-        //Avoid Deeply Nested IF Statements Kamala
-        if((caseMap.size()>0 && caseMap!=null) && (Core_IPS_Case_Interested_Party__c.sObjectType.getDescribe().isDeletable())){
-            /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
-                delete [select id from Core_IPS_Case_Interested_Party__c where Case__c in : caseMap.keySet() and Contact__c in:caseMap.values()];
-        }
         
-    }
-    
     /***************************************************************************************************    
     Modification Log :
     * Developer                   Date                   Description
