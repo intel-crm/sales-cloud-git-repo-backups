@@ -1144,7 +1144,7 @@ msgStr = mapConentValErrorMsg.get('UI Single Entitlement Assignment');
             objContact = [SELECT Id, Name,Email,FirstName,LastName,Core_Enterprise_Id__c, AccountId, Account.Name, Account.Core_CNDA_Number__c, Account.Core_IPS_Active__c,Account.PRM_Count_IPA_Terms_And_Conditions__c,
                           Core_IPS_Intel_Support_Owner__c, Core_ERPM_Integration_Status__c, Core_AGS_Integration_Status__c,Account.Owner.UserRole.Name, Core_Contact_B2B_Indicator__c,
                           Account.Core_IsODM__c,Account.Core_IPS_PSG_WOM_Check__c,Core_Set_ERPM_Status_Bypass__c, Account.Core_CIM_ID__c,Account.Core_Business_Party_Id__c, Core_Personal_Email_Indicator__c, Core_ERPM_Integration_Queue_txt__c,
-                          Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c,Account.Core_English_Only_Name__c,Core_Local_Last_Name__c,Core_Local_First_Name__c,Account.Core_Alternate_Language_Name__c,Account.Core_Deactivated__c,Account.Core_Deactivation_Reason__c,Core_AGS_Republish_Ind__c,
+                          Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c,Account.Core_English_Only_Name__c,Core_Local_Last_Name__c,Core_Local_First_Name__c,Account.Core_Alternate_Language_Name__c,Account.Core_Data_Simplified_Account_Nm__c,Account.Core_Deactivated__c,Account.Core_Deactivation_Reason__c,Core_AGS_Republish_Ind__c,
                           (SELECT id,name,Core_Entitlement_Nm__c,Core_Status__c, Core_Selected__c,Core_Entitlement_Id__r.Id,Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__c,Core_Entitlement_Id__r.Core_Entitlement_Type__c FROM contact_entitlements__r)
                           FROM Contact WHERE Id = :idContact LIMIT 1];
             
@@ -1162,7 +1162,7 @@ msgStr = mapConentValErrorMsg.get('UI Single Entitlement Assignment');
                 objContact = [SELECT Id, Name,Email,FirstName,LastName,Core_Enterprise_Id__c, AccountId, Account.Name, Account.Core_CNDA_Number__c, Account.Core_IPS_Active__c,Account.PRM_Count_IPA_Terms_And_Conditions__c,
                               Core_IPS_Intel_Support_Owner__c, Core_ERPM_Integration_Status__c, Core_AGS_Integration_Status__c,Account.Owner.UserRole.Name, Core_Contact_B2B_Indicator__c,
                               Account.Core_IsODM__c,Account.Core_IPS_PSG_WOM_Check__c, Core_Set_ERPM_Status_Bypass__c, Account.Core_CIM_ID__c,Account.Core_Business_Party_Id__c, Core_Personal_Email_Indicator__c, Core_ERPM_Integration_Queue_txt__c,
-                              Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c,Account.Core_English_Only_Name__c,Core_Local_Last_Name__c,Core_Local_First_Name__c,Account.Core_Alternate_Language_Name__c,Account.Core_Deactivated__c,Account.Core_Deactivation_Reason__c,Core_AGS_Republish_Ind__c,
+                              Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c,Account.Core_English_Only_Name__c,Core_Local_Last_Name__c,Core_Local_First_Name__c,Account.Core_Alternate_Language_Name__c,Account.Core_Data_Simplified_Account_Nm__c,Account.Core_Deactivated__c,Account.Core_Deactivation_Reason__c,Core_AGS_Republish_Ind__c,
                               (SELECT id,name,Core_Entitlement_Nm__c,Core_Status__c, Core_Selected__c,Core_Entitlement_Id__r.Id FROM contact_entitlements__r)
                               FROM Contact WHERE Id = :idContact LIMIT 1];
                 boolean notInProgress = (objContact.Core_ERPM_Integration_Status__c != 'Pending' && objContact.Core_ERPM_Integration_Status__c != 'In-Progress');

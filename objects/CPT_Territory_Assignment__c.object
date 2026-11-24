@@ -631,6 +631,151 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>CPT_OW_CCPG_Deal_Target__c</fullName>
+        <label>OW - CCPG Deal Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</fullName>
+        <label>OW - CCPG Deal Wins Vol Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal_Wins_Vol__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - CCPG Deal Wins Vol</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - CCPG Deal</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Design_Target__c</fullName>
+        <label>OW - CCPG Design Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Design__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - CCPG Design</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Target__c</fullName>
+        <label>OW - DCG Deal Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Wins_Vol_Target__c</fullName>
+        <label>OW - DCG Deal Wins Vol Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Wins_Vol__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - DCG Deal Wins Vol</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - DCG Deal</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Design_Target__c</fullName>
+        <label>OW - DCG Design Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Design__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - DCG Design</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - EDge Deal Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Deal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - EDge Deal</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Design_Target__c</fullName>
+        <label>OW - Edge Design Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Design__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - Edge Design</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>CPT_Quota_Period__c</fullName>
         <description>The Quota Period for reference.</description>
         <externalId>false</externalId>
@@ -702,7 +847,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -710,7 +855,7 @@
         <fullName>CPT_Wins_Deal__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Wins - Deal</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -720,7 +865,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -728,7 +873,7 @@
         <fullName>CPT_Wins_Design__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Wins - Design</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>

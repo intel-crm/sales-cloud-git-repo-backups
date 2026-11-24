@@ -11,9 +11,8 @@
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateMyList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>FindDup</excludeButtons>
-    <excludeButtons>GenerateKnowledge</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
     <excludeButtons>XClean</excludeButtons>
     <headers>PersonalTagging</headers>
@@ -62,10 +61,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Individual_Send_Email__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SWS_Marketo_Email_Invalid_Cause__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

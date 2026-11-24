@@ -5,53 +5,53 @@ public without sharing class ACM_CNDA_SearchAndSelect
         try 
         {            
             UCD_ACM_Logger.information('ACM_CNDA_SearchAndSelect', 'ExecuteAPI', 'Account ID fetched through Current Reference Page : '+ AcctID, 'CNDA');
+            UCD_ACM_Logger.setLogDetails();
             
             // Check if the user has any of the allowed profiles
-        	
-                Account acct = [Select Name,Core_CNDA_Number__c from Account where Id =: AcctID WITH SECURITY_ENFORCED LIMIT 1];    
-                if(String.isNotBlank(Name))
-                {
-                    return new MyReturnWrapper(getCNDAforName(Name,multiParam),acct.Core_CNDA_Number__c);
-                }
-                
-                return new MyReturnWrapper(getCNDAforName(acct.Name,multiParam),acct.Core_CNDA_Number__c);
+            
+            Account acct = [Select Name,Core_CNDA_Number__c from Account where Id =: AcctID WITH SECURITY_ENFORCED LIMIT 1];    
+            if(String.isNotBlank(Name))
+            {
+                return new MyReturnWrapper(getCNDAforName(Name,multiParam),acct.Core_CNDA_Number__c);
+            }
+            
+            return new MyReturnWrapper(getCNDAforName(acct.Name,multiParam),acct.Core_CNDA_Number__c);
             
         }
         catch(Exception ex)
         {
             UCD_ACM_Logger.error('ACM_CNDA_SearchAndSelect','ExecuteAPI','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+            UCD_ACM_Logger.setLogDetails();
+            
             throw ex;
         }
-        finally
-        {
-            UCD_ACM_Logger.setLogDetails();
-        }
+        
     }
     
     @AuraEnabled
     public static String getCNDAforName(String Name,Boolean multiParam){
-            HttpRequest httpReq = new HttpRequest();
-            HttpResponse response = new HttpResponse();
-            String AccountName = EncodingUtil.urlEncode(Name, 'UTF-8').replace('+', '%20');
-        	String params ='';
-        	if(!multiParam)
-            {
-            	params = '/lawmas/v1/general-access-contracts?query=counterparty_name~='+'\''+AccountName+'\''+'&field=counterparty_name&field=intel_contact_name&field=contract_number&field=contract_type0&field=contract_subtype&field=counterparty_country&field=counterparty_state_province&field=counterparty_city&field=counterparty_address_line_1&field=counterparty_address_line_2&field=counterparty_zip_or_postal_code';
-            }
-        	else
-            {
-                params = '/lawmas/v1/general-access-contracts?query=contract_number%3D'+'\''+AccountName+'\''+'%7C%7Ccounterparty_name~='+'\''+AccountName+'\''+'&field=counterparty_name&field=intel_contact_name&field=contract_number&field=contract_type0&field=contract_subtype&field=counterparty_country&field=counterparty_state_province&field=counterparty_city&field=counterparty_address_line_1&field=counterparty_address_line_2&field=counterparty_zip_or_postal_code';
-            }
-            httpReq.setEndpoint('callout:SalesCRM_Apigee'+params);
-            httpReq.setMethod('POST');
-            httpReq.setTimeout(60000);
-            httpReq.setHeader('Content-Type','application/json');  
-            httpReq.setHeader('Content-Length', '0');
-            
-            ClassForEmptyBody classForEmptyBodyObject = new ClassForEmptyBody();
-            String jsonBody = json.serializePretty(classForEmptyBodyObject , true);
-            httpReq.setBody(jsonBody);
-            
+        HttpRequest httpReq = new HttpRequest();
+        HttpResponse response = new HttpResponse();
+        String AccountName = EncodingUtil.urlEncode(Name, 'UTF-8').replace('+', '%20');
+        String params ='';
+        if(!multiParam)
+        {
+            params = '/lawmas/v1/general-access-contracts?query=counterparty_name~='+'\''+AccountName+'\''+'&field=counterparty_name&field=intel_contact_name&field=contract_number&field=contract_type0&field=contract_subtype&field=counterparty_country&field=counterparty_state_province&field=counterparty_city&field=counterparty_address_line_1&field=counterparty_address_line_2&field=counterparty_zip_or_postal_code';
+        }
+        else
+        {
+            params = '/lawmas/v1/general-access-contracts?query=contract_number%3D'+'\''+AccountName+'\''+'%7C%7Ccounterparty_name~='+'\''+AccountName+'\''+'&field=counterparty_name&field=intel_contact_name&field=contract_number&field=contract_type0&field=contract_subtype&field=counterparty_country&field=counterparty_state_province&field=counterparty_city&field=counterparty_address_line_1&field=counterparty_address_line_2&field=counterparty_zip_or_postal_code';
+        }
+        httpReq.setEndpoint('callout:SalesCRM_Apigee'+params);
+        httpReq.setMethod('POST');
+        httpReq.setTimeout(60000);
+        httpReq.setHeader('Content-Type','application/json');  
+        httpReq.setHeader('Content-Length', '0');
+        
+        ClassForEmptyBody classForEmptyBodyObject = new ClassForEmptyBody();
+        String jsonBody = json.serializePretty(classForEmptyBodyObject , true);
+        httpReq.setBody(jsonBody);
+        
         try{
             response = new Http().send(httpReq);           
             UCD_ACM_Logger.information('ACM_CNDA_SearchAndSelect', 'getCNDAforName', 'Response from LAWMAS API : '+ response.getBody(), 'CNDA');
@@ -107,17 +107,17 @@ public without sharing class ACM_CNDA_SearchAndSelect
         // Ensure the string ends with a semicolon
         if(String.isNotBlank(finalResult) && !finalResult.endsWith(';'))
         {
-			finalResult += ';';
+            finalResult += ';';
         }
         
         
         acc.Core_CNDA_Number__c = finalResult;
-    
+        
         try 
         {
             if(Schema.sObjectType.Account.isUpdateable()){
-            update acc; // Update the Account record
-            return true;  // Return true if update is successful
+                update acc; // Update the Account record
+                return true;  // Return true if update is successful
             }
             return false;
             
@@ -125,13 +125,13 @@ public without sharing class ACM_CNDA_SearchAndSelect
         {
             // If there's an error during the update, log the error and return false
             return false;
-    	}
+        }
     }
-
+    
     public class MyReturnWrapper {
         @AuraEnabled public String jsonResponse;
         @AuraEnabled public String cndaList; 
-
+        
         public MyReturnWrapper(String str, String cnda) {
             jsonResponse = str;
             cndaList = cnda;

@@ -12,11 +12,8 @@
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateMyList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>FindDup</excludeButtons>
-    <excludeButtons>GenerateKnowledge</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <excludeButtons>XClean</excludeButtons>
@@ -62,14 +59,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Lead_Priority__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SWS_Marketo_Email_Invalid__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SWS_Marketo_Email_Invalid_Cause__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

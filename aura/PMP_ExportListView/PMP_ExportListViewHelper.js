@@ -140,14 +140,16 @@
         //get the export type and the list view name to be set as file name.
         var exportType = component.get("v.exportType");
         var listViewName = component.get("v.currentListViewName");
-        var blob = new Blob(["\ufeff",convertToCsvOrExcel]);
+        var blob = new Blob(["\ufeff",convertToCsvOrExcel],
+            { type: 'application/vnd.ms-excel' }
+        );
         var a = window.document.createElement("a");
-        a.href = window.URL.createObjectURL(blob,{type:"text/csv;charset=utf-8,%EF%BB%BF"+encodeURIComponent(convertToCsvOrExcel)});
-        if(exportType=='csv'){           
+        a.href = window.URL.createObjectURL(blob);
+        if(exportType=='csv'){            
             a.download = listViewName+".csv";
         }
         else{           
-            a.download = listViewName+".xls";
+            a.download = listViewName+".xlsx";
         }
         document.body.appendChild(a);
         a.click();

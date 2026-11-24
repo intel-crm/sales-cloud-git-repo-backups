@@ -452,32 +452,7 @@ mapUserGroupMembers.get(mapContactIdUserId.get(ceRemoved.Core_Contact_Id__c)).co
                     insert lstPSAInsert;
                 }
                 if(!lstPSADelete.isEmpty()){
-                    //delete lstPSADelete;
-                    //Ganesh Changes
-                    Set<Id> psaIds = new Set<Id>();
-                    
-                    for(PermissionSetAssignment psa : lstPSADelete){
-                        if(psa != null && psa.Id != null){
-                            psaIds.add(psa.Id);
-                        }
-                    }
-                    
-                    List<PermissionSetAssignment> existingPSAs = [SELECT Id FROM PermissionSetAssignment WHERE Id IN :psaIds];
-                    
-                    if(!existingPSAs.isEmpty()){
-                        Database.DeleteResult[] deleteResults = Database.delete(existingPSAs, false);
-                        
-                        for(Integer i = 0; i < deleteResults.size(); i++){
-                            if(!deleteResults[i].isSuccess()){
-                                for(Database.Error err : deleteResults[i].getErrors()){
-                                    UCD_ACM_Logger.error('Core_ContactEntitlementHelper', 'updatePsPgAssignmentRemoval', 'Failed to delete PSA Id: ' + existingPSAs[i].Id + ' Error: ' + err.getMessage(), null);
-                                }
-                            }
-                        }
-                        
-                        UCD_ACM_Logger.setLogDetails();
-                    }
-                    //Ganesh Changes End
+                    delete lstPSADelete;
                 }
                 if(!lstGMInsert.isEmpty()){
                     insert lstGMInsert;

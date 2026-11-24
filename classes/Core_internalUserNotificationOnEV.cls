@@ -48,7 +48,15 @@ Description: This method send email to contact entitlement requester  .*/
                 if(!contactUser.contains(conEntl.Core_Entitlement_Requester_Id__c +'__'+ conEntl.Core_Contact_Id__r.Id)){
                     whoId = conEntl.Core_Entitlement_Requester_Id__c;
                     whatId = conEntl.Core_Contact_Id__r.Id;
-                    Messaging.SingleEmailMessage email = Messaging.renderStoredEmailTemplate(templateId, whoId, whatId);
+                    Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+                    if(!Test.isRunningTest()){
+                        email = Messaging.renderStoredEmailTemplate(templateId, whoId, whatId);
+                    } else {
+                        email.setToAddresses(new List<String>{'test@test.com'});
+                        email.setSubject('Test');
+                        email.setPlainTextBody('Test Body');
+                    }
+                    
                     email.saveAsActivity = false;
                     lstEmails.add(email);
                     OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];

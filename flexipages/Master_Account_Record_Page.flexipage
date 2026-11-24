@@ -4152,6 +4152,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>csvImporter</componentName>
+                <identifier>c_csvImporter</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>accountActivityVisibilityUpdater</componentName>
                 <identifier>c_accountActivityVisibilityUpdater</identifier>
             </componentInstance>

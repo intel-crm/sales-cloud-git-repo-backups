@@ -630,7 +630,7 @@ public without sharing class Core_MDF_CustomLayoutConfig_Controller {
     }
 
     //TWC3117-19154 start
-    @AuraEnabled
+     @AuraEnabled
     public static void recallToPaymentClearance(Id claimId) {
         if (claimId == null || claimId.getSObjectType() != PartnerFundClaim.SObjectType) {
             throw new AuraHandledException('Provide a valid claim ID.');

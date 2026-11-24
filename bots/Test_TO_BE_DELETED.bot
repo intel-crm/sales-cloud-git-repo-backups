@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bot xmlns="http://soap.sforce.com/2006/04/metadata">
-    <agentDSLEnabled>false</agentDSLEnabled>
-    <botMlDomain>
-        <label>Test TO BE DELETED</label>
-        <name>Test_TO_BE_DELETED</name>
-    </botMlDomain>
-    <botSource>None</botSource>
     <botVersions>
         <fullName>v1</fullName>
         <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
@@ -158,34 +152,4 @@
         <stopWelcomePrompts>false</stopWelcomePrompts>
         <surfacesEnabled>false</surfacesEnabled>
     </botVersions>
-    <contextVariables>
-        <dataType>Id</dataType>
-        <developerName>EndUserId</developerName>
-        <includeInPrompt>true</includeInPrompt>
-        <label>End User Id</label>
-    </contextVariables>
-    <contextVariables>
-        <dataType>Id</dataType>
-        <developerName>RoutableId</developerName>
-        <includeInPrompt>true</includeInPrompt>
-        <label>Routable Id</label>
-    </contextVariables>
-    <contextVariables>
-        <dataType>Id</dataType>
-        <developerName>ContactId</developerName>
-        <includeInPrompt>false</includeInPrompt>
-        <label>Contact Id</label>
-    </contextVariables>
-    <contextVariables>
-        <dataType>Text</dataType>
-        <developerName>ChatKey</developerName>
-        <includeInPrompt>false</includeInPrompt>
-        <label>Chat Key</label>
-    </contextVariables>
-    <description>A bot from scratch.</description>
-    <label>Test TO BE DELETED</label>
-    <logPrivateConversationData>false</logPrivateConversationData>
-    <richContentEnabled>false</richContentEnabled>
-    <sessionTimeout>0</sessionTimeout>
-    <type>Bot</type>
 </Bot>

@@ -53341,6 +53341,10 @@ TEXT(MONTH( Core_MDF_End_Date__c )) &amp;&quot;/&quot;&amp; TEXT(DAY(Core_MDF_En
                 <default>false</default>
             </values>
             <values>
+                <fullName>Digital Transformation</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Digital Workplace</fullName>
                 <default>false</default>
             </values>

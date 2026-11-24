@@ -42,7 +42,7 @@ public class PRM_VxDataStageBatchTest {
         newAccount1.BillingStreet='Street';
         newAccount1.BillingCountry='India';
         newAccount1.BillingPostalCode='Postal code';
-        newAccount1.Core_IPA_Partner_Role__c = 'Guest';
+        newAccount1.Core_IPA_Partner_Role__c = 'Distributor';
         newAccount1.Core_CNDA_Number__c='676875764539878';
         newAccount1.OwnerId = UserInfo.getUserId();
         newAccount1.Core_Account_Type__c='Cloud Service Provider (CSP)';
@@ -56,7 +56,7 @@ public class PRM_VxDataStageBatchTest {
         newAccount2.BillingStreet='Street';
         newAccount2.BillingCountry='India';
         newAccount2.BillingPostalCode='Postal code';
-        newAccount2.Core_IPA_Partner_Role__c = 'Guest';
+        newAccount2.Core_IPA_Partner_Role__c = 'Distributor';
         newAccount2.Core_Account_Type__c='Cloud Service Provider (CSP)';
         acc.add(newAccount2);
         
@@ -67,7 +67,7 @@ public class PRM_VxDataStageBatchTest {
         newAccount3.BillingStreet='Street';
         newAccount3.BillingCountry='India';
         newAccount3.BillingPostalCode='Postal code';
-        newAccount3.Core_IPA_Partner_Role__c = 'Solution Integrator';
+        newAccount3.Core_IPA_Partner_Role__c = 'Distributor'   /*'Solution Integrator'*/;
         newAccount3.Core_Account_Type__c='Cloud Service Provider (CSP)';
         acc.add(newAccount3);
         insert acc;    

@@ -1,228 +1,286 @@
-public class ExcelImportParser {
+public with sharing class ExcelImportParser {
 
-    // ============================================
-    // REQUEST & RESULT CLASSES
-    // ============================================
-    
-    public class ParseRequest {
-        @InvocableVariable(
-            required=true 
-            label='Content Version Id')
-        public String contentVersionId;
-    }
-    
+    private static final Integer MAX_FILE_BYTES  = 5242880;
+    private static final Integer MAX_DATA_ROWS   = 5000;
+
+    private static final Set<String> COMPANY_ALIASES =
+        new Set<String>{
+            'company name', 'company',
+            'client',       'account',
+            'organization', 'business',
+            'account name', 'client name'
+        };
+
+    private static final Set<String> PRODUCT_ALIASES =
+        new Set<String>{
+            'product',      'product name',
+            'item',         'sku',
+            'service',      'product code',
+            'item name'
+        };
+
     public class ParseResult {
-        @InvocableVariable(label='Detected Columns JSON')
-        public String detectedColumnsJson;
-        
-        @InvocableVariable(label='Parsed Data JSON')
-        public String parsedDataJson;
-        
-        @InvocableVariable(label='Total Rows')
-        public Integer totalRows;
-        
-        @InvocableVariable(label='Is Success')
-        public Boolean isSuccess;
-        
-        @InvocableVariable(label='Error Message')
-        public String errorMessage;
-        
-        @InvocableVariable(label='Columns Already Match')
-        public Boolean columnsAlreadyMatch;
-        
-        @InvocableVariable(label='Auto Mapping JSON')
-        public String autoMappingJson;
+        @AuraEnabled public String  detectedColumnsJson;
+        @AuraEnabled public String  parsedDataJson;
+        @AuraEnabled public Integer totalRows;
+        @AuraEnabled public Boolean isSuccess;
+        @AuraEnabled public String  errorMessage;
+        @AuraEnabled public String  warningMessage;
+        @AuraEnabled public Boolean columnsAlreadyMatch;
+        @AuraEnabled public String  autoMappingJson;
     }
 
-    // ============================================
-    // MAIN INVOCABLE METHOD
-    // ============================================
-    
-    @InvocableMethod(
-        label='Parse Import File' 
-        description='Parses uploaded CSV file and detects columns'
-        category='Excel Import'
-    )
+    @AuraEnabled(cacheable=false)
     public static List<ParseResult> parseFile(
-        List<ParseRequest> requests) {
-        
+            String contentVersionId) {
+
         List<ParseResult> results = new List<ParseResult>();
-        ParseResult result = new ParseResult();
-        
+        ParseResult result        = new ParseResult();
+        result.isSuccess          = false;
+        result.errorMessage       = 'Processing not completed';
+
         try {
-            // Step 1: Get file from ContentVersion
-            ContentVersion cv = [
-                SELECT VersionData, 
-                       FileExtension, 
-                       Title
-                FROM ContentVersion 
-                WHERE Id = :requests[0].contentVersionId
-                LIMIT 1
-            ];
-            
-            // Step 2: Validate file type
-            if(cv.FileExtension.toLowerCase() != 'csv') {
-                result.isSuccess = false;
-                result.errorMessage = 
-                    'Please upload a CSV file. ' +
-                    'To convert: Open Excel → ' +
-                    'File → Save As → CSV format.';
+
+            // ── Step 1 · Validate ID ─────────────────────
+            if (String.isBlank(contentVersionId)) {
+                result.errorMessage =
+                    'No file ID received. ' +
+                    'Please try uploading again.';
                 results.add(result);
                 return results;
             }
-            
-            // Step 3: Convert file to string
-            String fileContent = cv.VersionData.toString();
-            
-            // Step 4: Split into rows
-            // Handle both Windows (\r\n) and Mac/Linux (\n)
-            fileContent = fileContent.replace('\r\n', '\n');
-            fileContent = fileContent.replace('\r', '\n');
-            List<String> rows = fileContent.split('\n');
-            
-            if(rows.size() < 2) {
-                result.isSuccess = false;
-                result.errorMessage = 
-                    'File has no data rows. ' +
+
+            // ── Step 2 · Query file ──────────────────────
+            List<ContentVersion> cvList = [
+                SELECT VersionData,
+                       FileExtension,
+                       Title
+                FROM   ContentVersion
+                WHERE  Id = :contentVersionId
+                WITH    USER_MODE
+                LIMIT  1
+            ];
+
+            if (cvList.isEmpty()) {
+                result.errorMessage =
+                    'File not found. ' +
+                    'Please upload again.';
+                results.add(result);
+                return results;
+            }
+
+            ContentVersion cv = cvList[0];
+
+            // ── Step 3 · Validate extension ──────────────
+            if (cv.FileExtension == null ||
+                    cv.FileExtension.toLowerCase() != 'csv') {
+                result.errorMessage =
+                    'Please upload a CSV file. ' +
+                    'Received: ' + cv.FileExtension;
+                results.add(result);
+                return results;
+            }
+
+            // ── Step 4 · Validate file size ──────────────
+            if (cv.VersionData.size() > MAX_FILE_BYTES) {
+                result.errorMessage =
+                    'File exceeds the 5 MB limit. ' +
+                    'Please split it into smaller files.';
+                results.add(result);
+                return results;
+            }
+
+            // ── Step 5 · Decode + normalise ──────────────
+            String raw = cv.VersionData.toString()
+                .replace('\r\n', '\n')
+                .replace('\r',   '\n');
+
+            List<String> rows = raw.split('\n');
+
+            if (rows.size() < 2) {
+                result.errorMessage =
+                    'The file has no data rows. ' +
                     'Please check your file.';
                 results.add(result);
                 return results;
             }
-            
-            // Step 5: Parse header row
+
+            // ── Step 6 · Parse header row ─────────────────
             List<String> headers = parseCSVRow(rows[0]);
-            result.detectedColumnsJson = JSON.serialize(headers);
-            
-            // Step 6: Parse all data rows
-            List<Map<String,String>> allData = 
+
+            // Validate no empty or duplicate headers
+            Set<String> seen = new Set<String>();
+            for (Integer i = 0; i < headers.size(); i++) {
+                if (String.isBlank(headers[i])) {
+                    result.errorMessage =
+                        'Column ' + (i + 1) +
+                        ' has no header name. ' +
+                        'Please fix your CSV.';
+                    results.add(result);
+                    return results;
+                }
+                String lower = headers[i].trim().toLowerCase();
+                if (!seen.add(lower)) {
+                    result.errorMessage =
+                        'Duplicate column name: "' +
+                        headers[i] + '". ' +
+                        'Headers must be unique.';
+                    results.add(result);
+                    return results;
+                }
+            }
+
+            result.detectedColumnsJson =
+                JSON.serialize(headers);
+
+            // ── Step 7 · Parse data rows ──────────────────
+            List<Map<String,String>> allData =
                 new List<Map<String,String>>();
-                
-            for(Integer i = 1; i < rows.size(); i++) {
+
+            Integer rowLimit = Math.min(
+                rows.size(),
+                MAX_DATA_ROWS + 1
+            );
+
+            for (Integer i = 1; i < rowLimit; i++) {
+
+                if (Limits.getCpuTime() >
+                        Limits.getLimitCpuTime() * 0.85) {
+                    result.warningMessage =
+                        'Processing stopped at row ' + i +
+                        ' due to CPU limits. ' +
+                        'Please use a smaller file.';
+                    break;
+                }
+
                 String row = rows[i].trim();
-                if(String.isBlank(row)) continue;
-                
-                List<String> values = parseCSVRow(row);
-                Map<String,String> rowData = 
+                if (String.isBlank(row)) continue;
+
+                List<String>       values  = parseCSVRow(row);
+                Map<String,String> rowData =
                     new Map<String,String>();
-                
-                for(Integer j = 0; j < headers.size(); j++) {
-                    String val = j < values.size() ? 
-                        values[j].trim() : '';
+
+                for (Integer j = 0; j < headers.size(); j++) {
+                    String val = j < values.size()
+                        ? values[j].trim()
+                        : '';
                     rowData.put(headers[j].trim(), val);
                 }
+
                 allData.add(rowData);
             }
-            
+
             result.parsedDataJson = JSON.serialize(allData);
-            result.totalRows = allData.size();
-            
-            // Step 7: Try auto mapping
-            Map<String,String> autoMapping = 
+            result.totalRows      = allData.size();
+
+            // ── Step 8 · Truncation warning ───────────────
+            Integer totalDataLines = rows.size() - 1;
+            if (totalDataLines > MAX_DATA_ROWS) {
+                result.warningMessage =
+                    'Only the first ' + MAX_DATA_ROWS +
+                    ' of ' + totalDataLines +
+                    ' rows were processed. ' +
+                    'Please split the file into batches.';
+            }
+
+            // ── Step 9 · Auto-mapping ─────────────────────
+            Map<String,String> autoMapping =
                 attemptAutoMapping(headers);
-            result.autoMappingJson = 
+
+            result.autoMappingJson      =
                 JSON.serialize(autoMapping);
-            result.columnsAlreadyMatch = 
+            result.columnsAlreadyMatch  =
                 checkRequiredColumnsMapped(autoMapping);
-            
-            result.isSuccess = true;
-            
-        } catch(Exception e) {
-            result.isSuccess = false;
-            result.errorMessage = 
-                'Error: ' + e.getMessage();
+            result.isSuccess            = true;
+            result.errorMessage         = null;
+
+        } catch (Exception e) {
+            System.debug(
+                LoggingLevel.ERROR,
+                'ExcelImportParser error: ' +
+                e.getMessage() +
+                ' | line: ' + e.getLineNumber()
+            );
+            result.isSuccess    = false;
+            result.errorMessage =
+                'An unexpected error occurred: ' +
+                e.getMessage();
         }
-        
+
         results.add(result);
         return results;
     }
-    
-    // ============================================
-    // HELPER: Parse CSV row
-    // Handles commas inside quoted values
-    // ============================================
-    
+
+    @TestVisible
     private static List<String> parseCSVRow(String row) {
-        List<String> values = new List<String>();
-        Boolean inQuotes = false;
-        String currentVal = '';
-        
-        for(Integer i = 0; i < row.length(); i++) {
-            String ch = row.substring(i, i+1);
-            
-            if(ch == '"') {
-                inQuotes = !inQuotes;
-            } else if(ch == ',' && !inQuotes) {
-                values.add(currentVal.trim()
-                    .removeStart('"')
-                    .removeEnd('"'));
-                currentVal = '';
+
+        List<String> values        = new List<String>();
+        Boolean      inQuotes      = false;
+        Boolean      fieldWasQuoted = false;
+        List<String> chars         = new List<String>();
+
+        for (Integer i = 0; i < row.length(); i++) {
+
+            String ch = row.substring(i, i + 1);
+
+            if (ch == '"') {
+                if (inQuotes
+                        && i + 1 < row.length()
+                        && row.substring(i + 1, i + 2) == '"') {
+                    chars.add('"');
+                    i++;
+                } else {
+                    if (!inQuotes) fieldWasQuoted = true;
+                    inQuotes = !inQuotes;
+                }
+            } else if (ch == ',' && !inQuotes) {
+                String fieldValue = String.join(chars, '');
+                values.add(
+                    fieldWasQuoted
+                        ? fieldValue
+                        : fieldValue.trim()
+                );
+                chars          = new List<String>();
+                fieldWasQuoted = false;
             } else {
-                currentVal += ch;
+                chars.add(ch);
             }
         }
-        values.add(currentVal.trim()
-            .removeStart('"')
-            .removeEnd('"'));
-            
+
+        String lastField = String.join(chars, '');
+        values.add(
+            fieldWasQuoted
+                ? lastField
+                : lastField.trim()
+        );
+
         return values;
     }
-    
-    // ============================================
-    // HELPER: Auto map columns
-    // ============================================
-    
+
     private static Map<String,String> attemptAutoMapping(
-        List<String> headers) {
-        
+            List<String> headers) {
+
         Map<String,String> mapping = new Map<String,String>();
-        
-        // Expected columns and their common aliases
-        Map<String,List<String>> expectedColumns = 
-            new Map<String,List<String>>{
-                'company_name' => new List<String>{
-                    'company name','company','client',
-                    'account','organization','business',
-                    'account name'
-                },
-                'product' => new List<String>{
-                    'product','product name','item',
-                    'sku','service','product code'
-                },
-                'owner_email' => new List<String>{
-                    'owner email','owner','rep','email',
-                    'assigned to','sales rep','rep email'
-                },
-                'notes' => new List<String>{
-                    'notes','description','comments',
-                    'details','remarks','note'
-                }
-            };
-        
-        for(String expectedKey : expectedColumns.keySet()) {
-            List<String> aliases = 
-                expectedColumns.get(expectedKey);
-            
-            for(String header : headers) {
-                if(aliases.contains(
-                    header.trim().toLowerCase())) {
-                    mapping.put(expectedKey, header.trim());
-                    break;
-                }
+
+        for (String header : headers) {
+            String h = header.trim().toLowerCase();
+
+            if (!mapping.containsKey('company_name')
+                    && COMPANY_ALIASES.contains(h)) {
+                mapping.put('company_name', header.trim());
+            }
+            if (!mapping.containsKey('product')
+                    && PRODUCT_ALIASES.contains(h)) {
+                mapping.put('product', header.trim());
             }
         }
-        
+
         return mapping;
     }
-    
-    // ============================================
-    // HELPER: Check required columns mapped
-    // ============================================
-    
+
     private static Boolean checkRequiredColumnsMapped(
-        Map<String,String> mapping) {
-        
-        // company_name and product are required
-        return mapping.containsKey('company_name') && 
+            Map<String,String> mapping) {
+        return mapping.containsKey('company_name') &&
                mapping.containsKey('product');
     }
 }

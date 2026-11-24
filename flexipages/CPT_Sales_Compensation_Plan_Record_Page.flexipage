@@ -96,6 +96,12 @@
                 <identifier>RecordCPT_Plan_Type__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CPT_Percent_OW_Revenue__c</fieldItem>
+                <identifier>RecordCPT_Percent_OW_Revenue__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-1d6c8323-8588-46e7-b17b-5d31f96a08e7</name>
         <type>Facet</type>
     </flexiPageRegions>

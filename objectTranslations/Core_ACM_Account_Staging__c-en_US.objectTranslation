@@ -9,10 +9,6 @@
         <value>ACM Account Staging</value>
     </caseValues>
     <fields>
-        <label><!-- ACM Account Staging Name --></label>
-        <name>ACM_Account_Staging_Name__c</name>
-    </fields>
-    <fields>
         <label><!-- Account Id --></label>
         <name>AccountId__c</name>
     </fields>

@@ -199,6 +199,70 @@
         <name>CPT_MarVol_Next_Gen_DCG_GNR__c</name>
     </fields>
     <fields>
+        <label><!-- OW - CCPG Deal Target --></label>
+        <name>CPT_OW_CCPG_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Deal Wins Vol Target --></label>
+        <name>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Deal Wins Vol --></label>
+        <name>CPT_OW_CCPG_Deal_Wins_Vol__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Deal --></label>
+        <name>CPT_OW_CCPG_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Design Target --></label>
+        <name>CPT_OW_CCPG_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Design --></label>
+        <name>CPT_OW_CCPG_Design__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal Target --></label>
+        <name>CPT_OW_DCG_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal Wins Vol Target --></label>
+        <name>CPT_OW_DCG_Deal_Wins_Vol_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal Wins Vol --></label>
+        <name>CPT_OW_DCG_Deal_Wins_Vol__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal --></label>
+        <name>CPT_OW_DCG_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Design Target --></label>
+        <name>CPT_OW_DCG_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Design --></label>
+        <name>CPT_OW_DCG_Design__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - EDge Deal Target --></label>
+        <name>CPT_OW_Edge_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - EDge Deal --></label>
+        <name>CPT_OW_Edge_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Design Target --></label>
+        <name>CPT_OW_Edge_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Design --></label>
+        <name>CPT_OW_Edge_Design__c</name>
+    </fields>
+    <fields>
         <label><!-- Quota Period --></label>
         <name>CPT_Quota_Period__c</name>
     </fields>

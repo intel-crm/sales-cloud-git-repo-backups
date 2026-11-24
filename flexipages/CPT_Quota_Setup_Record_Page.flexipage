@@ -616,6 +616,91 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>adminFilters</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>CPT_Quota_Setup__c.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Territory_Assignments__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>CPT_Territory_Name__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CPT_OW_CCPG_Deal_Target__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CPT_OW_CCPG_Design_Target__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CPT_OW_DCG_Deal_Target__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CPT_OW_DCG_Design_Target__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CPT_OW_Edge_Deal_Target__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CPT_OW_Edge_Design_Target__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CPT_OW_DCG_Deal_Wins_Vol_Target__c</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>Territory Assignments</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>CPT_Territory_Name__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Default</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-fe4ba690-16ac-41c4-b732-aa084ff4a66f</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
                 </componentInstanceProperties>
@@ -643,6 +728,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-fe4ba690-16ac-41c4-b732-aa084ff4a66f</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Opportunity Wins</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab5</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-922ffd9c-2d80-4fa0-8bf6-57ff1205b9b1</name>
@@ -1444,6 +1543,218 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_Allowed__c</fieldItem>
+                <identifier>RecordCPT_OW_Allowed_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_CCPG_Deal_Assigned__c</fieldItem>
+                <identifier>RecordCPT_OW_CCPG_Deal_Assigned_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_CCPG_Design_Assigned__c</fieldItem>
+                <identifier>RecordCPT_OW_CCPG_Design_Assigned_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_DCG_Deal_Assigned__c</fieldItem>
+                <identifier>RecordCPT_OW_DCG_Deal_Assigned_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_DCG_Design_Assigned__c</fieldItem>
+                <identifier>RecordCPT_OW_DCG_Design_Assigned_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_Edge_Deal_Assigned__c</fieldItem>
+                <identifier>RecordCPT_OW_Edge_Deal_Assigned_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_Edge_Design_Assigned__c</fieldItem>
+                <identifier>RecordCPT_OW_Edge_Design_Assigned_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</fieldItem>
+                <identifier>RecordCPT_OW_CCPG_Deal_Wins_Vol_Assigned_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</fieldItem>
+                <identifier>RecordCPT_OW_DCG_Deal_Wins_Vol_Assigned_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-28c809da-d567-4daf-9a92-50ecc86ab964</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_Assigned__c</fieldItem>
+                <identifier>RecordCPT_OW_Assigned_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_CCPG_Deal_Quota__c</fieldItem>
+                <identifier>RecordCPT_OW_CCPG_Deal_Quota_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_CCPG_Design_Quota__c</fieldItem>
+                <identifier>RecordCPT_OW_CCPG_Design_Quota_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_DCG_Deal_Quota__c</fieldItem>
+                <identifier>RecordCPT_OW_DCG_Deal_Quota_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_DCG_Design_Quota__c</fieldItem>
+                <identifier>RecordCPT_OW_DCG_Design_Quota_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_Edge_Deal_Quota__c</fieldItem>
+                <identifier>RecordCPT_OW_Edge_Deal_Quota_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_Edge_Design_Quota__c</fieldItem>
+                <identifier>RecordCPT_OW_Edge_Design_Quota_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_CCPG_Deal_Wins_Vol_Quota__c</fieldItem>
+                <identifier>RecordCPT_OW_CCPG_Deal_Wins_Vol_Quota_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CPT_OW_DCG_Deal_Wins_Vol_Quota__c</fieldItem>
+                <identifier>RecordCPT_OW_DCG_Deal_Wins_Vol_Quota_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-aad86499-9e8c-4f09-aaac-69f515d3fed2</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-28c809da-d567-4daf-9a92-50ecc86ab964</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-aad86499-9e8c-4f09-aaac-69f515d3fed2</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column6</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-71b6fa5c-4d39-4935-b8c2-130cdd8cff6a</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.CreatedById</fieldItem>
                 <identifier>RecordCreatedByIdField</identifier>
             </fieldInstance>
@@ -1587,6 +1898,31 @@
                 <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.CPT_Wins_Allowed__c}</leftValue>
+                        <operator>GT</operator>
+                        <rightValue>0</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-71b6fa5c-4d39-4935-b8c2-130cdd8cff6a</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Opportunity Wins</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection3</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.CPT_OW_Allowed__c}</leftValue>
                         <operator>GT</operator>
                         <rightValue>0</rightValue>
                     </criteria>
@@ -1809,7 +2145,7 @@
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CPT_BR_Allowed__c}</leftValue>
                         <operator>GT</operator>
@@ -1817,6 +2153,11 @@
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.CPT_CR_Allowed__c}</leftValue>
+                        <operator>GT</operator>
+                        <rightValue>0</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CPT_OW_Allowed__c}</leftValue>
                         <operator>GT</operator>
                         <rightValue>0</rightValue>
                     </criteria>

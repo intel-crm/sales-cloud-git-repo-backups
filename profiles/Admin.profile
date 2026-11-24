@@ -745,8 +745,8 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>AccountFuzzyMatchProcessor</apexClass>
-        <enabled>false</enabled>
+        <apexClass>AccountExactMatchProcessor</apexClass>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>AccountPipelineService</apexClass>
@@ -10121,6 +10121,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CsvHeaderReader</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CustomSelectOptions</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -10574,7 +10578,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ExcelImportParser</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ExecutiveMeetingBrief_ServiceHandler</apexClass>
@@ -21653,6 +21657,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>UCD_ACM_AccountNameChangeBatchTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>UCD_ACM_AccountPlatformEvent_Batch</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -30955,6 +30963,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Plan__c.CPT_Percent_OW_Revenue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CPT_Plan__c.CPT_Percent_Sales_OKR__c</field>
         <readable>true</readable>
@@ -31301,22 +31314,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG_Quota__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Assigned__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Quota__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -31392,6 +31395,101 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CPT_Quota_Setup__c.CPT_Notes__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_Allocated__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_Allowed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Deal_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Deal_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Deal_Wins_Vol_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Design_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Design_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Deal_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Deal_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Deal_Wins_Vol_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Design_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Design_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_Edge_Deal_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_Edge_Deal_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_Edge_Design_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_OW_Edge_Design_Quota__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -31876,6 +31974,86 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Wins_Vol_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Wins_Vol__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Design_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Design__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Wins_Vol_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Wins_Vol__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Design_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Design__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Deal_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Deal__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Design_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Design__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CPT_Territory_Assignment__c.CPT_Quota_Period__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -31958,6 +32136,46 @@
         <editable>true</editable>
         <field>CPT_Territory_Target__c.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Target__c.CPT_OW_CCPG_Deal_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Target__c.CPT_OW_CCPG_Deal_Wins_Vol_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Target__c.CPT_OW_CCPG_Design_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Target__c.CPT_OW_DCG_Deal_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Target__c.CPT_OW_DCG_Deal_Wins_Vol_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Target__c.CPT_OW_DCG_Design_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Target__c.CPT_OW_Edge_Deal_Target__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Territory_Target__c.CPT_OW_Edge_Design_Target__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -37807,11 +38025,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Core_AAQC_Commissions_Case__c.Core_AAQC_Subject__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_ACM_Account_Staging__c.ACM_Account_Staging_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -113861,6 +114074,16 @@
         <startAddress>2.23.80.0</startAddress>
     </loginIpRanges>
     <loginIpRanges>
+        <description>Rox</description>
+        <endAddress>3.12.195.193</endAddress>
+        <startAddress>3.12.195.193</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Rox</description>
+        <endAddress>3.128.77.212</endAddress>
+        <startAddress>3.128.77.212</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
         <description>Groove&amp;apos;s</description>
         <endAddress>3.208.245.190</endAddress>
         <startAddress>3.208.245.190</startAddress>
@@ -113888,6 +114111,11 @@
     <loginIpRanges>
         <endAddress>13.110.74.8</endAddress>
         <startAddress>13.110.74.8</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Rox</description>
+        <endAddress>18.219.150.237</endAddress>
+        <startAddress>18.219.150.237</startAddress>
     </loginIpRanges>
     <loginIpRanges>
         <description>Copado USA</description>
@@ -113950,6 +114178,11 @@
         <startAddress>34.73.251.138</startAddress>
     </loginIpRanges>
     <loginIpRanges>
+        <description>Fivetran</description>
+        <endAddress>34.85.252.27</endAddress>
+        <startAddress>34.85.252.27</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
         <endAddress>34.90.11.138</endAddress>
         <startAddress>34.90.11.138</startAddress>
     </loginIpRanges>
@@ -114007,6 +114240,11 @@
         <description>Copado USA</description>
         <endAddress>35.174.57.133</endAddress>
         <startAddress>35.174.57.133</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Fivetran</description>
+        <endAddress>35.197.105.90</endAddress>
+        <startAddress>35.197.105.90</startAddress>
     </loginIpRanges>
     <loginIpRanges>
         <endAddress>35.232.195.89</endAddress>
@@ -114253,6 +114491,16 @@
         <description>Haifa, Israel</description>
         <endAddress>134.191.233.222</endAddress>
         <startAddress>134.191.233.193</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Fivetran</description>
+        <endAddress>136.107.62.143</endAddress>
+        <startAddress>136.107.62.136</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Fivetran</description>
+        <endAddress>136.118.115.31</endAddress>
+        <startAddress>136.118.115.24</startAddress>
     </loginIpRanges>
     <loginIpRanges>
         <description>Impartner integration user</description>

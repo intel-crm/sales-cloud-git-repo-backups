@@ -43,6 +43,10 @@
         <name>CPT_Percent_Margin__c</name>
     </fields>
     <fields>
+        <label><!-- Opportunity Wins --></label>
+        <name>CPT_Percent_OW_Revenue__c</name>
+    </fields>
+    <fields>
         <label><!-- Sales OKR --></label>
         <name>CPT_Percent_Sales_OKR__c</name>
     </fields>

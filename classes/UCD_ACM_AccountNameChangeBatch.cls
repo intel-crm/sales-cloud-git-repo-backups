@@ -97,7 +97,7 @@ public without sharing class UCD_ACM_AccountNameChangeBatch implements Database.
                                             };
                                                 
         String jsonBody = JSON.serialize(payload);
-        System.debug('json Body'+jsonBody);
+        //System.debug('json Body'+jsonBody);
         
         Core_RestClient restClient = new Core_RestClient(rc.endpoint, rc.method, requestHeader, jsonBody, rc.timeoutMs);
         return restClient.invokeApi();

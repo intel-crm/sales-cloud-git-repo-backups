@@ -5,8 +5,10 @@ public class Core_internalUserNotificationOnEV_Test {
     
     @isTest static void testSendMail(){
         List<Id> cId = InternalUserNotificationOnEVTestData.createTestData();
+        Test.startTest();
         Core_internalUserNotificationOnEV.sendEmailOnEvCompletion(cId);
-		system.assert(cId.size()>0);        
+        Test.stopTest();  
+        system.assert(cId.size()>0);        
     }    
-
+    
 }

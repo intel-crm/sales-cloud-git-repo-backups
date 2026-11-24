@@ -825,9 +825,9 @@ IF( Core_MDF_Completed_Item_Count_Nbr__c &gt;0,&apos;Finished&apos;,&apos;Failed
         <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_Batch_Class_Name_Txt__c</field>
-            <operation>contains</operation>
-            <value>OPID</value>
+            <field>Core_MDF_Program_Txt__c</field>
+            <operation>equals</operation>
+            <value>ACM</value>
         </filters>
         <label>All</label>
     </listViews>

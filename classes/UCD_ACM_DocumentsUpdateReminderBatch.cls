@@ -9,7 +9,9 @@ public class UCD_ACM_DocumentsUpdateReminderBatch implements DataBase.Batchable<
     private static Map<Id, Date> testLatestUploadDateByAccount;
     
     public Database.QueryLocator start(Database.BatchableContext bc) {
-        return  Database.getQueryLocator([SELECT Id, Name, OwnerId, Last_Reminder_Sent__c FROM Account WHERE RecordType.Name = 'Intel Account' AND Last_Reminder_Sent__c != Null]);
+        return  Database.getQueryLocator([SELECT Id, Name, OwnerId, Last_Reminder_Sent__c FROM Account WHERE ID IN 
+                                          (SELECT PRM_Account__c FROM PRM_IPA_Affiliation__c where  RecordType.DeveloperName = 'Intel_Account_Affiliation' 
+                                           AND PRM_Active__c = True  AND PRM_Builder_Strategy__r.Name = 'Builder Growth Accelerator')]);
     }
     
     public void execute(Database.BatchableContext bc, List<Account> listAccounts){
@@ -114,9 +116,6 @@ public class UCD_ACM_DocumentsUpdateReminderBatch implements DataBase.Batchable<
             }
         }
         
-        if (Test.isRunningTest() && testLatestUploadDateByAccount != null) {
-            return testLatestUploadDateByAccount;
-        }
         return accountLatestDateMap;
     }
     
