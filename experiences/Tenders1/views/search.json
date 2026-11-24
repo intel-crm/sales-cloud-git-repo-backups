@@ -27,11 +27,11 @@
           "isPublic" : true,
           "name" : "SBQQ__Quote__c"
         }, {
-          "isPublic" : false,
-          "name" : "SBQQ__QuoteLine__c"
-        }, {
-          "isPublic" : false,
+          "isPublic" : true,
           "name" : "core_cpq_dpa_aln__c"
+        }, {
+          "isPublic" : true,
+          "name" : "SBQQ__QuoteLine__c"
         } ],
         "searchResultFiltering" : true,
         "searchTerm" : "{!searchString}",

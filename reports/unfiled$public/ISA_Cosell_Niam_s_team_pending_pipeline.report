@@ -93,8 +93,8 @@ all co-sell opportunities with decision date in 2020</description>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
-        <endDate>2026-11-23</endDate>
+        <endDate>2026-11-24</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-23</startDate>
+        <startDate>2026-11-24</startDate>
     </timeFrameFilter>
 </Report>

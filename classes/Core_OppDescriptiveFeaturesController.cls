@@ -51,8 +51,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
         'Project Schedule: PRQ',
         'Custom Silicon Segment',
         'Custom Silicon Application',
-        'CEG Contact',
-        'CEG Comments'
+        'CEG Contact','CEG Comments'
     };
     // Variable to Map String to List of SelectOption 
     public Map < String, List < SelectOption >> mapStringToLstOption = new Map < String, List < SelectOption >> {};
@@ -254,13 +253,13 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     } else if (feature.Core_Feature_Type__c == 'Project Schedule: PRQ') {
                         this.projectSchedulePRQ = feature.Core_Feature_Name__c;
                     } else if (feature.Core_Feature_Type__c == 'Custom Silicon Segment') {
-                        this.projectSchedulePRQ = feature.Core_Feature_Name__c;
+                        this.customSiliconSegment = feature.Core_Feature_Name__c;
                     } else if (feature.Core_Feature_Type__c == 'Custom Silicon Application') {
-                        this.projectSchedulePRQ = feature.Core_Feature_Name__c;
+                        this.customSiliconApplication = feature.Core_Feature_Name__c;
                     } else if (feature.Core_Feature_Type__c == 'CEG Contact') {
-                        this.projectSchedulePRQ = feature.Core_Feature_Name__c;
+                        this.CEGContact = feature.Core_Feature_Name__c;
                     } else if (feature.Core_Feature_Type__c == 'CEG Comments') {
-                        this.projectSchedulePRQ = feature.Core_Feature_Name__c;
+                        this.CEGComments = feature.Core_Feature_Name__c;
                     }
                 }
             }
@@ -819,24 +818,24 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             
 
             Map<String, String> featureTypeAndValueMap = new Map<String, String>{
-                'Consumer Sales system'                 => this.consumersales1,
-                'Project Code Name'                     => this.projectCodeName,
-                'Process Node'                          => this.processNode,
-                'Exec Sponsor Contact'                  => this.execSponsorContact,
-                'NRE $'                                 => this.nreUSD,
-                'Project Schedule: RFx'                 => this.projectScheduleRFx,
-                'Project Schedule: TR Kick off'         => this.projectScheduleTRKickOff,
-                'Project Schedule: Tape In/Out'         => this.projectScheduleTapeInOut,
-                'Project Schedule: Engineering Sample'  => this.projectScheduleEngSample,
-                'Project Schedule: PRQ'                 => this.projectSchedulePRQ,
-                'Custom Silicon Segment'                => this.customSiliconSegment,
-                'Custom Silicon Application'            => this.customSiliconApplication,
-                'CEG Contact'                           => this.CEGContact,
-                'CEG Comments'                          => this.CEGComments
+            'Consumer Sales system' => this.consumersales1,
+            'Project Code Name' => this.projectCodeName,
+            'Process Node' => this.processNode,
+            'Exec Sponsor Contact' => this.execSponsorContact,
+            'NRE $' => this.nreUSD,
+            'Project Schedule: RFx' => this.projectScheduleRFx,
+            'Project Schedule: TR Kick off' => this.projectScheduleTRKickOff,
+            'Project Schedule: Tape In/Out' => this.projectScheduleTapeInOut,
+            'Project Schedule: Engineering Sample' => this.projectScheduleEngSample,
+            'Project Schedule: PRQ' => this.projectSchedulePRQ,
+            'Custom Silicon Segment' => this.customSiliconSegment,
+            'Custom Silicon Application' => this.customSiliconApplication,
+            'CEG Contact' => this.CEGContact,
+            'CEG Comments' => this.CEGComments
             };
 
-            Set<String> activeTypes = new Set<String>();
-            Set<String> activeValues = new Set<String>();
+            List<String> activeTypes = new List<String>();
+            List<String> activeValues = new List<String>();
             Set<String> allFeatureTypes = featureTypeAndValueMap.keySet();
 
             for (String fType : allFeatureTypes) {
@@ -846,7 +845,8 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     activeValues.add(fVal);
                 }
             }
-
+            System.debug('Active types: '+activeTypes);
+            System.debug('Active Values: '+activeValues);
             // 1. ALWAYS clean up existing Opportunity Features for ALL managed text types first!
             // This guarantees that any field cleared to blank will have its record deleted.
             List<Core_Opportunity_Features__c> oppFeatDel = [
@@ -855,6 +855,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                 WHERE Core_Opportunity__c = :sObjOpp.Id 
                 AND Core_Feature_Type__c IN :allFeatureTypes
             ];
+            System.debug('Existing Desc features: '+Oppfeatdel);
             if (!oppFeatDel.isEmpty()) {
                 delete oppFeatDel;
             }
@@ -869,7 +870,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     AND Core_Feature_Value__c IN :activeValues
                     ORDER BY CreatedDate DESC
                 ];
-
+                System.debug('Existing Features in database: '+existingFeatures);
                 Map<String, Core_Feature__c> existingFeatureMap = new Map<String, Core_Feature__c>();
                 for (Core_Feature__c f : existingFeatures) {
                     String featKey = f.Core_Feature_Type__c.trim().toLowerCase() + '::' + f.Core_Feature_Value__c.trim().toLowerCase();
@@ -877,6 +878,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         existingFeatureMap.put(featKey, f);
                     }
                 }
+                System.debug('Existing feature map in database: '+existingFeatureMap);
 
                 // Insert any missing features
                 List<Core_Feature__c> featuresToInsert = new List<Core_Feature__c>();
@@ -901,7 +903,8 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         existingFeatureMap.put(featKey, f);
                     }
                 }
-
+                System.debug('Missing Features: '+featuresToInsert);
+                System.debug('All features after insertion: '+existingFeatureMap);
                 List<Core_Feature__c> allActiveFeatures = existingFeatureMap.values();
 
                 // Query Header
@@ -925,7 +928,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         AND Core_Active__c = true
                         ORDER BY CreatedDate DESC
                     ];
-
+                    System.debug('Existing Feature sets in database: '+existingFsList);
                     Map<String, Core_Feature_Set__c> uniqueFeatureHeaderSetMap = new Map<String, Core_Feature_Set__c>();
                     for (Core_Feature_Set__c fs : existingFsList) {
                         String compositeKey = fs.Core_Feature__c + '::' + fs.Core_Feature_Header__c;
@@ -933,7 +936,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                             uniqueFeatureHeaderSetMap.put(compositeKey, fs);
                         }
                     }
-
+                    System.debug('Existing feature sets map in database: '+uniqueFeatureHeaderSetMap);
                     // Insert missing Feature Sets
                     List<Core_Feature_Set__c> fsToInsert = new List<Core_Feature_Set__c>();
                     for (Core_Feature__c feat : allActiveFeatures) {
@@ -955,7 +958,10 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         }
                     }
 
-                    // Re-insert only the currently active Opportunity Features
+                    System.debug('Missing Featuresets: '+fsToInsert);
+                    System.debug('All features after insertion: '+uniqueFeatureHeaderSetMap);
+
+                    // insert only the currently active Opportunity Features
                     List<Core_Opportunity_Features__c> oppFeatureList = new List<Core_Opportunity_Features__c>();
                     for (Core_Feature_Set__c fs : uniqueFeatureHeaderSetMap.values()) {
                         oppFeatureList.add(new Core_Opportunity_Features__c(
@@ -963,7 +969,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                             Core_Opportunity__c = sObjOpp.Id
                         ));
                     }
-
+                    System.debug('new Descriptive features: '+oppFeatureList);
                     if (!oppFeatureList.isEmpty()) {
                         insert oppFeatureList;
                     }

@@ -51,7 +51,7 @@
             "isPublic" : true,
             "name" : "core_cpq_dpa_aln__c"
           }, {
-            "isPublic" : false,
+            "isPublic" : true,
             "name" : "SBQQ__QuoteLine__c"
           } ]
         },
@@ -128,6 +128,49 @@
     }, {
       "id" : "6deaa258-9c87-4f7e-9ba5-3c729bd98c79",
       "regionName" : "userInfo",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "allowPrepopulatePrechatFields" : true,
+          "avatarImgURL" : "",
+          "codeSettingsName" : "",
+          "defaultMinimizedText" : "PSG Disty Assistant",
+          "displayHelpButton" : true,
+          "eswConfigurationJSON" : {
+            "baseCoreURL" : "https://intel--crmdevsls3.sandbox.my.salesforce.com",
+            "baseLiveAgentContentURL" : "https://c.la2-c1cs-ia6.salesforceliveagent.com/content",
+            "baseLiveAgentURL" : "https://d.la2-c1cs-ia6.salesforceliveagent.com/chat",
+            "buttonId" : "5732D0000008Ses",
+            "deploymentId" : "5722D0000008RRn",
+            "enabledFeatures" : [ "LiveAgent" ],
+            "entryFeature" : "LiveAgent",
+            "eswConfigDevName" : "PsgChatbot",
+            "eswConfigId" : "04I2D00000000GwUAI",
+            "eswLiveAgentDevName" : "PsgChatbot",
+            "gslbBaseURL" : "https://service.force.com",
+            "isOfflineCasesEnabled" : "0",
+            "orgId" : "00D2D000000E9ZK"
+          },
+          "externalScripts" : "",
+          "externalStyles" : "",
+          "fallbackRouting" : "",
+          "offlineSupportMinimizedText" : "Contact Us",
+          "offlineText" : "Agent Offline",
+          "onlineLoadingText" : "Loading",
+          "prechatBackgroundImgURL" : "",
+          "smallCompanyLogoImgURL" : "",
+          "snippetSettingsFile" : "",
+          "storageDomain" : "",
+          "waitingStateBackgroundImgURL" : ""
+        },
+        "componentName" : "forceCommunity:embeddedService",
+        "id" : "a2708b16-1401-4329-ab1d-240c0c94b505",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "6b0fe4c0-c5be-4204-9e18-5c413748572d",
+      "regionName" : "chatbot",
       "type" : "region"
     } ],
     "type" : "view"

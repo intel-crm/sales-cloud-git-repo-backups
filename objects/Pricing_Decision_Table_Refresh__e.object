@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This platform event is to trigger a queueable batch to Refresh the Decision tables with Admin User.</description>
+    <eventType>HighVolume</eventType>
+    <fields>
+        <fullName>Pricing_Decision_Table_Name_Txt__c</fullName>
+        <description>To hold the Decision Table API Names</description>
+        <externalId>false</externalId>
+        <isFilteringDisabled>false</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>false</isSortingDisabled>
+        <label>Decision Table Name</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Refresh Decision Table</label>
+    <pluralLabel>Refresh Decision Tables</pluralLabel>
+    <publishBehavior>PublishImmediately</publishBehavior>
+</CustomObject>

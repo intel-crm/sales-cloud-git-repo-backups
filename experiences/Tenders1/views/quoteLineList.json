@@ -19,10 +19,10 @@
     }, {
       "componentAttributes" : {
         "enableInlineEdit" : true,
-        "filterName" : "{!filterId}",
+        "filterName" : "Tender_Quote_Lines",
         "layout" : "FULL",
         "pageSize" : 25,
-        "scope" : "{!objectName}",
+        "scope" : "SBQQ__QuoteLine__c",
         "showActionBar" : false,
         "showChartsPanel" : true,
         "showDisplay" : "showall",
@@ -34,7 +34,7 @@
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "386f29d2-365a-4dd3-a913-74d7e23867c7",
+      "id" : "42a7be72-518d-4c5e-b061-ca8c35663afa",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -49,5 +49,5 @@
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "list-a81"
+  "viewType" : "list-a9U"
 }

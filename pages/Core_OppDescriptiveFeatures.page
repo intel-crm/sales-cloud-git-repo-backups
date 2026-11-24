@@ -110,7 +110,7 @@
             		Project Schedule: TR Kick off (MM/DD/YYYY) <apex:inputText value="{!projectScheduleTRKickOff}" html-autocomplete="off" html-placeholder="MM/DD/YYYY"/>
             	</apex:pageblocksectionItem>
                 <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
-            		Project Schedule: Tape In/Out (MM/DD/YYYY) <apex:inputText value="{!projectScheduleTapeInOut}" html-autocomplete="off" html-placeholder="(MM/DD/YYYY)" />
+            		Project Schedule: Tape In/Out (MM/DD/YYYY) <apex:inputText value="{!projectScheduleTapeInOut}" html-autocomplete="off" html-placeholder="MM/DD/YYYY" />
             	</apex:pageblocksectionItem>
                 <apex:pageblocksectionItem rendered="{!selectedPlatformBU='PBS' && sPlatform = 'CUSTOM SILICON'}"> 
             		Project Schedule: Engineering Sample (MM/DD/YYYY) <apex:inputText value="{!projectScheduleEngSample}" html-autocomplete="off" html-placeholder="MM/DD/YYYY"/>

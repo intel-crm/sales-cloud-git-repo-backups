@@ -95,17 +95,17 @@
     }, {
       "componentAttributes" : {
         "tabsetConfig" : {
-          "UUID" : "60c440fa-ef18-48bb-bec1-2f99325433ed",
+          "UUID" : "37eae7a0-fb2f-4601-b7e9-a2bf1a9877dd",
           "activeTab" : "",
           "tabs" : [ {
-            "UUID" : "12a20ac7-2c47-48cc-82e1-3635cc8df5bc",
+            "UUID" : "7d8f7d2b-be85-4936-8de2-e27d6d0cb716",
             "allowGuestUser" : false,
             "locked" : false,
             "seedComponents" : [ ],
             "tabKey" : "1",
             "tabName" : "Chatter"
           }, {
-            "UUID" : "da5bb0a3-b6da-401a-91c5-571f760f4930",
+            "UUID" : "7f9ec89a-6c4e-4b1a-a19f-d831e18fe37d",
             "allowGuestUser" : false,
             "locked" : false,
             "seedComponents" : [ ],
@@ -116,18 +116,18 @@
         }
       },
       "componentName" : "forceCommunity:tabset",
-      "id" : "60c440fa-ef18-48bb-bec1-2f99325433ed",
+      "id" : "37eae7a0-fb2f-4601-b7e9-a2bf1a9877dd",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : {
-            "richTextValue" : "<p><br></p><p style=\"text-align: center;\"><span style=\"color: rgb(0, 0, 0); font-size: 14px;\">Click on </span><strong style=\"color: rgb(0, 0, 0); font-size: 14px;\">Chatter Messages</strong><span style=\"color: rgb(0, 0, 0); font-size: 14px;\"> tab to post or read chatter messages.</span></p>"
+            "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"color: rgb(0, 0, 0); font-size: 14px;\">Click on </span><strong style=\"color: rgb(0, 0, 0); font-size: 14px;\">Chatter Messages</strong><span style=\"color: rgb(0, 0, 0); font-size: 14px;\"> tab to post or read chatter messages.</span></p>"
           },
           "componentName" : "forceCommunity:richTextInline",
-          "id" : "b306f5a6-9d34-4799-8a58-22cb725924ab",
+          "id" : "343a59ea-4a7f-475b-a650-ab7e4c7cf8df",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "12a20ac7-2c47-48cc-82e1-3635cc8df5bc",
+        "id" : "7d8f7d2b-be85-4936-8de2-e27d6d0cb716",
         "regionLabel" : "Chatter",
         "regionName" : "1",
         "renditionMap" : { },
@@ -140,7 +140,7 @@
             "width" : "MEDIUM"
           },
           "componentName" : "forceCommunity:feedPublisher",
-          "id" : "baec2b39-58b6-491e-9ed5-8afc135409b9",
+          "id" : "449910d7-aa5c-4beb-8c55-575d59e7ee0f",
           "renditionMap" : { },
           "type" : "component"
         }, {
@@ -155,11 +155,11 @@
             "type" : "Record"
           },
           "componentName" : "forceCommunity:forceCommunityFeed",
-          "id" : "969da8c2-ba3a-4dae-ad19-1839b37c9960",
+          "id" : "00ab456f-5a2a-4d9b-96bd-2f4915b9bc91",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "da5bb0a3-b6da-401a-91c5-571f760f4930",
+        "id" : "7f9ec89a-6c4e-4b1a-a19f-d831e18fe37d",
         "regionLabel" : "Chatter Messages",
         "regionName" : "2",
         "renditionMap" : { },
@@ -220,5 +220,5 @@
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "detail-a85"
+  "viewType" : "detail-a9Y"
 }

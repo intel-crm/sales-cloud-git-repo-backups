@@ -5,14 +5,6 @@
   "id" : "8832008c-aa8d-4c6e-9c91-c1581ca04ed0",
   "label" : "Record List",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:psg_quoteRequestButtonCmp",
-      "id" : "e35c03a3-8a46-4040-88a9-225fe7b9cf6b",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "2e043f1b-c394-4284-bd91-d2d46b89192b",
     "regionName" : "header",
     "type" : "region"

@@ -7,6 +7,11 @@
   "mainAppPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
   "preferredDomain" : "none",
   "selfRegistrationRouteId" : "db8ac738-08a3-4e8c-97c9-02da660babe5",
+  "trustedSitesForIFrame" : [ {
+    "id" : "d5c115a3-e69e-487f-94b0-7cb24eb01ebb",
+    "trustedDomainsForInlineFrames" : [ ],
+    "type" : "trustedSitesForIFrame"
+  } ],
   "trustedSitesForScript" : [ {
     "id" : "179863bc-54d5-4a25-b6cd-fdcf81a7b06a",
     "isActive" : true,
@@ -23,7 +28,19 @@
     "id" : "4224544d-d6b8-43fe-a68c-a3cb314c1fb9",
     "isActive" : true,
     "trustedSiteName" : "LiveAgent",
-    "trustedSiteUrl" : "https://d.la4-c1cs-dfw.salesforceliveagent.com/chat/rest/",
+    "trustedSiteUrl" : "https://d.la2-c1cs-ia6.salesforceliveagent.com/chat/rest/",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "d8521deb-16db-4c24-9c3e-3008a655eb0c",
+    "isActive" : true,
+    "trustedSiteName" : "https://service.force.com/embeddedservic",
+    "trustedSiteUrl" : "https://service.force.com/embeddedservice/5.0/esw.min.js",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "39addeef-dd01-4383-90c9-dbcfb230e1c4",
+    "isActive" : true,
+    "trustedSiteName" : "chatbot",
+    "trustedSiteUrl" : "https://c.la2-c1cs-ia6.salesforceliveagent.com/content/g/js/57.0/deployment.js",
     "type" : "trustedSitesForScripts"
   } ],
   "type" : "site"

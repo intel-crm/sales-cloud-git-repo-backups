@@ -20,15 +20,6 @@
       "renderPriority" : "HIGHEST",
       "renditionMap" : { },
       "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "richTextValue" : "<p style=\"text-align: center;\"><strong style=\"font-size: 12px; color: rgb(230, 0, 0);\">Important Note for Altera/PSG Distributors Only : There is a planned system upgrade starting Jul 17-28. During this time, you will be able to view your open transactions but will not be able to create or modify transactions. The new system will be available to you on July 28 and you will receive an email with the new URL and instructions. Our apologies for any inconvenience and thank you for your patience.</strong></p>"
-      },
-      "componentName" : "forceCommunity:richTextInline",
-      "id" : "1f3dd10f-2d42-40ec-a219-082a17fb62ca",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
     } ],
     "id" : "33d96db2-2dfd-49df-bdda-15989c4937cc",
     "regionName" : "header",
@@ -37,7 +28,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:psg_quoteRequestButtonCmp",
-      "id" : "65f968f3-0064-4905-8237-89606720f7e1",
+      "id" : "40ae9f3c-be20-49f7-b9da-5448b1f92fb0",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

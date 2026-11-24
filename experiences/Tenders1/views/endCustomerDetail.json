@@ -1,0 +1,65 @@
+{
+  "appPageId" : "2cfd7824-526d-4e0e-aead-7bebe0e75bca",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "d96a5563-7d08-4c2d-a407-b6dcd6a5c096",
+  "label" : "End Customer Detail",
+  "regions" : [ {
+    "id" : "1b33a5d1-acd1-4b13-895e-243d990473b8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "427453eb-629b-4fcf-a922-bb3fa6710fcc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "none",
+        "tab3Type" : "none",
+        "tab4Type" : "none",
+        "timelineTabLabel" : ""
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "3470298c-a9a2-4dd3-a043-4fba8421fc60",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a9da2176-6b7c-4702-8335-52802aae6c48",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "594c4fad-d046-45a2-bf8a-a12032eb9034",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "a0fa8ae7-82d2-4c31-bef4-7e62b425938e",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5c750a26-1d30-4b10-9e9c-189bcbfcce73",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-aAj"
+}
