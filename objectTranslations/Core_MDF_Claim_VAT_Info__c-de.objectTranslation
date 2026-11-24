@@ -137,7 +137,7 @@
         <name>Core_MDF_VAT_Amt__c</name>
     </fields>
     <fields>
-        <label><!-- VAT Cancellation Comment --></label>
+        <label>Kommentar zur Mehrwertsteuerstornierung</label>
         <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>

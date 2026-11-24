@@ -360,7 +360,7 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Claim Cancellation Reason --></label>
+        <label>Причина отмены требования</label>
         <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
     </fields>
     <fields>

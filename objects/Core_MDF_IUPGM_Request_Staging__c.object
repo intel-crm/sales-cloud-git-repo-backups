@@ -744,6 +744,12 @@
                     <default>false</default>
                     <label>COPY</label>
                 </value>
+                <value>
+                    <fullName>LIST_ACCESS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>LIST_ACCESS</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

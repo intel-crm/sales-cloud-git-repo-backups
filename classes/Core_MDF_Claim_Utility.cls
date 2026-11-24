@@ -1577,11 +1577,11 @@ Modified By:        Date:       Changes:
                         if(channelProgramToCountriesMap.get(channelProgram).contains(bankCountry)){   
                             //ATHR - Deeply Nested if 16209
                             //if(!pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c){pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = true; } 
-                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = !pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c;
+                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = true; //19451 Prod Defect fix
                             
                         }else{
                             //if(pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c){pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = false;}
-                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = !pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c;
+                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = false; //19451 Prod Defect fix
                             if(pfc.Core_MDF_Bank_Doc_Hold_Ind__c && pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold')){listOfClaims.add(pfc);}
                             
                         }          

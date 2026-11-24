@@ -12432,6 +12432,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerMarketingBudget.Core_MDF_Co_Marketing_ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerMarketingBudget.Core_MDF_Co_Selling_ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerMarketingBudget.Core_MDF_CreatedBy_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -12458,6 +12468,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerMarketingBudget.Core_MDF_Program_Nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerMarketingBudget.Core_MDF_Revenue_Segment_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

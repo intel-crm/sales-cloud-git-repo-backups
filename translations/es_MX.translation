@@ -6653,19 +6653,19 @@ b.Si se solicita el reembolso de costos no adjudicados: informe detallado emitid
         <name>Core_MDF_Cancel_Claim_Yes</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Seleccione el &quot;Desglose de pago&quot; para el que desea cancelar el IVA.</label>
         <name>Core_MDF_Cancel_Outcome_Vat_Msg</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Cancelar IVA</label>
         <name>Core_MDF_Cancel_VAT</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>¿Está seguro de que desea cancelar la retención del IVA?</label>
         <name>Core_MDF_Cancel_VAT_Body</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Solo el remitente de la reclamación puede cancelar el IVA.</label>
         <name>Core_MDF_Cancel_VAT_Claim_Submitter_Only</name>
     </customLabels>
     <customLabels>
@@ -6909,7 +6909,7 @@ d.Cantidad de apariciones en película, admisiones e impresiones entregadas</lab
         <name>Core_MDF_ClaimBatchRecRetryLimit</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Motivo de cancelación de la reclamación</label>
         <name>Core_MDF_ClaimCancellationReason</name>
     </customLabels>
     <customLabels>
@@ -7237,7 +7237,7 @@ d.Cantidad de apariciones en película, admisiones e impresiones entregadas</lab
         <name>Core_MDF_Claim_ID_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Cancelar el IVA no está disponible: esta reclamación no está sujeta al IVA.</label>
         <name>Core_MDF_Claim_Not_On_VAT_Hold</name>
     </customLabels>
     <customLabels>
@@ -8225,7 +8225,7 @@ b.Para versiones digitales: URL, costo unitario y cantidad de alojamiento/coloca
         <name>Core_MDF_DocumentUploadDisabledMessage</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Estado del documento</label>
         <name>Core_MDF_Document_Status</name>
     </customLabels>
     <customLabels>
@@ -9665,7 +9665,7 @@ b.Para versiones digitales: URL, costo unitario y cantidad de alojamiento/coloca
         <name>Core_MDF_Hold_Status</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Esta reclamación está actualmente en espera. Cancelarla también cancelará todos los elementos del desglose de pagos.</label>
         <name>Core_MDF_Hold_Super_Claim_Cancel_Warning</name>
     </customLabels>
     <customLabels>
@@ -13576,7 +13576,7 @@ d.Para patrocinio: nombre del programa, cantidad de menciones</label>
         <name>Core_MDF_Requested_Reimbursement_Amount_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Monto solicitado (USD)</label>
         <name>Core_MDF_Requested_Reimbursement_Amt</name>
     </customLabels>
     <customLabels>
@@ -14100,7 +14100,7 @@ d.Para patrocinio: nombre del programa, cantidad de menciones</label>
         <name>Core_MDF_Select_One_Pri_Intel_Owner</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Seleccione al menos un desglose de pago para continuar.</label>
         <name>Core_MDF_Select_Payment_Breakdown</name>
     </customLabels>
     <customLabels>
@@ -15125,7 +15125,7 @@ a.ubicación o plataforma en línea, fecha y cantidad de participantes</label>
         <name>Core_MDF_VAT_Auto_Reject_Message</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>El flujo de trabajo del IVA se canceló correctamente.</label>
         <name>Core_MDF_VAT_Cancel_Success</name>
     </customLabels>
     <customLabels>

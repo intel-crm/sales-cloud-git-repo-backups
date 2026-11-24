@@ -101,7 +101,7 @@
         <name>Core_MDF_VAT_Amt__c</name>
     </fields>
     <fields>
-        <label><!-- VAT Cancellation Comment --></label>
+        <label>增值稅註銷備註</label>
         <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>

@@ -6653,19 +6653,19 @@ b.Se chiede il rimborso per i costi non premiati: report dettagliato emesso da u
         <name>Core_MDF_Cancel_Claim_Yes</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Seleziona il &quot;Dettaglio del pagamento&quot; per cui desideri annullare l&apos;IVA.</label>
         <name>Core_MDF_Cancel_Outcome_Vat_Msg</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Annulla IVA</label>
         <name>Core_MDF_Cancel_VAT</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Sei sicuro di voler annullare il blocco IVA?</label>
         <name>Core_MDF_Cancel_VAT_Body</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Solo il Presentatore della Richiesta può annullare l&apos;IVA.</label>
         <name>Core_MDF_Cancel_VAT_Claim_Submitter_Only</name>
     </customLabels>
     <customLabels>
@@ -6909,7 +6909,7 @@ d.Numero di proiezioni del film, di ingressi e di impressioni</label>
         <name>Core_MDF_ClaimBatchRecRetryLimit</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Motivo di annullamento del reclamo</label>
         <name>Core_MDF_ClaimCancellationReason</name>
     </customLabels>
     <customLabels>
@@ -7239,7 +7239,7 @@ Tutte le attività &lt;u&gt;devono&lt;/u&gt; essere rivendicate all&apos;interno
         <name>Core_MDF_Claim_ID_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Annulla IVA non è disponibile: questa richiesta non è soggetta a IVA.</label>
         <name>Core_MDF_Claim_Not_On_VAT_Hold</name>
     </customLabels>
     <customLabels>
@@ -8227,7 +8227,7 @@ b.Per le versioni digitali: URL, costo e quantità dell&apos;unità di hosting/p
         <name>Core_MDF_DocumentUploadDisabledMessage</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Stato del documento</label>
         <name>Core_MDF_Document_Status</name>
     </customLabels>
     <customLabels>
@@ -9667,7 +9667,7 @@ b.Per le versioni digitali: URL, costo e quantità dell&apos;unità di hosting/p
         <name>Core_MDF_Hold_Status</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Questo reclamo è attualmente in sospeso. Annullarlo annullerà anche tutte le voci della ripartizione dei pagamenti.</label>
         <name>Core_MDF_Hold_Super_Claim_Cancel_Warning</name>
     </customLabels>
     <customLabels>
@@ -13578,7 +13578,7 @@ d.Per la sponsorizzazione: nome del programma, numero di menzioni</label>
         <name>Core_MDF_Requested_Reimbursement_Amount_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Importo richiesto (USD)</label>
         <name>Core_MDF_Requested_Reimbursement_Amt</name>
     </customLabels>
     <customLabels>
@@ -14102,7 +14102,7 @@ d.Per la sponsorizzazione: nome del programma, numero di menzioni</label>
         <name>Core_MDF_Select_One_Pri_Intel_Owner</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Seleziona almeno una ripartizione di pagamento per continuare.</label>
         <name>Core_MDF_Select_Payment_Breakdown</name>
     </customLabels>
     <customLabels>
@@ -15127,7 +15127,7 @@ a.location o piattaforma online, data e numero di partecipanti</label>
         <name>Core_MDF_VAT_Auto_Reject_Message</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Il flusso IVA è stato annullato con successo.</label>
         <name>Core_MDF_VAT_Cancel_Success</name>
     </customLabels>
     <customLabels>

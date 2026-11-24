@@ -6653,19 +6653,19 @@ b.비보상 비용의 배상을 원하는 경우: 회원 또는 제3자가 발�
         <name>Core_MDF_Cancel_Claim_Yes</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VAT를 취소하려는 &quot;Payment Breakdown&quot;을 선택하세요.</label>
         <name>Core_MDF_Cancel_Outcome_Vat_Msg</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>부가가치세 취소</label>
         <name>Core_MDF_Cancel_VAT</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VAT 보류를 취소하시겠습니까?</label>
         <name>Core_MDF_Cancel_VAT_Body</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VAT는 청구 제출자만 취소할 수 있습니다.</label>
         <name>Core_MDF_Cancel_VAT_Claim_Submitter_Only</name>
     </customLabels>
     <customLabels>
@@ -6909,7 +6909,7 @@ d.전달된 영화 상영, 입장 및 노출 횟수</label>
         <name>Core_MDF_ClaimBatchRecRetryLimit</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>청구 취소 사유</label>
         <name>Core_MDF_ClaimCancellationReason</name>
     </customLabels>
     <customLabels>
@@ -7238,7 +7238,7 @@ d.전달된 영화 상영, 입장 및 노출 횟수</label>
         <name>Core_MDF_Claim_ID_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VAT 취소는 사용할 수 없습니다: 이 청구는 VAT 대상이 아닙니다.</label>
         <name>Core_MDF_Claim_Not_On_VAT_Hold</name>
     </customLabels>
     <customLabels>
@@ -8226,7 +8226,7 @@ b.디지털 버전: URL, 호스팅/배치 단위 비용 및 수량</label>
         <name>Core_MDF_DocumentUploadDisabledMessage</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>문서 상태</label>
         <name>Core_MDF_Document_Status</name>
     </customLabels>
     <customLabels>
@@ -9666,7 +9666,7 @@ b.디지털 버전: URL, 호스팅/배치 단위 비용 및 수량</label>
         <name>Core_MDF_Hold_Status</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>이 청구는 현재 보류 상태입니다. 이를 취소하면 모든 지급 내역 항목도 함께 취소됩니다.</label>
         <name>Core_MDF_Hold_Super_Claim_Cancel_Warning</name>
     </customLabels>
     <customLabels>
@@ -13577,7 +13577,7 @@ d.스폰서십: 프로그램 이름, 언급 횟수</label>
         <name>Core_MDF_Requested_Reimbursement_Amount_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>요청 금액 (USD)</label>
         <name>Core_MDF_Requested_Reimbursement_Amt</name>
     </customLabels>
     <customLabels>
@@ -14101,7 +14101,7 @@ d.스폰서십: 프로그램 이름, 언급 횟수</label>
         <name>Core_MDF_Select_One_Pri_Intel_Owner</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>계속하려면 최소 하나의 결제 내역을 선택하세요.</label>
         <name>Core_MDF_Select_Payment_Breakdown</name>
     </customLabels>
     <customLabels>
@@ -15126,7 +15126,7 @@ a.위치 또는 온라인 플랫폼, 날짜 및 참석자 수</label>
         <name>Core_MDF_VAT_Auto_Reject_Message</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VAT 워크플로가 성공적으로 취소되었습니다.</label>
         <name>Core_MDF_VAT_Cancel_Success</name>
     </customLabels>
     <customLabels>

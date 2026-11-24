@@ -6653,19 +6653,19 @@ b.賞品以外の費用の払戻しを求める場合は、メンバーまたは
         <name>Core_MDF_Cancel_Claim_Yes</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VATを取り消したい「支払い内訳」を選択してください。</label>
         <name>Core_MDF_Cancel_Outcome_Vat_Msg</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VATをキャンセル</label>
         <name>Core_MDF_Cancel_VAT</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VAT保留をキャンセルしてもよろしいですか？</label>
         <name>Core_MDF_Cancel_VAT_Body</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VATを取り消すことができるのは、申請者のみです。</label>
         <name>Core_MDF_Cancel_VAT_Claim_Submitter_Only</name>
     </customLabels>
     <customLabels>
@@ -6909,7 +6909,7 @@ d.映画上映回数、動員数、インプレッション数</label>
         <name>Core_MDF_ClaimBatchRecRetryLimit</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>請求のキャンセル理由</label>
         <name>Core_MDF_ClaimCancellationReason</name>
     </customLabels>
     <customLabels>
@@ -7237,7 +7237,7 @@ d.映画上映回数、動員数、インプレッション数</label>
         <name>Core_MDF_Claim_ID_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VATの取消はできません: この請求はVATの対象ではありません。</label>
         <name>Core_MDF_Claim_Not_On_VAT_Hold</name>
     </customLabels>
     <customLabels>
@@ -8225,7 +8225,7 @@ b.デジタルバージョンの場合は、URL、ホスティング / 広告掲
         <name>Core_MDF_DocumentUploadDisabledMessage</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>ドキュメントのステータス</label>
         <name>Core_MDF_Document_Status</name>
     </customLabels>
     <customLabels>
@@ -9665,7 +9665,7 @@ b.デジタルバージョンの場合は、URL、ホスティング / 広告掲
         <name>Core_MDF_Hold_Status</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>この請求は現在保留中です。キャンセルすると、すべての支払い内訳項目もキャンセルされます。</label>
         <name>Core_MDF_Hold_Super_Claim_Cancel_Warning</name>
     </customLabels>
     <customLabels>
@@ -13576,7 +13576,7 @@ d.スポンサーシップの場合は、プログラム名、コメント数を
         <name>Core_MDF_Requested_Reimbursement_Amount_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>要求金額（USD）</label>
         <name>Core_MDF_Requested_Reimbursement_Amt</name>
     </customLabels>
     <customLabels>
@@ -14100,7 +14100,7 @@ d.スポンサーシップの場合は、プログラム名、コメント数を
         <name>Core_MDF_Select_One_Pri_Intel_Owner</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>続行するには、少なくとも1つの支払い内訳を選択してください。</label>
         <name>Core_MDF_Select_Payment_Breakdown</name>
     </customLabels>
     <customLabels>
@@ -15125,7 +15125,7 @@ a.場所またはオンライン・プラットフォーム、日付および参
         <name>Core_MDF_VAT_Auto_Reject_Message</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>VAT ワークフローは正常にキャンセルされました。</label>
         <name>Core_MDF_VAT_Cancel_Success</name>
     </customLabels>
     <customLabels>

@@ -6652,19 +6652,19 @@ b.Bei Ansuchen um Erstattung nicht zugewiesener Kosten: nach Einzelposten aufges
         <name>Core_MDF_Cancel_Claim_Yes</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Wählen Sie die „Zahlungsübersicht“ aus, für die Sie die Mehrwertsteuer stornieren möchten</label>
         <name>Core_MDF_Cancel_Outcome_Vat_Msg</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Mehrwertsteuer stornieren</label>
         <name>Core_MDF_Cancel_VAT</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Sind Sie sicher, dass Sie die Mehrwertsteuer-Sperre aufheben möchten?</label>
         <name>Core_MDF_Cancel_VAT_Body</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Nur der Anspruchseinreicher kann die Mehrwertsteuer stornieren.</label>
         <name>Core_MDF_Cancel_VAT_Claim_Submitter_Only</name>
     </customLabels>
     <customLabels>
@@ -6908,7 +6908,7 @@ d.Anzahl der Filmvorführungen, Besucher und erzielten Impressions</label>
         <name>Core_MDF_ClaimBatchRecRetryLimit</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Grund für die Stornierung der Forderung</label>
         <name>Core_MDF_ClaimCancellationReason</name>
     </customLabels>
     <customLabels>
@@ -7238,7 +7238,7 @@ Alle Anträge &lt;u&gt;müssen&lt;/u&gt; im RMF-Tool mit allen oben genannten PO
         <name>Core_MDF_Claim_ID_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Stornierung der Mehrwertsteuer ist nicht verfügbar: dieser Anspruch unterliegt nicht der Mehrwertsteuer.</label>
         <name>Core_MDF_Claim_Not_On_VAT_Hold</name>
     </customLabels>
     <customLabels>
@@ -8226,7 +8226,7 @@ b.Für digitale Versionen: URL, Stückkosten für Hosting/Schaltung und Anzahl</
         <name>Core_MDF_DocumentUploadDisabledMessage</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Dokumentstatus</label>
         <name>Core_MDF_Document_Status</name>
     </customLabels>
     <customLabels>
@@ -9666,7 +9666,7 @@ b.Für digitale Versionen: URL, Stückkosten für Hosting/Schaltung und Anzahl</
         <name>Core_MDF_Hold_Status</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Dieser Anspruch ist derzeit ausgesetzt. Eine Stornierung führt auch zur Stornierung aller Zahlungsaufschlüsselungsposten.</label>
         <name>Core_MDF_Hold_Super_Claim_Cancel_Warning</name>
     </customLabels>
     <customLabels>
@@ -13577,7 +13577,7 @@ d.Für Sponsorship: Programmname, Anzahl der Erwähnungen</label>
         <name>Core_MDF_Requested_Reimbursement_Amount_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Beantragter Betrag (USD)</label>
         <name>Core_MDF_Requested_Reimbursement_Amt</name>
     </customLabels>
     <customLabels>
@@ -14101,7 +14101,7 @@ d.Für Sponsorship: Programmname, Anzahl der Erwähnungen</label>
         <name>Core_MDF_Select_One_Pri_Intel_Owner</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Bitte wählen Sie mindestens eine Zahlungsaufstellung aus, um fortzufahren.</label>
         <name>Core_MDF_Select_Payment_Breakdown</name>
     </customLabels>
     <customLabels>
@@ -15126,7 +15126,7 @@ a.Ort oder Online-Plattform, Datum und Anzahl der Teilnehmer</label>
         <name>Core_MDF_VAT_Auto_Reject_Message</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Der Mehrwertsteuer-Workflow wurde erfolgreich storniert.</label>
         <name>Core_MDF_VAT_Cancel_Success</name>
     </customLabels>
     <customLabels>

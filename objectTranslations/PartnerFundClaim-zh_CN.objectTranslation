@@ -261,7 +261,7 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Claim Cancellation Reason --></label>
+        <label>索赔取消原因</label>
         <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
     </fields>
     <fields>

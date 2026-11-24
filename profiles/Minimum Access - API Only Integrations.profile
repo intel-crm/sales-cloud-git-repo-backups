@@ -43279,26 +43279,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Core_MDF_BankProgram_Entitlement_Mapping__mdt.Core_MDF_Bank_Program_Name__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BankProgram_Entitlement_Mapping__mdt.Core_MDF_Channel_Program__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BankProgram_Entitlement_Mapping__mdt.Core_MDF_Entitlement_Name__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BankProgram_Entitlement_Mapping__mdt.Core_MDF_Permission_Set_Name__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Core_MDF_Bank__c.Core_MDF_AP_SYS_CD__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -43810,46 +43790,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Batch_Scheduler__c.Scheduled_Time_Dt__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BudgetType_Benefit_Mapping__mdt.Core_MDF_Budget_Type__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BudgetType_Benefit_Mapping__mdt.Core_MDF_IsActive__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BudgetType_Benefit_Mapping__mdt.Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BudgetType_Benefit_Mapping__mdt.Core_MDF_Partner_Benefit__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BudgetType_Benefit_Mapping__mdt.Core_MDF_Program_Nm__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BudgetType_Benefit_Mapping__mdt.Core_MDF_RecordType__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BudgetType_Benefit_Mapping__mdt.Core_MDF_Record_Developer_Nm__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_BudgetType_Benefit_Mapping__mdt.Core_MDF_Reimbursement_Rate__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -44870,66 +44810,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_ChannelProgram__mdt.Geo_Based_Sharing_Required__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_Activity_Close_Days__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_Budget_Cap_RecType_DevName_Txt__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_Channel_Program_txt__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_ClaimStage_RecordType_txt__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_Claim_Activity_Name_Swap_Ind__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_Enable_Fund_Reservation_chk__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_External_Master_Group_Name_Txt__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_Internal_Master_Group_Name_Txt__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_POP_Mandatory_Ind__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_Region_cd__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_isProgramBased_Ind__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_ClaimActAllocRecTypeMapping__mdt.Core_MDF_isProposalBased__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -49100,66 +48980,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_PFRCustomPicklist__c.Core_MDF_Technology__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_Activity_Category__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_Activity_Types__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_Amount_Operator__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_Country_Picklist_Value__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_Day_Difference__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_Days_Difference_Operator__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_Days_Difference__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_Error_Message__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_PFR_RecordType_Id__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_PFR_RecordType__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_PFR_StartDate__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_PFR_Event_Rule__mdt.Core_MDF_Requested_Amount__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
