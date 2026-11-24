@@ -3371,7 +3371,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Intermediate_Budget__c</field>
+            <field>Core_MDF_Intermediate_Budget_ind__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
         <masterLabel>Budgets</masterLabel>

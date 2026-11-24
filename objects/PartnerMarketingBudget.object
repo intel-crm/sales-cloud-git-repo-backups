@@ -879,7 +879,7 @@ Amount= Amount - Budget_Reduction_Amount</description>
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_MDF_Intermediate_Budget__c</fullName>
+        <fullName>Core_MDF_Intermediate_Budget_ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Intermediate Budget</label>
         <trackFeedHistory>false</trackFeedHistory>

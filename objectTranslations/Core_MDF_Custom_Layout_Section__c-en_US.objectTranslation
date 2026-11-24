@@ -60,6 +60,10 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
             <translation><!-- API List View --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>API Picklist</masterLabel>
+            <translation><!-- API Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>API Update</masterLabel>
             <translation><!-- API Update --></translation>
         </picklistValues>

@@ -47,7 +47,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Intermediate_Budget__c</field>
+                <field>Core_MDF_Intermediate_Budget_ind__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

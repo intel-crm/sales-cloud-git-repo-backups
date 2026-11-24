@@ -22,7 +22,7 @@ public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<
     private Map<Id, DateTime> parentIdToLatestHistoryDateMap = new Map<Id, DateTime>();
 
     // Roshan - TWC3117-18808
-    private Boolean isHistoricalRun = false;
+    /*private Boolean isHistoricalRun = false;
     private Integer activityOutcomesForUpdate = 0;
     private Integer campaignOutcomesForUpdate = 0;
     private Integer recordsUpdated = 0;
@@ -32,7 +32,7 @@ public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<
 
     public Core_MDF_UpdateOutBasedCampAttrBatch(Boolean isHistoricalRun) {
         this.isHistoricalRun = isHistoricalRun == true;
-    }
+    }*/
 
     private class ClaimAttriutesWrapper {
         Id parentId;
@@ -45,11 +45,11 @@ public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<
     public Iterable<SObject> start(Database.BatchableContext bc) {
 
         // Roshan - TWC3117-18808
-        // DateTime oneWeekAgo = Date.today().addDays(-7);
-        // DateTime oneYearAgo = System.now().addYears(-1);
-        DateTime minDate = DateTime.newInstanceGmt(2015, 1, 1);
+        DateTime oneWeekAgo = Date.today().addDays(-7);
+        DateTime oneYearAgo = System.now().addYears(-1);
+        /*DateTime minDate = DateTime.newInstanceGmt(2015, 1, 1);
         DateTime oneWeekAgo = isHistoricalRun ? minDate : Date.today().addDays(-7);
-        DateTime oneYearAgo = isHistoricalRun ? minDate : System.now().addYears(-1);
+        DateTime oneYearAgo = isHistoricalRun ? minDate : System.now().addYears(-1);*/
 
         // Field history (PartnerFundClaimHistory) records cannot be created in Apex test context,
         // so in tests drive the batch using the related claim records directly. This lets
@@ -108,22 +108,22 @@ public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<
                 }
             }
         }
-        activityOutcomesForUpdate += outcomesToUpdate.size();
-        campaignOutcomesForUpdate += campaignOutcomesToUpdate.size();
+        /*activityOutcomesForUpdate += outcomesToUpdate.size();
+        campaignOutcomesForUpdate += campaignOutcomesToUpdate.size();*/
 
-        if (!isHistoricalRun) {
+        /*if (!isHistoricalRun) {*/
             if (!outcomesToUpdate.isEmpty()) {
-                try { countResults(Database.update(outcomesToUpdate, false)); } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+                try { /*countResults(*/Database.update(outcomesToUpdate, false/*)*/); } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
             }
             if (!campaignOutcomesToUpdate.isEmpty()) {
-                try { countResults(Database.update(campaignOutcomesToUpdate, false)); } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
-            }
+                try { /*countResults(*/Database.update(campaignOutcomesToUpdate, false/*)*/); } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
+            /*}
         }
-    }
+    }*/
 
-    private void countResults(List<Database.SaveResult> results) {
+    /*private void countResults(List<Database.SaveResult> results) {
         for (Database.SaveResult result : results) {
-            if (result.isSuccess()) { recordsUpdated++; } else { recordsFailed++; }
+            if (result.isSuccess()) { recordsUpdated++; } else { recordsFailed++; }*/
         }
     }
 
@@ -173,8 +173,8 @@ public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<
     }
 
     // Roshan - TWC3117-18808 
-    public void finish(Database.BatchableContext bc) {
-        if (isHistoricalRun) { sendCompletionEmail(bc.getJobId()); }
+    public void finish(Database.BatchableContext bc) {}
+        /*if (isHistoricalRun) { sendCompletionEmail(bc.getJobId()); }
     }
 
     private void sendCompletionEmail(Id jobId) {
@@ -199,5 +199,5 @@ public class Core_MDF_UpdateOutBasedCampAttrBatch implements Database.Batchable<
         } catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
         }
-    }
+    }*/
 }

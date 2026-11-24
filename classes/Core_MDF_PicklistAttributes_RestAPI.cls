@@ -50,10 +50,12 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     private static final String CTRL_FLD_API = 'Core_MDF_Controlling_Field_nm__c';
     private static final String CTRL_FLD_BUDGET_TYPE = 'Budget Type';
     private static final String CTRL_FLD_FOCUS_AREA = 'Focus Area';
+    private static final String LAYOUT_CFG_OBJECT = 'Core_MDF_Custom_Picklist__c';
+    private static final String LAYOUT_CFG_USER_TYPE = 'External User';
+    private static Map<String, Set<String>> layoutCfgFldsByProg = new Map<String, Set<String>>();
     private static Map<String, Schema.SObjectType> sObjectType = new Map<String, Schema.SObjectType>();
     private static Map<String, Schema.DescribeSObjectResult> sObjectDescribe = new Map<String, Schema.DescribeSObjectResult>();
     private static Map<String, Map<String, Schema.SObjectField>> fieldMap = new Map<String, Map<String, Schema.SObjectField>>();
-    private static Map<String, Map<String, Schema.FieldSet>> fieldSetMap = new Map<String, Map<String, Schema.FieldSet>>();
     private static Map<String, Schema.DescribeFieldResult> fieldDescribe = new Map<String, Schema.DescribeFieldResult>();
     private static Map<String, Map<String, Schema.RecordTypeInfo>> recTypeByDevName = new Map<String, Map<String, Schema.RecordTypeInfo>>();
     private static Boolean progRecTypeMapLoaded = false;
@@ -93,17 +95,6 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             fieldMap.put(objApiName, describe == null ? null : describe.fields.getMap());
         }
         return fieldMap.get(objApiName);
-    }
-    private static Map<String, Schema.FieldSet> getFldSetMap(String objApiName) {
-        if (String.isBlank(objApiName)) {
-            return null;
-        }
-        if (!fieldSetMap.containsKey(objApiName)) {
-            Schema.DescribeSObjectResult describe = getSObjectDescribe(objApiName);
-            Map<String, Schema.FieldSet> fieldSet = (describe == null || describe.fieldSets == null) ? null : describe.fieldSets.getMap();
-            fieldSetMap.put(objApiName, fieldSet);
-        }
-        return fieldSetMap.get(objApiName);
     }
     private static Schema.DescribeFieldResult getFldDesc(String objApiName, String fldApiName) {
         if (String.isBlank(objApiName) || String.isBlank(fldApiName)) {
@@ -322,6 +313,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             Map<String, Object> mergedDepsByFld = new Map<String, Object>();
             boolean ctrlValProvided = !String.isBlank(ctrlFldVal);
             boolean foundResultsForCtrlVal = false;
+            Set<String> configuredFldApiNames = getConfiguredFldApiNm(canonicalProg);
             for (String rtDevName : rtDevNames) {
                 RecTypePicklistResult recTypeResult = getRecTypeEnabledPicklstVal(rtDevName, ctrlFldVal, useFieldLabels, canonicalProg);
                 Map<String, List<String>> recTypeVal = recTypeResult.valuesByField;
@@ -329,7 +321,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                     continue;
                 }
                 foundResultsForCtrlVal = true;
-                Set<String> allowedFldApiNames = getFldApiNmFromFldSet('Core_MDF_Custom_Picklist__c', rtDevName);
+                Set<String> allowedFldApiNames = configuredFldApiNames;
                 recTypeVal = filterValByAllowedFlds(recTypeVal, allowedFldApiNames);
                 // The controlling field is surfaced as controllingField and the dependentValues keys instead.
                 recTypeVal.remove(CTRL_FLD_API);
@@ -355,7 +347,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             getFldApiFromDepMdt(fldApiNames, mergedDepsByFld);
             // An empty label map keeps API names as keys when fielddisplay=technicalname.
             Map<String, String> attrFldLabels = useFieldLabels ? getFldLabels(fldApiNames) : new Map<String, String>();
-            Object attributesPayload = rtDevNames.size() > 1 ? injectDepIntoAttrByRecType(attrsByRt, depsByRt, attrFldLabels) : injectDepIntoAttr(data, mergedDepsByFld, attrFldLabels);
+            Object attributesPayload = rtDevNames.size() > 1 ? injectDepIntoAttrByRecType(attrsByRt, depsByRt, attrFldLabels, ctrlValProvided) : injectDepIntoAttr(data, mergedDepsByFld, attrFldLabels, ctrlValProvided);
             Core_MDF_Campaign_APIResponse apiRes = new Core_MDF_Campaign_APIResponse();
             Map<String, Object> respDetails = new Map<String, Object>();
             respDetails.put('programName', canonicalProg);
@@ -1074,46 +1066,51 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         }
     }    
     /****************************************************************
-* Method Name: getFldApiNmFromFldSet
-* Parameters: String objectApi, String recTypeDevNm
-* Description: Loads all fieldsets mapped to a record type and returns the union of field API names across them.
+* Method Name: getConfiguredFldApiNm
+* Parameters: String progNm
+* Description: Returns the picklist field API names configured for the program in Core_MDF_Custom_Layout_Configurations__c (object Core_MDF_Custom_Picklist__c, Record Type Name = program name). Unknown fields are ignored.
 *****************************************************************/
-    private static Set<String> getFldApiNmFromFldSet(String objectApi, String recTypeDevNm) {
-        Set<String> allowedFldApi = new Set<String>();
-        if (String.isBlank(objectApi) || String.isBlank(recTypeDevNm)) {
-            return allowedFldApi;
+    private static Set<String> getConfiguredFldApiNm(String progNm) {
+        Set<String> fldApiNames = new Set<String>();
+        if (String.isBlank(progNm)) {
+            return fldApiNames;
         }
-        Map<String, Schema.FieldSet> fieldSetMap = getFldSetMap(objectApi);
-        if (fieldSetMap == null || fieldSetMap.isEmpty()) {
-            return allowedFldApi;
-        }        
-        List<Core_MDF_RecordType_FieldSet_Mapping__mdt> mappings = [SELECT Core_MDF_Field_Set_API_Name_nm__c FROM Core_MDF_RecordType_FieldSet_Mapping__mdt WHERE Core_MDF_Object_API_Name_nm__c = :objectApi AND Core_MDF_Record_Type_DeveloperName_nm__c = :recTypeDevNm];
-        for (Core_MDF_RecordType_FieldSet_Mapping__mdt rec : mappings) {
-            String fieldSetApi = rec.Core_MDF_Field_Set_API_Name_nm__c;
-            if (String.isBlank(fieldSetApi) || !fieldSetMap.containsKey(fieldSetApi)) {
-                continue;
-            }            
-            for (Schema.FieldSetMember fieldSetMember : fieldSetMap.get(fieldSetApi).getFields()) {
-                String fieldPath = fieldSetMember.getFieldPath();
-                if (!String.isBlank(fieldPath)) {
-                    allowedFldApi.add(fieldPath);
+        if (layoutCfgFldsByProg.containsKey(progNm)) {
+            return layoutCfgFldsByProg.get(progNm);
+        }
+        try {
+            Map<String, Schema.SObjectField> objFields = getFieldMap(LAYOUT_CFG_OBJECT);
+            for (Core_MDF_Custom_Layout_Configurations__c cfg : [
+                SELECT Core_MDF_Field_API_Name_txt__c
+                FROM Core_MDF_Custom_Layout_Configurations__c
+                WHERE Core_MDF_Object_API_Name_txt__c = :LAYOUT_CFG_OBJECT
+                AND Core_MDF_Record_Type_Name_txt__c = :progNm
+                AND Core_MDF_User_Type_nm__c = :LAYOUT_CFG_USER_TYPE
+                AND API_Visibility__c = true
+                AND Core_MDF_Active_Ind__c = true
+                AND Core_MDF_Section_id__r.Core_MDF_Field_View_nm__c ='API Picklist'
+            ]) {
+                String cfgFldApi = String.isBlank(cfg.Core_MDF_Field_API_Name_txt__c) ? null : cfg.Core_MDF_Field_API_Name_txt__c.trim();
+                if (cfgFldApi != null && objFields != null && objFields.containsKey(cfgFldApi)) {
+                    // Describe returns the canonical casing, which the UI API payload keys use.
+                    fldApiNames.add(objFields.get(cfgFldApi).getDescribe().getName());
                 }
             }
+        } catch (Exception ex) {
+            Core_MDF_CCP_UtilityClass.logError(ex);
         }
-        return allowedFldApi;
-    }    
+        layoutCfgFldsByProg.put(progNm, fldApiNames);
+        return fldApiNames;
+    }
     /****************************************************************
 * Method Name: filterValByAllowedFlds
 * Parameters: Map<String, List<String>> recTypeVal, Set<String> allowedFldApi
-* Description: Keeps only picklist fields that are included in the mapped fieldset union.
+* Description: Keeps only picklist fields included in the configuration.
 *****************************************************************/
     private static Map<String, List<String>> filterValByAllowedFlds(Map<String, List<String>> recTypeVal, Set<String> allowedFldApi) {
         Map<String, List<String>> filteredValues = new Map<String, List<String>>();
-        if (recTypeVal == null || recTypeVal.isEmpty()) {
+        if (recTypeVal == null || recTypeVal.isEmpty() || allowedFldApi == null || allowedFldApi.isEmpty()) {
             return filteredValues;
-        }
-        if (allowedFldApi == null || allowedFldApi.isEmpty()) {
-            return recTypeVal;
         }
         for (String fieldApiName : recTypeVal.keySet()) {
             if (allowedFldApi.contains(fieldApiName)) {
@@ -2212,10 +2209,10 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     }
     /****************************************************************
 * Method Name: injectDepIntoAttr
-* Parameters: Map<String, List<String>> attributesByFld, Map<String, Object> dependenciesByFld, Map<String, String> fldLabels
+* Parameters: Map<String, List<String>> attributesByFld, Map<String, Object> dependenciesByFld, Map<String, String> fldLabels, Boolean ctrlValProvided
 * Description: Shapes attributes keyed by field label (or API name when no label is supplied) with technicalName always holding the field API name; dependentOn is omitted when the controlling field is the Budget Type / Focus Area.
 *****************************************************************/
-    private static Map<String, Object> injectDepIntoAttr(Map<String, List<String>> attributesByFld, Map<String, Object> dependenciesByFld, Map<String, String> fldLabels) {
+    private static Map<String, Object> injectDepIntoAttr(Map<String, List<String>> attributesByFld, Map<String, Object> dependenciesByFld, Map<String, String> fldLabels, Boolean ctrlValProvided) {
         Map<String, Object> attributes = new Map<String, Object>();
         if (attributesByFld == null || attributesByFld.isEmpty()) {
             return attributes;
@@ -2231,6 +2228,8 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                 String dependentOnApi = String.valueOf(depMeta.get('dependentOn'));
                 if (!CTRL_FLD_API.equalsIgnoreCase(dependentOnApi)) {
                     fieldDetails.put('dependentOn', fldLabels.containsKey(dependentOnApi) ? fldLabels.get(dependentOnApi) : dependentOnApi);
+                } else if (ctrlValProvided) {
+                    fieldDetails.remove('values');
                 }
                 fieldDetails.put('dependentValues', sortMapKeysAscending((Map<String, Object>) depMeta.get('dependentValues')));
             }
@@ -2244,10 +2243,10 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     }
     /****************************************************************
 * Method Name: injectDepIntoAttrByRecType
-* Parameters: Map<String, Object> attributesByRecType, Map<String, Object> dependenciesByRecType, Map<String, String> fldLabels
+* Parameters: Map<String, Object> attributesByRecType, Map<String, Object> dependenciesByRecType, Map<String, String> fldLabels, Boolean ctrlValProvided
 * Description: Applies attribute shaping independently for each record type response branch.
 *****************************************************************/
-    private static Map<String, Object> injectDepIntoAttrByRecType(Map<String, Object> attributesByRecType, Map<String, Object> dependenciesByRecType, Map<String, String> fldLabels) {
+    private static Map<String, Object> injectDepIntoAttrByRecType(Map<String, Object> attributesByRecType, Map<String, Object> dependenciesByRecType, Map<String, String> fldLabels, Boolean ctrlValProvided) {
         Map<String, Object> enrichedByRecordType = new Map<String, Object>();
         if (attributesByRecType == null || attributesByRecType.isEmpty()) {
             return enrichedByRecordType;
@@ -2257,7 +2256,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             Map<String, Object> deps = (dependenciesByRecType != null && dependenciesByRecType.containsKey(recordTypeName))
                 ? (Map<String, Object>) dependenciesByRecType.get(recordTypeName)
                 : new Map<String, Object>();
-            enrichedByRecordType.put(recordTypeName, injectDepIntoAttr(attrs, deps, fldLabels));
+            enrichedByRecordType.put(recordTypeName, injectDepIntoAttr(attrs, deps, fldLabels, ctrlValProvided));
         }
         return enrichedByRecordType;
     }

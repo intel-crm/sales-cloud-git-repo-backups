@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
-    <commaSeparatedProfile>Core Integration,System Administrator</commaSeparatedProfile>
+    <commaSeparatedProfile>System Administrator,Core Integration</commaSeparatedProfile>
     <externalClientApplication>CDB_Agent_Connected_App</externalClientApplication>
     <ipRelaxationPolicyType>Bypass</ipRelaxationPolicyType>
     <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>

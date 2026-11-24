@@ -259,6 +259,11 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
                     <default>false</default>
                     <label>API List View</label>
                 </value>
+                <value>
+                    <fullName>API Picklist</fullName>
+                    <default>false</default>
+                    <label>API Picklist</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

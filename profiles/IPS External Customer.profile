@@ -48438,7 +48438,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PartnerMarketingBudget.Core_MDF_Intermediate_Budget__c</field>
+        <field>PartnerMarketingBudget.Core_MDF_Intermediate_Budget_ind__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -725,6 +725,8 @@ public with sharing class Core_MDF_PartnerFundRequestCreatePage{
                 EndDate = endDate,
                 Core_MDF_Budget_Partner__c = accountId,
                 Core_MDF_Program__c = coInvProgram.Id,
+                Core_MDF_Intermediate_Budget_ind__c = true,
+                Core_MDF_Budget_Status__c = 'Released',
                 RecordTypeId = coInvRecordTypeId
             );
             Core_MDF_PMBServiceHandler.bypassCoInvBudgetAccessCheck = true;
@@ -3187,6 +3189,7 @@ public static List<Map<String, Object>> fetchAvailableBudgetsForType(String budg
                 FROM PartnerMarketingBudget 
                 WHERE Core_MDF_Budget_Type_Txt__c = :budgetType 
                 AND Core_MDF_Budget_Partner__c = :accountId
+                AND Core_MDF_Intermediate_Budget_ind__c  = false
                 AND StartDate <= :endDateObj
                 AND EndDate >= :startDateObj
                 ORDER BY Title
