@@ -142,8 +142,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Date_Submitted_for_Approval__c</dateColumn>
-        <endDate>2026-11-23</endDate>
+        <endDate>2026-11-24</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-23</startDate>
+        <startDate>2026-11-24</startDate>
     </timeFrameFilter>
 </Report>

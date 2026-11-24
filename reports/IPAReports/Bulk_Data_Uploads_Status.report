@@ -86,9 +86,9 @@
         <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
             <dateColumn>PRM_Account_Contact_Relationship__c$PRM_Activated_Date__c</dateColumn>
-            <endDate>2026-11-23</endDate>
+            <endDate>2026-11-24</endDate>
             <interval>INTERVAL_CUSTOM</interval>
-            <startDate>2026-11-23</startDate>
+            <startDate>2026-11-24</startDate>
         </timeFrameFilter>
     </block>
     <block>
