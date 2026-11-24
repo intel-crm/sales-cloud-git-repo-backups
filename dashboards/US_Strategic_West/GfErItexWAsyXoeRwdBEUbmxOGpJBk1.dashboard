@@ -125,10 +125,11 @@
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
                         <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
+                        <sortColumn>s!TOTAL_PRICE</sortColumn>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>

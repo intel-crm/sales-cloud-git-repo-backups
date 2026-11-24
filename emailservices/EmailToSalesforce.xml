@@ -313,11 +313,39 @@
         <runAsUser>12140816@intel.com.crm</runAsUser>
     </emailServicesAddresses>
     <emailServicesAddresses>
+        <authorizedSenders>atul.ahuja@intel.com</authorizedSenders>
+        <developerName>emailtosalesforce1037</developerName>
+        <isActive>true</isActive>
+        <localPart>emailtosalesforce</localPart>
+        <runAsUser>12362337@intel.com.crm</runAsUser>
+    </emailServicesAddresses>
+    <emailServicesAddresses>
+        <authorizedSenders>jon.c.petersen@intel.com</authorizedSenders>
+        <developerName>emailtosalesforce1038</developerName>
+        <isActive>true</isActive>
+        <localPart>emailtosalesforce</localPart>
+        <runAsUser>10701036@intel.com.crm</runAsUser>
+    </emailServicesAddresses>
+    <emailServicesAddresses>
+        <authorizedSenders>wojciech.bosek@intel.com</authorizedSenders>
+        <developerName>emailtosalesforce1039</developerName>
+        <isActive>true</isActive>
+        <localPart>emailtosalesforce</localPart>
+        <runAsUser>11278659@intel.com.crm</runAsUser>
+    </emailServicesAddresses>
+    <emailServicesAddresses>
         <authorizedSenders>viniciusx.caldeira@intel.com</authorizedSenders>
         <developerName>emailtosalesforce104</developerName>
         <isActive>true</isActive>
         <localPart>emailtosalesforce</localPart>
         <runAsUser>11837122@intel.com.crm</runAsUser>
+    </emailServicesAddresses>
+    <emailServicesAddresses>
+        <authorizedSenders>philip.c.king@intel.com</authorizedSenders>
+        <developerName>emailtosalesforce1040</developerName>
+        <isActive>true</isActive>
+        <localPart>emailtosalesforce</localPart>
+        <runAsUser>10656010@intel.com.crm</runAsUser>
     </emailServicesAddresses>
     <emailServicesAddresses>
         <authorizedSenders>douglas.geisler@intel.com</authorizedSenders>

@@ -120,7 +120,7 @@
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
                 <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
+                <groupingColumn>ACCOUNT_NAME</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -129,7 +129,8 @@
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
-                        <sortOrder>d</sortOrder>
+                        <sortColumn>s!TOTAL_PRICE</sortColumn>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
                 <header>27 Pipeline</header>

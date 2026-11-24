@@ -85,6 +85,13 @@
             <operator>equals</operator>
             <value>Opportunity.Core_Deal_Opportunity,Opportunity.Core_Design_Opportunity</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Approved_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>9/27/2026 12:00 AM</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>

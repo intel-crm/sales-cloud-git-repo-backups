@@ -6709,6 +6709,10 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <recordType>PRM_IPA_Affiliation__c.Partner_Account_Group_Affiliation</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <recordType>PRM_Message__c.PRM_Adhoc</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
