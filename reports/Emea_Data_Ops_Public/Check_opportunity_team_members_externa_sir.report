@@ -53,7 +53,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA</value>
+            <value>,APJ,ASMO,EMEA,PRC</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Coverage_Nm__c</column>

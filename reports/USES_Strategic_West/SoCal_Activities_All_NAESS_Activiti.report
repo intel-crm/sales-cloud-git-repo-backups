@@ -33,7 +33,7 @@
         <scale>2</scale>
     </customDetailFormulas>
     <filter>
-        <booleanFilter>1 AND (2 OR 3) AND 4 AND 5</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3) AND 4 AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <column>Activity.Core_Subtype_of_Activity__c</column>
             <columnToColumn>false</columnToColumn>
@@ -68,6 +68,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
             <value>NEXT_N_DAYS:60</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Dell,HPi,HPe,HP,Supermicro,Lenovo,Hewlet</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

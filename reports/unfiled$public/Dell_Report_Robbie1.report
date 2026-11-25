@@ -139,7 +139,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c.SBQQ__LineItems__r$CreatedDate</dateColumn>
-        <endDate>2026-11-18</endDate>
+        <endDate>2026-11-24</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2025-01-01</startDate>
     </timeFrameFilter>

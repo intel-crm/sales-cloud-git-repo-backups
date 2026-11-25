@@ -110,7 +110,7 @@
         <field>OpportunityLineItem.Core_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>HPC 25-27 (Tagged and mentioned) by Qtr</name>
+    <name>HPC 25-30 (Tagged and mentioned) by Qtr</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -134,7 +134,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2027-12-31</endDate>
+        <endDate>2030-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2025-01-01</startDate>
     </timeFrameFilter>

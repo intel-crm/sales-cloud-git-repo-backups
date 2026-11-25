@@ -111,7 +111,7 @@
         <field>PRODUCT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>HPC 25-27 By product</name>
+    <name>HPC 25-30 By product</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -137,7 +137,7 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2027-12-31</endDate>
+        <endDate>2030-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2025-01-01</startDate>
     </timeFrameFilter>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
     <clientCredentialsFlowUser>11637316@intel.com.crm</clientCredentialsFlowUser>
-    <commaSeparatedPermissionSet>One_AI_VITA,Ask_a_Question,PMP_Internal_Intel_Read_Only,MSTeamsIntegration</commaSeparatedPermissionSet>
+    <commaSeparatedPermissionSet>One_AI_VITA,Ask_a_Question,MSTeamsIntegration,PMP_Internal_Intel_Read_Only</commaSeparatedPermissionSet>
     <commaSeparatedProfile>IPS Support Org Admin</commaSeparatedProfile>
     <externalClientApplication>Keren_App</externalClientApplication>
     <ipRelaxationPolicyType>Enforce</ipRelaxationPolicyType>

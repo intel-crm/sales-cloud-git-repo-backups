@@ -348,6 +348,13 @@
         <runAsUser>10656010@intel.com.crm</runAsUser>
     </emailServicesAddresses>
     <emailServicesAddresses>
+        <authorizedSenders>melanie.yan@intel.com</authorizedSenders>
+        <developerName>emailtosalesforce1041</developerName>
+        <isActive>true</isActive>
+        <localPart>emailtosalesforce</localPart>
+        <runAsUser>10684468@intel.com.crm</runAsUser>
+    </emailServicesAddresses>
+    <emailServicesAddresses>
         <authorizedSenders>douglas.geisler@intel.com</authorizedSenders>
         <developerName>emailtosalesforce105</developerName>
         <isActive>true</isActive>

@@ -106759,6 +106759,16 @@
         <startAddress>2.23.80.0</startAddress>
     </loginIpRanges>
     <loginIpRanges>
+        <description>Rox</description>
+        <endAddress>3.12.195.193</endAddress>
+        <startAddress>3.12.195.193</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Rox</description>
+        <endAddress>3.128.77.212</endAddress>
+        <startAddress>3.128.77.212</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
         <description>Groove&amp;apos;s</description>
         <endAddress>3.208.245.190</endAddress>
         <startAddress>3.208.245.190</startAddress>
@@ -106781,6 +106791,11 @@
     <loginIpRanges>
         <endAddress>13.110.74.8</endAddress>
         <startAddress>13.110.74.8</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Rox</description>
+        <endAddress>18.219.150.237</endAddress>
+        <startAddress>18.219.150.237</startAddress>
     </loginIpRanges>
     <loginIpRanges>
         <description>Copado USA</description>
@@ -106831,6 +106846,11 @@
         <description>Copado NA</description>
         <endAddress>34.73.251.138</endAddress>
         <startAddress>34.73.251.138</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Fivetran</description>
+        <endAddress>34.85.252.27</endAddress>
+        <startAddress>34.85.252.27</startAddress>
     </loginIpRanges>
     <loginIpRanges>
         <endAddress>34.90.11.138</endAddress>
@@ -106886,6 +106906,11 @@
         <description>Copado USA</description>
         <endAddress>35.174.57.133</endAddress>
         <startAddress>35.174.57.133</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Fivetran</description>
+        <endAddress>35.197.105.90</endAddress>
+        <startAddress>35.197.105.90</startAddress>
     </loginIpRanges>
     <loginIpRanges>
         <endAddress>35.234.89.246</endAddress>
@@ -107109,6 +107134,16 @@
         <description>Haifa, Israel</description>
         <endAddress>134.191.233.222</endAddress>
         <startAddress>134.191.233.193</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Fivetran</description>
+        <endAddress>136.107.62.143</endAddress>
+        <startAddress>136.107.62.136</startAddress>
+    </loginIpRanges>
+    <loginIpRanges>
+        <description>Fivetran</description>
+        <endAddress>136.118.115.31</endAddress>
+        <startAddress>136.118.115.24</startAddress>
     </loginIpRanges>
     <loginIpRanges>
         <description>AKAMAI</description>
