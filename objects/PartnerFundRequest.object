@@ -44870,6 +44870,10 @@ TEXT(MONTH( Core_MDF_End_Date__c )) &amp;&quot;/&quot;&amp; TEXT(DAY(Core_MDF_En
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial Evo %28non-vPro%29</fullName>
                 <default>false</default>
             </values>
@@ -45066,6 +45070,10 @@ TEXT(MONTH( Core_MDF_End_Date__c )) &amp;&quot;/&quot;&amp; TEXT(DAY(Core_MDF_En
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -45139,6 +45147,14 @@ TEXT(MONTH( Core_MDF_End_Date__c )) &amp;&quot;/&quot;&amp; TEXT(DAY(Core_MDF_En
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
