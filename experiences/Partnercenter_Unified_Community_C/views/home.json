@@ -122,6 +122,22 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
+        "richTextValue" : "<div \n  data-marketing-studio-carousel \n  data-collection=\"my-actual-collection\">\n</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "ba2981d8-0e7b-4a39-b822-da9c61926c06",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:marketingStudioCarousel",
+      "id" : "0941555d-0201-441d-9d92-47140f35ca1e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
         "project" : "CCP",
         "type" : "Community Home"
       },
@@ -259,7 +275,9 @@
       "renditionMap" : { },
       "type" : "component"
     }, {
-      "componentAttributes" : { },
+      "componentAttributes" : {
+        "pageName" : "Home"
+      },
       "componentName" : "c:core_MDF_SiteAdobeAnalyticsSupport",
       "id" : "14131b6f-a069-47c4-9344-4cc2b647b8c1",
       "renderPriority" : "NEUTRAL",

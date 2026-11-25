@@ -23,6 +23,7 @@
       "type" : "component"
     }, {
       "componentAttributes" : {
+        "controllingObj" : "Campaign",
         "fieldAPIName" : "Core_MDF_Proposal_Based_Ind__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Claim_Id__c,Core_MDF_Has_Sub_Claims_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Campaign_Id__c",
         "isCompactLayout" : "Yes",
         "objAPIName" : "PartnerFundClaim"
@@ -308,7 +309,9 @@
     "type" : "region"
   }, {
     "components" : [ {
-      "componentAttributes" : { },
+      "componentAttributes" : {
+        "pageName" : "Claim Detail Page"
+      },
       "componentName" : "c:core_MDF_SiteAdobeAnalyticsSupport",
       "id" : "a9d31117-ddb0-457e-a0ca-1bd2d3496add",
       "renderPriority" : "NEUTRAL",

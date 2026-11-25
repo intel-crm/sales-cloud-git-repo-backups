@@ -5,7 +5,7 @@
  * Description     : Validates Partner Fund Claims and prepares batch records.
  */
 
-@RestResource(urlMapping='/v1.0/partnercenter/claims/create/*')
+@RestResource(urlMapping='/v1.0/partnercenter/claims/batch/create/*')
 global without sharing class Core_MDF_PFC_RestAPI {
     private static final Integer MAX_CLAIMS_PER_REQUEST = Core_MDF_PFC_APIUtil.MAX_CLAIMS_PER_REQUEST;
     private static final Map<String, Schema.SObjectField> STAGE_FIELDS = Core_MDF_Claim_Batch_Stage__c.SObjectType.getDescribe().fields.getMap();

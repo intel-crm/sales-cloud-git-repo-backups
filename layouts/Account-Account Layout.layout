@@ -608,6 +608,10 @@
         <fields>NAME</fields>
         <relatedList>Core_MDF_Partner_Group_Mapping__c.Core_MDF_Virtual_Corp_nm__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>IPATestObject__c.AccountId__c</relatedList>
+    </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>true</runAssignmentRulesDefault>
     <showEmailCheckbox>false</showEmailCheckbox>

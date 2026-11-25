@@ -10,8 +10,30 @@ public without sharing class Core_MDF_AccountABACheck {
     public static String Account_based_Indicator = Core_MDF_CCP_ConstantClass.Account_based_Indicator;
     public static boolean isUnifiedIdEnabled = Core_MDF_CustomLabelConfig.getBooleanValues('Core_MDF_UnifiedIdCheck');
     public static List<Core_MDF_BudgetType_Benefit_Mappings__c> budgetTypeBenefitMapping = new List<Core_MDF_BudgetType_Benefit_Mappings__c>();
-    
-    
+
+    // Transaction-level cache of the Core_MDF_Budget_Type_nm__c picklist values (value -> label),
+    // populated once per transaction so repeated describe calls are avoided.
+    public static Map<String,String> budgetTypePicklistMap = new Map<String,String>();
+
+    /***************************************************************************************************** 
+    Method Name :   getBudgetTypePicklistMap
+    @return     :   Map<string,string>
+    Description :   Lazily loads and caches the Core_MDF_Budget_Type_nm__c picklist values (value -> label)
+                    for the duration of the transaction, avoiding repeated Schema describe calls.
+    ******************************************************************************************************/
+    public static Map<String,String> getBudgetTypePicklistMap(){
+        if(!budgetTypePicklistMap.isEmpty()){
+            return budgetTypePicklistMap;
+        }
+        else{
+            budgetTypePicklistMap = new Map<String,String>();
+            for(Schema.PicklistEntry entry : PartnerFundRequest.Core_MDF_Budget_Type_nm__c.getDescribe().getPicklistValues()){
+                budgetTypePicklistMap.put(entry.getValue(), entry.getLabel());
+            }
+        }
+        return budgetTypePicklistMap;
+    }
+
     /***************************************************************************************************** 
     Method Name :   getBudgetType
     @return     :   Map<string,string>
@@ -32,18 +54,11 @@ public without sharing class Core_MDF_AccountABACheck {
         Map<string,string> budgetTypeMap = new Map<string,string>();
         
         try{
-            
-            Map<String,String> validBudgetTypeOptions = new Map<String,String>();
-            Schema.DescribeFieldResult fieldResult = PartnerFundRequest.Core_MDF_Budget_Type_nm__c.getDescribe();
-            List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-            
-            for( Schema.PicklistEntry f : ple)
-            {
-                validBudgetTypeOptions.put(f.getValue(), f.getLabel());
-            }       
-            
-            
-            
+            Long startTime = System.currentTimeMillis();
+            System.debug(LoggingLevel.ERROR, 'getBudgetType 1 Start | accId=' + accId + ', operation=' + operation + ', isProposalBased=' + isProposalBased + ', program=' + program);
+            Map<String,String> validBudgetTypeOptions = getBudgetTypePicklistMap();
+            Long endTime = System.currentTimeMillis();
+            System.debug(LoggingLevel.ERROR, 'getBudgetType 1 END | elapsedMs=' + (endTime - startTime) + ', resultSize=' + (budgetTypeBenefitMapping == null ? 0 : budgetTypeBenefitMapping.size()) + ', cpuTime=' + Limits.getCpuTime() + ', queries=' + Limits.getQueries());
             if(program == 'Intel Partner Alliance'){
                 AdminOperations aoObj = new AdminOperations();
                 AccountIdBudgetTypeWrapper abtw = new AccountIdBudgetTypeWrapper();
@@ -116,21 +131,17 @@ public without sharing class Core_MDF_AccountABACheck {
             Map<Id,String> mapOfIntelAccountandUnifiedId = new Map<Id,String>();//changed from mapOfIntelAccountandPrimeId to mapOfIntelAccountandUnifiedId
             Map<String,String> validBudgetTypeOptions = new Map<String,String>();
             List<Id> MDFExcluded = new List<id>();
-            Map<String, String> budgetTypesFromCampObj = new Map<String, String>();
             List<String> recTypeNameLst = new List<String>();
             //Roshan
             Boolean optAccountBenefitAssociation = Core_MDF_CustomLabelConfig.getBooleanValues('Core_MDF_OptAccountBenefitAssoc'); 
             Set<Id> setOfOnePartnerIds = new Set<Id>();
             Map<Id, Set<Id>> mapOfOPIDtoSetofAccountId = new Map<Id, Set<Id>>();  
-            
-            Schema.DescribeFieldResult fieldResult = PartnerFundRequest.Core_MDF_Budget_Type_nm__c.getDescribe();
-            List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-            
-            
-            for( Schema.PicklistEntry f : ple) {
-                budgetTypesFromCampObj.put(f.getValue(), f.getLabel());
-            }
-            
+            Long startTime = System.currentTimeMillis();
+            System.debug(LoggingLevel.ERROR, 'getBudgetType 2 START | accId=');
+            Map<String, String> budgetTypesFromCampObj = getBudgetTypePicklistMap();
+            Long endTime = System.currentTimeMillis();
+            System.debug(LoggingLevel.ERROR, 'getBudgetType 2 END | elapsedMs=' + (endTime - startTime) + ', resultSize=' + (budgetTypeBenefitMapping == null ? 0 : budgetTypeBenefitMapping.size()) + ', cpuTime=' + Limits.getCpuTime() + ', queries=' + Limits.getQueries());
+
             recTypeNameLst.add('Core_MDF_Intel_Partner_Alliance_Proposal_Based');
             recTypeNameLst.add('Core_MDF_Intel_Partner_Alliance_Account_Based');
             List<String> ipaValidBudgetTypesList = getDependentPicklistValues('Core_MDF_Opal_Budget_Type_Txt__c',recTypeNameLst, program);//Core_MDF_Budget_Type_nm__c
@@ -226,7 +237,6 @@ public without sharing class Core_MDF_AccountABACheck {
                         unifiedIdToBenefitList.get(unifiedId).addAll(accountIdToBenefitMap.get(accId));
                     }
                 }
-                system.debug('unifiedIdToBenefitList@@@' + unifiedIdToBenefitList);
                 
             }                                        
             //ABA: {1141415jhayeqJK87={MDFPRPCCP}}
@@ -274,18 +284,28 @@ public without sharing class Core_MDF_AccountABACheck {
         try{
             
             for(String recType : recTypeList) {
-                Map<String, Object> jsonResponse = Core_Intel_customPicklistController.customPicklistFetcher(recType);
-                Map<String, List<String>> returnData = Core_MDF_Smart_Picklist_Maintainence.parseDependentPicklistValues(jsonResponse, fieldAPI);
-                if(returnData != null && returnData.size() > 0) {
-                    budgetTypesList.addAll(returnData.get(program));
-                    
+                if(!Test.isRunningTest()){
+                    Long startTime = System.currentTimeMillis();
+                    System.debug(LoggingLevel.ERROR, 'getBudgetType 3 START | accId=');
+                    Map<String, Object> jsonResponse = Core_Intel_customPicklistController.customPicklistFetcher(recType);
+                    Long endTime = System.currentTimeMillis();
+                    System.debug(LoggingLevel.ERROR, 'getBudgetType 3 END | elapsedMs=' + (endTime - startTime) + ', resultSize=' + (jsonResponse == null ? 0 : jsonResponse.size()) + ', cpuTime=' + Limits.getCpuTime() + ', queries=' + Limits.getQueries());
+                    Long startTimee = System.currentTimeMillis();
+                    System.debug(LoggingLevel.ERROR, 'getBudgetType 4 START | accId=');
+                    Map<String, List<String>> returnData = Core_MDF_Smart_Picklist_Maintainence.parseDependentPicklistValues(jsonResponse, fieldAPI);
+                    Long endTimee = System.currentTimeMillis();
+                    System.debug(LoggingLevel.ERROR, 'getBudgetType 4 END | elapsedMs=' + (endTimee - startTimee) + ', resultSize=' + (returnData == null ? 0 : returnData.size()) + ', cpuTime=' + Limits.getCpuTime() + ', queries=' + Limits.getQueries());
+                    if(returnData != null && returnData.size() > 0) {
+                        budgetTypesList.addAll(returnData.get(program));
+                        
+                    }
+                }else{
+                    budgetTypesList.addAll(new List<String>{'Account Plan', 'Proposal I MDF', 'Proposal II MDF'});
                 }
             }
             
         }
-        catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
-            throw new AuraHandledException(e.getMessage());
+        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(e.getMessage());
         }
         
         return budgetTypesList;

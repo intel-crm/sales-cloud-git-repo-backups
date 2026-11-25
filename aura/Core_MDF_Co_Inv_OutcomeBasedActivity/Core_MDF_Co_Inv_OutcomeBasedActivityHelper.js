@@ -2144,7 +2144,7 @@
 
                 // Create the associated Co-Inv Partner Marketing Budget record
                 if (component.get("v.mode") !== "edit") {
-                    self.createCoInvPartnerMarketingBudget(component, newPFR);
+                    self.createCoInvPartnerMarketingBudget(component, newPFR, response.getReturnValue());
                 }
 
                 if (isSaveAndNew) {
@@ -2206,7 +2206,7 @@
     // ═══════════════════════════════════════════════════════════════
     // CREATE CO-INV PARTNER MARKETING BUDGET (post PFR save)
     // ═══════════════════════════════════════════════════════════════
-    createCoInvPartnerMarketingBudget: function (component, newPFR) {
+    createCoInvPartnerMarketingBudget: function (component, newPFR, pfrId) {
         var self = this;
         var accountId = component.get("v.selectedAccount.Id");
         var maxIntelAmount = parseFloat(
@@ -2224,7 +2224,8 @@
             amount: maxIntelAmount,
             startDate: newPFR.Core_MDF_Start_Date__c,
             endDate: newPFR.Core_MDF_End_Date__c,
-            accountNodeAllocations: accountNodeAllocations
+            accountNodeAllocations: accountNodeAllocations,
+            pfrId: pfrId
         });
 
         action.setCallback(this, function (response) {

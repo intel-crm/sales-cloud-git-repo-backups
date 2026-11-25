@@ -5491,6 +5491,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_PFC_CreateAPI</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_PFC_HoldCheck</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -26092,6 +26096,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_MDF_Budget_Type_Dependency__mdt.Core_MDF_Budget_Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Budget_Type_Dependency__mdt.Core_MDF_IsActive__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Budget_Type_Dependency__mdt.Core_MDF_Program_Nm__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_MDF_BulkClaimConfiguration__mdt.Core_MDF_Active__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -40327,6 +40346,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>IPATestObject__c.AccountId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Idea.Attachment</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -52580,6 +52604,9 @@
         <recordType>Core_MDF_Batch_Request_and_Update_Log__c.Core_MDF_Process_Entitlement</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Core_MDF_Budget_Type_Dependency__mdt-Budget Type Dependency Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Core_MDF_CCP_Custom_Metadata_Utility__c-Generic Meta Data Config Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -52742,6 +52769,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>FlowRecordVersionOccurrence-%5F%5FMISSING LABEL%5F%5F PropertyFile - val FlowRecordVersionOccurrence not found in section StandardLayouts</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>IPATestObject__c-IPATestObject Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>PIC_Calculation_DNU__c-Sushma Test Layout</layout>
@@ -56139,6 +56169,10 @@
     <tabVisibilities>
         <tab>GridView_6QPS</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>IPATestObject__c</tab>
+        <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>IPA_Bulk_Clone</tab>

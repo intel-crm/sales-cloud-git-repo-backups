@@ -137,38 +137,32 @@ Added By    :   Accenture - NZ - 06/23/2021
     }
     
     public static void insertUserGroupMappingRecords(List<SObject> allRecords, Map<Id, Boolean> userToUpdateFlag) {
-        if (allRecords == null || allRecords.isEmpty()) {
-            return;
-        }
-        if (userToUpdateFlag == null) {
-            userToUpdateFlag = new Map<Id, Boolean>();
-        }
-
-        // Perform bulk upsert.
+        // 1. Bulk Upsert
         List<Database.UpsertResult> saveList = Database.upsert(allRecords, false);
-
-        // Database results maintain the same order as input records.
+        
+        // 2. Performance Optimization: Use SObjectType directly instead of String matching 
+        // and avoid calling .getDescribe().getName() inside the loop.
+        final Schema.SObjectType USER_TYPE = User.SObjectType;
+        
         for (Integer i = 0; i < saveList.size(); i++) {
             Database.UpsertResult sr = saveList[i];
-            // Get the original record to identify its actual object type.
+            
+            // Match the original record by index (the order of saveList matches allRecords)
             SObject originalRecord = allRecords[i];
-            // Process only User records.
-            if (originalRecord.getSObjectType() != USER_SOBJECT_TYPE) {
-                continue;
-            }
-            Boolean isSuccessful = sr.isSuccess();
-            // Successful upsert: use the ID returned by Salesforce.
-            // Failed update: use the original record ID.
-            Id userId = isSuccessful ? sr.getId(): originalRecord.Id;
-
-            // Failed inserts may not have an ID, so they cannot be
-            // associated with the User lookup field in the log object.
-            if (userId != null) {
-                userToUpdateFlag.put(userId, isSuccessful);
+            
+            // Only process if the original record is a User
+            if (originalRecord.getSObjectType() == USER_TYPE) {
+                if (sr.isSuccess()) {
+                    userToUpdateFlag.put(sr.getId(), true);
+                } else {
+                    // To preserve 100% original functionality, we capture the ID (which will be null 
+                    // for failed inserts) and put it into the map as false.
+                    userToUpdateFlag.put(originalRecord.Id, false);
+                }
             }
         }
-
-        // Create User Group Mapping log records.
+        
+        // 3. Chain to logging
         if (!userToUpdateFlag.isEmpty()) {
             insertUserGroupMappingRecords(userToUpdateFlag);
         }

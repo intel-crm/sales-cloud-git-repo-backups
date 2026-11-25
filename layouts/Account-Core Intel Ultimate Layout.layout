@@ -230,6 +230,10 @@
         <fields>CORE.USERS.LAST_NAME</fields>
         <relatedList>Account.Core_MDF_Virtual_Corp_Account_Id__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>IPATestObject__c.AccountId__c</relatedList>
+    </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

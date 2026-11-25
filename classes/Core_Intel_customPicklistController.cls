@@ -6,25 +6,10 @@ Modified By:                      Date:07/25/2018                     Changes:No
 ******************************************************************************************************/
 public with sharing class Core_Intel_customPicklistController {
 
-    // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
-    // Static cache added at class level — shared across all methods
-    private static Map<String, Schema.SObjectType> sObjectTypeCache = new Map<String, Schema.SObjectType>();
-
-    // Private helper replaces getGlobalDescribe() in all methods
-    private static Schema.SObjectType getSObjectTypeToken(String objectName) {
-        if (String.isBlank(objectName)) { return null; }
-        String key = objectName.toLowerCase();
-        if (!sObjectTypeCache.containsKey(key)) {
-            try {
-                Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
-                if (results != null && !results.isEmpty()) {
-                    sObjectTypeCache.put(key, results[0].getSObjectType());
-                }
-            } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); }
-        }
-        return sObjectTypeCache.containsKey(key) ? sObjectTypeCache.get(key) : null;
-    }
-
+    // Transaction-level cache of customPicklistFetcher responses keyed by recordTypeName,
+    // avoiding repeated HTTP callouts for the same record type within a transaction.
+    private static Map<String, Map<String, Object>> customPicklistCache = new Map<String, Map<String, Object>>();
+ 
     /***************************************************************************************************** 
     Method Name :   getselectOptions
     Description :   Custom method to get picklist values
@@ -63,8 +48,7 @@ public with sharing class Core_Intel_customPicklistController {
                     objectType = PartnerFundRequest.SObjectType;
                 }
                 else{
-                    // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
-                    objectType = getSObjectTypeToken(objObject);
+                    objectType = Schema.getGlobalDescribe().get(objObject);
                 }
                 Map<String, SObjectField> fieldMap = objectType.getDescribe().fields.getMap();
                 System.debug('fieldMap-----latest--->'+fieldMap);
@@ -129,6 +113,9 @@ public with sharing class Core_Intel_customPicklistController {
     
    public static Map<String, Object> customPicklistFetcher(string recordTypeName){
        system.debug('recordTypeName '+recordTypeName);
+       if(customPicklistCache.containsKey(recordTypeName)){
+           return customPicklistCache.get(recordTypeName);
+       }
        Schema.DescribeSObjectResult resSchema = Core_MDF_Custom_Picklist__c.sObjectType.getDescribe();
        Map<String,Schema.RecordTypeInfo>  recordTypeInfo = resSchema.getRecordTypeInfosByDeveloperName();
        Id devRecordTypeId = recordTypeInfo.get(recordTypeName).getRecordTypeId();
@@ -145,6 +132,7 @@ public with sharing class Core_Intel_customPicklistController {
        String strResponse = res.getBody();
        Map<String, Object> m =  (Map<String, Object>)JSON.deserializeUntyped(strResponse);
        system.debug('---m'+m);
+       customPicklistCache.put(recordTypeName, m);
        return m;     
     }
     
@@ -202,8 +190,7 @@ public with sharing class Core_Intel_customPicklistController {
             objectType = Core_MDF_Custom_Picklist__c.SObjectType;
         }
         when else {
-            // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
-            objectType = getSObjectTypeToken(objName);
+            objectType = Schema.getGlobalDescribe().get(objName);
         }
     }
 
@@ -228,14 +215,12 @@ public with sharing class Core_Intel_customPicklistController {
         }
         // Integer cpuTimeUsed = Limits.getCpuTime();
         // System.debug('CPU time used 2' + cpuTimeUsed + ' milliseconds');
-        system.debug('mapValueLabelFinial:'+mapValueLabel);
         return mapValueLabel;
     }
     
     @AuraEnabled
     public static Map<String,String> apitoLabelReferenceCampaign(String objName, List <String> pfrPiclistField ){
-        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
-        Schema.SObjectType objectType = getSObjectTypeToken(objName);
+        Schema.SObjectType objectType = Schema.getGlobalDescribe().get(objName);
         Map<String,String> mapValueLabel = new Map<String,String>();
         Map<String, SObjectField> fieldMap = objectType.getDescribe().fields.getMap();
         system.debug('mapValueLabel Campaign --- objName:  '+ objName);

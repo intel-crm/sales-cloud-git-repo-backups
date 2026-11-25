@@ -705,6 +705,8 @@ public with sharing class Core_MDF_PartnerFundRequestCreatePage{
                   accountNodeAllocations - Rows from the core_MDF_Outcome_Based_Acc_Node component
                   (each with accountId/percent/amount); a PartnerFundAllocation is created against the
                   new budget for every account row.
+                  pfrId - Super Activity (PartnerFundRequest) saved from the UI; it is linked to the new
+                  budget, and its Sub Activities are linked to the budget and the allocation of their account.
     Description : US - Creates a PartnerMarketingBudget record (Program & Record Type = Co-Inv) after a
                   Co-Inv Outcome Based Activity is saved, along with a PartnerFundAllocation per account
                   selected in the Account Node allocation grid.
@@ -712,7 +714,7 @@ public with sharing class Core_MDF_PartnerFundRequestCreatePage{
     @AuraEnabled
     public static Id createCoInvPartnerMarketingBudget(Id accountId, String budgetTitle, Decimal amount,
                                                          Date startDate, Date endDate,
-                                                         Object accountNodeAllocations) {
+                                                         Object accountNodeAllocations, Id pfrId) {
         try {
             ChannelProgram coInvProgram = [SELECT Id FROM ChannelProgram WHERE Name = 'Co-Inv' LIMIT 1];
             Id coInvRecordTypeId = Schema.SObjectType.PartnerMarketingBudget
@@ -736,6 +738,7 @@ public with sharing class Core_MDF_PartnerFundRequestCreatePage{
                 Core_MDF_PMBServiceHandler.bypassCoInvBudgetAccessCheck = false;
             }
 
+            Map<Id, Id> accountToAllocationMap = new Map<Id, Id>();
             if (accountNodeAllocations != null) {
                 List<Core_MDF_Outcome_Acc_Based_Activity.AccountAllocationWrapper> accountRows =
                     (List<Core_MDF_Outcome_Acc_Based_Activity.AccountAllocationWrapper>) JSON.deserialize(
@@ -757,13 +760,57 @@ public with sharing class Core_MDF_PartnerFundRequestCreatePage{
                 }
                 if (!allocationsToInsert.isEmpty()) {
                     insert allocationsToInsert;
+                    for (PartnerFundAllocation allocation : allocationsToInsert) {
+                        accountToAllocationMap.put(allocation.ChannelPartnerId, allocation.Id);
+                    }
                 }
+            }
+
+            if (pfrId != null) {
+                new CoInvActivityBudgetLinker().link(pfrId, pmb.Id, accountToAllocationMap);
             }
 
             return pmb.Id;
         } catch (Exception e) {
             Core_MDF_CCP_UtilityClass.logError(e);
             throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    /*****************************************************************************************************
+    Class Name  : CoInvActivityBudgetLinker
+    Description : Stamps the Co-Inv budget on the Super Activity and its Sub Activities, and the account's
+                  allocation on each Sub Activity. Runs without sharing since Sub Activities are owned by
+                  a bypass user and may not be editable by the logged-in user.
+    *****************************************************************************************************/
+    private without sharing class CoInvActivityBudgetLinker {
+        private void link(Id superActivityId, Id budgetId, Map<Id, Id> accountToAllocationMap) {
+            List<PartnerFundRequest> activitiesToUpdate = new List<PartnerFundRequest>();
+            for (PartnerFundRequest activity : [SELECT Id, ChannelPartnerId, BudgetId, AllocationId,
+                                                       Core_MDF_Activity_Level_nm__c
+                                                FROM PartnerFundRequest
+                                                WHERE Id = :superActivityId
+                                                OR (Core_MDF_Parent_Activity_Id__c = :superActivityId
+                                                    AND Core_MDF_Activity_Level_nm__c = :Core_MDF_CCP_ConstantClass.PFR_SUB_ACTIVITY
+                                                    AND Core_MDF_Fund_Request_Status__c != 'Cancelled')]) {
+                PartnerFundRequest toUpdate = new PartnerFundRequest(Id = activity.Id);
+                Boolean changed = false;
+                if (activity.BudgetId == null) {
+                    toUpdate.BudgetId = budgetId;
+                    changed = true;
+                }
+                if (activity.Id != superActivityId && activity.AllocationId == null
+                    && accountToAllocationMap.containsKey(activity.ChannelPartnerId)) {
+                    toUpdate.AllocationId = accountToAllocationMap.get(activity.ChannelPartnerId);
+                    changed = true;
+                }
+                if (changed) {
+                    activitiesToUpdate.add(toUpdate);
+                }
+            }
+            if (!activitiesToUpdate.isEmpty()) {
+                update activitiesToUpdate;
+            }
         }
     }
     /***************************************************************************************************** 

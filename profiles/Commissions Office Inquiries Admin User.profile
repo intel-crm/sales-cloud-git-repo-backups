@@ -5491,6 +5491,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_PFC_CreateAPI</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_PFC_HoldCheck</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -26092,6 +26096,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_MDF_Budget_Type_Dependency__mdt.Core_MDF_Budget_Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Budget_Type_Dependency__mdt.Core_MDF_IsActive__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Budget_Type_Dependency__mdt.Core_MDF_Program_Nm__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_MDF_BulkClaimConfiguration__mdt.Core_MDF_Active__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -40327,6 +40346,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>IPATestObject__c.AccountId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Idea.Attachment</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -53484,6 +53508,9 @@
         <layout>Core_MDF_Budget_Transfer_Log__c-Account Transfer Log Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Core_MDF_Budget_Type_Dependency__mdt-Budget Type Dependency Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Core_MDF_BulkClaimConfiguration__mdt-Core_MDF_BulkClaimConfiguration Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -54469,6 +54496,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>GridBuddy_Usage_Analytics__c-GridBuddy Usage Analytics Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>IPATestObject__c-IPATestObject Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Idea-Idea Layout</layout>
@@ -58670,6 +58700,10 @@
     <tabVisibilities>
         <tab>GridView_6QPS</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>IPATestObject__c</tab>
+        <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>IPA_Bulk_Clone</tab>

@@ -1078,13 +1078,14 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         if (layoutCfgFldsByProg.containsKey(progNm)) {
             return layoutCfgFldsByProg.get(progNm);
         }
+        String progNmLike = '%' + progNm + '%';
         try {
             Map<String, Schema.SObjectField> objFields = getFieldMap(LAYOUT_CFG_OBJECT);
             for (Core_MDF_Custom_Layout_Configurations__c cfg : [
                 SELECT Core_MDF_Field_API_Name_txt__c
                 FROM Core_MDF_Custom_Layout_Configurations__c
                 WHERE Core_MDF_Object_API_Name_txt__c = :LAYOUT_CFG_OBJECT
-                AND Core_MDF_Record_Type_Name_txt__c = :progNm
+                AND Core_MDF_Record_Type_Name_txt__c LIKE: progNmLike
                 AND Core_MDF_User_Type_nm__c = :LAYOUT_CFG_USER_TYPE
                 AND API_Visibility__c = true
                 AND Core_MDF_Active_Ind__c = true

@@ -1,0 +1,39 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "b5e7d2f7-7062-4215-8f0a-87e4d15fa4ae",
+  "label" : "__MISSING LABEL__ Flexipage_prm_view-actionplantemplate-relatedlist_title not found! Please add it to the correct section in sites.xml",
+  "regions" : [ {
+    "id" : "a16ee5b6-f7f7-435e-bf98-70026b2d2173",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "7168831f-23fd-4377-90ed-d1820f1bc6ee",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "68e568b7-4f97-452f-865c-e228a4cb6603",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e1154ec6-f144-4614-a260-29de96fee319",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-0PR"
+}

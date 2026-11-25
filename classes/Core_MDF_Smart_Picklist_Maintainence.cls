@@ -320,17 +320,19 @@ public static Map<String, List<String>> parseDependentPicklistValues(Map<String,
                 convertedCVmap.put(i,s);
         }
         List<Object> valuesList = (List<Object>)fldData.get('values');
+        // Parse validFor once per value instead of once per (controlling value x value) pair
+        List<String> valueNames = new List<String>();
+        List<Set<String>> validForSets = new List<Set<String>>();
+        for (Object valueObj : valuesList) {
+            Map<String, Object> valueMapObj = (Map<String, Object>) valueObj;
+            valueNames.add((String) valueMapObj.get('value'));
+            validForSets.add(new Set<String>((List<String>) JSON.deserialize(JSON.serialize(valueMapObj.get('validFor')), List<String>.class)));
+        }
         for(String s:convertedCVmap.keySet()){
             String controllingval = convertedCVmap.get(s);
-            for (Object valueObj : valuesList) {
-                Map<String, Object> valueMapObj = (Map<String, Object>) valueObj;
-                String label = (String) valueMapObj.get('label');
-                String value = (String) valueMapObj.get('value');
-                
-                Object validFor = (Object)valueMapObj.get('validFor');
-            
-                List<String> objAsStrings = (List<String>) JSON.deserialize(JSON.serialize(validFor), List<String>.class);
-                if(objAsStrings.contains(s)){
+            for (Integer idx = 0; idx < valueNames.size(); idx++) {
+                String value = valueNames[idx];
+                if(validForSets[idx].contains(s)){
                     if(fdvaluesmap.containskey(controllingval)){
                         fdvaluesmap.get(controllingval).add(value);
                         }
