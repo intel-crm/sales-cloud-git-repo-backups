@@ -81,7 +81,7 @@ public without sharing class Core_MDF_PartnerFundRequest_Utility {
     Added By:           SS - 06/17/2019
     Modified By:        Date:      Changes: 
     *******************************************************************************************************/
-    public static Map<Id,string> getOwnerLanguage( Set < Id > ownerIdSet)
+    /*public static Map<Id,string> getOwnerLanguage( Set < Id > ownerIdSet)
     {
         Map<Id,string> ownerIdLangLocaleMap = new Map<Id,string>();
         for(User ownerLang : [SELECT Id, LanguageLocaleKey
@@ -92,7 +92,7 @@ public without sharing class Core_MDF_PartnerFundRequest_Utility {
         }
         
         return ownerIdLangLocaleMap;
-    }
+    }*/
     /****************************************************************************************************** 
     Method Name:        getCCPRTNames
     @return  :          void

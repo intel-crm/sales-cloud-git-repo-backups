@@ -2,10 +2,10 @@
   "appPageId" : "b15e9917-f493-45ed-b1ab-63ce77cdadfa",
   "componentName" : "siteforce:dynamicLayout",
   "dataProviders" : [ ],
-  "id" : "c038fcd3-1a99-4bb7-afd1-0d2e5f42a738",
+  "id" : "fe24207d-525f-4616-ae20-6ac2dcb748d0",
   "label" : "Enablement Program List",
   "regions" : [ {
-    "id" : "b25cdfeb-2276-4004-953f-bdc161ea9b90",
+    "id" : "161d9ba1-38ec-4e80-9eb1-ef65a12c5637",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -15,7 +15,7 @@
         "id" : "Program_Dashboard_Prm_sfdcSESv61"
       },
       "componentName" : "runtime_sales_prm:dashboardWrapper",
-      "id" : "6dffc77e-6e42-4de3-be90-f765f09de8ac",
+      "id" : "097a7125-7ff5-4749-91f8-1c1bbb9c34f1",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -25,9 +25,9 @@
         "backgroundOverlay" : "rgba(0,0,0,0.5)",
         "contentAreaWidth" : 100,
         "sectionConfig" : {
-          "UUID" : "468abeb9-bf9b-4c46-9178-7e4159a64223",
+          "UUID" : "dedf3876-5b94-4ce9-bec2-66d70d00ce1b",
           "columns" : [ {
-            "UUID" : "e9f3bcad-8e38-43d3-911b-8a339c16b1eb",
+            "UUID" : "ca95df1a-314e-4782-841b-be80d9ced732",
             "columnKey" : "col1",
             "columnName" : "column 1",
             "columnWidth" : "12",
@@ -124,7 +124,7 @@
         "sectionHeight" : 32
       },
       "componentName" : "forceCommunity:section",
-      "id" : "468abeb9-bf9b-4c46-9178-7e4159a64223",
+      "id" : "dedf3876-5b94-4ce9-bec2-66d70d00ce1b",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : {
@@ -153,7 +153,7 @@
             "titleStyle" : "medium"
           },
           "componentName" : "runtime_ses_ext:programCollectionCard",
-          "id" : "f80742c0-6ad5-407b-8eb0-f2e0e556f166",
+          "id" : "c87edcb6-a0c9-4e83-b474-66039fa807d9",
           "renderPriority" : "NEUTRAL",
           "renditionMap" : { },
           "type" : "component"
@@ -184,7 +184,7 @@
             "titleStyle" : "medium"
           },
           "componentName" : "runtime_ses_ext:programCollectionCard",
-          "id" : "4aca31bf-ddcc-4a99-a31b-e96faae0be94",
+          "id" : "f25543e7-0b36-4d10-a618-89f698dd8612",
           "renderPriority" : "NEUTRAL",
           "renditionMap" : { },
           "type" : "component"
@@ -215,12 +215,12 @@
             "titleStyle" : "medium"
           },
           "componentName" : "runtime_ses_ext:programCollectionCard",
-          "id" : "ee2af00f-9965-48f4-a479-8768cdc37e4d",
+          "id" : "943f8fca-a6c7-4fcc-bdab-5e0b3b7e30f8",
           "renderPriority" : "NEUTRAL",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "e9f3bcad-8e38-43d3-911b-8a339c16b1eb",
+        "id" : "ca95df1a-314e-4782-841b-be80d9ced732",
         "regionLabel" : "column 1",
         "regionName" : "col1",
         "renditionMap" : { },
@@ -230,11 +230,11 @@
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "45030ca1-85fc-40e2-817f-3da097a88624",
+    "id" : "789e27dc-65a6-4627-afa1-59724e54104c",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "7e6da946-3c58-4ce4-babb-5734e18a9452",
+    "id" : "cf639d06-c106-4523-9361-45b6582bfd4c",
     "regionName" : "footer",
     "type" : "region"
   } ],

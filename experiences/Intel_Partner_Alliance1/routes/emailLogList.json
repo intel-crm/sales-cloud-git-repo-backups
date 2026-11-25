@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "5ea899d1-8503-460e-950a-99d029b99753",
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "configurationTags" : [ ],
+  "devName" : "EmailLog_List__c",
+  "id" : "2b7573f7-5733-4a3b-aab0-ae1d8a28c172",
+  "label" : "EmailLog List",
+  "objectApiName" : "PRM_EmailLog__c",
+  "routeType" : "list-a5r",
+  "type" : "route",
+  "urlPrefix" : "prm-emaillog"
+}

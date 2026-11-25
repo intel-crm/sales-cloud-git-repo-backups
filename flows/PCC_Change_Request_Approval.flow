@@ -5,7 +5,7 @@
         <label>Approve Change Request</label>
         <locationX>534</locationX>
         <locationY>842</locationY>
-        <actionName>01pD3000000y5zaNotFound</actionName>
+        <actionName>PCC_ChangeRequestApproval</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>Update_Triggering_Change_Request</targetReference>
@@ -20,6 +20,7 @@
                 <elementReference>RecordId.Id</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>PCC_ChangeRequestApproval</nameSegment>
         <offset>0</offset>
         <outputParameters>
             <assignToReference>addResult</assignToReference>

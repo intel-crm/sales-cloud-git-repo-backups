@@ -274,6 +274,18 @@
                 <identifier>RecordCore_Can_View_Activity__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Core_Market_Segment__c</fieldItem>
+                <identifier>RecordCore_Market_Segment__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Core_Project_Name__c</fieldItem>
+                <identifier>RecordCore_Project_Name__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-824bff80-d14c-42b7-9940-1047d343e798</name>
         <type>Facet</type>
     </flexiPageRegions>

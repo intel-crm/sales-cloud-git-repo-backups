@@ -247,11 +247,11 @@
         <name>CPT_OW_DCG_Design__c</name>
     </fields>
     <fields>
-        <label><!-- OW - EDge Deal Target --></label>
+        <label><!-- OW - Edge Deal Target --></label>
         <name>CPT_OW_Edge_Deal_Target__c</name>
     </fields>
     <fields>
-        <label><!-- OW - EDge Deal --></label>
+        <label><!-- OW - Edge Deal --></label>
         <name>CPT_OW_Edge_Deal__c</name>
     </fields>
     <fields>
@@ -320,6 +320,10 @@
     <validationRules>
         <errorMessage><!-- For Plan 240, select either Consumption Revenue Partner or Retail, not both, on this Territory Assignment. --></errorMessage>
         <name>CPT_Prevent_Multiple_TT_CR_240</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Opportunity Wins Revenue Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee. --></errorMessage>
+        <name>CPT_Prevent_OW_Territory_BU_Update</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You do not have permission to make updates to the Target field. --></errorMessage>

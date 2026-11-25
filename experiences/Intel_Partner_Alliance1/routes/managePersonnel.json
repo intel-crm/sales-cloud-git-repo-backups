@@ -5,7 +5,7 @@
   "devName" : "manage_personnel__c",
   "id" : "f071acc5-b4f4-438a-8dbc-d86a8ddcbde1",
   "label" : "Manage Personnel",
-  "pageAccess" : "RequiresLogin",
+  "pageAccess" : "UseParent",
   "routeType" : "custom-manage-personnel",
   "type" : "route",
   "urlPrefix" : "manage-personnel"

@@ -170,6 +170,13 @@
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:doceboAssets",
+      "id" : "c71a0710-efe3-43d8-a6da-e677bd50d37c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
     } ],
     "id" : "de5c0bf5-cb43-427b-ad7e-f3b97d41d9a0",
     "regionName" : "tab1",
@@ -178,7 +185,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:ipaPartnerMessages",
-      "id" : "9fdd681c-3bc0-4f5b-9af6-b5882de3ae10",
+      "id" : "639ff44c-5d72-466d-b3ba-72372b0d53b6",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -188,6 +195,19 @@
     "type" : "region"
   }, {
     "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "",
+        "reportId" : "of_Retired_Products_in_SFDC",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "ec298583-1672-40d7-830e-2be63be65c09",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
       "componentAttributes" : { },
       "componentName" : "c:ipaPartnerQuickLinks",
       "id" : "cc8af0a0-af70-4ed1-b0b5-15a7185cd3d2",

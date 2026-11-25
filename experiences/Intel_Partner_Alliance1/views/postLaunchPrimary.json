@@ -7,6 +7,7 @@
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : {
+        "backgroundVariant" : "mosaic-l1",
         "type" : "Post Launch"
       },
       "componentName" : "c:ipaPartnerOnboarding",
@@ -45,7 +46,7 @@
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
-  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "themeLayoutType" : "lTMY7AzHP7mIPP0c3BvVWYdEproBMk",
   "type" : "view",
   "viewType" : "custom-post-launch-primary"
 }

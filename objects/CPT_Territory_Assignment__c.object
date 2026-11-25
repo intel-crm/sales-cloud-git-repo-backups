@@ -632,6 +632,7 @@
     </fields>
     <fields>
         <fullName>CPT_OW_CCPG_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
         <label>OW - CCPG Deal Target</label>
         <precision>12</precision>
         <required>false</required>
@@ -642,6 +643,7 @@
     </fields>
     <fields>
         <fullName>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</fullName>
+        <defaultValue>0</defaultValue>
         <label>OW - CCPG Deal Wins Vol Target</label>
         <precision>12</precision>
         <required>false</required>
@@ -668,6 +670,7 @@
     </fields>
     <fields>
         <fullName>CPT_OW_CCPG_Design_Target__c</fullName>
+        <defaultValue>0</defaultValue>
         <label>OW - CCPG Design Target</label>
         <precision>12</precision>
         <required>false</required>
@@ -686,6 +689,7 @@
     </fields>
     <fields>
         <fullName>CPT_OW_DCG_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
         <label>OW - DCG Deal Target</label>
         <precision>12</precision>
         <required>false</required>
@@ -696,6 +700,7 @@
     </fields>
     <fields>
         <fullName>CPT_OW_DCG_Deal_Wins_Vol_Target__c</fullName>
+        <defaultValue>0</defaultValue>
         <label>OW - DCG Deal Wins Vol Target</label>
         <precision>12</precision>
         <required>false</required>
@@ -722,6 +727,7 @@
     </fields>
     <fields>
         <fullName>CPT_OW_DCG_Design_Target__c</fullName>
+        <defaultValue>0</defaultValue>
         <label>OW - DCG Design Target</label>
         <precision>12</precision>
         <required>false</required>
@@ -741,7 +747,7 @@
     <fields>
         <fullName>CPT_OW_Edge_Deal_Target__c</fullName>
         <defaultValue>0</defaultValue>
-        <label>OW - EDge Deal Target</label>
+        <label>OW - Edge Deal Target</label>
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
@@ -752,13 +758,14 @@
     <fields>
         <fullName>CPT_OW_Edge_Deal__c</fullName>
         <defaultValue>false</defaultValue>
-        <label>OW - EDge Deal</label>
+        <label>OW - Edge Deal</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>CPT_OW_Edge_Design_Target__c</fullName>
+        <defaultValue>0</defaultValue>
         <label>OW - Edge Design Target</label>
         <precision>12</precision>
         <required>false</required>
@@ -1064,6 +1071,70 @@ AND(CPT_CR_Retail__c, OR(CPT_CR_Retail_Target__c= 0, ISNULL(CPT_CR_Retail_Target
     ) &gt; 1
 )</errorConditionFormula>
         <errorMessage>For Plan 240, select either Consumption Revenue Partner or Retail, not both, on this Territory Assignment.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_OW_Territory_BU_Update</fullName>
+        <active>true</active>
+        <description>Rule to make sure that the Employee cannot be a part of BU if the corresponding Target Amount is zero.</description>
+        <errorConditionFormula>OR(
+    AND(
+        CPT_OW_DCG_Deal__c,
+        OR(
+            CPT_OW_DCG_Deal_Target__c = 0,
+            ISNULL(CPT_OW_DCG_Deal_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_CCPG_Deal__c,
+        OR(
+            CPT_OW_CCPG_Deal_Target__c = 0,
+            ISNULL(CPT_OW_CCPG_Deal_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_Edge_Deal__c,
+        OR(
+            CPT_OW_Edge_Deal_Target__c = 0,
+            ISNULL(CPT_OW_Edge_Deal_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_DCG_Deal_Wins_Vol__c,
+        OR(
+            CPT_OW_DCG_Deal_Wins_Vol_Target__c = 0,
+            ISNULL(CPT_OW_DCG_Deal_Wins_Vol_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_CCPG_Deal_Wins_Vol__c,
+        OR(
+            CPT_OW_CCPG_Deal_Wins_Vol_Target__c = 0,
+            ISNULL(CPT_OW_CCPG_Deal_Wins_Vol_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_DCG_Design__c,
+        OR(
+            CPT_OW_DCG_Design_Target__c = 0,
+            ISNULL(CPT_OW_DCG_Design_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_CCPG_Design__c,
+        OR(
+            CPT_OW_CCPG_Design_Target__c = 0,
+            ISNULL(CPT_OW_CCPG_Design_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_Edge_Design__c,
+        OR(
+            CPT_OW_Edge_Design_Target__c = 0,
+            ISNULL(CPT_OW_Edge_Design_Target__c)
+        )
+    )
+)</errorConditionFormula>
+        <errorMessage>The Opportunity Wins Revenue Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>CPT_Prevent_Territory_Target_Update</fullName>

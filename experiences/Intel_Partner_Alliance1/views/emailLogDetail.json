@@ -1,0 +1,123 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "d68977ee-e847-4f35-a7a3-d9b10c0c23b8",
+  "label" : "EmailLog Detail",
+  "regions" : [ {
+    "id" : "51885a86-721d-4979-a7ca-7461df595140",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "e05df992-72d4-48f4-a81b-17d922171578",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c398cac4-f490-495d-ab2b-d563cc8fa9f7",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "9ed1ff39-6e4a-4cee-841d-81579095f981",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "76236d85-fd46-4740-9565-3abca414842d",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Details"
+          }, {
+            "UUID" : "05d3458d-348f-43af-b80f-8d51782d23df",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "Related"
+          } ],
+          "useOverflowMenu" : true
+        }
+      },
+      "componentName" : "forceCommunity:tabLayout",
+      "id" : "9ed1ff39-6e4a-4cee-841d-81579095f981",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "5806b90d-d26f-44ff-99c9-1b28857bf287",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "76236d85-fd46-4740-9565-3abca414842d",
+        "regionLabel" : "Details",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "relatedListApiName" : "CombinedAttachments",
+            "relatedListComponentOverride" : "ADVGRID",
+            "width" : "SMALL"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "d4ea943a-d70c-469b-b0cb-e7f9f31d2dc6",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "ActionPlans",
+            "relatedListComponentOverride" : "GRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "634669c1-c6fa-4761-ab0b-e046f75c5627",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "05d3458d-348f-43af-b80f-8d51782d23df",
+        "regionLabel" : "Related",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "dd7871ba-5408-4b87-bcb9-a627e9358b23",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "84c2d978-411e-4507-84c6-f7493e335ea8",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ceb7eb0b-212b-4fba-8357-ddf2a066d022",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a5r"
+}

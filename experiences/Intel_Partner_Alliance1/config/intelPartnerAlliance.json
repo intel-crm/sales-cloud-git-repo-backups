@@ -5,8 +5,13 @@
   "isProgressiveRenderingEnabled" : true,
   "loginAppPageId" : "b07655c6-5db9-45fd-a716-3b9f516c8e28",
   "mainAppPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
-  "preferredDomain" : "partner.intel.com",
+  "preferredDomain" : "intel--crmdevint3.sandbox.my.site.com",
   "selfRegistrationRouteId" : "8bac6354-05e0-48cd-a9ac-a976f080b779",
+  "trustedSitesForIFrame" : [ {
+    "id" : "00c9cdf9-5fae-4499-9f85-363eec160c74",
+    "trustedDomainsForInlineFrames" : [ ],
+    "type" : "trustedSitesForIFrame"
+  } ],
   "trustedSitesForScript" : [ {
     "id" : "e5236f42-2b85-4417-a80e-b8804b410178",
     "isActive" : true,
@@ -290,7 +295,7 @@
     "trustedSiteUrl" : "https://*.adoberesources.net",
     "type" : "trustedSitesForScripts"
   }, {
-    "id" : "907b3f98-7870-4a52-8091-a5e63812d077",
+    "id" : "cfa6e925-df7d-47f8-9aa2-88cbcbc59b08",
     "isActive" : true,
     "trustedSiteName" : "Avaamo",
     "trustedSiteUrl" : "https://c0.avaamo.com",

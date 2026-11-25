@@ -1,0 +1,80 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "da67b1e3-df1c-4f36-89ea-429fa1f1007f",
+  "label" : "PowerBi",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "description" : "",
+        "marqueeDataSource" : "Design Attributes",
+        "pageType" : "BenefitService",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "",
+        "rightButtonLabel" : "",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "Lorem Ipsum Subtitle",
+        "title" : "Lorem Ipsum Title"
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "1edad8ac-c6fd-4e8f-812c-302e6a58ee32",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "37cf434d-0bbf-4deb-9f4b-5ca2afe218e0",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "configName" : "PBI_Report_Embed"
+      },
+      "componentName" : "c:embedPBICloud",
+      "id" : "90f1c58e-7efa-4998-bfa0-15c8326b33ee",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e39bca5e-2f1e-4d98-b856-8b7e474eacf7",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooter",
+      "id" : "d3839d61-d5dc-4fc2-b796-03c7e049dd4d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "20745e60-e640-4f3a-96cc-5887e57a3f29",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "PowerBi"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "17a013ad-2e9f-446e-b76b-49e5eca5fc85",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8926d80b-b945-4a1f-9570-4b337e6079e1",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-powerbi"
+}

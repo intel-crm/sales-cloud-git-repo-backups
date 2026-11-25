@@ -5,6 +5,14 @@
   "id" : "29a9cd4b-e47f-470b-a4b5-ee846e06c97a",
   "label" : "Manage Personnel NewTest",
   "regions" : [ {
+    "id" : "9634bb21-09be-4be3-839e-640f38b696ca",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "40bbd460-341e-4fa5-b745-65e0c0cfa3f3",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
     "components" : [ {
       "componentAttributes" : {
         "analyticsPageType" : "{\"pageType\": \"ManagePersonnel\",\"title\":\"Manage Personnel\"}",
@@ -25,22 +33,6 @@
       },
       "componentName" : "c:ipaMarqueePartner",
       "id" : "0ee40b10-1aaa-45c1-bbec-8f795815a929",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "9634bb21-09be-4be3-839e-640f38b696ca",
-    "regionName" : "marquee",
-    "type" : "region"
-  }, {
-    "id" : "40bbd460-341e-4fa5-b745-65e0c0cfa3f3",
-    "regionName" : "mainFullWidth",
-    "type" : "region"
-  }, {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:ePUM_SearchContactLWC_newLayout",
-      "id" : "6a2e6124-723b-43b3-b180-31b4bf5d4a61",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

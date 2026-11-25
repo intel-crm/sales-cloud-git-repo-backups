@@ -59,11 +59,67 @@
                 <elementReference>$Record.CPT_CR_Partner_Target__c</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_DCG_Deal_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_DCG_Deal_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_CCPG_Deal_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_CCPG_Deal_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_Edge_Deal_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_Edge_Deal_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_DCG_Deal_Wins_Vol_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_DCG_Deal_Wins_Vol_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_CCPG_Deal_Wins_Vol_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_CCPG_Deal_Wins_Vol_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_DCG_Design_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_DCG_Design_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_CCPG_Design_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_CCPG_Design_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_Edge_Design_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_Edge_Design_Target__c</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>CPT_Add_Assigment_Record_to_List</targetReference>
         </connector>
     </assignments>
-    <description>[12/Nov/2025] Flow to Copy the target values from the account/territory/country into the assignment object.</description>
+    <description>[25/Nov/2025] Flow to Copy the target values from the account/territory/country into the assignment object.</description>
     <ends>
         <name>END_ELEMENT_2</name>
         <locationX>176</locationX>
@@ -148,7 +204,7 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>AssignmentRecordsList</name>
         <dataType>SObject</dataType>

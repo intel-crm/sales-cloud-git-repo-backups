@@ -5,33 +5,10 @@
   "id" : "e67a611c-ff8a-42bb-8b21-3cad7a2b1cb3",
   "label" : "demo",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:customUploadButton",
-      "id" : "bee0cb93-99cf-43f6-aa4c-a8ddef9f9f16",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "e5686755-e9c3-47c6-948d-9ba03e0d12d5",
     "regionName" : "header",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:bulkContactCreation",
-      "id" : "00522628-22e9-4bb6-bee7-94885900301c",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : { },
-      "componentName" : "c:ePUM_SearchContactLWC_copy",
-      "id" : "946e3d33-91ac-4f0f-b308-0ea8438fe53d",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "ea39c1cb-b7db-495b-961b-cb7ff5a16609",
     "regionName" : "content",
     "type" : "region"

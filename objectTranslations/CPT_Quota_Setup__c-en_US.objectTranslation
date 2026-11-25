@@ -353,6 +353,7 @@
         <name>CPT_OW_CCPG_Deal_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- OW - CCPG Deal Quota --></label>
         <name>CPT_OW_CCPG_Deal_Quota__c</name>
     </fields>
@@ -361,6 +362,7 @@
         <name>CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- OW - CCPG Deal Wins Vol Quota --></label>
         <name>CPT_OW_CCPG_Deal_Wins_Vol_Quota__c</name>
     </fields>
@@ -369,6 +371,7 @@
         <name>CPT_OW_CCPG_Design_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- OW - CCPG Design Quota --></label>
         <name>CPT_OW_CCPG_Design_Quota__c</name>
     </fields>
@@ -386,6 +389,7 @@
         <name>CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- OW - DCG Deal Wins Vol Quota --></label>
         <name>CPT_OW_DCG_Deal_Wins_Vol_Quota__c</name>
     </fields>
@@ -394,6 +398,7 @@
         <name>CPT_OW_DCG_Design_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- OW - DCG Design Quota --></label>
         <name>CPT_OW_DCG_Design_Quota__c</name>
     </fields>
@@ -402,6 +407,7 @@
         <name>CPT_OW_Edge_Deal_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- OW - Edge Deal Quota --></label>
         <name>CPT_OW_Edge_Deal_Quota__c</name>
     </fields>
@@ -410,6 +416,7 @@
         <name>CPT_OW_Edge_Design_Assigned__c</name>
     </fields>
     <fields>
+        <help><!-- Value is in whole dollars. --></help>
         <label><!-- OW - Edge Design Quota --></label>
         <name>CPT_OW_Edge_Design_Quota__c</name>
     </fields>

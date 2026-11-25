@@ -114,24 +114,8 @@
     "id" : "67e31032-14af-491e-87df-d3b93aac9391",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
-  }, {
-    "id" : "ab71e596-f6ec-4f8d-b6e9-d3bb4d7b7fb5",
-    "regionName" : "header",
-    "type" : "region"
-  }, {
-    "id" : "4de2d072-a19f-4570-a17d-9f14176c5b26",
-    "regionName" : "content",
-    "type" : "region"
-  }, {
-    "id" : "b42cb1ea-7fec-4395-bc64-7785c4f28c31",
-    "regionName" : "sidebar",
-    "type" : "region"
-  }, {
-    "id" : "26de4c3c-3636-4784-a498-9965807e153b",
-    "regionName" : "footer",
-    "type" : "region"
   } ],
-  "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
+  "themeLayoutType" : "lTMY7AzHP7mIPP0c3BvVWYdEproBMk",
   "type" : "view",
   "viewType" : "custom-manage-personnel"
 }

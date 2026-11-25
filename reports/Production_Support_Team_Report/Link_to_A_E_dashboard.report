@@ -3306,6 +3306,12 @@
     <columns>
         <field>Account.Is_Partner_Admin_Exist__c</field>
     </columns>
+    <columns>
+        <field>Account.Core_Market_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Project_Name__c</field>
+    </columns>
     <description>This is a placeholder report to link to A&amp;E dashboard</description>
     <filter>
         <criteriaItems>

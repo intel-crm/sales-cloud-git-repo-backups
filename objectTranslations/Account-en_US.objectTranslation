@@ -6303,6 +6303,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Marked_for_Deletion__c</name>
     </fields>
     <fields>
+        <label><!-- Market Segment --></label>
+        <name>Core_Market_Segment__c</name>
+    </fields>
+    <fields>
         <help><!-- Mastered Business Physical Address Country Code --></help>
         <label><!-- Mastered Country Code --></label>
         <name>Core_Mastered_Country_Cd__c</name>
@@ -6546,6 +6550,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Private --></label>
         <name>Core_Private__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Name --></label>
+        <name>Core_Project_Name__c</name>
     </fields>
     <fields>
         <help><!-- If checked, Contacts entitled to Resource &amp; Design Center (RDC) privileged access under this account have access to specifically targeted content, but are prevented from viewing standard CNDA content. For questions, use AAQ and select Access &amp; Entitlement --></help>

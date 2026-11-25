@@ -8,7 +8,7 @@
 * Intel :Areefa Banu       12/03/2021          Class to handle Opal Budget Validation
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_OPAL_Budget_Validation {
-    public static void validateOpalBudgetDates(List<PartnerMarketingBudget> newPMBList) {
+    /*public static void validateOpalBudgetDates(List<PartnerMarketingBudget> newPMBList) {
         try{
             Map<Id,Date> mapofBudgetIdActyStartDate = new Map<Id,Date>(); 
             Map<Id,Date> mapofBudgetIdActyEndDate = new Map<Id,Date>();
@@ -47,5 +47,5 @@ public without sharing class Core_MDF_OPAL_Budget_Validation {
                 }
             }
         }catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e); throw e; } 
-    }
+    }*/
 }

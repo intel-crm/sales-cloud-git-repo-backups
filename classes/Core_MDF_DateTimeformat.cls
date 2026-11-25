@@ -3,12 +3,12 @@ public class Core_MDF_DateTimeformat {
 //  -------------------------------------------------------
 //  getUserDateFormat: e.g. M/d/yyyy
 //  -------------------------------------------------------
-public static String getUserDateFormat() {
+/*public static String getUserDateFormat() {
     String      userLocale  = UserInfo.getLocale();
     getLocaleToDateTimeFmtMap();
     if (!localeToDateTimeFmtMap.containsKey(userLocale))    return 'yyyy-mm-dd';
     return localeToDateTimeFmtMap.get(userLocale).substringBefore(' ');
-}
+}*/
 
 //  -------------------------------------------------------
 //  getUserDateTimeFormat: e.g. M/d/yyyy hh.mm.ss

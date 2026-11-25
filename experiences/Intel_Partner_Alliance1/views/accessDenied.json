@@ -8,7 +8,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:ipaIntelAccessDenied",
-      "id" : "7acad77c-636d-42c0-86cf-75e6f48d9702",
+      "id" : "ee99fa94-c2a3-4931-b42d-ce5df4227fcd",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -17,6 +17,16 @@
     "regionName" : "marquee",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p> </p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "d36bf1d2-6042-48a2-9e9f-beeda0345c52",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "94102883-b3bc-4801-9c21-65301af18cd5",
     "regionName" : "mainFullWidth",
     "type" : "region"

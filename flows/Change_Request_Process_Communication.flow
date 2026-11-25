@@ -5,7 +5,7 @@
         <label>Process Addition of New Products</label>
         <locationX>50</locationX>
         <locationY>278</locationY>
-        <actionName>01pD3000000yDFiNotFound</actionName>
+        <actionName>PCC_ChgReqChgLineApproval</actionName>
         <actionType>apex</actionType>
         <faultConnector>
             <targetReference>Create_Log_Entry</targetReference>
@@ -23,6 +23,7 @@
                 <stringValue>Add</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>PCC_ChgReqChgLineApproval</nameSegment>
         <offset>0</offset>
     </actionCalls>
     <actionCalls>

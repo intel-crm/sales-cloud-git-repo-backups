@@ -170,6 +170,14 @@
     "label" : "English (UK) (GB)",
     "languageCode" : "en",
     "type" : "language"
+  }, {
+    "countryCode" : "",
+    "fallbackLanguageId" : null,
+    "id" : "477698f6-e799-4a44-9631-d4ac8b040c6f",
+    "isActive" : true,
+    "label" : "Spanish",
+    "languageCode" : "es",
+    "type" : "language"
   } ],
   "type" : "languageContainer"
 }

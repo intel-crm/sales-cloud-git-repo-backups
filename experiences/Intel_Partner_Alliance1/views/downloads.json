@@ -1,0 +1,210 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:IPAPartnerSearchLayout",
+  "dataProviders" : [ ],
+  "id" : "2c9006d5-01f5-4506-abc0-9d951cc71cf6",
+  "label" : "Downloads",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"Downloads\",\"title\":\"Downloads\"}",
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "Downloads",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "#",
+        "rightButtonLabel" : "Dashboard",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "#",
+        "rightCta2Label" : "My Intel Profile",
+        "subtitle" : "",
+        "title" : ""
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "3446b5fe-9c45-4ab1-8db2-0d08fb4ed1f8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ca5d93b4-9c11-41dc-b47f-0b4c64bd6c46",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "7cf76318-9389-4b2b-a0e0-90201bed07e7",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "6c06a405-b4d0-485b-a2e4-7779155c84d7",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "bc3aa930-1381-487f-a770-abe52a61b616",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "id" : "a94346fd-87dc-49db-8417-235c99da9845",
+    "regionName" : "tab01",
+    "type" : "region"
+  }, {
+    "id" : "586b16c1-7a81-4fe1-8dc6-5ea5debc005c",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "id" : "422bae4a-2cf1-45e8-a345-7cdae89cd9b4",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "7b56af0c-05ab-4002-8065-cff738b1a1a6",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_DownloadNotes",
+      "id" : "56108f68-d66a-407a-8e86-7a9964a67ba5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fd71d046-496f-4cf1-b6c9-032f48c4cb4a",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "e487ccb2-4eda-468e-9b89-af6e23fe6c13",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "230c71a7-0403-4055-b523-1eec73181643",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "734a818b-87b6-467d-b51f-27ce0fef8cc1",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "41169c87-1b6d-4d65-86c8-7455d546984b",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Downloads"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "56ebabd2-ee00-404a-a22e-b9615cdf7bdf",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e2488b69-6ff2-4320-902d-ff13c7e1e7ef",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "adf69af9-6a38-4327-a9dd-cf2446e6f385",
+    "regionName" : "blade2white",
+    "type" : "region"
+  }, {
+    "id" : "1627f042-ab3e-4d6d-b94f-076e462f729d",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  }, {
+    "id" : "c103fffd-38ae-4395-8815-c121c0181cf6",
+    "regionName" : "tab4",
+    "type" : "region"
+  }, {
+    "id" : "0c322f03-858f-4267-ba5e-00629bf195e7",
+    "regionName" : "tab5",
+    "type" : "region"
+  }, {
+    "id" : "a4ccca15-1a2e-4077-a514-6b80fff8a482",
+    "regionName" : "tab6",
+    "type" : "region"
+  }, {
+    "id" : "66ed56cd-0594-480d-90a0-643acfe3eed5",
+    "regionName" : "tab7",
+    "type" : "region"
+  }, {
+    "id" : "336d8b44-c354-408a-91bf-929eee535d02",
+    "regionName" : "tab8",
+    "type" : "region"
+  }, {
+    "id" : "8c4f526d-69d7-4d11-b8ee-4728d2bc296d",
+    "regionName" : "tab9",
+    "type" : "region"
+  }, {
+    "id" : "28be67bb-b59b-4e75-9083-8ddd8be9d3c0",
+    "regionName" : "tab10",
+    "type" : "region"
+  }, {
+    "id" : "992b3303-08f0-48fd-aa25-729387b30777",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "e442d613-f6c0-4896-90d1-db732411a279",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "id" : "35ef0c24-e54d-4189-b2ed-1baa745569d6",
+    "regionName" : "offeringbutton",
+    "type" : "region"
+  }, {
+    "id" : "493657ad-9904-45fb-b1a0-77ad644e1b15",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "id" : "35593f42-ee14-4eb6-ac70-3a25dcc66ac6",
+    "regionName" : "custombutton",
+    "type" : "region"
+  }, {
+    "id" : "a9bf4b65-f5cf-4090-8823-6b293f619a6c",
+    "regionName" : "dashboard1",
+    "type" : "region"
+  }, {
+    "id" : "487cbb0b-603c-4dd5-9ef9-8a9c53736248",
+    "regionName" : "dashboard2",
+    "type" : "region"
+  }, {
+    "id" : "848b98b1-d6ac-4165-af71-93cf8d6aa5d5",
+    "regionName" : "dashboard12",
+    "type" : "region"
+  }, {
+    "id" : "ec74e622-3462-42a7-bfed-883efcf90383",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "0d3b7cb5-da8b-4906-9454-684d8d743a23",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "id" : "1e0978af-744c-4950-b137-acc31008c99a",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "11855db5-fbf7-4d45-b29c-5baf466838fa",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "ac99d287-730a-4062-b063-ab354ff7126f",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "00a96ddd-3045-4f2d-bb58-ebe9bd40ebcc",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "26f36d40-090c-4220-ac0d-7046d055cc2c",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "id" : "bbc8997a-8c30-439f-abc7-514a0bf24949",
+    "regionName" : "compareTray",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-downloads"
+}

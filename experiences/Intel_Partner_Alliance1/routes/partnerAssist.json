@@ -1,12 +1,12 @@
 {
-  "activeViewId" : "6c3ff62f-f9a3-4291-b38d-7c2d8538c334",
+  "activeViewId" : "da67b1e3-df1c-4f36-89ea-429fa1f1007f",
   "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
   "configurationTags" : [ ],
-  "devName" : "partnerassist__c",
-  "id" : "ae92d598-cb80-40fb-a234-db268d83a480",
+  "devName" : "powerbi__c",
+  "id" : "4e90907b-70b9-4f0e-b904-147b77a006bd",
   "label" : "Partner Assist",
   "pageAccess" : "UseParent",
-  "routeType" : "custom-partner-assist",
+  "routeType" : "custom-powerbi",
   "type" : "route",
-  "urlPrefix" : "partner-assist"
+  "urlPrefix" : "powerbi"
 }

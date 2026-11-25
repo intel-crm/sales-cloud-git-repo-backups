@@ -1,0 +1,72 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "a98ac1df-b2f1-4102-9754-ab970ed7fbbb",
+  "label" : "PRM_DownloadData",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "4c7cc220-f61f-4938-a42b-6ed0e5a2cc12",
+          "columns" : [ {
+            "UUID" : "3d7964ac-576c-4ee6-b4da-80d43feae474",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "4c7cc220-f61f-4938-a42b-6ed0e5a2cc12",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "height" : "300",
+            "pageName" : "prm_downloadVF",
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:visualforcePage",
+          "id" : "f4386bde-186d-4bc3-ab9c-65c3e70fbe8b",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "3d7964ac-576c-4ee6-b4da-80d43feae474",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "740faebc-e905-499e-bb22-fe64e23f0739",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "PRM_DownloadData"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f92dfb58-71b5-4ad9-975f-720ff245e91b",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5cef80ec-e479-49e2-90ce-dec431002a8e",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-prmdownloaddata"
+}

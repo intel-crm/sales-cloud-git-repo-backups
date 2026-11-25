@@ -426,6 +426,7 @@ VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_Wins_Revenue__c), &apos;0&apos;),&a
         <columns>CPT_Percent_Billings_Revenue__c</columns>
         <columns>CPT_Percent_Consumption_Revenue__c</columns>
         <columns>CPT_Percent_Wins_Revenue__c</columns>
+        <columns>CPT_Percent_OW_Revenue__c</columns>
         <columns>CPT_Breakout_Total__c</columns>
         <columns>CPT_Inactive__c</columns>
         <filterScope>Everything</filterScope>

@@ -51,6 +51,22 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Assign_OW_Plan_Default_Value</name>
+        <label>Assign OW Plan Default Value</label>
+        <locationX>2118</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Default_Value__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Assign_Wins_Deal_field</name>
         <label>Assign Wins Deal field</label>
         <locationX>1678</locationX>
@@ -161,7 +177,7 @@
     <decisions>
         <name>Check_Quota_Setup_Field_Name</name>
         <label>Check Quota Setup Field Name</label>
-        <locationX>1260</locationX>
+        <locationX>1480</locationX>
         <locationY>755</locationY>
         <defaultConnector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
@@ -218,6 +234,21 @@
                 <targetReference>Is_Wins_field</targetReference>
             </connector>
             <label>Wins</label>
+        </rules>
+        <rules>
+            <name>OW</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Sales_KPI_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>OW</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_OW_Field</targetReference>
+            </connector>
+            <label>OW</label>
         </rules>
     </decisions>
     <decisions>
@@ -358,6 +389,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Is_OW_Field</name>
+        <label>Is OW Field?</label>
+        <locationX>2250</locationX>
+        <locationY>863</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>OW_Field</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CPT_OW_Assigned__c</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_OW_Plan_Default_Value</targetReference>
+            </connector>
+            <label>OW Field</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Is_Wins_field</name>
         <label>Is Wins field</label>
         <locationX>1678</locationX>
@@ -422,7 +478,7 @@
             <label>Territory Allocation</label>
         </rules>
     </decisions>
-    <description>[Vats 10/nov/2026] Flow to populate the plan on the quota setup record whenever the new record is created + Default Value</description>
+    <description>[Vats 25/nov/2026] Flow to populate the plan on the quota setup record whenever the new record is created + Default Value</description>
     <ends>
         <name>END_ELEMENT_5</name>
         <locationX>490</locationX>
@@ -568,7 +624,7 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>AssignDefaultPlanRecordsList</name>
         <dataType>SObject</dataType>

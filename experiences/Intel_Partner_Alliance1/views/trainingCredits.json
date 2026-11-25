@@ -7,12 +7,12 @@
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : {
-        "analyticsPageType" : "{\"pageType\": \"TrainingCredits\",\"title\":\"Training Credits\"}",
+        "analyticsPageType" : "",
         "description" : "",
         "marqueeDataSource" : "Benefit Service",
         "pageType" : "Training Credits",
         "rightButtonCommPage" : "",
-        "rightButtonExternalUrl" : "#",
+        "rightButtonExternalUrl" : "",
         "rightButtonLabel" : "Dashboard",
         "rightCta1CommPage" : "",
         "rightCta1ExternalUrl" : "",

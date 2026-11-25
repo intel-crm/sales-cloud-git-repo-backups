@@ -216,7 +216,7 @@
     "componentAttributes" : {
       "fixedPageWidth" : 1170,
       "headerBgColor" : "rgba(0, 0, 0, 0)",
-      "isHeaderPinned" : true,
+      "isHeaderPinned" : false,
       "isHeroUnderHeader" : false,
       "isPageWidthFixed" : true,
       "showHeader" : true,
@@ -228,10 +228,34 @@
     "regions" : [ {
       "components" : [ {
         "componentAttributes" : {
-          "richTextValue" : "<p><img class=\"sfdcCbImage\" alt=\"\" src=\"{!contentAsset.Maintenance_Logo.1}\"></p>"
+          "richTextValue" : "<p><img class=\"sfdcCbImage\" alt=\"\" src=\"{!contentAsset.Maintenance_Site.1}\"></p>"
         },
         "componentName" : "forceCommunity:richTextInline",
-        "id" : "ae143327-b9f7-4ead-b8e5-6835535b5f0a",
+        "id" : "469573ad-eec5-4884-8f36-2c411721b26b",
+        "renditionMap" : { },
+        "type" : "component"
+      }, {
+        "componentAttributes" : {
+          "richTextValue" : "<p>Replace this text with content of your own.</p>"
+        },
+        "componentName" : "forceCommunity:richTextInline",
+        "id" : "23bb0b9e-9653-4cda-95e7-5193cc163f88",
+        "renditionMap" : { },
+        "type" : "component"
+      }, {
+        "componentAttributes" : {
+          "richTextValue" : "Replace this text with content of your own."
+        },
+        "componentName" : "forceCommunity:richTextInline",
+        "id" : "6e4c2232-da1b-4516-996f-0ee3b97e7d94",
+        "renditionMap" : { },
+        "type" : "component"
+      }, {
+        "componentAttributes" : {
+          "richTextValue" : "<p>Replace this text with content of your own.</p>"
+        },
+        "componentName" : "forceCommunity:richTextInline",
+        "id" : "a8285aa6-a40a-438e-b537-0589edf66ee5",
         "renditionMap" : { },
         "type" : "component"
       } ],

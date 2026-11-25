@@ -42,6 +42,62 @@
                 <elementReference>CPT_Get_Target_Values.CPT_BR_DCAI_Target__c</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_DCG_Deal_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CPT_Get_Target_Values.CPT_OW_DCG_Deal_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_CCPG_Deal_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CPT_Get_Target_Values.CPT_OW_CCPG_Deal_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_Edge_Deal_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CPT_Get_Target_Values.CPT_OW_Edge_Deal_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_DCG_Deal_Wins_Vol_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CPT_Get_Target_Values.CPT_OW_DCG_Deal_Wins_Vol_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_CCPG_Deal_Wins_Vol_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CPT_Get_Target_Values.CPT_OW_CCPG_Deal_Wins_Vol_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_DCG_Design_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CPT_Get_Target_Values.CPT_OW_DCG_Design_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_CCPG_Design_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CPT_Get_Target_Values.CPT_OW_CCPG_Design_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_Edge_Design_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CPT_Get_Target_Values.CPT_OW_Edge_Design_Target__c</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>END_ELEMENT_2</targetReference>
         </connector>
@@ -71,7 +127,7 @@
             <label>Target Found</label>
         </rules>
     </decisions>
-    <description>[12/Nov/26] Flow to populate the unique value combination of the Quota Setup and Territory Target update</description>
+    <description>[25/Nov/26] Flow to populate the unique value combination of the Quota Setup and Territory Target update</description>
     <ends>
         <name>END_ELEMENT_2</name>
         <locationX>182</locationX>
@@ -152,5 +208,5 @@
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

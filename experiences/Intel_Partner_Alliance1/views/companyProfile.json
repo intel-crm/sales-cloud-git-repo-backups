@@ -94,42 +94,6 @@
     "regionName" : "mainFullWidth",
     "type" : "region"
   }, {
-    "id" : "01052db1-223b-4d9f-a34c-d35fad840cf3",
-    "regionName" : "main",
-    "type" : "region"
-  }, {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:companyInfo",
-      "id" : "e87bd948-d24e-4112-b759-729bbf4775c4",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "bbabf04b-bf87-4072-985c-e5121181bfc4",
-    "regionName" : "tab1",
-    "type" : "region"
-  }, {
-    "id" : "925685b0-6db1-4de5-b757-be6ead911ec3",
-    "regionName" : "tab2",
-    "type" : "region"
-  }, {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:responsibilityGrid",
-      "id" : "f67ae217-e9dd-41b0-a56e-c8dda0163e0a",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "a2c6240f-4855-46e2-b81c-8292da7cfced",
-    "regionName" : "tab3",
-    "type" : "region"
-  }, {
-    "id" : "f51f86b4-9d8c-4ef5-b9d8-5bd3c5d242f2",
-    "regionName" : "blade1",
-    "type" : "region"
-  }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:ipaSupportFooterComponent",
@@ -138,6 +102,42 @@
       "renditionMap" : { },
       "type" : "component"
     } ],
+    "id" : "01052db1-223b-4d9f-a34c-d35fad840cf3",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:companyInfo",
+      "id" : "e92dd538-e808-4c9a-989e-ed043d6ba948",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bbabf04b-bf87-4072-985c-e5121181bfc4",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:responsibilityGrid",
+      "id" : "d365d93b-2ff4-4850-9e46-ee1e94211374",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "925685b0-6db1-4de5-b757-be6ead911ec3",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "id" : "a2c6240f-4855-46e2-b81c-8292da7cfced",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "f51f86b4-9d8c-4ef5-b9d8-5bd3c5d242f2",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
     "id" : "d8f8be7b-988b-4f00-b912-06cf6a0ada2c",
     "regionName" : "blade1white",
     "type" : "region"
@@ -158,7 +158,7 @@
     "regionName" : "blade5",
     "type" : "region"
   }, {
-    "id" : "82dea4bd-e728-4dea-91b6-b1d72d0bd446",
+    "id" : "3a761abb-140a-4021-a964-34b508fe959b",
     "regionName" : "tab01",
     "type" : "region"
   } ],
