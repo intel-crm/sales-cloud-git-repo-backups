@@ -19,9 +19,6 @@
         <field>Case$Core_IPS_Case_URL__c</field>
     </columns>
     <columns>
-        <field>Case$Core_IPS_Case_Owner_Groups__c.Name</field>
-    </columns>
-    <columns>
         <field>Case$Core_IPS_Case_Owner_Groups__c</field>
     </columns>
     <columns>

@@ -13,9 +13,6 @@
         <field>Case$Core_CaseType__c</field>
     </columns>
     <columns>
-        <field>Case$Core_IPS_Case_Owner_Groups__c.Name</field>
-    </columns>
-    <columns>
         <field>Case$Core_IPS_Case_Owner_Groups__c.Core_IPS_Owner_Group_1__c</field>
     </columns>
     <columns>

@@ -32931,12 +32931,12 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.SWS_Marketo_Email_Invalid_Cause__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.SWS_Marketo_Email_Invalid__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -62066,12 +62066,12 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.SWS_Marketo_Email_Invalid_Cause__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.SWS_Marketo_Email_Invalid__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>

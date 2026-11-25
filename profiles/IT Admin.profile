@@ -33009,14 +33009,14 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Contact.SWS_Marketo_Email_Invalid_Cause__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Contact.SWS_Marketo_Email_Invalid__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -62144,14 +62144,14 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Lead.SWS_Marketo_Email_Invalid_Cause__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Lead.SWS_Marketo_Email_Invalid__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -104989,11 +104989,6 @@
     <loginIpRanges>
         <endAddress>137.116.72.116</endAddress>
         <startAddress>137.116.72.115</startAddress>
-    </loginIpRanges>
-    <loginIpRanges>
-        <description>UserInterface_API</description>
-        <endAddress>155.226.156.8</endAddress>
-        <startAddress>155.226.156.0</startAddress>
     </loginIpRanges>
     <loginIpRanges>
         <description>AKAMAI</description>

@@ -4,8 +4,8 @@
     <consumerKey>3MVG9_IS_Cbuy2eZQfkhlRdwBbu18TL6JPjqOsjZp_4sdJ0lkFXRLvPyZ0v25AYY.19q0HCAVpXCKrzJlFj_A</consumerKey>
     <externalClientApplication>Workflow_Plus</externalClientApplication>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
-    <isCodeCredFlowEnabled>true</isCodeCredFlowEnabled>
-    <isCodeCredPostOnly>true</isCodeCredPostOnly>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
     <isConsumerSecretOptional>false</isConsumerSecretOptional>
     <isDPopEnabled>false</isDPopEnabled>
     <isDeviceFlowEnabled>false</isDeviceFlowEnabled>

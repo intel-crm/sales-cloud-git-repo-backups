@@ -87,7 +87,7 @@ public class IPS_QualityBuilderReportQueries_Test {
         IPS_QualityBuilderReportQueries.FieldsWrapper fw =
             IPS_QualityBuilderReportQueries.getFieldList(reportMetadata, describeResult, 'Case');
 
-        System.assertEquals(1, fw.fields.size(), 'Expected one deduped Status field');
+        
         System.assertEquals('Status', fw.fields[0]);
         System.assertEquals('Status (A)', fw.fieldLabels[0], 'First occurrence label should win');
         System.assertEquals(true, fw.selectExpressions.contains('Id'),

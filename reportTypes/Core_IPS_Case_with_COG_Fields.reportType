@@ -1673,11 +1673,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Case_Owner_Groups__c.Name</field>
-            <table>Case</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Contact.Core_Preferred_Language__c</field>
             <table>Case</table>
         </columns>
@@ -1699,6 +1694,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Case_Owner__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Case_Owner_Groups__c.Name</field>
             <table>Case</table>
         </columns>
         <masterLabel>Cases</masterLabel>

@@ -2,7 +2,7 @@
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
     <clientCredentialsFlowUser>integration.product.pim@intel.com.crm.crmqa9</clientCredentialsFlowUser>
     <commaSeparatedPermissionSet>Product_IntegrationUser</commaSeparatedPermissionSet>
-    <commaSeparatedProfile>Core Integration,Integration</commaSeparatedProfile>
+    <commaSeparatedProfile>Integration,Core Integration</commaSeparatedProfile>
     <externalClientApplication>PIM_Integration_User_App</externalClientApplication>
     <ipRelaxationPolicyType>Enforce</ipRelaxationPolicyType>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>

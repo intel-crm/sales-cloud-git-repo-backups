@@ -16,9 +16,6 @@
         <field>Case$Account.Core_Export_Compliance_Block__c</field>
     </columns>
     <columns>
-        <field>Case$Core_IPS_Case_Owner_Groups__c.Name</field>
-    </columns>
-    <columns>
         <field>Case$Core_IPS_Case_Owner_Groups__c</field>
     </columns>
     <columns>

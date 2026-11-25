@@ -149,13 +149,12 @@ public class IPS_QualityBuilderReportQueries {
         }
         return (Map<String, Object>) reportExtendedMetadata.get('detailColumnInfo');
     }
-
-    //Builds the SELECT field list from the report's detail columns. Resolves the report's detail columns into usable SOQL field paths and display labels.
+        //Builds the SELECT field list from the report's detail columns. Resolves the report's detail columns into usable SOQL field paths and display labels.
     public static FieldsWrapper getFieldList(Map<String, Object> reportMetadata, Map<String, Object> describeResult, String objectApiName) {
         FieldsWrapper fw = new FieldsWrapper();
-        List<String> fields = new List<String>();
-        List<String> labels = new List<String>();
-        List<String> selectExprs = new List<String>();
+        List<String> fields = new List<String>();       // CSV columns (repeats allowed)
+        List<String> labels = new List<String>();       // CSV headers (one per column)
+        List<String> selectExprs = new List<String>();  // SOQL SELECT (unique)
         List<String> seenFields = new List<String>();
         List<ChildNode> childRoots = new List<ChildNode>();
 
@@ -169,35 +168,41 @@ public class IPS_QualityBuilderReportQueries {
                 String fieldName = rc == null ? null : rc.soqlPath;
 
                 if (String.isBlank(fieldName) || !isPlausibleFieldPath(fieldName)) {
-                    //System.debug('Skipping report column that could not be resolved: ' + columnKey);
                     continue;
                 }
 
                 // Unique key: child fields are prefixed with their relationship chain.
                 String fieldKey = rc.childPath == null ? fieldName : childFieldKey(rc.childPath, fieldName);
-                if (seenFields.contains(fieldKey)) continue;
 
-                seenFields.add(fieldKey);
+                // CSV: every report column, repeats included
                 fields.add(fieldKey);
+                String schemaLabel = String.isNotBlank(rc.label) ? rc.label : fieldName;
+                labels.add(resolveColumnLabel(columnKey, detailColumnInfo, schemaLabel));
 
-                String expr = isDateType(rc.displayType) ? 'Format(' + fieldName + ')' : fieldName;
+                // SOQL: each field selected only once
+                if (seenFields.contains(fieldKey)) continue;
+                seenFields.add(fieldKey);
+
+                //String expr = isDateType(rc.displayType) ? 'Format(' + fieldName + ')' : fieldName;
+                String expr = fieldName;
+                if (isDateType(rc.displayType)) {
+                expr = 'Format(' + fieldName + ')';
+                } else if (rc.displayType == Schema.DisplayType.PICKLIST
+                || rc.displayType == Schema.DisplayType.MULTIPICKLIST) {
+                expr = 'toLabel(' + fieldName + ')';        // picklist → label instead of API value
+                }
                 if (rc.childPath == null) {
                     selectExprs.add(expr);
                 } else {
                     addToChildTree(childRoots, rc.childPath, expr);
                 }
-
-                String schemaLabel = String.isNotBlank(rc.label) ? rc.label : fieldName;
-                labels.add(resolveColumnLabel(columnKey, detailColumnInfo, schemaLabel));
             }
         }
 
         // Id is needed for most downstream processing (dedupe, upsert, etc.), regardless of
         // whether the report itself displayed it.
         if (!seenFields.contains('Id')) {
-            //fields.add('Id');
             selectExprs.add('Id');
-            //labels.add('Id');
         }
 
         for (ChildNode n : childRoots) {
@@ -209,7 +214,7 @@ public class IPS_QualityBuilderReportQueries {
         fw.selectExpressions = selectExprs;
         return fw;
     }
-
+    
     public static String childFieldKey(List<ChildLink> path, String fieldName) {
         List<String> rels = new List<String>();
         for (ChildLink l : path) rels.add(l.relName);
@@ -667,12 +672,18 @@ public class IPS_QualityBuilderReportQueries {
     //Resolves a field or relationship path against Salesforce schema metadata. Returns a ResolvedColumn containing the normalized SOQL path and display type, or null if the path is invalid.
     public static ResolvedColumn resolveColumn(String columnKey, String rootObjectApiName) {
         if (String.isBlank(columnKey) || String.isBlank(rootObjectApiName)) return null;
+        // The report API keys a related object's Name field as "<lookup>.Name__lookup".
+        // "__lookup" is not a real field: strip it so the path resolves to <lookup>__r.Name.
+        String key = columnKey.trim();
+        if (key.endsWithIgnoreCase('__lookup')) {
+            key = key.removeEndIgnoreCase('__lookup');
+        }
 
-        List<String> segs = columnKey.trim().split('\\.');
+        List<String> segs = key.split('\\.');
         if (segs[0].equalsIgnoreCase(rootObjectApiName)) {
             segs.remove(0);
         } else if (segs.size() > 1 && getObjectMeta(segs[0]) != null) {
-            return resolveChildColumn(columnKey, segs[0], rootObjectApiName);
+            return resolveChildColumn(key, segs[0], rootObjectApiName);
         }
 
         if (segs.isEmpty()) return null;
