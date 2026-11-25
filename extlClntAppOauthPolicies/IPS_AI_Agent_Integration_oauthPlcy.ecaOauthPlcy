@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
     <commaSeparatedPermissionSet>IPS_Agent_Accessible</commaSeparatedPermissionSet>
-    <commaSeparatedProfile>IPS Agent-Partner,IPS Agent Enhanced,IPS Agent,IPS Support Org Admin</commaSeparatedProfile>
+    <commaSeparatedProfile>IPS Agent,IPS Support Org Admin,IPS Agent-Partner,IPS Agent Enhanced</commaSeparatedProfile>
     <externalClientApplication>IPS_AI_Agent_Integration</externalClientApplication>
     <ipRelaxationPolicyType>Bypass</ipRelaxationPolicyType>
     <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
