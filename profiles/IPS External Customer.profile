@@ -5902,6 +5902,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>IPS_Support_CopilotAgentUtility</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>IPS_Support_CopilotHandler</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ITokenProvider</apexClass>
         <enabled>true</enabled>
     </classAccesses>

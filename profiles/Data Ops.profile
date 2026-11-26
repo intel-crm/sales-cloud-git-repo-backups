@@ -5902,6 +5902,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>IPS_Support_CopilotAgentUtility</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>IPS_Support_CopilotHandler</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ITokenProvider</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -9531,7 +9539,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Core_IPS_Backend_ID_URL__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -9576,7 +9584,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Core_IPS_Backend_System__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -16276,17 +16284,17 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_IPS_Case_Interested_Party__c.Email__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_IPS_Case_Interested_Party__c.First_Name__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_IPS_Case_Interested_Party__c.Last_Name__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -17391,7 +17399,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_IPS_Project_Member__c.Core_User__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -30757,7 +30765,7 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
-        <allowCreate>false</allowCreate>
+        <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
