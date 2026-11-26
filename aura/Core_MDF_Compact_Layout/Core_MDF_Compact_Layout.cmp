@@ -281,8 +281,11 @@
                         <c:Core_MDF_SubmitClaimToPICProcess recordId ="{!v.recordId}" isCustomComp = 'true'/>
                     </aura:if>
                     <!--TWC3117-19154 start-->
-                    <aura:if isTrue="{!AND(v.openCmp == 'Recall to Payment Clearance',  v.objAPIName == 'PartnerFundClaim')}">
-                        <p>This claim will be recalled to Payment Clearance Processing. Click "Yes" to proceed, if you click on "No", use the "Recall to Payment Clearance" button to recall later.</p>
+
+                    <!-- Roshan - Recall for CCF/DCF/RMF -->
+                    <aura:if isTrue="{!AND(OR(v.openCmp == 'Recall to Payment Clearance', v.openCmp == 'Recall to PIC Review'), v.objAPIName == 'PartnerFundClaim')}">
+                        <p>{!v.modalBody}</p>
+
                         <aura:if isTrue="{!not(empty(v.errorMessage))}">
                             <div class="slds-text-color_error slds-m-top_small" role="alert">
                                 {!v.errorMessage}
@@ -312,7 +315,10 @@
                 <aura:if isTrue="{!(v.isShowHeaderFooter)}">
                     <div class="slds-modal__footer">
                         <!--TWC3117-19154 start-->
-                        <aura:if isTrue="{!v.openCmp == 'Recall to Payment Clearance'}">
+
+                        <!-- Roshan - Recall for CCF/DCF/RMF -->
+                        <aura:if isTrue="{!OR(v.openCmp == 'Recall to Payment Clearance', v.openCmp == 'Recall to PIC Review')}">
+                            
                             <lightning:button label="No" onclick="{!c.closeModal}" disabled="{!v.isRecallSaving}"/>
                             <lightning:button label="Yes" variant="brand" onclick="{!c.confirmRecall}" disabled="{!v.isRecallSaving}"/>
                         <aura:set attribute="else">

@@ -277,7 +277,11 @@
         }
         component.set("v.isRecallSaving", true);
         component.set("v.errorMessage", "");
-        var action = component.get("c.recallToPaymentClearance");
+
+        // Roshan - Recall for CCF/DCF/RMF
+        var isPicRecall = component.get("v.openCmp") === "Recall to PIC Review";
+        var action = component.get(isPicRecall ? "c.recallToPICReview" : "c.recallToPaymentClearance");
+
         action.setParams({
             claimId: component.get("v.recordId")
         });

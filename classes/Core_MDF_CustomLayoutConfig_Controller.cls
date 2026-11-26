@@ -728,6 +728,22 @@ public without sharing class Core_MDF_CustomLayoutConfig_Controller {
         }
     }
     //TWC3117-19154 end
+
+    // Roshan - Recall for CCF/DCF/RMF
+    @AuraEnabled
+    public static void recallToPICReview(Id claimId) {
+        try {
+            PartnerFundClaim claim = [SELECT Id, Core_MDF_Status__c FROM PartnerFundClaim WHERE Id = :claimId FOR UPDATE];
+            update new PartnerFundClaim(
+                Id = claimId,
+                Core_MDF_Status__c = Label.Core_MDF_Claim_Status_PIC_Pending,
+                Core_MDF_PIC_Review_Completed__c = false
+            );
+        } catch (Exception e) {
+            Core_MDF_CCP_UtilityClass.logError(e);
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
     
     @AuraEnabled
     public static void logErrors(String errorMessage, String objName) {

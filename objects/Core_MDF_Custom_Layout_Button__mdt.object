@@ -103,6 +103,11 @@
                     <label>Recall to Payment Clearance</label>
                 </value>
                 <value>
+                    <fullName>Recall to PIC Review</fullName>
+                    <default>false</default>
+                    <label>Recall to PIC Review</label>
+                </value>
+                <value>
                     <fullName>Release Hold</fullName>
                     <default>false</default>
                     <label>Release Hold</label>

@@ -54,12 +54,24 @@
                 component.set("v.openCmp", 'Submit For PIC');
             }else if(quickAction == 'Submit for Payment Clearance'){  //Anushya - added for IPA Final Outcome based
                 component.set("v.openCmp", 'Submit for Payment Clearance');
-            } else if(quickAction == 'Recall to Payment Clearance'){ //TWC3117-19154
+            /*} else if(quickAction == 'Recall to Payment Clearance'){ //TWC3117-19154
                 component.set("v.openCmp", 'Recall to Payment Clearance'); //TWC3117-19154
                 component.set("v.modalHeader", 'Recall to Payment Clearance'); //TWC3117-19154
                 component.set("v.isShowHeaderFooter", true); //TWC3117-19154
                 component.set("v.errorMessage", ''); //TWC3117-19154
-            }else if(quickAction == 'Manual Audit'){  //Anushya - added for IPA Final Outcome based
+            }*/
+           
+            // Roshan - Recall for CCF/DCF/RMF
+            } else if(quickAction == 'Recall to Payment Clearance' || quickAction == 'Recall to PIC Review'){
+                var isPicRecall = quickAction == 'Recall to PIC Review';
+                component.set("v.openCmp", quickAction);
+                component.set("v.modalHeader", quickAction);
+                component.set("v.modalBody", isPicRecall ? "This claim will be recalled to PIC Pending. Click 'Yes' to proceed, if you click on 'No', use the 'Recall to PIC Review' button to recall later." : 'This claim will be recalled to Payment Clearance Processing. Click "Yes" to proceed, if you click on "No", use the "Recall to Payment Clearance" button to recall later.');
+                component.set("v.isShowHeaderFooter", true);
+                component.set("v.errorMessage", '');
+            }
+            
+            else if(quickAction == 'Manual Audit'){  //Anushya - added for IPA Final Outcome based
                 component.set("v.openCmp", 'Manual Audit');
             }else if(quickAction == 'Complete Payment Clearance Processing'){  //Tavishi - added for IPA Final Outcome based
                 component.set("v.openCmp", 'Complete Payment Clearance Processing');

@@ -30,7 +30,8 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             }
             String ctrlFldVal = (String) paramValidation.get('ctrlFldVal');
             Boolean useFieldLabels = (Boolean) paramValidation.get('useFieldLabels');
-            apiRes = processAttributes(programName, ctrlFldVal, useFieldLabels);
+            String fieldName = (String) paramValidation.get('fieldName');
+            apiRes = processAttributes(programName, ctrlFldVal, useFieldLabels, fieldName);
             setResponseBody(res, apiRes);
         } catch (Exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);
@@ -45,7 +46,8 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     private static final Map<String, String> SUPPORTED_QUERY_PARAMETER_MAP = new Map<String, String>{
         'programName' => 'programName',
         'controllingFieldValue' => 'controllingFieldValue',
-        'fielddisplay' => 'fielddisplay'
+        'fielddisplay' => 'fielddisplay',
+        'fieldName' => 'fieldName'
     };
     private static final String CTRL_FLD_API = 'Core_MDF_Controlling_Field_nm__c';
     private static final String CTRL_FLD_BUDGET_TYPE = 'Budget Type';
@@ -165,7 +167,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             if (!SUPPORTED_QUERY_PARAMETER_MAP.containsKey(key)) {
                 String paramValue = req.params.get(key);
                 if (String.isNotBlank(paramValue)) {
-                	List<String> allowedVal = new List<String>{ 'controllingFieldValue', 'fielddisplay' };
+                	List<String> allowedVal = new List<String>{ 'programName', 'controllingFieldValue', 'fielddisplay', 'fieldName' };
                 	rslt.put('error', createErrorApiResponse(Core_MDF_Attributes_RestAPIConstants.CODE_1003_INVALID_PARAMETER_KEY, buildInvalidReqParamDetails(key, allowedVal), key));
                 	return rslt;
                 }
@@ -189,6 +191,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         String ctrlFldVal = resolveCtrlFldVal(req);
         rslt.put('ctrlFldVal', ctrlFldVal);
         rslt.put('useFieldLabels', useFieldLabels);
+        rslt.put('fieldName', req.params.get('fieldName'));
         return rslt;
     }
     /****************************************************************
@@ -288,10 +291,10 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
 
     /****************************************************************
 * Method Name: processAttributes
-* Parameters: String progNmRaw, String ctrlFldVal, Boolean useFieldLabels
+* Parameters: String progNmRaw, String ctrlFldVal, Boolean useFieldLabels, String fieldName
 * Description: Validates input and builds a response containing record-type filtered picklist attributes.
 *****************************************************************/
-    private static Core_MDF_Campaign_APIResponse processAttributes(String progNmRaw, String ctrlFldVal, Boolean useFieldLabels) {
+    private static Core_MDF_Campaign_APIResponse processAttributes(String progNmRaw, String ctrlFldVal, Boolean useFieldLabels, String fieldName) {
         try {
             String progNm = String.isBlank(progNmRaw) ? null : progNmRaw.trim();
             if (String.isBlank(progNm)) {
@@ -313,23 +316,84 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             Map<String, Object> mergedDepsByFld = new Map<String, Object>();
             boolean ctrlValProvided = !String.isBlank(ctrlFldVal);
             boolean foundResultsForCtrlVal = false;
-            Set<String> configuredFldApiNames = getConfiguredFldApiNm(canonicalProg);
+            Boolean isIpa = resolveCtrlFldDisplayNm(canonicalProg) == CTRL_FLD_FOCUS_AREA;
+            Map<String, Set<String>> configuredFldsByRt = new Map<String, Set<String>>();
+            Set<String> configuredFldApiNames = new Set<String>();
+            if (isIpa) {
+                Map<String, Set<String>> configNamesByRt = new Map<String, Set<String>>();
+                Set<String> configNames = new Set<String>();
+                for (String rtDevName : rtDevNames) {
+                    Set<String> rtConfigNames = new Set<String>{ rtDevName };
+                    String rtName = resolveRecTypeNmByDevNm(LAYOUT_CFG_OBJECT, rtDevName);
+                    if (String.isNotBlank(rtName)) {
+                        rtConfigNames.add(rtName);
+                    }
+                    configNamesByRt.put(rtDevName, rtConfigNames);
+                    configNames.addAll(rtConfigNames);
+                }
+                Map<String, Set<String>> configuredFldsByName = getConfiguredFldsByName(configNames);
+                for (String rtDevName : rtDevNames) {
+                    Set<String> rtConfiguredFlds = new Set<String>();
+                    for (String configName : configNamesByRt.get(rtDevName)) {
+                        rtConfiguredFlds.addAll(configuredFldsByName.get(configName.trim().toLowerCase()));
+                    }
+                    configuredFldsByRt.put(rtDevName, rtConfiguredFlds);
+                    configuredFldApiNames.addAll(rtConfiguredFlds);
+                }
+            } else {
+                configuredFldApiNames.addAll(getConfiguredFldApiNm(canonicalProg));
+            }
+            String requestedFldApi;
+            if (String.isNotBlank(fieldName)) {
+                Map<String, String> configuredLabels = getFldLabels(configuredFldApiNames);
+                List<String> matchingFields = new List<String>();
+                for (String fldApi : configuredFldApiNames) {
+                    if (fldApi.equalsIgnoreCase(fieldName.trim())) {
+                        requestedFldApi = fldApi;
+                        break;
+                    }
+                    String fieldLabel = configuredLabels.get(fldApi);
+                    if (String.isNotBlank(fieldLabel) && fieldLabel.trim().equalsIgnoreCase(fieldName.trim())) {
+                        matchingFields.add(fldApi);
+                    }
+                }
+                if (requestedFldApi == null && matchingFields.size() == 1) {
+                    requestedFldApi = matchingFields[0];
+                }
+                if (requestedFldApi == null) {
+                    matchingFields.sort();
+                    Core_MDF_Campaign_APIResponse fieldError = new Core_MDF_Campaign_APIResponse();
+                    fieldError.setErrorInfo(matchingFields.isEmpty() ? 'Field is not configured for this program.' : 'Field label is ambiguous; use a field API name.', Core_MDF_Attributes_RestAPIConstants.CODE_1007_INVALID_FIELD);
+                    fieldError.details = buildInvalidReqParamDetails('fieldName', matchingFields);
+                    return fieldError;
+                }
+            }
             for (String rtDevName : rtDevNames) {
+                Set<String> allowedFldApiNames = isIpa ? configuredFldsByRt.get(rtDevName) : configuredFldApiNames;
+                if (allowedFldApiNames == null || allowedFldApiNames.isEmpty()) {
+                    continue;
+                }
                 RecTypePicklistResult recTypeResult = getRecTypeEnabledPicklstVal(rtDevName, ctrlFldVal, useFieldLabels, canonicalProg);
                 Map<String, List<String>> recTypeVal = recTypeResult.valuesByField;
                 if (recTypeVal == null || recTypeVal.isEmpty()) {
                     continue;
                 }
                 foundResultsForCtrlVal = true;
-                Set<String> allowedFldApiNames = configuredFldApiNames;
                 recTypeVal = filterValByAllowedFlds(recTypeVal, allowedFldApiNames);
                 // The controlling field is surfaced as controllingField and the dependentValues keys instead.
                 recTypeVal.remove(CTRL_FLD_API);
                 if (recTypeVal.isEmpty()) {
                     continue;
                 }
-                Map<String, Object> recTypeDependency = filterDepMdtByAllowedFld(recTypeResult.dependenciesByField, allowedFldApiNames, new Set<String>(recTypeVal.keySet()));
+                Set<String> dependencyFields = isIpa ? new Set<String>(recTypeResult.valuesByField.keySet()) : new Set<String>(recTypeVal.keySet());
+                Map<String, Object> recTypeDependency = filterDepMdtByAllowedFld(recTypeResult.dependenciesByField, allowedFldApiNames, dependencyFields, !isIpa);
                 addCtrlFldDependencies(recTypeDependency, recTypeResult.ctrlDependenciesByField, recTypeVal.keySet());
+                if (requestedFldApi != null) {
+                    recTypeVal = filterValByAllowedFlds(recTypeVal, new Set<String>{ requestedFldApi });
+                    if (recTypeVal.isEmpty()) {
+                        continue;
+                    }
+                }
                 String recTypeNm = resolveRecTypeNmByDevNm('Core_MDF_Custom_Picklist__c', rtDevName);
                 attrsByRt.put(String.isBlank(recTypeNm) ? rtDevName : recTypeNm, recTypeVal);
                 if (!recTypeDependency.isEmpty()) {
@@ -1067,41 +1131,55 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     }    
     /****************************************************************
 * Method Name: getConfiguredFldApiNm
-* Parameters: String progNm
-* Description: Returns the picklist field API names configured for the program in Core_MDF_Custom_Layout_Configurations__c (object Core_MDF_Custom_Picklist__c, Record Type Name = program name). Unknown fields are ignored.
+* Parameters: String configName
+* Description: Returns field API names configured for the given program or record type name.
 *****************************************************************/
-    private static Set<String> getConfiguredFldApiNm(String progNm) {
-        Set<String> fldApiNames = new Set<String>();
-        if (String.isBlank(progNm)) {
-            return fldApiNames;
+    private static Set<String> getConfiguredFldApiNm(String configName) {
+        if (String.isBlank(configName)) {
+            return new Set<String>();
         }
-        if (layoutCfgFldsByProg.containsKey(progNm)) {
-            return layoutCfgFldsByProg.get(progNm);
+        return getConfiguredFldsByName(new Set<String>{ configName }).get(configName.trim().toLowerCase());
+    }
+
+    private static Map<String, Set<String>> getConfiguredFldsByName(Set<String> configNames) {
+        Map<String, Set<String>> fieldsByName = new Map<String, Set<String>>();
+        Set<String> namesToQuery = new Set<String>();
+        for (String configName : configNames) {
+            if (String.isBlank(configName)) {
+                continue;
+            }
+            String cacheKey = configName.trim().toLowerCase();
+            if (!layoutCfgFldsByProg.containsKey(cacheKey)) {
+                layoutCfgFldsByProg.put(cacheKey, new Set<String>());
+                namesToQuery.add(configName.trim());
+            }
+            fieldsByName.put(cacheKey, layoutCfgFldsByProg.get(cacheKey));
         }
-        String progNmLike = '%' + progNm + '%';
+        if (namesToQuery.isEmpty()) {
+            return fieldsByName;
+        }
         try {
             Map<String, Schema.SObjectField> objFields = getFieldMap(LAYOUT_CFG_OBJECT);
             for (Core_MDF_Custom_Layout_Configurations__c cfg : [
-                SELECT Core_MDF_Field_API_Name_txt__c
+                SELECT Core_MDF_Field_API_Name_txt__c, Core_MDF_Record_Type_Name_txt__c
                 FROM Core_MDF_Custom_Layout_Configurations__c
                 WHERE Core_MDF_Object_API_Name_txt__c = :LAYOUT_CFG_OBJECT
-                AND Core_MDF_Record_Type_Name_txt__c LIKE: progNmLike
+                AND Core_MDF_Record_Type_Name_txt__c IN :namesToQuery
                 AND Core_MDF_User_Type_nm__c = :LAYOUT_CFG_USER_TYPE
                 AND API_Visibility__c = true
                 AND Core_MDF_Active_Ind__c = true
                 AND Core_MDF_Section_id__r.Core_MDF_Field_View_nm__c ='API Picklist'
             ]) {
                 String cfgFldApi = String.isBlank(cfg.Core_MDF_Field_API_Name_txt__c) ? null : cfg.Core_MDF_Field_API_Name_txt__c.trim();
-                if (cfgFldApi != null && objFields != null && objFields.containsKey(cfgFldApi)) {
-                    // Describe returns the canonical casing, which the UI API payload keys use.
-                    fldApiNames.add(objFields.get(cfgFldApi).getDescribe().getName());
+                String cacheKey = String.isBlank(cfg.Core_MDF_Record_Type_Name_txt__c) ? null : cfg.Core_MDF_Record_Type_Name_txt__c.trim().toLowerCase();
+                if (cacheKey != null && fieldsByName.containsKey(cacheKey) && cfgFldApi != null && objFields != null && objFields.containsKey(cfgFldApi)) {
+                    fieldsByName.get(cacheKey).add(objFields.get(cfgFldApi).getDescribe().getName());
                 }
             }
         } catch (Exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);
         }
-        layoutCfgFldsByProg.put(progNm, fldApiNames);
-        return fldApiNames;
+        return fieldsByName;
     }
     /****************************************************************
 * Method Name: filterValByAllowedFlds
@@ -1415,6 +1493,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         if (apiResponse.isSuccess) {
             return Core_MDF_Attributes_RestAPIConstants.HTTP_200;
         }        
+        if (apiResponse.getCode() == Core_MDF_Attributes_RestAPIConstants.CODE_1007_INVALID_FIELD) {
+            return Core_MDF_Attributes_RestAPIConstants.HTTP_400;
+        }
         Core_MDF_RestAPI_Logger.ErrorConfig config = Core_MDF_RestAPI_Logger.getErrorConfigDetails(apiResponse.getCode(),'Custom Picklist Attributes');
         if (config != null) {
             return config.httpStatusCode;
@@ -1522,10 +1603,10 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
     
     /****************************************************************
 * Method Name: filterDepMdtByAllowedFld
-* Parameters: Map<String, Object> dependencyByFld, Set<String> allowedFldApi, Set<String> returnedFldApi
-* Description: Filters dependency metadata to include only dependencies whose dependent and controlling fields are allowed and returned.
+* Parameters: Map<String, Object> dependencyByFld, Set<String> allowedFldApi, Set<String> returnedFldApi, Boolean requireConfiguredController
+* Description: Filters dependency metadata for configured fields and available controlling fields.
 *****************************************************************/
-    private static Map<String, Object> filterDepMdtByAllowedFld(Map<String, Object> dependencyByFld, Set<String> allowedFldApi, Set<String> returnedFldApi) {
+    private static Map<String, Object> filterDepMdtByAllowedFld(Map<String, Object> dependencyByFld, Set<String> allowedFldApi, Set<String> returnedFldApi, Boolean requireConfiguredController) {
         Map<String, Object> filtered = new Map<String, Object>();
         if (dependencyByFld == null || dependencyByFld.isEmpty()) {
             return filtered;
@@ -1548,7 +1629,7 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
             if (returnedFldApi != null && !returnedFldApi.isEmpty() && !returnedFldApi.contains(cntrFldApiName)) {
                 continue;
             }
-            if (allowedFldApi != null && !allowedFldApi.isEmpty() && !allowedFldApi.contains(cntrFldApiName)) {
+            if (requireConfiguredController && allowedFldApi != null && !allowedFldApi.isEmpty() && !allowedFldApi.contains(cntrFldApiName)) {
                 continue;
             }
             filtered.put(fldApiNm, metadata);

@@ -17,6 +17,7 @@ public class Core_MDF_Attributes_RestAPIConstants {
     public static final String CODE_1004_APPLICATION_ERROR = '1004';
     public static final String CODE_1005_INVALID_FIELDDISPLAY_VALUE = '1005';
     public static final String CODE_1006_INVALID_CONTROLLING_VALUE = '1006';
+    public static final String CODE_1007_INVALID_FIELD = '1007';
    
     private static final Map<String, Integer> HTTP_STATUS_BY_API_CODE = new Map<String, Integer>{
         CODE_200 => HTTP_200,
@@ -26,7 +27,8 @@ public class Core_MDF_Attributes_RestAPIConstants {
         CODE_1003_INVALID_PARAMETER_KEY => HTTP_400,
         CODE_1004_APPLICATION_ERROR => HTTP_500,
         CODE_1005_INVALID_FIELDDISPLAY_VALUE => HTTP_400,
-        CODE_1006_INVALID_CONTROLLING_VALUE => HTTP_400
+        CODE_1006_INVALID_CONTROLLING_VALUE => HTTP_400,
+        CODE_1007_INVALID_FIELD => HTTP_400
     };
 
     public static Integer getHttpStatusByApiCode(String apiCode) {
