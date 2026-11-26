@@ -444,11 +444,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG_Quota__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG__c</field>
         <readable>true</readable>
@@ -456,11 +451,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Assigned__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Quota__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -916,21 +916,6 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>CPT_MarVol_Margin_CCG_Quota__c</fullName>
-        <label>MarVol - Margin CCG Quota</label>
-        <summarizedField>CPT_Territory_Assignment__c.CPT_MarVol_Margin_CCG_Target__c</summarizedField>
-        <summaryFilterItems>
-            <field>CPT_Territory_Assignment__c.CPT_MarVol_Margin_CCG__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </summaryFilterItems>
-        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
-        <summaryOperation>sum</summaryOperation>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
         <fullName>CPT_MarVol_Margin_CCG__c</fullName>
         <defaultValue>false</defaultValue>
         <inlineHelpText>Select this if you want to include CCG margin target. Must be selected with at least one Volume CCG field.</inlineHelpText>
@@ -954,21 +939,6 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>CPT_MarVol_Margin_DCG_Quota__c</fullName>
-        <label>MarVol - Margin DCG Quota</label>
-        <summarizedField>CPT_Territory_Assignment__c.CPT_MarVol_Margin_DCG_Target__c</summarizedField>
-        <summaryFilterItems>
-            <field>CPT_Territory_Assignment__c.CPT_MarVol_Margin_DCG__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </summaryFilterItems>
-        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
-        <summaryOperation>sum</summaryOperation>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
     </fields>
     <fields>
         <fullName>CPT_MarVol_Margin_DCG__c</fullName>
@@ -4465,7 +4435,7 @@ ISBLANK(TEXT(CPT_Sales_Team_Goal__c))
     </validationRules>
     <validationRules>
         <fullName>MarVol_Checkbox_And_Quota_Alignment</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>This validation rule ensures mutual dependency between checkbox fields and their corresponding quota fields. If a quota value &gt; 0 exists, the corresponding checkbox must be selected. If a checkbox is selected, the corresponding quota value must be &gt; 0.</description>
         <errorConditionFormula>AND( ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;), OR( AND(NOT(CPT_MarVol_Margin_CCG__c), CPT_MarVol_Margin_CCG_Quota__c &gt; 0), AND(NOT(CPT_MarVol_Margin_DCG__c), CPT_MarVol_Margin_DCG_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_CCG_LNL__c), CPT_MarVol_NextGen_CCG_LNL_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_CCG_PTL__c), CPT_MarVol_NextGen_CCG_PTL_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_CCG_WCL__c), CPT_MarVol_NextGen_CCG_WCL_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_DCG_GNR__c), CPT_MarVol_NextGen_DCG_GNR_Quota__c &gt; 0),AND(CPT_MarVol_Margin_CCG__c, CPT_MarVol_Margin_CCG_Quota__c &lt;= 0), AND(CPT_MarVol_Margin_DCG__c, CPT_MarVol_Margin_DCG_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_CCG_LNL__c, CPT_MarVol_NextGen_CCG_LNL_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_CCG_PTL__c, CPT_MarVol_NextGen_CCG_PTL_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_CCG_WCL__c, CPT_MarVol_NextGen_CCG_WCL_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_DCG_GNR__c, CPT_MarVol_NextGen_DCG_GNR_Quota__c &lt;= 0), CPT_MarVol_Allocated__c &lt;&gt; CPT_MarVol_Allowed__c ) )</errorConditionFormula>
         <errorDisplayField>CPT_Account_Breakout__c</errorDisplayField>

@@ -268,10 +268,6 @@
         <name>CPT_MarVol_Margin_CCG_Assigned__c</name>
     </fields>
     <fields>
-        <label><!-- MarVol - Margin CCG Quota --></label>
-        <name>CPT_MarVol_Margin_CCG_Quota__c</name>
-    </fields>
-    <fields>
         <help><!-- Select this if you want to include CCG margin target. Must be selected with at least one Volume CCG field. --></help>
         <label><!-- MarVol - Margin CCG --></label>
         <name>CPT_MarVol_Margin_CCG__c</name>
@@ -279,10 +275,6 @@
     <fields>
         <label><!-- MarVol - Margin DCG % Assigned --></label>
         <name>CPT_MarVol_Margin_DCG_Assigned__c</name>
-    </fields>
-    <fields>
-        <label><!-- MarVol - Margin DCG Quota --></label>
-        <name>CPT_MarVol_Margin_DCG_Quota__c</name>
     </fields>
     <fields>
         <help><!-- Select this if you want to include DCG margin target. Must be selected together with NextGen DCG GNR. --></help>

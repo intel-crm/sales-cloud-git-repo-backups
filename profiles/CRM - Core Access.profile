@@ -19818,6 +19818,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>UCD_ACM_AccountNameChangeBatch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>UCD_ACM_AccountNameChangeBatchTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>UCD_ACM_AccountPlatformEvent_Batch</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -27963,22 +27971,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG_Quota__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_CCG__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Assigned__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CPT_Quota_Setup__c.CPT_MarVol_Margin_DCG_Quota__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -74878,6 +74876,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Summary__c.PRM_Points_Balance__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Summary__c.PRM_Sales_Amount__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -74889,6 +74892,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Value_Exchange_Summary__c.PRM_TimePeriod_Nm__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Summary__c.PRM_Total_Points_Due_to_Expire_Nbr__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

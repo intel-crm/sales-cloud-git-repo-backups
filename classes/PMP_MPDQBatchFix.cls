@@ -264,7 +264,8 @@ logEntryMsgString +='\nReactivated latest deactivated PAG '
                             }                          
                             if (!alreadyQueued) {
                                 latestRel.Is_Active__c = true;
-                                //if(!relUpdates.contains(latestRel))
+                                //WW50
+                                if(!relUpdates.contains(latestRel))
                                 relUpdates.add(latestRel);                         
                                 logEntryMsgString +='\nReactivated latest deactivated PAG ' + latestRel.Id +' for Account ' + accId;
                             }
@@ -421,7 +422,8 @@ changed = true;
 }*/}
                     
                     if (!inactiveOPIDMPIREL && (IfInactivatedMPI || changed)) {
-                       // if(!companyUpdates.contains(pub))
+                        //WW50
+                        if(!companyUpdates.contains(pub))
                         companyUpdates.add(pub);
                         companyPcMap.put(pub.id,pub);
                         system.debug('companyUpdates.add(pub);'+companyUpdates);

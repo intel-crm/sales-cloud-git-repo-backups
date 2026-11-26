@@ -166,6 +166,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>PRM_Points_Balance__c</fullName>
+        <externalId>false</externalId>
+        <label>Points Current Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Sales_Amount__c</fullName>
         <externalId>false</externalId>
         <label>Sales Amount</label>
@@ -211,6 +223,18 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Total_Points_Due_to_Expire_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Points Due to Expire</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_Training_Credit_Points_Count_Nbr__c</fullName>

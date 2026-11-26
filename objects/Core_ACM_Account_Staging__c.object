@@ -221,6 +221,11 @@
                     <default>false</default>
                     <label>REMOVE_MPSHARE</label>
                 </value>
+                <value>
+                    <fullName>NAME_UPDATE</fullName>
+                    <default>false</default>
+                    <label>NAME UPDATE</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

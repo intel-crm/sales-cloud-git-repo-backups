@@ -14,6 +14,10 @@
         <relationshipLabel><!-- Value Exchange Summaries --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Points Current Balance --></label>
+        <name>PRM_Points_Balance__c</name>
+    </fields>
+    <fields>
         <label><!-- Sales Amount --></label>
         <name>PRM_Sales_Amount__c</name>
     </fields>
@@ -32,6 +36,10 @@
             <masterLabel>Q4 2026 - Q3 2027</masterLabel>
             <translation><!-- Q4 2026 - Q3 2027 --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Points Due to Expire --></label>
+        <name>PRM_Total_Points_Due_to_Expire_Nbr__c</name>
     </fields>
     <fields>
         <label><!-- Training Credit Points Count --></label>
