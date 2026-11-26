@@ -146,10 +146,40 @@
     }, {
       "components" : [ {
         "componentAttributes" : {
-          "richTextValue" : "<p style=\"text-align: center;\"><span style=\"font-size: 18px; color: rgb(230, 0, 0);\">&nbsp;The Intel® FPGA Self-Service Licensing Center (SSLC) is upgrading to a new location on the altera.com domain. To ensure a smooth transition of your data, the current site will not accept new license requests from </span><strong style=\"font-size: 18px; color: rgb(230, 0, 0);\">February 23rd</strong><span style=\"font-size: 18px; color: rgb(230, 0, 0);\"> through </span><strong style=\"font-size: 18px; color: rgb(230, 0, 0);\">March 15th</strong><span style=\"font-size: 18px; color: rgb(230, 0, 0);\">. </span></p><p style=\"text-align: center;\"><span style=\"font-size: 18px; color: rgb(230, 0, 0);\">You will still be able to create evaluation and no-cost licenses on the intel.com SSLC during this time</span></p>"
+          "allowPrepopulatePrechatFields" : true,
+          "avatarImgURL" : "",
+          "codeSettingsName" : "",
+          "defaultMinimizedText" : "License Assistant",
+          "displayHelpButton" : true,
+          "eswConfigurationJSON" : {
+            "baseCoreURL" : "https://intel.my.salesforce.com",
+            "baseLiveAgentContentURL" : "https://c.la3-c1-ia6.salesforceliveagent.com/content",
+            "baseLiveAgentURL" : "https://d.la3-c1-ia6.salesforceliveagent.com/chat",
+            "buttonId" : "5733b000000TQ0r",
+            "deploymentId" : "5723b000000TPyN",
+            "enabledFeatures" : [ "LiveAgent" ],
+            "entryFeature" : "LiveAgent",
+            "eswConfigDevName" : "PSG_Sales_Chat_Group",
+            "eswConfigId" : "04I3b000000CaVYEA0",
+            "eswLiveAgentDevName" : "EmbeddedServiceLiveAgent_Parent04I3b000000CaVYEA0_17ca28289d4",
+            "gslbBaseURL" : "https://service.force.com",
+            "isOfflineCasesEnabled" : "0",
+            "orgId" : "00Do0000000aRcf"
+          },
+          "externalScripts" : "",
+          "externalStyles" : "",
+          "fallbackRouting" : "",
+          "offlineSupportMinimizedText" : "Contact Us",
+          "offlineText" : "Offline",
+          "onlineLoadingText" : "Loading",
+          "prechatBackgroundImgURL" : "",
+          "smallCompanyLogoImgURL" : "",
+          "snippetSettingsFile" : "Sales_Bot_PreChat",
+          "storageDomain" : "",
+          "waitingStateBackgroundImgURL" : ""
         },
-        "componentName" : "forceCommunity:richTextInline",
-        "id" : "32c6dd21-f94e-4a88-9b14-8a0c71642fcd",
+        "componentName" : "forceCommunity:embeddedService",
+        "id" : "bf9c16da-3281-46be-a2df-e638ce19a499",
         "renditionMap" : { },
         "type" : "component"
       } ],

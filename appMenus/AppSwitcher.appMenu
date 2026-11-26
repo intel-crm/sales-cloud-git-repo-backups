@@ -868,4 +868,12 @@
         <name>Draco_AGS_JWT_Integration_App</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>IPS_Quality_builder</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Workflow_Plus</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
 </AppMenu>
