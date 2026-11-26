@@ -489,6 +489,14 @@
         <name>Core_Bypass_Field_Validation__c</name>
     </fields>
     <fields>
+        <label><!-- CEG Comments --></label>
+        <name>Core_CEG_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- CEG Contact --></label>
+        <name>Core_CEG_Contact__c</name>
+    </fields>
+    <fields>
         <label><!-- CPU --></label>
         <name>Core_CPU__c</name>
     </fields>
@@ -515,6 +523,10 @@
     <fields>
         <label><!-- Cloud Service Provider --></label>
         <name>Core_Cloud_Service_Provider__c</name>
+    </fields>
+    <fields>
+        <label><!-- Collaboration Model --></label>
+        <name>Core_Collaboration_Model__c</name>
     </fields>
     <fields>
         <help><!-- Select all applicable values to submit Deal opportunity for Approval. Add specific solution usage (i.e. MRS, Software). --></help>
@@ -1001,6 +1013,22 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Custom Silicon Application --></label>
+        <name>Core_Custom_Silicon_Application__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Product Type --></label>
+        <name>Core_Custom_Silicon_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Project Stage --></label>
+        <name>Core_Custom_Silicon_Project_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Segment --></label>
+        <name>Core_Custom_Silicon_Segment__c</name>
+    </fields>
+    <fields>
         <label><!-- Customer Project Details --></label>
         <name>Core_Customer_Project_Details__c</name>
     </fields>
@@ -1158,6 +1186,10 @@
     <fields>
         <label><!-- Exclude from Confidence --></label>
         <name>Core_Exclude_from_Confidence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exec Sponsor Contact --></label>
+        <name>Core_Exec_Sponsor_Contact__c</name>
     </fields>
     <fields>
         <help><!-- Free form text field to track the lead number or other reference ID from the system where the Opportunity originated. --></help>
@@ -1540,6 +1572,10 @@
             <translation><!-- CRESCENT ISLAND --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>CUSTOM SILICON</masterLabel>
+            <translation><!-- CUSTOM SILICON --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>CYCLONE</masterLabel>
             <translation><!-- CYCLONE --></translation>
         </picklistValues>
@@ -1680,6 +1716,10 @@
             <translation><!-- PHOEBE LAKE --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>PINE STREAM</masterLabel>
+            <translation><!-- PINE STREAM --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PURLEY</masterLabel>
             <translation><!-- PURLEY --></translation>
         </picklistValues>
@@ -1698,6 +1738,18 @@
         <picklistValues>
             <masterLabel>RAPTOR LAKE REFRESH M</masterLabel>
             <translation><!-- RAPTOR LAKE REFRESH M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAZOR LAKE AX</masterLabel>
+            <translation><!-- RAZOR LAKE AX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAZOR LAKE D</masterLabel>
+            <translation><!-- RAZOR LAKE D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAZOR LAKE M</masterLabel>
+            <translation><!-- RAZOR LAKE M --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>REDONDO LAKE</masterLabel>
@@ -2075,6 +2127,10 @@
     <fields>
         <label><!-- Modern Standby --></label>
         <name>Core_Modern_Standby__c</name>
+    </fields>
+    <fields>
+        <label><!-- NRE $ --></label>
+        <name>Core_NRE__c</name>
     </fields>
     <fields>
         <label><!-- Named/Strategic Territory Name --></label>
@@ -3585,6 +3641,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Private_Compliance_Comments__c</name>
     </fields>
     <fields>
+        <label><!-- Process Node --></label>
+        <name>Core_Process_Node__c</name>
+    </fields>
+    <fields>
         <help><!-- Select the customer&apos;s application for the opportunity products. The available options are determined by the Product Segment selected. --></help>
         <label><!-- Product Application --></label>
         <name>Core_Product_Application__c</name>
@@ -3996,6 +4056,10 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Products_At_Risk_Count__c</name>
     </fields>
     <fields>
+        <label><!-- Project Code Name --></label>
+        <name>Core_Project_Code_Name__c</name>
+    </fields>
+    <fields>
         <help><!-- Describes where the customer is in the &quot;Purchase Cycle&quot;. This field will default from a converted lead if applicable and is not editable. --></help>
         <label><!-- Project Phase --></label>
         <name>Core_Project_Phase__c</name>
@@ -4015,6 +4079,26 @@ Partner-led - This option is systematically populated when an opportunity is cre
             <masterLabel>Purchase</masterLabel>
             <translation><!-- Purchase --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: Engineering Sample --></label>
+        <name>Core_Project_Schedule_Engineering_Sample__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: PRQ --></label>
+        <name>Core_Project_Schedule_PRQ__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: RFx --></label>
+        <name>Core_Project_Schedule_RFx__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: TR Kick off --></label>
+        <name>Core_Project_Schedule_TR_Kick_off__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: Tape In/Out --></label>
+        <name>Core_Project_Schedule_Tape_In_Out__c</name>
     </fields>
     <fields>
         <help><!-- Indicates the estimated US dollar size of the opportunity. This field will default from a converted lead if applicable and is not editable. --></help>

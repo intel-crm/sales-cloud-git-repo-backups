@@ -57796,6 +57796,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_CEG_Comments__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_CEG_Contact__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_Opportunity_Facts__c.Core_CPU__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -57822,6 +57832,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_Opportunity_Facts__c.Core_Cloud_Service_Provider__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Collaboration_Model__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -57852,6 +57867,26 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_Opportunity_Facts__c.Core_Crystal_Ridge__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Custom_Silicon_Application__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Custom_Silicon_Product_Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Custom_Silicon_Project_Stage__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Custom_Silicon_Segment__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -57932,6 +57967,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_Opportunity_Facts__c.Core_Entry_SPP_US__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Exec_Sponsor_Contact__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -58075,6 +58115,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_NRE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Core_Opportunity_Facts__c.Core_New_ID__c</field>
         <readable>true</readable>
@@ -58141,6 +58186,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Process_Node__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_Opportunity_Facts__c.Core_Product_Capability_Technology__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -58148,6 +58198,36 @@
         <editable>true</editable>
         <field>Core_Opportunity_Facts__c.Core_Production_Lifecycle__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Project_Code_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Project_Schedule_Engineering_Sample__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Project_Schedule_PRQ__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Project_Schedule_RFx__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Project_Schedule_TR_Kick_off__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Facts__c.Core_Project_Schedule_Tape_In_Out__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -58371,7 +58451,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_CEG_Comments__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_CEG_Contact__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_Opportunity_Features__c.Core_Consumer_Sales_system__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Custom_Silicon_Application__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Custom_Silicon_Segment__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Exec_Sponsor_Contact__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -58391,7 +58496,47 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_NRE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_Opportunity_Features__c.Core_Platform_BU__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Process_Node__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Project_Code_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Project_Schedule_Engineering_Sample__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Project_Schedule_PRQ__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Project_Schedule_RFx__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Project_Schedule_TR_Kick_off__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_Opportunity_Features__c.Core_Project_Schedule_Tape_In_Out__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -69136,6 +69281,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.Core_CEG_Comments__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_CEG_Contact__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.Core_CPU__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -69167,6 +69322,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Core_Cloud_Service_Provider__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Collaboration_Model__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -69287,6 +69447,26 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Core_Current_Architecture__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Custom_Silicon_Application__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Custom_Silicon_Product_Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Custom_Silicon_Project_Stage__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Custom_Silicon_Segment__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -69467,6 +69647,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Core_Exclude_from_Confidence__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Exec_Sponsor_Contact__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -69843,6 +70028,11 @@
         <editable>false</editable>
         <field>Opportunity.Core_Modern_Standby__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_NRE__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -70286,6 +70476,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.Core_Process_Node__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.Core_Product_Application__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -70351,7 +70546,37 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.Core_Project_Code_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.Core_Project_Phase__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Project_Schedule_Engineering_Sample__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Project_Schedule_PRQ__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Project_Schedule_RFx__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Project_Schedule_TR_Kick_off__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Core_Project_Schedule_Tape_In_Out__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

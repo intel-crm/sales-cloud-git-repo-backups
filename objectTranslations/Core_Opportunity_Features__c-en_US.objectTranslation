@@ -9,8 +9,28 @@
         <value>Descriptive Features</value>
     </caseValues>
     <fields>
+        <label><!-- CEG Comments --></label>
+        <name>Core_CEG_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- CEG Contact --></label>
+        <name>Core_CEG_Contact__c</name>
+    </fields>
+    <fields>
         <label><!-- Consumer Sales System --></label>
         <name>Core_Consumer_Sales_system__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Application --></label>
+        <name>Core_Custom_Silicon_Application__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Segment --></label>
+        <name>Core_Custom_Silicon_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exec Sponsor Contact --></label>
+        <name>Core_Exec_Sponsor_Contact__c</name>
     </fields>
     <fields>
         <label><!-- Feature Name --></label>
@@ -30,6 +50,10 @@
         <name>Core_Multi_Select__c</name>
     </fields>
     <fields>
+        <label><!-- NRE $ --></label>
+        <name>Core_NRE__c</name>
+    </fields>
+    <fields>
         <label><!-- Opportunity --></label>
         <name>Core_Opportunity__c</name>
         <relationshipLabel><!-- Descriptive Features --></relationshipLabel>
@@ -37,6 +61,34 @@
     <fields>
         <label><!-- Platform BU --></label>
         <name>Core_Platform_BU__c</name>
+    </fields>
+    <fields>
+        <label><!-- Process Node --></label>
+        <name>Core_Process_Node__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Code Name --></label>
+        <name>Core_Project_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: Engineering Sample --></label>
+        <name>Core_Project_Schedule_Engineering_Sample__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: PRQ --></label>
+        <name>Core_Project_Schedule_PRQ__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: RFx --></label>
+        <name>Core_Project_Schedule_RFx__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: TR Kick off --></label>
+        <name>Core_Project_Schedule_TR_Kick_off__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: Tape In/Out --></label>
+        <name>Core_Project_Schedule_Tape_In_Out__c</name>
     </fields>
     <fields>
         <label><!-- Opportunity Product --></label>

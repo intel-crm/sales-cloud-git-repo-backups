@@ -2034,6 +2034,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -2046,8 +2050,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -2056,6 +2072,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -2070,12 +2094,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -2086,12 +2126,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -2192,12 +2256,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -2234,6 +2301,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -2275,6 +2346,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -2377,6 +2449,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -2471,6 +2544,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -2487,7 +2561,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -4671,6 +4751,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -4683,8 +4767,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -4693,6 +4789,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -4707,12 +4811,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -4723,12 +4843,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -4828,12 +4972,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -4870,6 +5017,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -4911,6 +5062,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -5013,6 +5165,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -5107,6 +5260,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -5123,7 +5277,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -7304,6 +7464,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -7316,8 +7480,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -7326,6 +7502,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -7340,12 +7524,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -7356,12 +7556,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -7460,12 +7684,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -7502,6 +7729,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -7543,6 +7774,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -7645,6 +7877,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -7739,6 +7972,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -7755,7 +7989,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -9940,6 +10180,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -9952,8 +10196,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -9962,6 +10218,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -9976,12 +10240,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -9992,12 +10272,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -10097,12 +10401,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -10139,6 +10446,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -10180,6 +10491,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -10282,6 +10594,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -10376,6 +10689,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -10392,7 +10706,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -12573,6 +12893,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -12585,8 +12909,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -12595,6 +12931,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -12609,12 +12953,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -12625,12 +12985,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -12729,12 +13113,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -12771,6 +13158,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -12812,6 +13203,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -12914,6 +13306,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -13008,6 +13401,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -13024,7 +13418,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -15209,6 +15609,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -15221,8 +15625,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -15231,6 +15647,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -15245,12 +15669,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -15261,12 +15701,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -15366,12 +15830,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -15408,6 +15875,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -15449,6 +15920,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -15551,6 +16023,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -15645,6 +16118,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -15661,7 +16135,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -17842,6 +18322,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -17854,8 +18338,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -17864,6 +18360,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -17878,12 +18382,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -17894,12 +18414,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -17998,12 +18542,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -18040,6 +18587,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -18081,6 +18632,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -18183,6 +18735,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -18277,6 +18830,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -18293,7 +18847,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -20478,6 +21038,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -20490,8 +21054,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -20500,6 +21076,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -20514,12 +21098,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -20530,12 +21130,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -20635,12 +21259,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -20677,6 +21304,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -20718,6 +21349,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -20820,6 +21452,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -20914,6 +21547,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -20930,7 +21564,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -23111,6 +23751,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -23123,8 +23767,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -23133,6 +23789,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -23147,12 +23811,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -23163,12 +23843,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -23267,12 +23971,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -23309,6 +24016,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -23350,6 +24061,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -23452,6 +24164,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -23546,6 +24259,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -23562,7 +24276,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -25743,6 +26463,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -25755,8 +26479,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -25765,6 +26501,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -25779,12 +26523,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -25795,12 +26555,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -25900,12 +26684,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -25942,6 +26729,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -25983,6 +26774,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -26085,6 +26877,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -26179,6 +26972,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -26195,7 +26989,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -28379,6 +29179,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -28391,8 +29195,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -28401,6 +29217,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -28415,12 +29239,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -28431,12 +29271,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -28537,12 +29401,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -28579,6 +29446,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -28620,6 +29491,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -28722,6 +29594,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -28816,6 +29689,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -28832,7 +29706,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -31012,6 +31892,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -31024,8 +31908,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -31034,6 +31930,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -31048,12 +31952,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -31064,12 +31984,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -31169,12 +32113,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -31211,6 +32158,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -31252,6 +32203,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -31354,6 +32306,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -31448,6 +32401,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -31464,7 +32418,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -33648,6 +34608,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -33660,8 +34624,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -33670,6 +34646,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -33684,12 +34668,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -33700,12 +34700,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -33806,12 +34830,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -33848,6 +34875,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -33889,6 +34920,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -33991,6 +35023,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -34085,6 +35118,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -34101,7 +35135,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -36281,6 +37321,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -36293,8 +37337,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -36303,6 +37359,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -36317,12 +37381,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -36333,12 +37413,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -36438,12 +37542,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -36480,6 +37587,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -36521,6 +37632,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -36623,6 +37735,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -36717,6 +37830,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -36733,7 +37847,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -38913,6 +40033,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -38925,8 +40049,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -38935,6 +40071,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -38949,12 +40093,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -38965,12 +40125,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -39070,12 +40254,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -39112,6 +40299,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -39153,6 +40344,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -39255,6 +40447,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -39349,6 +40542,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -39365,7 +40559,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -41545,6 +42745,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -41557,8 +42761,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -41567,6 +42783,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -41581,12 +42805,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -41597,12 +42837,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -41702,12 +42966,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -41744,6 +43011,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -41785,6 +43056,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -41887,6 +43159,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -41981,6 +43254,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -41997,7 +43271,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -44177,6 +45457,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -44189,8 +45473,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -44199,6 +45495,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -44213,12 +45517,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -44229,12 +45549,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -44338,12 +45682,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -44380,6 +45727,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -44421,6 +45772,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -44523,6 +45875,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -44617,6 +45970,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -44633,7 +45987,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -46817,6 +48177,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -46829,8 +48193,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -46839,6 +48215,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -46853,12 +48237,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -46869,12 +48269,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -46975,12 +48399,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -47017,6 +48444,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -47058,6 +48489,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -47160,6 +48592,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -47254,6 +48687,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -47270,7 +48704,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -49459,6 +50899,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -49471,8 +50915,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -49481,6 +50937,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -49495,12 +50959,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -49511,12 +50991,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -49617,12 +51121,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -49659,6 +51166,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -49700,6 +51211,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -49802,6 +51314,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -49896,6 +51409,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -49912,7 +51426,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -52093,6 +53613,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -52105,8 +53629,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -52115,6 +53651,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -52129,12 +53673,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -52145,12 +53705,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -52254,12 +53838,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -52296,6 +53883,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -52337,6 +53928,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -52439,6 +54031,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -52533,6 +54126,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -52549,7 +54143,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -54725,6 +56325,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -54737,8 +56341,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -54747,6 +56363,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -54761,12 +56385,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -54777,12 +56417,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -54881,12 +56545,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -54923,6 +56590,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -54964,6 +56635,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -55066,6 +56738,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -55160,6 +56833,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -55176,7 +56850,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -57361,6 +59041,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -57373,8 +59057,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -57383,6 +59079,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -57397,12 +59101,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -57413,12 +59133,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -57518,12 +59262,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -57560,6 +59307,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -57601,6 +59352,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -57703,6 +59455,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -57797,6 +59550,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -57813,7 +59567,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -59994,6 +61754,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -60006,8 +61770,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -60016,6 +61792,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -60030,12 +61814,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -60046,12 +61846,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -60150,12 +61974,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -60192,6 +62019,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -60233,6 +62064,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -60335,6 +62167,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -60429,6 +62262,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -60445,7 +62279,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>
@@ -62626,6 +64466,10 @@
             <label>DMR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixw</field>
+            <label>CEG Comments</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000C98KA</field>
             <label>Cloud Service Provider</label>
         </forecastingObjectListLabelMappings>
@@ -62638,8 +64482,20 @@
             <label>Won</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixx</field>
+            <label>CEG Contact</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixy</field>
+            <label>Collaboration Model</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaB</field>
             <label>Low pipeline confidence</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008vixz</field>
+            <label>Custom Silicon Application</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gdaA</field>
@@ -62648,6 +64504,14 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyA</field>
+            <label>Project Schedule: TR Kick off</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viyB</field>
+            <label>Project Schedule: Tape In/Out</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gL0Z</field>
@@ -62662,12 +64526,28 @@
             <label>Milestone Count</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy0</field>
+            <label>Custom Silicon Product Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy1</field>
+            <label>Custom Silicon Project Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis5</field>
             <label>Push Reason Details</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy2</field>
+            <label>Custom Silicon Segment</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00ND3000001tis6</field>
             <label>Push Reason</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy3</field>
+            <label>Exec Sponsor Contact</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00No000000CBYNZ</field>
@@ -62678,12 +64558,36 @@
             <label>Compliance Sub-Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy8</field>
+            <label>Project Schedule: PRQ</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CwiR0</field>
             <label>Number U2 Slots (NVMe)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy9</field>
+            <label>Project Schedule: RFx</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy4</field>
+            <label>NRE $</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy5</field>
+            <label>Process Node</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy6</field>
+            <label>Project Code Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00No000000CBYNa</field>
             <label>Org URL</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NTH000008viy7</field>
+            <label>Project Schedule: Engineering Sample</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00N2i000001gda9</field>
@@ -62782,12 +64686,15 @@
             <field>00No000000DVo9D</field>
             <field>00No000000Dy6n1</field>
             <field>00No0000009KAXR</field>
+            <field>00NTH000008vixw</field>
+            <field>00NTH000008vixx</field>
             <field>00No000000CBAL2</field>
             <field>00N1J00000FGlFP</field>
             <field>00No0000009KAXS</field>
             <field>00No000000C98KA</field>
             <field>00N2i000001gL0t</field>
             <field>00N2i000001gL0u</field>
+            <field>00NTH000008vixy</field>
             <field>00No000000EfBeP</field>
             <field>00N1J00000EqiX3</field>
             <field>00ND3000001tRRm</field>
@@ -62824,6 +64731,10 @@
             <field>00No000000E1fyn</field>
             <field>00No000000E1fyo</field>
             <field>00No000000E1fyp</field>
+            <field>00NTH000008vixz</field>
+            <field>00NTH000008viy0</field>
+            <field>00NTH000008viy1</field>
+            <field>00NTH000008viy2</field>
             <field>00N2i000001GCT9</field>
             <field>00N2i000001GCTA</field>
             <field>00NTH000006b3jd</field>
@@ -62865,6 +64776,7 @@
             <field>00No000000C98KK</field>
             <field>00ND3000001mdXc</field>
             <field>00N1J00000FTfjy</field>
+            <field>00NTH000008viy3</field>
             <field>00No0000009KAXf</field>
             <field>00N2i000000SwJl</field>
             <field>00ND3000001tmhr</field>
@@ -62967,6 +64879,7 @@
             <field>00No0000009KAY1</field>
             <field>00N2i000001Hnty</field>
             <field>00NTH000006b3jf</field>
+            <field>00NTH000008viy4</field>
             <field>00N2i000000Ulcb</field>
             <field>00No000000CwiR0</field>
             <field>00No000000C98KV</field>
@@ -63061,6 +64974,7 @@
             <field>00N1J00000FGoCR</field>
             <field>00No0000009KAYO</field>
             <field>00No0000009KAYP</field>
+            <field>00NTH000008viy5</field>
             <field>00No0000009KAYQ</field>
             <field>00N2i000001Gs8i</field>
             <field>00N2i000001Gs8j</field>
@@ -63077,7 +64991,13 @@
             <field>00N3b000006jzrp</field>
             <field>00No0000009KAYS</field>
             <field>00ND3000002IOlt</field>
+            <field>00NTH000008viy6</field>
             <field>00No0000009KAYU</field>
+            <field>00NTH000008viy7</field>
+            <field>00NTH000008viy8</field>
+            <field>00NTH000008viy9</field>
+            <field>00NTH000008viyB</field>
+            <field>00NTH000008viyA</field>
             <field>00No0000009KAYV</field>
             <field>00No0000009KAYW</field>
             <field>00No000000Efjky</field>

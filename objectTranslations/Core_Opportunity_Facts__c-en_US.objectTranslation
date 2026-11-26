@@ -33,6 +33,14 @@
         <name>Core_BlueTooth__c</name>
     </fields>
     <fields>
+        <label><!-- CEG Comments --></label>
+        <name>Core_CEG_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- CEG Contact --></label>
+        <name>Core_CEG_Contact__c</name>
+    </fields>
+    <fields>
         <label><!-- CPU --></label>
         <name>Core_CPU__c</name>
     </fields>
@@ -57,6 +65,10 @@
         <name>Core_Cloud_Service_Provider__c</name>
     </fields>
     <fields>
+        <label><!-- Collaboration Model --></label>
+        <name>Core_Collaboration_Model__c</name>
+    </fields>
+    <fields>
         <label><!-- Consumer Factor Login --></label>
         <name>Core_Consumer_Factor_Login__c</name>
     </fields>
@@ -79,6 +91,22 @@
     <fields>
         <label><!-- Crystal Ridge --></label>
         <name>Core_Crystal_Ridge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Application --></label>
+        <name>Core_Custom_Silicon_Application__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Product Type --></label>
+        <name>Core_Custom_Silicon_Product_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Project Stage --></label>
+        <name>Core_Custom_Silicon_Project_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Silicon Segment --></label>
+        <name>Core_Custom_Silicon_Segment__c</name>
     </fields>
     <fields>
         <label><!-- DIMM Per CPU --></label>
@@ -143,6 +171,10 @@
     <fields>
         <label><!-- Entry SPP (US$) --></label>
         <name>Core_Entry_SPP_US__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exec Sponsor Contact --></label>
+        <name>Core_Exec_Sponsor_Contact__c</name>
     </fields>
     <fields>
         <label><!-- FPGA Virtualization Framework --></label>
@@ -257,6 +289,10 @@
         <name>Core_Multi_boarded__c</name>
     </fields>
     <fields>
+        <label><!-- NRE $ --></label>
+        <name>Core_NRE__c</name>
+    </fields>
+    <fields>
         <label><!-- New ID? --></label>
         <name>Core_New_ID__c</name>
     </fields>
@@ -309,12 +345,40 @@
         <name>Core_Performance_Features_Enabled__c</name>
     </fields>
     <fields>
+        <label><!-- Process Node --></label>
+        <name>Core_Process_Node__c</name>
+    </fields>
+    <fields>
         <label><!-- Product Capability/Technology --></label>
         <name>Core_Product_Capability_Technology__c</name>
     </fields>
     <fields>
         <label><!-- Production Lifecycle --></label>
         <name>Core_Production_Lifecycle__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Code Name --></label>
+        <name>Core_Project_Code_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: Engineering Sample --></label>
+        <name>Core_Project_Schedule_Engineering_Sample__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: PRQ --></label>
+        <name>Core_Project_Schedule_PRQ__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: RFx --></label>
+        <name>Core_Project_Schedule_RFx__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: TR Kick off --></label>
+        <name>Core_Project_Schedule_TR_Kick_off__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Schedule: Tape In/Out --></label>
+        <name>Core_Project_Schedule_Tape_In_Out__c</name>
     </fields>
     <fields>
         <label><!-- Publisher --></label>

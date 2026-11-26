@@ -1768,6 +1768,26 @@ IMAGE(&quot;/servlet/servlet.FileDownload?file=0152D000000Uk3v&quot;,&quot;f&quo
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_CEG_Comments__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_CEG_Comments__c</formula>
+        <label>CEG Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CEG_Contact__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_CEG_Contact__c</formula>
+        <label>CEG Contact</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_CPU__c</fullName>
         <externalId>false</externalId>
         <formula>Core_Opportunity_Facts_ID__r.Core_CPU__c</formula>
@@ -1852,6 +1872,16 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
         <formula>Core_Opportunity_Facts_ID__r.Core_Cloud_Service_Provider__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Cloud Service Provider</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Collaboration_Model__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Collaboration_Model__c</formula>
+        <label>Collaboration Model</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Text</type>
@@ -2844,6 +2874,46 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_Custom_Silicon_Application__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Custom_Silicon_Application__c</formula>
+        <label>Custom Silicon Application</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Custom_Silicon_Product_Type__c</formula>
+        <label>Custom Silicon Product Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Project_Stage__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Custom_Silicon_Project_Stage__c</formula>
+        <label>Custom Silicon Project Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Segment__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Custom_Silicon_Segment__c</formula>
+        <label>Custom Silicon Segment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Customer_Project_Details__c</fullName>
         <externalId>false</externalId>
         <formula>IF(ISBLANK(Core_Customer_Project_ID__c), NULL, HYPERLINK(&quot;https://edc.intel.com/app_admin/IRDC/Edit-Project.aspx?id=&quot;&amp;Core_Customer_Project_ID__c, &quot;Click Here&quot;))</formula>
@@ -3261,6 +3331,16 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Exec_Sponsor_Contact__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Exec_Sponsor_Contact__c</formula>
+        <label>Exec Sponsor Contact</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_External_ID__c</fullName>
@@ -3895,6 +3975,11 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
                     <label>CRESCENT ISLAND</label>
                 </value>
                 <value>
+                    <fullName>CUSTOM SILICON</fullName>
+                    <default>false</default>
+                    <label>CUSTOM SILICON</label>
+                </value>
+                <value>
                     <fullName>Cyclone</fullName>
                     <default>false</default>
                     <label>CYCLONE</label>
@@ -4070,6 +4155,11 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
                     <label>PHOEBE LAKE</label>
                 </value>
                 <value>
+                    <fullName>PINE STREAM</fullName>
+                    <default>false</default>
+                    <label>PINE STREAM</label>
+                </value>
+                <value>
                     <fullName>Purley</fullName>
                     <default>false</default>
                     <label>PURLEY</label>
@@ -4093,6 +4183,21 @@ IF(Core_System_Sales_Segment_Count__c &gt; 1 &amp;&amp; !INCLUDES(Core_Sales_Seg
                     <fullName>Raptor Lake Refresh M</fullName>
                     <default>false</default>
                     <label>RAPTOR LAKE REFRESH M</label>
+                </value>
+                <value>
+                    <fullName>RAZOR LAKE AX</fullName>
+                    <default>false</default>
+                    <label>RAZOR LAKE AX</label>
+                </value>
+                <value>
+                    <fullName>RAZOR LAKE D</fullName>
+                    <default>false</default>
+                    <label>RAZOR LAKE D</label>
+                </value>
+                <value>
+                    <fullName>RAZOR LAKE M</fullName>
+                    <default>false</default>
+                    <label>RAZOR LAKE M</label>
                 </value>
                 <value>
                     <fullName>REDONDO LAKE</fullName>
@@ -4979,6 +5084,16 @@ IF (Core_MAG_Questionnaire_ID__c != &apos;&apos;,&apos;&amp;Id=&apos;+Core_MAG_Q
         <formula>Core_Opportunity_Facts_ID__r.Core_Modern_Standby__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Modern Standby</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_NRE__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_NRE__c</formula>
+        <label>NRE $</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Text</type>
@@ -7481,6 +7596,16 @@ IF(Core_Opportunity_Geo_PRC__c, &quot;PRC,&quot;, &quot;&quot;)) - 1 )</formula>
         <trackHistory>true</trackHistory>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Process_Node__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Process_Node__c</formula>
+        <label>Process Node</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Product_Application__c</fullName>
@@ -10348,6 +10473,16 @@ The value of this field is 1 when Opportunity Stage is &quot;Production Win&quot
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Core_Project_Code_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Project_Code_Name__c</formula>
+        <label>Project Code Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Project_Phase__c</fullName>
         <description>Describes where the customer is in the &quot;Purchase Cycle&quot;. This field will default from a converted lead if applicable and is not editable</description>
         <inlineHelpText>Describes where the customer is in the &quot;Purchase Cycle&quot;. This field will default from a converted lead if applicable and is not editable.</inlineHelpText>
@@ -10381,6 +10516,56 @@ The value of this field is 1 when Opportunity Stage is &quot;Production Win&quot
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Engineering_Sample__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Project_Schedule_Engineering_Sample__c</formula>
+        <label>Project Schedule: Engineering Sample</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_PRQ__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Project_Schedule_PRQ__c</formula>
+        <label>Project Schedule: PRQ</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_RFx__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Project_Schedule_RFx__c</formula>
+        <label>Project Schedule: RFx</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_TR_Kick_off__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Project_Schedule_TR_Kick_off__c</formula>
+        <label>Project Schedule: TR Kick off</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Tape_In_Out__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opportunity_Facts_ID__r.Core_Project_Schedule_Tape_In_Out__c</formula>
+        <label>Project Schedule: Tape In/Out</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Project_Size__c</fullName>
@@ -28355,6 +28540,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>CUSTOM SILICON</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Cascade Lake SP</fullName>
                 <default>false</default>
             </values>
@@ -28527,11 +28716,27 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>PINE STREAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Purley</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>RAPTOR LAKE PS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RAZOR LAKE AX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RAZOR LAKE D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RAZOR LAKE M</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -36428,14 +36633,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
-                <fullName>Prospecting - Existing Account</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Prospecting - New Account</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Referral %E2%80%93 Partner%2FDisti%2FThird Party</fullName>
                 <default>false</default>
             </values>
@@ -37358,6 +37555,10 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>CUSTOM SILICON</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Cascade Lake SP</fullName>
                 <default>false</default>
             </values>
@@ -37530,11 +37731,27 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
                 <default>false</default>
             </values>
             <values>
+                <fullName>PINE STREAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Purley</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>RAPTOR LAKE PS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RAZOR LAKE AX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RAZOR LAKE D</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RAZOR LAKE M</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -45428,14 +45645,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>Partner Program</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Prospecting - Existing Account</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Prospecting - New Account</fullName>
                 <default>false</default>
             </values>
             <values>

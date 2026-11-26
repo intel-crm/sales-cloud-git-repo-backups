@@ -32,6 +32,10 @@
             <translation><!-- ASIL D --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Agentic AI</masterLabel>
+            <translation><!-- Agentic AI --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Analytics &amp; Data Science</masterLabel>
             <translation><!-- Analytics &amp; Data Science --></translation>
         </picklistValues>
@@ -218,6 +222,10 @@
         <picklistValues>
             <masterLabel>Provisioning and Orchestration</masterLabel>
             <translation><!-- Provisioning and Orchestration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics Control + AI</masterLabel>
+            <translation><!-- Robotics Control + AI --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Security: Endpoint</masterLabel>

@@ -637,7 +637,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -648,7 +648,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -656,7 +656,7 @@
         <fullName>CPT_OW_CCPG_Deal_Wins_Vol__c</fullName>
         <defaultValue>false</defaultValue>
         <label>OW - CCPG Deal Wins Vol</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -664,7 +664,7 @@
         <fullName>CPT_OW_CCPG_Deal__c</fullName>
         <defaultValue>false</defaultValue>
         <label>OW - CCPG Deal</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -675,7 +675,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -683,7 +683,7 @@
         <fullName>CPT_OW_CCPG_Design__c</fullName>
         <defaultValue>false</defaultValue>
         <label>OW - CCPG Design</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -694,7 +694,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -705,7 +705,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -713,7 +713,7 @@
         <fullName>CPT_OW_DCG_Deal_Wins_Vol__c</fullName>
         <defaultValue>false</defaultValue>
         <label>OW - DCG Deal Wins Vol</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -721,7 +721,7 @@
         <fullName>CPT_OW_DCG_Deal__c</fullName>
         <defaultValue>false</defaultValue>
         <label>OW - DCG Deal</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -732,7 +732,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -740,7 +740,7 @@
         <fullName>CPT_OW_DCG_Design__c</fullName>
         <defaultValue>false</defaultValue>
         <label>OW - DCG Design</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -751,7 +751,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -759,7 +759,7 @@
         <fullName>CPT_OW_Edge_Deal__c</fullName>
         <defaultValue>false</defaultValue>
         <label>OW - Edge Deal</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -770,7 +770,7 @@
         <precision>12</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -778,7 +778,7 @@
         <fullName>CPT_OW_Edge_Design__c</fullName>
         <defaultValue>false</defaultValue>
         <label>OW - Edge Design</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -902,6 +902,22 @@
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Copy_of_My_Team_s_Assignments_OW_Design</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_Quota_Setup__c</columns>
+        <columns>CPT_Territory_Target__c</columns>
+        <columns>CPT_OW_CCPG_Design__c</columns>
+        <columns>CPT_OW_CCPG_Design_Target__c</columns>
+        <columns>CPT_OW_DCG_Design__c</columns>
+        <columns>CPT_OW_DCG_Design_Target__c</columns>
+        <columns>CPT_OW_Edge_Design__c</columns>
+        <columns>CPT_OW_Edge_Design_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments- OW Design</label>
+    </listViews>
+    <listViews>
         <fullName>My_Team_s_Assignments_BR</fullName>
         <columns>NAME</columns>
         <columns>CPT_Employee_Name__c</columns>
@@ -990,6 +1006,26 @@
         <columns>CPT_Locked_Status__c</columns>
         <filterScope>Everything</filterScope>
         <label>My Team&apos;s Assignments - MARGINVOLUME</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Assignments_OW</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_Quota_Setup__c</columns>
+        <columns>CPT_Territory_Target__c</columns>
+        <columns>CPT_OW_CCPG_Deal__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Target__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Wins_Vol__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</columns>
+        <columns>CPT_OW_DCG_Deal__c</columns>
+        <columns>CPT_OW_DCG_Deal_Target__c</columns>
+        <columns>CPT_OW_DCG_Deal_Wins_Vol__c</columns>
+        <columns>CPT_OW_DCG_Deal_Wins_Vol_Target__c</columns>
+        <columns>CPT_OW_Edge_Deal__c</columns>
+        <columns>CPT_OW_Edge_Deal_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments - OW Deals</label>
     </listViews>
     <nameField>
         <displayFormat>TA-{000000}</displayFormat>

@@ -187,6 +187,11 @@
                     <label>CCG</label>
                 </value>
                 <value>
+                    <fullName>CCG ECG</fullName>
+                    <default>false</default>
+                    <label>CCG ECG</label>
+                </value>
+                <value>
                     <fullName>DCG</fullName>
                     <default>false</default>
                     <label>DCAI</label>
@@ -202,9 +207,9 @@
                     <label>NTG</label>
                 </value>
                 <value>
-                    <fullName>CCG ECG</fullName>
+                    <fullName>PBS</fullName>
                     <default>false</default>
-                    <label>CCG ECG</label>
+                    <label>PBS</label>
                 </value>
                 <value>
                     <fullName>ADG</fullName>

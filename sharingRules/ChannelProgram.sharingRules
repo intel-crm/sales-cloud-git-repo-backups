@@ -15,21 +15,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Channel_Program_Sharing_for_CoInv_External</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>Channel Program Sharing for CoInv External user</description>
-        <label>Channel Program Sharing for CoInv External</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_CoInv_EXTERNAL_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Technical_Program_Name__c</field>
-            <operation>equals</operation>
-            <value>Co-Inv</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_Channel_Program_All_Users_CCP_Internal_Read_Write</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Channel Program All Users - CCP Internal Read Write</label>
@@ -268,6 +253,21 @@
             <value>Service Provider Co-Marketing Fund</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_Share_for_CoInv_EXTERNAL_ALL</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Sharing for CoInv External user</description>
+        <label>Channel Program Share for CoInv EXTERNAL ALL</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CoInv_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-Inv</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Core_MDF_Channel_Program_Share_for_EEF_External</fullName>

@@ -2,7 +2,7 @@
   "appPageId" : "b15e9917-f493-45ed-b1ab-63ce77cdadfa",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "7118fed2-a4fc-4120-8428-b32ed930fa41",
+  "id" : "b6f91303-3457-44f4-98dd-778483c585db",
   "label" : "Account Plan Objective",
   "regions" : [ {
     "components" : [ {
@@ -10,31 +10,31 @@
         "recordId" : "{!recordId}"
       },
       "componentName" : "forceCommunity:recordHeadline",
-      "id" : "7f07eb90-acdd-42fb-9863-650cbcb867a7",
+      "id" : "854242fe-88d1-49e0-bba6-17671f839785",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "15aa85bd-2aad-407c-ae49-740c25ffe8b7",
+    "id" : "712fc733-f777-4e94-ac21-412308841b6f",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "runtime_sales_accountplan:objectiveBarChartWrapper",
-      "id" : "4f24d419-aba6-4343-a694-e70b123bbaf4",
+      "id" : "35c28e37-29cd-4fdf-8f48-7bc0665080ec",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     }, {
       "componentAttributes" : { },
       "componentName" : "runtime_sales_accountplan:strategicTrackerWrapper",
-      "id" : "f4e71a61-3472-4c66-8eef-fbd4a771cc11",
+      "id" : "f279fc81-030a-4933-b351-9b52d60244bb",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "f70db884-4f16-49b8-86c9-5f8053bc7050",
+    "id" : "92212cee-5f3b-4d5a-be06-326cb3b3e864",
     "regionName" : "content",
     "type" : "region"
   }, {
@@ -45,11 +45,11 @@
         "title" : "{!Record._Object}: {!Record._Title}"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "a6b999e3-f5fc-4dd9-a432-717e9c4ecf3e",
+      "id" : "d72683b8-77e5-4bff-b5f2-920a70b227c0",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "5b014c67-7066-4b72-9b9b-18bc4f8e4607",
+    "id" : "c60eb0aa-b10e-4475-a8f6-253c58064851",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],

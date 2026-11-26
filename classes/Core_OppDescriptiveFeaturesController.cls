@@ -33,6 +33,34 @@ public with sharing class Core_OppDescriptiveFeaturesController{
     public Core_Opportunity_Features__c cSale {get; set;}
     public String consumerSales;
     public String consumerSales1{get;set;}
+    public String projectCodeName{get;set;}
+    public String processNode{get;set;}
+    public String execSponsorContact{get;set;}
+    public String nreUSD{get;set;}
+    public String projectScheduleRFx{get;set;}
+    public String projectScheduleTRKickOff{get;set;}
+    public String projectScheduleTapeInOut{get;set;}
+    public String projectScheduleEngSample{get;set;}
+    public String projectSchedulePRQ{get;set;}
+    public String customSiliconSegment{get;set;}
+    public String customSiliconApplication{get;set;}
+    public String CEGContact{get;set;}
+    public String CEGComments{get;set;}
+    public List<String> allTextFeatureTypes = new List<String> {
+        'Consumer Sales system',
+        'Project Code Name',
+        'Process Node',
+        'Exec Sponsor Contact',
+        'NRE $',
+        'Project Schedule: RFx',
+        'Project Schedule: TR Kick off',
+        'Project Schedule: Tape In/Out',
+        'Project Schedule: Engineering Sample',
+        'Project Schedule: PRQ',
+        'Custom Silicon Segment',
+        'Custom Silicon Application',
+        'CEG Contact','CEG Comments'
+    };
     // Variable to Map String to List of SelectOption 
     public Map < String, List < SelectOption >> mapStringToLstOption = new Map < String, List < SelectOption >> {};
     
@@ -211,11 +239,22 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                  if(Oppfeaturelst.size() >0){ 
                      this.consumerSales1=Oppfeaturelst[0].Core_Feature_Name__c;
                  }*/
-                 Opplst=[Select id,Core_Consumer_Sales_System__c from Opportunity Where Id =: sOppId];
-                 
+                 Opplst=[Select id,Core_Consumer_Sales_System__c,Core_Project_Code_Name__c,Core_Process_Node__c,Core_Exec_Sponsor_Contact__c,Core_NRE__c,Core_Project_Schedule_RFx__c,Core_Project_Schedule_TR_Kick_off__c,Core_Project_Schedule_Tape_In_Out__c,Core_Project_Schedule_Engineering_Sample__c,Core_Project_Schedule_PRQ__c,Core_Custom_Silicon_Segment__c,Core_Custom_Silicon_Application__c,Core_CEG_Contact__c,Core_CEG_Comments__c from Opportunity Where Id =: sOppId];
                  if(Opplst.size() >0){ 
-                     this.consumerSales1=Opplst[0].Core_Consumer_Sales_System__c;
-                    
+                    this.consumerSales1=Opplst[0].Core_Consumer_Sales_System__c;
+                    this.projectCodeName=Opplst[0].Core_Project_Code_Name__c;
+                    this.processNode=Opplst[0].Core_Process_Node__c;
+                    this.execSponsorContact = Opplst[0].Core_Exec_Sponsor_Contact__c;
+                    this.nreUSD = Opplst[0].Core_NRE__c;
+                    this.projectScheduleRFx = Opplst[0].Core_Project_Schedule_RFx__c;
+                    this.projectScheduleTRKickOff = Opplst[0].Core_Project_Schedule_TR_Kick_off__c;
+                    this.projectScheduleTapeInOut = Opplst[0].Core_Project_Schedule_Tape_In_Out__c;
+                    this.projectScheduleEngSample = Opplst[0].Core_Project_Schedule_Engineering_Sample__c;
+                    this.projectSchedulePRQ = Opplst[0].Core_Project_Schedule_PRQ__c;
+                    this.customSiliconSegment = Opplst[0].Core_Custom_Silicon_Segment__c;
+                    this.customSiliconApplication = Opplst[0].Core_Custom_Silicon_Application__c;
+                    this.CEGContact = Opplst[0].Core_CEG_Contact__c;
+                    this.CEGComments = Opplst[0].Core_CEG_Comments__c;
                  }
                
                  
@@ -234,11 +273,23 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                    Id OpptyId=this.sObjOppFeature.Core_Opportunity__c;
                   
                      
-                 Opplst=[Select id,Core_Consumer_Sales_System__c from Opportunity Where Id =: OpptyId];
+                 Opplst=[Select id,Core_Consumer_Sales_System__c,Core_Project_Code_Name__c,Core_Process_Node__c,Core_Exec_Sponsor_Contact__c,Core_NRE__c,Core_Project_Schedule_RFx__c,Core_Project_Schedule_TR_Kick_off__c,Core_Project_Schedule_Tape_In_Out__c,Core_Project_Schedule_Engineering_Sample__c,Core_Project_Schedule_PRQ__c,Core_Custom_Silicon_Segment__c,Core_Custom_Silicon_Application__c,Core_CEG_Contact__c,Core_CEG_Comments__c from Opportunity Where Id =: OpptyId];
                  
                  if(Opplst.size() >0){ 
                      this.consumerSales1=Opplst[0].Core_Consumer_Sales_System__c;
-                     
+                    this.projectCodeName=Opplst[0].Core_Project_Code_Name__c;
+                    this.processNode=Opplst[0].Core_Process_Node__c;
+                    this.execSponsorContact=Opplst[0].Core_Exec_Sponsor_Contact__c;
+                    this.nreUSD=Opplst[0].Core_NRE__c;
+                    this.projectScheduleRFx=Opplst[0].Core_Project_Schedule_RFx__c;
+                    this.projectScheduleTRKickOff=Opplst[0].Core_Project_Schedule_TR_Kick_off__c;
+                    this.projectScheduleTapeInOut=Opplst[0].Core_Project_Schedule_Tape_In_Out__c;
+                    this.projectScheduleEngSample=Opplst[0].Core_Project_Schedule_Engineering_Sample__c;
+                    this.projectSchedulePRQ=Opplst[0].Core_Project_Schedule_PRQ__c;
+                    this.customSiliconSegment = Opplst[0].Core_Custom_Silicon_Segment__c;
+                    this.customSiliconApplication = Opplst[0].Core_Custom_Silicon_Application__c;
+                    this.CEGContact = Opplst[0].Core_CEG_Contact__c;
+                    this.CEGComments = Opplst[0].Core_CEG_Comments__c;
                  }
             }
             
@@ -383,7 +434,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             //START - US103701 : added BU filter in feature set query 
             for (Core_Feature_Set__c sobjFeatureSet: [select Core_Feature__r.Core_Feature_Type__c, Core_Display_Order__c, Core_Feature__r.Core_Feature_Value__c, 
                 Core_Feature__r.Core_Multi_Select__c, Core_Feature_Header__r.Core_Header_Type__c from Core_Feature_Set__c
-                where Core_Feature_Header__r.Core_Header_Name__c in : lstPlatform  and Core_Feature_BU__c =:selectedPlatformBU and Core_Active__c = true and  Core_Feature__r.Core_Feature_Type__c !='Consumer Sales system'ORDER BY Core_Feature_Value__c
+                where Core_Feature_Header__r.Core_Header_Name__c in : lstPlatform  and Core_Feature_BU__c =:selectedPlatformBU and Core_Active__c = true and  Core_Feature__r.Core_Feature_Type__c NOT IN :allTextFeatureTypes ORDER BY Core_Feature_Value__c
                 ]) {
             //END - US103701 : added BU filter in feature set query      
                 Set<System.SelectOption> setFeatureValue = new Set<System.SelectOption>{};
@@ -543,7 +594,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                 //based on the platform name present on the opporunity record                
                 for (Core_Feature_Set__c sobjFutSet: [select Core_Feature__r.Core_Feature_Type__c,Core_Feature_BU__c,Core_Display_Order__c, Core_Feature__r.Core_Feature_Value__c, 
                     Core_Feature__r.Core_Multi_Select__c, Core_Feature_Header__r.Core_Header_Type__c from Core_Feature_Set__c
-                    where Core_Feature_Header__r.Core_Header_Name__c =: sPlatform and Core_Active__c = true and Core_Feature__r.Core_Feature_Type__c !='Consumer Sales system']) {                                          
+                    where Core_Feature_Header__r.Core_Header_Name__c =: sPlatform and Core_Active__c = true and Core_Feature__r.Core_Feature_Type__c NOT IN :allTextFeatureTypes]) {                                          
                         if (!mapPlatformBUString.containsKey(mapfeatureBULabels.get(sobjFutSet.Core_Feature_BU__c))) {
                             if(sobjFutSet.Core_Feature_BU__c != null){                                                        
                                 mapPlatformBUString.put(mapfeatureBULabels.get(sobjFutSet.Core_Feature_BU__c), sobjFutSet.Core_Feature_BU__c);
@@ -622,6 +673,9 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             // Set up the values from the already present Opp features for the opportunity
             for (Core_Opportunity_Features__c sobjOpportFeature: [select Core_Feature_Set__r.Core_Feature__r.Core_Feature_Type__c, Core_Opportunity__c, Opportunity_Product__c,
                     Core_Feature_Name__c, Core_Feature_Type__c, Core_Feature_Set__r.Core_Feature__r.Core_Feature_Value__c, Core_Consumer_Sales_system__c,
+                    Core_Project_Code_Name__c,Core_Process_Node__c,Core_Exec_Sponsor_Contact__c,Core_NRE__c,Core_Project_Schedule_RFx__c,Core_Project_Schedule_TR_Kick_off__c,
+                    Core_Project_Schedule_Tape_In_Out__c,Core_Project_Schedule_Engineering_Sample__c,Core_Project_Schedule_PRQ__c,Core_Custom_Silicon_Segment__c,
+                    Core_Custom_Silicon_Application__c,Core_CEG_Contact__c,Core_CEG_Comments__c,
                     Core_Feature_Set__r.Core_Feature__r.Core_Multi_Select__c from Core_Opportunity_Features__c where Core_Opportunity__c = : sObjOpp.Id AND Opportunity_Product__c=:sOppProdId     ////TWC3123-4019 Redesign Descriptive Feature
                     And Core_Feature_Set__r.Core_Feature_BU__c=:selectedPlatformBU And Type__C=:  this.Type]) {
                 mapCheckIfRecordIsPresent.put(sobjOpportFeature.Core_Feature_Set__r.Core_Feature__r.Core_Feature_Type__c, sobjOpportFeature);
@@ -658,11 +712,38 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         if (!mapCheckIfRecordIsPresent.containsKey(sobjFeature.Core_Feature_Type__c)) { 
                             
                             sobjOpportFeature = new Core_Opportunity_Features__c(Core_Opportunity__c = sObjOpp.Id,Opportunity_Product__c = sOppProdId, Core_Consumer_Sales_system__c=consumerSales1,   ////TWC3123-4019 Redesign Descriptive Feature
+                                Core_Project_Code_Name__c=this.projectCodeName,
+                                Core_Process_Node__c=this.processNode,
+                                Core_Exec_Sponsor_Contact__c = this.execSponsorContact,
+                                Core_NRE__c = this.nreUSD,
+                                Core_Project_Schedule_RFx__c = this.projectScheduleRFx,
+                                Core_Project_Schedule_TR_Kick_off__c = this.projectScheduleTRKickOff,
+                                Core_Project_Schedule_Tape_In_Out__c = this.projectScheduleTapeInOut,
+                                Core_Project_Schedule_Engineering_Sample__c = this.projectScheduleEngSample,
+                                Core_Project_Schedule_PRQ__c = this.projectSchedulePRQ,
+                                Core_Custom_Silicon_Segment__c = this.customSiliconSegment,
+                                Core_Custom_Silicon_Application__c = this.customSiliconApplication,
+                                Core_CEG_Contact__c = this.CEGContact,
+                                Core_CEG_Comments__c = this.CEGComments,
                             Core_Feature_Set__c = mapSTringTofeatureId.get(sobjFeature.Core_Feature_Type__c + sobjFeature.Core_Feature_Value__c));
                             lstOppFeature.add(sobjOpportFeature);
                         } else  {  
-                            sobjOpportFeature = new Core_Opportunity_Features__c(Id = mapCheckIfRecordIsPresent.get(sobjFeature.Core_Feature_Type__c).Id,Core_Consumer_Sales_system__c=consumerSales1,
-                                                                                 Core_Feature_Set__c = mapSTringTofeatureId.get(sobjFeature.Core_Feature_Type__c + sobjFeature.Core_Feature_Value__c));
+                            sobjOpportFeature = new Core_Opportunity_Features__c(Id = mapCheckIfRecordIsPresent.get(sobjFeature.Core_Feature_Type__c).Id,
+                                                                                Core_Consumer_Sales_system__c = this.consumerSales1,
+                                                                                Core_Project_Code_Name__c = this.projectCodeName,
+                                                                                Core_Process_Node__c = this.processNode,
+                                                                                Core_Exec_Sponsor_Contact__c = this.execSponsorContact,
+                                                                                Core_NRE__c = this.nreUSD,
+                                                                                Core_Project_Schedule_RFx__c = this.projectScheduleRFx,
+                                                                                Core_Project_Schedule_TR_Kick_off__c = this.projectScheduleTRKickOff,
+                                                                                Core_Project_Schedule_Tape_In_Out__c = this.projectScheduleTapeInOut,
+                                                                                Core_Project_Schedule_Engineering_Sample__c = this.projectScheduleEngSample,
+                                                                                Core_Project_Schedule_PRQ__c = this.projectSchedulePRQ,
+                                                                                Core_Custom_Silicon_Segment__c = this.customSiliconSegment,
+                                                                                Core_Custom_Silicon_Application__c = this.customSiliconApplication,
+                                                                                Core_CEG_Contact__c = this.CEGContact,
+                                                                                Core_CEG_Comments__c = this.CEGComments,
+                                                                                Core_Feature_Set__c = mapSTringTofeatureId.get(sobjFeature.Core_Feature_Type__c + sobjFeature.Core_Feature_Value__c));
                             lstOppFeature.add(sobjOpportFeature);
                             
                         }
@@ -671,6 +752,19 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     else{//// If the picklist is a multi select picklist
                         if(!mapMultiSelectTofeature.containsKey(sobjFeature.Core_Feature_Type__c+sobjFeature.Core_Feature_Value__c)){
                             sobjOpportFeature = new Core_Opportunity_Features__c(Core_Opportunity__c = sObjOpp.Id,Opportunity_Product__c = sOppProdId,Core_Consumer_Sales_system__c=consumerSales1,   ////TWC3123-4019 Redesign Descriptive Feature
+                                                                                Core_Project_Code_Name__c = this.projectCodeName,
+                                                                                Core_Process_Node__c = this.processNode,
+                                                                                Core_Exec_Sponsor_Contact__c = this.execSponsorContact,
+                                                                                Core_NRE__c = this.nreUSD,
+                                                                                Core_Project_Schedule_RFx__c = this.projectScheduleRFx,
+                                                                                Core_Project_Schedule_TR_Kick_off__c = this.projectScheduleTRKickOff,
+                                                                                Core_Project_Schedule_Tape_In_Out__c = this.projectScheduleTapeInOut,
+                                                                                Core_Project_Schedule_Engineering_Sample__c = this.projectScheduleEngSample,
+                                                                                Core_Project_Schedule_PRQ__c = this.projectSchedulePRQ,
+                                                                                Core_Custom_Silicon_Segment__c = this.customSiliconSegment,
+                                                                                Core_Custom_Silicon_Application__c = this.customSiliconApplication,
+                                                                                Core_CEG_Contact__c = this.CEGContact,
+                                                                                Core_CEG_Comments__c = this.CEGComments,
                             Core_Feature_Set__c = mapSTringTofeatureId.get(sobjFeature.Core_Feature_Type__c + sobjFeature.Core_Feature_Value__c));
                             lstOppFeature.add(sobjOpportFeature);
                         }
@@ -679,7 +773,20 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                 }
             }
             for(Core_Opportunity_Features__c oft: lstOppFeature){
-                oft.Core_Consumer_Sales_system__c = consumerSales1;
+                oft.Core_Consumer_Sales_system__c = this.consumerSales1;
+                oft.Core_Project_Code_Name__c = this.projectCodeName;
+                oft.Core_Process_Node__c = this.processNode;
+                oft.Core_Exec_Sponsor_Contact__c = this.execSponsorContact;
+                oft.Core_NRE__c = this.nreUSD;
+                oft.Core_Project_Schedule_RFx__c = this.projectScheduleRFx;
+                oft.Core_Project_Schedule_TR_Kick_off__c = this.projectScheduleTRKickOff;
+                oft.Core_Project_Schedule_Tape_In_Out__c = this.projectScheduleTapeInOut;
+                oft.Core_Project_Schedule_Engineering_Sample__c = this.projectScheduleEngSample;
+                oft.Core_Project_Schedule_PRQ__c = this.projectSchedulePRQ;
+                oft.Core_Custom_Silicon_Segment__c = this.customSiliconSegment;
+                oft.Core_Custom_Silicon_Application__c = this.customSiliconApplication;
+                oft.Core_CEG_Contact__c = this.CEGContact;
+                oft.Core_CEG_Comments__c = this.CEGComments;
             } 
            
             // Carry out the addition & deletion of Opp feature and updation of opportunity
@@ -691,8 +798,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             update sObjOpp; 
             
             // Consumer Sales System
-            if(!String.isBlank(consumerSales1)){
-                
+            /*if(!String.isBlank(consumerSales1)){
                 
                 List<Core_Feature__c> flist = [select id from Core_Feature__c where Core_Feature_Type__c = 'Consumer Sales system' and Core_Feature_Value__c =:consumerSales1];
                 Core_Feature__c  feature = new Core_Feature__c();
@@ -724,20 +830,165 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     Core_Opportunity_Features__c  Oppfeature = new Core_Opportunity_Features__c (Core_Feature_Set__c=fs.id,Core_Opportunity__c=sObjOpp.Id,Opportunity_Product__c = sOppProdId);  ////TWC3123-4019 Redesign Descriptive Feature
                     insert Oppfeature;
                 }
-                /*Core_Feature_Set__c fs = new Core_Feature_Set__c(Core_Feature__c=feature.id,Core_Feature_Header__c= Fh[0].id,Core_Active__c=true);
-                insert fs;
-                Core_Opportunity_Features__c  Oppfeature = new Core_Opportunity_Features__c (Core_Feature_Set__c=fs.id,Core_Opportunity__c=sObjOpp.Id);
-                insert Oppfeature;*/
+                // Core_Feature_Set__c fs = new Core_Feature_Set__c(Core_Feature__c=feature.id,Core_Feature_Header__c= Fh[0].id,Core_Active__c=true);
+                // insert fs;
+                // Core_Opportunity_Features__c  Oppfeature = new Core_Opportunity_Features__c (Core_Feature_Set__c=fs.id,Core_Opportunity__c=sObjOpp.Id);
+                // insert Oppfeature;
             }
             else{
                 
                 List <Core_Opportunity_Features__c> Oppfeatdel=[Select id from Core_Opportunity_Features__c where Core_Opportunity__c =:sObjOpp.id AND  Opportunity_Product__c =: sOppProdId AND Core_Feature_Type__c='Consumer Sales system'  And Type__c=:  this.Type];  ////TWC3123-4019 Redesign Descriptive Feature
                 delete Oppfeatdel;
-            }         
+            }*/ 
+	    
+	    //Start: Added Save logic for all the text fields 
+            Map<String, String> featureTypeAndValueMap = new Map<String, String>{
+            'Consumer Sales system'                     => this.consumersales1,
+            'Project Code Name'                         => this.projectCodeName,
+            'Process Node'                              => this.processNode,
+            'Exec Sponsor Contact'                      => this.execSponsorContact,
+            'NRE $'                                     => this.nreUSD,
+            'Project Schedule: RFx'                     => this.projectScheduleRFx,
+            'Project Schedule: TR Kick off'             => this.projectScheduleTRKickOff,
+            'Project Schedule: Tape In/Out'             => this.projectScheduleTapeInOut,
+            'Project Schedule: Engineering Sample'      => this.projectScheduleEngSample,
+            'Project Schedule: PRQ'                     => this.projectSchedulePRQ,
+            'Custom Silicon Segment'                    => this.customSiliconSegment,
+            'Custom Silicon Application'                => this.customSiliconApplication,
+            'CEG Contact'                               => this.CEGContact,
+            'CEG Comments'                              => this.CEGComments
+            };
+
+            List<String> activeTypes = new List<String>();
+            List<String> activeValues = new List<String>();
+            Set<String> allFeatureTypes = featureTypeAndValueMap.keySet();
+
+            for (String fType : allFeatureTypes) {
+                String fVal = featureTypeAndValueMap.get(fType);
+                if (String.isNotBlank(fVal)) {
+                    activeTypes.add(fType);
+                    activeValues.add(fVal);
+                }
+            }
+            // 1. ALWAYS clean up existing Opportunity Features for ALL managed text types first!
+            // This guarantees that any field cleared to blank will have its record deleted.
+            List<Core_Opportunity_Features__c> oppFeatDel = [SELECT Id FROM Core_Opportunity_Features__c WHERE Core_Opportunity__c = :sObjOpp.Id AND Core_Feature_Type__c IN :allFeatureTypes];
+            if (!oppFeatDel.isEmpty()) {
+                delete oppFeatDel;
+            }
+
+            // 2. Only proceed with creating/linking if there are active (non-blank) values
+            if (!activeValues.isEmpty()) {
+                // Query existing Features matching both Type and Value
+                List<Core_Feature__c> existingFeatures = [
+                    SELECT Id, Core_Feature_Type__c, Core_Feature_Value__c FROM Core_Feature__c WHERE Core_Feature_Type__c IN :activeTypes AND Core_Feature_Value__c IN :activeValues ORDER BY CreatedDate DESC
+                ];
+                Map<String, Core_Feature__c> existingFeatureMap = new Map<String, Core_Feature__c>();
+                for (Core_Feature__c f : existingFeatures) {
+                    if(f.Core_Feature_Value__c == featureTypeAndValueMap.get(f.Core_Feature_Type__c)){
+                        String featKey = f.Core_Feature_Type__c.trim().toLowerCase() + '::' + f.Core_Feature_Value__c.trim().toLowerCase();
+                        if (!existingFeatureMap.containsKey(featKey)) {
+                            existingFeatureMap.put(featKey, f);
+                        }
+                    }
+                }
+
+                // Insert any missing features
+                List<Core_Feature__c> featuresToInsert = new List<Core_Feature__c>();
+                for (String actType : activeTypes) {
+                    String actVal = featureTypeAndValueMap.get(actType);
+                    String featKey = actType.trim().toLowerCase() + '::' + actVal.trim().toLowerCase();
+
+                    if (!existingFeatureMap.containsKey(featKey)) {
+                        String bu = (actType == 'Consumer Sales system') ? 'CCG' : 'PBS';
+                        featuresToInsert.add(new Core_Feature__c(
+                            Core_Feature_Type__c  = actType,
+                            Core_Feature_Value__c = actVal,
+                            Core_Feature_BU__c    = bu
+                        ));
+                    }
+                }
+
+                if (!featuresToInsert.isEmpty()) {
+                    insert featuresToInsert;
+                    for (Core_Feature__c f : featuresToInsert) {
+                        String featKey = f.Core_Feature_Type__c.trim().toLowerCase() + '::' + f.Core_Feature_Value__c.trim().toLowerCase();
+                        existingFeatureMap.put(featKey, f);
+                    }
+                }
+                List<Core_Feature__c> allActiveFeatures = existingFeatureMap.values();
+
+                // Query Header
+                List<Core_Feature_Header__c> Fh = [
+                    SELECT Id, OwnerId, Core_Header_Name__c, Core_Header_Type__c 
+                    FROM Core_Feature_Header__c 
+                    WHERE Core_Header_Type__c = 'Intel Platform' 
+                    AND Core_Header_Name__c = :sPlatform 
+                    LIMIT 1
+                ];
+
+                if (!Fh.isEmpty() && !allActiveFeatures.isEmpty()) {
+                    Id headerId = Fh[0].Id;
+
+                    // Query existing Feature Sets
+                    List<Core_Feature_Set__c> existingFsList = [
+                        SELECT Id, Core_Feature__c, Core_Feature_Header__c 
+                        FROM Core_Feature_Set__c 
+                        WHERE Core_Feature_Header__c = :headerId 
+                        AND Core_Feature__c IN :allActiveFeatures 
+                        AND Core_Active__c = true
+                        ORDER BY CreatedDate DESC
+                    ];
+                    Map<String, Core_Feature_Set__c> uniqueFeatureHeaderSetMap = new Map<String, Core_Feature_Set__c>();
+                    for (Core_Feature_Set__c fs : existingFsList) {
+                        String compositeKey = fs.Core_Feature__c + '::' + fs.Core_Feature_Header__c;
+                        if (!uniqueFeatureHeaderSetMap.containsKey(compositeKey)) {
+                            uniqueFeatureHeaderSetMap.put(compositeKey, fs);
+                        }
+                    }
+                    // Insert missing Feature Sets
+                    List<Core_Feature_Set__c> fsToInsert = new List<Core_Feature_Set__c>();
+                    for (Core_Feature__c feat : allActiveFeatures) {
+                        String compositeKey = feat.Id + '::' + headerId;
+                        if (!uniqueFeatureHeaderSetMap.containsKey(compositeKey)) {
+                            fsToInsert.add(new Core_Feature_Set__c(
+                                Core_Feature__c        = feat.Id,
+                                Core_Feature_Header__c = headerId,
+                                Core_Active__c         = true
+                            ));
+                        }
+                    }
+
+                    if (!fsToInsert.isEmpty()) {
+                        insert fsToInsert;
+                        for (Core_Feature_Set__c fs : fsToInsert) {
+                            String compositeKey = fs.Core_Feature__c + '::' + fs.Core_Feature_Header__c;
+                            uniqueFeatureHeaderSetMap.put(compositeKey, fs);
+                        }
+                    }
+
+
+                    // insert only the currently active Opportunity Features
+                    List<Core_Opportunity_Features__c> oppFeatureList = new List<Core_Opportunity_Features__c>();
+                    for (Core_Feature_Set__c fs : uniqueFeatureHeaderSetMap.values()) {
+                        oppFeatureList.add(new Core_Opportunity_Features__c(
+                            Core_Feature_Set__c = fs.Id,
+                            Core_Opportunity__c = sObjOpp.Id
+                        ));
+                    }
+                    System.debug('new Descriptive features: '+oppFeatureList);
+                    if (!oppFeatureList.isEmpty()) {
+                        insert oppFeatureList;
+                    }
+                }
+            }
+
+        //End: Added Save logic for all the text fields        
         } catch (Exception e) {  
            
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.label.Core_Exception+e.getmessage()));
-            
+            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Descriptive features insertion failed',Core_Details__c = e.getMessage(), Core_Origin__c='Core_OppDescriptiveFeaturesController', Core_Severity__c='info', Core_When__c=System.Now(), Core_Project__c = 'Unicorn');
+            Database.insert(logEntry, false);
             //Call the method to return the earlier values of the feature & header
             Core_getFeature();
             return NULL;

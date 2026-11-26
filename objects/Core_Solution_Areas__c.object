@@ -164,6 +164,11 @@
             <valueSetDefinition>
                 <sorted>true</sorted>
                 <value>
+                    <fullName>Agentic AI</fullName>
+                    <default>false</default>
+                    <label>Agentic AI</label>
+                </value>
+                <value>
                     <fullName>AI Inference</fullName>
                     <default>false</default>
                     <label>AI Inference</label>
@@ -422,6 +427,11 @@
                     <fullName>Provisioning and Orchestration</fullName>
                     <default>false</default>
                     <label>Provisioning and Orchestration</label>
+                </value>
+                <value>
+                    <fullName>Robotics Control + AI</fullName>
+                    <default>false</default>
+                    <label>Robotics Control + AI</label>
                 </value>
                 <value>
                     <fullName>Security: Endpoint</fullName>

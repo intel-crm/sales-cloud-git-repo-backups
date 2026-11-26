@@ -269,8 +269,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
-        <endDate>2026-11-25</endDate>
+        <endDate>2026-11-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-25</startDate>
+        <startDate>2026-11-26</startDate>
     </timeFrameFilter>
 </Report>

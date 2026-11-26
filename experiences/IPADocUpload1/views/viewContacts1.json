@@ -2,7 +2,7 @@
   "appPageId" : "b15e9917-f493-45ed-b1ab-63ce77cdadfa",
   "componentName" : "siteforce:dynamicLayout",
   "dataProviders" : [ ],
-  "id" : "80d1eddc-9400-45e7-a70e-b308858535f8",
+  "id" : "0e5a1b5d-0ce2-408e-a78c-a107898e64ab",
   "label" : "View Contacts (1)",
   "regions" : [ {
     "components" : [ {
@@ -11,9 +11,9 @@
         "backgroundOverlay" : "rgba(0,0,0,0.5)",
         "contentAreaWidth" : 100,
         "sectionConfig" : {
-          "UUID" : "85c694a1-2a40-48c4-a6c6-841700f29f1f",
+          "UUID" : "fa8dc459-bcdd-4ab2-93ef-7a6287998a1f",
           "columns" : [ {
-            "UUID" : "191fe9e2-5053-454d-9e62-70ebe51bf635",
+            "UUID" : "8d07dc1f-9a45-472b-81ff-3f1011246a24",
             "columnKey" : "col1",
             "columnName" : "Contact List Column",
             "columnWidth" : "12",
@@ -30,7 +30,7 @@
         "sectionHeight" : 32
       },
       "componentName" : "forceCommunity:section",
-      "id" : "85c694a1-2a40-48c4-a6c6-841700f29f1f",
+      "id" : "fa8dc459-bcdd-4ab2-93ef-7a6287998a1f",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : {
@@ -50,12 +50,12 @@
             "showSearchBar" : true
           },
           "componentName" : "forceCommunity:objectHome",
-          "id" : "780716e9-7c16-4b1c-bf0a-2821b93c6973",
+          "id" : "66c76f48-019f-4979-ab33-1dd22118b452",
           "renderPriority" : "NEUTRAL",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "191fe9e2-5053-454d-9e62-70ebe51bf635",
+        "id" : "8d07dc1f-9a45-472b-81ff-3f1011246a24",
         "regionLabel" : "Contact List Column",
         "regionName" : "col1",
         "renditionMap" : { },
@@ -65,7 +65,7 @@
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "7eca8d34-ee86-4e09-97b5-0d1906b70eb2",
+    "id" : "27fabd82-7544-435b-b3c2-aca4e24ca4a6",
     "regionName" : "content",
     "type" : "region"
   } ],

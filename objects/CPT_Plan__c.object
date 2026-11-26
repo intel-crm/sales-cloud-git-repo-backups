@@ -165,7 +165,7 @@
     <fields>
         <fullName>CPT_Breakout_Total__c</fullName>
         <description>The sum of all the Breakout Elements. It should be equal to 100.</description>
-        <formula>(VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_Billings_Revenue__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;)) + 
+        <formula>(VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_Billings_Revenue__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;)) + VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_OW_Revenue__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;)) + 
 VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_Consumption_Revenue__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;)) +
 VALUE(SUBSTITUTE(BLANKVALUE(TEXT(CPT_Percent_Wins_Revenue__c), &apos;0&apos;),&apos;%&apos;,&apos;&apos;)))/100</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

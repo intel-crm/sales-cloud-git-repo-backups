@@ -273,6 +273,11 @@
         <columns>CPT_Effective_End__c</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>PayeeID__c</field>
+            <operation>equals</operation>
+            <value>12</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

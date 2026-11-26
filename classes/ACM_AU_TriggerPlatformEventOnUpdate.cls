@@ -53,6 +53,8 @@ public class ACM_AU_TriggerPlatformEventOnUpdate implements UCD_ACM_ServiceContr
                 && ((acct.Core_Customer_Aggregation_Type__c != oldAcct.Core_Customer_Aggregation_Type__c)
                     || (acct.Core_Survivor_Account_Id__c != oldAcct.Core_Survivor_Account_Id__c)
                     || (acct.Core_Business_Party_Id__c != oldAcct.Core_Business_Party_Id__c)
+                    || (acct.Core_Market_Segment__c!=oldAcct.Core_Market_Segment__c)
+                    || (acct.Core_Project_Name__c!=oldAcct.Core_Project_Name__c)
                     || (acct.Core_Data_Simplified_Account_Nm__c != oldAcct.Core_Data_Simplified_Account_Nm__c)
                     || (String.isNotBlank(acct.Core_Data_Simplified_Account_Nm__c) && String.isNotBlank(oldAcct.Core_Data_Simplified_Account_Nm__c) && !(acct.Core_Data_Simplified_Account_Nm__c.equals(oldAcct.Core_Data_Simplified_Account_Nm__c)))
                     || (acct.RecordTypeId != oldRTId)

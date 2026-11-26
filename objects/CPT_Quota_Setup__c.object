@@ -1180,7 +1180,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <fullName>CPT_OW_CCPG_Deal_Assigned__c</fullName>
         <label>OW - CCPG Deal % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1208,7 +1208,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <fullName>CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</fullName>
         <label>OW - CCPG Deal Wins Vol % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1236,7 +1236,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <fullName>CPT_OW_CCPG_Design_Assigned__c</fullName>
         <label>OW - CCPG Design % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1264,7 +1264,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <fullName>CPT_OW_DCG_Deal_Assigned__c</fullName>
         <label>OW - DCG Deal % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1292,7 +1292,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <fullName>CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</fullName>
         <label>OW - DCG Deal Wins Vol % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1320,7 +1320,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <fullName>CPT_OW_DCG_Design_Assigned__c</fullName>
         <label>OW - DCG Design % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1348,7 +1348,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <fullName>CPT_OW_Edge_Deal_Assigned__c</fullName>
         <label>OW - Edge Deal % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1376,7 +1376,7 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <fullName>CPT_OW_Edge_Design_Assigned__c</fullName>
         <label>OW - Edge Design % Assigned</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -2666,6 +2666,52 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
         <label>My Team&apos;s Quota - MarginVolume</label>
     </listViews>
     <listViews>
+        <fullName>My_Team_s_Quota_Opportunity_Wins_Deal</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Status__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Assigned__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Quota__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Wins_Vol_Quota__c</columns>
+        <columns>CPT_OW_DCG_Deal_Assigned__c</columns>
+        <columns>CPT_OW_DCG_Deal_Quota__c</columns>
+        <columns>CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</columns>
+        <columns>CPT_OW_DCG_Deal_Wins_Vol_Quota__c</columns>
+        <columns>CPT_OW_Edge_Deal_Assigned__c</columns>
+        <columns>CPT_OW_Edge_Deal_Quota__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CPT_OW_Allowed__c</field>
+            <operation>greaterThan</operation>
+            <value>0.0</value>
+        </filters>
+        <label>My Team&apos;s Quota - Opportunity Wins Deal</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Quota_Opportunity_Wins_Design</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Status__c</columns>
+        <columns>CPT_OW_CCPG_Design_Assigned__c</columns>
+        <columns>CPT_OW_CCPG_Design_Quota__c</columns>
+        <columns>CPT_OW_DCG_Design_Assigned__c</columns>
+        <columns>CPT_OW_DCG_Design_Quota__c</columns>
+        <columns>CPT_OW_Edge_Design_Assigned__c</columns>
+        <columns>CPT_OW_Edge_Design_Quota__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CPT_OW_Allowed__c</field>
+            <operation>greaterThan</operation>
+            <value>0.0</value>
+        </filters>
+        <label>My Team&apos;s Quota -Opportunity Wins Design</label>
+    </listViews>
+    <listViews>
         <fullName>My_Team_s_Quota_Sales_OKR</fullName>
         <columns>NAME</columns>
         <columns>CPT_Employee_Name__c</columns>
@@ -2783,6 +2829,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -2796,6 +2846,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3048,6 +3110,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -3061,6 +3127,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3147,6 +3225,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -3160,6 +3242,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3246,6 +3340,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -3259,6 +3357,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3345,6 +3455,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -3358,6 +3472,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3444,6 +3570,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -3457,6 +3587,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4172,6 +4314,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -4185,6 +4331,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4255,6 +4413,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -4268,6 +4430,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4338,6 +4512,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -4351,6 +4529,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4421,6 +4611,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -4434,6 +4628,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4504,6 +4710,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -4517,6 +4727,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4587,6 +4809,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -4600,6 +4826,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4670,6 +4908,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -4683,6 +4925,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4753,6 +5007,10 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>4%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>40%25</fullName>
                 <default>false</default>
             </values>
@@ -4766,6 +5024,18 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
             <values>
                 <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E000%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
                 <default>false</default>
             </values>
             <values>

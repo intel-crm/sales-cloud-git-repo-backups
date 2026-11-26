@@ -220,6 +220,26 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_CEG_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>CEG Comments</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CEG_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>CEG Contact</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_CPU__c</fullName>
         <externalId>false</externalId>
         <label>CPU</label>
@@ -280,6 +300,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Collaboration_Model__c</fullName>
+        <externalId>false</externalId>
+        <label>Collaboration Model</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Consumer_Factor_Login__c</fullName>
         <externalId>false</externalId>
         <label>Consumer Factor Login</label>
@@ -333,6 +363,46 @@
         <fullName>Core_Crystal_Ridge__c</fullName>
         <externalId>false</externalId>
         <label>Crystal Ridge</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Application__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Application</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Product Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Project_Stage__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Project Stage</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Segment__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Segment</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -493,6 +563,16 @@
         <fullName>Core_Entry_SPP_US__c</fullName>
         <externalId>false</externalId>
         <label>Entry SPP (US$)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Exec_Sponsor_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>Exec Sponsor Contact</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -781,6 +861,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_NRE__c</fullName>
+        <externalId>false</externalId>
+        <label>NRE $</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_New_ID__c</fullName>
         <externalId>false</externalId>
         <label>New ID?</label>
@@ -912,6 +1002,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Process_Node__c</fullName>
+        <externalId>false</externalId>
+        <label>Process Node</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Product_Capability_Technology__c</fullName>
         <externalId>false</externalId>
         <label>Product Capability/Technology</label>
@@ -926,6 +1026,66 @@
         <externalId>false</externalId>
         <label>Production Lifecycle</label>
         <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Code_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Code Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Engineering_Sample__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: Engineering Sample</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_PRQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: PRQ</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_RFx__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: RFx</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_TR_Kick_off__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: TR Kick off</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Tape_In_Out__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: Tape In/Out</label>
+        <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>

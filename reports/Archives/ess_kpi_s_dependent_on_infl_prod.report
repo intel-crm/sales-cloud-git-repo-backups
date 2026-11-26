@@ -1870,6 +1870,54 @@
         <field>Opportunity.Core_Design_Type__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_CEG_Comments__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_CEG_Contact__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Collaboration_Model__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Custom_Silicon_Application__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Custom_Silicon_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Custom_Silicon_Project_Stage__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Custom_Silicon_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Exec_Sponsor_Contact__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_NRE__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Process_Node__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Project_Code_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Project_Schedule_Engineering_Sample__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Project_Schedule_PRQ__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Project_Schedule_RFx__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Project_Schedule_TR_Kick_off__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Project_Schedule_Tape_In_Out__c</field>
+    </columns>
+    <columns>
         <field>User.Core_Employee_Type_Code__c</field>
     </columns>
     <columns>

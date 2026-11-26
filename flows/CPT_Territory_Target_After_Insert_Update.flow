@@ -60,31 +60,10 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_DCG_Deal_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_OW_DCG_Deal_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
             <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_CCPG_Deal_Target__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>$Record.CPT_OW_CCPG_Deal_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_Edge_Deal_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_OW_Edge_Deal_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_DCG_Deal_Wins_Vol_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_OW_DCG_Deal_Wins_Vol_Target__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -95,6 +74,27 @@
             </value>
         </assignmentItems>
         <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_CCPG_Design_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_CCPG_Design_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_DCG_Deal_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_DCG_Deal_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_DCG_Deal_Wins_Vol_Target__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CPT_OW_DCG_Deal_Wins_Vol_Target__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
             <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_DCG_Design_Target__c</assignToReference>
             <operator>Assign</operator>
             <value>
@@ -102,10 +102,10 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_CCPG_Design_Target__c</assignToReference>
+            <assignToReference>CPT_Iterate_through_the_Assignment_Records.CPT_OW_Edge_Deal_Target__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.CPT_OW_CCPG_Design_Target__c</elementReference>
+                <elementReference>$Record.CPT_OW_Edge_Deal_Target__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -119,7 +119,7 @@
             <targetReference>CPT_Add_Assigment_Record_to_List</targetReference>
         </connector>
     </assignments>
-    <description>[25/Nov/2025] Flow to Copy the target values from the account/territory/country into the assignment object.</description>
+    <description>[25/Nov/2026] Flow to Copy the target values from the account/territory/country into the assignment object.</description>
     <ends>
         <name>END_ELEMENT_2</name>
         <locationX>176</locationX>
@@ -204,7 +204,7 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Obsolete</status>
     <variables>
         <name>AssignmentRecordsList</name>
         <dataType>SObject</dataType>

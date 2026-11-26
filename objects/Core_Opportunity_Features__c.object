@@ -159,9 +159,59 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>Core_CEG_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>CEG Comments</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_CEG_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>CEG Contact</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Consumer_Sales_system__c</fullName>
         <externalId>false</externalId>
         <label>Consumer Sales System</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Application__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Application</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Custom_Silicon_Segment__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Silicon Segment</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Exec_Sponsor_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>Exec Sponsor Contact</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -213,6 +263,16 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_NRE__c</fullName>
+        <externalId>false</externalId>
+        <label>NRE $</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Opportunity__c</fullName>
         <description>This is a field used to associate a lookup relationship with the Opportunity Object</description>
         <label>Opportunity</label>
@@ -233,10 +293,81 @@
 &quot;CCG ECG&quot;, &quot;CCG ECG&quot;,
 &quot;DCG&quot;, &quot;DCAI&quot;,
 &quot;PSG&quot;, &quot;PSG&quot;,
-&quot;NTG&quot;, &quot;NTG&quot;,&quot;&quot;
+&quot;NTG&quot;, &quot;NTG&quot;,
+&quot;PBS&quot;,&quot;PBS&quot;,&quot;&quot;
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Platform BU</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Process_Node__c</fullName>
+        <externalId>false</externalId>
+        <label>Process Node</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Code_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Code Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Engineering_Sample__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: Engineering Sample</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_PRQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: PRQ</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_RFx__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: RFx</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_TR_Kick_off__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: TR Kick off</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Project_Schedule_Tape_In_Out__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Schedule: Tape In/Out</label>
+        <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>

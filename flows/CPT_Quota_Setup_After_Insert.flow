@@ -51,22 +51,6 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_OW_Plan_Default_Value</name>
-        <label>Assign OW Plan Default Value</label>
-        <locationX>2118</locationX>
-        <locationY>971</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_OW_Assigned__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Default_Value__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Assign_Wins_Deal_field</name>
         <label>Assign Wins Deal field</label>
         <locationX>1678</locationX>
@@ -125,6 +109,71 @@
             </value>
         </assignmentItems>
         <connector>
+            <targetReference>Initialize_OW_Assigned_Values</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Initialize_OW_Assigned_Values</name>
+        <label>Initialize OW Assigned Values</label>
+        <locationX>182</locationX>
+        <locationY>1931</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_DCG_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_CCPG_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_Edge_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_DCG_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_CCPG_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_Edge_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
             <targetReference>Update_Quota_Setup_Fields_with_Default_Value</targetReference>
         </connector>
     </assignments>
@@ -177,7 +226,7 @@
     <decisions>
         <name>Check_Quota_Setup_Field_Name</name>
         <label>Check Quota Setup Field Name</label>
-        <locationX>1480</locationX>
+        <locationX>1260</locationX>
         <locationY>755</locationY>
         <defaultConnector>
             <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
@@ -234,21 +283,6 @@
                 <targetReference>Is_Wins_field</targetReference>
             </connector>
             <label>Wins</label>
-        </rules>
-        <rules>
-            <name>OW</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_Sales_KPI_Type__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>OW</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Is_OW_Field</targetReference>
-            </connector>
-            <label>OW</label>
         </rules>
     </decisions>
     <decisions>
@@ -389,31 +423,6 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Is_OW_Field</name>
-        <label>Is OW Field?</label>
-        <locationX>2250</locationX>
-        <locationY>863</locationY>
-        <defaultConnector>
-            <targetReference>Loop_Over_Quota_Setup_Plan_Defaults</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>OW_Field</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Loop_Over_Quota_Setup_Plan_Defaults.CPT_QuotaSetup_Field_Name__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>CPT_OW_Assigned__c</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_OW_Plan_Default_Value</targetReference>
-            </connector>
-            <label>OW Field</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Is_Wins_field</name>
         <label>Is Wins field</label>
         <locationX>1678</locationX>
@@ -459,7 +468,7 @@
         <locationX>182</locationX>
         <locationY>1631</locationY>
         <defaultConnector>
-            <targetReference>Update_Quota_Setup_Fields_with_Default_Value</targetReference>
+            <targetReference>Initialize_OW_Assigned_Values</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -487,7 +496,7 @@
     <ends>
         <name>END_ELEMENT_6</name>
         <locationX>182</locationX>
-        <locationY>2039</locationY>
+        <locationY>2147</locationY>
     </ends>
     <environments>Default</environments>
     <formulas>
@@ -527,9 +536,9 @@
         <expression>CASE(
     TEXT({!$Record.CPT_Plan__c}),
     &quot;250&quot;, &quot;60%&quot;,
-    &quot;330&quot;, &quot;30%&quot;,
+    &quot;330&quot;, &quot;60%&quot;,
     &quot;620&quot;, &quot;20%&quot;,
-    &quot;630&quot;, &quot;40%&quot;,
+    &quot;630&quot;, &quot;60%&quot;,
     &quot;0%&quot;
 )</expression>
     </formulas>
@@ -600,7 +609,7 @@
         <name>Update_Quota_Setup_Fields_with_Default_Value</name>
         <label>Update Quota Setup Fields with Default Value</label>
         <locationX>182</locationX>
-        <locationY>1931</locationY>
+        <locationY>2039</locationY>
         <connector>
             <targetReference>END_ELEMENT_6</targetReference>
         </connector>
@@ -624,7 +633,7 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>AssignDefaultPlanRecordsList</name>
         <dataType>SObject</dataType>

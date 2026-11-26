@@ -203,6 +203,62 @@
                 <stringValue>0%</stringValue>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_OW_DCG_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_OW_CCPG_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_OW_Edge_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_OW_DCG_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_OW_CCPG_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Loop_Over_the_List_of_Quota_Setup_Records.CPT_OW_Edge_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Get_Quota_Setup_Plan_Defaults</targetReference>
         </connector>
@@ -509,7 +565,7 @@
             <label>Territory Assignment Found</label>
         </rules>
     </decisions>
-    <description>[17/Nov/26]  - Added the Default Value for the BR, CR &amp; PfR Fields Default Value</description>
+    <description>[25/Nov/26]  - Added the Default Value for the BR, CR &amp; PfR + OW Fields Default Value</description>
     <ends>
         <name>END_ELEMENT_1</name>
         <locationX>270</locationX>

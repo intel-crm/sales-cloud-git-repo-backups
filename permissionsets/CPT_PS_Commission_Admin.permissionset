@@ -1045,41 +1045,81 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Wins_Vol__c</field>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Target__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Wins_Vol_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Wins_Vol__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Design_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Design__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Wins_Vol__c</field>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Target__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Wins_Vol_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Wins_Vol__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Design_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Design__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Deal_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Deal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Design_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Design__c</field>
         <readable>true</readable>
     </fieldPermissions>

@@ -2,7 +2,7 @@
   "appPageId" : "b15e9917-f493-45ed-b1ab-63ce77cdadfa",
   "componentName" : "siteforce:dynamicLayout",
   "dataProviders" : [ ],
-  "id" : "742464fc-5540-417c-923e-ebfb9a1b4b02",
+  "id" : "dd9f56ab-d976-41e4-9604-1e4c6774c156",
   "label" : "Deal Registration",
   "regions" : [ {
     "components" : [ {
@@ -11,9 +11,9 @@
         "backgroundOverlay" : "rgba(0,0,0,0.5)",
         "contentAreaWidth" : 100,
         "sectionConfig" : {
-          "UUID" : "25d8c6c1-eeba-41e0-9cf4-4ebac52c754d",
+          "UUID" : "0a5812aa-a01a-47d5-91f9-e75cc43933e7",
           "columns" : [ {
-            "UUID" : "e153ac04-e947-4777-b0d5-a2771ed9bb8a",
+            "UUID" : "6307e86f-daad-48e1-9463-2603ac515122",
             "columnKey" : "col1",
             "columnName" : "Deal Registration Flow Column",
             "columnWidth" : "7",
@@ -26,7 +26,7 @@
               "fqn" : "forceCommunity:flowCommunity"
             } ]
           }, {
-            "UUID" : "04b1f3ac-f8d4-497c-88b2-00c24189bf37",
+            "UUID" : "d7695567-c2a5-4c71-99f2-36aa4cd88048",
             "columnKey" : "col2",
             "columnName" : "Deal Registration TnC Column",
             "columnWidth" : "5",
@@ -47,7 +47,7 @@
         "sectionHeight" : 32
       },
       "componentName" : "forceCommunity:section",
-      "id" : "25d8c6c1-eeba-41e0-9cf4-4ebac52c754d",
+      "id" : "0a5812aa-a01a-47d5-91f9-e75cc43933e7",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : {
@@ -55,12 +55,12 @@
             "flowName" : "prm_slack_flows__DealRegistration"
           },
           "componentName" : "forceCommunity:flowCommunity",
-          "id" : "6ec08ba0-0216-4f9d-af41-20307f5e3044",
+          "id" : "a0103464-1e89-4d56-97b0-cd12a7951eb3",
           "renderPriority" : "NEUTRAL",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "e153ac04-e947-4777-b0d5-a2771ed9bb8a",
+        "id" : "6307e86f-daad-48e1-9463-2603ac515122",
         "regionLabel" : "Deal Registration Flow Column",
         "regionName" : "col1",
         "renditionMap" : { },
@@ -71,7 +71,7 @@
             "richTextValue" : "<div class=\"slds-box slds-theme_default slds-rounded_large slds-text-color_default\">                                                 <h1 class=\"slds-text-heading_large slds-text-title_bold slds-m-bottom_medium\">                                                   Deal Registration Terms &amp; Conditions                                                 </h1>                                                  <h2 class=\"slds-text-title_bold slds-m-bottom_x-small\">Eligibility</h2>                                                 <ul class=\"slds-list_dotted slds-m-left_medium slds-m-bottom_medium\">                                                   <li>Only direct partners/resellers can register opportunities.</li>                                                   <li>An opportunity must not already be registered by another partner.</li>                                                   <li>                                                     Before registering, the partner must have made significant pre-sales efforts, such as:                                                     <ul class=\"slds-list_dotted slds-m-left_medium slds-m-top_xx-small\">                                                       <li>Meeting decision-makers</li>                                                       <li>Qualifying the opportunity</li>                                                       <li>Assisting the customer in setting a project budget with Welo’s products or services</li>                                                       <li>Helping define project requirements that include Welo’s products or services</li>                                                     </ul>                                                   </li>                                                 </ul>                                                  <hr class=\"slds-m-vertical_medium\">                                                  <h2 class=\"slds-text-title_bold slds-m-bottom_x-small\">Registration Process</h2>                                                 <ol class=\"slds-list_ordered slds-m-left_medium slds-m-bottom_medium\">                                                   <li>Submit the deal via the <strong>Deal Registration Form</strong>.</li>                                                   <li>Approval is given to the first partner who submits and meets all eligibility criteria.</li>                                                   <li>                                                     <strong>Notifications:</strong>                                                     <ul class=\"slds-list_dotted slds-m-left_medium slds-m-top_xx-small\">                                                       <li>If approved, Partner will confirm via the portal experience.</li>                                                       <li>If declined, Partner will notify you via the partner site and explain the reasons.</li>                                                     </ul>                                                   </li>                                                   <li>                                                     <strong>Protection Period:</strong>                                                     <ul class=\"slds-list_dotted slds-m-left_medium slds-m-top_xx-small\">                                                       <li>Approved deals are protected for 3 months from the approval date.</li>                                                       <li>If there is a material change to the solution, a new registration is required.</li>                                                     </ul>                                                   </li>                                                 </ol>                                                  <h2 class=\"slds-text-title_bold slds-m-bottom_x-small\">Disputes</h2>                                                 <p>Any disputes with Partner Site or any other sites must be submitted through the partner site.</p>                                               </div>"
           },
           "componentName" : "forceCommunity:htmlBlock",
-          "id" : "4e06bace-535b-4c72-9a7f-5e495b61a709",
+          "id" : "ef02604d-543d-4903-9647-302c0f91c3c3",
           "renderPriority" : "NEUTRAL",
           "renditionMap" : { },
           "type" : "component"
@@ -82,12 +82,12 @@
             "title" : "Welcome to Steps Partner Referral Programme"
           },
           "componentName" : "runtime_sales_prm:partnerReferralWelcomeContainer",
-          "id" : "0012e6b9-4d21-4504-9d2b-08a18eddafe6",
+          "id" : "f44f04b8-2266-40fa-aa33-48607267fe42",
           "renderPriority" : "NEUTRAL",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "04b1f3ac-f8d4-497c-88b2-00c24189bf37",
+        "id" : "d7695567-c2a5-4c71-99f2-36aa4cd88048",
         "regionLabel" : "Deal Registration TnC Column",
         "regionName" : "col2",
         "renditionMap" : { },
@@ -97,7 +97,7 @@
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "f5b4c817-6c6a-4991-9816-e9f6d1366a50",
+    "id" : "da364438-0d66-4f7f-a60f-b7dd7cd20e16",
     "regionName" : "content",
     "type" : "region"
   } ],

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>82</activeVersionNumber>
+    <activeVersionNumber>83</activeVersionNumber>
     <description>[12-Dec-2025] - QST 2026 Changes
 1. Added New SubElements for CR i.e. OEM, Retail &amp; Partner
 2. Added New Elements - SubElements i.e. VOL - Next Gen and MARGIN - Account</description>
