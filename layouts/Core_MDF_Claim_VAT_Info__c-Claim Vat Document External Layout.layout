@@ -32,6 +32,10 @@
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Vat_Inv_Guide_Link__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_VAT_Comments_txt__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

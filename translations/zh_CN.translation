@@ -186,6 +186,14 @@
     </customLabels>
     <customLabels>
         <label></label>
+        <name>Activity_Display_Fields</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Activity_Display_Fields_Additional</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
         <name>Agents_Profile_List</name>
     </customLabels>
     <customLabels>
@@ -6629,6 +6637,26 @@ b.如果申请偿付非奖励成本：会员或第三方出具的明细报告
         <name>Core_MDF_Cancel_Claim_Yes</name>
     </customLabels>
     <customLabels>
+        <label>选择要取消增值税的“付款明细”。</label>
+        <name>Core_MDF_Cancel_Outcome_Vat_Msg</name>
+    </customLabels>
+    <customLabels>
+        <label>取消增值税</label>
+        <name>Core_MDF_Cancel_VAT</name>
+    </customLabels>
+    <customLabels>
+        <label>您确定要取消增值税保留吗？</label>
+        <name>Core_MDF_Cancel_VAT_Body</name>
+    </customLabels>
+    <customLabels>
+        <label>只有申报提交人可以取消增值税。</label>
+        <name>Core_MDF_Cancel_VAT_Claim_Submitter_Only</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Cancel_VAT_Invalid_Status</name>
+    </customLabels>
+    <customLabels>
         <label>无法取消处于完成状态的提议活动。</label>
         <name>Core_MDF_Cancel_proposal_Error_Message</name>
     </customLabels>
@@ -6865,6 +6893,10 @@ d.电影播放次数、观众人数、提供的展示总数</label>
         <name>Core_MDF_ClaimBatchRecRetryLimit</name>
     </customLabels>
     <customLabels>
+        <label>索赔取消原因</label>
+        <name>Core_MDF_ClaimCancellationReason</name>
+    </customLabels>
+    <customLabels>
         <label></label>
         <name>Core_MDF_ClaimCaseReviewResult_RecordType</name>
     </customLabels>
@@ -6895,6 +6927,10 @@ d.电影播放次数、观众人数、提供的展示总数</label>
     <customLabels>
         <label>申请的数额超出上限余额</label>
         <name>Core_MDF_ClaimExceedsCapRemainder_ErrorMsg</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_ClaimEzy_MaxFileSize</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -7185,6 +7221,10 @@ d.电影播放次数、观众人数、提供的展示总数</label>
     <customLabels>
         <label>申请的唯一标识符，供成员引用</label>
         <name>Core_MDF_Claim_ID_Help</name>
+    </customLabels>
+    <customLabels>
+        <label>取消增值税不可用：此索赔不适用于增值税。</label>
+        <name>Core_MDF_Claim_Not_On_VAT_Hold</name>
     </customLabels>
     <customLabels>
         <label>已发送申请以进行付款清算处理</label>
@@ -7597,6 +7637,22 @@ d.电影播放次数、观众人数、提供的展示总数</label>
     <customLabels>
         <label></label>
         <name>Core_MDF_Co_GTM_program_name</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_Budget_ApprovalProcess</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_RecordType</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_Technical_program_name</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_program_name</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -8153,6 +8209,10 @@ b.对于数字版本：URL、托管/投放单位成本和数量</label>
     <customLabels>
         <label>无法上传处于此状态的文件。</label>
         <name>Core_MDF_DocumentUploadDisabledMessage</name>
+    </customLabels>
+    <customLabels>
+        <label>文档状态</label>
+        <name>Core_MDF_Document_Status</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -9589,6 +9649,10 @@ b.对于数字版本：URL、托管/投放单位成本和数量</label>
     <customLabels>
         <label></label>
         <name>Core_MDF_Hold_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>此索赔目前处于挂起状态。取消它也会取消所有付款明细项目。</label>
+        <name>Core_MDF_Hold_Super_Claim_Cancel_Warning</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -13498,7 +13562,7 @@ d.对于赞助广告：节目名称、提及的次数</label>
         <name>Core_MDF_Requested_Reimbursement_Amount_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>申请金额（美元）</label>
         <name>Core_MDF_Requested_Reimbursement_Amt</name>
     </customLabels>
     <customLabels>
@@ -14020,6 +14084,10 @@ d.对于赞助广告：节目名称、提及的次数</label>
     <customLabels>
         <label>请选择该活动的主要英特尔负责人</label>
         <name>Core_MDF_Select_One_Pri_Intel_Owner</name>
+    </customLabels>
+    <customLabels>
+        <label>请选择至少一个付款明细以继续。</label>
+        <name>Core_MDF_Select_Payment_Breakdown</name>
     </customLabels>
     <customLabels>
         <label>选择状态</label>
@@ -15041,6 +15109,10 @@ a.地点或在线平台、日期和参加者人数</label>
     <customLabels>
         <label></label>
         <name>Core_MDF_VAT_Auto_Reject_Message</name>
+    </customLabels>
+    <customLabels>
+        <label>增值税工作流程已成功取消。</label>
+        <name>Core_MDF_VAT_Cancel_Success</name>
     </customLabels>
     <customLabels>
         <label>发票类型确认</label>

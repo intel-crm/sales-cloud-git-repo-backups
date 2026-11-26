@@ -109,6 +109,10 @@
         <translation>상업 - SMB</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Commercial Client</masterLabel>
+        <translation>상업 고객</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Commercial Evo (non-vPro)</masterLabel>
         <translation>상업용 Evo(비 vPro)</translation>
     </valueTranslation>
@@ -305,6 +309,10 @@
         <translation><!-- Machine Learning --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Mainstream Client</masterLabel>
+        <translation>메인스트림 클라이언트</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Mainstream PCs</masterLabel>
         <translation>메인스트림 PC</translation>
     </valueTranslation>
@@ -379,6 +387,14 @@
     <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation>기타</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Physical AI</masterLabel>
+        <translation>물리적 AI</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Premium Client</masterLabel>
+        <translation>프리미엄 고객</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Private Wireless Networks</masterLabel>

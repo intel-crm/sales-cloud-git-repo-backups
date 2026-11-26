@@ -26,11 +26,14 @@ public without sharing class Core_MDF_Campaign_QuickActionController {
     *****************************************************************/
     @AuraEnabled
     public static Campaign loadCampaignRecord(String recordId) {
+        List<Campaign> recordObjList;
+        if(String.isBlank(recordId)) return null;
         String sanitiziedCampaignId = String.escapeSingleQuotes(recordId);
-        String sQuery = 'SELECT Id, Name, RecordTypeId, RecordType.Name, RecordType.DeveloperName, Status,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Market__c,Core_MDF_Claims_Created_Ind__c,Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Account__r.Core_MDF_Active_Ind__c ';
+        String sQuery = 'SELECT Id, Name, RecordTypeId, RecordType.Name, RecordType.DeveloperName, Status,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Market__c,Core_MDF_Claims_Created_Ind__c,Core_MDF_Opal_Budget_Type_Txt__c,Core_MDF_Account__r.Core_MDF_Active_Ind__c,Core_MDF_Partner_Mapping_Txt__c ';
         sQuery += ' FROM Campaign WHERE Id =:sanitiziedCampaignId ';
-        Campaign recordObj = Database.query(sQuery);
-        return recordObj;
+        recordObjList = Database.query(sQuery);
+        if(recordObjList.isEmpty()) return null;
+        return recordObjList[0];
     }
     /*@AuraEnabled
     public static RecordType loadIPARecTypeInfo() {

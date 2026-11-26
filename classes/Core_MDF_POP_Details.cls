@@ -114,6 +114,8 @@ Modified By: Akanksha                          Date: 28/10/2024            Chang
 Vivek K                      09/06/2020        Created.
 *****************************************************************************************************************************************/    
     private static String fetchPOPMetadata() {
+        //exception fix 
+        if(String.isBlank(strActCatVal) || String.isBlank(strActTypeVal) || String.isBlank(strProgramName)){return '';}
         String userLang = UserInfo.getLanguage();
         String strLabel = '';
         String objectFieldApiName;

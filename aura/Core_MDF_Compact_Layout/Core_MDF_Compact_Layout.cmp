@@ -279,6 +279,11 @@
                     <aura:if isTrue="{!AND((v.openCmp == 'Complete Payment Clearance Processing'),v.objAPIName == 'PartnerFundClaim')}">
                         <c:core_MDF_PicReviewProcess recordId ="{!v.recordId}"/>
                     </aura:if>
+                    <!-- Roshan - TWC3117-19010 -->
+                    <aura:if isTrue="{!AND((v.openCmp == 'Cancel VAT'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:core_MDF_PFC_Cancel_VAT recordId ="{!v.recordId}" isCustomComp = 'true' onclosemodal="{!c.closeModal}"/>
+                    </aura:if>
+
 
                 </div>
                 <!--Footer Section-->

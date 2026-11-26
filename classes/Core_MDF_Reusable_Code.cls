@@ -189,8 +189,10 @@ public class Core_MDF_Reusable_Code {
         Schema.DescribeSObjectResult sObjRes;
         Schema.DescribeFieldResult sObjField;
         
-        sObject sObj = Schema.getGlobalDescribe().get(objectName).newSObject();
-        sObjRes = sObj.getSObjectType().getDescribe(); 
+    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+    	Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+    	if(results == null || results.isEmpty()) { return null; }
+    	sObjRes = results[0];
         sObjField = sObjRes.fields.getMap().get(field).getDescribe();
         return string.valueOf(sObjField.getType());   
     }

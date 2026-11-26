@@ -207,6 +207,11 @@
                     <label>Co-Engineering</label>
                 </value>
                 <value>
+                    <fullName>Co-Investment</fullName>
+                    <default>false</default>
+                    <label>Co-Investment</label>
+                </value>
+                <value>
                     <fullName>Business Client Acceleration Automated - MDF</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -405,6 +410,11 @@
                     <fullName>Co-GTM</fullName>
                     <default>false</default>
                     <label>Co-GTM</label>
+                </value>
+                <value>
+                    <fullName>Co-Inv</fullName>
+                    <default>false</default>
+                    <label>Co-Inv</label>
                 </value>
                 <value>
                     <fullName>Datacenter</fullName>

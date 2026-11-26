@@ -302,6 +302,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label>Raison d&apos;annulation de la réclamation</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>Remarque en texte libre liée à la demande</help>
         <label>Commentaires sur la demande</label>
         <name>Core_MDF_Claim_Comments__c</name>

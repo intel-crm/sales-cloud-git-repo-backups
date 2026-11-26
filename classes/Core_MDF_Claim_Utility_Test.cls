@@ -432,12 +432,16 @@ public class Core_MDF_Claim_Utility_Test {
     @isTest
     public static void calculateClaimFieldsforUpdateTest(){
         test.startTest();
-          List<PartnerFundClaim> claims=[SELECT Id, Status,Core_MDF_Country_Location_nm__c,Core_MDF_Reimbursable_Transaction_Amount__c,Core_MDF_Exchange_rate__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_AccountCompany__c,Core_MDF_Activity_Types__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_To_Be_Audited_Ind__c,Core_MDF_Currency__c,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Taxes_Local__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Invoice_Date__c,Core_MDF_Invoice_Number__c,Core_MDF_Bank__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Media_Vehicle__c,Core_MDF_AuditSelectionInProgress__c, Core_MDF_Status__c,Core_MDF_Type_Txt__c, Core_MDF_Audit_Hold__c, Core_MDF_ESD_Hold__c, Core_MDF_Claim_Previous_Status__c FROM PartnerFundClaim limit 5];	
+          List<PartnerFundClaim> claims=[SELECT Id, CreatedDate,Core_MDF_Budget_Type_Nm__c,Core_MDF_Program__c,Core_MDF_OutcomeBased_Ind__c,Status,Core_MDF_Country_Location_nm__c,Core_MDF_Reimbursable_Transaction_Amount__c,Core_MDF_Exchange_rate__c,Core_MDF_Reimbursement_Percent__c,Core_MDF_AccountCompany__c,Core_MDF_Activity_Types__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_To_Be_Audited_Ind__c,Core_MDF_Currency__c,Core_MDF_Audit_Adjustment_Amount__c,Core_MDF_Taxes_Local__c,Core_MDF_OtherCostsnotReimbursable_Local__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Invoice_Date__c,Core_MDF_Invoice_Number__c,Core_MDF_Bank__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Media_Vehicle__c,Core_MDF_AuditSelectionInProgress__c, Core_MDF_Status__c,Core_MDF_Type_Txt__c, Core_MDF_Audit_Hold__c, Core_MDF_ESD_Hold__c, Core_MDF_Claim_Previous_Status__c,Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Bank_Doc_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c  FROM PartnerFundClaim limit 5];	
         Map<Id,PartnerFundClaim> inputClaimMap=new Map<Id,PartnerFundClaim>();
         for(PartnerFundClaim claim:claims){
              inputClaimMap.put(claim.id,claim);
         }
         Core_MDF_Claim_Utility.calculateClaimFieldsforUpdate(inputClaimMap,inputClaimMap,claims);
+        Core_MDF_Claim_Utility.releaseHold(claims,new List<String>{Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ESD_Hold')});
+        //Core_MDF_Claim_Utility.updateSuperClaimStatusFromSubClaims(claims);
+        Core_MDF_Claim_Utility.isClaimEligibleForAICDBCallout(claims[0]);
+        Core_MDF_Claim_Utility.bypassCDBCalloutValidationCheck('Core_MDF_claimProcessesOnBeforeInsert','Core_MDF_claimProcessesOnBeforeUpdate');
         test.stopTest();
 	 // Unit Test Method should include System.Assert
          System.assert(inputClaimMap.keySet().size() > 0, 'Map should contain claim IDs');

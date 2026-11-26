@@ -186,6 +186,14 @@
     </customLabels>
     <customLabels>
         <label></label>
+        <name>Activity_Display_Fields</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Activity_Display_Fields_Additional</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
         <name>Agents_Profile_List</name>
     </customLabels>
     <customLabels>
@@ -6622,6 +6630,26 @@ b.При запросе на возмещение расходов, не свя�
         <name>Core_MDF_Cancel_Claim_Yes</name>
     </customLabels>
     <customLabels>
+        <label>Выберите «Разбвку платежа», для которой вы хотите отменить НДС.</label>
+        <name>Core_MDF_Cancel_Outcome_Vat_Msg</name>
+    </customLabels>
+    <customLabels>
+        <label>Отменить НДС</label>
+        <name>Core_MDF_Cancel_VAT</name>
+    </customLabels>
+    <customLabels>
+        <label>Вы уверены, что хотите отменить удержание НДС?</label>
+        <name>Core_MDF_Cancel_VAT_Body</name>
+    </customLabels>
+    <customLabels>
+        <label>Только отправитель заявления может отменить НДС.</label>
+        <name>Core_MDF_Cancel_VAT_Claim_Submitter_Only</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Cancel_VAT_Invalid_Status</name>
+    </customLabels>
+    <customLabels>
         <label>Не удается отменить действие для предложения в выполненном статусе.</label>
         <name>Core_MDF_Cancel_proposal_Error_Message</name>
     </customLabels>
@@ -6858,6 +6886,10 @@ d.Количество показов в фильмах, допусков и п�
         <name>Core_MDF_ClaimBatchRecRetryLimit</name>
     </customLabels>
     <customLabels>
+        <label>Причина отмены требования</label>
+        <name>Core_MDF_ClaimCancellationReason</name>
+    </customLabels>
+    <customLabels>
         <label></label>
         <name>Core_MDF_ClaimCaseReviewResult_RecordType</name>
     </customLabels>
@@ -6888,6 +6920,10 @@ d.Количество показов в фильмах, допусков и п�
     <customLabels>
         <label>Заявка превышает ограничение остатка</label>
         <name>Core_MDF_ClaimExceedsCapRemainder_ErrorMsg</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_ClaimEzy_MaxFileSize</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -7176,6 +7212,10 @@ d.Количество показов в фильмах, допусков и п�
     <customLabels>
         <label>Уникальный идентификатор заявки, использующийся участником для справки</label>
         <name>Core_MDF_Claim_ID_Help</name>
+    </customLabels>
+    <customLabels>
+        <label>Отмена НДС недоступна: этот иск не облагается НДС.</label>
+        <name>Core_MDF_Claim_Not_On_VAT_Hold</name>
     </customLabels>
     <customLabels>
         <label>Сведения о заявке отправлены на одобрение обработки платежа</label>
@@ -7588,6 +7628,22 @@ d.Количество показов в фильмах, допусков и п�
     <customLabels>
         <label></label>
         <name>Core_MDF_Co_GTM_program_name</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_Budget_ApprovalProcess</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_RecordType</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_Technical_program_name</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_program_name</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -8144,6 +8200,10 @@ b.Для цифровых версий: URL-адрес, стоимость од�
     <customLabels>
         <label>Невозможно загрузить файлы с этим статусом.</label>
         <name>Core_MDF_DocumentUploadDisabledMessage</name>
+    </customLabels>
+    <customLabels>
+        <label>Статус документа</label>
+        <name>Core_MDF_Document_Status</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -9580,6 +9640,10 @@ b.Для цифровых версий: URL-адрес, стоимость од�
     <customLabels>
         <label></label>
         <name>Core_MDF_Hold_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>Это требование в настоящее время приостановлено. Его отмена также отменит все элементы разбвки платежей.</label>
+        <name>Core_MDF_Hold_Super_Claim_Cancel_Warning</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -13480,7 +13544,7 @@ d.Для программ по спонсорству: название прог
         <name>Core_MDF_Requested_Reimbursement_Amount_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Запрашиваемая сумма (USD)</label>
         <name>Core_MDF_Requested_Reimbursement_Amt</name>
     </customLabels>
     <customLabels>
@@ -14002,6 +14066,10 @@ d.Для программ по спонсорству: название прог
     <customLabels>
         <label>Пожалуйста, выберите основного ответственного со стороны Intel за эту деятельность</label>
         <name>Core_MDF_Select_One_Pri_Intel_Owner</name>
+    </customLabels>
+    <customLabels>
+        <label>Пожалуйста, выберите хотя бы один вариант разбвки платежа, чтобы продолжить.</label>
+        <name>Core_MDF_Select_Payment_Breakdown</name>
     </customLabels>
     <customLabels>
         <label>Выберите статус</label>
@@ -14996,6 +15064,10 @@ a.место проведения или онлайн-платформа, дат
     <customLabels>
         <label></label>
         <name>Core_MDF_VAT_Auto_Reject_Message</name>
+    </customLabels>
+    <customLabels>
+        <label>Рабочий процесс по НДС был успешно отменен.</label>
+        <name>Core_MDF_VAT_Cancel_Success</name>
     </customLabels>
     <customLabels>
         <label>Подтверждение типа счета-фактуры</label>

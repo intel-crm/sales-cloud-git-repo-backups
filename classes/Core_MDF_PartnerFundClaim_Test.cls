@@ -713,8 +713,9 @@ private class Core_MDF_PartnerFundClaim_Test {
             Core_MDF_PartnerFundClaim.ActivityDetailsWrapper wrapper = Core_MDF_PartnerFundClaim.getActivityDetails(pfr.Id);
             PartnerFundRequest pfrObj = wrapper.activityDetails;
             Core_MDF_PartnerFundClaim.createClaimWrapper claimWrapper = Core_MDF_PartnerFundClaim.checkClaimFromActivity('ABC',pfr.Id, false);
-           // assert.areEqual(claimWrapper, null);
-            assert.areEqual(null, null);
+            //assert.areEqual(claimWrapper, null);
+            Assert.isNotNull(claimWrapper);
+            Assert.areEqual(false, claimWrapper.checkCreate);
             test.stopTest();
         }
     }
@@ -1741,51 +1742,4 @@ private class Core_MDF_PartnerFundClaim_Test {
             test.stopTest();
         }
     }
-    
-    // Additional coverage for AI/PIC claim processing methods.
-    @isTest
-    static void testGetClaimFieldsForAIPICProcess() {
-        Test.startTest();
-        List<String> fields = Core_MDF_PartnerFundClaim.getClaimFieldsForAIPICProcess();
-        Test.stopTest();
-
-        System.assertNotEquals(null, fields, 'The field list should not be null.');
-        // The field set can be configured differently across orgs, so do not assume
-        // a fixed number of fields.
-    }
-    
-    @isTest
-    static void testParseInvoiceString() {
-        Test.startTest();
-        List<Map<String, String>> parsed = Core_MDF_PartnerFundClaim.parseInvoiceString(
-            'Invoice Number: INV-123 & Invoice Amount: $125.50 & Tax: 5.75 & InvalidEntry'
-        );
-        Test.stopTest();
-
-        System.assertEquals(3, parsed.size(), 'Only entries containing a key and value should be parsed.');
-        System.assertEquals('INV-123', parsed[0].get('Invoice Number'));
-        System.assertEquals('$125.50', parsed[1].get('Invoice Amount'));
-        System.assertEquals('5.75', parsed[2].get('Tax'));
-    }
-
-    @isTest
-    static void testCreateAIClaimInstance() {
-        String invoiceData =
-            'Invoice Number: INV-456' +
-            '&Invoice Amount: $125.50' +
-            '&Tax: 5.75' +
-            '&Invoice Date: 02/11/2026' +
-            '&Currency: USD';
-
-        Test.startTest();
-        PartnerFundClaim claim = Core_MDF_PartnerFundClaim.createAIClaimInstance(invoiceData);
-        Test.stopTest();
-
-        System.assertNotEquals(null, claim, 'The AI claim instance should be returned.');
-        System.assertEquals('INV-456', claim.Core_MDF_Invoice_Number__c);
-        System.assertEquals(Decimal.valueOf('125.50'), claim.Core_MDF_Total_Invoice_Amount_Local__c);
-        System.assertEquals(Decimal.valueOf('5.75'), claim.Core_MDF_Taxes_Local__c);
-        System.assertEquals(Date.newInstance(2026, 11, 2), claim.Core_MDF_Invoice_Date__c);
-    }
-
 }

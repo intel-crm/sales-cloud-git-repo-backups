@@ -20326,6 +20326,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial Evo %28non-vPro%29</fullName>
                 <default>false</default>
             </values>
@@ -20426,6 +20430,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -20463,6 +20471,14 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -20800,7 +20816,23 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -37767,6 +37799,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>RXT engagement</fullName>
                 <default>false</default>
             </values>
@@ -38114,6 +38150,10 @@
             </values>
             <values>
                 <fullName>Infrastructure Optimization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

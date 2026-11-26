@@ -77,6 +77,14 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Filter_Criteria_txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_List_Api_Filter_Operator_nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_List_Api_Filter_Field_Ind__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>

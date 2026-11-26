@@ -1577,11 +1577,11 @@ Modified By:        Date:       Changes:
                         if(channelProgramToCountriesMap.get(channelProgram).contains(bankCountry)){   
                             //ATHR - Deeply Nested if 16209
                             //if(!pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c){pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = true; } 
-                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = !pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c;
+                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = true; //19451 Prod Defect fix
                             
                         }else{
                             //if(pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c){pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = false;}
-                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = !pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c;
+                            pfc.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = false; //19451 Prod Defect fix
                             if(pfc.Core_MDF_Bank_Doc_Hold_Ind__c && pfc.Core_MDF_Status__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Hold')){listOfClaims.add(pfc);}
                             
                         }          
@@ -1780,7 +1780,7 @@ Modified By:        Date:       Changes:
 public static Boolean isClaimEligibleForAICDBCallout(PartnerFundClaim claim) {
     List<String> aiPICEnabledPgms = Label.Core_MDF_AI_POP_Validation_EnabledPrograms.split(';');
     Boolean isClaimEligibleForCDBCallout = false;
-    if(!claim.Core_MDF_OutcomeBased_Ind__c && aiPICEnabledPgms.contains(claim.Core_MDF_Program__c)  && claim.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && 
+    if(!claim.Core_MDF_OutcomeBased_Ind__c && aiPICEnabledPgms.contains(claim.Core_MDF_Program__c)  && claim.Core_MDF_Budget_Type_Nm__c !=  Label.Core_MDF_Retail_RSAMD_UnTranslated && claim.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && 
     claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_PIC_Pending) {
         isClaimEligibleForCDBCallout = true;
     } else {

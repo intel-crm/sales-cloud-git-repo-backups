@@ -782,6 +782,14 @@ ISPICKVAL(Core_MDF_Type_Txt__c , &apos;Adjustment&apos;) )</formula>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Claim_Cancellation_Reason_txt__c</fullName>
+        <description>Holds the Claim Cancellation Reason</description>
+        <label>Claim Cancellation Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Claim_Comments__c</fullName>
         <description>This is to store the comments</description>
         <inlineHelpText>Free text note related to the Claim</inlineHelpText>
@@ -19175,6 +19183,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Arc%E2%84%A2 GPU</fullName>
                 <default>false</default>
             </values>
@@ -19408,6 +19420,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Intel%C2%AE Gaudi%C2%AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21742,6 +21758,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Arc%E2%84%A2 GPU</fullName>
                 <default>false</default>
             </values>
@@ -21975,6 +21995,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Intel%C2%AE Gaudi%C2%AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>

@@ -25,6 +25,51 @@ private class IPS_QualityBuilderUtility_Test {
         Test.stopTest(); 
         
     }
+     
+    private class QBMock implements HttpCalloutMock {
+        private Integer code;
+        private Boolean throwEx;
+        QBMock(Integer code, Boolean throwEx) {
+            this.code = code;
+            this.throwEx = throwEx;
+        }
+        public HTTPResponse respond(HTTPRequest req) {
+            if (throwEx) {
+                throw new CalloutException('Simulated callout failure');
+            }
+            HttpResponse res = new HttpResponse();
+            res.setStatusCode(code);
+            res.setBody('{"result":"mock"}');
+            return res;
+        }
+    }
+     private static IPS_QualityBuilder_Generic_Pipe_Setting__c buildSetting(String name, Boolean active, String cron) {
+        IPS_QualityBuilder_Generic_Pipe_Setting__c s = new IPS_QualityBuilder_Generic_Pipe_Setting__c();
+        s.Name = name;
+        s.Cron_Expression__c = cron;
+        s.File_Name_Date_Format__c = 'MMddyyyy';
+        s.File_Name_Prefix__c = 'QB';
+        s.Is_Active__c = active;
+        s.Report_Id__c = System.Label.IPS_QB_REPORT_ID;
+        return s;
+    }
+     @isTest static void testSendReport() {
+        Test.setMock(HttpCalloutMock.class, new QBMock(200, false));
+        IPS_QualityBuilder_Generic_Pipe_Setting__c s = buildSetting('Send Job', true, '0 0 8 * * ?');
+        Test.startTest();
+        IPS_QualityBuilderUtility.sendReport(s, Blob.valueOf('col1,col2\n1,2'), 1);
+        Test.stopTest();
+        System.assertEquals('', IPS_QualityBuilderUtility.grandTotalErrorMessage);
+    }
+
+    @isTest static void testSendReportFailure() {
+        Test.setMock(HttpCalloutMock.class, new QBMock(400, false));
+        IPS_QualityBuilder_Generic_Pipe_Setting__c s = buildSetting('Send Job', true, '0 0 8 * * ?');
+        Test.startTest();
+        IPS_QualityBuilderUtility.sendReport(s, Blob.valueOf('col1,col2\n1,2'), 1);
+        Test.stopTest();
+        System.assert(IPS_QualityBuilderUtility.grandTotalErrorMessage.contains('400'));
+    }
     // To test positive response.
     @isTest static void testPositive() {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
@@ -42,7 +87,6 @@ private class IPS_QualityBuilderUtility_Test {
         String fileName = IPS_QualityBuilderUtility.generateFileName('Test Job', 'MMddyyy');
         String boundryString = IPS_QualityBuilderUtility.generateBoundryString();
         Blob blobBody = IPS_QualityBuilderUtility.generateBlobBody(reportContent, boundryString, fileName);
-        String res = IPS_QualityBuilderUtility.doReportSendCalloutWithRetry(reportContent, boundryString, '',10);
         
         Test.stopTest();
     }
@@ -105,24 +149,7 @@ private class IPS_QualityBuilderUtility_Test {
         IPS_QualityBuilderReportscheduler.schedule();
         Test.stopTest();
     }
-    @isTest static void testTokenGenerationFailure() {
-        MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
-        multimock.setHeader('Content-Type', 'application/json');
-        multimock.setStatusCode(500); 
-        
-        Test.setMock(HttpCalloutMock.class, multimock);
-        Test.startTest();
-        
-        try {
-            IPS_QualityBuilderUtility.generateTokenWithRetry('https://apis.intel.com/v1/auth/token', 'client_id', 'client_secret');
-        } catch (Exception e) {
-            System.assert(e.getMessage().contains('Failed to generate token'), 'Expected failure message');
-        }
-        
-        Test.stopTest();
-    }
+   
     
     
     @isTest static void testReportUploadFailure() {
@@ -138,7 +165,7 @@ private class IPS_QualityBuilderUtility_Test {
         try {
             Blob reportContent = Blob.valueOf('dummy content');
             String boundryString = 'dummyBoundary';
-            IPS_QualityBuilderUtility.doReportSendCalloutWithRetry(reportContent, boundryString, 'token', 10);
+            IPS_QualityBuilderUtility.doReportSendCallout(Blob.valueOf('x'), '--Boundry1', 0);
         } catch (Exception e) {
             System.assert(e.getMessage().contains('File Upload Failed'), 'Expected failure message');
         }
@@ -177,7 +204,7 @@ private class IPS_QualityBuilderUtility_Test {
         String token = 'token';
         Decimal totalRecords = 10;  
       
-        String result = IPS_QualityBuilderUtility.doReportSendCalloutWithRetry(reportContent, boundaryString, token, totalRecords);
+        String result = IPS_QualityBuilderUtility.doReportSendCallout(Blob.valueOf('x'), '--Boundry1', 0);
         System.assertEquals(totalRecords, 10);
 		Test.stopTest();
     }

@@ -13,6 +13,10 @@
         <name>API_Visibility__c</name>
     </fields>
     <fields>
+        <label><!-- API Error Code --></label>
+        <name>Core_MDF_API_Error_Code__c</name>
+    </fields>
+    <fields>
         <label><!-- Is API Required --></label>
         <name>Core_MDF_API_Required_Ind__c</name>
     </fields>
@@ -83,6 +87,78 @@
     <fields>
         <label><!-- Is Relationship --></label>
         <name>Core_MDF_Is_Relationship_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- List Api Filter Field --></label>
+        <name>Core_MDF_List_Api_Filter_Field_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- List API Filter Operator --></label>
+        <name>Core_MDF_List_Api_Filter_Operator_nm__c</name>
+        <picklistValues>
+            <masterLabel>CONTAIN</masterLabel>
+            <translation><!-- CONTAIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EQ</masterLabel>
+            <translation><!-- EQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EQUAL TO</masterLabel>
+            <translation><!-- EQUAL TO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EXCLUDE</masterLabel>
+            <translation><!-- EXCLUDE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GE</masterLabel>
+            <translation><!-- GE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GREATER THAN</masterLabel>
+            <translation><!-- GREATER THAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GREATER THAN OR EQUAL TO</masterLabel>
+            <translation><!-- GREATER THAN OR EQUAL TO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GT</masterLabel>
+            <translation><!-- GT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INCLUDE</masterLabel>
+            <translation><!-- INCLUDE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LE</masterLabel>
+            <translation><!-- LE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LESS THAN</masterLabel>
+            <translation><!-- LESS THAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LESS THAN OR EQUAL TO</masterLabel>
+            <translation><!-- LESS THAN OR EQUAL TO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LT</masterLabel>
+            <translation><!-- LT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NE</masterLabel>
+            <translation><!-- NE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOT CONTAIN</masterLabel>
+            <translation><!-- NOT CONTAIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOT EQUAL TO</masterLabel>
+            <translation><!-- NOT EQUAL TO --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Lookup Custom URL Indicator --></label>

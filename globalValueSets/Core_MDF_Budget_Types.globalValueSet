@@ -36,6 +36,11 @@
         <label>Co-Engineering</label>
     </customValue>
     <customValue>
+        <fullName>Co-Investment</fullName>
+        <default>false</default>
+        <label>Co-Investment</label>
+    </customValue>
+    <customValue>
         <fullName>Data Center Market Accelerate</fullName>
         <default>false</default>
         <label>Data Center Market Accelerate</label>
@@ -131,12 +136,6 @@
         <label>Core Solutions</label>
     </customValue>
     <customValue>
-        <fullName>Value Exchange</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Value Exchange</label>
-    </customValue>
-    <customValue>
         <fullName>DCG MAF</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -173,16 +172,16 @@
         <label>Intel MDF Account Based3</label>
     </customValue>
     <customValue>
+        <fullName>Intel MDF Account Based4</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Intel MDF Account Based4</label>
+    </customValue>
+    <customValue>
         <fullName>Data Center Specialties MDF</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Data Center Specialties MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>ODM Growth Plan- MDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>ODM Growth Plan- MDF</label>
     </customValue>
     <customValue>
         <fullName>Business</fullName>
@@ -221,10 +220,10 @@
         <label>Testing Budget type</label>
     </customValue>
     <customValue>
-        <fullName>Intel MDF Account Based4</fullName>
+        <fullName>ODM Growth Plan- MDF</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Intel MDF Account Based4</label>
+        <label>ODM Growth Plan- MDF</label>
     </customValue>
     <customValue>
         <fullName>Optane Specialties MDF</fullName>
@@ -375,6 +374,12 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>SP Visual Retail MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Value Exchange</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Value Exchange</label>
     </customValue>
     <masterLabel>Budget Types</masterLabel>
     <sorted>true</sorted>

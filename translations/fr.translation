@@ -186,6 +186,14 @@
     </customLabels>
     <customLabels>
         <label></label>
+        <name>Activity_Display_Fields</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Activity_Display_Fields_Additional</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
         <name>Agents_Profile_List</name>
     </customLabels>
     <customLabels>
@@ -6629,6 +6637,26 @@ b.Pour un remboursement des frais de non-octroi : rapport détaillé délivré p
         <name>Core_MDF_Cancel_Claim_Yes</name>
     </customLabels>
     <customLabels>
+        <label>Sélectionnez la « répartition du paiement » pour laquelle vous souhaitez annuler la TVA.</label>
+        <name>Core_MDF_Cancel_Outcome_Vat_Msg</name>
+    </customLabels>
+    <customLabels>
+        <label>Annuler la TVA</label>
+        <name>Core_MDF_Cancel_VAT</name>
+    </customLabels>
+    <customLabels>
+        <label>Êtes-vous sûr de vouloir annuler la retenue de TVA ?</label>
+        <name>Core_MDF_Cancel_VAT_Body</name>
+    </customLabels>
+    <customLabels>
+        <label>Seul le déclarant de la demande peut annuler la TVA.</label>
+        <name>Core_MDF_Cancel_VAT_Claim_Submitter_Only</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Cancel_VAT_Invalid_Status</name>
+    </customLabels>
+    <customLabels>
         <label>Impossible d&apos;annuler l&apos;activité d&apos;une proposition en statut complet.</label>
         <name>Core_MDF_Cancel_proposal_Error_Message</name>
     </customLabels>
@@ -6865,6 +6893,10 @@ d.Nombre de séances, admissions et impressions livrées</label>
         <name>Core_MDF_ClaimBatchRecRetryLimit</name>
     </customLabels>
     <customLabels>
+        <label>Raison d&apos;annulation de la réclamation</label>
+        <name>Core_MDF_ClaimCancellationReason</name>
+    </customLabels>
+    <customLabels>
         <label></label>
         <name>Core_MDF_ClaimCaseReviewResult_RecordType</name>
     </customLabels>
@@ -6895,6 +6927,10 @@ d.Nombre de séances, admissions et impressions livrées</label>
     <customLabels>
         <label>La demande dépasse le restant du plafond</label>
         <name>Core_MDF_ClaimExceedsCapRemainder_ErrorMsg</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_ClaimEzy_MaxFileSize</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -7185,6 +7221,10 @@ Toutes les activités &lt;u&gt;doivent&lt;/u&gt; faire l&apos;objet d&apos;une r
     <customLabels>
         <label>Identifiant unique de la demande utilisé comme référence par le membre</label>
         <name>Core_MDF_Claim_ID_Help</name>
+    </customLabels>
+    <customLabels>
+        <label>Annuler la TVA est indisponible : cette demande n’est pas soumise à la TVA.</label>
+        <name>Core_MDF_Claim_Not_On_VAT_Hold</name>
     </customLabels>
     <customLabels>
         <label>Demande envoyée pour validation du paiement</label>
@@ -7597,6 +7637,22 @@ Toutes les activités &lt;u&gt;doivent&lt;/u&gt; faire l&apos;objet d&apos;une r
     <customLabels>
         <label></label>
         <name>Core_MDF_Co_GTM_program_name</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_Budget_ApprovalProcess</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_RecordType</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_Technical_program_name</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_program_name</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -8153,6 +8209,10 @@ b.Pour les versions numériques : URL, coût d&apos;unité d&apos;hébergement/
     <customLabels>
         <label>Impossible de charger des fichiers dans cet état.</label>
         <name>Core_MDF_DocumentUploadDisabledMessage</name>
+    </customLabels>
+    <customLabels>
+        <label>Statut du document</label>
+        <name>Core_MDF_Document_Status</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -9589,6 +9649,10 @@ b.Pour les versions numériques : URL, coût d&apos;unité d&apos;hébergement/
     <customLabels>
         <label></label>
         <name>Core_MDF_Hold_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>Cette réclamation est actuellement en attente. L’annuler annulera également tous les éléments de ventilation de paiement.</label>
+        <name>Core_MDF_Hold_Super_Claim_Cancel_Warning</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -13498,7 +13562,7 @@ d.Pour le parrainage : nom du programme, nombre de mentions</label>
         <name>Core_MDF_Requested_Reimbursement_Amount_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Montant demandé (USD)</label>
         <name>Core_MDF_Requested_Reimbursement_Amt</name>
     </customLabels>
     <customLabels>
@@ -14020,6 +14084,10 @@ d.Pour le parrainage : nom du programme, nombre de mentions</label>
     <customLabels>
         <label>Veuillez sélectionner un propriétaire Intel principal pour l’activité</label>
         <name>Core_MDF_Select_One_Pri_Intel_Owner</name>
+    </customLabels>
+    <customLabels>
+        <label>Veuillez sélectionner au moins une ventilation de paiement pour continuer.</label>
+        <name>Core_MDF_Select_Payment_Breakdown</name>
     </customLabels>
     <customLabels>
         <label>Sélectionner l&apos;état</label>
@@ -15041,6 +15109,10 @@ a.emplacement ou plateforme en ligne, date et nombre de participants</label>
     <customLabels>
         <label></label>
         <name>Core_MDF_VAT_Auto_Reject_Message</name>
+    </customLabels>
+    <customLabels>
+        <label>Le workflow de TVA a été annulé avec succès.</label>
+        <name>Core_MDF_VAT_Cancel_Success</name>
     </customLabels>
     <customLabels>
         <label>Confirmation du type de facture</label>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>CCPG CPU Desktop</fullName>
+        <default>false</default>
+        <label>CCPG CPU Desktop - 2211</label>
+    </customValue>
+    <customValue>
+        <fullName>CCPG CPU Notebook</fullName>
+        <default>false</default>
+        <label>CCPG CPU Notebook - 2214</label>
+    </customValue>
+    <customValue>
+        <fullName>CCPG CPU Workstation</fullName>
+        <default>false</default>
+        <label>CCPG CPU Workstation - 2260</label>
+    </customValue>
+    <customValue>
+        <fullName>Data Center DGPU</fullName>
+        <default>false</default>
+        <label>Data Center DGPU - 2734</label>
+    </customValue>
+    <customValue>
+        <fullName>DCG CPU HPC</fullName>
+        <default>false</default>
+        <label>DCG CPU HPC - 3428</label>
+    </customValue>
+    <customValue>
+        <fullName>DCG CPU Server</fullName>
+        <default>false</default>
+        <label>DCG CPU Server - 2380</label>
+    </customValue>
+    <customValue>
+        <fullName>IOT</fullName>
+        <default>false</default>
+        <label>IOT - 2129</label>
+    </customValue>
+    <customValue>
+        <fullName>Test</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Test</label>
+    </customValue>
+    <description>Stores Budget Revenue Segments</description>
+    <masterLabel>Revenue Segment</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

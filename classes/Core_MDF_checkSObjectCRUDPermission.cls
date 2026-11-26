@@ -6,6 +6,28 @@ Added By   :    Accenture - SS
 Modified By:                      Date:09/04/2018                     Changes:None  
 ******************************************************************************************************/
 public with sharing class Core_MDF_checkSObjectCRUDPermission {
+	
+	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+	// Static cache added at class level — shared across all 4 permission methods
+	private static Map<String, Schema.DescribeSObjectResult> describeCache = new Map<String, Schema.DescribeSObjectResult>();
+
+	// Private helper replaces getGlobalDescribe() in all 4 methods
+	private static Schema.DescribeSObjectResult getSObjectDescribe(String objectName) {
+    	if (String.isBlank(objectName)) { return null; }
+    	String key = objectName.toLowerCase();
+    	if (!describeCache.containsKey(key)) {
+        	try {
+            	Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+            	if (results != null && !results.isEmpty()) {
+                	describeCache.put(key, results[0]);
+            	}
+        	} catch (Exception e) {
+            			Core_MDF_CCP_UtilityClass.logError(e);
+        	}
+    	}
+    	return describeCache.containsKey(key) ? describeCache.get(key) : null;
+	}
+
     
     /***************************************************************************************************** 
     Method Name :   checkSObjectCreatePermission
@@ -15,13 +37,13 @@ public with sharing class Core_MDF_checkSObjectCRUDPermission {
         @AuraEnabled
         public static Boolean checkSObjectCreatePermission(String objectName){
         
-            Map<String,Schema.SObjectType> gd = Schema.getGlobalDescribe();
-            Schema.SObjectType sobjType = gd.get(objectName);
-    
-            Schema.DescribeSObjectResult r = sobjType.getDescribe();
-            Boolean checkCreate = r.createable;
-            
-            return checkCreate;
+        	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+	    	Schema.DescribeSObjectResult r = getSObjectDescribe(objectName);
+	    	Boolean checkReadAccess = false;
+			if(r != null){
+    			checkReadAccess = r.createable;
+			}
+			return checkReadAccess;
         }
         
     /***************************************************************************************************** 
@@ -31,14 +53,15 @@ public with sharing class Core_MDF_checkSObjectCRUDPermission {
     ******************************************************************************************************/
         @AuraEnabled
         public static Boolean checkSObjectEditPermission(String objectName){
-          
-            Map<String,Schema.SObjectType> gd = Schema.getGlobalDescribe();
-            Schema.SObjectType sobjType = gd.get(objectName);
-    
-            Schema.DescribeSObjectResult r = sobjType.getDescribe();
-            Boolean checkEdit = r.updateable;
-            
-            return checkEdit;  
+        	
+			// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        	Schema.DescribeSObjectResult r = getSObjectDescribe(objectName);
+	    	Boolean checkReadAccess = false;
+			if(r != null){
+    			checkReadAccess = r.updateable;
+			}
+			return checkReadAccess;
+  
         }
         
     /***************************************************************************************************** 
@@ -48,14 +71,15 @@ public with sharing class Core_MDF_checkSObjectCRUDPermission {
     ******************************************************************************************************/
         @AuraEnabled
         public static Boolean checkSObjectDeletePermission(String objectName){
-     
-            Map<String,Schema.SObjectType> gd = Schema.getGlobalDescribe();
-            Schema.SObjectType sobjType = gd.get(objectName);
-    
-            Schema.DescribeSObjectResult r = sobjType.getDescribe();
-            Boolean checkDelete = r.deletable;
-            
-            return checkDelete;  
+     		
+			// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        	Schema.DescribeSObjectResult r = getSObjectDescribe(objectName);
+	    	Boolean checkReadAccess = false;
+			if(r != null){
+    			checkReadAccess = r.deletable;
+			}
+			return checkReadAccess;
+  
         }
     
         /***************************************************************************************************** 
@@ -164,13 +188,13 @@ public with sharing class Core_MDF_checkSObjectCRUDPermission {
         @AuraEnabled
         public static Boolean checkSObjectReadPermission(String objectName){
             
-            Map<String,Schema.SObjectType> gd = Schema.getGlobalDescribe();
-            Schema.SObjectType sobjType = gd.get(objectName);
-    
-            Schema.DescribeSObjectResult r = sobjType.getDescribe();
-            Boolean checkReadAccess = r.accessible;
-            
-            return checkReadAccess;
+	    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        	Schema.DescribeSObjectResult r = getSObjectDescribe(objectName);
+	    	Boolean checkReadAccess = false;
+			if(r != null){
+    			checkReadAccess = r.accessible;
+			}
+			return checkReadAccess;
         }
     /***************************************************************************************************** 
     Method Name :   checkRecordEditAccess

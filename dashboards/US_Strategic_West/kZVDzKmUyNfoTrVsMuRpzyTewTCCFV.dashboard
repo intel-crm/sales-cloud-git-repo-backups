@@ -14,10 +14,6 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>contains</operator>
-            <values>Austin Davis</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
             <values>Camille Cudaback</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
@@ -96,81 +92,6 @@
         </dashboardFilterOptions>
         <name>Account Level</name>
     </dashboardFilters>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Accommodation and Food Services,Health and Life Sciences</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Agriculture</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Arts, Entertainment and Recreation&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Automotive (Non Manufacturing)</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Construction</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Consulting</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Defense and Space</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Energy and Utilities</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Finance and Insurance</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Gaming</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Health and Life Sciences</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Manufacturing</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Media</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Professional and Business Services</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Real Estate, Rental and Leasing&quot;</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Retail</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Telecommunications</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>&quot;Transportation, Travel and Warehousing&quot;</values>
-        </dashboardFilterOptions>
-        <name>Industry</name>
-    </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
             <colSpan>1</colSpan>
@@ -189,9 +110,6 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -240,9 +158,6 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -275,9 +190,6 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -312,9 +224,6 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -347,9 +256,6 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -384,9 +290,6 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -419,9 +322,6 @@
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -456,9 +356,6 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -489,9 +386,6 @@
                 <dashboardFilterColumns>
                     <column>Account.Core_Account_Level__c</column>
                 </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>INDUSTRY</column>
-                </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
@@ -508,12 +402,6 @@
                     </flexTableColumn>
                     <flexTableColumn>
                         <reportColumn>USERS.NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>ADDRESS1_STATE</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
@@ -537,7 +425,13 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>INDUSTRY</reportColumn>
+                        <reportColumn>Account.Core_Account_Level_Preview__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Account.Core_Account_Owner_Preview__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>

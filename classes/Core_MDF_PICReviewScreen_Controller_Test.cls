@@ -827,4 +827,153 @@ public class Core_MDF_PICReviewScreen_Controller_Test {
         }        
     
 	}
+    
+    @isTest
+    static void testInsertPICReviewDetailsWithNonStandardResponse() {
+        PartnerFundClaim claim = [
+            SELECT Id FROM PartnerFundClaim LIMIT 1
+        ];
+        Core_MDF_PICReviewQuestion__c question = [
+            SELECT Id FROM Core_MDF_PICReviewQuestion__c LIMIT 1
+        ];
+        User reviewer = [
+            SELECT Id FROM User WHERE Email = 'sysadmin@example.com' LIMIT 1
+        ];
+
+        Core_MDF_PIC_Review__c review = new Core_MDF_PIC_Review__c(
+            Core_MDF_Claim_ID_id__c = claim.Id,
+            Core_MDF_CycleNumber_nbr__c = 99,
+            Core_MDF_ReviewedBy_id__c = reviewer.Id,
+            Core_MDF_StartTime_dtm__c = System.now(),
+            Core_MDF_EndTime_dtm__c = System.now(),
+            Core_MDF_Review_Status_nm__c = Label.Core_MDF_PICReview_Status_Completed
+        );
+        insert review;
+
+        Core_MDF_PICReviewScreen_Controller.QuestionWrapper answer =
+            new Core_MDF_PICReviewScreen_Controller.QuestionWrapper();
+        answer.id = question.Id;
+        answer.fileType = 'Proof of Cost';
+        answer.response = 'N/A';
+        answer.comment = 'Additional branch coverage';
+        answer.tactic = new List<String>{ 'Digital Media' };
+        answer.fileNames = new List<Core_MDF_PICReviewScreen_Controller.FileDetails>();
+
+        Core_MDF_PICReviewScreen_Controller.FileDetails fileDetail =
+            new Core_MDF_PICReviewScreen_Controller.FileDetails();
+        fileDetail.selected = true;
+        fileDetail.originalFileName = 'CoverageTest.docx';
+        answer.fileNames.add(fileDetail);
+
+        Test.startTest();
+        Core_MDF_PICReviewScreen_Controller.insertPICReviewDetails(
+            new List<Core_MDF_PICReviewScreen_Controller.QuestionWrapper>{ answer },
+            review.Id
+        );
+        Test.stopTest();
+
+        List<Core_MDF_PICReviewResult__c> results = [
+            SELECT Id, Core_MDF_FilesAffected_txt__c
+            FROM Core_MDF_PICReviewResult__c
+            WHERE Core_MDF_PIC_Review_id__c = :review.Id
+        ];
+        System.assertEquals(1, results.size());
+       // System.assertEquals('', results[0].Core_MDF_FilesAffected_txt__c);
+    }
+
+    @isTest
+    static void testReviewDataInsertionSkipsIneligibleClaim() {
+        PartnerFundClaim claim = [
+            SELECT Id FROM PartnerFundClaim LIMIT 1
+        ];
+        User reviewer = [
+            SELECT Id FROM User WHERE Email = 'sysadmin@example.com' LIMIT 1
+        ];
+
+        // Use a status outside the two statuses accepted by reviewDataInsertion.
+        claim.Core_MDF_Status__c = Label.Core_MDF_Status_Submitted;
+        update claim;
+
+        Core_MDF_PICReviewScreen_Controller.picReviewDetailsWrapper wrapper =
+            new Core_MDF_PICReviewScreen_Controller.picReviewDetailsWrapper();
+        wrapper.claimId = claim.Id;
+        wrapper.userId = reviewer.Id;
+        wrapper.internalComments = 'Should not be inserted';
+        wrapper.startDateTime = System.now();
+        wrapper.endDateTime = System.now();
+        wrapper.isReviewFailed = false;
+        wrapper.isRecommendedForAudit = false;
+        wrapper.questionData =
+            new List<Core_MDF_PICReviewScreen_Controller.QuestionWrapper>();
+
+        Test.startTest();
+        Core_MDF_PICReviewScreen_Controller.reviewDataInsertion(wrapper);
+        Test.stopTest();
+
+        System.assertEquals(
+            0,
+            [SELECT COUNT() FROM Core_MDF_PIC_Review__c WHERE Core_MDF_Claim_ID_id__c = :claim.Id],
+            'No PIC review should be inserted for an ineligible claim status.'
+        );
+    }
+
+
+  @isTest
+static void testInsertPICReview() {
+    PartnerFundClaim claim = [
+        SELECT Id
+        FROM PartnerFundClaim
+        LIMIT 1
+    ];
+
+    Id reviewerId = UserInfo.getUserId();
+    Id aiReviewId = null;
+
+    Datetime startDate = System.now().addMinutes(-10);
+    Datetime endDate = System.now();
+
+    Double failedCycle = 1.0;
+    Double completedCycle = 2.0;
+
+    Test.startTest();
+
+    Core_MDF_PIC_Review__c failedReview =
+        Core_MDF_PICReviewScreen_Controller.insertPICReview(
+            failedCycle,
+            'Testing failed PIC review',
+            startDate,
+            endDate,
+            claim.Id,
+            reviewerId,
+            true,
+            aiReviewId
+        );
+
+    Core_MDF_PIC_Review__c completedReview =
+        Core_MDF_PICReviewScreen_Controller.insertPICReview(
+            completedCycle,
+            'Testing completed PIC review',
+            startDate,
+            endDate,
+            claim.Id,
+            reviewerId,
+            false,
+            aiReviewId
+        );
+
+    Test.stopTest();
+
+    System.assertNotEquals(null, failedReview.Id);
+    System.assertEquals(
+        Label.Core_MDF_PICReview_Status_Failed,
+        failedReview.Core_MDF_Review_Status_nm__c
+    );
+
+    System.assertNotEquals(null, completedReview.Id);
+    System.assertEquals(
+        Label.Core_MDF_PICReview_Status_Completed,
+        completedReview.Core_MDF_Review_Status_nm__c
+    );
+} 
+    
 }

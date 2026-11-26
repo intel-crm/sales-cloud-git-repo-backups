@@ -37,7 +37,9 @@ public without sharing class Core_MDF_Budget_Approval {
                            || isCustomPermissionAssigned('Core_MDF_CCP_Internal_DCF_MDF_Budget_Approver')
                            || isCustomPermissionAssigned('Core_MDF_CCP_Internal_IPA_Budget_Approver')
                            || isCustomPermissionAssigned('Core_MDF_Internal_EEF_Budget_Approver')
-                           || isCustomPermissionAssigned('Core_MDF_CCP_Internal_Co_GTM_Budget_Approver');
+                           || isCustomPermissionAssigned('Core_MDF_CCP_Internal_Co_GTM_Budget_Approver')
+                           || isCustomPermissionAssigned('Core_MDF_CCP_Internal_Co_Inv_Budget_Approver');
+
                     userPermissionApprovalBudget.isCustomPermissionAssigned = hasCustomPermission;
                     userPermissionApprovalBudget.isBudgetApprover = Core_MDF_GeneralPurpose_UI_Utility.isRecordApprover(budgetval, UserInfo.getUserId());
                 }

@@ -282,6 +282,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label>索賠取消原因</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>與此申請相關的自由文字備註</help>
         <label>申請意見</label>
         <name>Core_MDF_Claim_Comments__c</name>

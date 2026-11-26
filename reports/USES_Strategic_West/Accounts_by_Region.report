@@ -24,6 +24,12 @@
     <columns>
         <field>Account.Core_Technical_Owner__c</field>
     </columns>
+    <columns>
+        <field>Account.Core_Account_Level_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Preview__c</field>
+    </columns>
     <customDetailFormulas>
         <calculatedFormula>IF(Account.Core_Account_Owner_Manager__c = &apos;Todd Phillips&apos;, &apos; Southeast&apos;, IF(Account.Core_Account_Owner_Manager__c = &apos;Christopher Haynes&apos;, &apos;Southwest&apos;, IF(Account.Core_Account_Owner_Manager__c = &apos;Ken Constantino&apos;, &apos;Northeast&apos;, If (Account.Core_Account_Owner_Manager__c = &apos;Tim Wood&apos;, &apos;Northwest&apos;, If (Account.Core_Account_Owner_Manager__c = &apos;Vince Curella&apos;, &apos;Telco&apos;, If (Account.Core_Account_Owner_Manager__c = &apos;Asma Aziz&apos;,&apos;Canada&apos;, IF (Account.Core_Account_Owner_Manager__c = &apos;Cormack Glass&apos;,&apos;Midwest/Mid-Atlantic&apos;, &apos;Jeff&apos;) ))))))</calculatedFormula>
         <dataType>Text</dataType>

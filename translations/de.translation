@@ -186,6 +186,14 @@
     </customLabels>
     <customLabels>
         <label></label>
+        <name>Activity_Display_Fields</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Activity_Display_Fields_Additional</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
         <name>Agents_Profile_List</name>
     </customLabels>
     <customLabels>
@@ -6628,6 +6636,26 @@ b.Bei Ansuchen um Erstattung nicht zugewiesener Kosten: nach Einzelposten aufges
         <name>Core_MDF_Cancel_Claim_Yes</name>
     </customLabels>
     <customLabels>
+        <label>Wählen Sie die „Zahlungsübersicht“ aus, für die Sie die Mehrwertsteuer stornieren möchten</label>
+        <name>Core_MDF_Cancel_Outcome_Vat_Msg</name>
+    </customLabels>
+    <customLabels>
+        <label>Mehrwertsteuer stornieren</label>
+        <name>Core_MDF_Cancel_VAT</name>
+    </customLabels>
+    <customLabels>
+        <label>Sind Sie sicher, dass Sie die Mehrwertsteuer-Sperre aufheben möchten?</label>
+        <name>Core_MDF_Cancel_VAT_Body</name>
+    </customLabels>
+    <customLabels>
+        <label>Nur der Anspruchseinreicher kann die Mehrwertsteuer stornieren.</label>
+        <name>Core_MDF_Cancel_VAT_Claim_Submitter_Only</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Cancel_VAT_Invalid_Status</name>
+    </customLabels>
+    <customLabels>
         <label>Sie können Aktivität für einen Vorschlag im Status „Komplett“ nicht stornieren.</label>
         <name>Core_MDF_Cancel_proposal_Error_Message</name>
     </customLabels>
@@ -6864,6 +6892,10 @@ d.Anzahl der Filmvorführungen, Besucher und erzielten Impressions</label>
         <name>Core_MDF_ClaimBatchRecRetryLimit</name>
     </customLabels>
     <customLabels>
+        <label>Grund für die Stornierung der Forderung</label>
+        <name>Core_MDF_ClaimCancellationReason</name>
+    </customLabels>
+    <customLabels>
         <label></label>
         <name>Core_MDF_ClaimCaseReviewResult_RecordType</name>
     </customLabels>
@@ -6894,6 +6926,10 @@ d.Anzahl der Filmvorführungen, Besucher und erzielten Impressions</label>
     <customLabels>
         <label>Antrag übersteigt Restbetrag der begrenzten Summe</label>
         <name>Core_MDF_ClaimExceedsCapRemainder_ErrorMsg</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_ClaimEzy_MaxFileSize</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -7184,6 +7220,10 @@ Alle Anträge &lt;u&gt;müssen&lt;/u&gt; im RMF-Tool mit allen oben genannten PO
     <customLabels>
         <label>Eine eindeutige Kennzeichnung für einen Antrag, die vom Programmteilnehmer als Referenz verwendet wird</label>
         <name>Core_MDF_Claim_ID_Help</name>
+    </customLabels>
+    <customLabels>
+        <label>Stornierung der Mehrwertsteuer ist nicht verfügbar: dieser Anspruch unterliegt nicht der Mehrwertsteuer.</label>
+        <name>Core_MDF_Claim_Not_On_VAT_Hold</name>
     </customLabels>
     <customLabels>
         <label>Antrag wurde für die Zahlungsabwicklung gesendet</label>
@@ -7596,6 +7636,22 @@ Alle Anträge &lt;u&gt;müssen&lt;/u&gt; im RMF-Tool mit allen oben genannten PO
     <customLabels>
         <label></label>
         <name>Core_MDF_Co_GTM_program_name</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_Budget_ApprovalProcess</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_RecordType</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_Technical_program_name</name>
+    </customLabels>
+    <customLabels>
+        <label></label>
+        <name>Core_MDF_Co_Inv_program_name</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -8152,6 +8208,10 @@ b.Für digitale Versionen: URL, Stückkosten für Hosting/Schaltung und Anzahl</
     <customLabels>
         <label>Datei-Upload in diesem Status unmöglich.</label>
         <name>Core_MDF_DocumentUploadDisabledMessage</name>
+    </customLabels>
+    <customLabels>
+        <label>Dokumentstatus</label>
+        <name>Core_MDF_Document_Status</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -9588,6 +9648,10 @@ b.Für digitale Versionen: URL, Stückkosten für Hosting/Schaltung und Anzahl</
     <customLabels>
         <label></label>
         <name>Core_MDF_Hold_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>Dieser Anspruch ist derzeit ausgesetzt. Eine Stornierung führt auch zur Stornierung aller Zahlungsaufschlüsselungsposten.</label>
+        <name>Core_MDF_Hold_Super_Claim_Cancel_Warning</name>
     </customLabels>
     <customLabels>
         <label></label>
@@ -13497,7 +13561,7 @@ d.Für Sponsorship: Programmname, Anzahl der Erwähnungen</label>
         <name>Core_MDF_Requested_Reimbursement_Amount_Help</name>
     </customLabels>
     <customLabels>
-        <label></label>
+        <label>Beantragter Betrag (USD)</label>
         <name>Core_MDF_Requested_Reimbursement_Amt</name>
     </customLabels>
     <customLabels>
@@ -14019,6 +14083,10 @@ d.Für Sponsorship: Programmname, Anzahl der Erwähnungen</label>
     <customLabels>
         <label>Bitte wählen Sie einen primären Intel Inhaber für die Aktivität</label>
         <name>Core_MDF_Select_One_Pri_Intel_Owner</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte wählen Sie mindestens eine Zahlungsaufstellung aus, um fortzufahren.</label>
+        <name>Core_MDF_Select_Payment_Breakdown</name>
     </customLabels>
     <customLabels>
         <label>Status auswählen</label>
@@ -15040,6 +15108,10 @@ a.Ort oder Online-Plattform, Datum und Anzahl der Teilnehmer</label>
     <customLabels>
         <label></label>
         <name>Core_MDF_VAT_Auto_Reject_Message</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Mehrwertsteuer-Workflow wurde erfolgreich storniert.</label>
+        <name>Core_MDF_VAT_Cancel_Success</name>
     </customLabels>
     <customLabels>
         <label>Bestätigung der Rechnungsart</label>

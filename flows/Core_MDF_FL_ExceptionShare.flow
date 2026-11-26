@@ -503,14 +503,6 @@
     </start>
     <status>Active</status>
     <variables>
-        <name>sCollChannelProgramName</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_BankProgram_Entitlement_Mapping__mdt</objectType>
-    </variables>
-    <variables>
         <name>sCollEAMShareList</name>
         <dataType>SObject</dataType>
         <isCollection>true</isCollection>
@@ -550,14 +542,6 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Core_MDF_ChannelProgram__mdt</objectType>
-    </variables>
-    <variables>
-        <name>sCPtemp1</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_BankProgram_Entitlement_Mapping__mdt</objectType>
     </variables>
     <variables>
         <name>sEAMShareTemp</name>

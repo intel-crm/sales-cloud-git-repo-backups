@@ -403,6 +403,7 @@
         <fields>NAME</fields>
         <fields>Core_MDF_VAT_Amt__c</fields>
         <fields>Core_MDF_Status_Txt__c</fields>
+        <fields>Core_MDF_VAT_Comments_txt__c</fields>
         <relatedList>Core_MDF_Claim_VAT_Info__c.Core_MDF_Claim_Id__c</relatedList>
     </relatedLists>
     <relatedLists>

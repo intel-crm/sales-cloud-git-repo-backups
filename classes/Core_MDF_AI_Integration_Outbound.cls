@@ -134,6 +134,11 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                 claimWrap.pocCurrency        = claimRecord.Core_MDF_Currency__c;
                 claimWrap.activityType       = claimRecord.Core_MDF_Activity_Types__c;
                 claimWrap.claimId            = claimRecord.Id;
+                claimWrap.activityDes        = claimRecord.Request.Core_MDF_Activity_Description__c;
+                claimWrap.actPOPRequirements = claimRecord.Request.Core_MDF_POP_Requirements_txt__c;
+                claimWrap.actAttrRequirements = claimRecord.Request.Core_MDF_Attribution_Requirements_txt__c;
+                claimWrap.reimbAmtUSD = claimRecord.Amount;
+                claimWrap.budgetType = claimRecord.Core_MDF_Budget_Type_Options_Nm__c;
                 
                 // Build outbound wrapper
                 CDBOutboundWrapper mainWrapper = new CDBOutboundWrapper();
@@ -650,9 +655,8 @@ public without sharing class Core_MDF_AI_Integration_Outbound {
                      finalClaimIds.add(review.Core_MDF_Claim_ID_id__c);
                 }
             }
-            
-            Map<Id, PartnerFundClaim> claimIdToClaimRecordMap = new Map<Id, PartnerFundClaim>([SELECT id,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Program__c, Core_MDF_Ad_Run_End_Date__c,Core_MDF_Reimbursable_TransactionAmt_Loc__c,Core_MDF_Activity_Types__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Currency__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c FROM PartnerFundClaim 
-                                                                                           WHERE Id IN: claimIdToPicReviewIdToFinalCDBLog.keyset()]);
+            Map<Id, PartnerFundClaim> claimIdToClaimRecordMap = new Map<Id, PartnerFundClaim>([SELECT id,Core_MDF_OutcomeBased_Ind__c,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Program__c, Core_MDF_Ad_Run_End_Date__c,Core_MDF_Reimbursable_TransactionAmt_Loc__c,Core_MDF_Activity_Types__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Currency__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, request.Core_MDF_Activity_Description__c, request.Core_MDF_POP_Requirements_txt__c, request.Core_MDF_Attribution_Requirements_txt__c, Amount, Core_MDF_Budget_Type_Options_Nm__c FROM PartnerFundClaim 
+                                                                                               WHERE Id IN: claimIdToPicReviewIdToFinalCDBLog.keyset()]);
             if(!claimIdToClaimRecordMap.isEmpty() && !claimIdToPicReviewIdToFinalCDBLog.isEmpty()){
                 fetchClaimDocAndPICReviewDetails(claimIdToClaimRecordMap, claimIdToPicReviewIdToFinalCDBLog,picReviewMap);//POP Schema Changes - Added picReviewMap parameter
             }
@@ -749,6 +753,11 @@ Modified By:       Date:       Changes:
         public Decimal totalAmountLocal;
         public String pocCurrency;//claimCurrency ?
         public String activityType;
+        public String activityDes;
+        public String actPOPRequirements;
+        public String actAttrRequirements;
+        public Decimal reimbAmtUSD;
+        public String budgetType;
     }
     
     public class DocumentWrapper

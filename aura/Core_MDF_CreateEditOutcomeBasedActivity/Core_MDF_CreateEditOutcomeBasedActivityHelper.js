@@ -728,7 +728,7 @@ fetchBudgetTypesBasedOnBenefits: function (component){
         component.set("v.partnerContactErrorMsg", "");
     },
 
-    getPartnerContactDomainErrorMessage: function(component) {
+   /* getPartnerContactDomainErrorMessage: function(component) {
         return $A.get("$Label.c.Core_MDF_No_ApprovedDomain_Error");
     },
 
@@ -849,7 +849,7 @@ fetchBudgetTypesBasedOnBenefits: function (component){
 
             return emailDomain === allowedDomain;
         });
-    },
+    },*/
 
     validatePartnerContactEmails: function(component) {
         var partnerContactValue = component.get("v.newPFR.Core_MDF_Partner_Contact_txt__c");
@@ -859,13 +859,23 @@ fetchBudgetTypesBasedOnBenefits: function (component){
             return true;
         }
 
-        var emailValues = String(partnerContactValue).split(/[;\n\r,]+/).map(function(value) {
+        var emailString = String(partnerContactValue);
+
+        // Reject commas and display the existing invalid email error message
+        if (emailString.indexOf(',') !== -1) {
+            component.set("v.showPartnerContactError", true);
+            component.set("v.partnerContactErrorMsg",$A.get("$Label.c.Core_MDF_InvalidEmailError"));
+            return false;
+        }
+        
+        // Allow semicolons and newlines as separators
+        var emailValues = emailString.split(/[;\n\r]+/).map(function(value) {
             return value.trim();
         }).filter(function(value) {
             return value !== "";
         });
-
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        var emailPattern = /^[^\s@]+@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
         for (var index = 0; index < emailValues.length; index++) {
             if (!emailPattern.test(emailValues[index])) {
                 component.set("v.showPartnerContactError", true);
@@ -874,6 +884,7 @@ fetchBudgetTypesBasedOnBenefits: function (component){
             }
         }
 
+        /*Ramapriya - Commented as part of TWC702-16422
         for (var unsupportedIndex = 0; unsupportedIndex < emailValues.length; unsupportedIndex++) {
             if (this.isUnsupportedPartnerContactDomain(emailValues[unsupportedIndex])) {
                 component.set("v.showPartnerContactError", true);
@@ -908,7 +919,7 @@ fetchBudgetTypesBasedOnBenefits: function (component){
                 component.set("v.partnerContactErrorMsg", ($A.get("$Label.c.Core_MDF_UnsupportedDomain_Error") || '') + ' ' + allowedValues.join(", "));
                 return false;
             }
-        }
+        }*/
 
         this.resetPartnerContactValidation(component);
         return true;
@@ -1532,11 +1543,17 @@ updatePriorityPickVals: function(component) {
             var label = this.decodeHtmlEntities(option.label);
             var value = this.decodeHtmlEntities(option.value);
             
-            if(localizedMap && localizedMap[option.value]) {
+            /*if(localizedMap && localizedMap[option.value]) {
                 label = this.decodeHtmlEntities(localizedMap[option.value]);
+            }*/
+            if(localizedMap) {
+                var translatedLabel = localizedMap[option.value] || localizedMap[value];
+                if(translatedLabel) {
+                    label = this.decodeHtmlEntities(translatedLabel);
+                }
             }
-            
-            processedOptions.push({
+			
+			processedOptions.push({
                 "label": label,
                 "value": value
             });
@@ -1783,10 +1800,17 @@ setPriority2AllValues: function(component) {
             var option = priority2Options[i];
             var label = this.decodeHtmlEntities(option.label);  
             var value = this.decodeHtmlEntities(option.value);  
-            if(localizedMap && localizedMap[option.value]) {
+            /*if(localizedMap && localizedMap[option.value]) {
                 label = this.decodeHtmlEntities(localizedMap[option.value]);  
+            }*/
+			
+            if(localizedMap) {
+                var translatedLabel = localizedMap[option.value] || localizedMap[value];
+                if(translatedLabel) {
+                    label = this.decodeHtmlEntities(translatedLabel);
+                }
             }
-            
+			
             processedOptions.push({
                 "label": label,  
                 "value": value   
@@ -1937,7 +1961,7 @@ loadPFR: function(component) {
                 // Set selected account if available
                 if (result.ChannelPartner) {
                     component.set("v.selectedAccount", result.ChannelPartner);
-                    this.loadPartnerContactDomains(component);
+                   // this.loadPartnerContactDomains(component);
                 }
                 
                 // Set budget information for IPA

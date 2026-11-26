@@ -138,7 +138,7 @@ public without sharing class Core_MDF_FileRepository {
             FROM Core_MDF_Documents__c
             WHERE Core_MDF_Document_Id__c = :contentDocumentId LIMIT 1
         ];
-        ContentDocument contentDocument = [
+        List<ContentDocument> contentDocument = [
             SELECT Id
             FROM ContentDocument
             WHERE Id = :contentDocumentId
@@ -152,7 +152,7 @@ public without sharing class Core_MDF_FileRepository {
             } catch(Exception ex){ Core_MDF_CCP_UtilityClass.logError(ex); throw new AuraHandledException(ex.getMessage()); }
         }
         // delete content document
-        if(contentDocument != null){
+        if(!contentDocument.isEmpty()){
             try{
                 delete contentDocument;
             } catch(Exception ex){ Core_MDF_CCP_UtilityClass.logError(ex); throw new AuraHandledException(ex.getMessage()); }

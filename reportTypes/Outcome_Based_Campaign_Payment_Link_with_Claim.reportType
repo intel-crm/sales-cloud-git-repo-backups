@@ -172,7 +172,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Claim Submitted by Company</displayNameOverride>
+            <displayNameOverride>Account (Company)</displayNameOverride>
             <field>Core_MDF_Claim_Id__c.Core_MDF_AccountCompany__c</field>
             <table>Core_MDF_Claim_Payment_Link__c</table>
         </columns>

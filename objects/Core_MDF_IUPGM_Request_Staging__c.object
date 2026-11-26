@@ -148,7 +148,7 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
@@ -357,6 +357,27 @@
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Copy_Operation_Id__c</fullName>
+        <description>Correlation id shared by every role-assignment staging record created from a single Copy User Access; chatbot operation. Null for ordinary GRANT/REVOKE requests.Used to group and roll up the individual per-role outcomes (approved/denied/pending/skipped)
+        back into one overall result for the source/target copy operation.</description>
+        <externalId>false</externalId>
+        <label>Copy Operation Id</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Copy_Source_User_txt__c</fullName>
+        <label>Copy Source User Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Error_Message_txt__c</fullName>
@@ -604,6 +625,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Pending_Dependent_Role_txt__c</fullName>
+        <description>JSON describing a dependent role</description>
+        <label>Pending Dependent Role</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Request_Status_nm__c</fullName>
         <label>Request Status</label>
         <required>false</required>
@@ -679,6 +710,11 @@
                     <default>false</default>
                     <label>Submitted</label>
                 </value>
+                <value>
+                    <fullName>Copy_Pending</fullName>
+                    <default>false</default>
+                    <label>Copy_Pending</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -702,6 +738,17 @@
                     <fullName>REVOKE</fullName>
                     <default>false</default>
                     <label>REVOKE</label>
+                </value>
+                <value>
+                    <fullName>COPY</fullName>
+                    <default>false</default>
+                    <label>COPY</label>
+                </value>
+                <value>
+                    <fullName>LIST_ACCESS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>LIST_ACCESS</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

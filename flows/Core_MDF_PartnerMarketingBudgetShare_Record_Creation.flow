@@ -91,7 +91,7 @@
                 <elementReference>ProgramName</elementReference>
             </value>
         </filters>
-        <object>Core_MDF_ClaimActAllocRecTypeMapping__mdt</object>
+        <object>Core_MDF_ObjRecType_Budget_FieldSetMap__mdt</object>
         <outputReference>ClaimActivityAllocationRecordtypeMappingRecord</outputReference>
         <queriedFields>Id</queriedFields>
         <queriedFields>Core_MDF_Region_cd__c</queriedFields>
@@ -243,7 +243,7 @@
         <sortOrder>Asc</sortOrder>
     </recordLookups>
     <startElementReference>Core_MDF_GetMetadataRecords</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <subflows>
         <name>Core_MDF_Iteration</name>
         <label>Iterator</label>
@@ -343,7 +343,7 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>Core_MDF_ClaimActAllocRecTypeMapping__mdt</objectType>
+        <objectType>Core_MDF_ObjRecType_Budget_FieldSetMap__mdt</objectType>
     </variables>
     <variables>
         <description>This will contain all the Group names fetched from the PGM Collection.</description>

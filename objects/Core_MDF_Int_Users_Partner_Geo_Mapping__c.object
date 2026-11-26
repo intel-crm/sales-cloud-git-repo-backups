@@ -198,7 +198,7 @@
             <filterItems>
                 <field>$Source.Core_MDF_Program_nm__c</field>
                 <operation>equals</operation>
-                <value>Client, Client Co-Marketing Fund Boost, Intel Partner Alliance, Service Provider Co-Marketing Fund, Ecosystem Extension Fund, Datacenter, Co-GTM</value>
+                <value>Client, Client Co-Marketing Fund Boost, Intel Partner Alliance, Service Provider Co-Marketing Fund, Ecosystem Extension Fund, Datacenter, Co-GTM, Co-Inv</value>
             </filterItems>
             <filterItems>
                 <field>Account.RecordType.DeveloperName</field>
@@ -292,9 +292,11 @@
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Core_MDF_L2_Approver</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Budget_Manager</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L1</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_Escalation_Reviewer_L2</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_EEF_Budget_Loader</controllingFieldValue>
@@ -343,6 +345,7 @@
                 <controllingFieldValue>Core_MDF_Second_Level_Manager</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Budget_Manager</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_IPA_Exception_Reviewer</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_EEF_Budget_Loader</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_EEF_Budget_Approver</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Internal_EEF_Budget_Manager</controllingFieldValue>
@@ -518,6 +521,11 @@
                     <label>APJ-&gt;Co-Engineering</label>
                 </value>
                 <value>
+                    <fullName>APJ-&gt;Co-Investment</fullName>
+                    <default>false</default>
+                    <label>APJ-&gt;Co-Investment</label>
+                </value>
+                <value>
                     <fullName>APJ-&gt;Data Center Specialties MDF</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -677,6 +685,11 @@
                     <fullName>ASMO-&gt;Co-Engineering</fullName>
                     <default>false</default>
                     <label>ASMO-&gt;Co-Engineering</label>
+                </value>
+                <value>
+                    <fullName>ASMO-&gt;Co-Investment</fullName>
+                    <default>false</default>
+                    <label>ASMO-&gt;Co-Investment</label>
                 </value>
                 <value>
                     <fullName>ASMO-&gt;Data Center Specialties MDF</fullName>
@@ -1146,6 +1159,11 @@
                     <label>EMEA-&gt;Co-Engineering</label>
                 </value>
                 <value>
+                    <fullName>EMEA-&gt;Co-Investment</fullName>
+                    <default>false</default>
+                    <label>EMEA-&gt;Co-Investment</label>
+                </value>
+                <value>
                     <fullName>EMEA-&gt;Data Center Specialties MDF</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -1385,6 +1403,11 @@
                     <label>PRC-&gt;Co-Engineering</label>
                 </value>
                 <value>
+                    <fullName>PRC-&gt;Co-Investment</fullName>
+                    <default>false</default>
+                    <label>PRC-&gt;Co-Investment</label>
+                </value>
+                <value>
                     <fullName>PRC-&gt;Data Center Specialties MDF</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -1544,6 +1567,11 @@
                     <fullName>WW-&gt;Co-Engineering</fullName>
                     <default>false</default>
                     <label>WW-&gt;Co-Engineering</label>
+                </value>
+                <value>
+                    <fullName>WW-&gt;Co-Investment</fullName>
+                    <default>false</default>
+                    <label>WW-&gt;Co-Investment</label>
                 </value>
                 <value>
                     <fullName>WW-&gt;Data Center Specialties MDF</fullName>
@@ -2757,6 +2785,31 @@
                 <valueName>PRC-&gt;SOEM Data Center MDF</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</controllingFieldValue>
+                <valueName>APJ-&gt;Co-Investment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</controllingFieldValue>
+                <valueName>ASMO-&gt;Co-Investment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</controllingFieldValue>
+                <valueName>EMEA-&gt;Co-Investment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</controllingFieldValue>
+                <valueName>PRC-&gt;Co-Investment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</controllingFieldValue>
+                <valueName>WW-&gt;Co-Investment</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Budget_Manager</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Budget_Loader</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_CCP_Internal_IPA_Budget_Approver</controllingFieldValue>
@@ -3382,6 +3435,7 @@
                 <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
+                <controllingFieldValue>CoInv</controllingFieldValue>
                 <valueName>APJ</valueName>
             </valueSettings>
             <valueSettings>
@@ -3391,6 +3445,7 @@
                 <controllingFieldValue>Client CoMarketing Fund Boost</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
+                <controllingFieldValue>CoInv</controllingFieldValue>
                 <valueName>ASMO</valueName>
             </valueSettings>
             <valueSettings>
@@ -3401,6 +3456,7 @@
                 <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
+                <controllingFieldValue>CoInv</controllingFieldValue>
                 <valueName>EMEA</valueName>
             </valueSettings>
             <valueSettings>
@@ -3411,6 +3467,7 @@
                 <controllingFieldValue>Retail Marketing Funds</controllingFieldValue>
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
+                <controllingFieldValue>CoInv</controllingFieldValue>
                 <valueName>PRC</valueName>
             </valueSettings>
             <valueSettings>
@@ -3422,6 +3479,7 @@
                 <controllingFieldValue>Intel Partner Alliance</controllingFieldValue>
                 <controllingFieldValue>Ecosystem Extension Fund</controllingFieldValue>
                 <controllingFieldValue>CoGTM</controllingFieldValue>
+                <controllingFieldValue>CoInv</controllingFieldValue>
                 <valueName>WW</valueName>
             </valueSettings>
             <valueSettings>
@@ -3741,6 +3799,14 @@
             <valueSettings>
                 <controllingFieldValue>CoGTM</controllingFieldValue>
                 <valueName>Core_MDF_CCP_Internal_Co_GTM_Technical_Approver</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CoInv</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CoInv</controllingFieldValue>
+                <valueName>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -6077,6 +6143,237 @@
             </values>
             <values>
                 <fullName>Core_MDF_Internal_Co_GTM_Exception_Reviewer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Sub_Region_cd__c</picklist>
+            <values>
+                <fullName>ANZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CEE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IJKK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KOREA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>META</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEUR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RCIS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ROA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SEUR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TAIWAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WEUR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Co_Inv</fullName>
+        <active>true</active>
+        <label>Co-Inv</label>
+        <picklistValues>
+            <picklist>Core_MDF_Activity_Classification_nm__c</picklist>
+            <values>
+                <fullName>Co-Engineering</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_All_Accounts_cd__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Approval_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO-LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO-NAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WW</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
+            <values>
+                <fullName>Co-Investment</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_GeoSubGeo_Budget_Type_nm__c</picklist>
+            <values>
+                <fullName>APJ-%3ECo-Investment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO-%3ECo-Investment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA-%3ECo-Investment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC-%3ECo-Investment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WW-%3ECo-Investment</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Program_nm__c</picklist>
+            <values>
+                <fullName>CoInv</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_Sub_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO-LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO-NAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WW</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_cd__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WW</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Role_nm__c</picklist>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -9356,6 +9653,23 @@ INCLUDES( Core_MDF_Approval_Region_nm__c ,&apos;PRC&apos;)
         <errorMessage>For CCF/DCF Budget Loader and Approver, &apos;WW&apos; region has to be selected</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_MDF_COINV_Region_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+    OR(
+        ISPICKVAL(Core_MDF_Role_nm__c, &apos;Core_MDF_CCP_Internal_Co_Inv_Budget_Loader&apos;),
+        ISPICKVAL(Core_MDF_Role_nm__c, &apos;Core_MDF_CCP_Internal_Co_Inv_Budget_Approver&apos;)
+    ),
+    NOT(
+        OR(
+            INCLUDES(Core_MDF_Region_Sub_Region_nm__c, &apos;WW&apos;),
+            INCLUDES(Core_MDF_GeoSubGeo_Budget_Type_nm__c, &apos;WW-&gt;Co-Investment&apos;)
+        )
+    )
+)</errorConditionFormula>
+        <errorMessage>Please select only WW for this role.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_CannotUpdateIUPGM</fullName>
         <active>true</active>
         <description>Throws error when user tries to update Account,Program or User</description>
@@ -9598,7 +9912,8 @@ CONTAINS($CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_IUPGM_
 CONTAINS($CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_IUPGM_Roles.Core_MDF_Value5_Txt__c,TEXT( Core_MDF_Role_nm__c)),
 CONTAINS($CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_IUPGM_Roles_2.Core_MDF_Value_Txt__c,TEXT( Core_MDF_Role_nm__c)),
 CONTAINS($CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_IUPGM_Roles_2.Core_MDF_Value2_Txt__c,TEXT( Core_MDF_Role_nm__c)),
-CONTAINS($CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_IUPGM_Roles_2.Core_MDF_Value3_Txt__c,TEXT( Core_MDF_Role_nm__c))
+CONTAINS($CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_IUPGM_Roles_2.Core_MDF_Value3_Txt__c,TEXT(Core_MDF_Role_nm__c)),
+CONTAINS($CustomMetadata.Core_MDF_Custom_Label_Configration__mdt.Core_MDF_IUPGM_Roles_2.Core_MDF_Value4_Txt__c,TEXT(Core_MDF_Role_nm__c))
 ),
 NOT(AND(ISPICKVAL( Core_MDF_Role_nm__c ,&apos;Core_MDF_CCP_Internal_Price_Reviewer&apos;),ISPICKVAL(Core_MDF_Program_nm__c ,&apos;Retail Marketing Funds&apos;)))
 )</errorConditionFormula>

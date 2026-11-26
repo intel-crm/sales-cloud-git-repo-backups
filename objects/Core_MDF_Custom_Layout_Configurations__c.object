@@ -170,6 +170,18 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_API_Error_Code__c</fullName>
+        <description>Error Code for the API field</description>
+        <externalId>false</externalId>
+        <label>API Error Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_API_Required_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Is the field mandatory field for API</description>
@@ -321,6 +333,111 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_List_Api_Filter_Field_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used for Generic List View API.</description>
+        <label>List Api Filter Field</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_List_Api_Filter_Operator_nm__c</fullName>
+        <description>Allowed filter operators for the List API.</description>
+        <label>List API Filter Operator</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>EQ</fullName>
+                    <default>false</default>
+                    <label>EQ</label>
+                </value>
+                <value>
+                    <fullName>NE</fullName>
+                    <default>false</default>
+                    <label>NE</label>
+                </value>
+                <value>
+                    <fullName>GT</fullName>
+                    <default>false</default>
+                    <label>GT</label>
+                </value>
+                <value>
+                    <fullName>GE</fullName>
+                    <default>false</default>
+                    <label>GE</label>
+                </value>
+                <value>
+                    <fullName>LT</fullName>
+                    <default>false</default>
+                    <label>LT</label>
+                </value>
+                <value>
+                    <fullName>LE</fullName>
+                    <default>false</default>
+                    <label>LE</label>
+                </value>
+                <value>
+                    <fullName>INCLUDE</fullName>
+                    <default>false</default>
+                    <label>INCLUDE</label>
+                </value>
+                <value>
+                    <fullName>EXCLUDE</fullName>
+                    <default>false</default>
+                    <label>EXCLUDE</label>
+                </value>
+                <value>
+                    <fullName>CONTAIN</fullName>
+                    <default>false</default>
+                    <label>CONTAIN</label>
+                </value>
+                <value>
+                    <fullName>NOT CONTAIN</fullName>
+                    <default>false</default>
+                    <label>NOT CONTAIN</label>
+                </value>
+                <value>
+                    <fullName>EQUAL TO</fullName>
+                    <default>false</default>
+                    <label>EQUAL TO</label>
+                </value>
+                <value>
+                    <fullName>NOT EQUAL TO</fullName>
+                    <default>false</default>
+                    <label>NOT EQUAL TO</label>
+                </value>
+                <value>
+                    <fullName>GREATER THAN</fullName>
+                    <default>false</default>
+                    <label>GREATER THAN</label>
+                </value>
+                <value>
+                    <fullName>GREATER THAN OR EQUAL TO</fullName>
+                    <default>false</default>
+                    <label>GREATER THAN OR EQUAL TO</label>
+                </value>
+                <value>
+                    <fullName>LESS THAN</fullName>
+                    <default>false</default>
+                    <label>LESS THAN</label>
+                </value>
+                <value>
+                    <fullName>LESS THAN OR EQUAL TO</fullName>
+                    <default>false</default>
+                    <label>LESS THAN OR EQUAL TO</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Lookup_Custom_URL_Ind__c</fullName>

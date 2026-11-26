@@ -487,6 +487,10 @@
     <columns>
         <field>Case.Core_IPS_Assigned_Queue__c</field>
     </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AGE</field>
+    </columns>
     <description>All cases by ADLINK in Embedded queue, in all platforms, in 2026</description>
     <filter>
         <booleanFilter>1 AND 2</booleanFilter>
@@ -514,7 +518,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Case.Core_External_Issue_Category__c</field>
+        <field>BucketField_42984781</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>ADLINK - Org 007 -local kl</name>

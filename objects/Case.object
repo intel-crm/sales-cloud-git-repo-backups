@@ -34857,6 +34857,10 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Infrastructure Power Manager</fullName>
                 <default>false</default>
             </values>
@@ -37401,6 +37405,14 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -41153,6 +41165,10 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Infrastructure Power Manager</fullName>
                 <default>false</default>
             </values>
@@ -43697,6 +43713,14 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>

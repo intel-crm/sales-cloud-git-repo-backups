@@ -287,6 +287,34 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_All_Budget_Type_Access_Ind__c</fieldItem>
+                <identifier>RecordCore_MDF_All_Budget_Type_Access_Ind_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program_nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>CoInv</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Role_nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Role_nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Region_Sub_Region_nm__c</fieldItem>
                 <identifier>RecordCore_MDF_Region_Sub_Region_nm__cField</identifier>
                 <visibilityRule>
@@ -356,12 +384,7 @@
                 <fieldItem>Record.Core_MDF_Region_Sub_Region_nm__c</fieldItem>
                 <identifier>RecordCore_MDF_Region_Sub_Region_nm__cField3</identifier>
                 <visibilityRule>
-                    <booleanFilter>( 2 AND (1 OR 3 OR 6 OR 8) ) OR ((3 OR 6 OR 8) AND (4 OR 5 OR 7 OR 9 ) ) OR (3 AND 10)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program_nm__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Channel MDF</rightValue>
-                    </criteria>
+                    <booleanFilter>(1 AND (2 OR 5 OR 7)) OR ((2 OR 5 OR 7) AND (3 OR 4 OR 6 OR 8)) OR (2 AND 9)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_MDF_All_Budget_Type_Access_Ind__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -434,6 +457,39 @@
                         <leftValue>{!Record.Core_MDF_Role_nm__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Core_MDF_CCP_Internal_Co_GTM_Technical_Approver</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_Region_Sub_Region_nm__c</fieldItem>
+                <identifier>RecordCore_MDF_Region_Sub_Region_nm_cField2</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_All_Budget_Type_Access_Ind__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program_nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>CoInv</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Role_nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Role_nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -548,6 +604,39 @@
                         <leftValue>{!Record.Core_MDF_All_Budget_Type_Access_Ind__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>false</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Core_MDF_GeoSubGeo_Budget_Type_nm__c</fieldItem>
+                <identifier>RecordCore_MDF_GeoSubGeo_Budget_Type_nm_cField2</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_All_Budget_Type_Access_Ind__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Program_nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>CoInv</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Role_nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Core_MDF_Role_nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Core_MDF_CCP_Internal_Co_Inv_Budget_Approver</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>

@@ -1,6 +1,6 @@
 {
  "activity": {
-   "ActivityName": "Internal Approval request tab Testing",
+   "ActivityName": " Test API CCF MDF activity creation test_02",
    "ActivityDescription": "Marketing campaign for product",
    "StartDate": "2026-09-23",
    "EndDate": "2026-09-23",
@@ -9,44 +9,48 @@
    "AccountName": "Test Account",
    "BudgetType": "OEM CMP",
    "ActivitySpendingLimitLocal": 50001,
+   "ReimbursementRate": "100",
    "Currency": "USD",
+   "MemberOwner":"",
+   "PartnerContact:"",
    "TargetAudience": "Creator",
    "Country": "ARGENTINA",
-   "MemberOwner":"Test",
-   "PartnerContact":"test@intel.com"
-   "Brand": "Intel® Arc™ graphics;Intel® Core™ 3 Processor;Intel vPro®, An Intel® Evo™ Design;Intel vPro® platform;Intel® Arc™ G3 Processor;Intel® Arc™ G3 Extreme Processor",
+   "Brand": "Intel® Arc™ graphics;Intel® Core™ 3 Processor",
    "ProductType": "Chromebook",
    "BudgetReferenceNumber": "BUD-11755",
    "ActivityCategory": "Event",
-   "ActivityTypes": "Joint Event",
+   "ActivityTypes": "Joint Event",   
+   "NumberOfWinners":"",
+   "NumberOfExpectedParticipants":"",
    "EcosystemPartner": "Others",
    "OtherEcosystemPartner":"test",
-   "Industry": "Automotive (Non Manufacturing);B2B general;B2C, no industry;Construction;Defense and Space",
-   "MemberAcceptorUsername": "test @intel.com",
-   "IntelApproverUsername": "test @intel.com",
-   "DomainType": "",  
-   "NumberOfWinners": "",
-   "NumberOfExpectedParticipants": "",
-   "EventName": "Other",
-   "OtherEventName": "Other",
+   "Industry": "Automotive (Non Manufacturing);B2B general",
+   "MemberAcceptorUsername": "300010xxxx@intel.com",
+   "IntelApproverUsername": "",
+    "DomainType": "",  
+   "EventName": "",
+   "OtherEventName": "",
    "ActivitySubType": "",
    "EventFormat": "",   
-   "EcoPercentageAllocation":"",
+   "EcoPercentageAllocation":"0",
    "Is this Activity targeting government entities or state-owned enterprises or having key participants from government entities or state-owned enterprises or their employees?" :"",
    "Does your event include one or more Competitive Elements?":"",
    "Files": [
-               { "FileName":"proof.pdf",
-                  "file":"QogIDwvZz4NCjwvc3ZnPg0K",
-                  "comment":"Testing upload" }
-               ]
+               { "FileName":"test.pdf",
+                  "file":"PHN2ZyB4bWxuczK",
+                  "comment":"Testing upload" 
+	       }
+             ]
  },
  "Segments": [
     {
      "SegmentName": "",
      "MinimumForecastVolume": "",
      "IncentiveAmountPerUnit": "",
+     "MaximumBundledVolume": "",
+     "MaximumCostOfBundle": "",
      "ProductIds": [
-       ""
+       "01t3b000008LlT***"
      ]
      
     }

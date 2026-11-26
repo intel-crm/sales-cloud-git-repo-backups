@@ -7669,6 +7669,7 @@
                 <controllingFieldValue>RSA MD</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
                 <valueName>Intel® Processor (N/U Series)</valueName>
@@ -7848,6 +7849,10 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Edge</controllingFieldValue>
+                <valueName>Intel® Geti™</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
                 <valueName>Intel® Robotics</valueName>
             </valueSettings>
             <valueSettings>
@@ -7901,6 +7906,7 @@
             <valueSettings>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
                 <valueName>Intel® Arc™ G3 Processor</valueName>
@@ -8024,6 +8030,10 @@
                 <controllingFieldValue>Edge</controllingFieldValue>
                 <controllingFieldValue>Client Computing</controllingFieldValue>
                 <valueName>Intel® Evo™ Edition</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <valueName>Intel® Geti™</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Edge</controllingFieldValue>
@@ -8202,6 +8212,14 @@
             <valueSettings>
                 <controllingFieldValue>Scale Acceleration - MDF</controllingFieldValue>
                 <valueName>Intel® Select Solutions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Intel® Arc™ G3 Processor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Intel® Processor (N/U Series)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Client Computing</controllingFieldValue>
@@ -10783,6 +10801,27 @@
                 <controllingFieldValue>Networking &amp; Intelligent Edge</controllingFieldValue>
                 <controllingFieldValue>Data Center</controllingFieldValue>
                 <valueName>Infrastructure Optimization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Commercial Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Mainstream Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <controllingFieldValue>Data Center</controllingFieldValue>
+                <valueName>Physical AI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Premium Client</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Client Specialties MDF</controllingFieldValue>
@@ -14075,6 +14114,43 @@
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <valueName>Gaming</valueName>
             </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Commercial Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Mainstream Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <controllingFieldValue>Data Center</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Physical AI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Premium Client</valueName>
+            </valueSettings>
         </valueSet>
     </fields>
     <fields>
@@ -14136,6 +14212,36 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <valueName>Gaming</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Commercial Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Mainstream Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Physical AI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Premium Client</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -14239,6 +14345,34 @@
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <valueName>Gaming</valueName>
             </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>Data Center</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Commercial Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <valueName>Mainstream Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Physical AI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Premium Client</valueName>
+            </valueSettings>
         </valueSet>
     </fields>
     <fields>
@@ -14285,6 +14419,27 @@
                 <controllingFieldValue>Networking &amp; Intelligent Edge</controllingFieldValue>
                 <controllingFieldValue>Data Center</controllingFieldValue>
                 <valueName>Infrastructure Optimization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Commercial Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Mainstream Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <controllingFieldValue>Data Center</controllingFieldValue>
+                <valueName>Physical AI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Edge</controllingFieldValue>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Premium Client</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Data Centric Acceleration - MDF</controllingFieldValue>
@@ -16253,6 +16408,14 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <valueName>X Series</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Series 4 Intel® Core™ (Wildcat Lake Refresh)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Client Computing</controllingFieldValue>
+                <valueName>Series 4 Intel® Core™ Ultra (Nova Lake)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Client Computing</controllingFieldValue>
@@ -30253,11 +30416,27 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Gaming</fullName>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>None</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -30272,11 +30451,27 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Gaming</fullName>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>None</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -30291,7 +30486,23 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -45922,6 +46133,10 @@
                 <fullName>None</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Priority_3_nm__c</picklist>
@@ -45937,6 +46152,10 @@
                 <fullName>None</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Priority__c</picklist>
@@ -45946,6 +46165,10 @@
             </values>
             <values>
                 <fullName>Infrastructure Optimization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -56027,6 +56250,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Core%E2%84%A2 Processor Family</fullName>
                 <default>false</default>
             </values>
@@ -56071,6 +56298,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Infrastructure Processing Unit %28Intel%C2%AE IPU%29</fullName>
                 <default>false</default>
             </values>
@@ -56084,6 +56315,10 @@
             </values>
             <values>
                 <fullName>Intel%C2%AE Partner Alliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Processor %28N%2FU Series%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -56271,6 +56506,10 @@
             </values>
             <values>
                 <fullName>Intel%C2%AE Arc%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -56511,6 +56750,10 @@
             </values>
             <values>
                 <fullName>Intel%C2%AE Gaudi%C2%AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -58909,6 +59152,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Enterprise AI</fullName>
                 <default>false</default>
             </values>
@@ -58918,6 +59165,18 @@
             </values>
             <values>
                 <fullName>Infrastructure Optimization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -60233,6 +60492,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Consumer Chromebook</fullName>
                 <default>false</default>
             </values>
@@ -60337,6 +60600,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -60394,6 +60661,14 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -61118,6 +61393,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial%E2%80%8B - Large enterprise</fullName>
                 <default>false</default>
             </values>
@@ -61274,6 +61553,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -61343,6 +61626,14 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -62673,6 +62964,14 @@
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -71573,6 +71872,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Core%E2%84%A2 Processor Family</fullName>
                 <default>false</default>
             </values>
@@ -71617,6 +71920,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Infrastructure Processing Unit %28Intel%C2%AE IPU%29</fullName>
                 <default>false</default>
             </values>
@@ -71634,6 +71941,10 @@
             </values>
             <values>
                 <fullName>Intel%C2%AE Partner Alliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Processor %28N%2FU Series%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -71825,6 +72136,10 @@
             </values>
             <values>
                 <fullName>Intel%C2%AE Arc%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -72065,6 +72380,10 @@
             </values>
             <values>
                 <fullName>Intel%C2%AE Gaudi%C2%AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -74519,6 +74838,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Enterprise AI</fullName>
                 <default>false</default>
             </values>
@@ -74528,6 +74851,18 @@
             </values>
             <values>
                 <fullName>Infrastructure Optimization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -75931,6 +76266,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Consumer Chromebook</fullName>
                 <default>false</default>
             </values>
@@ -76027,6 +76366,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -76084,6 +76427,14 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -76210,6 +76561,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Consumer Chromebook</fullName>
                 <default>false</default>
             </values>
@@ -76306,6 +76661,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -76363,6 +76722,10 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -76489,6 +76852,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Connectivity</fullName>
                 <default>false</default>
             </values>
@@ -76589,6 +76956,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -76646,6 +77017,10 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -76808,6 +77183,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial%E2%80%8B - Large enterprise</fullName>
                 <default>false</default>
             </values>
@@ -76960,6 +77339,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -77029,6 +77412,14 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -78275,6 +78666,14 @@
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>

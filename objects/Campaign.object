@@ -9549,6 +9549,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial Evo %28non-vPro%29</fullName>
                 <default>false</default>
             </values>
@@ -9578,6 +9582,18 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9620,6 +9636,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial Evo %28non-vPro%29</fullName>
                 <default>false</default>
             </values>
@@ -9649,6 +9669,18 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9691,6 +9723,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial Evo %28non-vPro%29</fullName>
                 <default>false</default>
             </values>
@@ -9720,6 +9756,18 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -22141,7 +22189,19 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Network Transformation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -22192,6 +22252,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Security</fullName>
                 <default>false</default>
             </values>
@@ -22236,6 +22300,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Network Transformation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -28968,6 +29036,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Arria%C2%AE</fullName>
                 <default>false</default>
             </values>
@@ -29101,6 +29173,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Intel%C2%AE Gaudi%C2%AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -29803,6 +29879,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial%E2%80%8B - Large enterprise</fullName>
                 <default>false</default>
             </values>
@@ -29891,6 +29971,10 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Multi-Access Edge Computing</fullName>
                 <default>false</default>
             </values>
@@ -29908,6 +29992,14 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -32940,6 +33032,14 @@ TEXT(MONTH(EndDate)) &amp;&quot;/&quot;&amp; TEXT(DAY(EndDate)) &amp;&quot;/&quo
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>

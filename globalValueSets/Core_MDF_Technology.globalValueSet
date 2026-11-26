@@ -1196,6 +1196,16 @@
         <label>Intel® Xeon® 6 W Processors</label>
     </customValue>
     <customValue>
+        <fullName>Series 4 Intel® Core™ Ultra (Nova Lake)</fullName>
+        <default>false</default>
+        <label>Series 4 Intel® Core™ Ultra (Nova Lake)</label>
+    </customValue>
+    <customValue>
+        <fullName>Series 4 Intel® Core™ (Wildcat Lake Refresh)</fullName>
+        <default>false</default>
+        <label>Series 4 Intel® Core™ (Wildcat Lake Refresh)</label>
+    </customValue>
+    <customValue>
         <fullName>Intel® OptaneTM DC Persistent Memory</fullName>
         <default>false</default>
         <isActive>false</isActive>

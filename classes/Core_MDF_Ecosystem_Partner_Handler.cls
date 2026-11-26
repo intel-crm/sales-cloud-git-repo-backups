@@ -107,6 +107,46 @@ public without sharing class Core_MDF_Ecosystem_Partner_Handler {
         
         return results;
     }
+
+    public static Map<Id, List<Object>> getAllocations(Set<Id> activityIds) {
+        Map<Id, List<Object>> allocationsByActivityId =
+            new Map<Id, List<Object>>();
+        if (activityIds == null || activityIds.isEmpty()) {
+            return allocationsByActivityId;
+        }
+
+        for (Id activityId : activityIds) {
+            allocationsByActivityId.put(activityId, new List<Object>());
+        }
+
+        for (Core_MDF_Ecosystem_Partner_Allocation__c allocation : [
+            SELECT Id, Core_MDF_Activity_Id__c,
+                Core_MDF_Ecosystem_Partner_txt__c,
+                Core_MDF_Percentage_pct__c
+            FROM Core_MDF_Ecosystem_Partner_Allocation__c
+            WHERE Core_MDF_Activity_Id__c IN :activityIds
+                AND Core_MDF_Active_Ind__c = true
+            WITH SYSTEM_MODE
+        ]) {
+            allocationsByActivityId.get(
+                allocation.Core_MDF_Activity_Id__c
+            ).add(
+                new Map<String, Object>{
+                    'Ecosystem Partner' => emptyIfNull(
+                        allocation.Core_MDF_Ecosystem_Partner_txt__c
+                    ),
+                    'Percentage (%)' => emptyIfNull(
+                        allocation.Core_MDF_Percentage_pct__c
+                    )
+                }
+            );
+        }
+        return allocationsByActivityId;
+    }
+
+    private static Object emptyIfNull(Object value) {
+        return value == null ? '' : value;
+    }
     
     /**
      * @description Wrapper class for ecosystem partner allocation data

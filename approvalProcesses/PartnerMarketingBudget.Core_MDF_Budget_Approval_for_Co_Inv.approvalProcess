@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Core_MDF_Budget_Partner__c</field>
+        <field>StartDate</field>
+        <field>EndDate</field>
+        <field>Amount</field>
+        <field>Core_MDF_Budget_Status__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Released</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Core_MDF_Internal_Budget_Approver_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Step for Co-Inv approval</description>
+        <label>Approval Request Submitted for Co-Inv</label>
+        <name>Approval_Request_Submitted_for_Co_Inv</name>
+        <rejectionActions>
+            <action>
+                <name>Core_MDF_Status_Change_to_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>Budget Approval process for Co-Inv Program</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(ISPICKVAL(Core_MDF_Budget_Status__c ,&apos;Pending Review&apos;),
+ISPICKVAL(Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c,&apos;CoInv&apos;))</formula>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Budget Approval for Co-Inv</label>
+    <processOrder>6</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

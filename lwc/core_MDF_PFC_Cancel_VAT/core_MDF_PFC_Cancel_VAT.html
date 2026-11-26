@@ -1,0 +1,42 @@
+<template>
+    <lightning-quick-action-panel header={labels.title}>
+        <div class="slds-is-relative">
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+            </template>
+
+            <template if:true={isEligible}>
+                <div class="confirmation">
+
+                    <template if:true={isSuperClaim}>
+                        <p>{labels.outcomeModalbody}</p>
+                        <lightning-datatable
+                            key-field="id"
+                            data={subClaims}
+                            columns={subClaimColumns}
+                            onrowselection={handleSelection}>
+                        </lightning-datatable>
+                    </template>
+
+                    <template if:false={isSuperClaim}>
+                        <lightning-icon icon-name="utility:warning" variant="warning" size="small" alternative-text="Warning"></lightning-icon>
+                        <p>{labels.modalBody}</p>
+                    </template>
+                    
+                    <div class="confirmation-buttons  slds-m-top_medium">
+                        <lightning-button variant="brand" label={labels.yes} onclick={handleConfirm} disabled={isLoading}></lightning-button>
+                        <lightning-button class="slds-m-left_x-small" label={labels.no} onclick={handleClose}></lightning-button>
+                    </div>
+                </div>
+            </template>
+
+            <template if:true={errorMessage}>
+                <div class="slds-p-around_medium" role="alert">{errorMessage}</div>
+            </template>
+        </div>
+
+        <div slot="footer">
+            <lightning-button variant="brand" label={labels.cancel} onclick={handleClose}></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

@@ -4301,6 +4301,10 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
                 <default>false</default>
             </values>
             <values>
+                <fullName>Co-Investment</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>DCF 1%2E0</fullName>
                 <default>false</default>
             </values>

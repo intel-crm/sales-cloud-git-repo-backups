@@ -114,6 +114,20 @@
         <value>Activate your Intel® Partner Alliance account</value>
     </labels>
     <labels>
+        <fullName>Activity_Display_Fields</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Activity_Display_Fields</shortDescription>
+        <value>Core_MDF_Program__c,Core_MDF_Ultimate_Account_Name__c,Core_MDF_Activity_Types__c,Core_MDF_Activity_Reimbursement_Amt_nbr__c,Core_MDF_Activity_Number__c,Core_MDF_Fund_Request_Status__c,Title,Core_MDF_Activity_Description__c,Core_MDF_Start_Date__c,Core_MDF_End_Date__c,CampaignId,Core_MDF_Budget_Type_nm__c,Core_MDF_Priorities__c,ChannelPartnerId,Core_MDF_ProductType__c,Core_MDF_TargetAudience__c,Core_MDF_Brand_nm__c,Core_MDF_Channel_Partner__c,Core_MDF_Member_Owner_txt__c,Core_MDF_Industry_Multi_nm__c,Core_MDF_Member_Acceptor_Id__c,Core_MDF_Intel_Activity_Owner_Id__c,RequestedAmount,Core_MDF_Country_nm__c,Core_MDF_Reimbursement_Rate__c,Core_MDF_Region_nm__c,Core_MDF_Budget_Amount_Local_amt__c,Core_MDF_ATF_Flag_nm__c,Core_MDF_Budget_Currency_cd__c,Core_MDF_ToBeClosedDate__c,Core_MDF_ActivityCategory__c,Core_MDF_External_Approval_Comment_txt__c,Core_MDF_Event_Name_nm__c,Core_MDF_Other_Event_Name_txt__c,Core_MDF_Event_Format_Nm__c,Core_MDF_Tactics_nm__c,Core_MDF_Domain_Type_nm__c</value>
+    </labels>
+    <labels>
+        <fullName>Activity_Display_Fields_Additional</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Activity_Display_Fields_Additional</shortDescription>
+        <value>Core_MDF_ofPagesEligible__c,Core_MDF_EligibleSpace__c,Core_MDF_Competitive_Elements__c,Core_MDF_Strategic_Marketing_Fund_Ind__c,Core_MDF_Government_Nexus__c,Core_MDF_pagespayingfor__c,OwnerId,Core_MDF_Partner_Contact_txt__c</value>
+    </labels>
+    <labels>
         <fullName>Agents_Profile_List</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -11494,7 +11508,7 @@ Please contact System Administrator.</value>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Core_MDF_CCP_Program_Names</shortDescription>
-        <value>Client;Datacenter;Client Co-Marketing Fund Boost;Service Provider Co-Marketing Fund;Intel Partner Alliance;Retail Marketing Funds;Ecosystem Extension Fund;Co-GTM</value>
+        <value>Client;Datacenter;Client Co-Marketing Fund Boost;Service Provider Co-Marketing Fund;Intel Partner Alliance;Retail Marketing Funds;Ecosystem Extension Fund;Co-GTM;Co-Inv</value>
     </labels>
     <labels>
         <fullName>Core_MDF_CCP_Programs</fullName>
@@ -12276,6 +12290,44 @@ Please contact System Administrator.</value>
         <value>Yes</value>
     </labels>
     <labels>
+        <fullName>Core_MDF_Cancel_Outcome_Vat_Msg</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Cancel_Outcome_Vat_Msg</shortDescription>
+        <value>Select the &quot;Payment Breakdown&quot; for which you want to cancel VAT.</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Cancel_VAT</fullName>
+        <categories>Claim Labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Cancel_VAT</shortDescription>
+        <value>Cancel VAT</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Cancel_VAT_Body</fullName>
+        <categories>Claim Labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Cancel_VAT_Body</shortDescription>
+        <value>Are you sure you want to cancel the VAT hold?</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Cancel_VAT_Claim_Submitter_Only</fullName>
+        <categories>Claim Labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Cancel_VAT_Claim_Submitter_Only</shortDescription>
+        <value>Only the Claim Submitter can cancel VAT.</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Cancel_VAT_Invalid_Status</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Cancel_VAT_Invalid_Status</shortDescription>
+        <value>VAT can only be cancelled in Pending Documents or Under Review status.</value>
+    </labels>
+    <labels>
         <fullName>Core_MDF_Cancel_proposal_Error_Message</fullName>
         <categories>ActivityCreation</categories>
         <language>en_US</language>
@@ -12725,6 +12777,13 @@ Please contact System Administrator.</value>
         <value>30</value>
     </labels>
     <labels>
+        <fullName>Core_MDF_ClaimCancellationReason</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_ClaimCancellationReason</shortDescription>
+        <value>Claim Cancellation Reason</value>
+    </labels>
+    <labels>
         <fullName>Core_MDF_ClaimCaseReviewResult_RecordType</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -12784,6 +12843,13 @@ Please contact System Administrator.</value>
         <protected>false</protected>
         <shortDescription>Claim Exceeds Cap Remainder Error Message</shortDescription>
         <value>Claim exceeds Cap Remainder</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_ClaimEzy_MaxFileSize</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_ClaimEzy_MaxFileSize</shortDescription>
+        <value>4400000</value>
     </labels>
     <labels>
         <fullName>Core_MDF_ClaimEzy_Prompt1</fullName>
@@ -13320,6 +13386,14 @@ All activities &lt;u&gt;must&lt;/u&gt; be claimed within the RMF tool with all P
         <protected>false</protected>
         <shortDescription>Claim ID Help</shortDescription>
         <value>A unique identifier for a claim used for reference by member</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Claim_Not_On_VAT_Hold</fullName>
+        <categories>Claim Labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Claim_Not_On_VAT_Hold</shortDescription>
+        <value>Cancel VAT is unavailable: this claim is not subject to VAT.</value>
     </labels>
     <labels>
         <fullName>Core_MDF_Claim_Payment_Clearance_Email</fullName>
@@ -14066,6 +14140,34 @@ Pending Review, Pending Approval, Revision Required, Cancelled and Closed</value
         <protected>false</protected>
         <shortDescription>Co-GTM program name</shortDescription>
         <value>Co-GTM</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Co_Inv_Budget_ApprovalProcess</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Co_Inv_Budget_ApprovalProcess</shortDescription>
+        <value>Core_MDF_Budget_Approval_for_Co_Inv</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Co_Inv_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Co_Inv_RecordType</shortDescription>
+        <value>Core_MDF_Co_Inv</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Co_Inv_Technical_program_name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Co-Inv Technical program name</shortDescription>
+        <value>CoInv</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Co_Inv_program_name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Co-Inv Technical program name</shortDescription>
+        <value>Co-Inv</value>
     </labels>
     <labels>
         <fullName>Core_MDF_Co_Marketing_Record_Type_Developer_Name</fullName>
@@ -15120,6 +15222,13 @@ Pending Review, Pending Approval, Revision Required, Cancelled and Closed</value
         <protected>false</protected>
         <shortDescription>Core_MDF_DocumentUploadDisabledMessage</shortDescription>
         <value>Cannot upload files in this status.</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Document_Status</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Document_Status</shortDescription>
+        <value>Document Status</value>
     </labels>
     <labels>
         <fullName>Core_MDF_Document_Submission_Days</fullName>
@@ -17832,6 +17941,13 @@ Core_MDF_Internal_EEF_Activating_Partner_Acct_Mgr,Core_MDF_Internal_EEF_Exceptio
         <protected>false</protected>
         <shortDescription>Hold Status</shortDescription>
         <value>Hold</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_Hold_Super_Claim_Cancel_Warning</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Hold_Super_Claim_Cancel_Warning</shortDescription>
+        <value>This Claim is currently on hold. Cancelling it will also cancel all Payment Breakdown items.</value>
     </labels>
     <labels>
         <fullName>Core_MDF_HoldingJobStatus</fullName>
@@ -26054,6 +26170,13 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
         <value>Please select a Primary Intel Owner for the activity</value>
     </labels>
     <labels>
+        <fullName>Core_MDF_Select_Payment_Breakdown</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_Select_Payment_Breakdown</shortDescription>
+        <value>Please select atleast one Payment Breakdown to continue.</value>
+    </labels>
+    <labels>
         <fullName>Core_MDF_Select_Status</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -27168,7 +27291,7 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>TechnicalProgramName</shortDescription>
-        <value>Client CoMarketing Fund;Data Center CoMarketing Fund;Service Provider CoMarketing Fund;Client CoMarketing Fund Boost;Retail Marketing Funds;Intel Partner Alliance;Ecosystem Extension Fund;CoGTM</value>
+        <value>Client CoMarketing Fund;Data Center CoMarketing Fund;Service Provider CoMarketing Fund;Client CoMarketing Fund Boost;Retail Marketing Funds;Intel Partner Alliance;Ecosystem Extension Fund;CoGTM;CoInv</value>
     </labels>
     <labels>
         <fullName>Core_MDF_Technology</fullName>
@@ -27911,6 +28034,13 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
         <protected>false</protected>
         <shortDescription>VAT Auto Reject Message</shortDescription>
         <value>Automatically rejected due to change in Claim Status or Reimbursement Amount.</value>
+    </labels>
+    <labels>
+        <fullName>Core_MDF_VAT_Cancel_Success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Core_MDF_VAT_Cancel_Success</shortDescription>
+        <value>The VAT workflow was successfully cancelled.</value>
     </labels>
     <labels>
         <fullName>Core_MDF_VAT_Confirmation</fullName>

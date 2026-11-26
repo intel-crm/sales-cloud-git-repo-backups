@@ -302,6 +302,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label>Motivo di annullamento del reclamo</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>Nota di testo libero relativa alla richiesta di rimborso</help>
         <label>Commenti sulla richiesta di rimborso</label>
         <name>Core_MDF_Claim_Comments__c</name>

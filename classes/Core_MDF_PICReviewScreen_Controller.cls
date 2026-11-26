@@ -116,14 +116,23 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
         
         list<Core_MDF_PIC_Review__c> existingPICReviewRecords = new List<Core_MDF_PIC_Review__c>();
         try {
-            existingPICReviewRecords = [select Id,Core_MDF_CycleNumber_nbr__c from Core_MDF_PIC_Review__c where Core_MDF_Claim_ID_id__c =: picReviewWrapper.claimId and Core_MDF_AI_PIC_Review_Ind__c = false order by Core_MDF_CycleNumber_nbr__c DESC limit 1];
-        
+			//TWC3117-18978 defect
+            PartnerFundClaim claimToLock = [SELECT Id, Core_MDF_Status__c FROM PartnerFundClaim WHERE Id = :picReviewWrapper.claimId FOR UPDATE];
+            Boolean isEligibleForReview =
+            claimToLock.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_PIC_Pending ||
+            claimToLock.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_Payment_Clearance_Processing;
+            
+            if (!isEligibleForReview) {
+                return;
+            }
+			//TWC3117-18978 defect
+            existingPICReviewRecords = [select Id,Core_MDF_CycleNumber_nbr__c from Core_MDF_PIC_Review__c where Core_MDF_Claim_ID_id__c =: picReviewWrapper.claimId and Core_MDF_AI_PIC_Review_Ind__c = false order by Core_MDF_CycleNumber_nbr__c DESC limit 1]; 
+        	
             if(!existingPICReviewRecords.isEmpty()) {
                 reviewCycle = existingPICReviewRecords.get(0).Core_MDF_CycleNumber_nbr__c + 1;
             } else {
                 reviewCycle = 1;
-            }
-        
+            }       
         
             // PIC Review Insertion
             picReview = insertPICReview(reviewCycle,picReviewWrapper.internalComments,picReviewWrapper.startDateTime,picReviewWrapper.endDateTime,picReviewWrapper.claimId,picReviewWrapper.userId,picReviewWrapper.isReviewFailed, picReviewWrapper.latestAIPICreviewID);
@@ -151,7 +160,7 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
         PartnerFundClaim claim = new PartnerFundClaim();
         Set<String> kpiFieldsList = fetchKPIFields(claimId);
         String kpiFields;
-        String queryString = 'Select Id,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Status__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Program__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Currency__c, Core_MDF_Invoice_Date__c, Core_MDF_Invoice_Number__c, Core_MDF_OtherCostsnotReimbursable_Local__c, Core_MDF_Bank__c, Core_MDF_Taxes_Local__c, Title, Core_MDF_Claim_Comments__c, Core_MDF_Media_Vehicle__c, Core_MDF_Last_Reviewed_By_id__c, Core_MDF_Last_Reviewed_By_id__r.Name,Core_MDF_VAT_Opt_In__c,Core_MDF_Country_Location_nm__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Quantity_to_Date_Nbr__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Campaign_Id__c,Core_MDF_Reimbursable_TransactionAmt_Loc__c,Core_MDF_Activity_Types__c';//16654
+        String queryString = 'Select Id,Core_MDF_Ad_Run_Start_Date__c,Core_MDF_Ad_Run_End_Date__c,Core_MDF_Status__c,Core_MDF_Budget_Type_Nm__c,Core_MDF_Program__c,Core_MDF_Total_Invoice_Amount_Local__c,Core_MDF_Requested_Reimbursement_Amt__c,Core_MDF_Currency__c, Core_MDF_Invoice_Date__c, Core_MDF_Invoice_Number__c, Core_MDF_OtherCostsnotReimbursable_Local__c, Core_MDF_Bank__c, Core_MDF_Taxes_Local__c, Title, Core_MDF_Claim_Comments__c, Core_MDF_Media_Vehicle__c, Core_MDF_Last_Reviewed_By_id__c, Core_MDF_Last_Reviewed_By_id__r.Name,Core_MDF_VAT_Opt_In__c,Core_MDF_Country_Location_nm__c,Core_MDF_Campaign_Id__r.Core_MDF_CampOutcomeOpt_In_Ind__c, Core_MDF_Quantity_to_Date_Nbr__c,Core_MDF_OutcomeBased_Ind__c,Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,Core_MDF_Campaign_Id__c,Core_MDF_Reimbursable_TransactionAmt_Loc__c,Core_MDF_Activity_Types__c,Request.Core_MDF_Activity_Description__c,Request.Core_MDF_POP_Requirements_txt__c,Request.Core_MDF_Attribution_Requirements_txt__c,Amount,Core_MDF_Budget_Type_Options_Nm__c';//16654
         if(!kpiFieldsList.isEmpty()) {
             for(String kpiField: kpiFieldsList) {
                queryString = queryString + ','+ kpiField;
