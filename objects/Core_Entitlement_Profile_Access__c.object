@@ -1280,6 +1280,11 @@
                     <label>Platform Diagnostics External Upload</label>
                 </value>
                 <value>
+                    <fullName>Disti Voucher Admin</fullName>
+                    <default>false</default>
+                    <label>Disti Voucher Admin</label>
+                </value>
+                <value>
                     <fullName>CIP General View</fullName>
                     <default>false</default>
                     <isActive>false</isActive>

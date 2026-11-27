@@ -294,6 +294,12 @@ public without sharing class UCD_ACM_Models {
         public string ComplianceStatus {
             get; set;
         }
+        public string ProjectName {
+            get; set;
+        }
+        public string MarketSegment {
+            get; set;
+        }
         public string MasteredSimplifiedAccountName {
             get; set;
         }
@@ -353,7 +359,7 @@ public without sharing class UCD_ACM_Models {
 
         // This method used to return query to get parent account details.
         public String getParentAccountQueryForEvent() {
-            return 'Id,Name,RecordTypeId,Core_Business_Party_Id__c, Core_Market_Segment__c, Core_Project_Name__c Core_Compliance_Watch_List_Type__c, Core_Compliance_Status__c, Core_Data_Simplified_Account_Nm__c,Core_Parent_Data_Simplified_Account_Nm__c,ParentId,Parent.Core_Customer_Aggregation_Type__c,Core_Customer_Aggregation_Type__c,Core_Unified_Global_Customer_Name__c,Core_Unified_Global_Customer_BP_Id__c,Core_Account_Reference_Source_Name__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c,Core_Unified_Intermdt_Customer_2_Name__c,Core_Survivor_Account_Id__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,BillingCountry,BillingCountryCode,ShippingCountry,ShippingCountryCode,Core_Data_Country_Nm__c,Core_Parent_Business_Party_Id__c';        
+            return 'Id,Name,RecordTypeId,Core_Business_Party_Id__c, Core_Market_Segment__c, Core_Project_Name__c, Core_Compliance_Watch_List_Type__c, Core_Compliance_Status__c, Core_Data_Simplified_Account_Nm__c,Core_Parent_Data_Simplified_Account_Nm__c,ParentId,Parent.Core_Customer_Aggregation_Type__c,Core_Customer_Aggregation_Type__c,Core_Unified_Global_Customer_Name__c,Core_Unified_Global_Customer_BP_Id__c,Core_Account_Reference_Source_Name__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c,Core_Unified_Intermdt_Customer_2_Name__c,Core_Survivor_Account_Id__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,BillingCountry,BillingCountryCode,ShippingCountry,ShippingCountryCode,Core_Data_Country_Nm__c,Core_Parent_Business_Party_Id__c';        
         }
 
         // This method used to return query to get customerProcessEngagement details.
@@ -402,6 +408,8 @@ public without sharing class UCD_ACM_Models {
             responseModel.accountName = String.isNotBlank(account.Name)?account.Name:'';
             responseModel.SurvivorAccountId = String.isNotBlank(account.Core_Survivor_Account_Id__c) ? account.Core_Survivor_Account_Id__c : null;
             responseModel.businessPartyIdentifier = String.isNotBlank(account.Core_Business_Party_Id__c) ? account.Core_Business_Party_Id__c:'';
+            responseModel.ProjectName=String.isNotBlank(account.Core_Project_Name__c) ? account.Core_Project_Name__c : '';
+            responseModel.MarketSegment=String.isNotBlank(account.Core_Market_Segment__c) ? account.Core_Market_Segment__c : '';
             responseModel.masteredSimplifiedAccountName = String.isNotBlank(account.Core_Data_Simplified_Account_Nm__c) ? account.Core_Data_Simplified_Account_Nm__c : '';
             //responseModel.dataSimplifiedAccountName = account.Core_Data_Simplified_Account_Nm__c != null ? account.Core_Data_Simplified_Account_Nm__c : '';
             responseModel.recordType = Schema.getGlobalDescribe().get(objectName).getDescribe().getRecordTypeInfosById().get(account.RecordTypeId).getName();

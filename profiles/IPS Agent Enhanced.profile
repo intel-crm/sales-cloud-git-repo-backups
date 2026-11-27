@@ -14293,6 +14293,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PRMCreatePdoFromLead</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PRM_ABA_Utility_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -31982,6 +31986,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CPT_Territory_Target__c.CPT_CR_CCG_Consumer_CPU_Target__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CPT_Territory_Target__c.CPT_CR_CCG_One_Intel_OEM_Target__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -40943,6 +40952,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_CustomMetadata_Object__c.Metadata_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_CustomMetadata_Object__c.PRM_IPA_Affiliation__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

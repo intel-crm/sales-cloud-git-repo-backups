@@ -138,9 +138,10 @@ public class Core_MDF_CCP_ConstantClass {
     //Account Record Type
     public static final String ACCOUNT_RECORD_TYPE = 'Core_MDF_Co_Marketing';
 
-
+    // Account budget administrators
+    Public static List<String>  ACCOUNT_BUDGET_ADMINISTRATORS = new List<String>{'Datacenter Account Budget Administrator', 'Client Account Budget Administrator','SPCF Account Budget Administrator','CCF Boost Account Budget Administrator'};
     
-     // APPROVAL STAGE
+    // APPROVAL STAGE
     public static final String L1_APPROVAL = 'L1 Approval';
     public static final String L2_APPROVAL = 'L2 Approval';
     public static final String FIRST_LEVEL_MGR = 'First Level Manager';

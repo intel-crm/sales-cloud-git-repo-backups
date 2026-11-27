@@ -50,6 +50,62 @@
     <columns>
         <field>CPT_Quota_Setup__c.CPT_Wins_Design_Assigned__c</field>
     </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Deal_Assigned__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Deal_Quota__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Deal_Wins_Vol_Quota__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Design_Assigned__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Quota_Setup__c.CPT_OW_CCPG_Design_Quota__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Deal_Assigned__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Deal_Quota__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Deal_Wins_Vol_Quota__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Design_Assigned__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Quota_Setup__c.CPT_OW_DCG_Design_Quota__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_OW_Edge_Deal_Assigned__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Quota_Setup__c.CPT_OW_Edge_Deal_Quota__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_OW_Edge_Design_Assigned__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Quota_Setup__c.CPT_OW_Edge_Design_Quota__c</field>
+    </columns>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

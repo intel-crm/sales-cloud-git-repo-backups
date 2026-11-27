@@ -56,29 +56,30 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
     //Create map of map to retain older values
     global Map<Id,Map<String,Set<Id>>> paymentToUserOldMapofMap;
 
-  //create a list to store paymentIds which has changed to paid
-  global Set<Id> paymentIdSet;
+    //create a list to store paymentIds which has changed to paid
+    global Set<Id> paymentIdSet;
 
-  //create a claimList to store failed claim ids
+    //create a claimList to store failed claim ids
     global Set<Id> failedClaimSet;
 
-  //create set for storing paymentIds whos claims has failed
-  global Map<Id,List<Id>> failedPaymentIdToFailClaimMap;
+    //create set for storing paymentIds whos claims has failed
+    global Map<Id,List<Id>> failedPaymentIdToFailClaimMap;
 
     //create count of batches run
     global Integer batchCount;
 
-  //default constructor
-  public Core_MDF_SendPaidPaymentEmailToAdmin(){
+
+    //default constructor
+    public Core_MDF_SendPaidPaymentEmailToAdmin(){
         paymentIdToCPIdListMap = new Map<Id,Set<Id>>();
         paymentIdToProgramMap = new Map<Id,String>();
         cPIdToUserDataListMap = new Map<Id,Set<WrapClass>>();
         paymentIdToUserListMap = new Map<Id,Set<WrapClass>>();
         paymentProgSet = new Set<String>();
         userIdSet = new Set<String>();
-    paymentIdSet = new Set<Id>();
-    failedClaimSet = new Set<Id>();
-    failedPaymentIdToFailClaimMap = new Map<Id,List<Id>>();
+        paymentIdSet = new Set<Id>();
+        failedClaimSet = new Set<Id>();
+        failedPaymentIdToFailClaimMap = new Map<Id,List<Id>>();
         flag = false;
         batchCount = 1;
     }
@@ -92,17 +93,19 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
         Database.executeBatch(new Core_MDF_SendPaidPaymentEmailToAdmin(setOfPaymentIds), Integer.valueOf(Label.Core_MDF_BatchSize));
     }
 
-  //parameterized constructor which takes paymentIds as argument
-  public Core_MDF_SendPaidPaymentEmailToAdmin(Set<Id> paymentIdparamList){
-    this();
-    paymentIdSet.addAll(paymentIdparamList);
-  }
+    //parameterized constructor which takes paymentIds as argument
+    public Core_MDF_SendPaidPaymentEmailToAdmin(Set<Id> paymentIdparamList){
+        this();
+        paymentIdSet.addAll(paymentIdparamList);
+        
+    }
 
     //Prepare paymentId to EFT Number Map
     public static void populatePaymentMap(Set<Id> paymentIdSet) {
         try {
             for(Core_MDF_Payment__c payRec: [select Id, Core_MDF_EFT_Nbr__c from Core_MDF_Payment__c where Id in :paymentIdSet]) {
                 paymentToEFTMap.put(payRec.Id,payRec.Core_MDF_EFT_Nbr__c);
+                
             }
         }
         catch(Exception e) {
@@ -112,18 +115,18 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
     //parameterised constructor to take maps,sets as parameter
     public Core_MDF_SendPaidPaymentEmailToAdmin(Map<Id,Set<Id>> paymentIdToCPParamMap,Map<Id,Map<String,Set<Id>>> paymentToUserParamMapofMap,
                                                 Map<Id,String> paymentToProgramParamMap,Set<String> localeKeyParamSet,Set<String> programParamSet,
-                        Set<Id> paymentIdsParamList,Set<Id> failedClaimParamSet,Map<Id,List<Id>> failedPaymentIdToFailClaimParamMap,Integer countParam){
+                                                Set<Id> paymentIdsParamList,Set<Id> failedClaimParamSet,Map<Id,List<Id>> failedPaymentIdToFailClaimParamMap,Integer countParam){
         this();
         paymentIdToCPListOldMap = new Map<Id,Set<Id>>();
         paymentToUserOldMapofMap = new Map<Id,Map<String,Set<Id>>>();
         paymentIdToCPListOldMap.putAll(paymentIdToCPParamMap);
         paymentToUserOldMapofMap.putAll(paymentToUserParamMapofMap);
         paymentIdToProgramMap.putAll(paymentToProgramParamMap);
-    paymentProgSet.addAll(programParamSet);
-    localeKeySet.addAll(localeKeyParamSet);
-    paymentIdSet.addAll(paymentIdsParamList);
-    failedClaimSet.addAll(failedClaimParamSet);
-    failedPaymentIdToFailClaimMap.putAll(failedPaymentIdToFailClaimParamMap);
+        paymentProgSet.addAll(programParamSet);
+        localeKeySet.addAll(localeKeyParamSet);
+        paymentIdSet.addAll(paymentIdsParamList);
+        failedClaimSet.addAll(failedClaimParamSet);
+        failedPaymentIdToFailClaimMap.putAll(failedPaymentIdToFailClaimParamMap);
         batchCount = countParam;
     }
 
@@ -137,7 +140,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
     ******************************************************************************************************/
 
     global Database.QueryLocator start(Database.BatchableContext bc) {
-        try{
+        try{ 
             //create a list to store claim status
             List<String> claimPendingPaymentStatusList = Label.Core_MDF_Status_Pending_Payment.split(',');
 
@@ -177,6 +180,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
             List<PartnerFundClaim> claimListToUpdate = new List<PartnerFundClaim>();
 
             for(PartnerFundClaim claimRecord : scope){
+             
                 //changing claim standard status to Paid
                 claimRecord.Status = Label.Core_MDF_ClaimStatus;
 
@@ -186,7 +190,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                 claimRecord.Core_MDF_EFT_Number_txt__c = paymentToEFTMap.get(claimRecord.Core_MDF_Payment_Id__c);
 
                 if (Test.isRunningTest() && testFlag) {
-                  //update record with wrong value to test exception handling [REMOVE BELOW ELEMENT THIS IS ONLY FOR TESTING]
+                    //update record with wrong value to test exception handling [REMOVE BELOW ELEMENT THIS IS ONLY FOR TESTING]
                     claimRecord.Core_MDF_Invoice_Number__c = '';
                     testFlag = false;
                 }
@@ -196,7 +200,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                     cPIdSet.add(claimRecord.ChannelPartnerId);
                 }
 
-               //adding changed value to a claim List of objects
+                //adding changed value to a claim List of objects
                 claimListToUpdate.add(claimRecord);
 
                 //initially adding claims to failClaimSet
@@ -230,41 +234,43 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                 Integer count = 0;
 
                 for(Database.SaveResult sr:updateResults)
-        {
-          if (sr.isSuccess()){
+                {
+                    if (sr.isSuccess()){
                         //remove successful claim Ids from the failedClaimSet
-            failedClaimSet.remove(claimListToUpdate.get(count).Id);
-          }
+                        failedClaimSet.remove(claimListToUpdate.get(count).Id);
+                    }
                     else{
-            // Operation failed, so get all errors
+                        // Operation failed, so get all errors
                         if(failedPaymentIdToFailClaimMap.keySet().contains(claimListToUpdate.get(count).Core_MDF_Payment_Id__c)){failedPaymentIdToFailClaimMap.get(claimListToUpdate.get(count).Core_MDF_Payment_Id__c).add(claimListToUpdate.get(count).Id);
                         }
-            else{ failedPaymentIdToFailClaimMap.put(claimListToUpdate.get(count).Core_MDF_Payment_Id__c, new List<Id>{claimListToUpdate.get(count).Id});
-            }
+                        else{ failedPaymentIdToFailClaimMap.put(claimListToUpdate.get(count).Core_MDF_Payment_Id__c, new List<Id>{claimListToUpdate.get(count).Id});
+                        }
                     }
                     count++;
-        }
+                }
             }
 
             //remove the payment Id associated with failed claim to stop sending notification
-      for(Id paymentId : failedPaymentIdToFailClaimMap.keySet()){ paymentIdToCPIdListMap.remove(paymentId);
-      }
+            for(Id paymentId : failedPaymentIdToFailClaimMap.keySet()){ paymentIdToCPIdListMap.remove(paymentId);
+            }
 
             Map<Id, Id> contactIdUserIdMap = new Map<Id, Id>();
             Set<Id> userSet = new Set<Id>();
             //Query on the PNUM to create the Contact Id to User Id Map
-            for(Core_MDF_Partner_Node_User_Mapping__c pnum : [SELECT Id,Core_MDF_User__c,Core_MDF_Account__c,Core_MDF_User__r.languageLocalekey, Core_MDF_User__r.ContactId
+            for(Core_MDF_Partner_Node_User_Mapping__c pnum : [SELECT Id,Core_MDF_User__c,Core_MDF_User__r.ContactId //HP:ATHR Fix
                                                               FROM Core_MDF_Partner_Node_User_Mapping__c
                                                               WHERE Core_MDF_Account__c IN :cPIdSet AND 
                                                                     Core_MDF_User__c <> NULL AND
-                                                                    Core_MDF_User__r.ContactId <> NULL]){
+                                                                    Core_MDF_User__r.ContactId <> NULL
+                                                                    AND Core_MDF_Active_Ind__c = true]){
                 contactIdUserIdMap.put(pnum.Core_MDF_User__r.ContactId, pnum.Core_MDF_User__c);
             }
             //Fetch the Contacts from the Contact Entitlements which has Account Budget Admin and build the userSet
             if(contactIdUserIdMap != NULL && contactIdUserIdMap.size() > 0){
-                for(Core_Contact_Entitlement__c ce : [SELECT Id, Core_Contact_Id__c, Core_Entitlement_Id__c, Core_Contact_Id__r.Name, Core_Entitlement_Id__r.Name
+                List<String> administratorNames = Core_MDF_CCP_ConstantClass.ACCOUNT_BUDGET_ADMINISTRATORS;
+                for(Core_Contact_Entitlement__c ce : [SELECT Id, Core_Contact_Id__c //HP:ATHR Fix
                                                       FROM Core_Contact_Entitlement__c
-                                                      WHERE Core_Entitlement_Id__r.Name LIKE '%Account Budget Administrator' AND 
+                                                      WHERE Core_Entitlement_Id__r.Name IN :administratorNames AND //HP:ATHR Fix
                                                             Core_Contact_Id__c IN :contactIdUserIdMap.keySet() AND
                                                             Core_Type__c = 'Entitlement' AND 
                                                             Core_Category__c = 'Consolidated Co-marketing Platform' AND
@@ -276,6 +282,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
             }
             
             if(userSet != NULL && userSet.size() > 0){
+
                 //populating cPIdToUserDataListMap by looping in pnum records whose user has AccountBudgetAdmin Access
                 for(Core_MDF_Partner_Node_User_Mapping__c pnum : [SELECT Id,Core_MDF_User__c,Core_MDF_Account__c,Core_MDF_User__r.languageLocalekey
                                                                 FROM Core_MDF_Partner_Node_User_Mapping__c
@@ -300,7 +307,10 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                 }
             }
 
-            if(paymentIdToCPIdListMap != NULL && paymentIdToCPIdListMap.size() > 0){
+            //if(paymentIdToCPIdListMap != NULL && paymentIdToCPIdListMap.size() > 0){
+                if (paymentIdToCPIdListMap == null || paymentIdToCPIdListMap.isEmpty()) {//ATHR Fix WW19
+                    return; 
+                }
                 //populating paymentIdToUserListMap by using paymentIdToCPIdListMap and cPIdToUserDataListMap
                 for(Id paymentId : paymentIdToCPIdListMap.keySet()){
 
@@ -316,7 +326,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                         }
                     }
                 }
-            }
+           // }
         }catch(Exception e){String errorDetails = Core_MDF_CCP_UtilityClass.getErrorDetails(e);Core_MDF_UpdateBankDetails.logErrorinLogObjectWithReason(errorDetails,Label.Core_MDF_Payment_OriginName);}
     }
 
@@ -347,7 +357,8 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                 Map<String,Set<Id>> localeKeyToUserListMap = new Map<String,Set<Id>>();
 
                 for(WrapClass user : paymentIdToUserListMap.get(paymentId)){
-                  localeKeySet.add(user.localeKey);
+                    
+                    localeKeySet.add(user.localeKey);
                     if(localeKeyToUserListMap.containsKey(user.localeKey)){
                        localeKeyToUserListMap.get(user.localeKey).add(user.userId);
                     }
@@ -362,7 +373,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
 
             //put all previous values of paymentId to CpId List map values
             if(paymentIdToCPListOldMap != NULL){
-              paymentIdToCPIdListMap.putAll(paymentIdToCPListOldMap);
+                paymentIdToCPIdListMap.putAll(paymentIdToCPListOldMap);
             }
 
             //put all previous values of paymentId to user List map of map values
@@ -377,8 +388,8 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
 
                 Core_MDF_SendPaidPaymentEmailToAdmin batchObj = new Core_MDF_SendPaidPaymentEmailToAdmin(paymentIdToCPIdListMap,paymentIdToUserMapOfMap,
                                                                                                          paymentIdToProgramMap,localeKeySet,paymentProgSet,
-                                                     paymentIdSet,failedClaimSet,failedPaymentIdToFailClaimMap,
-                                                     batchCount);
+                                                                                                         paymentIdSet,failedClaimSet,failedPaymentIdToFailClaimMap,
+                                                                                                         batchCount);
                 database.executeBatch(batchObj,Integer.valueOf(Label.Core_MDF_BatchSize));
             }
 
@@ -398,13 +409,17 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                                                                                        (Core_MDF_LocaleKey__c = 'en_US'   OR
                                                                                         Core_MDF_LocaleKey__c IN :localeKeySet)]){
 
-                    String metaKey = metaDataObj.Core_MDF_LocaleKey__c   + metaDataObj.Core_MDF_Program__c;
+                    String metaKey = metaDataObj.Core_MDF_LocaleKey__c  + metaDataObj.Core_MDF_Program__c;
                     localeAndProgToMetaDataObjectMap.put(metaKey, metaDataObj);
                 }
 
                 //Preparing Email Object
                 for(Id paymentId : paymentIdToUserMapOfMap.keySet()){
-                    if(paymentIdToProgramMap.get(paymentId) != NULL && localeAndProgToMetaDataObjectMap != NULL && localeAndProgToMetaDataObjectMap.size() > 0){
+                    //if(paymentIdToProgramMap.get(paymentId) != NULL && localeAndProgToMetaDataObjectMap != NULL && localeAndProgToMetaDataObjectMap.size() > 0){ //ATHR Fix WW19
+                        if (paymentIdToProgramMap.get(paymentId) == null || localeAndProgToMetaDataObjectMap == null || localeAndProgToMetaDataObjectMap.isEmpty()) {
+                            continue;
+                        }
+
                         for(String langCode : paymentIdToUserMapOfMap.get(paymentId).keySet()){
 
                             Set<Id> userId = paymentIdToUserMapOfMap.get(paymentId).get(langCode);
@@ -464,7 +479,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                                 }
                             }
                         }
-                    }
+                    //}
                 }
                 //Send Emails only if emaiList has values
                 if(emaiList.size()>0){
@@ -480,7 +495,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                     /*iteration count over the paymentIds*/ Integer count = 0;/*create a flag to check if the control went in else condition or not*/ Boolean checkFlag;
 
                     //loop through the failedPaymentIdToFailClaimMap keySet to generate log object
-          for(Id paymentId : failedPaymentIdToFailClaimMap.keySet()){ checkFlag = false; count++; String payId = (String) paymentId;
+                    for(Id paymentId : failedPaymentIdToFailClaimMap.keySet()){ checkFlag = false; count++; String payId = (String) paymentId;
 
                         //converting list to string and calculating its length
                         detailLength += (String.join(failedPaymentIdToFailClaimMap.get(paymentId),',')).length();
@@ -491,23 +506,23 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
 
                         //keep on concatinating the paymentIds along with claimIds until it reaches 30000 limit
                         if(detailLength <= 30000){detail += paymentId+'->(' + String.join(failedPaymentIdToFailClaimMap.get(paymentId),',') + '); ';
-            }
+                        }
 
                         //if limit reaches then create a log entry object
                         else{ checkFlag = true;
 
-              //if incoming paymentId has claims which is crossing the limit then break and
-              //create multiple log entry objects
+                            //if incoming paymentId has claims which is crossing the limit then break and
+                            //create multiple log entry objects
                             if((String.join(failedPaymentIdToFailClaimMap.get(paymentId),',')).length() > 30000){ String claimIds = String.join(failedPaymentIdToFailClaimMap.get(paymentId),',') + ',,';
 
                                 /*i will be kept at the initial point of substring*/ Integer i = 0;/*index will be kept at the ending point of substring*/Integer index = 30000;
 
                                 //break claimIds string and create log entry objects
-                While( i < claimIds.length() ){if(index > claimIds.length()){index = claimIds.length();}
+                                While( i < claimIds.length() ){if(index > claimIds.length()){index = claimIds.length();}
 
                                     //getting the nearest location of ',' from end point of string
-                  index = claimIds.lastIndexOf(',' , index);String subDetail = paymentId + '->('+claimIds.substring(i,index-1)+'); ';paymentLogList.add(createLogObject(subDetail)); /*change the value of i and index to handle next substring*/ i = index+1;index = 2 * index;} /*reset detailLength*/detailLength = 0;
-              }
+                                    index = claimIds.lastIndexOf(',' , index);String subDetail = paymentId + '->('+claimIds.substring(i,index-1)+'); ';paymentLogList.add(createLogObject(subDetail)); /*change the value of i and index to handle next substring*/ i = index+1;index = 2 * index;} /*reset detailLength*/detailLength = 0;
+                            }
 
                             //if detail is not empty then create log entry for that as well
                             if(detail != ''){ paymentLogList.add(createLogObject(detail));
@@ -516,7 +531,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                                 if((String.join(failedPaymentIdToFailClaimMap.get(paymentId),',')).length() <= 30000){ detail += paymentId+'->(' + String.join(failedPaymentIdToFailClaimMap.get(paymentId),',') + '); '; detailLength = detail.length();
                                 }
                             }
-            }
+                        }
 
                         //for left over paymentids
                         if(!checkFlag && count == failedPaymentIdToFailClaimMap.keySet().size()){paymentLogList.add(createLogObject(detail));}} insert(paymentLogList);

@@ -21,6 +21,9 @@
     <columns>
         <field>CPT_Quota_Setup__c.CPT_Wins_Assigned__c</field>
     </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_OW_Assigned__c</field>
+    </columns>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

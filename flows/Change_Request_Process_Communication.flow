@@ -30,7 +30,7 @@
         <label>Process Change of Existing Products</label>
         <locationX>578</locationX>
         <locationY>278</locationY>
-        <actionName>01pD3000000yDFiNotFound</actionName>
+        <actionName>PCC_ChgReqChgLineApproval</actionName>
         <actionType>apex</actionType>
         <faultConnector>
             <targetReference>Create_Log_Entry1</targetReference>
@@ -48,6 +48,7 @@
                 <stringValue>Change</stringValue>
             </value>
         </inputParameters>
+        <nameSegment>PCC_ChgReqChgLineApproval</nameSegment>
         <offset>0</offset>
     </actionCalls>
     <apiVersion>62.0</apiVersion>

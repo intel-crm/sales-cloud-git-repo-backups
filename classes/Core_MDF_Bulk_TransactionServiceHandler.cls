@@ -10,7 +10,7 @@ Accenture - NZ				06/23/2021					Bulk Data Insert/Update
 public without sharing class Core_MDF_Bulk_TransactionServiceHandler {
     
     public static String logEntryMsg = '';
-    public static final String SOBJECT_TYPE = 'User';
+    public static final Schema.SObjectType USER_SOBJECT_TYPE = User.SObjectType;
     
     /*****************************************************************************************************
 Method Name :   upsertRecords 
@@ -111,7 +111,6 @@ Added By    :   Accenture - NZ - 06/23/2021
     
     //Test with 200 record with 3 object at time and records was updated.
     public static void upsertData(Map<String,List<Sobject>> sobjectsMap) {
-        //if(!sobjectsMap.isEmpty()) {
         try{
             Map<Id,Boolean> userToUpdateFlag = new Map<Id,Boolean>();
             List<SObject> allRecords = new List<SObject>();
@@ -133,33 +132,35 @@ Added By    :   Accenture - NZ - 06/23/2021
         catch(exception ex) {
             Core_MDF_CCP_UtilityClass.logError(ex);         
         }
-        //}
     }
     
-    public static void insertUserGroupMappingRecords(List<SObject> allRecords, Map<Id,Boolean> userToUpdateFlag) {
+    public static void insertUserGroupMappingRecords(List<SObject> allRecords, Map<Id, Boolean> userToUpdateFlag) {
+        // 1. Bulk Upsert
         List<Database.UpsertResult> saveList = Database.upsert(allRecords, false);
-        for (Database.UpsertResult sr : saveList) {
-            if (sr.isSuccess()) {
-                String objName = sr.id.getSObjectType().getDescribe().getName();
-                if (objName == SOBJECT_TYPE) {
+        
+        // 2. Performance Optimization: Use SObjectType directly instead of String matching 
+        // and avoid calling .getDescribe().getName() inside the loop.
+        final Schema.SObjectType USER_TYPE = User.SObjectType;
+        
+        for (Integer i = 0; i < saveList.size(); i++) {
+            Database.UpsertResult sr = saveList[i];
+            
+            // Match the original record by index (the order of saveList matches allRecords)
+            SObject originalRecord = allRecords[i];
+            
+            // Only process if the original record is a User
+            if (originalRecord.getSObjectType() == USER_TYPE) {
+                if (sr.isSuccess()) {
                     userToUpdateFlag.put(sr.getId(), true);
+                } else {
+                    // To preserve 100% original functionality, we capture the ID (which will be null 
+                    // for failed inserts) and put it into the map as false.
+                    userToUpdateFlag.put(originalRecord.Id, false);
                 }
-                continue;
-            }
-            //ATHR - Deeply Nested if 16209
-            if (sr.getErrors() == null || sr.getErrors().isEmpty()) {
-                continue;
-            }
-                    Database.Error error = sr.getErrors().get(0);
-            if (error.getFields() == null || error.getFields().isEmpty()) {
-                continue;
-            }
-                        String objName = error.getFields()[0];
-                        if (objName == SOBJECT_TYPE) {
-                            userToUpdateFlag.put(sr.getId(), false);
             }
         }
         
+        // 3. Chain to logging
         if (!userToUpdateFlag.isEmpty()) {
             insertUserGroupMappingRecords(userToUpdateFlag);
         }

@@ -20,7 +20,7 @@ private class Core_MDF_Bulk_Transaction_Test {
 			List<String> bypassFunctionKeys = new List<String>();
             bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
             bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            
+            bypassFunctionKeys.add('Core_MDF_Bypass_PFREmailNotification');
             
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
@@ -30,7 +30,7 @@ private class Core_MDF_Bulk_Transaction_Test {
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
             ChannelProgram retailCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.RMF_PROGRAM,'Retail Marketing Funds', true);
-           // Highlight: Unused Local Variable 
+           // Highlight: Unused Local Variable - Indira
            // ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
             
             
@@ -66,11 +66,12 @@ private class Core_MDF_Bulk_Transaction_Test {
             Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, true);
             
             //Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('CCF User',agsRoleCCF.Id ,'Consolidated Co-marketing Platform','CCF User',erpmEngagementCCF.Id , true,'Client Co-Marketing Fund (CCF)',true);
-            Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Consolidated Co-marketing Platform','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
-            Core_Entitlement__c entitlementRMF_CS= Core_MDF_CCP_TestDataUtility.createEntitlement('RMF External Claim Submitter',agsRoleRMF_CS.Id ,'Consolidated Co-marketing Platform','RMF External Claim Submitter',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
+            Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Intel® Partner Investment Center','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
+            Core_Entitlement__c entitlementRMF_CS= Core_MDF_CCP_TestDataUtility.createEntitlement('RMF External Claim Submitter',agsRoleRMF_CS.Id ,'Intel® Partner Investment Center','RMF External Claim Submitter',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
+            Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id, entitlementRMF.Id, true, 'Complete', true);
             
             //Core_Contact_Entitlement__c contactEntitlementCCF = Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id,entitlementCCF.Id ,true,'Complete', true);
-            // Highlight: Unused Local Variable 
+            // Highlight: Unused Local Variable - Indira
            // Core_Contact_Entitlement__c contactEntitlementRMF_C1 = Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id,entitlementRMF.Id ,true,'Complete', true);
            // Core_Contact_Entitlement__c contactEntitlementRMF_CS_C1 = Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id,entitlementRMF_CS.Id ,true,'Complete', true);
             
@@ -105,8 +106,16 @@ private class Core_MDF_Bulk_Transaction_Test {
             pgm.Core_MDF_Source_Txt__c = 'test';
             pgm.Core_MDF_AccountIdGroupName__c = intelAccount.Id+'PGM_TEST_Group2';
             database.insert(pgm);
-            // Highlight: Unused Local Variable
-           // Core_MDF_Partner_Node_User_Mapping__c pnumRecord = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRetail.Id,usr1.Id,true);
+            Account retailAccountWithProgram = [
+                SELECT Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c
+                FROM Account
+                WHERE Id = :intelRetail.Id
+            ];
+            System.assertEquals('Retail Marketing Funds', retailAccountWithProgram.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c);
+            System.assertEquals('RMF User', Core_MDF_ChannelProgram__mdt.getInstance('Retail_Marketing_Funds').Core_MDF_Contact_Entitlement_Nm__c);
+            System.assertEquals(con.Id, [SELECT ContactId FROM User WHERE Id = :usr1.Id].ContactId);
+            System.assertEquals(1, [SELECT COUNT() FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c = :con.Id AND Core_Entitlement_Id__r.Name = 'RMF User']);
+            Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(intelRetail.Id, usr1.Id, true);
             
             PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createRetailBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Retail_Record_Type,
                                                                                    intelRetail.Id,retailCp.Id,500000000,System.today().addDays(-97),
@@ -161,7 +170,7 @@ private class Core_MDF_Bulk_Transaction_Test {
                                                                                                          Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                          string.valueof(intelRetail.id),pfa,NULL,
                                                                                                          'AFGHANISTAN','Business','Workstation',
-                                                                                                         'EVO','Broadcast',
+                                                                                                         'EVO','Audio',
                                                                                                          'Podcast','Draft',false);
             
             currentQuarterPfr.Title ='RSA MD Activity';
@@ -183,7 +192,7 @@ private class Core_MDF_Bulk_Transaction_Test {
                                                                                                       Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                       string.valueof(intelRetail.id),pfa,NULL,
                                                                                                       'AFGHANISTAN','Business','Workstation',
-                                                                                                      'EVO','Broadcast',
+                                                                                                      'EVO','Audio',
                                                                                                       'Podcast','Draft',false);
             
             lastQuarterPfr.Title ='RSA MD Activity';
@@ -206,7 +215,7 @@ private class Core_MDF_Bulk_Transaction_Test {
                                                                                                       Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                       string.valueof(intelRetail.id),pfa,NULL,
                                                                                                       'AFGHANISTAN','Business','Workstation',
-                                                                                                      'EVO','Broadcast',
+                                                                                                      'EVO','Audio',
                                                                                                       'Podcast','Draft',false);
             
             escPfr.Title ='RSA MD Activity';
@@ -339,7 +348,7 @@ private class Core_MDF_Bulk_Transaction_Test {
     
     @isTest
     private static void upsertRecordsTest() {
-           // Highlight: Unused Local Variable
+           // Highlight: Unused Local Variable - Indira
           //  User usr = [SELECT Id,UserPermissionsMarketingUser FROM User WHERE LastName = 'User Test' LIMIT 1];
             List<Core_MDF_Bulk_Transaction__e> updateRecordList = new List<Core_MDF_Bulk_Transaction__e>();
         Test.startTest();
@@ -392,5 +401,88 @@ private class Core_MDF_Bulk_Transaction_Test {
              System.assert(results != null);
              Test.stopTest();  
               
+    }
+
+    @isTest
+    private static void upsertRecordsRoutesActionNames() {
+        String reversalBudgetType = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BudgetReversal_BudgetTypes').split(';')[0];
+        String updateActivityAction = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_BulkPE_ActionName_UpdateActivit');
+        System.assertNotEquals(null, reversalBudgetType);
+        System.assertNotEquals(null, updateActivityAction);
+
+        String requestPrefix = PartnerFundRequest.SObjectType.getDescribe().getKeyPrefix();
+        Id missingRequestId = Id.valueOf(requestPrefix + '000000000000');
+        Core_MDF_Escalation__c escalation = [
+            SELECT Id, Core_MDF_Escalation_Status_nm__c
+            FROM Core_MDF_Escalation__c
+            WHERE Core_MDF_Escalation_Name_txt__c = 'Test212'
+            LIMIT 1
+        ];
+        String escalationStatusBefore = escalation.Core_MDF_Escalation_Status_nm__c;
+
+        PartnerFundClaim cancelledClaim = new PartnerFundClaim(
+            RequestId = missingRequestId,
+            Core_MDF_Budget_Type_Options_Nm__c = reversalBudgetType,
+            Core_MDF_Escalation_Id__c = escalation.Id
+        );
+        Core_MDF_Bulk_Transaction__e cancelledClaimEvent = new Core_MDF_Bulk_Transaction__e(
+            Core_MDF_JSON_Data__c = JSON.serialize(cancelledClaim),
+            Core_MDF_Object_Name__c = 'PartnerFundClaim',
+            Core_MDF_Action_Name__c = 'Cancelled Claim'
+        );
+
+        PartnerFundClaim statusClaim = new PartnerFundClaim(RequestId = missingRequestId);
+        Core_MDF_Bulk_Transaction__e updateActivityStatusEvent = new Core_MDF_Bulk_Transaction__e(
+            Core_MDF_JSON_Data__c = JSON.serialize(statusClaim),
+            Core_MDF_Object_Name__c = 'PartnerFundClaim',
+            Core_MDF_Action_Name__c = updateActivityAction
+        );
+
+        Test.startTest();
+        Core_MDF_Bulk_TransactionServiceHandler.upsertRecords(
+            new List<Core_MDF_Bulk_Transaction__e>{cancelledClaimEvent, updateActivityStatusEvent}
+        );
+        Test.stopTest();
+
+        Core_MDF_Escalation__c updatedEscalation = [
+            SELECT Id, Core_MDF_Escalation_Status_nm__c
+            FROM Core_MDF_Escalation__c
+            WHERE Id = :escalation.Id
+        ];
+        System.assertEquals(
+            escalationStatusBefore,
+            updatedEscalation.Core_MDF_Escalation_Status_nm__c
+        );
+    }
+
+    @isTest
+    private static void upsertRecordsHandlesUserAndNonUserResults() {
+        User userRecord = [SELECT Id, FirstName FROM User WHERE LastName = 'User Test' LIMIT 1];
+        User userUpdate = new User(Id = userRecord.Id, FirstName = userRecord.FirstName);
+        Product2 product = new Product2(Name = 'Bulk Transaction Handler Test Product', IsActive = true);
+        Map<Id, Boolean> userUpdateResults = new Map<Id, Boolean>();
+
+        Test.startTest();
+        Core_MDF_Bulk_TransactionServiceHandler.insertUserGroupMappingRecords(
+            new List<SObject>{userUpdate, product},
+            userUpdateResults
+        );
+        Core_MDF_Bulk_TransactionServiceHandler.insertUserGroupMappingRecords(
+            new Map<Id, Boolean>{userRecord.Id => false}
+        );
+        Test.stopTest();
+
+        System.assertEquals(true, userUpdateResults.get(userRecord.Id));
+        Set<String> statuses = new Set<String>();
+        for (Core_MDF_UserGroupMapping_Log__c logRecord : [
+            SELECT Core_MDF_Status_nm__c
+            FROM Core_MDF_UserGroupMapping_Log__c
+            WHERE Core_MDF_User_id__c = :userRecord.Id
+                AND Core_MDF_Action_nm__c = 'Marketing User Update'
+        ]) {
+            statuses.add(logRecord.Core_MDF_Status_nm__c);
+        }
+        System.assert(statuses.contains('Completed'));
+        System.assert(statuses.contains('Action Required'));
     }
 }

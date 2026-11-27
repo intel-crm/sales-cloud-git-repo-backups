@@ -343,6 +343,13 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PRM_IPA_Affiliation__c</fullName>
+        <label>IPA Affiliation</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Permission_Set_API_Name__c</fullName>
         <label>Permission Set API Name</label>
         <required>false</required>
