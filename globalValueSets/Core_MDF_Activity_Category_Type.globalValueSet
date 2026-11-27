@@ -1,254 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Digital-&gt;Display/Video Ad</fullName>
+        <fullName>Audio-&gt;Other (Audio)</fullName>
         <default>false</default>
-        <label>Digital-&gt;Display/Video Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital-&gt;Email</fullName>
-        <default>false</default>
-        <label>Digital-&gt;Email</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital-&gt;Other (Digital)</fullName>
-        <default>false</default>
-        <label>Digital-&gt;Other (Digital)</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital-&gt;Search (SEM) Ad</fullName>
-        <default>false</default>
-        <label>Digital-&gt;Search (SEM) Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital-&gt;Social Ad</fullName>
-        <default>false</default>
-        <label>Digital-&gt;Social Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital-&gt;Social Post</fullName>
-        <default>false</default>
-        <label>Digital-&gt;Social Post</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital-&gt;Web Content</fullName>
-        <default>false</default>
-        <label>Digital-&gt;Web Content</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital-&gt;Lead Generation</fullName>
-        <default>false</default>
-        <label>Digital-&gt;Lead Generation</label>
-    </customValue>
-    <customValue>
-        <fullName>Print-&gt;Collateral</fullName>
-        <default>false</default>
-        <label>Print-&gt;Collateral</label>
-    </customValue>
-    <customValue>
-        <fullName>Print-&gt;Magazine/Newspaper</fullName>
-        <default>false</default>
-        <label>Print-&gt;Magazine/Newspaper</label>
-    </customValue>
-    <customValue>
-        <fullName>Print-&gt;Other (Print)</fullName>
-        <default>false</default>
-        <label>Print-&gt;Other (Print)</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home-&gt;Billboard/Transit</fullName>
-        <default>false</default>
-        <label>Out of Home-&gt;Billboard/Transit</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home-&gt;Cinema</fullName>
-        <default>false</default>
-        <label>Out of Home-&gt;Cinema</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home-&gt;Video Screen</fullName>
-        <default>false</default>
-        <label>Out of Home-&gt;Video Screen</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home-&gt;Other (Out Of Home)</fullName>
-        <default>false</default>
-        <label>Out of Home-&gt;Other (Out Of Home)</label>
-    </customValue>
-    <customValue>
-        <fullName>Video-&gt;Television</fullName>
-        <default>false</default>
-        <label>Video-&gt;Television</label>
-    </customValue>
-    <customValue>
-        <fullName>Video-&gt;Streaming</fullName>
-        <default>false</default>
-        <label>Video-&gt;Streaming</label>
-    </customValue>
-    <customValue>
-        <fullName>Video-&gt;Other (Video)</fullName>
-        <default>false</default>
-        <label>Video-&gt;Other (Video)</label>
-    </customValue>
-    <customValue>
-        <fullName>Event-&gt;Third Party Event</fullName>
-        <default>false</default>
-        <label>Event-&gt;Third Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event-&gt;Joint Event</fullName>
-        <default>false</default>
-        <label>Event-&gt;Joint Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event-&gt;Other (Event)</fullName>
-        <default>false</default>
-        <label>Event-&gt;Other (Event)</label>
-    </customValue>
-    <customValue>
-        <fullName>Production-&gt;Content</fullName>
-        <default>false</default>
-        <label>Production-&gt;Content</label>
-    </customValue>
-    <customValue>
-        <fullName>Production-&gt;Other (Production)</fullName>
-        <default>false</default>
-        <label>Production-&gt;Other (Production)</label>
-    </customValue>
-    <customValue>
-        <fullName>Seller Incentive-&gt;SPIF - Volume</fullName>
-        <default>false</default>
-        <label>Seller Incentive-&gt;SPIF - Volume</label>
-    </customValue>
-    <customValue>
-        <fullName>Seller Incentive-&gt;SPIF - Target</fullName>
-        <default>false</default>
-        <label>Seller Incentive-&gt;SPIF - Target</label>
-    </customValue>
-    <customValue>
-        <fullName>Seller Incentive-&gt;SPIF - Contest</fullName>
-        <default>false</default>
-        <label>Seller Incentive-&gt;SPIF - Contest</label>
-    </customValue>
-    <customValue>
-        <fullName>Seller Incentive-&gt;SPIF - Other</fullName>
-        <default>false</default>
-        <label>Seller Incentive-&gt;SPIF - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive-&gt;Offer - Bundle</fullName>
-        <default>false</default>
-        <label>Buyer Incentive-&gt;Offer - Bundle</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive-&gt;Offer - Sweepstakes</fullName>
-        <default>false</default>
-        <label>Buyer Incentive-&gt;Offer - Sweepstakes</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive-&gt;Offer - Rewards</fullName>
-        <default>false</default>
-        <label>Buyer Incentive-&gt;Offer - Rewards</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive-&gt;Offer - Target</fullName>
-        <default>false</default>
-        <label>Buyer Incentive-&gt;Offer - Target</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive-&gt;Offer - Contest</fullName>
-        <default>false</default>
-        <label>Buyer Incentive-&gt;Offer - Contest</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive-&gt;Offer - Other</fullName>
-        <default>false</default>
-        <label>Buyer Incentive-&gt;Offer - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness-&gt;Collateral</fullName>
-        <default>false</default>
-        <label>Sales Readiness-&gt;Collateral</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness-&gt;Promotion - Retail</fullName>
-        <default>false</default>
-        <label>Sales Readiness-&gt;Promotion - Retail</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness-&gt;Promotion - Non-Retail</fullName>
-        <default>false</default>
-        <label>Sales Readiness-&gt;Promotion - Non-Retail</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness-&gt;Training/Meeting</fullName>
-        <default>false</default>
-        <label>Sales Readiness-&gt;Training/Meeting</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness-&gt;Training Incentive</fullName>
-        <default>false</default>
-        <label>Sales Readiness-&gt;Training Incentive</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness-&gt;Personnel</fullName>
-        <default>false</default>
-        <label>Sales Readiness-&gt;Personnel</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness-&gt;Other (Sales Readiness)</fullName>
-        <default>false</default>
-        <label>Sales Readiness-&gt;Other (Sales Readiness)</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;Sales Event</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;Sales Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;Seed Unit</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;Seed Unit</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;Trial Instance</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;Trial Instance</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;System Demo</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;System Demo</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;Proof of Concept</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;Proof of Concept</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;Case Study</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;Case Study</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;Migration</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;Migration</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;Benchmarking</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;Benchmarking</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;Telemarketing</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;Telemarketing</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales-&gt;Other (Technical Sales)</fullName>
-        <default>false</default>
-        <label>Technical Sales-&gt;Other (Technical Sales)</label>
+        <label>Audio-&gt;Other (Audio)</label>
     </customValue>
     <customValue>
         <fullName>Audio-&gt;Podcast</fullName>
@@ -261,9 +16,19 @@
         <label>Audio-&gt;Radio</label>
     </customValue>
     <customValue>
-        <fullName>Audio-&gt;Other (Audio)</fullName>
+        <fullName>Audio 2025-&gt;Other (Audio)</fullName>
         <default>false</default>
-        <label>Audio-&gt;Other (Audio)</label>
+        <label>Audio 2025-&gt;Other (Audio)</label>
+    </customValue>
+    <customValue>
+        <fullName>Audio 2025-&gt;Podcast</fullName>
+        <default>false</default>
+        <label>Audio 2025-&gt;Podcast</label>
+    </customValue>
+    <customValue>
+        <fullName>Audio 2025-&gt;Radio</fullName>
+        <default>false</default>
+        <label>Audio 2025-&gt;Radio</label>
     </customValue>
     <customValue>
         <fullName>Broadcast (Pre-2025)-&gt;Other (Broadcast)</fullName>
@@ -291,346 +56,6 @@
         <label>Broadcast (Pre-2025)-&gt;Television</label>
     </customValue>
     <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;EcosystemPartner.com</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;EcosystemPartner.com</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;Member.com</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;Member.com</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;NonPartner.com</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;NonPartner.com</label>
-    </customValue>
-    <customValue>
-        <fullName>Event (Pre-2025)-&gt;Joint Event</fullName>
-        <default>false</default>
-        <label>Event (Pre-2025)-&gt;Joint Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event (Pre-2025)-&gt;Other (Event)</fullName>
-        <default>false</default>
-        <label>Event (Pre-2025)-&gt;Other (Event)</label>
-    </customValue>
-    <customValue>
-        <fullName>Event (Pre-2025)-&gt;Third Party Event</fullName>
-        <default>false</default>
-        <label>Event (Pre-2025)-&gt;Third Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home (Pre-2025)-&gt;Billboard/Transit</fullName>
-        <default>false</default>
-        <label>Out of Home (Pre-2025)-&gt;Billboard/Transit</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home (Pre-2025)-&gt;Cinema</fullName>
-        <default>false</default>
-        <label>Out of Home (Pre-2025)-&gt;Cinema</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home (Pre-2025)-&gt;Other (Out of Home)</fullName>
-        <default>false</default>
-        <label>Out of Home (Pre-2025)-&gt;Other (Out of Home)</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home (Pre-2025)-&gt;Video Screen</fullName>
-        <default>false</default>
-        <label>Out of Home (Pre-2025)-&gt;Video Screen</label>
-    </customValue>
-    <customValue>
-        <fullName>Print (Pre-2025)-&gt;Collateral</fullName>
-        <default>false</default>
-        <label>Print (Pre-2025)-&gt;Collateral</label>
-    </customValue>
-    <customValue>
-        <fullName>Print (Pre-2025)-&gt;Magazine/Newspaper</fullName>
-        <default>false</default>
-        <label>Print (Pre-2025)-&gt;Magazine/Newspaper</label>
-    </customValue>
-    <customValue>
-        <fullName>Purchase Incentive (Pre-2025)-&gt;Buyer - Bundle Offer</fullName>
-        <default>false</default>
-        <label>Purchase Incentive (Pre-2025)-&gt;Buyer - Bundle Offer</label>
-    </customValue>
-    <customValue>
-        <fullName>Purchase Incentive (Pre-2025)-&gt;Buyer - Other</fullName>
-        <default>false</default>
-        <label>Purchase Incentive (Pre-2025)-&gt;Buyer - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Purchase Incentive (Pre-2025)-&gt;Buyer - Reward/Frequency</fullName>
-        <default>false</default>
-        <label>Purchase Incentive (Pre-2025)-&gt;Buyer - Reward/Frequency</label>
-    </customValue>
-    <customValue>
-        <fullName>Purchase Incentive (Pre-2025)-&gt;Buyer - Sweepstakes</fullName>
-        <default>false</default>
-        <label>Purchase Incentive (Pre-2025)-&gt;Buyer - Sweepstakes</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Contest SPIF</fullName>
-        <default>false</default>
-        <label>Sales Incentive (Pre-2025)-&gt;Seller - Contest SPIF</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Other</fullName>
-        <default>false</default>
-        <label>Sales Incentive (Pre-2025)-&gt;Seller - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF</fullName>
-        <default>false</default>
-        <label>Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF</fullName>
-        <default>false</default>
-        <label>Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness (Pre-2025)-&gt;In-Store Promotion</fullName>
-        <default>false</default>
-        <label>Sales Readiness (Pre-2025)-&gt;In-Store Promotion</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness)</fullName>
-        <default>false</default>
-        <label>Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness)</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness (Pre-2025)-&gt;Out-of-Store Promotion</fullName>
-        <default>false</default>
-        <label>Sales Readiness (Pre-2025)-&gt;Out-of-Store Promotion</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness (Pre-2025)-&gt;Personnel</fullName>
-        <default>false</default>
-        <label>Sales Readiness (Pre-2025)-&gt;Personnel</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness (Pre-2025)-&gt;Telemarketing</fullName>
-        <default>false</default>
-        <label>Sales Readiness (Pre-2025)-&gt;Telemarketing</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness (Pre-2025)-&gt;Training/Meeting</fullName>
-        <default>false</default>
-        <label>Sales Readiness (Pre-2025)-&gt;Training/Meeting</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Case Study</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Case Study</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Demo Hardware</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Demo Hardware</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Demo Hardware/Cloud Instance</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Demo Hardware/Cloud Instance</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Other (Tech Exploration)</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Other (Tech Exploration)</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Proof of Concept</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Proof of Concept</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Seed Unit</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Seed Unit</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;Content Creation</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;Content Creation</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;Email</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;Email</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;Member Website Online Display</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;Member Website Online Display</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;Online Display</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;Online Display</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;Online Video Spot</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;Online Video Spot</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media (Pre-2025)-&gt;Text Ad</fullName>
-        <default>false</default>
-        <label>Digital Media (Pre-2025)-&gt;Text Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Event (Pre-2025)-&gt;Channel Partner Owned Event</fullName>
-        <default>false</default>
-        <label>Event (Pre-2025)-&gt;Channel Partner Owned Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</fullName>
-        <default>false</default>
-        <label>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event (Pre-2025)-&gt;Member Event</fullName>
-        <default>false</default>
-        <label>Event (Pre-2025)-&gt;Member Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event (Pre-2025)-&gt;Member Owned Event</fullName>
-        <default>false</default>
-        <label>Event (Pre-2025)-&gt;Member Owned Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</fullName>
-        <default>false</default>
-        <label>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event (Pre-2025)-&gt;Promotion</fullName>
-        <default>false</default>
-        <label>Event (Pre-2025)-&gt;Promotion</label>
-    </customValue>
-    <customValue>
-        <fullName>Lead Management (Pre-2025)-&gt;Lead Generation</fullName>
-        <default>false</default>
-        <label>Lead Management (Pre-2025)-&gt;Lead Generation</label>
-    </customValue>
-    <customValue>
-        <fullName>Lead Management (Pre-2025)-&gt;Lead Nurturing</fullName>
-        <default>false</default>
-        <label>Lead Management (Pre-2025)-&gt;Lead Nurturing</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home (Pre-2025)-&gt;Other (OOH)</fullName>
-        <default>false</default>
-        <label>Out of Home (Pre-2025)-&gt;Other (OOH)</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</fullName>
-        <default>false</default>
-        <label>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home Media (Pre-2025)-&gt;Cinema</fullName>
-        <default>false</default>
-        <label>Out of Home Media (Pre-2025)-&gt;Cinema</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</fullName>
-        <default>false</default>
-        <label>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</label>
-    </customValue>
-    <customValue>
-        <fullName>Paid Social Media (Pre-2025)-&gt;Social Online Display</fullName>
-        <default>false</default>
-        <label>Paid Social Media (Pre-2025)-&gt;Social Online Display</label>
-    </customValue>
-    <customValue>
-        <fullName>Paid Social Media (Pre-2025)-&gt;Social Post</fullName>
-        <default>false</default>
-        <label>Paid Social Media (Pre-2025)-&gt;Social Post</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media (Pre-2025)-&gt;Catalog/Brochure</fullName>
-        <default>false</default>
-        <label>Print Media (Pre-2025)-&gt;Catalog/Brochure</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media (Pre-2025)-&gt;Collateral - Other</fullName>
-        <default>false</default>
-        <label>Print Media (Pre-2025)-&gt;Collateral - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media (Pre-2025)-&gt;Direct Mail</fullName>
-        <default>false</default>
-        <label>Print Media (Pre-2025)-&gt;Direct Mail</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</fullName>
-        <default>false</default>
-        <label>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media (Pre-2025)-&gt;Magazine/Newspaper</fullName>
-        <default>false</default>
-        <label>Print Media (Pre-2025)-&gt;Magazine/Newspaper</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</fullName>
-        <default>false</default>
-        <label>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</label>
-    </customValue>
-    <customValue>
-        <fullName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</fullName>
-        <default>false</default>
-        <label>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</fullName>
-        <default>false</default>
-        <label>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</fullName>
-        <default>false</default>
-        <label>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness (Pre-2025)-&gt;Collateral</fullName>
-        <default>false</default>
-        <label>Sales Readiness (Pre-2025)-&gt;Collateral</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Benchmarks</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Benchmarks</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Deal Investment</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Deal Investment</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration (Pre-2025)-&gt;Solution Development</fullName>
-        <default>false</default>
-        <label>Tech Exploration (Pre-2025)-&gt;Solution Development</label>
-    </customValue>
-    <customValue>
         <fullName>Broadcast-&gt;Other (Broadcast)</fullName>
         <default>false</default>
         <label>Broadcast-&gt;Other (Broadcast)</label>
@@ -656,9 +81,219 @@
         <label>Broadcast-&gt;Television</label>
     </customValue>
     <customValue>
+        <fullName>Buyer Incentive-&gt;Offer - Bundle</fullName>
+        <default>false</default>
+        <label>Buyer Incentive-&gt;Offer - Bundle</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive-&gt;Offer - Contest</fullName>
+        <default>false</default>
+        <label>Buyer Incentive-&gt;Offer - Contest</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive-&gt;Offer - Other</fullName>
+        <default>false</default>
+        <label>Buyer Incentive-&gt;Offer - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive-&gt;Offer - Rewards</fullName>
+        <default>false</default>
+        <label>Buyer Incentive-&gt;Offer - Rewards</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive-&gt;Offer - Sweepstakes</fullName>
+        <default>false</default>
+        <label>Buyer Incentive-&gt;Offer - Sweepstakes</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive-&gt;Offer - Target</fullName>
+        <default>false</default>
+        <label>Buyer Incentive-&gt;Offer - Target</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive 2025-&gt;Offer - Bundle</fullName>
+        <default>false</default>
+        <label>Buyer Incentive 2025-&gt;Offer - Bundle</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive 2025-&gt;Offer - Contest</fullName>
+        <default>false</default>
+        <label>Buyer Incentive 2025-&gt;Offer - Contest</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive 2025-&gt;Offer - Other</fullName>
+        <default>false</default>
+        <label>Buyer Incentive 2025-&gt;Offer - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive 2025-&gt;Offer - Rewards</fullName>
+        <default>false</default>
+        <label>Buyer Incentive 2025-&gt;Offer - Rewards</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive 2025-&gt;Offer - Sweepstakes</fullName>
+        <default>false</default>
+        <label>Buyer Incentive 2025-&gt;Offer - Sweepstakes</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive 2025-&gt;Offer - Target</fullName>
+        <default>false</default>
+        <label>Buyer Incentive 2025-&gt;Offer - Target</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital-&gt;Display/Video Ad</fullName>
+        <default>false</default>
+        <label>Digital-&gt;Display/Video Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital-&gt;Email</fullName>
+        <default>false</default>
+        <label>Digital-&gt;Email</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital-&gt;Lead Generation</fullName>
+        <default>false</default>
+        <label>Digital-&gt;Lead Generation</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital-&gt;Other (Digital)</fullName>
+        <default>false</default>
+        <label>Digital-&gt;Other (Digital)</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital-&gt;Search (SEM) Ad</fullName>
+        <default>false</default>
+        <label>Digital-&gt;Search (SEM) Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital-&gt;Social Ad</fullName>
+        <default>false</default>
+        <label>Digital-&gt;Social Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital-&gt;Social Post</fullName>
+        <default>false</default>
+        <label>Digital-&gt;Social Post</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital-&gt;Web Content</fullName>
+        <default>false</default>
+        <label>Digital-&gt;Web Content</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Display/Video Ad</fullName>
+        <default>false</default>
+        <label>Digital 2025-&gt;Display/Video Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Email</fullName>
+        <default>false</default>
+        <label>Digital 2025-&gt;Email</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Lead Generation</fullName>
+        <default>false</default>
+        <label>Digital 2025-&gt;Lead Generation</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Other (Digital)</fullName>
+        <default>false</default>
+        <label>Digital 2025-&gt;Other (Digital)</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Search (SEM) Ad</fullName>
+        <default>false</default>
+        <label>Digital 2025-&gt;Search (SEM) Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Social Ad</fullName>
+        <default>false</default>
+        <label>Digital 2025-&gt;Social Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Social Post</fullName>
+        <default>false</default>
+        <label>Digital 2025-&gt;Social Post</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital 2025-&gt;Web Content</fullName>
+        <default>false</default>
+        <label>Digital 2025-&gt;Web Content</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;Content Creation</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;Content Creation</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;EcosystemPartner.com</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;EcosystemPartner.com</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;Email</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;Email</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;Member.com</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;Member.com</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;Member Website Online Display</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;Member Website Online Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;NonPartner.com</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;NonPartner.com</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;Online Display</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;Online Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;Online Video Spot</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;Online Video Spot</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media (Pre-2025)-&gt;Text Ad</fullName>
+        <default>false</default>
+        <label>Digital Media (Pre-2025)-&gt;Text Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media-&gt;Channel Partner Website Online Ad</fullName>
+        <default>false</default>
+        <label>Digital Media-&gt;Channel Partner Website Online Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media-&gt;Content Creation</fullName>
+        <default>false</default>
+        <label>Digital Media-&gt;Content Creation</label>
+    </customValue>
+    <customValue>
         <fullName>Digital Media-&gt;EcosystemPartner.com</fullName>
         <default>false</default>
         <label>Digital Media-&gt;EcosystemPartner.com</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media-&gt;Email</fullName>
+        <default>false</default>
+        <label>Digital Media-&gt;Email</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media-&gt;IndustryPartner.com</fullName>
+        <default>false</default>
+        <label>Digital Media-&gt;IndustryPartner.com</label>
     </customValue>
     <customValue>
         <fullName>Digital Media-&gt;Member.com</fullName>
@@ -666,9 +301,134 @@
         <label>Digital Media-&gt;Member.com</label>
     </customValue>
     <customValue>
+        <fullName>Digital Media-&gt;Member Website Online Display</fullName>
+        <default>false</default>
+        <label>Digital Media-&gt;Member Website Online Display</label>
+    </customValue>
+    <customValue>
         <fullName>Digital Media-&gt;NonPartner.com</fullName>
         <default>false</default>
         <label>Digital Media-&gt;NonPartner.com</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media-&gt;Online Display</fullName>
+        <default>false</default>
+        <label>Digital Media-&gt;Online Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media-&gt;Online Video Spot</fullName>
+        <default>false</default>
+        <label>Digital Media-&gt;Online Video Spot</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media-&gt;Text Ad</fullName>
+        <default>false</default>
+        <label>Digital Media-&gt;Text Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Event (Pre-2025)-&gt;Channel Partner Owned Event</fullName>
+        <default>false</default>
+        <label>Event (Pre-2025)-&gt;Channel Partner Owned Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</fullName>
+        <default>false</default>
+        <label>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event (Pre-2025)-&gt;Joint Event</fullName>
+        <default>false</default>
+        <label>Event (Pre-2025)-&gt;Joint Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event (Pre-2025)-&gt;Member Event</fullName>
+        <default>false</default>
+        <label>Event (Pre-2025)-&gt;Member Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event (Pre-2025)-&gt;Member Owned Event</fullName>
+        <default>false</default>
+        <label>Event (Pre-2025)-&gt;Member Owned Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</fullName>
+        <default>false</default>
+        <label>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event (Pre-2025)-&gt;Other (Event)</fullName>
+        <default>false</default>
+        <label>Event (Pre-2025)-&gt;Other (Event)</label>
+    </customValue>
+    <customValue>
+        <fullName>Event (Pre-2025)-&gt;Promotion</fullName>
+        <default>false</default>
+        <label>Event (Pre-2025)-&gt;Promotion</label>
+    </customValue>
+    <customValue>
+        <fullName>Event (Pre-2025)-&gt;Third Party Event</fullName>
+        <default>false</default>
+        <label>Event (Pre-2025)-&gt;Third Party Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event-&gt;Channel Partner Owned Event</fullName>
+        <default>false</default>
+        <label>Event-&gt;Channel Partner Owned Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event-&gt;Channel Partner Participation in Third-Party Event</fullName>
+        <default>false</default>
+        <label>Event-&gt;Channel Partner Participation in Third-Party Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event-&gt;Joint Event</fullName>
+        <default>false</default>
+        <label>Event-&gt;Joint Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event-&gt;Member Event</fullName>
+        <default>false</default>
+        <label>Event-&gt;Member Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event-&gt;Member Owned Event</fullName>
+        <default>false</default>
+        <label>Event-&gt;Member Owned Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event-&gt;Member Participation in Third-Party Event</fullName>
+        <default>false</default>
+        <label>Event-&gt;Member Participation in Third-Party Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event-&gt;Other (Event)</fullName>
+        <default>false</default>
+        <label>Event-&gt;Other (Event)</label>
+    </customValue>
+    <customValue>
+        <fullName>Event-&gt;Promotion</fullName>
+        <default>false</default>
+        <label>Event-&gt;Promotion</label>
+    </customValue>
+    <customValue>
+        <fullName>Event-&gt;Third Party Event</fullName>
+        <default>false</default>
+        <label>Event-&gt;Third Party Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event 2025-&gt;Joint Event</fullName>
+        <default>false</default>
+        <label>Event 2025-&gt;Joint Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Event 2025-&gt;Other (Event)</fullName>
+        <default>false</default>
+        <label>Event 2025-&gt;Other (Event)</label>
+    </customValue>
+    <customValue>
+        <fullName>Event 2025-&gt;Third Party Event</fullName>
+        <default>false</default>
+        <label>Event 2025-&gt;Third Party Event</label>
     </customValue>
     <customValue>
         <fullName>Events-&gt;Event(Customer-Owned)</fullName>
@@ -726,6 +486,31 @@
         <label>Incentive-&gt;Seller - Target SPIF</label>
     </customValue>
     <customValue>
+        <fullName>Innovation -&gt;Engineering</fullName>
+        <default>false</default>
+        <label>Innovation -&gt;Engineering</label>
+    </customValue>
+    <customValue>
+        <fullName>Lead Management (Pre-2025)-&gt;Lead Generation</fullName>
+        <default>false</default>
+        <label>Lead Management (Pre-2025)-&gt;Lead Generation</label>
+    </customValue>
+    <customValue>
+        <fullName>Lead Management (Pre-2025)-&gt;Lead Nurturing</fullName>
+        <default>false</default>
+        <label>Lead Management (Pre-2025)-&gt;Lead Nurturing</label>
+    </customValue>
+    <customValue>
+        <fullName>Lead Management-&gt;Lead Generation</fullName>
+        <default>false</default>
+        <label>Lead Management-&gt;Lead Generation</label>
+    </customValue>
+    <customValue>
+        <fullName>Lead Management-&gt;Lead Nurturing</fullName>
+        <default>false</default>
+        <label>Lead Management-&gt;Lead Nurturing</label>
+    </customValue>
+    <customValue>
         <fullName>Media-&gt;Billboard, Transit &amp; Digital Signage</fullName>
         <default>false</default>
         <label>Media-&gt;Billboard, Transit &amp; Digital Signage</label>
@@ -756,6 +541,271 @@
         <label>Other-&gt;Other</label>
     </customValue>
     <customValue>
+        <fullName>Outcome-Based-&gt;Outcome-Based</fullName>
+        <default>false</default>
+        <label>Outcome-Based-&gt;Outcome-Based</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home (Pre-2025)-&gt;Billboard/Transit</fullName>
+        <default>false</default>
+        <label>Out of Home (Pre-2025)-&gt;Billboard/Transit</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home (Pre-2025)-&gt;Cinema</fullName>
+        <default>false</default>
+        <label>Out of Home (Pre-2025)-&gt;Cinema</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home (Pre-2025)-&gt;Other (OOH)</fullName>
+        <default>false</default>
+        <label>Out of Home (Pre-2025)-&gt;Other (OOH)</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home (Pre-2025)-&gt;Other (Out of Home)</fullName>
+        <default>false</default>
+        <label>Out of Home (Pre-2025)-&gt;Other (Out of Home)</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home (Pre-2025)-&gt;Video Screen</fullName>
+        <default>false</default>
+        <label>Out of Home (Pre-2025)-&gt;Video Screen</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home-&gt;Billboard/Transit</fullName>
+        <default>false</default>
+        <label>Out of Home-&gt;Billboard/Transit</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home-&gt;Cinema</fullName>
+        <default>false</default>
+        <label>Out of Home-&gt;Cinema</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home-&gt;Other (OOH)</fullName>
+        <default>false</default>
+        <label>Out of Home-&gt;Other (OOH)</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home-&gt;Other (Out Of Home)</fullName>
+        <default>false</default>
+        <label>Out of Home-&gt;Other (Out Of Home)</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home-&gt;Video Screen</fullName>
+        <default>false</default>
+        <label>Out of Home-&gt;Video Screen</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home 2025-&gt;Billboard/Transit</fullName>
+        <default>false</default>
+        <label>Out of Home 2025-&gt;Billboard/Transit</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home 2025-&gt;Cinema</fullName>
+        <default>false</default>
+        <label>Out of Home 2025-&gt;Cinema</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home 2025-&gt;Other (Out Of Home)</fullName>
+        <default>false</default>
+        <label>Out of Home 2025-&gt;Other (Out Of Home)</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home 2025-&gt;Video Screen</fullName>
+        <default>false</default>
+        <label>Out of Home 2025-&gt;Video Screen</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</fullName>
+        <default>false</default>
+        <label>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home Media (Pre-2025)-&gt;Cinema</fullName>
+        <default>false</default>
+        <label>Out of Home Media (Pre-2025)-&gt;Cinema</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</fullName>
+        <default>false</default>
+        <label>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home Media-&gt;Billboard/Transit</fullName>
+        <default>false</default>
+        <label>Out of Home Media-&gt;Billboard/Transit</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home Media-&gt;Cinema</fullName>
+        <default>false</default>
+        <label>Out of Home Media-&gt;Cinema</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home Media-&gt;Digital Video Screen</fullName>
+        <default>false</default>
+        <label>Out of Home Media-&gt;Digital Video Screen</label>
+    </customValue>
+    <customValue>
+        <fullName>Paid Social Media (Pre-2025)-&gt;Social Online Display</fullName>
+        <default>false</default>
+        <label>Paid Social Media (Pre-2025)-&gt;Social Online Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Paid Social Media (Pre-2025)-&gt;Social Post</fullName>
+        <default>false</default>
+        <label>Paid Social Media (Pre-2025)-&gt;Social Post</label>
+    </customValue>
+    <customValue>
+        <fullName>Paid Social Media-&gt;Social Online Display</fullName>
+        <default>false</default>
+        <label>Paid Social Media-&gt;Social Online Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Paid Social Media-&gt;Social Post</fullName>
+        <default>false</default>
+        <label>Paid Social Media-&gt;Social Post</label>
+    </customValue>
+    <customValue>
+        <fullName>Print (Pre-2025)-&gt;Collateral</fullName>
+        <default>false</default>
+        <label>Print (Pre-2025)-&gt;Collateral</label>
+    </customValue>
+    <customValue>
+        <fullName>Print (Pre-2025)-&gt;Magazine/Newspaper</fullName>
+        <default>false</default>
+        <label>Print (Pre-2025)-&gt;Magazine/Newspaper</label>
+    </customValue>
+    <customValue>
+        <fullName>Print-&gt;Collateral</fullName>
+        <default>false</default>
+        <label>Print-&gt;Collateral</label>
+    </customValue>
+    <customValue>
+        <fullName>Print-&gt;Magazine/Newspaper</fullName>
+        <default>false</default>
+        <label>Print-&gt;Magazine/Newspaper</label>
+    </customValue>
+    <customValue>
+        <fullName>Print-&gt;Other (Print)</fullName>
+        <default>false</default>
+        <label>Print-&gt;Other (Print)</label>
+    </customValue>
+    <customValue>
+        <fullName>Print 2025-&gt;Collateral</fullName>
+        <default>false</default>
+        <label>Print 2025-&gt;Collateral</label>
+    </customValue>
+    <customValue>
+        <fullName>Print 2025-&gt;Magazine/Newspaper</fullName>
+        <default>false</default>
+        <label>Print 2025-&gt;Magazine/Newspaper</label>
+    </customValue>
+    <customValue>
+        <fullName>Print 2025-&gt;Other (Print)</fullName>
+        <default>false</default>
+        <label>Print 2025-&gt;Other (Print)</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media (Pre-2025)-&gt;Catalog/Brochure</fullName>
+        <default>false</default>
+        <label>Print Media (Pre-2025)-&gt;Catalog/Brochure</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media (Pre-2025)-&gt;Collateral - Other</fullName>
+        <default>false</default>
+        <label>Print Media (Pre-2025)-&gt;Collateral - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media (Pre-2025)-&gt;Direct Mail</fullName>
+        <default>false</default>
+        <label>Print Media (Pre-2025)-&gt;Direct Mail</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</fullName>
+        <default>false</default>
+        <label>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media (Pre-2025)-&gt;Magazine/Newspaper</fullName>
+        <default>false</default>
+        <label>Print Media (Pre-2025)-&gt;Magazine/Newspaper</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</fullName>
+        <default>false</default>
+        <label>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media-&gt;Catalog/Brochure</fullName>
+        <default>false</default>
+        <label>Print Media-&gt;Catalog/Brochure</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media-&gt;Collateral - Other</fullName>
+        <default>false</default>
+        <label>Print Media-&gt;Collateral - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media-&gt;Direct Mail</fullName>
+        <default>false</default>
+        <label>Print Media-&gt;Direct Mail</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media-&gt;Insert/Outsert/Flyer</fullName>
+        <default>false</default>
+        <label>Print Media-&gt;Insert/Outsert/Flyer</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media-&gt;Magazine/Newspaper</fullName>
+        <default>false</default>
+        <label>Print Media-&gt;Magazine/Newspaper</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media-&gt;Poster/Sign/Banner</fullName>
+        <default>false</default>
+        <label>Print Media-&gt;Poster/Sign/Banner</label>
+    </customValue>
+    <customValue>
+        <fullName>Production-&gt;Content</fullName>
+        <default>false</default>
+        <label>Production-&gt;Content</label>
+    </customValue>
+    <customValue>
+        <fullName>Production-&gt;Other (Production)</fullName>
+        <default>false</default>
+        <label>Production-&gt;Other (Production)</label>
+    </customValue>
+    <customValue>
+        <fullName>Production 2025-&gt;Content</fullName>
+        <default>false</default>
+        <label>Production 2025-&gt;Content</label>
+    </customValue>
+    <customValue>
+        <fullName>Production 2025-&gt;Other (Production)</fullName>
+        <default>false</default>
+        <label>Production 2025-&gt;Other (Production)</label>
+    </customValue>
+    <customValue>
+        <fullName>Purchase Incentive (Pre-2025)-&gt;Buyer - Bundle Offer</fullName>
+        <default>false</default>
+        <label>Purchase Incentive (Pre-2025)-&gt;Buyer - Bundle Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>Purchase Incentive (Pre-2025)-&gt;Buyer - Other</fullName>
+        <default>false</default>
+        <label>Purchase Incentive (Pre-2025)-&gt;Buyer - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Purchase Incentive (Pre-2025)-&gt;Buyer - Reward/Frequency</fullName>
+        <default>false</default>
+        <label>Purchase Incentive (Pre-2025)-&gt;Buyer - Reward/Frequency</label>
+    </customValue>
+    <customValue>
+        <fullName>Purchase Incentive (Pre-2025)-&gt;Buyer - Sweepstakes</fullName>
+        <default>false</default>
+        <label>Purchase Incentive (Pre-2025)-&gt;Buyer - Sweepstakes</label>
+    </customValue>
+    <customValue>
         <fullName>Purchase Incentive-&gt;Buyer - Bundle Offer</fullName>
         <default>false</default>
         <label>Purchase Incentive-&gt;Buyer - Bundle Offer</label>
@@ -776,6 +826,31 @@
         <label>Purchase Incentive-&gt;Buyer - Sweepstakes</label>
     </customValue>
     <customValue>
+        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Contest SPIF</fullName>
+        <default>false</default>
+        <label>Sales Incentive (Pre-2025)-&gt;Seller - Contest SPIF</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Other</fullName>
+        <default>false</default>
+        <label>Sales Incentive (Pre-2025)-&gt;Seller - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</fullName>
+        <default>false</default>
+        <label>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF</fullName>
+        <default>false</default>
+        <label>Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF</fullName>
+        <default>false</default>
+        <label>Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF</label>
+    </customValue>
+    <customValue>
         <fullName>Sales Incentive-&gt;Seller - Contest SPIF</fullName>
         <default>false</default>
         <label>Sales Incentive-&gt;Seller - Contest SPIF</label>
@@ -784,6 +859,11 @@
         <fullName>Sales Incentive-&gt;Seller - Other</fullName>
         <default>false</default>
         <label>Sales Incentive-&gt;Seller - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Incentive-&gt;Seller - Per Instance SPIF</fullName>
+        <default>false</default>
+        <label>Sales Incentive-&gt;Seller - Per Instance SPIF</label>
     </customValue>
     <customValue>
         <fullName>Sales Incentive-&gt;Seller - Per Unit SPIF</fullName>
@@ -826,6 +906,46 @@
         <label>Sales Incentives-&gt;Sweepstakes</label>
     </customValue>
     <customValue>
+        <fullName>Sales Readiness (Pre-2025)-&gt;Collateral</fullName>
+        <default>false</default>
+        <label>Sales Readiness (Pre-2025)-&gt;Collateral</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness (Pre-2025)-&gt;In-Store Promotion</fullName>
+        <default>false</default>
+        <label>Sales Readiness (Pre-2025)-&gt;In-Store Promotion</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness)</fullName>
+        <default>false</default>
+        <label>Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness)</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness (Pre-2025)-&gt;Out-of-Store Promotion</fullName>
+        <default>false</default>
+        <label>Sales Readiness (Pre-2025)-&gt;Out-of-Store Promotion</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness (Pre-2025)-&gt;Personnel</fullName>
+        <default>false</default>
+        <label>Sales Readiness (Pre-2025)-&gt;Personnel</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness (Pre-2025)-&gt;Telemarketing</fullName>
+        <default>false</default>
+        <label>Sales Readiness (Pre-2025)-&gt;Telemarketing</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness (Pre-2025)-&gt;Training/Meeting</fullName>
+        <default>false</default>
+        <label>Sales Readiness (Pre-2025)-&gt;Training/Meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness-&gt;Collateral</fullName>
+        <default>false</default>
+        <label>Sales Readiness-&gt;Collateral</label>
+    </customValue>
+    <customValue>
         <fullName>Sales Readiness-&gt;Customer Demonstrations (External)</fullName>
         <default>false</default>
         <label>Sales Readiness-&gt;Customer Demonstrations (External)</label>
@@ -851,9 +971,29 @@
         <label>Sales Readiness-&gt;Marketing Support Headcount</label>
     </customValue>
     <customValue>
+        <fullName>Sales Readiness-&gt;Other (Sales Readiness)</fullName>
+        <default>false</default>
+        <label>Sales Readiness-&gt;Other (Sales Readiness)</label>
+    </customValue>
+    <customValue>
         <fullName>Sales Readiness-&gt;Out-of-Store Promotion</fullName>
         <default>false</default>
         <label>Sales Readiness-&gt;Out-of-Store Promotion</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness-&gt;Personnel</fullName>
+        <default>false</default>
+        <label>Sales Readiness-&gt;Personnel</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness-&gt;Promotion - Non-Retail</fullName>
+        <default>false</default>
+        <label>Sales Readiness-&gt;Promotion - Non-Retail</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness-&gt;Promotion - Retail</fullName>
+        <default>false</default>
+        <label>Sales Readiness-&gt;Promotion - Retail</label>
     </customValue>
     <customValue>
         <fullName>Sales Readiness-&gt;Proof-of-Concept</fullName>
@@ -881,9 +1021,169 @@
         <label>Sales Readiness-&gt;Telemarketing</label>
     </customValue>
     <customValue>
+        <fullName>Sales Readiness-&gt;Training/Meeting</fullName>
+        <default>false</default>
+        <label>Sales Readiness-&gt;Training/Meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness-&gt;Training Incentive</fullName>
+        <default>false</default>
+        <label>Sales Readiness-&gt;Training Incentive</label>
+    </customValue>
+    <customValue>
         <fullName>Sales Readiness-&gt;White Paper/Case Study/Benchmarking</fullName>
         <default>false</default>
         <label>Sales Readiness-&gt;White Paper/Case Study/Benchmarking</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness 2025-&gt;Collateral</fullName>
+        <default>false</default>
+        <label>Sales Readiness 2025-&gt;Collateral</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness 2025-&gt;Other (Sales Readiness)</fullName>
+        <default>false</default>
+        <label>Sales Readiness 2025-&gt;Other (Sales Readiness)</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness 2025-&gt;Personnel</fullName>
+        <default>false</default>
+        <label>Sales Readiness 2025-&gt;Personnel</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness 2025-&gt;Promotion - Non-Retail</fullName>
+        <default>false</default>
+        <label>Sales Readiness 2025-&gt;Promotion - Non-Retail</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness 2025-&gt;Promotion - Retail</fullName>
+        <default>false</default>
+        <label>Sales Readiness 2025-&gt;Promotion - Retail</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness 2025-&gt;Training/Meeting</fullName>
+        <default>false</default>
+        <label>Sales Readiness 2025-&gt;Training/Meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness 2025-&gt;Training Incentive</fullName>
+        <default>false</default>
+        <label>Sales Readiness 2025-&gt;Training Incentive</label>
+    </customValue>
+    <customValue>
+        <fullName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</fullName>
+        <default>false</default>
+        <label>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</fullName>
+        <default>false</default>
+        <label>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Search Engine Marketing (SEM)-&gt;Graphic Ad</fullName>
+        <default>false</default>
+        <label>Search Engine Marketing (SEM)-&gt;Graphic Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Search Engine Marketing (SEM)-&gt;Text Ad</fullName>
+        <default>false</default>
+        <label>Search Engine Marketing (SEM)-&gt;Text Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller Incentive-&gt;SPIF - Contest</fullName>
+        <default>false</default>
+        <label>Seller Incentive-&gt;SPIF - Contest</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller Incentive-&gt;SPIF - Other</fullName>
+        <default>false</default>
+        <label>Seller Incentive-&gt;SPIF - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller Incentive-&gt;SPIF - Target</fullName>
+        <default>false</default>
+        <label>Seller Incentive-&gt;SPIF - Target</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller Incentive-&gt;SPIF - Volume</fullName>
+        <default>false</default>
+        <label>Seller Incentive-&gt;SPIF - Volume</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller Incentive 2025-&gt;SPIF - Contest</fullName>
+        <default>false</default>
+        <label>Seller Incentive 2025-&gt;SPIF - Contest</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller Incentive 2025-&gt;SPIF - Other</fullName>
+        <default>false</default>
+        <label>Seller Incentive 2025-&gt;SPIF - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller Incentive 2025-&gt;SPIF - Target</fullName>
+        <default>false</default>
+        <label>Seller Incentive 2025-&gt;SPIF - Target</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller Incentive 2025-&gt;SPIF - Volume</fullName>
+        <default>false</default>
+        <label>Seller Incentive 2025-&gt;SPIF - Volume</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Benchmarks</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Benchmarks</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Case Study</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Case Study</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Deal Investment</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Deal Investment</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Demo Hardware</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Demo Hardware</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Demo Hardware/Cloud Instance</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Demo Hardware/Cloud Instance</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Other (Tech Exploration)</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Other (Tech Exploration)</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Proof of Concept</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Proof of Concept</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Seed Unit</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Seed Unit</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration (Pre-2025)-&gt;Solution Development</fullName>
+        <default>false</default>
+        <label>Tech Exploration (Pre-2025)-&gt;Solution Development</label>
     </customValue>
     <customValue>
         <fullName>Tech Exploration-&gt;Benchmarks</fullName>
@@ -896,6 +1196,16 @@
         <label>Tech Exploration-&gt;Case Study</label>
     </customValue>
     <customValue>
+        <fullName>Tech Exploration-&gt;Cloud/Platform Trial</fullName>
+        <default>false</default>
+        <label>Tech Exploration-&gt;Cloud/Platform Trial</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration-&gt;Deal Investment</fullName>
+        <default>false</default>
+        <label>Tech Exploration-&gt;Deal Investment</label>
+    </customValue>
+    <customValue>
         <fullName>Tech Exploration-&gt;Demo Hardware</fullName>
         <default>false</default>
         <label>Tech Exploration-&gt;Demo Hardware</label>
@@ -904,6 +1214,11 @@
         <fullName>Tech Exploration-&gt;Demo Hardware/Cloud Instance</fullName>
         <default>false</default>
         <label>Tech Exploration-&gt;Demo Hardware/Cloud Instance</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration-&gt;Joint Engineering/Optimization</fullName>
+        <default>false</default>
+        <label>Tech Exploration-&gt;Joint Engineering/Optimization</label>
     </customValue>
     <customValue>
         <fullName>Tech Exploration-&gt;Other (Tech Exploration)</fullName>
@@ -921,254 +1236,64 @@
         <label>Tech Exploration-&gt;Seed Unit</label>
     </customValue>
     <customValue>
-        <fullName>Sales Incentive-&gt;Seller - Per Instance SPIF</fullName>
-        <default>false</default>
-        <label>Sales Incentive-&gt;Seller - Per Instance SPIF</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration-&gt;Cloud/Platform Trial</fullName>
-        <default>false</default>
-        <label>Tech Exploration-&gt;Cloud/Platform Trial</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration-&gt;Joint Engineering/Optimization</fullName>
-        <default>false</default>
-        <label>Tech Exploration-&gt;Joint Engineering/Optimization</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration-&gt;Deal Investment</fullName>
-        <default>false</default>
-        <label>Tech Exploration-&gt;Deal Investment</label>
-    </customValue>
-    <customValue>
         <fullName>Tech Exploration-&gt;Solution Development</fullName>
         <default>false</default>
         <label>Tech Exploration-&gt;Solution Development</label>
     </customValue>
     <customValue>
-        <fullName>Digital 2025-&gt;Display/Video Ad</fullName>
+        <fullName>Technical Sales-&gt;Benchmarking</fullName>
         <default>false</default>
-        <label>Digital 2025-&gt;Display/Video Ad</label>
+        <label>Technical Sales-&gt;Benchmarking</label>
     </customValue>
     <customValue>
-        <fullName>Digital 2025-&gt;Email</fullName>
+        <fullName>Technical Sales-&gt;Case Study</fullName>
         <default>false</default>
-        <label>Digital 2025-&gt;Email</label>
+        <label>Technical Sales-&gt;Case Study</label>
     </customValue>
     <customValue>
-        <fullName>Digital 2025-&gt;Other (Digital)</fullName>
+        <fullName>Technical Sales-&gt;Migration</fullName>
         <default>false</default>
-        <label>Digital 2025-&gt;Other (Digital)</label>
+        <label>Technical Sales-&gt;Migration</label>
     </customValue>
     <customValue>
-        <fullName>Digital 2025-&gt;Search (SEM) Ad</fullName>
+        <fullName>Technical Sales-&gt;Other (Technical Sales)</fullName>
         <default>false</default>
-        <label>Digital 2025-&gt;Search (SEM) Ad</label>
+        <label>Technical Sales-&gt;Other (Technical Sales)</label>
     </customValue>
     <customValue>
-        <fullName>Digital 2025-&gt;Social Ad</fullName>
+        <fullName>Technical Sales-&gt;Proof of Concept</fullName>
         <default>false</default>
-        <label>Digital 2025-&gt;Social Ad</label>
+        <label>Technical Sales-&gt;Proof of Concept</label>
     </customValue>
     <customValue>
-        <fullName>Digital 2025-&gt;Social Post</fullName>
+        <fullName>Technical Sales-&gt;Sales Event</fullName>
         <default>false</default>
-        <label>Digital 2025-&gt;Social Post</label>
+        <label>Technical Sales-&gt;Sales Event</label>
     </customValue>
     <customValue>
-        <fullName>Digital 2025-&gt;Web Content</fullName>
+        <fullName>Technical Sales-&gt;Seed Unit</fullName>
         <default>false</default>
-        <label>Digital 2025-&gt;Web Content</label>
+        <label>Technical Sales-&gt;Seed Unit</label>
     </customValue>
     <customValue>
-        <fullName>Digital 2025-&gt;Lead Generation</fullName>
+        <fullName>Technical Sales-&gt;System Demo</fullName>
         <default>false</default>
-        <label>Digital 2025-&gt;Lead Generation</label>
+        <label>Technical Sales-&gt;System Demo</label>
     </customValue>
     <customValue>
-        <fullName>Print 2025-&gt;Collateral</fullName>
+        <fullName>Technical Sales-&gt;Telemarketing</fullName>
         <default>false</default>
-        <label>Print 2025-&gt;Collateral</label>
+        <label>Technical Sales-&gt;Telemarketing</label>
     </customValue>
     <customValue>
-        <fullName>Print 2025-&gt;Magazine/Newspaper</fullName>
+        <fullName>Technical Sales-&gt;Trial Instance</fullName>
         <default>false</default>
-        <label>Print 2025-&gt;Magazine/Newspaper</label>
+        <label>Technical Sales-&gt;Trial Instance</label>
     </customValue>
     <customValue>
-        <fullName>Print 2025-&gt;Other (Print)</fullName>
+        <fullName>Technical Sales 2025-&gt;Benchmarking</fullName>
         <default>false</default>
-        <label>Print 2025-&gt;Other (Print)</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home 2025-&gt;Billboard/Transit</fullName>
-        <default>false</default>
-        <label>Out of Home 2025-&gt;Billboard/Transit</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home 2025-&gt;Cinema</fullName>
-        <default>false</default>
-        <label>Out of Home 2025-&gt;Cinema</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home 2025-&gt;Video Screen</fullName>
-        <default>false</default>
-        <label>Out of Home 2025-&gt;Video Screen</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home 2025-&gt;Other (Out Of Home)</fullName>
-        <default>false</default>
-        <label>Out of Home 2025-&gt;Other (Out Of Home)</label>
-    </customValue>
-    <customValue>
-        <fullName>Video 2025-&gt;Television</fullName>
-        <default>false</default>
-        <label>Video 2025-&gt;Television</label>
-    </customValue>
-    <customValue>
-        <fullName>Video 2025-&gt;Streaming</fullName>
-        <default>false</default>
-        <label>Video 2025-&gt;Streaming</label>
-    </customValue>
-    <customValue>
-        <fullName>Video 2025-&gt;Other (Video)</fullName>
-        <default>false</default>
-        <label>Video 2025-&gt;Other (Video)</label>
-    </customValue>
-    <customValue>
-        <fullName>Event 2025-&gt;Third Party Event</fullName>
-        <default>false</default>
-        <label>Event 2025-&gt;Third Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event 2025-&gt;Joint Event</fullName>
-        <default>false</default>
-        <label>Event 2025-&gt;Joint Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event 2025-&gt;Other (Event)</fullName>
-        <default>false</default>
-        <label>Event 2025-&gt;Other (Event)</label>
-    </customValue>
-    <customValue>
-        <fullName>Production 2025-&gt;Content</fullName>
-        <default>false</default>
-        <label>Production 2025-&gt;Content</label>
-    </customValue>
-    <customValue>
-        <fullName>Production 2025-&gt;Other (Production)</fullName>
-        <default>false</default>
-        <label>Production 2025-&gt;Other (Production)</label>
-    </customValue>
-    <customValue>
-        <fullName>Seller Incentive 2025-&gt;SPIF - Volume</fullName>
-        <default>false</default>
-        <label>Seller Incentive 2025-&gt;SPIF - Volume</label>
-    </customValue>
-    <customValue>
-        <fullName>Seller Incentive 2025-&gt;SPIF - Target</fullName>
-        <default>false</default>
-        <label>Seller Incentive 2025-&gt;SPIF - Target</label>
-    </customValue>
-    <customValue>
-        <fullName>Seller Incentive 2025-&gt;SPIF - Contest</fullName>
-        <default>false</default>
-        <label>Seller Incentive 2025-&gt;SPIF - Contest</label>
-    </customValue>
-    <customValue>
-        <fullName>Seller Incentive 2025-&gt;SPIF - Other</fullName>
-        <default>false</default>
-        <label>Seller Incentive 2025-&gt;SPIF - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive 2025-&gt;Offer - Bundle</fullName>
-        <default>false</default>
-        <label>Buyer Incentive 2025-&gt;Offer - Bundle</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive 2025-&gt;Offer - Sweepstakes</fullName>
-        <default>false</default>
-        <label>Buyer Incentive 2025-&gt;Offer - Sweepstakes</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive 2025-&gt;Offer - Rewards</fullName>
-        <default>false</default>
-        <label>Buyer Incentive 2025-&gt;Offer - Rewards</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive 2025-&gt;Offer - Target</fullName>
-        <default>false</default>
-        <label>Buyer Incentive 2025-&gt;Offer - Target</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive 2025-&gt;Offer - Contest</fullName>
-        <default>false</default>
-        <label>Buyer Incentive 2025-&gt;Offer - Contest</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer Incentive 2025-&gt;Offer - Other</fullName>
-        <default>false</default>
-        <label>Buyer Incentive 2025-&gt;Offer - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025-&gt;Collateral</fullName>
-        <default>false</default>
-        <label>Sales Readiness 2025-&gt;Collateral</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025-&gt;Promotion - Retail</fullName>
-        <default>false</default>
-        <label>Sales Readiness 2025-&gt;Promotion - Retail</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025-&gt;Promotion - Non-Retail</fullName>
-        <default>false</default>
-        <label>Sales Readiness 2025-&gt;Promotion - Non-Retail</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025-&gt;Training/Meeting</fullName>
-        <default>false</default>
-        <label>Sales Readiness 2025-&gt;Training/Meeting</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025-&gt;Training Incentive</fullName>
-        <default>false</default>
-        <label>Sales Readiness 2025-&gt;Training Incentive</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025-&gt;Personnel</fullName>
-        <default>false</default>
-        <label>Sales Readiness 2025-&gt;Personnel</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025-&gt;Other (Sales Readiness)</fullName>
-        <default>false</default>
-        <label>Sales Readiness 2025-&gt;Other (Sales Readiness)</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales 2025-&gt;Sales Event</fullName>
-        <default>false</default>
-        <label>Technical Sales 2025-&gt;Sales Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales 2025-&gt;Seed Unit</fullName>
-        <default>false</default>
-        <label>Technical Sales 2025-&gt;Seed Unit</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales 2025-&gt;Trial Instance</fullName>
-        <default>false</default>
-        <label>Technical Sales 2025-&gt;Trial Instance</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales 2025-&gt;System Demo</fullName>
-        <default>false</default>
-        <label>Technical Sales 2025-&gt;System Demo</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Sales 2025-&gt;Proof of Concept</fullName>
-        <default>false</default>
-        <label>Technical Sales 2025-&gt;Proof of Concept</label>
+        <label>Technical Sales 2025-&gt;Benchmarking</label>
     </customValue>
     <customValue>
         <fullName>Technical Sales 2025-&gt;Case Study</fullName>
@@ -1181,9 +1306,29 @@
         <label>Technical Sales 2025-&gt;Migration</label>
     </customValue>
     <customValue>
-        <fullName>Technical Sales 2025-&gt;Benchmarking</fullName>
+        <fullName>Technical Sales 2025-&gt;Other (Technical Sales)</fullName>
         <default>false</default>
-        <label>Technical Sales 2025-&gt;Benchmarking</label>
+        <label>Technical Sales 2025-&gt;Other (Technical Sales)</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical Sales 2025-&gt;Proof of Concept</fullName>
+        <default>false</default>
+        <label>Technical Sales 2025-&gt;Proof of Concept</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical Sales 2025-&gt;Sales Event</fullName>
+        <default>false</default>
+        <label>Technical Sales 2025-&gt;Sales Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical Sales 2025-&gt;Seed Unit</fullName>
+        <default>false</default>
+        <label>Technical Sales 2025-&gt;Seed Unit</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical Sales 2025-&gt;System Demo</fullName>
+        <default>false</default>
+        <label>Technical Sales 2025-&gt;System Demo</label>
     </customValue>
     <customValue>
         <fullName>Technical Sales 2025-&gt;Telemarketing</fullName>
@@ -1191,184 +1336,81 @@
         <label>Technical Sales 2025-&gt;Telemarketing</label>
     </customValue>
     <customValue>
-        <fullName>Technical Sales 2025-&gt;Other (Technical Sales)</fullName>
+        <fullName>Technical Sales 2025-&gt;Trial Instance</fullName>
         <default>false</default>
-        <label>Technical Sales 2025-&gt;Other (Technical Sales)</label>
+        <label>Technical Sales 2025-&gt;Trial Instance</label>
     </customValue>
     <customValue>
-        <fullName>Audio 2025-&gt;Podcast</fullName>
+        <fullName>Video-&gt;Other (Video)</fullName>
         <default>false</default>
-        <label>Audio 2025-&gt;Podcast</label>
+        <label>Video-&gt;Other (Video)</label>
     </customValue>
     <customValue>
-        <fullName>Audio 2025-&gt;Radio</fullName>
+        <fullName>Video-&gt;Streaming</fullName>
         <default>false</default>
-        <label>Audio 2025-&gt;Radio</label>
+        <label>Video-&gt;Streaming</label>
     </customValue>
     <customValue>
-        <fullName>Audio 2025-&gt;Other (Audio)</fullName>
+        <fullName>Video-&gt;Television</fullName>
         <default>false</default>
-        <label>Audio 2025-&gt;Other (Audio)</label>
+        <label>Video-&gt;Television</label>
     </customValue>
     <customValue>
-        <fullName>Digital Media-&gt;Channel Partner Website Online Ad</fullName>
+        <fullName>Video 2025-&gt;Other (Video)</fullName>
         <default>false</default>
-        <label>Digital Media-&gt;Channel Partner Website Online Ad</label>
+        <label>Video 2025-&gt;Other (Video)</label>
     </customValue>
     <customValue>
-        <fullName>Digital Media-&gt;Content Creation</fullName>
+        <fullName>Video 2025-&gt;Streaming</fullName>
         <default>false</default>
-        <label>Digital Media-&gt;Content Creation</label>
+        <label>Video 2025-&gt;Streaming</label>
     </customValue>
     <customValue>
-        <fullName>Digital Media-&gt;Email</fullName>
+        <fullName>Video 2025-&gt;Television</fullName>
         <default>false</default>
-        <label>Digital Media-&gt;Email</label>
+        <label>Video 2025-&gt;Television</label>
     </customValue>
     <customValue>
-        <fullName>Digital Media-&gt;Member Website Online Display</fullName>
+        <fullName>Online -&gt; Affiliate/Referral Programs</fullName>
         <default>false</default>
-        <label>Digital Media-&gt;Member Website Online Display</label>
+        <isActive>false</isActive>
+        <label>Online -&gt; Affiliate/Referral Programs</label>
     </customValue>
     <customValue>
-        <fullName>Digital Media-&gt;Online Display</fullName>
+        <fullName>Media -&gt; Broadcast (Audio-Visual)</fullName>
         <default>false</default>
-        <label>Digital Media-&gt;Online Display</label>
+        <isActive>false</isActive>
+        <label>Media -&gt; Broadcast (Audio-Visual)</label>
     </customValue>
     <customValue>
-        <fullName>Digital Media-&gt;Online Video Spot</fullName>
+        <fullName>Media -&gt; Billboard, Transit &amp; Digital Signage</fullName>
         <default>false</default>
-        <label>Digital Media-&gt;Online Video Spot</label>
+        <isActive>false</isActive>
+        <label>Media -&gt; Billboard, Transit &amp; Digital Signage</label>
     </customValue>
     <customValue>
-        <fullName>Digital Media-&gt;Text Ad</fullName>
+        <fullName>Events -&gt; Sponsorships/Third-Party Event</fullName>
         <default>false</default>
-        <label>Digital Media-&gt;Text Ad</label>
+        <isActive>false</isActive>
+        <label>Events -&gt; Sponsorships/Third-Party Event</label>
     </customValue>
     <customValue>
-        <fullName>Event-&gt;Channel Partner Owned Event</fullName>
+        <fullName>Events -&gt; Event with Product Sales Onsite</fullName>
         <default>false</default>
-        <label>Event-&gt;Channel Partner Owned Event</label>
+        <isActive>false</isActive>
+        <label>Events -&gt; Event with Product Sales Onsite</label>
     </customValue>
     <customValue>
-        <fullName>Event-&gt;Channel Partner Participation in Third-Party Event</fullName>
+        <fullName>Events -&gt; Event(Customer-Owned)</fullName>
         <default>false</default>
-        <label>Event-&gt;Channel Partner Participation in Third-Party Event</label>
+        <isActive>false</isActive>
+        <label>Events -&gt; Event(Customer-Owned)</label>
     </customValue>
     <customValue>
-        <fullName>Event-&gt;Member Event</fullName>
+        <fullName>Digital Media-&gt;Channel Partner Online Display</fullName>
         <default>false</default>
-        <label>Event-&gt;Member Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event-&gt;Member Owned Event</fullName>
-        <default>false</default>
-        <label>Event-&gt;Member Owned Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event-&gt;Member Participation in Third-Party Event</fullName>
-        <default>false</default>
-        <label>Event-&gt;Member Participation in Third-Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Event-&gt;Promotion</fullName>
-        <default>false</default>
-        <label>Event-&gt;Promotion</label>
-    </customValue>
-    <customValue>
-        <fullName>Lead Management-&gt;Lead Generation</fullName>
-        <default>false</default>
-        <label>Lead Management-&gt;Lead Generation</label>
-    </customValue>
-    <customValue>
-        <fullName>Lead Management-&gt;Lead Nurturing</fullName>
-        <default>false</default>
-        <label>Lead Management-&gt;Lead Nurturing</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home-&gt;Other (OOH)</fullName>
-        <default>false</default>
-        <label>Out of Home-&gt;Other (OOH)</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home Media-&gt;Billboard/Transit</fullName>
-        <default>false</default>
-        <label>Out of Home Media-&gt;Billboard/Transit</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home Media-&gt;Cinema</fullName>
-        <default>false</default>
-        <label>Out of Home Media-&gt;Cinema</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home Media-&gt;Digital Video Screen</fullName>
-        <default>false</default>
-        <label>Out of Home Media-&gt;Digital Video Screen</label>
-    </customValue>
-    <customValue>
-        <fullName>Paid Social Media-&gt;Social Online Display</fullName>
-        <default>false</default>
-        <label>Paid Social Media-&gt;Social Online Display</label>
-    </customValue>
-    <customValue>
-        <fullName>Paid Social Media-&gt;Social Post</fullName>
-        <default>false</default>
-        <label>Paid Social Media-&gt;Social Post</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media-&gt;Catalog/Brochure</fullName>
-        <default>false</default>
-        <label>Print Media-&gt;Catalog/Brochure</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media-&gt;Collateral - Other</fullName>
-        <default>false</default>
-        <label>Print Media-&gt;Collateral - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media-&gt;Direct Mail</fullName>
-        <default>false</default>
-        <label>Print Media-&gt;Direct Mail</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media-&gt;Insert/Outsert/Flyer</fullName>
-        <default>false</default>
-        <label>Print Media-&gt;Insert/Outsert/Flyer</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media-&gt;Magazine/Newspaper</fullName>
-        <default>false</default>
-        <label>Print Media-&gt;Magazine/Newspaper</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media-&gt;Poster/Sign/Banner</fullName>
-        <default>false</default>
-        <label>Print Media-&gt;Poster/Sign/Banner</label>
-    </customValue>
-    <customValue>
-        <fullName>Search Engine Marketing (SEM)-&gt;Graphic Ad</fullName>
-        <default>false</default>
-        <label>Search Engine Marketing (SEM)-&gt;Graphic Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Search Engine Marketing (SEM)-&gt;Text Ad</fullName>
-        <default>false</default>
-        <label>Search Engine Marketing (SEM)-&gt;Text Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Innovation -&gt;Engineering</fullName>
-        <default>false</default>
-        <label>Innovation -&gt;Engineering</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media-&gt;IndustryPartner.com</fullName>
-        <default>false</default>
-        <label>Digital Media-&gt;IndustryPartner.com</label>
-    </customValue>
-    <customValue>
-        <fullName>Outcome-Based-&gt;Outcome-Based</fullName>
-        <default>false</default>
-        <label>Outcome-Based-&gt;Outcome-Based</label>
+        <isActive>false</isActive>
+        <label>Digital Media-&gt;Channel Partner Online Display</label>
     </customValue>
     <customValue>
         <fullName>Test2</fullName>
@@ -1616,48 +1658,6 @@
         <isActive>false</isActive>
         <label>Online -&gt; Custom.COM</label>
     </customValue>
-    <customValue>
-        <fullName>Online -&gt; Affiliate/Referral Programs</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Online -&gt; Affiliate/Referral Programs</label>
-    </customValue>
-    <customValue>
-        <fullName>Media -&gt; Broadcast (Audio-Visual)</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Media -&gt; Broadcast (Audio-Visual)</label>
-    </customValue>
-    <customValue>
-        <fullName>Media -&gt; Billboard, Transit &amp; Digital Signage</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Media -&gt; Billboard, Transit &amp; Digital Signage</label>
-    </customValue>
-    <customValue>
-        <fullName>Events -&gt; Sponsorships/Third-Party Event</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Events -&gt; Sponsorships/Third-Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Events -&gt; Event with Product Sales Onsite</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Events -&gt; Event with Product Sales Onsite</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media-&gt;Channel Partner Online Display</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Digital Media-&gt;Channel Partner Online Display</label>
-    </customValue>
-    <customValue>
-        <fullName>Events -&gt; Event(Customer-Owned)</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Events -&gt; Event(Customer-Owned)</label>
-    </customValue>
     <masterLabel>Activity Category -&gt;Type</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

@@ -1794,6 +1794,27 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
+                <controllingFieldValue>CMP only</controllingFieldValue>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Broadcast-&gt;Podcast</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <controllingFieldValue>CMP only</controllingFieldValue>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Broadcast-&gt;Radio</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <controllingFieldValue>CMP only</controllingFieldValue>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Broadcast-&gt;Television</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
                 <valueName>Digital Media (Pre-2025)-&gt;Channel Partner Website Online Ad</valueName>
             </valueSettings>
             <valueSettings>
@@ -1819,107 +1840,6 @@
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
                 <valueName>Digital Media (Pre-2025)-&gt;Text Ad</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Channel Partner Owned Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Member Owned Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Promotion</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Lead Management (Pre-2025)-&gt;Lead Generation</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Lead Management (Pre-2025)-&gt;Lead Nurturing</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Out of Home Media (Pre-2025)-&gt;Cinema</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Paid Social Media (Pre-2025)-&gt;Social Online Display</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Paid Social Media (Pre-2025)-&gt;Social Post</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Catalog/Brochure</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Collateral - Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Direct Mail</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Magazine/Newspaper</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <valueName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <controllingFieldValue>CMP only</controllingFieldValue>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Broadcast-&gt;Podcast</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <controllingFieldValue>CMP only</controllingFieldValue>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Broadcast-&gt;Radio</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Yes</controllingFieldValue>
-                <controllingFieldValue>CMP only</controllingFieldValue>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Broadcast-&gt;Television</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
@@ -1951,6 +1871,26 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Channel Partner Owned Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Member Owned Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Promotion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
                 <valueName>Event-&gt;Channel Partner Owned Event</valueName>
             </valueSettings>
             <valueSettings>
@@ -1971,11 +1911,31 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Lead Management (Pre-2025)-&gt;Lead Generation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Lead Management (Pre-2025)-&gt;Lead Nurturing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
                 <valueName>Lead Management-&gt;Lead Generation</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
                 <valueName>Lead Management-&gt;Lead Nurturing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Out of Home Media (Pre-2025)-&gt;Cinema</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
@@ -1991,11 +1951,43 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Paid Social Media (Pre-2025)-&gt;Social Online Display</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Paid Social Media (Pre-2025)-&gt;Social Post</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
                 <valueName>Paid Social Media-&gt;Social Online Display</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
                 <valueName>Paid Social Media-&gt;Social Post</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Catalog/Brochure</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Collateral - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Direct Mail</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Magazine/Newspaper</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
@@ -2023,6 +2015,14 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
                 <valueName>Search Engine Marketing (SEM)-&gt;Graphic Ad</valueName>
             </valueSettings>
             <valueSettings>
@@ -2045,6 +2045,18 @@
                 <controllingFieldValue>CMP only</controllingFieldValue>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Broadcast-&gt;Other (Broadcast)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CMP only</controllingFieldValue>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Broadcast-&gt;Streaming</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CMP only</controllingFieldValue>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Digital Media (Pre-2025)-&gt;EcosystemPartner.com</valueName>
             </valueSettings>
             <valueSettings>
@@ -2052,6 +2064,18 @@
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Digital Media (Pre-2025)-&gt;NonPartner.com</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CMP only</controllingFieldValue>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Digital Media-&gt;EcosystemPartner.com</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CMP only</controllingFieldValue>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Digital Media-&gt;NonPartner.com</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CMP only</controllingFieldValue>
@@ -2102,33 +2126,14 @@
                 <valueName>Print (Pre-2025)-&gt;Magazine/Newspaper</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>CMP only</controllingFieldValue>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Broadcast-&gt;Other (Broadcast)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CMP only</controllingFieldValue>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Broadcast-&gt;Streaming</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CMP only</controllingFieldValue>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Digital Media-&gt;EcosystemPartner.com</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CMP only</controllingFieldValue>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Digital Media-&gt;NonPartner.com</valueName>
-            </valueSettings>
-            <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Digital Media (Pre-2025)-&gt;Member.com</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Digital Media-&gt;Member.com</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2158,6 +2163,26 @@
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Purchase Incentive-&gt;Buyer - Bundle Offer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Purchase Incentive-&gt;Buyer - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Purchase Incentive-&gt;Buyer - Reward/Frequency</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Purchase Incentive-&gt;Buyer - Sweepstakes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Contest SPIF</valueName>
             </valueSettings>
             <valueSettings>
@@ -2168,12 +2193,42 @@
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Incentive-&gt;Seller - Contest SPIF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Incentive-&gt;Seller - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Incentive-&gt;Seller - Per Instance SPIF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Incentive-&gt;Seller - Per Unit SPIF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Incentive-&gt;Seller - Target SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2208,7 +2263,37 @@
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;In-Store Promotion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Out-of-Store Promotion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Telemarketing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Benchmarks</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Tech Exploration (Pre-2025)-&gt;Case Study</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Deal Investment</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2219,6 +2304,11 @@
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Tech Exploration (Pre-2025)-&gt;Demo Hardware/Cloud Instance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2238,92 +2328,7 @@
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Benchmarks</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Deal Investment</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Tech Exploration (Pre-2025)-&gt;Solution Development</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Digital Media-&gt;Member.com</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Purchase Incentive-&gt;Buyer - Bundle Offer</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Purchase Incentive-&gt;Buyer - Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Purchase Incentive-&gt;Buyer - Reward/Frequency</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Purchase Incentive-&gt;Buyer - Sweepstakes</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Contest SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Per Unit SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Target SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;In-Store Promotion</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Out-of-Store Promotion</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Telemarketing</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2338,12 +2343,27 @@
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Cloud/Platform Trial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Deal Investment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Tech Exploration-&gt;Demo Hardware</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Tech Exploration-&gt;Demo Hardware/Cloud Instance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Joint Engineering/Optimization</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2363,27 +2383,103 @@
             <valueSettings>
                 <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Per Instance SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Cloud/Platform Trial</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Joint Engineering/Optimization</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Deal Investment</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Tech Exploration-&gt;Solution Development</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Audio-&gt;Other (Audio)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Audio-&gt;Podcast</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Audio-&gt;Radio</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Audio 2025-&gt;Other (Audio)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Audio 2025-&gt;Podcast</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Audio 2025-&gt;Radio</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Bundle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Contest</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Rewards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Sweepstakes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Target</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Bundle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Contest</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Rewards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Sweepstakes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Target</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2396,6 +2492,11 @@
                 <controllingFieldValue>New CMP only</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Digital-&gt;Email</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <valueName>Digital-&gt;Lead Generation</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2430,254 +2531,6 @@
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>New CMP only</controllingFieldValue>
-                <valueName>Digital-&gt;Lead Generation</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Print-&gt;Collateral</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Print-&gt;Magazine/Newspaper</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Print-&gt;Other (Print)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Out of Home-&gt;Billboard/Transit</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Out of Home-&gt;Cinema</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Out of Home-&gt;Video Screen</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Out of Home-&gt;Other (Out Of Home)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Video-&gt;Television</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Video-&gt;Streaming</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Video-&gt;Other (Video)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Event-&gt;Third Party Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Event-&gt;Joint Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Event-&gt;Other (Event)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Production-&gt;Content</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Production-&gt;Other (Production)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Seller Incentive-&gt;SPIF - Volume</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Seller Incentive-&gt;SPIF - Target</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Seller Incentive-&gt;SPIF - Contest</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Seller Incentive-&gt;SPIF - Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Bundle</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Sweepstakes</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Rewards</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Target</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Contest</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Collateral</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Promotion - Retail</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Promotion - Non-Retail</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Training/Meeting</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Training Incentive</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Personnel</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Other (Sales Readiness)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Sales Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Seed Unit</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Trial Instance</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;System Demo</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Proof of Concept</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Case Study</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Migration</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Benchmarking</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Telemarketing</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Other (Technical Sales)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Audio-&gt;Podcast</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Audio-&gt;Radio</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Audio-&gt;Other (Audio)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Digital 2025-&gt;Display/Video Ad</valueName>
             </valueSettings>
@@ -2686,6 +2539,11 @@
                 <controllingFieldValue>New CMP only</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Digital 2025-&gt;Email</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <valueName>Digital 2025-&gt;Lead Generation</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2720,7 +2578,113 @@
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>New CMP only</controllingFieldValue>
-                <valueName>Digital 2025-&gt;Lead Generation</valueName>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Event-&gt;Joint Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Event-&gt;Other (Event)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Event-&gt;Third Party Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Event 2025-&gt;Joint Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Event 2025-&gt;Other (Event)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Event 2025-&gt;Third Party Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Innovation -&gt;Engineering</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <valueName>Outcome-Based-&gt;Outcome-Based</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Out of Home-&gt;Billboard/Transit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Out of Home-&gt;Cinema</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Out of Home-&gt;Other (Out Of Home)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Out of Home-&gt;Video Screen</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Out of Home 2025-&gt;Billboard/Transit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Out of Home 2025-&gt;Cinema</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Out of Home 2025-&gt;Other (Out Of Home)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Out of Home 2025-&gt;Video Screen</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Print-&gt;Collateral</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Print-&gt;Magazine/Newspaper</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Print-&gt;Other (Print)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2744,61 +2708,13 @@
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>New CMP only</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Out of Home 2025-&gt;Billboard/Transit</valueName>
+                <valueName>Production-&gt;Content</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>New CMP only</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Out of Home 2025-&gt;Cinema</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Out of Home 2025-&gt;Video Screen</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Out of Home 2025-&gt;Other (Out Of Home)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Video 2025-&gt;Television</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Video 2025-&gt;Streaming</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Video 2025-&gt;Other (Video)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Event 2025-&gt;Third Party Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Event 2025-&gt;Joint Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>New CMP only</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Event 2025-&gt;Other (Event)</valueName>
+                <valueName>Production-&gt;Other (Production)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2815,52 +2731,37 @@
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Seller Incentive 2025-&gt;SPIF - Volume</valueName>
+                <valueName>Sales Readiness-&gt;Collateral</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Seller Incentive 2025-&gt;SPIF - Target</valueName>
+                <valueName>Sales Readiness-&gt;Other (Sales Readiness)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Seller Incentive 2025-&gt;SPIF - Contest</valueName>
+                <valueName>Sales Readiness-&gt;Personnel</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Seller Incentive 2025-&gt;SPIF - Other</valueName>
+                <valueName>Sales Readiness-&gt;Promotion - Non-Retail</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Bundle</valueName>
+                <valueName>Sales Readiness-&gt;Promotion - Retail</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Sweepstakes</valueName>
+                <valueName>Sales Readiness-&gt;Training/Meeting</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Rewards</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Target</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Contest</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Other</valueName>
+                <valueName>Sales Readiness-&gt;Training Incentive</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2870,12 +2771,22 @@
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness 2025-&gt;Promotion - Retail</valueName>
+                <valueName>Sales Readiness 2025-&gt;Other (Sales Readiness)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Readiness 2025-&gt;Personnel</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
                 <valueName>Sales Readiness 2025-&gt;Promotion - Non-Retail</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Sales Readiness 2025-&gt;Promotion - Retail</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2890,37 +2801,97 @@
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness 2025-&gt;Personnel</valueName>
+                <valueName>Seller Incentive-&gt;SPIF - Contest</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Sales Readiness 2025-&gt;Other (Sales Readiness)</valueName>
+                <valueName>Seller Incentive-&gt;SPIF - Other</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Sales Event</valueName>
+                <valueName>Seller Incentive-&gt;SPIF - Target</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Seed Unit</valueName>
+                <valueName>Seller Incentive-&gt;SPIF - Volume</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Trial Instance</valueName>
+                <valueName>Seller Incentive 2025-&gt;SPIF - Contest</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;System Demo</valueName>
+                <valueName>Seller Incentive 2025-&gt;SPIF - Other</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Proof of Concept</valueName>
+                <valueName>Seller Incentive 2025-&gt;SPIF - Target</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Seller Incentive 2025-&gt;SPIF - Volume</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Benchmarking</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Case Study</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Migration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Other (Technical Sales)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Proof of Concept</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Sales Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Seed Unit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;System Demo</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Telemarketing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Trial Instance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;Benchmarking</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2935,7 +2906,27 @@
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Benchmarking</valueName>
+                <valueName>Technical Sales 2025-&gt;Other (Technical Sales)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;Proof of Concept</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;Sales Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;Seed Unit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;System Demo</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
@@ -2945,34 +2936,43 @@
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Other (Technical Sales)</valueName>
+                <valueName>Technical Sales 2025-&gt;Trial Instance</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>New CMP only</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Audio 2025-&gt;Podcast</valueName>
+                <valueName>Video-&gt;Other (Video)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>New CMP only</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Audio 2025-&gt;Radio</valueName>
+                <valueName>Video-&gt;Streaming</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>New CMP only</controllingFieldValue>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Audio 2025-&gt;Other (Audio)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
-                <valueName>Innovation -&gt;Engineering</valueName>
+                <valueName>Video-&gt;Television</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
                 <controllingFieldValue>New CMP only</controllingFieldValue>
-                <valueName>Outcome-Based-&gt;Outcome-Based</valueName>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Video 2025-&gt;Other (Video)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Video 2025-&gt;Streaming</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>New MDF or both CMP &amp; MDF</controllingFieldValue>
+                <controllingFieldValue>New CMP only</controllingFieldValue>
+                <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>
+                <valueName>Video 2025-&gt;Television</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>All MDF or both CMP &amp; MDF</controllingFieldValue>

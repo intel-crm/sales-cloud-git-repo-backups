@@ -42,7 +42,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>EMEA,UK,Europe,MEA,EU,Region</value>
+            <value>EMEA,UK,Europe,MEA,EU,ASMO,APJ</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>

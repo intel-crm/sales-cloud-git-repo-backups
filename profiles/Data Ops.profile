@@ -41118,7 +41118,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_IPS_Case_Interested_Party__c.Active__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -41148,17 +41148,17 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_IPS_Case_Interested_Party__c.Email__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_IPS_Case_Interested_Party__c.First_Name__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_IPS_Case_Interested_Party__c.Last_Name__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -42273,7 +42273,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_IPS_Project_Member__c.Core_User__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -112229,6 +112229,7 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
+        <personAccountDefault>true</personAccountDefault>
         <recordType>Core_IPS_Case_Interested_Party__c.Internal</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>

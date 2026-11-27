@@ -106683,12 +106683,12 @@
         <startAddress>2.23.80.0</startAddress>
     </loginIpRanges>
     <loginIpRanges>
-        <description>ROx</description>
+        <description>Rox</description>
         <endAddress>3.12.195.193</endAddress>
         <startAddress>3.12.195.193</startAddress>
     </loginIpRanges>
     <loginIpRanges>
-        <description>ROx</description>
+        <description>Rox</description>
         <endAddress>3.128.77.212</endAddress>
         <startAddress>3.128.77.212</startAddress>
     </loginIpRanges>
@@ -107058,11 +107058,6 @@
         <description>Haifa, Israel</description>
         <endAddress>134.191.233.222</endAddress>
         <startAddress>134.191.233.193</startAddress>
-    </loginIpRanges>
-    <loginIpRanges>
-        <description>Fivetran</description>
-        <endAddress>136.107.62.136</endAddress>
-        <startAddress>136.107.62.136</startAddress>
     </loginIpRanges>
     <loginIpRanges>
         <description>Fivetran</description>

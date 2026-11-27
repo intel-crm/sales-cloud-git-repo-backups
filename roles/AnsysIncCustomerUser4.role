@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Ansys, Inc. Customer User</description>
+    <description>Synopsys Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Ansys, Inc. Customer User</name>
+    <name>Synopsys Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>EMP_12340524_Alka_Khanna</parentRole>
 </Role>

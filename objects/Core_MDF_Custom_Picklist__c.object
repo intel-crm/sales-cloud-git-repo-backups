@@ -4949,343 +4949,7 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital-&gt;Display/Video Ad</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital-&gt;Email</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital-&gt;Other (Digital)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital-&gt;Search (SEM) Ad</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital-&gt;Social Ad</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital-&gt;Social Post</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital-&gt;Web Content</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital-&gt;Lead Generation</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Print-&gt;Collateral</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Print-&gt;Magazine/Newspaper</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Print-&gt;Other (Print)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home-&gt;Billboard/Transit</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home-&gt;Cinema</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home-&gt;Video Screen</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home-&gt;Other (Out Of Home)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Video-&gt;Television</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Video-&gt;Streaming</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Video-&gt;Other (Video)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Event-&gt;Third Party Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Event-&gt;Joint Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Event-&gt;Other (Event)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Production-&gt;Content</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Production-&gt;Other (Production)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Seller Incentive-&gt;SPIF - Volume</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Seller Incentive-&gt;SPIF - Target</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Seller Incentive-&gt;SPIF - Contest</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Seller Incentive-&gt;SPIF - Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Bundle</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Sweepstakes</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Rewards</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Target</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Contest</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive-&gt;Offer - Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Collateral</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Promotion - Retail</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Promotion - Non-Retail</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Training/Meeting</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Training Incentive</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Personnel</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Other (Sales Readiness)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Sales Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Seed Unit</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Trial Instance</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;System Demo</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Proof of Concept</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Case Study</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Migration</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Benchmarking</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Telemarketing</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales-&gt;Other (Technical Sales)</valueName>
+                <valueName>Audio-&gt;Other (Audio)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -5309,7 +4973,23 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Audio-&gt;Other (Audio)</valueName>
+                <valueName>Audio 2025-&gt;Other (Audio)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Audio 2025-&gt;Podcast</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Audio 2025-&gt;Radio</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -5363,216 +5043,6 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital Media (Pre-2025)-&gt;EcosystemPartner.com</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Digital Media (Pre-2025)-&gt;Member.com</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital Media (Pre-2025)-&gt;NonPartner.com</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Joint Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Other (Event)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Third Party Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home (Pre-2025)-&gt;Billboard/Transit</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home (Pre-2025)-&gt;Cinema</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home (Pre-2025)-&gt;Other (Out of Home)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home (Pre-2025)-&gt;Video Screen</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Print (Pre-2025)-&gt;Collateral</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Print (Pre-2025)-&gt;Magazine/Newspaper</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Contest SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness (Pre-2025)-&gt;In-Store Promotion</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness (Pre-2025)-&gt;Out-of-Store Promotion</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness (Pre-2025)-&gt;Personnel</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness (Pre-2025)-&gt;Telemarketing</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness (Pre-2025)-&gt;Training/Meeting</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Case Study</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Demo Hardware</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Demo Hardware/Cloud Instance</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Other (Tech Exploration)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Proof of Concept</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Seed Unit</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Member Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Benchmarks</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Deal Investment</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration (Pre-2025)-&gt;Solution Development</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
                 <valueName>Broadcast-&gt;Other (Broadcast)</valueName>
             </valueSettings>
             <valueSettings>
@@ -5617,15 +5087,77 @@
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Bundle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Contest</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Rewards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Sweepstakes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive-&gt;Offer - Target</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Bundle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Contest</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Rewards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Sweepstakes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Buyer Incentive 2025-&gt;Offer - Target</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital Media-&gt;EcosystemPartner.com</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Digital Media-&gt;Member.com</valueName>
+                <valueName>Digital-&gt;Display/Video Ad</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -5633,103 +5165,55 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital Media-&gt;NonPartner.com</valueName>
+                <valueName>Digital-&gt;Email</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Contest SPIF</valueName>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital-&gt;Lead Generation</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Other</valueName>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital-&gt;Other (Digital)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Target SPIF</valueName>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital-&gt;Search (SEM) Ad</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;In-Store Promotion</valueName>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital-&gt;Social Ad</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Out-of-Store Promotion</valueName>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital-&gt;Social Post</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness-&gt;Telemarketing</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Benchmarks</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Case Study</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Demo Hardware</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Demo Hardware/Cloud Instance</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Other (Tech Exploration)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Proof of Concept</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Seed Unit</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Per Instance SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Cloud/Platform Trial</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Joint Engineering/Optimization</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Deal Investment</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Tech Exploration-&gt;Solution Development</valueName>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital-&gt;Web Content</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -5746,6 +5230,14 @@
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
                 <valueName>Digital 2025-&gt;Email</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital 2025-&gt;Lead Generation</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -5793,7 +5285,257 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Digital 2025-&gt;Lead Generation</valueName>
+                <valueName>Digital Media (Pre-2025)-&gt;EcosystemPartner.com</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Digital Media (Pre-2025)-&gt;Member.com</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital Media (Pre-2025)-&gt;NonPartner.com</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital Media-&gt;EcosystemPartner.com</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Digital Media-&gt;Member.com</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Digital Media-&gt;NonPartner.com</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Joint Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Member Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Other (Event)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Third Party Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Event-&gt;Joint Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Event-&gt;Member Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Event-&gt;Other (Event)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Event-&gt;Third Party Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Event 2025-&gt;Joint Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Event 2025-&gt;Other (Event)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Event 2025-&gt;Third Party Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home (Pre-2025)-&gt;Billboard/Transit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home (Pre-2025)-&gt;Cinema</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home (Pre-2025)-&gt;Other (Out of Home)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home (Pre-2025)-&gt;Video Screen</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home-&gt;Billboard/Transit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home-&gt;Cinema</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home-&gt;Other (Out Of Home)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home-&gt;Video Screen</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home 2025-&gt;Billboard/Transit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home 2025-&gt;Cinema</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home 2025-&gt;Other (Out Of Home)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Out of Home 2025-&gt;Video Screen</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Print (Pre-2025)-&gt;Collateral</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Print (Pre-2025)-&gt;Magazine/Newspaper</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Print-&gt;Collateral</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Print-&gt;Magazine/Newspaper</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Print-&gt;Other (Print)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -5825,7 +5567,7 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home 2025-&gt;Billboard/Transit</valueName>
+                <valueName>Production-&gt;Content</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -5833,71 +5575,7 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home 2025-&gt;Cinema</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home 2025-&gt;Video Screen</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Out of Home 2025-&gt;Other (Out Of Home)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Video 2025-&gt;Television</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Video 2025-&gt;Streaming</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Video 2025-&gt;Other (Video)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Event 2025-&gt;Third Party Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Event 2025-&gt;Joint Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Event 2025-&gt;Other (Event)</valueName>
+                <valueName>Production-&gt;Other (Production)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -5919,59 +5597,141 @@
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Seller Incentive 2025-&gt;SPIF - Volume</valueName>
+                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Contest SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Seller Incentive 2025-&gt;SPIF - Target</valueName>
+                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Seller Incentive 2025-&gt;SPIF - Contest</valueName>
+                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Target SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Seller Incentive 2025-&gt;SPIF - Other</valueName>
+                <valueName>Sales Incentive-&gt;Seller - Contest SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Bundle</valueName>
+                <valueName>Sales Incentive-&gt;Seller - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Sales Incentive-&gt;Seller - Per Instance SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Sweepstakes</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Rewards</valueName>
+                <valueName>Sales Incentive-&gt;Seller - Target SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Target</valueName>
+                <valueName>Sales Readiness (Pre-2025)-&gt;In-Store Promotion</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Contest</valueName>
+                <valueName>Sales Readiness (Pre-2025)-&gt;Other (Sales Readiness)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Buyer Incentive 2025-&gt;Offer - Other</valueName>
+                <valueName>Sales Readiness (Pre-2025)-&gt;Out-of-Store Promotion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness (Pre-2025)-&gt;Personnel</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness (Pre-2025)-&gt;Telemarketing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness (Pre-2025)-&gt;Training/Meeting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Collateral</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;In-Store Promotion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Other (Sales Readiness)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Out-of-Store Promotion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Personnel</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Promotion - Non-Retail</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Promotion - Retail</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Telemarketing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Training/Meeting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness-&gt;Training Incentive</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -5983,13 +5743,25 @@
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness 2025-&gt;Promotion - Retail</valueName>
+                <valueName>Sales Readiness 2025-&gt;Other (Sales Readiness)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness 2025-&gt;Personnel</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <valueName>Sales Readiness 2025-&gt;Promotion - Non-Retail</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Sales Readiness 2025-&gt;Promotion - Retail</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -6007,43 +5779,227 @@
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness 2025-&gt;Personnel</valueName>
+                <valueName>Seller Incentive-&gt;SPIF - Contest</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Readiness 2025-&gt;Other (Sales Readiness)</valueName>
+                <valueName>Seller Incentive-&gt;SPIF - Other</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Sales Event</valueName>
+                <valueName>Seller Incentive-&gt;SPIF - Target</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Seed Unit</valueName>
+                <valueName>Seller Incentive-&gt;SPIF - Volume</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Trial Instance</valueName>
+                <valueName>Seller Incentive 2025-&gt;SPIF - Contest</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;System Demo</valueName>
+                <valueName>Seller Incentive 2025-&gt;SPIF - Other</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Proof of Concept</valueName>
+                <valueName>Seller Incentive 2025-&gt;SPIF - Target</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Seller Incentive 2025-&gt;SPIF - Volume</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Benchmarks</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Case Study</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Cloud/Platform Trial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Deal Investment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Demo Hardware</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Demo Hardware/Cloud Instance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Joint Engineering/Optimization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Other (Tech Exploration)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Proof of Concept</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Seed Unit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration (Pre-2025)-&gt;Solution Development</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Benchmarks</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Case Study</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Cloud/Platform Trial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Deal Investment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Demo Hardware</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Demo Hardware/Cloud Instance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Joint Engineering/Optimization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Other (Tech Exploration)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Proof of Concept</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Seed Unit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Tech Exploration-&gt;Solution Development</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Benchmarking</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Case Study</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Migration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Other (Technical Sales)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Proof of Concept</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Sales Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Seed Unit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;System Demo</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Telemarketing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales-&gt;Trial Instance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;Benchmarking</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -6061,7 +6017,31 @@
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Benchmarking</valueName>
+                <valueName>Technical Sales 2025-&gt;Other (Technical Sales)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;Proof of Concept</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;Sales Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;Seed Unit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <valueName>Technical Sales 2025-&gt;System Demo</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -6073,7 +6053,7 @@
                 <controllingFieldValue>Cloud</controllingFieldValue>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Technical Sales 2025-&gt;Other (Technical Sales)</valueName>
+                <valueName>Technical Sales 2025-&gt;Trial Instance</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -6081,7 +6061,7 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Audio 2025-&gt;Podcast</valueName>
+                <valueName>Video-&gt;Other (Video)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -6089,7 +6069,7 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Audio 2025-&gt;Radio</valueName>
+                <valueName>Video-&gt;Streaming</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
@@ -6097,15 +6077,42 @@
                 <controllingFieldValue>MDF+</controllingFieldValue>
                 <controllingFieldValue>OEM CMP</controllingFieldValue>
                 <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Audio 2025-&gt;Other (Audio)</valueName>
+                <valueName>Video-&gt;Television</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Cloud</controllingFieldValue>
-                <valueName>Event-&gt;Member Event</valueName>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Video 2025-&gt;Other (Video)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Video 2025-&gt;Streaming</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Video 2025-&gt;Television</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Co-Engineering</controllingFieldValue>
                 <valueName>Innovation -&gt;Engineering</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MDF</controllingFieldValue>
+                <controllingFieldValue>MDF+</controllingFieldValue>
+                <controllingFieldValue>OEM CMP</controllingFieldValue>
+                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
+                <valueName>Outcome-Based-&gt;Outcome-Based</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF</controllingFieldValue>
@@ -6130,11 +6137,6 @@
             <valueSettings>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>MDF</controllingFieldValue>
-                <controllingFieldValue>MDF+</controllingFieldValue>
                 <valueName>Purchase Incentive-&gt;Buyer - Bundle Offer</valueName>
             </valueSettings>
             <valueSettings>
@@ -6155,14 +6157,12 @@
             <valueSettings>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <valueName>Sales Incentive-&gt;Seller - Per Unit SPIF</valueName>
+                <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Per Unit SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MDF</controllingFieldValue>
                 <controllingFieldValue>MDF+</controllingFieldValue>
-                <controllingFieldValue>OEM CMP</controllingFieldValue>
-                <controllingFieldValue>Service Provider CMP</controllingFieldValue>
-                <valueName>Outcome-Based-&gt;Outcome-Based</valueName>
+                <valueName>Sales Incentive-&gt;Seller - Per Unit SPIF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
@@ -6202,106 +6202,6 @@
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
                 <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Channel Partner Owned Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Member Owned Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Event (Pre-2025)-&gt;Promotion</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Lead Management (Pre-2025)-&gt;Lead Generation</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Lead Management (Pre-2025)-&gt;Lead Nurturing</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Out of Home Media (Pre-2025)-&gt;Cinema</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Paid Social Media (Pre-2025)-&gt;Social Online Display</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Paid Social Media (Pre-2025)-&gt;Social Post</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Catalog/Brochure</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Collateral - Other</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Direct Mail</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Magazine/Newspaper</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
-                <valueName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>CCF 1.0</controllingFieldValue>
-                <controllingFieldValue>DCF 1.0</controllingFieldValue>
                 <valueName>Digital Media-&gt;Channel Partner Website Online Ad</valueName>
             </valueSettings>
             <valueSettings>
@@ -6337,6 +6237,31 @@
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
                 <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Channel Partner Owned Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Channel Partner Participation in Third-Party Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Member Owned Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Member Participation in Third-Party Event</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Event (Pre-2025)-&gt;Promotion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
                 <valueName>Event-&gt;Channel Partner Owned Event</valueName>
             </valueSettings>
             <valueSettings>
@@ -6362,12 +6287,37 @@
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
                 <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Lead Management (Pre-2025)-&gt;Lead Generation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Lead Management (Pre-2025)-&gt;Lead Nurturing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
                 <valueName>Lead Management-&gt;Lead Generation</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
                 <controllingFieldValue>DCF 1.0</controllingFieldValue>
                 <valueName>Lead Management-&gt;Lead Nurturing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Out of Home Media (Pre-2025)-&gt;Billboard/Transit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Out of Home Media (Pre-2025)-&gt;Cinema</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Out of Home Media (Pre-2025)-&gt;Digital Video Screen</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
@@ -6387,12 +6337,52 @@
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
                 <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Paid Social Media (Pre-2025)-&gt;Social Online Display</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Paid Social Media (Pre-2025)-&gt;Social Post</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
                 <valueName>Paid Social Media-&gt;Social Online Display</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
                 <controllingFieldValue>DCF 1.0</controllingFieldValue>
                 <valueName>Paid Social Media-&gt;Social Post</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Catalog/Brochure</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Collateral - Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Direct Mail</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Insert/Outsert/Flyer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Magazine/Newspaper</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Print Media (Pre-2025)-&gt;Poster/Sign/Banner</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
@@ -6423,6 +6413,16 @@
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
                 <controllingFieldValue>DCF 1.0</controllingFieldValue>
                 <valueName>Print Media-&gt;Poster/Sign/Banner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Graphic Ad</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCF 1.0</controllingFieldValue>
+                <controllingFieldValue>DCF 1.0</controllingFieldValue>
+                <valueName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>CCF 1.0</controllingFieldValue>
