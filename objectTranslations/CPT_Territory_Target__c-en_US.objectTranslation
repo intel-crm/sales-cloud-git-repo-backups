@@ -77,6 +77,38 @@
         <name>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</name>
     </fields>
     <fields>
+        <label><!-- OW - CCPG Deal Target --></label>
+        <name>CPT_OW_CCPG_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Deal Wins Vol Target --></label>
+        <name>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Design Target --></label>
+        <name>CPT_OW_CCPG_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal Target --></label>
+        <name>CPT_OW_DCG_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal Wins Vol Target --></label>
+        <name>CPT_OW_DCG_Deal_Wins_Vol_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Design Target --></label>
+        <name>CPT_OW_DCG_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Deal Target --></label>
+        <name>CPT_OW_Edge_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Design Target --></label>
+        <name>CPT_OW_Edge_Design_Target__c</name>
+    </fields>
+    <fields>
         <label><!-- Quota Period --></label>
         <name>CPT_Quota_Period__c</name>
         <relationshipLabel><!-- Territory Targets --></relationshipLabel>

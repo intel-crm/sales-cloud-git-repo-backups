@@ -12,15 +12,15 @@ export default class core_IPS_SearchBeforeSubmit_Lex extends LightningElement {
   @api disableStateInUrl = false;
   @api skipFirstSearch = false;
 
-  _caseinfo;
+  incaseinfo;
   @track caseData = {};
 
   @api
   get caseinfo() {
-    return this._caseinfo;
+    return this.incaseinfo;
   }
   set caseinfo(value) {
-    this._caseinfo = value;
+    this.incaseinfo = value;
     if (value) {
       try {
         this.caseData = typeof value === 'string' ? JSON.parse(value) : value;

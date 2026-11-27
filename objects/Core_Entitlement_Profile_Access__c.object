@@ -1190,6 +1190,11 @@
                     <label>OTC IP Double Bailment External Reporting Users</label>
                 </value>
                 <value>
+                    <fullName>Disti Voucher Admin</fullName>
+                    <default>false</default>
+                    <label>Disti Voucher Admin</label>
+                </value>
+                <value>
                     <fullName>CCF Account Budget Administrator</fullName>
                     <default>false</default>
                     <isActive>false</isActive>

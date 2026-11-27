@@ -268,6 +268,10 @@
         <name>CPT_MarVol_Margin_CCG_Assigned__c</name>
     </fields>
     <fields>
+        <label><!-- MarVol_Margin_CCG --></label>
+        <name>CPT_MarVol_Margin_CCG_Quota__c</name>
+    </fields>
+    <fields>
         <help><!-- Select this if you want to include CCG margin target. Must be selected with at least one Volume CCG field. --></help>
         <label><!-- MarVol - Margin CCG --></label>
         <name>CPT_MarVol_Margin_CCG__c</name>
@@ -275,6 +279,10 @@
     <fields>
         <label><!-- MarVol - Margin DCG % Assigned --></label>
         <name>CPT_MarVol_Margin_DCG_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- MarVol Margin DCG --></label>
+        <name>CPT_MarVol_Margin_DCG_Quota__c</name>
     </fields>
     <fields>
         <help><!-- Select this if you want to include DCG margin target. Must be selected together with NextGen DCG GNR. --></help>
@@ -340,6 +348,90 @@
     <fields>
         <label><!-- Notes --></label>
         <name>CPT_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Wins (Allocated) --></label>
+        <name>CPT_OW_Allocated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Wins (Allowed) --></label>
+        <name>CPT_OW_Allowed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Wins (% Assigned) --></label>
+        <name>CPT_OW_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Deal % Assigned --></label>
+        <name>CPT_OW_CCPG_Deal_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- OW - CCPG Deal Quota --></label>
+        <name>CPT_OW_CCPG_Deal_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Deal Wins Vol % Assigned --></label>
+        <name>CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- OW - CCPG Deal Wins Vol Quota --></label>
+        <name>CPT_OW_CCPG_Deal_Wins_Vol_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Design % Assigned --></label>
+        <name>CPT_OW_CCPG_Design_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- OW - CCPG Design Quota --></label>
+        <name>CPT_OW_CCPG_Design_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal % Assigned --></label>
+        <name>CPT_OW_DCG_Deal_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- OW - DCG Deal Quota --></label>
+        <name>CPT_OW_DCG_Deal_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal Wins Vol % Assigned --></label>
+        <name>CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- OW - DCG Deal Wins Vol Quota --></label>
+        <name>CPT_OW_DCG_Deal_Wins_Vol_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Design % Assigned --></label>
+        <name>CPT_OW_DCG_Design_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- OW - DCG Design Quota --></label>
+        <name>CPT_OW_DCG_Design_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Deal % Assigned --></label>
+        <name>CPT_OW_Edge_Deal_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- OW - Edge Deal Quota --></label>
+        <name>CPT_OW_Edge_Deal_Quota__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Design % Assigned --></label>
+        <name>CPT_OW_Edge_Design_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- Value is in whole dollars. --></help>
+        <label><!-- OW - Edge Design Quota --></label>
+        <name>CPT_OW_Edge_Design_Quota__c</name>
     </fields>
     <fields>
         <help><!-- Select &quot;Overlay&quot; if a role is an overlay or duplicate quota (i.e., technical seller). This will exclude quota from Manager roll-up. --></help>
@@ -601,6 +693,10 @@
         <name>CPT_Avoid_DR_AssignPercent_WhenNoTarget</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- A Territory must be linked to the selected Billings Revenue Business Units (BU) to assign % and Quota. Please select the OW-BU checkbox in Territory Assignments. --></errorMessage>
+        <name>CPT_Avoid_OW_AssignPercent_WhenNoTarget</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- BR allocation is fixed. Plan 250 requires CCG 0% and DCG 40%. Plans 330, 630 and 650 require CCG 0% and DCG 20%. --></errorMessage>
         <name>CPT_BR_Fixed_Plan_Allocation</name>
     </validationRules>
@@ -651,6 +747,14 @@
     <validationRules>
         <errorMessage><!-- Please complete Sales OKR Selection, Assigned %, and Quota. --></errorMessage>
         <name>CPT_OKR_Prevent_Incomplete_Data_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The OW% Assigned exceeds the allowed limit. --></errorMessage>
+        <name>CPT_OW_Prevent_Excess_Allocation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please complete the Opportunity Wins Assigned % and Quota fields. --></errorMessage>
+        <name>CPT_OW_Prevent_Incomplete_Data_Update</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Invalid assignment: Check plan-specific percentage restrictions. --></errorMessage>

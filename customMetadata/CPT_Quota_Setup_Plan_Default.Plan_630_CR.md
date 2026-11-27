@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>CPT_Default_Value__c</field>
-        <value xsi:type="xsd:string">40%</value>
+        <value xsi:type="xsd:string">60%</value>
     </values>
     <values>
         <field>CPT_QuotaSetup_Field_Name__c</field>

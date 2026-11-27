@@ -749,6 +749,11 @@
                     <label>Closed Lost</label>
                 </value>
                 <value>
+                    <fullName>Pre-Registered</fullName>
+                    <default>false</default>
+                    <label>Pre-Registered</label>
+                </value>
+                <value>
                     <fullName>Cancelled</fullName>
                     <default>false</default>
                     <isActive>false</isActive>

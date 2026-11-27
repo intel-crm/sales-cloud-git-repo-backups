@@ -189,6 +189,70 @@
         <name>CPT_MarVol_Next_Gen_DCG_GNR__c</name>
     </fields>
     <fields>
+        <label><!-- OW - CCPG Deal Target --></label>
+        <name>CPT_OW_CCPG_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Deal Wins Vol Target --></label>
+        <name>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Deal Wins Vol --></label>
+        <name>CPT_OW_CCPG_Deal_Wins_Vol__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Deal --></label>
+        <name>CPT_OW_CCPG_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Design Target --></label>
+        <name>CPT_OW_CCPG_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - CCPG Design --></label>
+        <name>CPT_OW_CCPG_Design__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal Target --></label>
+        <name>CPT_OW_DCG_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal Wins Vol Target --></label>
+        <name>CPT_OW_DCG_Deal_Wins_Vol_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal Wins Vol --></label>
+        <name>CPT_OW_DCG_Deal_Wins_Vol__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Deal --></label>
+        <name>CPT_OW_DCG_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Design Target --></label>
+        <name>CPT_OW_DCG_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - DCG Design --></label>
+        <name>CPT_OW_DCG_Design__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Deal Target --></label>
+        <name>CPT_OW_Edge_Deal_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Deal --></label>
+        <name>CPT_OW_Edge_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Design Target --></label>
+        <name>CPT_OW_Edge_Design_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- OW - Edge Design --></label>
+        <name>CPT_OW_Edge_Design__c</name>
+    </fields>
+    <fields>
         <label><!-- Quota Period --></label>
         <name>CPT_Quota_Period__c</name>
     </fields>
@@ -246,6 +310,10 @@
     <validationRules>
         <errorMessage><!-- For Plan 240, select either Consumption Revenue Partner or Retail, not both, on this Territory Assignment. --></errorMessage>
         <name>CPT_Prevent_Multiple_TT_CR_240</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Opportunity Wins Revenue Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee. --></errorMessage>
+        <name>CPT_Prevent_OW_Territory_BU_Update</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You do not have permission to make updates to the Target field. --></errorMessage>

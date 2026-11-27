@@ -20,7 +20,8 @@ public without sharing class PRM_DoceboController {
     private static final String DOCEBO_DOMAIN = string.valueof(system.label.PRM_DOCEBO_DOMAIN);
     private static final Integer CALLOUT_TIMEOUT = Integer.valueOf(System.Label.PRM_Docebo_Timeout);
     //private static final String USERNAME = 'test.endpoints1@test.test';
-    private static final Map<String, String> SF_TO_DOCEBO_LANG_MAP = new Map<String, String>{
+    //Map<String, Map<String, Object>> dqObjectsMap = getCustomMetadataRecords();
+    /*private static final Map<String, String> SF_TO_DOCEBO_LANG_MAP = new Map<String, String>{
     'en_US' => 'en',
     'en_GB' => 'en-gb',
 
@@ -52,7 +53,7 @@ public without sharing class PRM_DoceboController {
     'in'    => 'id',    // Salesforce uses in, Docebo uses id
 
     'vi'    => 'vi'
-};
+};*/
     @AuraEnabled(cacheable=false)
     public static DoceboResponse getChannelAssets() {
         
@@ -71,7 +72,7 @@ public without sharing class PRM_DoceboController {
             User currentUser = [Select id, email,username,LanguageLocaleKey from User where Id =: UserInfo.getUserId() limit 1]; 
             String USERNAME = currentUser.email;
             string userLanguage = currentUser.LanguageLocaleKey;
-            String doceboLanguageCodeForLoggedInUser = SF_TO_DOCEBO_LANG_MAP.get(userLanguage);
+            String doceboLanguageCodeForLoggedInUser = getDoceboLanguageCode(userLanguage);
             Map<String,String> authPayload = new Map<String,String>{'username' => USERNAME};
                 
                 String authRequest = JSON.serialize(authPayload);
@@ -248,6 +249,7 @@ responseMessageForLog = channelRes.getBody();
             Map<String,Object> data = (Map<String,Object>)responseData.get('data');
             
             List<Object> items = (List<Object>)data.get('items');
+            system.debug('items--'+items);
             List<CourseWrapper> courses = new List<CourseWrapper>();
             
             for(Object itemObj : items){
@@ -291,6 +293,8 @@ responseMessageForLog = channelRes.getBody();
                     course.level = toStringValue(otherFields.get('level'));
                     course.language = toStringValue(otherFields.get('language'));
                     course.languageCode = toStringValue(otherFields.get('language_code'));
+                    system.debug('course.languageCode--'+course.languageCode);
+                    system.debug('doceboLanguageCodeForLoggedInUser'+doceboLanguageCodeForLoggedInUser);
                     if(course.languageCode!=null && !((course.languageCode).equalsIgnoreCase(doceboLanguageCodeForLoggedInUser))){
                         continue;
                     }
@@ -448,4 +452,20 @@ responseMessageForLog = channelRes.getBody();
         @AuraEnabled public Boolean alreadyMarked;
         @AuraEnabled public Boolean hasActions;
     }
+   public static String getDoceboLanguageCode(String sfLanguageCode) {
+
+    Core_CustomMetadataObjectController customMetadataController =
+        new Core_CustomMetadataObjectController('docebo_mdt');
+
+    Map<String, Map<String, Object>> languageMappings =
+        customMetadataController.getAll();
+
+    if(languageMappings.containsKey(sfLanguageCode)) {
+        return String.valueOf(
+            languageMappings.get(sfLanguageCode).get('Docebo_Code')
+        );
+    }
+
+    return null;
+}
 }

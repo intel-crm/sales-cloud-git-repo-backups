@@ -5,7 +5,7 @@
     <assignments>
         <name>Assignment_3</name>
         <label>Set Retail Selected</label>
-        <locationX>336</locationX>
+        <locationX>578</locationX>
         <locationY>1163</locationY>
         <assignmentItems>
             <assignToReference>varRetailSelected</assignToReference>
@@ -19,12 +19,124 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Set_OEM_Selected</name>
-        <label>Set OEM Selected</label>
-        <locationX>336</locationX>
-        <locationY>1463</locationY>
+        <name>Set_CCPGDeal_Selected</name>
+        <label>Set CCPGDeal Selected</label>
+        <locationX>578</locationX>
+        <locationY>2063</locationY>
         <assignmentItems>
-            <assignToReference>varOEMSelected</assignToReference>
+            <assignToReference>varOWCCPGDealSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_EdgeDeal_Selected</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_CCPGDealWinsVol_Selected</name>
+        <label>Set CCPGDealWinsVol Selected</label>
+        <locationX>578</locationX>
+        <locationY>2963</locationY>
+        <assignmentItems>
+            <assignToReference>varOWCCPGDealVolSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_DCGDesign_Selected</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_CCPGDesign_Selected</name>
+        <label>Set CCPGDesign Selected</label>
+        <locationX>578</locationX>
+        <locationY>3563</locationY>
+        <assignmentItems>
+            <assignToReference>varOWCCPGDesignSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_EdgeDesign_Selected</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_DCGDeal_Selected</name>
+        <label>Set DCGDeal Selected</label>
+        <locationX>578</locationX>
+        <locationY>1763</locationY>
+        <assignmentItems>
+            <assignToReference>varOWDCGDealSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_CCPGDeal_Selected</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_DCGDealWinsVol_Selected</name>
+        <label>Set DCGDealWinsVol Selected</label>
+        <locationX>578</locationX>
+        <locationY>2663</locationY>
+        <assignmentItems>
+            <assignToReference>varOWDCGDealVolSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_CCPGDealWinsVol_Selected</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_DCGDesign_Selected</name>
+        <label>Set DCGDesign Selected</label>
+        <locationX>578</locationX>
+        <locationY>3263</locationY>
+        <assignmentItems>
+            <assignToReference>varOWDCGDesignSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_CCPGDesign_Selected</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_EdgeDeal_Selected</name>
+        <label>Set EdgeDeal Selected</label>
+        <locationX>578</locationX>
+        <locationY>2363</locationY>
+        <assignmentItems>
+            <assignToReference>varOWEdgeDealSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_DCGDealWinsVol_Selected</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_EdgeDesign_Selected</name>
+        <label>Set EdgeDesign Selected</label>
+        <locationX>578</locationX>
+        <locationY>3863</locationY>
+        <assignmentItems>
+            <assignToReference>varOWEdgeDesignSelected</assignToReference>
             <operator>Assign</operator>
             <value>
                 <booleanValue>true</booleanValue>
@@ -35,9 +147,90 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Set_OEM_Selected</name>
+        <label>Set OEM Selected</label>
+        <locationX>578</locationX>
+        <locationY>1463</locationY>
+        <assignmentItems>
+            <assignToReference>varOEMSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_DCGDeal_Selected</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_OW_Assigned_Percentages</name>
+        <label>Set OW Assigned Percentages</label>
+        <locationX>930</locationX>
+        <locationY>4505</locationY>
+        <assignmentItems>
+            <assignToReference>CPT_Get_Quota_Setup.CPT_OW_DCG_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OW_DCG_Deal_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Get_Quota_Setup.CPT_OW_CCPG_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OW_CCPG_Deal_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Get_Quota_Setup.CPT_OW_Edge_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OW_Edge_Deal_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Get_Quota_Setup.CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OW_DCG_DealVol_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Get_Quota_Setup.CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OW_CCPG_DealVol_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Get_Quota_Setup.CPT_OW_DCG_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OW_DCG_Design_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Get_Quota_Setup.CPT_OW_CCPG_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OW_CCPG_Design_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>CPT_Get_Quota_Setup.CPT_OW_Edge_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OW_Edge_Design_Percentage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>BR_DCG_Default_Required</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Set_Partner_Selected</name>
         <label>Set Partner Selected</label>
-        <locationX>336</locationX>
+        <locationX>578</locationX>
         <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>varPartnerSelected</assignToReference>
@@ -79,10 +272,23 @@
         </value>
     </constants>
     <customErrors>
+        <name>Copy_1_of_Invalid_OW_SubElement_Selection</name>
+        <label>Copy 1 of Invalid_OW_SubElement_Selection</label>
+        <locationX>314</locationX>
+        <locationY>4247</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_7</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>The selected Opportunity Wins sub-elements are not valid for this Plan. Plans 620 and 621 support Design Wins, while Plans 630 and 631 support Deal Wins.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
         <name>Invalid_CR_Category_Selection</name>
         <label>Invalid CR Category Selection</label>
-        <locationX>50</locationX>
-        <locationY>2147</locationY>
+        <locationX>732</locationX>
+        <locationY>5021</locationY>
         <connector>
             <targetReference>END_ELEMENT_3</targetReference>
         </connector>
@@ -91,11 +297,24 @@
             <isFieldError>false</isFieldError>
         </customErrorMessages>
     </customErrors>
+    <customErrors>
+        <name>Invalid_OW_SubElement_Selection</name>
+        <label>Invalid_OW_SubElement_Selection</label>
+        <locationX>50</locationX>
+        <locationY>4247</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>The selected Opportunity Wins sub-elements are not valid for this Plan. Plans 620 and 621 support Design Wins, while Plans 630 and 631 support Deal Wins.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
     <decisions>
         <name>BR_DCG_Default_Required</name>
         <label>BR DCG Default Required?</label>
-        <locationX>248</locationX>
-        <locationY>1739</locationY>
+        <locationX>930</locationX>
+        <locationY>4613</locationY>
         <defaultConnector>
             <targetReference>Conflicting_CR_Selections</targetReference>
         </defaultConnector>
@@ -140,8 +359,8 @@
     <decisions>
         <name>Conflicting_CR_Selections</name>
         <label>Conflicting CR Selections?</label>
-        <locationX>248</locationX>
-        <locationY>2039</locationY>
+        <locationX>930</locationX>
+        <locationY>4913</locationY>
         <defaultConnector>
             <targetReference>Determine_Plan_Allocation</targetReference>
         </defaultConnector>
@@ -163,10 +382,75 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Determine_OW_Allocation</name>
+        <label>Determine OW Allocation</label>
+        <locationX>930</locationX>
+        <locationY>4247</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>BR_DCG_Default_Required</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Plan_620_Design_OW_20</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>631</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_OW_Assigned_Percentages</targetReference>
+            </connector>
+            <label>Plan 620 - Design OW 20%</label>
+        </rules>
+        <rules>
+            <name>Plan_621_Design_OW_30</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>621</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_OW_Assigned_Percentages</targetReference>
+            </connector>
+            <label>Plan 621 - Design OW 30%</label>
+        </rules>
+        <rules>
+            <name>Plan_630_Deal_OW_20</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Set_OW_Assigned_Percentages</targetReference>
+            </connector>
+            <label>Plan 630 - Deal OW 20%</label>
+        </rules>
+        <rules>
+            <name>Plan_631_Deal_OW_30</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Set_OW_Assigned_Percentages</targetReference>
+            </connector>
+            <label>Plan 631 - Deal OW 30%</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Determine_Plan_Allocation</name>
         <label>Determine Plan Allocation</label>
-        <locationX>446</locationX>
-        <locationY>2147</locationY>
+        <locationX>1128</locationX>
+        <locationY>5021</locationY>
         <defaultConnector>
             <targetReference>END_ELEMENT_2</targetReference>
         </defaultConnector>
@@ -188,9 +472,209 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Is_CCPGDeal_Selected</name>
+        <label>Is CCPGDeal Selected ?</label>
+        <locationX>710</locationX>
+        <locationY>1955</locationY>
+        <defaultConnector>
+            <targetReference>Is_EdgeDeal_Selected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CCPGDeal_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_OW_CCPG_Deal__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_CCPGDeal_Selected</targetReference>
+            </connector>
+            <label>CCPGDeal Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_CCPGDealWinsVol_Selected</name>
+        <label>Is CCPGDealWinsVol Selected ?</label>
+        <locationX>710</locationX>
+        <locationY>2855</locationY>
+        <defaultConnector>
+            <targetReference>Is_DCGDesign_Selected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CCPGDealWinsVol_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_OW_CCPG_Deal_Wins_Vol__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_CCPGDealWinsVol_Selected</targetReference>
+            </connector>
+            <label>CCPGDealWinsVol Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_CCPGDesign_Selected</name>
+        <label>Is CCPGDesign Selected ?</label>
+        <locationX>710</locationX>
+        <locationY>3455</locationY>
+        <defaultConnector>
+            <targetReference>Is_EdgeDesign_Selected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CCPGDesign_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_OW_CCPG_Design__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_CCPGDesign_Selected</targetReference>
+            </connector>
+            <label>CCPGDesign Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_DCGDeal_Selected</name>
+        <label>Is DCGDeal Selected ?</label>
+        <locationX>710</locationX>
+        <locationY>1655</locationY>
+        <defaultConnector>
+            <targetReference>Is_CCPGDeal_Selected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>DCGDeal_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_OW_DCG_Deal__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_DCGDeal_Selected</targetReference>
+            </connector>
+            <label>DCGDeal Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_DCGDealWinsVol_Selected</name>
+        <label>Is DCGDealWinsVol Selected ?</label>
+        <locationX>710</locationX>
+        <locationY>2555</locationY>
+        <defaultConnector>
+            <targetReference>Is_CCPGDealWinsVol_Selected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>DCGDealWinsVol_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_OW_DCG_Deal_Wins_Vol__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_DCGDealWinsVol_Selected</targetReference>
+            </connector>
+            <label>DCGDealWinsVol Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_DCGDesign_Selected</name>
+        <label>Is DCGDesign Selected ?</label>
+        <locationX>710</locationX>
+        <locationY>3155</locationY>
+        <defaultConnector>
+            <targetReference>Is_CCPGDesign_Selected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>DCGDesign_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_OW_DCG_Design__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_DCGDesign_Selected</targetReference>
+            </connector>
+            <label>DCGDesign Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_EdgeDeal_Selected</name>
+        <label>Is EdgeDeal Selected ?</label>
+        <locationX>710</locationX>
+        <locationY>2255</locationY>
+        <defaultConnector>
+            <targetReference>Is_DCGDealWinsVol_Selected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>EdgeDeal_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_OW_Edge_Deal__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_EdgeDeal_Selected</targetReference>
+            </connector>
+            <label>EdgeDeal Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_EdgeDesign_Selected</name>
+        <label>Is EdgeDesign Selected ?</label>
+        <locationX>710</locationX>
+        <locationY>3755</locationY>
+        <defaultConnector>
+            <targetReference>Territory_Assignment_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>EdgeDesign_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_OW_Edge_Design__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_EdgeDesign_Selected</targetReference>
+            </connector>
+            <label>EdgeDesign Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Is_Partner_Selected</name>
         <label>Is Partner Selected?</label>
-        <locationX>468</locationX>
+        <locationX>710</locationX>
         <locationY>755</locationY>
         <defaultConnector>
             <targetReference>Is_Retail_Selected</targetReference>
@@ -215,7 +699,7 @@
     <decisions>
         <name>Is_Retail_Selected</name>
         <label>Is Retail Selected?</label>
-        <locationX>468</locationX>
+        <locationX>710</locationX>
         <locationY>1055</locationY>
         <defaultConnector>
             <targetReference>Iss_OEM_Selected</targetReference>
@@ -240,10 +724,10 @@
     <decisions>
         <name>Iss_OEM_Selected</name>
         <label>Is OEM Selected?</label>
-        <locationX>468</locationX>
+        <locationX>710</locationX>
         <locationY>1355</locationY>
         <defaultConnector>
-            <targetReference>Territory_Assignment_Records</targetReference>
+            <targetReference>Is_DCGDeal_Selected</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>OEM Not Selected</defaultConnectorLabel>
         <rules>
@@ -265,7 +749,7 @@
     <decisions>
         <name>Quota_Setup_Found</name>
         <label>Quota Setup Found?</label>
-        <locationX>501</locationX>
+        <locationX>1018</locationX>
         <locationY>431</locationY>
         <defaultConnector>
             <targetReference>END_ELEMENT_1</targetReference>
@@ -287,21 +771,99 @@
             <label>Found</label>
         </rules>
     </decisions>
-    <description>[11/Nov/2026] Flow to copy the target values from target object into the assignment</description>
+    <decisions>
+        <name>Validate_OW_Selections_by_Plan</name>
+        <label>Validate OW Selections by Plan</label>
+        <locationX>490</locationX>
+        <locationY>4139</locationY>
+        <defaultConnector>
+            <targetReference>Determine_OW_Allocation</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Invalid_Deal_selection_for_Design_Plan</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>OW_Deal_Selection_Count</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>620</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>621</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Invalid_OW_SubElement_Selection</targetReference>
+            </connector>
+            <label>Invalid Deal selection for Design Plan</label>
+        </rules>
+        <rules>
+            <name>Invalid_Design_selection_for_Deal_Plan</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>OW_Design_Selection_Count</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>630</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>631</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Invalid_OW_SubElement_Selection</targetReference>
+            </connector>
+            <label>Invalid Design selection for Deal Plan</label>
+        </rules>
+    </decisions>
+    <description>[25/Nov/2026] Flow to copy the target values from target object into the assignment</description>
     <ends>
         <name>END_ELEMENT_1</name>
-        <locationX>754</locationX>
+        <locationX>1546</locationX>
         <locationY>539</locationY>
     </ends>
     <ends>
         <name>END_ELEMENT_2</name>
-        <locationX>446</locationX>
-        <locationY>2447</locationY>
+        <locationX>1128</locationX>
+        <locationY>5321</locationY>
     </ends>
     <ends>
         <name>END_ELEMENT_3</name>
+        <locationX>732</locationX>
+        <locationY>5129</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
         <locationX>50</locationX>
-        <locationY>2255</locationY>
+        <locationY>4355</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_7</name>
+        <locationX>314</locationX>
+        <locationY>4355</locationY>
     </ends>
     <environments>Default</environments>
     <formulas>
@@ -326,6 +888,7 @@ IF({!varPartnerSelected}, 1, 0)</expression>
     &quot;330&quot;, 1,
     &quot;331&quot;, 1,
     &quot;620&quot;, 1,
+    &quot;621&quot;, 1,
     &quot;630&quot;, 1,
     &quot;631&quot;, 1,
     &quot;640&quot;, 1,
@@ -368,6 +931,268 @@ IF({!varPartnerSelected}, 1, 0)</expression>
         <expression>IF({!varOEMSelected}, &quot;50%&quot;, &quot;0%&quot;)</expression>
     </formulas>
     <formulas>
+        <name>OW_CCPG_Deal_Percentage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varOWCCPGDealSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;630&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;20%&quot;,
+                2, &quot;10%&quot;,
+                3, &quot;6.667%&quot;,
+                4, &quot;5%&quot;,
+                5, &quot;4%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;631&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;30%&quot;,
+                2, &quot;15%&quot;,
+                3, &quot;10%&quot;,
+                4, &quot;7.5%&quot;,
+                5, &quot;6%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>OW_CCPG_DealVol_Percentage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varOWCCPGDealVolSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;630&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;20%&quot;,
+                2, &quot;10%&quot;,
+                3, &quot;6.667%&quot;,
+                4, &quot;5%&quot;,
+                5, &quot;4%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;631&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;30%&quot;,
+                2, &quot;15%&quot;,
+                3, &quot;10%&quot;,
+                4, &quot;7.5%&quot;,
+                5, &quot;6%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>OW_CCPG_Design_Percentage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varOWCCPGDesignSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;620&quot;,
+            CASE(
+                {!OW_Design_Selection_Count},
+                1, &quot;20%&quot;,
+                2, &quot;10%&quot;,
+                3, &quot;6.667%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;621&quot;,
+            CASE(
+                {!OW_Design_Selection_Count},
+                1, &quot;30%&quot;,
+                2, &quot;15%&quot;,
+                3, &quot;10%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>OW_DCG_Deal_Percentage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varOWDCGDealSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;630&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;20%&quot;,
+                2, &quot;10%&quot;,
+                3, &quot;6.666%&quot;,
+                4, &quot;5%&quot;,
+                5, &quot;4%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;631&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;30%&quot;,
+                2, &quot;15%&quot;,
+                3, &quot;10%&quot;,
+                4, &quot;7.5%&quot;,
+                5, &quot;6%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>OW_DCG_DealVol_Percentage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varOWDCGDealVolSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;630&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;20%&quot;,
+                2, &quot;10%&quot;,
+                3, &quot;6.666%&quot;,
+                4, &quot;5%&quot;,
+                5, &quot;4%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;631&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;30%&quot;,
+                2, &quot;15%&quot;,
+                3, &quot;10%&quot;,
+                4, &quot;7.5%&quot;,
+                5, &quot;6%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>OW_DCG_Design_Percentage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varOWDCGDesignSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;620&quot;,
+            CASE(
+                {!OW_Design_Selection_Count},
+                1, &quot;20%&quot;,
+                2, &quot;10%&quot;,
+                3, &quot;6.666%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;621&quot;,
+            CASE(
+                {!OW_Design_Selection_Count},
+                1, &quot;30%&quot;,
+                2, &quot;15%&quot;,
+                3, &quot;10%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>OW_Deal_Selection_Count</name>
+        <dataType>Number</dataType>
+        <expression>IF({!varOWDCGDealSelected}, 1, 0) +
+IF({!varOWCCPGDealSelected}, 1, 0) +
+IF({!varOWEdgeDealSelected}, 1, 0) +
+IF({!varOWDCGDealVolSelected}, 1, 0) +
+IF({!varOWCCPGDealVolSelected}, 1, 0)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>OW_Design_Selection_Count</name>
+        <dataType>Number</dataType>
+        <expression>IF({!varOWDCGDesignSelected}, 1, 0) +
+IF({!varOWCCPGDesignSelected}, 1, 0) +
+IF({!varOWEdgeDesignSelected}, 1, 0)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>OW_Edge_Deal_Percentage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varOWEdgeDealSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;630&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;20%&quot;,
+                2, &quot;10%&quot;,
+                3, &quot;6.667%&quot;,
+                4, &quot;5%&quot;,
+                5, &quot;4%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;631&quot;,
+            CASE(
+                {!OW_Deal_Selection_Count},
+                1, &quot;30%&quot;,
+                2, &quot;15%&quot;,
+                3, &quot;10%&quot;,
+                4, &quot;7.5%&quot;,
+                5, &quot;6%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>OW_Edge_Design_Percentage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varOWEdgeDesignSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;620&quot;,
+            CASE(
+                {!OW_Design_Selection_Count},
+                1, &quot;20%&quot;,
+                2, &quot;10%&quot;,
+                3, &quot;6.667%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;621&quot;,
+            CASE(
+                {!OW_Design_Selection_Count},
+                1, &quot;30%&quot;,
+                2, &quot;15%&quot;,
+                3, &quot;10%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
         <name>Partneroneselected</name>
         <dataType>String</dataType>
         <expression>IF({!varPartnerSelected}, &quot;100%&quot;, &quot;0%&quot;)</expression>
@@ -395,9 +1220,9 @@ IF({!varPartnerSelected}, 1, 0)</expression>
         <expression>CASE(
     TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
     &quot;250&quot;, &quot;60%&quot;,
-    &quot;330&quot;, &quot;30%&quot;,
+    &quot;330&quot;, &quot;60%&quot;,
     &quot;620&quot;, &quot;20%&quot;,
-    &quot;630&quot;, &quot;40%&quot;,
+    &quot;630&quot;, &quot;60%&quot;,
     IF(
         NOT({!varOEMSelected}),
         &quot;0%&quot;,
@@ -408,7 +1233,7 @@ IF({!varPartnerSelected}, 1, 0)</expression>
             &quot;331&quot;,
                 IF(
                     {!CPT_Get_Quota_Setup.CPT_Sales_Group__c} &lt;&gt; &quot;PRC&quot;,
-                    &quot;50%&quot;,
+                    &quot;70%&quot;,
                     &quot;0%&quot;
                 ),
             &quot;631&quot;,
@@ -578,7 +1403,7 @@ IF({!varPartnerSelected}, 1, 0)</expression>
     <loops>
         <name>Territory_Assignment_Records</name>
         <label>Territory Assignment Records</label>
-        <locationX>248</locationX>
+        <locationX>490</locationX>
         <locationY>647</locationY>
         <collectionReference>Get_Related_Territory_Assignments</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -586,7 +1411,7 @@ IF({!varPartnerSelected}, 1, 0)</expression>
             <targetReference>Is_Partner_Selected</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>BR_DCG_Default_Required</targetReference>
+            <targetReference>Validate_OW_Selections_by_Plan</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -611,7 +1436,7 @@ IF({!varPartnerSelected}, 1, 0)</expression>
     <recordLookups>
         <name>CPT_Get_Quota_Setup</name>
         <label>Get Quota Setup</label>
-        <locationX>501</locationX>
+        <locationX>1018</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -632,7 +1457,7 @@ IF({!varPartnerSelected}, 1, 0)</expression>
     <recordLookups>
         <name>Get_Related_Territory_Assignments</name>
         <label>Get Related Territory Assignments</label>
-        <locationX>248</locationX>
+        <locationX>490</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -653,8 +1478,8 @@ IF({!varPartnerSelected}, 1, 0)</expression>
     <recordUpdates>
         <name>Update_BR_DCG_Default</name>
         <label>Update BR DCG Default</label>
-        <locationX>116</locationX>
-        <locationY>1847</locationY>
+        <locationX>798</locationX>
+        <locationY>4721</locationY>
         <connector>
             <targetReference>Conflicting_CR_Selections</targetReference>
         </connector>
@@ -683,8 +1508,8 @@ IF({!varPartnerSelected}, 1, 0)</expression>
     <recordUpdates>
         <name>Update_Quotasetup</name>
         <label>Update Quotasetup</label>
-        <locationX>314</locationX>
-        <locationY>2255</locationY>
+        <locationX>996</locationX>
+        <locationY>5129</locationY>
         <connector>
             <targetReference>END_ELEMENT_2</targetReference>
         </connector>
@@ -714,10 +1539,58 @@ IF({!varPartnerSelected}, 1, 0)</expression>
                 <elementReference>Percentage_Retail</elementReference>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <field>CPT_OW_CCPG_Deal_Assigned__c</field>
+            <value>
+                <elementReference>OW_CCPG_Deal_Percentage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</field>
+            <value>
+                <elementReference>OW_CCPG_DealVol_Percentage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_OW_CCPG_Design_Assigned__c</field>
+            <value>
+                <elementReference>OW_CCPG_Design_Percentage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_OW_DCG_Deal_Assigned__c</field>
+            <value>
+                <elementReference>OW_DCG_Deal_Percentage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</field>
+            <value>
+                <elementReference>OW_DCG_DealVol_Percentage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_OW_DCG_Design_Assigned__c</field>
+            <value>
+                <elementReference>OW_DCG_Design_Percentage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_OW_Edge_Deal_Assigned__c</field>
+            <value>
+                <elementReference>OW_Edge_Deal_Percentage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_OW_Edge_Design_Assigned__c</field>
+            <value>
+                <elementReference>OW_Edge_Design_Percentage</elementReference>
+            </value>
+        </inputAssignments>
         <inputReference>$Record.CPT_Quota_Setup__r</inputReference>
     </recordUpdates>
     <start>
-        <locationX>375</locationX>
+        <locationX>892</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>CPT_Get_Quota_Setup</targetReference>
@@ -755,6 +1628,86 @@ IF({!varPartnerSelected}, 1, 0)</expression>
     </variables>
     <variables>
         <name>varOEMSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varOWCCPGDealSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varOWCCPGDealVolSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varOWCCPGDesignSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varOWDCGDealSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varOWDCGDealVolSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varOWDCGDesignSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varOWEdgeDealSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varOWEdgeDesignSelected</name>
         <dataType>Boolean</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>

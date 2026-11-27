@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Endpoint__c</field>
-        <value xsi:type="xsd:string">callout:PEGA_API/bpms/ucd/analytics/v1/create-cases/Customer%20Name%20Change</value>
+        <value xsi:type="xsd:string">callout:SalesCRM_UCD_App/bpms/ucd/analytics/v1/create-cases/Customer%20Name%20Change</value>
     </values>
     <values>
         <field>Http_Method__c</field>

@@ -367,6 +367,94 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>CPT_OW_CCPG_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - CCPG Deal Target</label>
+        <precision>12</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - CCPG Deal Wins Vol Target</label>
+        <precision>12</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Design_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - CCPG Design Target</label>
+        <precision>12</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - DCG Deal Target</label>
+        <precision>12</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Wins_Vol_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - DCG Deal Wins Vol Target</label>
+        <precision>12</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Design_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - DCG Design Target</label>
+        <precision>12</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - Edge Deal Target</label>
+        <precision>12</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Design_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - Edge Design Target</label>
+        <precision>12</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>CPT_Quota_Period__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Quota Period</label>
@@ -428,6 +516,21 @@
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Opportunity_Wins_Targets</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Account_Territory__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Target__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</columns>
+        <columns>CPT_OW_CCPG_Design_Target__c</columns>
+        <columns>CPT_OW_DCG_Deal_Target__c</columns>
+        <columns>CPT_OW_DCG_Deal_Wins_Vol_Target__c</columns>
+        <columns>CPT_OW_DCG_Design_Target__c</columns>
+        <columns>CPT_OW_Edge_Deal_Target__c</columns>
+        <columns>CPT_OW_Edge_Design_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Opportunity Wins Targets</label>
     </listViews>
     <nameField>
         <displayFormat>TT-{000000}</displayFormat>

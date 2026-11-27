@@ -1,0 +1,83 @@
+<template>
+    <lightning-spinner
+        if:true={isLoading}
+        alternative-text="Creating PDO..."
+        size="medium">
+    </lightning-spinner>
+
+    <!-- Header -->
+    <div class="slds-p-around_medium slds-border_bottom">
+        <h2 style="font-size: 20px; text-align: center;"
+            class="slds-text-title_bold">
+            Create Partner Deal 
+        </h2>
+    </div>
+
+    <div class="slds-p-around_medium">
+
+        <!-- Fields populated from Lead -->
+
+        <lightning-input
+            label="End Customer Name"
+            value={company}
+            readonly
+            onchange={handleCompanyChange}>
+        </lightning-input>
+
+        <lightning-input
+            label="End Customer Country"
+            value={country}
+            readonly
+            onchange={handleCountryChange}>
+        </lightning-input>
+
+        <lightning-input
+            label="End customer Website"
+            type="text"
+            value={website}
+            readonly
+            onchange={handleWebsiteChange}>
+        </lightning-input>
+
+        <!-- Manually entered fields -->
+
+        <lightning-input
+            label="Opportunity Name"
+            value={opportunityName}
+            required
+            onchange={handleOpportunityNameChange}>
+        </lightning-input>
+
+        <lightning-textarea
+            label="Opportunity Summary"
+            value={opportunitySummary}
+            required
+            onchange={handleOpportunitySummaryChange}>
+        </lightning-textarea>
+
+        <lightning-input
+            label="Estimated Budget"
+            type="number"
+            step="0.01"
+            value={estimatedBudget}
+            required
+            onchange={handleEstimatedBudgetChange}>
+        </lightning-input>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="slds-modal__footer">
+        <lightning-button
+            label="Cancel"
+            onclick={handleCancel}>
+        </lightning-button>
+
+        <lightning-button
+            label="Save"
+            variant="brand"
+            class="slds-m-left_small"
+            onclick={handleSave}>
+        </lightning-button>
+    </div>
+</template>

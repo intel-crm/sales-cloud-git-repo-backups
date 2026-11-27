@@ -534,7 +534,7 @@
         <filters>
             <field>Core_Source_System__c</field>
             <operation>equals</operation>
-            <value>ERPM</value>
+            <value>ECA</value>
         </filters>
         <label>All</label>
     </listViews>

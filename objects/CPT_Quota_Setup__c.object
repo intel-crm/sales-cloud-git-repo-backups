@@ -916,6 +916,18 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>CPT_MarVol_Margin_CCG_Quota__c</fullName>
+        <description>Field to be deleted- Work around for deployment</description>
+        <externalId>false</externalId>
+        <label>MarVol_Margin_CCG</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CPT_MarVol_Margin_CCG__c</fullName>
         <defaultValue>false</defaultValue>
         <inlineHelpText>Select this if you want to include CCG margin target. Must be selected with at least one Volume CCG field.</inlineHelpText>
@@ -934,6 +946,18 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>MarVol - Margin DCG % Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_MarVol_Margin_DCG_Quota__c</fullName>
+        <description>To be deleted-created to unblock deployment</description>
+        <externalId>false</externalId>
+        <label>MarVol Margin DCG</label>
+        <length>10</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1130,6 +1154,275 @@ TEXT(ROUND((CPT_MarVol_Allocated__c / CPT_MarVol_Subelements_Count__c) * 100, 2)
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Allocated__c</fullName>
+        <formula>(
+    VALUE(SUBSTITUTE(TEXT(CPT_OW_DCG_Deal_Assigned__c), &apos;%&apos;, &apos;&apos;)) +
+    VALUE(SUBSTITUTE(TEXT(CPT_OW_CCPG_Deal_Assigned__c), &apos;%&apos;, &apos;&apos;)) +
+    VALUE(SUBSTITUTE(TEXT(CPT_OW_Edge_Deal_Assigned__c), &apos;%&apos;, &apos;&apos;)) +
+    VALUE(SUBSTITUTE(TEXT(CPT_OW_DCG_Deal_Wins_Vol_Assigned__c), &apos;%&apos;, &apos;&apos;)) +
+    VALUE(SUBSTITUTE(TEXT(CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c), &apos;%&apos;, &apos;&apos;)) +
+    VALUE(SUBSTITUTE(TEXT(CPT_OW_DCG_Design_Assigned__c), &apos;%&apos;, &apos;&apos;)) +
+    VALUE(SUBSTITUTE(TEXT(CPT_OW_CCPG_Design_Assigned__c), &apos;%&apos;, &apos;&apos;)) +
+    VALUE(SUBSTITUTE(TEXT(CPT_OW_Edge_Design_Assigned__c), &apos;%&apos;, &apos;&apos;))
+) / 100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Wins (Allocated)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Allowed__c</fullName>
+        <formula>VALUE(SUBSTITUTE(TEXT(CPT_Employee__r.CPT_Sales_Compensation_Plan__r.CPT_Percent_OW_Revenue__c ), &apos;%&apos;, &apos;&apos;))/100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Wins (Allowed)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CPT_OW_Allocated__c*100) &amp; &quot;/&quot; &amp; TEXT(CPT_OW_Allowed__c*100) &amp; &quot;%&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Wins (% Assigned)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal_Assigned__c</fullName>
+        <label>OW - CCPG Deal % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>OW - CCPG Deal Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</fullName>
+        <label>OW - CCPG Deal Wins Vol % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal_Wins_Vol_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>OW - CCPG Deal Wins Vol Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Wins_Vol_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Deal_Wins_Vol__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Design_Assigned__c</fullName>
+        <label>OW - CCPG Design % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Design_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>OW - CCPG Design Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_OW_CCPG_Design_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_OW_CCPG_Design__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Assigned__c</fullName>
+        <label>OW - DCG Deal % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>OW - DCG Deal Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</fullName>
+        <label>OW - DCG Deal Wins Vol % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Wins_Vol_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>OW - DCG Deal Wins Vol Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Wins_Vol_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Deal_Wins_Vol__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Design_Assigned__c</fullName>
+        <label>OW - DCG Design % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Design_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>OW - DCG Design Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_OW_DCG_Design_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_OW_DCG_Design__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Deal_Assigned__c</fullName>
+        <label>OW - Edge Deal % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Deal_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>OW - Edge Deal Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_OW_Edge_Deal_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Deal__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Design_Assigned__c</fullName>
+        <label>OW - Edge Design % Assigned</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>CPT_Percentage_Picklist</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Design_Quota__c</fullName>
+        <inlineHelpText>Value is in whole dollars.</inlineHelpText>
+        <label>OW - Edge Design Quota</label>
+        <summarizedField>CPT_Territory_Assignment__c.CPT_OW_Edge_Design_Target__c</summarizedField>
+        <summaryFilterItems>
+            <field>CPT_Territory_Assignment__c.CPT_OW_Edge_Design__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>CPT_Territory_Assignment__c.CPT_Quota_Setup__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
     </fields>
     <fields>
         <fullName>CPT_Overlay__c</fullName>
@@ -2101,7 +2394,7 @@ IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;Pending&quot;,20,50)))</form
     </fields>
     <fields>
         <fullName>CPT_Total_Allocated__c</fullName>
-        <formula>CPT_BR_Allocated__c + CPT_CR_Allocated__c + CPT_Wins_Allocated__c</formula>
+        <formula>CPT_BR_Allocated__c + CPT_CR_Allocated__c + CPT_Wins_Allocated__c + CPT_OW_Allocated__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Total (Allocated)</label>
         <precision>18</precision>
@@ -2244,6 +2537,11 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
         <columns>CPT_Effective_Start__c</columns>
         <columns>CPT_Effective_End__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CPT_Employee_Name__c</field>
+            <operation>contains</operation>
+            <value>Test</value>
+        </filters>
         <label>All Records</label>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -2343,6 +2641,52 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>My_Team_s_Quota_Opportunity_Wins_Deal</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Status__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Assigned__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Quota__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Wins_Vol_Quota__c</columns>
+        <columns>CPT_OW_DCG_Deal_Assigned__c</columns>
+        <columns>CPT_OW_DCG_Deal_Quota__c</columns>
+        <columns>CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</columns>
+        <columns>CPT_OW_DCG_Deal_Wins_Vol_Quota__c</columns>
+        <columns>CPT_OW_Edge_Deal_Assigned__c</columns>
+        <columns>CPT_OW_Edge_Deal_Quota__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CPT_OW_Allowed__c</field>
+            <operation>greaterThan</operation>
+            <value>0.0</value>
+        </filters>
+        <label>My Team&apos;s Quota - Opportunity Wins Deal</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Quota_Opportunity_Wins_Design</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Stage__c</columns>
+        <columns>CPT_Plan_Name__c</columns>
+        <columns>CPT_Status__c</columns>
+        <columns>CPT_OW_CCPG_Design_Assigned__c</columns>
+        <columns>CPT_OW_CCPG_Design_Quota__c</columns>
+        <columns>CPT_OW_DCG_Design_Assigned__c</columns>
+        <columns>CPT_OW_DCG_Design_Quota__c</columns>
+        <columns>CPT_OW_Edge_Design_Assigned__c</columns>
+        <columns>CPT_OW_Edge_Design_Quota__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CPT_OW_Allowed__c</field>
+            <operation>greaterThan</operation>
+            <value>0.0</value>
+        </filters>
+        <label>My Team&apos;s Quota -Opportunity Wins Design</label>
+    </listViews>
+    <listViews>
         <fullName>My_Team_s_Quota_Wins</fullName>
         <columns>NAME</columns>
         <columns>CPT_Employee_Name__c</columns>
@@ -2357,7 +2701,7 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
         <columns>CPT_Wins_Allocated__c</columns>
         <columns>CPT_Wins_Allowed__c</columns>
         <filterScope>Mine</filterScope>
-        <label>My_Team&apos;s_Quota_PFR</label>
+        <label>My_Team_s_Quota_Wins</label>
     </listViews>
     <nameField>
         <displayFormat>QS-{000000}</displayFormat>
@@ -3765,6 +4109,798 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>CPT_OW_CCPG_Deal_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_OW_CCPG_Design_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_OW_DCG_Deal_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_OW_DCG_Design_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_OW_Edge_Deal_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CPT_OW_Edge_Design_Assigned__c</picklist>
+            <values>
+                <fullName>0%25</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>10%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>35%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>40%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>45%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>55%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E666%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%2E667%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>65%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>70%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>80%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>85%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>90%25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>95%25</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>CPT_Plan__c</picklist>
             <values>
                 <fullName>120</fullName>
@@ -4054,42 +5190,47 @@ VALUE( SUBSTITUTE(TEXT( CPT_Wins_Design_Assigned__c), &apos;%&apos;, &apos;&apos
         <active>true</active>
         <description>Please select 0% instead of &quot;none&quot; for all the Assigned % fields.</description>
         <errorConditionFormula>OR(
-AND(
-  CPT_BR_Allowed__c &gt; 0, 
-  OR(
-    TEXT(CPT_BR_CCG_Assigned__c)=&apos;&apos;,  
-    TEXT(CPT_BR_DCAI_Assigned__c)=&apos;&apos;, 
-    TEXT(CPT_BR_All_Assigned__c)=&apos;&apos;
-  )
-),
+    AND(
+        CPT_BR_Allowed__c &gt; 0,
+        OR(
+            TEXT(CPT_BR_CCG_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_BR_DCAI_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_BR_All_Assigned__c) = &apos;&apos;
+        )
+    ),
 
-AND(
-  CPT_CR_Allowed__c &gt; 0, 
-  OR(
-    TEXT(CPT_CR_OEM_Assigned__c)=&apos;&apos;,
-    TEXT(CPT_CR_Partner_Assigned__c)=&apos;&apos;,
-    TEXT(CPT_CR_Retail_Assigned__c)=&apos;&apos;
-  )
-),
+    AND(
+        CPT_CR_Allowed__c &gt; 0,
+        OR(
+            TEXT(CPT_CR_OEM_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_CR_Partner_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_CR_Retail_Assigned__c) = &apos;&apos;
+        )
+    ),
 
+    AND(
+        CPT_OW_Allowed__c &gt; 0,
+        OR(
+            TEXT(CPT_OW_DCG_Deal_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_OW_CCPG_Deal_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_OW_Edge_Deal_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_OW_DCG_Deal_Wins_Vol_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_OW_DCG_Design_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_OW_CCPG_Design_Assigned__c) = &apos;&apos;,
+            TEXT(CPT_OW_Edge_Design_Assigned__c) = &apos;&apos;
+        )
+    ),
 
+    AND(
+        CPT_Sales_OKR_Allowed__c &gt; 0,
+        CPT_Sales_OKR_Assigned__c = &apos;&apos;
+    ),
 
-
-
-AND(
-  CPT_Sales_OKR_Allowed__c &gt; 0, 
-  OR(
-    CPT_Sales_OKR_Assigned__c=&apos;&apos;
-  )
-),
-
-AND(
-  CPT_Sales_Team_Goal_Allowed__c &gt; 0, 
-  OR(
-    CPT_Sales_Team_Goal_Assigned__c =&apos;&apos;
-  )
-)
-
+    AND(
+        CPT_Sales_Team_Goal_Allowed__c &gt; 0,
+        CPT_Sales_Team_Goal_Assigned__c = &apos;&apos;
+    )
 )</errorConditionFormula>
         <errorMessage>Please select 0% instead of &quot;none&quot; for all the Assigned % fields.</errorMessage>
     </validationRules>
@@ -4126,6 +5267,59 @@ IF(Text(CPT_DR_CCG_Assigned__c)=&apos;0%&apos;,false,IF(CPT_DR_CCG_Quota__c=0,tr
 IF(TEXT(CPT_DR_DCAI_Assigned__c) =&apos;0%&apos;,false,IF(CPT_DR_DCAI_Quota__c=0,true,false)),
 IF(TEXT(CPT_DR_NEX_Assigned__c) =&apos;0%&apos;,false,IF(CPT_DR_NEX_Quota__c=0,true,false)))</errorConditionFormula>
         <errorMessage>A Territory must be tied to selected Deal Win Rev BU&apos;s to Assign % and Quota. Please add quota for selected DR-BU(s) in Territory Assignments.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Avoid_OW_AssignPercent_WhenNoTarget</fullName>
+        <active>true</active>
+        <description>Restrict user from giving the percentage assigned when there is no target.</description>
+        <errorConditionFormula>AND(
+    ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
+    OR(
+        
+
+        IF(
+            TEXT(CPT_OW_DCG_Deal_Assigned__c) = &apos;0%&apos;,
+            FALSE,
+            IF(CPT_OW_DCG_Deal_Quota__c = 0, TRUE, FALSE)
+        ),
+        IF(
+            TEXT(CPT_OW_CCPG_Deal_Assigned__c) = &apos;0%&apos;,
+            FALSE,
+            IF(CPT_OW_CCPG_Deal_Quota__c = 0, TRUE, FALSE)
+        ),
+        IF(
+            TEXT(CPT_OW_Edge_Deal_Assigned__c) = &apos;0%&apos;,
+            FALSE,
+            IF(CPT_OW_Edge_Deal_Quota__c = 0, TRUE, FALSE)
+        ),
+        IF(
+            TEXT(CPT_OW_DCG_Deal_Wins_Vol_Assigned__c) = &apos;0%&apos;,
+            FALSE,
+            IF(CPT_OW_DCG_Deal_Wins_Vol_Quota__c = 0, TRUE, FALSE)
+        ),
+        IF(
+            TEXT(CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c) = &apos;0%&apos;,
+            FALSE,
+            IF(CPT_OW_CCPG_Deal_Wins_Vol_Quota__c = 0, TRUE, FALSE)
+        ),
+        IF(
+            TEXT(CPT_OW_DCG_Design_Assigned__c) = &apos;0%&apos;,
+            FALSE,
+            IF(CPT_OW_DCG_Design_Quota__c = 0, TRUE, FALSE)
+        ),
+        IF(
+            TEXT(CPT_OW_CCPG_Design_Assigned__c) = &apos;0%&apos;,
+            FALSE,
+            IF(CPT_OW_CCPG_Design_Quota__c = 0, TRUE, FALSE)
+        ),
+        IF(
+            TEXT(CPT_OW_Edge_Design_Assigned__c) = &apos;0%&apos;,
+            FALSE,
+            IF(CPT_OW_Edge_Design_Quota__c = 0, TRUE, FALSE)
+        )
+    )
+)</errorConditionFormula>
+        <errorMessage>A Territory must be linked to the selected Billings Revenue Business Units (BU) to assign % and Quota. Please select the OW-BU checkbox in Territory Assignments.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>CPT_BR_Fixed_Plan_Allocation</fullName>
@@ -4315,6 +5509,123 @@ CPT_DR_Allocated__c&lt;&gt;CPT_DR_Allowed__c
     )
 )</errorConditionFormula>
         <errorMessage>Please complete Sales OKR Selection, Assigned %, and Quota.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_OW_Prevent_Excess_Allocation</fullName>
+        <active>true</active>
+        <description>Prevent over allocation of Opportunity Wins (OW).</description>
+        <errorConditionFormula>CPT_OW_Allocated__c &gt; CPT_OW_Allowed__c</errorConditionFormula>
+        <errorMessage>The OW% Assigned exceeds the allowed limit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_OW_Prevent_Incomplete_Data_Update</fullName>
+        <active>true</active>
+        <description>Enforce Opportunity Wins assignment and quota is complete</description>
+        <errorConditionFormula>AND(
+    ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;),
+    OR(
+        AND(
+            OR(
+                ISBLANK(TEXT(CPT_OW_DCG_Deal_Assigned__c)),
+                TEXT(CPT_OW_DCG_Deal_Assigned__c) = &apos;0%&apos;
+            ),
+            CPT_OW_DCG_Deal_Quota__c &gt; 0
+        ),
+        AND(
+            OR(
+                ISBLANK(TEXT(CPT_OW_CCPG_Deal_Assigned__c)),
+                TEXT(CPT_OW_CCPG_Deal_Assigned__c) = &apos;0%&apos;
+            ),
+            CPT_OW_CCPG_Deal_Quota__c &gt; 0
+        ),
+        AND(
+            OR(
+                ISBLANK(TEXT(CPT_OW_Edge_Deal_Assigned__c)),
+                TEXT(CPT_OW_Edge_Deal_Assigned__c) = &apos;0%&apos;
+            ),
+            CPT_OW_Edge_Deal_Quota__c &gt; 0
+        ),
+        AND(
+            OR(
+                ISBLANK(TEXT(CPT_OW_DCG_Deal_Wins_Vol_Assigned__c)),
+                TEXT(CPT_OW_DCG_Deal_Wins_Vol_Assigned__c) = &apos;0%&apos;
+            ),
+            CPT_OW_DCG_Deal_Wins_Vol_Quota__c &gt; 0
+        ),
+        AND(
+            OR(
+                ISBLANK(TEXT(CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c)),
+                TEXT(CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c) = &apos;0%&apos;
+            ),
+            CPT_OW_CCPG_Deal_Wins_Vol_Quota__c &gt; 0
+        ),
+        AND(
+            OR(
+                ISBLANK(TEXT(CPT_OW_DCG_Design_Assigned__c)),
+                TEXT(CPT_OW_DCG_Design_Assigned__c) = &apos;0%&apos;
+            ),
+            CPT_OW_DCG_Design_Quota__c &gt; 0
+        ),
+        AND(
+            OR(
+                ISBLANK(TEXT(CPT_OW_CCPG_Design_Assigned__c)),
+                TEXT(CPT_OW_CCPG_Design_Assigned__c) = &apos;0%&apos;
+            ),
+            CPT_OW_CCPG_Design_Quota__c &gt; 0
+        ),
+        AND(
+            OR(
+                ISBLANK(TEXT(CPT_OW_Edge_Design_Assigned__c)),
+                TEXT(CPT_OW_Edge_Design_Assigned__c) = &apos;0%&apos;
+            ),
+            CPT_OW_Edge_Design_Quota__c &gt; 0
+        ),
+
+        AND(
+            TEXT(CPT_OW_DCG_Deal_Assigned__c) &lt;&gt; &apos;0%&apos;,
+            TEXT(CPT_OW_DCG_Deal_Assigned__c) &lt;&gt; &apos;&apos;,
+            CPT_OW_DCG_Deal_Quota__c &lt;= 0
+        ),
+        AND(
+            TEXT(CPT_OW_CCPG_Deal_Assigned__c) &lt;&gt; &apos;0%&apos;,
+            TEXT(CPT_OW_CCPG_Deal_Assigned__c) &lt;&gt; &apos;&apos;,
+            CPT_OW_CCPG_Deal_Quota__c &lt;= 0
+        ),
+        AND(
+            TEXT(CPT_OW_Edge_Deal_Assigned__c) &lt;&gt; &apos;0%&apos;,
+            TEXT(CPT_OW_Edge_Deal_Assigned__c) &lt;&gt; &apos;&apos;,
+            CPT_OW_Edge_Deal_Quota__c &lt;= 0
+        ),
+        AND(
+            TEXT(CPT_OW_DCG_Deal_Wins_Vol_Assigned__c) &lt;&gt; &apos;0%&apos;,
+            TEXT(CPT_OW_DCG_Deal_Wins_Vol_Assigned__c) &lt;&gt; &apos;&apos;,
+            CPT_OW_DCG_Deal_Wins_Vol_Quota__c &lt;= 0
+        ),
+        AND(
+            TEXT(CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c) &lt;&gt; &apos;0%&apos;,
+            TEXT(CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c) &lt;&gt; &apos;&apos;,
+            CPT_OW_CCPG_Deal_Wins_Vol_Quota__c &lt;= 0
+        ),
+        AND(
+            TEXT(CPT_OW_DCG_Design_Assigned__c) &lt;&gt; &apos;0%&apos;,
+            TEXT(CPT_OW_DCG_Design_Assigned__c) &lt;&gt; &apos;&apos;,
+            CPT_OW_DCG_Design_Quota__c &lt;= 0
+        ),
+        AND(
+            TEXT(CPT_OW_CCPG_Design_Assigned__c) &lt;&gt; &apos;0%&apos;,
+            TEXT(CPT_OW_CCPG_Design_Assigned__c) &lt;&gt; &apos;&apos;,
+            CPT_OW_CCPG_Design_Quota__c &lt;= 0
+        ),
+        AND(
+            TEXT(CPT_OW_Edge_Design_Assigned__c) &lt;&gt; &apos;0%&apos;,
+            TEXT(CPT_OW_Edge_Design_Assigned__c) &lt;&gt; &apos;&apos;,
+            CPT_OW_Edge_Design_Quota__c &lt;= 0
+        ),
+
+        CPT_OW_Allocated__c &lt;&gt; CPT_OW_Allowed__c
+    )
+)</errorConditionFormula>
+        <errorMessage>Please complete the Opportunity Wins Assigned % and Quota fields.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>CPT_Plan_Specific_Field_Restriction</fullName>

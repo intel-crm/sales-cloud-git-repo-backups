@@ -606,6 +606,158 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>CPT_OW_CCPG_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - CCPG Deal Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - CCPG Deal Wins Vol Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal_Wins_Vol__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - CCPG Deal Wins Vol</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Deal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - CCPG Deal</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Design_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - CCPG Design Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_CCPG_Design__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - CCPG Design</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - DCG Deal Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Wins_Vol_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - DCG Deal Wins Vol Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal_Wins_Vol__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - DCG Deal Wins Vol</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Deal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - DCG Deal</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Design_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - DCG Design Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_DCG_Design__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - DCG Design</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Deal_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - Edge Deal Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Deal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - Edge Deal</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Design_Target__c</fullName>
+        <defaultValue>0</defaultValue>
+        <label>OW - Edge Design Target</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CPT_OW_Edge_Design__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>OW - Edge Design</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>CPT_Quota_Period__c</fullName>
         <description>The Quota Period for reference.</description>
         <externalId>false</externalId>
@@ -725,6 +877,22 @@
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Copy_of_My_Team_s_Assignments_OW_Design</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_Quota_Setup__c</columns>
+        <columns>CPT_Territory_Target__c</columns>
+        <columns>CPT_OW_CCPG_Design__c</columns>
+        <columns>CPT_OW_CCPG_Design_Target__c</columns>
+        <columns>CPT_OW_DCG_Design__c</columns>
+        <columns>CPT_OW_DCG_Design_Target__c</columns>
+        <columns>CPT_OW_Edge_Design__c</columns>
+        <columns>CPT_OW_Edge_Design_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments- OW Design</label>
+    </listViews>
+    <listViews>
         <fullName>My_Team_s_Assignments_BR</fullName>
         <columns>NAME</columns>
         <columns>CPT_Employee_Name__c</columns>
@@ -759,6 +927,26 @@
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Assignments_OW</fullName>
+        <columns>NAME</columns>
+        <columns>CPT_Employee_Name__c</columns>
+        <columns>CPT_Territory_Name__c</columns>
+        <columns>CPT_Quota_Setup__c</columns>
+        <columns>CPT_Territory_Target__c</columns>
+        <columns>CPT_OW_CCPG_Deal__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Target__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Wins_Vol__c</columns>
+        <columns>CPT_OW_CCPG_Deal_Wins_Vol_Target__c</columns>
+        <columns>CPT_OW_DCG_Deal__c</columns>
+        <columns>CPT_OW_DCG_Deal_Target__c</columns>
+        <columns>CPT_OW_DCG_Deal_Wins_Vol__c</columns>
+        <columns>CPT_OW_DCG_Deal_Wins_Vol_Target__c</columns>
+        <columns>CPT_OW_Edge_Deal__c</columns>
+        <columns>CPT_OW_Edge_Deal_Target__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Team&apos;s Assignments - OW Deals</label>
     </listViews>
     <nameField>
         <displayFormat>TA-{000000}</displayFormat>
@@ -840,6 +1028,70 @@ AND(CPT_CR_Retail__c, OR(CPT_CR_Retail_Target__c= 0, ISNULL(CPT_CR_Retail_Target
     ) &gt; 1
 )</errorConditionFormula>
         <errorMessage>For Plan 240, select either Consumption Revenue Partner or Retail, not both, on this Territory Assignment.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CPT_Prevent_OW_Territory_BU_Update</fullName>
+        <active>true</active>
+        <description>Rule to make sure that the Employee cannot be a part of BU if the corresponding Target Amount is zero.</description>
+        <errorConditionFormula>OR(
+    AND(
+        CPT_OW_DCG_Deal__c,
+        OR(
+            CPT_OW_DCG_Deal_Target__c = 0,
+            ISNULL(CPT_OW_DCG_Deal_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_CCPG_Deal__c,
+        OR(
+            CPT_OW_CCPG_Deal_Target__c = 0,
+            ISNULL(CPT_OW_CCPG_Deal_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_Edge_Deal__c,
+        OR(
+            CPT_OW_Edge_Deal_Target__c = 0,
+            ISNULL(CPT_OW_Edge_Deal_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_DCG_Deal_Wins_Vol__c,
+        OR(
+            CPT_OW_DCG_Deal_Wins_Vol_Target__c = 0,
+            ISNULL(CPT_OW_DCG_Deal_Wins_Vol_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_CCPG_Deal_Wins_Vol__c,
+        OR(
+            CPT_OW_CCPG_Deal_Wins_Vol_Target__c = 0,
+            ISNULL(CPT_OW_CCPG_Deal_Wins_Vol_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_DCG_Design__c,
+        OR(
+            CPT_OW_DCG_Design_Target__c = 0,
+            ISNULL(CPT_OW_DCG_Design_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_CCPG_Design__c,
+        OR(
+            CPT_OW_CCPG_Design_Target__c = 0,
+            ISNULL(CPT_OW_CCPG_Design_Target__c)
+        )
+    ),
+    AND(
+        CPT_OW_Edge_Design__c,
+        OR(
+            CPT_OW_Edge_Design_Target__c = 0,
+            ISNULL(CPT_OW_Edge_Design_Target__c)
+        )
+    )
+)</errorConditionFormula>
+        <errorMessage>The Opportunity Wins Revenue Target for the Business Unit (BU) must exceed $0 to assign the BU to the employee.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>CPT_Prevent_Territory_Target_Update</fullName>

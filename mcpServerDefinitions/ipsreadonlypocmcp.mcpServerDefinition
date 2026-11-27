@@ -2,4 +2,34 @@
 <McpServerDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>MCP for readonly API POC</description>
     <masterLabel>ips-readonly-poc-mcp</masterLabel>
+    <tools>
+        <apiDefinition>
+            <apiIdentifier>ar:IPSSupportCopilotHandler</apiIdentifier>
+            <apiSource>API_CATALOG</apiSource>
+            <operation>CreateCaseFromCopilot</operation>
+        </apiDefinition>
+        <descriptionOverride>CreateCaseFromCopilot</descriptionOverride>
+        <destructive>false</destructive>
+        <idempotent>false</idempotent>
+        <openWorld>false</openWorld>
+        <readOnly>false</readOnly>
+        <returnDirect>false</returnDirect>
+        <toolName>CreateCaseFromCopilotIPSSupportCopilotHandler</toolName>
+        <toolTitle>CreateCaseFromCopilot</toolTitle>
+    </tools>
+    <tools>
+        <apiDefinition>
+            <apiIdentifier>ar:IPSSupportCopilotHandler</apiIdentifier>
+            <apiSource>API_CATALOG</apiSource>
+            <operation>GetCasesForUser</operation>
+        </apiDefinition>
+        <descriptionOverride>GetCasesForUser</descriptionOverride>
+        <destructive>false</destructive>
+        <idempotent>false</idempotent>
+        <openWorld>false</openWorld>
+        <readOnly>false</readOnly>
+        <returnDirect>false</returnDirect>
+        <toolName>GetCasesForUserIPSSupportCopilotHandler</toolName>
+        <toolTitle>GetCasesForUser</toolTitle>
+    </tools>
 </McpServerDefinition>

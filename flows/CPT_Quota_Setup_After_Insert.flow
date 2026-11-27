@@ -109,6 +109,71 @@
             </value>
         </assignmentItems>
         <connector>
+            <targetReference>Initialize_OW_Assigned_Values</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Initialize_OW_Assigned_Values</name>
+        <label>Initialize OW Assigned Values</label>
+        <locationX>182</locationX>
+        <locationY>1931</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_DCG_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_CCPG_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_Edge_Deal_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_DCG_Deal_Wins_Vol_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_CCPG_Deal_Wins_Vol_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_DCG_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_CCPG_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CPT_OW_Edge_Design_Assigned__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
             <targetReference>Update_Quota_Setup_Fields_with_Default_Value</targetReference>
         </connector>
     </assignments>
@@ -403,7 +468,7 @@
         <locationX>182</locationX>
         <locationY>1631</locationY>
         <defaultConnector>
-            <targetReference>Update_Quota_Setup_Fields_with_Default_Value</targetReference>
+            <targetReference>Initialize_OW_Assigned_Values</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -422,7 +487,7 @@
             <label>Territory Allocation</label>
         </rules>
     </decisions>
-    <description>[Vats 10/nov/2026] Flow to populate the plan on the quota setup record whenever the new record is created + Default Value</description>
+    <description>[Vats 25/nov/2026] Flow to populate the plan on the quota setup record whenever the new record is created + Default Value</description>
     <ends>
         <name>END_ELEMENT_5</name>
         <locationX>490</locationX>
@@ -431,7 +496,7 @@
     <ends>
         <name>END_ELEMENT_6</name>
         <locationX>182</locationX>
-        <locationY>2039</locationY>
+        <locationY>2147</locationY>
     </ends>
     <environments>Default</environments>
     <formulas>
@@ -471,9 +536,9 @@
         <expression>CASE(
     TEXT({!$Record.CPT_Plan__c}),
     &quot;250&quot;, &quot;60%&quot;,
-    &quot;330&quot;, &quot;30%&quot;,
+    &quot;330&quot;, &quot;60%&quot;,
     &quot;620&quot;, &quot;20%&quot;,
-    &quot;630&quot;, &quot;40%&quot;,
+    &quot;630&quot;, &quot;60%&quot;,
     &quot;0%&quot;
 )</expression>
     </formulas>
@@ -544,7 +609,7 @@
         <name>Update_Quota_Setup_Fields_with_Default_Value</name>
         <label>Update Quota Setup Fields with Default Value</label>
         <locationX>182</locationX>
-        <locationY>1931</locationY>
+        <locationY>2039</locationY>
         <connector>
             <targetReference>END_ELEMENT_6</targetReference>
         </connector>

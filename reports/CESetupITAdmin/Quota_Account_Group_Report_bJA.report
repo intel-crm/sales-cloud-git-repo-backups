@@ -79,6 +79,15 @@
         <field>CPT_Quota_Setup__c.CPT_Job_Role__c</field>
     </columns>
     <columns>
+        <field>CPT_Quota_Setup__c.CPT_KPI_Name1__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_KPI_Name2__c</field>
+    </columns>
+    <columns>
+        <field>CPT_Quota_Setup__c.CPT_KPI_Name3__c</field>
+    </columns>
+    <columns>
         <field>CPT_Quota_Setup__c.CPT_Locked_Status__c</field>
     </columns>
     <columns>

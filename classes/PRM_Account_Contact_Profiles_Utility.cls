@@ -843,7 +843,7 @@ where ER_Customer_Master_File_Grouping__c IN (SELECT Er_Customer_Master_File_Gro
         List<ER_CMFGroupAssociation__c> records;
         List<Contact> contactrecList;
         Map<String,List<ER_CMFGroupAssociation__c>> cmfDataMap = new Map<String,List<ER_CMFGroupAssociation__c>>();
-        /*Ganesh Changes*/for(ER_CMFGroupAssociation__c associationRec : [SELECT id,/*ER_Customer_Master_File_Group__r.id,*/ER_Customer_Master_File__r.Name,ER_Customer_Master_File__r.ER_CMF_Name__c,ER_Customer_Master_File_Group__r.Name,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File__r.ER_Central_Block__c,ER_Customer_Master_File__r.ER_SalesAreaOrderBlockCd__c,ER_Customer_Master_File_Group__r.ER_Description__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c, ER_Customer_Master_File_Group__r.ER_Inactive_Contacts__c, ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c, ER_Customer_Master_File_Group__r.ER_Inactive_Customer_Master_Files__c, ER_Customer_Master_File__r.ER_Account_Group__c,ER_Customer_Master_File__r.ER_CMF_Address__c, ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c,ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c, ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c, ER_Customer_Master_File__r.ER_Sales_Org_Code__c, ER_Customer_Master_File__r.ER_Sales_Org_Name__c FROM ER_CMFGroupAssociation__c WHERE ER_Customer_Master_File_Group__c IN (SELECT Er_Customer_Master_File_Group__c from ER_ContactGroupAssociation__c WHERE ER_Active__c = true AND (ER_Contact__r.Email =:key OR ER_Contact__r.Core_Enterprise_Id__c =:key))]){
+        for(ER_CMFGroupAssociation__c associationRec : [SELECT id,ER_Customer_Master_File__r.Name,ER_Customer_Master_File__r.ER_CMF_Name__c,ER_Customer_Master_File_Group__r.Name,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File__r.ER_Central_Block__c,ER_Customer_Master_File__r.ER_SalesAreaOrderBlockCd__c,ER_Customer_Master_File_Group__r.ER_Description__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c, ER_Customer_Master_File_Group__r.ER_Inactive_Contacts__c, ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c, ER_Customer_Master_File_Group__r.ER_Inactive_Customer_Master_Files__c, ER_Customer_Master_File__r.ER_Account_Group__c,ER_Customer_Master_File__r.ER_CMF_Address__c, ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c,ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c, ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c, ER_Customer_Master_File__r.ER_Sales_Org_Code__c, ER_Customer_Master_File__r.ER_Sales_Org_Name__c FROM ER_CMFGroupAssociation__c WHERE ER_Customer_Master_File_Group__c IN (SELECT Er_Customer_Master_File_Group__c from ER_ContactGroupAssociation__c WHERE ER_Active__c = true AND (ER_Contact__r.Email =:key OR ER_Contact__r.Core_Enterprise_Id__c =:key))]){
             if(cmfDataMap.containsKey(associationRec.ER_Customer_Master_File_Group__r.Name)){
                 List<ER_CMFGroupAssociation__c> idsOfCmfGroup = cmfDataMap.get(associationRec.ER_Customer_Master_File_Group__r.Name);
                 idsOfCmfGroup.add(associationRec);
@@ -858,8 +858,6 @@ where ER_Customer_Master_File_Grouping__c IN (SELECT Er_Customer_Master_File_Gro
         for(String GroupName : cmfDataMap.keySet()){
             PRM_Account_Contact_Profiles_Model.cmfWrapper cmfWrapperData = new PRM_Account_Contact_Profiles_Model.cmfWrapper();
             cmfWrapperData.GroupName = GroupName; 
-            //cmfWrapperData.GroupId = cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__c;
-            //cmfWrapperData.GroupId =cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__r.id;//Ganesh Changes
             cmfWrapperData.Active = cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__r.ER_Active__c;
             cmfWrapperData.Description= cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__r.ER_Description__c;
             cmfWrapperData.ActiveCMFcount= String.valueof(cmfDataMap.get(GroupName)[0].ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c);
@@ -886,8 +884,7 @@ where ER_Customer_Master_File_Grouping__c IN (SELECT Er_Customer_Master_File_Gro
             cmfWrapperData.CMFs=cmfdetails;
             cmfWrapperDataList.add(cmfWrapperData);
         }
-        //returnWrapper.CMFGroups = cmfWrapperDataList; //Ganesh Changes
-        /*Ganesh Changes*/for(Contact contactRec : [SELECT id,/*Account.Core_CNDA_Number__c,*/name,FirstName,LastName,Core_Enterprise_Id__c,Email,Account.Core_IsODM__c, Account.Name,account.IsDeleted,Account.Core_Business_Party_Id__c,account.Core_Account_ID__c, account.Core_Deactivated__c,IsDeleted, Core_Deactivated__c  from Contact WHERE Email =:key OR Core_Enterprise_Id__c =:key LIMIT 1]){
+        for(Contact contactRec : [SELECT id,name,FirstName,LastName,Core_Enterprise_Id__c,Email,Account.Core_IsODM__c, Account.Name,account.IsDeleted,Account.Core_Business_Party_Id__c,account.Core_Account_ID__c, account.Core_Deactivated__c,IsDeleted, Core_Deactivated__c  from Contact WHERE Email =:key OR Core_Enterprise_Id__c =:key LIMIT 1]){
             returnWrapper.FirstName=contactRec.FirstName;
             returnWrapper.LastName=contactRec.LastName;
             returnWrapper.EnterpriseId=contactRec.Core_Enterprise_Id__c;
@@ -901,7 +898,6 @@ where ER_Customer_Master_File_Grouping__c IN (SELECT Er_Customer_Master_File_Gro
             returnWrapper.IsDeleted=contactRec.IsDeleted;
             returnWrapper.IsODMAccount=contactRec.Account.Core_IsODM__c;
             returnWrapper.CMFGroups=cmfWrapperDataList;
-            //returnWrapper.CNDANumber = contactRec.Account.Core_CNDA_Number__c;//Ganesh Changes
         }
          PRM_Account_Contact_Profiles_Model.Profiles profiles = new PRM_Account_Contact_Profiles_Model.Profiles();
          profiles.ContactGroupResults=returnWrapper;

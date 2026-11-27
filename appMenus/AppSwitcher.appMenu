@@ -1020,4 +1020,8 @@
         <name>Workflow_Plus</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>IPS_MCP_Server_App</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
 </AppMenu>

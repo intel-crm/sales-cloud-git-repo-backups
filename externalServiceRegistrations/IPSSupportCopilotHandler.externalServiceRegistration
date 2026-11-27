@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is auto-generated OpenAPI v3 spec for IPSSupportCopilotHandler.</description>
+    <label>IPSSupportCopilotHandler</label>
+    <operations>
+        <active>false</active>
+        <name>getcasesforuser</name>
+    </operations>
+    <operations>
+        <active>false</active>
+        <name>createcasefromcopilot</name>
+    </operations>
+    <registrationProviderAsset>IPS_Support_CopilotAgentUtility</registrationProviderAsset>
+    <registrationProviderType>ApexRest</registrationProviderType>
+    <schema>openapi: 3.0.0
+servers:
+  - url: /services/apexrest
+info:
+  title: IPSSupportCopilotHandler
+  version: 1.0.0
+  description: This is auto-generated OpenAPI v3 spec for IPSSupportCopilotHandler.
+paths:
+  /support/v1.0/cases:
+    description: REST API for fetching Cases for a User via Copilot.
+    get:
+      description: GetCasesForUser
+      operationId: GetCasesForUser
+      parameters:
+        - name: client_id
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: accountName
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: oauth
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        &quot;200&quot;:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Code:
+                    type: number
+                  IsSuccess:
+                    type: boolean
+                  Cases:
+                    type: array
+                    nullable: true
+                    items:
+                      type: object
+                      properties:
+                        CaseNumber:
+                          type: string
+                        Status:
+                          type: string
+                        SubStatus:
+                          type: string
+                        Subject:
+                          type: string
+                        CreatedDate:
+                          type: string
+                          format: date-time
+                        CaseUrl:
+                          type: string
+                        LastModifiedDate:
+                          type: string
+                          format: date-time
+                      additionalProperties: true
+                  ErrorMessage:
+                    type: string
+                    nullable: true
+                  ClientId:
+                    type: string
+                    nullable: true
+                additionalProperties: true
+        &quot;400&quot;:
+          description: Bad Request - Missing required parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Code:
+                    type: number
+                  IsSuccess:
+                    type: boolean
+                  Cases:
+                    type: array
+                    nullable: true
+                    items:
+                      type: object
+                  ErrorMessage:
+                    type: string
+                  ClientId:
+                    type: string
+                    nullable: true
+                additionalProperties: true
+        &quot;401&quot;:
+          description: Unauthorized - Invalid user or no access to account cases
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Code:
+                    type: number
+                  IsSuccess:
+                    type: boolean
+                  Cases:
+                    type: array
+                    nullable: true
+                    items:
+                      type: object
+                  ErrorMessage:
+                    type: string
+                  ClientId:
+                    type: string
+                    nullable: true
+                additionalProperties: true
+        &quot;403&quot;:
+          description: Forbidden - Cases not accessible to the logged-in user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Code:
+                    type: number
+                  IsSuccess:
+                    type: boolean
+                  Cases:
+                    type: array
+                    nullable: true
+                    items:
+                      type: object
+                  ErrorMessage:
+                    type: string
+                  ClientId:
+                    type: string
+                    nullable: true
+                additionalProperties: true
+        &quot;500&quot;:
+          description: Internal Server Error - Unable to retrieve cases
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Code:
+                    type: number
+                  IsSuccess:
+                    type: boolean
+                  Cases:
+                    type: array
+                    nullable: true
+                    items:
+                      type: object
+                  ErrorMessage:
+                    type: string
+                  ClientId:
+                    type: string
+                    nullable: true
+                additionalProperties: true
+  /support/v1.0/cases/create:
+    description: REST API for creating a Case from Copilot.
+    post:
+      description: CreateCaseFromCopilot
+      operationId: CreateCaseFromCopilot
+      parameters:
+        - name: client_id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        &quot;200&quot;:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Code:
+                    type: number
+                  IsSuccess:
+                    type: boolean
+                  Cases:
+                    type: array
+                    nullable: true
+                    items:
+                      type: object
+                  ErrorMessage:
+                    type: string
+                    nullable: true
+                  ClientId:
+                    type: string
+                    nullable: true
+                additionalProperties: true
+</schema>
+    <schemaType>OpenApi3</schemaType>
+    <schemaUploadFileExtension>yaml</schemaUploadFileExtension>
+    <schemaUploadFileName>IPSSupportCopilotHandler</schemaUploadFileName>
+    <serviceBinding>{&quot;host&quot;:&quot;&quot;,&quot;basePath&quot;:&quot;/services/apexrest&quot;,&quot;allowedSchemes&quot;:[],&quot;requestMediaTypes&quot;:[],&quot;responseMediaTypes&quot;:[],&quot;compatibleMediaTypes&quot;:{},&quot;integrationFlags&quot;:null,&quot;extensions&quot;:{}}</serviceBinding>
+    <status>Complete</status>
+    <systemVersion>9</systemVersion>
+</ExternalServiceRegistration>
