@@ -153,9 +153,9 @@
         <sortOrder>Desc</sortOrder>
         <timeFrameFilter>
             <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-            <endDate>2026-11-24</endDate>
+            <endDate>2026-11-27</endDate>
             <interval>INTERVAL_CUSTOM</interval>
-            <startDate>2026-11-24</startDate>
+            <startDate>2026-11-27</startDate>
         </timeFrameFilter>
     </block>
     <block>
@@ -231,9 +231,9 @@
         <sortOrder>Asc</sortOrder>
         <timeFrameFilter>
             <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
-            <endDate>2026-11-24</endDate>
+            <endDate>2026-11-27</endDate>
             <interval>INTERVAL_CUSTOM</interval>
-            <startDate>2026-11-24</startDate>
+            <startDate>2026-11-27</startDate>
         </timeFrameFilter>
     </block>
     <blockInfo>

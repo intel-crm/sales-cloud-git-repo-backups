@@ -25,6 +25,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
     public Core_Opportunity_Features__c cSale {get; set;}
     public String consumerSales;
     public String consumerSales1{get;set;}
+    //Start: Added all the text fields by Sreekanth 
     public String projectCodeName{get;set;}
     public String processNode{get;set;}
     public String execSponsorContact{get;set;}
@@ -53,6 +54,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
         'Custom Silicon Application',
         'CEG Contact','CEG Comments'
     };
+    // End: Added all the text fields by Sreekanth
     // Variable to Map String to List of SelectOption 
     public Map < String, List < SelectOption >> mapStringToLstOption = new Map < String, List < SelectOption >> {};
     
@@ -206,6 +208,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                  if(Oppfeaturelst.size() >0){ 
                      this.consumerSales1=Oppfeaturelst[0].Core_Feature_Name__c;
                  }*/
+                //Start: Added all the text fields by Sreekanth
                  Opplst=[Select id,Core_Consumer_Sales_System__c,Core_Project_Code_Name__c,Core_Process_Node__c,Core_Exec_Sponsor_Contact__c,Core_NRE__c,Core_Project_Schedule_RFx__c,Core_Project_Schedule_TR_Kick_off__c,Core_Project_Schedule_Tape_In_Out__c,Core_Project_Schedule_Engineering_Sample__c,Core_Project_Schedule_PRQ__c,Core_Custom_Silicon_Segment__c,Core_Custom_Silicon_Application__c,Core_CEG_Contact__c,Core_CEG_Comments__c from Opportunity Where Id =: sOppId];
                  if(Opplst.size() >0){ 
                     this.consumerSales1=Opplst[0].Core_Consumer_Sales_System__c;
@@ -226,43 +229,6 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                
             }
 
-            if (this.sObjOppFeature.Id != null) {
-                // 1. Query both feature types in a single database round-trip
-                Oppfeaturelst = [
-                    SELECT Id, Core_Platform_BU__c,Core_Feature_Name__c, Core_Feature_Type__c FROM Core_Opportunity_Features__c WHERE Id = :this.sObjOppFeature.Id AND Core_Feature_Type__c IN: allTextFeatureTypes ORDER BY CreatedDate DESC
-                ];
-                for (Core_Opportunity_Features__c feature : Oppfeaturelst) {
-                    if (feature.Core_Feature_Type__c == 'Consumer Sales system') {
-                        this.consumerSales1 = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Project Code Name') {
-                        this.projectCodeName = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Process Node') {
-                        this.processNode = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Exec Sponsor Contact') {
-                        this.execSponsorContact = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'NRE $') {
-                        this.nreUSD = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Project Schedule: RFx') {
-                        this.projectScheduleRFx = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Project Schedule: TR Kick off') {
-                        this.projectScheduleTRKickOff = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Project Schedule: Tape In/Out') {
-                        this.projectScheduleTapeInOut = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Project Schedule: Engineering Sample') {
-                        this.projectScheduleEngSample = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Project Schedule: PRQ') {
-                        this.projectSchedulePRQ = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Custom Silicon Segment') {
-                        this.customSiliconSegment = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'Custom Silicon Application') {
-                        this.customSiliconApplication = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'CEG Contact') {
-                        this.CEGContact = feature.Core_Feature_Name__c;
-                    } else if (feature.Core_Feature_Type__c == 'CEG Comments') {
-                        this.CEGComments = feature.Core_Feature_Name__c;
-                    }
-                }
-            }
 
             /*if(this.sObjOppFeature.Id != null){
                 Oppfeaturelst = [SELECT Id,Core_Platform_BU__c,Core_Consumer_Sales_system__c,Core_Feature_Name__c,Core_Feature_Type__c FROM Core_Opportunity_Features__c where id =: sObjOppFeature.Id AND Core_Feature_Type__c='Consumer Sales system' order by createddate desc limit 1];
@@ -270,7 +236,6 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     this.consumerSales1=Oppfeaturelst[0].Core_Feature_Name__c;
                 }
                 }*/
-
             if(this.sObjOppFeature.Id != null){
                 //Id descid=this.sObjOppFeature.Id;
                 Id OpptyId=this.sObjOppFeature.Core_Opportunity__c;
@@ -293,6 +258,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     this.CEGComments = Opplst[0].Core_CEG_Comments__c;
                 }
             }
+            //end: Added all the text fields by Sreekanth
             
             //If the Opportunity record is not NULL get the platform and Opportunity name
             if (sObjOpp != NULL) {
@@ -684,7 +650,8 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     // If the picklist is NOT a multi select picklist //cSale:: Change for Consumer Sales System in Querries
                     if(sobjFeature.Core_Multi_Select__c == false){
                        
-                        // If the Opp feature is already present
+                        // If the Opp feature is already present 
+                        //Start: Added all the text fields by Sreekanth
                         if (!mapCheckIfRecordIsPresent.containsKey(sobjFeature.Core_Feature_Type__c)) { 
                             
                             sobjOpportFeature = new Core_Opportunity_Features__c(
@@ -767,7 +734,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                 oft.Core_CEG_Contact__c = this.CEGContact;
                 oft.Core_CEG_Comments__c = this.CEGComments;
             } 
-           
+            // End: Added all the text fields by Sreekanth
             // Carry out the addition & deletion of Opp feature and updation of opportunity
             upsert lstOppFeature;
             delete lstDeleteOppFeature;
@@ -816,22 +783,22 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                 delete Oppfeatdel;
             }*/
             
-
+            //Start: Added Save logic for all the text fields by Sreekanth
             Map<String, String> featureTypeAndValueMap = new Map<String, String>{
-            'Consumer Sales system' => this.consumersales1,
-            'Project Code Name' => this.projectCodeName,
-            'Process Node' => this.processNode,
-            'Exec Sponsor Contact' => this.execSponsorContact,
-            'NRE $' => this.nreUSD,
-            'Project Schedule: RFx' => this.projectScheduleRFx,
-            'Project Schedule: TR Kick off' => this.projectScheduleTRKickOff,
-            'Project Schedule: Tape In/Out' => this.projectScheduleTapeInOut,
-            'Project Schedule: Engineering Sample' => this.projectScheduleEngSample,
-            'Project Schedule: PRQ' => this.projectSchedulePRQ,
-            'Custom Silicon Segment' => this.customSiliconSegment,
-            'Custom Silicon Application' => this.customSiliconApplication,
-            'CEG Contact' => this.CEGContact,
-            'CEG Comments' => this.CEGComments
+            'Consumer Sales system'                     => this.consumersales1,
+            'Project Code Name'                         => this.projectCodeName,
+            'Process Node'                              => this.processNode,
+            'Exec Sponsor Contact'                      => this.execSponsorContact,
+            'NRE $'                                     => this.nreUSD,
+            'Project Schedule: RFx'                     => this.projectScheduleRFx,
+            'Project Schedule: TR Kick off'             => this.projectScheduleTRKickOff,
+            'Project Schedule: Tape In/Out'             => this.projectScheduleTapeInOut,
+            'Project Schedule: Engineering Sample'      => this.projectScheduleEngSample,
+            'Project Schedule: PRQ'                     => this.projectSchedulePRQ,
+            'Custom Silicon Segment'                    => this.customSiliconSegment,
+            'Custom Silicon Application'                => this.customSiliconApplication,
+            'CEG Contact'                               => this.CEGContact,
+            'CEG Comments'                              => this.CEGComments
             };
 
             List<String> activeTypes = new List<String>();
@@ -849,12 +816,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             System.debug('Active Values: '+activeValues);
             // 1. ALWAYS clean up existing Opportunity Features for ALL managed text types first!
             // This guarantees that any field cleared to blank will have its record deleted.
-            List<Core_Opportunity_Features__c> oppFeatDel = [
-                SELECT Id 
-                FROM Core_Opportunity_Features__c 
-                WHERE Core_Opportunity__c = :sObjOpp.Id 
-                AND Core_Feature_Type__c IN :allFeatureTypes
-            ];
+            List<Core_Opportunity_Features__c> oppFeatDel = [SELECT Id FROM Core_Opportunity_Features__c WHERE Core_Opportunity__c = :sObjOpp.Id AND Core_Feature_Type__c IN :allFeatureTypes];
             System.debug('Existing Desc features: '+Oppfeatdel);
             if (!oppFeatDel.isEmpty()) {
                 delete oppFeatDel;
@@ -864,18 +826,16 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             if (!activeValues.isEmpty()) {
                 // Query existing Features matching both Type and Value
                 List<Core_Feature__c> existingFeatures = [
-                    SELECT Id, Core_Feature_Type__c, Core_Feature_Value__c 
-                    FROM Core_Feature__c 
-                    WHERE Core_Feature_Type__c IN :activeTypes 
-                    AND Core_Feature_Value__c IN :activeValues
-                    ORDER BY CreatedDate DESC
+                    SELECT Id, Core_Feature_Type__c, Core_Feature_Value__c FROM Core_Feature__c WHERE Core_Feature_Type__c IN :activeTypes AND Core_Feature_Value__c IN :activeValues ORDER BY CreatedDate DESC
                 ];
                 System.debug('Existing Features in database: '+existingFeatures);
                 Map<String, Core_Feature__c> existingFeatureMap = new Map<String, Core_Feature__c>();
                 for (Core_Feature__c f : existingFeatures) {
-                    String featKey = f.Core_Feature_Type__c.trim().toLowerCase() + '::' + f.Core_Feature_Value__c.trim().toLowerCase();
-                    if (!existingFeatureMap.containsKey(featKey)) {
-                        existingFeatureMap.put(featKey, f);
+                    if(f.Core_Feature_Value__c == featureTypeAndValueMap.get(f.Core_Feature_Type__c)){
+                        String featKey = f.Core_Feature_Type__c.trim().toLowerCase() + '::' + f.Core_Feature_Value__c.trim().toLowerCase();
+                        if (!existingFeatureMap.containsKey(featKey)) {
+                            existingFeatureMap.put(featKey, f);
+                        }
                     }
                 }
                 System.debug('Existing feature map in database: '+existingFeatureMap);
@@ -976,7 +936,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                 }
             }
 
-        
+        //End: Added Save logic for all the text fields by Sreekanth
             
         } catch (Exception e) {  
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.label.Core_Exception+e.getmessage()));

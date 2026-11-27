@@ -3976,7 +3976,7 @@ CPT_Wins_Allocated__c&lt;&gt;CPT_Wins_Allowed__c
     </validationRules>
     <validationRules>
         <fullName>MarVol_Checkbox_And_Quota_Alignment</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>This validation rule ensures mutual dependency between checkbox fields and their corresponding quota fields. If a quota value &gt; 0 exists, the corresponding checkbox must be selected. If a checkbox is selected, the corresponding quota value must be &gt; 0.</description>
         <errorConditionFormula>AND( ISPICKVAL(CPT_Stage__c, &apos;Completed&apos;), OR( AND(NOT(CPT_MarVol_Margin_CCG__c), CPT_MarVol_Margin_CCG_Quota__c &gt; 0), AND(NOT(CPT_MarVol_Margin_DCG__c), CPT_MarVol_Margin_DCG_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_CCG_LNL__c), CPT_MarVol_NextGen_CCG_LNL_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_CCG_PTL__c), CPT_MarVol_NextGen_CCG_PTL_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_CCG_WCL__c), CPT_MarVol_NextGen_CCG_WCL_Quota__c &gt; 0), AND(NOT(CPT_MarVol_NextGen_DCG_GNR__c), CPT_MarVol_NextGen_DCG_GNR_Quota__c &gt; 0),AND(CPT_MarVol_Margin_CCG__c, CPT_MarVol_Margin_CCG_Quota__c &lt;= 0), AND(CPT_MarVol_Margin_DCG__c, CPT_MarVol_Margin_DCG_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_CCG_LNL__c, CPT_MarVol_NextGen_CCG_LNL_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_CCG_PTL__c, CPT_MarVol_NextGen_CCG_PTL_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_CCG_WCL__c, CPT_MarVol_NextGen_CCG_WCL_Quota__c &lt;= 0), AND(CPT_MarVol_NextGen_DCG_GNR__c, CPT_MarVol_NextGen_DCG_GNR_Quota__c &lt;= 0), CPT_MarVol_Allocated__c &lt;&gt; CPT_MarVol_Allowed__c ) )</errorConditionFormula>
         <errorDisplayField>CPT_Account_Breakout__c</errorDisplayField>

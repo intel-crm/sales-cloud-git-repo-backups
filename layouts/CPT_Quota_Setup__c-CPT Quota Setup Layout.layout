@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>GenerateKnowledge</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -160,10 +158,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>CPT_MarVol_NextGen_DCG_GNR_Quota__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>CPT_MarVol_NextGen_CCG_LNL_Quota__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>

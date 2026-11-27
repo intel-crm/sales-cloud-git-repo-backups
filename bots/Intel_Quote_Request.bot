@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentDSLEnabled>false</agentDSLEnabled>
+    <botMlDomain>
+        <label>Intel Quote Request</label>
+        <mlIntents>
+            <developerName>I_am_new_to_IQR_Intel_Quote_Request_and_need_access</developerName>
+            <label>I am new to IQR(Intel Quote Request) and need access</label>
+            <mlIntentUtterances>
+                <utterance>i am new to IQR</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <utterance>i am new to intel quote request</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <utterance>i need access</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <utterance>i don&apos;t have access</utterance>
+            </mlIntentUtterances>
+            <relatedMlIntents>
+                <relatedMlIntent>IQR_Bot_Intent_Set.Need_Access</relatedMlIntent>
+            </relatedMlIntents>
+        </mlIntents>
+        <mlIntents>
+            <developerName>I_can_t_access_the_IQR_Application</developerName>
+            <label>I can&apos;t access the IQR Application</label>
+            <relatedMlIntents>
+                <relatedMlIntent>IQR_Bot_Intent_Set.Not_able_to_access</relatedMlIntent>
+            </relatedMlIntents>
+        </mlIntents>
+        <mlIntents>
+            <developerName>No_Agent_Available</developerName>
+            <label>No Agent</label>
+        </mlIntents>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>Email</developerName>
+            <extractionRegex>^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$</extractionRegex>
+            <extractionType>Pattern</extractionType>
+            <label>Email</label>
+        </mlSlotClasses>
+        <name>Intel_Quote_Request</name>
+    </botMlDomain>
+    <botSource>None</botSource>
+    <botUser>11454661@intel.com.crm.crmdevsls3</botUser>
     <botVersions>
         <fullName>v1</fullName>
         <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
@@ -503,4 +547,58 @@
         <stopWelcomePrompts>false</stopWelcomePrompts>
         <surfacesEnabled>false</surfacesEnabled>
     </botVersions>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.ChatKey</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Text</dataType>
+        <developerName>ChatKey</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Chat Key</label>
+    </contextVariables>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.ContactId</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Id</dataType>
+        <developerName>ContactId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Contact Id</label>
+    </contextVariables>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.LiveChatVisitorId</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Id</dataType>
+        <developerName>EndUserId</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>End User Id</label>
+    </contextVariables>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.Id</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Id</dataType>
+        <developerName>RoutableId</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>Routable Id</label>
+    </contextVariables>
+    <conversationChannelProviders>
+        <agentRequired>false</agentRequired>
+        <chatButtonName>IQR_Sales_Chat_Group</chatButtonName>
+    </conversationChannelProviders>
+    <description>A bot for Intel Quote Request Users.</description>
+    <label>Intel Quote Request</label>
+    <logPrivateConversationData>true</logPrivateConversationData>
+    <richContentEnabled>false</richContentEnabled>
+    <sessionTimeout>0</sessionTimeout>
+    <type>Bot</type>
 </Bot>

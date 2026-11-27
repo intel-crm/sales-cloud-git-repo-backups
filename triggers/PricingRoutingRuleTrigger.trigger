@@ -12,7 +12,7 @@ trigger PricingRoutingRuleTrigger on Pricing_Routing_Rules__c (after insert, aft
     for(String decisionTableName : updatedDecisionTableSet) {
         eventsToPublish.add(new Pricing_Decision_Table_Refresh__e(
             Pricing_Decision_Table_Name_Txt__c = decisionTableName
-        ));
+        ));  
     }
    
     List<Database.SaveResult> results = EventBus.publish(eventsToPublish);

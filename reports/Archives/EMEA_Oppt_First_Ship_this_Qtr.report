@@ -124,8 +124,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_First_Customer_Ship_Date__c</dateColumn>
-        <endDate>2026-11-24</endDate>
+        <endDate>2026-11-27</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-24</startDate>
+        <startDate>2026-11-27</startDate>
     </timeFrameFilter>
 </Report>

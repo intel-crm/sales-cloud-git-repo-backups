@@ -413,11 +413,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CPT_MarVol_NextGen_CCG_LNL_Quota__c</field>
-            <table>CPT_Quota_Setup__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>CPT_MarVol_NextGen_CCG_PTL_Quota__c</field>
             <table>CPT_Quota_Setup__c</table>
         </columns>

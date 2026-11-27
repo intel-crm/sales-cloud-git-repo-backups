@@ -38,6 +38,22 @@
         <name>Business_Need__c</name>
     </fields>
     <fields>
+        <label><!-- AI Status --></label>
+        <name>CRM_AI_Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Approved Annual Recurring Revenue --></label>
         <name>CRM_Approved_Annual_Recurring_Revenue__c</name>
     </fields>

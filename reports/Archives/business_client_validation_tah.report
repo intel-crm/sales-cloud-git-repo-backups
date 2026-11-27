@@ -2047,6 +2047,9 @@
         <field>Opportunity.Core_Custom_Silicon_Segment__c</field>
     </columns>
     <columns>
+        <field>Opportunity.CRM_AI_Status__c</field>
+    </columns>
+    <columns>
         <field>User.Core_Employee_Type_Code__c</field>
     </columns>
     <columns>
@@ -4364,8 +4367,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-24</endDate>
+        <endDate>2026-11-27</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-24</startDate>
+        <startDate>2026-11-27</startDate>
     </timeFrameFilter>
 </Report>

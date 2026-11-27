@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentDSLEnabled>false</agentDSLEnabled>
+    <botMlDomain>
+        <label>License Generation Assistent</label>
+        <mlIntents>
+            <developerName>Welcome</developerName>
+            <label>Welcome</label>
+        </mlIntents>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <description>License activation code requires 32 characters</description>
+            <developerName>Sales_Activation_Code</developerName>
+            <extractionRegex>^[a-zA-Z0-9]{32}$</extractionRegex>
+            <extractionType>Pattern</extractionType>
+            <label>Sales Activation Code</label>
+        </mlSlotClasses>
+        <name>License_Generation_Assistent</name>
+    </botMlDomain>
+    <botSource>None</botSource>
     <botVersions>
         <fullName>v1</fullName>
         <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
@@ -440,4 +458,54 @@
         <stopWelcomePrompts>false</stopWelcomePrompts>
         <surfacesEnabled>false</surfacesEnabled>
     </botVersions>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.ChatKey</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Text</dataType>
+        <developerName>ChatKey</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Chat Key</label>
+    </contextVariables>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.ContactId</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Id</dataType>
+        <developerName>ContactId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Contact Id</label>
+    </contextVariables>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.LiveChatVisitorId</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Id</dataType>
+        <developerName>EndUserId</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>End User Id</label>
+    </contextVariables>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.Id</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Id</dataType>
+        <developerName>RoutableId</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>Routable Id</label>
+    </contextVariables>
+    <description>Bot assistent to generate license files</description>
+    <label>License Generation Assistent</label>
+    <logPrivateConversationData>true</logPrivateConversationData>
+    <richContentEnabled>false</richContentEnabled>
+    <sessionTimeout>0</sessionTimeout>
+    <type>Bot</type>
 </Bot>

@@ -1,5 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentDSLEnabled>false</agentDSLEnabled>
+    <botMlDomain>
+        <label>PSG Disty Assistant</label>
+        <mlIntents>
+            <developerName>End_Chat</developerName>
+            <label>End Chat</label>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>END</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>end chat</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>End</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>End Chat</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>end</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>END Chat</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>endchat</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>Endchat</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>EndChat</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>ENDCHAT</utterance>
+            </mlIntentUtterances>
+        </mlIntents>
+        <mlIntents>
+            <developerName>Main_Menu</developerName>
+            <label>Main Menu</label>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>MainMenu</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>mainmenu</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>main menu</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>Main Menu</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>main</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>menu</utterance>
+            </mlIntentUtterances>
+        </mlIntents>
+        <mlIntents>
+            <developerName>Quote_Operation</developerName>
+            <label>DPA/ALN Status</label>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>dpa status</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>dpa/aln</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>Dpa</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>Aln</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>DPA/ALN</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>ALN</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>DPA</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>DPA Status</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>ALN Status</utterance>
+            </mlIntentUtterances>
+            <mlIntentUtterances>
+                <language>en_US</language>
+                <utterance>aln status</utterance>
+            </mlIntentUtterances>
+        </mlIntents>
+        <mlIntents>
+            <developerName>Quote_Status</developerName>
+            <label>Quote Status</label>
+        </mlIntents>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>DpaUsernotvalid</developerName>
+            <extractionType>Value</extractionType>
+            <label>DpaUsernotvalid</label>
+        </mlSlotClasses>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>end_chat</developerName>
+            <extractionType>Value</extractionType>
+            <label>end chat</label>
+        </mlSlotClasses>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>Lastresponse</developerName>
+            <extractionType>Value</extractionType>
+            <label>Lastresponse</label>
+        </mlSlotClasses>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>midresponse</developerName>
+            <extractionType>Value</extractionType>
+            <label>midresponse</label>
+        </mlSlotClasses>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>Prodmidresponse</developerName>
+            <extractionType>Value</extractionType>
+            <label>Prodmidresponse</label>
+        </mlSlotClasses>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>product_opn</developerName>
+            <extractionType>Value</extractionType>
+            <label>product opn</label>
+        </mlSlotClasses>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>Quote_Deactive</developerName>
+            <extractionType>Value</extractionType>
+            <label>Quote Deactive</label>
+        </mlSlotClasses>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>quoteline_selected</developerName>
+            <extractionType>Value</extractionType>
+            <label>quoteline selected</label>
+        </mlSlotClasses>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>quotenotexistresponse</developerName>
+            <extractionType>Value</extractionType>
+            <label>quotenotexistresponse</label>
+        </mlSlotClasses>
+        <mlSlotClasses>
+            <dataType>Text</dataType>
+            <developerName>Ship_date</developerName>
+            <extractionRegex>^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$</extractionRegex>
+            <extractionType>Pattern</extractionType>
+            <label>Ship date</label>
+        </mlSlotClasses>
+        <name>PSG_Disty_Assistant</name>
+    </botMlDomain>
+    <botSource>None</botSource>
+    <botUser>test_ranjitx.kumar@intel.com.crm.crmdevsls3</botUser>
     <botVersions>
         <fullName>v1</fullName>
         <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
@@ -3651,4 +3839,70 @@
         <stopWelcomePrompts>false</stopWelcomePrompts>
         <surfacesEnabled>false</surfacesEnabled>
     </botVersions>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.ChatKey</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Text</dataType>
+        <developerName>ChatKey</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Chat Key</label>
+    </contextVariables>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.ContactId</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Id</dataType>
+        <developerName>ContactId</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Contact Id</label>
+    </contextVariables>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.LiveChatVisitorId</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Id</dataType>
+        <developerName>EndUserId</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>End User Id</label>
+    </contextVariables>
+    <contextVariables>
+        <dataType>Text</dataType>
+        <developerName>operation</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>operation</label>
+    </contextVariables>
+    <contextVariables>
+        <dataType>Text</dataType>
+        <developerName>Quotetest</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Quotetest</label>
+    </contextVariables>
+    <contextVariables>
+        <contextVariableMappings>
+            <SObjectType>LiveChatTranscript</SObjectType>
+            <fieldName>LiveChatTranscript.Id</fieldName>
+            <messageType>WebChat</messageType>
+        </contextVariableMappings>
+        <dataType>Id</dataType>
+        <developerName>RoutableId</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>Routable Id</label>
+    </contextVariables>
+    <conversationChannelProviders>
+        <agentRequired>false</agentRequired>
+        <chatButtonName>PsgChatbot</chatButtonName>
+    </conversationChannelProviders>
+    <description>A bot for Enquiry related to Psg Quote</description>
+    <label>PSG Disty Assistant</label>
+    <logPrivateConversationData>true</logPrivateConversationData>
+    <richContentEnabled>false</richContentEnabled>
+    <sessionTimeout>480</sessionTimeout>
+    <type>Bot</type>
 </Bot>

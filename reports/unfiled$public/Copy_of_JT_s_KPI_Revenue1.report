@@ -60,8 +60,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Goal__c.Core_Goal_Accept_Date__c</dateColumn>
-        <endDate>2026-11-24</endDate>
+        <endDate>2026-11-27</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-24</startDate>
+        <startDate>2026-11-27</startDate>
     </timeFrameFilter>
 </Report>

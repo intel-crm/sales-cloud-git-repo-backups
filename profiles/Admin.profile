@@ -933,6 +933,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CRM_AI_Opportunity_Integration</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CRM_APController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -68669,6 +68673,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Business_Need__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.CRM_AI_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

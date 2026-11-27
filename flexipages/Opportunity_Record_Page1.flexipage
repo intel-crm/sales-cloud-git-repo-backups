@@ -286,6 +286,22 @@
                         <valueListItems>
                             <value>Opportunity.crm_Sharing_LWC</value>
                         </valueListItems>
+                        <valueListItems>
+                            <value>Opportunity.CRM_AI_Audit</value>
+                            <visibilityRule>
+                                <booleanFilter>1 OR 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.Core_Approval_Status__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Approved</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Core_PW_Approval_Status__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Approved</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -2563,6 +2579,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.CRM_Audit_Fail_Reason__c</fieldItem>
                 <identifier>RecordCRM_Audit_Fail_Reason_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CRM_AI_Status__c</fieldItem>
+                <identifier>RecordCRM_AI_Status__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-42a4f2c8-6c2e-4f95-87b3-8dc1f63d9ca1</name>
