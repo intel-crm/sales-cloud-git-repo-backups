@@ -733,7 +733,8 @@ public without sharing class Core_MDF_CustomLayoutConfig_Controller {
     @AuraEnabled
     public static void recallToPICReview(Id claimId) {
         try {
-            PartnerFundClaim claim = [SELECT Id, Core_MDF_Status__c FROM PartnerFundClaim WHERE Id = :claimId FOR UPDATE];
+            PartnerFundClaim claim = [SELECT Id, Core_MDF_Status__c, Core_MDF_ESD_Hold__c, Core_MDF_Audit_Hold__c, Core_MDF_Payment_Hold_ind__c, Core_MDF_Criteria_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c, Core_MDF_Member_Manual_Hold_Ind__c, Core_MDF_Document_Hold_Ind__c, Core_MDF_VAT_Hold_Ind__c, Core_MDF_Bank_Doc_Hold_Ind__c FROM PartnerFundClaim WHERE Id = :claimId FOR UPDATE];
+            
             update new PartnerFundClaim(
                 Id = claimId,
                 Core_MDF_Status__c = Label.Core_MDF_Claim_Status_PIC_Pending,

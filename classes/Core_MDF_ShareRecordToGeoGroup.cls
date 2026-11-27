@@ -10,6 +10,7 @@
 public without sharing class Core_MDF_ShareRecordToGeoGroup {
     private Static String underscore = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Underscore');
     private Static String IPATechnicalProgram=Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name');
+    private Static String coInvProgram=Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_Inv_program_name');
     /***************************************************************************************************** 
 Method Name:        ShareRecordToGeoGroup
 @return  :          void
@@ -360,7 +361,7 @@ Modified By:        Date:       Changes:
 
             //In case of objects that need to be shared to all the Geo groups.
             if(objectsForAllGeoSharing.contains(objectName) && (record.program!=Label.Core_MDF_Retail_Channel_Program_Name) && (record.program!=IPATechnicalProgram) &&
-               (record.program != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name') && (record.program != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name') )))
+               (record.program != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name') && (record.program != Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name') )) && record.program != coInvProgram)
             {
                 /*for(String grpNm : pgmGeoSubGeoBudgetTypeGrpMap.values())
                 {   
@@ -388,7 +389,7 @@ Modified By:        Date:       Changes:
                 }
             } 
             //In case of objects that need to be shared to all the Geo groups.
-            if(objectsForAllGeoSharing.contains(objectName) && ((record.program==IPATechnicalProgram && ((String.isBlank(record.geo) && objectsForHostRegSharing.contains(objectName)) || !objectsForHostRegSharing.contains(objectName))) || (record.program== Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name')) || (record.program== Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name') )))
+            if(objectsForAllGeoSharing.contains(objectName) && ((record.program==IPATechnicalProgram && ((String.isBlank(record.geo) && objectsForHostRegSharing.contains(objectName)) || !objectsForHostRegSharing.contains(objectName))) || (record.program== Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name')) || (record.program== Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name') ) || (coInvProgram != null && record.program == coInvProgram)))
                 
             {
 

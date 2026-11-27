@@ -361,9 +361,30 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
                     requestedFldApi = matchingFields[0];
                 }
                 if (requestedFldApi == null) {
+                    if (matchingFields.isEmpty()) {
+                        List<String> fieldLabels = new List<String>();
+                        for (String fldApi : configuredFldApiNames) {
+                            Schema.DescribeFieldResult fieldDesc = getFldDesc(LAYOUT_CFG_OBJECT, fldApi);
+                            if (CTRL_FLD_API.equalsIgnoreCase(fldApi) || fieldDesc == null || (fieldDesc.getType() != Schema.DisplayType.Picklist && fieldDesc.getType() != Schema.DisplayType.MultiPicklist)) {
+                                continue;
+                            }
+                            String fieldLabel = fieldDesc.getLabel();
+                            if (String.isNotBlank(fieldLabel)) {
+                                fieldLabels.add(fieldLabel.trim());
+                            }
+                        }
+                        List<String> allowedFields = new List<String>();
+                        Set<String> normalizedLabels = new Set<String>();
+                        for (String fieldLabel : getSortedDistinctVal(fieldLabels)) {
+                            if (normalizedLabels.add(fieldLabel.toLowerCase())) {
+                                allowedFields.add(fieldLabel);
+                            }
+                        }
+                        return createErrorApiResponse(Core_MDF_Attributes_RestAPIConstants.CODE_1007_INVALID_FIELD, buildInvalidReqParamDetails('fieldName', allowedFields), fieldName);
+                    }
                     matchingFields.sort();
                     Core_MDF_Campaign_APIResponse fieldError = new Core_MDF_Campaign_APIResponse();
-                    fieldError.setErrorInfo(matchingFields.isEmpty() ? 'Field is not configured for this program.' : 'Field label is ambiguous; use a field API name.', Core_MDF_Attributes_RestAPIConstants.CODE_1007_INVALID_FIELD);
+                    fieldError.setErrorInfo('Field label is ambiguous; use a field API name.', Core_MDF_Attributes_RestAPIConstants.CODE_1007_INVALID_FIELD);
                     fieldError.details = buildInvalidReqParamDetails('fieldName', matchingFields);
                     return fieldError;
                 }
@@ -1516,9 +1537,9 @@ global without sharing class Core_MDF_PicklistAttributes_RestAPI {
         String jsonStr = '{';
         jsonStr += '"isSuccess":' + (safeResponse.isSuccess ? 'true' : 'false');
         if (safeResponse.isSuccess && safeResponse.success != null) {
-            jsonStr += ',"success":{"code":"' + safeResponse.success.code + '","message":"' + safeResponse.success.message.replace('"', '\\"') + '"}';
+            jsonStr += ',"success":{"code":' + JSON.serialize(safeResponse.success.code) + ',"message":' + JSON.serialize(safeResponse.success.message) + '}';
         } else if (!safeResponse.isSuccess && safeResponse.error != null) {
-            jsonStr += ',"error":{"code":"' + safeResponse.error.code + '","message":"' + safeResponse.error.message.replace('"', '\\"') + '"}';
+            jsonStr += ',"error":{"code":' + JSON.serialize(safeResponse.error.code) + ',"message":' + JSON.serialize(safeResponse.error.message) + '}';
         }
         if (safeResponse.details == null) {
             jsonStr += ',"details":null';

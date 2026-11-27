@@ -296,11 +296,13 @@ public without sharing class Core_MDF_AccountABACheck {
                     Long endTimee = System.currentTimeMillis();
                     System.debug(LoggingLevel.ERROR, 'getBudgetType 4 END | elapsedMs=' + (endTimee - startTimee) + ', resultSize=' + (returnData == null ? 0 : returnData.size()) + ', cpuTime=' + Limits.getCpuTime() + ', queries=' + Limits.getQueries());
                     if(returnData != null && returnData.size() > 0) {
+                        system.debug('returnData for program ' + program + ': ' + returnData.get(program));
                         budgetTypesList.addAll(returnData.get(program));
                         
                     }
                 }else{
                     budgetTypesList.addAll(new List<String>{'Account Plan', 'Proposal I MDF', 'Proposal II MDF'});
+                    system.debug('Test mode budgetTypesList: ' + budgetTypesList);
                 }
             }
             

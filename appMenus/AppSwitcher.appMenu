@@ -532,4 +532,8 @@
         <name>partnerexp1</name>
         <type>Network</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>PartnerReactCommAppTest</name>
+        <type>Network</type>
+    </appMenuItems>
 </AppMenu>

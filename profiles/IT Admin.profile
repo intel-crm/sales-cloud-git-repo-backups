@@ -8507,6 +8507,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>IPATestObjectHandler</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>IPA_Apigee_Auth_Provider</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -40455,6 +40459,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>IPATestObject__c.AccountName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>IPATestObject__c.Country__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>IPATestObject__c.Region__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Idea.Attachment</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -54616,6 +54635,14 @@
         <layout>IPATestObject__c-IPATestObject Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>IPATestObject__c-IPATestObject Layout</layout>
+        <recordType>IPATestObject__c.RecordType1</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>IPATestObject__c-IPATestObject Layout</layout>
+        <recordType>IPATestObject__c.RecordType2</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Idea-Idea Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -62315,6 +62342,16 @@
     <recordTypeVisibilities>
         <default>true</default>
         <recordType>Event.Expert_Engagement</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>IPATestObject__c.RecordType1</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>IPATestObject__c.RecordType2</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

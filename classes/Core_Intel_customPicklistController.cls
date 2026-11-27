@@ -133,6 +133,7 @@ public with sharing class Core_Intel_customPicklistController {
        Map<String, Object> m =  (Map<String, Object>)JSON.deserializeUntyped(strResponse);
        system.debug('---m'+m);
        customPicklistCache.put(recordTypeName, m);
+       system.debug('customPicklistCache after put: ' + customPicklistCache);
        return m;     
     }
     
