@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectBinding xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <implementationField>ssot__FinancialCustomer__dlm.ssot__AccountId__c</implementationField>
+        <interfaceField>FinancialCustomerDmo.AccountId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__FinancialCustomer__dlm.ssot__CustomerRating__c</implementationField>
+        <interfaceField>FinancialCustomerDmo.CustomerRating</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__FinancialCustomer__dlm.ssot__DataSourceId__c</implementationField>
+        <interfaceField>FinancialCustomerDmo.DataSourceId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__FinancialCustomer__dlm.ssot__DataSourceObjectId__c</implementationField>
+        <interfaceField>FinancialCustomerDmo.DataSourceObjectId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__FinancialCustomer__dlm.ssot__Id__c</implementationField>
+        <interfaceField>FinancialCustomerDmo.Id</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__FinancialCustomer__dlm.KQ_AccountId__c</implementationField>
+        <interfaceField>FinancialCustomerDmo.KQ_AccountId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__FinancialCustomer__dlm.KQ_Id__c</implementationField>
+        <interfaceField>FinancialCustomerDmo.KQ_Id</interfaceField>
+    </fields>
+    <implementationObject>ssot__FinancialCustomer__dlm</implementationObject>
+    <interfaceObject>FinancialCustomerDmo</interfaceObject>
+    <masterLabel>ssot__FinancialCustomer</masterLabel>
+</CustomObjectBinding>

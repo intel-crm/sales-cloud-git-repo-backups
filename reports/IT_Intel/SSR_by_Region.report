@@ -77,8 +77,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Sales_Support_Request__c.Core_IT_IAI_Date_of_Topic__c</dateColumn>
-        <endDate>2026-11-26</endDate>
+        <endDate>2026-11-27</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-26</startDate>
+        <startDate>2026-11-27</startDate>
     </timeFrameFilter>
 </Report>

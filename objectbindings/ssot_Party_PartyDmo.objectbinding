@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectBinding xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <implementationField>ssot__Party__dlm.ssot__DataSourceId__c</implementationField>
+        <interfaceField>PartyDmo.DataSourceId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__Party__dlm.ssot__DataSourceObjectId__c</implementationField>
+        <interfaceField>PartyDmo.DataSourceObjectId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__Party__dlm.ssot__Id__c</implementationField>
+        <interfaceField>PartyDmo.Id</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__Party__dlm.ssot__IndividualId__c</implementationField>
+        <interfaceField>PartyDmo.IndividualId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__Party__dlm.KQ_Id__c</implementationField>
+        <interfaceField>PartyDmo.KQ_Id</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__Party__dlm.KQ_IndividualId__c</implementationField>
+        <interfaceField>PartyDmo.KQ_IndividualId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__Party__dlm.ssot__PartyType__c</implementationField>
+        <interfaceField>PartyDmo.PartyType</interfaceField>
+    </fields>
+    <implementationObject>ssot__Party__dlm</implementationObject>
+    <interfaceObject>PartyDmo</interfaceObject>
+    <masterLabel>ssot__Party</masterLabel>
+</CustomObjectBinding>

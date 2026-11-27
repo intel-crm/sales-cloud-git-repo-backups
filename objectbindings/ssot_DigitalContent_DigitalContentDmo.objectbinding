@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectBinding xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <implementationField>ssot__DigitalContent__dlm.ssot__DataSourceId__c</implementationField>
+        <interfaceField>DigitalContentDmo.DataSourceId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__DigitalContent__dlm.ssot__DataSourceObjectId__c</implementationField>
+        <interfaceField>DigitalContentDmo.DataSourceObjectId</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__DigitalContent__dlm.ssot__DigitalContentType__c</implementationField>
+        <interfaceField>DigitalContentDmo.DigitalContentType</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__DigitalContent__dlm.ssot__Id__c</implementationField>
+        <interfaceField>DigitalContentDmo.Id</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__DigitalContent__dlm.KQ_Id__c</implementationField>
+        <interfaceField>DigitalContentDmo.KQ_Id</interfaceField>
+    </fields>
+    <fields>
+        <implementationField>ssot__DigitalContent__dlm.ssot__Name__c</implementationField>
+        <interfaceField>DigitalContentDmo.NameInterfaceField</interfaceField>
+    </fields>
+    <implementationObject>ssot__DigitalContent__dlm</implementationObject>
+    <interfaceObject>DigitalContentDmo</interfaceObject>
+    <masterLabel>ssot__DigitalContent</masterLabel>
+</CustomObjectBinding>

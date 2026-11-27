@@ -4,14 +4,14 @@
     <connectionMethod>Ingress</connectionMethod>
     <connectionStatus>ACTIVE</connectionStatus>
     <connectorName>MarketingDataConnector</connectorName>
-    <externalRecordIdentifier>38f6aa5a-fe06-4543-aacb-ee14050631c7</externalRecordIdentifier>
+    <externalRecordIdentifier>814c810d-2609-4385-b2f2-ab7af4b33c14</externalRecordIdentifier>
     <isActivityEnabled>false</isActivityEnabled>
     <isSentosEnabled>false</isSentosEnabled>
     <masterLabel>MarketingDataConnection</masterLabel>
     <parameters>
         <fullName>MarketingDataConnector_orgId</fullName>
         <paramName>orgId</paramName>
-        <value>core/prod/00Do0000000aRcfEAE</value>
+        <value>core/prod/00D3F0000000NmrUAE</value>
     </parameters>
     <shouldAutoCreatePolicies>false</shouldAutoCreatePolicies>
 </MktDataConnection>

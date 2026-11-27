@@ -68,6 +68,11 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
+        <fullName>DataSpaceId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Description</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -153,6 +158,7 @@
     </fields>
     <searchLayouts>
         <customTabListAdditionalFields>Suffix</customTabListAdditionalFields>
+        <customTabListAdditionalFields>DataSpace</customTabListAdditionalFields>
         <customTabListAdditionalFields>RootEntityLabel</customTabListAdditionalFields>
         <customTabListAdditionalFields>Status</customTabListAdditionalFields>
         <customTabListAdditionalFields>LastRunStatus</customTabListAdditionalFields>
@@ -161,6 +167,7 @@
         <customTabListAdditionalFields>UnifiedCount</customTabListAdditionalFields>
         <customTabListAdditionalFields>ConsolidationRate</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>Suffix</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>DataSpace</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>RootEntityLabel</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Status</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>LastRunStatus</lookupDialogsAdditionalFields>
@@ -169,6 +176,7 @@
         <lookupDialogsAdditionalFields>UnifiedCount</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ConsolidationRate</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Suffix</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>DataSpace</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>RootEntityLabel</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Status</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>LastRunStatus</lookupPhoneDialogsAdditionalFields>
@@ -177,6 +185,7 @@
         <lookupPhoneDialogsAdditionalFields>UnifiedCount</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ConsolidationRate</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>Suffix</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>DataSpace</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>RootEntityLabel</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Status</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>LastRunStatus</searchResultsAdditionalFields>

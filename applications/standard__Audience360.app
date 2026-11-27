@@ -11,6 +11,7 @@
     <tabs>standard-DataStream</tabs>
     <tabs>standard-DataLakeObjectInstance</tabs>
     <tabs>standard-DataModel</tabs>
+    <tabs>standard-DataGovernance</tabs>
     <tabs>standard-DataView</tabs>
     <tabs>standard-EinsteinStudio</tabs>
     <tabs>standard-GenAIMetadataStudio</tabs>
@@ -25,6 +26,7 @@
     <tabs>standard-MarketSegment</tabs>
     <tabs>standard-ActivationTarget</tabs>
     <tabs>standard-MarketSegmentActivation</tabs>
+    <tabs>standard-DataSpace</tabs>
     <tabs>standard-MlWorkspace</tabs>
     <tabs>standard-DataSemanticSearch</tabs>
     <tabs>standard-DataObjSecondaryIndex</tabs>
