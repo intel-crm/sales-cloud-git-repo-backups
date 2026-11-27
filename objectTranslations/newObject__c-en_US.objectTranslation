@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>newObjects</value>
     </caseValues>
+    <fields>
+        <label><!-- Id --></label>
+        <name>Id__c</name>
+    </fields>
     <recordTypes>
         <description><!-- ecap deal --></description>
         <label><!-- Ecap --></label>

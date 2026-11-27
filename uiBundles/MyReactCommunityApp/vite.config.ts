@@ -6,6 +6,18 @@ import { resolve } from 'path';
 import tailwindcss from '@tailwindcss/vite';
 import salesforce from '@salesforce/vite-plugin-ui-bundle';
 import codegen from 'vite-plugin-graphql-codegen';
+import { EnvHttpProxyAgent, setGlobalDispatcher } from 'undici';
+
+// Node's global fetch (used by the Salesforce dev proxy) ignores HTTP(S)_PROXY,
+// so route it through the corporate proxy when one is configured.
+if (
+  process.env.HTTPS_PROXY ||
+  process.env.https_proxy ||
+  process.env.HTTP_PROXY ||
+  process.env.http_proxy
+) {
+  setGlobalDispatcher(new EnvHttpProxyAgent());
+}
 
 const schemaPath = resolve(__dirname, '../../../../../schema.graphql');
 const schemaExists = existsSync(schemaPath);

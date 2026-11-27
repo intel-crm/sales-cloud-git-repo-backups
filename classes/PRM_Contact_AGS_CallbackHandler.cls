@@ -271,7 +271,7 @@ global with sharing class PRM_Contact_AGS_CallbackHandler {
             //if(System.isBatch()){
             List<PRM_Account_Contact_Relationship__c> acrList = new List<PRM_Account_Contact_Relationship__c>();
             
-            acrlist = [SELECT id, PRM_Contact_Id__c, PRM_Source_Agent__c, PRM_Contact_Id__r.Core_Preferred_Language__c FROM PRM_Account_Contact_Relationship__c WHERE PRM_Contact_Id__c =: cont.id LIMIT 1];
+            acrlist = [SELECT id, /*PRM_Contact_Id__c,*/ PRM_Source_Agent__c, PRM_Contact_Id__r.Core_Preferred_Language__c FROM PRM_Account_Contact_Relationship__c WHERE PRM_Contact_Id__c =: cont.id LIMIT 1]; //ATHR Fix - TWC729-9556 - JB
             
             List<String> businessEventsList = Label.PRM_Email_Business_Events.split(',');
             Map<String,String> languagesMap = new Map<String,String>();

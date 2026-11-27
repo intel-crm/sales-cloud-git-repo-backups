@@ -154,6 +154,16 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Id__c</fullName>
+        <description>obj id</description>
+        <displayFormat>{0000}</displayFormat>
+        <externalId>true</externalId>
+        <label>Id</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
     <label>newObject</label>
     <listViews>
         <fullName>All</fullName>
@@ -161,10 +171,9 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <displayFormat>{0000}</displayFormat>
         <label>newObject Name</label>
         <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
+        <type>Text</type>
     </nameField>
     <pluralLabel>newObjects</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>

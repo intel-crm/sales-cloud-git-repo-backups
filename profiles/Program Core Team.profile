@@ -53604,6 +53604,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>newObject__c.Id__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>sf_scraping_request__e.Company_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>

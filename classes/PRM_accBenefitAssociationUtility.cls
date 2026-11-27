@@ -662,7 +662,7 @@ Description : Check Wether correct benefit is associated with the account.
                 
                 //Iterating aba record to fetch accid for various operation
                 if(lstAccBenefit != null && ! lstAccBenefit.isEmpty()){
-                     for(PRM_AccountBenefitAssociation__c aba: [Select id,name,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__c,PRM_Partner_Benefit_Id__r.Name,PRM_Status_Reason_Txt__c from PRM_AccountBenefitAssociation__c where Id IN: lstAccBenefit AND PRM_Account_Id__r.Recordtypeid =: OpidAccRecordTypeId AND PRM_Partner_Benefit_Id__r.Name IN: setOfBnfts]){
+                     for(PRM_AccountBenefitAssociation__c aba: [Select id,name,PRM_Status_Nm__c,PRM_Account_Id__c,/*PRM_Partner_Benefit_Id__c,*/PRM_Partner_Benefit_Id__r.Name,PRM_Status_Reason_Txt__c from PRM_AccountBenefitAssociation__c where Id IN: lstAccBenefit AND PRM_Account_Id__r.Recordtypeid =: OpidAccRecordTypeId AND PRM_Partner_Benefit_Id__r.Name IN: setOfBnfts]){//ATHR Fix - TWC729-9556 - JB
                         if (aba.PRM_Status_Nm__c == System.Label.PRM_Status_Active) {
                             setOfAccountId.add(aba.PRM_Account_Id__c);
                             if(aba.PRM_Partner_Benefit_Id__r.Name == System.Label.PRM_Solutions_Marketplace_Basic_Profile){
@@ -714,7 +714,7 @@ Description : Check Wether correct benefit is associated with the account.
                 
                 //Inactivating aba as per condition
                 if(setofFinalAccid != null && ! setofFinalAccid.isEmpty() && setOfFinalBnft!=null && !setOfFinalBnft.isEmpty()){
-                    for(PRM_AccountBenefitAssociation__c abaFinal: [Select id,name,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Account_Id__r.Recordtypeid,PRM_Partner_Benefit_Id__c,PRM_Partner_Benefit_Id__r.Name,PRM_Source__c from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c In: setofFinalAccid AND PRM_Status_Nm__c =: System.Label.PRM_Status_Active AND PRM_Partner_Benefit_Id__r.Name IN: setOfFinalBnft]){
+                    for(PRM_AccountBenefitAssociation__c abaFinal: [Select id,name,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Account_Id__r.Recordtypeid,/*PRM_Partner_Benefit_Id__c,*/PRM_Partner_Benefit_Id__r.Name,PRM_Source__c from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c In: setofFinalAccid AND PRM_Status_Nm__c =: System.Label.PRM_Status_Active AND PRM_Partner_Benefit_Id__r.Name IN: setOfFinalBnft]){ //ATHR Fix - TWC729-9556 - JB
                         If(abaFinal.PRM_Partner_Benefit_Id__r.Name == System.Label.PRM_Solution_Marketplace_Basic_Access && setOfChildAccId.contains(abaFinal.PRM_Account_Id__c)){
                             abaFinal.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;abaFinal.PRM_Status_Reason_Txt__c =System.Label.PRM_Aba_Inactive;abaFinal.PRM_Source__c='';
           lstOfAba.add(abaFinal);    
