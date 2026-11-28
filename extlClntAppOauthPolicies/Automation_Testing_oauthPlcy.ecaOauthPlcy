@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
     <clientCredentialsFlowUser>12222730@intel.com.crm.crmdevint3</clientCredentialsFlowUser>
-    <commaSeparatedProfile>IT Admin,Core Integration,System Administrator</commaSeparatedProfile>
+    <commaSeparatedProfile>Core Integration,System Administrator,IT Admin</commaSeparatedProfile>
     <externalClientApplication>Automation_Testing</externalClientApplication>
     <ipRelaxationPolicyType>Bypass</ipRelaxationPolicyType>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>

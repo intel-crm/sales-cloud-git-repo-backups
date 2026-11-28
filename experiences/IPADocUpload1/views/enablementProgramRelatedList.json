@@ -2,10 +2,10 @@
   "appPageId" : "b15e9917-f493-45ed-b1ab-63ce77cdadfa",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "d03e4831-25c5-48d8-9eac-8a41aeec3415",
+  "id" : "0e171be3-baaa-4d4b-8042-9ca594d628c7",
   "label" : "Enablement Program Related List",
   "regions" : [ {
-    "id" : "54cc1d13-4eb4-44c9-89b8-3675b694d60d",
+    "id" : "8b4d87bc-5593-49b9-a328-0df7baa1e7d5",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -20,16 +20,16 @@
         "showRowNumbers" : true
       },
       "componentName" : "forceCommunity:relatedList",
-      "id" : "a3284c10-ae2f-4df7-8e77-426bbfacba8d",
+      "id" : "c2eb96a6-5eba-48ac-b419-5b79b032e3d2",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "44a90bac-a2ff-4973-ae5c-c72a789f735b",
+    "id" : "f70ca802-b139-4b33-b1d6-f986faf633b6",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "32f27c28-4461-4a22-8d3c-d9963d3d6271",
+    "id" : "93ce1df1-8621-417b-b836-3144a2f98b3d",
     "regionName" : "footer",
     "type" : "region"
   } ],
