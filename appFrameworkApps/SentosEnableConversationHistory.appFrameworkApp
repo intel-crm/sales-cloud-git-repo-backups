@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppFrameworkApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <appAssetVersion>68.0</appAssetVersion>
+    <appTemplate>sfdc_internal__SentosEnableConversationHistory</appTemplate>
+    <label>SentosEnableConversationHistory</label>
+    <templateType>APP</templateType>
+    <templateVersion>1.0</templateVersion>
+</AppFrameworkApp>

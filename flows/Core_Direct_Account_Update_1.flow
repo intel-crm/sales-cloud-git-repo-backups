@@ -2,8 +2,60 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>58.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_For_New_Account</name>
+        <label>Check For New Account</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IsNewAccount</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>NewAccount</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ParentId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Direct_Account_Update</targetReference>
+            </connector>
+            <label>IsNewAccount</label>
+        </rules>
+    </decisions>
     <description>This flow will update the Direct Account field and Direct Account Active field</description>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+    </ends>
     <environments>Default</environments>
+    <formulas>
+        <name>NewAccount</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
     <interviewLabel>Core_Direct_Account_Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_Direct_Account_Update</label>
     <processMetadataValues>
@@ -15,15 +67,74 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_log_entry</name>
+        <label>Create log entry</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Core_Direct_Account_Update flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>ACM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>Update Account</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordUpdates>
-        <name>myRule_1_A1</name>
+        <name>Core_Direct_Account_Update</name>
         <label>Core_Direct_Account_Update</label>
-        <locationX>584</locationX>
-        <locationY>447</locationY>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Direct_Account_Active_Ind__c</field>
             <value>
@@ -39,31 +150,17 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>458</locationX>
-        <locationY>48</locationY>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
         <connector>
-            <targetReference>myRule_1_A1</targetReference>
+            <targetReference>Check_For_New_Account</targetReference>
         </connector>
-        <filterLogic>(1 AND 2) OR (1 AND 3)</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Account_Record_Type__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Direct Account</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>CreatedDate</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>ParentId</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <object>Account</object>

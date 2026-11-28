@@ -5,8 +5,8 @@
     <decisions>
         <name>Check_Record_Type_Change</name>
         <label>Check Record Type Change</label>
-        <locationX>608</locationX>
-        <locationY>270</locationY>
+        <locationX>710</locationX>
+        <locationY>323</locationY>
         <defaultConnector>
             <targetReference>If_Region_Is_Changed</targetReference>
         </defaultConnector>
@@ -44,8 +44,11 @@
     <decisions>
         <name>If_Region_Is_Changed</name>
         <label>If Region Is Changed</label>
-        <locationX>608</locationX>
-        <locationY>530</locationY>
+        <locationX>1370</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Region_Changed_True</name>
@@ -128,6 +131,36 @@
             <label>Group Name Is Updated to Null</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_10</name>
+        <locationX>578</locationX>
+        <locationY>647</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_11</name>
+        <locationX>314</locationX>
+        <locationY>755</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>2162</locationX>
+        <locationY>539</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_7</name>
+        <locationX>1106</locationX>
+        <locationY>755</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_8</name>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_9</name>
+        <locationX>1634</locationX>
+        <locationY>647</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>UCD ACM Account Umbrella Grouping {!$Flow.CurrentDateTime}</interviewLabel>
     <label>UCD ACM Account Umbrella Grouping</label>
@@ -140,7 +173,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -150,11 +183,64 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_log_entry</name>
+        <label>Create log entry</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_11</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>UCD ACM Account Umbrella Grouping flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>ACM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>Update Account</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>Get_Group_ID</name>
         <label>Get Group ID</label>
-        <locationX>619</locationX>
-        <locationY>705</locationY>
+        <locationX>1106</locationX>
+        <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Populate_Group_ID</targetReference>
@@ -176,8 +262,8 @@
     <recordLookups>
         <name>Get_Group_ID_For_Record_Type_Change</name>
         <label>Get Group ID For Record Type Change</label>
-        <locationX>350</locationX>
-        <locationY>400</locationY>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Populate_Group_ID_For_Record_Type_Change</targetReference>
@@ -199,8 +285,15 @@
     <recordUpdates>
         <name>Populate_Group_ID</name>
         <label>Populate Group ID</label>
-        <locationX>618</locationX>
-        <locationY>825</locationY>
+        <locationX>1106</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_7</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Group_Id__c</field>
             <value>
@@ -212,8 +305,14 @@
     <recordUpdates>
         <name>Populate_Group_ID_For_Record_Type_Change</name>
         <label>Populate Group ID For Record Type Change</label>
-        <locationX>350</locationX>
-        <locationY>530</locationY>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_8</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Group_Id__c</field>
             <value>
@@ -225,8 +324,15 @@
     <recordUpdates>
         <name>Remove_Group_Id</name>
         <label>Remove Group Id</label>
-        <locationX>877</locationX>
-        <locationY>405</locationY>
+        <locationX>1634</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_9</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Group_Id__c</field>
             <value>
@@ -238,8 +344,15 @@
     <recordUpdates>
         <name>Update_Global_Name_and_Id_To_Null</name>
         <label>Update Global Name and Id To Null</label>
-        <locationX>385</locationX>
-        <locationY>393</locationY>
+        <locationX>578</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_10</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Group_Id__c</field>
             <value>
@@ -255,8 +368,8 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>490</locationX>
-        <locationY>48</locationY>
+        <locationX>584</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Check_Record_Type_Change</targetReference>
         </connector>

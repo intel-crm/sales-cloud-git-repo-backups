@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MktDataConnection xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessType>Shared</accessType>
+    <connectionMethod>Ingress</connectionMethod>
+    <connectionStatus>ACTIVE</connectionStatus>
+    <connectorName>AIPlatform</connectorName>
+    <externalRecordIdentifier>11fb5e8d-1369-4197-af8c-dd386c705170</externalRecordIdentifier>
+    <isActivityEnabled>false</isActivityEnabled>
+    <isSentosEnabled>false</isSentosEnabled>
+    <masterLabel>AIPlatform_COWORKER_INSIGHTS</masterLabel>
+    <parameters>
+        <fullName>AIPlatform_COWORKER_INSIGHTS_customerOrg</fullName>
+        <paramName>customerOrg</paramName>
+        <value>true</value>
+    </parameters>
+    <parameters>
+        <fullName>AIPlatform_COWORKER_INSIGHTS_providerName</fullName>
+        <paramName>providerName</paramName>
+        <value>COWORKER_INSIGHTS</value>
+    </parameters>
+    <shouldAutoCreatePolicies>false</shouldAutoCreatePolicies>
+</MktDataConnection>

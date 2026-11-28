@@ -360,7 +360,7 @@ objectsToDelete.clear();
         for(Product2 newproduct : listNewProduct) {
             newProduct.Core_Division_Code__c = String.isBlank(newProduct.Core_Division_Code__c) ? mapOldproduct.get(newproduct.Id).Core_Division_Code__c : MMFieldsContainsOldValueCheck(newProduct.Core_Division_Code__c.trim(), mapOldproduct.get(newproduct.Id).Core_Division_Code__c?.trim());
             newProduct.Core_Division_Code_Short_Name__c = String.isBlank(newProduct.Core_Division_Code_Short_Name__c) ? mapOldproduct.get(newproduct.Id).Core_Division_Code_Short_Name__c : MMFieldsContainsOldValueCheck(newProduct.Core_Division_Code_Short_Name__c.trim(), mapOldproduct.get(newproduct.Id).Core_Division_Code_Short_Name__c?.trim());
-            newProduct.Core_Code_Name__c = String.isBlank(newProduct.Core_Code_Name__c) ? mapOldproduct.get(newproduct.Id).Core_Code_Name__c : MMFieldsContainsOldValueCheck(newProduct.Core_Code_Name__c.trim(), mapOldproduct.get(newproduct.Id).Core_Code_Name__c.trim());
+            newProduct.Core_Code_Name__c = String.isBlank(newProduct.Core_Code_Name__c) ? mapOldproduct.get(newproduct.Id).Core_Code_Name__c?.left(255) : MMFieldsContainsOldValueCheck(newProduct.Core_Code_Name__c.trim(), mapOldproduct.get(newproduct.Id).Core_Code_Name__c.trim());
             newProduct.Core_Product_Status__c = String.isBlank(newProduct.Core_Product_Status__c) ? mapOldproduct.get(newproduct.Id).Core_Product_Status__c : MMFieldsContainsOldValueCheck(newProduct.Core_Product_Status__c.trim(), mapOldproduct.get(newproduct.Id).Core_Product_Status__c?.trim());
             newProduct.Core_BU_Operation_Code__c = String.isBlank(newProduct.Core_BU_Operation_Code__c) ? mapOldproduct.get(newproduct.Id).Core_BU_Operation_Code__c : MMFieldsContainsOldValueCheck(newProduct.Core_BU_Operation_Code__c.trim(), mapOldproduct.get(newproduct.Id).Core_BU_Operation_Code__c?.trim());
             newProduct.Core_Group_Code_Short_Name__c = String.isBlank(newProduct.Core_Group_Code_Short_Name__c) ? mapOldproduct.get(newproduct.Id).Core_Group_Code_Short_Name__c : MMFieldsContainsOldValueCheck(newProduct.Core_Group_Code_Short_Name__c.trim(), mapOldproduct.get(newproduct.Id).Core_Group_Code_Short_Name__c?.trim());
@@ -374,7 +374,7 @@ objectsToDelete.clear();
     
     public static String MMFieldsContainsOldValueCheck(String newValue, String oldValue){
         if (String.isBlank(oldValue)) {
-            return newValue;
+            return newValue.left(255);
         }
         List<String> listAllNewValues = newValue.split(';');
         for (String newFieldValue : listAllNewValues) {
@@ -382,7 +382,7 @@ objectsToDelete.clear();
                 oldValue += ';'+newFieldValue;
             }
         }
-        return oldValue;
+        return oldValue.left(255);
     }
     //END
    

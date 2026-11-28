@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalDataConnector xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataConnectionStatus>Connected</dataConnectionStatus>
+    <dataConnectorConfiguration>AgenticConnector_a1f850fb_4699_4d40_a28f_155f238b028b</dataConnectorConfiguration>
+    <dataConnectorType>StreamingApp</dataConnectorType>
+    <dataPlatform>Streaming_App</dataPlatform>
+    <masterLabel>AgenticConnector</masterLabel>
+</ExternalDataConnector>

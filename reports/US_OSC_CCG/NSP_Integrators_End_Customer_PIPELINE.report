@@ -163,8 +163,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
-        <endDate>2026-11-27</endDate>
+        <endDate>2026-11-28</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-27</startDate>
+        <startDate>2026-11-28</startDate>
     </timeFrameFilter>
 </Report>

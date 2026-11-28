@@ -36,7 +36,9 @@ public with sharing class Product_DeleteFPHRecords implements Database.Batchable
                 if (!listProducts.isEmpty()) {
                     for(product2 prd : listProducts){
                         if(!mapL5IdFPH.isEmpty() && mapL5IdFPH.containsKey(prd.Core_Unique_ID__c)) {
-                            listFPHRecordsToDelete.add(mapL5IdFPH.get(prd.Core_Unique_ID__c));
+                            if(!listFPHRecordsToDelete.contains(mapL5IdFPH.get(prd.Core_Unique_ID__c))) {
+                                listFPHRecordsToDelete.add(mapL5IdFPH.get(prd.Core_Unique_ID__c));
+                            }
                         }
                     }
                     if (!listFPHRecordsToDelete.isEmpty()) {

@@ -5,7 +5,7 @@
     <decisions>
         <name>Verify_Existing_ACM_Queue_Records</name>
         <label>Verify Existing ACM Queue Records</label>
-        <locationX>270</locationX>
+        <locationX>446</locationX>
         <locationY>539</locationY>
         <defaultConnector>
             <targetReference>Create_ACM_Integration_Message_Queue</targetReference>
@@ -50,14 +50,20 @@
                     <stringValue>New</stringValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>END_ELEMENT_5</targetReference>
+            </connector>
             <label>Record with New Status</label>
         </rules>
     </decisions>
     <decisions>
         <name>Verify_Required_Business_Types</name>
         <label>Verify Required Business Types</label>
-        <locationX>512</locationX>
+        <locationX>908</locationX>
         <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Required_Business_Types</name>
@@ -89,6 +95,31 @@
             <label>Required Business Types</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>578</locationX>
+        <locationY>647</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>1370</locationX>
+        <locationY>431</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_7</name>
+        <locationX>842</locationX>
+        <locationY>755</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_8</name>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_9</name>
+        <locationX>314</locationX>
+        <locationY>863</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>ER_ABT Field Updates {!$Flow.CurrentDateTime}</interviewLabel>
     <label>ER_ABT Field Updates</label>
@@ -114,8 +145,15 @@
     <recordCreates>
         <name>Create_ACM_Integration_Message_Queue</name>
         <label>Create ACM Integration Message Queue</label>
-        <locationX>490</locationX>
+        <locationX>842</locationX>
         <locationY>647</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_7</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Content_Type__c</field>
             <value>
@@ -155,10 +193,63 @@
         <object>ACM_Integration_Message_Queue__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
+    <recordCreates>
+        <name>Create_log_entry</name>
+        <label>Create log entry</label>
+        <locationX>314</locationX>
+        <locationY>755</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_9</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>ER_ABT Field Updates flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>ACM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>Create or Update Account Business Types</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>Get_Existing_ACM_Integration_Message_Queue_Records</name>
         <label>Get Existing ACM Integration Message Queue Records</label>
-        <locationX>270</locationX>
+        <locationX>446</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -202,6 +293,12 @@
         <label>Update Existing Record to New</label>
         <locationX>50</locationX>
         <locationY>647</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_8</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -219,7 +316,7 @@
         <object>ACM_Integration_Message_Queue__c</object>
     </recordUpdates>
     <start>
-        <locationX>386</locationX>
+        <locationX>782</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Verify_Required_Business_Types</targetReference>

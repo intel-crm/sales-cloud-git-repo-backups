@@ -813,6 +813,10 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
+        <name>standard__AIWorkbench</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>CDB_Agent_Connected_App</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>

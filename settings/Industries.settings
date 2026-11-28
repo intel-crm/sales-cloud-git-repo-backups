@@ -11,6 +11,7 @@
     <enableContractRiskAnalysisEnabled>false</enableContractRiskAnalysisEnabled>
     <enableContractSearchPref>false</enableContractSearchPref>
     <enableContractsAIPref>false</enableContractsAIPref>
+    <enableDataCloudEventsOnTimeline>false</enableDataCloudEventsOnTimeline>
     <enableDataTrueUpPreference>false</enableDataTrueUpPreference>
     <enableDesignDocumentTemplate>false</enableDesignDocumentTemplate>
     <enableDiscoveryFrameworkMetadata>false</enableDiscoveryFrameworkMetadata>

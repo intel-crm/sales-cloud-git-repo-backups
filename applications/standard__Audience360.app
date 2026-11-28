@@ -41,5 +41,6 @@
     <tabs>standard-DataGovernance</tabs>
     <tabs>standard-DataCleanRoom</tabs>
     <tabs>standard-DataQuickAttribute</tabs>
+    <tabs>standard-Agents</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

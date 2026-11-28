@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Parmar Gadgets Partner User</description>
+    <description>Parmar Gadgets1 Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Parmar Gadgets Partner User</name>
+    <name>Parmar Gadgets1 Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>Admin</parentRole>
 </Role>

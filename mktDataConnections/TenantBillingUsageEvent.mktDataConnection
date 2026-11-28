@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MktDataConnection xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessType>Shared</accessType>
     <connectionMethod>Ingress</connectionMethod>
-    <connectionStatus>ACTIVE</connectionStatus>
+    <connectionStatus>INACTIVE</connectionStatus>
     <connectorName>TenantBillingUsageConnector</connectorName>
-    <externalRecordIdentifier>679ef93e-3e01-48ee-a976-061f81c57780</externalRecordIdentifier>
     <isActivityEnabled>false</isActivityEnabled>
     <isSentosEnabled>false</isSentosEnabled>
     <masterLabel>TenantBillingUsageEvent</masterLabel>
