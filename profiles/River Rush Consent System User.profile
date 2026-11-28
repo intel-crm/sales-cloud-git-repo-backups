@@ -32576,6 +32576,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>standard-DataObjSecondaryIndex</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>standard-DataSpace</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>

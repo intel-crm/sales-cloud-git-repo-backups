@@ -36,6 +36,7 @@
     <tabs>standard-ExtDataShare</tabs>
     <tabs>standard-ExtDataShareTarget</tabs>
     <tabs>standard-DataQueryWorkspace</tabs>
+    <tabs>standard-DataCommunicationCap</tabs>
     <tabs>standard-DataQuickAttribute</tabs>
     <tabs>standard-KnowledgeSpace</tabs>
     <tabs>standard-Agents</tabs>
