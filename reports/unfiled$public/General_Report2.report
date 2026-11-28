@@ -29,9 +29,9 @@
         <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
             <dateColumn>CUST_LAST_UPDATE</dateColumn>
-            <endDate>2026-11-27</endDate>
+            <endDate>2026-11-28</endDate>
             <interval>INTERVAL_CUSTOM</interval>
-            <startDate>2026-11-27</startDate>
+            <startDate>2026-11-28</startDate>
         </timeFrameFilter>
     </block>
     <block>
@@ -58,9 +58,9 @@
         <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
             <dateColumn>CUST_LAST_UPDATE</dateColumn>
-            <endDate>2026-11-27</endDate>
+            <endDate>2026-11-28</endDate>
             <interval>INTERVAL_CUSTOM</interval>
-            <startDate>2026-11-27</startDate>
+            <startDate>2026-11-28</startDate>
         </timeFrameFilter>
     </block>
     <block>
@@ -109,9 +109,9 @@
         <sortOrder>Asc</sortOrder>
         <timeFrameFilter>
             <dateColumn>CUST_LAST_UPDATE</dateColumn>
-            <endDate>2026-11-27</endDate>
+            <endDate>2026-11-28</endDate>
             <interval>INTERVAL_CUSTOM</interval>
-            <startDate>2026-11-27</startDate>
+            <startDate>2026-11-28</startDate>
         </timeFrameFilter>
     </block>
     <block>
@@ -160,9 +160,9 @@
         <sortOrder>Desc</sortOrder>
         <timeFrameFilter>
             <dateColumn>CUST_LAST_UPDATE</dateColumn>
-            <endDate>2026-11-27</endDate>
+            <endDate>2026-11-28</endDate>
             <interval>INTERVAL_CUSTOM</interval>
-            <startDate>2026-11-27</startDate>
+            <startDate>2026-11-28</startDate>
         </timeFrameFilter>
     </block>
     <blockInfo>
